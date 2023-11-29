@@ -1,0 +1,679 @@
+openapi: 3.0.1
+info:
+  description: "### Overview\nManage credentials for transaction tests using the Credentials\
+    \ API. \n\nThe following permissions are required to access Credentials API endpoints:\
+    \ \n* `Settings Tests Read` for read operations. \n* `Settings Tests Update` for\
+    \ write operations. \n* `View sensitive data in web transaction scripts` to view\
+    \ the encrypted value property of credentials. \n* `Settings Tests Create Transaction\
+    \ (Tx) Tests` to create credentials."
+  title: Credentials API
+  version: 7.0.0
+servers:
+- description: Thousandeyes API production URL
+  url: https://api.thousandeyes.com
+security:
+- BearerAuth:
+  - read
+paths:
+  /v7/credentials:
+    get:
+      description: Retrieves a list of credentials configured in ThousandEyes. Users
+        have access to the list of credentials based on the default settings or the
+        specified account ID.
+      operationId: getTransactionTestsCredentialsList
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getTransactionTestsCredentialsList_200_response'
+          description: OK
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: List credentials
+      tags:
+      - Credentials
+      x-accepts: "application/hal+json,application/problem+json"
+    post:
+      description: "Creates a new credential for ThousandEyes transaction tests, based\
+        \ on properties provided in the request data. To create a new credential,\
+        \ you must have permission to update tests."
+      operationId: createTransactionTestsCredential
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/CredentialWithoutValue'
+          description: Created
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Create credential
+      tags:
+      - Credentials
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/credentials/{id}:
+    delete:
+      description: "Deletes a ThousandEyes transaction test credential, using the\
+        \ request parameters. To delete a credential, you must have permission to\
+        \ update tests and access to the credential based on its default or provided\
+        \ account ID."
+      operationId: deleteTransactionTestsCredential
+      parameters:
+      - description: The ID of the desired credential.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "3247"
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: No content
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Delete credential
+      tags:
+      - Credentials
+      x-accepts: application/json
+    get:
+      description: "Retrieves detailed information about a ThousandEyes transaction\
+        \ test credential. To access this information, you must have access to the\
+        \ credential based on its default or provided account ID."
+      operationId: getTransactionTestsCredentialDetails
+      parameters:
+      - description: The ID of the desired credential.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "3247"
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Credential'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Retrieve credential
+      tags:
+      - Credentials
+      x-accepts: "application/hal+json,application/problem+json"
+    put:
+      description: "Updates the credential for ThousandEyes transaction tests, based\
+        \ on properties provided in the request data. To update a credential, you\
+        \ must have permission to update tests and access to the credential based\
+        \ on its default or provided account ID."
+      operationId: updateTransactionTestsCredential
+      parameters:
+      - description: The ID of the desired credential.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "3247"
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/CredentialWithoutValue'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Update credential
+      tags:
+      - Credentials
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+components:
+  headers:
+    Location:
+      description: The absolute path to created resource.
+      schema:
+        example: https://api.thousandeyes.com/v7/link/to/resource/id
+        format: uri
+        type: string
+  parameters:
+    Id:
+      description: The ID of the desired credential.
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        example: "3247"
+        type: string
+      style: simple
+    AccountGroupId:
+      description: A unique identifier associated with your account group. You can
+        retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that
+        you must be assigned to the target account group. Specifying this parameter
+        without being assigned to the target account group will result in an error
+        response.
+      in: query
+      name: aid
+      required: false
+      schema:
+        example: "2067"
+        type: string
+  responses:
+    "401":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+      description: Unauthorized
+    "403":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Insufficient permissions to query endpoint
+    "404":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: URI Resource Not Found
+            status: 404
+            detail: Details explaining if the 404 error is related to an invalid URI
+              or a wrong ID
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Not found
+    "429":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Exhausted rate limit for the organization
+    "500":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: Internal server error
+            status: 500
+            detail: Optional detail about the internal error message.
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Internal server error
+    "400":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: Request validation failed. There are invalid or missing fields
+            status: 400
+            detail: Invalid field value for field `expand`
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Bad Request
+    "204":
+      content:
+        application/json: {}
+      description: No content
+  schemas:
+    CredentialRequest:
+      example:
+        name: Example Credential 1
+        value: Example Credential 1 Password
+      properties:
+        name:
+          description: The name of the credential.
+          example: Example Credential 1
+          type: string
+        value:
+          description: The value of the credential that will be encrypted.
+          example: Example Credential 1 Password
+          type: string
+      type: object
+    CredentialWithoutValue:
+      allOf:
+      - properties:
+          id:
+            description: Unique ID of the credential.
+            example: "3247"
+            type: string
+          name:
+            description: The name of the credential.
+            example: Example Credential
+            type: string
+        type: object
+      - $ref: '#/components/schemas/SelfLinks'
+    Credential:
+      allOf:
+      - properties:
+          value:
+            description: The value of the credential that will be encrypted.
+            example: rwhR12uDm1Im47p5IVXgzz4ORgC7m48ajzzeWVUt
+            type: string
+        type: object
+      - $ref: '#/components/schemas/CredentialWithoutValue'
+    Credentials:
+      properties:
+        credentials:
+          items:
+            $ref: '#/components/schemas/Credential'
+          type: array
+      type: object
+    SelfLinks:
+      properties:
+        _links:
+          $ref: '#/components/schemas/SelfLinks__links'
+      readOnly: true
+      type: object
+    Link:
+      description: A hyperlink from the containing resource to a URI.
+      properties:
+        href:
+          description: "Its value is either a URI [RFC3986] or a URI template [RFC6570]."
+          example: https://api.thousandeyes.com/v7/link/to/resource/id
+          type: string
+        templated:
+          description: Should be true when the link object's "href" property is a
+            URI template.
+          type: boolean
+        type:
+          description: Used as a hint to indicate the media type expected when dereferencing
+            the target resource.
+          type: string
+        deprecation:
+          description: Its presence indicates that the link is to be deprecated at
+            a future date. Its value is a URL that should provide further information
+            about the deprecation.
+          type: string
+        name:
+          description: Its value may be used as a secondary key for selecting link
+            objects that share the same relation type.
+          type: string
+        profile:
+          description: A URI that hints about the profile of the target resource.
+          type: string
+        title:
+          description: Intended for labelling the link with a human-readable identifier
+          type: string
+        hreflang:
+          description: Indicates the language of the target resource
+          type: string
+      required:
+      - href
+      type: object
+    UnauthorizedError:
+      properties:
+        error:
+          example: invalid_token
+          type: string
+        error_description:
+          example: Invalid access token
+          type: string
+      type: object
+    Error:
+      properties:
+        type:
+          description: "A URI reference that identifies the problem type. When this\
+            \ member is not present, its value is assumed to be \"about:blank\"."
+          type: string
+        title:
+          description: "A short, human-readable summary of the problem type."
+          type: string
+        status:
+          description: The HTTP status code generated by the origin server for this
+            occurrence of the problem.
+          type: integer
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        instance:
+          description: A URI reference that identifies the specific occurrence of
+            the problem.
+          type: string
+      type: object
+    getTransactionTestsCredentialsList_200_response:
+      allOf:
+      - $ref: '#/components/schemas/Credentials'
+      - $ref: '#/components/schemas/SelfLinks'
+    SelfLinks__links:
+      description: A links object containing the self link.
+      properties:
+        self:
+          $ref: '#/components/schemas/Link'
+      readOnly: true
+      type: object
+  securitySchemes:
+    BearerAuth:
+      description: Bearer authentication token
+      scheme: bearer
+      type: http
+

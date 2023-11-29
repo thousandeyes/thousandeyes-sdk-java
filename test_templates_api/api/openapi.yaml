@@ -1,0 +1,1059 @@
+openapi: 3.0.0
+info:
+  description: "\n## Overview\n\nTest templates allow you create a set of tests, alert\
+    \ rules, dashboards, and labels from a single template configuration file. \n\n\
+    \nThe following applies to test templates:\n\n* You can create tests for monitoring\
+    \ common services and applications such as Microsoft 365, Webex, and others using\
+    \ a predefined set of certified templates.\n\n* Test templates reduce the time\
+    \ and complexity of creating tests for common SaaS or other services by providing\
+    \ a set of templates for creating tests, alert rules, and other assets within\
+    \ the ThousandEyes platform.\n\n* Templates created with an account group in a\
+    \ particular organization are visible to all account groups in that organization,\
+    \ provided they have the `View Test Templates` permission.\n\n* Credentials (usernames,\
+    \ passwords, tokens, etc.) can be included in a test template only as placeholders\
+    \ whose value is provided by user input when the template is deployed. Creating\
+    \ or updating a test template that contains a credentials field in plain text\
+    \ will result in a bad request (HTTP 400).\n\n* The schemas to use for `labels`,\
+    \ `tests`, `alertRules` and `dashboards` are defined at https://developer.thousandeyes.com/v7/.\n\
+    \n* To support referencing an asset from another asset of a different type (for\
+    \ example, defining the `testId` field of an `alertRule` by referencing the ID\
+    \ of a test defined in the template itself), the deployment of assets is done\
+    \ in a specific order:\n\n    1. Labels\n    2. Tests\n    3. Alert rules\n  \
+    \  4. Dashboards\n  \n  For a given asset type, you can reference any asset type\
+    \ with a higher order. (For example, labels cannot reference other assets in the\
+    \ template; tests can only reference labels; alert rules can reference tests and\
+    \ labels, etc.)"
+  title: Test Template
+  version: 7.0.1
+servers:
+- description: Thousandeyes API production URL
+  url: https://api.thousandeyes.com
+security:
+- BearerAuth:
+  - read
+tags:
+- name: Test template endpoints
+paths:
+  /v7/tests/templates:
+    get:
+      description: Retrieves a list of all your test templates
+      operationId: getUserOrgTestTemplates
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TestTemplateCollection'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Forbidden
+        "404":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Not Found
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Internal Server Error
+      summary: List all test templates.
+      tags:
+      - Test template endpoints
+      x-accepts: "application/hal+json,application/problem+json"
+    post:
+      description: Creates a test template.
+      operationId: createTestTemplate
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestTemplateUpsert'
+        description: The test template to create or update.
+        required: true
+      responses:
+        "201":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TestTemplate'
+          description: Created
+          headers:
+            Location:
+              explode: false
+              schema:
+                example: https://api.thousandeyes.com/v7/tests/templates/fcbb89a7-61cf-4616-9c4f-828fa3cb4684
+                type: string
+              style: simple
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Forbidden
+        "404":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Not Found
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Internal Server Error
+      summary: Create a test template.
+      tags:
+      - Test template endpoints
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/tests/templates/{id}:
+    delete:
+      description: Deletes a test template using its ID.
+      operationId: deleteTestTemplate
+      parameters:
+      - description: The ID of the test template
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: fcbb89a7-61cf-4616-9c4f-828fa3cb4684
+          format: uuid
+          maxLength: 36
+          minLength: 10
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: No content
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Forbidden
+        "404":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Not Found
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Internal Server Error
+      summary: Delete a test template
+      tags:
+      - Test template endpoints
+      x-accepts: application/json
+    get:
+      description: Retrieves a test template using its ID.
+      operationId: getUserOrgTestTemplate
+      parameters:
+      - description: The ID of the test template
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: fcbb89a7-61cf-4616-9c4f-828fa3cb4684
+          format: uuid
+          maxLength: 36
+          minLength: 10
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TestTemplate'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Forbidden
+        "404":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Not Found
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Internal Server Error
+      summary: Retrieve a test template
+      tags:
+      - Test template endpoints
+      x-accepts: "application/hal+json,application/problem+json"
+    put:
+      description: "Updates an existing test template. This operation overwrites the\
+        \ existing test template object with the object sent in the request. If a\
+        \ partial update is required, it is recommended that you retrieve the test\
+        \ template and modify the test template object before updating it."
+      operationId: updateTestTemplate
+      parameters:
+      - description: The ID of the test template
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: fcbb89a7-61cf-4616-9c4f-828fa3cb4684
+          format: uuid
+          maxLength: 36
+          minLength: 10
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestTemplateUpsert'
+        description: The test template to create or update.
+        required: true
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TestTemplate'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Forbidden
+        "404":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Not Found
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Internal Server Error
+      summary: Update a test template
+      tags:
+      - Test template endpoints
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/tests/templates/{id}/deploy:
+    post:
+      description: "Deploys a test template to create tests, alert rules, and dashboards\
+        \ defined by the template. You can deploy templates to easily create new tests.\
+        \ \n\nTo deploy test templates, you must specify `userInputValues` required\
+        \ by the template in the request body. `userInputValues` enables you to specify\
+        \ a minimum set of user values required to configure the tests from a test\
+        \ template. This way, you do not have to edit all the details of each test\
+        \ configuration. If necessary, you can edit the test details directly in the\
+        \ template.\n\n\n### Considerations\n\nConsider the following when deploying\
+        \ a test template:\n\n* To deploy a test template, you must first create the\
+        \ template or use one of ThousandEyes' predefined test templates.\n\n* The\
+        \ deployment strategy allows you to specify what should happen to a particular\
+        \ asset in the event that a test template is redeployed.\n\n  When you attempt\
+        \ to deploy a test template that has already been deployed, the API service\
+        \ compares any assets that have not yet been deployed with the assets that\
+        \ were deployed in the previous deployment (the comparison is done using the\
+        \ **asset key**; the asset keys are simply the object keys used in the `tests`,\
+        \ `labels`, `alertRules`, and `dashboards` fields). By default, if the configuration\
+        \ of a particular asset has not changed from the previous deployment, that\
+        \ asset is ignored. \n\n    If a change is detected:\n\n  * If the asset is\
+        \ a test, a new test is created with the new configuration.\n  * If the asset\
+        \ is not a test, the asset is updated.\n\n* You can create new resources such\
+        \ as tests, alert rules, labels, dashboards, and modify existing resources\
+        \ defined in test templates, overwriting the default configurations.\n\n*\
+        \ You can also use existing resources (such as those created outside the test\
+        \ template deployment flow) by adding their ID either in the raw test template\
+        \ or using the overrides when deploying the template. See example usage below\
+        \ for the raw test template sample.\n\n**Note**: The test template API does\
+        \ not currently track \"live\" configuration of assets. Any changes made to\
+        \ assets outside of the test template API will not be considered when comparing\
+        \ changes during the redeployment scenario.\n\n### Example usage:\n\n```POST\n\
+        /v7/tests/templates/fcbb89a7-61cf-4616-9c4f-828fa3cb4684/deploy\n\n{\n  \"\
+        userInputValues\": {\n    \"interval\": 120,\n    \"target\": \"https://microsoft.com\"\
+        ,\n    \"agents\": [{\"agentId\":11}],\n    \"domain\": \"microsoft.com\"\n\
+        \  },\n  \"name\":\"Microsoft Suite\",\n  \"tests\": {\n    \"secondPageLoadTest\"\
+        : {\n      \"httpInterval\": 120,\n      \"interval\": 120,\n      \"testId\"\
+        : 182481,\n      \"type\": \"page-load\",\n      \"url\": \"https://microsoft.com\"\
+        ,\n      \"testName\": \"Microsoft Suite - Second Page Load\",\n      \"agents\"\
+        : [\n        {\n          \"agentId\": 11\n        }\n      ]\n    }\n  }\n\
+        }\n```\n#### Raw Test Template Sample\n\n```\n{\n  ...\n  \"tests\": {\n \
+        \     \"existingTest\": {\n          \"testId\": \"123\", //The API will only\
+        \ try to update this test; will never create it\n          \"type\": \"http-server\"\
+        ,\n          ....\n      },\n      ...\n  },\n  ...\n}\n```"
+      operationId: deployUserTemplate
+      parameters:
+      - description: The ID of the test template
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: fcbb89a7-61cf-4616-9c4f-828fa3cb4684
+          format: uuid
+          maxLength: 36
+          minLength: 10
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployTestTemplate'
+        description: Deploy test template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Forbidden
+        "404":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Not Found
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: Internal Server Error
+      summary: Deploy a test template.
+      tags:
+      - Test template endpoints
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  parameters:
+    ID:
+      description: The ID of the test template
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        example: fcbb89a7-61cf-4616-9c4f-828fa3cb4684
+        format: uuid
+        maxLength: 36
+        minLength: 10
+        type: string
+      style: simple
+    AccountGroupId:
+      description: A unique identifier associated with your account group. You can
+        retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that
+        you must be assigned to the target account group. Specifying this parameter
+        without being assigned to the target account group will result in an error
+        response.
+      in: query
+      name: aid
+      required: false
+      schema:
+        example: "2067"
+        type: string
+  responses:
+    "401":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+      description: Unauthorized
+    "204":
+      content:
+        application/json: {}
+      description: No content
+  schemas:
+    TestTemplateUpsert:
+      description: The test template to create or update.
+      example:
+        tests:
+          pageLoadTest:
+            name: OneDrive PageLoad Test
+            type: page-load
+            target: "https://{{tenantName}}-my.sharepoint.com"
+            agents: "{{userInputs.agents}}"
+          dnsServerTest:
+            name: OneDrive Dns Server Test
+            type: dns-server
+            domain: "{{tenantName}}-my.sharepoint.com CNAME"
+            agents: "{{userInputs.agents}}"
+        userInputs:
+          key:
+            tenantName:
+              title: Tenant Name
+              description: Name of OneDrive tenant; will be used in OneDrive URL
+              type: string
+            agents:
+              name: Agent List
+              type: any
+        alertRules:
+          httpAlert:
+            alertType: HTTP Serverr
+            ruleName: An Http alert rule
+            expression: ((totalTime >= 500 ms) && (responseTime >= 500 ms))
+            roundsViolatingRequired: 1
+            roundsViolatingOutOf: 1
+            testIds:
+            - "{{tests.pageLoadTest.testId}}"
+        name: OneDrive Template
+        icon: oneDrive.svg
+        description: OneDrive Template
+        isBuiltIn: false
+        deploymentStrategy:
+          pageLoadTest: Create Always
+          httpAlert: Ignore on Change
+        dashboards:
+          myDashboard:
+            title: Test Dashboard 12
+            widgets:
+            - filters:
+                Test Labels: "[{{labels.templateLabel.groupId}}]"
+              type: "Bar Chart: Stacked"
+              title: "A Bar Chart: Stacked widget"
+              metricGroup: Web - HTTP Server
+              measure:
+                type: Median
+              metric: Response Time
+              axisGroupBy: Continents
+              dataSource: Cloud & Enterprise Agents
+        labels:
+          templateLabel:
+            name: OneDrive Template
+      properties:
+        name:
+          description: The name of the test template.
+          example: OneDrive Template
+          type: string
+        description:
+          description: Text that describes the test template.
+          example: OneDrive Template
+          type: string
+        icon:
+          description: Icon for the test template; will be displayed in the UI.
+          example: oneDrive.svg
+          type: string
+        isBuiltIn:
+          description: Indicates whether the test template is a built-in template.
+            Note that built-in test templates are read-only.
+          example: false
+          type: boolean
+        userInputs:
+          additionalProperties:
+            $ref: '#/components/schemas/UserInput'
+          type: object
+        labels:
+          description: "A map of <labelKey, labelConfiguration>."
+          example:
+            templateLabel:
+              name: OneDrive Template
+          externalDocs:
+            url: https://developer.thousandeyes.com/v6/labels/#/label_detail
+          type: object
+        tests:
+          description: "A map of <testKey, testConfiguration>."
+          example:
+            pageLoadTest:
+              name: OneDrive PageLoad Test
+              type: page-load
+              target: "https://{{tenantName}}-my.sharepoint.com"
+              agents: "{{userInputs.agents}}"
+            dnsServerTest:
+              name: OneDrive Dns Server Test
+              type: dns-server
+              domain: "{{tenantName}}-my.sharepoint.com CNAME"
+              agents: "{{userInputs.agents}}"
+          externalDocs:
+            url: https://developer.thousandeyes.com/v6/tests/#/test_metadata
+          type: object
+        alertRules:
+          description: "A map of <alertRuleKey, alertRuleConfiguration>."
+          example:
+            httpAlert:
+              alertType: HTTP Serverr
+              ruleName: An Http alert rule
+              expression: ((totalTime >= 500 ms) && (responseTime >= 500 ms))
+              roundsViolatingRequired: 1
+              roundsViolatingOutOf: 1
+              testIds:
+              - "{{tests.pageLoadTest.testId}}"
+          externalDocs:
+            url: https://developer.thousandeyes.com/v6/alerts/#/alert_rule_metadata
+          type: object
+        dashboards:
+          description: "A map of <dashboardKey, dashboardConfiguration>."
+          example:
+            myDashboard:
+              title: Test Dashboard 12
+              widgets:
+              - filters:
+                  Test Labels: "[{{labels.templateLabel.groupId}}]"
+                type: "Bar Chart: Stacked"
+                title: "A Bar Chart: Stacked widget"
+                metricGroup: Web - HTTP Server
+                measure:
+                  type: Median
+                metric: Response Time
+                axisGroupBy: Continents
+                dataSource: Cloud & Enterprise Agents
+          externalDocs:
+            url: https://developer.thousandeyes.com/v7/dashboards/#/dashboard-detail
+          type: object
+        deploymentStrategy:
+          additionalProperties:
+            $ref: '#/components/schemas/DeploymentStrategy'
+          description: "A map of <assetKey, deploymentStrategy>."
+          example:
+            pageLoadTest: Create Always
+            httpAlert: Ignore on Change
+          type: object
+      required:
+      - name
+      title: TestTemplateUpsert
+      type: object
+    UserInput:
+      description: The set of inputs that the user must fill in to use the test template.
+        These inputs are provided by the user when creating a set of tests via the
+        test template API or via the UI. The UI dynamically displays these user inputs
+        for the user to input.
+      example:
+        tenantName:
+          title: Tenant Name
+          description: Name of OneDrive tenant; will be used in OneDrive URL
+          type: string
+        agents:
+          name: Agent List
+          type: any
+      properties:
+        name:
+          description: The name of the user input field.
+          example: target
+          type: string
+        title:
+          description: The title of the user input field; may be used by UI.
+          example: Test Target
+          type: string
+        description:
+          description: Description of the user input field; used by UI.
+          example: The target of the Tests
+          type: string
+        defaultValue:
+          $ref: '#/components/schemas/UserInput_defaultValue'
+        type:
+          $ref: '#/components/schemas/UserInputType'
+      required:
+      - name
+      - type
+      title: UserInput
+      type: object
+    UserInputType:
+      description: "The type of user input field. This is used to validate the user\
+        \ values provided when deploying a template. \n\n- \"string\": A string based\
+        \ user input. E.g., `\"https://google.com\"` \n- \"number\": A number based\
+        \ user input. E.g., `25.8` \n- \"boolean\": A boolean based user input. E.g.,\
+        \ `false` \n- \"string[]\": A list of string based user inputs. E.g., `[\"\
+        someId\", \"someOtherId\"]` \n- \"number[]\": A list of number based user\
+        \ inputs. E.g., `[1, 2.3, 5000]` \n- \"boolean[]\": A list of boolean based\
+        \ user inputs. E.g., `[true, false]` \n- \"any\": For any other user inputs\
+        \ that don't belong to the types listed above. E.g., `[{\"agentId\": 22}]`\
+        \ \n"
+      enum:
+      - string
+      - number
+      - boolean
+      - "string[]"
+      - "number[]"
+      - "boolean[]"
+      - agentSelectionConfig
+      - any
+      example: string
+      type: string
+    DeploymentStrategy:
+      description: |-
+        The `deploymentStrategy` field defines how the system behaves when an asset (test, label, dashboard) defined in the template already exists.
+
+        For tests, the system uses the test type and name to determine if a test already exists. For example, if a template contains an http-server test named `Test123` and an http-server test with the same name already exists, the system assumes that this test already exists. If the test had a different type (for example, page-load), then the system would not consider the test to already exist because the types are different.
+
+        For Labels and Dashboards, the system uses only the name. (Note that current Test Templates only consider "test" Labels).
+
+        Alert Rules do not currently support `deploymentStrategy`.
+
+        Below are the possible deployment strategies and their behaviors:
+
+          * `Create Always` - The system will always attempt to create the asset. If an asset of the same name and type already exists, the system will generate an error. This behavior ensures that each asset created from a template is unique. This is the default behavior.
+
+          * `Update on Change` - If an asset of the same type and name already exists, the existing asset is used instead of creating a new asset. If the configuration of the asset in the template is different from the existing one, the latest configuration is applied.
+
+          * `Ignore on Change` - If an asset of the same type and name already exists, the existing asset is used instead of creating a new asset. If the configuration of the asset in the template is different from the existing one, the configuration of the existing asset is used and the configuration in the template is ignored.
+
+        The `Update on Change` and `Ignore on Change` strategies essentially allow assets to be shared across templates. For example, the built-in "Custom Web Page", "Custom Web Server", and "Custom Device" templates all contain a Dashboard asset called "Health Overview". It's `deploymentStrategy` is set to `Ignore on Change`, which means that the first deployment of a template such as the "Custom Web Page" template creates the "Health Overview" dashboard. Subsequent deployments of the "Custom Web Page" template do not attempt to recreate the "Health Overview" dashboard. Instead, the existing dashboard is reused.
+
+        Note: Assets that were not created using a template are not included when the system searches for existing assets; they are not used with `Update on Change` or `Ignore on Change`.
+      enum:
+      - Create on Change
+      - Update on Change
+      - Ignore on Change
+      - Create Always
+      example: "{\"pageLoadTest\":\"Create Always\",\"httpAlert\":\"Ignore on Change\"\
+        }"
+      type: string
+    TestTemplate:
+      properties:
+        id:
+          description: The ID of the test template.
+          example: fcbb89a7-61cf-4616-9c4f-828fa3cb4684
+          format: uuid
+          type: string
+        name:
+          description: The name of the test template.
+          example: OneDrive Template
+          type: string
+        description:
+          description: Text that describes the test template.
+          example: OneDrive Template
+          type: string
+        icon:
+          description: Icon for the test template; will be displayed in the UI.
+          example: oneDrive.svg
+          type: string
+        isBuiltIn:
+          description: Indicates whether the test template is a built-in template.
+            Note that built-in test templates are read-only.
+          example: false
+          type: boolean
+        certificationLevel:
+          description: ""
+          example: User
+          type: string
+        dateCreated:
+          description: The date and time the test template was created.
+          example: 2022-09-28 13:25:15
+          type: string
+        userInputs:
+          additionalProperties:
+            $ref: '#/components/schemas/UserInput'
+          example:
+            tenantName:
+              title: Tenant Name
+              description: Name of OneDrive tenant; will be used in OneDrive URL
+              type: string
+            agents:
+              name: Agent List
+              type: any
+          type: object
+        labels:
+          description: "A map of <labelKey, labelConfiguration>."
+          example:
+            templateLabel:
+              name: OneDrive Template
+          externalDocs:
+            url: https://developer.thousandeyes.com/v6/labels/#/label_detail
+          type: object
+        tests:
+          description: "A map of <testKey, testConfiguration>."
+          example:
+            dnsTest:
+              type: object
+              example:
+                domain: "{{userInputs.domain}} A"
+                groups:
+                - groupId: "{{labels.webHealthDashLabel.groupId}}"
+                - groupId: "{{labels.templateLabel.groupId}}"
+                interval: "{{userInputs.interval}}"
+                type: dns-server
+                dnsServers: "{{userInputs.dnsServers}}"
+                testName: "{{name}} - DNS"
+                agents: "{{userInputs.agents}}"
+            httpServerTest:
+              groups:
+              - groupId: "{{labels.webHealthDashLabel.groupId}}"
+              - groupId: "{{labels.templateLabel.groupId}}"
+              interval: "{{userInputs.interval}}"
+              type: http-server
+              url: "https://{{userInputs.domain}}"
+              testName: "{{name}} - HTTP Server"
+              agents: "{{userInputs.agents}}"
+            networkTest:
+              server: "{{userInputs.domain}}"
+              protocol: TCP
+              port: "{{userInputs.port}}"
+              groups:
+                groupId: "{{labels.webHealthDashLabel.groupId}}"
+              interval: "{{userInputs.interval}}"
+              type: agent-to-server
+              url: "https://{{userInputs.domain}}"
+              testName: "{{name}} - Network"
+              agents: "{{userInputs.agents}}"
+            pageLoadTest:
+              name: OneDrive PageLoad Test
+              type: page-load
+              target: "https://{{tenantName}}-my.sharepoint.com"
+              agents: "{{userInputs.agents}}"
+            dnsServerTest:
+              name: OneDrive Dns Server Test
+              type: dns-server
+              domain: "{{tenantName}}-my.sharepoint.com CNAME"
+              agents: "{{userInputs.agents}}"
+          externalDocs:
+            url: https://developer.thousandeyes.com/v6/tests/#/test_metadata
+          type: object
+        alertRules:
+          description: "A map of <alertRuleKey, alertRuleConfiguration>."
+          example:
+            httpAlert:
+              testIds:
+              - "{{tests.pageLoadTest.testId}}"
+              severity: MINOR
+              roundsViolatingRequired: 1
+              roundsViolatingOutOf: 1
+              alertType: HTTP Server
+              expression: ((totalTime >= 500 ms) && (responseTime >= 500 ms))
+              ruleName: "{{name}} - HTTP Alert"
+              minimumSources: 1
+          externalDocs:
+            url: https://developer.thousandeyes.com/v6/alerts/#/alert_rule_metadata
+          type: object
+        dashboards:
+          description: "A map of <dashboardKey, dashboardConfiguration>."
+          example:
+            webHealthDashboard:
+              title: Web Health Overview
+              widgets:
+              - metricGroup: Web - HTTP Server
+                measure:
+                  type: Mean
+                metric: Total Time
+                filters:
+                  Test Labels: "[{{labels.webHealthDashLabel.groupId}}]"
+                groupBy: Tests
+                type: "Time Series: Line"
+                title: HTTP Response Times
+                dataSource: Cloud & Enterprise Agents
+          externalDocs:
+            url: https://developer.thousandeyes.com/v7/dashboards/#/dashboard-detail
+          type: object
+        deploymentStrategy:
+          additionalProperties:
+            $ref: '#/components/schemas/DeploymentStrategy'
+          description: "A map of <assetKey, deploymentStrategy>."
+          example:
+            testVoiceLabel: Update on Change
+            testVideoLabel: Update on Change
+            testLabel: Update on Change
+            dnsTest: Ignore on Change
+            webexDashboard: Ignore on Change
+            serverTest: Ignore on Change
+          type: object
+        _links:
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
+          type: object
+      title: TestTemplate
+      type: object
+    Links:
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
+      type: object
+    TestTemplateCollection:
+      properties:
+        templates:
+          items:
+            $ref: '#/components/schemas/TestTemplate'
+          type: array
+        _links:
+          $ref: '#/components/schemas/TestTemplateCollection__links'
+      type: object
+    Link:
+      properties:
+        href:
+          type: string
+        hreflang:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        deprecation:
+          type: string
+        profile:
+          type: string
+        name:
+          type: string
+        templated:
+          type: boolean
+      type: object
+    DeployTestTemplate:
+      example:
+        userInputValues:
+          type: object
+          example:
+            interval: 120
+            target: https://microsoft.com
+            agents:
+            - agentId: 11
+            domain: microsoft.com
+        name: Microsoft Suite
+        tests:
+          secondPageLoadTest:
+            httpInterval: 120
+            interval: 120
+            testId: 182481
+            type: page-load
+            url: https://microsoft.com
+            testName: Microsoft Suite - Second Page Load
+            agents:
+            - agentId: 11
+      properties:
+        userInputValues:
+          $ref: '#/components/schemas/DeployTestTemplate_userInputValues'
+        name:
+          type: string
+        tests:
+          $ref: '#/components/schemas/DeployTestTemplate_tests'
+      type: object
+    ApiError:
+      properties:
+        message:
+          type: string
+        errors:
+          items:
+            type: string
+          type: array
+      type: object
+    BadRequestError:
+      properties:
+        timestamp:
+          example: 1680006221517
+          format: int64
+          type: integer
+        status:
+          example: 400
+          format: int64
+          type: integer
+        error:
+          example: Bad Request
+          type: string
+        path:
+          example: /v1/tests/templates
+          type: string
+      type: object
+    NotFoundError:
+      properties:
+        message:
+          type: string
+      type: object
+    UnauthorizedError:
+      properties:
+        error:
+          example: invalid_token
+          type: string
+        error_description:
+          example: Invalid access token
+          type: string
+      type: object
+    UserInput_defaultValue:
+      description: Default value of user input field.
+      example: https://google.com
+      oneOf:
+      - type: string
+      - type: number
+    TestTemplateCollection__links_self:
+      properties:
+        href:
+          example: https://api.thousandeyes.com/v7/tests/templates/6c6bc11c-0332-4e28-9efb-f171a14be824
+          type: string
+      type: object
+    TestTemplateCollection__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/TestTemplateCollection__links_self'
+      type: object
+    DeployTestTemplate_userInputValues:
+      properties:
+        interval:
+          type: integer
+        target:
+          type: string
+        agents:
+          type: string
+        domain:
+          type: string
+      type: object
+    DeployTestTemplate_tests:
+      properties:
+        interval:
+          type: integer
+      type: object
+  securitySchemes:
+    BearerAuth:
+      description: Bearer authentication token
+      scheme: bearer
+      type: http
+

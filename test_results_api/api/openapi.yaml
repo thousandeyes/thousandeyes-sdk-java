@@ -1,0 +1,4365 @@
+openapi: 3.0.1
+info:
+  description: Get test result metrics for Cloud and Enterprise Agent tests.
+  title: Test Results API
+  version: 7.0.0
+externalDocs:
+  description: Find out more about Test Results
+  url: https://docs.thousandeyes.com/product-documentation/getting-started/getting-started-with-cloud-and-enterprise-agent-tests#interpreting-test-results
+servers:
+- description: Thousandeyes API production URL
+  url: https://api.thousandeyes.com
+security:
+- BearerAuth:
+  - read
+paths:
+  /v7/test-results/{testId}/network:
+    get:
+      description: |
+        Returns network test results for every agent and round. If you do not specify a window or a start and end date, data is displayed for the most recent testing round.
+      operationId: get-test-result-metrics
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      - description: "Choose the direction for the metrics you want: [`from-target`,\
+          \ `to-target`, `bidirectional`]. This applies when you're doing bidirectional\
+          \ Agent-to-Agent tests. For bidirectional data, you'll get combined results;\
+          \ otherwise, you'll get data for one direction. If you try to get unidirectional\
+          \ test data with an incorrect direction parameter, it will trigger an error\
+          \ response."
+        explode: true
+        in: query
+        name: direction
+        required: false
+        schema:
+          $ref: '#/components/schemas/TestDirection'
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_metrics_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get network test results
+      tags:
+      - Network Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/pathvis:
+    get:
+      description: "Returns a summary of the path trace data collected during path\
+        \ visualization for a given time range. With each attempt, three tries are\
+        \ made to reach the destination. The entire path is displayed in order. If\
+        \ you do not specify a window or a start and end date, data is displayed for\
+        \ the most recent testing round. \n\nBidirectional agent-to-agent tests also\
+        \ support the `direction` parameter. For example, if agents A, B, and C are\
+        \ testing agent D bidirectionally, and you want results from the route from\
+        \ agent A to agent D, you can use the query `pathvis?direction=to-target`.\
+        \ For results from agent D to agent A, you can use `pathvis?direction=from-target`.\
+        \ To get both results for both routes, query without the direction parameter.\
+        \ The source will always be agent A and the destination will be agent D, but\
+        \ the direction field will indicate which trace direction you want test results\
+        \ from.\n"
+      operationId: get-test-result-network-pathvis
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      - description: "Choose the direction for the metrics you want: [`from-target`,\
+          \ `to-target`, `bidirectional`]. This applies when you're doing bidirectional\
+          \ Agent-to-Agent tests. For bidirectional data, you'll get combined results;\
+          \ otherwise, you'll get data for one direction. If you try to get unidirectional\
+          \ test data with an incorrect direction parameter, it will trigger an error\
+          \ response."
+        explode: true
+        in: query
+        name: direction
+        required: false
+        schema:
+          $ref: '#/components/schemas/TestDirection'
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_network_pathvis_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get pathvis network test results
+      tags:
+      - Network Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/pathvis/agent/{agentId}/round/{roundId}:
+    get:
+      description: |
+        Returns a summary of the path trace data collected during path visualization for a given agent and round. With each attempt, three tries are made to reach the destination. The entire path is displayed in order.
+
+        Bidirectional agent-to-agent tests also support the `direction` parameter. For example, if agents A, B, and C are testing agent D bidirectionally, and you want results from the route from agent A to agent D, you can use the query `pathvis?direction=to-target`. For results from agent D to agent A, you can use `pathvis?direction=from-target`. To get both results for both routes, query without the direction parameter. The source will always be agent A and the destination will be agent D, but the direction field will indicate which trace direction you want test results from.
+      operationId: get-test-pathvis-agent-round
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: Agent ID
+        in: path
+        name: agentId
+        required: true
+        schema:
+          example: "11"
+          type: string
+      - description: Round ID
+        in: path
+        name: roundId
+        required: true
+        schema:
+          example: "1384309800"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: "Choose the direction for the metrics you want: [`from-target`,\
+          \ `to-target`, `bidirectional`]. This applies when you're doing bidirectional\
+          \ Agent-to-Agent tests. For bidirectional data, you'll get combined results;\
+          \ otherwise, you'll get data for one direction. If you try to get unidirectional\
+          \ test data with an incorrect direction parameter, it will trigger an error\
+          \ response."
+        explode: true
+        in: query
+        name: direction
+        required: false
+        schema:
+          $ref: '#/components/schemas/TestDirection'
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_pathvis_agent_round_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get pathvis test results by agent and round
+      tags:
+      - Network Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/http-server:
+    get:
+      description: |
+        Returns results for requests made over HTTP. Components include DNS, Connect, Wait, Receive, and Fetch.
+      operationId: get-test-result-http-server
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      - description: "This parameter lets you decide if you want to see more details\
+          \ about test results. By default, no extra information is shown unless you\
+          \ use the query parameter. For instance, if you want more info about the\
+          \ \"header,\" add ?expand=header to the query."
+        explode: false
+        in: query
+        name: expand
+        required: false
+        schema:
+          example:
+          - certificate
+          items:
+            $ref: '#/components/schemas/Expand'
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_http_server_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get HTTP server test results
+      tags:
+      - Web HTTP Server Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/page-load:
+    get:
+      description: |
+        Returns results for page load server tests with a focus on page load times and DOM for a web page.
+      operationId: get-test-result-page-load
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_page_load_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get page load server test results
+      tags:
+      - Web Page Load Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/page-load/agent/{agentId}/round/{roundId}:
+    get:
+      description: |
+        Returns test results for a given agent and round in [HAR (http archive)](http://www.softwareishard.com/blog/har-12-spec/) format. These results contain a list of components and their load times in a page load test, similar to the waterfall view for a page load test.
+      operationId: get-test-result-page-load-component-detail
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: Agent ID
+        in: path
+        name: agentId
+        required: true
+        schema:
+          example: "11"
+          type: string
+      - description: Round ID
+        in: path
+        name: roundId
+        required: true
+        schema:
+          example: "1384309800"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_page_load_component_detail_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get page load server test results by agent and round
+      tags:
+      - Web Page Load Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/web-transactions:
+    get:
+      description: |
+        Returns test results for web transactions. If you do not specify a window or a start and end date, data is displayed for the most recent testing round.
+      operationId: get-test-result-web-transactions
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_web_transactions_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get web transactions test results
+      tags:
+      - Web Transactions Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}:
+    get:
+      description: |
+        Returns test results for web transactions for a given agent and round.
+      operationId: get-test-result-web-transactions-component-detail
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: Agent ID
+        in: path
+        name: agentId
+        required: true
+        schema:
+          example: "11"
+          type: string
+      - description: Round ID
+        in: path
+        name: roundId
+        required: true
+        schema:
+          example: "1384309800"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_web_transactions_component_detail_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get web transactions test results by agent and round
+      tags:
+      - Web Transactions Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId}:
+    get:
+      description: |
+        Returns a page of web transaction test results for an agent and round.
+      operationId: get-test-result-web-transactions-component-page-detail
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: Agent ID
+        in: path
+        name: agentId
+        required: true
+        schema:
+          example: "11"
+          type: string
+      - description: Round ID
+        in: path
+        name: roundId
+        required: true
+        schema:
+          example: "1384309800"
+          type: string
+      - description: Web page ID
+        in: path
+        name: pageId
+        required: true
+        schema:
+          example: "281474976710706"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_web_transactions_component_page_detail_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: "Get detailed web transactions test result by agent, round, and page"
+      tags:
+      - Web Transactions Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/ftp-server:
+    get:
+      description: |
+        Returns test results for FTP server requests. If you do not specify a window or a start and end date, data is displayed for the most recent testing round.
+      operationId: get-test-result-ftp-server
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_ftp_server_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get FTP server test results
+      tags:
+      - Web FTP Server Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/dns-trace:
+    get:
+      description: |
+        Returns a DNS record from the requesting agent's point of view. This is similar to dig +trace.
+      operationId: get-test-result-dns-trace
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_dns_trace_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get DNS trace test results
+      tags:
+      - DNS Trace Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/dns-server/{serverId}:
+    get:
+      description: |
+        Returns mappings for a DNS record and resolution time to the specified server, measured from the requesting agent's point of view. This is similar to dig @server.
+      operationId: get-test-result-dns-server
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: DNS server ID
+        explode: false
+        in: path
+        name: serverId
+        required: true
+        schema:
+          example: "281474976710706"
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_dns_server_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get DNS server test results by server
+      tags:
+      - DNS Server Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/dns-server:
+    get:
+      description: |
+        Returns the mappings for a DNS record, along with the resolution time to each authoritative server, measured from the agent's point of view. Similar to dig @server.
+      operationId: get-test-result-dns-servers
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_dns_server_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get DNS server test results
+      tags:
+      - DNS Server Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/dnssec:
+    get:
+      description: |
+        Returns the keychain validity for a record on a domain secured using DNSSEC extensions.
+      operationId: get-test-result-dnssec
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_dnssec_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get DNSSEC test results
+      tags:
+      - DNSSEC Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/sip-server:
+    get:
+      description: |
+        Returns Voice SIP server test results. It returns data for each agent and each `roundId` within the selected time frame. If you do not specify a window or a start and end date, data is displayed for the most recent testing round.
+      operationId: get-test-result-sip-server
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_sip_server_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get SIP server test results
+      tags:
+      - Voice SIP Server Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/rtp-server:
+    get:
+      description: |
+        Returns Voice RTP server test results. If you do not specify a window or a start and end date, data is displayed for the most recent testing round.
+      operationId: get-test-result-rtp-stream
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_result_rtp_stream_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Retrieve RTP server test metrics
+      tags:
+      - Voice RTP Server Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/bgp:
+    get:
+      description: |
+        Returns a list of BGP monitors actively monitoring the destination's target prefix. This list includes information about the prefix, its associated AS Number, and provides details regarding reachability, path updates, and any changes in the path for the target network.
+      operationId: get-test-results-bgp
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_results_bgp_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get BGP test results
+      tags:
+      - Network BGP Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId}:
+    get:
+      description: |
+        Returns an ordered list of networks crossed by a particular network prefix, including assigned monitors for the test and the paths taken to reach the destination. This is similar to revealing ASPath details found in a BGP Routing Information Base (rib) dump.
+      operationId: get-test-results-bgp-prefix
+      parameters:
+      - description: Test ID
+        in: path
+        name: testId
+        required: true
+        schema:
+          example: "202701"
+          type: string
+      - description: "The ID of the prefix. You can get `prefixId` from the `/test-results/{testId}/bgp`\
+          \ endpoint."
+        explode: false
+        in: path
+        name: prefixId
+        required: true
+        schema:
+          example: "3789376546"
+          type: string
+        style: simple
+      - description: Round ID
+        in: path
+        name: roundId
+        required: true
+        schema:
+          example: "1384309800"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/get_test_results_bgp_prefix_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+        "502":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway
+        default:
+          description: An error occurred
+      summary: Get BGP route test results by prefix
+      tags:
+      - Network BGP Test Metrics
+      x-accepts: "application/hal+json,application/problem+json"
+components:
+  parameters:
+    PrefixIdPath:
+      description: "The ID of the prefix. You can get `prefixId` from the `/test-results/{testId}/bgp`\
+        \ endpoint."
+      explode: false
+      in: path
+      name: prefixId
+      required: true
+      schema:
+        example: "3789376546"
+        type: string
+      style: simple
+    ServerIdPath:
+      description: DNS server ID
+      explode: false
+      in: path
+      name: serverId
+      required: true
+      schema:
+        example: "281474976710706"
+        type: string
+      style: simple
+    httpServerExpand:
+      description: "This parameter lets you decide if you want to see more details\
+        \ about test results. By default, no extra information is shown unless you\
+        \ use the query parameter. For instance, if you want more info about the \"\
+        header,\" add ?expand=header to the query."
+      explode: false
+      in: query
+      name: expand
+      required: false
+      schema:
+        example:
+        - certificate
+        items:
+          $ref: '#/components/schemas/Expand'
+        type: array
+      style: form
+    direction:
+      description: "Choose the direction for the metrics you want: [`from-target`,\
+        \ `to-target`, `bidirectional`]. This applies when you're doing bidirectional\
+        \ Agent-to-Agent tests. For bidirectional data, you'll get combined results;\
+        \ otherwise, you'll get data for one direction. If you try to get unidirectional\
+        \ test data with an incorrect direction parameter, it will trigger an error\
+        \ response."
+      explode: true
+      in: query
+      name: direction
+      required: false
+      schema:
+        $ref: '#/components/schemas/TestDirection'
+      style: form
+    TestIdPath:
+      description: Test ID
+      in: path
+      name: testId
+      required: true
+      schema:
+        example: "202701"
+        type: string
+    AccountGroupId:
+      description: A unique identifier associated with your account group. You can
+        retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that
+        you must be assigned to the target account group. Specifying this parameter
+        without being assigned to the target account group will result in an error
+        response.
+      in: query
+      name: aid
+      required: false
+      schema:
+        example: "2067"
+        type: string
+    Window:
+      description: |-
+        A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+        For a precise date range, use `startDate` and `endDate`.
+      in: query
+      name: window
+      schema:
+        example: 12h
+        pattern: "^\\d+(?:[smhdw]{1})?$"
+        type: string
+    StartDate:
+      description: "Use with the `endDate` parameter. Include the complete time (hours,\
+        \ minutes, and seconds) in UTC time zone, following the ISO 8601 date-time\
+        \ format. See the example for reference. Please note that this parameter can't\
+        \ be used with `window`."
+      in: query
+      name: startDate
+      schema:
+        example: 2022-07-17T22:00:54Z
+        format: date-time
+        type: string
+    EndDate:
+      description: "Defaults to current time the request is made. Use with the `startDate`\
+        \ parameter. Include the complete time (hours, minutes, and seconds) in UTC\
+        \ time zone, following the ISO 8601 date-time format. See the example for\
+        \ reference. Please note that this parameter can't be used with `window`."
+      in: query
+      name: endDate
+      schema:
+        example: 2022-07-18T22:00:54Z
+        format: date-time
+        type: string
+    PaginationCursor:
+      description: (Optional) Opaque cursor used for pagination. Clients should use
+        `_links` instead of this parameter.
+      in: query
+      name: cursor
+      schema:
+        type: string
+        example: null
+    AgentIdPath:
+      description: Agent ID
+      in: path
+      name: agentId
+      required: true
+      schema:
+        example: "11"
+        type: string
+    RoundIdPath:
+      description: Round ID
+      in: path
+      name: roundId
+      required: true
+      schema:
+        example: "1384309800"
+        type: string
+    PageIdPath:
+      description: Web page ID
+      in: path
+      name: pageId
+      required: true
+      schema:
+        example: "281474976710706"
+        type: string
+  responses:
+    "400":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: Request validation failed. There are invalid or missing fields
+            status: 400
+            detail: Invalid field value for field `expand`
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Bad Request
+    "401":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+      description: Unauthorized
+    "403":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Insufficient permissions to query endpoint
+    "404":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: URI Resource Not Found
+            status: 404
+            detail: Details explaining if the 404 error is related to an invalid URI
+              or a wrong ID
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Not found
+    "429":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Exhausted rate limit for the organization
+    "500":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: Internal server error
+            status: 500
+            detail: Optional detail about the internal error message.
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Internal server error
+    "502":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Bad Gateway
+    GeneralError:
+      description: An error occurred
+  schemas:
+    Expand:
+      enum:
+      - header
+      - certificate
+      type: string
+    NetworkTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/NetworkTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    NetworkTestResult:
+      allOf:
+      - properties:
+          availableBandwidth:
+            example: 9.100464
+            format: double
+            readOnly: true
+            type: number
+          avgLatency:
+            description: Average RTT for packets sent to destination
+            example: 167.04
+            format: double
+            readOnly: true
+            type: number
+          bandwidth:
+            example: 4.3313155
+            format: double
+            readOnly: true
+            type: number
+          capacity:
+            example: 210.10854
+            format: double
+            readOnly: true
+            type: number
+          jitter:
+            description: Standard deviation of latency
+            example: 0.076808
+            format: double
+            readOnly: true
+            type: number
+          loss:
+            description: Percentage of packets not reaching destination
+            example: 0.0
+            format: double
+            readOnly: true
+            type: number
+          maxLatency:
+            description: Maximum RTT for packets sent to destination
+            example: 168.0
+            format: double
+            readOnly: true
+            type: number
+          minLatency:
+            description: Minimum RTT for packets sent to destination
+            example: 167.0
+            format: double
+            readOnly: true
+            type: number
+          agent:
+            $ref: '#/components/schemas/Agent'
+          date:
+            description: Data point date in UTC (ISO date-time format).
+            example: 2022-07-17T22:00:54Z
+            format: date-time
+            readOnly: true
+            type: string
+          roundId:
+            description: Epoch time (seconds) indicating the start time of the round
+            example: 1384309800
+            readOnly: true
+            type: integer
+          serverIp:
+            description: IP of target server
+            example: 50.18.127.223
+            readOnly: true
+            type: string
+          server:
+            description: "Target server, including port (if method used is TCP)"
+            example: www.thousandeyes.com:80
+            readOnly: true
+            type: string
+          direction:
+            $ref: '#/components/schemas/TestDirection'
+        type: object
+      - $ref: '#/components/schemas/TestResult'
+      - $ref: '#/components/schemas/EpochTimeWindow'
+    PathVisDetailTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PathVisDetailTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    PathVisDetailTestResult:
+      allOf:
+      - $ref: '#/components/schemas/PathVisBaseTestResult'
+      - properties:
+          routes:
+            description: "Shows 3 iterations of path trace, with each iteration specified\
+              \ by a pathId"
+            items:
+              $ref: '#/components/schemas/PathVisRoute'
+            type: array
+        type: object
+    PathVisTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PathVisTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    PathVisTestResult:
+      allOf:
+      - properties:
+          endpoints:
+            description: "Shows all iterations of path trace, with each iteration\
+              \ specified by a pathId"
+            items:
+              $ref: '#/components/schemas/PathVisEndpoint'
+            type: array
+        type: object
+      - $ref: '#/components/schemas/PathVisBaseTestResult'
+    PathVisBaseTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - $ref: '#/components/schemas/EpochTimeWindow'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          server:
+            description: "Target server, including port (if method used is TCP)"
+            example: www.google.com:443
+            readOnly: true
+            type: string
+          serverIp:
+            description: IP of target server
+            example: 172.217.170.68
+            readOnly: true
+            type: string
+          sourceIp:
+            description: IP address of source agent
+            example: 196.40.106.237
+            readOnly: true
+            type: string
+          sourcePrefix:
+            description: IP prefix of source agent
+            example: 196.40.96.0/20
+            readOnly: true
+            type: string
+          targetIsProxy:
+            example: true
+            readOnly: true
+            type: boolean
+          direction:
+            $ref: '#/components/schemas/TestDirection'
+        type: object
+    PathVisRoute:
+      properties:
+        pathId:
+          description: Unique ID of path trace
+          example: "4711301366345855606023718047703941305741293841502186803"
+          readOnly: true
+          type: string
+        hops:
+          description: Array of hop objects indicating each step in the traceroute
+          items:
+            $ref: '#/components/schemas/PathVisHop'
+          type: array
+      type: object
+    PathVisHop:
+      properties:
+        hop:
+          description: Hop index
+          example: 1
+          readOnly: true
+          type: integer
+        ipAddress:
+          description: IP address of the hop
+          example: 196.40.106.237
+          readOnly: true
+          type: string
+        prefix:
+          description: Prefix of IP address shown in CIDR
+          example: 196.40.96.0/20
+          readOnly: true
+          type: string
+        rdns:
+          description: "Reverse DNS entry of IP, if available"
+          example: core-router1.cpt2.host-h.net
+          readOnly: true
+          type: string
+        network:
+          description: Autonomous System originating the prefix
+          example: HETZNER (Pty) Ltd (AS 37153)
+          readOnly: true
+          type: string
+        responseTime:
+          description: RTT to the hop’s IP in milliseconds
+          example: 1
+          readOnly: true
+          type: integer
+        location:
+          description: Location information for the hop
+          example: "Cape Town, South Africa"
+          readOnly: true
+          type: string
+        mpls:
+          description: "Multiprotocol Label Switching information, if available"
+          readOnly: true
+          type: string
+      type: object
+    PathVisEndpoint:
+      properties:
+        ipAddress:
+          description: IP address of the hop
+          example: 196.40.106.237
+          readOnly: true
+          type: string
+        mss:
+          description: Maximum segment size in bytes
+          example: 1460
+          readOnly: true
+          type: integer
+        numberOfHops:
+          description: Number of hops for path trace to destination
+          example: 15
+          readOnly: true
+          type: integer
+        pathId:
+          description: Unique ID of path trace
+          example: "1230899668701775614109128428722974545787322404682781961521"
+          readOnly: true
+          type: string
+        pathMtu:
+          description: Location information for the hop
+          example: "Cape Town, South Africa"
+          readOnly: true
+          type: string
+        responseTime:
+          description: RTT of the path trace to the destination in milliseconds
+          example: 1500
+          readOnly: true
+          type: integer
+      type: object
+    HttpTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/HttpTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    HttpTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          serverIp:
+            description: IP address of destination server
+            example: 193.2.1.88
+            readOnly: true
+            type: string
+          responseCode:
+            description: HTTP response code
+            example: 200
+            type: integer
+          numRedirects:
+            description: Number of redirects
+            example: 0
+            type: integer
+          redirectTime:
+            description: Cumulative redirect timing in milliseconds
+            example: 10
+            type: integer
+          dnsTime:
+            description: Time required to resolve DNS in milliseconds
+            example: 0
+            type: integer
+          sslTime:
+            description: Time to negotiate SSL/TLS in milliseconds
+            example: 9
+            type: integer
+          connectTime:
+            description: Time required to establish a TCP connection to the server
+            example: 2
+            type: integer
+          waitTime:
+            description: Time elapsed between completion of request and first byte
+              of response in milliseconds
+            example: 3
+            type: integer
+          receiveTime:
+            description: Elapsed time between first and last byte of response in milliseconds
+            example: 1
+            type: integer
+          wireSize:
+            description: Size of content in bytes
+            example: 9993
+            type: integer
+          responseTime:
+            description: Time to first byte in milliseconds
+            example: 14
+            type: integer
+          throughput:
+            description: WireSize divided by receiveTime in byter per second
+            example: 123
+            format: double
+            type: number
+          totalTime:
+            description: response time + receive time
+            example: 15
+            type: integer
+          headers:
+            $ref: '#/components/schemas/HttpTestResultHeaders'
+          errorType:
+            description: Type of error encountered; corresponds to phase of connection
+            example: None
+            readOnly: true
+            type: string
+          errorDetails:
+            $ref: '#/components/schemas/TestResultErrorDetails'
+          sslCipher:
+            description: Cipher suite
+            type: string
+          sslVersion:
+            description: TLS version
+            example: TLSv1.3
+            type: string
+          sslCertificates:
+            items:
+              $ref: '#/components/schemas/SslCert'
+            type: array
+        type: object
+    HttpTestResultHeaders:
+      description: Expandable object containing both request and response headers
+      properties:
+        requestHeaders:
+          description: "Crlf-delimited list of request headers in header: value format"
+          example: "GET / HTTP/1.1\r\nHost: www.thousandeyes.com\r\nUser-Agent: curl/7.58.0-DEV\r\
+            \nAccept: */*\r\nAccept-Encoding: deflate, gzip\r\nX-ThousandEyes-Agent:\
+            \ yes\r\n"
+          type: string
+        responseHeaders:
+          description: "crlf-delimited list of response headers in header: value format"
+          example: "HTTP/1.1 200 OK\r\nContent-Type: text/html;charset=UTF-8\r\nContent-Length:\
+            \ 9993\r\nConnection: keep-alive\r\nDate: Mon, 04 May 2020 16:13:00 GMT\r\
+            \nServer: Apache\r\nContent-Language: en-US\r\nContent-Encoding: gzip\r\
+            \nX-Frame-Options: sameorigin\r\nCache-Control: max-age=600, must-revalidate\r\
+            \nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options:\
+            \ nosniff\r\nX-XSS-Protection: 1; mode=block\r\nVary: Accept-Encoding\r\
+            \nX-Cache: Hit from cloudfront\r\nVia: 1.1 7ba3caf71ae7a52dd411d1a543e80cd8.cloudfront.net\
+            \ (CloudFront)\r\nX-Amz-Cf-Pop: SFO5-C3\r\nX-Amz-Cf-Id: w4h42tkoJD-rEpkRDZUvnQBmy26GVGe6pUsuRr1Dphf7oajYbjXaOA==\r\
+            \nAge: 132\r\n"
+          type: string
+      type: object
+    SslCert:
+      properties:
+        daysUntilExpiry:
+          description: "Days until certificate expires, rounded down. 0 is shown if\
+            \ there are less than 24 hours remaining. Calculated when the test was\
+            \ executed."
+          type: integer
+        isFetchDateInValidCertDateRange:
+          description: "True when certificate fetch date is within the valid certificate\
+            \ date range, false otherwise"
+          example: "true"
+          type: string
+        hasValidSigningCert:
+          description: This field is implicitly true; it is output only when false.
+            false indicates this certificate was missing a valid signing certificate
+            in the chain.
+          example: "false"
+          type: string
+        issuerName:
+          description: Certificate issuer
+          example: DigiCert SHA2 Extended Validation Server CA
+          type: string
+        validBefore:
+          description: Certificate is not valid after this date
+          example: 2020-05-12T12:00:00Z
+          format: date-time
+          type: string
+        validAfter:
+          description: Certificate is not valid before this date
+          example: 2018-03-27T00:00:00Z
+          format: date-time
+          type: string
+        subjectAlternativeNames:
+          description: "Alternative name(s) of the certificate subject, extracted\
+            \ from the Subject Alternative Name (SAN) X.509 certificate extension,\
+            \ for example example.com, www2.example.com"
+          example:
+          - www.thousandeyes.com
+          - thousandeyes.com
+          items:
+            type: string
+          type: array
+        subjectName:
+          description: "certificate’s subject name - a value of the common name (CN)\
+            \ RDN from the certificate’s Subject attribute, for example www.example.com"
+          example: www.thousandeyes.com
+          type: string
+      type: object
+    PageLoadTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PageLoadTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    PageLoadTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          responseTime:
+            description: Time to first byte in milliseconds
+            example: 34.35
+            format: double
+            readOnly: true
+            type: number
+          totalSize:
+            description: Sum of wire size of all objects on page in bytes
+            example: 403301
+            readOnly: true
+            type: integer
+          numObjects:
+            description: Number of objects found on the page
+            example: 17
+            readOnly: true
+            type: integer
+          numErrors:
+            description: Number of objects which encountered errors during download
+            example: 0
+            readOnly: true
+            type: integer
+          domLoadTime:
+            description: Time to interaction in milliseconds
+            example: 352
+            readOnly: true
+            type: integer
+          pageLoadTime:
+            description: Time to completely load page in milliseconds
+            example: 352
+            readOnly: true
+            type: integer
+        type: object
+    PageLoadDetailTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PageLoadDetailTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    PageLoadDetailTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - $ref: '#/components/schemas/PageLoadTestResult'
+      - properties:
+          har:
+            $ref: '#/components/schemas/PageHar'
+        type: object
+    PageHar:
+      description: "See [HAR specification](http://www.softwareishard.com/blog/har-12-spec/)\
+        \ for details"
+      example:
+        log:
+          creator:
+            name: ThousandEyes DB Exporter
+          entries:
+          - pageref: page_0
+            request:
+              headers:
+              - name: :authority
+                value: google.com
+              - name: :method
+                value: GET
+              - name: :path
+                value: /
+              - name: :scheme
+                value: https
+              - name: accept
+                value: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+              - name: accept-encoding
+                value: "gzip, deflate, br"
+              - name: accept-language
+                value: "en-US,en;q=0.9"
+              - name: upgrade-insecure-requests
+                value: "1"
+              - name: user-agent
+                value: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML,\
+                  \ like Gecko) Chrome/68.0.3440.83 Safari/537.36"
+              - name: x-thousandeyes-agent
+                value: "yes"
+              method: GET
+              url: https://google.com/
+            response:
+              bodySize: 220
+              content:
+                mimeType: text/html
+                size: 220
+              headers:
+              - name: alt-svc
+                value: "quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\"\
+                  :443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"\
+                  ; ma=2592000,h3-Q043=\":443\"; ma=2592000"
+              - name: cache-control
+                value: "public, max-age=2592000"
+              - name: content-length
+                value: "220"
+              - name: content-type
+                value: text/html; charset=UTF-8
+              - name: date
+                value: "Fri, 15 Nov 2019 16:41:54 GMT"
+              - name: expires
+                value: "Sun, 15 Dec 2019 16:41:54 GMT"
+              - name: location
+                value: https://www.google.com/
+              - name: server
+                value: gws
+              - name: status
+                value: "301"
+              - name: x-frame-options
+                value: SAMEORIGIN
+              - name: x-xss-protection
+                value: "0"
+              headersSize: 471
+              redirectURL: ""
+              status: 301
+              statusText: MOVED_PERMANENTLY
+            serverIPAddress: 172.217.6.110
+            startedDateTime: 2019-11-15T16:41:54.798Z
+            time: 71
+            timings:
+              blocked: 2
+              connect: 16
+              dns: 1
+              receive: 1
+              send: 0
+              ssl: 14
+              wait: 50
+          - pageref: page_0
+            request:
+              headers:
+              - name: :authority
+                value: www.google.com
+              - name: :method
+                value: GET
+              - name: :path
+                value: /
+              - name: :scheme
+                value: https
+              - name: accept
+                value: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+              - name: accept-encoding
+                value: "gzip, deflate, br"
+              - name: accept-language
+                value: "en-US,en;q=0.9"
+              - name: upgrade-insecure-requests
+                value: "1"
+              - name: user-agent
+                value: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML,\
+                  \ like Gecko) Chrome/68.0.3440.83 Safari/537.36"
+              - name: x-thousandeyes-agent
+                value: "yes"
+              method: GET
+              url: https://www.google.com/
+            response:
+              bodySize: 65214
+              content:
+                mimeType: text/html
+                size: 225039
+              headers:
+              - name: alt-svc
+                value: "quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\"\
+                  :443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"\
+                  ; ma=2592000,h3-Q043=\":443\"; ma=2592000"
+              - name: cache-control
+                value: "private, max-age=0"
+              - name: content-encoding
+                value: br
+              - name: content-length
+                value: "65214"
+              - name: content-type
+                value: text/html; charset=UTF-8
+              - name: date
+                value: "Fri, 15 Nov 2019 16:41:54 GMT"
+              - name: expires
+                value: "-1"
+              - name: p3p
+                value: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+              - name: server
+                value: gws
+              - name: set-cookie
+                value: (removed)
+              - name: status
+                value: "200"
+              - name: strict-transport-security
+                value: max-age=31536000
+              - name: x-frame-options
+                value: SAMEORIGIN
+              - name: x-xss-protection
+                value: "0"
+              headersSize: 915
+              redirectURL: ""
+              status: 200
+              statusText: OK
+            serverIPAddress: 172.217.4.196
+            startedDateTime: 2019-11-15T16:41:54.870Z
+            time: 182
+            timings:
+              blocked: 2
+              connect: 4
+              dns: 0
+              receive: 58
+              send: 0
+              ssl: 2
+              wait: 118
+          pages:
+          - id: page_0
+            pageTimings:
+              onContentLoad: 367
+              onLoad: 737
+            responseCode: 0
+            startedDateTime: 2019-11-15T16:41:54.796Z
+            title: Google
+          version: "1.2"
+      readOnly: true
+      type: object
+    WebTransactionTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/WebTransactionTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    WebTransactionTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          componentErrors:
+            description: Number of components which did not successfully load
+            example: 5
+            readOnly: true
+            type: integer
+          transactionTime:
+            description: Elapsed execution time of the web transaction script in milliseconds
+            example: 2379
+            readOnly: true
+            type: integer
+          errorType:
+            description: Type of error encountered; corresponds to phase of connection
+            example: None
+            readOnly: true
+            type: string
+          errorDetails:
+            $ref: '#/components/schemas/TestResultErrorDetails'
+        type: object
+    WebTransactionDetailTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/WebTransactionDetailTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    WebTransactionDetailTestResult:
+      allOf:
+      - $ref: '#/components/schemas/WebTransactionTestResult'
+      - properties:
+          markers:
+            items:
+              $ref: '#/components/schemas/Marker'
+            type: array
+          pages:
+            items:
+              $ref: '#/components/schemas/Page'
+            type: array
+        type: object
+    WebTransactionPageDetailTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/WebTransactionPageDetailTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    WebTransactionPageDetailTestResult:
+      allOf:
+      - $ref: '#/components/schemas/WebTransactionDetailTestResult'
+      - properties:
+          har:
+            $ref: '#/components/schemas/PageHar'
+        type: object
+    Marker:
+      properties:
+        name:
+          description: Name assigned to marker in transaction script
+          example: SearchForWebdriver
+          readOnly: true
+          type: string
+        duration:
+          description: Total time recorded by marker in milliseconds
+          readOnly: true
+          type: integer
+      type: object
+    Page:
+      properties:
+        pageNum:
+          description: Page index
+          example: 0
+          readOnly: true
+          type: integer
+        pageName:
+          description: Meta title value for page visited
+          example: Google
+          readOnly: true
+          type: string
+        componentCount:
+          description: Number of components on target page
+          example: 136
+          readOnly: true
+          type: integer
+        errorCount:
+          description: Number of errors encountered during page load
+          example: 0
+          readOnly: true
+          type: integer
+        duration:
+          description: Time spent on page in milliseconds
+          example: 1117.5660001039505
+          format: float
+          readOnly: true
+          type: number
+      type: object
+    FtpServerTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/FtpServerTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    FtpServerTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          serverIp:
+            description: IP address of destination server
+            example: 193.2.1.88
+            readOnly: true
+            type: string
+          responseCode:
+            description: FTP response code
+            example: 226
+            readOnly: true
+            type: integer
+          dnsTime:
+            description: Time required to resolve DNS  in milliseconds
+            example: 0.589
+            format: float
+            readOnly: true
+            type: number
+          connectTime:
+            description: Time required to establish a TCP connection to the server
+              in milliseconds
+            example: 50.153
+            format: float
+            readOnly: true
+            type: number
+          negotiationTime:
+            description: Time negotiate the connection and authenticate with the destination
+              server in milliseconds
+            example: 503.413
+            format: float
+            readOnly: true
+            type: number
+          waitTime:
+            description: Time elapsed between completion of request and first byte
+              of response in milliseconds
+            example: 52.1
+            format: float
+            readOnly: true
+            type: number
+          responseTime:
+            description: "Sum of DNS, connect, negotiation and wait times in milliseconds"
+            example: 0.589
+            format: float
+            readOnly: true
+            type: number
+          transferTime:
+            description: Elapsed time between first and last byte of the transfer
+              in milliseconds
+            example: 99.865
+            format: float
+            readOnly: true
+            type: number
+          wireSize:
+            description: Size of content in bytes
+            example: 22172
+            format: integer
+            readOnly: true
+            type: number
+          totalTime:
+            description: Sum of response + transfer time in milliseconds
+            example: 705.554
+            format: float
+            readOnly: true
+            type: number
+          errorType:
+            description: Type of error encountered; corresponds to phase of connection
+            example: None
+            readOnly: true
+            type: string
+          errorDetails:
+            $ref: '#/components/schemas/TestResultErrorDetails'
+          throughput:
+            description: WireSize divided by receiveTime in byter per second
+            example: 123
+            format: integer
+            readOnly: true
+            type: number
+        type: object
+    DnsTraceTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/DnsTraceTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    DnsTraceTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - $ref: '#/components/schemas/EpochTimeWindow'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          output:
+            description: Verbose output from the trace request
+            example: "com.\t172800\tIN\tNS\ta.gtld-servers.net.\ncom.\t172800\tIN\t\
+              NS\tf.gtld-servers.net.\ncom.\t172800\tIN\tNS\tc.gtld-servers.net.\n\
+              com.\t172800\tIN\tNS\tb.gtld-servers.net.\ncom.\t172800\tIN\tNS\td.gtld-servers.net.\n\
+              com.\t172800\tIN\tNS\te.gtld-servers.net.\ncom.\t172800\tIN\tNS\tg.gtld-servers.net.\n\
+              com.\t172800\tIN\tNS\tm.gtld-servers.net.\ncom.\t172800\tIN\tNS\th.gtld-servers.net.\n\
+              com.\t172800\tIN\tNS\tj.gtld-servers.net.\ncom.\t172800\tIN\tNS\ti.gtld-servers.net.\n\
+              com.\t172800\tIN\tNS\tl.gtld-servers.net.\ncom.\t172800\tIN\tNS\tk.gtld-servers.net.\n\
+              ;; Received 498 bytes from 199.7.91.13(d.root-servers.net.) in 119 ms\n\
+              \nthousandeyes.com.\t172800\tIN\tNS\ta1.verisigndns.com.\nthousandeyes.com.\t\
+              172800\tIN\tNS\ta2.verisigndns.com.\nthousandeyes.com.\t172800\tIN\t\
+              NS\ta3.verisigndns.com.\nthousandeyes.com.\t172800\tIN\tNS\tu1.verisigndns.com.\n\
+              ;; Received 266 bytes from 192.5.6.30(a.gtld-servers.net.) in 178 ms\n\
+              \napp.thousandeyes.com.\t300\tIN\tCNAME\tweb.thousandeyes.com.\nweb.thousandeyes.com.\t\
+              300\tIN\tCNAME\tlb-app.thousandeyes.com.\nlb-app.thousandeyes.com.\t\
+              3600\tIN\tA\t208.185.7.120\n;; Received 173 bytes from 209.112.113.33(a1.verisigndns.com.)\
+              \ in 178 ms\n\n"
+            readOnly: true
+            type: string
+          errorDetails:
+            $ref: '#/components/schemas/TestResultErrorDetails'
+          queries:
+            description: How many queries were required to get to the requested result
+            example: 3
+            readOnly: true
+            type: integer
+          failedQueries:
+            description: How many queries failed while getting to the requested result
+            example: 0
+            readOnly: true
+            type: integer
+          finalServerQueried:
+            description: DNS server that provided the final result
+            example: a1.verisigndns.com.
+            readOnly: true
+            type: string
+          finalQueryTime:
+            description: How long the final query took to return a response
+            example: 178
+            readOnly: true
+            type: integer
+          mappings:
+            description: Final mappings returned from the request
+            example: 208.185.7.120
+            readOnly: true
+            type: string
+        type: object
+    DnsServerTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/DnsServerTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    DnsServerTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - $ref: '#/components/schemas/EpochTimeWindow'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          serverId:
+            description: Internal ID of DNS server being tested
+            example: "456"
+            readOnly: true
+            type: string
+          server:
+            description: Canonical name of server being tested
+            example: a1.verisigndns.com.
+            readOnly: true
+            type: string
+          resolutionTime:
+            description: How long it took to run the query against the serverow long
+              it took to run the query against the server
+            example: 3
+            readOnly: true
+            type: integer
+          errorDetails:
+            $ref: '#/components/schemas/TestResultErrorDetails'
+          mappings:
+            description: Final mappings returned from the request
+            example: 208.185.7.120
+            readOnly: true
+            type: string
+        type: object
+    DnssecTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/DnssecTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    DnssecTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - $ref: '#/components/schemas/EpochTimeWindow'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          isValid:
+            description: Indicates if keychain is valid (if false see errorDetails
+              field)
+            example: true
+            readOnly: true
+            type: boolean
+          errorDetails:
+            $ref: '#/components/schemas/TestResultErrorDetails'
+        type: object
+    SipServerTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/SipServerTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    SipServerTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - properties:
+          serverIp:
+            description: Target agent IP address
+            example: 193.2.1.88
+            readOnly: true
+            type: string
+          agent:
+            $ref: '#/components/schemas/Agent'
+          availability:
+            description: availability of the service
+            example: 100.0
+            format: float
+            readOnly: true
+            type: number
+          connectTime:
+            description: "Time required to establish a TCP connection to the server\
+              \ in milliseconds, only available when TCP is configured as protocol"
+            example: 5
+            readOnly: true
+            type: integer
+          dnsTime:
+            description: Time required to resolve DNS in milliseconds
+            example: 2
+            readOnly: true
+            type: integer
+          inviteTime:
+            description: Time to complete INVITE in milliseconds
+            example: 10
+            readOnly: true
+            type: integer
+          optionsTime:
+            description: Time to complete OPTIONS in milliseconds
+            example: 17
+            readOnly: true
+            type: integer
+          numRedirects:
+            description: Number of redirects
+            example: 0
+            readOnly: true
+            type: integer
+          optionsRequest:
+            description: Entire OPTIONS request
+            example: "OPTIONS sip:6054@voice.sfo2.notarealco.com SIP/2.0\r\nVia: SIP/2.0/TCP\
+              \ 38.140.61.68:55431;branch=z9hG4bKRTzPzMoVh0;rport\r\nFrom: <sip:6054@voice.sfo2.notarealco.com>;tag=cGaJDNKQFE\r\
+              \nTo: <sip:6054@voice.sfo2.notarealco.com>\r\nCall-ID: oO9WaL3av8@38.140.61.68\r\
+              \nCSeq: 3 OPTIONS\r\nContact: <sip:6054@38.140.61.68:55431;transport=tcp>\r\
+              \nUser-Agent: ThousandEyes Test Call\r\nAllow: INVITE, ACK, CANCEL,\
+              \ BYE\r\nSupported: outbound, path\r\nMax-Forwards: 70\r\nExpires: 60\r\
+              \nContent-Length: 0\r\n\r\n\nOPTIONS sip:6054@voice.sfo2.notarealco.com\
+              \ SIP/2.0\r\nVia: SIP/2.0/TCP 38.140.61.68:55431;branch=z9hG4bKRTzPzMoVh0;rport\r\
+              \nFrom: <sip:6054@voice.sfo2.notarealco.com>;tag=cGaJDNKQFE\r\nTo: <sip:6054@voice.sfo2.notarealco.com>\r\
+              \nCall-ID: oO9WaL3av8@38.140.61.68\r\nCSeq: 4 OPTIONS\r\nContact: <sip:6054@38.140.61.68:55431;transport=tcp>\r\
+              \nAuthorization: Digest username=\"al6054\", realm=\"asterisk\", nonce=\"\
+              1598728080/4e3bef2c789bdfa45ce9123221e08c8f\", uri=\"sip:6054@voice.sfo2.notarealco.com\"\
+              , response=\"83c538a39ff766cf75ffd1d62317b442\", algorithm=MD5, cnonce=\"\
+              0a4f113b\", opaque=\"748ffa241d840721\", qop=auth, nc=00000001\r\nUser-Agent:\
+              \ ThousandEyes Test Call\r\nAllow: INVITE, ACK, CANCEL, BYE\r\nSupported:\
+              \ outbound, path\r\nMax-Forwards: 70\r\nExpires: 60\r\nContent-Length:\
+              \ 0\r\n\r\n"
+            readOnly: true
+            type: string
+          optionsResponse:
+            description: Entire OPTIONS response
+            example: "SIP/2.0 401 Unauthorized\r\nVia: SIP/2.0/TCP 38.140.61.68:55431;rport=55431;received=38.140.61.68;branch=z9hG4bKRTzPzMoVh0\r\
+              \nCall-ID: oO9WaL3av8@38.140.61.68\r\nFrom: <sip:6054@voice.sfo2.notarealco.com>;tag=cGaJDNKQFE\r\
+              \nTo: <sip:6054@voice.sfo2.notarealco.com>;tag=z9hG4bKRTzPzMoVh0\r\n\
+              CSeq: 3 OPTIONS\r\nWWW-Authenticate: Digest  realm=\"asterisk\",nonce=\"\
+              1598728080/4e3bef2c789bdfa45ce9123221e08c8f\",opaque=\"748ffa241d840721\"\
+              ,algorithm=md5,qop=\"auth\"\r\nServer: Asterisk PBX 16.4.0\r\nContent-Length:\
+              \  0\r\n\r\n\nSIP/2.0 200 OK\r\nVia: SIP/2.0/TCP 38.140.61.68:55431;rport=55431;received=38.140.61.68;branch=z9hG4bKRTzPzMoVh0\r\
+              \nCall-ID: oO9WaL3av8@38.140.61.68\r\nFrom: <sip:6054@voice.sfo2.notarealco.com>;tag=cGaJDNKQFE\r\
+              \nTo: <sip:6054@voice.sfo2.notarealco.com>;tag=z9hG4bKRTzPzMoVh0\r\n\
+              CSeq: 4 OPTIONS\r\nAccept: application/xpidf+xml, application/cpim-pidf+xml,\
+              \ application/simple-message-summary, application/pidf+xml, application/dialog-info+xml,\
+              \ application/simple-message-summary, application/pidf+xml, application/dialog-info+xml,\
+              \ application/sdp, message/sipfrag;version=2.0\r\nAllow: OPTIONS, REGISTER,\
+              \ SUBSCRIBE, NOTIFY, PUBLISH, INVITE, ACK, BYE, CANCEL, UPDATE, PRACK,\
+              \ MESSAGE, REFER\r\nSupported: 100rel, timer, replaces, norefersub\r\
+              \nAccept-Encoding: text/plain\r\nAccept-Language: en\r\nServer: Asterisk\
+              \ PBX 16.4.0\r\nContent-Length:  0\r\n\r\n"
+            readOnly: true
+            type: string
+          registerTime:
+            description: Time to complete REGISTER in milliseconds
+            example: 21
+            readOnly: true
+            type: integer
+          responseCode:
+            description: SIP server response code
+            example: 200
+            readOnly: true
+            type: integer
+          responseTime:
+            description: Time to first byte
+            example: 12
+            readOnly: true
+            type: integer
+          totalTime:
+            description: Total time
+            example: 40
+            readOnly: true
+            type: integer
+          waitTime:
+            description: Time elapsed between completion of request and first byte
+              of response
+            example: 5
+            readOnly: true
+            type: integer
+          errorType:
+            $ref: '#/components/schemas/SipServerErrorType'
+          problemDetail:
+            description: "Error details, if an error was encountered"
+            readOnly: true
+            type: string
+        type: object
+    SipServerErrorType:
+      description: "Error type, none if there is no error"
+      enum:
+      - none
+      - dns
+      - connect
+      - register
+      - invite
+      - option
+      - server
+      - ssl
+      example: none
+      readOnly: true
+      type: string
+    RtpStreamTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/RtpStreamTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    RtpStreamTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - properties:
+          agent:
+            $ref: '#/components/schemas/Agent'
+          serverIp:
+            description: Target agent IP address
+            example: 172.97.102.37
+            readOnly: true
+            type: string
+          dscp:
+            description: DSCP value received by the server from the agent
+            example: "46"
+            readOnly: true
+            type: string
+          dscpName:
+            description: Name of DSCP value received by the server from the agent
+            example: EF (DSCP 46)
+            readOnly: true
+            type: string
+          mos:
+            description: Mean opinion score for agent’s stream
+            example: 4.351024
+            format: float
+            readOnly: true
+            type: number
+          codecName:
+            description: Name of codec used by agen
+            example: G.711 @ 64 Kbps
+            readOnly: true
+            type: string
+          codecMaxMos:
+            description: Maximum value of Mean Opinion Score based on codec selection
+            example: 4.41
+            format: float
+            readOnly: true
+            type: number
+          loss:
+            description: Percentage value of packets sent from agent not received
+              by server
+            example: 0.0
+            format: float
+            readOnly: true
+            type: number
+          discards:
+            description: Percentage of packets discarded
+            example: 0
+            format: float
+            readOnly: true
+            type: number
+          latency:
+            description: Time to send packets from source to server in milliseconds
+            example: 103
+            readOnly: true
+            type: integer
+          pdv:
+            description: Variation in packet delay in milliseconds
+            example: 1
+            readOnly: true
+            type: integer
+          errorDetail:
+            description: "Error details, if an error was encountered"
+            example: Connection error
+            readOnly: true
+            type: string
+        type: object
+    Agent:
+      properties:
+        agentId:
+          description: Unique agent ID
+          example: "281474976710706"
+          readOnly: true
+          type: string
+        agentName:
+          description: Agent name
+          example: thousandeyes-stg-va-254
+          readOnly: true
+          type: string
+        countryId:
+          description: 2-digit ISO country code
+          example: US
+          readOnly: true
+          type: string
+      type: object
+    TestResultErrorDetails:
+      description: "Error details, if an error were encountered"
+      example: Connection error
+      readOnly: true
+      type: string
+    StartTime:
+      description: Epoch time (seconds) indicating the start time of the round
+      example: 1384309800
+      readOnly: true
+      type: integer
+    EndTime:
+      description: Epoch time (seconds) indicating the end time of the round
+      example: 1384309800
+      readOnly: true
+      type: integer
+    EpochTimeWindow:
+      properties:
+        startTime:
+          description: Epoch time (seconds) indicating the start time of the round
+          example: 1384309800
+          readOnly: true
+          type: integer
+        endTime:
+          description: Epoch time (seconds) indicating the end time of the round
+          example: 1384309800
+          readOnly: true
+          type: integer
+      type: object
+    BgpTestResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/BgpTestResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    BgpTestResult:
+      allOf:
+      - $ref: '#/components/schemas/BgpBasicTestResult'
+      - properties:
+          updates:
+            description: Number of updates tracked against this prefix by this monitor.
+            example: 0.0
+            format: double
+            type: number
+          pathChanges:
+            description: Number of path changes tracked against this prefix by this
+              monitor.
+            example: 0.0
+            format: double
+            type: number
+          reachability:
+            description: Percentage reachability
+            example: 0.0
+            format: double
+            type: number
+        type: object
+    BgpBasicTestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult'
+      - properties:
+          monitor:
+            $ref: '#/components/schemas/Monitor'
+          prefixId:
+            description: Internally tracked prefix ID.
+            example: "215"
+            type: string
+          prefix:
+            description: Prefix being tracked.
+            example: 99.128.0.0/11
+            format: ipv4
+            type: string
+        type: object
+    Monitor:
+      properties:
+        monitorId:
+          description: Unique monitor ID.
+          example: "281474976710706"
+          readOnly: true
+          type: string
+        monitorName:
+          description: The name of the Monitor.
+          example: "Vancouver, Canada - Bell Canada (AS 6539)"
+          readOnly: true
+          type: string
+        countryId:
+          description: 2-digit ISO country code.
+          example: US
+          readOnly: true
+          type: string
+      type: object
+    BgpTestRouteInformationResults:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/BgpTestRouteInformationResult'
+          type: array
+        test:
+          $ref: '#/components/schemas/SimpleTest'
+      type: object
+    BgpTestRouteInformationResult:
+      allOf:
+      - $ref: '#/components/schemas/BgpBasicTestResult'
+      - properties:
+          isActive:
+            description: "Represents whether the route is active or inactive. An inactive\
+              \ route was an active route in the previous test round and is now superseded\
+              \ by another active (preferred) route. When requesting data for the\
+              \ test round in which a route change happened, both routes (active and\
+              \ inactive one) are included in the response."
+            example: true
+            type: boolean
+          hops:
+            items:
+              $ref: '#/components/schemas/BgpHop'
+            type: array
+        type: object
+    BgpHop:
+      properties:
+        asn:
+          description: ASN of transit autonomous system
+          example: 852
+          readOnly: true
+          type: number
+        asName:
+          description: Name of autonomous system.
+          example: Telus Advanced Communications
+          readOnly: true
+          type: string
+      type: object
+    TestDirection:
+      default: to-target
+      description: "Direction of the test, which affects how results are shown."
+      enum:
+      - to-target
+      - from-target
+      - bidirectional
+      type: string
+    QueryWindow:
+      properties:
+        startDate:
+          description: "(Optional) When passing `window` or `startDate` parameter,\
+            \  the client will also receive the `startDate` field indicating the UTC\
+            \ start date of the data's time range being retrieved  (ISO date-time\
+            \ format)."
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          readOnly: true
+          type: string
+        endDate:
+          description: "(Optional) When passing `window` or `endDate` parameter, \
+            \ the client will also receive the `endDate` field indicating the UTC\
+            \ end date of the data's time range being retrieved  (ISO date-time format)."
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    StartDate:
+      description: "(Optional) When passing `window` or `startDate` parameter,  the\
+        \ client will also receive the `startDate` field indicating the UTC start\
+        \ date of the data's time range being retrieved  (ISO date-time format)."
+      example: 2022-07-17T22:00:54Z
+      format: date-time
+      readOnly: true
+      type: string
+    EndDate:
+      description: "(Optional) When passing `window` or `endDate` parameter,  the\
+        \ client will also receive the `endDate` field indicating the UTC end date\
+        \ of the data's time range being retrieved  (ISO date-time format)."
+      example: 2022-07-18T22:00:54Z
+      format: date-time
+      readOnly: true
+      type: string
+    PaginationLinks:
+      description: A links object containing pagination related link(s).
+      properties:
+        _links:
+          $ref: '#/components/schemas/PaginationLinks__links'
+      type: object
+    Link:
+      description: A hyperlink from the containing resource to a URI.
+      properties:
+        href:
+          description: "Its value is either a URI [RFC3986] or a URI template [RFC6570]."
+          example: https://api.thousandeyes.com/v7/link/to/resource/id
+          type: string
+        templated:
+          description: Should be true when the link object's "href" property is a
+            URI template.
+          type: boolean
+        type:
+          description: Used as a hint to indicate the media type expected when dereferencing
+            the target resource.
+          type: string
+        deprecation:
+          description: Its presence indicates that the link is to be deprecated at
+            a future date. Its value is a URL that should provide further information
+            about the deprecation.
+          type: string
+        name:
+          description: Its value may be used as a secondary key for selecting link
+            objects that share the same relation type.
+          type: string
+        profile:
+          description: A URI that hints about the profile of the target resource.
+          type: string
+        title:
+          description: Intended for labelling the link with a human-readable identifier
+          type: string
+        hreflang:
+          description: Indicates the language of the target resource
+          type: string
+      required:
+      - href
+      type: object
+    SelfLinks:
+      properties:
+        _links:
+          $ref: '#/components/schemas/SelfLinks__links'
+      readOnly: true
+      type: object
+    Error:
+      properties:
+        type:
+          description: "A URI reference that identifies the problem type. When this\
+            \ member is not present, its value is assumed to be \"about:blank\"."
+          type: string
+        title:
+          description: "A short, human-readable summary of the problem type."
+          type: string
+        status:
+          description: The HTTP status code generated by the origin server for this
+            occurrence of the problem.
+          type: integer
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        instance:
+          description: A URI reference that identifies the specific occurrence of
+            the problem.
+          type: string
+      type: object
+    UnauthorizedError:
+      properties:
+        error:
+          example: invalid_token
+          type: string
+        error_description:
+          example: Invalid access token
+          type: string
+      type: object
+    SimpleTest:
+      allOf:
+      - $ref: '#/components/schemas/UnexpandedTest'
+      - $ref: '#/components/schemas/UnexpandedInstantTest'
+      description: "Each test includes additional fields depending on its `type`.\
+        \ Refer `/tests/{type}` endpoint to know the set of fields returned by a given\
+        \ `type`."
+    UnexpandedTest:
+      properties:
+        interval:
+          $ref: '#/components/schemas/TestInterval'
+        alertsEnabled:
+          description: Indicates if alerts are enabled.
+          example: true
+          type: boolean
+        enabled:
+          default: true
+          description: Test is enabled.
+          example: true
+          type: boolean
+      type: object
+    TestInterval:
+      description: Interval between test runs in seconds.
+      enum:
+      - 60
+      - 120
+      - 300
+      - 600
+      - 900
+      - 1800
+      - 3600
+      example: 120
+      type: integer
+    UnexpandedInstantTest:
+      properties:
+        createdBy:
+          description: User that created the test.
+          example: user@user.com
+          readOnly: true
+          type: string
+        createdDate:
+          description: UTC created date (ISO date-time format).
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: A description of the test.
+          example: ThousandEyes Test
+          type: string
+        liveShare:
+          description: Indicates if the test is shared with the account group.
+          example: false
+          readOnly: true
+          type: boolean
+        modifiedBy:
+          description: User that modified the test.
+          example: user@user.com
+          readOnly: true
+          type: string
+        modifiedDate:
+          description: UTC last modification date (ISO date-time format).
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          readOnly: true
+          type: string
+        savedEvent:
+          description: Indicates if the test is a saved event.
+          readOnly: true
+          type: boolean
+        testId:
+          description: Each test is assigned an unique ID; this is used to access
+            test information and results from other endpoints.
+          example: "281474976710706"
+          readOnly: true
+          type: string
+        testName:
+          description: The name of the test. Test name must be unique.
+          example: ThousandEyes Test
+          type: string
+        type:
+          $ref: '#/components/schemas/TestType'
+        _links:
+          $ref: '#/components/schemas/UnexpandedInstantTest__links'
+      type: object
+    TestCreatedBy:
+      description: User that created the test.
+      example: user@user.com
+      readOnly: true
+      type: string
+    TestCreatedDate:
+      description: UTC created date (ISO date-time format).
+      example: 2022-07-17T22:00:54Z
+      format: date-time
+      readOnly: true
+      type: string
+    TestType:
+      description: "This is a read only value, as test type is implicit in the test\
+        \ creation url."
+      enum:
+      - agent-to-agent
+      - agent-to-server
+      - bgp
+      - http-server
+      - page-load
+      - web-transactions
+      - ftp-server
+      - dns-trace
+      - dns-server
+      - dnssec
+      - sip-server
+      - voice
+      example: agent-to-server
+      readOnly: true
+      type: string
+    TestResults:
+      description: Reference to the test results.
+      items:
+        $ref: '#/components/schemas/Link'
+      type: array
+    TestResult:
+      allOf:
+      - properties:
+          date:
+            description: Data point date UTC (ISO date-time format).
+            example: 2022-07-17T22:00:54Z
+            format: date-time
+            readOnly: true
+            type: string
+          roundId:
+            description: Epoch time (seconds) indicating the start time of the round
+            example: 1384309800
+            readOnly: true
+            type: integer
+        type: object
+      - $ref: '#/components/schemas/TestResultAppLinks'
+    TestResultAppLinks:
+      allOf:
+      - $ref: '#/components/schemas/AppLinks'
+      - properties:
+          _links:
+            example:
+              appLink:
+                href: https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125
+        type: object
+    AppLinks:
+      properties:
+        _links:
+          $ref: '#/components/schemas/AppLinks__links'
+      readOnly: true
+      type: object
+    get_test_result_metrics_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/NetworkTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_network_pathvis_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/PathVisTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_pathvis_agent_round_200_response:
+      allOf:
+      - $ref: '#/components/schemas/PathVisDetailTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_http_server_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/HttpTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_page_load_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/PageLoadTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_page_load_component_detail_200_response:
+      allOf:
+      - $ref: '#/components/schemas/PageLoadDetailTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_web_transactions_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/WebTransactionTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_web_transactions_component_detail_200_response:
+      allOf:
+      - $ref: '#/components/schemas/WebTransactionDetailTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_web_transactions_component_page_detail_200_response:
+      allOf:
+      - $ref: '#/components/schemas/WebTransactionPageDetailTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_ftp_server_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/FtpServerTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_dns_trace_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/DnsTraceTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_dns_server_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/DnsServerTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_dnssec_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/DnssecTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_sip_server_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/SipServerTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_result_rtp_stream_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/RtpStreamTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_results_bgp_200_response:
+      allOf:
+      - $ref: '#/components/schemas/BgpTestResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    get_test_results_bgp_prefix_200_response:
+      allOf:
+      - $ref: '#/components/schemas/BgpTestRouteInformationResults'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    PaginationLinks__links:
+      properties:
+        previous:
+          $ref: '#/components/schemas/Link'
+        next:
+          $ref: '#/components/schemas/Link'
+      type: object
+    SelfLinks__links:
+      description: A links object containing the self link.
+      properties:
+        self:
+          $ref: '#/components/schemas/Link'
+      readOnly: true
+      type: object
+    UnexpandedInstantTest__links_self:
+      allOf:
+      - description: Reference to the test.
+        example:
+          href: "https://api.thousandeyes.com/v7/tests/{type}/281474976710706"
+      - $ref: '#/components/schemas/Link'
+    UnexpandedInstantTest__links_testResults:
+      example:
+      - href: https://api.thousandeyes.com/v7/test-results/281474976710706/network
+      - href: https://api.thousandeyes.com/v7/test-results/281474976710706/pathvis
+      oneOf:
+      - $ref: '#/components/schemas/TestResults'
+      - $ref: '#/components/schemas/Link'
+    UnexpandedInstantTest__links:
+      description: A list of links that can be accessed to get more information
+      properties:
+        self:
+          $ref: '#/components/schemas/UnexpandedInstantTest__links_self'
+        testResults:
+          $ref: '#/components/schemas/UnexpandedInstantTest__links_testResults'
+      readOnly: true
+      type: object
+    AppLinks__links:
+      description: A links object containing the ThousandEyes App link
+      properties:
+        appLink:
+          $ref: '#/components/schemas/Link'
+      type: object
+  securitySchemes:
+    BearerAuth:
+      description: Bearer authentication token
+      scheme: bearer
+      type: http
+

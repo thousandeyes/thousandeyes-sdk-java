@@ -1,0 +1,669 @@
+openapi: 3.0.1
+info:
+  description: |
+    Manage labels applied to endpoint agents using this API.
+  title: Endpoint Agent Labels API
+  version: 7.0.0
+servers:
+- description: Thousandeyes API production URL
+  url: https://api.thousandeyes.com
+security:
+- BearerAuth:
+  - read
+paths:
+  /v7/endpoint/labels:
+    get:
+      operationId: endpoint-labels-list
+      parameters:
+      - description: (Optional) Maximum number of objects to return.
+        in: query
+        name: max
+        schema:
+          example: 5
+          type: number
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      - description: "This parameter is optional and determines whether to include\
+          \ additional details in the response. To specify multiple expansions, you\
+          \ can either separate the values with commas or specify the parameter multiple\
+          \ times."
+        example:
+        - filters
+        explode: false
+        in: query
+        name: expand
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/Expand'
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/endpoint_labels_list_200_response'
+          description: OK
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+      summary: List labels
+      tags:
+      - Manage Labels
+      x-accepts: "application/hal+json,application/problem+json"
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_v7_endpoint_labels_post_request'
+        description: Label settings
+      responses:
+        "201":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/_v7_endpoint_labels_post_201_response'
+          description: created
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+      summary: Create label
+      tags:
+      - Manage Labels
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/endpoint/labels/{id}:
+    delete:
+      description: |
+        Deletes the label from your account.
+      operationId: endpoint-label-delete
+      parameters:
+      - description: The unique identifier of the label to operate on.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: '#/components/schemas/LabelId'
+        style: simple
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: No content
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+      summary: Deletes label
+      tags:
+      - Manage Labels
+      x-accepts: application/json
+    get:
+      description: Returns a single label using its ID.
+      operationId: endpoint-label-get
+      parameters:
+      - description: The unique identifier of the label to operate on.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: '#/components/schemas/LabelId'
+        style: simple
+      - description: "This parameter is optional and determines whether to include\
+          \ additional details in the response. To specify multiple expansions, you\
+          \ can either separate the values with commas or specify the parameter multiple\
+          \ times."
+        example:
+        - filters
+        explode: false
+        in: query
+        name: expand
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/Expand'
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/_v7_endpoint_labels_post_201_response'
+          description: OK
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+      summary: Retrieve label
+      tags:
+      - Manage Labels
+      x-accepts: "application/hal+json,application/problem+json"
+    patch:
+      description: Updates a label using its ID.
+      operationId: endpoint-label-update
+      parameters:
+      - description: The unique identifier of the label to operate on.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: '#/components/schemas/LabelId'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Label'
+        description: Fields to change on the agent
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/_v7_endpoint_labels_post_201_response'
+          description: OK
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+      summary: Update label
+      tags:
+      - Manage Labels
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+components:
+  headers:
+    Location:
+      description: The absolute path to created resource.
+      schema:
+        example: https://api.thousandeyes.com/v7/link/to/resource/id
+        format: uri
+        type: string
+  parameters:
+    IncludeDeleted:
+      description: "When requesting entities, set to `true` if you want to see deleted\
+        \ entities."
+      example: false
+      explode: true
+      in: query
+      name: includeDeleted
+      required: false
+      schema:
+        type: boolean
+      style: form
+    LabelIdPath:
+      description: The unique identifier of the label to operate on.
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        $ref: '#/components/schemas/LabelId'
+      style: simple
+    ExpandLabel:
+      description: "This parameter is optional and determines whether to include additional\
+        \ details in the response. To specify multiple expansions, you can either\
+        \ separate the values with commas or specify the parameter multiple times."
+      example:
+      - filters
+      explode: false
+      in: query
+      name: expand
+      required: false
+      schema:
+        items:
+          $ref: '#/components/schemas/Expand'
+        type: array
+      style: form
+    PaginationMax:
+      description: (Optional) Maximum number of objects to return.
+      in: query
+      name: max
+      schema:
+        example: 5
+        type: number
+    PaginationCursor:
+      description: (Optional) Opaque cursor used for pagination. Clients should use
+        `_links` instead of this parameter.
+      in: query
+      name: cursor
+      schema:
+        type: string
+        example: null
+  responses:
+    "401":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+      description: Unauthorized
+    "403":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Insufficient permissions to query endpoint
+    "429":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Exhausted rate limit for the organization
+    "404":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: URI Resource Not Found
+            status: 404
+            detail: Details explaining if the 404 error is related to an invalid URI
+              or a wrong ID
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Not found
+    "204":
+      content:
+        application/json: {}
+      description: No content
+  schemas:
+    Expand:
+      enum:
+      - filters
+      type: string
+    LabelId:
+      description: Label identifier.
+      example: abc-123-def
+      readOnly: true
+      type: string
+    Labels:
+      description: A list of Labels.
+      properties:
+        labels:
+          items:
+            $ref: '#/components/schemas/Labels_labels_inner'
+          type: array
+      type: object
+    Label:
+      description: A label definition.
+      example:
+        color: '#ff3333'
+        matchType: null
+        name: Head office meeting rooms
+        id: abc-123-def
+        filters:
+        - mode: null
+          values:
+          - 10.1.1.0/24
+          - 192.168.1.0/24
+          key: vpn-client-network
+        - mode: null
+          values:
+          - 10.1.1.0/24
+          - 192.168.1.0/24
+          key: vpn-client-network
+      properties:
+        id:
+          description: Label identifier.
+          example: abc-123-def
+          readOnly: true
+          type: string
+        name:
+          description: The label name.
+          example: Head office meeting rooms
+          readOnly: false
+          type: string
+        color:
+          description: UI color
+          example: '#ff3333'
+          readOnly: false
+          type: string
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+        filters:
+          description: The filters combined using the matchType to determine the label's
+            match.
+          items:
+            $ref: '#/components/schemas/Filter'
+          readOnly: false
+          type: array
+      type: object
+    MatchType:
+      description: |
+        Specifies how the filters are combined for matching this label.
+
+        * `and`: All filters must be matched.
+        * `or`: Any of the filters should match.
+      enum:
+      - and
+      - or
+      readOnly: false
+      type: string
+    Filter:
+      example:
+        mode: null
+        values:
+        - 10.1.1.0/24
+        - 192.168.1.0/24
+        key: vpn-client-network
+      properties:
+        key:
+          $ref: '#/components/schemas/Filter_key'
+        values:
+          example:
+          - 10.1.1.0/24
+          - 192.168.1.0/24
+          items:
+            $ref: '#/components/schemas/Filter_values_inner'
+          type: array
+        mode:
+          $ref: '#/components/schemas/LabelFilterMode'
+      type: object
+    FilterType:
+      description: |
+        Type of filter - the data that will be used to filter.
+      enum:
+      - agent-id
+      - public-network
+      - local-network
+      - connection
+      - gateway
+      - platform
+      - agent-type
+      - vpn-vendor
+      - vpn-gateway-address
+      - vpn-client-network
+      - vpn-client-address
+      - ip-address-family
+      - ssid
+      - bssid
+      - hostname
+      - username
+      - asn
+      type: string
+    LabelFilterMode:
+      description: |
+        Type of matching to be applied for the values:
+
+        * `in`: The value on the agent must match one of the list of values provided.
+        * `not-in`: The value on the agent must not match any of the list of values provided.
+      enum:
+      - in
+      - not-in
+      type: string
+    PaginationNextLink:
+      description: A links object containing a related link for forward pagination.
+      properties:
+        _links:
+          $ref: '#/components/schemas/PaginationNextLink__links'
+      type: object
+    SelfLinks:
+      properties:
+        _links:
+          $ref: '#/components/schemas/SelfLinks__links'
+      readOnly: true
+      type: object
+    Link:
+      description: A hyperlink from the containing resource to a URI.
+      properties:
+        href:
+          description: "Its value is either a URI [RFC3986] or a URI template [RFC6570]."
+          example: https://api.thousandeyes.com/v7/link/to/resource/id
+          type: string
+        templated:
+          description: Should be true when the link object's "href" property is a
+            URI template.
+          type: boolean
+        type:
+          description: Used as a hint to indicate the media type expected when dereferencing
+            the target resource.
+          type: string
+        deprecation:
+          description: Its presence indicates that the link is to be deprecated at
+            a future date. Its value is a URL that should provide further information
+            about the deprecation.
+          type: string
+        name:
+          description: Its value may be used as a secondary key for selecting link
+            objects that share the same relation type.
+          type: string
+        profile:
+          description: A URI that hints about the profile of the target resource.
+          type: string
+        title:
+          description: Intended for labelling the link with a human-readable identifier
+          type: string
+        hreflang:
+          description: Indicates the language of the target resource
+          type: string
+      required:
+      - href
+      type: object
+    UnauthorizedError:
+      properties:
+        error:
+          example: invalid_token
+          type: string
+        error_description:
+          example: Invalid access token
+          type: string
+      type: object
+    Error:
+      properties:
+        type:
+          description: "A URI reference that identifies the problem type. When this\
+            \ member is not present, its value is assumed to be \"about:blank\"."
+          type: string
+        title:
+          description: "A short, human-readable summary of the problem type."
+          type: string
+        status:
+          description: The HTTP status code generated by the origin server for this
+            occurrence of the problem.
+          type: integer
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        instance:
+          description: A URI reference that identifies the specific occurrence of
+            the problem.
+          type: string
+      type: object
+    endpoint_labels_list_200_response:
+      allOf:
+      - $ref: '#/components/schemas/Labels'
+      - $ref: '#/components/schemas/PaginationNextLink'
+      - $ref: '#/components/schemas/SelfLinks'
+    _v7_endpoint_labels_post_request:
+      allOf:
+      - required:
+        - filters
+        - matchType
+        - name
+      - $ref: '#/components/schemas/Label'
+    _v7_endpoint_labels_post_201_response:
+      allOf:
+      - $ref: '#/components/schemas/Label'
+      - $ref: '#/components/schemas/SelfLinks'
+    Labels_labels_inner:
+      allOf:
+      - $ref: '#/components/schemas/SelfLinks'
+      - $ref: '#/components/schemas/Label'
+    Filter_key:
+      anyOf:
+      - $ref: '#/components/schemas/FilterType'
+      - description: "Other keys, not documented here. The values depend on the key,\
+          \ and may change in the future."
+        type: string
+      example: vpn-client-network
+    Filter_values_inner:
+      oneOf:
+      - description: "Value depends on the key.\n\n* `agent-id`: The agent identifiers.\n\
+          * `gateway`: The gateway IP to match.\n* `ssid`: A wildcard match on the\
+          \ SSID. Supports `*` for any characters and `?` for any single character.\n\
+          * `user-name`: A wildcard match on the users that use the agent. Supports\
+          \ `*` for any characters and `?` for any single character.\n* `hostname`:\
+          \ A wildcard match on the host name - supports `*` for any characters\n\
+          and `?` for any single character\n* `bssid`: BSSID for the wifi, lower case,\
+          \ with colons.\n* `platform`: Currently supports `Mac`, `Windows`, and `Linux`.\n\
+          * `asn`: Integer AS Number.\n* `public-network`: Network for agent's public\
+          \ IP in CIDR format, or IP for single IP. e.g. `192.45.32.0/22`.\n* `local-network`:\
+          \ Network for agent's local IP in CIDR format, or IP for single IP. e.g.\
+          \ `10.100.64.0/20`.\n* `connection`: Type of connection `Ethernet` or `Wireless`.\n\
+          * `agent-type`: Type of agent `endpoint`, `endpoint-pulse` or `endpoint-csc`.\n\
+          * `ip-address-family`: `ipv4` or `ipv6`.\n* `vpn-vendor`: Vendor of the\
+          \ VPN software. \n   Examples include: \n   \n   * `cisco-anyconnect`\n\
+          \   * `palo-alto-globalprotect`\n   * `ivanti-connect-secure`\n   * `zscaler-internet-access`\n\
+          \   * `f5-big-ip`\n* `vpn-gateway-address`: Server-side VPN connection IP\
+          \ address.\n* `vpn-client-network`: Network for the VPN client IP in CIDR\
+          \ format. For example, `10.100.32.128/25`.\n* `vpn-client-address`: The\
+          \ VPN client IP. For example, `10.100.32.165`.\n"
+        example: 10.1.1.0/24
+        type: string
+      - additionalProperties:
+          type: string
+        description: For future expansion.
+        type: object
+    PaginationNextLink__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/Link'
+      type: object
+    SelfLinks__links:
+      description: A links object containing the self link.
+      properties:
+        self:
+          $ref: '#/components/schemas/Link'
+      readOnly: true
+      type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http
+

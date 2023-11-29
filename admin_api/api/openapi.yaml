@@ -1,0 +1,2646 @@
+openapi: 3.0.1
+info:
+  description: "## Overview\nManage users, accounts, and account groups in the ThousandEyes\
+    \ platform using the Administrative API.\n\nThis API provides the following endpoints\
+    \ that define the operations to manage your organization: \n\n  * `/account-groups`:\
+    \ Account groups are used to divide an organization into different sections. These\
+    \ endpoints can be used to create, retrieve, update and delete account groups.\n\
+    \  * `/users`: Create, retrieve, update and delete users within an organization.\
+    \ \n  * `/roles`: Create, retrieve and update roles for the current user. \n \
+    \ * `/permissions`: Retrieve all assignable permissions. Used in the context of\
+    \ modifying roles. \n  * `/audit-user-events`: Retrieve all activity log events."
+  title: Administrative API
+  version: 7.0.0
+externalDocs:
+  description: Find out more about the administrative models
+  url: https://docs.thousandeyes.com/product-documentation/user-management
+servers:
+- description: Thousandeyes API production URL
+  url: https://api.thousandeyes.com
+security:
+- BearerAuth:
+  - read
+tags:
+- description: Account group CRUD operations
+  name: Account Groups
+- description: User CRUD operations
+  name: Users
+- description: Role CRUD operations
+  name: Roles
+- description: Permission GET operation
+  name: Permissions
+- description: User events GET operation
+  name: User Events
+paths:
+  /v7/account-groups:
+    get:
+      description: Retrieves a list of account groups available to the current user.
+      operationId: getAccountGroups
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getAccountGroups_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: List account groups
+      tags:
+      - Account Groups
+      x-accepts: "application/hal+json,application/problem+json"
+    post:
+      description: |-
+        Creates a new account group. This operation requires the `Edit all account groups` permission.
+
+        **Note:** Any user assigned to `All Account Groups` is automatically assigned to the new account group.
+      operationId: createAccountGroup
+      parameters:
+      - description: "Optional parameter that specifies whether or not account group\
+          \ related resources should be expanded. By default, no expansion takes place\
+          \ if the query parameter is not passed. For example, to expand the `users`\
+          \ resource, pass the `?expand=user` query."
+        explode: false
+        in: query
+        name: expand
+        required: false
+        schema:
+          example:
+          - user
+          items:
+            $ref: '#/components/schemas/Expand'
+          type: array
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountGroupRequestBody'
+        required: true
+      responses:
+        "201":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/createAccountGroup_201_response'
+          description: Created
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Create account group
+      tags:
+      - Account Groups
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/account-groups/{id}:
+    delete:
+      description: |-
+        Deletes an account group using its ID. This operation requires the following permissions:
+
+          * Assign management permissions
+          * Delete account
+          * Edit all account groups
+      operationId: deleteAccountGroup
+      parameters:
+      - description: Identifier for the account group.
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: No content
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Delete account group
+      tags:
+      - Account Groups
+      x-accepts: application/json
+    get:
+      description: Retrieves detailed information about an account group using its
+        ID.  This operation requires the `View all account groups settings` permission.
+      operationId: getAccountGroup
+      parameters:
+      - description: Identifier for the account group.
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "2067"
+          type: string
+      - description: "Optional parameter that specifies whether or not account group\
+          \ related resources should be expanded. By default, no expansion takes place\
+          \ if the query parameter is not passed. For example, to expand the `users`\
+          \ resource, pass the `?expand=user` query."
+        explode: false
+        in: query
+        name: expand
+        required: false
+        schema:
+          example:
+          - user
+          items:
+            $ref: '#/components/schemas/Expand'
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getAccountGroup_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Retrieve account group
+      tags:
+      - Account Groups
+      x-accepts: "application/hal+json,application/problem+json"
+    put:
+      description: Updates an account group using its ID. You can modify the account
+        group’s name or the list of agents assigned to the account group.
+      operationId: updateAccountGroup
+      parameters:
+      - description: Identifier for the account group.
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "2067"
+          type: string
+      - description: "Optional parameter that specifies whether or not account group\
+          \ related resources should be expanded. By default, no expansion takes place\
+          \ if the query parameter is not passed. For example, to expand the `users`\
+          \ resource, pass the `?expand=user` query."
+        explode: false
+        in: query
+        name: expand
+        required: false
+        schema:
+          example:
+          - user
+          items:
+            $ref: '#/components/schemas/Expand'
+          type: array
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountGroupRequestBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getAccountGroup_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Update account group
+      tags:
+      - Account Groups
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/users:
+    get:
+      description: "Retrieves a list of users in the organization the account group\
+        \ ID belongs to. This operation requires the `API Access` and `View all users`\
+        \ permissions. See [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext)\
+        \ for more information on changing the account group context."
+      operationId: getUsers
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getUsers_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: List users
+      tags:
+      - Users
+      x-accepts: "application/hal+json,application/problem+json"
+    post:
+      description: "Creates a new user.\n\nThe following applies when creating a user:\
+        \ \n* If the user is already a member of another ThousandEyes customer organization,\
+        \ the user must set their own login account group. \n* Any update that includes\
+        \ `accountGroupRoles` is a replace-based update and not a delta-based update."
+      operationId: createUser
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequestBody'
+        required: true
+      responses:
+        "201":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/createUser_201_response'
+          description: Created
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Create user
+      tags:
+      - Users
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/users/{id}:
+    delete:
+      description: Deletes a user using the user ID. This endpoint requires the `Edit
+        users in all account groups` or `Edit users` permission.
+      operationId: deleteUser
+      parameters:
+      - description: Identifer for the user.
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "1884"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: No content
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Delete user
+      tags:
+      - Users
+      x-accepts: application/json
+    get:
+      description: Retrieves detailed information about a user. This operation requires
+        the `API Access` and `View All Users` permissions.
+      operationId: getUser
+      parameters:
+      - description: Identifer for the user.
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "1884"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getUser_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Retrieve user
+      tags:
+      - Users
+      x-accepts: "application/hal+json,application/problem+json"
+    put:
+      description: "Updates a user using the user ID. You can update the user name,\
+        \ email address, account group assignments, or roles. This endpoint requires\
+        \ the `Edit users in all account groups` or `Edit users` permission. \n\n\
+        When updating a user, the following applies:\n* When updating a user's email\
+        \ address, the user must confirm the username change before they can subsequently\
+        \ log in or perform API operations.\n* Any update that includes `accountGroupRoles`\
+        \ is a replace-based update and not a delta-based update."
+      operationId: updateUser
+      parameters:
+      - description: Identifer for the user.
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "1884"
+          type: string
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequestBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getUser_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Update user
+      tags:
+      - Users
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/roles:
+    get:
+      description: Retrieves a list of defined roles visible to the current user.
+      operationId: getRoles
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getRoles_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: List roles
+      tags:
+      - Roles
+      x-accepts: "application/hal+json,application/problem+json"
+    post:
+      description: Creates a new role.
+      operationId: createRole
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRequestBody'
+        required: true
+      responses:
+        "201":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/createRole_201_response'
+          description: Created
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Create role
+      tags:
+      - Roles
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/roles/{id}:
+    delete:
+      description: Deletes a role using its ID. The user needs appropriate permissions
+        to successfully call this endpoint.
+      operationId: deleteRole
+      parameters:
+      - description: The ID of the desired role.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "23"
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: No content
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Delete role
+      tags:
+      - Roles
+      x-accepts: application/json
+    get:
+      description: Returns detailed information about a role using its ID.
+      operationId: getRole
+      parameters:
+      - description: The ID of the desired role.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "23"
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/createRole_201_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Retrieve role
+      tags:
+      - Roles
+      x-accepts: "application/hal+json,application/problem+json"
+    put:
+      description: "Updates a user-defined role using its ID.\n\nWhen updating a role,\
+        \ the following applies: \n* The full list of permissions must be sent, This\
+        \ endpoint does not support delta-based grant or revoking of permissions.\
+        \ \n* Permission definitions and details can be obtained from the Permissions\
+        \ endpoint."
+      operationId: updateRole
+      parameters:
+      - description: The ID of the desired role.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "23"
+          type: string
+        style: simple
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRequestBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/createRole_201_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: Update role
+      tags:
+      - Roles
+      x-content-type: application/json
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/audit-user-events:
+    get:
+      description: "Returns a list of activity log events. Users with the `View activity\
+        \ log for all users in account group` permission can see all activity log\
+        \ events in the current account group. Users with the `View own activity log`\
+        \ permission can see their own activity log events in the current account\
+        \ group. \n\nFor more information about changing the account group context,\
+        \ see [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext)."
+      operationId: getUserEvents
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      - description: |-
+          A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+          For a precise date range, use `startDate` and `endDate`.
+        in: query
+        name: window
+        schema:
+          example: 12h
+          pattern: "^\\d+(?:[smhdw]{1})?$"
+          type: string
+      - description: "Use with the `endDate` parameter. Include the complete time\
+          \ (hours, minutes, and seconds) in UTC time zone, following the ISO 8601\
+          \ date-time format. See the example for reference. Please note that this\
+          \ parameter can't be used with `window`."
+        in: query
+        name: startDate
+        schema:
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+      - description: "Defaults to current time the request is made. Use with the `startDate`\
+          \ parameter. Include the complete time (hours, minutes, and seconds) in\
+          \ UTC time zone, following the ISO 8601 date-time format. See the example\
+          \ for reference. Please note that this parameter can't be used with `window`."
+        in: query
+        name: endDate
+        schema:
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          type: string
+      - description: (Optional) Opaque cursor used for pagination. Clients should
+          use `_links` instead of this parameter.
+        in: query
+        name: cursor
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getUserEvents_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: List activity log events
+      tags:
+      - User Events
+      x-accepts: "application/hal+json,application/problem+json"
+  /v7/permissions:
+    get:
+      description: Users must be in a role assigned management permissions to access
+        this endpoint. Users without management permissions who attempt to access
+        this endpoint receive an HTTP/403 response code.
+      operationId: getPermissions
+      parameters:
+      - description: A unique identifier associated with your account group. You can
+          retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note
+          that you must be assigned to the target account group. Specifying this parameter
+          without being assigned to the target account group will result in an error
+          response.
+        in: query
+        name: aid
+        required: false
+        schema:
+          example: "2067"
+          type: string
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/getPermissions_200_response'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Request validation failed. There are invalid or missing fields
+                status: 400
+                detail: Invalid field value for field `expand`
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Insufficient permissions to query endpoint
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: URI Resource Not Found
+                status: 404
+                detail: Details explaining if the 404 error is related to an invalid
+                  URI or a wrong ID
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
+        "429":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Exhausted rate limit for the organization
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: about:blank
+                title: Internal server error
+                status: 500
+                detail: Optional detail about the internal error message.
+                instance: /v7
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal server error
+      summary: List assignable permissions
+      tags:
+      - Permissions
+      x-accepts: "application/hal+json,application/problem+json"
+components:
+  headers:
+    Location:
+      description: The absolute path to created resource.
+      schema:
+        example: https://api.thousandeyes.com/v7/link/to/resource/id
+        format: uri
+        type: string
+  parameters:
+    RoleId:
+      description: The ID of the desired role.
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        example: "23"
+        type: string
+      style: simple
+    ExpandAccountGroup:
+      description: "Optional parameter that specifies whether or not account group\
+        \ related resources should be expanded. By default, no expansion takes place\
+        \ if the query parameter is not passed. For example, to expand the `users`\
+        \ resource, pass the `?expand=user` query."
+      explode: false
+      in: query
+      name: expand
+      required: false
+      schema:
+        example:
+        - user
+        items:
+          $ref: '#/components/schemas/Expand'
+        type: array
+      style: form
+    AccountGroupId:
+      description: A unique identifier associated with your account group. You can
+        retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that
+        you must be assigned to the target account group. Specifying this parameter
+        without being assigned to the target account group will result in an error
+        response.
+      in: query
+      name: aid
+      required: false
+      schema:
+        example: "2067"
+        type: string
+    AccountGroupIdPath:
+      description: Identifier for the account group.
+      in: path
+      name: id
+      required: true
+      schema:
+        example: "2067"
+        type: string
+    UserIdPath:
+      description: Identifer for the user.
+      in: path
+      name: id
+      required: true
+      schema:
+        example: "1884"
+        type: string
+    Window:
+      description: |-
+        A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks.
+        For a precise date range, use `startDate` and `endDate`.
+      in: query
+      name: window
+      schema:
+        example: 12h
+        pattern: "^\\d+(?:[smhdw]{1})?$"
+        type: string
+    StartDate:
+      description: "Use with the `endDate` parameter. Include the complete time (hours,\
+        \ minutes, and seconds) in UTC time zone, following the ISO 8601 date-time\
+        \ format. See the example for reference. Please note that this parameter can't\
+        \ be used with `window`."
+      in: query
+      name: startDate
+      schema:
+        example: 2022-07-17T22:00:54Z
+        format: date-time
+        type: string
+    EndDate:
+      description: "Defaults to current time the request is made. Use with the `startDate`\
+        \ parameter. Include the complete time (hours, minutes, and seconds) in UTC\
+        \ time zone, following the ISO 8601 date-time format. See the example for\
+        \ reference. Please note that this parameter can't be used with `window`."
+      in: query
+      name: endDate
+      schema:
+        example: 2022-07-18T22:00:54Z
+        format: date-time
+        type: string
+    PaginationCursor:
+      description: (Optional) Opaque cursor used for pagination. Clients should use
+        `_links` instead of this parameter.
+      in: query
+      name: cursor
+      schema:
+        type: string
+        example: null
+  responses:
+    "400":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: Request validation failed. There are invalid or missing fields
+            status: 400
+            detail: Invalid field value for field `expand`
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Bad Request
+    "401":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+      description: Unauthorized
+    "403":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Insufficient permissions to query endpoint
+    "404":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: URI Resource Not Found
+            status: 404
+            detail: Details explaining if the 404 error is related to an invalid URI
+              or a wrong ID
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Not found
+    "429":
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Exhausted rate limit for the organization
+    "500":
+      content:
+        application/problem+json:
+          example:
+            type: about:blank
+            title: Internal server error
+            status: 500
+            detail: Optional detail about the internal error message.
+            instance: /v7
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Internal server error
+    "204":
+      content:
+        application/json: {}
+      description: No content
+  schemas:
+    Expand:
+      enum:
+      - user
+      - agent
+      type: string
+    AccountGroup:
+      allOf:
+      - $ref: '#/components/schemas/AccountGroup_1'
+      - properties:
+          isCurrentAccountGroup:
+            description: Indicates whether the requested aid is the context of the
+              current account.
+            example: true
+            type: boolean
+          isDefaultAccountGroup:
+            description: Indicates whether the aid is the default one for the requesting
+              user.
+            example: true
+            type: boolean
+          organizationName:
+            description: (Optional) Indicates whether the aid is the default one for
+              the requesting user.
+            type: string
+        type: object
+      type: object
+    NewAccountGroupResponse:
+      allOf:
+      - $ref: '#/components/schemas/AccountGroup'
+      - $ref: '#/components/schemas/UserAccountGroups'
+    AccountGroupDetail:
+      allOf:
+      - $ref: '#/components/schemas/AccountGroup'
+      - $ref: '#/components/schemas/UserAccountGroups'
+      - $ref: '#/components/schemas/EnterpriseAgents'
+    AccountGroupRequestBody:
+      example:
+        accountGroupName: My testing account group
+        agents:
+        - "105"
+        - "719"
+      properties:
+        accountGroupName:
+          description: The name of the account group
+          example: My testing account group
+          type: string
+        agents:
+          description: "To grant access to enterprise agents, specify the agent list.\
+            \ Note that this is not an additive list - the full list must be specified\
+            \ if changing access to agents."
+          example:
+          - "105"
+          - "719"
+          items:
+            type: string
+          type: array
+      required:
+      - accountGroupName
+      type: object
+    AccountGroups:
+      properties:
+        accountGroups:
+          items:
+            $ref: '#/components/schemas/AccountGroup'
+          type: array
+      type: object
+    AccountGroupRoles:
+      properties:
+        accountGroupRoles:
+          items:
+            $ref: '#/components/schemas/AccountGroupRoles_accountGroupRoles_inner'
+          type: array
+      type: object
+    AccountGroupRolesRequestBody:
+      items:
+        $ref: '#/components/schemas/AccountGroupRolesRequestBody_inner'
+      type: array
+    UserRequestBody:
+      example:
+        loginAccountGroupId: "691"
+        accountGroupRoles:
+        - roleIds:
+          - "57"
+          - "1140"
+          accountGroupId: "315"
+        - roleIds:
+          - "57"
+          - "1140"
+          accountGroupId: "315"
+        name: User X
+        allAccountGroupRoleIds:
+        - "57"
+        - "1140"
+        email: userx@thousandeyes.com
+      properties:
+        name:
+          description: User's display name.
+          example: User X
+          type: string
+        email:
+          description: User's email address.
+          example: userx@thousandeyes.com
+          format: email
+          type: string
+        loginAccountGroupId:
+          description: Unique ID of the login account group.
+          example: "691"
+          type: string
+        accountGroupRoles:
+          items:
+            $ref: '#/components/schemas/AccountGroupRolesRequestBody_inner'
+          type: array
+        allAccountGroupRoleIds:
+          description: Unique IDs representing the roles.
+          example:
+          - "57"
+          - "1140"
+          items:
+            description: Unique role ID.
+            example: "57"
+            type: string
+          type: array
+      type: object
+    User:
+      properties:
+        name:
+          description: User's display name.
+          example: User X
+          type: string
+        email:
+          description: User's email address.
+          example: userx@thousandeyes.com
+          format: email
+          type: string
+        uid:
+          description: Unique ID of the user.
+          example: "245"
+          type: string
+        dateRegistered:
+          description: UTC date the user registered their account (ISO date-time format).
+          example: 2020-07-17T22:00:54Z
+          format: date-time
+          type: string
+        loginAccountGroup:
+          $ref: '#/components/schemas/AccountGroup_1'
+      type: object
+    ExtendedUser:
+      allOf:
+      - $ref: '#/components/schemas/User'
+      - properties:
+          lastLogin:
+            description: UTC last login of the user (ISO date-time format).
+            example: 2022-07-17T22:00:54Z
+            format: date-time
+            type: string
+        type: object
+    Users:
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/ExtendedUser'
+          type: array
+      type: object
+    CreatedUser:
+      allOf:
+      - $ref: '#/components/schemas/User'
+      - $ref: '#/components/schemas/LoginAccountGroup'
+      - $ref: '#/components/schemas/AccountGroupRoles'
+      - $ref: '#/components/schemas/AllAccountGroupRoles'
+    UserDetail:
+      allOf:
+      - $ref: '#/components/schemas/ExtendedUser'
+      - $ref: '#/components/schemas/LoginAccountGroup'
+      - $ref: '#/components/schemas/AccountGroupRoles'
+      - $ref: '#/components/schemas/AllAccountGroupRoles'
+    AllAccountGroupRoles:
+      properties:
+        allAccountGroupRoles:
+          items:
+            $ref: '#/components/schemas/Role'
+          type: array
+      type: object
+    LoginAccountGroup:
+      properties:
+        loginAccountGroup:
+          $ref: '#/components/schemas/AccountGroup_1'
+      type: object
+    UserAccountGroup:
+      properties:
+        name:
+          description: User's display name.
+          example: User X
+          type: string
+        email:
+          description: User's email address.
+          example: userx@thousandeyes.com
+          format: email
+          type: string
+        uid:
+          description: Unique ID representing the user.
+          example: "235"
+          type: string
+        lastLogin:
+          description: User's UTC last login date (ISO date-time format).
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+        dateRegistered:
+          description: User's UTC registration date (ISO date-time format).
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          type: string
+        roles:
+          items:
+            $ref: '#/components/schemas/Role'
+          type: array
+      type: object
+    UserAccountGroups:
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/UserAccountGroup'
+          type: array
+      type: object
+    BaseRole:
+      properties:
+        name:
+          description: Name of the role.
+          example: Organization Admin
+          type: string
+        roleId:
+          description: Unique ID representing the role.
+          example: "35"
+          type: string
+        isBuiltin:
+          description: "Flag indicating if the role is built-in (Account Admin, Organization\
+            \ Admin, Regular User)."
+          type: boolean
+      type: object
+    Role:
+      allOf:
+      - $ref: '#/components/schemas/BaseRole'
+      - properties:
+          hasManagementPermissions:
+            description: Flag indicating whether the user has management permissions.
+            type: boolean
+      type: object
+    Permission:
+      properties:
+        label:
+          description: Label corresponding to the permission.
+          example: View reports
+          type: string
+        permissionId:
+          description: Unique ID representing the permission.
+          example: "56"
+          type: string
+        isManagementPermission:
+          description: Flag indicating whether the permission is classified as a management
+            permission.
+          type: boolean
+        permission:
+          description: Permission name
+          example: REPORT_SNAPSHOTS_READ
+          type: string
+      type: object
+    Permissions:
+      properties:
+        permissions:
+          example:
+          - label: View reports
+            permissionId: 1
+            isManagementPermission: true
+            permission: REPORT_READ
+          - label: View snapshots
+            permissionId: 51
+            isManagementPermission: false
+            permission: REPORT_SNAPSHOTS_READ
+          items:
+            $ref: '#/components/schemas/Permission'
+          type: array
+      type: object
+    RoleDetail:
+      allOf:
+      - $ref: '#/components/schemas/BaseRole'
+      - $ref: '#/components/schemas/Permissions'
+    Roles:
+      properties:
+        roles:
+          items:
+            $ref: '#/components/schemas/Role'
+          type: array
+      type: object
+    RoleRequestBody:
+      example:
+        permissions:
+        - "56"
+        - "315"
+        name: Organization Admin
+      properties:
+        name:
+          description: Name of the role.
+          example: Organization Admin
+          type: string
+        permissions:
+          description: Contains list of test permission IDs (get `permissionId` from
+            `/permissions` endpoint)
+          example:
+          - "56"
+          - "315"
+          items:
+            type: string
+          type: array
+      type: object
+    UserEvent:
+      allOf:
+      - $ref: '#/components/schemas/AccountGroup_1'
+      - properties:
+          date:
+            description: UTC event date (ISO date-time format).
+            example: 2020-07-17T22:00:54Z
+            format: date-time
+            type: string
+          event:
+            description: Event type.
+            example: Login failed.
+            type: string
+          ipAddress:
+            description: Source IP address of the user.
+            example: 99.128.0.0/11
+            format: ipv4
+            type: string
+          uid:
+            description: Unique id representing the user.
+            example: "245"
+            type: string
+          user:
+            description: The name and email address of the user.
+            example: API Sandbox User (noreply@thousandeyes.com)
+            type: string
+          resources:
+            items:
+              $ref: '#/components/schemas/UserEvent_allOf_resources_inner'
+            type: array
+        type: object
+      type: object
+    UserEvents:
+      properties:
+        auditEvents:
+          example:
+          - accountGroupName: API Sandbox
+            aid: "75"
+            date: 2020-07-17T21:54:54Z
+            event: Report created.
+            ipAddress: 99.128.0.0/11
+            uid: "245"
+            user: API Sandbox User (noreply@thousandeyes.com)
+            resources:
+            - name: My New report
+              type: reportTitle
+            - name: Other Report
+              type: testName
+          - accountGroupName: API Sandbox
+            aid: "75"
+            date: 2020-07-17T22:00:54Z
+            event: Login failed.
+            ipAddress: 99.128.0.0/11
+            uid: "245"
+            user: API Sandbox User (noreply@thousandeyes.com)
+          items:
+            $ref: '#/components/schemas/UserEvent'
+          type: array
+      type: object
+    SelfLinks:
+      properties:
+        _links:
+          $ref: '#/components/schemas/SelfLinks__links'
+      readOnly: true
+      type: object
+    Link:
+      description: A hyperlink from the containing resource to a URI.
+      properties:
+        href:
+          description: "Its value is either a URI [RFC3986] or a URI template [RFC6570]."
+          example: https://api.thousandeyes.com/v7/link/to/resource/id
+          type: string
+        templated:
+          description: Should be true when the link object's "href" property is a
+            URI template.
+          type: boolean
+        type:
+          description: Used as a hint to indicate the media type expected when dereferencing
+            the target resource.
+          type: string
+        deprecation:
+          description: Its presence indicates that the link is to be deprecated at
+            a future date. Its value is a URL that should provide further information
+            about the deprecation.
+          type: string
+        name:
+          description: Its value may be used as a secondary key for selecting link
+            objects that share the same relation type.
+          type: string
+        profile:
+          description: A URI that hints about the profile of the target resource.
+          type: string
+        title:
+          description: Intended for labelling the link with a human-readable identifier
+          type: string
+        hreflang:
+          description: Indicates the language of the target resource
+          type: string
+      required:
+      - href
+      type: object
+    Error:
+      properties:
+        type:
+          description: "A URI reference that identifies the problem type. When this\
+            \ member is not present, its value is assumed to be \"about:blank\"."
+          type: string
+        title:
+          description: "A short, human-readable summary of the problem type."
+          type: string
+        status:
+          description: The HTTP status code generated by the origin server for this
+            occurrence of the problem.
+          type: integer
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        instance:
+          description: A URI reference that identifies the specific occurrence of
+            the problem.
+          type: string
+      type: object
+    UnauthorizedError:
+      properties:
+        error:
+          example: invalid_token
+          type: string
+        error_description:
+          example: Invalid access token
+          type: string
+      type: object
+    QueryWindow:
+      properties:
+        startDate:
+          description: "(Optional) When passing `window` or `startDate` parameter,\
+            \  the client will also receive the `startDate` field indicating the UTC\
+            \ start date of the data's time range being retrieved  (ISO date-time\
+            \ format)."
+          example: 2022-07-17T22:00:54Z
+          format: date-time
+          readOnly: true
+          type: string
+        endDate:
+          description: "(Optional) When passing `window` or `endDate` parameter, \
+            \ the client will also receive the `endDate` field indicating the UTC\
+            \ end date of the data's time range being retrieved  (ISO date-time format)."
+          example: 2022-07-18T22:00:54Z
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    StartDate:
+      description: "(Optional) When passing `window` or `startDate` parameter,  the\
+        \ client will also receive the `startDate` field indicating the UTC start\
+        \ date of the data's time range being retrieved  (ISO date-time format)."
+      example: 2022-07-17T22:00:54Z
+      format: date-time
+      readOnly: true
+      type: string
+    EndDate:
+      description: "(Optional) When passing `window` or `endDate` parameter,  the\
+        \ client will also receive the `endDate` field indicating the UTC end date\
+        \ of the data's time range being retrieved  (ISO date-time format)."
+      example: 2022-07-18T22:00:54Z
+      format: date-time
+      readOnly: true
+      type: string
+    PaginationLinks:
+      description: A links object containing pagination related link(s).
+      properties:
+        _links:
+          $ref: '#/components/schemas/PaginationLinks__links'
+      type: object
+    AccountGroup_1:
+      allOf:
+      - $ref: '#/components/schemas/AccountGroupId'
+      - properties:
+          accountGroupName:
+            description: Account group name
+            example: Account A
+            type: string
+        type: object
+      type: object
+    AccountGroupId:
+      properties:
+        aid:
+          description: A unique identifier associated with your account group. You
+            can retrieve your `AccountGroupId` from the `/account-groups` endpoint.
+          example: "11"
+          type: string
+      type: object
+    EnterpriseAgents:
+      properties:
+        agents:
+          items:
+            $ref: '#/components/schemas/EnterpriseAgent'
+          type: array
+      type: object
+    EnterpriseAgent:
+      allOf:
+      - $ref: '#/components/schemas/Agent'
+      - properties:
+          clusterMembers:
+            $ref: '#/components/schemas/ClusterMembers'
+          utilization:
+            description: Shows overall utilization percentage (online Enterprise Agents
+              and Enterprise Clusters only).
+            example: 25
+            readOnly: true
+            type: integer
+          accountGroups:
+            description: List of account groups. See /accounts-groups to pull a list
+              of account IDs
+            items:
+              $ref: '#/components/schemas/AccountGroup_1'
+            type: array
+          prefix:
+            description: Prefix containing agents public IP address.
+            example: 99.128.0.0/11
+            format: ipv4
+            readOnly: true
+            type: string
+          ipv6Policy:
+            $ref: '#/components/schemas/EnterpriseAgentIpv6Policy'
+          errorDetails:
+            description: "If an enterprise agent or a cluster member presents at least\
+              \ one error, the errors will be shown as an array of entries in the\
+              \ errorDetails field (Enterprise Agents and Enterprise Cluster members\
+              \ only)"
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            readOnly: true
+            type: array
+          hostname:
+            description: Fully qualified domain name of the agent (Enterprise Agents
+              only)
+            example: thousandeyes.com
+            readOnly: true
+            type: string
+          lastSeen:
+            description: UTC last seen date (ISO date-time format).
+            example: 2022-07-17T22:00:54Z
+            format: date-time
+            readOnly: true
+            type: string
+          agentState:
+            $ref: '#/components/schemas/EnterpriseAgentState'
+          keepBrowserCache:
+            description: Flag indicating if the agent retains cache.
+            example: true
+            type: boolean
+          createdDate:
+            description: UTC Agent creation date (ISO date-time format).
+            example: 2022-07-17T22:00:54Z
+            format: date-time
+            readOnly: true
+            type: string
+          targetForTests:
+            description: Test target IP address.
+            example: 1.1.1.1
+            format: ipv4
+            type: string
+          localResolutionPrefixes:
+            description: "To perform rDNS lookups for public IP ranges, this field\
+              \ represents the public IP ranges. The range must be in CIDR notation;\
+              \ for example, 10.1.1.0/24. Maximum of 5 prefixes allowed (Enterprise\
+              \ Agents and Enterprise Agent clusters only)."
+            items:
+              example: 10.2.3.3/24
+              type: string
+            type: array
+          interfaceIpMappings:
+            items:
+              $ref: '#/components/schemas/InterfaceIpMapping'
+            readOnly: true
+            type: array
+        type: object
+    Agent:
+      allOf:
+      - $ref: '#/components/schemas/AgentBase'
+      - properties:
+          agentId:
+            description: Unique ID of the agent.
+            example: "281474976710706"
+            readOnly: true
+            type: string
+          agentName:
+            description: Name of the agent.
+            example: thousandeyes-stg-va-254
+            type: string
+          agentType:
+            $ref: '#/components/schemas/CloudEnterpriseAgentType'
+          location:
+            description: Location of the agent.
+            example: San Francisco Bay Area
+            readOnly: true
+            type: string
+          countryId:
+            description: 2-digit ISO country code
+            example: US
+            readOnly: true
+            type: string
+          enabled:
+            description: Flag indicating if the agent is enabled.
+            example: true
+            type: boolean
+          verifySslCertificates:
+            description: Flag indicating if has normal SSL operations or  if instead
+              it's set to ignore SSL errors on browserbot-based tests.
+            example: true
+            readOnly: true
+            type: boolean
+        type: object
+      type: object
+    AgentBase:
+      properties:
+        ipAddresses:
+          description: Array of private IP addresses.
+          example:
+          - 99.139.65.220
+          - 99.139.65.221
+          items:
+            format: ipv4
+            type: string
+          readOnly: true
+          type: array
+        publicIpAddresses:
+          description: Array of public IP addresses.
+          example:
+          - 192.168.1.78
+          - 192.168.1.79
+          items:
+            format: ipv4
+            type: string
+          readOnly: true
+          type: array
+        network:
+          description: Network (including ASN) of agent’s public IP.
+          example: "AT&T Services, Inc. (AS 7018)"
+          readOnly: true
+          type: string
+      type: object
+    CloudEnterpriseAgentType:
+      description: Type of the agent.
+      enum:
+      - cloud
+      - enterprise-cluster
+      - enterprise
+      example: enterprise-cluster
+      readOnly: true
+      type: string
+    ClusterMembers:
+      description: "If an enterprise agent is clustered, detailed information about\
+        \ each cluster member will be shown as array entries in the clusterMembers\
+        \ field. This field is not shown for Enterprise Agents in standalone mode,\
+        \ or for Cloud Agents."
+      items:
+        $ref: '#/components/schemas/ClusterMember'
+      readOnly: true
+      type: array
+    ClusterMember:
+      allOf:
+      - $ref: '#/components/schemas/AgentBase'
+      - properties:
+          memberId:
+            description: Unique ID of the cluster member
+            example: "10"
+            readOnly: true
+            type: string
+          name:
+            description: Name of the cluster member
+            example: Cluster member name
+            readOnly: true
+            type: string
+          errorDetails:
+            description: "If an enterprise agent or a cluster member presents at least\
+              \ one error, the errors will be shown as an array of entries in the\
+              \ errorDetails field (Enterprise Agents and Enterprise Cluster members\
+              \ only)"
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            readOnly: true
+            type: array
+          lastSeen:
+            description: UTC last seen date (ISO date-time format).
+            example: 2022-07-17T22:00:54Z
+            format: date-time
+            readOnly: true
+            type: string
+          agentState:
+            $ref: '#/components/schemas/EnterpriseAgentState'
+          targetForTests:
+            description: Test target IP address.
+            example: 1.1.1.1
+            format: ipv4
+            type: string
+          utilization:
+            description: Shows overall utilization percentage (online Enterprise Agents
+              and Enterprise Clusters only).
+            example: 25
+            readOnly: true
+            type: integer
+        type: object
+    ErrorDetail:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorDetailCode'
+        description:
+          description: Description for the agent error.
+          example: "Agent Version 0.1.1 (latest: 1.0.0)"
+          readOnly: true
+          type: string
+      type: object
+    ErrorDetailCode:
+      description: Code for the agent error.
+      enum:
+      - agent-version-outdated
+      - browserbot-version-outdated
+      - appliance-version-outdated
+      - clock-offset
+      - os-end-of-installation-support
+      - os-end-of-support
+      - os-end-of-life
+      - nat-traversal-error
+      example: agent-version-outdated
+      readOnly: true
+      type: string
+    EnterpriseAgentState:
+      description: State of the agent.
+      enum:
+      - online
+      - offline
+      - disabled
+      example: online
+      readOnly: true
+      type: string
+    EnterpriseAgentIpv6Policy:
+      description: "IP version policy, (Enterprise Agents and Enterprise Clusters\
+        \ only)"
+      enum:
+      - force-ipv4
+      - prefer-ipv6
+      - force-ipv6
+      example: force-ipv4
+      type: string
+    InterfaceIpMapping:
+      properties:
+        interfaceName:
+          description: Name of the mapping
+          example: wlp4s0
+          readOnly: true
+          type: string
+        ipAddresses:
+          description: Array of ipAddress entries
+          example:
+          - 73.252.207.219
+          - 2601:646:300:3ae0::b977
+          items:
+            type: string
+          readOnly: true
+          type: array
+      type: object
+    getAccountGroups_200_response:
+      allOf:
+      - $ref: '#/components/schemas/AccountGroups'
+      - $ref: '#/components/schemas/SelfLinks'
+    createAccountGroup_201_response:
+      allOf:
+      - $ref: '#/components/schemas/NewAccountGroupResponse'
+      - $ref: '#/components/schemas/SelfLinks'
+    getAccountGroup_200_response:
+      allOf:
+      - $ref: '#/components/schemas/AccountGroupDetail'
+      - $ref: '#/components/schemas/SelfLinks'
+    getUsers_200_response:
+      allOf:
+      - $ref: '#/components/schemas/Users'
+      - $ref: '#/components/schemas/SelfLinks'
+    createUser_201_response:
+      allOf:
+      - $ref: '#/components/schemas/CreatedUser'
+      - $ref: '#/components/schemas/SelfLinks'
+    getUser_200_response:
+      allOf:
+      - $ref: '#/components/schemas/UserDetail'
+      - $ref: '#/components/schemas/SelfLinks'
+    getRoles_200_response:
+      allOf:
+      - $ref: '#/components/schemas/Roles'
+      - $ref: '#/components/schemas/SelfLinks'
+    createRole_201_response:
+      allOf:
+      - $ref: '#/components/schemas/RoleDetail'
+      - $ref: '#/components/schemas/SelfLinks'
+    getUserEvents_200_response:
+      allOf:
+      - $ref: '#/components/schemas/QueryWindow'
+      - $ref: '#/components/schemas/UserEvents'
+      - $ref: '#/components/schemas/PaginationLinks'
+      - $ref: '#/components/schemas/SelfLinks'
+    getPermissions_200_response:
+      allOf:
+      - $ref: '#/components/schemas/Permissions'
+      - $ref: '#/components/schemas/SelfLinks'
+    AccountGroupRoles_accountGroupRoles_inner:
+      properties:
+        accountGroup:
+          $ref: '#/components/schemas/AccountGroup_1'
+        roles:
+          items:
+            $ref: '#/components/schemas/Role'
+          type: array
+    AccountGroupRolesRequestBody_inner:
+      example:
+        roleIds:
+        - "57"
+        - "1140"
+        accountGroupId: "315"
+      properties:
+        accountGroupId:
+          description: Unique ID of the account group.
+          example: "315"
+          type: string
+        roleIds:
+          description: Unique role IDs.
+          example:
+          - "57"
+          - "1140"
+          items:
+            description: Unique role ID.
+            example: "57"
+            type: string
+          type: array
+    UserEvent_allOf_resources_inner:
+      properties:
+        type:
+          description: "Type of resource affected. Can be “testName”, “reportTitle”\
+            , “userDisplayName”, “alertRuleName”, etc."
+          type: string
+        name:
+          description: Name of the affected resource.
+          type: string
+    SelfLinks__links:
+      description: A links object containing the self link.
+      properties:
+        self:
+          $ref: '#/components/schemas/Link'
+      readOnly: true
+      type: object
+    PaginationLinks__links:
+      properties:
+        previous:
+          $ref: '#/components/schemas/Link'
+        next:
+          $ref: '#/components/schemas/Link'
+      type: object
+  securitySchemes:
+    BearerAuth:
+      description: Bearer authentication token
+      scheme: bearer
+      type: http
+

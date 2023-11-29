@@ -1,0 +1,17 @@
+
+
+# TestIpv6Policy
+
+## Enum
+
+
+* `FORCE_IPV4` (value: `"force-ipv4"`)
+
+* `PREFER_IPV6` (value: `"prefer-ipv6"`)
+
+* `FORCE_IPV6` (value: `"force-ipv6"`)
+
+* `USE_AGENT_POLICY` (value: `"use-agent-policy"`)
+
+
+
