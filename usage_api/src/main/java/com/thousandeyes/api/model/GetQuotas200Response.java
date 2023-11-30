@@ -53,7 +53,7 @@ import com.thousandeyes.JSON;
 /**
  * GetQuotas200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:44.752803Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:30.044048Z[Europe/London]")
 public class GetQuotas200Response {
   public static final String SERIALIZED_NAME_QUOTAS = "quotas";
   @SerializedName(SERIALIZED_NAME_QUOTAS)

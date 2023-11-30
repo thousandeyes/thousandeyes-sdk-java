@@ -3884,7 +3884,7 @@ components:
         type:
           allOf:
           - $ref: '#/components/schemas/NetworkTopologyType'
-          - readOnly: true
+          readOnly: true
         icmpPing:
           $ref: '#/components/schemas/NetworkPing'
         isIcmpBlocked:
@@ -4186,13 +4186,16 @@ components:
         interval:
           $ref: '#/components/schemas/TestInterval'
         isEnabled:
-          allOf:
-          - $ref: '#/components/schemas/TestIsEnabled'
-          - readOnly: true
+          default: true
+          description: Indicates if test is enabled.
+          example: true
+          readOnly: true
+          type: boolean
         isSavedEvent:
-          allOf:
-          - $ref: '#/components/schemas/TestIsSavedEvent'
-          - readOnly: true
+          description: Indicates if the test is a saved event.
+          example: false
+          readOnly: true
+          type: boolean
         hasPathTraceInSession:
           description: "Enables \"in session\" path trace. When enabled, this option\
             \ initiates a TCP session with the target server and sends path trace\
@@ -4383,10 +4386,12 @@ components:
       default: true
       description: Indicates if test is enabled.
       example: true
+      readOnly: true
       type: boolean
     TestIsSavedEvent:
       description: Indicates if the test is a saved event.
       example: false
+      readOnly: true
       type: boolean
     TestHasPathTraceInSession:
       description: "Enables \"in session\" path trace. When enabled, this option initiates\
@@ -4589,7 +4594,7 @@ components:
     DynamicTest:
       properties:
         _links:
-          $ref: '#/components/schemas/DynamicTest__links'
+          $ref: '#/components/schemas/DynamicTestLinks'
         agentSelectorConfig:
           $ref: '#/components/schemas/EndpointAgentSelectorConfig'
         application:
@@ -4603,13 +4608,15 @@ components:
         interval:
           $ref: '#/components/schemas/TestInterval'
         isEnabled:
-          allOf:
-          - $ref: '#/components/schemas/TestIsEnabled'
-          - readOnly: true
+          default: true
+          description: Indicates if test is enabled.
+          example: true
+          readOnly: true
+          type: boolean
         hasPathTraceInSession:
           allOf:
           - $ref: '#/components/schemas/TestHasPathTraceInSession'
-          - readOnly: true
+          readOnly: true
         hasPing:
           default: true
           description: Optional flag indicating if the test should run ping.
@@ -4627,13 +4634,13 @@ components:
         networkMeasurements:
           allOf:
           - $ref: '#/components/schemas/TestNetworkMeasurements'
-          - readOnly: true
+          readOnly: true
         protocol:
           $ref: '#/components/schemas/EndpointTestProtocol'
         tcpProbeMode:
           allOf:
           - $ref: '#/components/schemas/TestProbeMode'
-          - readOnly: true
+          readOnly: true
         testId:
           description: Each test is assigned a unique ID; this is used to access test
             information and results from other endpoints.
@@ -4872,10 +4879,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/TestResults'
       - $ref: '#/components/schemas/Link'
-    DynamicTest__links:
-      allOf:
-      - $ref: '#/components/schemas/DynamicTestLinks'
-      - readOnly: true
     DynamicTestLinks_self:
       allOf:
       - description: The reference to the test.

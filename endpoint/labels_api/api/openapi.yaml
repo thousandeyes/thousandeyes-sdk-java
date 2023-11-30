@@ -473,13 +473,36 @@ components:
         key: vpn-client-network
       properties:
         key:
-          $ref: '#/components/schemas/Filter_key'
+          $ref: '#/components/schemas/FilterType'
         values:
           example:
           - 10.1.1.0/24
           - 192.168.1.0/24
           items:
-            $ref: '#/components/schemas/Filter_values_inner'
+            description: "Value depends on the key, and may change in the future.\n\
+              \n* `agent-id`: The agent identifiers.\n* `gateway`: The gateway IP\
+              \ to match.\n* `ssid`: A wildcard match on the SSID. Supports `*` for\
+              \ any characters and `?` for any single character.\n* `user-name`: A\
+              \ wildcard match on the users that use the agent. Supports `*` for any\
+              \ characters and `?` for any single character.\n* `hostname`: A wildcard\
+              \ match on the host name - supports `*` for any characters\nand `?`\
+              \ for any single character\n* `bssid`: BSSID for the wifi, lower case,\
+              \ with colons.\n* `platform`: Currently supports `Mac`, `Windows`, and\
+              \ `Linux`.\n* `asn`: Integer AS Number.\n* `public-network`: Network\
+              \ for agent's public IP in CIDR format, or IP for single IP. e.g. `192.45.32.0/22`.\n\
+              * `local-network`: Network for agent's local IP in CIDR format, or IP\
+              \ for single IP. e.g. `10.100.64.0/20`.\n* `connection`: Type of connection\
+              \ `Ethernet` or `Wireless`.\n* `agent-type`: Type of agent `endpoint`,\
+              \ `endpoint-pulse` or `endpoint-csc`.\n* `ip-address-family`: `ipv4`\
+              \ or `ipv6`.\n* `vpn-vendor`: Vendor of the VPN software. \n    Examples\
+              \ include: \n    \n    * `cisco-anyconnect`\n    * `palo-alto-globalprotect`\n\
+              \    * `ivanti-connect-secure`\n    * `zscaler-internet-access`\n  \
+              \  * `f5-big-ip`\n* `vpn-gateway-address`: Server-side VPN connection\
+              \ IP address.\n* `vpn-client-network`: Network for the VPN client IP\
+              \ in CIDR format. For example, `10.100.32.128/25`.\n* `vpn-client-address`:\
+              \ The VPN client IP. For example, `10.100.32.165`.\n"
+            example: 10.1.1.0/24
+            type: string
           type: array
         mode:
           $ref: '#/components/schemas/LabelFilterMode'
@@ -505,6 +528,7 @@ components:
       - hostname
       - username
       - asn
+      example: vpn-client-network
       type: string
     LabelFilterMode:
       description: |
@@ -615,41 +639,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/SelfLinks'
       - $ref: '#/components/schemas/Label'
-    Filter_key:
-      anyOf:
-      - $ref: '#/components/schemas/FilterType'
-      - description: "Other keys, not documented here. The values depend on the key,\
-          \ and may change in the future."
-        type: string
-      example: vpn-client-network
-    Filter_values_inner:
-      oneOf:
-      - description: "Value depends on the key.\n\n* `agent-id`: The agent identifiers.\n\
-          * `gateway`: The gateway IP to match.\n* `ssid`: A wildcard match on the\
-          \ SSID. Supports `*` for any characters and `?` for any single character.\n\
-          * `user-name`: A wildcard match on the users that use the agent. Supports\
-          \ `*` for any characters and `?` for any single character.\n* `hostname`:\
-          \ A wildcard match on the host name - supports `*` for any characters\n\
-          and `?` for any single character\n* `bssid`: BSSID for the wifi, lower case,\
-          \ with colons.\n* `platform`: Currently supports `Mac`, `Windows`, and `Linux`.\n\
-          * `asn`: Integer AS Number.\n* `public-network`: Network for agent's public\
-          \ IP in CIDR format, or IP for single IP. e.g. `192.45.32.0/22`.\n* `local-network`:\
-          \ Network for agent's local IP in CIDR format, or IP for single IP. e.g.\
-          \ `10.100.64.0/20`.\n* `connection`: Type of connection `Ethernet` or `Wireless`.\n\
-          * `agent-type`: Type of agent `endpoint`, `endpoint-pulse` or `endpoint-csc`.\n\
-          * `ip-address-family`: `ipv4` or `ipv6`.\n* `vpn-vendor`: Vendor of the\
-          \ VPN software. \n   Examples include: \n   \n   * `cisco-anyconnect`\n\
-          \   * `palo-alto-globalprotect`\n   * `ivanti-connect-secure`\n   * `zscaler-internet-access`\n\
-          \   * `f5-big-ip`\n* `vpn-gateway-address`: Server-side VPN connection IP\
-          \ address.\n* `vpn-client-network`: Network for the VPN client IP in CIDR\
-          \ format. For example, `10.100.32.128/25`.\n* `vpn-client-address`: The\
-          \ VPN client IP. For example, `10.100.32.165`.\n"
-        example: 10.1.1.0/24
-        type: string
-      - additionalProperties:
-          type: string
-        description: For future expansion.
-        type: object
     PaginationNextLink__links:
       properties:
         next:

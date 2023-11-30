@@ -64,7 +64,7 @@ import com.thousandeyes.JSON;
 /**
  * A widget composed of multiple cards, each presenting a singular metric, such as average packet loss, page load time, or alert count.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:34.047854Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:19.739212Z[Europe/London]")
 public class ApiNumbersCardWidget {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

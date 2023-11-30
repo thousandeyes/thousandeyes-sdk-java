@@ -51,7 +51,7 @@ import com.thousandeyes.JSON;
 /**
  * DeployTestTemplate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:43.826062Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:29.165180Z[Europe/London]")
 public class DeployTestTemplate {
   public static final String SERIALIZED_NAME_USER_INPUT_VALUES = "userInputValues";
   @SerializedName(SERIALIZED_NAME_USER_INPUT_VALUES)

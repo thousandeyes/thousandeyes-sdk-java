@@ -49,7 +49,7 @@ import com.thousandeyes.JSON;
 /**
  * Page
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:31.708307Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:17.453500Z[Europe/London]")
 public class Page {
   public static final String SERIALIZED_NAME_PAGE_NUM = "pageNum";
   @SerializedName(SERIALIZED_NAME_PAGE_NUM)

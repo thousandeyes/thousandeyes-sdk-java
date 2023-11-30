@@ -52,7 +52,7 @@ import com.thousandeyes.JSON;
 /**
  * A list of &#x60;EndpointAgents&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:35.446421Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:21.121994Z[Europe/London]")
 public class EndpointAgents {
   public static final String SERIALIZED_NAME_TOTAL_AGENTS = "totalAgents";
   @SerializedName(SERIALIZED_NAME_TOTAL_AGENTS)

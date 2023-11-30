@@ -54,7 +54,7 @@ import com.thousandeyes.JSON;
 /**
  * TestCustomHeaders
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:28.202795Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:14.024601Z[Europe/London]")
 public class TestCustomHeaders {
   public static final String SERIALIZED_NAME_ROOT = "root";
   @SerializedName(SERIALIZED_NAME_ROOT)

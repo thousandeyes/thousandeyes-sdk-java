@@ -51,7 +51,7 @@ import com.google.gson.JsonParseException;
 
 import com.thousandeyes.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:43.826062Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:29.165180Z[Europe/London]")
 public class UserInputDefaultValue extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(UserInputDefaultValue.class.getName());
 

@@ -49,7 +49,7 @@ import com.thousandeyes.JSON;
 /**
  * ApiApplicationOutageAffectedServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:42.909342Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:28.269079Z[Europe/London]")
 public class ApiApplicationOutageAffectedServer {
   public static final String SERIALIZED_NAME_DOMAIN = "domain";
   @SerializedName(SERIALIZED_NAME_DOMAIN)

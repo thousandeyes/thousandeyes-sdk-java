@@ -51,7 +51,7 @@ import com.thousandeyes.JSON;
 /**
  * InterfaceGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:29.962605Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:15.741232Z[Europe/London]")
 public class InterfaceGroup {
   public static final String SERIALIZED_NAME_AID = "aid";
   @SerializedName(SERIALIZED_NAME_AID)

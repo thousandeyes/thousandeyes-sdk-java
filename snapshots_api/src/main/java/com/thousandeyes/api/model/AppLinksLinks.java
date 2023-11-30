@@ -50,7 +50,7 @@ import com.thousandeyes.JSON;
 /**
  * A links object containing the ThousandEyes App link
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:33.108331Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:18.760138Z[Europe/London]")
 public class AppLinksLinks {
   public static final String SERIALIZED_NAME_APP_LINK = "appLink";
   @SerializedName(SERIALIZED_NAME_APP_LINK)

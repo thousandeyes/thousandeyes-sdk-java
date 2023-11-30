@@ -56,7 +56,7 @@ import com.thousandeyes.JSON;
 /**
  * EndpointTest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:39.012067Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:24.591538Z[Europe/London]")
 public class EndpointTest {
   public static final String SERIALIZED_NAME_LINKS = "_links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -76,7 +76,7 @@ public class EndpointTest {
 
   public static final String SERIALIZED_NAME_IS_ENABLED = "isEnabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)
-  private Boolean isEnabled;
+  private Boolean isEnabled = true;
 
   public static final String SERIALIZED_NAME_IS_SAVED_EVENT = "isSavedEvent";
   @SerializedName(SERIALIZED_NAME_IS_SAVED_EVENT)
@@ -128,11 +128,15 @@ public class EndpointTest {
   
   public EndpointTest(
      OffsetDateTime createdDate, 
+     Boolean isEnabled, 
+     Boolean isSavedEvent, 
      OffsetDateTime modifiedDate, 
      String testId
   ) {
     this();
     this.createdDate = createdDate;
+    this.isEnabled = isEnabled;
+    this.isSavedEvent = isSavedEvent;
     this.modifiedDate = modifiedDate;
     this.testId = testId;
   }
@@ -212,14 +216,8 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest isEnabled(Boolean isEnabled) {
-    
-    this.isEnabled = isEnabled;
-    return this;
-  }
-
    /**
-   * Get isEnabled
+   * Indicates if test is enabled.
    * @return isEnabled
   **/
   @javax.annotation.Nullable
@@ -228,19 +226,10 @@ public class EndpointTest {
   }
 
 
-  public void setIsEnabled(Boolean isEnabled) {
-    this.isEnabled = isEnabled;
-  }
 
-
-  public EndpointTest isSavedEvent(Boolean isSavedEvent) {
-    
-    this.isSavedEvent = isSavedEvent;
-    return this;
-  }
 
    /**
-   * Get isSavedEvent
+   * Indicates if the test is a saved event.
    * @return isSavedEvent
   **/
   @javax.annotation.Nullable
@@ -249,9 +238,6 @@ public class EndpointTest {
   }
 
 
-  public void setIsSavedEvent(Boolean isSavedEvent) {
-    this.isSavedEvent = isSavedEvent;
-  }
 
 
   public EndpointTest hasPathTraceInSession(Boolean hasPathTraceInSession) {
@@ -570,14 +556,6 @@ public class EndpointTest {
       // validate the optional field `agentSelectorConfig`
       if (jsonObj.get("agentSelectorConfig") != null && !jsonObj.get("agentSelectorConfig").isJsonNull()) {
         EndpointAgentSelectorConfig.validateJsonElement(jsonObj.get("agentSelectorConfig"));
-      }
-      // validate the optional field `isEnabled`
-      if (jsonObj.get("isEnabled") != null && !jsonObj.get("isEnabled").isJsonNull()) {
-        Boolean.validateJsonElement(jsonObj.get("isEnabled"));
-      }
-      // validate the optional field `isSavedEvent`
-      if (jsonObj.get("isSavedEvent") != null && !jsonObj.get("isSavedEvent").isJsonNull()) {
-        Boolean.validateJsonElement(jsonObj.get("isSavedEvent"));
       }
       if ((jsonObj.get("server") != null && !jsonObj.get("server").isJsonNull()) && !jsonObj.get("server").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `server` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server").toString()));

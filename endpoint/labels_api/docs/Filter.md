@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**key** | [**FilterKey**](FilterKey.md) |  |  [optional] |
-|**values** | [**List&lt;FilterValuesInner&gt;**](FilterValuesInner.md) |  |  [optional] |
+|**key** | **FilterType** |  |  [optional] |
+|**values** | **List&lt;String&gt;** |  |  [optional] |
 |**mode** | **LabelFilterMode** |  |  [optional] |
 
 

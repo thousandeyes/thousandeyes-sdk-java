@@ -52,7 +52,7 @@ import com.thousandeyes.JSON;
 /**
  * EnterpriseAgents
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:21.831308Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:07.206171Z[Europe/London]")
 public class EnterpriseAgents {
   public static final String SERIALIZED_NAME_AGENTS = "agents";
   @SerializedName(SERIALIZED_NAME_AGENTS)

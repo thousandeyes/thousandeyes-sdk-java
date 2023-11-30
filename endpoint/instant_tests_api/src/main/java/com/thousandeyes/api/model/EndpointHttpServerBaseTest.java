@@ -53,7 +53,7 @@ import com.thousandeyes.JSON;
 /**
  * EndpointHttpServerBaseTest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:37.680813Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:23.306263Z[Europe/London]")
 public class EndpointHttpServerBaseTest {
   public static final String SERIALIZED_NAME_AUTH_TYPE = "authType";
   @SerializedName(SERIALIZED_NAME_AUTH_TYPE)

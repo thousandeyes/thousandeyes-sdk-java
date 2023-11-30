@@ -2,7 +2,7 @@
 
 Internet Insights API
 - API version: 7.0.0
-  - Build date: 2023-11-29T10:17:42.909342Z[Europe/London]
+  - Build date: 2023-11-30T09:45:28.269079Z[Europe/London]
 
 # Overview
 We are happy to announce the release of the Internet Insights API set. This limited release includes endpoints that:

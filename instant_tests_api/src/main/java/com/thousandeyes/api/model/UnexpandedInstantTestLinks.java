@@ -51,7 +51,7 @@ import com.thousandeyes.JSON;
 /**
  * A list of links that can be accessed to get more information
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:28.202795Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:14.024601Z[Europe/London]")
 public class UnexpandedInstantTestLinks {
   public static final String SERIALIZED_NAME_SELF = "self";
   @SerializedName(SERIALIZED_NAME_SELF)

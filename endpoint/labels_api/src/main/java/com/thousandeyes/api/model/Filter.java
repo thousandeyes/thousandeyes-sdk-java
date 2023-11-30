@@ -19,8 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.thousandeyes.api.model.FilterKey;
-import com.thousandeyes.api.model.FilterValuesInner;
+import com.thousandeyes.api.model.FilterType;
 import com.thousandeyes.api.model.LabelFilterMode;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,15 +53,15 @@ import com.thousandeyes.JSON;
 /**
  * Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:36.432034Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:22.114146Z[Europe/London]")
 public class Filter {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
-  private FilterKey key;
+  private FilterType key;
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<FilterValuesInner> values;
+  private List<String> values;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -71,7 +70,7 @@ public class Filter {
   public Filter() {
   }
 
-  public Filter key(FilterKey key) {
+  public Filter key(FilterType key) {
     
     this.key = key;
     return this;
@@ -82,23 +81,23 @@ public class Filter {
    * @return key
   **/
   @javax.annotation.Nullable
-  public FilterKey getKey() {
+  public FilterType getKey() {
     return key;
   }
 
 
-  public void setKey(FilterKey key) {
+  public void setKey(FilterType key) {
     this.key = key;
   }
 
 
-  public Filter values(List<FilterValuesInner> values) {
+  public Filter values(List<String> values) {
     
     this.values = values;
     return this;
   }
 
-  public Filter addValuesItem(FilterValuesInner valuesItem) {
+  public Filter addValuesItem(String valuesItem) {
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -111,12 +110,12 @@ public class Filter {
    * @return values
   **/
   @javax.annotation.Nullable
-  public List<FilterValuesInner> getValues() {
+  public List<String> getValues() {
     return values;
   }
 
 
-  public void setValues(List<FilterValuesInner> values) {
+  public void setValues(List<String> values) {
     this.values = values;
   }
 
@@ -220,23 +219,9 @@ public class Filter {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `key`
-      if (jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) {
-        FilterKey.validateJsonElement(jsonObj.get("key"));
-      }
-      if (jsonObj.get("values") != null && !jsonObj.get("values").isJsonNull()) {
-        JsonArray jsonArrayvalues = jsonObj.getAsJsonArray("values");
-        if (jsonArrayvalues != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("values").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
-          }
-
-          // validate the optional field `values` (array)
-          for (int i = 0; i < jsonArrayvalues.size(); i++) {
-            FilterValuesInner.validateJsonElement(jsonArrayvalues.get(i));
-          };
-        }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("values") != null && !jsonObj.get("values").isJsonNull() && !jsonObj.get("values").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
       }
   }
 

@@ -58,7 +58,7 @@ import com.google.gson.JsonParseException;
 
 import com.thousandeyes.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:33.108331Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:18.760138Z[Europe/London]")
 public class UnexpandedInstantTestLinksTestResults extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(UnexpandedInstantTestLinksTestResults.class.getName());
 

@@ -52,7 +52,7 @@ import com.thousandeyes.JSON;
 /**
  * Agent shown in agent status widget.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:34.047854Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:19.739212Z[Europe/London]")
 public class ApiAgentStatusAgent {
   public static final String SERIALIZED_NAME_AGENT_ID = "agentId";
   @SerializedName(SERIALIZED_NAME_AGENT_ID)

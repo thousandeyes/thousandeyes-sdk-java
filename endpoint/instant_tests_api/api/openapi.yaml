@@ -504,13 +504,16 @@ components:
         interval:
           $ref: '#/components/schemas/TestInterval'
         isEnabled:
-          allOf:
-          - $ref: '#/components/schemas/TestIsEnabled'
-          - readOnly: true
+          default: true
+          description: Indicates if test is enabled.
+          example: true
+          readOnly: true
+          type: boolean
         isSavedEvent:
-          allOf:
-          - $ref: '#/components/schemas/TestIsSavedEvent'
-          - readOnly: true
+          description: Indicates if the test is a saved event.
+          example: false
+          readOnly: true
+          type: boolean
         hasPathTraceInSession:
           description: "Enables \"in session\" path trace. When enabled, this option\
             \ initiates a TCP session with the target server and sends path trace\
@@ -676,10 +679,12 @@ components:
       default: true
       description: Indicates if test is enabled.
       example: true
+      readOnly: true
       type: boolean
     TestIsSavedEvent:
       description: Indicates if the test is a saved event.
       example: false
+      readOnly: true
       type: boolean
     TestHasPathTraceInSession:
       description: "Enables \"in session\" path trace. When enabled, this option initiates\

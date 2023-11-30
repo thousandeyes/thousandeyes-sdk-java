@@ -52,7 +52,7 @@ import com.thousandeyes.JSON;
 /**
  * Monitors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:25.807899Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:11.313415Z[Europe/London]")
 public class Monitors {
   public static final String SERIALIZED_NAME_MONITORS = "monitors";
   @SerializedName(SERIALIZED_NAME_MONITORS)

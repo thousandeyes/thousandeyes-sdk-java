@@ -49,7 +49,7 @@ import com.thousandeyes.JSON;
 /**
  * InstantTestRequestAgentsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:28.202795Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:14.024601Z[Europe/London]")
 public class InstantTestRequestAgentsInner {
   public static final String SERIALIZED_NAME_AGENT_ID = "agentId";
   @SerializedName(SERIALIZED_NAME_AGENT_ID)

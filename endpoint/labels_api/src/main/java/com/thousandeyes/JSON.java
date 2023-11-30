@@ -96,8 +96,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.model.EndpointLabelsList200Response.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.model.Error.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.model.Filter.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.model.FilterKey.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.model.FilterValuesInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.model.Label.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.model.Labels.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.model.LabelsLabelsInner.CustomTypeAdapterFactory());

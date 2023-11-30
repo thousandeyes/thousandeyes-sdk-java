@@ -49,7 +49,7 @@ import com.thousandeyes.JSON;
 /**
  * IP information of the agent.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:34.047854Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:19.739212Z[Europe/London]")
 public class ApiAgentStatusIpInfo {
   public static final String SERIALIZED_NAME_PUBLIC_IP = "publicIp";
   @SerializedName(SERIALIZED_NAME_PUBLIC_IP)

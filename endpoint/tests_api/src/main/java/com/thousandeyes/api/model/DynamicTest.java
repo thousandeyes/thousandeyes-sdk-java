@@ -57,7 +57,7 @@ import com.thousandeyes.JSON;
 /**
  * DynamicTest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:39.012067Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:24.591538Z[Europe/London]")
 public class DynamicTest {
   public static final String SERIALIZED_NAME_LINKS = "_links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -81,7 +81,7 @@ public class DynamicTest {
 
   public static final String SERIALIZED_NAME_IS_ENABLED = "isEnabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)
-  private Boolean isEnabled;
+  private Boolean isEnabled = true;
 
   public static final String SERIALIZED_NAME_HAS_PATH_TRACE_IN_SESSION = "hasPathTraceInSession";
   @SerializedName(SERIALIZED_NAME_HAS_PATH_TRACE_IN_SESSION)
@@ -129,12 +129,20 @@ public class DynamicTest {
   
   public DynamicTest(
      OffsetDateTime createdDate, 
+     Boolean isEnabled, 
+     Boolean hasPathTraceInSession, 
      OffsetDateTime modifiedDate, 
+     Boolean networkMeasurements, 
+     TestProbeMode tcpProbeMode, 
      String testId
   ) {
     this();
     this.createdDate = createdDate;
+    this.isEnabled = isEnabled;
+    this.hasPathTraceInSession = hasPathTraceInSession;
     this.modifiedDate = modifiedDate;
+    this.networkMeasurements = networkMeasurements;
+    this.tcpProbeMode = tcpProbeMode;
     this.testId = testId;
   }
 
@@ -234,14 +242,8 @@ public class DynamicTest {
   }
 
 
-  public DynamicTest isEnabled(Boolean isEnabled) {
-    
-    this.isEnabled = isEnabled;
-    return this;
-  }
-
    /**
-   * Get isEnabled
+   * Indicates if test is enabled.
    * @return isEnabled
   **/
   @javax.annotation.Nullable
@@ -250,19 +252,10 @@ public class DynamicTest {
   }
 
 
-  public void setIsEnabled(Boolean isEnabled) {
-    this.isEnabled = isEnabled;
-  }
 
-
-  public DynamicTest hasPathTraceInSession(Boolean hasPathTraceInSession) {
-    
-    this.hasPathTraceInSession = hasPathTraceInSession;
-    return this;
-  }
 
    /**
-   * Get hasPathTraceInSession
+   * Enables \&quot;in session\&quot; path trace. When enabled, this option initiates a TCP session with the target server and sends path trace packets within the established TCP session.
    * @return hasPathTraceInSession
   **/
   @javax.annotation.Nullable
@@ -271,9 +264,6 @@ public class DynamicTest {
   }
 
 
-  public void setHasPathTraceInSession(Boolean hasPathTraceInSession) {
-    this.hasPathTraceInSession = hasPathTraceInSession;
-  }
 
 
   public DynamicTest hasPing(Boolean hasPing) {
@@ -330,14 +320,8 @@ public class DynamicTest {
 
 
 
-  public DynamicTest networkMeasurements(Boolean networkMeasurements) {
-    
-    this.networkMeasurements = networkMeasurements;
-    return this;
-  }
-
    /**
-   * Get networkMeasurements
+   * Enable or disable network measurements. Set to true to enable or false to disable network measurements.
    * @return networkMeasurements
   **/
   @javax.annotation.Nullable
@@ -346,9 +330,6 @@ public class DynamicTest {
   }
 
 
-  public void setNetworkMeasurements(Boolean networkMeasurements) {
-    this.networkMeasurements = networkMeasurements;
-  }
 
 
   public DynamicTest protocol(EndpointTestProtocol protocol) {
@@ -372,12 +353,6 @@ public class DynamicTest {
   }
 
 
-  public DynamicTest tcpProbeMode(TestProbeMode tcpProbeMode) {
-    
-    this.tcpProbeMode = tcpProbeMode;
-    return this;
-  }
-
    /**
    * Get tcpProbeMode
    * @return tcpProbeMode
@@ -388,9 +363,6 @@ public class DynamicTest {
   }
 
 
-  public void setTcpProbeMode(TestProbeMode tcpProbeMode) {
-    this.tcpProbeMode = tcpProbeMode;
-  }
 
 
    /**
@@ -571,22 +543,6 @@ public class DynamicTest {
       // validate the optional field `agentSelectorConfig`
       if (jsonObj.get("agentSelectorConfig") != null && !jsonObj.get("agentSelectorConfig").isJsonNull()) {
         EndpointAgentSelectorConfig.validateJsonElement(jsonObj.get("agentSelectorConfig"));
-      }
-      // validate the optional field `isEnabled`
-      if (jsonObj.get("isEnabled") != null && !jsonObj.get("isEnabled").isJsonNull()) {
-        Boolean.validateJsonElement(jsonObj.get("isEnabled"));
-      }
-      // validate the optional field `hasPathTraceInSession`
-      if (jsonObj.get("hasPathTraceInSession") != null && !jsonObj.get("hasPathTraceInSession").isJsonNull()) {
-        Boolean.validateJsonElement(jsonObj.get("hasPathTraceInSession"));
-      }
-      // validate the optional field `networkMeasurements`
-      if (jsonObj.get("networkMeasurements") != null && !jsonObj.get("networkMeasurements").isJsonNull()) {
-        Boolean.validateJsonElement(jsonObj.get("networkMeasurements"));
-      }
-      // validate the optional field `tcpProbeMode`
-      if (jsonObj.get("tcpProbeMode") != null && !jsonObj.get("tcpProbeMode").isJsonNull()) {
-        TestProbeMode.validateJsonElement(jsonObj.get("tcpProbeMode"));
       }
       if ((jsonObj.get("testId") != null && !jsonObj.get("testId").isJsonNull()) && !jsonObj.get("testId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `testId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("testId").toString()));

@@ -64,7 +64,7 @@ import com.google.gson.JsonParseException;
 
 import com.thousandeyes.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:40.551124Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:26.016985Z[Europe/London]")
 public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(EndpointAgentSelectorConfig.class.getName());
 

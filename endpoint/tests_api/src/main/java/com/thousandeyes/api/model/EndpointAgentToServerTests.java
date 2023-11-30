@@ -52,7 +52,7 @@ import com.thousandeyes.JSON;
 /**
  * EndpointAgentToServerTests
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:39.012067Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:24.591538Z[Europe/London]")
 public class EndpointAgentToServerTests {
   public static final String SERIALIZED_NAME_TESTS = "tests";
   @SerializedName(SERIALIZED_NAME_TESTS)

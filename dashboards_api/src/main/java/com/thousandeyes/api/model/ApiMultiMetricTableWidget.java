@@ -67,7 +67,7 @@ import com.thousandeyes.JSON;
 /**
  * A Multi-Metric table widget with columns, each representing a different metric, offering a comprehensive view rather than restricting to a single metric.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:34.047854Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:19.739212Z[Europe/London]")
 public class ApiMultiMetricTableWidget {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

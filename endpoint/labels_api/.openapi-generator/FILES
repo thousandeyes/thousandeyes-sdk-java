@@ -10,9 +10,7 @@ docs/EndpointLabelsList200Response.md
 docs/Error.md
 docs/Expand.md
 docs/Filter.md
-docs/FilterKey.md
 docs/FilterType.md
-docs/FilterValuesInner.md
 docs/Label.md
 docs/LabelFilterMode.md
 docs/Labels.md
@@ -55,9 +53,7 @@ src/main/java/com/thousandeyes/api/model/EndpointLabelsList200Response.java
 src/main/java/com/thousandeyes/api/model/Error.java
 src/main/java/com/thousandeyes/api/model/Expand.java
 src/main/java/com/thousandeyes/api/model/Filter.java
-src/main/java/com/thousandeyes/api/model/FilterKey.java
 src/main/java/com/thousandeyes/api/model/FilterType.java
-src/main/java/com/thousandeyes/api/model/FilterValuesInner.java
 src/main/java/com/thousandeyes/api/model/Label.java
 src/main/java/com/thousandeyes/api/model/LabelFilterMode.java
 src/main/java/com/thousandeyes/api/model/Labels.java
@@ -79,10 +75,8 @@ src/test/java/com/thousandeyes/api/ManageLabelsApiTest.java
 src/test/java/com/thousandeyes/api/model/EndpointLabelsList200ResponseTest.java
 src/test/java/com/thousandeyes/api/model/ErrorTest.java
 src/test/java/com/thousandeyes/api/model/ExpandTest.java
-src/test/java/com/thousandeyes/api/model/FilterKeyTest.java
 src/test/java/com/thousandeyes/api/model/FilterTest.java
 src/test/java/com/thousandeyes/api/model/FilterTypeTest.java
-src/test/java/com/thousandeyes/api/model/FilterValuesInnerTest.java
 src/test/java/com/thousandeyes/api/model/LabelFilterModeTest.java
 src/test/java/com/thousandeyes/api/model/LabelTest.java
 src/test/java/com/thousandeyes/api/model/LabelsLabelsInnerTest.java

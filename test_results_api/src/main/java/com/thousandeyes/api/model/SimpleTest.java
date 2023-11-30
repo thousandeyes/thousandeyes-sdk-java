@@ -53,7 +53,7 @@ import com.thousandeyes.JSON;
 /**
  * Each test includes additional fields depending on its &#x60;type&#x60;. Refer &#x60;/tests/{type}&#x60; endpoint to know the set of fields returned by a given &#x60;type&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:31.708307Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:17.453500Z[Europe/London]")
 public class SimpleTest {
   public static final String SERIALIZED_NAME_INTERVAL = "interval";
   @SerializedName(SERIALIZED_NAME_INTERVAL)

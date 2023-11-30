@@ -57,7 +57,7 @@ import com.thousandeyes.JSON;
 /**
  * PathVisDetailTestResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:40.551124Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:26.016985Z[Europe/London]")
 public class PathVisDetailTestResult {
   public static final String SERIALIZED_NAME_AGENT_ID = "agentId";
   @SerializedName(SERIALIZED_NAME_AGENT_ID)

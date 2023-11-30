@@ -2,6 +2,7 @@
 
 # DynamicTestLinks
 
+A list of links that can be accessed to get more information.
 
 ## Properties
 

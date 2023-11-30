@@ -61,7 +61,7 @@ import com.thousandeyes.JSON;
 /**
  * LocalNetworkTopologyResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:40.551124Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:26.016985Z[Europe/London]")
 public class LocalNetworkTopologyResult {
   public static final String SERIALIZED_NAME_AGENT_ID = "agentId";
   @SerializedName(SERIALIZED_NAME_AGENT_ID)
@@ -134,6 +134,7 @@ public class LocalNetworkTopologyResult {
      Integer roundId, 
      String target, 
      BigDecimal targetPort, 
+     NetworkTopologyType type, 
      Boolean isIcmpBlocked
   ) {
     this();
@@ -143,6 +144,7 @@ public class LocalNetworkTopologyResult {
     this.roundId = roundId;
     this.target = target;
     this.targetPort = targetPort;
+    this.type = type;
     this.isIcmpBlocked = isIcmpBlocked;
   }
 
@@ -218,12 +220,6 @@ public class LocalNetworkTopologyResult {
 
 
 
-  public LocalNetworkTopologyResult type(NetworkTopologyType type) {
-    
-    this.type = type;
-    return this;
-  }
-
    /**
    * Get type
    * @return type
@@ -234,9 +230,6 @@ public class LocalNetworkTopologyResult {
   }
 
 
-  public void setType(NetworkTopologyType type) {
-    this.type = type;
-  }
 
 
   public LocalNetworkTopologyResult icmpPing(NetworkPing icmpPing) {
@@ -528,10 +521,6 @@ public class LocalNetworkTopologyResult {
       }
       if ((jsonObj.get("target") != null && !jsonObj.get("target").isJsonNull()) && !jsonObj.get("target").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `target` to be a primitive type in the JSON string but got `%s`", jsonObj.get("target").toString()));
-      }
-      // validate the optional field `type`
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
-        NetworkTopologyType.validateJsonElement(jsonObj.get("type"));
       }
       // validate the optional field `icmpPing`
       if (jsonObj.get("icmpPing") != null && !jsonObj.get("icmpPing").isJsonNull()) {

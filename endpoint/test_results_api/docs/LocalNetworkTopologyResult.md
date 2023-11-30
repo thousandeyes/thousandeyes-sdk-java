@@ -13,7 +13,7 @@
 |**roundId** | **Integer** | Epoch time (seconds) indicating the start time of the round. |  [optional] [readonly] |
 |**target** | **String** | IP of the target the network topology was performed against. This is typically a default gateway, proxy or VPN endpoint. |  [optional] [readonly] |
 |**targetPort** | **BigDecimal** | Port of the target the network topology was performed against. |  [optional] [readonly] |
-|**type** | [**NetworkTopologyType**](NetworkTopologyType.md) |  |  [optional] |
+|**type** | **NetworkTopologyType** |  |  [optional] [readonly] |
 |**icmpPing** | [**NetworkPing**](NetworkPing.md) |  |  [optional] |
 |**isIcmpBlocked** | **Boolean** | Set to &#x60;true&#x60; if network target is blocking ICMP echo (ping) queries. |  [optional] [readonly] |
 |**tcpConnect** | [**TcpConnect**](TcpConnect.md) |  |  [optional] |

@@ -52,7 +52,7 @@ import com.thousandeyes.JSON;
 /**
  * TagAssignment
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:41.989011Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:27.383909Z[Europe/London]")
 public class TagAssignment {
   public static final String SERIALIZED_NAME_ASSIGNMENTS = "assignments";
   @SerializedName(SERIALIZED_NAME_ASSIGNMENTS)

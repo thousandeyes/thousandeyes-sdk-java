@@ -69,7 +69,7 @@ import com.google.gson.JsonParseException;
 
 import com.thousandeyes.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:26.714202Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:12.244629Z[Europe/London]")
 public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CloudEnterpriseAgent.class.getName());
 

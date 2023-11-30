@@ -52,7 +52,7 @@ import com.thousandeyes.JSON;
 /**
  * Data shown in a test table widget.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-29T10:17:34.047854Z[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-30T09:45:19.739212Z[Europe/London]")
 public class ApiTestTableData {
   public static final String SERIALIZED_NAME_TEST_ID = "testId";
   @SerializedName(SERIALIZED_NAME_TEST_ID)
