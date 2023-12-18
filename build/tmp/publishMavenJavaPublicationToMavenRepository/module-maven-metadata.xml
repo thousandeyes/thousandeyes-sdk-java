@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.thousandeyes.api</groupId>
+  <artifactId>thousandeyes-java-sdk</artifactId>
+  <versioning>
+    <latest>7.0.0-SNAPSHOT</latest>
+    <versions>
+      <version>7.0.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20231218115840</lastUpdated>
+  </versioning>
+</metadata>

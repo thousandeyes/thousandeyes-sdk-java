@@ -1,0 +1,14 @@
+
+
+# GetRoles200Response
+
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**roles** | [**List&lt;Role&gt;**](Role.md) |  |  [optional] |
+|**links** | [**SelfLinksLinks**](SelfLinksLinks.md) |  |  [optional] |
+
+
+

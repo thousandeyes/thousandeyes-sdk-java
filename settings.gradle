@@ -1,0 +1,40 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url teRepoUrl
+            credentials {
+                username teRepoUser
+                password teRepoPassword
+            }
+        }
+    }
+}
+
+plugins {
+    id "com.gradle.enterprise" version "3.7.2"
+}
+
+gradle.taskGraph.whenReady { graph ->
+    if (graph.hasTask(':useGradleEnterprise')) {
+        gradleEnterprise {
+            // configuration
+            server = "https://gradle.releng.gcp.thousandeyes.com"
+            allowUntrustedServer = true
+
+            buildScan {
+                publishAlways()
+            }
+        }
+
+        buildCache {
+            remote(HttpBuildCache) {
+                push = true
+            }
+        }
+    }
+}
+
+rootProject.name = 'thousandeyes-java-sdk'
+include 'thousandeyes-java-sdk-administrative'
