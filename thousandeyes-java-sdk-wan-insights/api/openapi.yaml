@@ -1,0 +1,151 @@
+openapi: 3.0.1
+info:
+  description: APIs for onboarding WANI
+  title: WANI Integration Service API V1
+  version: 7.0.0
+servers:
+- url: //api.thousandeyes.com/
+tags:
+- description: Wan Insights Onboarding Controller
+  name: WANI Onboarding
+paths:
+  /api/v1/wan-insights/activations:
+    post:
+      deprecated: false
+      description: Creates a tenant for overlay and assigns the tenant to an organization
+      operationId: activateWanInsightsForOverlayUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activation Request'
+        description: activationRequest
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ActivationResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivationResponse'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      summary: Activate WANI overlay
+      tags:
+      - WANI Onboarding
+      x-codegen-request-body-name: activationRequest
+      x-content-type: application/json
+      x-accepts: application/json
+  /api/v1/wan-insights/activations/{activationId}:
+    get:
+      deprecated: false
+      description: Provides the status of an activation request along with the sharelink
+        status
+      operationId: getActivationStatusUsingGET
+      parameters:
+      - description: Activation ID returned in the response of the activation request
+        in: path
+        name: activationId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ActivationResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivationResponse'
+          description: OK
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: When the organization doesn't exist
+      summary: Activation Request Status Endpoint
+      tags:
+      - WANI Onboarding
+      x-accepts: application/json
+components:
+  schemas:
+    Activation Request:
+      properties:
+        adminEmailIds:
+          items:
+            type: string
+          type: array
+        overlayId:
+          type: string
+        smartAccountId:
+          type: string
+        telemetrySource:
+          $ref: '#/components/schemas/TelemetrySource'
+        virtualAccountId:
+          type: string
+      title: Activation Request
+      type: object
+    ActivationResponse:
+      description: "Represents the activation request, tenantId and shareLink information"
+      example:
+        tenantId: tenantId
+        activationId: activationId
+      properties:
+        activationId:
+          type: string
+        tenantId:
+          type: string
+      title: ActivationResponse
+      type: object
+    ActivationStatus:
+      description: Represents the status of an activation
+      properties:
+        tenant:
+          $ref: '#/components/schemas/Tenant'
+      title: ActivationStatus
+      type: object
+    TelemetrySource:
+      description: Represents the S3 bucket name for the overlay
+      properties:
+        s3BucketName:
+          type: string
+      title: TelemetrySource
+      type: object
+    Tenant:
+      description: Tenant Summary
+      properties:
+        id:
+          type: string
+        status:
+          enum:
+          - ACTIVE
+          - OFFBOARDED
+          - PAUSED
+          - ONBOARDING_BACKFILL
+          - ERROR
+          - TENANT_NOT_FOUND
+          - TENANT_ID_MISSING
+          - UNKNOWN
+          type: string
+      title: Tenant
+      type: object
+x-original-swagger-version: "2.0"
+

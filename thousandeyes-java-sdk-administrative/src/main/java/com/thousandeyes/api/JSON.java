@@ -101,7 +101,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.administrative.model.AccountGroupRoles.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.administrative.model.AccountGroupRolesAccountGroupRolesInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.administrative.model.AccountGroupRolesRequestBodyInner.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.administrative.model.AccountGroups.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.administrative.model.Agent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.administrative.model.AgentBase.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.thousandeyes.api.administrative.model.AllAccountGroupRoles.CustomTypeAdapterFactory());

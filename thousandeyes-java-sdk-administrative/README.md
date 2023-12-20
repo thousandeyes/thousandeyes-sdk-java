@@ -2,7 +2,7 @@
 
 Administrative API
 - API version: 7.0.0
-  - Build date: 2023-12-14T14:30:03.034189Z[Europe/Lisbon]
+  - Build date: 2023-12-18T17:52:53.269143Z[Europe/Lisbon]
 
 ## Overview
 Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API.
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.thousandeyes</groupId>
+  <groupId>org.openapitools</groupId>
   <artifactId>thousandeyes-java-sdk-administrative</artifactId>
   <version>7.0.0</version>
   <scope>compile</scope>
@@ -65,7 +65,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.thousandeyes:thousandeyes-java-sdk-administrative:7.0.0"
+     implementation "org.openapitools:thousandeyes-java-sdk-administrative:7.0.0"
   }
 ```
 
