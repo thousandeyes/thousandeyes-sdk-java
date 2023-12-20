@@ -147,7 +147,3 @@ src/main/java/com/thousandeyes/api/auth/ApiKeyAuth.java
 src/main/java/com/thousandeyes/api/auth/Authentication.java
 src/main/java/com/thousandeyes/api/auth/HttpBasicAuth.java
 src/main/java/com/thousandeyes/api/auth/HttpBearerAuth.java
-src/test/java/com/thousandeyes/api/agents/CloudAndEnterpriseAgentNotificationRulesApiTest.java
-src/test/java/com/thousandeyes/api/agents/CloudAndEnterpriseAgentsApiTest.java
-src/test/java/com/thousandeyes/api/agents/EnterpriseAgentClusterApiTest.java
-src/test/java/com/thousandeyes/api/agents/ProxiesApiTest.java

@@ -54,7 +54,7 @@ import com.thousandeyes.api.JSON;
 /**
  * PutStream
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:01.156542Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:28.138431Z[Europe/Lisbon]")
 public class PutStream {
   public static final String SERIALIZED_NAME_CUSTOM_HEADERS = "customHeaders";
   @SerializedName(SERIALIZED_NAME_CUSTOM_HEADERS)

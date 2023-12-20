@@ -51,7 +51,7 @@ import com.thousandeyes.api.JSON;
 /**
  * AssignEnterpriseAgentClusterRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.604841Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:30.468717Z[Europe/Lisbon]")
 public class AssignEnterpriseAgentClusterRequest {
   public static final String SERIALIZED_NAME_AGENTS = "agents";
   @SerializedName(SERIALIZED_NAME_AGENTS)

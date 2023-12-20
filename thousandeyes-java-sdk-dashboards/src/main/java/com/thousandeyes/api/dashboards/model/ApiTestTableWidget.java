@@ -62,7 +62,7 @@ import com.thousandeyes.api.JSON;
 /**
  * Displays tests and statuses with options to sort and filter. It can be set to show only certain tests, like those with specific labels or failing tests.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.427485Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.147613Z[Europe/Lisbon]")
 public class ApiTestTableWidget {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

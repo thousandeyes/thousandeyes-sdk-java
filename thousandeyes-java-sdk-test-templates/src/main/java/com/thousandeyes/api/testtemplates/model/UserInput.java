@@ -51,7 +51,7 @@ import com.thousandeyes.api.JSON;
 /**
  * The set of inputs that the user must fill in to use the test template. These inputs are provided by the user when creating a set of tests via the test template API or via the UI. The UI dynamically displays these user inputs for the user to input.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.138345Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.528444Z[Europe/Lisbon]")
 public class UserInput {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

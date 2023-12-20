@@ -50,7 +50,7 @@ import com.thousandeyes.api.JSON;
 /**
  * A multi search filter key within the Multi-Metric table widget. The key represents the filter name, and the value specifies the filter value.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.427485Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.147613Z[Europe/Lisbon]")
 public class ApiMultiSearchFilterApiTestTableFilterKey {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)

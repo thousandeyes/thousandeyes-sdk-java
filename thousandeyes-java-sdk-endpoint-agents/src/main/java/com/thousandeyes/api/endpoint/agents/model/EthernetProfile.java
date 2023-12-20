@@ -49,7 +49,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * Information about the ethernet connectivity of this device. Only present if the hardware type is &#x60;ethernet&#x60;. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.075333Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:28.978971Z[Europe/Lisbon]")
 public class EthernetProfile {
   public static final String SERIALIZED_NAME_LINK_SPEED = "linkSpeed";
   @SerializedName(SERIALIZED_NAME_LINK_SPEED)

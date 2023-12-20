@@ -121,6 +121,3 @@ src/main/java/com/thousandeyes/api/endpoint/auth/ApiKeyAuth.java
 src/main/java/com/thousandeyes/api/endpoint/auth/Authentication.java
 src/main/java/com/thousandeyes/api/endpoint/auth/HttpBasicAuth.java
 src/main/java/com/thousandeyes/api/endpoint/auth/HttpBearerAuth.java
-src/test/java/com/thousandeyes/api/endpoint/agents/AdministrativeEndpointsApiTest.java
-src/test/java/com/thousandeyes/api/endpoint/agents/ManageAgentsApiTest.java
-src/test/java/com/thousandeyes/api/endpoint/agents/TransferApiTest.java

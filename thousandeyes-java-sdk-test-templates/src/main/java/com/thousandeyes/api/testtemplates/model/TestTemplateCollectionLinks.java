@@ -50,7 +50,7 @@ import com.thousandeyes.api.JSON;
 /**
  * TestTemplateCollectionLinks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.138345Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.528444Z[Europe/Lisbon]")
 public class TestTemplateCollectionLinks {
   public static final String SERIALIZED_NAME_SELF = "self";
   @SerializedName(SERIALIZED_NAME_SELF)

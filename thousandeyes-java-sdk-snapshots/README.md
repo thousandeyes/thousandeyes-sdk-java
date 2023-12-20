@@ -2,7 +2,7 @@
 
 Test Snapshots API
 - API version: 7.0.0
-  - Build date: 2023-12-20T12:21:02.780629Z[Europe/Lisbon]
+  - Build date: 2023-12-20T14:43:29.446597Z[Europe/Lisbon]
 
 Creates a new test snapshot in ThousandEyes
 

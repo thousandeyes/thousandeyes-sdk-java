@@ -50,7 +50,7 @@ import com.thousandeyes.api.JSON;
 /**
  * An object containing the Tag links
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:01.512061Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:28.407560Z[Europe/Lisbon]")
 public class TagLinksLinks {
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)

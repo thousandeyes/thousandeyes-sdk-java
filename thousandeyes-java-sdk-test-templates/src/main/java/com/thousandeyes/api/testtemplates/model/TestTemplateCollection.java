@@ -53,7 +53,7 @@ import com.thousandeyes.api.JSON;
 /**
  * TestTemplateCollection
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.138345Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.528444Z[Europe/Lisbon]")
 public class TestTemplateCollection {
   public static final String SERIALIZED_NAME_TEMPLATES = "templates";
   @SerializedName(SERIALIZED_NAME_TEMPLATES)

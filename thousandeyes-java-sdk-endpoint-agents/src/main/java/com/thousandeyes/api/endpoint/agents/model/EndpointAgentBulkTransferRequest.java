@@ -52,7 +52,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * EndpointAgentBulkTransferRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.075333Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:28.978971Z[Europe/Lisbon]")
 public class EndpointAgentBulkTransferRequest {
   public static final String SERIALIZED_NAME_TRANSFERS = "transfers";
   @SerializedName(SERIALIZED_NAME_TRANSFERS)

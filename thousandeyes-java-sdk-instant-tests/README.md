@@ -2,7 +2,7 @@
 
 Instant Tests API
 - API version: 7.0.0
-  - Build date: 2023-12-20T12:21:05.783040Z[Europe/Lisbon]
+  - Build date: 2023-12-20T14:43:32.643170Z[Europe/Lisbon]
 
 
 ### Overview

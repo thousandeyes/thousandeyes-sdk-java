@@ -2,7 +2,7 @@
 
 WANI Integration Service API V1
 - API version: 7.0.0
-  - Build date: 2023-12-20T12:21:03.187424Z[Europe/Lisbon]
+  - Build date: 2023-12-20T14:43:29.467799Z[Europe/Lisbon]
 
 APIs for onboarding WANI
 

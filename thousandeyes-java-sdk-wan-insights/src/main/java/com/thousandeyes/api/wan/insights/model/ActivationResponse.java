@@ -49,7 +49,7 @@ import com.thousandeyes.api.wan.JSON;
 /**
  * Represents the activation request, tenantId and shareLink information
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.187424Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.467799Z[Europe/Lisbon]")
 public class ActivationResponse {
   public static final String SERIALIZED_NAME_ACTIVATION_ID = "activationId";
   @SerializedName(SERIALIZED_NAME_ACTIVATION_ID)

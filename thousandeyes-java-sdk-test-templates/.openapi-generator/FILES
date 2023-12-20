@@ -63,4 +63,3 @@ src/main/java/com/thousandeyes/api/testtemplates/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/testtemplates/model/UserInput.java
 src/main/java/com/thousandeyes/api/testtemplates/model/UserInputDefaultValue.java
 src/main/java/com/thousandeyes/api/testtemplates/model/UserInputType.java
-src/test/java/com/thousandeyes/api/testtemplates/TestTemplateEndpointsApiTest.java

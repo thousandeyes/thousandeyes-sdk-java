@@ -143,6 +143,3 @@ src/main/java/com/thousandeyes/api/auth/ApiKeyAuth.java
 src/main/java/com/thousandeyes/api/auth/Authentication.java
 src/main/java/com/thousandeyes/api/auth/HttpBasicAuth.java
 src/main/java/com/thousandeyes/api/auth/HttpBearerAuth.java
-src/test/java/com/thousandeyes/api/alerts/AlertRulesApiTest.java
-src/test/java/com/thousandeyes/api/alerts/AlertSuppressionWindowsApiTest.java
-src/test/java/com/thousandeyes/api/alerts/AlertsApiTest.java

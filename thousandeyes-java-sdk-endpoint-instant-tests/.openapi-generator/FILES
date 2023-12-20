@@ -95,6 +95,3 @@ src/main/java/com/thousandeyes/api/endpoint/instant/tests/model/TestInterval.jav
 src/main/java/com/thousandeyes/api/endpoint/instant/tests/model/TestProbeMode.java
 src/main/java/com/thousandeyes/api/endpoint/instant/tests/model/TestSslVersionId.java
 src/main/java/com/thousandeyes/api/endpoint/instant/tests/model/UnauthorizedError.java
-src/test/java/com/thousandeyes/api/endpoint/instant/tests/AgentToServerInstantScheduledTestApiTest.java
-src/test/java/com/thousandeyes/api/endpoint/instant/tests/HttpServerInstantScheduledTestApiTest.java
-src/test/java/com/thousandeyes/api/endpoint/instant/tests/RunExistingTestApiTest.java

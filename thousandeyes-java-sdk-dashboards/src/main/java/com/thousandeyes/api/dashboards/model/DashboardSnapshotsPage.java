@@ -52,7 +52,7 @@ import com.thousandeyes.api.JSON;
 /**
  * Dashboard snapshots page.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.427485Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.147613Z[Europe/Lisbon]")
 public class DashboardSnapshotsPage {
   public static final String SERIALIZED_NAME_DASHBOARD_SNAPSHOTS = "dashboardSnapshots";
   @SerializedName(SERIALIZED_NAME_DASHBOARD_SNAPSHOTS)

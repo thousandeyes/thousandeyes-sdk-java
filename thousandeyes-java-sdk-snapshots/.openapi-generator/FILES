@@ -61,4 +61,3 @@ src/main/java/com/thousandeyes/api/snapshots/model/UnexpandedInstantTestLinks.ja
 src/main/java/com/thousandeyes/api/snapshots/model/UnexpandedInstantTestLinksSelf.java
 src/main/java/com/thousandeyes/api/snapshots/model/UnexpandedInstantTestLinksTestResults.java
 src/main/java/com/thousandeyes/api/snapshots/model/UnexpandedTest.java
-src/test/java/com/thousandeyes/api/snapshots/CreateTestSnapshotApiTest.java

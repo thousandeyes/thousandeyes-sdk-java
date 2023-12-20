@@ -2,7 +2,7 @@
 
 Labels API
 - API version: 7.0.0
-  - Build date: 2023-12-20T12:21:01.778416Z[Europe/Lisbon]
+  - Build date: 2023-12-20T14:43:28.517669Z[Europe/Lisbon]
 
 ### Overview
 This is API for the Labels API (formerly called groups).

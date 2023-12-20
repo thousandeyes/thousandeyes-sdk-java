@@ -53,7 +53,7 @@ import com.thousandeyes.api.JSON;
 /**
  * QuotasQuotasInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.693049Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.991723Z[Europe/Lisbon]")
 public class QuotasQuotasInner {
   public static final String SERIALIZED_NAME_ORGANIZATION_QUOTA = "organizationQuota";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_QUOTA)

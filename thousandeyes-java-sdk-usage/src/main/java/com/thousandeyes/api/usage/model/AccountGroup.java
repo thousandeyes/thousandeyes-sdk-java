@@ -49,7 +49,7 @@ import com.thousandeyes.api.JSON;
 /**
  * AccountGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.693049Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.991723Z[Europe/Lisbon]")
 public class AccountGroup {
   public static final String SERIALIZED_NAME_AID = "aid";
   @SerializedName(SERIALIZED_NAME_AID)

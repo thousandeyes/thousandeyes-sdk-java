@@ -49,7 +49,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * AgentTransferRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.075333Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:28.978971Z[Europe/Lisbon]")
 public class AgentTransferRequest {
   public static final String SERIALIZED_NAME_TO_AID = "toAid";
   @SerializedName(SERIALIZED_NAME_TO_AID)

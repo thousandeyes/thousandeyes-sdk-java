@@ -2,7 +2,7 @@
 
 Administrative API
 - API version: 7.0.0
-  - Build date: 2023-12-20T12:44:58.735345Z[Europe/Lisbon]
+  - Build date: 2023-12-20T14:43:29.770800Z[Europe/Lisbon]
 
 ## Overview
 Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API.

@@ -85,5 +85,3 @@ src/main/java/com/thousandeyes/api/internetinsights/model/OutageScope.java
 src/main/java/com/thousandeyes/api/internetinsights/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/internetinsights/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/internetinsights/model/UnauthorizedError.java
-src/test/java/com/thousandeyes/api/internetinsights/CatalogProvidersApiTest.java
-src/test/java/com/thousandeyes/api/internetinsights/OutagesApiPublicApiTest.java

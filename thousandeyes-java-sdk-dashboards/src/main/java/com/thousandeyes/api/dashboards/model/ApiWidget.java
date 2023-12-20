@@ -97,7 +97,7 @@ import com.google.gson.JsonParseException;
 
 import com.thousandeyes.api.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.427485Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.147613Z[Europe/Lisbon]")
 public class ApiWidget extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ApiWidget.class.getName());
 

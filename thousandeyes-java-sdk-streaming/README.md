@@ -2,7 +2,7 @@
 
 ThousandEyes for OpenTelemetry API
 - API version: 7.0.0
-  - Build date: 2023-12-20T12:21:01.156542Z[Europe/Lisbon]
+  - Build date: 2023-12-20T14:43:28.138431Z[Europe/Lisbon]
 
 
 Configure ThousandEyes to stream or push test data to a OpenTelemetry compliant endpoint with the ThousandEyes for OpenTelemetry API.

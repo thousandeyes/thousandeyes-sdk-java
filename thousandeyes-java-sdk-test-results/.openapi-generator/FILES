@@ -219,14 +219,3 @@ src/main/java/com/thousandeyes/api/test/results/model/WebTransactionPageDetailTe
 src/main/java/com/thousandeyes/api/test/results/model/WebTransactionPageDetailTestResults.java
 src/main/java/com/thousandeyes/api/test/results/model/WebTransactionTestResult.java
 src/main/java/com/thousandeyes/api/test/results/model/WebTransactionTestResults.java
-src/test/java/com/thousandeyes/api/test/results/DnsServerTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/DnsTraceTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/DnssecTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/NetworkBgpTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/NetworkTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/VoiceRtpServerTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/VoiceSipServerTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/WebFtpServerTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/WebHttpServerTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/WebPageLoadTestMetricsApiTest.java
-src/test/java/com/thousandeyes/api/test/results/WebTransactionsTestMetricsApiTest.java

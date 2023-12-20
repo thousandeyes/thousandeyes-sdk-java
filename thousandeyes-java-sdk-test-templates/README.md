@@ -2,7 +2,7 @@
 
 Test Templates API
 - API version: 7.0.1
-  - Build date: 2023-12-20T12:21:03.138345Z[Europe/Lisbon]
+  - Build date: 2023-12-20T14:43:29.528444Z[Europe/Lisbon]
 
 
 ## Overview

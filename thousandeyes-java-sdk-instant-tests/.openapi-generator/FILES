@@ -171,15 +171,3 @@ src/main/java/com/thousandeyes/api/instant/tests/model/VoiceInstantTest.java
 src/main/java/com/thousandeyes/api/instant/tests/model/VoiceInstantTestRequest.java
 src/main/java/com/thousandeyes/api/instant/tests/model/WebTransactionInstantTest.java
 src/main/java/com/thousandeyes/api/instant/tests/model/WebTransactionInstantTestRequest.java
-src/test/java/com/thousandeyes/api/instant/tests/AgentToAgentApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/AgentToServerApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/DnsSecurityApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/DnsServerApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/DnsTraceApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/FtpServerApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/HttpPageLoadApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/HttpServerApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/RunApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/SipServerApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/VoiceApiTest.java
-src/test/java/com/thousandeyes/api/instant/tests/WebTransactionApiTest.java

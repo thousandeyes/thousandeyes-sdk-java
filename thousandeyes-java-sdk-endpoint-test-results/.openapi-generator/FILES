@@ -345,8 +345,3 @@ src/main/java/com/thousandeyes/api/endpoint/tests/results/model/Trigger.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/VpnProfile.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/VpnType.java
-src/test/java/com/thousandeyes/api/endpoint/tests/results/LocalNetworkTestsResultsApiTest.java
-src/test/java/com/thousandeyes/api/endpoint/tests/results/NetworkDynamicTestsResultsApiTest.java
-src/test/java/com/thousandeyes/api/endpoint/tests/results/NetworkScheduledTestsResultsApiTest.java
-src/test/java/com/thousandeyes/api/endpoint/tests/results/RealUserTestsResultsApiTest.java
-src/test/java/com/thousandeyes/api/endpoint/tests/results/WebHttpServerScheduledTestResultsApiTest.java

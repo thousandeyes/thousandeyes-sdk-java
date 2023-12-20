@@ -53,7 +53,7 @@ import com.thousandeyes.api.endpoint.tests.JSON;
 /**
  * GetEndpointLocalNetworks200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:05.666462Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:32.305594Z[Europe/Lisbon]")
 public class GetEndpointLocalNetworks200Response {
   public static final String SERIALIZED_NAME_LOCAL_NETWORKS = "localNetworks";
   @SerializedName(SERIALIZED_NAME_LOCAL_NETWORKS)

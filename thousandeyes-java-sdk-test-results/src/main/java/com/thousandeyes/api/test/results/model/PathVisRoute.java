@@ -52,7 +52,7 @@ import com.thousandeyes.api.test.JSON;
 /**
  * PathVisRoute
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:04.702673Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:31.504596Z[Europe/Lisbon]")
 public class PathVisRoute {
   public static final String SERIALIZED_NAME_PATH_ID = "pathId";
   @SerializedName(SERIALIZED_NAME_PATH_ID)

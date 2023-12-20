@@ -52,7 +52,7 @@ import com.thousandeyes.api.JSON;
 /**
  * AccountGroups
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:44:58.735345Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:29.770800Z[Europe/Lisbon]")
 public class AccountGroups {
   public static final String SERIALIZED_NAME_ACCOUNT_GROUPS = "accountGroups";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_GROUPS)

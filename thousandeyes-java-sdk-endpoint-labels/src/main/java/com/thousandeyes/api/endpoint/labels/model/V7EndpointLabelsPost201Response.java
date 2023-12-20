@@ -54,7 +54,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * V7EndpointLabelsPost201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:01.564706Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:28.652251Z[Europe/Lisbon]")
 public class V7EndpointLabelsPost201Response {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

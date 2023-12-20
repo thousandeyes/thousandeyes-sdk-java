@@ -65,4 +65,3 @@ src/main/java/com/thousandeyes/api/endpoint/labels/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/V7EndpointLabelsPost201Response.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/V7EndpointLabelsPostRequest.java
-src/test/java/com/thousandeyes/api/endpoint/labels/ManageLabelsApiTest.java

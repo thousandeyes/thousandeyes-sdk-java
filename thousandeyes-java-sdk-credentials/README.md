@@ -2,7 +2,7 @@
 
 Credentials API
 - API version: 7.0.0
-  - Build date: 2023-12-20T12:21:01.770789Z[Europe/Lisbon]
+  - Build date: 2023-12-20T14:43:28.663365Z[Europe/Lisbon]
 
 ### Overview
 Manage credentials for transaction tests using the Credentials API. 

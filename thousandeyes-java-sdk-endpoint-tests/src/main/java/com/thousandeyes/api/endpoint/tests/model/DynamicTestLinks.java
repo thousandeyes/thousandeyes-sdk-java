@@ -51,7 +51,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * A list of links that can be accessed to get more information.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:05.597581Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:32.432392Z[Europe/Lisbon]")
 public class DynamicTestLinks {
   public static final String SERIALIZED_NAME_SELF = "self";
   @SerializedName(SERIALIZED_NAME_SELF)

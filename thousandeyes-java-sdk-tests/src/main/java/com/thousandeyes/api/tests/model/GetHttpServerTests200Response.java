@@ -53,7 +53,7 @@ import com.thousandeyes.api.JSON;
 /**
  * GetHttpServerTests200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:06.198107Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:33.205984Z[Europe/Lisbon]")
 public class GetHttpServerTests200Response {
   public static final String SERIALIZED_NAME_TESTS = "tests";
   @SerializedName(SERIALIZED_NAME_TESTS)

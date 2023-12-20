@@ -49,4 +49,3 @@ src/main/java/com/thousandeyes/api/credentials/model/Link.java
 src/main/java/com/thousandeyes/api/credentials/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/credentials/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/credentials/model/UnauthorizedError.java
-src/test/java/com/thousandeyes/api/credentials/CredentialsApiTest.java

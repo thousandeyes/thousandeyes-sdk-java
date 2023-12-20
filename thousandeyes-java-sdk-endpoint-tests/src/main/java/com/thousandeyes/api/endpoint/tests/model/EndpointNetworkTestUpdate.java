@@ -52,7 +52,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * EndpointNetworkTestUpdate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:05.597581Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:32.432392Z[Europe/Lisbon]")
 public class EndpointNetworkTestUpdate {
   public static final String SERIALIZED_NAME_INTERVAL = "interval";
   @SerializedName(SERIALIZED_NAME_INTERVAL)

@@ -53,7 +53,7 @@ import com.thousandeyes.api.JSON;
 /**
  * CreateAgentLabel201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:01.778416Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T14:43:28.517669Z[Europe/Lisbon]")
 public class CreateAgentLabel201Response {
   public static final String SERIALIZED_NAME_LABEL_ID = "labelId";
   @SerializedName(SERIALIZED_NAME_LABEL_ID)
