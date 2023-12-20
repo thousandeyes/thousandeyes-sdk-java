@@ -50,7 +50,7 @@ import com.thousandeyes.api.JSON;
 /**
  * CredentialWithoutValue
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.268132Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:01.770789Z[Europe/Lisbon]")
 public class CredentialWithoutValue {
   public static final String SERIALIZED_NAME_LINKS = "_links";
   @SerializedName(SERIALIZED_NAME_LINKS)

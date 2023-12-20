@@ -13,7 +13,7 @@
 
 package com.thousandeyes.api;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.268132Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:01.770789Z[Europe/Lisbon]")
 public class Pair {
     private String name = "";
     private String value = "";

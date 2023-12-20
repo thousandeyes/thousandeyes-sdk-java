@@ -2,7 +2,7 @@
 
 Administrative API
 - API version: 7.0.0
-  - Build date: 2023-12-18T17:52:53.269143Z[Europe/Lisbon]
+  - Build date: 2023-12-20T12:44:58.735345Z[Europe/Lisbon]
 
 ## Overview
 Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API.
@@ -53,6 +53,7 @@ Add this dependency to your project's POM:
   <scope>compile</scope>
 </dependency>
 ```
+
 
 ### Gradle users
 

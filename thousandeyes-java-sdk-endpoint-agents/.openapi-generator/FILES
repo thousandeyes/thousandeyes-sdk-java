@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AccountGroupId.md
 docs/AddressProfile.md
 docs/AddressType.md
@@ -52,13 +49,11 @@ docs/TransferApi.md
 docs/UnauthorizedError.md
 docs/VpnType.md
 docs/WirelessProfile.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/ApiCallback.java
@@ -126,3 +121,6 @@ src/main/java/com/thousandeyes/api/endpoint/auth/ApiKeyAuth.java
 src/main/java/com/thousandeyes/api/endpoint/auth/Authentication.java
 src/main/java/com/thousandeyes/api/endpoint/auth/HttpBasicAuth.java
 src/main/java/com/thousandeyes/api/endpoint/auth/HttpBearerAuth.java
+src/test/java/com/thousandeyes/api/endpoint/agents/AdministrativeEndpointsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/agents/ManageAgentsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/agents/TransferApiTest.java

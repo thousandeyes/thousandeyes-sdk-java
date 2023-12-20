@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AccountGroup.md
 docs/AccountGroup1.md
 docs/AccountGroupDetail.md
@@ -70,13 +67,11 @@ docs/UserEventsApi.md
 docs/UserRequestBody.md
 docs/Users.md
 docs/UsersApi.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java

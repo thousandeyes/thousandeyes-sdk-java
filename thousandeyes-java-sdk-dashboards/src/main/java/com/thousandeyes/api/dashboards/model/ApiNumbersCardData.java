@@ -53,7 +53,7 @@ import com.thousandeyes.api.JSON;
 /**
  * The data displayed on a numbers card.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.740200Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.427485Z[Europe/Lisbon]")
 public class ApiNumbersCardData {
   public static final String SERIALIZED_NAME_CARD_ID = "cardId";
   @SerializedName(SERIALIZED_NAME_CARD_ID)

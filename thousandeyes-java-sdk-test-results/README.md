@@ -2,7 +2,7 @@
 
 Test Results API
 - API version: 7.0.0
-  - Build date: 2023-12-18T17:52:54.864279Z[Europe/Lisbon]
+  - Build date: 2023-12-20T12:21:04.702673Z[Europe/Lisbon]
 
 Get test result metrics for Cloud and Enterprise Agent tests.
 
@@ -44,6 +44,7 @@ Add this dependency to your project's POM:
   <scope>compile</scope>
 </dependency>
 ```
+
 
 ### Gradle users
 

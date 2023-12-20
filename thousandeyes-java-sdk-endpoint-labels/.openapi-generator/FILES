@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/EndpointLabelsList200Response.md
 docs/Error.md
 docs/Expand.md
@@ -24,13 +21,11 @@ docs/SelfLinksLinks.md
 docs/UnauthorizedError.md
 docs/V7EndpointLabelsPost201Response.md
 docs/V7EndpointLabelsPostRequest.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/ApiCallback.java
@@ -70,3 +65,4 @@ src/main/java/com/thousandeyes/api/endpoint/labels/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/V7EndpointLabelsPost201Response.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/V7EndpointLabelsPostRequest.java
+src/test/java/com/thousandeyes/api/endpoint/labels/ManageLabelsApiTest.java

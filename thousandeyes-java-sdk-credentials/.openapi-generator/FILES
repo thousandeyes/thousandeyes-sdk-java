@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/Credential.md
 docs/CredentialRequest.md
 docs/CredentialWithoutValue.md
@@ -16,13 +13,11 @@ docs/Link.md
 docs/SelfLinks.md
 docs/SelfLinksLinks.md
 docs/UnauthorizedError.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java
@@ -54,3 +49,4 @@ src/main/java/com/thousandeyes/api/credentials/model/Link.java
 src/main/java/com/thousandeyes/api/credentials/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/credentials/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/credentials/model/UnauthorizedError.java
+src/test/java/com/thousandeyes/api/credentials/CredentialsApiTest.java

@@ -49,7 +49,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * EndpointAsnDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.549567Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.075333Z[Europe/Lisbon]")
 public class EndpointAsnDetails {
   public static final String SERIALIZED_NAME_AS_NUMBER = "asNumber";
   @SerializedName(SERIALIZED_NAME_AS_NUMBER)

@@ -49,7 +49,7 @@ import com.thousandeyes.api.JSON;
 /**
  * Summary of the agent status.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.740200Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.427485Z[Europe/Lisbon]")
 public class ApiAgentStatusSummary {
   public static final String SERIALIZED_NAME_ONLINE = "online";
   @SerializedName(SERIALIZED_NAME_ONLINE)

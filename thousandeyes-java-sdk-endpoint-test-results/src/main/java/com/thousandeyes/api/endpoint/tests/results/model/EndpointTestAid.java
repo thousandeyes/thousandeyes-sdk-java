@@ -49,7 +49,7 @@ import com.thousandeyes.api.endpoint.tests.JSON;
 /**
  * EndpointTestAid
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:55.800198Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:05.666462Z[Europe/Lisbon]")
 public class EndpointTestAid {
   public static final String SERIALIZED_NAME_AID = "aid";
   @SerializedName(SERIALIZED_NAME_AID)

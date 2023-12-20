@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AppAndSelfLinks.md
 docs/AppAndSelfLinksLinks.md
 docs/CreateTestSnapshotApi.md
@@ -22,13 +19,11 @@ docs/UnexpandedInstantTestLinks.md
 docs/UnexpandedInstantTestLinksSelf.md
 docs/UnexpandedInstantTestLinksTestResults.md
 docs/UnexpandedTest.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java
@@ -66,3 +61,4 @@ src/main/java/com/thousandeyes/api/snapshots/model/UnexpandedInstantTestLinks.ja
 src/main/java/com/thousandeyes/api/snapshots/model/UnexpandedInstantTestLinksSelf.java
 src/main/java/com/thousandeyes/api/snapshots/model/UnexpandedInstantTestLinksTestResults.java
 src/main/java/com/thousandeyes/api/snapshots/model/UnexpandedTest.java
+src/test/java/com/thousandeyes/api/snapshots/CreateTestSnapshotApiTest.java

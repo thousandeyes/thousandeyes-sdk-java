@@ -64,7 +64,7 @@ import com.thousandeyes.api.JSON;
 /**
  * Displays grouped bars, each representing multiple data points. You can configure the bars to align horizontally or vertically.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.740200Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.427485Z[Europe/Lisbon]")
 public class ApiGroupedBarchartWidget {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

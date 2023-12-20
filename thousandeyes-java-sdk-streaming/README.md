@@ -2,7 +2,7 @@
 
 ThousandEyes for OpenTelemetry API
 - API version: 7.0.0
-  - Build date: 2023-12-18T17:52:51.866982Z[Europe/Lisbon]
+  - Build date: 2023-12-20T12:21:01.156542Z[Europe/Lisbon]
 
 
 Configure ThousandEyes to stream or push test data to a OpenTelemetry compliant endpoint with the ThousandEyes for OpenTelemetry API.
@@ -46,6 +46,7 @@ Add this dependency to your project's POM:
   <scope>compile</scope>
 </dependency>
 ```
+
 
 ### Gradle users
 

@@ -53,7 +53,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * EndpointAgentsSearch200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.549567Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.075333Z[Europe/Lisbon]")
 public class EndpointAgentsSearch200Response {
   public static final String SERIALIZED_NAME_TOTAL_AGENTS = "totalAgents";
   @SerializedName(SERIALIZED_NAME_TOTAL_AGENTS)

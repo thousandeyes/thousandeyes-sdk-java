@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AccountGroupId.md
 docs/AgentLabelsSelectorType.md
 docs/AllAgentsSelectorType.md
@@ -69,13 +66,11 @@ docs/TestProbeMode.md
 docs/TestSslVersionId.md
 docs/TestUpdate.md
 docs/UnauthorizedError.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/ApiCallback.java
@@ -160,3 +155,7 @@ src/main/java/com/thousandeyes/api/endpoint/tests/model/TestProbeMode.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/TestSslVersionId.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/TestUpdate.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/UnauthorizedError.java
+src/test/java/com/thousandeyes/api/endpoint/tests/DynamicTestsAgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ListEndpointScheduledTestsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ScheduledTestsAgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ScheduledTestsHttpServerApiTest.java

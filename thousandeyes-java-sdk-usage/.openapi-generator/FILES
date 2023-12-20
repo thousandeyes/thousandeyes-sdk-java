@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AccountGroup.md
 docs/AccountGroupId.md
 docs/AccountGroupQuota.md
@@ -37,13 +34,11 @@ docs/Usage.md
 docs/UsageApi.md
 docs/UsageUsage.md
 docs/UsageUsageQuota.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java
@@ -96,3 +91,5 @@ src/main/java/com/thousandeyes/api/usage/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/usage/model/Usage.java
 src/main/java/com/thousandeyes/api/usage/model/UsageUsage.java
 src/main/java/com/thousandeyes/api/usage/model/UsageUsageQuota.java
+src/test/java/com/thousandeyes/api/usage/QuotasApiTest.java
+src/test/java/com/thousandeyes/api/usage/UsageApiTest.java

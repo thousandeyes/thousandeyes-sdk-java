@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AccessType.md
 docs/ApiError.md
 docs/Assignment.md
@@ -26,13 +23,11 @@ docs/TagLinks.md
 docs/TagLinksLinks.md
 docs/TagsApi.md
 docs/UnauthorizedError.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java
@@ -74,3 +69,5 @@ src/main/java/com/thousandeyes/api/tags/model/TagCollection.java
 src/main/java/com/thousandeyes/api/tags/model/TagLinks.java
 src/main/java/com/thousandeyes/api/tags/model/TagLinksLinks.java
 src/main/java/com/thousandeyes/api/tags/model/UnauthorizedError.java
+src/test/java/com/thousandeyes/api/tags/TagAssignmentApiTest.java
+src/test/java/com/thousandeyes/api/tags/TagsApiTest.java

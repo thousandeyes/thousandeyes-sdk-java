@@ -63,7 +63,7 @@ import com.thousandeyes.api.JSON;
 /**
  * GetAgentDetails200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:53.465396Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.604841Z[Europe/Lisbon]")
 public class GetAgentDetails200Response {
   public static final String SERIALIZED_NAME_IP_ADDRESSES = "ipAddresses";
   @SerializedName(SERIALIZED_NAME_IP_ADDRESSES)

@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AccountGroupId.md
 docs/AgentLabelsSelectorType.md
 docs/AllAgentsSelectorType.md
@@ -164,13 +161,11 @@ docs/UnauthorizedError.md
 docs/VpnProfile.md
 docs/VpnType.md
 docs/WebHttpServerScheduledTestResultsApi.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/tests/ApiCallback.java
@@ -350,3 +345,8 @@ src/main/java/com/thousandeyes/api/endpoint/tests/results/model/Trigger.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/VpnProfile.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/VpnType.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/LocalNetworkTestsResultsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/NetworkDynamicTestsResultsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/NetworkScheduledTestsResultsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/RealUserTestsResultsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/WebHttpServerScheduledTestResultsApiTest.java

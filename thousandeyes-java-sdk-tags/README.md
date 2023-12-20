@@ -2,7 +2,7 @@
 
 Tags API
 - API version: 7.0.0
-  - Build date: 2023-12-18T17:52:52.169959Z[Europe/Lisbon]
+  - Build date: 2023-12-20T12:21:01.512061Z[Europe/Lisbon]
 
 The ThousandEyes Tags API provides a tagging system with key/value pairs. It allows you to tag assets within the ThousandEyes platform (such as agents, tests, or alert rules) with meaningful metadata. For example: `branch:sfo`, `branch:nyc`, and `team:netops`.
 
@@ -55,6 +55,7 @@ Add this dependency to your project's POM:
   <scope>compile</scope>
 </dependency>
 ```
+
 
 ### Gradle users
 

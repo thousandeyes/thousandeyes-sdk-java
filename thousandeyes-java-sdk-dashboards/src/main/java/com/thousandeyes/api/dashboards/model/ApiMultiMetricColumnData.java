@@ -53,7 +53,7 @@ import com.thousandeyes.api.JSON;
 /**
  * The data presented within a single column of a Multi-Metric table.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.740200Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.427485Z[Europe/Lisbon]")
 public class ApiMultiMetricColumnData {
   public static final String SERIALIZED_NAME_COLUMN_ID = "columnId";
   @SerializedName(SERIALIZED_NAME_COLUMN_ID)

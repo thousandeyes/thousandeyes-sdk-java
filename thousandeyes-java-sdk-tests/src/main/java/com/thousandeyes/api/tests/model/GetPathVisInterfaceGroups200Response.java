@@ -53,7 +53,7 @@ import com.thousandeyes.api.JSON;
 /**
  * GetPathVisInterfaceGroups200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:56.680950Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:06.198107Z[Europe/Lisbon]")
 public class GetPathVisInterfaceGroups200Response {
   public static final String SERIALIZED_NAME_PATH_VIS_INTERFACE_GROUPS = "pathVisInterfaceGroups";
   @SerializedName(SERIALIZED_NAME_PATH_VIS_INTERFACE_GROUPS)

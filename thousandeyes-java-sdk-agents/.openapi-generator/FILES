@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AccountGroup.md
 docs/AccountGroupId.md
 docs/Agent.md
@@ -65,13 +62,11 @@ docs/UnexpandedInstantTestLinksSelf.md
 docs/UnexpandedInstantTestLinksTestResults.md
 docs/UnexpandedTest.md
 docs/UpdateEnterpriseAgentDetails200Response.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java
@@ -152,3 +147,7 @@ src/main/java/com/thousandeyes/api/auth/ApiKeyAuth.java
 src/main/java/com/thousandeyes/api/auth/Authentication.java
 src/main/java/com/thousandeyes/api/auth/HttpBasicAuth.java
 src/main/java/com/thousandeyes/api/auth/HttpBearerAuth.java
+src/test/java/com/thousandeyes/api/agents/CloudAndEnterpriseAgentNotificationRulesApiTest.java
+src/test/java/com/thousandeyes/api/agents/CloudAndEnterpriseAgentsApiTest.java
+src/test/java/com/thousandeyes/api/agents/EnterpriseAgentClusterApiTest.java
+src/test/java/com/thousandeyes/api/agents/ProxiesApiTest.java

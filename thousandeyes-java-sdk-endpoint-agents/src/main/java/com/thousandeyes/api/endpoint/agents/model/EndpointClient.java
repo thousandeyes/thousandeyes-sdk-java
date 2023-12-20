@@ -53,7 +53,7 @@ import com.thousandeyes.api.endpoint.JSON;
 /**
  * Information about the user who has the agent installed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.549567Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:02.075333Z[Europe/Lisbon]")
 public class EndpointClient {
   public static final String SERIALIZED_NAME_USER_PROFILE = "userProfile";
   @SerializedName(SERIALIZED_NAME_USER_PROFILE)

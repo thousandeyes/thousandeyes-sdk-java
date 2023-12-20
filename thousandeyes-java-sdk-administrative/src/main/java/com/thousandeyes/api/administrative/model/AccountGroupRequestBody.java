@@ -51,7 +51,7 @@ import com.thousandeyes.api.JSON;
 /**
  * AccountGroupRequestBody
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:53.269143Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:44:58.735345Z[Europe/Lisbon]")
 public class AccountGroupRequestBody {
   public static final String SERIALIZED_NAME_ACCOUNT_GROUP_NAME = "accountGroupName";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_GROUP_NAME)

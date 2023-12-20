@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AgentStatusDatasource.md
 docs/AgentWidgetShow.md
 docs/AgentWidgetType.md
@@ -106,13 +103,11 @@ docs/WidgetMeasureType.md
 docs/WidgetSortDirection.md
 docs/WidgetSortProperty.md
 docs/WidgetType.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java
@@ -234,3 +229,5 @@ src/main/java/com/thousandeyes/api/dashboards/model/WidgetMeasureType.java
 src/main/java/com/thousandeyes/api/dashboards/model/WidgetSortDirection.java
 src/main/java/com/thousandeyes/api/dashboards/model/WidgetSortProperty.java
 src/main/java/com/thousandeyes/api/dashboards/model/WidgetType.java
+src/test/java/com/thousandeyes/api/dashboards/DashboardSnapshotsApiTest.java
+src/test/java/com/thousandeyes/api/dashboards/DashboardsApiTest.java

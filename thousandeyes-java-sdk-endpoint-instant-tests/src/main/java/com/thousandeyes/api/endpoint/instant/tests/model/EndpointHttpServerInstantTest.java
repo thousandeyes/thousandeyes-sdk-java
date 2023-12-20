@@ -57,7 +57,7 @@ import com.thousandeyes.api.endpoint.instant.JSON;
 /**
  * EndpointHttpServerInstantTest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:55.295420Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:05.354569Z[Europe/Lisbon]")
 public class EndpointHttpServerInstantTest {
   public static final String SERIALIZED_NAME_AGENT_SELECTOR_TYPE = "agentSelectorType";
   @SerializedName(SERIALIZED_NAME_AGENT_SELECTOR_TYPE)

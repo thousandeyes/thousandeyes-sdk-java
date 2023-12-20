@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/Alert.md
 docs/AlertDetail.md
 docs/AlertLinks.md
@@ -63,13 +60,11 @@ docs/ThirdPartyIntegrationType.md
 docs/UnauthorizedError.md
 docs/UnexpandedTest.md
 docs/WebhookIntegrationType.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java
@@ -148,3 +143,6 @@ src/main/java/com/thousandeyes/api/auth/ApiKeyAuth.java
 src/main/java/com/thousandeyes/api/auth/Authentication.java
 src/main/java/com/thousandeyes/api/auth/HttpBasicAuth.java
 src/main/java/com/thousandeyes/api/auth/HttpBearerAuth.java
+src/test/java/com/thousandeyes/api/alerts/AlertRulesApiTest.java
+src/test/java/com/thousandeyes/api/alerts/AlertSuppressionWindowsApiTest.java
+src/test/java/com/thousandeyes/api/alerts/AlertsApiTest.java

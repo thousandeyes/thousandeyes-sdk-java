@@ -2,7 +2,7 @@
 
 Labels API
 - API version: 7.0.0
-  - Build date: 2023-12-18T17:52:52.402643Z[Europe/Lisbon]
+  - Build date: 2023-12-20T12:21:01.778416Z[Europe/Lisbon]
 
 ### Overview
 This is API for the Labels API (formerly called groups).
@@ -45,6 +45,7 @@ Add this dependency to your project's POM:
   <scope>compile</scope>
 </dependency>
 ```
+
 
 ### Gradle users
 

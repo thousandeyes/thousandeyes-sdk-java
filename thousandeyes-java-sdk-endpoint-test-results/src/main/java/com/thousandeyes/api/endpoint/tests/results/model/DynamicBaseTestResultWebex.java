@@ -49,7 +49,7 @@ import com.thousandeyes.api.endpoint.tests.JSON;
 /**
  * Contains object with webex conference information. Only returned when &#x60;application&#x60; &#x3D;&#x3D; &#x60;webex&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:55.800198Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:05.666462Z[Europe/Lisbon]")
 public class DynamicBaseTestResultWebex {
   public static final String SERIALIZED_NAME_CONFERENCE_ID = "conferenceId";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_ID)

@@ -2,7 +2,7 @@
 
 Test Snapshots API
 - API version: 7.0.0
-  - Build date: 2023-12-18T17:52:52.849573Z[Europe/Lisbon]
+  - Build date: 2023-12-20T12:21:02.780629Z[Europe/Lisbon]
 
 Creates a new test snapshot in ThousandEyes
 
@@ -44,6 +44,7 @@ Add this dependency to your project's POM:
   <scope>compile</scope>
 </dependency>
 ```
+
 
 ### Gradle users
 

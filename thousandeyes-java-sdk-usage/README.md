@@ -2,7 +2,7 @@
 
 Usage API
 - API version: 7.0.0
-  - Build date: 2023-12-18T17:52:53.841908Z[Europe/Lisbon]
+  - Build date: 2023-12-20T12:21:03.693049Z[Europe/Lisbon]
 
 ## Overview
 These usage endpoints define the following operations:
@@ -56,6 +56,7 @@ Add this dependency to your project's POM:
   <scope>compile</scope>
 </dependency>
 ```
+
 
 ### Gradle users
 

@@ -49,7 +49,7 @@ import com.thousandeyes.api.wan.JSON;
 /**
  * Represents the S3 bucket name for the overlay
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:53.567204Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:03.187424Z[Europe/Lisbon]")
 public class TelemetrySource {
   public static final String SERIALIZED_NAME_S3_BUCKET_NAME = "s3BucketName";
   @SerializedName(SERIALIZED_NAME_S3_BUCKET_NAME)

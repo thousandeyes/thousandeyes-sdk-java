@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AgentApi.md
 docs/AllLabelsApi.md
 docs/CreateAgentLabel201Response.md
@@ -22,13 +19,11 @@ docs/SelfLinks.md
 docs/SelfLinksLinks.md
 docs/TestApi.md
 docs/UnauthorizedError.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/ApiCallback.java
@@ -66,3 +61,8 @@ src/main/java/com/thousandeyes/api/labels/model/Link.java
 src/main/java/com/thousandeyes/api/labels/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/labels/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/labels/model/UnauthorizedError.java
+src/test/java/com/thousandeyes/api/labels/AgentApiTest.java
+src/test/java/com/thousandeyes/api/labels/AllLabelsApiTest.java
+src/test/java/com/thousandeyes/api/labels/DashboardApiTest.java
+src/test/java/com/thousandeyes/api/labels/EndpointTestApiTest.java
+src/test/java/com/thousandeyes/api/labels/TestApiTest.java

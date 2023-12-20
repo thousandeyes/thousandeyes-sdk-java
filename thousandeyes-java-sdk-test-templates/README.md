@@ -2,7 +2,7 @@
 
 Test Templates API
 - API version: 7.0.1
-  - Build date: 2023-12-18T17:52:53.416039Z[Europe/Lisbon]
+  - Build date: 2023-12-20T12:21:03.138345Z[Europe/Lisbon]
 
 
 ## Overview
@@ -69,6 +69,7 @@ Add this dependency to your project's POM:
   <scope>compile</scope>
 </dependency>
 ```
+
 
 ### Gradle users
 

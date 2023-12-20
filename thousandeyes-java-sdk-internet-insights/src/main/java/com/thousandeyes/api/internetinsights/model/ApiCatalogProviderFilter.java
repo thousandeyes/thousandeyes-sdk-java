@@ -49,7 +49,7 @@ import com.thousandeyes.api.JSON;
 /**
  * Advanced filter query used to filter the response. The provider name, location, asn can be partial names. Can filter on: - Provider name - Provider type - Region - Location - ASN - included
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:52.307887Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:01.633711Z[Europe/Lisbon]")
 public class ApiCatalogProviderFilter {
   public static final String SERIALIZED_NAME_PROVIDER_NAME = "providerName";
   @SerializedName(SERIALIZED_NAME_PROVIDER_NAME)

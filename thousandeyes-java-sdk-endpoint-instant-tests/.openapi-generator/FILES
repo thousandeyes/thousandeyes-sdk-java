@@ -1,10 +1,7 @@
-.github/workflows/maven.yml
 .gitignore
 .travis.yml
 README.md
-api/openapi.yaml
 build.gradle
-build.sbt
 docs/AccountGroupId.md
 docs/AgentLabelsSelectorType.md
 docs/AgentToServerInstantScheduledTestApi.md
@@ -39,13 +36,11 @@ docs/TestInterval.md
 docs/TestProbeMode.md
 docs/TestSslVersionId.md
 docs/UnauthorizedError.md
-git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/instant/ApiCallback.java
@@ -100,3 +95,6 @@ src/main/java/com/thousandeyes/api/endpoint/instant/tests/model/TestInterval.jav
 src/main/java/com/thousandeyes/api/endpoint/instant/tests/model/TestProbeMode.java
 src/main/java/com/thousandeyes/api/endpoint/instant/tests/model/TestSslVersionId.java
 src/main/java/com/thousandeyes/api/endpoint/instant/tests/model/UnauthorizedError.java
+src/test/java/com/thousandeyes/api/endpoint/instant/tests/AgentToServerInstantScheduledTestApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/instant/tests/HttpServerInstantScheduledTestApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/instant/tests/RunExistingTestApiTest.java

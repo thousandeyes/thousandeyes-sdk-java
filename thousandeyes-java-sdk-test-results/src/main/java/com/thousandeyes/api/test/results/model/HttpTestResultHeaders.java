@@ -49,7 +49,7 @@ import com.thousandeyes.api.test.JSON;
 /**
  * Expandable object containing both request and response headers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-18T17:52:54.864279Z[Europe/Lisbon]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-20T12:21:04.702673Z[Europe/Lisbon]")
 public class HttpTestResultHeaders {
   public static final String SERIALIZED_NAME_REQUEST_HEADERS = "requestHeaders";
   @SerializedName(SERIALIZED_NAME_REQUEST_HEADERS)
