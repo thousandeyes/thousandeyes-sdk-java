@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+ext {
+    jacksonVersion = "2.16.1"
+    junitVersion = "5.10.1"
+    jacksonDatabindNullableVersion = "0.2.6"
+    googleJsr305Version = "3.0.2"
+    apacheCommonsLang3 = "3.14.0"
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'java'
+
+    group = 'com.thousandeyes.api'
+    version = '7.0.0-SNAPSHOT'
+
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+
+    // Some text from the schema is copy pasted into the source files as UTF-8
+    // but the default still seems to be to use platform encoding
+    tasks.withType(JavaCompile) {
+        configure(options) {
+            options.encoding = 'UTF-8'
+        }
+    }
+    javadoc {
+        options.encoding = 'UTF-8'
+    }
+
+    task execute(type:JavaExec) {
+        classpath = sourceSets.main.runtimeClasspath
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+}
