@@ -1,1 +1,5 @@
 rootProject.name = 'thousandeyes-java-sdk'
+include 'thousandeyes-java-sdk-authentication'
+include 'thousandeyes-java-sdk-client'
+include 'thousandeyes-java-sdk-client-native'
+include 'thousandeyes-java-sdk-examples'
