@@ -1,0 +1,804 @@
+# ManageLabelsApi
+
+All URIs are relative to *https://api.thousandeyes.com*
+
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**endpointLabelDelete**](ManageLabelsApi.md#endpointLabelDelete) | **DELETE** /v7/endpoint/labels/{id} | Deletes label |
+| [**endpointLabelDeleteWithHttpInfo**](ManageLabelsApi.md#endpointLabelDeleteWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Deletes label |
+| [**endpointLabelGet**](ManageLabelsApi.md#endpointLabelGet) | **GET** /v7/endpoint/labels/{id} | Retrieve label |
+| [**endpointLabelGetWithHttpInfo**](ManageLabelsApi.md#endpointLabelGetWithHttpInfo) | **GET** /v7/endpoint/labels/{id} | Retrieve label |
+| [**endpointLabelUpdate**](ManageLabelsApi.md#endpointLabelUpdate) | **PATCH** /v7/endpoint/labels/{id} | Update label |
+| [**endpointLabelUpdateWithHttpInfo**](ManageLabelsApi.md#endpointLabelUpdateWithHttpInfo) | **PATCH** /v7/endpoint/labels/{id} | Update label |
+| [**endpointLabelsList**](ManageLabelsApi.md#endpointLabelsList) | **GET** /v7/endpoint/labels | List labels |
+| [**endpointLabelsListWithHttpInfo**](ManageLabelsApi.md#endpointLabelsListWithHttpInfo) | **GET** /v7/endpoint/labels | List labels |
+| [**v7EndpointLabelsPost**](ManageLabelsApi.md#v7EndpointLabelsPost) | **POST** /v7/endpoint/labels | Create label |
+| [**v7EndpointLabelsPostWithHttpInfo**](ManageLabelsApi.md#v7EndpointLabelsPostWithHttpInfo) | **POST** /v7/endpoint/labels | Create label |
+
+
+
+## endpointLabelDelete
+
+> void endpointLabelDelete(id, aid)
+
+Deletes label
+
+Deletes the label from your account. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        String id = "id_example"; // String | The unique identifier of the label to operate on.
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            apiInstance.endpointLabelDelete(id, aid);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#endpointLabelDelete");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| The unique identifier of the label to operate on. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+## endpointLabelDeleteWithHttpInfo
+
+> ApiResponse<Void> endpointLabelDelete endpointLabelDeleteWithHttpInfo(id, aid)
+
+Deletes label
+
+Deletes the label from your account. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        String id = "id_example"; // String | The unique identifier of the label to operate on.
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<Void> response = apiInstance.endpointLabelDeleteWithHttpInfo(id, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#endpointLabelDelete");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| The unique identifier of the label to operate on. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+
+## endpointLabelGet
+
+> V7EndpointLabelsPost201Response endpointLabelGet(id, expand, aid)
+
+Retrieve label
+
+Returns a single label using its ID.
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        String id = "id_example"; // String | The unique identifier of the label to operate on.
+        List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            V7EndpointLabelsPost201Response result = apiInstance.endpointLabelGet(id, expand, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#endpointLabelGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| The unique identifier of the label to operate on. | |
+| **expand** | [**List&lt;Expand&gt;**](Expand.md)| This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+## endpointLabelGetWithHttpInfo
+
+> ApiResponse<V7EndpointLabelsPost201Response> endpointLabelGet endpointLabelGetWithHttpInfo(id, expand, aid)
+
+Retrieve label
+
+Returns a single label using its ID.
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        String id = "id_example"; // String | The unique identifier of the label to operate on.
+        List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.endpointLabelGetWithHttpInfo(id, expand, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#endpointLabelGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| The unique identifier of the label to operate on. | |
+| **expand** | [**List&lt;Expand&gt;**](Expand.md)| This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+
+## endpointLabelUpdate
+
+> V7EndpointLabelsPost201Response endpointLabelUpdate(id, aid, label)
+
+Update label
+
+Updates a label using its ID.
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        String id = "id_example"; // String | The unique identifier of the label to operate on.
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        Label label = new Label(); // Label | Fields to change on the agent
+        try {
+            V7EndpointLabelsPost201Response result = apiInstance.endpointLabelUpdate(id, aid, label);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#endpointLabelUpdate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| The unique identifier of the label to operate on. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **label** | [**Label**](Label.md)| Fields to change on the agent | [optional] |
+
+### Return type
+
+[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+## endpointLabelUpdateWithHttpInfo
+
+> ApiResponse<V7EndpointLabelsPost201Response> endpointLabelUpdate endpointLabelUpdateWithHttpInfo(id, aid, label)
+
+Update label
+
+Updates a label using its ID.
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        String id = "id_example"; // String | The unique identifier of the label to operate on.
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        Label label = new Label(); // Label | Fields to change on the agent
+        try {
+            ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.endpointLabelUpdateWithHttpInfo(id, aid, label);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#endpointLabelUpdate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| The unique identifier of the label to operate on. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **label** | [**Label**](Label.md)| Fields to change on the agent | [optional] |
+
+### Return type
+
+ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+
+## endpointLabelsList
+
+> EndpointLabelsList200Response endpointLabelsList(max, cursor, expand, aid)
+
+List labels
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        BigDecimal max = new BigDecimal("5"); // BigDecimal | (Optional) Maximum number of objects to return.
+        String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            EndpointLabelsList200Response result = apiInstance.endpointLabelsList(max, cursor, expand, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#endpointLabelsList");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **max** | **BigDecimal**| (Optional) Maximum number of objects to return. | [optional] |
+| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;Expand&gt;**](Expand.md)| This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**EndpointLabelsList200Response**](EndpointLabelsList200Response.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+## endpointLabelsListWithHttpInfo
+
+> ApiResponse<EndpointLabelsList200Response> endpointLabelsList endpointLabelsListWithHttpInfo(max, cursor, expand, aid)
+
+List labels
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        BigDecimal max = new BigDecimal("5"); // BigDecimal | (Optional) Maximum number of objects to return.
+        String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<EndpointLabelsList200Response> response = apiInstance.endpointLabelsListWithHttpInfo(max, cursor, expand, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#endpointLabelsList");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **max** | **BigDecimal**| (Optional) Maximum number of objects to return. | [optional] |
+| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;Expand&gt;**](Expand.md)| This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**EndpointLabelsList200Response**](EndpointLabelsList200Response.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+
+## v7EndpointLabelsPost
+
+> V7EndpointLabelsPost201Response v7EndpointLabelsPost(aid, v7EndpointLabelsPostRequest)
+
+Create label
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest = new V7EndpointLabelsPostRequest(); // V7EndpointLabelsPostRequest | Label settings
+        try {
+            V7EndpointLabelsPost201Response result = apiInstance.v7EndpointLabelsPost(aid, v7EndpointLabelsPostRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#v7EndpointLabelsPost");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **v7EndpointLabelsPostRequest** | [**V7EndpointLabelsPostRequest**](V7EndpointLabelsPostRequest.md)| Label settings | [optional] |
+
+### Return type
+
+[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | created |  * Location -  <br>  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
+## v7EndpointLabelsPostWithHttpInfo
+
+> ApiResponse<V7EndpointLabelsPost201Response> v7EndpointLabelsPost v7EndpointLabelsPostWithHttpInfo(aid, v7EndpointLabelsPostRequest)
+
+Create label
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.labels.ManageLabelsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest = new V7EndpointLabelsPostRequest(); // V7EndpointLabelsPostRequest | Label settings
+        try {
+            ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.v7EndpointLabelsPostWithHttpInfo(aid, v7EndpointLabelsPostRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManageLabelsApi#v7EndpointLabelsPost");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **v7EndpointLabelsPostRequest** | [**V7EndpointLabelsPostRequest**](V7EndpointLabelsPostRequest.md)| Label settings | [optional] |
+
+### Return type
+
+ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | created |  * Location -  <br>  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+
