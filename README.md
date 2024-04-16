@@ -1,4 +1,4 @@
-# thousandeyes-java-sdk
+# thousandeyes-sdk-java
 
 ## Owners: api-team-admin
 

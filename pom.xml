@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thousandeyes.api</groupId>
-    <artifactId>thousandeyes-java-sdk</artifactId>
+    <artifactId>thousandeyes-sdk-java</artifactId>
     <packaging>pom</packaging>
-    <name>thousandeyes-java-sdk</name>
+    <name>thousandeyes-sdk-java</name>
     <version>7.0.0-SNAPSHOT</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>ThousandEyes Java SDK</description>
