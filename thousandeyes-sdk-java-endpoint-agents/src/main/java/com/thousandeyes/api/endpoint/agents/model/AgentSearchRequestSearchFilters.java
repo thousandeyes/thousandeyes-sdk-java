@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchRequestSearchFilters.JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE,
   AgentSearchRequestSearchFilters.JSON_PROPERTY_LOCATION_CITY
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.779627Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.291563+01:00[Europe/Lisbon]")
 public class AgentSearchRequestSearchFilters {
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
   private List<String> agentName;

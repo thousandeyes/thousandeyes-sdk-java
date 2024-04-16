@@ -49,7 +49,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.878253Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.640131+01:00[Europe/Lisbon]")
 public class RunExistingTestApi {
   private final ApiClient apiClient;
 
@@ -100,8 +100,6 @@ public class RunExistingTestApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -109,7 +107,7 @@ public class RunExistingTestApi {
     }
 
     requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
 }

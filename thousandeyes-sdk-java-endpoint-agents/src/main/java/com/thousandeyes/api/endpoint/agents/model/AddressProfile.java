@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AddressProfile.JSON_PROPERTY_GATEWAY,
   AddressProfile.JSON_PROPERTY_ROUTER_HARDWARE_ADDRESS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.779627Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.291563+01:00[Europe/Lisbon]")
 public class AddressProfile {
   public static final String JSON_PROPERTY_ADDRESS_TYPE = "addressType";
   private AddressType addressType;

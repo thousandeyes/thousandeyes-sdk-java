@@ -54,7 +54,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.640529Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.190241+01:00[Europe/Lisbon]")
 public class OutagesApiPublicApi {
   private final ApiClient apiClient;
 
@@ -107,8 +107,6 @@ public class OutagesApiPublicApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -116,7 +114,7 @@ public class OutagesApiPublicApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -163,8 +161,6 @@ public class OutagesApiPublicApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -173,7 +169,7 @@ public class OutagesApiPublicApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     requestBuilder.requestBody(apiOutageFilter);
     return requestBuilder;
   }
@@ -222,8 +218,6 @@ public class OutagesApiPublicApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -231,7 +225,7 @@ public class OutagesApiPublicApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
 }

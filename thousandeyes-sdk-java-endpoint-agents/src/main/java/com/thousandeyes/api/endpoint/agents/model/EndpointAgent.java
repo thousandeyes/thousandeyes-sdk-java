@@ -68,7 +68,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_TCP_DRIVER_AVAILABLE,
   EndpointAgent.JSON_PROPERTY_NPCAP_VERSION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.779627Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.291563+01:00[Europe/Lisbon]")
 public class EndpointAgent {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;

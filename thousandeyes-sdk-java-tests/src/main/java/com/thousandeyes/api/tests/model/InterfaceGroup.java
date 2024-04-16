@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InterfaceGroup.JSON_PROPERTY_IP_ADDRESSES,
   InterfaceGroup.JSON_PROPERTY_RDNS_REGEXES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:23.827774Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.640956+01:00[Europe/Lisbon]")
 public class InterfaceGroup {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;

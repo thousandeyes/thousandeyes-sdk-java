@@ -57,7 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BgpTest.JSON_PROPERTY_ALERTS_ENABLED,
   BgpTest.JSON_PROPERTY_ALERT_RULES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:23.827774Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.640956+01:00[Europe/Lisbon]")
 public class BgpTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;

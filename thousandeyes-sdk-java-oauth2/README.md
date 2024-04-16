@@ -4,7 +4,7 @@ Endpoint for getting an OAuth2 token based on client credentials
 
 - API version: 7.0.0
 
-- Build date: 2024-02-07T22:58:17.541479Z[Europe/Lisbon]
+- Build date: 2024-04-16T16:28:26.111581+01:00[Europe/Lisbon]
 
 This endpoint allows clients to trade their client credentials for an Access Token that can be used on subsequent calls to our API. Example of usage:
 

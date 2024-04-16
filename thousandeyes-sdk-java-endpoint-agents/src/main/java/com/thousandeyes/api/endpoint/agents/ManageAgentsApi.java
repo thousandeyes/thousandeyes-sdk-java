@@ -58,7 +58,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.779627Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.291563+01:00[Europe/Lisbon]")
 public class ManageAgentsApi {
   private final ApiClient apiClient;
 
@@ -111,10 +111,7 @@ public class ManageAgentsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
-    localVarQueryParameterBaseName = "expand";
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -122,7 +119,7 @@ public class ManageAgentsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -170,8 +167,6 @@ public class ManageAgentsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -179,7 +174,7 @@ public class ManageAgentsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -227,8 +222,6 @@ public class ManageAgentsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -236,7 +229,7 @@ public class ManageAgentsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -288,12 +281,8 @@ public class ManageAgentsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
-    localVarQueryParameterBaseName = "expand";
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
-    localVarQueryParameterBaseName = "includeDeleted";
     localVarQueryParams.addAll(parameterToPairs("includeDeleted", includeDeleted));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -301,7 +290,7 @@ public class ManageAgentsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -353,10 +342,7 @@ public class ManageAgentsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
-    localVarQueryParameterBaseName = "expand";
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -365,7 +351,7 @@ public class ManageAgentsApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     requestBuilder.requestBody(endpointAgentUpdate);
     return requestBuilder;
   }
@@ -421,22 +407,13 @@ public class ManageAgentsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "max";
     localVarQueryParams.addAll(parameterToPairs("max", max));
-    localVarQueryParameterBaseName = "cursor";
     localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
-    localVarQueryParameterBaseName = "expand";
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
-    localVarQueryParameterBaseName = "includeDeleted";
     localVarQueryParams.addAll(parameterToPairs("includeDeleted", includeDeleted));
-    localVarQueryParameterBaseName = "useAllPermittedAids";
     localVarQueryParams.addAll(parameterToPairs("useAllPermittedAids", useAllPermittedAids));
-    localVarQueryParameterBaseName = "agentName";
     localVarQueryParams.addAll(parameterToPairs("agentName", agentName));
-    localVarQueryParameterBaseName = "computerName";
     localVarQueryParams.addAll(parameterToPairs("computerName", computerName));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -444,7 +421,7 @@ public class ManageAgentsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -499,16 +476,10 @@ public class ManageAgentsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "max";
     localVarQueryParams.addAll(parameterToPairs("max", max));
-    localVarQueryParameterBaseName = "cursor";
     localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
-    localVarQueryParameterBaseName = "expand";
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
-    localVarQueryParameterBaseName = "includeDeleted";
     localVarQueryParams.addAll(parameterToPairs("includeDeleted", includeDeleted));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -517,7 +488,7 @@ public class ManageAgentsApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     requestBuilder.requestBody(agentSearchRequest);
     return requestBuilder;
   }

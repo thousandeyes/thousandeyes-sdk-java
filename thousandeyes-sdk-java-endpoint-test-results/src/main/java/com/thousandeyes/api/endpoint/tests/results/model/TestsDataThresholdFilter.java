@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestsDataThresholdFilter.JSON_PROPERTY_VALUE,
   TestsDataThresholdFilter.JSON_PROPERTY_OPERATOR
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:18.077659Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.640380+01:00[Europe/Lisbon]")
 public class TestsDataThresholdFilter {
   public static final String JSON_PROPERTY_NAME = "name";
   private ThresholdFilterName name;

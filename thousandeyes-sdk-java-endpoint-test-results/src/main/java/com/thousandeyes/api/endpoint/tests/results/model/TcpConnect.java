@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TcpConnect.JSON_PROPERTY_ERROR,
   TcpConnect.JSON_PROPERTY_INFO_FLAGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:18.077659Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.640380+01:00[Europe/Lisbon]")
 public class TcpConnect {
   public static final String JSON_PROPERTY_RTT = "rtt";
   private Double rtt;
