@@ -4,7 +4,7 @@ Endpoint Instant Scheduled Tests API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-16T16:28:26.640131+01:00[Europe/Lisbon]
+- Build date: 2024-04-17T14:20:01.847122+01:00[Europe/Lisbon]
 
 
 ### Overview

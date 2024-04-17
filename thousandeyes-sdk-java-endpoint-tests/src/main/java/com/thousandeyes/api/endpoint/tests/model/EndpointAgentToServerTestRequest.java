@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTestRequest.JSON_PROPERTY_SERVER_NAME,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_INTERVAL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.543871+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.859263+01:00[Europe/Lisbon]")
 public class EndpointAgentToServerTestRequest {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
   private EndpointTestAgentSelectorType agentSelectorType;

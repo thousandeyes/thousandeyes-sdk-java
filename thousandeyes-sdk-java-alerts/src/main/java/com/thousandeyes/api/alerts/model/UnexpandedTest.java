@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedTest.JSON_PROPERTY_ALERTS_ENABLED,
   UnexpandedTest.JSON_PROPERTY_ENABLED
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:28.498353+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:04.382663+01:00[Europe/Lisbon]")
 public class UnexpandedTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
