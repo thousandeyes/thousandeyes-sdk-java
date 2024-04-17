@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentResponseExpands.JSON_PROPERTY_NOTIFICATION_RULES,
   EnterpriseAgentResponseExpands.JSON_PROPERTY_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.928625Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.635781+01:00[Europe/Lisbon]")
 public class EnterpriseAgentResponseExpands {
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<SimpleTest> tests;

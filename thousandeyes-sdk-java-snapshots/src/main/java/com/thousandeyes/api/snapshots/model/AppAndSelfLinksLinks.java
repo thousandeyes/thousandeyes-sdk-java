@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppAndSelfLinksLinks.JSON_PROPERTY_APP_LINK,
   AppAndSelfLinksLinks.JSON_PROPERTY_SELF
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.753093Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.404193+01:00[Europe/Lisbon]")
 public class AppAndSelfLinksLinks {
   public static final String JSON_PROPERTY_APP_LINK = "appLink";
   private Link appLink;

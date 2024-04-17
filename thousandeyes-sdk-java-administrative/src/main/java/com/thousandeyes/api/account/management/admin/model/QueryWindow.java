@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   QueryWindow.JSON_PROPERTY_START_DATE,
   QueryWindow.JSON_PROPERTY_END_DATE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.986770Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.439325+01:00[Europe/Lisbon]")
 public class QueryWindow {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private OffsetDateTime startDate;

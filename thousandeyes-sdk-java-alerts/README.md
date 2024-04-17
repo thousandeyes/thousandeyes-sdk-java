@@ -4,7 +4,7 @@ Alerts API
 
 - API version: 7.0.0
 
-- Build date: 2024-02-07T22:58:18.329806Z[Europe/Lisbon]
+- Build date: 2024-04-16T16:28:28.498353+01:00[Europe/Lisbon]
 
 
 ## Overview

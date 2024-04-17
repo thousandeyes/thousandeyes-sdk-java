@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NotificationWebhook.JSON_PROPERTY_INTEGRATION_ID,
   NotificationWebhook.JSON_PROPERTY_INTEGRATION_TYPE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:18.329806Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:28.498353+01:00[Europe/Lisbon]")
 public class NotificationWebhook {
   public static final String JSON_PROPERTY_INTEGRATION_ID = "integrationId";
   private List<String> integrationId;

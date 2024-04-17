@@ -52,7 +52,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.986770Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.439325+01:00[Europe/Lisbon]")
 public class UserEventsApi {
   private final ApiClient apiClient;
 
@@ -108,18 +108,11 @@ public class UserEventsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
-    localVarQueryParameterBaseName = "useAllPermittedAids";
     localVarQueryParams.addAll(parameterToPairs("useAllPermittedAids", useAllPermittedAids));
-    localVarQueryParameterBaseName = "window";
     localVarQueryParams.addAll(parameterToPairs("window", window));
-    localVarQueryParameterBaseName = "startDate";
     localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
-    localVarQueryParameterBaseName = "endDate";
     localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
-    localVarQueryParameterBaseName = "cursor";
     localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -127,7 +120,7 @@ public class UserEventsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
 }

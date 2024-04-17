@@ -55,7 +55,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:17.986770Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.439325+01:00[Europe/Lisbon]")
 public class UsersApi {
   private final ApiClient apiClient;
 
@@ -107,8 +107,6 @@ public class UsersApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -117,7 +115,7 @@ public class UsersApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     requestBuilder.requestBody(userRequestBody);
     return requestBuilder;
   }
@@ -164,8 +162,6 @@ public class UsersApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -173,7 +169,7 @@ public class UsersApi {
     }
 
     requestBuilder.header("Accept", List.of("application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -221,8 +217,6 @@ public class UsersApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -230,7 +224,7 @@ public class UsersApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -271,8 +265,6 @@ public class UsersApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -280,7 +272,7 @@ public class UsersApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     return requestBuilder;
   }
   /**
@@ -334,8 +326,6 @@ public class UsersApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "aid";
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -344,7 +334,7 @@ public class UsersApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-
+    requestBuilder.header("User-Agent", "ThousandEyesSDK-Java/7.0.0");
     requestBuilder.requestBody(userRequestBody);
     return requestBuilder;
   }

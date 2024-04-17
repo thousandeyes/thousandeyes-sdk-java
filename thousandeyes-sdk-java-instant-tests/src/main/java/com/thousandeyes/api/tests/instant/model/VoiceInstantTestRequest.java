@@ -59,7 +59,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceInstantTestRequest.JSON_PROPERTY_PORT,
   VoiceInstantTestRequest.JSON_PROPERTY_TARGET_AGENT_ID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-02-07T22:58:18.001552Z[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.640197+01:00[Europe/Lisbon]")
 public class VoiceInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
