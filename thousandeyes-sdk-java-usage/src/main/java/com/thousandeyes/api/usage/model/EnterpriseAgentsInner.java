@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentsInner.JSON_PROPERTY_ACCOUNT_GROUP_NAME,
   EnterpriseAgentsInner.JSON_PROPERTY_ENTERPRISE_AGENTS_USED
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:32.421106+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:08.765351+01:00[Europe/Lisbon]")
 public class EnterpriseAgentsInner {
   public static final String JSON_PROPERTY_AID = "aid";
   private Object aid = null;

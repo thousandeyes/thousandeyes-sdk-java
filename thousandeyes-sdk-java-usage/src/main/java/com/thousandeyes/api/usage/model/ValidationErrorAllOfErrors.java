@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ValidationErrorAllOfErrors.JSON_PROPERTY_FIELD,
   ValidationErrorAllOfErrors.JSON_PROPERTY_MESSAGE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:32.421106+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:08.765351+01:00[Europe/Lisbon]")
 public class ValidationErrorAllOfErrors {
   public static final String JSON_PROPERTY_CODE = "code";
   private String code;

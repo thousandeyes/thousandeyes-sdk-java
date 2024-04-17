@@ -4,7 +4,7 @@ BGP Monitors API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-16T16:28:25.506526+01:00[Europe/Lisbon]
+- Build date: 2024-04-17T14:20:00.837714+01:00[Europe/Lisbon]
 
 
 ## Overview

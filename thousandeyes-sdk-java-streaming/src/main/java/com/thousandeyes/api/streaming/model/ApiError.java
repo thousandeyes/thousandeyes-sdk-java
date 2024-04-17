@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiError.JSON_PROPERTY_ERRORS,
   ApiError.JSON_PROPERTY_PATH
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.186324+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.690107+01:00[Europe/Lisbon]")
 public class ApiError {
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;

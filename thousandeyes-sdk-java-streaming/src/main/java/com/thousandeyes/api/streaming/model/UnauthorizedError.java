@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnauthorizedError.JSON_PROPERTY_ERROR,
   UnauthorizedError.JSON_PROPERTY_ERROR_DESCRIPTION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.186324+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.690107+01:00[Europe/Lisbon]")
 public class UnauthorizedError extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_ERROR = "error";
   private String error;

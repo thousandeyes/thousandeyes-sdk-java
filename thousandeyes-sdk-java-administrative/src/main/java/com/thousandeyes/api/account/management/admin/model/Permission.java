@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Permission.JSON_PROPERTY_IS_MANAGEMENT_PERMISSION,
   Permission.JSON_PROPERTY_PERMISSION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:26.439325+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.812817+01:00[Europe/Lisbon]")
 public class Permission {
   public static final String JSON_PROPERTY_LABEL = "label";
   private String label;

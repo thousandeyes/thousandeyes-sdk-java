@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   QuotasQuotasInner.JSON_PROPERTY_ORGANIZATION_QUOTA,
   QuotasQuotasInner.JSON_PROPERTY_ACCOUNT_GROUP_QUOTAS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-16T16:28:32.421106+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:08.765351+01:00[Europe/Lisbon]")
 public class QuotasQuotasInner {
   public static final String JSON_PROPERTY_ORGANIZATION_QUOTA = "organizationQuota";
   private OrganizationQuota organizationQuota;
