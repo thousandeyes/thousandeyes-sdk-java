@@ -60,7 +60,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsSecTest.JSON_PROPERTY_DOMAIN,
   DnsSecTest.JSON_PROPERTY_DNS_QUERY_CLASS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.911482+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
 public class DnsSecTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;

@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiOutageFilter.JSON_PROPERTY_APPLICATION_NAME,
   ApiOutageFilter.JSON_PROPERTY_INTERFACE_NETWORK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.681166+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.699320+01:00[Europe/Lisbon]")
 public class ApiOutageFilter {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private String startDate;

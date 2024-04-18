@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SimpleAgent.JSON_PROPERTY_PREFIX,
   SimpleAgent.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.911482+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
 public class SimpleAgent {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
   private List<String> ipAddresses;

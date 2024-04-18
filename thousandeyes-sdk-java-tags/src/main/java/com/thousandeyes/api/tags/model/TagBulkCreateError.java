@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TagBulkCreateError.JSON_PROPERTY_RESPONSE_CODE,
   TagBulkCreateError.JSON_PROPERTY_MESSAGE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.847804+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.957080+01:00[Europe/Lisbon]")
 public class TagBulkCreateError {
   public static final String JSON_PROPERTY_TAG = "tag";
   private Map<String, Tag> tag = new HashMap<>();

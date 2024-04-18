@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SslCert.JSON_PROPERTY_SUBJECT_ALTERNATIVE_NAMES,
   SslCert.JSON_PROPERTY_SUBJECT_NAME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.894016+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.084308+01:00[Europe/Lisbon]")
 public class SslCert {
   public static final String JSON_PROPERTY_DAYS_UNTIL_EXPIRY = "daysUntilExpiry";
   private Integer daysUntilExpiry;

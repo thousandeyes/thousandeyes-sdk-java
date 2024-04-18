@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentsConnectionString200Response.JSON_PROPERTY_LINKS,
   EndpointAgentsConnectionString200Response.JSON_PROPERTY_CONNECTION_STRING
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.720354+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.770114+01:00[Europe/Lisbon]")
 public class EndpointAgentsConnectionString200Response {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;

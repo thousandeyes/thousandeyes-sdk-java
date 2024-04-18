@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PutStreamTagMatchInner.JSON_PROPERTY_KEY,
   PutStreamTagMatchInner.JSON_PROPERTY_VALUE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.690107+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.565267+01:00[Europe/Lisbon]")
 public class PutStreamTagMatchInner {
   public static final String JSON_PROPERTY_OBJECT_TYPE = "objectType";
   private TagMatchObjectType objectType;

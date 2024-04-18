@@ -100,7 +100,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdatePageLoadTest.JSON_PROPERTY_HTTP_INTERVAL,
   UpdatePageLoadTest.JSON_PROPERTY_SUBINTERVAL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.911482+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
 public class UpdatePageLoadTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;

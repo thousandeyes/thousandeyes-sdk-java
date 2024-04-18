@@ -4,7 +4,7 @@ Instant Tests API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-17T14:20:01.894005+01:00[Europe/Lisbon]
+- Build date: 2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]
 
 
 ### Overview
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-instant-tests</artifactId>
-  <version>7.0.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-instant-tests:7.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-instant-tests:1.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-instant-tests-7.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-instant-tests-1.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
