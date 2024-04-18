@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNetworkOutageResponse.JSON_PROPERTY_AFFECTED_LOCATIONS,
   ApiNetworkOutageResponse.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.681166+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.699320+01:00[Europe/Lisbon]")
 public class ApiNetworkOutageResponse {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

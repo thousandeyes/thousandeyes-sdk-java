@@ -4,7 +4,7 @@ Tags API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-17T14:20:01.847804+01:00[Europe/Lisbon]
+- Build date: 2024-04-18T12:55:01.957080+01:00[Europe/Lisbon]
 
 The ThousandEyes Tags API provides a tagging system with key/value pairs. It allows you to tag assets within the ThousandEyes platform (such as agents, tests, or alert rules) with meaningful metadata. For example: `branch:sfo`, `branch:nyc`, and `team:netops`.
 
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-tags</artifactId>
-  <version>7.0.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -63,7 +63,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-tags:7.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-tags:1.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -76,7 +76,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-tags-7.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-tags-1.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SnapshotRequest.JSON_PROPERTY_END_DATE,
   SnapshotRequest.JSON_PROPERTY_IS_PUBLIC
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.811446+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.934536+01:00[Europe/Lisbon]")
 public class SnapshotRequest {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;

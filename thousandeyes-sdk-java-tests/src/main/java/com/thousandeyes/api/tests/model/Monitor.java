@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Monitor.JSON_PROPERTY_MONITOR_TYPE,
   Monitor.JSON_PROPERTY_MONITOR_NAME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.911482+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
 public class Monitor {
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
   private String countryId;

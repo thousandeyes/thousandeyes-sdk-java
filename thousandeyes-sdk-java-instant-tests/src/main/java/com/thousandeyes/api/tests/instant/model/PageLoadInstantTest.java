@@ -91,7 +91,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   PageLoadInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.894005+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
 public class PageLoadInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;

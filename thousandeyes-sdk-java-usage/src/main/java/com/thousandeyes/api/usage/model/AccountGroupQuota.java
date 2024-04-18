@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AccountGroupQuota.JSON_PROPERTY_VALUE,
   AccountGroupQuota.JSON_PROPERTY_AID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:08.765351+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:07.965038+01:00[Europe/Lisbon]")
 public class AccountGroupQuota {
   public static final String JSON_PROPERTY_VALUE = "value";
   private Long value;

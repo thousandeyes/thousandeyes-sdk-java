@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   OrganizationsQuotasUnassignOrganizationsInner.JSON_PROPERTY_ORG_ID,
   OrganizationsQuotasUnassignOrganizationsInner.JSON_PROPERTY_ACCOUNT_GROUPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:08.765351+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:07.965038+01:00[Europe/Lisbon]")
 public class OrganizationsQuotasUnassignOrganizationsInner {
   public static final String JSON_PROPERTY_ORG_ID = "orgId";
   private String orgId;

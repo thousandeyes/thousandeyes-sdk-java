@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiCatalogProviderDetailsLocationsInner.JSON_PROPERTY_LOCATION,
   ApiCatalogProviderDetailsLocationsInner.JSON_PROPERTY_INTERFACES_COUNT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.681166+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.699320+01:00[Europe/Lisbon]")
 public class ApiCatalogProviderDetailsLocationsInner {
   public static final String JSON_PROPERTY_LOCATION = "location";
   private String location;

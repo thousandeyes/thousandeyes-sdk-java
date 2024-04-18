@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetTags200Response.JSON_PROPERTY_TAGS,
   GetTags200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.847804+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.957080+01:00[Europe/Lisbon]")
 public class GetTags200Response {
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<GetTag> tags;

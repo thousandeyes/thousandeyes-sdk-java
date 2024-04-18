@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   CloudEnterpriseAgents.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.832402+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.917713+01:00[Europe/Lisbon]")
 public class CloudEnterpriseAgents {
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<CloudEnterpriseAgent> agents;

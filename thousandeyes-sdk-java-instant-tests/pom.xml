@@ -5,13 +5,13 @@
     <artifactId>thousandeyes-sdk-java-instant-tests</artifactId>
     <packaging>jar</packaging>
     <name>thousandeyes-sdk-java-instant-tests</name>
-    <version>7.0.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>ThousandEyes Java SDK for Instant Tests API</description>
     <parent>
         <groupId>com.thousandeyes.api</groupId>
         <artifactId>thousandeyes-sdk-java</artifactId>
-        <version>7.0.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>

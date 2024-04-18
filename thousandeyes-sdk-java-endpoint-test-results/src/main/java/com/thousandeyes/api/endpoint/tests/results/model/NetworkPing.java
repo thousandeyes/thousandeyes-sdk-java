@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkPing.JSON_PROPERTY_ERROR,
   NetworkPing.JSON_PROPERTY_INFO_FLAGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-17T14:20:01.893850+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083600+01:00[Europe/Lisbon]")
 public class NetworkPing {
   public static final String JSON_PROPERTY_AVG_RTT = "avgRtt";
   private Integer avgRtt;
