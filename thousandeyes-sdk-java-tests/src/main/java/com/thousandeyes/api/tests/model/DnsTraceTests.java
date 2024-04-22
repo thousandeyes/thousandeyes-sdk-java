@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.api.tests.model.DnsTraceTest;
+import com.thousandeyes.api.tests.model.UnexpandedDnsTraceTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,20 +34,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DnsTraceTests.JSON_PROPERTY_TESTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class DnsTraceTests {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<DnsTraceTest> tests;
+  private List<UnexpandedDnsTraceTest> tests;
 
   public DnsTraceTests() { 
   }
 
-  public DnsTraceTests tests(List<DnsTraceTest> tests) {
+  public DnsTraceTests tests(List<UnexpandedDnsTraceTest> tests) {
     this.tests = tests;
     return this;
   }
 
-  public DnsTraceTests addTestsItem(DnsTraceTest testsItem) {
+  public DnsTraceTests addTestsItem(UnexpandedDnsTraceTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -63,14 +63,14 @@ public class DnsTraceTests {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<DnsTraceTest> getTests() {
+  public List<UnexpandedDnsTraceTest> getTests() {
     return tests;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<DnsTraceTest> tests) {
+  public void setTests(List<UnexpandedDnsTraceTest> tests) {
     this.tests = tests;
   }
 

@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Dashboard upon which this dashboard snapshot is based upon.
  */
 @JsonPropertyOrder({
+  ApiDashboard.JSON_PROPERTY_GLOBAL_FILTER_ID,
   ApiDashboard.JSON_PROPERTY_ACCOUNT_ID,
   ApiDashboard.JSON_PROPERTY_CREATED_BY,
   ApiDashboard.JSON_PROPERTY_MODIFIED_BY,
@@ -60,16 +61,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDashboard.JSON_PROPERTY_IS_GLOBAL_OVERRIDE,
   ApiDashboard.JSON_PROPERTY_IS_MIGRATED_REPORT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 public class ApiDashboard {
+  public static final String JSON_PROPERTY_GLOBAL_FILTER_ID = "globalFilterId";
+  private String globalFilterId;
+
   public static final String JSON_PROPERTY_ACCOUNT_ID = "accountId";
-  private Integer accountId;
+  private Long accountId;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
   private String modifiedDate;
@@ -136,9 +140,9 @@ public class ApiDashboard {
 
   @JsonCreator
   public ApiDashboard(
-    @JsonProperty(JSON_PROPERTY_ACCOUNT_ID) Integer accountId, 
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) Integer createdBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) Integer modifiedBy, 
+    @JsonProperty(JSON_PROPERTY_ACCOUNT_ID) Long accountId, 
+    @JsonProperty(JSON_PROPERTY_CREATED_BY) Long createdBy, 
+    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) Long modifiedBy, 
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) String modifiedDate, 
     @JsonProperty(JSON_PROPERTY_MIGRATED_REPORT) Boolean migratedReport, 
     @JsonProperty(JSON_PROPERTY_DASHBOARD_ID) String dashboardId, 
@@ -168,6 +172,31 @@ public class ApiDashboard {
     this.isMigratedReport = isMigratedReport;
   }
 
+  public ApiDashboard globalFilterId(String globalFilterId) {
+    this.globalFilterId = globalFilterId;
+    return this;
+  }
+
+   /**
+   * Default global dashboard filter ID (obtained from &#x60;/dashboards/filters&#x60; endpoint).
+   * @return globalFilterId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_GLOBAL_FILTER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getGlobalFilterId() {
+    return globalFilterId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GLOBAL_FILTER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGlobalFilterId(String globalFilterId) {
+    this.globalFilterId = globalFilterId;
+  }
+
+
    /**
    * Identifier for the account group associated with a dashboard.
    * @return accountId
@@ -176,7 +205,7 @@ public class ApiDashboard {
   @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
@@ -191,7 +220,7 @@ public class ApiDashboard {
   @JsonProperty(JSON_PROPERTY_CREATED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
@@ -206,7 +235,7 @@ public class ApiDashboard {
   @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
@@ -631,7 +660,8 @@ public class ApiDashboard {
       return false;
     }
     ApiDashboard apiDashboard = (ApiDashboard) o;
-    return Objects.equals(this.accountId, apiDashboard.accountId) &&
+    return Objects.equals(this.globalFilterId, apiDashboard.globalFilterId) &&
+        Objects.equals(this.accountId, apiDashboard.accountId) &&
         Objects.equals(this.createdBy, apiDashboard.createdBy) &&
         Objects.equals(this.modifiedBy, apiDashboard.modifiedBy) &&
         Objects.equals(this.modifiedDate, apiDashboard.modifiedDate) &&
@@ -658,13 +688,14 @@ public class ApiDashboard {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, createdBy, modifiedBy, modifiedDate, globalOverride, migratedReport, apiLink, links, dashboardId, title, isBuiltIn, aid, dashboardCreatedBy, dashboardModifiedBy, dashboardModifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport);
+    return Objects.hash(globalFilterId, accountId, createdBy, modifiedBy, modifiedDate, globalOverride, migratedReport, apiLink, links, dashboardId, title, isBuiltIn, aid, dashboardCreatedBy, dashboardModifiedBy, dashboardModifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApiDashboard {\n");
+    sb.append("    globalFilterId: ").append(toIndentedString(globalFilterId)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    modifiedBy: ").append(toIndentedString(modifiedBy)).append("\n");

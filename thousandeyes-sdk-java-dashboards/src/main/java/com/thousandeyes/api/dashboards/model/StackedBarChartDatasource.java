@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -28,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum StackedBarChartDatasource {
   
   CLOUD_AND_ENTERPRISE_AGENTS("CLOUD_AND_ENTERPRISE_AGENTS"),
+  
+  ENDPOINT_AGENTS("ENDPOINT_AGENTS"),
   
   ENDPOINT_BROWSER_SESSION("ENDPOINT_BROWSER_SESSION"),
   

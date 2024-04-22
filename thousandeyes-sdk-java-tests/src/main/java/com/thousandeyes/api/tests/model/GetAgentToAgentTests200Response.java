@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -21,8 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.api.tests.model.AgentToAgentTest;
 import com.thousandeyes.api.tests.model.SelfLinksLinks;
+import com.thousandeyes.api.tests.model.UnexpandedAgentToAgentTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetAgentToAgentTests200Response.JSON_PROPERTY_TESTS,
   GetAgentToAgentTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class GetAgentToAgentTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<AgentToAgentTest> tests;
+  private List<UnexpandedAgentToAgentTest> tests;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -47,12 +47,12 @@ public class GetAgentToAgentTests200Response {
   public GetAgentToAgentTests200Response() { 
   }
 
-  public GetAgentToAgentTests200Response tests(List<AgentToAgentTest> tests) {
+  public GetAgentToAgentTests200Response tests(List<UnexpandedAgentToAgentTest> tests) {
     this.tests = tests;
     return this;
   }
 
-  public GetAgentToAgentTests200Response addTestsItem(AgentToAgentTest testsItem) {
+  public GetAgentToAgentTests200Response addTestsItem(UnexpandedAgentToAgentTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -68,14 +68,14 @@ public class GetAgentToAgentTests200Response {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AgentToAgentTest> getTests() {
+  public List<UnexpandedAgentToAgentTest> getTests() {
     return tests;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<AgentToAgentTest> tests) {
+  public void setTests(List<UnexpandedAgentToAgentTest> tests) {
     this.tests = tests;
   }
 

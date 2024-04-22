@@ -25,7 +25,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Create dashboard
 
-Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; premission (Regular User). 
+Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
 
 ### Example
 
@@ -49,7 +49,7 @@ public class Example {
 
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         Dashboard dashboard = new Dashboard(); // Dashboard | Request body schema to create a dashboard.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             Dashboard result = apiInstance.createDashboard(dashboard, aid);
             System.out.println(result);
@@ -103,7 +103,7 @@ public class Example {
 
 Create dashboard
 
-Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; premission (Regular User). 
+Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
 
 ### Example
 
@@ -128,7 +128,7 @@ public class Example {
 
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         Dashboard dashboard = new Dashboard(); // Dashboard | Request body schema to create a dashboard.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Dashboard> response = apiInstance.createDashboardWithHttpInfo(dashboard, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -209,7 +209,7 @@ public class Example {
 
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteDashboard(dashboardId, aid);
         } catch (ApiException e) {
@@ -287,7 +287,7 @@ public class Example {
 
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteDashboardWithHttpInfo(dashboardId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -367,7 +367,7 @@ public class Example {
 
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiDashboard result = apiInstance.getDashboardById(dashboardId, aid);
             System.out.println(result);
@@ -446,7 +446,7 @@ public class Example {
 
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<ApiDashboard> response = apiInstance.getDashboardByIdWithHttpInfo(dashboardId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -528,7 +528,7 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String widgetId = "unpmg"; // String | A Identifier for a widget.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
@@ -623,7 +623,7 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String widgetId = "unpmg"; // String | A Identifier for a widget.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
@@ -718,7 +718,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             List<ApiDashboard> result = apiInstance.getDashboardsForUser(aid);
             System.out.println(result);
@@ -795,7 +795,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<List<ApiDashboard>> response = apiInstance.getDashboardsForUserWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -876,7 +876,7 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         Dashboard dashboard = new Dashboard(); // Dashboard | Request body schema to update a dashboard.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             Dashboard result = apiInstance.updateDashboard(dashboardId, dashboard, aid);
             System.out.println(result);
@@ -957,7 +957,7 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         Dashboard dashboard = new Dashboard(); // Dashboard | Request body schema to update a dashboard.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Dashboard> response = apiInstance.updateDashboardWithHttpInfo(dashboardId, dashboard, aid);
             System.out.println("Status code: " + response.getStatusCode());

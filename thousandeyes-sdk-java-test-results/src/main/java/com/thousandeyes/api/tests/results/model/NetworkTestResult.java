@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkTestResult.JSON_PROPERTY_SERVER,
   NetworkTestResult.JSON_PROPERTY_DIRECTION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.084308+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.800492+01:00[Europe/London]")
 public class NetworkTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;

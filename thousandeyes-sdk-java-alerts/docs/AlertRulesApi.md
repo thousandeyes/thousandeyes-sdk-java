@@ -47,7 +47,7 @@ public class Example {
 
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CreateAlertRule201Response result = apiInstance.createAlertRule(ruleDetailUpdate, aid);
             System.out.println(result);
@@ -126,7 +126,7 @@ public class Example {
 
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CreateAlertRule201Response> response = apiInstance.createAlertRuleWithHttpInfo(ruleDetailUpdate, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -207,7 +207,7 @@ public class Example {
 
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String ruleId = "127094"; // String | Unique alert rule ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteAlertRule(ruleId, aid);
         } catch (ApiException e) {
@@ -285,7 +285,7 @@ public class Example {
 
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String ruleId = "127094"; // String | Unique alert rule ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteAlertRuleWithHttpInfo(ruleId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -365,7 +365,7 @@ public class Example {
 
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String ruleId = "127094"; // String | Unique alert rule ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetAlertRuleDetails200Response result = apiInstance.getAlertRuleDetails(ruleId, aid);
             System.out.println(result);
@@ -443,7 +443,7 @@ public class Example {
 
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String ruleId = "127094"; // String | Unique alert rule ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetAlertRuleDetails200Response> response = apiInstance.getAlertRuleDetailsWithHttpInfo(ruleId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -522,7 +522,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetAlertsRules200Response result = apiInstance.getAlertsRules(aid);
             System.out.println(result);
@@ -598,7 +598,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetAlertsRules200Response> response = apiInstance.getAlertsRulesWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -678,7 +678,7 @@ public class Example {
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String ruleId = "127094"; // String | Unique alert rule ID.
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CreateAlertRule201Response result = apiInstance.updateAlertRule(ruleId, ruleDetailUpdate, aid);
             System.out.println(result);
@@ -759,7 +759,7 @@ public class Example {
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String ruleId = "127094"; // String | Unique alert rule ID.
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CreateAlertRule201Response> response = apiInstance.updateAlertRuleWithHttpInfo(ruleId, ruleDetailUpdate, aid);
             System.out.println("Status code: " + response.getStatusCode());

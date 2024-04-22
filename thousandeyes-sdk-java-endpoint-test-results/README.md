@@ -4,7 +4,7 @@ Endpoint Test Results API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-18T12:55:02.083600+01:00[Europe/Lisbon]
+- Build date: 2024-04-22T10:43:50.862924+01:00[Europe/London]
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 
@@ -42,7 +42,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-test-results</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>7.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -52,7 +52,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-test-results:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-test-results:7.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -65,7 +65,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-test-results-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-test-results-7.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -86,7 +86,7 @@ public class LocalNetworkTestsResultsApiExample {
         // overriding the host and port, timeout, etc.
         LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
         String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetEndpointLocalNetworkTopologyDetails200Response result = apiInstance.getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid);
             System.out.println(result);

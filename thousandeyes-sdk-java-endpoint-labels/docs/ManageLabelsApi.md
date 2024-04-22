@@ -4,8 +4,8 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**endpointLabelDelete**](ManageLabelsApi.md#endpointLabelDelete) | **DELETE** /v7/endpoint/labels/{id} | Deletes label |
-| [**endpointLabelDeleteWithHttpInfo**](ManageLabelsApi.md#endpointLabelDeleteWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Deletes label |
+| [**endpointLabelDelete**](ManageLabelsApi.md#endpointLabelDelete) | **DELETE** /v7/endpoint/labels/{id} | Delete label |
+| [**endpointLabelDeleteWithHttpInfo**](ManageLabelsApi.md#endpointLabelDeleteWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Delete label |
 | [**endpointLabelGet**](ManageLabelsApi.md#endpointLabelGet) | **GET** /v7/endpoint/labels/{id} | Retrieve label |
 | [**endpointLabelGetWithHttpInfo**](ManageLabelsApi.md#endpointLabelGetWithHttpInfo) | **GET** /v7/endpoint/labels/{id} | Retrieve label |
 | [**endpointLabelUpdate**](ManageLabelsApi.md#endpointLabelUpdate) | **PATCH** /v7/endpoint/labels/{id} | Update label |
@@ -21,7 +21,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 > void endpointLabelDelete(id, aid)
 
-Deletes label
+Delete label
 
 Deletes the label from your account. 
 
@@ -47,7 +47,7 @@ public class Example {
 
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String id = "id_example"; // String | The unique identifier of the label to operate on.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.endpointLabelDelete(id, aid);
         } catch (ApiException e) {
@@ -96,7 +96,7 @@ null (empty response body)
 
 > ApiResponse<Void> endpointLabelDelete endpointLabelDeleteWithHttpInfo(id, aid)
 
-Deletes label
+Delete label
 
 Deletes the label from your account. 
 
@@ -123,7 +123,7 @@ public class Example {
 
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String id = "id_example"; // String | The unique identifier of the label to operate on.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.endpointLabelDeleteWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -202,7 +202,7 @@ public class Example {
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String id = "id_example"; // String | The unique identifier of the label to operate on.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             V7EndpointLabelsPost201Response result = apiInstance.endpointLabelGet(id, expand, aid);
             System.out.println(result);
@@ -281,7 +281,7 @@ public class Example {
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String id = "id_example"; // String | The unique identifier of the label to operate on.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.endpointLabelGetWithHttpInfo(id, expand, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -361,7 +361,7 @@ public class Example {
 
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String id = "id_example"; // String | The unique identifier of the label to operate on.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Label label = new Label(); // Label | Fields to change on the agent
         try {
             V7EndpointLabelsPost201Response result = apiInstance.endpointLabelUpdate(id, aid, label);
@@ -441,7 +441,7 @@ public class Example {
 
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String id = "id_example"; // String | The unique identifier of the label to operate on.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Label label = new Label(); // Label | Fields to change on the agent
         try {
             ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.endpointLabelUpdateWithHttpInfo(id, aid, label);
@@ -499,6 +499,8 @@ ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Respons
 
 List labels
 
+Returns a list of labels.
+
 ### Example
 
 ```java
@@ -523,7 +525,7 @@ public class Example {
         BigDecimal max = new BigDecimal("5"); // BigDecimal | (Optional) Maximum number of objects to return.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             EndpointLabelsList200Response result = apiInstance.endpointLabelsList(max, cursor, expand, aid);
             System.out.println(result);
@@ -576,6 +578,8 @@ public class Example {
 
 List labels
 
+Returns a list of labels.
+
 ### Example
 
 ```java
@@ -601,7 +605,7 @@ public class Example {
         BigDecimal max = new BigDecimal("5"); // BigDecimal | (Optional) Maximum number of objects to return.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<EndpointLabelsList200Response> response = apiInstance.endpointLabelsListWithHttpInfo(max, cursor, expand, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -657,6 +661,8 @@ ApiResponse<[**EndpointLabelsList200Response**](EndpointLabelsList200Response.md
 
 Create label
 
+Creates a new label.
+
 ### Example
 
 ```java
@@ -678,7 +684,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest = new V7EndpointLabelsPostRequest(); // V7EndpointLabelsPostRequest | Label settings
         try {
             V7EndpointLabelsPost201Response result = apiInstance.v7EndpointLabelsPost(aid, v7EndpointLabelsPostRequest);
@@ -731,6 +737,8 @@ public class Example {
 
 Create label
 
+Creates a new label.
+
 ### Example
 
 ```java
@@ -753,7 +761,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest = new V7EndpointLabelsPostRequest(); // V7EndpointLabelsPostRequest | Label settings
         try {
             ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.v7EndpointLabelsPostWithHttpInfo(aid, v7EndpointLabelsPostRequest);

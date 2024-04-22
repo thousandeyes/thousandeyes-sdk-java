@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -57,7 +57,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateFtpServerTest.JSON_PROPERTY_LINKS,
   UpdateFtpServerTest.JSON_PROPERTY_LABELS,
   UpdateFtpServerTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  UpdateFtpServerTest.JSON_PROPERTY_AGENTS,
   UpdateFtpServerTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   UpdateFtpServerTest.JSON_PROPERTY_DOWNLOAD_LIMIT,
   UpdateFtpServerTest.JSON_PROPERTY_FTP_TARGET_TIME,
@@ -76,10 +75,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateFtpServerTest.JSON_PROPERTY_USERNAME,
   UpdateFtpServerTest.JSON_PROPERTY_FIXED_PACKET_RATE,
   UpdateFtpServerTest.JSON_PROPERTY_IPV6_POLICY,
+  UpdateFtpServerTest.JSON_PROPERTY_AGENTS,
   UpdateFtpServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  UpdateFtpServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateFtpServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class UpdateFtpServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -131,9 +132,6 @@ public class UpdateFtpServerTest {
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
-
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -189,8 +187,14 @@ public class UpdateFtpServerTest {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestRequestAllOfAgents> agents;
+
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<String> monitors;
@@ -586,39 +590,6 @@ public class UpdateFtpServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSharedWithAccounts(List<String> sharedWithAccounts) {
     this.sharedWithAccounts = sharedWithAccounts;
-  }
-
-
-  public UpdateFtpServerTest agents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public UpdateFtpServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestRequestAllOfAgents> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
   }
 
 
@@ -1080,6 +1051,39 @@ public class UpdateFtpServerTest {
   }
 
 
+  public UpdateFtpServerTest agents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public UpdateFtpServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestRequestAllOfAgents> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+  }
+
+
   public UpdateFtpServerTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1102,6 +1106,31 @@ public class UpdateFtpServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
+  }
+
+
+  public UpdateFtpServerTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
   }
 
 
@@ -1167,7 +1196,6 @@ public class UpdateFtpServerTest {
         Objects.equals(this.links, updateFtpServerTest.links) &&
         Objects.equals(this.labels, updateFtpServerTest.labels) &&
         Objects.equals(this.sharedWithAccounts, updateFtpServerTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, updateFtpServerTest.agents) &&
         Objects.equals(this.bandwidthMeasurements, updateFtpServerTest.bandwidthMeasurements) &&
         Objects.equals(this.downloadLimit, updateFtpServerTest.downloadLimit) &&
         Objects.equals(this.ftpTargetTime, updateFtpServerTest.ftpTargetTime) &&
@@ -1186,13 +1214,15 @@ public class UpdateFtpServerTest {
         Objects.equals(this.username, updateFtpServerTest.username) &&
         Objects.equals(this.fixedPacketRate, updateFtpServerTest.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, updateFtpServerTest.ipv6Policy) &&
+        Objects.equals(this.agents, updateFtpServerTest.agents) &&
         Objects.equals(this.bgpMeasurements, updateFtpServerTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, updateFtpServerTest.usePublicBgp) &&
         Objects.equals(this.monitors, updateFtpServerTest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, bgpMeasurements, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, agents, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1216,7 +1246,6 @@ public class UpdateFtpServerTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    downloadLimit: ").append(toIndentedString(downloadLimit)).append("\n");
     sb.append("    ftpTargetTime: ").append(toIndentedString(ftpTargetTime)).append("\n");
@@ -1235,7 +1264,9 @@ public class UpdateFtpServerTest {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();

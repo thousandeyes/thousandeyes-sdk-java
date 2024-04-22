@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.tests.model.SelfLinksLinks;
-import com.thousandeyes.api.tests.model.SipServerTest;
+import com.thousandeyes.api.tests.model.UnexpandedSipServerTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetSipServerTests200Response.JSON_PROPERTY_TESTS,
   GetSipServerTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class GetSipServerTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<SipServerTest> tests;
+  private List<UnexpandedSipServerTest> tests;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -47,12 +47,12 @@ public class GetSipServerTests200Response {
   public GetSipServerTests200Response() { 
   }
 
-  public GetSipServerTests200Response tests(List<SipServerTest> tests) {
+  public GetSipServerTests200Response tests(List<UnexpandedSipServerTest> tests) {
     this.tests = tests;
     return this;
   }
 
-  public GetSipServerTests200Response addTestsItem(SipServerTest testsItem) {
+  public GetSipServerTests200Response addTestsItem(UnexpandedSipServerTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -68,14 +68,14 @@ public class GetSipServerTests200Response {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<SipServerTest> getTests() {
+  public List<UnexpandedSipServerTest> getTests() {
     return tests;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<SipServerTest> tests) {
+  public void setTests(List<UnexpandedSipServerTest> tests) {
     this.tests = tests;
   }
 

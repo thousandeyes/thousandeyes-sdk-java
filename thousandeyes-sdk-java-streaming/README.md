@@ -4,10 +4,20 @@ ThousandEyes for OpenTelemetry API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-18T12:55:01.565267+01:00[Europe/Lisbon]
+- Build date: 2024-04-22T10:43:50.462611+01:00[Europe/London]
 
+ThousandEyes for OpenTelemetry provides machine-to-machine integration between ThousandEyes and its customers. It allows you to export ThousandEyes telemetry data in OTel format, which is widely used in the industry. With ThousandEyes for OTel, you can leverage frameworks widely used in the observability domain - such as Splunk, Grafana, and Honeycomb - to capture and analyze ThousandEyes data. Any client that supports OTel can use ThousandEyes for OpenTelemetry.
 
-Configure ThousandEyes to stream or push test data to a OpenTelemetry compliant endpoint with the ThousandEyes for OpenTelemetry API.
+ThousandEyes for OTel is made up of the following components:
+
+* Data streaming APIs that you can use to configure and enable your ThousandEyes tests with OTel-compatible streams,
+in particular to configure how ThousandEyes telemetry data is exported to client integrations.
+* A set of streaming pipelines called _collectors_ that actively fetch ThousandEyes network test data, enrich the data with some additional
+detail, filter, and push the data to the customer-configured endpoints, depending on what you configure via the public APIs.
+* Third-party OTel collectors that receive, transform, filter, and export different metrics to client applications such as AppD, or any other OTel-capable client
+configuration.
+
+For more information about ThousandEyes for OpenTelemetry, see the [documentation](https://docs.thousandeyes.com/product-documentation/api/opentelemetry).
 
 
 
@@ -44,7 +54,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-streaming</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>7.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -54,7 +64,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-streaming:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-streaming:7.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -67,7 +77,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-streaming-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-streaming-7.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -87,7 +97,7 @@ public class StreamingApiExample {
         // Configure clients using the `defaultClient` object, such as
         // overriding the host and port, timeout, etc.
         StreamingApi apiInstance = new StreamingApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Stream stream = new Stream(); // Stream | Stream to configure
         try {
             CreateStreamResponse result = apiInstance.createStream(aid, stream);

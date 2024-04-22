@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -30,6 +30,8 @@ public enum GeoMapDatasource {
   ALERTS("ALERTS"),
   
   CLOUD_AND_ENTERPRISE_AGENTS("CLOUD_AND_ENTERPRISE_AGENTS"),
+  
+  ENDPOINT_AGENTS("ENDPOINT_AGENTS"),
   
   ENDPOINT_AST_TEST("ENDPOINT_AST_TEST"),
   

@@ -14,11 +14,15 @@ src/main/java/com/thousandeyes/api/usage/model/AccountGroupQuota.java
 src/main/java/com/thousandeyes/api/usage/model/EndpointAgentsEmbeddedInner.java
 src/main/java/com/thousandeyes/api/usage/model/EndpointAgentsEssentialsInner.java
 src/main/java/com/thousandeyes/api/usage/model/EndpointAgentsInner.java
+src/main/java/com/thousandeyes/api/usage/model/EnterpriseAgentUnitsByTestOwnerAccountGroup.java
+src/main/java/com/thousandeyes/api/usage/model/EnterpriseAgentUnitsByTestOwnerAccountGroupBreakdownsInner.java
 src/main/java/com/thousandeyes/api/usage/model/EnterpriseAgentUnitsInner.java
 src/main/java/com/thousandeyes/api/usage/model/EnterpriseAgentsInner.java
 src/main/java/com/thousandeyes/api/usage/model/Error.java
 src/main/java/com/thousandeyes/api/usage/model/Expand.java
+src/main/java/com/thousandeyes/api/usage/model/GetEnterpriseAgentsUnitsUsage200Response.java
 src/main/java/com/thousandeyes/api/usage/model/GetQuotas200Response.java
+src/main/java/com/thousandeyes/api/usage/model/GetTestUnitsUsage200Response.java
 src/main/java/com/thousandeyes/api/usage/model/GetUsage200Response.java
 src/main/java/com/thousandeyes/api/usage/model/Link.java
 src/main/java/com/thousandeyes/api/usage/model/OrganizationQuota.java
@@ -26,6 +30,8 @@ src/main/java/com/thousandeyes/api/usage/model/OrganizationsQuotasAssign.java
 src/main/java/com/thousandeyes/api/usage/model/OrganizationsQuotasAssignOrganizationsInner.java
 src/main/java/com/thousandeyes/api/usage/model/OrganizationsQuotasUnassign.java
 src/main/java/com/thousandeyes/api/usage/model/OrganizationsQuotasUnassignOrganizationsInner.java
+src/main/java/com/thousandeyes/api/usage/model/PaginationLinks.java
+src/main/java/com/thousandeyes/api/usage/model/PaginationLinksLinks.java
 src/main/java/com/thousandeyes/api/usage/model/Quotas.java
 src/main/java/com/thousandeyes/api/usage/model/QuotasAssignRequest.java
 src/main/java/com/thousandeyes/api/usage/model/QuotasAssignResponse.java
@@ -35,6 +41,8 @@ src/main/java/com/thousandeyes/api/usage/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/usage/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/usage/model/TestsInner.java
 src/main/java/com/thousandeyes/api/usage/model/UnauthorizedError.java
+src/main/java/com/thousandeyes/api/usage/model/UnitsByTests.java
+src/main/java/com/thousandeyes/api/usage/model/UnitsByTestsBreakdownsInner.java
 src/main/java/com/thousandeyes/api/usage/model/Usage.java
 src/main/java/com/thousandeyes/api/usage/model/UsageUsage.java
 src/main/java/com/thousandeyes/api/usage/model/UsageUsageQuota.java

@@ -47,7 +47,7 @@ public class Example {
 
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         UpdateDnsServerTest updateDnsServerTest = new UpdateDnsServerTest(); // UpdateDnsServerTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             DnsServerTest result = apiInstance.createDNSServerTest(updateDnsServerTest, aid, expand);
@@ -130,7 +130,7 @@ public class Example {
 
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         UpdateDnsServerTest updateDnsServerTest = new UpdateDnsServerTest(); // UpdateDnsServerTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<DnsServerTest> response = apiInstance.createDNSServerTestWithHttpInfo(updateDnsServerTest, aid, expand);
@@ -215,7 +215,7 @@ public class Example {
 
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteDnsServerTest(testId, aid);
         } catch (ApiException e) {
@@ -294,7 +294,7 @@ public class Example {
 
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteDnsServerTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -375,7 +375,7 @@ public class Example {
 
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             DnsServerTest result = apiInstance.getDNSServerTest(testId, aid, expand);
@@ -457,7 +457,7 @@ public class Example {
 
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<DnsServerTest> response = apiInstance.getDNSServerTestWithHttpInfo(testId, aid, expand);
@@ -540,7 +540,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetDNSServerTests200Response result = apiInstance.getDNSServerTests(aid);
             System.out.println(result);
@@ -618,7 +618,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetDNSServerTests200Response> response = apiInstance.getDNSServerTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -700,7 +700,7 @@ public class Example {
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
         UpdateDnsServerTest updateDnsServerTest = new UpdateDnsServerTest(); // UpdateDnsServerTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             DnsServerTest result = apiInstance.updateDNSServerTest(testId, updateDnsServerTest, aid, expand);
@@ -785,7 +785,7 @@ public class Example {
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
         UpdateDnsServerTest updateDnsServerTest = new UpdateDnsServerTest(); // UpdateDnsServerTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<DnsServerTest> response = apiInstance.updateDNSServerTestWithHttpInfo(testId, updateDnsServerTest, aid, expand);

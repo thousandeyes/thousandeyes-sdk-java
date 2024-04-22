@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -56,11 +56,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsSecTest.JSON_PROPERTY_LINKS,
   DnsSecTest.JSON_PROPERTY_LABELS,
   DnsSecTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  DnsSecTest.JSON_PROPERTY_AGENTS,
   DnsSecTest.JSON_PROPERTY_DOMAIN,
-  DnsSecTest.JSON_PROPERTY_DNS_QUERY_CLASS
+  DnsSecTest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsSecTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class DnsSecTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -113,14 +113,14 @@ public class DnsSecTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<TestSharedAccountsInner> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
-
   public static final String JSON_PROPERTY_DOMAIN = "domain";
   private String domain;
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<Agent> agents;
 
   public DnsSecTest() { 
   }
@@ -486,21 +486,6 @@ public class DnsSecTest {
 
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public DnsSecTest domain(String domain) {
     this.domain = domain;
     return this;
@@ -551,6 +536,21 @@ public class DnsSecTest {
   }
 
 
+   /**
+   * Contains list of agents.
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Agent> getAgents() {
+    return agents;
+  }
+
+
+
+
   /**
    * Return true if this DnsSecTest object is equal to o.
    */
@@ -580,14 +580,14 @@ public class DnsSecTest {
         Objects.equals(this.links, dnsSecTest.links) &&
         Objects.equals(this.labels, dnsSecTest.labels) &&
         Objects.equals(this.sharedWithAccounts, dnsSecTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, dnsSecTest.agents) &&
         Objects.equals(this.domain, dnsSecTest.domain) &&
-        Objects.equals(this.dnsQueryClass, dnsSecTest.dnsQueryClass);
+        Objects.equals(this.dnsQueryClass, dnsSecTest.dnsQueryClass) &&
+        Objects.equals(this.agents, dnsSecTest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, domain, dnsQueryClass);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, domain, dnsQueryClass, agents);
   }
 
   @Override
@@ -611,9 +611,9 @@ public class DnsSecTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

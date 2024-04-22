@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.dashboards.model.ApiAggregateProperty;
 import com.thousandeyes.api.dashboards.model.ApiDuration;
-import com.thousandeyes.api.dashboards.model.ApiMultiMetricColumnFiltersValueInner;
 import com.thousandeyes.api.dashboards.model.ApiWidgetMeasure;
 import com.thousandeyes.api.dashboards.model.DashboardMetric;
 import com.thousandeyes.api.dashboards.model.DashboardMetricDirection;
@@ -66,7 +65,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTableWidget.JSON_PROPERTY_LIMIT,
   ApiTableWidget.JSON_PROPERTY_DATA_SOURCE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 public class ApiTableWidget {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -93,7 +92,7 @@ public class ApiTableWidget {
   private DashboardMetric metric;
 
   public static final String JSON_PROPERTY_FILTERS = "filters";
-  private Map<String, Set<ApiMultiMetricColumnFiltersValueInner>> filters = new HashMap<>();
+  private Map<String, Set<Object>> filters = new HashMap<>();
 
   public static final String JSON_PROPERTY_MEASURE = "measure";
   private ApiWidgetMeasure measure;
@@ -329,12 +328,12 @@ public class ApiTableWidget {
   }
 
 
-  public ApiTableWidget filters(Map<String, Set<ApiMultiMetricColumnFiltersValueInner>> filters) {
+  public ApiTableWidget filters(Map<String, Set<Object>> filters) {
     this.filters = filters;
     return this;
   }
 
-  public ApiTableWidget putFiltersItem(String key, Set<ApiMultiMetricColumnFiltersValueInner> filtersItem) {
+  public ApiTableWidget putFiltersItem(String key, Set<Object> filtersItem) {
     if (this.filters == null) {
       this.filters = new HashMap<>();
     }
@@ -343,21 +342,21 @@ public class ApiTableWidget {
   }
 
    /**
-   * (Optional) Specifies the filters applied to the widget. When present, the &#x60;filters&#x60; property displays. Each filter object has two properties: &#x60;filterProperty&#x60; and &#x60;filterValue&#x60;. The &#x60;filterProperty&#x60; can be values like Agents, Agent Groups, Tests, Monitors, etc. The &#x60;filterValue&#x60; represents theIdentifierof the selected property.
+   * (Optional) Specifies the filters applied to the widget. When present, the &#x60;filters&#x60; property displays. Each filter object has two properties: &#x60;filterProperty&#x60; and &#x60;filterValue&#x60;. The &#x60;filterProperty&#x60; can be values like &#x60;AGENT&#x60;, &#x60;ENDPOINT_MACHINE_ID&#x60;, &#x60;TEST&#x60;, &#x60;MONITOR&#x60;, etc.  The &#x60;filterValue&#x60; represents an identifier array of the selected property.
    * @return filters
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FILTERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Map<String, Set<ApiMultiMetricColumnFiltersValueInner>> getFilters() {
+  public Map<String, Set<Object>> getFilters() {
     return filters;
   }
 
 
   @JsonProperty(JSON_PROPERTY_FILTERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilters(Map<String, Set<ApiMultiMetricColumnFiltersValueInner>> filters) {
+  public void setFilters(Map<String, Set<Object>> filters) {
     this.filters = filters;
   }
 

@@ -23,6 +23,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import com.thousandeyes.api.labels.model.CreateAgentLabel201Response;
 import com.thousandeyes.api.labels.model.Error;
+import com.thousandeyes.api.labels.model.GetLabels200Response;
 import com.thousandeyes.api.labels.model.LabelRequest;
 import java.net.URI;
 import com.thousandeyes.api.labels.model.UnauthorizedError;
@@ -53,7 +54,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.701657+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.622566+01:00[Europe/London]")
 public class DashboardApi {
   private final ApiClient apiClient;
 
@@ -109,7 +110,7 @@ public class DashboardApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(labelRequest);
     return requestBuilder;
   }
@@ -163,7 +164,7 @@ public class DashboardApi {
     }
 
     requestBuilder.header("Accept", List.of("application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -218,7 +219,55 @@ public class DashboardApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    return requestBuilder;
+  }
+  /**
+   * Get list of Labels of type &#x60;dashboard&#x60;
+   * Returns a list of all Dashboard labels (formerly called groups) configured in ThousandEyes.
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return GetLabels200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetLabels200Response getDashboardLabels(String aid) throws ApiException {
+    ApiResponse<GetLabels200Response> response = getDashboardLabelsWithHttpInfo(aid);
+    return response.getData();
+  }
+
+  /**
+   * Get list of Labels of type &#x60;dashboard&#x60;
+   * Returns a list of all Dashboard labels (formerly called groups) configured in ThousandEyes.
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return ApiResponse&lt;GetLabels200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetLabels200Response> getDashboardLabelsWithHttpInfo(String aid) throws ApiException {
+    getDashboardLabelsValidateRequest();
+
+    var requestBuilder = getDashboardLabelsRequestBuilder(aid);
+
+    return apiClient.send(requestBuilder.build(), GetLabels200Response.class);
+  }
+
+  private void getDashboardLabelsValidateRequest() throws ApiException {
+  }
+
+  private ApiRequest.ApiRequestBuilder getDashboardLabelsRequestBuilder(String aid) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("GET");
+
+    String path = "/v7/labels/dashboard";
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -276,7 +325,7 @@ public class DashboardApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(labelRequest);
     return requestBuilder;
   }

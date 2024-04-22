@@ -1,6 +1,6 @@
 /*
  * Endpoint Agents API
- * Manage ThousandEyes Endpoint Agents using this API.
+ * Manage ThousandEyes Endpoint Agents using this API.   For more information about Endpoint Agents, see [Endpoint Agents](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents).
  *
  * The version of the OpenAPI document: 7.0.0
  * 

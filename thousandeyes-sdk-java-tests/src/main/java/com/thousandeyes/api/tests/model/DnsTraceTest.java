@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -57,12 +57,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceTest.JSON_PROPERTY_LINKS,
   DnsTraceTest.JSON_PROPERTY_LABELS,
   DnsTraceTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  DnsTraceTest.JSON_PROPERTY_AGENTS,
   DnsTraceTest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   DnsTraceTest.JSON_PROPERTY_DOMAIN,
-  DnsTraceTest.JSON_PROPERTY_DNS_QUERY_CLASS
+  DnsTraceTest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsTraceTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class DnsTraceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -115,9 +115,6 @@ public class DnsTraceTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<TestSharedAccountsInner> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
-
   public static final String JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL = "dnsTransportProtocol";
   private TestDnsTransportProtocol dnsTransportProtocol = TestDnsTransportProtocol.UDP;
 
@@ -126,6 +123,9 @@ public class DnsTraceTest {
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<Agent> agents;
 
   public DnsTraceTest() { 
   }
@@ -491,21 +491,6 @@ public class DnsTraceTest {
 
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public DnsTraceTest dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
     this.dnsTransportProtocol = dnsTransportProtocol;
     return this;
@@ -581,6 +566,21 @@ public class DnsTraceTest {
   }
 
 
+   /**
+   * Contains list of agents.
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Agent> getAgents() {
+    return agents;
+  }
+
+
+
+
   /**
    * Return true if this DnsTraceTest object is equal to o.
    */
@@ -610,15 +610,15 @@ public class DnsTraceTest {
         Objects.equals(this.links, dnsTraceTest.links) &&
         Objects.equals(this.labels, dnsTraceTest.labels) &&
         Objects.equals(this.sharedWithAccounts, dnsTraceTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, dnsTraceTest.agents) &&
         Objects.equals(this.dnsTransportProtocol, dnsTraceTest.dnsTransportProtocol) &&
         Objects.equals(this.domain, dnsTraceTest.domain) &&
-        Objects.equals(this.dnsQueryClass, dnsTraceTest.dnsQueryClass);
+        Objects.equals(this.dnsQueryClass, dnsTraceTest.dnsQueryClass) &&
+        Objects.equals(this.agents, dnsTraceTest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, dnsTransportProtocol, domain, dnsQueryClass);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, agents);
   }
 
   @Override
@@ -642,10 +642,10 @@ public class DnsTraceTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

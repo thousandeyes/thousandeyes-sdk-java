@@ -47,7 +47,7 @@ public class Example {
 
         UsersApi apiInstance = new UsersApi(defaultClient);
         UserRequestBody userRequestBody = new UserRequestBody(); // UserRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CreateUser201Response result = apiInstance.createUser(userRequestBody, aid);
             System.out.println(result);
@@ -126,7 +126,7 @@ public class Example {
 
         UsersApi apiInstance = new UsersApi(defaultClient);
         UserRequestBody userRequestBody = new UserRequestBody(); // UserRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CreateUser201Response> response = apiInstance.createUserWithHttpInfo(userRequestBody, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -206,8 +206,8 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String id = "1884"; // String | Identifier for the user.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String id = "1234"; // String | Identifier for the user.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteUser(id, aid);
         } catch (ApiException e) {
@@ -284,8 +284,8 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String id = "1884"; // String | Identifier for the user.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String id = "1234"; // String | Identifier for the user.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteUserWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -364,8 +364,8 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String id = "1884"; // String | Identifier for the user.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String id = "1234"; // String | Identifier for the user.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetUser200Response result = apiInstance.getUser(id, aid);
             System.out.println(result);
@@ -443,8 +443,8 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String id = "1884"; // String | Identifier for the user.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String id = "1234"; // String | Identifier for the user.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetUser200Response> response = apiInstance.getUserWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -524,7 +524,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetUsers200Response result = apiInstance.getUsers(aid);
             System.out.println(result);
@@ -601,7 +601,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetUsers200Response> response = apiInstance.getUsersWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -680,9 +680,9 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String id = "1884"; // String | Identifier for the user.
+        String id = "1234"; // String | Identifier for the user.
         UserRequestBody userRequestBody = new UserRequestBody(); // UserRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetUser200Response result = apiInstance.updateUser(id, userRequestBody, aid);
             System.out.println(result);
@@ -761,9 +761,9 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String id = "1884"; // String | Identifier for the user.
+        String id = "1234"; // String | Identifier for the user.
         UserRequestBody userRequestBody = new UserRequestBody(); // UserRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetUser200Response> response = apiInstance.updateUserWithHttpInfo(id, userRequestBody, aid);
             System.out.println("Status code: " + response.getStatusCode());

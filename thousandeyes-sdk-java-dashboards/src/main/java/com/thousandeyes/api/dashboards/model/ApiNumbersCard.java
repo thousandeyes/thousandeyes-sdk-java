@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.dashboards.model.ApiDuration;
-import com.thousandeyes.api.dashboards.model.ApiMultiMetricColumnFiltersValueInner;
 import com.thousandeyes.api.dashboards.model.ApiWidgetFixedYScalePrefix;
 import com.thousandeyes.api.dashboards.model.ApiWidgetMeasure;
 import com.thousandeyes.api.dashboards.model.DashboardMetric;
@@ -54,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNumbersCard.JSON_PROPERTY_METRIC,
   ApiNumbersCard.JSON_PROPERTY_FILTERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 public class ApiNumbersCard {
   public static final String JSON_PROPERTY_MIN_SCALE = "minScale";
   private Float minScale;
@@ -96,7 +95,7 @@ public class ApiNumbersCard {
   private DashboardMetric metric;
 
   public static final String JSON_PROPERTY_FILTERS = "filters";
-  private Map<String, Set<ApiMultiMetricColumnFiltersValueInner>> filters = new HashMap<>();
+  private Map<String, Set<Object>> filters = new HashMap<>();
 
   public ApiNumbersCard() { 
   }
@@ -426,12 +425,12 @@ public class ApiNumbersCard {
   }
 
 
-  public ApiNumbersCard filters(Map<String, Set<ApiMultiMetricColumnFiltersValueInner>> filters) {
+  public ApiNumbersCard filters(Map<String, Set<Object>> filters) {
     this.filters = filters;
     return this;
   }
 
-  public ApiNumbersCard putFiltersItem(String key, Set<ApiMultiMetricColumnFiltersValueInner> filtersItem) {
+  public ApiNumbersCard putFiltersItem(String key, Set<Object> filtersItem) {
     if (this.filters == null) {
       this.filters = new HashMap<>();
     }
@@ -440,21 +439,21 @@ public class ApiNumbersCard {
   }
 
    /**
-   * Filters to apply to the widget.
+   * (Optional) Specifies the filters applied to the widget. When present, the &#x60;filters&#x60; property displays. Each filter object has two properties: &#x60;filterProperty&#x60; and &#x60;filterValue&#x60;. The &#x60;filterProperty&#x60; can be values like &#x60;AGENT&#x60;, &#x60;ENDPOINT_MACHINE_ID&#x60;, &#x60;TEST&#x60;, &#x60;MONITOR&#x60;, etc.  The &#x60;filterValue&#x60; represents an identifier array of the selected property.
    * @return filters
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FILTERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Map<String, Set<ApiMultiMetricColumnFiltersValueInner>> getFilters() {
+  public Map<String, Set<Object>> getFilters() {
     return filters;
   }
 
 
   @JsonProperty(JSON_PROPERTY_FILTERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilters(Map<String, Set<ApiMultiMetricColumnFiltersValueInner>> filters) {
+  public void setFilters(Map<String, Set<Object>> filters) {
     this.filters = filters;
   }
 

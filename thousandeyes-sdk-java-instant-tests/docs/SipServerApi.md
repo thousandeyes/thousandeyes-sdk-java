@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## postInstantSIPServer
 
-> SipServerInstantTest postInstantSIPServer(sipServerInstantTestRequest, aid, expand)
+> SipServerInstantTestResponse postInstantSIPServer(sipServerInstantTestRequest, aid, expand)
 
 Create SIP server instant test
 
@@ -39,10 +39,10 @@ public class Example {
 
         SipServerApi apiInstance = new SipServerApi(defaultClient);
         SipServerInstantTestRequest sipServerInstantTestRequest = new SipServerInstantTestRequest(); // SipServerInstantTestRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            SipServerInstantTest result = apiInstance.postInstantSIPServer(sipServerInstantTestRequest, aid, expand);
+            SipServerInstantTestResponse result = apiInstance.postInstantSIPServer(sipServerInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SipServerApi#postInstantSIPServer");
@@ -66,7 +66,7 @@ public class Example {
 
 ### Return type
 
-[**SipServerInstantTest**](SipServerInstantTest.md)
+[**SipServerInstantTestResponse**](SipServerInstantTestResponse.md)
 
 
 ### Authorization
@@ -93,7 +93,7 @@ public class Example {
 
 ## postInstantSIPServerWithHttpInfo
 
-> ApiResponse<SipServerInstantTest> postInstantSIPServer postInstantSIPServerWithHttpInfo(sipServerInstantTestRequest, aid, expand)
+> ApiResponse<SipServerInstantTestResponse> postInstantSIPServer postInstantSIPServerWithHttpInfo(sipServerInstantTestRequest, aid, expand)
 
 Create SIP server instant test
 
@@ -122,10 +122,10 @@ public class Example {
 
         SipServerApi apiInstance = new SipServerApi(defaultClient);
         SipServerInstantTestRequest sipServerInstantTestRequest = new SipServerInstantTestRequest(); // SipServerInstantTestRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<SipServerInstantTest> response = apiInstance.postInstantSIPServerWithHttpInfo(sipServerInstantTestRequest, aid, expand);
+            ApiResponse<SipServerInstantTestResponse> response = apiInstance.postInstantSIPServerWithHttpInfo(sipServerInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -151,7 +151,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**SipServerInstantTest**](SipServerInstantTest.md)>
+ApiResponse<[**SipServerInstantTestResponse**](SipServerInstantTestResponse.md)>
 
 
 ### Authorization

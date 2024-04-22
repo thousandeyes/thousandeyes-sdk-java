@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- *  ### Overview The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test.
+ * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.tests.instant.model.InstantTestRequestAgentsInner;
-import com.thousandeyes.api.tests.instant.model.SipTestProtocol;
 import com.thousandeyes.api.tests.instant.model.TestIpv6Policy;
 import com.thousandeyes.api.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.api.tests.instant.model.TestProbeMode;
@@ -52,27 +51,21 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerInstantTestRequest.JSON_PROPERTY_LINKS,
   SipServerInstantTestRequest.JSON_PROPERTY_LABELS,
   SipServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  SipServerInstantTestRequest.JSON_PROPERTY_AGENTS,
-  SipServerInstantTestRequest.JSON_PROPERTY_AUTH_USER,
   SipServerInstantTestRequest.JSON_PROPERTY_MTU_MEASUREMENTS,
   SipServerInstantTestRequest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   SipServerInstantTestRequest.JSON_PROPERTY_NUM_PATH_TRACES,
   SipServerInstantTestRequest.JSON_PROPERTY_OPTIONS_REGEX,
-  SipServerInstantTestRequest.JSON_PROPERTY_PASSWORD,
   SipServerInstantTestRequest.JSON_PROPERTY_PATH_TRACE_MODE,
-  SipServerInstantTestRequest.JSON_PROPERTY_PORT,
   SipServerInstantTestRequest.JSON_PROPERTY_PROBE_MODE,
-  SipServerInstantTestRequest.JSON_PROPERTY_PROTOCOL,
   SipServerInstantTestRequest.JSON_PROPERTY_REGISTER_ENABLED,
-  SipServerInstantTestRequest.JSON_PROPERTY_SIP_REGISTRAR,
   SipServerInstantTestRequest.JSON_PROPERTY_SIP_TARGET_TIME,
   SipServerInstantTestRequest.JSON_PROPERTY_SIP_TIME_LIMIT,
-  SipServerInstantTestRequest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS,
-  SipServerInstantTestRequest.JSON_PROPERTY_USER,
   SipServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
-  SipServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY
+  SipServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
+  SipServerInstantTestRequest.JSON_PROPERTY_AGENTS,
+  SipServerInstantTestRequest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
 public class SipServerInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -113,12 +106,6 @@ public class SipServerInstantTestRequest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_AUTH_USER = "authUser";
-  private String authUser;
-
   public static final String JSON_PROPERTY_MTU_MEASUREMENTS = "mtuMeasurements";
   private Boolean mtuMeasurements;
 
@@ -131,26 +118,14 @@ public class SipServerInstantTestRequest {
   public static final String JSON_PROPERTY_OPTIONS_REGEX = "optionsRegex";
   private String optionsRegex;
 
-  public static final String JSON_PROPERTY_PASSWORD = "password";
-  private String password;
-
   public static final String JSON_PROPERTY_PATH_TRACE_MODE = "pathTraceMode";
   private TestPathTraceMode pathTraceMode = TestPathTraceMode.CLASSIC;
-
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port = 49153;
 
   public static final String JSON_PROPERTY_PROBE_MODE = "probeMode";
   private TestProbeMode probeMode = TestProbeMode.AUTO;
 
-  public static final String JSON_PROPERTY_PROTOCOL = "protocol";
-  private SipTestProtocol protocol = SipTestProtocol.TCP;
-
   public static final String JSON_PROPERTY_REGISTER_ENABLED = "registerEnabled";
   private Boolean registerEnabled = false;
-
-  public static final String JSON_PROPERTY_SIP_REGISTRAR = "sipRegistrar";
-  private String sipRegistrar;
 
   public static final String JSON_PROPERTY_SIP_TARGET_TIME = "sipTargetTime";
   private Integer sipTargetTime;
@@ -158,17 +133,17 @@ public class SipServerInstantTestRequest {
   public static final String JSON_PROPERTY_SIP_TIME_LIMIT = "sipTimeLimit";
   private Integer sipTimeLimit = 5;
 
-  public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
-  private TestSipCredentials targetSipCredentials;
-
-  public static final String JSON_PROPERTY_USER = "user";
-  private String user;
-
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
+  private TestSipCredentials targetSipCredentials;
 
   public SipServerInstantTestRequest() { 
   }
@@ -456,64 +431,6 @@ public class SipServerInstantTestRequest {
   }
 
 
-  public SipServerInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public SipServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<InstantTestRequestAgentsInner> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-  }
-
-
-  public SipServerInstantTestRequest authUser(String authUser) {
-    this.authUser = authUser;
-    return this;
-  }
-
-   /**
-   * Username for authentication with SIP server.
-   * @return authUser
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AUTH_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getAuthUser() {
-    return authUser;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AUTH_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthUser(String authUser) {
-    this.authUser = authUser;
-  }
-
-
   public SipServerInstantTestRequest mtuMeasurements(Boolean mtuMeasurements) {
     this.mtuMeasurements = mtuMeasurements;
     return this;
@@ -616,31 +533,6 @@ public class SipServerInstantTestRequest {
   }
 
 
-  public SipServerInstantTestRequest password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Password for Basic/NTLM authentication.
-   * @return password
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPassword() {
-    return password;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-
   public SipServerInstantTestRequest pathTraceMode(TestPathTraceMode pathTraceMode) {
     this.pathTraceMode = pathTraceMode;
     return this;
@@ -663,33 +555,6 @@ public class SipServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPathTraceMode(TestPathTraceMode pathTraceMode) {
     this.pathTraceMode = pathTraceMode;
-  }
-
-
-  public SipServerInstantTestRequest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Target port.
-   * minimum: 1
-   * maximum: 65535
-   * @return port
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPort(Integer port) {
-    this.port = port;
   }
 
 
@@ -718,31 +583,6 @@ public class SipServerInstantTestRequest {
   }
 
 
-  public SipServerInstantTestRequest protocol(SipTestProtocol protocol) {
-    this.protocol = protocol;
-    return this;
-  }
-
-   /**
-   * Get protocol
-   * @return protocol
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROTOCOL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public SipTestProtocol getProtocol() {
-    return protocol;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROTOCOL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProtocol(SipTestProtocol protocol) {
-    this.protocol = protocol;
-  }
-
-
   public SipServerInstantTestRequest registerEnabled(Boolean registerEnabled) {
     this.registerEnabled = registerEnabled;
     return this;
@@ -765,31 +605,6 @@ public class SipServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegisterEnabled(Boolean registerEnabled) {
     this.registerEnabled = registerEnabled;
-  }
-
-
-  public SipServerInstantTestRequest sipRegistrar(String sipRegistrar) {
-    this.sipRegistrar = sipRegistrar;
-    return this;
-  }
-
-   /**
-   * SIP server to be tested, specified by domain name or IP address.
-   * @return sipRegistrar
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIP_REGISTRAR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getSipRegistrar() {
-    return sipRegistrar;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SIP_REGISTRAR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSipRegistrar(String sipRegistrar) {
-    this.sipRegistrar = sipRegistrar;
   }
 
 
@@ -847,56 +662,6 @@ public class SipServerInstantTestRequest {
   }
 
 
-  public SipServerInstantTestRequest targetSipCredentials(TestSipCredentials targetSipCredentials) {
-    this.targetSipCredentials = targetSipCredentials;
-    return this;
-  }
-
-   /**
-   * Get targetSipCredentials
-   * @return targetSipCredentials
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public TestSipCredentials getTargetSipCredentials() {
-    return targetSipCredentials;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTargetSipCredentials(TestSipCredentials targetSipCredentials) {
-    this.targetSipCredentials = targetSipCredentials;
-  }
-
-
-  public SipServerInstantTestRequest user(String user) {
-    this.user = user;
-    return this;
-  }
-
-   /**
-   * Username for SIP registration, should be unique within a ThousandEyes account group.
-   * @return user
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getUser() {
-    return user;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUser(String user) {
-    this.user = user;
-  }
-
-
   public SipServerInstantTestRequest fixedPacketRate(Integer fixedPacketRate) {
     this.fixedPacketRate = fixedPacketRate;
     return this;
@@ -949,6 +714,64 @@ public class SipServerInstantTestRequest {
   }
 
 
+  public SipServerInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public SipServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<InstantTestRequestAgentsInner> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+  }
+
+
+  public SipServerInstantTestRequest targetSipCredentials(TestSipCredentials targetSipCredentials) {
+    this.targetSipCredentials = targetSipCredentials;
+    return this;
+  }
+
+   /**
+   * Get targetSipCredentials
+   * @return targetSipCredentials
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public TestSipCredentials getTargetSipCredentials() {
+    return targetSipCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTargetSipCredentials(TestSipCredentials targetSipCredentials) {
+    this.targetSipCredentials = targetSipCredentials;
+  }
+
+
   /**
    * Return true if this SipServerInstantTestRequest object is equal to o.
    */
@@ -974,30 +797,24 @@ public class SipServerInstantTestRequest {
         Objects.equals(this.links, sipServerInstantTestRequest.links) &&
         Objects.equals(this.labels, sipServerInstantTestRequest.labels) &&
         Objects.equals(this.sharedWithAccounts, sipServerInstantTestRequest.sharedWithAccounts) &&
-        Objects.equals(this.agents, sipServerInstantTestRequest.agents) &&
-        Objects.equals(this.authUser, sipServerInstantTestRequest.authUser) &&
         Objects.equals(this.mtuMeasurements, sipServerInstantTestRequest.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, sipServerInstantTestRequest.networkMeasurements) &&
         Objects.equals(this.numPathTraces, sipServerInstantTestRequest.numPathTraces) &&
         Objects.equals(this.optionsRegex, sipServerInstantTestRequest.optionsRegex) &&
-        Objects.equals(this.password, sipServerInstantTestRequest.password) &&
         Objects.equals(this.pathTraceMode, sipServerInstantTestRequest.pathTraceMode) &&
-        Objects.equals(this.port, sipServerInstantTestRequest.port) &&
         Objects.equals(this.probeMode, sipServerInstantTestRequest.probeMode) &&
-        Objects.equals(this.protocol, sipServerInstantTestRequest.protocol) &&
         Objects.equals(this.registerEnabled, sipServerInstantTestRequest.registerEnabled) &&
-        Objects.equals(this.sipRegistrar, sipServerInstantTestRequest.sipRegistrar) &&
         Objects.equals(this.sipTargetTime, sipServerInstantTestRequest.sipTargetTime) &&
         Objects.equals(this.sipTimeLimit, sipServerInstantTestRequest.sipTimeLimit) &&
-        Objects.equals(this.targetSipCredentials, sipServerInstantTestRequest.targetSipCredentials) &&
-        Objects.equals(this.user, sipServerInstantTestRequest.user) &&
         Objects.equals(this.fixedPacketRate, sipServerInstantTestRequest.fixedPacketRate) &&
-        Objects.equals(this.ipv6Policy, sipServerInstantTestRequest.ipv6Policy);
+        Objects.equals(this.ipv6Policy, sipServerInstantTestRequest.ipv6Policy) &&
+        Objects.equals(this.agents, sipServerInstantTestRequest.agents) &&
+        Objects.equals(this.targetSipCredentials, sipServerInstantTestRequest.targetSipCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, authUser, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, password, pathTraceMode, port, probeMode, protocol, registerEnabled, sipRegistrar, sipTargetTime, sipTimeLimit, targetSipCredentials, user, fixedPacketRate, ipv6Policy);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, agents, targetSipCredentials);
   }
 
   @Override
@@ -1017,25 +834,19 @@ public class SipServerInstantTestRequest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
-    sb.append("    authUser: ").append(toIndentedString(authUser)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
     sb.append("    optionsRegex: ").append(toIndentedString(optionsRegex)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
-    sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    registerEnabled: ").append(toIndentedString(registerEnabled)).append("\n");
-    sb.append("    sipRegistrar: ").append(toIndentedString(sipRegistrar)).append("\n");
     sb.append("    sipTargetTime: ").append(toIndentedString(sipTargetTime)).append("\n");
     sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");
-    sb.append("    targetSipCredentials: ").append(toIndentedString(targetSipCredentials)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    targetSipCredentials: ").append(toIndentedString(targetSipCredentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }

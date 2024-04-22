@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateSnapshotExpirationDateApiRequest.JSON_PROPERTY_SNAPSHOT_EXPIRATION_DATE,
   UpdateSnapshotExpirationDateApiRequest.JSON_PROPERTY_EXPIRATION_DATE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 public class UpdateSnapshotExpirationDateApiRequest {
   public static final String JSON_PROPERTY_SNAPSHOT_EXPIRATION_DATE = "snapshotExpirationDate";
   private OffsetDateTime snapshotExpirationDate;

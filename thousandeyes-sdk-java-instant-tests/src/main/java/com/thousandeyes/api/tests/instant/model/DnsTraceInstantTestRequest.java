@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- *  ### Overview The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test.
+ * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -49,12 +49,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceInstantTestRequest.JSON_PROPERTY_LINKS,
   DnsTraceInstantTestRequest.JSON_PROPERTY_LABELS,
   DnsTraceInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  DnsTraceInstantTestRequest.JSON_PROPERTY_AGENTS,
   DnsTraceInstantTestRequest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   DnsTraceInstantTestRequest.JSON_PROPERTY_DOMAIN,
-  DnsTraceInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS
+  DnsTraceInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsTraceInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
 public class DnsTraceInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -95,9 +95,6 @@ public class DnsTraceInstantTestRequest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL = "dnsTransportProtocol";
   private TestDnsTransportProtocol dnsTransportProtocol = TestDnsTransportProtocol.UDP;
 
@@ -106,6 +103,9 @@ public class DnsTraceInstantTestRequest {
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
 
   public DnsTraceInstantTestRequest() { 
   }
@@ -393,39 +393,6 @@ public class DnsTraceInstantTestRequest {
   }
 
 
-  public DnsTraceInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public DnsTraceInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<InstantTestRequestAgentsInner> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-  }
-
-
   public DnsTraceInstantTestRequest dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
     this.dnsTransportProtocol = dnsTransportProtocol;
     return this;
@@ -501,6 +468,39 @@ public class DnsTraceInstantTestRequest {
   }
 
 
+  public DnsTraceInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public DnsTraceInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<InstantTestRequestAgentsInner> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+  }
+
+
   /**
    * Return true if this DnsTraceInstantTestRequest object is equal to o.
    */
@@ -526,15 +526,15 @@ public class DnsTraceInstantTestRequest {
         Objects.equals(this.links, dnsTraceInstantTestRequest.links) &&
         Objects.equals(this.labels, dnsTraceInstantTestRequest.labels) &&
         Objects.equals(this.sharedWithAccounts, dnsTraceInstantTestRequest.sharedWithAccounts) &&
-        Objects.equals(this.agents, dnsTraceInstantTestRequest.agents) &&
         Objects.equals(this.dnsTransportProtocol, dnsTraceInstantTestRequest.dnsTransportProtocol) &&
         Objects.equals(this.domain, dnsTraceInstantTestRequest.domain) &&
-        Objects.equals(this.dnsQueryClass, dnsTraceInstantTestRequest.dnsQueryClass);
+        Objects.equals(this.dnsQueryClass, dnsTraceInstantTestRequest.dnsQueryClass) &&
+        Objects.equals(this.agents, dnsTraceInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, dnsTransportProtocol, domain, dnsQueryClass);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, agents);
   }
 
   @Override
@@ -554,10 +554,10 @@ public class DnsTraceInstantTestRequest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

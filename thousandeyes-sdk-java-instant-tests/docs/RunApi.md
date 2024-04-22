@@ -39,7 +39,7 @@ public class Example {
 
         RunApi apiInstance = new RunApi(defaultClient);
         String testId = "105"; // String | Identifier for the instant test you wish to rerun.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.postInstantRun(testId, aid);
         } catch (ApiException e) {
@@ -118,7 +118,7 @@ public class Example {
 
         RunApi apiInstance = new RunApi(defaultClient);
         String testId = "105"; // String | Identifier for the instant test you wish to rerun.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.postInstantRunWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());

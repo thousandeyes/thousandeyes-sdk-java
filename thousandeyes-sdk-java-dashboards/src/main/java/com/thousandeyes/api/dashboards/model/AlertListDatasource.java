@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -32,6 +32,8 @@ public enum AlertListDatasource {
   DEVICES("DEVICES"),
   
   DNSP("DNSP"),
+  
+  ENDPOINT_AGENTS("ENDPOINT_AGENTS"),
   
   ENDPOINT_SCHEDULED_TEST("ENDPOINT_SCHEDULED_TEST"),
   

@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Dashboard upon which this dashboard snapshot is based upon.
  */
 @JsonPropertyOrder({
+  Dashboard.JSON_PROPERTY_GLOBAL_FILTER_ID,
   Dashboard.JSON_PROPERTY_LINKS,
   Dashboard.JSON_PROPERTY_DASHBOARD_ID,
   Dashboard.JSON_PROPERTY_TITLE,
@@ -52,8 +53,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Dashboard.JSON_PROPERTY_IS_GLOBAL_OVERRIDE,
   Dashboard.JSON_PROPERTY_IS_MIGRATED_REPORT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 public class Dashboard {
+  public static final String JSON_PROPERTY_GLOBAL_FILTER_ID = "globalFilterId";
+  private String globalFilterId;
+
   public static final String JSON_PROPERTY_LINKS = "_links";
   private DashboardLinksLinks links;
 
@@ -128,6 +132,31 @@ public class Dashboard {
     this.isDefaultForAccount = isDefaultForAccount;
     this.isMigratedReport = isMigratedReport;
   }
+
+  public Dashboard globalFilterId(String globalFilterId) {
+    this.globalFilterId = globalFilterId;
+    return this;
+  }
+
+   /**
+   * Default global dashboard filter ID (obtained from &#x60;/dashboards/filters&#x60; endpoint).
+   * @return globalFilterId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_GLOBAL_FILTER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getGlobalFilterId() {
+    return globalFilterId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GLOBAL_FILTER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGlobalFilterId(String globalFilterId) {
+    this.globalFilterId = globalFilterId;
+  }
+
 
   public Dashboard links(DashboardLinksLinks links) {
     this.links = links;
@@ -459,7 +488,8 @@ public class Dashboard {
       return false;
     }
     Dashboard dashboard = (Dashboard) o;
-    return Objects.equals(this.links, dashboard.links) &&
+    return Objects.equals(this.globalFilterId, dashboard.globalFilterId) &&
+        Objects.equals(this.links, dashboard.links) &&
         Objects.equals(this.dashboardId, dashboard.dashboardId) &&
         Objects.equals(this.title, dashboard.title) &&
         Objects.equals(this.isBuiltIn, dashboard.isBuiltIn) &&
@@ -479,13 +509,14 @@ public class Dashboard {
 
   @Override
   public int hashCode() {
-    return Objects.hash(links, dashboardId, title, isBuiltIn, aid, createdBy, modifiedBy, modifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport);
+    return Objects.hash(globalFilterId, links, dashboardId, title, isBuiltIn, aid, createdBy, modifiedBy, modifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Dashboard {\n");
+    sb.append("    globalFilterId: ").append(toIndentedString(globalFilterId)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    dashboardId: ").append(toIndentedString(dashboardId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");

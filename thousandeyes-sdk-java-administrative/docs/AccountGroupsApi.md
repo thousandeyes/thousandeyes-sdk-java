@@ -206,7 +206,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String id = "2067"; // String | Identifier for the account group.
+        String id = "1234"; // String | Identifier for the account group.
         try {
             apiInstance.deleteAccountGroup(id);
         } catch (ApiException e) {
@@ -282,7 +282,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String id = "2067"; // String | Identifier for the account group.
+        String id = "1234"; // String | Identifier for the account group.
         try {
             ApiResponse<Void> response = apiInstance.deleteAccountGroupWithHttpInfo(id);
             System.out.println("Status code: " + response.getStatusCode());
@@ -360,7 +360,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String id = "2067"; // String | Identifier for the account group.
+        String id = "1234"; // String | Identifier for the account group.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             GetAccountGroup200Response result = apiInstance.getAccountGroup(id, expand);
@@ -439,7 +439,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String id = "2067"; // String | Identifier for the account group.
+        String id = "1234"; // String | Identifier for the account group.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             ApiResponse<GetAccountGroup200Response> response = apiInstance.getAccountGroupWithHttpInfo(id, expand);
@@ -520,7 +520,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetAccountGroups200Response result = apiInstance.getAccountGroups(aid);
             System.out.println(result);
@@ -597,7 +597,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetAccountGroups200Response> response = apiInstance.getAccountGroupsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -676,7 +676,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String id = "2067"; // String | Identifier for the account group.
+        String id = "1234"; // String | Identifier for the account group.
         AccountGroupRequestBody accountGroupRequestBody = new AccountGroupRequestBody(); // AccountGroupRequestBody | 
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
@@ -757,7 +757,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String id = "2067"; // String | Identifier for the account group.
+        String id = "1234"; // String | Identifier for the account group.
         AccountGroupRequestBody accountGroupRequestBody = new AccountGroupRequestBody(); // AccountGroupRequestBody | 
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {

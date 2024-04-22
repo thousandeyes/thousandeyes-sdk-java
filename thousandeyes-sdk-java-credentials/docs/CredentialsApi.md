@@ -47,7 +47,7 @@ public class Example {
 
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CredentialWithoutValue result = apiInstance.createTransactionTestsCredential(credentialRequest, aid);
             System.out.println(result);
@@ -126,7 +126,7 @@ public class Example {
 
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CredentialWithoutValue> response = apiInstance.createTransactionTestsCredentialWithHttpInfo(credentialRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -207,7 +207,7 @@ public class Example {
 
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String id = "3247"; // String | The ID of the desired credential.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteTransactionTestsCredential(id, aid);
         } catch (ApiException e) {
@@ -284,7 +284,7 @@ public class Example {
 
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String id = "3247"; // String | The ID of the desired credential.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteTransactionTestsCredentialWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -363,7 +363,7 @@ public class Example {
 
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String id = "3247"; // String | The ID of the desired credential.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             Credential result = apiInstance.getTransactionTestsCredentialDetails(id, aid);
             System.out.println(result);
@@ -442,7 +442,7 @@ public class Example {
 
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String id = "3247"; // String | The ID of the desired credential.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Credential> response = apiInstance.getTransactionTestsCredentialDetailsWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -522,7 +522,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetTransactionTestsCredentialsList200Response result = apiInstance.getTransactionTestsCredentialsList(aid);
             System.out.println(result);
@@ -598,7 +598,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetTransactionTestsCredentialsList200Response> response = apiInstance.getTransactionTestsCredentialsListWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -678,7 +678,7 @@ public class Example {
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String id = "3247"; // String | The ID of the desired credential.
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CredentialWithoutValue result = apiInstance.updateTransactionTestsCredential(id, credentialRequest, aid);
             System.out.println(result);
@@ -759,7 +759,7 @@ public class Example {
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String id = "3247"; // String | The ID of the desired credential.
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CredentialWithoutValue> response = apiInstance.updateTransactionTestsCredentialWithHttpInfo(id, credentialRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());

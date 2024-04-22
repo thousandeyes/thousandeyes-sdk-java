@@ -41,7 +41,7 @@ public class Example {
 
         CatalogProvidersApi apiInstance = new CatalogProvidersApi(defaultClient);
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiCatalogProviderResponse result = apiInstance.catalogProviderList(apiCatalogProviderFilter, aid);
             System.out.println(result);
@@ -122,7 +122,7 @@ public class Example {
 
         CatalogProvidersApi apiInstance = new CatalogProvidersApi(defaultClient);
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<ApiCatalogProviderResponse> response = apiInstance.catalogProviderListWithHttpInfo(apiCatalogProviderFilter, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -205,7 +205,7 @@ public class Example {
 
         CatalogProvidersApi apiInstance = new CatalogProvidersApi(defaultClient);
         UUID providerId = UUID.fromString("85602a0a-54a7-4e97-946e-67492ef1fa26"); // UUID | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiCatalogProviderDetailsResponse result = apiInstance.getCatalogProvider(providerId, aid);
             System.out.println(result);
@@ -286,7 +286,7 @@ public class Example {
 
         CatalogProvidersApi apiInstance = new CatalogProvidersApi(defaultClient);
         UUID providerId = UUID.fromString("85602a0a-54a7-4e97-946e-67492ef1fa26"); // UUID | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<ApiCatalogProviderDetailsResponse> response = apiInstance.getCatalogProviderWithHttpInfo(providerId, aid);
             System.out.println("Status code: " + response.getStatusCode());

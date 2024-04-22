@@ -42,7 +42,7 @@ public class Example {
         EnterpriseAgentClusterApi apiInstance = new EnterpriseAgentClusterApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the Enterprise Agent cluster to add new agents to.
         AssignEnterpriseAgentClusterRequest assignEnterpriseAgentClusterRequest = new AssignEnterpriseAgentClusterRequest(); // AssignEnterpriseAgentClusterRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
             AgentDetails result = apiInstance.assignEnterpriseAgentCluster(agentId, assignEnterpriseAgentClusterRequest, aid, expand);
@@ -127,7 +127,7 @@ public class Example {
         EnterpriseAgentClusterApi apiInstance = new EnterpriseAgentClusterApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the Enterprise Agent cluster to add new agents to.
         AssignEnterpriseAgentClusterRequest assignEnterpriseAgentClusterRequest = new AssignEnterpriseAgentClusterRequest(); // AssignEnterpriseAgentClusterRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
             ApiResponse<AgentDetails> response = apiInstance.assignEnterpriseAgentClusterWithHttpInfo(agentId, assignEnterpriseAgentClusterRequest, aid, expand);
@@ -214,7 +214,7 @@ public class Example {
         EnterpriseAgentClusterApi apiInstance = new EnterpriseAgentClusterApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the Enterprise Agent cluster to remove agents from.
         UnassignEnterpriseAgentFromClusterRequest unassignEnterpriseAgentFromClusterRequest = new UnassignEnterpriseAgentFromClusterRequest(); // UnassignEnterpriseAgentFromClusterRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
             GetAgents200Response result = apiInstance.unassignEnterpriseAgentFromCluster(agentId, unassignEnterpriseAgentFromClusterRequest, aid, expand);
@@ -299,7 +299,7 @@ public class Example {
         EnterpriseAgentClusterApi apiInstance = new EnterpriseAgentClusterApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the Enterprise Agent cluster to remove agents from.
         UnassignEnterpriseAgentFromClusterRequest unassignEnterpriseAgentFromClusterRequest = new UnassignEnterpriseAgentFromClusterRequest(); // UnassignEnterpriseAgentFromClusterRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
             ApiResponse<GetAgents200Response> response = apiInstance.unassignEnterpriseAgentFromClusterWithHttpInfo(agentId, unassignEnterpriseAgentFromClusterRequest, aid, expand);

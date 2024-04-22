@@ -1,6 +1,6 @@
 /*
  * Endpoint Agents API
- * Manage ThousandEyes Endpoint Agents using this API.
+ * Manage ThousandEyes Endpoint Agents using this API.   For more information about Endpoint Agents, see [Endpoint Agents](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents).
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -68,7 +68,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_TCP_DRIVER_AVAILABLE,
   EndpointAgent.JSON_PROPERTY_NPCAP_VERSION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.770114+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.660146+01:00[Europe/London]")
 public class EndpointAgent {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;

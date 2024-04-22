@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -42,16 +42,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LegacyApiDashboard.JSON_PROPERTY_MIGRATED_REPORT,
   LegacyApiDashboard.JSON_PROPERTY_API_LINK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 public class LegacyApiDashboard {
   public static final String JSON_PROPERTY_ACCOUNT_ID = "accountId";
-  private Integer accountId;
+  private Long accountId;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
   private String modifiedDate;
@@ -70,9 +70,9 @@ public class LegacyApiDashboard {
 
   @JsonCreator
   public LegacyApiDashboard(
-    @JsonProperty(JSON_PROPERTY_ACCOUNT_ID) Integer accountId, 
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) Integer createdBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) Integer modifiedBy, 
+    @JsonProperty(JSON_PROPERTY_ACCOUNT_ID) Long accountId, 
+    @JsonProperty(JSON_PROPERTY_CREATED_BY) Long createdBy, 
+    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) Long modifiedBy, 
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) String modifiedDate, 
     @JsonProperty(JSON_PROPERTY_MIGRATED_REPORT) Boolean migratedReport
   ) {
@@ -92,7 +92,7 @@ public class LegacyApiDashboard {
   @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
@@ -107,7 +107,7 @@ public class LegacyApiDashboard {
   @JsonProperty(JSON_PROPERTY_CREATED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
@@ -122,7 +122,7 @@ public class LegacyApiDashboard {
   @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 

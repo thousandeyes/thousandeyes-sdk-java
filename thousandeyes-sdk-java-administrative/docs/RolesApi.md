@@ -47,7 +47,7 @@ public class Example {
 
         RolesApi apiInstance = new RolesApi(defaultClient);
         RoleRequestBody roleRequestBody = new RoleRequestBody(); // RoleRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CreateRole201Response result = apiInstance.createRole(roleRequestBody, aid);
             System.out.println(result);
@@ -126,7 +126,7 @@ public class Example {
 
         RolesApi apiInstance = new RolesApi(defaultClient);
         RoleRequestBody roleRequestBody = new RoleRequestBody(); // RoleRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CreateRole201Response> response = apiInstance.createRoleWithHttpInfo(roleRequestBody, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -207,7 +207,7 @@ public class Example {
 
         RolesApi apiInstance = new RolesApi(defaultClient);
         String id = "23"; // String | The ID of the desired role.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteRole(id, aid);
         } catch (ApiException e) {
@@ -285,7 +285,7 @@ public class Example {
 
         RolesApi apiInstance = new RolesApi(defaultClient);
         String id = "23"; // String | The ID of the desired role.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteRoleWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -365,7 +365,7 @@ public class Example {
 
         RolesApi apiInstance = new RolesApi(defaultClient);
         String id = "23"; // String | The ID of the desired role.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CreateRole201Response result = apiInstance.getRole(id, aid);
             System.out.println(result);
@@ -444,7 +444,7 @@ public class Example {
 
         RolesApi apiInstance = new RolesApi(defaultClient);
         String id = "23"; // String | The ID of the desired role.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CreateRole201Response> response = apiInstance.getRoleWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -524,7 +524,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         RolesApi apiInstance = new RolesApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetRoles200Response result = apiInstance.getRoles(aid);
             System.out.println(result);
@@ -601,7 +601,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         RolesApi apiInstance = new RolesApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetRoles200Response> response = apiInstance.getRolesWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -682,7 +682,7 @@ public class Example {
         RolesApi apiInstance = new RolesApi(defaultClient);
         String id = "23"; // String | The ID of the desired role.
         RoleRequestBody roleRequestBody = new RoleRequestBody(); // RoleRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CreateRole201Response result = apiInstance.updateRole(id, roleRequestBody, aid);
             System.out.println(result);
@@ -763,7 +763,7 @@ public class Example {
         RolesApi apiInstance = new RolesApi(defaultClient);
         String id = "23"; // String | The ID of the desired role.
         RoleRequestBody roleRequestBody = new RoleRequestBody(); // RoleRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CreateRole201Response> response = apiInstance.updateRoleWithHttpInfo(id, roleRequestBody, aid);
             System.out.println("Status code: " + response.getStatusCode());

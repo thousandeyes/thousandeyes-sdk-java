@@ -47,7 +47,7 @@ public class Example {
 
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         UpdateFtpServerTest updateFtpServerTest = new UpdateFtpServerTest(); // UpdateFtpServerTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             FtpServerTest result = apiInstance.createFtpServerTest(updateFtpServerTest, aid, expand);
@@ -130,7 +130,7 @@ public class Example {
 
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         UpdateFtpServerTest updateFtpServerTest = new UpdateFtpServerTest(); // UpdateFtpServerTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<FtpServerTest> response = apiInstance.createFtpServerTestWithHttpInfo(updateFtpServerTest, aid, expand);
@@ -215,7 +215,7 @@ public class Example {
 
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteFTPServerTest(testId, aid);
         } catch (ApiException e) {
@@ -292,7 +292,7 @@ public class Example {
 
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteFTPServerTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -371,7 +371,7 @@ public class Example {
 
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             FtpServerTest result = apiInstance.getFtpServerTest(testId, aid, expand);
@@ -453,7 +453,7 @@ public class Example {
 
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<FtpServerTest> response = apiInstance.getFtpServerTestWithHttpInfo(testId, aid, expand);
@@ -536,7 +536,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetFtpServerTests200Response result = apiInstance.getFtpServerTests(aid);
             System.out.println(result);
@@ -614,7 +614,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetFtpServerTests200Response> response = apiInstance.getFtpServerTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -696,7 +696,7 @@ public class Example {
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
         UpdateFtpServerTest updateFtpServerTest = new UpdateFtpServerTest(); // UpdateFtpServerTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             FtpServerTest result = apiInstance.updateFtpServerTest(testId, updateFtpServerTest, aid, expand);
@@ -781,7 +781,7 @@ public class Example {
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
         UpdateFtpServerTest updateFtpServerTest = new UpdateFtpServerTest(); // UpdateFtpServerTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<FtpServerTest> response = apiInstance.updateFtpServerTestWithHttpInfo(testId, updateFtpServerTest, aid, expand);

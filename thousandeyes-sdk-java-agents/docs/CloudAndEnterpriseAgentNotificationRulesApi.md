@@ -41,7 +41,7 @@ public class Example {
 
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetAgentsNotificationRule200Response result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
             System.out.println(result);
@@ -121,7 +121,7 @@ public class Example {
 
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetAgentsNotificationRule200Response> response = apiInstance.getAgentsNotificationRuleWithHttpInfo(notificationRuleId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -202,7 +202,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetAgentsNotificationRules200Response result = apiInstance.getAgentsNotificationRules(aid);
             System.out.println(result);
@@ -280,7 +280,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetAgentsNotificationRules200Response> response = apiInstance.getAgentsNotificationRulesWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());

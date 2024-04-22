@@ -49,9 +49,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisTestResult.JSON_PROPERTY_SOURCE_IP,
   PathVisTestResult.JSON_PROPERTY_SOURCE_PREFIX,
   PathVisTestResult.JSON_PROPERTY_LOCATION,
-  PathVisTestResult.JSON_PROPERTY_ENDPOINTS
+  PathVisTestResult.JSON_PROPERTY_PATH_TRACES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083600+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
 public class PathVisTestResult {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -89,8 +89,8 @@ public class PathVisTestResult {
   public static final String JSON_PROPERTY_LOCATION = "location";
   private String location;
 
-  public static final String JSON_PROPERTY_ENDPOINTS = "endpoints";
-  private List<PathVisEndpoint> endpoints;
+  public static final String JSON_PROPERTY_PATH_TRACES = "pathTraces";
+  private List<PathVisEndpoint> pathTraces;
 
   public PathVisTestResult() { 
   }
@@ -345,36 +345,36 @@ public class PathVisTestResult {
 
 
 
-  public PathVisTestResult endpoints(List<PathVisEndpoint> endpoints) {
-    this.endpoints = endpoints;
+  public PathVisTestResult pathTraces(List<PathVisEndpoint> pathTraces) {
+    this.pathTraces = pathTraces;
     return this;
   }
 
-  public PathVisTestResult addEndpointsItem(PathVisEndpoint endpointsItem) {
-    if (this.endpoints == null) {
-      this.endpoints = new ArrayList<>();
+  public PathVisTestResult addPathTracesItem(PathVisEndpoint pathTracesItem) {
+    if (this.pathTraces == null) {
+      this.pathTraces = new ArrayList<>();
     }
-    this.endpoints.add(endpointsItem);
+    this.pathTraces.add(pathTracesItem);
     return this;
   }
 
    /**
    * Shows an iteration of path trace, with each iteration specified by a pathId.
-   * @return endpoints
+   * @return pathTraces
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENDPOINTS)
+  @JsonProperty(JSON_PROPERTY_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<PathVisEndpoint> getEndpoints() {
-    return endpoints;
+  public List<PathVisEndpoint> getPathTraces() {
+    return pathTraces;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENDPOINTS)
+  @JsonProperty(JSON_PROPERTY_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndpoints(List<PathVisEndpoint> endpoints) {
-    this.endpoints = endpoints;
+  public void setPathTraces(List<PathVisEndpoint> pathTraces) {
+    this.pathTraces = pathTraces;
   }
 
 
@@ -402,12 +402,12 @@ public class PathVisTestResult {
         Objects.equals(this.sourceIp, pathVisTestResult.sourceIp) &&
         Objects.equals(this.sourcePrefix, pathVisTestResult.sourcePrefix) &&
         Objects.equals(this.location, pathVisTestResult.location) &&
-        Objects.equals(this.endpoints, pathVisTestResult.endpoints);
+        Objects.equals(this.pathTraces, pathVisTestResult.pathTraces);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, agentId, roundId, serverIp, networkProfile, systemMetrics, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, location, endpoints);
+    return Objects.hash(aid, agentId, roundId, serverIp, networkProfile, systemMetrics, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, location, pathTraces);
   }
 
   @Override
@@ -426,7 +426,7 @@ public class PathVisTestResult {
     sb.append("    sourceIp: ").append(toIndentedString(sourceIp)).append("\n");
     sb.append("    sourcePrefix: ").append(toIndentedString(sourcePrefix)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    endpoints: ").append(toIndentedString(endpoints)).append("\n");
+    sb.append("    pathTraces: ").append(toIndentedString(pathTraces)).append("\n");
     sb.append("}");
     return sb.toString();
   }

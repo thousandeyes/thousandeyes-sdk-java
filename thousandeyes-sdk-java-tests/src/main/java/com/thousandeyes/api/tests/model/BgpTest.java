@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -50,14 +50,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BgpTest.JSON_PROPERTY_LINKS,
   BgpTest.JSON_PROPERTY_LABELS,
   BgpTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  BgpTest.JSON_PROPERTY_ENABLED,
   BgpTest.JSON_PROPERTY_MONITORS,
   BgpTest.JSON_PROPERTY_INCLUDE_COVERED_PREFIXES,
-  BgpTest.JSON_PROPERTY_PREFIX,
-  BgpTest.JSON_PROPERTY_USE_PUBLIC_B_G_P,
+  BgpTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   BgpTest.JSON_PROPERTY_ALERTS_ENABLED,
-  BgpTest.JSON_PROPERTY_ALERT_RULES
+  BgpTest.JSON_PROPERTY_ALERT_RULES,
+  BgpTest.JSON_PROPERTY_PREFIX
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class BgpTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -98,23 +99,26 @@ public class BgpTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<TestSharedAccountsInner> sharedWithAccounts;
 
+  public static final String JSON_PROPERTY_ENABLED = "enabled";
+  private Boolean enabled = true;
+
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<Monitor> monitors;
 
   public static final String JSON_PROPERTY_INCLUDE_COVERED_PREFIXES = "includeCoveredPrefixes";
   private Boolean includeCoveredPrefixes;
 
-  public static final String JSON_PROPERTY_PREFIX = "prefix";
-  private String prefix;
-
-  public static final String JSON_PROPERTY_USE_PUBLIC_B_G_P = "usePublicBGP";
-  private Boolean usePublicBGP;
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
   private List<AlertRule> alertRules;
+
+  public static final String JSON_PROPERTY_PREFIX = "prefix";
+  private String prefix;
 
   public BgpTest() { 
   }
@@ -372,6 +376,31 @@ public class BgpTest {
 
 
 
+  public BgpTest enabled(Boolean enabled) {
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Test is enabled.
+   * @return enabled
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
+  }
+
+
    /**
    * Contains list of enabled BGP monitors.
    * @return monitors
@@ -412,53 +441,28 @@ public class BgpTest {
   }
 
 
-  public BgpTest prefix(String prefix) {
-    this.prefix = prefix;
+  public BgpTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
     return this;
   }
 
    /**
-   * a.b.c.d is a network address, with the prefix length defined as e. Prefixes can be any length from 8 to 24.
-   * @return prefix
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getPrefix() {
-    return prefix;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrefix(String prefix) {
-    this.prefix = prefix;
-  }
-
-
-  public BgpTest usePublicBGP(Boolean usePublicBGP) {
-    this.usePublicBGP = usePublicBGP;
-    return this;
-  }
-
-   /**
-   * Indicate if all available public BGP monitors should be used.
-   * @return usePublicBGP
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_B_G_P)
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Boolean getUsePublicBGP() {
-    return usePublicBGP;
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_B_G_P)
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsePublicBGP(Boolean usePublicBGP) {
-    this.usePublicBGP = usePublicBGP;
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
   }
 
 
@@ -520,6 +524,31 @@ public class BgpTest {
   }
 
 
+  public BgpTest prefix(String prefix) {
+    this.prefix = prefix;
+    return this;
+  }
+
+   /**
+   * a.b.c.d is a network address, with the prefix length defined as e. Prefixes can be any length from 8 to 24.
+   * @return prefix
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PREFIX)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getPrefix() {
+    return prefix;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PREFIX)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPrefix(String prefix) {
+    this.prefix = prefix;
+  }
+
+
   /**
    * Return true if this BgpTest object is equal to o.
    */
@@ -545,17 +574,18 @@ public class BgpTest {
         Objects.equals(this.links, bgpTest.links) &&
         Objects.equals(this.labels, bgpTest.labels) &&
         Objects.equals(this.sharedWithAccounts, bgpTest.sharedWithAccounts) &&
+        Objects.equals(this.enabled, bgpTest.enabled) &&
         Objects.equals(this.monitors, bgpTest.monitors) &&
         Objects.equals(this.includeCoveredPrefixes, bgpTest.includeCoveredPrefixes) &&
-        Objects.equals(this.prefix, bgpTest.prefix) &&
-        Objects.equals(this.usePublicBGP, bgpTest.usePublicBGP) &&
+        Objects.equals(this.usePublicBgp, bgpTest.usePublicBgp) &&
         Objects.equals(this.alertsEnabled, bgpTest.alertsEnabled) &&
-        Objects.equals(this.alertRules, bgpTest.alertRules);
+        Objects.equals(this.alertRules, bgpTest.alertRules) &&
+        Objects.equals(this.prefix, bgpTest.prefix);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, monitors, includeCoveredPrefixes, prefix, usePublicBGP, alertsEnabled, alertRules);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, enabled, monitors, includeCoveredPrefixes, usePublicBgp, alertsEnabled, alertRules, prefix);
   }
 
   @Override
@@ -575,12 +605,13 @@ public class BgpTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    includeCoveredPrefixes: ").append(toIndentedString(includeCoveredPrefixes)).append("\n");
-    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
-    sb.append("    usePublicBGP: ").append(toIndentedString(usePublicBGP)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("}");
     return sb.toString();
   }

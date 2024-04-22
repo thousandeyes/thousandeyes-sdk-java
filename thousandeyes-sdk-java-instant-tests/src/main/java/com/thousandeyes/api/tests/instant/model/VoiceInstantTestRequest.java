@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- *  ### Overview The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test.
+ * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -48,7 +48,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceInstantTestRequest.JSON_PROPERTY_LINKS,
   VoiceInstantTestRequest.JSON_PROPERTY_LABELS,
   VoiceInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  VoiceInstantTestRequest.JSON_PROPERTY_AGENTS,
   VoiceInstantTestRequest.JSON_PROPERTY_CODEC,
   VoiceInstantTestRequest.JSON_PROPERTY_CODEC_ID,
   VoiceInstantTestRequest.JSON_PROPERTY_DSCP,
@@ -57,9 +56,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceInstantTestRequest.JSON_PROPERTY_JITTER_BUFFER,
   VoiceInstantTestRequest.JSON_PROPERTY_NUM_PATH_TRACES,
   VoiceInstantTestRequest.JSON_PROPERTY_PORT,
-  VoiceInstantTestRequest.JSON_PROPERTY_TARGET_AGENT_ID
+  VoiceInstantTestRequest.JSON_PROPERTY_TARGET_AGENT_ID,
+  VoiceInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
 public class VoiceInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -100,9 +100,6 @@ public class VoiceInstantTestRequest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_CODEC = "codec";
   private String codec;
 
@@ -129,6 +126,9 @@ public class VoiceInstantTestRequest {
 
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
 
   public VoiceInstantTestRequest() { 
   }
@@ -420,39 +420,6 @@ public class VoiceInstantTestRequest {
   }
 
 
-  public VoiceInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public VoiceInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<InstantTestRequestAgentsInner> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-  }
-
-
    /**
    * Codec label
    * @return codec
@@ -666,6 +633,39 @@ public class VoiceInstantTestRequest {
   }
 
 
+  public VoiceInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public VoiceInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<InstantTestRequestAgentsInner> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+  }
+
+
   /**
    * Return true if this VoiceInstantTestRequest object is equal to o.
    */
@@ -691,7 +691,6 @@ public class VoiceInstantTestRequest {
         Objects.equals(this.links, voiceInstantTestRequest.links) &&
         Objects.equals(this.labels, voiceInstantTestRequest.labels) &&
         Objects.equals(this.sharedWithAccounts, voiceInstantTestRequest.sharedWithAccounts) &&
-        Objects.equals(this.agents, voiceInstantTestRequest.agents) &&
         Objects.equals(this.codec, voiceInstantTestRequest.codec) &&
         Objects.equals(this.codecId, voiceInstantTestRequest.codecId) &&
         Objects.equals(this.dscp, voiceInstantTestRequest.dscp) &&
@@ -700,12 +699,13 @@ public class VoiceInstantTestRequest {
         Objects.equals(this.jitterBuffer, voiceInstantTestRequest.jitterBuffer) &&
         Objects.equals(this.numPathTraces, voiceInstantTestRequest.numPathTraces) &&
         Objects.equals(this.port, voiceInstantTestRequest.port) &&
-        Objects.equals(this.targetAgentId, voiceInstantTestRequest.targetAgentId);
+        Objects.equals(this.targetAgentId, voiceInstantTestRequest.targetAgentId) &&
+        Objects.equals(this.agents, voiceInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId, agents);
   }
 
   @Override
@@ -725,7 +725,6 @@ public class VoiceInstantTestRequest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    codec: ").append(toIndentedString(codec)).append("\n");
     sb.append("    codecId: ").append(toIndentedString(codecId)).append("\n");
     sb.append("    dscp: ").append(toIndentedString(dscp)).append("\n");
@@ -735,6 +734,7 @@ public class VoiceInstantTestRequest {
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

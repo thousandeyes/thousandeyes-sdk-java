@@ -38,7 +38,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AllTestTypesApi apiInstance = new AllTestTypesApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetTests200Response result = apiInstance.getTests(aid);
             System.out.println(result);
@@ -116,7 +116,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AllTestTypesApi apiInstance = new AllTestTypesApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetTests200Response> response = apiInstance.getTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());

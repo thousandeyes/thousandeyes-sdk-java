@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- *  ### Overview The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test.
+ * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestSipCredentials.JSON_PROPERTY_SIP_REGISTRAR,
   TestSipCredentials.JSON_PROPERTY_USER
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
 public class TestSipCredentials {
   public static final String JSON_PROPERTY_AUTH_USER = "authUser";
   private String authUser;
@@ -45,7 +45,7 @@ public class TestSipCredentials {
   private String password;
 
   public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port;
+  private Integer port = 49153;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private SipTestProtocol protocol = SipTestProtocol.TCP;
@@ -90,7 +90,7 @@ public class TestSipCredentials {
   }
 
    /**
-   * Password for authentication with SIP server.
+   * Password for Basic/NTLM authentication.
    * @return password
   **/
   @jakarta.annotation.Nullable
@@ -115,8 +115,8 @@ public class TestSipCredentials {
   }
 
    /**
-   * Port number for the chosen protocol.
-   * minimum: 1024
+   * Target port.
+   * minimum: 1
    * maximum: 65535
    * @return port
   **/

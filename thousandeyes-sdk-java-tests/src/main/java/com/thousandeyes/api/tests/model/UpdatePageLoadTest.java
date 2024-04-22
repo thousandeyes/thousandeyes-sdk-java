@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -61,12 +61,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdatePageLoadTest.JSON_PROPERTY_LINKS,
   UpdatePageLoadTest.JSON_PROPERTY_LABELS,
   UpdatePageLoadTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  UpdatePageLoadTest.JSON_PROPERTY_AGENTS,
   UpdatePageLoadTest.JSON_PROPERTY_AUTH_TYPE,
   UpdatePageLoadTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   UpdatePageLoadTest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   UpdatePageLoadTest.JSON_PROPERTY_CONTENT_REGEX,
   UpdatePageLoadTest.JSON_PROPERTY_CUSTOM_HEADERS,
+  UpdatePageLoadTest.JSON_PROPERTY_DESIRED_STATUS_CODE,
   UpdatePageLoadTest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   UpdatePageLoadTest.JSON_PROPERTY_HTTP_TARGET_TIME,
   UpdatePageLoadTest.JSON_PROPERTY_HTTP_TIME_LIMIT,
@@ -88,6 +88,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdatePageLoadTest.JSON_PROPERTY_USER_AGENT,
   UpdatePageLoadTest.JSON_PROPERTY_USERNAME,
   UpdatePageLoadTest.JSON_PROPERTY_VERIFY_CERTIFICATE,
+  UpdatePageLoadTest.JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION,
   UpdatePageLoadTest.JSON_PROPERTY_BLOCK_DOMAINS,
   UpdatePageLoadTest.JSON_PROPERTY_DISABLE_SCREENSHOT,
   UpdatePageLoadTest.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
@@ -95,12 +96,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdatePageLoadTest.JSON_PROPERTY_BROWSER_LANGUAGE,
   UpdatePageLoadTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   UpdatePageLoadTest.JSON_PROPERTY_FIXED_PACKET_RATE,
+  UpdatePageLoadTest.JSON_PROPERTY_AGENTS,
   UpdatePageLoadTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  UpdatePageLoadTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdatePageLoadTest.JSON_PROPERTY_MONITORS,
   UpdatePageLoadTest.JSON_PROPERTY_HTTP_INTERVAL,
   UpdatePageLoadTest.JSON_PROPERTY_SUBINTERVAL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class UpdatePageLoadTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -153,9 +156,6 @@ public class UpdatePageLoadTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
-
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
 
@@ -170,6 +170,9 @@ public class UpdatePageLoadTest {
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private TestCustomHeaders customHeaders;
+
+  public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
+  private String desiredStatusCode = "200";
 
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
@@ -234,6 +237,9 @@ public class UpdatePageLoadTest {
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
   private Boolean verifyCertificate = false;
 
+  public static final String JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION = "allowUnsafeLegacyRenegotiation";
+  private Boolean allowUnsafeLegacyRenegotiation = true;
+
   public static final String JSON_PROPERTY_BLOCK_DOMAINS = "blockDomains";
   private String blockDomains;
 
@@ -255,8 +261,14 @@ public class UpdatePageLoadTest {
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestRequestAllOfAgents> agents;
+
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<String> monitors;
@@ -663,39 +675,6 @@ public class UpdatePageLoadTest {
   }
 
 
-  public UpdatePageLoadTest agents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public UpdatePageLoadTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestRequestAllOfAgents> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-  }
-
-
   public UpdatePageLoadTest authType(TestAuthType authType) {
     this.authType = authType;
     return this;
@@ -818,6 +797,31 @@ public class UpdatePageLoadTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCustomHeaders(TestCustomHeaders customHeaders) {
     this.customHeaders = customHeaders;
+  }
+
+
+  public UpdatePageLoadTest desiredStatusCode(String desiredStatusCode) {
+    this.desiredStatusCode = desiredStatusCode;
+    return this;
+  }
+
+   /**
+   * Specify the HTTP status code value that indicates a successful response.
+   * @return desiredStatusCode
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESIRED_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDesiredStatusCode() {
+    return desiredStatusCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESIRED_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDesiredStatusCode(String desiredStatusCode) {
+    this.desiredStatusCode = desiredStatusCode;
   }
 
 
@@ -1348,6 +1352,31 @@ public class UpdatePageLoadTest {
   }
 
 
+  public UpdatePageLoadTest allowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+    this.allowUnsafeLegacyRenegotiation = allowUnsafeLegacyRenegotiation;
+    return this;
+  }
+
+   /**
+   * Allows TLS renegotiation with servers not supporting RFC 5746. Default Set to true to allow unsafe legacy renegotiation.
+   * @return allowUnsafeLegacyRenegotiation
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getAllowUnsafeLegacyRenegotiation() {
+    return allowUnsafeLegacyRenegotiation;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAllowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+    this.allowUnsafeLegacyRenegotiation = allowUnsafeLegacyRenegotiation;
+  }
+
+
   public UpdatePageLoadTest blockDomains(String blockDomains) {
     this.blockDomains = blockDomains;
     return this;
@@ -1525,6 +1554,39 @@ public class UpdatePageLoadTest {
   }
 
 
+  public UpdatePageLoadTest agents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public UpdatePageLoadTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestRequestAllOfAgents> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+  }
+
+
   public UpdatePageLoadTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1547,6 +1609,31 @@ public class UpdatePageLoadTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
+  }
+
+
+  public UpdatePageLoadTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
   }
 
 
@@ -1662,12 +1749,12 @@ public class UpdatePageLoadTest {
         Objects.equals(this.links, updatePageLoadTest.links) &&
         Objects.equals(this.labels, updatePageLoadTest.labels) &&
         Objects.equals(this.sharedWithAccounts, updatePageLoadTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, updatePageLoadTest.agents) &&
         Objects.equals(this.authType, updatePageLoadTest.authType) &&
         Objects.equals(this.bandwidthMeasurements, updatePageLoadTest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, updatePageLoadTest.clientCertificate) &&
         Objects.equals(this.contentRegex, updatePageLoadTest.contentRegex) &&
         Objects.equals(this.customHeaders, updatePageLoadTest.customHeaders) &&
+        Objects.equals(this.desiredStatusCode, updatePageLoadTest.desiredStatusCode) &&
         Objects.equals(this.followRedirects, updatePageLoadTest.followRedirects) &&
         Objects.equals(this.httpTargetTime, updatePageLoadTest.httpTargetTime) &&
         Objects.equals(this.httpTimeLimit, updatePageLoadTest.httpTimeLimit) &&
@@ -1689,6 +1776,7 @@ public class UpdatePageLoadTest {
         Objects.equals(this.userAgent, updatePageLoadTest.userAgent) &&
         Objects.equals(this.username, updatePageLoadTest.username) &&
         Objects.equals(this.verifyCertificate, updatePageLoadTest.verifyCertificate) &&
+        Objects.equals(this.allowUnsafeLegacyRenegotiation, updatePageLoadTest.allowUnsafeLegacyRenegotiation) &&
         Objects.equals(this.blockDomains, updatePageLoadTest.blockDomains) &&
         Objects.equals(this.disableScreenshot, updatePageLoadTest.disableScreenshot) &&
         Objects.equals(this.allowMicAndCamera, updatePageLoadTest.allowMicAndCamera) &&
@@ -1696,7 +1784,9 @@ public class UpdatePageLoadTest {
         Objects.equals(this.browserLanguage, updatePageLoadTest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, updatePageLoadTest.pageLoadingStrategy) &&
         Objects.equals(this.fixedPacketRate, updatePageLoadTest.fixedPacketRate) &&
+        Objects.equals(this.agents, updatePageLoadTest.agents) &&
         Objects.equals(this.bgpMeasurements, updatePageLoadTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, updatePageLoadTest.usePublicBgp) &&
         Objects.equals(this.monitors, updatePageLoadTest.monitors) &&
         Objects.equals(this.httpInterval, updatePageLoadTest.httpInterval) &&
         Objects.equals(this.subinterval, updatePageLoadTest.subinterval);
@@ -1704,7 +1794,7 @@ public class UpdatePageLoadTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, followRedirects, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, pageLoadTargetTime, pageLoadTimeLimit, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, fixedPacketRate, bgpMeasurements, monitors, httpInterval, subinterval);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, followRedirects, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, pageLoadTargetTime, pageLoadTimeLimit, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, fixedPacketRate, agents, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval);
   }
 
   @Override
@@ -1728,12 +1818,12 @@ public class UpdatePageLoadTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
+    sb.append("    desiredStatusCode: ").append(toIndentedString(desiredStatusCode)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    httpTargetTime: ").append(toIndentedString(httpTargetTime)).append("\n");
     sb.append("    httpTimeLimit: ").append(toIndentedString(httpTimeLimit)).append("\n");
@@ -1755,6 +1845,7 @@ public class UpdatePageLoadTest {
     sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    verifyCertificate: ").append(toIndentedString(verifyCertificate)).append("\n");
+    sb.append("    allowUnsafeLegacyRenegotiation: ").append(toIndentedString(allowUnsafeLegacyRenegotiation)).append("\n");
     sb.append("    blockDomains: ").append(toIndentedString(blockDomains)).append("\n");
     sb.append("    disableScreenshot: ").append(toIndentedString(disableScreenshot)).append("\n");
     sb.append("    allowMicAndCamera: ").append(toIndentedString(allowMicAndCamera)).append("\n");
@@ -1762,7 +1853,9 @@ public class UpdatePageLoadTest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    httpInterval: ").append(toIndentedString(httpInterval)).append("\n");
     sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");

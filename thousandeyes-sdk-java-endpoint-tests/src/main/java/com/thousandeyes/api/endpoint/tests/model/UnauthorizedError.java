@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  ## Overview Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
+ *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -13,10 +13,6 @@
 
 package com.thousandeyes.api.endpoint.tests.model;
 
-import java.util.Map;
-import java.util.HashMap;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
@@ -25,8 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -37,8 +31,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnauthorizedError.JSON_PROPERTY_ERROR,
   UnauthorizedError.JSON_PROPERTY_ERROR_DESCRIPTION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.110548+01:00[Europe/Lisbon]")
-public class UnauthorizedError extends HashMap<String, Object> {
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.756412+01:00[Europe/London]")
+public class UnauthorizedError {
   public static final String JSON_PROPERTY_ERROR = "error";
   private String error;
 
@@ -97,49 +91,6 @@ public class UnauthorizedError extends HashMap<String, Object> {
     this.errorDescription = errorDescription;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   * @param key the name of the property
-   * @param value the value of the property
-   * @return self reference
-   */
-  @JsonAnySetter
-  public UnauthorizedError putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) properties.
-   * @return the additional (undeclared) properties
-   */
-  @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   * @param key the name of the property
-   * @return the additional (undeclared) property with the specified name
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
   /**
    * Return true if this UnauthorizedError object is equal to o.
@@ -154,24 +105,20 @@ public class UnauthorizedError extends HashMap<String, Object> {
     }
     UnauthorizedError unauthorizedError = (UnauthorizedError) o;
     return Objects.equals(this.error, unauthorizedError.error) &&
-        Objects.equals(this.errorDescription, unauthorizedError.errorDescription)&&
-        Objects.equals(this.additionalProperties, unauthorizedError.additionalProperties) &&
-        super.equals(o);
+        Objects.equals(this.errorDescription, unauthorizedError.errorDescription);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error, errorDescription, super.hashCode(), additionalProperties);
+    return Objects.hash(error, errorDescription);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UnauthorizedError {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    errorDescription: ").append(toIndentedString(errorDescription)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }

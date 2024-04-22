@@ -5,7 +5,7 @@
     <artifactId>thousandeyes-sdk-java-endpoint-agents</artifactId>
     <packaging>jar</packaging>
     <name>thousandeyes-sdk-java-endpoint-agents</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>7.0.0-SNAPSHOT</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>ThousandEyes Java SDK for Endpoint Agents API</description>
     <parent>

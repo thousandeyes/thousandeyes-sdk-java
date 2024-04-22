@@ -10,8 +10,8 @@ All URIs are relative to *https://api.thousandeyes.com*
 | [**deleteDnsSecTestWithHttpInfo**](DnssecApi.md#deleteDnsSecTestWithHttpInfo) | **DELETE** /v7/tests/dnssec/{testId} | Delete DNSSEC test |
 | [**getDnsSecTest**](DnssecApi.md#getDnsSecTest) | **GET** /v7/tests/dnssec/{testId} | Get DNSSEC test |
 | [**getDnsSecTestWithHttpInfo**](DnssecApi.md#getDnsSecTestWithHttpInfo) | **GET** /v7/tests/dnssec/{testId} | Get DNSSEC test |
-| [**getDnsSecTests**](DnssecApi.md#getDnsSecTests) | **GET** /v7/tests/dnssec | List DNS Sec tests |
-| [**getDnsSecTestsWithHttpInfo**](DnssecApi.md#getDnsSecTestsWithHttpInfo) | **GET** /v7/tests/dnssec | List DNS Sec tests |
+| [**getDnsSecTests**](DnssecApi.md#getDnsSecTests) | **GET** /v7/tests/dnssec | List DNSSEC tests |
+| [**getDnsSecTestsWithHttpInfo**](DnssecApi.md#getDnsSecTestsWithHttpInfo) | **GET** /v7/tests/dnssec | List DNSSEC tests |
 | [**updateDnsSecTest**](DnssecApi.md#updateDnsSecTest) | **PUT** /v7/tests/dnssec/{testId} | Update DNSSEC test |
 | [**updateDnsSecTestWithHttpInfo**](DnssecApi.md#updateDnsSecTestWithHttpInfo) | **PUT** /v7/tests/dnssec/{testId} | Update DNSSEC test |
 
@@ -47,7 +47,7 @@ public class Example {
 
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         UpdateDnsSecTest updateDnsSecTest = new UpdateDnsSecTest(); // UpdateDnsSecTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             DnsSecTest result = apiInstance.createDnsSecTest(updateDnsSecTest, aid, expand);
@@ -130,7 +130,7 @@ public class Example {
 
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         UpdateDnsSecTest updateDnsSecTest = new UpdateDnsSecTest(); // UpdateDnsSecTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<DnsSecTest> response = apiInstance.createDnsSecTestWithHttpInfo(updateDnsSecTest, aid, expand);
@@ -215,7 +215,7 @@ public class Example {
 
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteDnsSecTest(testId, aid);
         } catch (ApiException e) {
@@ -294,7 +294,7 @@ public class Example {
 
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteDnsSecTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -375,7 +375,7 @@ public class Example {
 
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             DnsSecTest result = apiInstance.getDnsSecTest(testId, aid, expand);
@@ -457,7 +457,7 @@ public class Example {
 
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<DnsSecTest> response = apiInstance.getDnsSecTestWithHttpInfo(testId, aid, expand);
@@ -515,9 +515,9 @@ ApiResponse<[**DnsSecTest**](DnsSecTest.md)>
 
 > GetDnsSecTests200Response getDnsSecTests(aid)
 
-List DNS Sec tests
+List DNSSEC tests
 
-Returns a list of all DNS Sec tests and saved events.
+Returns a list of all DNSSEC tests and saved events.
 
 ### Example
 
@@ -540,7 +540,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DnssecApi apiInstance = new DnssecApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetDnsSecTests200Response result = apiInstance.getDnsSecTests(aid);
             System.out.println(result);
@@ -592,9 +592,9 @@ public class Example {
 
 > ApiResponse<GetDnsSecTests200Response> getDnsSecTests getDnsSecTestsWithHttpInfo(aid)
 
-List DNS Sec tests
+List DNSSEC tests
 
-Returns a list of all DNS Sec tests and saved events.
+Returns a list of all DNSSEC tests and saved events.
 
 ### Example
 
@@ -618,7 +618,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DnssecApi apiInstance = new DnssecApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetDnsSecTests200Response> response = apiInstance.getDnsSecTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -700,7 +700,7 @@ public class Example {
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
         UpdateDnsSecTest updateDnsSecTest = new UpdateDnsSecTest(); // UpdateDnsSecTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             DnsSecTest result = apiInstance.updateDnsSecTest(testId, updateDnsSecTest, aid, expand);
@@ -785,7 +785,7 @@ public class Example {
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
         UpdateDnsSecTest updateDnsSecTest = new UpdateDnsSecTest(); // UpdateDnsSecTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<DnsSecTest> response = apiInstance.updateDnsSecTestWithHttpInfo(testId, updateDnsSecTest, aid, expand);

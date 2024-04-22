@@ -3,11 +3,13 @@ api/openapi.yaml
 build.gradle
 docs/DashboardSnapshotsApi.md
 docs/DashboardsApi.md
+docs/DashboardsFiltersApi.md
 pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/dashboards/DashboardSnapshotsApi.java
 src/main/java/com/thousandeyes/api/dashboards/DashboardsApi.java
+src/main/java/com/thousandeyes/api/dashboards/DashboardsFiltersApi.java
 src/main/java/com/thousandeyes/api/dashboards/model/AgentStatusDatasource.java
 src/main/java/com/thousandeyes/api/dashboards/model/AlertListAlertType.java
 src/main/java/com/thousandeyes/api/dashboards/model/AlertListDatasource.java
@@ -24,10 +26,16 @@ src/main/java/com/thousandeyes/api/dashboards/model/ApiAlertListWidget.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiAlertListWidgetAllOfActiveWithin.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiBoxAndWhiskersWidget.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiColorGridWidget.java
+src/main/java/com/thousandeyes/api/dashboards/model/ApiContextFilterRequest.java
+src/main/java/com/thousandeyes/api/dashboards/model/ApiContextFilterResponse.java
+src/main/java/com/thousandeyes/api/dashboards/model/ApiContextFiltersResponse.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiDashboard.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiDashboardAsw.java
+src/main/java/com/thousandeyes/api/dashboards/model/ApiDashboardFilterUserDetails.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiDashboardSnapshot.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiDataPointGroup.java
+src/main/java/com/thousandeyes/api/dashboards/model/ApiDataSourceFilter.java
+src/main/java/com/thousandeyes/api/dashboards/model/ApiDataSourceFilters.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiDefaultTimespan.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiDuration.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiDurationUnit.java
@@ -36,7 +44,6 @@ src/main/java/com/thousandeyes/api/dashboards/model/ApiGraphletPoint.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiGroupedBarchartWidget.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiMultiMetricColumn.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiMultiMetricColumnData.java
-src/main/java/com/thousandeyes/api/dashboards/model/ApiMultiMetricColumnFiltersValueInner.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiMultiMetricTableWidget.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiMultiSearchFilterApiTestTableFilterKey.java
 src/main/java/com/thousandeyes/api/dashboards/model/ApiNumbersCard.java
@@ -70,6 +77,7 @@ src/main/java/com/thousandeyes/api/dashboards/model/BoxAndWhiskersDatasource.jav
 src/main/java/com/thousandeyes/api/dashboards/model/ColorGridDatasource.java
 src/main/java/com/thousandeyes/api/dashboards/model/CreateDashboardSnapshot201Response.java
 src/main/java/com/thousandeyes/api/dashboards/model/Dashboard.java
+src/main/java/com/thousandeyes/api/dashboards/model/DashboardGlobalFilterId.java
 src/main/java/com/thousandeyes/api/dashboards/model/DashboardLinks.java
 src/main/java/com/thousandeyes/api/dashboards/model/DashboardLinksLinks.java
 src/main/java/com/thousandeyes/api/dashboards/model/DashboardMetric.java

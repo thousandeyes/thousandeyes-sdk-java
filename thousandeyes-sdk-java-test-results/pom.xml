@@ -5,7 +5,7 @@
     <artifactId>thousandeyes-sdk-java-test-results</artifactId>
     <packaging>jar</packaging>
     <name>thousandeyes-sdk-java-test-results</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>7.0.0-SNAPSHOT</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>ThousandEyes Java SDK for Test Results API</description>
     <parent>

@@ -40,7 +40,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TransferApi apiInstance = new TransferApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         EndpointAgentBulkTransferRequest endpointAgentBulkTransferRequest = new EndpointAgentBulkTransferRequest(); // EndpointAgentBulkTransferRequest | A collection of `AgentTransfers`.
         try {
             EndpointAgentBulkTransfer207Response result = apiInstance.endpointAgentBulkTransfer(aid, endpointAgentBulkTransferRequest);
@@ -118,7 +118,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TransferApi apiInstance = new TransferApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         EndpointAgentBulkTransferRequest endpointAgentBulkTransferRequest = new EndpointAgentBulkTransferRequest(); // EndpointAgentBulkTransferRequest | A collection of `AgentTransfers`.
         try {
             ApiResponse<EndpointAgentBulkTransfer207Response> response = apiInstance.endpointAgentBulkTransferWithHttpInfo(aid, endpointAgentBulkTransferRequest);
@@ -200,7 +200,7 @@ public class Example {
         TransferApi apiInstance = new TransferApi(defaultClient);
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         AgentTransferRequest agentTransferRequest = new AgentTransferRequest(); // AgentTransferRequest | The request to move an agent between accounts.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.endpointAgentSingleTransfer(agentId, agentTransferRequest, aid);
         } catch (ApiException e) {
@@ -278,7 +278,7 @@ public class Example {
         TransferApi apiInstance = new TransferApi(defaultClient);
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         AgentTransferRequest agentTransferRequest = new AgentTransferRequest(); // AgentTransferRequest | The request to move an agent between accounts.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.endpointAgentSingleTransferWithHttpInfo(agentId, agentTransferRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());

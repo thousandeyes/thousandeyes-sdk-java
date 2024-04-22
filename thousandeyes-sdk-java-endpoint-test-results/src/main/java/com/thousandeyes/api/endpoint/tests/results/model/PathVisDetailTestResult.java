@@ -48,10 +48,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDetailTestResult.JSON_PROPERTY_SERVER,
   PathVisDetailTestResult.JSON_PROPERTY_SOURCE_IP,
   PathVisDetailTestResult.JSON_PROPERTY_SOURCE_PREFIX,
-  PathVisDetailTestResult.JSON_PROPERTY_ROUTES,
-  PathVisDetailTestResult.JSON_PROPERTY_VPN_ROUTES
+  PathVisDetailTestResult.JSON_PROPERTY_PATH_TRACES,
+  PathVisDetailTestResult.JSON_PROPERTY_VPN_PATH_TRACES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083600+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
 public class PathVisDetailTestResult {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -86,11 +86,11 @@ public class PathVisDetailTestResult {
   public static final String JSON_PROPERTY_SOURCE_PREFIX = "sourcePrefix";
   private String sourcePrefix;
 
-  public static final String JSON_PROPERTY_ROUTES = "routes";
-  private List<PathVisRoute> routes;
+  public static final String JSON_PROPERTY_PATH_TRACES = "pathTraces";
+  private List<PathVisRoute> pathTraces;
 
-  public static final String JSON_PROPERTY_VPN_ROUTES = "vpnRoutes";
-  private List<PathVisRoute> vpnRoutes;
+  public static final String JSON_PROPERTY_VPN_PATH_TRACES = "vpnPathTraces";
+  private List<PathVisRoute> vpnPathTraces;
 
   public PathVisDetailTestResult() { 
   }
@@ -328,69 +328,69 @@ public class PathVisDetailTestResult {
 
 
 
-  public PathVisDetailTestResult routes(List<PathVisRoute> routes) {
-    this.routes = routes;
+  public PathVisDetailTestResult pathTraces(List<PathVisRoute> pathTraces) {
+    this.pathTraces = pathTraces;
     return this;
   }
 
-  public PathVisDetailTestResult addRoutesItem(PathVisRoute routesItem) {
-    if (this.routes == null) {
-      this.routes = new ArrayList<>();
+  public PathVisDetailTestResult addPathTracesItem(PathVisRoute pathTracesItem) {
+    if (this.pathTraces == null) {
+      this.pathTraces = new ArrayList<>();
     }
-    this.routes.add(routesItem);
+    this.pathTraces.add(pathTracesItem);
     return this;
   }
 
    /**
    * Shows iterations of path trace, with each iteration specified by a pathId.
-   * @return routes
+   * @return pathTraces
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTES)
+  @JsonProperty(JSON_PROPERTY_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<PathVisRoute> getRoutes() {
-    return routes;
+  public List<PathVisRoute> getPathTraces() {
+    return pathTraces;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTES)
+  @JsonProperty(JSON_PROPERTY_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRoutes(List<PathVisRoute> routes) {
-    this.routes = routes;
+  public void setPathTraces(List<PathVisRoute> pathTraces) {
+    this.pathTraces = pathTraces;
   }
 
 
-  public PathVisDetailTestResult vpnRoutes(List<PathVisRoute> vpnRoutes) {
-    this.vpnRoutes = vpnRoutes;
+  public PathVisDetailTestResult vpnPathTraces(List<PathVisRoute> vpnPathTraces) {
+    this.vpnPathTraces = vpnPathTraces;
     return this;
   }
 
-  public PathVisDetailTestResult addVpnRoutesItem(PathVisRoute vpnRoutesItem) {
-    if (this.vpnRoutes == null) {
-      this.vpnRoutes = new ArrayList<>();
+  public PathVisDetailTestResult addVpnPathTracesItem(PathVisRoute vpnPathTracesItem) {
+    if (this.vpnPathTraces == null) {
+      this.vpnPathTraces = new ArrayList<>();
     }
-    this.vpnRoutes.add(vpnRoutesItem);
+    this.vpnPathTraces.add(vpnPathTracesItem);
     return this;
   }
 
    /**
    * Shows iterations of the VPN path trace, with each iteration specified by a pathId.
-   * @return vpnRoutes
+   * @return vpnPathTraces
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VPN_ROUTES)
+  @JsonProperty(JSON_PROPERTY_VPN_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<PathVisRoute> getVpnRoutes() {
-    return vpnRoutes;
+  public List<PathVisRoute> getVpnPathTraces() {
+    return vpnPathTraces;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VPN_ROUTES)
+  @JsonProperty(JSON_PROPERTY_VPN_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpnRoutes(List<PathVisRoute> vpnRoutes) {
-    this.vpnRoutes = vpnRoutes;
+  public void setVpnPathTraces(List<PathVisRoute> vpnPathTraces) {
+    this.vpnPathTraces = vpnPathTraces;
   }
 
 
@@ -417,13 +417,13 @@ public class PathVisDetailTestResult {
         Objects.equals(this.server, pathVisDetailTestResult.server) &&
         Objects.equals(this.sourceIp, pathVisDetailTestResult.sourceIp) &&
         Objects.equals(this.sourcePrefix, pathVisDetailTestResult.sourcePrefix) &&
-        Objects.equals(this.routes, pathVisDetailTestResult.routes) &&
-        Objects.equals(this.vpnRoutes, pathVisDetailTestResult.vpnRoutes);
+        Objects.equals(this.pathTraces, pathVisDetailTestResult.pathTraces) &&
+        Objects.equals(this.vpnPathTraces, pathVisDetailTestResult.vpnPathTraces);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, agentId, roundId, serverIp, networkProfile, systemMetrics, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, routes, vpnRoutes);
+    return Objects.hash(aid, agentId, roundId, serverIp, networkProfile, systemMetrics, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, pathTraces, vpnPathTraces);
   }
 
   @Override
@@ -441,8 +441,8 @@ public class PathVisDetailTestResult {
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    sourceIp: ").append(toIndentedString(sourceIp)).append("\n");
     sb.append("    sourcePrefix: ").append(toIndentedString(sourcePrefix)).append("\n");
-    sb.append("    routes: ").append(toIndentedString(routes)).append("\n");
-    sb.append("    vpnRoutes: ").append(toIndentedString(vpnRoutes)).append("\n");
+    sb.append("    pathTraces: ").append(toIndentedString(pathTraces)).append("\n");
+    sb.append("    vpnPathTraces: ").append(toIndentedString(vpnPathTraces)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.api.dashboards.model.LegacyAlertListAlertType;
+import com.thousandeyes.api.dashboards.model.AlertListAlertType;
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiAlertListAlert.JSON_PROPERTY_DURATION_IN_SECONDS,
   ApiAlertListAlert.JSON_PROPERTY_ACTIVE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 public class ApiAlertListAlert {
   public static final String JSON_PROPERTY_ALERT_ID = "alertId";
   private String alertId;
@@ -58,7 +58,7 @@ public class ApiAlertListAlert {
   private String alertRule;
 
   public static final String JSON_PROPERTY_ALERT_TYPE = "alertType";
-  private LegacyAlertListAlertType alertType;
+  private AlertListAlertType alertType;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
   private OffsetDateTime startTime;
@@ -197,7 +197,7 @@ public class ApiAlertListAlert {
   }
 
 
-  public ApiAlertListAlert alertType(LegacyAlertListAlertType alertType) {
+  public ApiAlertListAlert alertType(AlertListAlertType alertType) {
     this.alertType = alertType;
     return this;
   }
@@ -210,14 +210,14 @@ public class ApiAlertListAlert {
   @JsonProperty(JSON_PROPERTY_ALERT_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public LegacyAlertListAlertType getAlertType() {
+  public AlertListAlertType getAlertType() {
     return alertType;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ALERT_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertType(LegacyAlertListAlertType alertType) {
+  public void setAlertType(AlertListAlertType alertType) {
     this.alertType = alertType;
   }
 

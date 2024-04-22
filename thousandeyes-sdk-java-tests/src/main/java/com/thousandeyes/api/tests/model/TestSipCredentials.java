@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestSipCredentials.JSON_PROPERTY_SIP_REGISTRAR,
   TestSipCredentials.JSON_PROPERTY_USER
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class TestSipCredentials {
   public static final String JSON_PROPERTY_AUTH_USER = "authUser";
   private String authUser;
@@ -45,7 +45,7 @@ public class TestSipCredentials {
   private String password;
 
   public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port;
+  private Integer port = 49153;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private SipTestProtocol protocol = SipTestProtocol.TCP;
@@ -90,7 +90,7 @@ public class TestSipCredentials {
   }
 
    /**
-   * Password for authentication with SIP server.
+   * Password for Basic/NTLM authentication.
    * @return password
   **/
   @jakarta.annotation.Nullable
@@ -115,8 +115,8 @@ public class TestSipCredentials {
   }
 
    /**
-   * Port number for the chosen protocol.
-   * minimum: 1024
+   * Target port.
+   * minimum: 1
    * maximum: 65535
    * @return port
   **/

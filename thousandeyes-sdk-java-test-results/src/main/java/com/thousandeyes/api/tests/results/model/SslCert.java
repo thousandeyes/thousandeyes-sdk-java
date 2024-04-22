@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SslCert.JSON_PROPERTY_SUBJECT_ALTERNATIVE_NAMES,
   SslCert.JSON_PROPERTY_SUBJECT_NAME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.084308+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.800492+01:00[Europe/London]")
 public class SslCert {
   public static final String JSON_PROPERTY_DAYS_UNTIL_EXPIRY = "daysUntilExpiry";
   private Integer daysUntilExpiry;
@@ -50,7 +50,7 @@ public class SslCert {
   private Boolean isFetchDateInValidCertDateRange;
 
   public static final String JSON_PROPERTY_HAS_VALID_SIGNING_CERT = "hasValidSigningCert";
-  private String hasValidSigningCert;
+  private Boolean hasValidSigningCert;
 
   public static final String JSON_PROPERTY_ISSUER_NAME = "issuerName";
   private String issuerName;
@@ -120,7 +120,7 @@ public class SslCert {
   }
 
 
-  public SslCert hasValidSigningCert(String hasValidSigningCert) {
+  public SslCert hasValidSigningCert(Boolean hasValidSigningCert) {
     this.hasValidSigningCert = hasValidSigningCert;
     return this;
   }
@@ -133,14 +133,14 @@ public class SslCert {
   @JsonProperty(JSON_PROPERTY_HAS_VALID_SIGNING_CERT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getHasValidSigningCert() {
+  public Boolean getHasValidSigningCert() {
     return hasValidSigningCert;
   }
 
 
   @JsonProperty(JSON_PROPERTY_HAS_VALID_SIGNING_CERT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasValidSigningCert(String hasValidSigningCert) {
+  public void setHasValidSigningCert(Boolean hasValidSigningCert) {
     this.hasValidSigningCert = hasValidSigningCert;
   }
 

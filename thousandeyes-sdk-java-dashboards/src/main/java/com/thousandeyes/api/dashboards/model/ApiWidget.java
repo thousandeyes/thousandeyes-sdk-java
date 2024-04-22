@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -35,7 +35,6 @@ import com.thousandeyes.api.dashboards.model.ApiDuration;
 import com.thousandeyes.api.dashboards.model.ApiGeoMapWidget;
 import com.thousandeyes.api.dashboards.model.ApiGroupedBarchartWidget;
 import com.thousandeyes.api.dashboards.model.ApiMultiMetricColumn;
-import com.thousandeyes.api.dashboards.model.ApiMultiMetricColumnFiltersValueInner;
 import com.thousandeyes.api.dashboards.model.ApiMultiMetricTableWidget;
 import com.thousandeyes.api.dashboards.model.ApiNumbersCard;
 import com.thousandeyes.api.dashboards.model.ApiNumbersCardWidget;
@@ -93,7 +92,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.api.serialization.JSON;
 import com.thousandeyes.api.serialization.AbstractOpenApiSchema;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 @JsonDeserialize(using = ApiWidget.ApiWidgetDeserializer.class)
 @JsonSerialize(using = ApiWidget.ApiWidgetSerializer.class)
 public class ApiWidget extends AbstractOpenApiSchema {

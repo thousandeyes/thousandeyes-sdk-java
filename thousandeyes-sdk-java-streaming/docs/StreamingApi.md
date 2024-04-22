@@ -46,7 +46,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Stream stream = new Stream(); // Stream | Stream to configure
         try {
             CreateStreamResponse result = apiInstance.createStream(aid, stream);
@@ -82,7 +82,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
+- **Accept**: application/hal+json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -124,7 +124,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Stream stream = new Stream(); // Stream | Stream to configure
         try {
             ApiResponse<CreateStreamResponse> response = apiInstance.createStreamWithHttpInfo(aid, stream);
@@ -162,7 +162,7 @@ ApiResponse<[**CreateStreamResponse**](CreateStreamResponse.md)>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
+- **Accept**: application/hal+json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -205,7 +205,7 @@ public class Example {
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
         String id = "id_example"; // String | ID of stream to query
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteStream(id, aid);
         } catch (ApiException e) {
@@ -239,7 +239,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json, application/json
+- **Accept**: application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -282,7 +282,7 @@ public class Example {
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
         String id = "id_example"; // String | ID of stream to query
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteStreamWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -318,7 +318,7 @@ ApiResponse<Void>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json, application/json
+- **Accept**: application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -361,7 +361,7 @@ public class Example {
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
         String id = "id_example"; // String | ID of stream to query
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         StreamType type = StreamType.fromValue("opentelemetry"); // StreamType | Optional filter on type of Stream; should match one of Stream `type` enum
         try {
             GetStreamResponse result = apiInstance.getStream(id, aid, type);
@@ -398,7 +398,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
+- **Accept**: application/hal+json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -441,7 +441,7 @@ public class Example {
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
         String id = "id_example"; // String | ID of stream to query
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         StreamType type = StreamType.fromValue("opentelemetry"); // StreamType | Optional filter on type of Stream; should match one of Stream `type` enum
         try {
             ApiResponse<GetStreamResponse> response = apiInstance.getStreamWithHttpInfo(id, aid, type);
@@ -480,7 +480,7 @@ ApiResponse<[**GetStreamResponse**](GetStreamResponse.md)>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
+- **Accept**: application/hal+json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -522,7 +522,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         StreamType type = StreamType.fromValue("opentelemetry"); // StreamType | Optional filter on type of Stream; should match one of Stream `type` enum
         try {
             List<GetStreamResponse> result = apiInstance.getStreams(aid, type);
@@ -558,7 +558,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
+- **Accept**: application/hal+json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -601,7 +601,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         StreamType type = StreamType.fromValue("opentelemetry"); // StreamType | Optional filter on type of Stream; should match one of Stream `type` enum
         try {
             ApiResponse<List<GetStreamResponse>> response = apiInstance.getStreamsWithHttpInfo(aid, type);
@@ -639,7 +639,7 @@ ApiResponse<[**List&lt;GetStreamResponse&gt;**](GetStreamResponse.md)>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
+- **Accept**: application/hal+json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -683,7 +683,7 @@ public class Example {
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
         String id = "id_example"; // String | ID of stream to query
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         PutStream putStream = new PutStream(); // PutStream | 
         try {
             GetStreamResponse result = apiInstance.putStream(id, aid, putStream);
@@ -720,7 +720,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
+- **Accept**: application/hal+json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -765,7 +765,7 @@ public class Example {
 
         StreamingApi apiInstance = new StreamingApi(defaultClient);
         String id = "id_example"; // String | ID of stream to query
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         PutStream putStream = new PutStream(); // PutStream | 
         try {
             ApiResponse<GetStreamResponse> response = apiInstance.putStreamWithHttpInfo(id, aid, putStream);
@@ -804,7 +804,7 @@ ApiResponse<[**GetStreamResponse**](GetStreamResponse.md)>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
+- **Accept**: application/hal+json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |

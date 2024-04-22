@@ -49,12 +49,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDetailDynamicTestResult.JSON_PROPERTY_SERVER,
   PathVisDetailDynamicTestResult.JSON_PROPERTY_SOURCE_IP,
   PathVisDetailDynamicTestResult.JSON_PROPERTY_SOURCE_PREFIX,
-  PathVisDetailDynamicTestResult.JSON_PROPERTY_ROUTES,
-  PathVisDetailDynamicTestResult.JSON_PROPERTY_VPN_ROUTES,
+  PathVisDetailDynamicTestResult.JSON_PROPERTY_PATH_TRACES,
+  PathVisDetailDynamicTestResult.JSON_PROPERTY_VPN_PATH_TRACES,
   PathVisDetailDynamicTestResult.JSON_PROPERTY_APPLICATION,
   PathVisDetailDynamicTestResult.JSON_PROPERTY_WEBEX
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083600+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
 public class PathVisDetailDynamicTestResult {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -89,11 +89,11 @@ public class PathVisDetailDynamicTestResult {
   public static final String JSON_PROPERTY_SOURCE_PREFIX = "sourcePrefix";
   private String sourcePrefix;
 
-  public static final String JSON_PROPERTY_ROUTES = "routes";
-  private List<PathVisRoute> routes;
+  public static final String JSON_PROPERTY_PATH_TRACES = "pathTraces";
+  private List<PathVisRoute> pathTraces;
 
-  public static final String JSON_PROPERTY_VPN_ROUTES = "vpnRoutes";
-  private List<PathVisRoute> vpnRoutes;
+  public static final String JSON_PROPERTY_VPN_PATH_TRACES = "vpnPathTraces";
+  private List<PathVisRoute> vpnPathTraces;
 
   public static final String JSON_PROPERTY_APPLICATION = "application";
   private String application;
@@ -337,69 +337,69 @@ public class PathVisDetailDynamicTestResult {
 
 
 
-  public PathVisDetailDynamicTestResult routes(List<PathVisRoute> routes) {
-    this.routes = routes;
+  public PathVisDetailDynamicTestResult pathTraces(List<PathVisRoute> pathTraces) {
+    this.pathTraces = pathTraces;
     return this;
   }
 
-  public PathVisDetailDynamicTestResult addRoutesItem(PathVisRoute routesItem) {
-    if (this.routes == null) {
-      this.routes = new ArrayList<>();
+  public PathVisDetailDynamicTestResult addPathTracesItem(PathVisRoute pathTracesItem) {
+    if (this.pathTraces == null) {
+      this.pathTraces = new ArrayList<>();
     }
-    this.routes.add(routesItem);
+    this.pathTraces.add(pathTracesItem);
     return this;
   }
 
    /**
    * Shows iterations of path trace, with each iteration specified by a pathId.
-   * @return routes
+   * @return pathTraces
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTES)
+  @JsonProperty(JSON_PROPERTY_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<PathVisRoute> getRoutes() {
-    return routes;
+  public List<PathVisRoute> getPathTraces() {
+    return pathTraces;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTES)
+  @JsonProperty(JSON_PROPERTY_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRoutes(List<PathVisRoute> routes) {
-    this.routes = routes;
+  public void setPathTraces(List<PathVisRoute> pathTraces) {
+    this.pathTraces = pathTraces;
   }
 
 
-  public PathVisDetailDynamicTestResult vpnRoutes(List<PathVisRoute> vpnRoutes) {
-    this.vpnRoutes = vpnRoutes;
+  public PathVisDetailDynamicTestResult vpnPathTraces(List<PathVisRoute> vpnPathTraces) {
+    this.vpnPathTraces = vpnPathTraces;
     return this;
   }
 
-  public PathVisDetailDynamicTestResult addVpnRoutesItem(PathVisRoute vpnRoutesItem) {
-    if (this.vpnRoutes == null) {
-      this.vpnRoutes = new ArrayList<>();
+  public PathVisDetailDynamicTestResult addVpnPathTracesItem(PathVisRoute vpnPathTracesItem) {
+    if (this.vpnPathTraces == null) {
+      this.vpnPathTraces = new ArrayList<>();
     }
-    this.vpnRoutes.add(vpnRoutesItem);
+    this.vpnPathTraces.add(vpnPathTracesItem);
     return this;
   }
 
    /**
    * Shows iterations of the VPN path trace, with each iteration specified by a pathId.
-   * @return vpnRoutes
+   * @return vpnPathTraces
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VPN_ROUTES)
+  @JsonProperty(JSON_PROPERTY_VPN_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<PathVisRoute> getVpnRoutes() {
-    return vpnRoutes;
+  public List<PathVisRoute> getVpnPathTraces() {
+    return vpnPathTraces;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VPN_ROUTES)
+  @JsonProperty(JSON_PROPERTY_VPN_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpnRoutes(List<PathVisRoute> vpnRoutes) {
-    this.vpnRoutes = vpnRoutes;
+  public void setVpnPathTraces(List<PathVisRoute> vpnPathTraces) {
+    this.vpnPathTraces = vpnPathTraces;
   }
 
 
@@ -476,15 +476,15 @@ public class PathVisDetailDynamicTestResult {
         Objects.equals(this.server, pathVisDetailDynamicTestResult.server) &&
         Objects.equals(this.sourceIp, pathVisDetailDynamicTestResult.sourceIp) &&
         Objects.equals(this.sourcePrefix, pathVisDetailDynamicTestResult.sourcePrefix) &&
-        Objects.equals(this.routes, pathVisDetailDynamicTestResult.routes) &&
-        Objects.equals(this.vpnRoutes, pathVisDetailDynamicTestResult.vpnRoutes) &&
+        Objects.equals(this.pathTraces, pathVisDetailDynamicTestResult.pathTraces) &&
+        Objects.equals(this.vpnPathTraces, pathVisDetailDynamicTestResult.vpnPathTraces) &&
         Objects.equals(this.application, pathVisDetailDynamicTestResult.application) &&
         Objects.equals(this.webex, pathVisDetailDynamicTestResult.webex);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, agentId, roundId, serverIp, networkProfile, systemMetrics, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, routes, vpnRoutes, application, webex);
+    return Objects.hash(aid, agentId, roundId, serverIp, networkProfile, systemMetrics, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, pathTraces, vpnPathTraces, application, webex);
   }
 
   @Override
@@ -502,8 +502,8 @@ public class PathVisDetailDynamicTestResult {
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    sourceIp: ").append(toIndentedString(sourceIp)).append("\n");
     sb.append("    sourcePrefix: ").append(toIndentedString(sourcePrefix)).append("\n");
-    sb.append("    routes: ").append(toIndentedString(routes)).append("\n");
-    sb.append("    vpnRoutes: ").append(toIndentedString(vpnRoutes)).append("\n");
+    sb.append("    pathTraces: ").append(toIndentedString(pathTraces)).append("\n");
+    sb.append("    vpnPathTraces: ").append(toIndentedString(vpnPathTraces)).append("\n");
     sb.append("    application: ").append(toIndentedString(application)).append("\n");
     sb.append("    webex: ").append(toIndentedString(webex)).append("\n");
     sb.append("}");

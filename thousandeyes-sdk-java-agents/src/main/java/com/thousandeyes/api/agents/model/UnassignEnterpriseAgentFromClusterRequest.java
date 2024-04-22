@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   UnassignEnterpriseAgentFromClusterRequest.JSON_PROPERTY_MEMBERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.917713+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
 public class UnassignEnterpriseAgentFromClusterRequest {
   public static final String JSON_PROPERTY_MEMBERS = "members";
   private List<String> members;
