@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -60,7 +60,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentTest.JSON_PROPERTY_LINKS,
   AgentToAgentTest.JSON_PROPERTY_LABELS,
   AgentToAgentTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  AgentToAgentTest.JSON_PROPERTY_AGENTS,
   AgentToAgentTest.JSON_PROPERTY_DIRECTION,
   AgentToAgentTest.JSON_PROPERTY_DSCP,
   AgentToAgentTest.JSON_PROPERTY_DSCP_ID,
@@ -74,10 +73,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentTest.JSON_PROPERTY_THROUGHPUT_DURATION,
   AgentToAgentTest.JSON_PROPERTY_THROUGHPUT_RATE,
   AgentToAgentTest.JSON_PROPERTY_FIXED_PACKET_RATE,
+  AgentToAgentTest.JSON_PROPERTY_AGENTS,
   AgentToAgentTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  AgentToAgentTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   AgentToAgentTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class AgentToAgentTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -130,9 +131,6 @@ public class AgentToAgentTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<TestSharedAccountsInner> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
-
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   private TestDirection direction = TestDirection.TO_TARGET;
 
@@ -172,8 +170,14 @@ public class AgentToAgentTest {
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<Agent> agents;
+
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<Monitor> monitors;
@@ -193,8 +197,8 @@ public class AgentToAgentTest {
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabelsInner> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<TestSharedAccountsInner> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
     @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
+    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
   this();
@@ -208,8 +212,8 @@ public class AgentToAgentTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
     this.dscp = dscp;
+    this.agents = agents;
     this.monitors = monitors;
   }
 
@@ -546,21 +550,6 @@ public class AgentToAgentTest {
 
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public AgentToAgentTest direction(TestDirection direction) {
     this.direction = direction;
     return this;
@@ -888,6 +877,21 @@ public class AgentToAgentTest {
   }
 
 
+   /**
+   * Contains list of agents.
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Agent> getAgents() {
+    return agents;
+  }
+
+
+
+
   public AgentToAgentTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -910,6 +914,31 @@ public class AgentToAgentTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
+  }
+
+
+  public AgentToAgentTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
   }
 
 
@@ -957,7 +986,6 @@ public class AgentToAgentTest {
         Objects.equals(this.links, agentToAgentTest.links) &&
         Objects.equals(this.labels, agentToAgentTest.labels) &&
         Objects.equals(this.sharedWithAccounts, agentToAgentTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, agentToAgentTest.agents) &&
         Objects.equals(this.direction, agentToAgentTest.direction) &&
         Objects.equals(this.dscp, agentToAgentTest.dscp) &&
         Objects.equals(this.dscpId, agentToAgentTest.dscpId) &&
@@ -971,13 +999,15 @@ public class AgentToAgentTest {
         Objects.equals(this.throughputDuration, agentToAgentTest.throughputDuration) &&
         Objects.equals(this.throughputRate, agentToAgentTest.throughputRate) &&
         Objects.equals(this.fixedPacketRate, agentToAgentTest.fixedPacketRate) &&
+        Objects.equals(this.agents, agentToAgentTest.agents) &&
         Objects.equals(this.bgpMeasurements, agentToAgentTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, agentToAgentTest.usePublicBgp) &&
         Objects.equals(this.monitors, agentToAgentTest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, bgpMeasurements, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, agents, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1001,7 +1031,6 @@ public class AgentToAgentTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    dscp: ").append(toIndentedString(dscp)).append("\n");
     sb.append("    dscpId: ").append(toIndentedString(dscpId)).append("\n");
@@ -1015,7 +1044,9 @@ public class AgentToAgentTest {
     sb.append("    throughputDuration: ").append(toIndentedString(throughputDuration)).append("\n");
     sb.append("    throughputRate: ").append(toIndentedString(throughputRate)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();

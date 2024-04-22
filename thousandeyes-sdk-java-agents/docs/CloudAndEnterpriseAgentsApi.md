@@ -45,7 +45,7 @@ public class Example {
 
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the agent.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteEnterpriseAgent(agentId, aid);
         } catch (ApiException e) {
@@ -124,7 +124,7 @@ public class Example {
 
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the agent.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteEnterpriseAgentWithHttpInfo(agentId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -205,7 +205,7 @@ public class Example {
 
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the agent.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
             AgentDetails result = apiInstance.getAgentDetails(agentId, aid, expand);
@@ -287,7 +287,7 @@ public class Example {
 
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the agent.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
             ApiResponse<AgentDetails> response = apiInstance.getAgentDetailsWithHttpInfo(agentId, aid, expand);
@@ -370,7 +370,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentListExpand> expand = Arrays.asList(); // List<AgentListExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         List<CloudEnterpriseAgentType> agentTypes = Arrays.asList(); // List<CloudEnterpriseAgentType> | Specifies the type of agent to request.
         try {
@@ -452,7 +452,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentListExpand> expand = Arrays.asList(); // List<AgentListExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         List<CloudEnterpriseAgentType> agentTypes = Arrays.asList(); // List<CloudEnterpriseAgentType> | Specifies the type of agent to request.
         try {
@@ -538,7 +538,7 @@ public class Example {
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the agent.
         AgentRequestBody agentRequestBody = new AgentRequestBody(); // AgentRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
             AgentDetails result = apiInstance.updateEnterpriseAgentDetails(agentId, agentRequestBody, aid, expand);
@@ -623,7 +623,7 @@ public class Example {
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the agent.
         AgentRequestBody agentRequestBody = new AgentRequestBody(); // AgentRequestBody | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
             ApiResponse<AgentDetails> response = apiInstance.updateEnterpriseAgentDetailsWithHttpInfo(agentId, agentRequestBody, aid, expand);

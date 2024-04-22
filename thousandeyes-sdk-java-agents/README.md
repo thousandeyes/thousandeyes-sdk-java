@@ -4,7 +4,7 @@ Agents API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-18T12:55:01.917713+01:00[Europe/Lisbon]
+- Build date: 2024-04-22T10:43:50.628946+01:00[Europe/London]
 
 
 ## Overview
@@ -44,7 +44,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-agents</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>7.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -54,7 +54,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-agents:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-agents:7.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -67,7 +67,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-agents-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-agents-7.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -88,7 +88,7 @@ public class CloudAndEnterpriseAgentNotificationRulesApiExample {
         // overriding the host and port, timeout, etc.
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetAgentsNotificationRule200Response result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
             System.out.println(result);

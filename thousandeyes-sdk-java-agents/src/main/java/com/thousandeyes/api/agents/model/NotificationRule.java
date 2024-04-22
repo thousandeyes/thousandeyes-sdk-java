@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NotificationRule.JSON_PROPERTY_NOTIFY_ON_CLEAR,
   NotificationRule.JSON_PROPERTY_IS_DEFAULT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.917713+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
 public class NotificationRule {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
   private String ruleId;

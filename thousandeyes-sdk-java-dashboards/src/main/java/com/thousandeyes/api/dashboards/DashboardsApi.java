@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -57,7 +57,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.220586+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
 public class DashboardsApi {
   private final ApiClient apiClient;
 
@@ -67,7 +67,7 @@ public class DashboardsApi {
 
   /**
    * Create dashboard
-   * Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; premission (Regular User). 
+   * Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
    * @param dashboard Request body schema to create a dashboard. (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return Dashboard
@@ -80,7 +80,7 @@ public class DashboardsApi {
 
   /**
    * Create dashboard
-   * Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; premission (Regular User). 
+   * Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
    * @param dashboard Request body schema to create a dashboard. (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;Dashboard&gt;
@@ -117,7 +117,7 @@ public class DashboardsApi {
 
     requestBuilder.header("Content-Type", List.of("application/hal+json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(dashboard);
     return requestBuilder;
   }
@@ -171,7 +171,7 @@ public class DashboardsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -226,7 +226,7 @@ public class DashboardsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -309,7 +309,7 @@ public class DashboardsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -336,7 +336,7 @@ public class DashboardsApi {
 
     var requestBuilder = getDashboardsForUserRequestBuilder(aid);
 
-    return apiClient.send(requestBuilder.build(), List<ApiDashboard>.class);
+    return apiClient.sendForList(requestBuilder.build(), ApiDashboard.class);
   }
 
   private void getDashboardsForUserValidateRequest() throws ApiException {
@@ -357,7 +357,7 @@ public class DashboardsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -419,7 +419,7 @@ public class DashboardsApi {
 
     requestBuilder.header("Content-Type", List.of("application/hal+json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(dashboard);
     return requestBuilder;
   }

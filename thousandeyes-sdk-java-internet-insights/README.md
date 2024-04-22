@@ -4,15 +4,15 @@ Internet Insights API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-18T12:55:01.699320+01:00[Europe/Lisbon]
+- Build date: 2024-04-22T10:43:50.510438+01:00[Europe/London]
 
-# Overview
 We are happy to announce the release of the Internet Insights API set. This limited release includes endpoints that:
+
 * Make our catalog provider and Internet outage data accessible to API users.
 * Provide access to advanced filtering, which is part of our next-generation API efforts to allow API users to fine-tune queries across all of our APIs in a consistent manner.
 
-Internet Insights provide visibility into core Internet infrastructure, including: ISPs, DNS providers, IaaS, CDNs , and SaaS providers.
-It tracks the macro-level impact of Internet events on individual users and enterprise networks connecting at the edge of the Internet. These events include: Outages, Routing hijacks and leaks, DDoS attacks, And political interference, among others.
+Internet Insights provide visibility into core Internet infrastructure, including ISPs, DNS providers, IaaS, CDNs , and SaaS providers.
+It tracks the macro-level impact of Internet events on individual users and enterprise networks connecting at the edge of the Internet. These events include Outages, Routing hijacks and leaks, DDoS attacks, And political interference, among others.
 
 Future releases of the Internet Insights API set will further unlock access to core Internet Insights functionality, unlocking potential integrations to enrich customer process flows.
 
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-internet-insights</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>7.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +61,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-internet-insights:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-internet-insights:7.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -74,7 +74,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-internet-insights-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-internet-insights-7.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -95,7 +95,7 @@ public class CatalogProvidersApiExample {
         // overriding the host and port, timeout, etc.
         CatalogProvidersApi apiInstance = new CatalogProvidersApi(defaultClient);
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiCatalogProviderResponse result = apiInstance.catalogProviderList(apiCatalogProviderFilter, aid);
             System.out.println(result);

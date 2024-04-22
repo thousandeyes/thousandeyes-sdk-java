@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- *  ### Overview The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test.
+ * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -54,7 +54,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTestRequest.JSON_PROPERTY_LINKS,
   HttpServerInstantTestRequest.JSON_PROPERTY_LABELS,
   HttpServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  HttpServerInstantTestRequest.JSON_PROPERTY_AGENTS,
   HttpServerInstantTestRequest.JSON_PROPERTY_AUTH_TYPE,
   HttpServerInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   HttpServerInstantTestRequest.JSON_PROPERTY_CLIENT_CERTIFICATE,
@@ -83,11 +82,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTestRequest.JSON_PROPERTY_USER_AGENT,
   HttpServerInstantTestRequest.JSON_PROPERTY_USERNAME,
   HttpServerInstantTestRequest.JSON_PROPERTY_VERIFY_CERTIFICATE,
+  HttpServerInstantTestRequest.JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION,
   HttpServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
   HttpServerInstantTestRequest.JSON_PROPERTY_FOLLOW_REDIRECTS,
-  HttpServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE
+  HttpServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
+  HttpServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
 public class HttpServerInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -127,9 +128,6 @@ public class HttpServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
-
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -215,6 +213,9 @@ public class HttpServerInstantTestRequest {
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
   private Boolean verifyCertificate = false;
 
+  public static final String JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION = "allowUnsafeLegacyRenegotiation";
+  private Boolean allowUnsafeLegacyRenegotiation = true;
+
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
@@ -223,6 +224,9 @@ public class HttpServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
 
   public HttpServerInstantTestRequest() { 
   }
@@ -509,39 +513,6 @@ public class HttpServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSharedWithAccounts(List<String> sharedWithAccounts) {
     this.sharedWithAccounts = sharedWithAccounts;
-  }
-
-
-  public HttpServerInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public HttpServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<InstantTestRequestAgentsInner> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
   }
 
 
@@ -1251,6 +1222,31 @@ public class HttpServerInstantTestRequest {
   }
 
 
+  public HttpServerInstantTestRequest allowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+    this.allowUnsafeLegacyRenegotiation = allowUnsafeLegacyRenegotiation;
+    return this;
+  }
+
+   /**
+   * Allows TLS renegotiation with servers not supporting RFC 5746. Default Set to true to allow unsafe legacy renegotiation.
+   * @return allowUnsafeLegacyRenegotiation
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getAllowUnsafeLegacyRenegotiation() {
+    return allowUnsafeLegacyRenegotiation;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAllowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+    this.allowUnsafeLegacyRenegotiation = allowUnsafeLegacyRenegotiation;
+  }
+
+
   public HttpServerInstantTestRequest ipv6Policy(TestIpv6Policy ipv6Policy) {
     this.ipv6Policy = ipv6Policy;
     return this;
@@ -1328,6 +1324,39 @@ public class HttpServerInstantTestRequest {
   }
 
 
+  public HttpServerInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public HttpServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<InstantTestRequestAgentsInner> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+  }
+
+
   /**
    * Return true if this HttpServerInstantTestRequest object is equal to o.
    */
@@ -1353,7 +1382,6 @@ public class HttpServerInstantTestRequest {
         Objects.equals(this.links, httpServerInstantTestRequest.links) &&
         Objects.equals(this.labels, httpServerInstantTestRequest.labels) &&
         Objects.equals(this.sharedWithAccounts, httpServerInstantTestRequest.sharedWithAccounts) &&
-        Objects.equals(this.agents, httpServerInstantTestRequest.agents) &&
         Objects.equals(this.authType, httpServerInstantTestRequest.authType) &&
         Objects.equals(this.bandwidthMeasurements, httpServerInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, httpServerInstantTestRequest.clientCertificate) &&
@@ -1382,14 +1410,16 @@ public class HttpServerInstantTestRequest {
         Objects.equals(this.userAgent, httpServerInstantTestRequest.userAgent) &&
         Objects.equals(this.username, httpServerInstantTestRequest.username) &&
         Objects.equals(this.verifyCertificate, httpServerInstantTestRequest.verifyCertificate) &&
+        Objects.equals(this.allowUnsafeLegacyRenegotiation, httpServerInstantTestRequest.allowUnsafeLegacyRenegotiation) &&
         Objects.equals(this.ipv6Policy, httpServerInstantTestRequest.ipv6Policy) &&
         Objects.equals(this.followRedirects, httpServerInstantTestRequest.followRedirects) &&
-        Objects.equals(this.fixedPacketRate, httpServerInstantTestRequest.fixedPacketRate);
+        Objects.equals(this.fixedPacketRate, httpServerInstantTestRequest.fixedPacketRate) &&
+        Objects.equals(this.agents, httpServerInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, authType, bandwidthMeasurements, clientCertificate, contentRegex, headers, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, postBody, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, ipv6Policy, followRedirects, fixedPacketRate);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, bandwidthMeasurements, clientCertificate, contentRegex, headers, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, postBody, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, ipv6Policy, followRedirects, fixedPacketRate, agents);
   }
 
   @Override
@@ -1409,7 +1439,6 @@ public class HttpServerInstantTestRequest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
@@ -1438,9 +1467,11 @@ public class HttpServerInstantTestRequest {
     sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    verifyCertificate: ").append(toIndentedString(verifyCertificate)).append("\n");
+    sb.append("    allowUnsafeLegacyRenegotiation: ").append(toIndentedString(allowUnsafeLegacyRenegotiation)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

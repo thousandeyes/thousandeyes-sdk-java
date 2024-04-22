@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 

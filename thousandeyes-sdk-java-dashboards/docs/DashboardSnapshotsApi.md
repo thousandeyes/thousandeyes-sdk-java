@@ -49,7 +49,7 @@ public class Example {
 
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             CreateDashboardSnapshot201Response result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
             System.out.println(result);
@@ -128,7 +128,7 @@ public class Example {
 
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<CreateDashboardSnapshot201Response> response = apiInstance.createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -209,7 +209,7 @@ public class Example {
 
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiDashboardSnapshot result = apiInstance.dashboardSnapshotById(snapshotId, aid);
             System.out.println(result);
@@ -288,7 +288,7 @@ public class Example {
 
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<ApiDashboardSnapshot> response = apiInstance.dashboardSnapshotByIdWithHttpInfo(snapshotId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -368,7 +368,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
@@ -449,7 +449,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
@@ -533,7 +533,7 @@ public class Example {
 
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteDashboardSnapshot(snapshotId, aid);
         } catch (ApiException e) {
@@ -611,7 +611,7 @@ public class Example {
 
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteDashboardSnapshotWithHttpInfo(snapshotId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -692,7 +692,7 @@ public class Example {
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
         String widgetId = "unpmg"; // String | A Identifier for a widget.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             SnapshotDataByWidget200Response result = apiInstance.snapshotDataByWidget(snapshotId, widgetId, aid);
             System.out.println(result);
@@ -773,7 +773,7 @@ public class Example {
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
         String widgetId = "unpmg"; // String | A Identifier for a widget.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<SnapshotDataByWidget200Response> response = apiInstance.snapshotDataByWidgetWithHttpInfo(snapshotId, widgetId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -856,7 +856,7 @@ public class Example {
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
         UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest = new UpdateSnapshotExpirationDateApiRequest(); // UpdateSnapshotExpirationDateApiRequest | Request body schema to update a snapshot expiration.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.updateSnapshotExpirationDate(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
         } catch (ApiException e) {
@@ -936,7 +936,7 @@ public class Example {
         DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
         UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest = new UpdateSnapshotExpirationDateApiRequest(); // UpdateSnapshotExpirationDateApiRequest | Request body schema to update a snapshot expiration.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.updateSnapshotExpirationDateWithHttpInfo(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());

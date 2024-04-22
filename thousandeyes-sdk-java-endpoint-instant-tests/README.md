@@ -4,10 +4,8 @@ Endpoint Instant Scheduled Tests API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-18T12:55:01.917753+01:00[Europe/Lisbon]
+- Build date: 2024-04-22T10:43:50.537471+01:00[Europe/London]
 
-
-### Overview
 
 You can create and execute a new endpoint instant scheduled test within ThousandEyes using this API. The test parameters are specified in the `POST` data.
 
@@ -54,7 +52,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-instant-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>7.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -64,7 +62,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-instant-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-instant-tests:7.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -77,7 +75,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-instant-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-instant-tests-7.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -98,7 +96,7 @@ public class AgentToServerInstantScheduledTestApiExample {
         // overriding the host and port, timeout, etc.
         AgentToServerInstantScheduledTestApi apiInstance = new AgentToServerInstantScheduledTestApi(defaultClient);
         EndpointAgentToServerInstantTest endpointAgentToServerInstantTest = new EndpointAgentToServerInstantTest(); // EndpointAgentToServerInstantTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             EndpointAgentToServerTest result = apiInstance.postAgentToServerInstantTest(endpointAgentToServerInstantTest, aid);
             System.out.println(result);

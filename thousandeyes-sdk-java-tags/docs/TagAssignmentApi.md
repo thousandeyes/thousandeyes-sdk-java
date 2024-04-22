@@ -46,7 +46,7 @@ public class Example {
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of the tag to associate
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             BulkTagAssignment result = apiInstance.assignTag(id, tagAssignment, aid);
             System.out.println(result);
@@ -126,7 +126,7 @@ public class Example {
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of the tag to associate
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<BulkTagAssignment> response = apiInstance.assignTagWithHttpInfo(id, tagAssignment, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -207,7 +207,7 @@ public class Example {
 
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             BulkTagAssignments result = apiInstance.bulkAssignTag(bulkTagAssignments, aid);
             System.out.println(result);
@@ -285,7 +285,7 @@ public class Example {
 
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<BulkTagAssignments> response = apiInstance.bulkAssignTagWithHttpInfo(bulkTagAssignments, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -365,7 +365,7 @@ public class Example {
 
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             BulkTagAssignments result = apiInstance.bulkUnAssignTag(bulkTagAssignments, aid);
             System.out.println(result);
@@ -443,7 +443,7 @@ public class Example {
 
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<BulkTagAssignments> response = apiInstance.bulkUnAssignTagWithHttpInfo(bulkTagAssignments, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -524,7 +524,7 @@ public class Example {
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         String id = "2983u1"; // String | ID of the tag to associate
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.unassignTag(id, tagAssignment, aid);
         } catch (ApiException e) {
@@ -603,7 +603,7 @@ public class Example {
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         String id = "2983u1"; // String | ID of the tag to associate
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.unassignTagWithHttpInfo(id, tagAssignment, aid);
             System.out.println("Status code: " + response.getStatusCode());

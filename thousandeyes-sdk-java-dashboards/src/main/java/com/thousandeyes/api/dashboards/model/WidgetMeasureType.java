@@ -1,6 +1,6 @@
 /*
  * Dashboards API
- * Manage ThousandEyes Dashboards
+ * Manage ThousandEyes Dashboards.
  *
  * The version of the OpenAPI document: 7.0.0
  * 

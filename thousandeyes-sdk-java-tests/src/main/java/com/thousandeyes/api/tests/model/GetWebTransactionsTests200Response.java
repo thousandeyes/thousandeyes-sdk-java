@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.tests.model.SelfLinksLinks;
-import com.thousandeyes.api.tests.model.WebTransactionTest;
+import com.thousandeyes.api.tests.model.UnexpandedWebTransactionTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetWebTransactionsTests200Response.JSON_PROPERTY_TESTS,
   GetWebTransactionsTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class GetWebTransactionsTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<WebTransactionTest> tests;
+  private List<UnexpandedWebTransactionTest> tests;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -47,12 +47,12 @@ public class GetWebTransactionsTests200Response {
   public GetWebTransactionsTests200Response() { 
   }
 
-  public GetWebTransactionsTests200Response tests(List<WebTransactionTest> tests) {
+  public GetWebTransactionsTests200Response tests(List<UnexpandedWebTransactionTest> tests) {
     this.tests = tests;
     return this;
   }
 
-  public GetWebTransactionsTests200Response addTestsItem(WebTransactionTest testsItem) {
+  public GetWebTransactionsTests200Response addTestsItem(UnexpandedWebTransactionTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -68,14 +68,14 @@ public class GetWebTransactionsTests200Response {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<WebTransactionTest> getTests() {
+  public List<UnexpandedWebTransactionTest> getTests() {
     return tests;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<WebTransactionTest> tests) {
+  public void setTests(List<UnexpandedWebTransactionTest> tests) {
     this.tests = tests;
   }
 

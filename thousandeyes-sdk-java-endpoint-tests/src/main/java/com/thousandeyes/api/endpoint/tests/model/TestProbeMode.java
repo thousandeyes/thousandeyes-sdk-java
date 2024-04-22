@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  ## Overview Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
+ *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 

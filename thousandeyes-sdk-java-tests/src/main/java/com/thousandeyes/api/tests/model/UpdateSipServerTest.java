@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.api.tests.model.SipTestProtocol;
+import com.thousandeyes.api.tests.model.Monitor;
 import com.thousandeyes.api.tests.model.TestInterval;
 import com.thousandeyes.api.tests.model.TestIpv6Policy;
 import com.thousandeyes.api.tests.model.TestPathTraceMode;
@@ -57,28 +57,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateSipServerTest.JSON_PROPERTY_LINKS,
   UpdateSipServerTest.JSON_PROPERTY_LABELS,
   UpdateSipServerTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  UpdateSipServerTest.JSON_PROPERTY_AGENTS,
-  UpdateSipServerTest.JSON_PROPERTY_AUTH_USER,
   UpdateSipServerTest.JSON_PROPERTY_MTU_MEASUREMENTS,
   UpdateSipServerTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   UpdateSipServerTest.JSON_PROPERTY_NUM_PATH_TRACES,
   UpdateSipServerTest.JSON_PROPERTY_OPTIONS_REGEX,
-  UpdateSipServerTest.JSON_PROPERTY_PASSWORD,
   UpdateSipServerTest.JSON_PROPERTY_PATH_TRACE_MODE,
-  UpdateSipServerTest.JSON_PROPERTY_PORT,
   UpdateSipServerTest.JSON_PROPERTY_PROBE_MODE,
-  UpdateSipServerTest.JSON_PROPERTY_PROTOCOL,
   UpdateSipServerTest.JSON_PROPERTY_REGISTER_ENABLED,
-  UpdateSipServerTest.JSON_PROPERTY_SIP_REGISTRAR,
   UpdateSipServerTest.JSON_PROPERTY_SIP_TARGET_TIME,
   UpdateSipServerTest.JSON_PROPERTY_SIP_TIME_LIMIT,
-  UpdateSipServerTest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS,
-  UpdateSipServerTest.JSON_PROPERTY_USER,
   UpdateSipServerTest.JSON_PROPERTY_FIXED_PACKET_RATE,
   UpdateSipServerTest.JSON_PROPERTY_IPV6_POLICY,
-  UpdateSipServerTest.JSON_PROPERTY_BGP_MEASUREMENTS
+  UpdateSipServerTest.JSON_PROPERTY_AGENTS,
+  UpdateSipServerTest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS,
+  UpdateSipServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  UpdateSipServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
+  UpdateSipServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -131,12 +127,6 @@ public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
-
-  public static final String JSON_PROPERTY_AUTH_USER = "authUser";
-  private String authUser;
-
   public static final String JSON_PROPERTY_MTU_MEASUREMENTS = "mtuMeasurements";
   private Boolean mtuMeasurements;
 
@@ -149,26 +139,14 @@ public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_OPTIONS_REGEX = "optionsRegex";
   private String optionsRegex;
 
-  public static final String JSON_PROPERTY_PASSWORD = "password";
-  private String password;
-
   public static final String JSON_PROPERTY_PATH_TRACE_MODE = "pathTraceMode";
   private TestPathTraceMode pathTraceMode = TestPathTraceMode.CLASSIC;
-
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port = 49153;
 
   public static final String JSON_PROPERTY_PROBE_MODE = "probeMode";
   private TestProbeMode probeMode = TestProbeMode.AUTO;
 
-  public static final String JSON_PROPERTY_PROTOCOL = "protocol";
-  private SipTestProtocol protocol = SipTestProtocol.TCP;
-
   public static final String JSON_PROPERTY_REGISTER_ENABLED = "registerEnabled";
   private Boolean registerEnabled = false;
-
-  public static final String JSON_PROPERTY_SIP_REGISTRAR = "sipRegistrar";
-  private String sipRegistrar;
 
   public static final String JSON_PROPERTY_SIP_TARGET_TIME = "sipTargetTime";
   private Integer sipTargetTime;
@@ -176,20 +154,26 @@ public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_SIP_TIME_LIMIT = "sipTimeLimit";
   private Integer sipTimeLimit = 5;
 
-  public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
-  private TestSipCredentials targetSipCredentials;
-
-  public static final String JSON_PROPERTY_USER = "user";
-  private String user;
-
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestRequestAllOfAgents> agents;
+
+  public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
+  private TestSipCredentials targetSipCredentials;
+
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<Monitor> monitors;
 
   public UpdateSipServerTest() { 
   }
@@ -203,7 +187,8 @@ public class UpdateSipServerTest {
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
     @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
+    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
+    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
   this();
     this.createdBy = createdBy;
@@ -214,6 +199,7 @@ public class UpdateSipServerTest {
     this.savedEvent = savedEvent;
     this.testId = testId;
     this.type = type;
+    this.monitors = monitors;
   }
 
   public UpdateSipServerTest interval(TestInterval interval) {
@@ -585,64 +571,6 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest agents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public UpdateSipServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestRequestAllOfAgents> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-  }
-
-
-  public UpdateSipServerTest authUser(String authUser) {
-    this.authUser = authUser;
-    return this;
-  }
-
-   /**
-   * Username for authentication with SIP server.
-   * @return authUser
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AUTH_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getAuthUser() {
-    return authUser;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AUTH_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthUser(String authUser) {
-    this.authUser = authUser;
-  }
-
-
   public UpdateSipServerTest mtuMeasurements(Boolean mtuMeasurements) {
     this.mtuMeasurements = mtuMeasurements;
     return this;
@@ -745,31 +673,6 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Password for Basic/NTLM authentication.
-   * @return password
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPassword() {
-    return password;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-
   public UpdateSipServerTest pathTraceMode(TestPathTraceMode pathTraceMode) {
     this.pathTraceMode = pathTraceMode;
     return this;
@@ -792,33 +695,6 @@ public class UpdateSipServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPathTraceMode(TestPathTraceMode pathTraceMode) {
     this.pathTraceMode = pathTraceMode;
-  }
-
-
-  public UpdateSipServerTest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Target port.
-   * minimum: 1
-   * maximum: 65535
-   * @return port
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPort(Integer port) {
-    this.port = port;
   }
 
 
@@ -847,31 +723,6 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest protocol(SipTestProtocol protocol) {
-    this.protocol = protocol;
-    return this;
-  }
-
-   /**
-   * Get protocol
-   * @return protocol
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROTOCOL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public SipTestProtocol getProtocol() {
-    return protocol;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROTOCOL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProtocol(SipTestProtocol protocol) {
-    this.protocol = protocol;
-  }
-
-
   public UpdateSipServerTest registerEnabled(Boolean registerEnabled) {
     this.registerEnabled = registerEnabled;
     return this;
@@ -894,31 +745,6 @@ public class UpdateSipServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegisterEnabled(Boolean registerEnabled) {
     this.registerEnabled = registerEnabled;
-  }
-
-
-  public UpdateSipServerTest sipRegistrar(String sipRegistrar) {
-    this.sipRegistrar = sipRegistrar;
-    return this;
-  }
-
-   /**
-   * SIP server to be tested, specified by domain name or IP address.
-   * @return sipRegistrar
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIP_REGISTRAR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getSipRegistrar() {
-    return sipRegistrar;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SIP_REGISTRAR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSipRegistrar(String sipRegistrar) {
-    this.sipRegistrar = sipRegistrar;
   }
 
 
@@ -976,56 +802,6 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest targetSipCredentials(TestSipCredentials targetSipCredentials) {
-    this.targetSipCredentials = targetSipCredentials;
-    return this;
-  }
-
-   /**
-   * Get targetSipCredentials
-   * @return targetSipCredentials
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public TestSipCredentials getTargetSipCredentials() {
-    return targetSipCredentials;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTargetSipCredentials(TestSipCredentials targetSipCredentials) {
-    this.targetSipCredentials = targetSipCredentials;
-  }
-
-
-  public UpdateSipServerTest user(String user) {
-    this.user = user;
-    return this;
-  }
-
-   /**
-   * Username for SIP registration, should be unique within a ThousandEyes account group.
-   * @return user
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getUser() {
-    return user;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUser(String user) {
-    this.user = user;
-  }
-
-
   public UpdateSipServerTest fixedPacketRate(Integer fixedPacketRate) {
     this.fixedPacketRate = fixedPacketRate;
     return this;
@@ -1078,6 +854,64 @@ public class UpdateSipServerTest {
   }
 
 
+  public UpdateSipServerTest agents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public UpdateSipServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestRequestAllOfAgents> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+  }
+
+
+  public UpdateSipServerTest targetSipCredentials(TestSipCredentials targetSipCredentials) {
+    this.targetSipCredentials = targetSipCredentials;
+    return this;
+  }
+
+   /**
+   * Get targetSipCredentials
+   * @return targetSipCredentials
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public TestSipCredentials getTargetSipCredentials() {
+    return targetSipCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTargetSipCredentials(TestSipCredentials targetSipCredentials) {
+    this.targetSipCredentials = targetSipCredentials;
+  }
+
+
   public UpdateSipServerTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1101,6 +935,46 @@ public class UpdateSipServerTest {
   public void setBgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
   }
+
+
+  public UpdateSipServerTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+  }
+
+
+   /**
+   * Contains list of enabled BGP monitors.
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Monitor> getMonitors() {
+    return monitors;
+  }
+
+
 
 
   /**
@@ -1132,31 +1006,27 @@ public class UpdateSipServerTest {
         Objects.equals(this.links, updateSipServerTest.links) &&
         Objects.equals(this.labels, updateSipServerTest.labels) &&
         Objects.equals(this.sharedWithAccounts, updateSipServerTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, updateSipServerTest.agents) &&
-        Objects.equals(this.authUser, updateSipServerTest.authUser) &&
         Objects.equals(this.mtuMeasurements, updateSipServerTest.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, updateSipServerTest.networkMeasurements) &&
         Objects.equals(this.numPathTraces, updateSipServerTest.numPathTraces) &&
         Objects.equals(this.optionsRegex, updateSipServerTest.optionsRegex) &&
-        Objects.equals(this.password, updateSipServerTest.password) &&
         Objects.equals(this.pathTraceMode, updateSipServerTest.pathTraceMode) &&
-        Objects.equals(this.port, updateSipServerTest.port) &&
         Objects.equals(this.probeMode, updateSipServerTest.probeMode) &&
-        Objects.equals(this.protocol, updateSipServerTest.protocol) &&
         Objects.equals(this.registerEnabled, updateSipServerTest.registerEnabled) &&
-        Objects.equals(this.sipRegistrar, updateSipServerTest.sipRegistrar) &&
         Objects.equals(this.sipTargetTime, updateSipServerTest.sipTargetTime) &&
         Objects.equals(this.sipTimeLimit, updateSipServerTest.sipTimeLimit) &&
-        Objects.equals(this.targetSipCredentials, updateSipServerTest.targetSipCredentials) &&
-        Objects.equals(this.user, updateSipServerTest.user) &&
         Objects.equals(this.fixedPacketRate, updateSipServerTest.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, updateSipServerTest.ipv6Policy) &&
-        Objects.equals(this.bgpMeasurements, updateSipServerTest.bgpMeasurements);
+        Objects.equals(this.agents, updateSipServerTest.agents) &&
+        Objects.equals(this.targetSipCredentials, updateSipServerTest.targetSipCredentials) &&
+        Objects.equals(this.bgpMeasurements, updateSipServerTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, updateSipServerTest.usePublicBgp) &&
+        Objects.equals(this.monitors, updateSipServerTest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, authUser, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, password, pathTraceMode, port, probeMode, protocol, registerEnabled, sipRegistrar, sipTargetTime, sipTimeLimit, targetSipCredentials, user, fixedPacketRate, ipv6Policy, bgpMeasurements);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, agents, targetSipCredentials, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1180,26 +1050,22 @@ public class UpdateSipServerTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
-    sb.append("    authUser: ").append(toIndentedString(authUser)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
     sb.append("    optionsRegex: ").append(toIndentedString(optionsRegex)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
-    sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    registerEnabled: ").append(toIndentedString(registerEnabled)).append("\n");
-    sb.append("    sipRegistrar: ").append(toIndentedString(sipRegistrar)).append("\n");
     sb.append("    sipTargetTime: ").append(toIndentedString(sipTargetTime)).append("\n");
     sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");
-    sb.append("    targetSipCredentials: ").append(toIndentedString(targetSipCredentials)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    targetSipCredentials: ").append(toIndentedString(targetSipCredentials)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

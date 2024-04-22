@@ -1,6 +1,6 @@
 /*
  * Administrative API
- * ## Overview Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API.  This API provides the following endpoints that define the operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These endpoints can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.
+ * ## Overview Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following endpoints that define the operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These endpoints can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -54,7 +54,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.050917+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
 public class RolesApi {
   private final ApiClient apiClient;
 
@@ -114,7 +114,7 @@ public class RolesApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(roleRequestBody);
     return requestBuilder;
   }
@@ -168,7 +168,7 @@ public class RolesApi {
     }
 
     requestBuilder.header("Accept", List.of("application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -223,7 +223,7 @@ public class RolesApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -271,7 +271,7 @@ public class RolesApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -333,7 +333,7 @@ public class RolesApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(roleRequestBody);
     return requestBuilder;
   }

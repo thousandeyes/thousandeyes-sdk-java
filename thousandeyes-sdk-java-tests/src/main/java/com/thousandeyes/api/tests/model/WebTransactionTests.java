@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.api.tests.model.WebTransactionTest;
+import com.thousandeyes.api.tests.model.UnexpandedWebTransactionTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,20 +34,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   WebTransactionTests.JSON_PROPERTY_TESTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class WebTransactionTests {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<WebTransactionTest> tests;
+  private List<UnexpandedWebTransactionTest> tests;
 
   public WebTransactionTests() { 
   }
 
-  public WebTransactionTests tests(List<WebTransactionTest> tests) {
+  public WebTransactionTests tests(List<UnexpandedWebTransactionTest> tests) {
     this.tests = tests;
     return this;
   }
 
-  public WebTransactionTests addTestsItem(WebTransactionTest testsItem) {
+  public WebTransactionTests addTestsItem(UnexpandedWebTransactionTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -63,14 +63,14 @@ public class WebTransactionTests {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<WebTransactionTest> getTests() {
+  public List<UnexpandedWebTransactionTest> getTests() {
     return tests;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<WebTransactionTest> tests) {
+  public void setTests(List<UnexpandedWebTransactionTest> tests) {
     this.tests = tests;
   }
 

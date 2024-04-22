@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- *  ### Overview The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test.
+ * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -52,7 +52,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ServerInstantTestRequest.JSON_PROPERTY_LINKS,
   ServerInstantTestRequest.JSON_PROPERTY_LABELS,
   ServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  ServerInstantTestRequest.JSON_PROPERTY_AGENTS,
   ServerInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   ServerInstantTestRequest.JSON_PROPERTY_DOWNLOAD_LIMIT,
   ServerInstantTestRequest.JSON_PROPERTY_FTP_TARGET_TIME,
@@ -70,9 +69,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ServerInstantTestRequest.JSON_PROPERTY_USE_EXPLICIT_FTPS,
   ServerInstantTestRequest.JSON_PROPERTY_USERNAME,
   ServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
-  ServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY
+  ServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
+  ServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
 public class ServerInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -112,9 +112,6 @@ public class ServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
-
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -169,6 +166,9 @@ public class ServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
 
   public ServerInstantTestRequest() { 
   }
@@ -453,39 +453,6 @@ public class ServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSharedWithAccounts(List<String> sharedWithAccounts) {
     this.sharedWithAccounts = sharedWithAccounts;
-  }
-
-
-  public ServerInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public ServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<InstantTestRequestAgentsInner> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
   }
 
 
@@ -947,6 +914,39 @@ public class ServerInstantTestRequest {
   }
 
 
+  public ServerInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public ServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<InstantTestRequestAgentsInner> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+  }
+
+
   /**
    * Return true if this ServerInstantTestRequest object is equal to o.
    */
@@ -972,7 +972,6 @@ public class ServerInstantTestRequest {
         Objects.equals(this.links, serverInstantTestRequest.links) &&
         Objects.equals(this.labels, serverInstantTestRequest.labels) &&
         Objects.equals(this.sharedWithAccounts, serverInstantTestRequest.sharedWithAccounts) &&
-        Objects.equals(this.agents, serverInstantTestRequest.agents) &&
         Objects.equals(this.bandwidthMeasurements, serverInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.downloadLimit, serverInstantTestRequest.downloadLimit) &&
         Objects.equals(this.ftpTargetTime, serverInstantTestRequest.ftpTargetTime) &&
@@ -990,12 +989,13 @@ public class ServerInstantTestRequest {
         Objects.equals(this.useExplicitFtps, serverInstantTestRequest.useExplicitFtps) &&
         Objects.equals(this.username, serverInstantTestRequest.username) &&
         Objects.equals(this.fixedPacketRate, serverInstantTestRequest.fixedPacketRate) &&
-        Objects.equals(this.ipv6Policy, serverInstantTestRequest.ipv6Policy);
+        Objects.equals(this.ipv6Policy, serverInstantTestRequest.ipv6Policy) &&
+        Objects.equals(this.agents, serverInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, agents);
   }
 
   @Override
@@ -1015,7 +1015,6 @@ public class ServerInstantTestRequest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    downloadLimit: ").append(toIndentedString(downloadLimit)).append("\n");
     sb.append("    ftpTargetTime: ").append(toIndentedString(ftpTargetTime)).append("\n");
@@ -1034,6 +1033,7 @@ public class ServerInstantTestRequest {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

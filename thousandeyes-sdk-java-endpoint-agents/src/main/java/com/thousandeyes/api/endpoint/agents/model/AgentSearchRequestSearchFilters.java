@@ -1,6 +1,6 @@
 /*
  * Endpoint Agents API
- * Manage ThousandEyes Endpoint Agents using this API.
+ * Manage ThousandEyes Endpoint Agents using this API.   For more information about Endpoint Agents, see [Endpoint Agents](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents).
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -25,6 +25,7 @@ import com.thousandeyes.api.endpoint.agents.model.Platform;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -32,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * AgentSearchRequestSearchFilters
  */
 @JsonPropertyOrder({
+  AgentSearchRequestSearchFilters.JSON_PROPERTY_ID,
   AgentSearchRequestSearchFilters.JSON_PROPERTY_AGENT_NAME,
   AgentSearchRequestSearchFilters.JSON_PROPERTY_COMPUTER_NAME,
   AgentSearchRequestSearchFilters.JSON_PROPERTY_USERNAME,
@@ -41,8 +43,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchRequestSearchFilters.JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE,
   AgentSearchRequestSearchFilters.JSON_PROPERTY_LOCATION_CITY
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.770114+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.660146+01:00[Europe/London]")
 public class AgentSearchRequestSearchFilters {
+  public static final String JSON_PROPERTY_ID = "id";
+  private List<UUID> id;
+
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
   private List<String> agentName;
 
@@ -69,6 +74,39 @@ public class AgentSearchRequestSearchFilters {
 
   public AgentSearchRequestSearchFilters() { 
   }
+
+  public AgentSearchRequestSearchFilters id(List<UUID> id) {
+    this.id = id;
+    return this;
+  }
+
+  public AgentSearchRequestSearchFilters addIdItem(UUID idItem) {
+    if (this.id == null) {
+      this.id = new ArrayList<>();
+    }
+    this.id.add(idItem);
+    return this;
+  }
+
+   /**
+   * Returns only agents that are an exact match of the provided identifiers.
+   * @return id
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<UUID> getId() {
+    return id;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(List<UUID> id) {
+    this.id = id;
+  }
+
 
   public AgentSearchRequestSearchFilters agentName(List<String> agentName) {
     this.agentName = agentName;
@@ -346,7 +384,8 @@ public class AgentSearchRequestSearchFilters {
       return false;
     }
     AgentSearchRequestSearchFilters agentSearchRequestSearchFilters = (AgentSearchRequestSearchFilters) o;
-    return Objects.equals(this.agentName, agentSearchRequestSearchFilters.agentName) &&
+    return Objects.equals(this.id, agentSearchRequestSearchFilters.id) &&
+        Objects.equals(this.agentName, agentSearchRequestSearchFilters.agentName) &&
         Objects.equals(this.computerName, agentSearchRequestSearchFilters.computerName) &&
         Objects.equals(this.username, agentSearchRequestSearchFilters.username) &&
         Objects.equals(this.platform, agentSearchRequestSearchFilters.platform) &&
@@ -358,13 +397,14 @@ public class AgentSearchRequestSearchFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentName, computerName, username, platform, osVersion, locationCountryISO, locationSubdivision1Code, locationCity);
+    return Objects.hash(id, agentName, computerName, username, platform, osVersion, locationCountryISO, locationSubdivision1Code, locationCity);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AgentSearchRequestSearchFilters {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    computerName: ").append(toIndentedString(computerName)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");

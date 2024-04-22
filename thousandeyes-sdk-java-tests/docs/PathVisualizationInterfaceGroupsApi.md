@@ -45,7 +45,7 @@ public class Example {
 
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
         InterfaceGroup interfaceGroup = new InterfaceGroup(); // InterfaceGroup | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             InterfaceGroup result = apiInstance.createPathVisInterfaceGroups(interfaceGroup, aid);
             System.out.println(result);
@@ -126,7 +126,7 @@ public class Example {
 
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
         InterfaceGroup interfaceGroup = new InterfaceGroup(); // InterfaceGroup | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<InterfaceGroup> response = apiInstance.createPathVisInterfaceGroupsWithHttpInfo(interfaceGroup, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -209,7 +209,7 @@ public class Example {
 
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
         String interfaceGroupId = "281474976710706"; // String | ID of the network path vis interface group
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deletePathVisInterfaceGroup(interfaceGroupId, aid);
         } catch (ApiException e) {
@@ -288,7 +288,7 @@ public class Example {
 
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
         String interfaceGroupId = "281474976710706"; // String | ID of the network path vis interface group
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deletePathVisInterfaceGroupWithHttpInfo(interfaceGroupId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -368,7 +368,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetPathVisInterfaceGroups200Response result = apiInstance.getPathVisInterfaceGroups(aid);
             System.out.println(result);
@@ -446,7 +446,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetPathVisInterfaceGroups200Response> response = apiInstance.getPathVisInterfaceGroupsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -528,7 +528,7 @@ public class Example {
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
         String interfaceGroupId = "281474976710706"; // String | ID of the network path vis interface group
         InterfaceGroup interfaceGroup = new InterfaceGroup(); // InterfaceGroup | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             InterfaceGroup result = apiInstance.updatePathVisInterfaceGroup(interfaceGroupId, interfaceGroup, aid);
             System.out.println(result);
@@ -611,7 +611,7 @@ public class Example {
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
         String interfaceGroupId = "281474976710706"; // String | ID of the network path vis interface group
         InterfaceGroup interfaceGroup = new InterfaceGroup(); // InterfaceGroup | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<InterfaceGroup> response = apiInstance.updatePathVisInterfaceGroupWithHttpInfo(interfaceGroupId, interfaceGroup, aid);
             System.out.println("Status code: " + response.getStatusCode());

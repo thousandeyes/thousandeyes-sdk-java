@@ -1,6 +1,6 @@
 /*
  * Test Snapshots API
- * Creates a new test snapshot in ThousandEyes
+ * Creates a new test snapshot in ThousandEyes.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -25,7 +25,6 @@ import com.thousandeyes.api.snapshots.model.ValidationErrorAllOfErrors;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -40,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ValidationError.JSON_PROPERTY_INSTANCE,
   ValidationError.JSON_PROPERTY_ERRORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.934536+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.463370+01:00[Europe/London]")
 public class ValidationError {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
@@ -241,20 +240,9 @@ public class ValidationError {
         Objects.equals(this.errors, validationError.errors);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(type, title, status, detail, instance, errors);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

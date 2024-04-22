@@ -55,7 +55,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083600+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
 public class LocalNetworkTestsResultsApi {
   private final ApiClient apiClient;
 
@@ -115,7 +115,7 @@ public class LocalNetworkTestsResultsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -163,7 +163,7 @@ public class LocalNetworkTestsResultsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -226,7 +226,7 @@ public class LocalNetworkTestsResultsApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(getEndpointLocalNetworksTopologiesRequest);
     return requestBuilder;
   }

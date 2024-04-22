@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.api.tests.model.HttpServerTest;
+import com.thousandeyes.api.tests.model.UnexpandedHttpServerTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,20 +34,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   HttpServerTests.JSON_PROPERTY_TESTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class HttpServerTests {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<HttpServerTest> tests;
+  private List<UnexpandedHttpServerTest> tests;
 
   public HttpServerTests() { 
   }
 
-  public HttpServerTests tests(List<HttpServerTest> tests) {
+  public HttpServerTests tests(List<UnexpandedHttpServerTest> tests) {
     this.tests = tests;
     return this;
   }
 
-  public HttpServerTests addTestsItem(HttpServerTest testsItem) {
+  public HttpServerTests addTestsItem(UnexpandedHttpServerTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -63,14 +63,14 @@ public class HttpServerTests {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<HttpServerTest> getTests() {
+  public List<UnexpandedHttpServerTest> getTests() {
     return tests;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<HttpServerTest> tests) {
+  public void setTests(List<UnexpandedHttpServerTest> tests) {
     this.tests = tests;
   }
 

@@ -1,6 +1,6 @@
 /*
  * Test Snapshots API
- * Creates a new test snapshot in ThousandEyes
+ * Creates a new test snapshot in ThousandEyes.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.api.snapshots.model.AppAndSelfLinksLinks;
 import com.thousandeyes.api.snapshots.model.SnapshotResponseAllOfTest;
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -43,10 +44,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SnapshotResponse.JSON_PROPERTY_EXTRA_PARAMS,
   SnapshotResponse.JSON_PROPERTY_TEST
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.934536+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.463370+01:00[Europe/London]")
 public class SnapshotResponse {
   public static final String JSON_PROPERTY_LINKS = "_links";
-  private Object links;
+  private AppAndSelfLinksLinks links;
 
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -96,7 +97,7 @@ public class SnapshotResponse {
     this.roundId = roundId;
   }
 
-  public SnapshotResponse links(Object links) {
+  public SnapshotResponse links(AppAndSelfLinksLinks links) {
     this.links = links;
     return this;
   }
@@ -109,14 +110,14 @@ public class SnapshotResponse {
   @JsonProperty(JSON_PROPERTY_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getLinks() {
+  public AppAndSelfLinksLinks getLinks() {
     return links;
   }
 
 
   @JsonProperty(JSON_PROPERTY_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLinks(Object links) {
+  public void setLinks(AppAndSelfLinksLinks links) {
     this.links = links;
   }
 

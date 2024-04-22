@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.endpoint.tests.results.model.EndpointScheduledTest;
 import com.thousandeyes.api.endpoint.tests.results.model.NetworkTestResult;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,12 +35,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   NetworkTestResults.JSON_PROPERTY_RESULTS,
+  NetworkTestResults.JSON_PROPERTY_TOTAL_HITS,
   NetworkTestResults.JSON_PROPERTY_TEST
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083600+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
 public class NetworkTestResults {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<NetworkTestResult> results;
+
+  public static final String JSON_PROPERTY_TOTAL_HITS = "totalHits";
+  private BigDecimal totalHits;
 
   public static final String JSON_PROPERTY_TEST = "test";
   private EndpointScheduledTest test;
@@ -77,6 +82,31 @@ public class NetworkTestResults {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResults(List<NetworkTestResult> results) {
     this.results = results;
+  }
+
+
+  public NetworkTestResults totalHits(BigDecimal totalHits) {
+    this.totalHits = totalHits;
+    return this;
+  }
+
+   /**
+   * Total number of measurements that match the search criteria
+   * @return totalHits
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOTAL_HITS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BigDecimal getTotalHits() {
+    return totalHits;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOTAL_HITS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTotalHits(BigDecimal totalHits) {
+    this.totalHits = totalHits;
   }
 
 
@@ -118,12 +148,13 @@ public class NetworkTestResults {
     }
     NetworkTestResults networkTestResults = (NetworkTestResults) o;
     return Objects.equals(this.results, networkTestResults.results) &&
+        Objects.equals(this.totalHits, networkTestResults.totalHits) &&
         Objects.equals(this.test, networkTestResults.test);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(results, test);
+    return Objects.hash(results, totalHits, test);
   }
 
   @Override
@@ -131,6 +162,7 @@ public class NetworkTestResults {
     StringBuilder sb = new StringBuilder();
     sb.append("class NetworkTestResults {\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
+    sb.append("    totalHits: ").append(toIndentedString(totalHits)).append("\n");
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  ## Overview Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
+ *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -58,7 +58,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.api.serialization.JSON;
 import com.thousandeyes.api.serialization.AbstractOpenApiSchema;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.110548+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.756412+01:00[Europe/London]")
 @JsonDeserialize(using = EndpointAgentSelectorConfig.EndpointAgentSelectorConfigDeserializer.class)
 @JsonSerialize(using = EndpointAgentSelectorConfig.EndpointAgentSelectorConfigSerializer.class)
 public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {

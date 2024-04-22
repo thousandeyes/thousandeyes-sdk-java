@@ -15,9 +15,14 @@ src/main/java/com/thousandeyes/api/endpoint/agents/model/AddressType.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentLicenseType.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentSearchRequest.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentSearchRequestSearchFilters.java
+src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentSearchSort.java
+src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentSearchSortKey.java
+src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentThresholdFilter.java
+src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentThresholdFilters.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentTransfer.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentTransferRequest.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/BrowserType.java
+src/main/java/com/thousandeyes/api/endpoint/agents/model/ConditionalOperator.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgent.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgentBulkTransfer207Response.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgentBulkTransfer207ResponseItemsInner.java
@@ -48,7 +53,9 @@ src/main/java/com/thousandeyes/api/endpoint/agents/model/PaginationNextLinkLinks
 src/main/java/com/thousandeyes/api/endpoint/agents/model/Platform.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/SelfLinksLinks.java
+src/main/java/com/thousandeyes/api/endpoint/agents/model/SortOrder.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/Status.java
+src/main/java/com/thousandeyes/api/endpoint/agents/model/ThresholdFilterOperator.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/ValidationError.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/ValidationErrorAllOfErrors.java

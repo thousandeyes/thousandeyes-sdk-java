@@ -47,7 +47,7 @@ public class Example {
 
         BgpApi apiInstance = new BgpApi(defaultClient);
         UpdateBgpTest updateBgpTest = new UpdateBgpTest(); // UpdateBgpTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             BgpTest result = apiInstance.createBgpTest(updateBgpTest, aid, expand);
@@ -130,7 +130,7 @@ public class Example {
 
         BgpApi apiInstance = new BgpApi(defaultClient);
         UpdateBgpTest updateBgpTest = new UpdateBgpTest(); // UpdateBgpTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<BgpTest> response = apiInstance.createBgpTestWithHttpInfo(updateBgpTest, aid, expand);
@@ -215,7 +215,7 @@ public class Example {
 
         BgpApi apiInstance = new BgpApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteBgpTest(testId, aid);
         } catch (ApiException e) {
@@ -294,7 +294,7 @@ public class Example {
 
         BgpApi apiInstance = new BgpApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteBgpTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -375,7 +375,7 @@ public class Example {
 
         BgpApi apiInstance = new BgpApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             BgpTest result = apiInstance.getBgpTest(testId, aid, expand);
@@ -457,7 +457,7 @@ public class Example {
 
         BgpApi apiInstance = new BgpApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
             ApiResponse<BgpTest> response = apiInstance.getBgpTestWithHttpInfo(testId, aid, expand);
@@ -540,7 +540,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         BgpApi apiInstance = new BgpApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetBgpTests200Response result = apiInstance.getBgpTests(aid);
             System.out.println(result);
@@ -618,7 +618,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         BgpApi apiInstance = new BgpApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetBgpTests200Response> response = apiInstance.getBgpTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -671,7 +671,7 @@ ApiResponse<[**GetBgpTests200Response**](GetBgpTests200Response.md)>
 
 ## updateBgpTest
 
-> BgpTest updateBgpTest(testId, updateBgpTest, aid, expand)
+> BgpTest updateBgpTest(testId, updateBgpTestRequest, aid, expand)
 
 Update BGP test
 
@@ -699,11 +699,11 @@ public class Example {
 
         BgpApi apiInstance = new BgpApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        UpdateBgpTest updateBgpTest = new UpdateBgpTest(); // UpdateBgpTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        UpdateBgpTestRequest updateBgpTestRequest = new UpdateBgpTestRequest(); // UpdateBgpTestRequest | 
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            BgpTest result = apiInstance.updateBgpTest(testId, updateBgpTest, aid, expand);
+            BgpTest result = apiInstance.updateBgpTest(testId, updateBgpTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpApi#updateBgpTest");
@@ -722,7 +722,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **testId** | **String**| ID of the test | |
-| **updateBgpTest** | [**UpdateBgpTest**](UpdateBgpTest.md)|  | |
+| **updateBgpTestRequest** | [**UpdateBgpTestRequest**](UpdateBgpTestRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 | **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
 
@@ -755,7 +755,7 @@ public class Example {
 
 ## updateBgpTestWithHttpInfo
 
-> ApiResponse<BgpTest> updateBgpTest updateBgpTestWithHttpInfo(testId, updateBgpTest, aid, expand)
+> ApiResponse<BgpTest> updateBgpTest updateBgpTestWithHttpInfo(testId, updateBgpTestRequest, aid, expand)
 
 Update BGP test
 
@@ -784,11 +784,11 @@ public class Example {
 
         BgpApi apiInstance = new BgpApi(defaultClient);
         String testId = "281474976710706"; // String | ID of the test
-        UpdateBgpTest updateBgpTest = new UpdateBgpTest(); // UpdateBgpTest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        UpdateBgpTestRequest updateBgpTestRequest = new UpdateBgpTestRequest(); // UpdateBgpTestRequest | 
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<BgpTest> response = apiInstance.updateBgpTestWithHttpInfo(testId, updateBgpTest, aid, expand);
+            ApiResponse<BgpTest> response = apiInstance.updateBgpTestWithHttpInfo(testId, updateBgpTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -809,7 +809,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **testId** | **String**| ID of the test | |
-| **updateBgpTest** | [**UpdateBgpTest**](UpdateBgpTest.md)|  | |
+| **updateBgpTestRequest** | [**UpdateBgpTestRequest**](UpdateBgpTestRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 | **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
 

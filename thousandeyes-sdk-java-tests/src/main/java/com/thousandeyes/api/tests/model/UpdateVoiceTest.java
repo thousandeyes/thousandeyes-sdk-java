@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.api.tests.model.Monitor;
 import com.thousandeyes.api.tests.model.TestDscpId;
 import com.thousandeyes.api.tests.model.TestInterval;
 import com.thousandeyes.api.tests.model.TestRequestAllOfAgents;
@@ -53,7 +54,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateVoiceTest.JSON_PROPERTY_LINKS,
   UpdateVoiceTest.JSON_PROPERTY_LABELS,
   UpdateVoiceTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  UpdateVoiceTest.JSON_PROPERTY_AGENTS,
   UpdateVoiceTest.JSON_PROPERTY_CODEC,
   UpdateVoiceTest.JSON_PROPERTY_CODEC_ID,
   UpdateVoiceTest.JSON_PROPERTY_DSCP,
@@ -63,9 +63,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateVoiceTest.JSON_PROPERTY_NUM_PATH_TRACES,
   UpdateVoiceTest.JSON_PROPERTY_PORT,
   UpdateVoiceTest.JSON_PROPERTY_TARGET_AGENT_ID,
-  UpdateVoiceTest.JSON_PROPERTY_BGP_MEASUREMENTS
+  UpdateVoiceTest.JSON_PROPERTY_AGENTS,
+  UpdateVoiceTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  UpdateVoiceTest.JSON_PROPERTY_USE_PUBLIC_BGP,
+  UpdateVoiceTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class UpdateVoiceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -118,9 +121,6 @@ public class UpdateVoiceTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
-
   public static final String JSON_PROPERTY_CODEC = "codec";
   private String codec;
 
@@ -148,8 +148,17 @@ public class UpdateVoiceTest {
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
 
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestRequestAllOfAgents> agents;
+
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<Monitor> monitors;
 
   public UpdateVoiceTest() { 
   }
@@ -165,7 +174,8 @@ public class UpdateVoiceTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_CODEC) String codec, 
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp
+    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
+    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
   this();
     this.createdBy = createdBy;
@@ -178,6 +188,7 @@ public class UpdateVoiceTest {
     this.type = type;
     this.codec = codec;
     this.dscp = dscp;
+    this.monitors = monitors;
   }
 
   public UpdateVoiceTest interval(TestInterval interval) {
@@ -549,39 +560,6 @@ public class UpdateVoiceTest {
   }
 
 
-  public UpdateVoiceTest agents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public UpdateVoiceTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestRequestAllOfAgents> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-  }
-
-
    /**
    * Codec label
    * @return codec
@@ -795,6 +773,39 @@ public class UpdateVoiceTest {
   }
 
 
+  public UpdateVoiceTest agents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public UpdateVoiceTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestRequestAllOfAgents> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+  }
+
+
   public UpdateVoiceTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -818,6 +829,46 @@ public class UpdateVoiceTest {
   public void setBgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
   }
+
+
+  public UpdateVoiceTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+  }
+
+
+   /**
+   * Contains list of enabled BGP monitors.
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Monitor> getMonitors() {
+    return monitors;
+  }
+
+
 
 
   /**
@@ -849,7 +900,6 @@ public class UpdateVoiceTest {
         Objects.equals(this.links, updateVoiceTest.links) &&
         Objects.equals(this.labels, updateVoiceTest.labels) &&
         Objects.equals(this.sharedWithAccounts, updateVoiceTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, updateVoiceTest.agents) &&
         Objects.equals(this.codec, updateVoiceTest.codec) &&
         Objects.equals(this.codecId, updateVoiceTest.codecId) &&
         Objects.equals(this.dscp, updateVoiceTest.dscp) &&
@@ -859,12 +909,15 @@ public class UpdateVoiceTest {
         Objects.equals(this.numPathTraces, updateVoiceTest.numPathTraces) &&
         Objects.equals(this.port, updateVoiceTest.port) &&
         Objects.equals(this.targetAgentId, updateVoiceTest.targetAgentId) &&
-        Objects.equals(this.bgpMeasurements, updateVoiceTest.bgpMeasurements);
+        Objects.equals(this.agents, updateVoiceTest.agents) &&
+        Objects.equals(this.bgpMeasurements, updateVoiceTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, updateVoiceTest.usePublicBgp) &&
+        Objects.equals(this.monitors, updateVoiceTest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId, bgpMeasurements);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId, agents, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -888,7 +941,6 @@ public class UpdateVoiceTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    codec: ").append(toIndentedString(codec)).append("\n");
     sb.append("    codecId: ").append(toIndentedString(codecId)).append("\n");
     sb.append("    dscp: ").append(toIndentedString(dscp)).append("\n");
@@ -898,7 +950,10 @@ public class UpdateVoiceTest {
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

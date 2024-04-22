@@ -38,7 +38,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AllLabelsApi apiInstance = new AllLabelsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetLabels200Response result = apiInstance.getLabels(aid);
             System.out.println(result);
@@ -115,7 +115,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AllLabelsApi apiInstance = new AllLabelsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetLabels200Response> response = apiInstance.getLabelsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());

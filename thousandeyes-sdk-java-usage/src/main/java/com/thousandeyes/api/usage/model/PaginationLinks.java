@@ -1,6 +1,6 @@
 /*
- * Test Snapshots API
- * Creates a new test snapshot in ThousandEyes
+ * Usage API
+ *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View Billing` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View Billing` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API endpoints for detailed usage instructions and optional parameters. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -11,7 +11,7 @@
  */
 
 
-package com.thousandeyes.api.snapshots.model;
+package com.thousandeyes.api.usage.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -21,25 +21,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.jackson.nullable.JsonNullable;
+import com.thousandeyes.api.usage.model.PaginationLinksLinks;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * SnapshotLinks
+ * A links object containing pagination related link(s).
  */
 @JsonPropertyOrder({
-  SnapshotLinks.JSON_PROPERTY_LINKS
+  PaginationLinks.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.934536+01:00[Europe/Lisbon]")
-public class SnapshotLinks {
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.525987+01:00[Europe/London]")
+public class PaginationLinks {
   public static final String JSON_PROPERTY_LINKS = "_links";
-  private Object links = null;
+  private PaginationLinksLinks links;
 
-  public SnapshotLinks() { 
+  public PaginationLinks() { 
   }
 
-  public SnapshotLinks links(Object links) {
+  public PaginationLinks links(PaginationLinksLinks links) {
     this.links = links;
     return this;
   }
@@ -52,20 +52,20 @@ public class SnapshotLinks {
   @JsonProperty(JSON_PROPERTY_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getLinks() {
+  public PaginationLinksLinks getLinks() {
     return links;
   }
 
 
   @JsonProperty(JSON_PROPERTY_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLinks(Object links) {
+  public void setLinks(PaginationLinksLinks links) {
     this.links = links;
   }
 
 
   /**
-   * Return true if this SnapshotLinks object is equal to o.
+   * Return true if this PaginationLinks object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -75,12 +75,8 @@ public class SnapshotLinks {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SnapshotLinks snapshotLinks = (SnapshotLinks) o;
-    return Objects.equals(this.links, snapshotLinks.links);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    PaginationLinks paginationLinks = (PaginationLinks) o;
+    return Objects.equals(this.links, paginationLinks.links);
   }
 
   @Override
@@ -88,17 +84,10 @@ public class SnapshotLinks {
     return Objects.hash(links);
   }
 
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
-  }
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SnapshotLinks {\n");
+    sb.append("class PaginationLinks {\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

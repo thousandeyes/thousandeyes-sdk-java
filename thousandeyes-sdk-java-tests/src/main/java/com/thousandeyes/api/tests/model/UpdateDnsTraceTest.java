@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -54,12 +54,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateDnsTraceTest.JSON_PROPERTY_LINKS,
   UpdateDnsTraceTest.JSON_PROPERTY_LABELS,
   UpdateDnsTraceTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  UpdateDnsTraceTest.JSON_PROPERTY_AGENTS,
   UpdateDnsTraceTest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   UpdateDnsTraceTest.JSON_PROPERTY_DOMAIN,
-  UpdateDnsTraceTest.JSON_PROPERTY_DNS_QUERY_CLASS
+  UpdateDnsTraceTest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  UpdateDnsTraceTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class UpdateDnsTraceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -112,9 +112,6 @@ public class UpdateDnsTraceTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
-
   public static final String JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL = "dnsTransportProtocol";
   private TestDnsTransportProtocol dnsTransportProtocol = TestDnsTransportProtocol.UDP;
 
@@ -123,6 +120,9 @@ public class UpdateDnsTraceTest {
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestRequestAllOfAgents> agents;
 
   public UpdateDnsTraceTest() { 
   }
@@ -518,39 +518,6 @@ public class UpdateDnsTraceTest {
   }
 
 
-  public UpdateDnsTraceTest agents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public UpdateDnsTraceTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestRequestAllOfAgents> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-  }
-
-
   public UpdateDnsTraceTest dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
     this.dnsTransportProtocol = dnsTransportProtocol;
     return this;
@@ -626,6 +593,39 @@ public class UpdateDnsTraceTest {
   }
 
 
+  public UpdateDnsTraceTest agents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public UpdateDnsTraceTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestRequestAllOfAgents> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+  }
+
+
   /**
    * Return true if this UpdateDnsTraceTest object is equal to o.
    */
@@ -655,15 +655,15 @@ public class UpdateDnsTraceTest {
         Objects.equals(this.links, updateDnsTraceTest.links) &&
         Objects.equals(this.labels, updateDnsTraceTest.labels) &&
         Objects.equals(this.sharedWithAccounts, updateDnsTraceTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, updateDnsTraceTest.agents) &&
         Objects.equals(this.dnsTransportProtocol, updateDnsTraceTest.dnsTransportProtocol) &&
         Objects.equals(this.domain, updateDnsTraceTest.domain) &&
-        Objects.equals(this.dnsQueryClass, updateDnsTraceTest.dnsQueryClass);
+        Objects.equals(this.dnsQueryClass, updateDnsTraceTest.dnsQueryClass) &&
+        Objects.equals(this.agents, updateDnsTraceTest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, dnsTransportProtocol, domain, dnsQueryClass);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, agents);
   }
 
   @Override
@@ -687,10 +687,10 @@ public class UpdateDnsTraceTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

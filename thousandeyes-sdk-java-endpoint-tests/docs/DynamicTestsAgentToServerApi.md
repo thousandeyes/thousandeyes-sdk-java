@@ -47,7 +47,7 @@ public class Example {
 
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteEndpointDynamicTest(testId, aid);
         } catch (ApiException e) {
@@ -127,7 +127,7 @@ public class Example {
 
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteEndpointDynamicTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -209,7 +209,7 @@ public class Example {
 
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             DynamicTest result = apiInstance.getDynamicTestDetail(testId, aid);
             System.out.println(result);
@@ -289,7 +289,7 @@ public class Example {
 
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<DynamicTest> response = apiInstance.getDynamicTestDetailWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -370,7 +370,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetDynamicTestsList200Response result = apiInstance.getDynamicTestsList(aid);
             System.out.println(result);
@@ -447,7 +447,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetDynamicTestsList200Response> response = apiInstance.getDynamicTestsListWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -527,7 +527,7 @@ public class Example {
 
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         DynamicTestRequest dynamicTestRequest = new DynamicTestRequest(); // DynamicTestRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             DynamicTest result = apiInstance.postDynamicTest(dynamicTestRequest, aid);
             System.out.println(result);
@@ -608,7 +608,7 @@ public class Example {
 
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         DynamicTestRequest dynamicTestRequest = new DynamicTestRequest(); // DynamicTestRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<DynamicTest> response = apiInstance.postDynamicTestWithHttpInfo(dynamicTestRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -692,7 +692,7 @@ public class Example {
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
         EndpointDynamicTestUpdate endpointDynamicTestUpdate = new EndpointDynamicTestUpdate(); // EndpointDynamicTestUpdate | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             DynamicTest result = apiInstance.updateEndpointDynamicTestDetail(testId, endpointDynamicTestUpdate, aid);
             System.out.println(result);
@@ -775,7 +775,7 @@ public class Example {
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
         EndpointDynamicTestUpdate endpointDynamicTestUpdate = new EndpointDynamicTestUpdate(); // EndpointDynamicTestUpdate | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<DynamicTest> response = apiInstance.updateEndpointDynamicTestDetailWithHttpInfo(testId, endpointDynamicTestUpdate, aid);
             System.out.println("Status code: " + response.getStatusCode());

@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  ## Overview Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
+ *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetEndpointTestsList200Response.JSON_PROPERTY_TESTS,
   GetEndpointTestsList200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.110548+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.756412+01:00[Europe/London]")
 public class GetEndpointTestsList200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<EndpointTest> tests;

@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- *  ### Overview The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test.
+ * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -23,8 +23,8 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import com.thousandeyes.api.tests.instant.model.Error;
 import com.thousandeyes.api.tests.instant.model.Expand;
-import com.thousandeyes.api.tests.instant.model.SipServerInstantTest;
 import com.thousandeyes.api.tests.instant.model.SipServerInstantTestRequest;
+import com.thousandeyes.api.tests.instant.model.SipServerInstantTestResponse;
 import java.net.URI;
 import com.thousandeyes.api.tests.instant.model.UnauthorizedError;
 import com.thousandeyes.api.tests.instant.model.ValidationError;
@@ -54,7 +54,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
 public class SipServerApi {
   private final ApiClient apiClient;
 
@@ -68,11 +68,11 @@ public class SipServerApi {
    * @param sipServerInstantTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
-   * @return SipServerInstantTest
+   * @return SipServerInstantTestResponse
    * @throws ApiException if fails to make API call
    */
-  public SipServerInstantTest postInstantSIPServer(SipServerInstantTestRequest sipServerInstantTestRequest, String aid, List<Expand> expand) throws ApiException {
-    ApiResponse<SipServerInstantTest> response = postInstantSIPServerWithHttpInfo(sipServerInstantTestRequest, aid, expand);
+  public SipServerInstantTestResponse postInstantSIPServer(SipServerInstantTestRequest sipServerInstantTestRequest, String aid, List<Expand> expand) throws ApiException {
+    ApiResponse<SipServerInstantTestResponse> response = postInstantSIPServerWithHttpInfo(sipServerInstantTestRequest, aid, expand);
     return response.getData();
   }
 
@@ -82,15 +82,15 @@ public class SipServerApi {
    * @param sipServerInstantTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
-   * @return ApiResponse&lt;SipServerInstantTest&gt;
+   * @return ApiResponse&lt;SipServerInstantTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SipServerInstantTest> postInstantSIPServerWithHttpInfo(SipServerInstantTestRequest sipServerInstantTestRequest, String aid, List<Expand> expand) throws ApiException {
+  public ApiResponse<SipServerInstantTestResponse> postInstantSIPServerWithHttpInfo(SipServerInstantTestRequest sipServerInstantTestRequest, String aid, List<Expand> expand) throws ApiException {
     postInstantSIPServerValidateRequest(sipServerInstantTestRequest);
 
     var requestBuilder = postInstantSIPServerRequestBuilder(sipServerInstantTestRequest, aid, expand);
 
-    return apiClient.send(requestBuilder.build(), SipServerInstantTest.class);
+    return apiClient.send(requestBuilder.build(), SipServerInstantTestResponse.class);
   }
 
   private void postInstantSIPServerValidateRequest(SipServerInstantTestRequest sipServerInstantTestRequest) throws ApiException {
@@ -117,7 +117,7 @@ public class SipServerApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(sipServerInstantTestRequest);
     return requestBuilder;
   }

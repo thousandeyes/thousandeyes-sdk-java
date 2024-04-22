@@ -4,7 +4,7 @@ Endpoint Agent Labels API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-18T12:55:01.701734+01:00[Europe/Lisbon]
+- Build date: 2024-04-22T10:43:50.474066+01:00[Europe/London]
 
 Manage labels applied to endpoint agents using this API.
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-labels</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>7.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-labels:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-labels:7.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-labels-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-labels-7.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -87,7 +87,7 @@ public class ManageLabelsApiExample {
         // overriding the host and port, timeout, etc.
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String id = "id_example"; // String | The unique identifier of the label to operate on.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.endpointLabelDelete(id, aid);
         } catch (ApiException e) {
@@ -108,8 +108,8 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ManageLabelsApi* | [**endpointLabelDelete**](docs/ManageLabelsApi.md#endpointLabelDelete) | **DELETE** /v7/endpoint/labels/{id} | Deletes label
-*ManageLabelsApi* | [**endpointLabelDeleteWithHttpInfo**](docs/ManageLabelsApi.md#endpointLabelDeleteWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Deletes label
+*ManageLabelsApi* | [**endpointLabelDelete**](docs/ManageLabelsApi.md#endpointLabelDelete) | **DELETE** /v7/endpoint/labels/{id} | Delete label
+*ManageLabelsApi* | [**endpointLabelDeleteWithHttpInfo**](docs/ManageLabelsApi.md#endpointLabelDeleteWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Delete label
 *ManageLabelsApi* | [**endpointLabelGet**](docs/ManageLabelsApi.md#endpointLabelGet) | **GET** /v7/endpoint/labels/{id} | Retrieve label
 *ManageLabelsApi* | [**endpointLabelGetWithHttpInfo**](docs/ManageLabelsApi.md#endpointLabelGetWithHttpInfo) | **GET** /v7/endpoint/labels/{id} | Retrieve label
 *ManageLabelsApi* | [**endpointLabelUpdate**](docs/ManageLabelsApi.md#endpointLabelUpdate) | **PATCH** /v7/endpoint/labels/{id} | Update label

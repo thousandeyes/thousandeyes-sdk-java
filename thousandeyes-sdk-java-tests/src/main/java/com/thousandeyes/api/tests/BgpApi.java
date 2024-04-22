@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -28,6 +28,7 @@ import com.thousandeyes.api.tests.model.GetBgpTests200Response;
 import java.net.URI;
 import com.thousandeyes.api.tests.model.UnauthorizedError;
 import com.thousandeyes.api.tests.model.UpdateBgpTest;
+import com.thousandeyes.api.tests.model.UpdateBgpTestRequest;
 import com.thousandeyes.api.tests.model.ValidationError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -55,7 +56,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class BgpApi {
   private final ApiClient apiClient;
 
@@ -118,7 +119,7 @@ public class BgpApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     requestBuilder.requestBody(updateBgpTest);
     return requestBuilder;
   }
@@ -172,7 +173,7 @@ public class BgpApi {
     }
 
     requestBuilder.header("Accept", List.of("application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -230,7 +231,7 @@ public class BgpApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
@@ -278,21 +279,21 @@ public class BgpApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
   /**
    * Update BGP test
    * Updates a BGP test. This method requires Account Admin permissions. The target test cannot be a live share or saved event.
    * @param testId ID of the test (required)
-   * @param updateBgpTest  (required)
+   * @param updateBgpTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
    * @return BgpTest
    * @throws ApiException if fails to make API call
    */
-  public BgpTest updateBgpTest(String testId, UpdateBgpTest updateBgpTest, String aid, List<Expand> expand) throws ApiException {
-    ApiResponse<BgpTest> response = updateBgpTestWithHttpInfo(testId, updateBgpTest, aid, expand);
+  public BgpTest updateBgpTest(String testId, UpdateBgpTestRequest updateBgpTestRequest, String aid, List<Expand> expand) throws ApiException {
+    ApiResponse<BgpTest> response = updateBgpTestWithHttpInfo(testId, updateBgpTestRequest, aid, expand);
     return response.getData();
   }
 
@@ -300,32 +301,32 @@ public class BgpApi {
    * Update BGP test
    * Updates a BGP test. This method requires Account Admin permissions. The target test cannot be a live share or saved event.
    * @param testId ID of the test (required)
-   * @param updateBgpTest  (required)
+   * @param updateBgpTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
    * @return ApiResponse&lt;BgpTest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BgpTest> updateBgpTestWithHttpInfo(String testId, UpdateBgpTest updateBgpTest, String aid, List<Expand> expand) throws ApiException {
-    updateBgpTestValidateRequest(testId, updateBgpTest);
+  public ApiResponse<BgpTest> updateBgpTestWithHttpInfo(String testId, UpdateBgpTestRequest updateBgpTestRequest, String aid, List<Expand> expand) throws ApiException {
+    updateBgpTestValidateRequest(testId, updateBgpTestRequest);
 
-    var requestBuilder = updateBgpTestRequestBuilder(testId, updateBgpTest, aid, expand);
+    var requestBuilder = updateBgpTestRequestBuilder(testId, updateBgpTestRequest, aid, expand);
 
     return apiClient.send(requestBuilder.build(), BgpTest.class);
   }
 
-  private void updateBgpTestValidateRequest(String testId, UpdateBgpTest updateBgpTest) throws ApiException {
+  private void updateBgpTestValidateRequest(String testId, UpdateBgpTestRequest updateBgpTestRequest) throws ApiException {
       // verify the required parameter 'testId' is set
       if (testId == null) {
         throw new ApiException(400, "Missing the required parameter 'testId' when calling updateBgpTest");
       }
-      // verify the required parameter 'updateBgpTest' is set
-      if (updateBgpTest == null) {
-        throw new ApiException(400, "Missing the required parameter 'updateBgpTest' when calling updateBgpTest");
+      // verify the required parameter 'updateBgpTestRequest' is set
+      if (updateBgpTestRequest == null) {
+        throw new ApiException(400, "Missing the required parameter 'updateBgpTestRequest' when calling updateBgpTest");
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateBgpTestRequestBuilder(String testId, UpdateBgpTest updateBgpTest, String aid, List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder updateBgpTestRequestBuilder(String testId, UpdateBgpTestRequest updateBgpTestRequest, String aid, List<Expand> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
@@ -343,8 +344,8 @@ public class BgpApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
-    requestBuilder.requestBody(updateBgpTest);
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.requestBody(updateBgpTestRequest);
     return requestBuilder;
   }
 }

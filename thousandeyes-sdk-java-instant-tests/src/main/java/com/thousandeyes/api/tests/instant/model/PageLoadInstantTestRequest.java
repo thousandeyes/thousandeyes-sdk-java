@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- *  ### Overview The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test.
+ * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -54,12 +54,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTestRequest.JSON_PROPERTY_LINKS,
   PageLoadInstantTestRequest.JSON_PROPERTY_LABELS,
   PageLoadInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  PageLoadInstantTestRequest.JSON_PROPERTY_AGENTS,
   PageLoadInstantTestRequest.JSON_PROPERTY_AUTH_TYPE,
   PageLoadInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   PageLoadInstantTestRequest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   PageLoadInstantTestRequest.JSON_PROPERTY_CONTENT_REGEX,
   PageLoadInstantTestRequest.JSON_PROPERTY_CUSTOM_HEADERS,
+  PageLoadInstantTestRequest.JSON_PROPERTY_DESIRED_STATUS_CODE,
   PageLoadInstantTestRequest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   PageLoadInstantTestRequest.JSON_PROPERTY_HTTP_TARGET_TIME,
   PageLoadInstantTestRequest.JSON_PROPERTY_HTTP_TIME_LIMIT,
@@ -81,15 +81,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTestRequest.JSON_PROPERTY_USER_AGENT,
   PageLoadInstantTestRequest.JSON_PROPERTY_USERNAME,
   PageLoadInstantTestRequest.JSON_PROPERTY_VERIFY_CERTIFICATE,
+  PageLoadInstantTestRequest.JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION,
   PageLoadInstantTestRequest.JSON_PROPERTY_BLOCK_DOMAINS,
   PageLoadInstantTestRequest.JSON_PROPERTY_DISABLE_SCREENSHOT,
   PageLoadInstantTestRequest.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
   PageLoadInstantTestRequest.JSON_PROPERTY_ALLOW_GEOLOCATION,
   PageLoadInstantTestRequest.JSON_PROPERTY_BROWSER_LANGUAGE,
   PageLoadInstantTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
-  PageLoadInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE
+  PageLoadInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
+  PageLoadInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083932+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
 public class PageLoadInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -130,9 +132,6 @@ public class PageLoadInstantTestRequest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
 
@@ -147,6 +146,9 @@ public class PageLoadInstantTestRequest {
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private TestCustomHeaders customHeaders;
+
+  public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
+  private String desiredStatusCode = "200";
 
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
@@ -211,6 +213,9 @@ public class PageLoadInstantTestRequest {
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
   private Boolean verifyCertificate = false;
 
+  public static final String JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION = "allowUnsafeLegacyRenegotiation";
+  private Boolean allowUnsafeLegacyRenegotiation = true;
+
   public static final String JSON_PROPERTY_BLOCK_DOMAINS = "blockDomains";
   private String blockDomains;
 
@@ -231,6 +236,9 @@ public class PageLoadInstantTestRequest {
 
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
 
   public PageLoadInstantTestRequest() { 
   }
@@ -520,39 +528,6 @@ public class PageLoadInstantTestRequest {
   }
 
 
-  public PageLoadInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public PageLoadInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<InstantTestRequestAgentsInner> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
-    this.agents = agents;
-  }
-
-
   public PageLoadInstantTestRequest authType(TestAuthType authType) {
     this.authType = authType;
     return this;
@@ -675,6 +650,31 @@ public class PageLoadInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCustomHeaders(TestCustomHeaders customHeaders) {
     this.customHeaders = customHeaders;
+  }
+
+
+  public PageLoadInstantTestRequest desiredStatusCode(String desiredStatusCode) {
+    this.desiredStatusCode = desiredStatusCode;
+    return this;
+  }
+
+   /**
+   * Specify the HTTP status code value that indicates a successful response.
+   * @return desiredStatusCode
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESIRED_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDesiredStatusCode() {
+    return desiredStatusCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESIRED_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDesiredStatusCode(String desiredStatusCode) {
+    this.desiredStatusCode = desiredStatusCode;
   }
 
 
@@ -1205,6 +1205,31 @@ public class PageLoadInstantTestRequest {
   }
 
 
+  public PageLoadInstantTestRequest allowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+    this.allowUnsafeLegacyRenegotiation = allowUnsafeLegacyRenegotiation;
+    return this;
+  }
+
+   /**
+   * Allows TLS renegotiation with servers not supporting RFC 5746. Default Set to true to allow unsafe legacy renegotiation.
+   * @return allowUnsafeLegacyRenegotiation
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getAllowUnsafeLegacyRenegotiation() {
+    return allowUnsafeLegacyRenegotiation;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAllowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+    this.allowUnsafeLegacyRenegotiation = allowUnsafeLegacyRenegotiation;
+  }
+
+
   public PageLoadInstantTestRequest blockDomains(String blockDomains) {
     this.blockDomains = blockDomains;
     return this;
@@ -1382,6 +1407,39 @@ public class PageLoadInstantTestRequest {
   }
 
 
+  public PageLoadInstantTestRequest agents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public PageLoadInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<InstantTestRequestAgentsInner> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<InstantTestRequestAgentsInner> agents) {
+    this.agents = agents;
+  }
+
+
   /**
    * Return true if this PageLoadInstantTestRequest object is equal to o.
    */
@@ -1407,12 +1465,12 @@ public class PageLoadInstantTestRequest {
         Objects.equals(this.links, pageLoadInstantTestRequest.links) &&
         Objects.equals(this.labels, pageLoadInstantTestRequest.labels) &&
         Objects.equals(this.sharedWithAccounts, pageLoadInstantTestRequest.sharedWithAccounts) &&
-        Objects.equals(this.agents, pageLoadInstantTestRequest.agents) &&
         Objects.equals(this.authType, pageLoadInstantTestRequest.authType) &&
         Objects.equals(this.bandwidthMeasurements, pageLoadInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, pageLoadInstantTestRequest.clientCertificate) &&
         Objects.equals(this.contentRegex, pageLoadInstantTestRequest.contentRegex) &&
         Objects.equals(this.customHeaders, pageLoadInstantTestRequest.customHeaders) &&
+        Objects.equals(this.desiredStatusCode, pageLoadInstantTestRequest.desiredStatusCode) &&
         Objects.equals(this.followRedirects, pageLoadInstantTestRequest.followRedirects) &&
         Objects.equals(this.httpTargetTime, pageLoadInstantTestRequest.httpTargetTime) &&
         Objects.equals(this.httpTimeLimit, pageLoadInstantTestRequest.httpTimeLimit) &&
@@ -1434,18 +1492,20 @@ public class PageLoadInstantTestRequest {
         Objects.equals(this.userAgent, pageLoadInstantTestRequest.userAgent) &&
         Objects.equals(this.username, pageLoadInstantTestRequest.username) &&
         Objects.equals(this.verifyCertificate, pageLoadInstantTestRequest.verifyCertificate) &&
+        Objects.equals(this.allowUnsafeLegacyRenegotiation, pageLoadInstantTestRequest.allowUnsafeLegacyRenegotiation) &&
         Objects.equals(this.blockDomains, pageLoadInstantTestRequest.blockDomains) &&
         Objects.equals(this.disableScreenshot, pageLoadInstantTestRequest.disableScreenshot) &&
         Objects.equals(this.allowMicAndCamera, pageLoadInstantTestRequest.allowMicAndCamera) &&
         Objects.equals(this.allowGeolocation, pageLoadInstantTestRequest.allowGeolocation) &&
         Objects.equals(this.browserLanguage, pageLoadInstantTestRequest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, pageLoadInstantTestRequest.pageLoadingStrategy) &&
-        Objects.equals(this.fixedPacketRate, pageLoadInstantTestRequest.fixedPacketRate);
+        Objects.equals(this.fixedPacketRate, pageLoadInstantTestRequest.fixedPacketRate) &&
+        Objects.equals(this.agents, pageLoadInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, followRedirects, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, pageLoadTargetTime, pageLoadTimeLimit, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, fixedPacketRate);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, followRedirects, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, pageLoadTargetTime, pageLoadTimeLimit, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, fixedPacketRate, agents);
   }
 
   @Override
@@ -1465,12 +1525,12 @@ public class PageLoadInstantTestRequest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
+    sb.append("    desiredStatusCode: ").append(toIndentedString(desiredStatusCode)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    httpTargetTime: ").append(toIndentedString(httpTargetTime)).append("\n");
     sb.append("    httpTimeLimit: ").append(toIndentedString(httpTimeLimit)).append("\n");
@@ -1492,6 +1552,7 @@ public class PageLoadInstantTestRequest {
     sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    verifyCertificate: ").append(toIndentedString(verifyCertificate)).append("\n");
+    sb.append("    allowUnsafeLegacyRenegotiation: ").append(toIndentedString(allowUnsafeLegacyRenegotiation)).append("\n");
     sb.append("    blockDomains: ").append(toIndentedString(blockDomains)).append("\n");
     sb.append("    disableScreenshot: ").append(toIndentedString(disableScreenshot)).append("\n");
     sb.append("    allowMicAndCamera: ").append(toIndentedString(allowMicAndCamera)).append("\n");
@@ -1499,6 +1560,7 @@ public class PageLoadInstantTestRequest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

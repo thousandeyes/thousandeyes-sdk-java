@@ -47,7 +47,7 @@ public class Example {
 
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         AlertSuppressionWindowRequest alertSuppressionWindowRequest = new AlertSuppressionWindowRequest(); // AlertSuppressionWindowRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
             CreateSuppressionWindows201Response result = apiInstance.createSuppressionWindows(alertSuppressionWindowRequest, aid, expand);
@@ -128,7 +128,7 @@ public class Example {
 
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         AlertSuppressionWindowRequest alertSuppressionWindowRequest = new AlertSuppressionWindowRequest(); // AlertSuppressionWindowRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
             ApiResponse<CreateSuppressionWindows201Response> response = apiInstance.createSuppressionWindowsWithHttpInfo(alertSuppressionWindowRequest, aid, expand);
@@ -211,7 +211,7 @@ public class Example {
 
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String windowId = "2411"; // String | Unique window ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteSuppressionWindow(windowId, aid);
         } catch (ApiException e) {
@@ -289,7 +289,7 @@ public class Example {
 
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String windowId = "2411"; // String | Unique window ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteSuppressionWindowWithHttpInfo(windowId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -369,7 +369,7 @@ public class Example {
 
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String windowId = "2411"; // String | Unique window ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
             CreateSuppressionWindows201Response result = apiInstance.getSuppressionWindowDetails(windowId, aid, expand);
@@ -449,7 +449,7 @@ public class Example {
 
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String windowId = "2411"; // String | Unique window ID.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
             ApiResponse<CreateSuppressionWindows201Response> response = apiInstance.getSuppressionWindowDetailsWithHttpInfo(windowId, aid, expand);
@@ -530,7 +530,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetSuppressionWindows200Response result = apiInstance.getSuppressionWindows(aid);
             System.out.println(result);
@@ -606,7 +606,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetSuppressionWindows200Response> response = apiInstance.getSuppressionWindowsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -686,7 +686,7 @@ public class Example {
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String windowId = "2411"; // String | Unique window ID.
         AlertSuppressionWindowRequest alertSuppressionWindowRequest = new AlertSuppressionWindowRequest(); // AlertSuppressionWindowRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
             CreateSuppressionWindows201Response result = apiInstance.updateSuppressionWindow(windowId, alertSuppressionWindowRequest, aid, expand);
@@ -769,7 +769,7 @@ public class Example {
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String windowId = "2411"; // String | Unique window ID.
         AlertSuppressionWindowRequest alertSuppressionWindowRequest = new AlertSuppressionWindowRequest(); // AlertSuppressionWindowRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
             ApiResponse<CreateSuppressionWindows201Response> response = apiInstance.updateSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand);

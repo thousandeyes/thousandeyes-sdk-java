@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -56,7 +56,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateAgentToAgentTest.JSON_PROPERTY_LINKS,
   UpdateAgentToAgentTest.JSON_PROPERTY_LABELS,
   UpdateAgentToAgentTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  UpdateAgentToAgentTest.JSON_PROPERTY_AGENTS,
   UpdateAgentToAgentTest.JSON_PROPERTY_DIRECTION,
   UpdateAgentToAgentTest.JSON_PROPERTY_DSCP,
   UpdateAgentToAgentTest.JSON_PROPERTY_DSCP_ID,
@@ -70,10 +69,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateAgentToAgentTest.JSON_PROPERTY_THROUGHPUT_DURATION,
   UpdateAgentToAgentTest.JSON_PROPERTY_THROUGHPUT_RATE,
   UpdateAgentToAgentTest.JSON_PROPERTY_FIXED_PACKET_RATE,
+  UpdateAgentToAgentTest.JSON_PROPERTY_AGENTS,
   UpdateAgentToAgentTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  UpdateAgentToAgentTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateAgentToAgentTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class UpdateAgentToAgentTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -126,9 +127,6 @@ public class UpdateAgentToAgentTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
-
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   private TestDirection direction = TestDirection.TO_TARGET;
 
@@ -168,8 +166,14 @@ public class UpdateAgentToAgentTest {
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestRequestAllOfAgents> agents;
+
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<String> monitors;
@@ -570,39 +574,6 @@ public class UpdateAgentToAgentTest {
   }
 
 
-  public UpdateAgentToAgentTest agents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public UpdateAgentToAgentTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestRequestAllOfAgents> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-  }
-
-
   public UpdateAgentToAgentTest direction(TestDirection direction) {
     this.direction = direction;
     return this;
@@ -930,6 +901,39 @@ public class UpdateAgentToAgentTest {
   }
 
 
+  public UpdateAgentToAgentTest agents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public UpdateAgentToAgentTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestRequestAllOfAgents> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+  }
+
+
   public UpdateAgentToAgentTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -952,6 +956,31 @@ public class UpdateAgentToAgentTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
+  }
+
+
+  public UpdateAgentToAgentTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
   }
 
 
@@ -1017,7 +1046,6 @@ public class UpdateAgentToAgentTest {
         Objects.equals(this.links, updateAgentToAgentTest.links) &&
         Objects.equals(this.labels, updateAgentToAgentTest.labels) &&
         Objects.equals(this.sharedWithAccounts, updateAgentToAgentTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, updateAgentToAgentTest.agents) &&
         Objects.equals(this.direction, updateAgentToAgentTest.direction) &&
         Objects.equals(this.dscp, updateAgentToAgentTest.dscp) &&
         Objects.equals(this.dscpId, updateAgentToAgentTest.dscpId) &&
@@ -1031,13 +1059,15 @@ public class UpdateAgentToAgentTest {
         Objects.equals(this.throughputDuration, updateAgentToAgentTest.throughputDuration) &&
         Objects.equals(this.throughputRate, updateAgentToAgentTest.throughputRate) &&
         Objects.equals(this.fixedPacketRate, updateAgentToAgentTest.fixedPacketRate) &&
+        Objects.equals(this.agents, updateAgentToAgentTest.agents) &&
         Objects.equals(this.bgpMeasurements, updateAgentToAgentTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, updateAgentToAgentTest.usePublicBgp) &&
         Objects.equals(this.monitors, updateAgentToAgentTest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, bgpMeasurements, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, agents, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1061,7 +1091,6 @@ public class UpdateAgentToAgentTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    dscp: ").append(toIndentedString(dscp)).append("\n");
     sb.append("    dscpId: ").append(toIndentedString(dscpId)).append("\n");
@@ -1075,7 +1104,9 @@ public class UpdateAgentToAgentTest {
     sb.append("    throughputDuration: ").append(toIndentedString(throughputDuration)).append("\n");
     sb.append("    throughputRate: ").append(toIndentedString(throughputRate)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();

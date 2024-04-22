@@ -39,7 +39,7 @@ public class Example {
 
         WebTransactionApi apiInstance = new WebTransactionApi(defaultClient);
         WebTransactionInstantTestRequest webTransactionInstantTestRequest = new WebTransactionInstantTestRequest(); // WebTransactionInstantTestRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
             WebTransactionInstantTest result = apiInstance.postInstantWebTransactions(webTransactionInstantTestRequest, aid, expand);
@@ -122,7 +122,7 @@ public class Example {
 
         WebTransactionApi apiInstance = new WebTransactionApi(defaultClient);
         WebTransactionInstantTestRequest webTransactionInstantTestRequest = new WebTransactionInstantTestRequest(); // WebTransactionInstantTestRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
             ApiResponse<WebTransactionInstantTest> response = apiInstance.postInstantWebTransactionsWithHttpInfo(webTransactionInstantTestRequest, aid, expand);

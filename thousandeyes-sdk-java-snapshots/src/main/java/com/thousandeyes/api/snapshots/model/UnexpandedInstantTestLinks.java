@@ -1,6 +1,6 @@
 /*
  * Test Snapshots API
- * Creates a new test snapshot in ThousandEyes
+ * Creates a new test snapshot in ThousandEyes.
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedInstantTestLinks.JSON_PROPERTY_SELF,
   UnexpandedInstantTestLinks.JSON_PROPERTY_TEST_RESULTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.934536+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.463370+01:00[Europe/London]")
 public class UnexpandedInstantTestLinks {
   public static final String JSON_PROPERTY_SELF = "self";
   private UnexpandedInstantTestLinksSelf self;

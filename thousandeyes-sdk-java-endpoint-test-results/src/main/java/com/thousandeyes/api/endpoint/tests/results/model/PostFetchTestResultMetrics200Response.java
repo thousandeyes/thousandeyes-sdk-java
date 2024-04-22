@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.endpoint.tests.results.model.EndpointScheduledTest;
 import com.thousandeyes.api.endpoint.tests.results.model.NetworkTestResult;
 import com.thousandeyes.api.endpoint.tests.results.model.PaginationNextLinkLinks;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,15 +37,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   PostFetchTestResultMetrics200Response.JSON_PROPERTY_RESULTS,
+  PostFetchTestResultMetrics200Response.JSON_PROPERTY_TOTAL_HITS,
   PostFetchTestResultMetrics200Response.JSON_PROPERTY_TEST,
   PostFetchTestResultMetrics200Response.JSON_PROPERTY_START_DATE,
   PostFetchTestResultMetrics200Response.JSON_PROPERTY_END_DATE,
   PostFetchTestResultMetrics200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.083600+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
 public class PostFetchTestResultMetrics200Response {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<NetworkTestResult> results;
+
+  public static final String JSON_PROPERTY_TOTAL_HITS = "totalHits";
+  private BigDecimal totalHits;
 
   public static final String JSON_PROPERTY_TEST = "test";
   private EndpointScheduledTest test;
@@ -101,6 +106,31 @@ public class PostFetchTestResultMetrics200Response {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResults(List<NetworkTestResult> results) {
     this.results = results;
+  }
+
+
+  public PostFetchTestResultMetrics200Response totalHits(BigDecimal totalHits) {
+    this.totalHits = totalHits;
+    return this;
+  }
+
+   /**
+   * Total number of measurements that match the search criteria
+   * @return totalHits
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOTAL_HITS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BigDecimal getTotalHits() {
+    return totalHits;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOTAL_HITS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTotalHits(BigDecimal totalHits) {
+    this.totalHits = totalHits;
   }
 
 
@@ -197,6 +227,7 @@ public class PostFetchTestResultMetrics200Response {
     }
     PostFetchTestResultMetrics200Response postFetchTestResultMetrics200Response = (PostFetchTestResultMetrics200Response) o;
     return Objects.equals(this.results, postFetchTestResultMetrics200Response.results) &&
+        Objects.equals(this.totalHits, postFetchTestResultMetrics200Response.totalHits) &&
         Objects.equals(this.test, postFetchTestResultMetrics200Response.test) &&
         Objects.equals(this.startDate, postFetchTestResultMetrics200Response.startDate) &&
         Objects.equals(this.endDate, postFetchTestResultMetrics200Response.endDate) &&
@@ -205,7 +236,7 @@ public class PostFetchTestResultMetrics200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(results, test, startDate, endDate, links);
+    return Objects.hash(results, totalHits, test, startDate, endDate, links);
   }
 
   @Override
@@ -213,6 +244,7 @@ public class PostFetchTestResultMetrics200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostFetchTestResultMetrics200Response {\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
+    sb.append("    totalHits: ").append(toIndentedString(totalHits)).append("\n");
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");

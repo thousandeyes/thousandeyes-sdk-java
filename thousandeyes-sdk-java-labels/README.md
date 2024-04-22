@@ -4,7 +4,7 @@ Labels API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-18T12:55:01.701657+01:00[Europe/Lisbon]
+- Build date: 2024-04-22T10:43:50.622566+01:00[Europe/London]
 
 ### Overview
 This is API for the Labels API (formerly called groups).
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-labels</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>7.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-labels:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-labels:7.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-labels-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-labels-7.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -86,7 +86,7 @@ public class AgentApiExample {
         // Configure clients using the `defaultClient` object, such as
         // overriding the host and port, timeout, etc.
         AgentApi apiInstance = new AgentApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label resource
         try {
             CreateAgentLabel201Response result = apiInstance.createAgentLabel(aid, labelRequest);
@@ -115,6 +115,8 @@ Class | Method | HTTP request | Description
 *AgentApi* | [**deleteAgentLabelWithHttpInfo**](docs/AgentApi.md#deleteAgentLabelWithHttpInfo) | **DELETE** /v7/labels/agent/{labelId} | Delete a Label object of type &#x60;agent&#x60;
 *AgentApi* | [**getAgentLabel**](docs/AgentApi.md#getAgentLabel) | **GET** /v7/labels/agent/{labelId} | Get a Label object of type &#x60;agent&#x60;
 *AgentApi* | [**getAgentLabelWithHttpInfo**](docs/AgentApi.md#getAgentLabelWithHttpInfo) | **GET** /v7/labels/agent/{labelId} | Get a Label object of type &#x60;agent&#x60;
+*AgentApi* | [**getAgentLabels**](docs/AgentApi.md#getAgentLabels) | **GET** /v7/labels/agent | Get list of Labels of type &#x60;agent&#x60;
+*AgentApi* | [**getAgentLabelsWithHttpInfo**](docs/AgentApi.md#getAgentLabelsWithHttpInfo) | **GET** /v7/labels/agent | Get list of Labels of type &#x60;agent&#x60;
 *AgentApi* | [**updateAgentLabel**](docs/AgentApi.md#updateAgentLabel) | **PUT** /v7/labels/agent/{labelId} | Update a Label object of type &#x60;agent&#x60;
 *AgentApi* | [**updateAgentLabelWithHttpInfo**](docs/AgentApi.md#updateAgentLabelWithHttpInfo) | **PUT** /v7/labels/agent/{labelId} | Update a Label object of type &#x60;agent&#x60;
 *AllLabelsApi* | [**getLabels**](docs/AllLabelsApi.md#getLabels) | **GET** /v7/labels | Get list of Labels
@@ -125,6 +127,8 @@ Class | Method | HTTP request | Description
 *DashboardApi* | [**deleteDashboardLabelWithHttpInfo**](docs/DashboardApi.md#deleteDashboardLabelWithHttpInfo) | **DELETE** /v7/labels/dashboard/{labelId} | Delete a Label object of type &#x60;dashboard&#x60;
 *DashboardApi* | [**getDashboardLabel**](docs/DashboardApi.md#getDashboardLabel) | **GET** /v7/labels/dashboard/{labelId} | Get a Label object of type &#x60;dashboard&#x60;
 *DashboardApi* | [**getDashboardLabelWithHttpInfo**](docs/DashboardApi.md#getDashboardLabelWithHttpInfo) | **GET** /v7/labels/dashboard/{labelId} | Get a Label object of type &#x60;dashboard&#x60;
+*DashboardApi* | [**getDashboardLabels**](docs/DashboardApi.md#getDashboardLabels) | **GET** /v7/labels/dashboard | Get list of Labels of type &#x60;dashboard&#x60;
+*DashboardApi* | [**getDashboardLabelsWithHttpInfo**](docs/DashboardApi.md#getDashboardLabelsWithHttpInfo) | **GET** /v7/labels/dashboard | Get list of Labels of type &#x60;dashboard&#x60;
 *DashboardApi* | [**updateDashboardLabel**](docs/DashboardApi.md#updateDashboardLabel) | **PUT** /v7/labels/dashboard/{labelId} | Update a Label object of type &#x60;dashboard&#x60;
 *DashboardApi* | [**updateDashboardLabelWithHttpInfo**](docs/DashboardApi.md#updateDashboardLabelWithHttpInfo) | **PUT** /v7/labels/dashboard/{labelId} | Update a Label object of type &#x60;dashboard&#x60;
 *EndpointTestApi* | [**createEndpointTestsLabel**](docs/EndpointTestApi.md#createEndpointTestsLabel) | **POST** /v7/labels/endpoint-test | Create a Label of type &#x60;endpoint-test&#x60;
@@ -133,6 +137,8 @@ Class | Method | HTTP request | Description
 *EndpointTestApi* | [**deleteEndpointTestLabelWithHttpInfo**](docs/EndpointTestApi.md#deleteEndpointTestLabelWithHttpInfo) | **DELETE** /v7/labels/endpoint-test/{labelId} | Delete a Label object of type &#x60;endpoint-test&#x60;
 *EndpointTestApi* | [**getEndpointTestLabel**](docs/EndpointTestApi.md#getEndpointTestLabel) | **GET** /v7/labels/endpoint-test/{labelId} | Get a Label object of type &#x60;endpoint-test&#x60;
 *EndpointTestApi* | [**getEndpointTestLabelWithHttpInfo**](docs/EndpointTestApi.md#getEndpointTestLabelWithHttpInfo) | **GET** /v7/labels/endpoint-test/{labelId} | Get a Label object of type &#x60;endpoint-test&#x60;
+*EndpointTestApi* | [**getEndpointTestLabels**](docs/EndpointTestApi.md#getEndpointTestLabels) | **GET** /v7/labels/endpoint-test | Get list of Labels of type &#x60;endpoint-test&#x60;
+*EndpointTestApi* | [**getEndpointTestLabelsWithHttpInfo**](docs/EndpointTestApi.md#getEndpointTestLabelsWithHttpInfo) | **GET** /v7/labels/endpoint-test | Get list of Labels of type &#x60;endpoint-test&#x60;
 *EndpointTestApi* | [**updateEndpointTestLabel**](docs/EndpointTestApi.md#updateEndpointTestLabel) | **PUT** /v7/labels/endpoint-test/{labelId} | Update a Label object of type &#x60;endpoint-test&#x60;
 *EndpointTestApi* | [**updateEndpointTestLabelWithHttpInfo**](docs/EndpointTestApi.md#updateEndpointTestLabelWithHttpInfo) | **PUT** /v7/labels/endpoint-test/{labelId} | Update a Label object of type &#x60;endpoint-test&#x60;
 *TestApi* | [**createTestLabel**](docs/TestApi.md#createTestLabel) | **POST** /v7/labels/test | Create a Label of type &#x60;test&#x60;
@@ -141,6 +147,8 @@ Class | Method | HTTP request | Description
 *TestApi* | [**deleteTestLabelWithHttpInfo**](docs/TestApi.md#deleteTestLabelWithHttpInfo) | **DELETE** /v7/labels/test/{labelId} | Delete a Label object of type &#x60;test&#x60;
 *TestApi* | [**getTestLabel**](docs/TestApi.md#getTestLabel) | **GET** /v7/labels/test/{labelId} | Get a Label object of type &#x60;test&#x60;
 *TestApi* | [**getTestLabelWithHttpInfo**](docs/TestApi.md#getTestLabelWithHttpInfo) | **GET** /v7/labels/test/{labelId} | Get a Label object of type &#x60;test&#x60;
+*TestApi* | [**getTestLabels**](docs/TestApi.md#getTestLabels) | **GET** /v7/labels/test | Get list of Labels of type &#x60;test&#x60;
+*TestApi* | [**getTestLabelsWithHttpInfo**](docs/TestApi.md#getTestLabelsWithHttpInfo) | **GET** /v7/labels/test | Get list of Labels of type &#x60;test&#x60;
 *TestApi* | [**updateTestLabel**](docs/TestApi.md#updateTestLabel) | **PUT** /v7/labels/test/{labelId} | Update a Label object of type &#x60;test&#x60;
 *TestApi* | [**updateTestLabelWithHttpInfo**](docs/TestApi.md#updateTestLabelWithHttpInfo) | **PUT** /v7/labels/test/{labelId} | Update a Label object of type &#x60;test&#x60;
 

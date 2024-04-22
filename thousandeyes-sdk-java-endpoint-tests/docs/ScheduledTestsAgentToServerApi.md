@@ -47,7 +47,7 @@ public class Example {
 
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteEndpointAgentToServerTest(testId, aid);
         } catch (ApiException e) {
@@ -127,7 +127,7 @@ public class Example {
 
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteEndpointAgentToServerTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -209,7 +209,7 @@ public class Example {
 
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             EndpointAgentToServerTest result = apiInstance.getEndpointAgentToServerDetail(testId, aid);
             System.out.println(result);
@@ -289,7 +289,7 @@ public class Example {
 
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<EndpointAgentToServerTest> response = apiInstance.getEndpointAgentToServerDetailWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -370,7 +370,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             GetEndpointAgentToserverTestsList200Response result = apiInstance.getEndpointAgentToserverTestsList(aid);
             System.out.println(result);
@@ -447,7 +447,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<GetEndpointAgentToserverTestsList200Response> response = apiInstance.getEndpointAgentToserverTestsListWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -527,7 +527,7 @@ public class Example {
 
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         EndpointAgentToServerTestRequest endpointAgentToServerTestRequest = new EndpointAgentToServerTestRequest(); // EndpointAgentToServerTestRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             EndpointAgentToServerTest result = apiInstance.postEndpointAgentToServerTest(endpointAgentToServerTestRequest, aid);
             System.out.println(result);
@@ -608,7 +608,7 @@ public class Example {
 
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         EndpointAgentToServerTestRequest endpointAgentToServerTestRequest = new EndpointAgentToServerTestRequest(); // EndpointAgentToServerTestRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<EndpointAgentToServerTest> response = apiInstance.postEndpointAgentToServerTestWithHttpInfo(endpointAgentToServerTestRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -692,7 +692,7 @@ public class Example {
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
         EndpointNetworkTestUpdate endpointNetworkTestUpdate = new EndpointNetworkTestUpdate(); // EndpointNetworkTestUpdate | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             EndpointAgentToServerTest result = apiInstance.updateEndpointAgentToServerDetail(testId, endpointNetworkTestUpdate, aid);
             System.out.println(result);
@@ -775,7 +775,7 @@ public class Example {
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         String testId = "584739201"; // String | Unique ID of endpoint test.
         EndpointNetworkTestUpdate endpointNetworkTestUpdate = new EndpointNetworkTestUpdate(); // EndpointNetworkTestUpdate | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<EndpointAgentToServerTest> response = apiInstance.updateEndpointAgentToServerDetailWithHttpInfo(testId, endpointNetworkTestUpdate, aid);
             System.out.println("Status code: " + response.getStatusCode());

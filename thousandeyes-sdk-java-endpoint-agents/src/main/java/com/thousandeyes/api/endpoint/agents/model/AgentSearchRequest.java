@@ -1,6 +1,6 @@
 /*
  * Endpoint Agents API
- * Manage ThousandEyes Endpoint Agents using this API.
+ * Manage ThousandEyes Endpoint Agents using this API.   For more information about Endpoint Agents, see [Endpoint Agents](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents).
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -22,6 +22,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.endpoint.agents.model.AgentSearchRequestSearchFilters;
+import com.thousandeyes.api.endpoint.agents.model.AgentSearchSort;
+import com.thousandeyes.api.endpoint.agents.model.AgentThresholdFilters;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -29,12 +34,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Parameters for filtering a list of agents.
  */
 @JsonPropertyOrder({
-  AgentSearchRequest.JSON_PROPERTY_SEARCH_FILTERS
+  AgentSearchRequest.JSON_PROPERTY_SEARCH_FILTERS,
+  AgentSearchRequest.JSON_PROPERTY_THRESHOLD_FILTER,
+  AgentSearchRequest.JSON_PROPERTY_SEARCH_SORT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:01.770114+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.660146+01:00[Europe/London]")
 public class AgentSearchRequest {
   public static final String JSON_PROPERTY_SEARCH_FILTERS = "searchFilters";
   private AgentSearchRequestSearchFilters searchFilters;
+
+  public static final String JSON_PROPERTY_THRESHOLD_FILTER = "thresholdFilter";
+  private AgentThresholdFilters thresholdFilter;
+
+  public static final String JSON_PROPERTY_SEARCH_SORT = "searchSort";
+  private List<AgentSearchSort> searchSort;
 
   public AgentSearchRequest() { 
   }
@@ -64,6 +77,64 @@ public class AgentSearchRequest {
   }
 
 
+  public AgentSearchRequest thresholdFilter(AgentThresholdFilters thresholdFilter) {
+    this.thresholdFilter = thresholdFilter;
+    return this;
+  }
+
+   /**
+   * Get thresholdFilter
+   * @return thresholdFilter
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_THRESHOLD_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public AgentThresholdFilters getThresholdFilter() {
+    return thresholdFilter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_THRESHOLD_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setThresholdFilter(AgentThresholdFilters thresholdFilter) {
+    this.thresholdFilter = thresholdFilter;
+  }
+
+
+  public AgentSearchRequest searchSort(List<AgentSearchSort> searchSort) {
+    this.searchSort = searchSort;
+    return this;
+  }
+
+  public AgentSearchRequest addSearchSortItem(AgentSearchSort searchSortItem) {
+    if (this.searchSort == null) {
+      this.searchSort = new ArrayList<>();
+    }
+    this.searchSort.add(searchSortItem);
+    return this;
+  }
+
+   /**
+   * Get searchSort
+   * @return searchSort
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SEARCH_SORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<AgentSearchSort> getSearchSort() {
+    return searchSort;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SEARCH_SORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSearchSort(List<AgentSearchSort> searchSort) {
+    this.searchSort = searchSort;
+  }
+
+
   /**
    * Return true if this AgentSearchRequest object is equal to o.
    */
@@ -76,12 +147,14 @@ public class AgentSearchRequest {
       return false;
     }
     AgentSearchRequest agentSearchRequest = (AgentSearchRequest) o;
-    return Objects.equals(this.searchFilters, agentSearchRequest.searchFilters);
+    return Objects.equals(this.searchFilters, agentSearchRequest.searchFilters) &&
+        Objects.equals(this.thresholdFilter, agentSearchRequest.thresholdFilter) &&
+        Objects.equals(this.searchSort, agentSearchRequest.searchSort);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(searchFilters);
+    return Objects.hash(searchFilters, thresholdFilter, searchSort);
   }
 
   @Override
@@ -89,6 +162,8 @@ public class AgentSearchRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class AgentSearchRequest {\n");
     sb.append("    searchFilters: ").append(toIndentedString(searchFilters)).append("\n");
+    sb.append("    thresholdFilter: ").append(toIndentedString(thresholdFilter)).append("\n");
+    sb.append("    searchSort: ").append(toIndentedString(searchSort)).append("\n");
     sb.append("}");
     return sb.toString();
   }

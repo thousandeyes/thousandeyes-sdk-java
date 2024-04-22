@@ -40,7 +40,7 @@ public class Example {
         CreateTestSnapshotApi apiInstance = new CreateTestSnapshotApi(defaultClient);
         String testId = "281474976710706"; // String | Test ID.
         SnapshotRequest snapshotRequest = new SnapshotRequest(); // SnapshotRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             SnapshotResponse result = apiInstance.createTestSnapshot(testId, snapshotRequest, aid);
             System.out.println(result);
@@ -123,7 +123,7 @@ public class Example {
         CreateTestSnapshotApi apiInstance = new CreateTestSnapshotApi(defaultClient);
         String testId = "281474976710706"; // String | Test ID.
         SnapshotRequest snapshotRequest = new SnapshotRequest(); // SnapshotRequest | 
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<SnapshotResponse> response = apiInstance.createTestSnapshotWithHttpInfo(testId, snapshotRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());

@@ -1,6 +1,6 @@
 /*
  * Tests API
- *  ### Overview This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+ * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -60,12 +60,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateWebTransactionTest.JSON_PROPERTY_LINKS,
   UpdateWebTransactionTest.JSON_PROPERTY_LABELS,
   UpdateWebTransactionTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  UpdateWebTransactionTest.JSON_PROPERTY_AGENTS,
   UpdateWebTransactionTest.JSON_PROPERTY_AUTH_TYPE,
   UpdateWebTransactionTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   UpdateWebTransactionTest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   UpdateWebTransactionTest.JSON_PROPERTY_CONTENT_REGEX,
-  UpdateWebTransactionTest.JSON_PROPERTY_CREDENTIALS,
   UpdateWebTransactionTest.JSON_PROPERTY_CUSTOM_HEADERS,
   UpdateWebTransactionTest.JSON_PROPERTY_DESIRED_STATUS_CODE,
   UpdateWebTransactionTest.JSON_PROPERTY_FOLLOW_REDIRECTS,
@@ -90,6 +88,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateWebTransactionTest.JSON_PROPERTY_USER_AGENT,
   UpdateWebTransactionTest.JSON_PROPERTY_USERNAME,
   UpdateWebTransactionTest.JSON_PROPERTY_VERIFY_CERTIFICATE,
+  UpdateWebTransactionTest.JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION,
   UpdateWebTransactionTest.JSON_PROPERTY_BLOCK_DOMAINS,
   UpdateWebTransactionTest.JSON_PROPERTY_DISABLE_SCREENSHOT,
   UpdateWebTransactionTest.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
@@ -97,11 +96,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateWebTransactionTest.JSON_PROPERTY_BROWSER_LANGUAGE,
   UpdateWebTransactionTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   UpdateWebTransactionTest.JSON_PROPERTY_FIXED_PACKET_RATE,
+  UpdateWebTransactionTest.JSON_PROPERTY_AGENTS,
+  UpdateWebTransactionTest.JSON_PROPERTY_CREDENTIALS,
   UpdateWebTransactionTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  UpdateWebTransactionTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateWebTransactionTest.JSON_PROPERTY_MONITORS,
   UpdateWebTransactionTest.JSON_PROPERTY_SUBINTERVAL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:02.081206+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
 public class UpdateWebTransactionTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -154,9 +156,6 @@ public class UpdateWebTransactionTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
-
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
 
@@ -168,9 +167,6 @@ public class UpdateWebTransactionTest {
 
   public static final String JSON_PROPERTY_CONTENT_REGEX = "contentRegex";
   private String contentRegex;
-
-  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<String> credentials;
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private TestCustomHeaders customHeaders;
@@ -244,6 +240,9 @@ public class UpdateWebTransactionTest {
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
   private Boolean verifyCertificate = false;
 
+  public static final String JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION = "allowUnsafeLegacyRenegotiation";
+  private Boolean allowUnsafeLegacyRenegotiation = true;
+
   public static final String JSON_PROPERTY_BLOCK_DOMAINS = "blockDomains";
   private String blockDomains;
 
@@ -265,8 +264,17 @@ public class UpdateWebTransactionTest {
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestRequestAllOfAgents> agents;
+
+  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
+  private List<String> credentials;
+
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<String> monitors;
@@ -670,39 +678,6 @@ public class UpdateWebTransactionTest {
   }
 
 
-  public UpdateWebTransactionTest agents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public UpdateWebTransactionTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestRequestAllOfAgents> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
-    this.agents = agents;
-  }
-
-
   public UpdateWebTransactionTest authType(TestAuthType authType) {
     this.authType = authType;
     return this;
@@ -800,39 +775,6 @@ public class UpdateWebTransactionTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setContentRegex(String contentRegex) {
     this.contentRegex = contentRegex;
-  }
-
-
-  public UpdateWebTransactionTest credentials(List<String> credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-  public UpdateWebTransactionTest addCredentialsItem(String credentialsItem) {
-    if (this.credentials == null) {
-      this.credentials = new ArrayList<>();
-    }
-    this.credentials.add(credentialsItem);
-    return this;
-  }
-
-   /**
-   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
-   * @return credentials
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getCredentials() {
-    return credentials;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentials(List<String> credentials) {
-    this.credentials = credentials;
   }
 
 
@@ -1438,6 +1380,31 @@ public class UpdateWebTransactionTest {
   }
 
 
+  public UpdateWebTransactionTest allowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+    this.allowUnsafeLegacyRenegotiation = allowUnsafeLegacyRenegotiation;
+    return this;
+  }
+
+   /**
+   * Allows TLS renegotiation with servers not supporting RFC 5746. Default Set to true to allow unsafe legacy renegotiation.
+   * @return allowUnsafeLegacyRenegotiation
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getAllowUnsafeLegacyRenegotiation() {
+    return allowUnsafeLegacyRenegotiation;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALLOW_UNSAFE_LEGACY_RENEGOTIATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAllowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+    this.allowUnsafeLegacyRenegotiation = allowUnsafeLegacyRenegotiation;
+  }
+
+
   public UpdateWebTransactionTest blockDomains(String blockDomains) {
     this.blockDomains = blockDomains;
     return this;
@@ -1615,6 +1582,72 @@ public class UpdateWebTransactionTest {
   }
 
 
+  public UpdateWebTransactionTest agents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public UpdateWebTransactionTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestRequestAllOfAgents> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(List<TestRequestAllOfAgents> agents) {
+    this.agents = agents;
+  }
+
+
+  public UpdateWebTransactionTest credentials(List<String> credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+  public UpdateWebTransactionTest addCredentialsItem(String credentialsItem) {
+    if (this.credentials == null) {
+      this.credentials = new ArrayList<>();
+    }
+    this.credentials.add(credentialsItem);
+    return this;
+  }
+
+   /**
+   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
+   * @return credentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getCredentials() {
+    return credentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCredentials(List<String> credentials) {
+    this.credentials = credentials;
+  }
+
+
   public UpdateWebTransactionTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1637,6 +1670,31 @@ public class UpdateWebTransactionTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
+  }
+
+
+  public UpdateWebTransactionTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
   }
 
 
@@ -1727,12 +1785,10 @@ public class UpdateWebTransactionTest {
         Objects.equals(this.links, updateWebTransactionTest.links) &&
         Objects.equals(this.labels, updateWebTransactionTest.labels) &&
         Objects.equals(this.sharedWithAccounts, updateWebTransactionTest.sharedWithAccounts) &&
-        Objects.equals(this.agents, updateWebTransactionTest.agents) &&
         Objects.equals(this.authType, updateWebTransactionTest.authType) &&
         Objects.equals(this.bandwidthMeasurements, updateWebTransactionTest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, updateWebTransactionTest.clientCertificate) &&
         Objects.equals(this.contentRegex, updateWebTransactionTest.contentRegex) &&
-        Objects.equals(this.credentials, updateWebTransactionTest.credentials) &&
         Objects.equals(this.customHeaders, updateWebTransactionTest.customHeaders) &&
         Objects.equals(this.desiredStatusCode, updateWebTransactionTest.desiredStatusCode) &&
         Objects.equals(this.followRedirects, updateWebTransactionTest.followRedirects) &&
@@ -1757,6 +1813,7 @@ public class UpdateWebTransactionTest {
         Objects.equals(this.userAgent, updateWebTransactionTest.userAgent) &&
         Objects.equals(this.username, updateWebTransactionTest.username) &&
         Objects.equals(this.verifyCertificate, updateWebTransactionTest.verifyCertificate) &&
+        Objects.equals(this.allowUnsafeLegacyRenegotiation, updateWebTransactionTest.allowUnsafeLegacyRenegotiation) &&
         Objects.equals(this.blockDomains, updateWebTransactionTest.blockDomains) &&
         Objects.equals(this.disableScreenshot, updateWebTransactionTest.disableScreenshot) &&
         Objects.equals(this.allowMicAndCamera, updateWebTransactionTest.allowMicAndCamera) &&
@@ -1764,14 +1821,17 @@ public class UpdateWebTransactionTest {
         Objects.equals(this.browserLanguage, updateWebTransactionTest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, updateWebTransactionTest.pageLoadingStrategy) &&
         Objects.equals(this.fixedPacketRate, updateWebTransactionTest.fixedPacketRate) &&
+        Objects.equals(this.agents, updateWebTransactionTest.agents) &&
+        Objects.equals(this.credentials, updateWebTransactionTest.credentials) &&
         Objects.equals(this.bgpMeasurements, updateWebTransactionTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, updateWebTransactionTest.usePublicBgp) &&
         Objects.equals(this.monitors, updateWebTransactionTest.monitors) &&
         Objects.equals(this.subinterval, updateWebTransactionTest.subinterval);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, agents, authType, bandwidthMeasurements, clientCertificate, contentRegex, credentials, customHeaders, desiredStatusCode, followRedirects, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, targetTime, timeLimit, transactionScript, url, useNtlm, userAgent, username, verifyCertificate, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, fixedPacketRate, bgpMeasurements, monitors, subinterval);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, followRedirects, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, targetTime, timeLimit, transactionScript, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, fixedPacketRate, agents, credentials, bgpMeasurements, usePublicBgp, monitors, subinterval);
   }
 
   @Override
@@ -1795,12 +1855,10 @@ public class UpdateWebTransactionTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    desiredStatusCode: ").append(toIndentedString(desiredStatusCode)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
@@ -1825,6 +1883,7 @@ public class UpdateWebTransactionTest {
     sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    verifyCertificate: ").append(toIndentedString(verifyCertificate)).append("\n");
+    sb.append("    allowUnsafeLegacyRenegotiation: ").append(toIndentedString(allowUnsafeLegacyRenegotiation)).append("\n");
     sb.append("    blockDomains: ").append(toIndentedString(blockDomains)).append("\n");
     sb.append("    disableScreenshot: ").append(toIndentedString(disableScreenshot)).append("\n");
     sb.append("    allowMicAndCamera: ").append(toIndentedString(allowMicAndCamera)).append("\n");
@@ -1832,7 +1891,10 @@ public class UpdateWebTransactionTest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");
     sb.append("}");

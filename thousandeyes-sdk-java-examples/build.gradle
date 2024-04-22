@@ -16,6 +16,10 @@ dependencies {
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 }
 
+javadoc {
+    enabled = false
+}
+
 test {
     useJUnitPlatform()
 }

@@ -1,6 +1,6 @@
 /*
  * Test Snapshots API
- * Creates a new test snapshot in ThousandEyes
+ * Creates a new test snapshot in ThousandEyes.
  *
  * The version of the OpenAPI document: 7.0.0
  * 

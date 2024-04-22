@@ -1,6 +1,6 @@
 /*
  * Usage API
- * ## Overview These usage endpoints define the following operations: * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View Billing` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View Billing` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the API definitions below for detailed usage instructions and optional parameters.
+ *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View Billing` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View Billing` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API endpoints for detailed usage instructions and optional parameters. 
  *
  * The version of the OpenAPI document: 7.0.0
  * 
@@ -23,7 +23,10 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import com.thousandeyes.api.usage.model.Error;
 import com.thousandeyes.api.usage.model.Expand;
+import com.thousandeyes.api.usage.model.GetEnterpriseAgentsUnitsUsage200Response;
+import com.thousandeyes.api.usage.model.GetTestUnitsUsage200Response;
 import com.thousandeyes.api.usage.model.GetUsage200Response;
+import java.time.OffsetDateTime;
 import com.thousandeyes.api.usage.model.UnauthorizedError;
 import com.thousandeyes.api.usage.model.ValidationError;
 
@@ -52,7 +55,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-18T12:55:07.965038+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.525987+01:00[Europe/London]")
 public class UsageApi {
   private final ApiClient apiClient;
 
@@ -60,6 +63,117 @@ public class UsageApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Get enterprise agent usage
+   * This endpoint returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared entprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @return GetEnterpriseAgentsUnitsUsage200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetEnterpriseAgentsUnitsUsage200Response getEnterpriseAgentsUnitsUsage(OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    ApiResponse<GetEnterpriseAgentsUnitsUsage200Response> response = getEnterpriseAgentsUnitsUsageWithHttpInfo(startDate, endDate, cursor);
+    return response.getData();
+  }
+
+  /**
+   * Get enterprise agent usage
+   * This endpoint returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared entprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @return ApiResponse&lt;GetEnterpriseAgentsUnitsUsage200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetEnterpriseAgentsUnitsUsage200Response> getEnterpriseAgentsUnitsUsageWithHttpInfo(OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    getEnterpriseAgentsUnitsUsageValidateRequest();
+
+    var requestBuilder = getEnterpriseAgentsUnitsUsageRequestBuilder(startDate, endDate, cursor);
+
+    return apiClient.send(requestBuilder.build(), GetEnterpriseAgentsUnitsUsage200Response.class);
+  }
+
+  private void getEnterpriseAgentsUnitsUsageValidateRequest() throws ApiException {
+  }
+
+  private ApiRequest.ApiRequestBuilder getEnterpriseAgentsUnitsUsageRequestBuilder(OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("GET");
+
+    String path = "/v7/usage/units/enterprise-agents";
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
+    localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
+    localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    return requestBuilder;
+  }
+  /**
+   * Get cloud and enterprise agents units usage
+   * This endpoint returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an entprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @return GetTestUnitsUsage200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetTestUnitsUsage200Response getTestUnitsUsage(String aid, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    ApiResponse<GetTestUnitsUsage200Response> response = getTestUnitsUsageWithHttpInfo(aid, startDate, endDate, cursor);
+    return response.getData();
+  }
+
+  /**
+   * Get cloud and enterprise agents units usage
+   * This endpoint returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an entprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @return ApiResponse&lt;GetTestUnitsUsage200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetTestUnitsUsage200Response> getTestUnitsUsageWithHttpInfo(String aid, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    getTestUnitsUsageValidateRequest();
+
+    var requestBuilder = getTestUnitsUsageRequestBuilder(aid, startDate, endDate, cursor);
+
+    return apiClient.send(requestBuilder.build(), GetTestUnitsUsage200Response.class);
+  }
+
+  private void getTestUnitsUsageValidateRequest() throws ApiException {
+  }
+
+  private ApiRequest.ApiRequestBuilder getTestUnitsUsageRequestBuilder(String aid, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("GET");
+
+    String path = "/v7/usage/units/tests";
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
+    localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
+    localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    return requestBuilder;
+  }
   /**
    * Get usage information for the last month
    * This endpoint returns the organization&#39;s usage data for a specified time period. If no time period is specified, it defaults to the last month.   
@@ -108,7 +222,7 @@ public class UsageApi {
     }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
     return requestBuilder;
   }
 }

@@ -48,7 +48,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Tag body = new Tag(); // Tag | Tag resource
         try {
             Tag result = apiInstance.createTag(aid, body);
@@ -125,7 +125,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Tag body = new Tag(); // Tag | Tag resource
         try {
             ApiResponse<Tag> response = apiInstance.createTagWithHttpInfo(aid, body);
@@ -204,7 +204,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         BulkTagResponse bulkTagResponse = new BulkTagResponse(); // BulkTagResponse | Tag resource
         try {
             BulkTagResponse result = apiInstance.createTagBulk(aid, bulkTagResponse);
@@ -280,7 +280,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         BulkTagResponse bulkTagResponse = new BulkTagResponse(); // BulkTagResponse | Tag resource
         try {
             ApiResponse<BulkTagResponse> response = apiInstance.createTagBulkWithHttpInfo(aid, bulkTagResponse);
@@ -335,6 +335,8 @@ ApiResponse<[**BulkTagResponse**](BulkTagResponse.md)>
 
 Delete tag
 
+Deletes a tag.
+
 ### Example
 
 ```java
@@ -357,7 +359,7 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of tag to delete
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             apiInstance.deleteTag(id, aid);
         } catch (ApiException e) {
@@ -409,6 +411,8 @@ null (empty response body)
 
 Delete tag
 
+Deletes a tag.
+
 ### Example
 
 ```java
@@ -432,7 +436,7 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of tag to delete
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             ApiResponse<Void> response = apiInstance.deleteTagWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
@@ -487,6 +491,8 @@ ApiResponse<Void>
 
 Retrieve tag
 
+Retrieves a tag using its ID.
+
 ### Example
 
 ```java
@@ -509,7 +515,7 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         UUID id = UUID.fromString("c6b78e57-81a2-4c5f-a11a-d96c3c664d55"); // UUID | ID of tag to retrieve
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional, to retrieve associated assignments
         try {
             GetTag result = apiInstance.getTag(id, aid, expand);
@@ -564,6 +570,8 @@ public class Example {
 
 Retrieve tag
 
+Retrieves a tag using its ID.
+
 ### Example
 
 ```java
@@ -587,7 +595,7 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         UUID id = UUID.fromString("c6b78e57-81a2-4c5f-a11a-d96c3c664d55"); // UUID | ID of tag to retrieve
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional, to retrieve associated assignments
         try {
             ApiResponse<GetTag> response = apiInstance.getTagWithHttpInfo(id, aid, expand);
@@ -668,7 +676,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional, to retrieve associated assignments
         try {
             GetTags200Response result = apiInstance.getTags(aid, expand);
@@ -746,7 +754,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional, to retrieve associated assignments
         try {
             ApiResponse<GetTags200Response> response = apiInstance.getTagsWithHttpInfo(aid, expand);
@@ -803,6 +811,8 @@ ApiResponse<[**GetTags200Response**](GetTags200Response.md)>
 
 Update tag
 
+Updates a tag.
+
 ### Example
 
 ```java
@@ -825,7 +835,7 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of tag to update
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Tag body = new Tag(); // Tag | 
         try {
             Tag result = apiInstance.updateTag(id, aid, body);
@@ -880,6 +890,8 @@ public class Example {
 
 Update tag
 
+Updates a tag.
+
 ### Example
 
 ```java
@@ -903,7 +915,7 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of tag to update
-        String aid = "2067"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Tag body = new Tag(); // Tag | 
         try {
             ApiResponse<Tag> response = apiInstance.updateTagWithHttpInfo(id, aid, body);
