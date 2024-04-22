@@ -32,6 +32,7 @@ import com.thousandeyes.api.dashboards.model.ValidationError;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -54,7 +55,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DashboardsFiltersApi {
   private final ApiClient apiClient;
 
@@ -87,8 +88,8 @@ public class DashboardsFiltersApi {
     createDashboardFilterValidateRequest(apiContextFilterRequest);
 
     var requestBuilder = createDashboardFilterRequestBuilder(apiContextFilterRequest, aid);
-
     return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
+
   }
 
   private void createDashboardFilterValidateRequest(ApiContextFilterRequest apiContextFilterRequest) throws ApiException {
@@ -113,8 +114,8 @@ public class DashboardsFiltersApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(apiContextFilterRequest);
     return requestBuilder;
   }
@@ -141,8 +142,8 @@ public class DashboardsFiltersApi {
     deleteDashboardFilterByIdValidateRequest(id);
 
     var requestBuilder = deleteDashboardFilterByIdRequestBuilder(id, aid);
-
     return apiClient.send(requestBuilder.build(), Void.class);
+
   }
 
   private void deleteDashboardFilterByIdValidateRequest(String id) throws ApiException {
@@ -168,7 +169,7 @@ public class DashboardsFiltersApi {
     }
 
     requestBuilder.header("Accept", List.of("application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -196,8 +197,8 @@ public class DashboardsFiltersApi {
     getAllDashboardFiltersValidateRequest();
 
     var requestBuilder = getAllDashboardFiltersRequestBuilder(searchPattern, aid);
-
     return apiClient.send(requestBuilder.build(), ApiContextFiltersResponse.class);
+
   }
 
   private void getAllDashboardFiltersValidateRequest() throws ApiException {
@@ -218,8 +219,8 @@ public class DashboardsFiltersApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -247,8 +248,8 @@ public class DashboardsFiltersApi {
     getDashboardFilterByIdValidateRequest(id);
 
     var requestBuilder = getDashboardFilterByIdRequestBuilder(id, aid);
-
     return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
+
   }
 
   private void getDashboardFilterByIdValidateRequest(String id) throws ApiException {
@@ -273,8 +274,8 @@ public class DashboardsFiltersApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -304,8 +305,8 @@ public class DashboardsFiltersApi {
     updateDashboardFilterByIdValidateRequest(id, apiContextFilterRequest);
 
     var requestBuilder = updateDashboardFilterByIdRequestBuilder(id, apiContextFilterRequest, aid);
-
     return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
+
   }
 
   private void updateDashboardFilterByIdValidateRequest(String id, ApiContextFilterRequest apiContextFilterRequest) throws ApiException {
@@ -335,8 +336,8 @@ public class DashboardsFiltersApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(apiContextFilterRequest);
     return requestBuilder;
   }

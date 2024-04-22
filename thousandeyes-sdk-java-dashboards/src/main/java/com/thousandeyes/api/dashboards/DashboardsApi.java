@@ -35,6 +35,7 @@ import com.thousandeyes.api.dashboards.model.ValidationError;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -57,7 +58,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DashboardsApi {
   private final ApiClient apiClient;
 
@@ -90,8 +91,8 @@ public class DashboardsApi {
     createDashboardValidateRequest(dashboard);
 
     var requestBuilder = createDashboardRequestBuilder(dashboard, aid);
-
     return apiClient.send(requestBuilder.build(), Dashboard.class);
+
   }
 
   private void createDashboardValidateRequest(Dashboard dashboard) throws ApiException {
@@ -115,9 +116,9 @@ public class DashboardsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Content-Type", List.of("application/hal+json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Content-Type", List.of("application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(dashboard);
     return requestBuilder;
   }
@@ -144,8 +145,8 @@ public class DashboardsApi {
     deleteDashboardValidateRequest(dashboardId);
 
     var requestBuilder = deleteDashboardRequestBuilder(dashboardId, aid);
-
     return apiClient.send(requestBuilder.build(), Void.class);
+
   }
 
   private void deleteDashboardValidateRequest(String dashboardId) throws ApiException {
@@ -171,7 +172,7 @@ public class DashboardsApi {
     }
 
     requestBuilder.header("Accept", List.of("application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -199,8 +200,8 @@ public class DashboardsApi {
     getDashboardByIdValidateRequest(dashboardId);
 
     var requestBuilder = getDashboardByIdRequestBuilder(dashboardId, aid);
-
     return apiClient.send(requestBuilder.build(), ApiDashboard.class);
+
   }
 
   private void getDashboardByIdValidateRequest(String dashboardId) throws ApiException {
@@ -225,8 +226,8 @@ public class DashboardsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -270,8 +271,8 @@ public class DashboardsApi {
     getDashboardDataValidateRequest(dashboardId, widgetId);
 
     var requestBuilder = getDashboardDataRequestBuilder(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
-
     return apiClient.send(requestBuilder.build(), GetDashboardData200Response.class);
+
   }
 
   private void getDashboardDataValidateRequest(String dashboardId, String widgetId) throws ApiException {
@@ -308,8 +309,8 @@ public class DashboardsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -335,8 +336,9 @@ public class DashboardsApi {
     getDashboardsForUserValidateRequest();
 
     var requestBuilder = getDashboardsForUserRequestBuilder(aid);
+    Class<List<ApiDashboard>> clazz = (Class) List.class;
+    return apiClient.send(requestBuilder.build(), clazz);
 
-    return apiClient.sendForList(requestBuilder.build(), ApiDashboard.class);
   }
 
   private void getDashboardsForUserValidateRequest() throws ApiException {
@@ -356,8 +358,8 @@ public class DashboardsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -387,8 +389,8 @@ public class DashboardsApi {
     updateDashboardValidateRequest(dashboardId, dashboard);
 
     var requestBuilder = updateDashboardRequestBuilder(dashboardId, dashboard, aid);
-
     return apiClient.send(requestBuilder.build(), Dashboard.class);
+
   }
 
   private void updateDashboardValidateRequest(String dashboardId, Dashboard dashboard) throws ApiException {
@@ -417,9 +419,9 @@ public class DashboardsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Content-Type", List.of("application/hal+json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Content-Type", List.of("application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(dashboard);
     return requestBuilder;
   }
