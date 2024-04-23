@@ -62,7 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTestRequest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
   DynamicTestRequest.JSON_PROPERTY_MAX_MACHINES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.756412+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.232828+01:00[Europe/London]")
 public class DynamicTestRequest {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;

@@ -3,9 +3,6 @@ api/openapi.yaml
 build.gradle
 docs/CatalogProvidersApi.md
 docs/OutagesApiPublicApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/internet/insights/CatalogProvidersApi.java
 src/main/java/com/thousandeyes/api/internet/insights/OutagesApiPublicApi.java
 src/main/java/com/thousandeyes/api/internet/insights/model/ApiAffectedAgent.java

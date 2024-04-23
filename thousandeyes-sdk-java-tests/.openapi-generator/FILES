@@ -15,9 +15,6 @@ docs/PathVisualizationInterfaceGroupsApi.md
 docs/SipServerApi.md
 docs/VoiceApi.md
 docs/WebTransactionApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/tests/AgentToAgentApi.java
 src/main/java/com/thousandeyes/api/tests/AgentToServerApi.java
 src/main/java/com/thousandeyes/api/tests/AllTestTypesApi.java

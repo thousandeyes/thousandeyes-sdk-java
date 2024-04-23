@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BgpBasicTestResult.JSON_PROPERTY_PREFIX_ID,
   BgpBasicTestResult.JSON_PROPERTY_PREFIX
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.800492+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.392286+01:00[Europe/London]")
 public class BgpBasicTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;

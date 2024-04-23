@@ -90,7 +90,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedHttpServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   UnexpandedHttpServerTest.JSON_PROPERTY_USE_PUBLIC_BGP
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
 public class UnexpandedHttpServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;

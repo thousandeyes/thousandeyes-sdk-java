@@ -6,9 +6,6 @@ docs/NetworkDynamicTestsResultsApi.md
 docs/NetworkScheduledTestsResultsApi.md
 docs/RealUserTestsResultsApi.md
 docs/WebHttpServerScheduledTestResultsApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/tests/results/LocalNetworkTestsResultsApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/NetworkDynamicTestsResultsApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/NetworkScheduledTestsResultsApi.java

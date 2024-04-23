@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserEventAllOfResourcesInner.JSON_PROPERTY_TYPE,
   UserEventAllOfResourcesInner.JSON_PROPERTY_NAME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
 public class UserEventAllOfResourcesInner {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;

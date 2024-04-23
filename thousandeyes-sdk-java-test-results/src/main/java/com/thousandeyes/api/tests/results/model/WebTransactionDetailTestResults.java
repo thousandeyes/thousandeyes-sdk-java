@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionDetailTestResults.JSON_PROPERTY_RESULTS,
   WebTransactionDetailTestResults.JSON_PROPERTY_TEST
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.800492+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.392286+01:00[Europe/London]")
 public class WebTransactionDetailTestResults {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<WebTransactionDetailTestResult> results;

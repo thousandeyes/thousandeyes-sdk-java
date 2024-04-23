@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NewAccountGroupResponse.JSON_PROPERTY_ORGANIZATION_NAME,
   NewAccountGroupResponse.JSON_PROPERTY_USERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
 public class NewAccountGroupResponse {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;

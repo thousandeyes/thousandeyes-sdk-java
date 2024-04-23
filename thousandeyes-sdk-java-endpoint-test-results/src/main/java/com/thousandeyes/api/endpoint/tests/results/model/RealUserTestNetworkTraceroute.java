@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RealUserTestNetworkTraceroute.JSON_PROPERTY_INTERNAL_ERRORS,
   RealUserTestNetworkTraceroute.JSON_PROPERTY_HOPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
 public class RealUserTestNetworkTraceroute {
   public static final String JSON_PROPERTY_DESTINATION = "destination";
   private String destination;

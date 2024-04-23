@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiAgentStatusIpInfo.JSON_PROPERTY_IPV6,
   ApiAgentStatusIpInfo.JSON_PROPERTY_OPERATIVE_SYSTEM_VERSION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
 public class ApiAgentStatusIpInfo {
   public static final String JSON_PROPERTY_PUBLIC_IP = "publicIp";
   private String publicIp;

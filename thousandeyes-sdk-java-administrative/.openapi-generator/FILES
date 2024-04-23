@@ -6,9 +6,6 @@ docs/PermissionsApi.md
 docs/RolesApi.md
 docs/UserEventsApi.md
 docs/UsersApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/account/management/admin/AccountGroupsApi.java
 src/main/java/com/thousandeyes/api/account/management/admin/PermissionsApi.java
 src/main/java/com/thousandeyes/api/account/management/admin/RolesApi.java

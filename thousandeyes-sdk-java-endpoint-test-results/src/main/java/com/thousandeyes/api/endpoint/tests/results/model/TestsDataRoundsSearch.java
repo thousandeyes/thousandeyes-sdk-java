@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestsDataRoundsSearch.JSON_PROPERTY_THRESHOLD_FILTER,
   TestsDataRoundsSearch.JSON_PROPERTY_SEARCH_FILTERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
 public class TestsDataRoundsSearch {
   public static final String JSON_PROPERTY_SEARCH_SORT = "searchSort";
   private List<TestsDataSearchSort> searchSort;
