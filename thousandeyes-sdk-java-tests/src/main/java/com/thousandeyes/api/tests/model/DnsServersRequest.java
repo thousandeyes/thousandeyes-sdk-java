@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DnsServersRequest.JSON_PROPERTY_DNS_SERVERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class DnsServersRequest {
   public static final String JSON_PROPERTY_DNS_SERVERS = "dnsServers";
   private List<String> dnsServers = new ArrayList<>();
@@ -46,7 +46,7 @@ public class DnsServersRequest {
     return this;
   }
 
-  public DnsServersRequest adddnsServersItem(String dnsServersItem) {
+  public DnsServersRequest addDnsServersItem(String dnsServersItem) {
     if (this.dnsServers == null) {
       this.dnsServers = new ArrayList<>();
     }

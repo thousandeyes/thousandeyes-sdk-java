@@ -77,7 +77,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateSipServerTest1.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateSipServerTest1.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class UpdateSipServerTest1 {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -291,7 +291,7 @@ public class UpdateSipServerTest1 {
     return this;
   }
 
-  public UpdateSipServerTest1 addalertRulesItem(AlertRule alertRulesItem) {
+  public UpdateSipServerTest1 addAlertRulesItem(AlertRule alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }

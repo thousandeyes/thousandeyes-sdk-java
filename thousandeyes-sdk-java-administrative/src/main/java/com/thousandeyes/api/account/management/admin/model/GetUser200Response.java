@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetUser200Response.JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES,
   GetUser200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class GetUser200Response {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -233,7 +233,7 @@ public class GetUser200Response {
     return this;
   }
 
-  public GetUser200Response addaccountGroupRolesItem(AccountGroupRolesAccountGroupRolesInner accountGroupRolesItem) {
+  public GetUser200Response addAccountGroupRolesItem(AccountGroupRolesAccountGroupRolesInner accountGroupRolesItem) {
     if (this.accountGroupRoles == null) {
       this.accountGroupRoles = new ArrayList<>();
     }
@@ -266,7 +266,7 @@ public class GetUser200Response {
     return this;
   }
 
-  public GetUser200Response addallAccountGroupRolesItem(Role allAccountGroupRolesItem) {
+  public GetUser200Response addAllAccountGroupRolesItem(Role allAccountGroupRolesItem) {
     if (this.allAccountGroupRoles == null) {
       this.allAccountGroupRoles = new ArrayList<>();
     }

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AgentTransfers.JSON_PROPERTY_TRANSFERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.591476+01:00[Europe/Lisbon]")
 public class AgentTransfers {
   public static final String JSON_PROPERTY_TRANSFERS = "transfers";
   private List<AgentTransfer> transfers = new ArrayList<>();
@@ -47,7 +47,7 @@ public class AgentTransfers {
     return this;
   }
 
-  public AgentTransfers addtransfersItem(AgentTransfer transfersItem) {
+  public AgentTransfers addTransfersItem(AgentTransfer transfersItem) {
     if (this.transfers == null) {
       this.transfers = new ArrayList<>();
     }

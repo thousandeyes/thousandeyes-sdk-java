@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentTransfer.JSON_PROPERTY_FROM_AID,
   AgentTransfer.JSON_PROPERTY_TO_AID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.591476+01:00[Europe/Lisbon]")
 public class AgentTransfer {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private UUID agentId;

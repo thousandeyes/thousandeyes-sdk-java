@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgents.JSON_PROPERTY_TOTAL_AGENTS,
   EndpointAgents.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.591476+01:00[Europe/Lisbon]")
 public class EndpointAgents {
   public static final String JSON_PROPERTY_TOTAL_AGENTS = "totalAgents";
   private Integer totalAgents;
@@ -76,7 +76,7 @@ public class EndpointAgents {
     return this;
   }
 
-  public EndpointAgents addagentsItem(EndpointAgentsAgentsInner agentsItem) {
+  public EndpointAgents addAgentsItem(EndpointAgentsAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiContextFilterResponse.JSON_PROPERTY_CREATED_DATE,
   ApiContextFilterResponse.JSON_PROPERTY_MODIFIED_BY
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiContextFilterResponse {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -111,7 +111,7 @@ public class ApiContextFilterResponse {
     return this;
   }
 
-  public ApiContextFilterResponse addcontextItem(ApiDataSourceFilters contextItem) {
+  public ApiContextFilterResponse addContextItem(ApiDataSourceFilters contextItem) {
     if (this.context == null) {
       this.context = new LinkedHashSet<>();
     }

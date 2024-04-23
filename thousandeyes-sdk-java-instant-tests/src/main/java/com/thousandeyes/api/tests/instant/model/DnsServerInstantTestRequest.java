@@ -69,7 +69,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class DnsServerInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -380,7 +380,7 @@ public class DnsServerInstantTestRequest {
     return this;
   }
 
-  public DnsServerInstantTestRequest addlabelsItem(String labelsItem) {
+  public DnsServerInstantTestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -413,7 +413,7 @@ public class DnsServerInstantTestRequest {
     return this;
   }
 
-  public DnsServerInstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public DnsServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -471,7 +471,7 @@ public class DnsServerInstantTestRequest {
     return this;
   }
 
-  public DnsServerInstantTestRequest adddnsServersItem(String dnsServersItem) {
+  public DnsServerInstantTestRequest addDnsServersItem(String dnsServersItem) {
     if (this.dnsServers == null) {
       this.dnsServers = new ArrayList<>();
     }
@@ -808,7 +808,7 @@ public class DnsServerInstantTestRequest {
     return this;
   }
 
-  public DnsServerInstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public DnsServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

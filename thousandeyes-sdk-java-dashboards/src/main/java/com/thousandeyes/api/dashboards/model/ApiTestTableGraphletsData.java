@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestTableGraphletsData.JSON_PROPERTY_TEST_ID,
   ApiTestTableGraphletsData.JSON_PROPERTY_POINTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiTestTableGraphletsData {
   public static final String JSON_PROPERTY_METRIC = "metric";
   private String metric;
@@ -105,7 +105,7 @@ public class ApiTestTableGraphletsData {
     return this;
   }
 
-  public ApiTestTableGraphletsData addpointsItem(ApiGraphletPoint pointsItem) {
+  public ApiTestTableGraphletsData addPointsItem(ApiGraphletPoint pointsItem) {
     if (this.points == null) {
       this.points = new ArrayList<>();
     }

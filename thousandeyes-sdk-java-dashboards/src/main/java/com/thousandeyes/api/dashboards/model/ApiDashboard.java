@@ -61,7 +61,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDashboard.JSON_PROPERTY_IS_GLOBAL_OVERRIDE,
   ApiDashboard.JSON_PROPERTY_IS_MIGRATED_REPORT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiDashboard {
   public static final String JSON_PROPERTY_GLOBAL_FILTER_ID = "globalFilterId";
   private String globalFilterId;
@@ -302,7 +302,7 @@ public class ApiDashboard {
     return this;
   }
 
-  public ApiDashboard addapiLinkItem(Map<String, Object> apiLinkItem) {
+  public ApiDashboard addApiLinkItem(Map<String, Object> apiLinkItem) {
     if (this.apiLink == null) {
       this.apiLink = new ArrayList<>();
     }
@@ -530,7 +530,7 @@ public class ApiDashboard {
     return this;
   }
 
-  public ApiDashboard addwidgetsItem(ApiWidget widgetsItem) {
+  public ApiDashboard addWidgetsItem(ApiWidget widgetsItem) {
     if (this.widgets == null) {
       this.widgets = new ArrayList<>();
     }

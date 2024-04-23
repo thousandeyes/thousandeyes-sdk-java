@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetDashboardData200Response.JSON_PROPERTY_DATA,
   GetDashboardData200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class GetDashboardData200Response {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private OffsetDateTime startDate;
@@ -110,7 +110,7 @@ public class GetDashboardData200Response {
     return this;
   }
 
-  public GetDashboardData200Response addgroupLabelsItem(ApiReportDataComponentLabelMap groupLabelsItem) {
+  public GetDashboardData200Response addGroupLabelsItem(ApiReportDataComponentLabelMap groupLabelsItem) {
     if (this.groupLabels == null) {
       this.groupLabels = new ArrayList<>();
     }

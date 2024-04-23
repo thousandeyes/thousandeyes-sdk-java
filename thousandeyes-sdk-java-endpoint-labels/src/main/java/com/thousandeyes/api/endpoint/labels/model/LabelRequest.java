@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LabelRequest.JSON_PROPERTY_MATCH_TYPE,
   LabelRequest.JSON_PROPERTY_FILTERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.808719+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.466412+01:00[Europe/Lisbon]")
 public class LabelRequest {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -162,7 +162,7 @@ public class LabelRequest {
     return this;
   }
 
-  public LabelRequest addfiltersItem(Filter filtersItem) {
+  public LabelRequest addFiltersItem(Filter filtersItem) {
     if (this.filters == null) {
       this.filters = new ArrayList<>();
     }

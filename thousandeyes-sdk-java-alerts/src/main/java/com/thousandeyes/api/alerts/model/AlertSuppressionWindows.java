@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AlertSuppressionWindows.JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.740680+01:00[Europe/Lisbon]")
 public class AlertSuppressionWindows {
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS = "alertSuppressionWindows";
   private List<AlertSuppressionWindowsAlertSuppressionWindowsInner> alertSuppressionWindows = new ArrayList<>();
@@ -47,7 +47,7 @@ public class AlertSuppressionWindows {
     return this;
   }
 
-  public AlertSuppressionWindows addalertSuppressionWindowsItem(AlertSuppressionWindowsAlertSuppressionWindowsInner alertSuppressionWindowsItem) {
+  public AlertSuppressionWindows addAlertSuppressionWindowsItem(AlertSuppressionWindowsAlertSuppressionWindowsInner alertSuppressionWindowsItem) {
     if (this.alertSuppressionWindows == null) {
       this.alertSuppressionWindows = new ArrayList<>();
     }

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AgentProxies.JSON_PROPERTY_AGENT_PROXIES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.654346+01:00[Europe/Lisbon]")
 public class AgentProxies {
   public static final String JSON_PROPERTY_AGENT_PROXIES = "agentProxies";
   private List<AgentProxy> agentProxies = new ArrayList<>();
@@ -47,7 +47,7 @@ public class AgentProxies {
     return this;
   }
 
-  public AgentProxies addagentProxiesItem(AgentProxy agentProxiesItem) {
+  public AgentProxies addAgentProxiesItem(AgentProxy agentProxiesItem) {
     if (this.agentProxies == null) {
       this.agentProxies = new ArrayList<>();
     }

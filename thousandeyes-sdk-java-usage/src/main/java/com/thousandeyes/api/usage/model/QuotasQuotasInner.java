@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   QuotasQuotasInner.JSON_PROPERTY_ORGANIZATION_QUOTA,
   QuotasQuotasInner.JSON_PROPERTY_ACCOUNT_GROUP_QUOTAS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.521046+01:00[Europe/Lisbon]")
 public class QuotasQuotasInner {
   public static final String JSON_PROPERTY_ORGANIZATION_QUOTA = "organizationQuota";
   private OrganizationQuota organizationQuota;
@@ -77,7 +77,7 @@ public class QuotasQuotasInner {
     return this;
   }
 
-  public QuotasQuotasInner addaccountGroupQuotasItem(AccountGroupQuota accountGroupQuotasItem) {
+  public QuotasQuotasInner addAccountGroupQuotasItem(AccountGroupQuota accountGroupQuotasItem) {
     if (this.accountGroupQuotas == null) {
       this.accountGroupQuotas = new ArrayList<>();
     }

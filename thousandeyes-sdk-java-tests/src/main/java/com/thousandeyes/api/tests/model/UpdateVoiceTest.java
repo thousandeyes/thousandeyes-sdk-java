@@ -68,7 +68,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateVoiceTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateVoiceTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class UpdateVoiceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -271,7 +271,7 @@ public class UpdateVoiceTest {
     return this;
   }
 
-  public UpdateVoiceTest addalertRulesItem(String alertRulesItem) {
+  public UpdateVoiceTest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -499,7 +499,7 @@ public class UpdateVoiceTest {
     return this;
   }
 
-  public UpdateVoiceTest addlabelsItem(String labelsItem) {
+  public UpdateVoiceTest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -532,7 +532,7 @@ public class UpdateVoiceTest {
     return this;
   }
 
-  public UpdateVoiceTest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateVoiceTest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -778,7 +778,7 @@ public class UpdateVoiceTest {
     return this;
   }
 
-  public UpdateVoiceTest addagentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateVoiceTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

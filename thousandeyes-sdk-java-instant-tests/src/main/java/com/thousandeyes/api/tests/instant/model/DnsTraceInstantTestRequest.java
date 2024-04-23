@@ -54,7 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsTraceInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class DnsTraceInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -332,7 +332,7 @@ public class DnsTraceInstantTestRequest {
     return this;
   }
 
-  public DnsTraceInstantTestRequest addlabelsItem(String labelsItem) {
+  public DnsTraceInstantTestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -365,7 +365,7 @@ public class DnsTraceInstantTestRequest {
     return this;
   }
 
-  public DnsTraceInstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public DnsTraceInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -473,7 +473,7 @@ public class DnsTraceInstantTestRequest {
     return this;
   }
 
-  public DnsTraceInstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public DnsTraceInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

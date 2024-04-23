@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetHttpServerTests200Response.JSON_PROPERTY_TESTS,
   GetHttpServerTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class GetHttpServerTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<UnexpandedHttpServerTest> tests = new ArrayList<>();
@@ -52,7 +52,7 @@ public class GetHttpServerTests200Response {
     return this;
   }
 
-  public GetHttpServerTests200Response addtestsItem(UnexpandedHttpServerTest testsItem) {
+  public GetHttpServerTests200Response addTestsItem(UnexpandedHttpServerTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

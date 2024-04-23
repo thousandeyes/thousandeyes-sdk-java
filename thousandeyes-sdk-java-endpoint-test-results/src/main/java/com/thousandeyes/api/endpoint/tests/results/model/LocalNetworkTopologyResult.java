@@ -57,7 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocalNetworkTopologyResult.JSON_PROPERTY_ICMP_TRACEROUTE,
   LocalNetworkTopologyResult.JSON_PROPERTY_ICMP_TRACEROUTES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class LocalNetworkTopologyResult {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private UUID agentId;
@@ -412,7 +412,7 @@ public class LocalNetworkTopologyResult {
     return this;
   }
 
-  public LocalNetworkTopologyResult addicmpTraceroutesItem(Traceroute icmpTraceroutesItem) {
+  public LocalNetworkTopologyResult addIcmpTraceroutesItem(Traceroute icmpTraceroutesItem) {
     if (this.icmpTraceroutes == null) {
       this.icmpTraceroutes = new ArrayList<>();
     }

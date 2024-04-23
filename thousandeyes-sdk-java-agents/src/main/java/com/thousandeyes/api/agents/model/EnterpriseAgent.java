@@ -64,7 +64,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgent.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   EnterpriseAgent.JSON_PROPERTY_INTERFACE_IP_MAPPINGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.654346+01:00[Europe/Lisbon]")
 public class EnterpriseAgent {
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
   private CloudEnterpriseAgentType agentType;
@@ -407,7 +407,7 @@ public class EnterpriseAgent {
     return this;
   }
 
-  public EnterpriseAgent addaccountGroupsItem(AccountGroup accountGroupsItem) {
+  public EnterpriseAgent addAccountGroupsItem(AccountGroup accountGroupsItem) {
     if (this.accountGroups == null) {
       this.accountGroups = new ArrayList<>();
     }
@@ -600,7 +600,7 @@ public class EnterpriseAgent {
     return this;
   }
 
-  public EnterpriseAgent addlocalResolutionPrefixesItem(String localResolutionPrefixesItem) {
+  public EnterpriseAgent addLocalResolutionPrefixesItem(String localResolutionPrefixesItem) {
     if (this.localResolutionPrefixes == null) {
       this.localResolutionPrefixes = new ArrayList<>();
     }

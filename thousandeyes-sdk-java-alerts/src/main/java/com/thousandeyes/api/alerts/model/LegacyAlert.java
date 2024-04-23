@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LegacyAlert.JSON_PROPERTY_PERMALINK,
   LegacyAlert.JSON_PROPERTY_API_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.740680+01:00[Europe/Lisbon]")
 public class LegacyAlert {
   public static final String JSON_PROPERTY_ALERT_ID = "alertId";
   private UUID alertId;
@@ -295,7 +295,7 @@ public class LegacyAlert {
     return this;
   }
 
-  public LegacyAlert addapiLinksItem(Map<String, Object> apiLinksItem) {
+  public LegacyAlert addApiLinksItem(Map<String, Object> apiLinksItem) {
     if (this.apiLinks == null) {
       this.apiLinks = new ArrayList<>();
     }

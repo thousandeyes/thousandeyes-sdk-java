@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointVpnProfile.JSON_PROPERTY_VPN_CLIENT_ADDRESSES,
   EndpointVpnProfile.JSON_PROPERTY_VPN_CLIENT_NETWORK_RANGE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.591476+01:00[Europe/Lisbon]")
 public class EndpointVpnProfile {
   public static final String JSON_PROPERTY_INTERFACE_NAME = "interfaceName";
   private String interfaceName;
@@ -138,7 +138,7 @@ public class EndpointVpnProfile {
     return this;
   }
 
-  public EndpointVpnProfile addvpnClientAddressesItem(String vpnClientAddressesItem) {
+  public EndpointVpnProfile addVpnClientAddressesItem(String vpnClientAddressesItem) {
     if (this.vpnClientAddresses == null) {
       this.vpnClientAddresses = new ArrayList<>();
     }
@@ -171,7 +171,7 @@ public class EndpointVpnProfile {
     return this;
   }
 
-  public EndpointVpnProfile addvpnClientNetworkRangeItem(String vpnClientNetworkRangeItem) {
+  public EndpointVpnProfile addVpnClientNetworkRangeItem(String vpnClientNetworkRangeItem) {
     if (this.vpnClientNetworkRange == null) {
       this.vpnClientNetworkRange = new ArrayList<>();
     }

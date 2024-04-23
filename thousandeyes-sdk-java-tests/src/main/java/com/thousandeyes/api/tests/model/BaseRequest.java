@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BaseRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   BaseRequest.JSON_PROPERTY_ALERT_RULES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class BaseRequest {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<String> labels = new ArrayList<>();
@@ -54,7 +54,7 @@ public class BaseRequest {
     return this;
   }
 
-  public BaseRequest addlabelsItem(String labelsItem) {
+  public BaseRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -87,7 +87,7 @@ public class BaseRequest {
     return this;
   }
 
-  public BaseRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public BaseRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -120,7 +120,7 @@ public class BaseRequest {
     return this;
   }
 
-  public BaseRequest addalertRulesItem(String alertRulesItem) {
+  public BaseRequest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }

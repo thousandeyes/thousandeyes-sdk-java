@@ -96,7 +96,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateHttpServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateHttpServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class UpdateHttpServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -364,7 +364,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addalertRulesItem(String alertRulesItem) {
+  public UpdateHttpServerTest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -592,7 +592,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addlabelsItem(String labelsItem) {
+  public UpdateHttpServerTest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -625,7 +625,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateHttpServerTest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -758,7 +758,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addheadersItem(String headersItem) {
+  public UpdateHttpServerTest addHeadersItem(String headersItem) {
     if (this.headers == null) {
       this.headers = new ArrayList<>();
     }
@@ -1466,7 +1466,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addagentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateHttpServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1549,7 +1549,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addmonitorsItem(String monitorsItem) {
+  public UpdateHttpServerTest addMonitorsItem(String monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }

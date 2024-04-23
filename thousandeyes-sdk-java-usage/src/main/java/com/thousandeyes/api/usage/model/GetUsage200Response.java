@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetUsage200Response.JSON_PROPERTY_USAGE,
   GetUsage200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.521046+01:00[Europe/Lisbon]")
 public class GetUsage200Response {
   public static final String JSON_PROPERTY_USAGE = "usage";
   private UsageUsage usage;

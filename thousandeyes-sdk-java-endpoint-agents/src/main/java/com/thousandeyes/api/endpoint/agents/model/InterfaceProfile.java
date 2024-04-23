@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InterfaceProfile.JSON_PROPERTY_ETHERNET_PROFILE,
   InterfaceProfile.JSON_PROPERTY_WIRELESS_PROFILE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.591476+01:00[Europe/Lisbon]")
 public class InterfaceProfile {
   public static final String JSON_PROPERTY_INTERFACE_NAME = "interfaceName";
   private String interfaceName;
@@ -91,7 +91,7 @@ public class InterfaceProfile {
     return this;
   }
 
-  public InterfaceProfile addaddressProfilesItem(AddressProfile addressProfilesItem) {
+  public InterfaceProfile addAddressProfilesItem(AddressProfile addressProfilesItem) {
     if (this.addressProfiles == null) {
       this.addressProfiles = new ArrayList<>();
     }

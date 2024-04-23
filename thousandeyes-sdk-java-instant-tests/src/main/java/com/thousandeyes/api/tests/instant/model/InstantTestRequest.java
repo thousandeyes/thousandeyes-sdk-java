@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   InstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class InstantTestRequest {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<String> labels = new ArrayList<>();
@@ -55,7 +55,7 @@ public class InstantTestRequest {
     return this;
   }
 
-  public InstantTestRequest addlabelsItem(String labelsItem) {
+  public InstantTestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -88,7 +88,7 @@ public class InstantTestRequest {
     return this;
   }
 
-  public InstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public InstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -121,7 +121,7 @@ public class InstantTestRequest {
     return this;
   }
 
-  public InstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public InstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

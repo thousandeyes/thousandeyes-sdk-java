@@ -47,7 +47,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocalNetworkTopologyResultBase.JSON_PROPERTY_TCP_CONNECT,
   LocalNetworkTopologyResultBase.JSON_PROPERTY_SYSTEM_METRICS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class LocalNetworkTopologyResultBase {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private UUID agentId;

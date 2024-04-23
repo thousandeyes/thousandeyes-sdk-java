@@ -61,7 +61,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Alert.JSON_PROPERTY_ALERT_STATE,
   Alert.JSON_PROPERTY_ALERT_SEVERITY
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.740680+01:00[Europe/Lisbon]")
 public class Alert {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
@@ -551,7 +551,7 @@ public class Alert {
     return this;
   }
 
-  public Alert addapiLinksItem(Map<String, Object> apiLinksItem) {
+  public Alert addApiLinksItem(Map<String, Object> apiLinksItem) {
     if (this.apiLinks == null) {
       this.apiLinks = new ArrayList<>();
     }

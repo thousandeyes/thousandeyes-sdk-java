@@ -57,7 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BaseBgpTest.JSON_PROPERTY_ALERTS_ENABLED,
   BaseBgpTest.JSON_PROPERTY_ALERT_RULES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class BaseBgpTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -492,7 +492,7 @@ public class BaseBgpTest {
     return this;
   }
 
-  public BaseBgpTest addalertRulesItem(AlertRule alertRulesItem) {
+  public BaseBgpTest addAlertRulesItem(AlertRule alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }

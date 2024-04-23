@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BgpTestRouteInformationResults.JSON_PROPERTY_RESULTS,
   BgpTestRouteInformationResults.JSON_PROPERTY_TEST
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.530738+01:00[Europe/Lisbon]")
 public class BgpTestRouteInformationResults {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<BgpTestRouteInformationResult> results = new ArrayList<>();
@@ -52,7 +52,7 @@ public class BgpTestRouteInformationResults {
     return this;
   }
 
-  public BgpTestRouteInformationResults addresultsItem(BgpTestRouteInformationResult resultsItem) {
+  public BgpTestRouteInformationResults addResultsItem(BgpTestRouteInformationResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

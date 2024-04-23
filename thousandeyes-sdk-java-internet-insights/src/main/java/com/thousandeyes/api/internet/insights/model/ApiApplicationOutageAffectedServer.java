@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiApplicationOutageAffectedServer.JSON_PROPERTY_DOMAIN,
   ApiApplicationOutageAffectedServer.JSON_PROPERTY_PREFIX
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.455424+01:00[Europe/Lisbon]")
 public class ApiApplicationOutageAffectedServer {
   public static final String JSON_PROPERTY_DOMAIN = "domain";
   private String domain;

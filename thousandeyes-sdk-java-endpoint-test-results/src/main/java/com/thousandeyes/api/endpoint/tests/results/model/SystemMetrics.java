@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SystemMetrics.JSON_PROPERTY_PHYSICAL_MEMORY_USED_BYTES,
   SystemMetrics.JSON_PROPERTY_PHYSICAL_MEMORY_TOTAL_BYTES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class SystemMetrics {
   public static final String JSON_PROPERTY_START_TIME_MS = "startTimeMs";
   private BigDecimal startTimeMs;

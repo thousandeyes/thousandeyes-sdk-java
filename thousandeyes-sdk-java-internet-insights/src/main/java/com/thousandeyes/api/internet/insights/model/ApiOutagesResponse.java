@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiOutagesResponse.JSON_PROPERTY_LINKS,
   ApiOutagesResponse.JSON_PROPERTY_OUTAGES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.455424+01:00[Europe/Lisbon]")
 public class ApiOutagesResponse {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -77,7 +77,7 @@ public class ApiOutagesResponse {
     return this;
   }
 
-  public ApiOutagesResponse addoutagesItem(ApiOutagesResponseAllOfOutagesInner outagesItem) {
+  public ApiOutagesResponse addOutagesItem(ApiOutagesResponseAllOfOutagesInner outagesItem) {
     if (this.outages == null) {
       this.outages = new ArrayList<>();
     }

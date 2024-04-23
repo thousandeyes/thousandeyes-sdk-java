@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RuleDetailUpdate.JSON_PROPERTY_NOTIFICATIONS,
   RuleDetailUpdate.JSON_PROPERTY_TEST_IDS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.740680+01:00[Europe/Lisbon]")
 public class RuleDetailUpdate {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
   private String ruleId;
@@ -484,7 +484,7 @@ public class RuleDetailUpdate {
     return this;
   }
 
-  public RuleDetailUpdate addtestIdsItem(String testIdsItem) {
+  public RuleDetailUpdate addTestIdsItem(String testIdsItem) {
     if (this.testIds == null) {
       this.testIds = new ArrayList<>();
     }

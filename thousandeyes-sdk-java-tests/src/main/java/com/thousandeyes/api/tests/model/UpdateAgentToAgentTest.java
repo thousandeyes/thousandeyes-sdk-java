@@ -74,7 +74,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateAgentToAgentTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateAgentToAgentTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class UpdateAgentToAgentTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -285,7 +285,7 @@ public class UpdateAgentToAgentTest {
     return this;
   }
 
-  public UpdateAgentToAgentTest addalertRulesItem(String alertRulesItem) {
+  public UpdateAgentToAgentTest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -513,7 +513,7 @@ public class UpdateAgentToAgentTest {
     return this;
   }
 
-  public UpdateAgentToAgentTest addlabelsItem(String labelsItem) {
+  public UpdateAgentToAgentTest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -546,7 +546,7 @@ public class UpdateAgentToAgentTest {
     return this;
   }
 
-  public UpdateAgentToAgentTest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateAgentToAgentTest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -906,7 +906,7 @@ public class UpdateAgentToAgentTest {
     return this;
   }
 
-  public UpdateAgentToAgentTest addagentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateAgentToAgentTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -989,7 +989,7 @@ public class UpdateAgentToAgentTest {
     return this;
   }
 
-  public UpdateAgentToAgentTest addmonitorsItem(String monitorsItem) {
+  public UpdateAgentToAgentTest addMonitorsItem(String monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }

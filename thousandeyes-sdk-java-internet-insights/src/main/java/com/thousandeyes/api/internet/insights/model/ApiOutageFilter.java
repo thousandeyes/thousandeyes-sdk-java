@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiOutageFilter.JSON_PROPERTY_APPLICATION_NAME,
   ApiOutageFilter.JSON_PROPERTY_INTERFACE_NETWORK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.455424+01:00[Europe/Lisbon]")
 public class ApiOutageFilter {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private String startDate;
@@ -171,7 +171,7 @@ public class ApiOutageFilter {
     return this;
   }
 
-  public ApiOutageFilter addproviderNameItem(String providerNameItem) {
+  public ApiOutageFilter addProviderNameItem(String providerNameItem) {
     if (this.providerName == null) {
       this.providerName = new ArrayList<>();
     }
@@ -204,7 +204,7 @@ public class ApiOutageFilter {
     return this;
   }
 
-  public ApiOutageFilter addapplicationNameItem(String applicationNameItem) {
+  public ApiOutageFilter addApplicationNameItem(String applicationNameItem) {
     if (this.applicationName == null) {
       this.applicationName = new ArrayList<>();
     }
@@ -237,7 +237,7 @@ public class ApiOutageFilter {
     return this;
   }
 
-  public ApiOutageFilter addinterfaceNetworkItem(String interfaceNetworkItem) {
+  public ApiOutageFilter addInterfaceNetworkItem(String interfaceNetworkItem) {
     if (this.interfaceNetwork == null) {
       this.interfaceNetwork = new ArrayList<>();
     }

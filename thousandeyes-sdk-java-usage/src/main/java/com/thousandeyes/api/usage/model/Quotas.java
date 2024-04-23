@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   Quotas.JSON_PROPERTY_QUOTAS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.521046+01:00[Europe/Lisbon]")
 public class Quotas {
   public static final String JSON_PROPERTY_QUOTAS = "quotas";
   private List<QuotasQuotasInner> quotas = new ArrayList<>();
@@ -47,7 +47,7 @@ public class Quotas {
     return this;
   }
 
-  public Quotas addquotasItem(QuotasQuotasInner quotasItem) {
+  public Quotas addQuotasItem(QuotasQuotasInner quotasItem) {
     if (this.quotas == null) {
       this.quotas = new ArrayList<>();
     }

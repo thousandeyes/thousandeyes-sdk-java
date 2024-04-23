@@ -49,7 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDetailTestResult.JSON_PROPERTY_DIRECTION,
   PathVisDetailTestResult.JSON_PROPERTY_PATH_TRACES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.530738+01:00[Europe/Lisbon]")
 public class PathVisDetailTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;
@@ -332,7 +332,7 @@ public class PathVisDetailTestResult {
     return this;
   }
 
-  public PathVisDetailTestResult addpathTracesItem(PathVisRoute pathTracesItem) {
+  public PathVisDetailTestResult addPathTracesItem(PathVisRoute pathTracesItem) {
     if (this.pathTraces == null) {
       this.pathTraces = new ArrayList<>();
     }

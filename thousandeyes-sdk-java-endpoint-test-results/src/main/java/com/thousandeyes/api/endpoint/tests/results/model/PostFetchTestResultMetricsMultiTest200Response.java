@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PostFetchTestResultMetricsMultiTest200Response.JSON_PROPERTY_END_DATE,
   PostFetchTestResultMetricsMultiTest200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class PostFetchTestResultMetricsMultiTest200Response {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<NetworkTestResult> results = new ArrayList<>();
@@ -76,7 +76,7 @@ public class PostFetchTestResultMetricsMultiTest200Response {
     return this;
   }
 
-  public PostFetchTestResultMetricsMultiTest200Response addresultsItem(NetworkTestResult resultsItem) {
+  public PostFetchTestResultMetricsMultiTest200Response addResultsItem(NetworkTestResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

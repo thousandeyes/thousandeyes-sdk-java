@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Traceroute.JSON_PROPERTY_INTERNAL_ERRORS,
   Traceroute.JSON_PROPERTY_HOPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class Traceroute {
   public static final String JSON_PROPERTY_DESTINATION = "destination";
   private String destination;
@@ -137,7 +137,7 @@ public class Traceroute {
     return this;
   }
 
-  public Traceroute addhopsItem(TracerouteHop hopsItem) {
+  public Traceroute addHopsItem(TracerouteHop hopsItem) {
     if (this.hops == null) {
       this.hops = new ArrayList<>();
     }

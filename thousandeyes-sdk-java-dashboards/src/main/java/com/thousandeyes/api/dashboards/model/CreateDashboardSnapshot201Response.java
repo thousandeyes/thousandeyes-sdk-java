@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateDashboardSnapshot201Response.JSON_PROPERTY_SNAPSHOT_ID,
   CreateDashboardSnapshot201Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class CreateDashboardSnapshot201Response {
   public static final String JSON_PROPERTY_SNAPSHOT_ID = "snapshotId";
   private UUID snapshotId;

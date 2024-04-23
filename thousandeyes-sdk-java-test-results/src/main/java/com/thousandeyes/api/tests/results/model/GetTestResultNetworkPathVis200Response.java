@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetTestResultNetworkPathVis200Response.JSON_PROPERTY_TEST,
   GetTestResultNetworkPathVis200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.530738+01:00[Europe/Lisbon]")
 public class GetTestResultNetworkPathVis200Response {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private OffsetDateTime startDate;
@@ -106,7 +106,7 @@ public class GetTestResultNetworkPathVis200Response {
     return this;
   }
 
-  public GetTestResultNetworkPathVis200Response addresultsItem(PathVisTestResult resultsItem) {
+  public GetTestResultNetworkPathVis200Response addResultsItem(PathVisTestResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedInstantTestLinks.JSON_PROPERTY_SELF,
   UnexpandedInstantTestLinks.JSON_PROPERTY_TEST_RESULTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class UnexpandedInstantTestLinks {
   public static final String JSON_PROPERTY_SELF = "self";
   private UnexpandedInstantTestLinksSelf self;
@@ -77,7 +77,7 @@ public class UnexpandedInstantTestLinks {
     return this;
   }
 
-  public UnexpandedInstantTestLinks addtestResultsItem(Link testResultsItem) {
+  public UnexpandedInstantTestLinks addTestResultsItem(Link testResultsItem) {
     if (this.testResults == null) {
       this.testResults = new ArrayList<>();
     }

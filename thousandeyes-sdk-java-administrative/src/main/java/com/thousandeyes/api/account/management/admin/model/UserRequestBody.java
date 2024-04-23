@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserRequestBody.JSON_PROPERTY_ACCOUNT_GROUP_ROLES,
   UserRequestBody.JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLE_IDS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class UserRequestBody {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -138,7 +138,7 @@ public class UserRequestBody {
     return this;
   }
 
-  public UserRequestBody addaccountGroupRolesItem(AccountGroupRolesRequestBodyInner accountGroupRolesItem) {
+  public UserRequestBody addAccountGroupRolesItem(AccountGroupRolesRequestBodyInner accountGroupRolesItem) {
     if (this.accountGroupRoles == null) {
       this.accountGroupRoles = new ArrayList<>();
     }
@@ -171,7 +171,7 @@ public class UserRequestBody {
     return this;
   }
 
-  public UserRequestBody addallAccountGroupRoleIdsItem(String allAccountGroupRoleIdsItem) {
+  public UserRequestBody addAllAccountGroupRoleIdsItem(String allAccountGroupRoleIdsItem) {
     if (this.allAccountGroupRoleIds == null) {
       this.allAccountGroupRoleIds = new ArrayList<>();
     }

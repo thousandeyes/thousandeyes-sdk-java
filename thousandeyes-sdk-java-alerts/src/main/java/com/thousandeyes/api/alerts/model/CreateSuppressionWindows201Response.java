@@ -48,7 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateSuppressionWindows201Response.JSON_PROPERTY_TESTS,
   CreateSuppressionWindows201Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.740680+01:00[Europe/Lisbon]")
 public class CreateSuppressionWindows201Response {
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOW_ID = "alertSuppressionWindowId";
   private String alertSuppressionWindowId;
@@ -286,7 +286,7 @@ public class CreateSuppressionWindows201Response {
     return this;
   }
 
-  public CreateSuppressionWindows201Response addtestsItem(BaseTest testsItem) {
+  public CreateSuppressionWindows201Response addTestsItem(BaseTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

@@ -55,7 +55,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDashboardSnapshot.JSON_PROPERTY_TIME_SPAN,
   ApiDashboardSnapshot.JSON_PROPERTY_SNAPSHOT_EXPIRATION_DATE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiDashboardSnapshot {
   public static final String JSON_PROPERTY_SNAPSHOT_ID = "snapshotId";
   private UUID snapshotId;
@@ -238,7 +238,7 @@ public class ApiDashboardSnapshot {
     return this;
   }
 
-  public ApiDashboardSnapshot addapiLinksItem(Map<String, Object> apiLinksItem) {
+  public ApiDashboardSnapshot addApiLinksItem(Map<String, Object> apiLinksItem) {
     if (this.apiLinks == null) {
       this.apiLinks = new ArrayList<>();
     }
@@ -421,7 +421,7 @@ public class ApiDashboardSnapshot {
     return this;
   }
 
-  public ApiDashboardSnapshot addwidgetsItem(ApiWidget widgetsItem) {
+  public ApiDashboardSnapshot addWidgetsItem(ApiWidget widgetsItem) {
     if (this.widgets == null) {
       this.widgets = new ArrayList<>();
     }

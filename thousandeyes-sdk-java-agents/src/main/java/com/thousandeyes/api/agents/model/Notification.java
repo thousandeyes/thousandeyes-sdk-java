@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Notification.JSON_PROPERTY_THIRD_PARTY,
   Notification.JSON_PROPERTY_WEBHOOK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.654346+01:00[Europe/Lisbon]")
 public class Notification {
   public static final String JSON_PROPERTY_EMAIL = "email";
   private AlertEmail email;
@@ -81,7 +81,7 @@ public class Notification {
     return this;
   }
 
-  public Notification addthirdPartyItem(AlertIntegrationBase thirdPartyItem) {
+  public Notification addThirdPartyItem(AlertIntegrationBase thirdPartyItem) {
     if (this.thirdParty == null) {
       this.thirdParty = new ArrayList<>();
     }
@@ -114,7 +114,7 @@ public class Notification {
     return this;
   }
 
-  public Notification addwebhookItem(AlertIntegrationBase webhookItem) {
+  public Notification addWebhookItem(AlertIntegrationBase webhookItem) {
     if (this.webhook == null) {
       this.webhook = new ArrayList<>();
     }

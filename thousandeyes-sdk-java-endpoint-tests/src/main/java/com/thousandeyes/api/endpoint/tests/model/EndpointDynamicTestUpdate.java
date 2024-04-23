@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointDynamicTestUpdate.JSON_PROPERTY_TCP_PROBE_MODE,
   EndpointDynamicTestUpdate.JSON_PROPERTY_APPLICATION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.019910+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.651839+01:00[Europe/Lisbon]")
 public class EndpointDynamicTestUpdate {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;

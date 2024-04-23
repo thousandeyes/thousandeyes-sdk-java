@@ -103,7 +103,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateWebTransactionTest.JSON_PROPERTY_MONITORS,
   UpdateWebTransactionTest.JSON_PROPERTY_SUBINTERVAL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class UpdateWebTransactionTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -389,7 +389,7 @@ public class UpdateWebTransactionTest {
     return this;
   }
 
-  public UpdateWebTransactionTest addalertRulesItem(String alertRulesItem) {
+  public UpdateWebTransactionTest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -617,7 +617,7 @@ public class UpdateWebTransactionTest {
     return this;
   }
 
-  public UpdateWebTransactionTest addlabelsItem(String labelsItem) {
+  public UpdateWebTransactionTest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -650,7 +650,7 @@ public class UpdateWebTransactionTest {
     return this;
   }
 
-  public UpdateWebTransactionTest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateWebTransactionTest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -1587,7 +1587,7 @@ public class UpdateWebTransactionTest {
     return this;
   }
 
-  public UpdateWebTransactionTest addagentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateWebTransactionTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1620,7 +1620,7 @@ public class UpdateWebTransactionTest {
     return this;
   }
 
-  public UpdateWebTransactionTest addcredentialsItem(String credentialsItem) {
+  public UpdateWebTransactionTest addCredentialsItem(String credentialsItem) {
     if (this.credentials == null) {
       this.credentials = new ArrayList<>();
     }
@@ -1703,7 +1703,7 @@ public class UpdateWebTransactionTest {
     return this;
   }
 
-  public UpdateWebTransactionTest addmonitorsItem(String monitorsItem) {
+  public UpdateWebTransactionTest addMonitorsItem(String monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }

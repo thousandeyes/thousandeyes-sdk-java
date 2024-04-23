@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CompleteAlertSuppressionWindow.JSON_PROPERTY_END_REPEAT,
   CompleteAlertSuppressionWindow.JSON_PROPERTY_TESTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.740680+01:00[Europe/Lisbon]")
 public class CompleteAlertSuppressionWindow {
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOW_ID = "alertSuppressionWindowId";
   private String alertSuppressionWindowId;
@@ -281,7 +281,7 @@ public class CompleteAlertSuppressionWindow {
     return this;
   }
 
-  public CompleteAlertSuppressionWindow addtestsItem(BaseTest testsItem) {
+  public CompleteAlertSuppressionWindow addTestsItem(BaseTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

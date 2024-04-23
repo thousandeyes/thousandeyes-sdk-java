@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   EnterpriseAgentUnitsByTestOwnerAccountGroup.JSON_PROPERTY_BREAKDOWNS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.521046+01:00[Europe/Lisbon]")
 public class EnterpriseAgentUnitsByTestOwnerAccountGroup {
   public static final String JSON_PROPERTY_BREAKDOWNS = "breakdowns";
   private List<EnterpriseAgentUnitsByTestOwnerAccountGroupBreakdownsInner> breakdowns = new ArrayList<>();
@@ -47,7 +47,7 @@ public class EnterpriseAgentUnitsByTestOwnerAccountGroup {
     return this;
   }
 
-  public EnterpriseAgentUnitsByTestOwnerAccountGroup addbreakdownsItem(EnterpriseAgentUnitsByTestOwnerAccountGroupBreakdownsInner breakdownsItem) {
+  public EnterpriseAgentUnitsByTestOwnerAccountGroup addBreakdownsItem(EnterpriseAgentUnitsByTestOwnerAccountGroupBreakdownsInner breakdownsItem) {
     if (this.breakdowns == null) {
       this.breakdowns = new ArrayList<>();
     }

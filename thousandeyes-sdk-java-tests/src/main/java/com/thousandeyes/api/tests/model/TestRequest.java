@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestRequest.JSON_PROPERTY_ALERT_RULES,
   TestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class TestRequest {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<String> labels = new ArrayList<>();
@@ -59,7 +59,7 @@ public class TestRequest {
     return this;
   }
 
-  public TestRequest addlabelsItem(String labelsItem) {
+  public TestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -92,7 +92,7 @@ public class TestRequest {
     return this;
   }
 
-  public TestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public TestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -125,7 +125,7 @@ public class TestRequest {
     return this;
   }
 
-  public TestRequest addalertRulesItem(String alertRulesItem) {
+  public TestRequest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -158,7 +158,7 @@ public class TestRequest {
     return this;
   }
 
-  public TestRequest addagentsItem(TestRequestAllOfAgents agentsItem) {
+  public TestRequest addAgentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ScalableWidget.JSON_PROPERTY_MAX_SCALE,
   ScalableWidget.JSON_PROPERTY_UNIT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ScalableWidget {
   public static final String JSON_PROPERTY_MIN_SCALE = "minScale";
   private Float minScale;

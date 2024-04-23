@@ -58,7 +58,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.api.serialization.JSON;
 import com.thousandeyes.api.serialization.AbstractOpenApiSchema;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.956104+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.475755+01:00[Europe/Lisbon]")
 @JsonDeserialize(using = EndpointAgentSelectorConfig.EndpointAgentSelectorConfigDeserializer.class)
 @JsonSerialize(using = EndpointAgentSelectorConfig.EndpointAgentSelectorConfigSerializer.class)
 public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {

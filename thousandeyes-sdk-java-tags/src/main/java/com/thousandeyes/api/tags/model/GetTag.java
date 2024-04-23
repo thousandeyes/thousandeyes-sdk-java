@@ -49,7 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetTag.JSON_PROPERTY_VALUE,
   GetTag.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.771341+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.220834+01:00[Europe/Lisbon]")
 public class GetTag {
   public static final String JSON_PROPERTY_ASSIGNMENTS = "assignments";
   private List<Assignment> assignments = new ArrayList<>();
@@ -111,7 +111,7 @@ public class GetTag {
     return this;
   }
 
-  public GetTag addassignmentsItem(Assignment assignmentsItem) {
+  public GetTag addAssignmentsItem(Assignment assignmentsItem) {
     if (this.assignments == null) {
       this.assignments = new ArrayList<>();
     }

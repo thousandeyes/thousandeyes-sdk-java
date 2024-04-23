@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   QuotasUnassign.JSON_PROPERTY_ORGANIZATIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.521046+01:00[Europe/Lisbon]")
 public class QuotasUnassign {
   public static final String JSON_PROPERTY_ORGANIZATIONS = "organizations";
   private List<String> organizations = new ArrayList<>();
@@ -46,7 +46,7 @@ public class QuotasUnassign {
     return this;
   }
 
-  public QuotasUnassign addorganizationsItem(String organizationsItem) {
+  public QuotasUnassign addOrganizationsItem(String organizationsItem) {
     if (this.organizations == null) {
       this.organizations = new ArrayList<>();
     }

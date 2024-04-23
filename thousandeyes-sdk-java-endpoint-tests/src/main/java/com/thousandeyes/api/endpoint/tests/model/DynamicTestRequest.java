@@ -62,7 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTestRequest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
   DynamicTestRequest.JSON_PROPERTY_MAX_MACHINES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.019910+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.651839+01:00[Europe/Lisbon]")
 public class DynamicTestRequest {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -559,7 +559,7 @@ public class DynamicTestRequest {
     return this;
   }
 
-  public DynamicTestRequest addagentsItem(UUID agentsItem) {
+  public DynamicTestRequest addAgentsItem(UUID agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -592,7 +592,7 @@ public class DynamicTestRequest {
     return this;
   }
 
-  public DynamicTestRequest addendpointAgentLabelsItem(String endpointAgentLabelsItem) {
+  public DynamicTestRequest addEndpointAgentLabelsItem(String endpointAgentLabelsItem) {
     if (this.endpointAgentLabels == null) {
       this.endpointAgentLabels = new ArrayList<>();
     }

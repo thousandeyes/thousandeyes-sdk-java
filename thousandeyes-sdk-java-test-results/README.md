@@ -4,7 +4,7 @@ Test Results API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]
+- Build date: 2024-04-23T17:12:32.530738+01:00[Europe/Lisbon]
 
 Get test result metrics for Cloud and Enterprise Agent tests.
 

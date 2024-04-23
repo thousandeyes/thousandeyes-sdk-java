@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BadRequestError.JSON_PROPERTY_ERRORS,
   BadRequestError.JSON_PROPERTY_PATH
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.814008+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.430484+01:00[Europe/Lisbon]")
 public class BadRequestError {
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
@@ -108,7 +108,7 @@ public class BadRequestError {
     return this;
   }
 
-  public BadRequestError adderrorsItem(String errorsItem) {
+  public BadRequestError addErrorsItem(String errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }

@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiWidgetsDataV2.JSON_PROPERTY_AGENTS,
   ApiWidgetsDataV2.JSON_PROPERTY_STATUS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiWidgetsDataV2 {
   public static final String JSON_PROPERTY_CARDS = "cards";
   private List<ApiNumbersCardData> cards = new ArrayList<>();
@@ -98,7 +98,7 @@ public class ApiWidgetsDataV2 {
     return this;
   }
 
-  public ApiWidgetsDataV2 addcardsItem(ApiNumbersCardData cardsItem) {
+  public ApiWidgetsDataV2 addCardsItem(ApiNumbersCardData cardsItem) {
     if (this.cards == null) {
       this.cards = new ArrayList<>();
     }
@@ -131,7 +131,7 @@ public class ApiWidgetsDataV2 {
     return this;
   }
 
-  public ApiWidgetsDataV2 addcolumnsItem(ApiMultiMetricColumnData columnsItem) {
+  public ApiWidgetsDataV2 addColumnsItem(ApiMultiMetricColumnData columnsItem) {
     if (this.columns == null) {
       this.columns = new ArrayList<>();
     }
@@ -164,7 +164,7 @@ public class ApiWidgetsDataV2 {
     return this;
   }
 
-  public ApiWidgetsDataV2 addpointsItem(ApiWidgetDataPoint pointsItem) {
+  public ApiWidgetsDataV2 addPointsItem(ApiWidgetDataPoint pointsItem) {
     if (this.points == null) {
       this.points = new ArrayList<>();
     }
@@ -197,7 +197,7 @@ public class ApiWidgetsDataV2 {
     return this;
   }
 
-  public ApiWidgetsDataV2 addtestsItem(ApiTestTableData testsItem) {
+  public ApiWidgetsDataV2 addTestsItem(ApiTestTableData testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -255,7 +255,7 @@ public class ApiWidgetsDataV2 {
     return this;
   }
 
-  public ApiWidgetsDataV2 addalertSuppressionWindowsItem(ApiDashboardAsw alertSuppressionWindowsItem) {
+  public ApiWidgetsDataV2 addAlertSuppressionWindowsItem(ApiDashboardAsw alertSuppressionWindowsItem) {
     if (this.alertSuppressionWindows == null) {
       this.alertSuppressionWindows = new ArrayList<>();
     }
@@ -338,7 +338,7 @@ public class ApiWidgetsDataV2 {
     return this;
   }
 
-  public ApiWidgetsDataV2 addalertsItem(ApiAlertListAlert alertsItem) {
+  public ApiWidgetsDataV2 addAlertsItem(ApiAlertListAlert alertsItem) {
     if (this.alerts == null) {
       this.alerts = new ArrayList<>();
     }
@@ -396,7 +396,7 @@ public class ApiWidgetsDataV2 {
     return this;
   }
 
-  public ApiWidgetsDataV2 addagentsItem(ApiAgentStatusAgent agentsItem) {
+  public ApiWidgetsDataV2 addAgentsItem(ApiAgentStatusAgent agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

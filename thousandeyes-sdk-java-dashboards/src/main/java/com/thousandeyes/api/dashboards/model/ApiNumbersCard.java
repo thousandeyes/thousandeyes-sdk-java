@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNumbersCard.JSON_PROPERTY_METRIC,
   ApiNumbersCard.JSON_PROPERTY_FILTERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiNumbersCard {
   public static final String JSON_PROPERTY_MIN_SCALE = "minScale";
   private Float minScale;
@@ -430,7 +430,7 @@ public class ApiNumbersCard {
     return this;
   }
 
-  public ApiNumbersCard putfiltersItem(String key, Set<Object> filtersItem) {
+  public ApiNumbersCard putFiltersItem(String key, Set<Object> filtersItem) {
     if (this.filters == null) {
       this.filters = new HashMap<>();
     }

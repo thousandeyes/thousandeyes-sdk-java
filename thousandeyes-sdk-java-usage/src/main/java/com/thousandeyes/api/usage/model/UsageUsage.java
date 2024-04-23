@@ -56,7 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UsageUsage.JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED,
   UsageUsage.JSON_PROPERTY_ENTERPRISE_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.521046+01:00[Europe/Lisbon]")
 public class UsageUsage {
   public static final String JSON_PROPERTY_QUOTA = "quota";
   private UsageUsageQuota quota;
@@ -392,7 +392,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addenterpriseAgentUnitsItem(EnterpriseAgentUnitsInner enterpriseAgentUnitsItem) {
+  public UsageUsage addEnterpriseAgentUnitsItem(EnterpriseAgentUnitsInner enterpriseAgentUnitsItem) {
     if (this.enterpriseAgentUnits == null) {
       this.enterpriseAgentUnits = new ArrayList<>();
     }
@@ -425,7 +425,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addtestsItem(TestsInner testsItem) {
+  public UsageUsage addTestsItem(TestsInner testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -458,7 +458,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addendpointAgentsItem(EndpointAgentsInner endpointAgentsItem) {
+  public UsageUsage addEndpointAgentsItem(EndpointAgentsInner endpointAgentsItem) {
     if (this.endpointAgents == null) {
       this.endpointAgents = new ArrayList<>();
     }
@@ -491,7 +491,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addendpointAgentsEssentialsItem(EndpointAgentsEssentialsInner endpointAgentsEssentialsItem) {
+  public UsageUsage addEndpointAgentsEssentialsItem(EndpointAgentsEssentialsInner endpointAgentsEssentialsItem) {
     if (this.endpointAgentsEssentials == null) {
       this.endpointAgentsEssentials = new ArrayList<>();
     }
@@ -524,7 +524,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addendpointAgentsEmbeddedItem(EndpointAgentsEmbeddedInner endpointAgentsEmbeddedItem) {
+  public UsageUsage addEndpointAgentsEmbeddedItem(EndpointAgentsEmbeddedInner endpointAgentsEmbeddedItem) {
     if (this.endpointAgentsEmbedded == null) {
       this.endpointAgentsEmbedded = new ArrayList<>();
     }
@@ -557,7 +557,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addenterpriseAgentsItem(EnterpriseAgentsInner enterpriseAgentsItem) {
+  public UsageUsage addEnterpriseAgentsItem(EnterpriseAgentsInner enterpriseAgentsItem) {
     if (this.enterpriseAgents == null) {
       this.enterpriseAgents = new ArrayList<>();
     }

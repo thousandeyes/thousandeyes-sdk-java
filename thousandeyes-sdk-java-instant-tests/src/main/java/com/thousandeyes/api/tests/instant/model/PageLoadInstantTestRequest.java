@@ -91,7 +91,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
   PageLoadInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class PageLoadInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -467,7 +467,7 @@ public class PageLoadInstantTestRequest {
     return this;
   }
 
-  public PageLoadInstantTestRequest addlabelsItem(String labelsItem) {
+  public PageLoadInstantTestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -500,7 +500,7 @@ public class PageLoadInstantTestRequest {
     return this;
   }
 
-  public PageLoadInstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public PageLoadInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -1412,7 +1412,7 @@ public class PageLoadInstantTestRequest {
     return this;
   }
 
-  public PageLoadInstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public PageLoadInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

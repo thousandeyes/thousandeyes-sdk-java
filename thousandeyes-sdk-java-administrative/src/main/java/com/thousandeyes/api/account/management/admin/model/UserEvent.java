@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserEvent.JSON_PROPERTY_USER,
   UserEvent.JSON_PROPERTY_RESOURCES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class UserEvent {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -251,7 +251,7 @@ public class UserEvent {
     return this;
   }
 
-  public UserEvent addresourcesItem(UserEventAllOfResourcesInner resourcesItem) {
+  public UserEvent addResourcesItem(UserEventAllOfResourcesInner resourcesItem) {
     if (this.resources == null) {
       this.resources = new ArrayList<>();
     }

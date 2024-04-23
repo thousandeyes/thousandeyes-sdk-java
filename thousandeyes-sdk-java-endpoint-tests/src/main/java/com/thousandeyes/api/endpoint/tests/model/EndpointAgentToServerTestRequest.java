@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTestRequest.JSON_PROPERTY_SERVER_NAME,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_INTERVAL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.019910+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.651839+01:00[Europe/Lisbon]")
 public class EndpointAgentToServerTestRequest {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
   private EndpointTestAgentSelectorType agentSelectorType;
@@ -110,7 +110,7 @@ public class EndpointAgentToServerTestRequest {
     return this;
   }
 
-  public EndpointAgentToServerTestRequest addagentsItem(UUID agentsItem) {
+  public EndpointAgentToServerTestRequest addAgentsItem(UUID agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -193,7 +193,7 @@ public class EndpointAgentToServerTestRequest {
     return this;
   }
 
-  public EndpointAgentToServerTestRequest addendpointAgentLabelsItem(String endpointAgentLabelsItem) {
+  public EndpointAgentToServerTestRequest addEndpointAgentLabelsItem(String endpointAgentLabelsItem) {
     if (this.endpointAgentLabels == null) {
       this.endpointAgentLabels = new ArrayList<>();
     }

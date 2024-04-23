@@ -54,7 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateBgpTest.JSON_PROPERTY_ALERT_RULES,
   UpdateBgpTest.JSON_PROPERTY_PREFIX
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class UpdateBgpTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -341,7 +341,7 @@ public class UpdateBgpTest {
     return this;
   }
 
-  public UpdateBgpTest addlabelsItem(String labelsItem) {
+  public UpdateBgpTest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -374,7 +374,7 @@ public class UpdateBgpTest {
     return this;
   }
 
-  public UpdateBgpTest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateBgpTest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -432,7 +432,7 @@ public class UpdateBgpTest {
     return this;
   }
 
-  public UpdateBgpTest addmonitorsItem(String monitorsItem) {
+  public UpdateBgpTest addMonitorsItem(String monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }
@@ -540,7 +540,7 @@ public class UpdateBgpTest {
     return this;
   }
 
-  public UpdateBgpTest addalertRulesItem(String alertRulesItem) {
+  public UpdateBgpTest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }

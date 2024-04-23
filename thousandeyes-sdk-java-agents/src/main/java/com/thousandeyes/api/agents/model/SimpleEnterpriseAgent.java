@@ -62,7 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SimpleEnterpriseAgent.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   SimpleEnterpriseAgent.JSON_PROPERTY_INTERFACE_IP_MAPPINGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.654346+01:00[Europe/Lisbon]")
 public class SimpleEnterpriseAgent {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
   private List<String> ipAddresses = new ArrayList<>();
@@ -377,7 +377,7 @@ public class SimpleEnterpriseAgent {
     return this;
   }
 
-  public SimpleEnterpriseAgent addaccountGroupsItem(AccountGroup accountGroupsItem) {
+  public SimpleEnterpriseAgent addAccountGroupsItem(AccountGroup accountGroupsItem) {
     if (this.accountGroups == null) {
       this.accountGroups = new ArrayList<>();
     }
@@ -570,7 +570,7 @@ public class SimpleEnterpriseAgent {
     return this;
   }
 
-  public SimpleEnterpriseAgent addlocalResolutionPrefixesItem(String localResolutionPrefixesItem) {
+  public SimpleEnterpriseAgent addLocalResolutionPrefixesItem(String localResolutionPrefixesItem) {
     if (this.localResolutionPrefixes == null) {
       this.localResolutionPrefixes = new ArrayList<>();
     }

@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateAccountGroup201Response.JSON_PROPERTY_USERS,
   CreateAccountGroup201Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class CreateAccountGroup201Response {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -197,7 +197,7 @@ public class CreateAccountGroup201Response {
     return this;
   }
 
-  public CreateAccountGroup201Response addusersItem(UserAccountGroup usersItem) {
+  public CreateAccountGroup201Response addUsersItem(UserAccountGroup usersItem) {
     if (this.users == null) {
       this.users = new ArrayList<>();
     }

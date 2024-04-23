@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   RealUserTestPageResults.JSON_PROPERTY_RESULTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class RealUserTestPageResults {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<RealUserTestPageResult> results = new ArrayList<>();
@@ -47,7 +47,7 @@ public class RealUserTestPageResults {
     return this;
   }
 
-  public RealUserTestPageResults addresultsItem(RealUserTestPageResult resultsItem) {
+  public RealUserTestPageResults addResultsItem(RealUserTestPageResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

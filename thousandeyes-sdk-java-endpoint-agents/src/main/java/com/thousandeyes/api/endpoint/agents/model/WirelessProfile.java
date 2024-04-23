@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WirelessProfile.JSON_PROPERTY_CHANNEL,
   WirelessProfile.JSON_PROPERTY_PHY_MODE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.591476+01:00[Europe/Lisbon]")
 public class WirelessProfile {
   public static final String JSON_PROPERTY_BSSID = "bssid";
   private String bssid;

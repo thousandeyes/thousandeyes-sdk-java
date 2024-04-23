@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentLabelsSelectorConfig.JSON_PROPERTY_MAX_MACHINES,
   EndpointAgentLabelsSelectorConfig.JSON_PROPERTY_ENDPOINT_AGENT_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.956104+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.475755+01:00[Europe/Lisbon]")
 public class EndpointAgentLabelsSelectorConfig {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
   private String agentSelectorType;
@@ -106,7 +106,7 @@ public class EndpointAgentLabelsSelectorConfig {
     return this;
   }
 
-  public EndpointAgentLabelsSelectorConfig addendpointAgentLabelsItem(String endpointAgentLabelsItem) {
+  public EndpointAgentLabelsSelectorConfig addEndpointAgentLabelsItem(String endpointAgentLabelsItem) {
     if (this.endpointAgentLabels == null) {
       this.endpointAgentLabels = new ArrayList<>();
     }

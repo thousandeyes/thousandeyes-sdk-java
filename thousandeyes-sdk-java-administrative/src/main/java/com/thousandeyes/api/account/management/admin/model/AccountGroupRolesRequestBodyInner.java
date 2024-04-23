@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AccountGroupRolesRequestBodyInner.JSON_PROPERTY_ACCOUNT_GROUP_ID,
   AccountGroupRolesRequestBodyInner.JSON_PROPERTY_ROLE_IDS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class AccountGroupRolesRequestBodyInner {
   public static final String JSON_PROPERTY_ACCOUNT_GROUP_ID = "accountGroupId";
   private String accountGroupId;
@@ -75,7 +75,7 @@ public class AccountGroupRolesRequestBodyInner {
     return this;
   }
 
-  public AccountGroupRolesRequestBodyInner addroleIdsItem(String roleIdsItem) {
+  public AccountGroupRolesRequestBodyInner addRoleIdsItem(String roleIdsItem) {
     if (this.roleIds == null) {
       this.roleIds = new ArrayList<>();
     }

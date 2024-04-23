@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionDetailTestResult.JSON_PROPERTY_MARKERS,
   WebTransactionDetailTestResult.JSON_PROPERTY_PAGES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.530738+01:00[Europe/Lisbon]")
 public class WebTransactionDetailTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;
@@ -244,7 +244,7 @@ public class WebTransactionDetailTestResult {
     return this;
   }
 
-  public WebTransactionDetailTestResult addmarkersItem(Marker markersItem) {
+  public WebTransactionDetailTestResult addMarkersItem(Marker markersItem) {
     if (this.markers == null) {
       this.markers = new ArrayList<>();
     }
@@ -277,7 +277,7 @@ public class WebTransactionDetailTestResult {
     return this;
   }
 
-  public WebTransactionDetailTestResult addpagesItem(Page pagesItem) {
+  public WebTransactionDetailTestResult addPagesItem(Page pagesItem) {
     if (this.pages == null) {
       this.pages = new ArrayList<>();
     }

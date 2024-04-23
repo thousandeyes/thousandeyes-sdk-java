@@ -88,7 +88,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
   HttpServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class HttpServerInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -455,7 +455,7 @@ public class HttpServerInstantTestRequest {
     return this;
   }
 
-  public HttpServerInstantTestRequest addlabelsItem(String labelsItem) {
+  public HttpServerInstantTestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -488,7 +488,7 @@ public class HttpServerInstantTestRequest {
     return this;
   }
 
-  public HttpServerInstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public HttpServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -621,7 +621,7 @@ public class HttpServerInstantTestRequest {
     return this;
   }
 
-  public HttpServerInstantTestRequest addheadersItem(String headersItem) {
+  public HttpServerInstantTestRequest addHeadersItem(String headersItem) {
     if (this.headers == null) {
       this.headers = new ArrayList<>();
     }
@@ -1329,7 +1329,7 @@ public class HttpServerInstantTestRequest {
     return this;
   }
 
-  public HttpServerInstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public HttpServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

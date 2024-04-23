@@ -48,7 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetStreamResponse.JSON_PROPERTY_TAG_MATCH,
   GetStreamResponse.JSON_PROPERTY_AUDIT_OPERATION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.814008+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.430484+01:00[Europe/Lisbon]")
 public class GetStreamResponse {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -233,7 +233,7 @@ public class GetStreamResponse {
     return this;
   }
 
-  public GetStreamResponse putcustomHeadersItem(String key, String customHeadersItem) {
+  public GetStreamResponse putCustomHeadersItem(String key, String customHeadersItem) {
     if (this.customHeaders == null) {
       this.customHeaders = new HashMap<>();
     }
@@ -266,7 +266,7 @@ public class GetStreamResponse {
     return this;
   }
 
-  public GetStreamResponse addtagMatchItem(PutStreamTagMatchInner tagMatchItem) {
+  public GetStreamResponse addTagMatchItem(PutStreamTagMatchInner tagMatchItem) {
     if (this.tagMatch == null) {
       this.tagMatch = new ArrayList<>();
     }

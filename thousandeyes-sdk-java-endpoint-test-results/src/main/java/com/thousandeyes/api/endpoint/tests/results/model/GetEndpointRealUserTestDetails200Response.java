@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetEndpointRealUserTestDetails200Response.JSON_PROPERTY_RESULTS,
   GetEndpointRealUserTestDetails200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class GetEndpointRealUserTestDetails200Response {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<EndpointRealUserTestDetail> results = new ArrayList<>();
@@ -52,7 +52,7 @@ public class GetEndpointRealUserTestDetails200Response {
     return this;
   }
 
-  public GetEndpointRealUserTestDetails200Response addresultsItem(EndpointRealUserTestDetail resultsItem) {
+  public GetEndpointRealUserTestDetails200Response addResultsItem(EndpointRealUserTestDetail resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

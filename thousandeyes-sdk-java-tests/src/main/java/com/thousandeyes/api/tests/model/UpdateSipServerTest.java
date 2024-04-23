@@ -74,7 +74,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateSipServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateSipServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -282,7 +282,7 @@ public class UpdateSipServerTest {
     return this;
   }
 
-  public UpdateSipServerTest addalertRulesItem(String alertRulesItem) {
+  public UpdateSipServerTest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -510,7 +510,7 @@ public class UpdateSipServerTest {
     return this;
   }
 
-  public UpdateSipServerTest addlabelsItem(String labelsItem) {
+  public UpdateSipServerTest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -543,7 +543,7 @@ public class UpdateSipServerTest {
     return this;
   }
 
-  public UpdateSipServerTest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateSipServerTest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -859,7 +859,7 @@ public class UpdateSipServerTest {
     return this;
   }
 
-  public UpdateSipServerTest addagentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateSipServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

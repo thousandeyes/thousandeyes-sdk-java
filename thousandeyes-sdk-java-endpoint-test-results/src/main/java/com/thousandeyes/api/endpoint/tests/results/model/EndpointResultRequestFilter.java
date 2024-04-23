@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointResultRequestFilter.JSON_PROPERTY_SSID,
   EndpointResultRequestFilter.JSON_PROPERTY_BSSID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class EndpointResultRequestFilter {
   public static final String JSON_PROPERTY_LOCATION = "location";
   private List<String> location = new ArrayList<>();
@@ -85,7 +85,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addlocationItem(String locationItem) {
+  public EndpointResultRequestFilter addLocationItem(String locationItem) {
     if (this.location == null) {
       this.location = new ArrayList<>();
     }
@@ -118,7 +118,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addconnectionItem(InterfaceHardwareType connectionItem) {
+  public EndpointResultRequestFilter addConnectionItem(InterfaceHardwareType connectionItem) {
     if (this.connection == null) {
       this.connection = new ArrayList<>();
     }
@@ -151,7 +151,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addplatformItem(Platform platformItem) {
+  public EndpointResultRequestFilter addPlatformItem(Platform platformItem) {
     if (this.platform == null) {
       this.platform = new ArrayList<>();
     }
@@ -184,7 +184,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addgatewayItem(String gatewayItem) {
+  public EndpointResultRequestFilter addGatewayItem(String gatewayItem) {
     if (this.gateway == null) {
       this.gateway = new ArrayList<>();
     }
@@ -217,7 +217,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addproxyTargetItem(String proxyTargetItem) {
+  public EndpointResultRequestFilter addProxyTargetItem(String proxyTargetItem) {
     if (this.proxyTarget == null) {
       this.proxyTarget = new ArrayList<>();
     }
@@ -250,7 +250,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addvpnTargetItem(String vpnTargetItem) {
+  public EndpointResultRequestFilter addVpnTargetItem(String vpnTargetItem) {
     if (this.vpnTarget == null) {
       this.vpnTarget = new ArrayList<>();
     }
@@ -283,7 +283,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addagentIdItem(UUID agentIdItem) {
+  public EndpointResultRequestFilter addAgentIdItem(UUID agentIdItem) {
     if (this.agentId == null) {
       this.agentId = new ArrayList<>();
     }
@@ -316,7 +316,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addnetworkIdItem(String networkIdItem) {
+  public EndpointResultRequestFilter addNetworkIdItem(String networkIdItem) {
     if (this.networkId == null) {
       this.networkId = new ArrayList<>();
     }
@@ -349,7 +349,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addssidItem(String ssidItem) {
+  public EndpointResultRequestFilter addSsidItem(String ssidItem) {
     if (this.ssid == null) {
       this.ssid = new ArrayList<>();
     }
@@ -382,7 +382,7 @@ public class EndpointResultRequestFilter {
     return this;
   }
 
-  public EndpointResultRequestFilter addbssidItem(String bssidItem) {
+  public EndpointResultRequestFilter addBssidItem(String bssidItem) {
     if (this.bssid == null) {
       this.bssid = new ArrayList<>();
     }

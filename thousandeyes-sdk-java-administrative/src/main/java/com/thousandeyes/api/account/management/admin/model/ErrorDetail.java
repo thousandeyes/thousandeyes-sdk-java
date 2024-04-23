@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ErrorDetail.JSON_PROPERTY_CODE,
   ErrorDetail.JSON_PROPERTY_DESCRIPTION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class ErrorDetail {
   public static final String JSON_PROPERTY_CODE = "code";
   private ErrorDetailCode code;

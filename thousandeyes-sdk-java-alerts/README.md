@@ -4,7 +4,7 @@ Alerts API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]
+- Build date: 2024-04-23T17:12:31.740680+01:00[Europe/Lisbon]
 
 You can manage the following alert functionalities on the ThousandEyes platform using the Alerts API:
 

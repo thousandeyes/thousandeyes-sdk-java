@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   UserAccountGroups.JSON_PROPERTY_USERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class UserAccountGroups {
   public static final String JSON_PROPERTY_USERS = "users";
   private List<UserAccountGroup> users = new ArrayList<>();
@@ -47,7 +47,7 @@ public class UserAccountGroups {
     return this;
   }
 
-  public UserAccountGroups addusersItem(UserAccountGroup usersItem) {
+  public UserAccountGroups addUsersItem(UserAccountGroup usersItem) {
     if (this.users == null) {
       this.users = new ArrayList<>();
     }

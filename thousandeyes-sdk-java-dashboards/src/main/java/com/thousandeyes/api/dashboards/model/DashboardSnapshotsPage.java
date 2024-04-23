@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DashboardSnapshotsPage.JSON_PROPERTY_PAGES,
   DashboardSnapshotsPage.JSON_PROPERTY_DASHBOARD_SNAPSHOTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class DashboardSnapshotsPage {
   public static final String JSON_PROPERTY_PAGES = "pages";
   private Map<String, Object> pages = new HashMap<>();
@@ -53,7 +53,7 @@ public class DashboardSnapshotsPage {
     return this;
   }
 
-  public DashboardSnapshotsPage putpagesItem(String key, Object pagesItem) {
+  public DashboardSnapshotsPage putPagesItem(String key, Object pagesItem) {
     if (this.pages == null) {
       this.pages = new HashMap<>();
     }
@@ -88,7 +88,7 @@ public class DashboardSnapshotsPage {
     return this;
   }
 
-  public DashboardSnapshotsPage adddashboardSnapshotsItem(ApiDashboardSnapshot dashboardSnapshotsItem) {
+  public DashboardSnapshotsPage addDashboardSnapshotsItem(ApiDashboardSnapshot dashboardSnapshotsItem) {
     if (this.dashboardSnapshots == null) {
       this.dashboardSnapshots = new ArrayList<>();
     }

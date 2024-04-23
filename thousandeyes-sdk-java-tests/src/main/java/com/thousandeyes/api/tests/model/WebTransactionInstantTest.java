@@ -95,7 +95,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTest.JSON_PROPERTY_AGENTS,
   WebTransactionInstantTest.JSON_PROPERTY_CREDENTIALS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class WebTransactionInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -1432,7 +1432,7 @@ public class WebTransactionInstantTest {
     return this;
   }
 
-  public WebTransactionInstantTest addcredentialsItem(String credentialsItem) {
+  public WebTransactionInstantTest addCredentialsItem(String credentialsItem) {
     if (this.credentials == null) {
       this.credentials = new ArrayList<>();
     }

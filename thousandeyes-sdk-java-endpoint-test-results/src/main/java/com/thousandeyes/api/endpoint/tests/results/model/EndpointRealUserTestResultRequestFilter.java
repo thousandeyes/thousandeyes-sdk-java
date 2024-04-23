@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointRealUserTestResultRequestFilter.JSON_PROPERTY_TRIGGER,
   EndpointRealUserTestResultRequestFilter.JSON_PROPERTY_VISITED_SITE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class EndpointRealUserTestResultRequestFilter {
   public static final String JSON_PROPERTY_LOCATION = "location";
   private List<String> location = new ArrayList<>();
@@ -102,7 +102,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addlocationItem(String locationItem) {
+  public EndpointRealUserTestResultRequestFilter addLocationItem(String locationItem) {
     if (this.location == null) {
       this.location = new ArrayList<>();
     }
@@ -135,7 +135,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addconnectionItem(InterfaceHardwareType connectionItem) {
+  public EndpointRealUserTestResultRequestFilter addConnectionItem(InterfaceHardwareType connectionItem) {
     if (this.connection == null) {
       this.connection = new ArrayList<>();
     }
@@ -168,7 +168,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addplatformItem(Platform platformItem) {
+  public EndpointRealUserTestResultRequestFilter addPlatformItem(Platform platformItem) {
     if (this.platform == null) {
       this.platform = new ArrayList<>();
     }
@@ -201,7 +201,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addgatewayItem(String gatewayItem) {
+  public EndpointRealUserTestResultRequestFilter addGatewayItem(String gatewayItem) {
     if (this.gateway == null) {
       this.gateway = new ArrayList<>();
     }
@@ -234,7 +234,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addproxyTargetItem(String proxyTargetItem) {
+  public EndpointRealUserTestResultRequestFilter addProxyTargetItem(String proxyTargetItem) {
     if (this.proxyTarget == null) {
       this.proxyTarget = new ArrayList<>();
     }
@@ -267,7 +267,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addvpnTargetItem(String vpnTargetItem) {
+  public EndpointRealUserTestResultRequestFilter addVpnTargetItem(String vpnTargetItem) {
     if (this.vpnTarget == null) {
       this.vpnTarget = new ArrayList<>();
     }
@@ -300,7 +300,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addagentIdItem(UUID agentIdItem) {
+  public EndpointRealUserTestResultRequestFilter addAgentIdItem(UUID agentIdItem) {
     if (this.agentId == null) {
       this.agentId = new ArrayList<>();
     }
@@ -333,7 +333,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addnetworkIdItem(String networkIdItem) {
+  public EndpointRealUserTestResultRequestFilter addNetworkIdItem(String networkIdItem) {
     if (this.networkId == null) {
       this.networkId = new ArrayList<>();
     }
@@ -366,7 +366,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addssidItem(String ssidItem) {
+  public EndpointRealUserTestResultRequestFilter addSsidItem(String ssidItem) {
     if (this.ssid == null) {
       this.ssid = new ArrayList<>();
     }
@@ -399,7 +399,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addbssidItem(String bssidItem) {
+  public EndpointRealUserTestResultRequestFilter addBssidItem(String bssidItem) {
     if (this.bssid == null) {
       this.bssid = new ArrayList<>();
     }
@@ -432,7 +432,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter adddestinationIpItem(String destinationIpItem) {
+  public EndpointRealUserTestResultRequestFilter addDestinationIpItem(String destinationIpItem) {
     if (this.destinationIp == null) {
       this.destinationIp = new ArrayList<>();
     }
@@ -465,7 +465,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter adddomainItem(String domainItem) {
+  public EndpointRealUserTestResultRequestFilter addDomainItem(String domainItem) {
     if (this.domain == null) {
       this.domain = new ArrayList<>();
     }
@@ -498,7 +498,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addtriggerItem(Trigger triggerItem) {
+  public EndpointRealUserTestResultRequestFilter addTriggerItem(Trigger triggerItem) {
     if (this.trigger == null) {
       this.trigger = new ArrayList<>();
     }
@@ -531,7 +531,7 @@ public class EndpointRealUserTestResultRequestFilter {
     return this;
   }
 
-  public EndpointRealUserTestResultRequestFilter addvisitedSiteItem(String visitedSiteItem) {
+  public EndpointRealUserTestResultRequestFilter addVisitedSiteItem(String visitedSiteItem) {
     if (this.visitedSite == null) {
       this.visitedSite = new ArrayList<>();
     }

@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisRoute.JSON_PROPERTY_PATH_ID,
   PathVisRoute.JSON_PROPERTY_HOPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.530738+01:00[Europe/Lisbon]")
 public class PathVisRoute {
   public static final String JSON_PROPERTY_PATH_ID = "pathId";
   private String pathId;
@@ -74,7 +74,7 @@ public class PathVisRoute {
     return this;
   }
 
-  public PathVisRoute addhopsItem(PathVisHop hopsItem) {
+  public PathVisRoute addHopsItem(PathVisHop hopsItem) {
     if (this.hops == null) {
       this.hops = new ArrayList<>();
     }

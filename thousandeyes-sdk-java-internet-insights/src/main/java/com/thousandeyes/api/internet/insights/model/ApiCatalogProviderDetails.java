@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiCatalogProviderDetails.JSON_PROPERTY_ASNS,
   ApiCatalogProviderDetails.JSON_PROPERTY_LOCATIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.455424+01:00[Europe/Lisbon]")
 public class ApiCatalogProviderDetails {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
@@ -198,7 +198,7 @@ public class ApiCatalogProviderDetails {
     return this;
   }
 
-  public ApiCatalogProviderDetails addasnsItem(ApiAsn asnsItem) {
+  public ApiCatalogProviderDetails addAsnsItem(ApiAsn asnsItem) {
     if (this.asns == null) {
       this.asns = new LinkedHashSet<>();
     }
@@ -232,7 +232,7 @@ public class ApiCatalogProviderDetails {
     return this;
   }
 
-  public ApiCatalogProviderDetails addlocationsItem(ApiCatalogProviderDetailsLocationsInner locationsItem) {
+  public ApiCatalogProviderDetails addLocationsItem(ApiCatalogProviderDetailsLocationsInner locationsItem) {
     if (this.locations == null) {
       this.locations = new LinkedHashSet<>();
     }

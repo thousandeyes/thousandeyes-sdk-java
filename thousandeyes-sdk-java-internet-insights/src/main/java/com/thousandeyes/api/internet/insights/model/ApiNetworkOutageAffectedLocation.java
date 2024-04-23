@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNetworkOutageAffectedLocation.JSON_PROPERTY_LOCATION,
   ApiNetworkOutageAffectedLocation.JSON_PROPERTY_AFFECTED_INTERFACES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.455424+01:00[Europe/Lisbon]")
 public class ApiNetworkOutageAffectedLocation {
   public static final String JSON_PROPERTY_LOCATION = "location";
   private String location;
@@ -75,7 +75,7 @@ public class ApiNetworkOutageAffectedLocation {
     return this;
   }
 
-  public ApiNetworkOutageAffectedLocation addaffectedInterfacesItem(String affectedInterfacesItem) {
+  public ApiNetworkOutageAffectedLocation addAffectedInterfacesItem(String affectedInterfacesItem) {
     if (this.affectedInterfaces == null) {
       this.affectedInterfaces = new ArrayList<>();
     }

@@ -54,7 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDetailDynamicTestResult.JSON_PROPERTY_APPLICATION,
   PathVisDetailDynamicTestResult.JSON_PROPERTY_WEBEX
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class PathVisDetailDynamicTestResult {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -342,7 +342,7 @@ public class PathVisDetailDynamicTestResult {
     return this;
   }
 
-  public PathVisDetailDynamicTestResult addpathTracesItem(PathVisRoute pathTracesItem) {
+  public PathVisDetailDynamicTestResult addPathTracesItem(PathVisRoute pathTracesItem) {
     if (this.pathTraces == null) {
       this.pathTraces = new ArrayList<>();
     }
@@ -375,7 +375,7 @@ public class PathVisDetailDynamicTestResult {
     return this;
   }
 
-  public PathVisDetailDynamicTestResult addvpnPathTracesItem(PathVisRoute vpnPathTracesItem) {
+  public PathVisDetailDynamicTestResult addVpnPathTracesItem(PathVisRoute vpnPathTracesItem) {
     if (this.vpnPathTraces == null) {
       this.vpnPathTraces = new ArrayList<>();
     }

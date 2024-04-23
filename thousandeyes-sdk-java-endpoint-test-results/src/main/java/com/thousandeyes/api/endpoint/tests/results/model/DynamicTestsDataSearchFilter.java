@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
   DynamicTestsDataSearchFilter.JSON_PROPERTY_WEBEX_CONFERENCE_ID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class DynamicTestsDataSearchFilter {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private List<UUID> agentId = new ArrayList<>();
@@ -51,7 +51,7 @@ public class DynamicTestsDataSearchFilter {
     return this;
   }
 
-  public DynamicTestsDataSearchFilter addagentIdItem(UUID agentIdItem) {
+  public DynamicTestsDataSearchFilter addAgentIdItem(UUID agentIdItem) {
     if (this.agentId == null) {
       this.agentId = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class DynamicTestsDataSearchFilter {
     return this;
   }
 
-  public DynamicTestsDataSearchFilter addwebexConferenceIdItem(UUID webexConferenceIdItem) {
+  public DynamicTestsDataSearchFilter addWebexConferenceIdItem(UUID webexConferenceIdItem) {
     if (this.webexConferenceId == null) {
       this.webexConferenceId = new ArrayList<>();
     }

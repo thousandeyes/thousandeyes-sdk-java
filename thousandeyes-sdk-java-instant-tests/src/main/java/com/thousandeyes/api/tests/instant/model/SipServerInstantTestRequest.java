@@ -65,7 +65,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerInstantTestRequest.JSON_PROPERTY_AGENTS,
   SipServerInstantTestRequest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class SipServerInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -370,7 +370,7 @@ public class SipServerInstantTestRequest {
     return this;
   }
 
-  public SipServerInstantTestRequest addlabelsItem(String labelsItem) {
+  public SipServerInstantTestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -403,7 +403,7 @@ public class SipServerInstantTestRequest {
     return this;
   }
 
-  public SipServerInstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public SipServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -719,7 +719,7 @@ public class SipServerInstantTestRequest {
     return this;
   }
 
-  public SipServerInstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public SipServerInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

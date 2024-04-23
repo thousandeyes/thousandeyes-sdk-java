@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LegacyApiDashboard.JSON_PROPERTY_MIGRATED_REPORT,
   LegacyApiDashboard.JSON_PROPERTY_API_LINK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class LegacyApiDashboard {
   public static final String JSON_PROPERTY_ACCOUNT_ID = "accountId";
   private Long accountId;
@@ -189,7 +189,7 @@ public class LegacyApiDashboard {
     return this;
   }
 
-  public LegacyApiDashboard addapiLinkItem(Map<String, Object> apiLinkItem) {
+  public LegacyApiDashboard addApiLinkItem(Map<String, Object> apiLinkItem) {
     if (this.apiLink == null) {
       this.apiLink = new ArrayList<>();
     }

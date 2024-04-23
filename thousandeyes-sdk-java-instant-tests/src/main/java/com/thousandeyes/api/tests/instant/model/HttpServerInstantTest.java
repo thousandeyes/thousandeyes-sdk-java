@@ -90,7 +90,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE,
   HttpServerInstantTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class HttpServerInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -593,7 +593,7 @@ public class HttpServerInstantTest {
     return this;
   }
 
-  public HttpServerInstantTest addheadersItem(String headersItem) {
+  public HttpServerInstantTest addHeadersItem(String headersItem) {
     if (this.headers == null) {
       this.headers = new ArrayList<>();
     }

@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiAlertListAlert.JSON_PROPERTY_DURATION_IN_SECONDS,
   ApiAlertListAlert.JSON_PROPERTY_ACTIVE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiAlertListAlert {
   public static final String JSON_PROPERTY_ALERT_ID = "alertId";
   private String alertId;

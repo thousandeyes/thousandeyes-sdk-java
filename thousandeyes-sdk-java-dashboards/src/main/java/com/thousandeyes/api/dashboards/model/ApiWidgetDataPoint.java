@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiWidgetDataPoint.JSON_PROPERTY_VALUE,
   ApiWidgetDataPoint.JSON_PROPERTY_GROUPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiWidgetDataPoint {
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
@@ -134,7 +134,7 @@ public class ApiWidgetDataPoint {
     return this;
   }
 
-  public ApiWidgetDataPoint addgroupsItem(ApiDataPointGroup groupsItem) {
+  public ApiWidgetDataPoint addGroupsItem(ApiDataPointGroup groupsItem) {
     if (this.groups == null) {
       this.groups = new ArrayList<>();
     }

@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiContextFilterRequest.JSON_PROPERTY_NAME,
   ApiContextFilterRequest.JSON_PROPERTY_DESCRIPTION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiContextFilterRequest {
   public static final String JSON_PROPERTY_CONTEXT = "context";
   private Set<ApiDataSourceFilters> context = new LinkedHashSet<>();
@@ -55,7 +55,7 @@ public class ApiContextFilterRequest {
     return this;
   }
 
-  public ApiContextFilterRequest addcontextItem(ApiDataSourceFilters contextItem) {
+  public ApiContextFilterRequest addContextItem(ApiDataSourceFilters contextItem) {
     if (this.context == null) {
       this.context = new LinkedHashSet<>();
     }

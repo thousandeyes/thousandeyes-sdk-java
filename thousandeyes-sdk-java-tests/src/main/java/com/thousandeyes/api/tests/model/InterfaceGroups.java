@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   InterfaceGroups.JSON_PROPERTY_PATH_VIS_INTERFACE_GROUPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class InterfaceGroups {
   public static final String JSON_PROPERTY_PATH_VIS_INTERFACE_GROUPS = "pathVisInterfaceGroups";
   private List<InterfaceGroup> pathVisInterfaceGroups = new ArrayList<>();
@@ -47,7 +47,7 @@ public class InterfaceGroups {
     return this;
   }
 
-  public InterfaceGroups addpathVisInterfaceGroupsItem(InterfaceGroup pathVisInterfaceGroupsItem) {
+  public InterfaceGroups addPathVisInterfaceGroupsItem(InterfaceGroup pathVisInterfaceGroupsItem) {
     if (this.pathVisInterfaceGroups == null) {
       this.pathVisInterfaceGroups = new ArrayList<>();
     }

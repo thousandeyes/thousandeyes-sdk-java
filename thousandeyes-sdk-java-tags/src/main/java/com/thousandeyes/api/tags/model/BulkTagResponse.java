@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BulkTagResponse.JSON_PROPERTY_TAGS,
   BulkTagResponse.JSON_PROPERTY_ERRORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.771341+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.220834+01:00[Europe/Lisbon]")
 public class BulkTagResponse {
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<GetTag> tags = new ArrayList<>();
@@ -60,7 +60,7 @@ public class BulkTagResponse {
     return this;
   }
 
-  public BulkTagResponse addtagsItem(GetTag tagsItem) {
+  public BulkTagResponse addTagsItem(GetTag tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }

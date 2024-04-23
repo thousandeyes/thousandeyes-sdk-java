@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkProfile.JSON_PROPERTY_ETHERNET_PROFILE,
   NetworkProfile.JSON_PROPERTY_PREVIOUS_INTERFACE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class NetworkProfile {
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
   private String ipAddress;

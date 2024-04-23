@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreatedUser.JSON_PROPERTY_ACCOUNT_GROUP_ROLES,
   CreatedUser.JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class CreatedUser {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -199,7 +199,7 @@ public class CreatedUser {
     return this;
   }
 
-  public CreatedUser addaccountGroupRolesItem(AccountGroupRolesAccountGroupRolesInner accountGroupRolesItem) {
+  public CreatedUser addAccountGroupRolesItem(AccountGroupRolesAccountGroupRolesInner accountGroupRolesItem) {
     if (this.accountGroupRoles == null) {
       this.accountGroupRoles = new ArrayList<>();
     }
@@ -232,7 +232,7 @@ public class CreatedUser {
     return this;
   }
 
-  public CreatedUser addallAccountGroupRolesItem(Role allAccountGroupRolesItem) {
+  public CreatedUser addAllAccountGroupRolesItem(Role allAccountGroupRolesItem) {
     if (this.allAccountGroupRoles == null) {
       this.allAccountGroupRoles = new ArrayList<>();
     }

@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateBgpTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   UpdateBgpTestRequest.JSON_PROPERTY_ALERT_RULES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class UpdateBgpTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -337,7 +337,7 @@ public class UpdateBgpTestRequest {
     return this;
   }
 
-  public UpdateBgpTestRequest addlabelsItem(String labelsItem) {
+  public UpdateBgpTestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -370,7 +370,7 @@ public class UpdateBgpTestRequest {
     return this;
   }
 
-  public UpdateBgpTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateBgpTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -428,7 +428,7 @@ public class UpdateBgpTestRequest {
     return this;
   }
 
-  public UpdateBgpTestRequest addmonitorsItem(String monitorsItem) {
+  public UpdateBgpTestRequest addMonitorsItem(String monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }
@@ -536,7 +536,7 @@ public class UpdateBgpTestRequest {
     return this;
   }
 
-  public UpdateBgpTestRequest addalertRulesItem(String alertRulesItem) {
+  public UpdateBgpTestRequest addAlertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }

@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ExtendedUser.JSON_PROPERTY_LOGIN_ACCOUNT_GROUP,
   ExtendedUser.JSON_PROPERTY_LAST_LOGIN
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.653403+01:00[Europe/Lisbon]")
 public class ExtendedUser {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

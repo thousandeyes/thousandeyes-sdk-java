@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiCatalogProviderResponse.JSON_PROPERTY_LINKS,
   ApiCatalogProviderResponse.JSON_PROPERTY_PROVIDERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.455424+01:00[Europe/Lisbon]")
 public class ApiCatalogProviderResponse {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -77,7 +77,7 @@ public class ApiCatalogProviderResponse {
     return this;
   }
 
-  public ApiCatalogProviderResponse addprovidersItem(ApiCatalogProviderResponseAllOfProvidersInner providersItem) {
+  public ApiCatalogProviderResponse addProvidersItem(ApiCatalogProviderResponseAllOfProvidersInner providersItem) {
     if (this.providers == null) {
       this.providers = new ArrayList<>();
     }

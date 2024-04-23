@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Stream.JSON_PROPERTY_ENDPOINT_TYPE,
   Stream.JSON_PROPERTY_STREAM_ENDPOINT_URL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.814008+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.430484+01:00[Europe/Lisbon]")
 public class Stream {
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
@@ -71,7 +71,7 @@ public class Stream {
     return this;
   }
 
-  public Stream putcustomHeadersItem(String key, String customHeadersItem) {
+  public Stream putCustomHeadersItem(String key, String customHeadersItem) {
     if (this.customHeaders == null) {
       this.customHeaders = new HashMap<>();
     }
@@ -104,7 +104,7 @@ public class Stream {
     return this;
   }
 
-  public Stream addtagMatchItem(PutStreamTagMatchInner tagMatchItem) {
+  public Stream addTagMatchItem(PutStreamTagMatchInner tagMatchItem) {
     if (this.tagMatch == null) {
       this.tagMatch = new ArrayList<>();
     }

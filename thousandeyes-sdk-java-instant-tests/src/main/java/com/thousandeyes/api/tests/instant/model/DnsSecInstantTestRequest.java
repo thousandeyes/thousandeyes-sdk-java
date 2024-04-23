@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsSecInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsSecInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.667611+01:00[Europe/Lisbon]")
 public class DnsSecInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -327,7 +327,7 @@ public class DnsSecInstantTestRequest {
     return this;
   }
 
-  public DnsSecInstantTestRequest addlabelsItem(String labelsItem) {
+  public DnsSecInstantTestRequest addLabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -360,7 +360,7 @@ public class DnsSecInstantTestRequest {
     return this;
   }
 
-  public DnsSecInstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
+  public DnsSecInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -443,7 +443,7 @@ public class DnsSecInstantTestRequest {
     return this;
   }
 
-  public DnsSecInstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public DnsSecInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

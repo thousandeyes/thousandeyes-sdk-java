@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetDnsTraceTests200Response.JSON_PROPERTY_TESTS,
   GetDnsTraceTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class GetDnsTraceTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<UnexpandedDnsTraceTest> tests = new ArrayList<>();
@@ -52,7 +52,7 @@ public class GetDnsTraceTests200Response {
     return this;
   }
 
-  public GetDnsTraceTests200Response addtestsItem(UnexpandedDnsTraceTest testsItem) {
+  public GetDnsTraceTests200Response addTestsItem(UnexpandedDnsTraceTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

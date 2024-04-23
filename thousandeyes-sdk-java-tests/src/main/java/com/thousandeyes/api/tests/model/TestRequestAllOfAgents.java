@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestRequestAllOfAgents.JSON_PROPERTY_AGENT_ID,
   TestRequestAllOfAgents.JSON_PROPERTY_SOURCE_IP_ADDRESS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.734520+01:00[Europe/Lisbon]")
 public class TestRequestAllOfAgents {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private String agentId;

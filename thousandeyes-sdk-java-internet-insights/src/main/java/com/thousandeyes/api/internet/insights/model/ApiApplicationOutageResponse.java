@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiApplicationOutageResponse.JSON_PROPERTY_AFFECTED_LOCATIONS,
   ApiApplicationOutageResponse.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.455424+01:00[Europe/Lisbon]")
 public class ApiApplicationOutageResponse {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -331,7 +331,7 @@ public class ApiApplicationOutageResponse {
     return this;
   }
 
-  public ApiApplicationOutageResponse addaffectedTestsItem(ApiAffectedTest affectedTestsItem) {
+  public ApiApplicationOutageResponse addAffectedTestsItem(ApiAffectedTest affectedTestsItem) {
     if (this.affectedTests == null) {
       this.affectedTests = new LinkedHashSet<>();
     }
@@ -365,7 +365,7 @@ public class ApiApplicationOutageResponse {
     return this;
   }
 
-  public ApiApplicationOutageResponse addaffectedDomainsItem(String affectedDomainsItem) {
+  public ApiApplicationOutageResponse addAffectedDomainsItem(String affectedDomainsItem) {
     if (this.affectedDomains == null) {
       this.affectedDomains = new LinkedHashSet<>();
     }
@@ -399,7 +399,7 @@ public class ApiApplicationOutageResponse {
     return this;
   }
 
-  public ApiApplicationOutageResponse addaffectedAgentsItem(ApiAffectedAgent affectedAgentsItem) {
+  public ApiApplicationOutageResponse addAffectedAgentsItem(ApiAffectedAgent affectedAgentsItem) {
     if (this.affectedAgents == null) {
       this.affectedAgents = new LinkedHashSet<>();
     }
@@ -433,7 +433,7 @@ public class ApiApplicationOutageResponse {
     return this;
   }
 
-  public ApiApplicationOutageResponse adderrorsItem(String errorsItem) {
+  public ApiApplicationOutageResponse addErrorsItem(String errorsItem) {
     if (this.errors == null) {
       this.errors = new LinkedHashSet<>();
     }
@@ -467,7 +467,7 @@ public class ApiApplicationOutageResponse {
     return this;
   }
 
-  public ApiApplicationOutageResponse addaffectedLocationsItem(ApiApplicationOutageAffectedLocation affectedLocationsItem) {
+  public ApiApplicationOutageResponse addAffectedLocationsItem(ApiApplicationOutageAffectedLocation affectedLocationsItem) {
     if (this.affectedLocations == null) {
       this.affectedLocations = new LinkedHashSet<>();
     }

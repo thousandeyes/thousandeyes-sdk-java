@@ -4,7 +4,7 @@ BGP Monitors API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T16:57:44.809279+01:00[Europe/Lisbon]
+- Build date: 2024-04-23T17:12:31.433854+01:00[Europe/Lisbon]
 
 
 Retrieve information about BGP monitors available to your ThousandEyes account. ThousandEyes ingests BGP routing data from dozens of global BGP collectors and automatically integrates that visibility as a configurable layer under service, network, and path visualization layers.

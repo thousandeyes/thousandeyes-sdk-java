@@ -4,7 +4,7 @@ Endpoint Agents API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]
+- Build date: 2024-04-23T17:12:31.591476+01:00[Europe/Lisbon]
 
 Manage ThousandEyes Endpoint Agents using this API. 
 

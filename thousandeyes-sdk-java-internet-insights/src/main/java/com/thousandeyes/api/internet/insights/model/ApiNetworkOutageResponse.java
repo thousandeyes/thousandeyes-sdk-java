@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNetworkOutageResponse.JSON_PROPERTY_AFFECTED_LOCATIONS,
   ApiNetworkOutageResponse.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.455424+01:00[Europe/Lisbon]")
 public class ApiNetworkOutageResponse {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -356,7 +356,7 @@ public class ApiNetworkOutageResponse {
     return this;
   }
 
-  public ApiNetworkOutageResponse addaffectedTestsItem(ApiAffectedTest affectedTestsItem) {
+  public ApiNetworkOutageResponse addAffectedTestsItem(ApiAffectedTest affectedTestsItem) {
     if (this.affectedTests == null) {
       this.affectedTests = new LinkedHashSet<>();
     }
@@ -390,7 +390,7 @@ public class ApiNetworkOutageResponse {
     return this;
   }
 
-  public ApiNetworkOutageResponse addaffectedDomainsItem(String affectedDomainsItem) {
+  public ApiNetworkOutageResponse addAffectedDomainsItem(String affectedDomainsItem) {
     if (this.affectedDomains == null) {
       this.affectedDomains = new LinkedHashSet<>();
     }
@@ -424,7 +424,7 @@ public class ApiNetworkOutageResponse {
     return this;
   }
 
-  public ApiNetworkOutageResponse addaffectedAgentsItem(ApiAffectedAgent affectedAgentsItem) {
+  public ApiNetworkOutageResponse addAffectedAgentsItem(ApiAffectedAgent affectedAgentsItem) {
     if (this.affectedAgents == null) {
       this.affectedAgents = new LinkedHashSet<>();
     }
@@ -458,7 +458,7 @@ public class ApiNetworkOutageResponse {
     return this;
   }
 
-  public ApiNetworkOutageResponse addaffectedLocationsItem(ApiNetworkOutageAffectedLocation affectedLocationsItem) {
+  public ApiNetworkOutageResponse addAffectedLocationsItem(ApiNetworkOutageAffectedLocation affectedLocationsItem) {
     if (this.affectedLocations == null) {
       this.affectedLocations = new LinkedHashSet<>();
     }

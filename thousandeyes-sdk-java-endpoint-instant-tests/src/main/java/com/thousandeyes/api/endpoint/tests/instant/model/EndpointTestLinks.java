@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointTestLinks.JSON_PROPERTY_SELF,
   EndpointTestLinks.JSON_PROPERTY_TEST_RESULTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.956104+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.475755+01:00[Europe/Lisbon]")
 public class EndpointTestLinks {
   public static final String JSON_PROPERTY_SELF = "self";
   private EndpointTestLinksSelf self;
@@ -77,7 +77,7 @@ public class EndpointTestLinks {
     return this;
   }
 
-  public EndpointTestLinks addtestResultsItem(Link testResultsItem) {
+  public EndpointTestLinks addTestResultsItem(Link testResultsItem) {
     if (this.testResults == null) {
       this.testResults = new ArrayList<>();
     }

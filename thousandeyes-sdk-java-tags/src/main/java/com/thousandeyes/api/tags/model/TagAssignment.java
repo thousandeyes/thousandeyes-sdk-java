@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   TagAssignment.JSON_PROPERTY_ASSIGNMENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.771341+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:32.220834+01:00[Europe/Lisbon]")
 public class TagAssignment {
   public static final String JSON_PROPERTY_ASSIGNMENTS = "assignments";
   private List<Assignment> assignments = new ArrayList<>();
@@ -47,7 +47,7 @@ public class TagAssignment {
     return this;
   }
 
-  public TagAssignment addassignmentsItem(Assignment assignmentsItem) {
+  public TagAssignment addAssignmentsItem(Assignment assignmentsItem) {
     if (this.assignments == null) {
       this.assignments = new ArrayList<>();
     }

@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestTableData.JSON_PROPERTY_IS_SHARED,
   ApiTestTableData.JSON_PROPERTY_GRAPHLETS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.702836+01:00[Europe/Lisbon]")
 public class ApiTestTableData {
   public static final String JSON_PROPERTY_TEST_ID = "testId";
   private String testId;
@@ -221,7 +221,7 @@ public class ApiTestTableData {
     return this;
   }
 
-  public ApiTestTableData addgraphletsItem(ApiTestTableGraphletsData graphletsItem) {
+  public ApiTestTableData addGraphletsItem(ApiTestTableGraphletsData graphletsItem) {
     if (this.graphlets == null) {
       this.graphlets = new ArrayList<>();
     }

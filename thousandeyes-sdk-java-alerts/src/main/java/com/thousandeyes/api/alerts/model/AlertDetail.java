@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AlertDetail.JSON_PROPERTY_SEVERITY,
   AlertDetail.JSON_PROPERTY_DETAILS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.740680+01:00[Europe/Lisbon]")
 public class AlertDetail {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
@@ -356,7 +356,7 @@ public class AlertDetail {
     return this;
   }
 
-  public AlertDetail adddetailsItem(AlertMetricDetail detailsItem) {
+  public AlertDetail addDetailsItem(AlertMetricDetail detailsItem) {
     if (this.details == null) {
       this.details = new ArrayList<>();
     }

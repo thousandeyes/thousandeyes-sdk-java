@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   LocalNetworkResults.JSON_PROPERTY_LOCAL_NETWORKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T17:12:31.787641+01:00[Europe/Lisbon]")
 public class LocalNetworkResults {
   public static final String JSON_PROPERTY_LOCAL_NETWORKS = "localNetworks";
   private List<LocalNetworkResult> localNetworks = new ArrayList<>();
@@ -47,7 +47,7 @@ public class LocalNetworkResults {
     return this;
   }
 
-  public LocalNetworkResults addlocalNetworksItem(LocalNetworkResult localNetworksItem) {
+  public LocalNetworkResults addLocalNetworksItem(LocalNetworkResult localNetworksItem) {
     if (this.localNetworks == null) {
       this.localNetworks = new ArrayList<>();
     }
