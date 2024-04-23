@@ -91,7 +91,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
   PageLoadInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
 public class PageLoadInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -127,10 +127,10 @@ public class PageLoadInstantTestRequest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels;
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts;
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -467,7 +467,7 @@ public class PageLoadInstantTestRequest {
     return this;
   }
 
-  public PageLoadInstantTestRequest addLabelsItem(String labelsItem) {
+  public PageLoadInstantTestRequest addlabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -500,7 +500,7 @@ public class PageLoadInstantTestRequest {
     return this;
   }
 
-  public PageLoadInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+  public PageLoadInstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -1412,7 +1412,7 @@ public class PageLoadInstantTestRequest {
     return this;
   }
 
-  public PageLoadInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public PageLoadInstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

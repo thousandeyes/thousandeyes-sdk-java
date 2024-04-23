@@ -22,9 +22,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.alerts.model.WebhookIntegrationType;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -35,10 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NotificationWebhook.JSON_PROPERTY_INTEGRATION_ID,
   NotificationWebhook.JSON_PROPERTY_INTEGRATION_TYPE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.783028+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
 public class NotificationWebhook {
   public static final String JSON_PROPERTY_INTEGRATION_ID = "integrationId";
-  private List<String> integrationId;
+  private String integrationId;
 
   public static final String JSON_PROPERTY_INTEGRATION_TYPE = "integrationType";
   private WebhookIntegrationType integrationType;
@@ -46,16 +43,8 @@ public class NotificationWebhook {
   public NotificationWebhook() { 
   }
 
-  public NotificationWebhook integrationId(List<String> integrationId) {
+  public NotificationWebhook integrationId(String integrationId) {
     this.integrationId = integrationId;
-    return this;
-  }
-
-  public NotificationWebhook addIntegrationIdItem(String integrationIdItem) {
-    if (this.integrationId == null) {
-      this.integrationId = new ArrayList<>();
-    }
-    this.integrationId.add(integrationIdItem);
     return this;
   }
 
@@ -67,14 +56,14 @@ public class NotificationWebhook {
   @JsonProperty(JSON_PROPERTY_INTEGRATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getIntegrationId() {
+  public String getIntegrationId() {
     return integrationId;
   }
 
 
   @JsonProperty(JSON_PROPERTY_INTEGRATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIntegrationId(List<String> integrationId) {
+  public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 

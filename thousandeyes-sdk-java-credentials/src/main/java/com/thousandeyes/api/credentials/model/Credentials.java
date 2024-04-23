@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   Credentials.JSON_PROPERTY_CREDENTIALS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.463323+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.809660+01:00[Europe/Lisbon]")
 public class Credentials {
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<Credential> credentials;
+  private List<Credential> credentials = new ArrayList<>();
 
   public Credentials() { 
   }
@@ -47,7 +47,7 @@ public class Credentials {
     return this;
   }
 
-  public Credentials addCredentialsItem(Credential credentialsItem) {
+  public Credentials addcredentialsItem(Credential credentialsItem) {
     if (this.credentials == null) {
       this.credentials = new ArrayList<>();
     }

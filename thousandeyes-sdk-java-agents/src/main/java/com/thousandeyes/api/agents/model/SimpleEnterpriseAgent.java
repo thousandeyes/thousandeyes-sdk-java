@@ -62,13 +62,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SimpleEnterpriseAgent.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   SimpleEnterpriseAgent.JSON_PROPERTY_INTERFACE_IP_MAPPINGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
 public class SimpleEnterpriseAgent {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
-  private List<String> ipAddresses;
+  private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESSES = "publicIpAddresses";
-  private List<String> publicIpAddresses;
+  private List<String> publicIpAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
   private String network;
@@ -95,19 +95,19 @@ public class SimpleEnterpriseAgent {
   private Boolean verifySslCertificates;
 
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
-  private List<ClusterMember> clusterMembers;
+  private List<ClusterMember> clusterMembers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_UTILIZATION = "utilization";
   private Integer utilization;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUPS = "accountGroups";
-  private List<AccountGroup> accountGroups;
+  private List<AccountGroup> accountGroups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private EnterpriseAgentIpv6Policy ipv6Policy;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
-  private List<ErrorDetail> errorDetails;
+  private List<ErrorDetail> errorDetails = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HOSTNAME = "hostname";
   private String hostname;
@@ -128,10 +128,10 @@ public class SimpleEnterpriseAgent {
   private String targetForTests;
 
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
-  private List<String> localResolutionPrefixes;
+  private List<String> localResolutionPrefixes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERFACE_IP_MAPPINGS = "interfaceIpMappings";
-  private List<InterfaceIpMapping> interfaceIpMappings;
+  private List<InterfaceIpMapping> interfaceIpMappings = new ArrayList<>();
 
   public SimpleEnterpriseAgent() { 
   }
@@ -377,7 +377,7 @@ public class SimpleEnterpriseAgent {
     return this;
   }
 
-  public SimpleEnterpriseAgent addAccountGroupsItem(AccountGroup accountGroupsItem) {
+  public SimpleEnterpriseAgent addaccountGroupsItem(AccountGroup accountGroupsItem) {
     if (this.accountGroups == null) {
       this.accountGroups = new ArrayList<>();
     }
@@ -570,7 +570,7 @@ public class SimpleEnterpriseAgent {
     return this;
   }
 
-  public SimpleEnterpriseAgent addLocalResolutionPrefixesItem(String localResolutionPrefixesItem) {
+  public SimpleEnterpriseAgent addlocalResolutionPrefixesItem(String localResolutionPrefixesItem) {
     if (this.localResolutionPrefixes == null) {
       this.localResolutionPrefixes = new ArrayList<>();
     }

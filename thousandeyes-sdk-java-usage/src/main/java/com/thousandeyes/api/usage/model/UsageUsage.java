@@ -56,7 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UsageUsage.JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED,
   UsageUsage.JSON_PROPERTY_ENTERPRISE_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.525987+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
 public class UsageUsage {
   public static final String JSON_PROPERTY_QUOTA = "quota";
   private UsageUsageQuota quota;
@@ -92,22 +92,22 @@ public class UsageUsage {
   private Long enterpriseAgentsUsed;
 
   public static final String JSON_PROPERTY_ENTERPRISE_AGENT_UNITS = "enterpriseAgentUnits";
-  private List<EnterpriseAgentUnitsInner> enterpriseAgentUnits;
+  private List<EnterpriseAgentUnitsInner> enterpriseAgentUnits = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<TestsInner> tests;
+  private List<TestsInner> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS = "endpointAgents";
-  private List<EndpointAgentsInner> endpointAgents;
+  private List<EndpointAgentsInner> endpointAgents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS_ESSENTIALS = "endpointAgentsEssentials";
-  private List<EndpointAgentsEssentialsInner> endpointAgentsEssentials;
+  private List<EndpointAgentsEssentialsInner> endpointAgentsEssentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED = "endpointAgentsEmbedded";
-  private List<EndpointAgentsEmbeddedInner> endpointAgentsEmbedded;
+  private List<EndpointAgentsEmbeddedInner> endpointAgentsEmbedded = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENTERPRISE_AGENTS = "enterpriseAgents";
-  private List<EnterpriseAgentsInner> enterpriseAgents;
+  private List<EnterpriseAgentsInner> enterpriseAgents = new ArrayList<>();
 
   public UsageUsage() { 
   }
@@ -392,7 +392,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addEnterpriseAgentUnitsItem(EnterpriseAgentUnitsInner enterpriseAgentUnitsItem) {
+  public UsageUsage addenterpriseAgentUnitsItem(EnterpriseAgentUnitsInner enterpriseAgentUnitsItem) {
     if (this.enterpriseAgentUnits == null) {
       this.enterpriseAgentUnits = new ArrayList<>();
     }
@@ -425,7 +425,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addTestsItem(TestsInner testsItem) {
+  public UsageUsage addtestsItem(TestsInner testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -458,7 +458,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addEndpointAgentsItem(EndpointAgentsInner endpointAgentsItem) {
+  public UsageUsage addendpointAgentsItem(EndpointAgentsInner endpointAgentsItem) {
     if (this.endpointAgents == null) {
       this.endpointAgents = new ArrayList<>();
     }
@@ -491,7 +491,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addEndpointAgentsEssentialsItem(EndpointAgentsEssentialsInner endpointAgentsEssentialsItem) {
+  public UsageUsage addendpointAgentsEssentialsItem(EndpointAgentsEssentialsInner endpointAgentsEssentialsItem) {
     if (this.endpointAgentsEssentials == null) {
       this.endpointAgentsEssentials = new ArrayList<>();
     }
@@ -524,7 +524,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addEndpointAgentsEmbeddedItem(EndpointAgentsEmbeddedInner endpointAgentsEmbeddedItem) {
+  public UsageUsage addendpointAgentsEmbeddedItem(EndpointAgentsEmbeddedInner endpointAgentsEmbeddedItem) {
     if (this.endpointAgentsEmbedded == null) {
       this.endpointAgentsEmbedded = new ArrayList<>();
     }
@@ -557,7 +557,7 @@ public class UsageUsage {
     return this;
   }
 
-  public UsageUsage addEnterpriseAgentsItem(EnterpriseAgentsInner enterpriseAgentsItem) {
+  public UsageUsage addenterpriseAgentsItem(EnterpriseAgentsInner enterpriseAgentsItem) {
     if (this.enterpriseAgents == null) {
       this.enterpriseAgents = new ArrayList<>();
     }

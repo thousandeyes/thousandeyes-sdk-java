@@ -65,7 +65,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiStackedBarchartWidget.JSON_PROPERTY_IS_HORIZONTAL_BAR_CHART,
   ApiStackedBarchartWidget.JSON_PROPERTY_DATA_SOURCE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiStackedBarchartWidget {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -333,7 +333,7 @@ public class ApiStackedBarchartWidget {
     return this;
   }
 
-  public ApiStackedBarchartWidget putFiltersItem(String key, Set<Object> filtersItem) {
+  public ApiStackedBarchartWidget putfiltersItem(String key, Set<Object> filtersItem) {
     if (this.filters == null) {
       this.filters = new HashMap<>();
     }

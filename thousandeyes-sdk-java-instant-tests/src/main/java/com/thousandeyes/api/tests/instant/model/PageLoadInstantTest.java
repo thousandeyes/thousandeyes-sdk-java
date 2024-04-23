@@ -93,7 +93,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE,
   PageLoadInstantTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
 public class PageLoadInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -129,10 +129,10 @@ public class PageLoadInstantTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabelsInner> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<TestSharedAccountsInner> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -240,7 +240,7 @@ public class PageLoadInstantTest {
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public PageLoadInstantTest() { 
   }

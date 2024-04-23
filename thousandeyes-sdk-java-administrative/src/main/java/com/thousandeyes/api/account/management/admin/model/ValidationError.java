@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ValidationError.JSON_PROPERTY_INSTANCE,
   ValidationError.JSON_PROPERTY_ERRORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
 public class ValidationError {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
@@ -192,7 +192,7 @@ public class ValidationError {
     return this;
   }
 
-  public ValidationError addErrorsItem(ValidationErrorAllOfErrors errorsItem) {
+  public ValidationError adderrorsItem(ValidationErrorAllOfErrors errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }

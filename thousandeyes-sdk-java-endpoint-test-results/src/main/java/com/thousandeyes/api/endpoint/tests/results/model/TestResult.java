@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestResult.JSON_PROPERTY_SYSTEM_METRICS,
   TestResult.JSON_PROPERTY_VPN_PROFILE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class TestResult {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;

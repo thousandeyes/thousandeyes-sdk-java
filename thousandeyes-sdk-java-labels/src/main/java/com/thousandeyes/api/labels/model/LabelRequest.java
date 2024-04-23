@@ -34,13 +34,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LabelRequest.JSON_PROPERTY_NAME,
   LabelRequest.JSON_PROPERTY_IDS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.622566+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.046788+01:00[Europe/Lisbon]")
 public class LabelRequest {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
   public static final String JSON_PROPERTY_IDS = "ids";
-  private List<String> ids;
+  private List<String> ids = new ArrayList<>();
 
   public LabelRequest() { 
   }
@@ -75,7 +75,7 @@ public class LabelRequest {
     return this;
   }
 
-  public LabelRequest addIdsItem(String idsItem) {
+  public LabelRequest addidsItem(String idsItem) {
     if (this.ids == null) {
       this.ids = new ArrayList<>();
     }

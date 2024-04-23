@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestResults.JSON_PROPERTY_RESULTS,
   PageLoadTestResults.JSON_PROPERTY_TEST
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.800492+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
 public class PageLoadTestResults {
   public static final String JSON_PROPERTY_RESULTS = "results";
-  private List<PageLoadTestResult> results;
+  private List<PageLoadTestResult> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEST = "test";
   private SimpleTest test;
@@ -52,7 +52,7 @@ public class PageLoadTestResults {
     return this;
   }
 
-  public PageLoadTestResults addResultsItem(PageLoadTestResult resultsItem) {
+  public PageLoadTestResults addresultsItem(PageLoadTestResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

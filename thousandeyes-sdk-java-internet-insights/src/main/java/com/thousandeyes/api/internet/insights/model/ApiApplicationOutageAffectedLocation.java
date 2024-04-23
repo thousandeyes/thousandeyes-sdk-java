@@ -35,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiApplicationOutageAffectedLocation.JSON_PROPERTY_LOCATION,
   ApiApplicationOutageAffectedLocation.JSON_PROPERTY_AFFECTED_SERVERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.510438+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
 public class ApiApplicationOutageAffectedLocation {
   public static final String JSON_PROPERTY_LOCATION = "location";
   private String location;
 
   public static final String JSON_PROPERTY_AFFECTED_SERVERS = "affectedServers";
-  private List<ApiApplicationOutageAffectedServer> affectedServers;
+  private List<ApiApplicationOutageAffectedServer> affectedServers = new ArrayList<>();
 
   public ApiApplicationOutageAffectedLocation() { 
   }
@@ -76,7 +76,7 @@ public class ApiApplicationOutageAffectedLocation {
     return this;
   }
 
-  public ApiApplicationOutageAffectedLocation addAffectedServersItem(ApiApplicationOutageAffectedServer affectedServersItem) {
+  public ApiApplicationOutageAffectedLocation addaffectedServersItem(ApiApplicationOutageAffectedServer affectedServersItem) {
     if (this.affectedServers == null) {
       this.affectedServers = new ArrayList<>();
     }

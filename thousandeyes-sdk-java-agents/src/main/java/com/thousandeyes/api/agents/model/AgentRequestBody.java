@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentRequestBody.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   AgentRequestBody.JSON_PROPERTY_TESTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
 public class AgentRequestBody {
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
   private String agentName;
@@ -50,7 +50,7 @@ public class AgentRequestBody {
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUPS = "accountGroups";
-  private List<String> accountGroups;
+  private List<String> accountGroups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private AgentIpv6Policy ipv6Policy;
@@ -62,10 +62,10 @@ public class AgentRequestBody {
   private String targetForTests;
 
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
-  private List<String> localResolutionPrefixes;
+  private List<String> localResolutionPrefixes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<String> tests;
+  private List<String> tests = new ArrayList<>();
 
   public AgentRequestBody() { 
   }
@@ -125,7 +125,7 @@ public class AgentRequestBody {
     return this;
   }
 
-  public AgentRequestBody addAccountGroupsItem(String accountGroupsItem) {
+  public AgentRequestBody addaccountGroupsItem(String accountGroupsItem) {
     if (this.accountGroups == null) {
       this.accountGroups = new ArrayList<>();
     }
@@ -233,7 +233,7 @@ public class AgentRequestBody {
     return this;
   }
 
-  public AgentRequestBody addLocalResolutionPrefixesItem(String localResolutionPrefixesItem) {
+  public AgentRequestBody addlocalResolutionPrefixesItem(String localResolutionPrefixesItem) {
     if (this.localResolutionPrefixes == null) {
       this.localResolutionPrefixes = new ArrayList<>();
     }
@@ -266,7 +266,7 @@ public class AgentRequestBody {
     return this;
   }
 
-  public AgentRequestBody addTestsItem(String testsItem) {
+  public AgentRequestBody addtestsItem(String testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

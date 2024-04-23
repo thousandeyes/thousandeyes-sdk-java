@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NotificationEmail.JSON_PROPERTY_RECIPIENTS,
   NotificationEmail.JSON_PROPERTY_MESSAGE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.783028+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
 public class NotificationEmail {
   public static final String JSON_PROPERTY_RECIPIENTS = "recipients";
-  private List<String> recipients;
+  private List<String> recipients = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
@@ -50,7 +50,7 @@ public class NotificationEmail {
     return this;
   }
 
-  public NotificationEmail addRecipientsItem(String recipientsItem) {
+  public NotificationEmail addrecipientsItem(String recipientsItem) {
     if (this.recipients == null) {
       this.recipients = new ArrayList<>();
     }

@@ -43,10 +43,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PostFetchTestResultMetrics200Response.JSON_PROPERTY_END_DATE,
   PostFetchTestResultMetrics200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class PostFetchTestResultMetrics200Response {
   public static final String JSON_PROPERTY_RESULTS = "results";
-  private List<NetworkTestResult> results;
+  private List<NetworkTestResult> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOTAL_HITS = "totalHits";
   private BigDecimal totalHits;
@@ -81,7 +81,7 @@ public class PostFetchTestResultMetrics200Response {
     return this;
   }
 
-  public PostFetchTestResultMetrics200Response addResultsItem(NetworkTestResult resultsItem) {
+  public PostFetchTestResultMetrics200Response addresultsItem(NetworkTestResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

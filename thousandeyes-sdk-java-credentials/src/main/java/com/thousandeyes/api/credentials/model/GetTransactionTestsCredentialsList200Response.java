@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetTransactionTestsCredentialsList200Response.JSON_PROPERTY_CREDENTIALS,
   GetTransactionTestsCredentialsList200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.463323+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.809660+01:00[Europe/Lisbon]")
 public class GetTransactionTestsCredentialsList200Response {
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<Credential> credentials;
+  private List<Credential> credentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -52,7 +52,7 @@ public class GetTransactionTestsCredentialsList200Response {
     return this;
   }
 
-  public GetTransactionTestsCredentialsList200Response addCredentialsItem(Credential credentialsItem) {
+  public GetTransactionTestsCredentialsList200Response addcredentialsItem(Credential credentialsItem) {
     if (this.credentials == null) {
       this.credentials = new ArrayList<>();
     }

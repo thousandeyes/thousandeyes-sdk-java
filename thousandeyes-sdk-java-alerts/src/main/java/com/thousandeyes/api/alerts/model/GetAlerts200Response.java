@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetAlerts200Response.JSON_PROPERTY_ALERTS,
   GetAlerts200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.783028+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
 public class GetAlerts200Response {
   public static final String JSON_PROPERTY_ALERTS = "alerts";
-  private List<Alert> alerts;
+  private List<Alert> alerts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinksLinks links;
@@ -52,7 +52,7 @@ public class GetAlerts200Response {
     return this;
   }
 
-  public GetAlerts200Response addAlertsItem(Alert alertsItem) {
+  public GetAlerts200Response addalertsItem(Alert alertsItem) {
     if (this.alerts == null) {
       this.alerts = new ArrayList<>();
     }

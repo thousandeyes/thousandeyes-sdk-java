@@ -6,9 +6,6 @@ docs/NetworkDynamicTestsResultsApi.md
 docs/NetworkScheduledTestsResultsApi.md
 docs/RealUserTestsResultsApi.md
 docs/WebHttpServerScheduledTestResultsApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/tests/results/LocalNetworkTestsResultsApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/NetworkDynamicTestsResultsApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/NetworkScheduledTestsResultsApi.java
@@ -38,6 +35,7 @@ src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointBrowser.
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointHttpDataPointScore.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointHttpServerBaseTest.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointHttpServerTest.java
+src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointNetworkTopologyResultRequest.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointNetworkTopologyResultRequestFilter.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointPingDataPointScore.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointRealUserTest.java
@@ -46,6 +44,7 @@ src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointRealUser
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointRealUserTestDetailResults.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointRealUserTestResultRequestFilter.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointRealUserTestResults.java
+src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointRealUserTestResultsRequest.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointResultRequestFilter.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointScheduledTest.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/EndpointScheduledTestType.java
@@ -63,13 +62,11 @@ src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetDynamicTestRe
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointLocalNetworkTopologyDetails200Response.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointLocalNetworks200Response.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointLocalNetworksTopologies200Response.java
-src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointLocalNetworksTopologiesRequest.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointRealUserTestDetails200Response.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointRealUserTestPagesDetails200Response.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointRealUserTests200Response.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointRealUserTestsNetwork200Response.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointRealUserTestsPages200Response.java
-src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetEndpointRealUserTestsRequest.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetTestResultHttpServer200Response.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetTestResultNetworkPathvis200Response.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/GetTestResultPathvisAgentRound200Response.java
@@ -163,3 +160,8 @@ src/main/java/com/thousandeyes/api/endpoint/tests/results/model/ValidationError.
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/ValidationErrorAllOfErrors.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/VpnProfile.java
 src/main/java/com/thousandeyes/api/endpoint/tests/results/model/VpnType.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/LocalNetworkTestsResultsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/NetworkDynamicTestsResultsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/NetworkScheduledTestsResultsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/RealUserTestsResultsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/results/WebHttpServerScheduledTestResultsApiTest.java

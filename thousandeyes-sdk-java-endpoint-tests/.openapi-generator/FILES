@@ -5,9 +5,6 @@ docs/DynamicTestsAgentToServerApi.md
 docs/ListEndpointScheduledTestsApi.md
 docs/ScheduledTestsAgentToServerApi.md
 docs/ScheduledTestsHttpServerApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/tests/DynamicTestsAgentToServerApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/ListEndpointScheduledTestsApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/ScheduledTestsAgentToServerApi.java
@@ -65,3 +62,7 @@ src/main/java/com/thousandeyes/api/endpoint/tests/model/TestUpdate.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/ValidationError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/endpoint/tests/DynamicTestsAgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ListEndpointScheduledTestsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ScheduledTestsAgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ScheduledTestsHttpServerApiTest.java

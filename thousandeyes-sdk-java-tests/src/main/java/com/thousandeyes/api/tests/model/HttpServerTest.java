@@ -100,7 +100,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   HttpServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class HttpServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -112,7 +112,7 @@ public class HttpServerTest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules;
+  private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -148,10 +148,10 @@ public class HttpServerTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabelsInner> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<TestSharedAccountsInner> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -166,7 +166,7 @@ public class HttpServerTest {
   private String contentRegex;
 
   public static final String JSON_PROPERTY_HEADERS = "headers";
-  private List<String> headers;
+  private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private TestCustomHeaders customHeaders;
@@ -250,7 +250,7 @@ public class HttpServerTest {
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -259,7 +259,7 @@ public class HttpServerTest {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors;
+  private List<Monitor> monitors = new ArrayList<>();
 
   public HttpServerTest() { 
   }
@@ -376,7 +376,7 @@ public class HttpServerTest {
     return this;
   }
 
-  public HttpServerTest addAlertRulesItem(AlertRule alertRulesItem) {
+  public HttpServerTest addalertRulesItem(AlertRule alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -734,7 +734,7 @@ public class HttpServerTest {
     return this;
   }
 
-  public HttpServerTest addHeadersItem(String headersItem) {
+  public HttpServerTest addheadersItem(String headersItem) {
     if (this.headers == null) {
       this.headers = new ArrayList<>();
     }

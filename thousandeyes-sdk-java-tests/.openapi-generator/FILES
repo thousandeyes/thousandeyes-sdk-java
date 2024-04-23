@@ -15,9 +15,6 @@ docs/PathVisualizationInterfaceGroupsApi.md
 docs/SipServerApi.md
 docs/VoiceApi.md
 docs/WebTransactionApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/tests/AgentToAgentApi.java
 src/main/java/com/thousandeyes/api/tests/AgentToServerApi.java
 src/main/java/com/thousandeyes/api/tests/AllTestTypesApi.java
@@ -179,3 +176,17 @@ src/main/java/com/thousandeyes/api/tests/model/WebTransactionInstantTest.java
 src/main/java/com/thousandeyes/api/tests/model/WebTransactionProperties.java
 src/main/java/com/thousandeyes/api/tests/model/WebTransactionTest.java
 src/main/java/com/thousandeyes/api/tests/model/WebTransactionTests.java
+src/test/java/com/thousandeyes/api/tests/AgentToAgentApiTest.java
+src/test/java/com/thousandeyes/api/tests/AgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/AllTestTypesApiTest.java
+src/test/java/com/thousandeyes/api/tests/BgpApiTest.java
+src/test/java/com/thousandeyes/api/tests/DnsServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/DnsTraceApiTest.java
+src/test/java/com/thousandeyes/api/tests/DnssecApiTest.java
+src/test/java/com/thousandeyes/api/tests/FtpServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/HttpServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/PageLoadApiTest.java
+src/test/java/com/thousandeyes/api/tests/PathVisualizationInterfaceGroupsApiTest.java
+src/test/java/com/thousandeyes/api/tests/SipServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/VoiceApiTest.java
+src/test/java/com/thousandeyes/api/tests/WebTransactionApiTest.java

@@ -55,7 +55,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDashboardSnapshot.JSON_PROPERTY_TIME_SPAN,
   ApiDashboardSnapshot.JSON_PROPERTY_SNAPSHOT_EXPIRATION_DATE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiDashboardSnapshot {
   public static final String JSON_PROPERTY_SNAPSHOT_ID = "snapshotId";
   private UUID snapshotId;
@@ -73,7 +73,7 @@ public class ApiDashboardSnapshot {
   private String permalink;
 
   public static final String JSON_PROPERTY_API_LINKS = "apiLinks";
-  private List<Map<String, Object>> apiLinks;
+  private List<Map<String, Object>> apiLinks = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private AppAndSelfLinksLinks links;
@@ -94,7 +94,7 @@ public class ApiDashboardSnapshot {
   private ApiDashboard dashboard;
 
   public static final String JSON_PROPERTY_WIDGETS = "widgets";
-  private List<ApiWidget> widgets;
+  private List<ApiWidget> widgets = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IS_SCHEDULED = "isScheduled";
   private Boolean isScheduled;
@@ -238,7 +238,7 @@ public class ApiDashboardSnapshot {
     return this;
   }
 
-  public ApiDashboardSnapshot addApiLinksItem(Map<String, Object> apiLinksItem) {
+  public ApiDashboardSnapshot addapiLinksItem(Map<String, Object> apiLinksItem) {
     if (this.apiLinks == null) {
       this.apiLinks = new ArrayList<>();
     }
@@ -421,7 +421,7 @@ public class ApiDashboardSnapshot {
     return this;
   }
 
-  public ApiDashboardSnapshot addWidgetsItem(ApiWidget widgetsItem) {
+  public ApiDashboardSnapshot addwidgetsItem(ApiWidget widgetsItem) {
     if (this.widgets == null) {
       this.widgets = new ArrayList<>();
     }

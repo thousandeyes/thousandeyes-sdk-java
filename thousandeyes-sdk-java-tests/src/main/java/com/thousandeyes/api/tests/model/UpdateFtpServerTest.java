@@ -80,7 +80,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateFtpServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateFtpServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class UpdateFtpServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -92,7 +92,7 @@ public class UpdateFtpServerTest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules;
+  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -128,10 +128,10 @@ public class UpdateFtpServerTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels;
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts;
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -188,7 +188,7 @@ public class UpdateFtpServerTest {
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
+  private List<TestRequestAllOfAgents> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -197,7 +197,7 @@ public class UpdateFtpServerTest {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors;
+  private List<String> monitors = new ArrayList<>();
 
   public UpdateFtpServerTest() { 
   }
@@ -304,7 +304,7 @@ public class UpdateFtpServerTest {
     return this;
   }
 
-  public UpdateFtpServerTest addAlertRulesItem(String alertRulesItem) {
+  public UpdateFtpServerTest addalertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -532,7 +532,7 @@ public class UpdateFtpServerTest {
     return this;
   }
 
-  public UpdateFtpServerTest addLabelsItem(String labelsItem) {
+  public UpdateFtpServerTest addlabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -565,7 +565,7 @@ public class UpdateFtpServerTest {
     return this;
   }
 
-  public UpdateFtpServerTest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateFtpServerTest addsharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -1056,7 +1056,7 @@ public class UpdateFtpServerTest {
     return this;
   }
 
-  public UpdateFtpServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateFtpServerTest addagentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1139,7 +1139,7 @@ public class UpdateFtpServerTest {
     return this;
   }
 
-  public UpdateFtpServerTest addMonitorsItem(String monitorsItem) {
+  public UpdateFtpServerTest addmonitorsItem(String monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }

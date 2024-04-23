@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserAccountGroup.JSON_PROPERTY_DATE_REGISTERED,
   UserAccountGroup.JSON_PROPERTY_ROLES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
 public class UserAccountGroup {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -58,7 +58,7 @@ public class UserAccountGroup {
   private OffsetDateTime dateRegistered;
 
   public static final String JSON_PROPERTY_ROLES = "roles";
-  private List<Role> roles;
+  private List<Role> roles = new ArrayList<>();
 
   public UserAccountGroup() { 
   }
@@ -193,7 +193,7 @@ public class UserAccountGroup {
     return this;
   }
 
-  public UserAccountGroup addRolesItem(Role rolesItem) {
+  public UserAccountGroup addrolesItem(Role rolesItem) {
     if (this.roles == null) {
       this.roles = new ArrayList<>();
     }

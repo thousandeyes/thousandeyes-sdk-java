@@ -37,16 +37,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Notification.JSON_PROPERTY_THIRD_PARTY,
   Notification.JSON_PROPERTY_WEBHOOK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
 public class Notification {
   public static final String JSON_PROPERTY_EMAIL = "email";
   private AlertEmail email;
 
   public static final String JSON_PROPERTY_THIRD_PARTY = "thirdParty";
-  private List<AlertIntegrationBase> thirdParty;
+  private List<AlertIntegrationBase> thirdParty = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WEBHOOK = "webhook";
-  private List<AlertIntegrationBase> webhook;
+  private List<AlertIntegrationBase> webhook = new ArrayList<>();
 
   public Notification() { 
   }
@@ -81,7 +81,7 @@ public class Notification {
     return this;
   }
 
-  public Notification addThirdPartyItem(AlertIntegrationBase thirdPartyItem) {
+  public Notification addthirdPartyItem(AlertIntegrationBase thirdPartyItem) {
     if (this.thirdParty == null) {
       this.thirdParty = new ArrayList<>();
     }
@@ -114,7 +114,7 @@ public class Notification {
     return this;
   }
 
-  public Notification addWebhookItem(AlertIntegrationBase webhookItem) {
+  public Notification addwebhookItem(AlertIntegrationBase webhookItem) {
     if (this.webhook == null) {
       this.webhook = new ArrayList<>();
     }

@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointLabelsList200Response.JSON_PROPERTY_LABELS,
   EndpointLabelsList200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.474066+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.808719+01:00[Europe/Lisbon]")
 public class EndpointLabelsList200Response {
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<LabelsLabelsInner> labels;
+  private List<LabelsLabelsInner> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextAndSelfLinkLinks links;
@@ -52,7 +52,7 @@ public class EndpointLabelsList200Response {
     return this;
   }
 
-  public EndpointLabelsList200Response addLabelsItem(LabelsLabelsInner labelsItem) {
+  public EndpointLabelsList200Response addlabelsItem(LabelsLabelsInner labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }

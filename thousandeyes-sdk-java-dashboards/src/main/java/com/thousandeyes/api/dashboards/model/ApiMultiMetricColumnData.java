@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiMultiMetricColumnData.JSON_PROPERTY_STATUS,
   ApiMultiMetricColumnData.JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiMultiMetricColumnData {
   public static final String JSON_PROPERTY_COLUMN_ID = "columnId";
   private String columnId;
@@ -48,13 +48,13 @@ public class ApiMultiMetricColumnData {
   private Long binSize;
 
   public static final String JSON_PROPERTY_POINTS = "points";
-  private List<ApiWidgetDataPoint> points;
+  private List<ApiWidgetDataPoint> points = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STATUS = "status";
   private String status;
 
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS = "alertSuppressionWindows";
-  private List<ApiDashboardAsw> alertSuppressionWindows;
+  private List<ApiDashboardAsw> alertSuppressionWindows = new ArrayList<>();
 
   public ApiMultiMetricColumnData() { 
   }
@@ -114,7 +114,7 @@ public class ApiMultiMetricColumnData {
     return this;
   }
 
-  public ApiMultiMetricColumnData addPointsItem(ApiWidgetDataPoint pointsItem) {
+  public ApiMultiMetricColumnData addpointsItem(ApiWidgetDataPoint pointsItem) {
     if (this.points == null) {
       this.points = new ArrayList<>();
     }
@@ -172,7 +172,7 @@ public class ApiMultiMetricColumnData {
     return this;
   }
 
-  public ApiMultiMetricColumnData addAlertSuppressionWindowsItem(ApiDashboardAsw alertSuppressionWindowsItem) {
+  public ApiMultiMetricColumnData addalertSuppressionWindowsItem(ApiDashboardAsw alertSuppressionWindowsItem) {
     if (this.alertSuppressionWindows == null) {
       this.alertSuppressionWindows = new ArrayList<>();
     }

@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetEnterpriseAgentsUnitsUsage200Response.JSON_PROPERTY_BREAKDOWNS,
   GetEnterpriseAgentsUnitsUsage200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.525987+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
 public class GetEnterpriseAgentsUnitsUsage200Response {
   public static final String JSON_PROPERTY_BREAKDOWNS = "breakdowns";
-  private List<EnterpriseAgentUnitsByTestOwnerAccountGroupBreakdownsInner> breakdowns;
+  private List<EnterpriseAgentUnitsByTestOwnerAccountGroupBreakdownsInner> breakdowns = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinksLinks links;
@@ -52,7 +52,7 @@ public class GetEnterpriseAgentsUnitsUsage200Response {
     return this;
   }
 
-  public GetEnterpriseAgentsUnitsUsage200Response addBreakdownsItem(EnterpriseAgentUnitsByTestOwnerAccountGroupBreakdownsInner breakdownsItem) {
+  public GetEnterpriseAgentsUnitsUsage200Response addbreakdownsItem(EnterpriseAgentUnitsByTestOwnerAccountGroupBreakdownsInner breakdownsItem) {
     if (this.breakdowns == null) {
       this.breakdowns = new ArrayList<>();
     }

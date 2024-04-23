@@ -34,13 +34,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RoleRequestBody.JSON_PROPERTY_NAME,
   RoleRequestBody.JSON_PROPERTY_PERMISSIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
 public class RoleRequestBody {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
   public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
-  private List<String> permissions;
+  private List<String> permissions = new ArrayList<>();
 
   public RoleRequestBody() { 
   }
@@ -75,7 +75,7 @@ public class RoleRequestBody {
     return this;
   }
 
-  public RoleRequestBody addPermissionsItem(String permissionsItem) {
+  public RoleRequestBody addpermissionsItem(String permissionsItem) {
     if (this.permissions == null) {
       this.permissions = new ArrayList<>();
     }

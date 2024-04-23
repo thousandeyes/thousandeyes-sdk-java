@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetAgentToAgentTests200Response.JSON_PROPERTY_TESTS,
   GetAgentToAgentTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class GetAgentToAgentTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<UnexpandedAgentToAgentTest> tests;
+  private List<UnexpandedAgentToAgentTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -52,7 +52,7 @@ public class GetAgentToAgentTests200Response {
     return this;
   }
 
-  public GetAgentToAgentTests200Response addTestsItem(UnexpandedAgentToAgentTest testsItem) {
+  public GetAgentToAgentTests200Response addtestsItem(UnexpandedAgentToAgentTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

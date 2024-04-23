@@ -35,7 +35,6 @@ import com.thousandeyes.api.dashboards.model.ValidationError;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -58,7 +57,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class DashboardSnapshotsApi {
   private final ApiClient apiClient;
 
@@ -91,8 +90,8 @@ public class DashboardSnapshotsApi {
     createDashboardSnapshotValidateRequest(generateDashboardSnapshotRequest);
 
     var requestBuilder = createDashboardSnapshotRequestBuilder(generateDashboardSnapshotRequest, aid);
-    return apiClient.send(requestBuilder.build(), CreateDashboardSnapshot201Response.class);
 
+    return apiClient.send(requestBuilder.build(), CreateDashboardSnapshot201Response.class);
   }
 
   private void createDashboardSnapshotValidateRequest(GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest) throws ApiException {
@@ -147,8 +146,8 @@ public class DashboardSnapshotsApi {
     dashboardSnapshotByIdValidateRequest(snapshotId);
 
     var requestBuilder = dashboardSnapshotByIdRequestBuilder(snapshotId, aid);
-    return apiClient.send(requestBuilder.build(), ApiDashboardSnapshot.class);
 
+    return apiClient.send(requestBuilder.build(), ApiDashboardSnapshot.class);
   }
 
   private void dashboardSnapshotByIdValidateRequest(String snapshotId) throws ApiException {
@@ -204,8 +203,8 @@ public class DashboardSnapshotsApi {
     dashboardSnapshotsValidateRequest();
 
     var requestBuilder = dashboardSnapshotsRequestBuilder(aid, dashboardId, cursor);
-    return apiClient.send(requestBuilder.build(), DashboardSnapshots200Response.class);
 
+    return apiClient.send(requestBuilder.build(), DashboardSnapshots200Response.class);
   }
 
   private void dashboardSnapshotsValidateRequest() throws ApiException {
@@ -254,8 +253,8 @@ public class DashboardSnapshotsApi {
     deleteDashboardSnapshotValidateRequest(snapshotId);
 
     var requestBuilder = deleteDashboardSnapshotRequestBuilder(snapshotId, aid);
-    return apiClient.send(requestBuilder.build(), Void.class);
 
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void deleteDashboardSnapshotValidateRequest(String snapshotId) throws ApiException {
@@ -280,7 +279,7 @@ public class DashboardSnapshotsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -311,8 +310,8 @@ public class DashboardSnapshotsApi {
     snapshotDataByWidgetValidateRequest(snapshotId, widgetId);
 
     var requestBuilder = snapshotDataByWidgetRequestBuilder(snapshotId, widgetId, aid);
-    return apiClient.send(requestBuilder.build(), SnapshotDataByWidget200Response.class);
 
+    return apiClient.send(requestBuilder.build(), SnapshotDataByWidget200Response.class);
   }
 
   private void snapshotDataByWidgetValidateRequest(String snapshotId, String widgetId) throws ApiException {
@@ -371,8 +370,8 @@ public class DashboardSnapshotsApi {
     updateSnapshotExpirationDateValidateRequest(snapshotId, updateSnapshotExpirationDateApiRequest);
 
     var requestBuilder = updateSnapshotExpirationDateRequestBuilder(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
-    return apiClient.send(requestBuilder.build(), Void.class);
 
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void updateSnapshotExpirationDateValidateRequest(String snapshotId, UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest) throws ApiException {
@@ -402,7 +401,7 @@ public class DashboardSnapshotsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(updateSnapshotExpirationDateApiRequest);
     return requestBuilder;

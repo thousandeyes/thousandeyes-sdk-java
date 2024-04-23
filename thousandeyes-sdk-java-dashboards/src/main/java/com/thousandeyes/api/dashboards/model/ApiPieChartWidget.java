@@ -58,7 +58,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiPieChartWidget.JSON_PROPERTY_GROUP_BY,
   ApiPieChartWidget.JSON_PROPERTY_DATA_SOURCE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiPieChartWidget {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -311,7 +311,7 @@ public class ApiPieChartWidget {
     return this;
   }
 
-  public ApiPieChartWidget putFiltersItem(String key, Set<Object> filtersItem) {
+  public ApiPieChartWidget putfiltersItem(String key, Set<Object> filtersItem) {
     if (this.filters == null) {
       this.filters = new HashMap<>();
     }

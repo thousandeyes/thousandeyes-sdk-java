@@ -59,7 +59,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTest.JSON_PROPERTY_ALERT_RULES,
   EndpointAgentToServerTest.JSON_PROPERTY_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.537471+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.956104+01:00[Europe/Lisbon]")
 public class EndpointAgentToServerTest {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -113,10 +113,10 @@ public class EndpointAgentToServerTest {
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules;
+  private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabelsInner> labels = new ArrayList<>();
 
   public EndpointAgentToServerTest() { 
   }
@@ -519,7 +519,7 @@ public class EndpointAgentToServerTest {
     return this;
   }
 
-  public EndpointAgentToServerTest addAlertRulesItem(AlertRule alertRulesItem) {
+  public EndpointAgentToServerTest addalertRulesItem(AlertRule alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }

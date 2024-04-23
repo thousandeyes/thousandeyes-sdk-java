@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   ApiContextFiltersResponse.JSON_PROPERTY_DASHBOARD_FILTERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiContextFiltersResponse {
   public static final String JSON_PROPERTY_DASHBOARD_FILTERS = "dashboardFilters";
-  private List<ApiContextFilterResponse> dashboardFilters;
+  private List<ApiContextFilterResponse> dashboardFilters = new ArrayList<>();
 
   public ApiContextFiltersResponse() { 
   }
@@ -47,7 +47,7 @@ public class ApiContextFiltersResponse {
     return this;
   }
 
-  public ApiContextFiltersResponse addDashboardFiltersItem(ApiContextFilterResponse dashboardFiltersItem) {
+  public ApiContextFiltersResponse adddashboardFiltersItem(ApiContextFilterResponse dashboardFiltersItem) {
     if (this.dashboardFilters == null) {
       this.dashboardFilters = new ArrayList<>();
     }

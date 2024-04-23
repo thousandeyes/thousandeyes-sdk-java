@@ -38,10 +38,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetDynamicTestResultPathvisAgentRound200Response.JSON_PROPERTY_TEST,
   GetDynamicTestResultPathvisAgentRound200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class GetDynamicTestResultPathvisAgentRound200Response {
   public static final String JSON_PROPERTY_RESULTS = "results";
-  private List<PathVisDetailDynamicTestResult> results;
+  private List<PathVisDetailDynamicTestResult> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEST = "test";
   private DynamicTest test;
@@ -57,7 +57,7 @@ public class GetDynamicTestResultPathvisAgentRound200Response {
     return this;
   }
 
-  public GetDynamicTestResultPathvisAgentRound200Response addResultsItem(PathVisDetailDynamicTestResult resultsItem) {
+  public GetDynamicTestResultPathvisAgentRound200Response addresultsItem(PathVisDetailDynamicTestResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

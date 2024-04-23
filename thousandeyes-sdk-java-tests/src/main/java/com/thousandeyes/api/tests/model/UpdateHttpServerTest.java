@@ -96,7 +96,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateHttpServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateHttpServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class UpdateHttpServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -108,7 +108,7 @@ public class UpdateHttpServerTest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules;
+  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -144,10 +144,10 @@ public class UpdateHttpServerTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels;
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts;
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -162,7 +162,7 @@ public class UpdateHttpServerTest {
   private String contentRegex;
 
   public static final String JSON_PROPERTY_HEADERS = "headers";
-  private List<String> headers;
+  private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private TestCustomHeaders customHeaders;
@@ -246,7 +246,7 @@ public class UpdateHttpServerTest {
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
+  private List<TestRequestAllOfAgents> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -255,7 +255,7 @@ public class UpdateHttpServerTest {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors;
+  private List<String> monitors = new ArrayList<>();
 
   public UpdateHttpServerTest() { 
   }
@@ -364,7 +364,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addAlertRulesItem(String alertRulesItem) {
+  public UpdateHttpServerTest addalertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -592,7 +592,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addLabelsItem(String labelsItem) {
+  public UpdateHttpServerTest addlabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -625,7 +625,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+  public UpdateHttpServerTest addsharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -758,7 +758,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addHeadersItem(String headersItem) {
+  public UpdateHttpServerTest addheadersItem(String headersItem) {
     if (this.headers == null) {
       this.headers = new ArrayList<>();
     }
@@ -1466,7 +1466,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateHttpServerTest addagentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1549,7 +1549,7 @@ public class UpdateHttpServerTest {
     return this;
   }
 
-  public UpdateHttpServerTest addMonitorsItem(String monitorsItem) {
+  public UpdateHttpServerTest addmonitorsItem(String monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }

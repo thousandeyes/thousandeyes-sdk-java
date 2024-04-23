@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BulkTagAssignment.JSON_PROPERTY_ASSIGNMENTS,
   BulkTagAssignment.JSON_PROPERTY_TAG_ID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.463430+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.771341+01:00[Europe/Lisbon]")
 public class BulkTagAssignment {
   public static final String JSON_PROPERTY_ASSIGNMENTS = "assignments";
-  private List<Assignment> assignments;
+  private List<Assignment> assignments = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAG_ID = "tagId";
   private UUID tagId;
@@ -52,7 +52,7 @@ public class BulkTagAssignment {
     return this;
   }
 
-  public BulkTagAssignment addAssignmentsItem(Assignment assignmentsItem) {
+  public BulkTagAssignment addassignmentsItem(Assignment assignmentsItem) {
     if (this.assignments == null) {
       this.assignments = new ArrayList<>();
     }

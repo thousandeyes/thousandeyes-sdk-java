@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   Monitors.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.468865+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.809279+01:00[Europe/Lisbon]")
 public class Monitors {
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors;
+  private List<Monitor> monitors = new ArrayList<>();
 
   public Monitors() { 
   }
@@ -47,7 +47,7 @@ public class Monitors {
     return this;
   }
 
-  public Monitors addMonitorsItem(Monitor monitorsItem) {
+  public Monitors addmonitorsItem(Monitor monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }

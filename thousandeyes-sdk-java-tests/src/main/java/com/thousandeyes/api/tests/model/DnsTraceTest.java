@@ -62,7 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceTest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsTraceTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class DnsTraceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -74,7 +74,7 @@ public class DnsTraceTest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules;
+  private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -110,10 +110,10 @@ public class DnsTraceTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabelsInner> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<TestSharedAccountsInner> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL = "dnsTransportProtocol";
   private TestDnsTransportProtocol dnsTransportProtocol = TestDnsTransportProtocol.UDP;
@@ -125,7 +125,7 @@ public class DnsTraceTest {
   private DnsQueryClass dnsQueryClass;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public DnsTraceTest() { 
   }
@@ -238,7 +238,7 @@ public class DnsTraceTest {
     return this;
   }
 
-  public DnsTraceTest addAlertRulesItem(AlertRule alertRulesItem) {
+  public DnsTraceTest addalertRulesItem(AlertRule alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }

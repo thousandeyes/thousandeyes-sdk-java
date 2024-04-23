@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointSpecificAgentsSelectorConfig.JSON_PROPERTY_MAX_MACHINES,
   EndpointSpecificAgentsSelectorConfig.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.537471+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.956104+01:00[Europe/Lisbon]")
 public class EndpointSpecificAgentsSelectorConfig {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
   private String agentSelectorType;
@@ -45,7 +45,7 @@ public class EndpointSpecificAgentsSelectorConfig {
   private Integer maxMachines;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<UUID> agents;
+  private List<UUID> agents = new ArrayList<>();
 
   public EndpointSpecificAgentsSelectorConfig() { 
   }
@@ -107,7 +107,7 @@ public class EndpointSpecificAgentsSelectorConfig {
     return this;
   }
 
-  public EndpointSpecificAgentsSelectorConfig addAgentsItem(UUID agentsItem) {
+  public EndpointSpecificAgentsSelectorConfig addagentsItem(UUID agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

@@ -3,9 +3,6 @@ api/openapi.yaml
 build.gradle
 docs/CatalogProvidersApi.md
 docs/OutagesApiPublicApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/internet/insights/CatalogProvidersApi.java
 src/main/java/com/thousandeyes/api/internet/insights/OutagesApiPublicApi.java
 src/main/java/com/thousandeyes/api/internet/insights/model/ApiAffectedAgent.java
@@ -37,3 +34,5 @@ src/main/java/com/thousandeyes/api/internet/insights/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/internet/insights/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/internet/insights/model/ValidationError.java
 src/main/java/com/thousandeyes/api/internet/insights/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/internet/insights/CatalogProvidersApiTest.java
+src/test/java/com/thousandeyes/api/internet/insights/OutagesApiPublicApiTest.java

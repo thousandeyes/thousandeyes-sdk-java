@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetEndpointLocalNetworksTopologies200Response.JSON_PROPERTY_RESULTS,
   GetEndpointLocalNetworksTopologies200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class GetEndpointLocalNetworksTopologies200Response {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private OffsetDateTime startDate;
@@ -48,7 +48,7 @@ public class GetEndpointLocalNetworksTopologies200Response {
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_RESULTS = "results";
-  private List<LocalNetworkTopologyResultBase> results;
+  private List<LocalNetworkTopologyResultBase> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextLinkLinks links;
@@ -101,7 +101,7 @@ public class GetEndpointLocalNetworksTopologies200Response {
     return this;
   }
 
-  public GetEndpointLocalNetworksTopologies200Response addResultsItem(LocalNetworkTopologyResultBase resultsItem) {
+  public GetEndpointLocalNetworksTopologies200Response addresultsItem(LocalNetworkTopologyResultBase resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

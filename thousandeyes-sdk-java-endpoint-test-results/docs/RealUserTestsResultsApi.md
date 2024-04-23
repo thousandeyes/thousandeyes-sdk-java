@@ -82,7 +82,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -163,7 +163,7 @@ ApiResponse<[**GetEndpointRealUserTestDetails200Response**](GetEndpointRealUserT
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -244,7 +244,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -327,7 +327,7 @@ ApiResponse<[**GetEndpointRealUserTestPagesDetails200Response**](GetEndpointReal
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -343,7 +343,7 @@ ApiResponse<[**GetEndpointRealUserTestPagesDetails200Response**](GetEndpointReal
 
 ## getEndpointRealUserTests
 
-> GetEndpointRealUserTests200Response getEndpointRealUserTests(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest)
+> GetEndpointRealUserTests200Response getEndpointRealUserTests(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
 
 List endpoint real user tests
 
@@ -375,9 +375,9 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest = new GetEndpointRealUserTestsRequest(); // GetEndpointRealUserTestsRequest | 
+        EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest = new EndpointRealUserTestResultsRequest(); // EndpointRealUserTestResultsRequest | 
         try {
-            GetEndpointRealUserTests200Response result = apiInstance.getEndpointRealUserTests(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest);
+            GetEndpointRealUserTests200Response result = apiInstance.getEndpointRealUserTests(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserTestsResultsApi#getEndpointRealUserTests");
@@ -400,7 +400,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **getEndpointRealUserTestsRequest** | [**GetEndpointRealUserTestsRequest**](GetEndpointRealUserTestsRequest.md)|  | [optional] |
+| **endpointRealUserTestResultsRequest** | [**EndpointRealUserTestResultsRequest**](EndpointRealUserTestResultsRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -414,7 +414,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -430,7 +430,7 @@ public class Example {
 
 ## getEndpointRealUserTestsWithHttpInfo
 
-> ApiResponse<GetEndpointRealUserTests200Response> getEndpointRealUserTests getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest)
+> ApiResponse<GetEndpointRealUserTests200Response> getEndpointRealUserTests getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
 
 List endpoint real user tests
 
@@ -463,9 +463,9 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest = new GetEndpointRealUserTestsRequest(); // GetEndpointRealUserTestsRequest | 
+        EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest = new EndpointRealUserTestResultsRequest(); // EndpointRealUserTestResultsRequest | 
         try {
-            ApiResponse<GetEndpointRealUserTests200Response> response = apiInstance.getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest);
+            ApiResponse<GetEndpointRealUserTests200Response> response = apiInstance.getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -490,7 +490,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **getEndpointRealUserTestsRequest** | [**GetEndpointRealUserTestsRequest**](GetEndpointRealUserTestsRequest.md)|  | [optional] |
+| **endpointRealUserTestResultsRequest** | [**EndpointRealUserTestResultsRequest**](EndpointRealUserTestResultsRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -504,7 +504,7 @@ ApiResponse<[**GetEndpointRealUserTests200Response**](GetEndpointRealUserTests20
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -521,7 +521,7 @@ ApiResponse<[**GetEndpointRealUserTests200Response**](GetEndpointRealUserTests20
 
 ## getEndpointRealUserTestsNetwork
 
-> GetEndpointRealUserTestsNetwork200Response getEndpointRealUserTestsNetwork(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest)
+> GetEndpointRealUserTestsNetwork200Response getEndpointRealUserTestsNetwork(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
 
 List endpoint real user tests
 
@@ -553,9 +553,9 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest = new GetEndpointRealUserTestsRequest(); // GetEndpointRealUserTestsRequest | 
+        EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest = new EndpointRealUserTestResultsRequest(); // EndpointRealUserTestResultsRequest | 
         try {
-            GetEndpointRealUserTestsNetwork200Response result = apiInstance.getEndpointRealUserTestsNetwork(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest);
+            GetEndpointRealUserTestsNetwork200Response result = apiInstance.getEndpointRealUserTestsNetwork(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserTestsResultsApi#getEndpointRealUserTestsNetwork");
@@ -578,7 +578,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **getEndpointRealUserTestsRequest** | [**GetEndpointRealUserTestsRequest**](GetEndpointRealUserTestsRequest.md)|  | [optional] |
+| **endpointRealUserTestResultsRequest** | [**EndpointRealUserTestResultsRequest**](EndpointRealUserTestResultsRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -592,7 +592,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -608,7 +608,7 @@ public class Example {
 
 ## getEndpointRealUserTestsNetworkWithHttpInfo
 
-> ApiResponse<GetEndpointRealUserTestsNetwork200Response> getEndpointRealUserTestsNetwork getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest)
+> ApiResponse<GetEndpointRealUserTestsNetwork200Response> getEndpointRealUserTestsNetwork getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
 
 List endpoint real user tests
 
@@ -641,9 +641,9 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest = new GetEndpointRealUserTestsRequest(); // GetEndpointRealUserTestsRequest | 
+        EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest = new EndpointRealUserTestResultsRequest(); // EndpointRealUserTestResultsRequest | 
         try {
-            ApiResponse<GetEndpointRealUserTestsNetwork200Response> response = apiInstance.getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest);
+            ApiResponse<GetEndpointRealUserTestsNetwork200Response> response = apiInstance.getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -668,7 +668,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **getEndpointRealUserTestsRequest** | [**GetEndpointRealUserTestsRequest**](GetEndpointRealUserTestsRequest.md)|  | [optional] |
+| **endpointRealUserTestResultsRequest** | [**EndpointRealUserTestResultsRequest**](EndpointRealUserTestResultsRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -682,7 +682,7 @@ ApiResponse<[**GetEndpointRealUserTestsNetwork200Response**](GetEndpointRealUser
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -770,7 +770,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -860,7 +860,7 @@ ApiResponse<[**GetEndpointRealUserTestsPages200Response**](GetEndpointRealUserTe
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserDetail.JSON_PROPERTY_ACCOUNT_GROUP_ROLES,
   UserDetail.JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
 public class UserDetail {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -65,10 +65,10 @@ public class UserDetail {
   private OffsetDateTime lastLogin;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUP_ROLES = "accountGroupRoles";
-  private List<AccountGroupRolesAccountGroupRolesInner> accountGroupRoles;
+  private List<AccountGroupRolesAccountGroupRolesInner> accountGroupRoles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES = "allAccountGroupRoles";
-  private List<Role> allAccountGroupRoles;
+  private List<Role> allAccountGroupRoles = new ArrayList<>();
 
   public UserDetail() { 
   }
@@ -228,7 +228,7 @@ public class UserDetail {
     return this;
   }
 
-  public UserDetail addAccountGroupRolesItem(AccountGroupRolesAccountGroupRolesInner accountGroupRolesItem) {
+  public UserDetail addaccountGroupRolesItem(AccountGroupRolesAccountGroupRolesInner accountGroupRolesItem) {
     if (this.accountGroupRoles == null) {
       this.accountGroupRoles = new ArrayList<>();
     }
@@ -261,7 +261,7 @@ public class UserDetail {
     return this;
   }
 
-  public UserDetail addAllAccountGroupRolesItem(Role allAccountGroupRolesItem) {
+  public UserDetail addallAccountGroupRolesItem(Role allAccountGroupRolesItem) {
     if (this.allAccountGroupRoles == null) {
       this.allAccountGroupRoles = new ArrayList<>();
     }

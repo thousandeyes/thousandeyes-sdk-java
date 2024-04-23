@@ -21,11 +21,11 @@ import com.thousandeyes.api.client.ApiResponse;
 import com.thousandeyes.api.client.ApiRequest;
 import org.apache.commons.lang3.tuple.Pair;
 
+import com.thousandeyes.api.endpoint.tests.results.model.EndpointNetworkTopologyResultRequest;
 import com.thousandeyes.api.endpoint.tests.results.model.Error;
 import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointLocalNetworkTopologyDetails200Response;
 import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointLocalNetworks200Response;
 import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointLocalNetworksTopologies200Response;
-import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointLocalNetworksTopologiesRequest;
 import java.time.OffsetDateTime;
 import com.thousandeyes.api.endpoint.tests.results.model.UnauthorizedError;
 import com.thousandeyes.api.endpoint.tests.results.model.ValidationError;
@@ -55,7 +55,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class LocalNetworkTestsResultsApi {
   private final ApiClient apiClient;
 
@@ -114,8 +114,8 @@ public class LocalNetworkTestsResultsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -162,8 +162,8 @@ public class LocalNetworkTestsResultsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
   /**
@@ -174,12 +174,12 @@ public class LocalNetworkTestsResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param getEndpointLocalNetworksTopologiesRequest  (optional)
+   * @param endpointNetworkTopologyResultRequest  (optional)
    * @return GetEndpointLocalNetworksTopologies200Response
    * @throws ApiException if fails to make API call
    */
-  public GetEndpointLocalNetworksTopologies200Response getEndpointLocalNetworksTopologies(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointLocalNetworksTopologiesRequest getEndpointLocalNetworksTopologiesRequest) throws ApiException {
-    ApiResponse<GetEndpointLocalNetworksTopologies200Response> response = getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointLocalNetworksTopologiesRequest);
+  public GetEndpointLocalNetworksTopologies200Response getEndpointLocalNetworksTopologies(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
+    ApiResponse<GetEndpointLocalNetworksTopologies200Response> response = getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
     return response.getData();
   }
 
@@ -191,14 +191,14 @@ public class LocalNetworkTestsResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param getEndpointLocalNetworksTopologiesRequest  (optional)
+   * @param endpointNetworkTopologyResultRequest  (optional)
    * @return ApiResponse&lt;GetEndpointLocalNetworksTopologies200Response&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetEndpointLocalNetworksTopologies200Response> getEndpointLocalNetworksTopologiesWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointLocalNetworksTopologiesRequest getEndpointLocalNetworksTopologiesRequest) throws ApiException {
+  public ApiResponse<GetEndpointLocalNetworksTopologies200Response> getEndpointLocalNetworksTopologiesWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
     getEndpointLocalNetworksTopologiesValidateRequest();
 
-    var requestBuilder = getEndpointLocalNetworksTopologiesRequestBuilder(aid, window, startDate, endDate, cursor, getEndpointLocalNetworksTopologiesRequest);
+    var requestBuilder = getEndpointLocalNetworksTopologiesRequestBuilder(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
 
     return apiClient.send(requestBuilder.build(), GetEndpointLocalNetworksTopologies200Response.class);
   }
@@ -206,7 +206,7 @@ public class LocalNetworkTestsResultsApi {
   private void getEndpointLocalNetworksTopologiesValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointLocalNetworksTopologiesRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointLocalNetworksTopologiesRequest getEndpointLocalNetworksTopologiesRequest) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getEndpointLocalNetworksTopologiesRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -225,9 +225,9 @@ public class LocalNetworkTestsResultsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
-    requestBuilder.requestBody(getEndpointLocalNetworksTopologiesRequest);
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
+    requestBuilder.requestBody(endpointNetworkTopologyResultRequest);
     return requestBuilder;
   }
 }

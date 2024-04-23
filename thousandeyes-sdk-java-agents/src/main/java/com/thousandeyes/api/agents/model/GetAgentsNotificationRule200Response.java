@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetAgentsNotificationRule200Response.JSON_PROPERTY_NOTIFICATIONS,
   GetAgentsNotificationRule200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
 public class GetAgentsNotificationRule200Response {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
   private String ruleId;
@@ -61,7 +61,7 @@ public class GetAgentsNotificationRule200Response {
   private Boolean isDefault;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NOTIFICATIONS = "notifications";
   private Notification notifications;
@@ -200,7 +200,7 @@ public class GetAgentsNotificationRule200Response {
     return this;
   }
 
-  public GetAgentsNotificationRule200Response addAgentsItem(Agent agentsItem) {
+  public GetAgentsNotificationRule200Response addagentsItem(Agent agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

@@ -6,9 +6,6 @@ docs/AllLabelsApi.md
 docs/DashboardApi.md
 docs/EndpointTestApi.md
 docs/TestApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/labels/AgentApi.java
 src/main/java/com/thousandeyes/api/labels/AllLabelsApi.java
 src/main/java/com/thousandeyes/api/labels/DashboardApi.java
@@ -28,3 +25,8 @@ src/main/java/com/thousandeyes/api/labels/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/labels/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/labels/model/ValidationError.java
 src/main/java/com/thousandeyes/api/labels/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/labels/AgentApiTest.java
+src/test/java/com/thousandeyes/api/labels/AllLabelsApiTest.java
+src/test/java/com/thousandeyes/api/labels/DashboardApiTest.java
+src/test/java/com/thousandeyes/api/labels/EndpointTestApiTest.java
+src/test/java/com/thousandeyes/api/labels/TestApiTest.java

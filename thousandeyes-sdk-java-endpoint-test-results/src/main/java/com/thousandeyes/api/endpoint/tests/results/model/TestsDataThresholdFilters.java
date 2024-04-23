@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestsDataThresholdFilters.JSON_PROPERTY_FILTERS,
   TestsDataThresholdFilters.JSON_PROPERTY_CONDITIONAL_OPERATOR
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class TestsDataThresholdFilters {
   public static final String JSON_PROPERTY_FILTERS = "filters";
-  private List<TestsDataThresholdFilter> filters;
+  private List<TestsDataThresholdFilter> filters = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CONDITIONAL_OPERATOR = "conditionalOperator";
   private ConditionalOperator conditionalOperator;
@@ -52,7 +52,7 @@ public class TestsDataThresholdFilters {
     return this;
   }
 
-  public TestsDataThresholdFilters addFiltersItem(TestsDataThresholdFilter filtersItem) {
+  public TestsDataThresholdFilters addfiltersItem(TestsDataThresholdFilter filtersItem) {
     if (this.filters == null) {
       this.filters = new ArrayList<>();
     }

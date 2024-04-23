@@ -4,7 +4,7 @@ Endpoint Tests API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-22T10:43:50.756412+01:00[Europe/London]
+- Build date: 2024-04-23T16:57:45.019910+01:00[Europe/Lisbon]
 
 
 Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
@@ -44,7 +44,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-tests</artifactId>
-  <version>7.0.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -54,7 +54,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-tests:7.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-tests:1.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -67,7 +67,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-tests-7.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-tests-1.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

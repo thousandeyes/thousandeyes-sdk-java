@@ -48,7 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateStreamResponse.JSON_PROPERTY_TAG_MATCH,
   CreateStreamResponse.JSON_PROPERTY_AUDIT_OPERATION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.462611+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.814008+01:00[Europe/Lisbon]")
 public class CreateStreamResponse {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -72,7 +72,7 @@ public class CreateStreamResponse {
   private Map<String, String> customHeaders = new HashMap<>();
 
   public static final String JSON_PROPERTY_TAG_MATCH = "tagMatch";
-  private List<PutStreamTagMatchInner> tagMatch;
+  private List<PutStreamTagMatchInner> tagMatch = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUDIT_OPERATION = "auditOperation";
   private AuditOperation auditOperation;
@@ -233,7 +233,7 @@ public class CreateStreamResponse {
     return this;
   }
 
-  public CreateStreamResponse putCustomHeadersItem(String key, String customHeadersItem) {
+  public CreateStreamResponse putcustomHeadersItem(String key, String customHeadersItem) {
     if (this.customHeaders == null) {
       this.customHeaders = new HashMap<>();
     }
@@ -266,7 +266,7 @@ public class CreateStreamResponse {
     return this;
   }
 
-  public CreateStreamResponse addTagMatchItem(PutStreamTagMatchInner tagMatchItem) {
+  public CreateStreamResponse addtagMatchItem(PutStreamTagMatchInner tagMatchItem) {
     if (this.tagMatch == null) {
       this.tagMatch = new ArrayList<>();
     }

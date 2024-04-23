@@ -36,13 +36,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AccountGroupRolesAccountGroupRolesInner.JSON_PROPERTY_ACCOUNT_GROUP,
   AccountGroupRolesAccountGroupRolesInner.JSON_PROPERTY_ROLES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
 public class AccountGroupRolesAccountGroupRolesInner {
   public static final String JSON_PROPERTY_ACCOUNT_GROUP = "accountGroup";
   private AccountGroup1 accountGroup;
 
   public static final String JSON_PROPERTY_ROLES = "roles";
-  private List<Role> roles;
+  private List<Role> roles = new ArrayList<>();
 
   public AccountGroupRolesAccountGroupRolesInner() { 
   }
@@ -77,7 +77,7 @@ public class AccountGroupRolesAccountGroupRolesInner {
     return this;
   }
 
-  public AccountGroupRolesAccountGroupRolesInner addRolesItem(Role rolesItem) {
+  public AccountGroupRolesAccountGroupRolesInner addrolesItem(Role rolesItem) {
     if (this.roles == null) {
       this.roles = new ArrayList<>();
     }

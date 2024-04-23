@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   V7EndpointLabelsPost201Response.JSON_PROPERTY_FILTERS,
   V7EndpointLabelsPost201Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.474066+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.808719+01:00[Europe/Lisbon]")
 public class V7EndpointLabelsPost201Response {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -56,7 +56,7 @@ public class V7EndpointLabelsPost201Response {
   private MatchType matchType;
 
   public static final String JSON_PROPERTY_FILTERS = "filters";
-  private List<Filter> filters;
+  private List<Filter> filters = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -167,7 +167,7 @@ public class V7EndpointLabelsPost201Response {
     return this;
   }
 
-  public V7EndpointLabelsPost201Response addFiltersItem(Filter filtersItem) {
+  public V7EndpointLabelsPost201Response addfiltersItem(Filter filtersItem) {
     if (this.filters == null) {
       this.filters = new ArrayList<>();
     }

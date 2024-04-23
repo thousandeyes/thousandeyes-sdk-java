@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaginationLinksLinks.JSON_PROPERTY_NEXT,
   PaginationLinksLinks.JSON_PROPERTY_SELF
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
 public class PaginationLinksLinks {
   public static final String JSON_PROPERTY_PREVIOUS = "previous";
   private Link previous;

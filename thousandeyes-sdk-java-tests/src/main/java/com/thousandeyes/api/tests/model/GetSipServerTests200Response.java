@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetSipServerTests200Response.JSON_PROPERTY_TESTS,
   GetSipServerTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class GetSipServerTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<UnexpandedSipServerTest> tests;
+  private List<UnexpandedSipServerTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -52,7 +52,7 @@ public class GetSipServerTests200Response {
     return this;
   }
 
-  public GetSipServerTests200Response addTestsItem(UnexpandedSipServerTest testsItem) {
+  public GetSipServerTests200Response addtestsItem(UnexpandedSipServerTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

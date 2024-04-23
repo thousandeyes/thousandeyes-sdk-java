@@ -72,7 +72,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerInstantTest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsServerInstantTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
 public class DnsServerInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -108,10 +108,10 @@ public class DnsServerInstantTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabelsInner> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<TestSharedAccountsInner> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -156,7 +156,7 @@ public class DnsServerInstantTest {
   private DnsQueryClass dnsQueryClass;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public DnsServerInstantTest() { 
   }
@@ -444,7 +444,7 @@ public class DnsServerInstantTest {
     return this;
   }
 
-  public DnsServerInstantTest addDnsServersItem(TestDnsServer dnsServersItem) {
+  public DnsServerInstantTest adddnsServersItem(TestDnsServer dnsServersItem) {
     if (this.dnsServers == null) {
       this.dnsServers = new ArrayList<>();
     }

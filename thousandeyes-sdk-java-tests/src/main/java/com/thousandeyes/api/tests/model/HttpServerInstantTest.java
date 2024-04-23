@@ -90,7 +90,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE,
   HttpServerInstantTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class HttpServerInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -126,10 +126,10 @@ public class HttpServerInstantTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabelsInner> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<TestSharedAccountsInner> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -144,7 +144,7 @@ public class HttpServerInstantTest {
   private String contentRegex;
 
   public static final String JSON_PROPERTY_HEADERS = "headers";
-  private List<String> headers;
+  private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private TestCustomHeaders customHeaders;
@@ -228,7 +228,7 @@ public class HttpServerInstantTest {
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public HttpServerInstantTest() { 
   }
@@ -593,7 +593,7 @@ public class HttpServerInstantTest {
     return this;
   }
 
-  public HttpServerInstantTest addHeadersItem(String headersItem) {
+  public HttpServerInstantTest addheadersItem(String headersItem) {
     if (this.headers == null) {
       this.headers = new ArrayList<>();
     }

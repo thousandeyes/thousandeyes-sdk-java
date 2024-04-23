@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDashboardAsw.JSON_PROPERTY_REPEAT_EVERY,
   ApiDashboardAsw.JSON_PROPERTY_REPEAT_UNIT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiDashboardAsw {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -55,10 +55,10 @@ public class ApiDashboardAsw {
   private String name;
 
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
-  private Set<String> testIds;
+  private Set<String> testIds = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_START_TIMES = "startTimes";
-  private List<OffsetDateTime> startTimes;
+  private List<OffsetDateTime> startTimes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DURATION_IN_SECONDS = "durationInSeconds";
   private Long durationInSeconds;
@@ -130,7 +130,7 @@ public class ApiDashboardAsw {
     return this;
   }
 
-  public ApiDashboardAsw addTestIdsItem(String testIdsItem) {
+  public ApiDashboardAsw addtestIdsItem(String testIdsItem) {
     if (this.testIds == null) {
       this.testIds = new LinkedHashSet<>();
     }
@@ -164,7 +164,7 @@ public class ApiDashboardAsw {
     return this;
   }
 
-  public ApiDashboardAsw addStartTimesItem(OffsetDateTime startTimesItem) {
+  public ApiDashboardAsw addstartTimesItem(OffsetDateTime startTimesItem) {
     if (this.startTimes == null) {
       this.startTimes = new ArrayList<>();
     }

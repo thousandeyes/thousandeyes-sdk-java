@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionDetailTestResult.JSON_PROPERTY_MARKERS,
   WebTransactionDetailTestResult.JSON_PROPERTY_PAGES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.800492+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
 public class WebTransactionDetailTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;
@@ -73,10 +73,10 @@ public class WebTransactionDetailTestResult {
   private String errorDetails;
 
   public static final String JSON_PROPERTY_MARKERS = "markers";
-  private List<Marker> markers;
+  private List<Marker> markers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PAGES = "pages";
-  private List<Page> pages;
+  private List<Page> pages = new ArrayList<>();
 
   public WebTransactionDetailTestResult() { 
   }
@@ -244,7 +244,7 @@ public class WebTransactionDetailTestResult {
     return this;
   }
 
-  public WebTransactionDetailTestResult addMarkersItem(Marker markersItem) {
+  public WebTransactionDetailTestResult addmarkersItem(Marker markersItem) {
     if (this.markers == null) {
       this.markers = new ArrayList<>();
     }
@@ -277,7 +277,7 @@ public class WebTransactionDetailTestResult {
     return this;
   }
 
-  public WebTransactionDetailTestResult addPagesItem(Page pagesItem) {
+  public WebTransactionDetailTestResult addpagesItem(Page pagesItem) {
     if (this.pages == null) {
       this.pages = new ArrayList<>();
     }

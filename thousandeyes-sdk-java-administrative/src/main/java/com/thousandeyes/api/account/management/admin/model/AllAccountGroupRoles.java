@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AllAccountGroupRoles.JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
 public class AllAccountGroupRoles {
   public static final String JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES = "allAccountGroupRoles";
-  private List<Role> allAccountGroupRoles;
+  private List<Role> allAccountGroupRoles = new ArrayList<>();
 
   public AllAccountGroupRoles() { 
   }
@@ -47,7 +47,7 @@ public class AllAccountGroupRoles {
     return this;
   }
 
-  public AllAccountGroupRoles addAllAccountGroupRolesItem(Role allAccountGroupRolesItem) {
+  public AllAccountGroupRoles addallAccountGroupRolesItem(Role allAccountGroupRolesItem) {
     if (this.allAccountGroupRoles == null) {
       this.allAccountGroupRoles = new ArrayList<>();
     }

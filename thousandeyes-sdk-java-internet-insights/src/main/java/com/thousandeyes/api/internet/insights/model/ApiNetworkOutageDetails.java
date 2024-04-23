@@ -49,7 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNetworkOutageDetails.JSON_PROPERTY_AFFECTED_AGENTS,
   ApiNetworkOutageDetails.JSON_PROPERTY_AFFECTED_LOCATIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.510438+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.976231+01:00[Europe/Lisbon]")
 public class ApiNetworkOutageDetails {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -82,16 +82,16 @@ public class ApiNetworkOutageDetails {
   private Long duration;
 
   public static final String JSON_PROPERTY_AFFECTED_TESTS = "affectedTests";
-  private Set<ApiAffectedTest> affectedTests;
+  private Set<ApiAffectedTest> affectedTests = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_DOMAINS = "affectedDomains";
-  private Set<String> affectedDomains;
+  private Set<String> affectedDomains = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_AGENTS = "affectedAgents";
-  private Set<ApiAffectedAgent> affectedAgents;
+  private Set<ApiAffectedAgent> affectedAgents = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_LOCATIONS = "affectedLocations";
-  private Set<ApiNetworkOutageAffectedLocation> affectedLocations;
+  private Set<ApiNetworkOutageAffectedLocation> affectedLocations = new LinkedHashSet<>();
 
   public ApiNetworkOutageDetails() { 
   }
@@ -351,7 +351,7 @@ public class ApiNetworkOutageDetails {
     return this;
   }
 
-  public ApiNetworkOutageDetails addAffectedTestsItem(ApiAffectedTest affectedTestsItem) {
+  public ApiNetworkOutageDetails addaffectedTestsItem(ApiAffectedTest affectedTestsItem) {
     if (this.affectedTests == null) {
       this.affectedTests = new LinkedHashSet<>();
     }
@@ -385,7 +385,7 @@ public class ApiNetworkOutageDetails {
     return this;
   }
 
-  public ApiNetworkOutageDetails addAffectedDomainsItem(String affectedDomainsItem) {
+  public ApiNetworkOutageDetails addaffectedDomainsItem(String affectedDomainsItem) {
     if (this.affectedDomains == null) {
       this.affectedDomains = new LinkedHashSet<>();
     }
@@ -419,7 +419,7 @@ public class ApiNetworkOutageDetails {
     return this;
   }
 
-  public ApiNetworkOutageDetails addAffectedAgentsItem(ApiAffectedAgent affectedAgentsItem) {
+  public ApiNetworkOutageDetails addaffectedAgentsItem(ApiAffectedAgent affectedAgentsItem) {
     if (this.affectedAgents == null) {
       this.affectedAgents = new LinkedHashSet<>();
     }
@@ -453,7 +453,7 @@ public class ApiNetworkOutageDetails {
     return this;
   }
 
-  public ApiNetworkOutageDetails addAffectedLocationsItem(ApiNetworkOutageAffectedLocation affectedLocationsItem) {
+  public ApiNetworkOutageDetails addaffectedLocationsItem(ApiNetworkOutageAffectedLocation affectedLocationsItem) {
     if (this.affectedLocations == null) {
       this.affectedLocations = new LinkedHashSet<>();
     }

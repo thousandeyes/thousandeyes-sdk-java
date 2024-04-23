@@ -27,6 +27,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum State {
   
+  ACTIVE("active"),
+  
   CLEAR("clear"),
   
   TRIGGER("trigger");

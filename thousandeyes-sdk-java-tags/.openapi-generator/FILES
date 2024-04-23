@@ -3,9 +3,6 @@ api/openapi.yaml
 build.gradle
 docs/TagAssignmentApi.md
 docs/TagsApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/tags/TagAssignmentApi.java
 src/main/java/com/thousandeyes/api/tags/TagsApi.java
 src/main/java/com/thousandeyes/api/tags/model/AccessType.java
@@ -30,3 +27,5 @@ src/main/java/com/thousandeyes/api/tags/model/TagCollection.java
 src/main/java/com/thousandeyes/api/tags/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/tags/model/ValidationError.java
 src/main/java/com/thousandeyes/api/tags/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/tags/TagAssignmentApiTest.java
+src/test/java/com/thousandeyes/api/tags/TagsApiTest.java

@@ -35,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   OrganizationsQuotasAssignOrganizationsInner.JSON_PROPERTY_ORG_ID,
   OrganizationsQuotasAssignOrganizationsInner.JSON_PROPERTY_ACCOUNT_GROUPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.525987+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.021172+01:00[Europe/Lisbon]")
 public class OrganizationsQuotasAssignOrganizationsInner {
   public static final String JSON_PROPERTY_ORG_ID = "orgId";
   private String orgId;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUPS = "accountGroups";
-  private List<AccountGroupQuota> accountGroups;
+  private List<AccountGroupQuota> accountGroups = new ArrayList<>();
 
   public OrganizationsQuotasAssignOrganizationsInner() { 
   }
@@ -76,7 +76,7 @@ public class OrganizationsQuotasAssignOrganizationsInner {
     return this;
   }
 
-  public OrganizationsQuotasAssignOrganizationsInner addAccountGroupsItem(AccountGroupQuota accountGroupsItem) {
+  public OrganizationsQuotasAssignOrganizationsInner addaccountGroupsItem(AccountGroupQuota accountGroupsItem) {
     if (this.accountGroups == null) {
       this.accountGroups = new ArrayList<>();
     }

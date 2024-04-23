@@ -37,19 +37,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestRequest.JSON_PROPERTY_ALERT_RULES,
   TestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class TestRequest {
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels;
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts;
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules;
+  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
+  private List<TestRequestAllOfAgents> agents = new ArrayList<>();
 
   public TestRequest() { 
   }
@@ -59,7 +59,7 @@ public class TestRequest {
     return this;
   }
 
-  public TestRequest addLabelsItem(String labelsItem) {
+  public TestRequest addlabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -92,7 +92,7 @@ public class TestRequest {
     return this;
   }
 
-  public TestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+  public TestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -125,7 +125,7 @@ public class TestRequest {
     return this;
   }
 
-  public TestRequest addAlertRulesItem(String alertRulesItem) {
+  public TestRequest addalertRulesItem(String alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -158,7 +158,7 @@ public class TestRequest {
     return this;
   }
 
-  public TestRequest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+  public TestRequest addagentsItem(TestRequestAllOfAgents agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }

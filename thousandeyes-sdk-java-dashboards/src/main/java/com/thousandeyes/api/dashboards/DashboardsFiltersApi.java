@@ -32,7 +32,6 @@ import com.thousandeyes.api.dashboards.model.ValidationError;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -55,7 +54,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class DashboardsFiltersApi {
   private final ApiClient apiClient;
 
@@ -88,8 +87,8 @@ public class DashboardsFiltersApi {
     createDashboardFilterValidateRequest(apiContextFilterRequest);
 
     var requestBuilder = createDashboardFilterRequestBuilder(apiContextFilterRequest, aid);
-    return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
 
+    return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
   }
 
   private void createDashboardFilterValidateRequest(ApiContextFilterRequest apiContextFilterRequest) throws ApiException {
@@ -142,8 +141,8 @@ public class DashboardsFiltersApi {
     deleteDashboardFilterByIdValidateRequest(id);
 
     var requestBuilder = deleteDashboardFilterByIdRequestBuilder(id, aid);
-    return apiClient.send(requestBuilder.build(), Void.class);
 
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void deleteDashboardFilterByIdValidateRequest(String id) throws ApiException {
@@ -168,7 +167,7 @@ public class DashboardsFiltersApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -197,8 +196,8 @@ public class DashboardsFiltersApi {
     getAllDashboardFiltersValidateRequest();
 
     var requestBuilder = getAllDashboardFiltersRequestBuilder(searchPattern, aid);
-    return apiClient.send(requestBuilder.build(), ApiContextFiltersResponse.class);
 
+    return apiClient.send(requestBuilder.build(), ApiContextFiltersResponse.class);
   }
 
   private void getAllDashboardFiltersValidateRequest() throws ApiException {
@@ -248,8 +247,8 @@ public class DashboardsFiltersApi {
     getDashboardFilterByIdValidateRequest(id);
 
     var requestBuilder = getDashboardFilterByIdRequestBuilder(id, aid);
-    return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
 
+    return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
   }
 
   private void getDashboardFilterByIdValidateRequest(String id) throws ApiException {
@@ -305,8 +304,8 @@ public class DashboardsFiltersApi {
     updateDashboardFilterByIdValidateRequest(id, apiContextFilterRequest);
 
     var requestBuilder = updateDashboardFilterByIdRequestBuilder(id, apiContextFilterRequest, aid);
-    return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
 
+    return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
   }
 
   private void updateDashboardFilterByIdValidateRequest(String id, ApiContextFilterRequest apiContextFilterRequest) throws ApiException {

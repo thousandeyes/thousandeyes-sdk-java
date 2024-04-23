@@ -38,13 +38,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PutStream.JSON_PROPERTY_TAG_MATCH,
   PutStream.JSON_PROPERTY_ENABLED
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.462611+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.814008+01:00[Europe/Lisbon]")
 public class PutStream {
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
 
   public static final String JSON_PROPERTY_TAG_MATCH = "tagMatch";
-  private List<PutStreamTagMatchInner> tagMatch;
+  private List<PutStreamTagMatchInner> tagMatch = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
@@ -57,7 +57,7 @@ public class PutStream {
     return this;
   }
 
-  public PutStream putCustomHeadersItem(String key, String customHeadersItem) {
+  public PutStream putcustomHeadersItem(String key, String customHeadersItem) {
     if (this.customHeaders == null) {
       this.customHeaders = new HashMap<>();
     }
@@ -90,7 +90,7 @@ public class PutStream {
     return this;
   }
 
-  public PutStream addTagMatchItem(PutStreamTagMatchInner tagMatchItem) {
+  public PutStream addtagMatchItem(PutStreamTagMatchInner tagMatchItem) {
     if (this.tagMatch == null) {
       this.tagMatch = new ArrayList<>();
     }

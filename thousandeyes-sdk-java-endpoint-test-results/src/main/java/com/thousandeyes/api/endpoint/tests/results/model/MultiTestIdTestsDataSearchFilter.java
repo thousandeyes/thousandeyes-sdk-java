@@ -35,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MultiTestIdTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
   MultiTestIdTestsDataSearchFilter.JSON_PROPERTY_TEST_ID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class MultiTestIdTestsDataSearchFilter {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
-  private List<UUID> agentId;
+  private List<UUID> agentId = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
-  private List<String> testId;
+  private List<String> testId = new ArrayList<>();
 
   public MultiTestIdTestsDataSearchFilter() { 
   }
@@ -51,7 +51,7 @@ public class MultiTestIdTestsDataSearchFilter {
     return this;
   }
 
-  public MultiTestIdTestsDataSearchFilter addAgentIdItem(UUID agentIdItem) {
+  public MultiTestIdTestsDataSearchFilter addagentIdItem(UUID agentIdItem) {
     if (this.agentId == null) {
       this.agentId = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class MultiTestIdTestsDataSearchFilter {
     return this;
   }
 
-  public MultiTestIdTestsDataSearchFilter addTestIdItem(String testIdItem) {
+  public MultiTestIdTestsDataSearchFilter addtestIdItem(String testIdItem) {
     if (this.testId == null) {
       this.testId = new ArrayList<>();
     }

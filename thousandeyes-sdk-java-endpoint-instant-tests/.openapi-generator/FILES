@@ -4,9 +4,6 @@ build.gradle
 docs/AgentToServerInstantScheduledTestApi.md
 docs/HttpServerInstantScheduledTestApi.md
 docs/RunExistingTestApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/AgentToServerInstantScheduledTestApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/HttpServerInstantScheduledTestApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/RunExistingTestApi.java
@@ -42,3 +39,6 @@ src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/TestSslVersionId
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/ValidationError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/endpoint/tests/instant/AgentToServerInstantScheduledTestApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/instant/HttpServerInstantScheduledTestApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/instant/RunExistingTestApiTest.java

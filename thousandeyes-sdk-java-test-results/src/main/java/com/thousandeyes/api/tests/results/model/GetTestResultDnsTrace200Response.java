@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetTestResultDnsTrace200Response.JSON_PROPERTY_TEST,
   GetTestResultDnsTrace200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.800492+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
 public class GetTestResultDnsTrace200Response {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private OffsetDateTime startDate;
@@ -50,7 +50,7 @@ public class GetTestResultDnsTrace200Response {
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_RESULTS = "results";
-  private List<DnsTraceTestResult> results;
+  private List<DnsTraceTestResult> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEST = "test";
   private SimpleTest test;
@@ -106,7 +106,7 @@ public class GetTestResultDnsTrace200Response {
     return this;
   }
 
-  public GetTestResultDnsTrace200Response addResultsItem(DnsTraceTestResult resultsItem) {
+  public GetTestResultDnsTrace200Response addresultsItem(DnsTraceTestResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

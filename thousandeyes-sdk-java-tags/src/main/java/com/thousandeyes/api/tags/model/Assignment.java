@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Assignment.JSON_PROPERTY_ID,
   Assignment.JSON_PROPERTY_TYPE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.463430+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.771341+01:00[Europe/Lisbon]")
 public class Assignment {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

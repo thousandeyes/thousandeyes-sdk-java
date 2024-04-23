@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchRequest.JSON_PROPERTY_THRESHOLD_FILTER,
   AgentSearchRequest.JSON_PROPERTY_SEARCH_SORT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.660146+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
 public class AgentSearchRequest {
   public static final String JSON_PROPERTY_SEARCH_FILTERS = "searchFilters";
   private AgentSearchRequestSearchFilters searchFilters;
@@ -47,7 +47,7 @@ public class AgentSearchRequest {
   private AgentThresholdFilters thresholdFilter;
 
   public static final String JSON_PROPERTY_SEARCH_SORT = "searchSort";
-  private List<AgentSearchSort> searchSort;
+  private List<AgentSearchSort> searchSort = new ArrayList<>();
 
   public AgentSearchRequest() { 
   }
@@ -107,7 +107,7 @@ public class AgentSearchRequest {
     return this;
   }
 
-  public AgentSearchRequest addSearchSortItem(AgentSearchSort searchSortItem) {
+  public AgentSearchRequest addsearchSortItem(AgentSearchSort searchSortItem) {
     if (this.searchSort == null) {
       this.searchSort = new ArrayList<>();
     }

@@ -6,9 +6,6 @@ docs/PermissionsApi.md
 docs/RolesApi.md
 docs/UserEventsApi.md
 docs/UsersApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/account/management/admin/AccountGroupsApi.java
 src/main/java/com/thousandeyes/api/account/management/admin/PermissionsApi.java
 src/main/java/com/thousandeyes/api/account/management/admin/RolesApi.java
@@ -78,3 +75,8 @@ src/main/java/com/thousandeyes/api/account/management/admin/model/UserRequestBod
 src/main/java/com/thousandeyes/api/account/management/admin/model/Users.java
 src/main/java/com/thousandeyes/api/account/management/admin/model/ValidationError.java
 src/main/java/com/thousandeyes/api/account/management/admin/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/account/management/admin/AccountGroupsApiTest.java
+src/test/java/com/thousandeyes/api/account/management/admin/PermissionsApiTest.java
+src/test/java/com/thousandeyes/api/account/management/admin/RolesApiTest.java
+src/test/java/com/thousandeyes/api/account/management/admin/UserEventsApiTest.java
+src/test/java/com/thousandeyes/api/account/management/admin/UsersApiTest.java

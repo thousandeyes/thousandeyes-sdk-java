@@ -49,13 +49,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CloudAgentDetail.JSON_PROPERTY_TESTS,
   CloudAgentDetail.JSON_PROPERTY_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
 public class CloudAgentDetail {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
-  private List<String> ipAddresses;
+  private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESSES = "publicIpAddresses";
-  private List<String> publicIpAddresses;
+  private List<String> publicIpAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
   private String network;
@@ -88,10 +88,10 @@ public class CloudAgentDetail {
   private String agentType;
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<SimpleTest> tests;
+  private List<SimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<Labels> labels;
+  private List<Labels> labels = new ArrayList<>();
 
   public CloudAgentDetail() { 
   }
@@ -345,7 +345,7 @@ public class CloudAgentDetail {
     return this;
   }
 
-  public CloudAgentDetail addTestsItem(SimpleTest testsItem) {
+  public CloudAgentDetail addtestsItem(SimpleTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

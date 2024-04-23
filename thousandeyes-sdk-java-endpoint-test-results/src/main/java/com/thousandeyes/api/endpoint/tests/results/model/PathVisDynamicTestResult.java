@@ -54,7 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDynamicTestResult.JSON_PROPERTY_LOCATION,
   PathVisDynamicTestResult.JSON_PROPERTY_PATH_TRACES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class PathVisDynamicTestResult {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -99,7 +99,7 @@ public class PathVisDynamicTestResult {
   private String location;
 
   public static final String JSON_PROPERTY_PATH_TRACES = "pathTraces";
-  private List<PathVisEndpoint> pathTraces;
+  private List<PathVisEndpoint> pathTraces = new ArrayList<>();
 
   public PathVisDynamicTestResult() { 
   }
@@ -409,7 +409,7 @@ public class PathVisDynamicTestResult {
     return this;
   }
 
-  public PathVisDynamicTestResult addPathTracesItem(PathVisEndpoint pathTracesItem) {
+  public PathVisDynamicTestResult addpathTracesItem(PathVisEndpoint pathTracesItem) {
     if (this.pathTraces == null) {
       this.pathTraces = new ArrayList<>();
     }

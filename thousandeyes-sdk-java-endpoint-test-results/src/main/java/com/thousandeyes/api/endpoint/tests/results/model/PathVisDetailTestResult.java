@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDetailTestResult.JSON_PROPERTY_PATH_TRACES,
   PathVisDetailTestResult.JSON_PROPERTY_VPN_PATH_TRACES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class PathVisDetailTestResult {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -87,10 +87,10 @@ public class PathVisDetailTestResult {
   private String sourcePrefix;
 
   public static final String JSON_PROPERTY_PATH_TRACES = "pathTraces";
-  private List<PathVisRoute> pathTraces;
+  private List<PathVisRoute> pathTraces = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VPN_PATH_TRACES = "vpnPathTraces";
-  private List<PathVisRoute> vpnPathTraces;
+  private List<PathVisRoute> vpnPathTraces = new ArrayList<>();
 
   public PathVisDetailTestResult() { 
   }
@@ -333,7 +333,7 @@ public class PathVisDetailTestResult {
     return this;
   }
 
-  public PathVisDetailTestResult addPathTracesItem(PathVisRoute pathTracesItem) {
+  public PathVisDetailTestResult addpathTracesItem(PathVisRoute pathTracesItem) {
     if (this.pathTraces == null) {
       this.pathTraces = new ArrayList<>();
     }
@@ -366,7 +366,7 @@ public class PathVisDetailTestResult {
     return this;
   }
 
-  public PathVisDetailTestResult addVpnPathTracesItem(PathVisRoute vpnPathTracesItem) {
+  public PathVisDetailTestResult addvpnPathTracesItem(PathVisRoute vpnPathTracesItem) {
     if (this.vpnPathTraces == null) {
       this.vpnPathTraces = new ArrayList<>();
     }

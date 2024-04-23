@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LegacyDashboardSnapshot.JSON_PROPERTY_PERMALINK,
   LegacyDashboardSnapshot.JSON_PROPERTY_API_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class LegacyDashboardSnapshot {
   public static final String JSON_PROPERTY_ACCOUNT_ID = "accountId";
   private Long accountId;
@@ -55,7 +55,7 @@ public class LegacyDashboardSnapshot {
   private String permalink;
 
   public static final String JSON_PROPERTY_API_LINKS = "apiLinks";
-  private List<Map<String, Object>> apiLinks;
+  private List<Map<String, Object>> apiLinks = new ArrayList<>();
 
   public LegacyDashboardSnapshot() { 
   }
@@ -165,7 +165,7 @@ public class LegacyDashboardSnapshot {
     return this;
   }
 
-  public LegacyDashboardSnapshot addApiLinksItem(Map<String, Object> apiLinksItem) {
+  public LegacyDashboardSnapshot addapiLinksItem(Map<String, Object> apiLinksItem) {
     if (this.apiLinks == null) {
       this.apiLinks = new ArrayList<>();
     }

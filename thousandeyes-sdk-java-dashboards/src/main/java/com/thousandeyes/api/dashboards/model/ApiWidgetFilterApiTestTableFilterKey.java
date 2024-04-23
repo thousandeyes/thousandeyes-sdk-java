@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiWidgetFilterApiTestTableFilterKey.JSON_PROPERTY_FILTERS,
   ApiWidgetFilterApiTestTableFilterKey.JSON_PROPERTY_TYPE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiWidgetFilterApiTestTableFilterKey {
   public static final String JSON_PROPERTY_FILTERS = "filters";
-  private List<ApiMultiSearchFilterApiTestTableFilterKey> filters;
+  private List<ApiMultiSearchFilterApiTestTableFilterKey> filters = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private TestTableFilterType type;
@@ -52,7 +52,7 @@ public class ApiWidgetFilterApiTestTableFilterKey {
     return this;
   }
 
-  public ApiWidgetFilterApiTestTableFilterKey addFiltersItem(ApiMultiSearchFilterApiTestTableFilterKey filtersItem) {
+  public ApiWidgetFilterApiTestTableFilterKey addfiltersItem(ApiMultiSearchFilterApiTestTableFilterKey filtersItem) {
     if (this.filters == null) {
       this.filters = new ArrayList<>();
     }

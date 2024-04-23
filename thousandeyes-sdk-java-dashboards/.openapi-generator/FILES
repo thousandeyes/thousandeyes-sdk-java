@@ -4,9 +4,6 @@ build.gradle
 docs/DashboardSnapshotsApi.md
 docs/DashboardsApi.md
 docs/DashboardsFiltersApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/dashboards/DashboardSnapshotsApi.java
 src/main/java/com/thousandeyes/api/dashboards/DashboardsApi.java
 src/main/java/com/thousandeyes/api/dashboards/DashboardsFiltersApi.java

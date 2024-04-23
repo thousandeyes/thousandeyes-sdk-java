@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LabelsLabelsInner.JSON_PROPERTY_MATCH_TYPE,
   LabelsLabelsInner.JSON_PROPERTY_FILTERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.474066+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.808719+01:00[Europe/Lisbon]")
 public class LabelsLabelsInner {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -59,7 +59,7 @@ public class LabelsLabelsInner {
   private MatchType matchType;
 
   public static final String JSON_PROPERTY_FILTERS = "filters";
-  private List<Filter> filters;
+  private List<Filter> filters = new ArrayList<>();
 
   public LabelsLabelsInner() { 
   }
@@ -192,7 +192,7 @@ public class LabelsLabelsInner {
     return this;
   }
 
-  public LabelsLabelsInner addFiltersItem(Filter filtersItem) {
+  public LabelsLabelsInner addfiltersItem(Filter filtersItem) {
     if (this.filters == null) {
       this.filters = new ArrayList<>();
     }

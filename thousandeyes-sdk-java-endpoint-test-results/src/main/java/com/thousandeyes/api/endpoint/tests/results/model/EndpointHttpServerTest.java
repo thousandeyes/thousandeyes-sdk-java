@@ -75,7 +75,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTest.JSON_PROPERTY_USER_AGENT,
   EndpointHttpServerTest.JSON_PROPERTY_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class EndpointHttpServerTest {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -129,7 +129,7 @@ public class EndpointHttpServerTest {
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules;
+  private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private EndpointTestAuthType authType = EndpointTestAuthType.NONE;
@@ -174,7 +174,7 @@ public class EndpointHttpServerTest {
   private String userAgent;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabelsInner> labels = new ArrayList<>();
 
   public EndpointHttpServerTest() { 
   }
@@ -579,7 +579,7 @@ public class EndpointHttpServerTest {
     return this;
   }
 
-  public EndpointHttpServerTest addAlertRulesItem(AlertRule alertRulesItem) {
+  public EndpointHttpServerTest addalertRulesItem(AlertRule alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }

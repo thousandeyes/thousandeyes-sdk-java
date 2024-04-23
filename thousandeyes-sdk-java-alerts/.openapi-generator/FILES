@@ -4,9 +4,6 @@ build.gradle
 docs/AlertRulesApi.md
 docs/AlertSuppressionWindowsApi.md
 docs/AlertsApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/alerts/AlertRulesApi.java
 src/main/java/com/thousandeyes/api/alerts/AlertSuppressionWindowsApi.java
 src/main/java/com/thousandeyes/api/alerts/AlertsApi.java
@@ -69,3 +66,6 @@ src/main/java/com/thousandeyes/api/alerts/model/UnexpandedTest.java
 src/main/java/com/thousandeyes/api/alerts/model/ValidationError.java
 src/main/java/com/thousandeyes/api/alerts/model/ValidationErrorAllOfErrors.java
 src/main/java/com/thousandeyes/api/alerts/model/WebhookIntegrationType.java
+src/test/java/com/thousandeyes/api/alerts/AlertRulesApiTest.java
+src/test/java/com/thousandeyes/api/alerts/AlertSuppressionWindowsApiTest.java
+src/test/java/com/thousandeyes/api/alerts/AlertsApiTest.java

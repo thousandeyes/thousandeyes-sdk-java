@@ -33,7 +33,6 @@ import com.thousandeyes.api.credentials.model.ValidationError;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -56,7 +55,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.809660+01:00[Europe/Lisbon]")
 public class CredentialsApi {
   private final ApiClient apiClient;
 
@@ -89,8 +88,8 @@ public class CredentialsApi {
     createTransactionTestsCredentialValidateRequest(credentialRequest);
 
     var requestBuilder = createTransactionTestsCredentialRequestBuilder(credentialRequest, aid);
-    return apiClient.send(requestBuilder.build(), CredentialWithoutValue.class);
 
+    return apiClient.send(requestBuilder.build(), CredentialWithoutValue.class);
   }
 
   private void createTransactionTestsCredentialValidateRequest(CredentialRequest credentialRequest) throws ApiException {
@@ -143,8 +142,8 @@ public class CredentialsApi {
     deleteTransactionTestsCredentialValidateRequest(id);
 
     var requestBuilder = deleteTransactionTestsCredentialRequestBuilder(id, aid);
-    return apiClient.send(requestBuilder.build(), Void.class);
 
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void deleteTransactionTestsCredentialValidateRequest(String id) throws ApiException {
@@ -169,7 +168,7 @@ public class CredentialsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -198,8 +197,8 @@ public class CredentialsApi {
     getTransactionTestsCredentialDetailsValidateRequest(id);
 
     var requestBuilder = getTransactionTestsCredentialDetailsRequestBuilder(id, aid);
-    return apiClient.send(requestBuilder.build(), Credential.class);
 
+    return apiClient.send(requestBuilder.build(), Credential.class);
   }
 
   private void getTransactionTestsCredentialDetailsValidateRequest(String id) throws ApiException {
@@ -251,8 +250,8 @@ public class CredentialsApi {
     getTransactionTestsCredentialsListValidateRequest();
 
     var requestBuilder = getTransactionTestsCredentialsListRequestBuilder(aid);
-    return apiClient.send(requestBuilder.build(), GetTransactionTestsCredentialsList200Response.class);
 
+    return apiClient.send(requestBuilder.build(), GetTransactionTestsCredentialsList200Response.class);
   }
 
   private void getTransactionTestsCredentialsListValidateRequest() throws ApiException {
@@ -303,8 +302,8 @@ public class CredentialsApi {
     updateTransactionTestsCredentialValidateRequest(id, credentialRequest);
 
     var requestBuilder = updateTransactionTestsCredentialRequestBuilder(id, credentialRequest, aid);
-    return apiClient.send(requestBuilder.build(), CredentialWithoutValue.class);
 
+    return apiClient.send(requestBuilder.build(), CredentialWithoutValue.class);
   }
 
   private void updateTransactionTestsCredentialValidateRequest(String id, CredentialRequest credentialRequest) throws ApiException {

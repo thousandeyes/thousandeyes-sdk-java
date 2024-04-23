@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DnsSecTests.JSON_PROPERTY_TESTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class DnsSecTests {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<UnexpandedDnsSecTest> tests;
+  private List<UnexpandedDnsSecTest> tests = new ArrayList<>();
 
   public DnsSecTests() { 
   }
@@ -47,7 +47,7 @@ public class DnsSecTests {
     return this;
   }
 
-  public DnsSecTests addTestsItem(UnexpandedDnsSecTest testsItem) {
+  public DnsSecTests addtestsItem(UnexpandedDnsSecTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }

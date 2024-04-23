@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetBGPMonitors200Response.JSON_PROPERTY_MONITORS,
   GetBGPMonitors200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.468865+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.809279+01:00[Europe/Lisbon]")
 public class GetBGPMonitors200Response {
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors;
+  private List<Monitor> monitors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -52,7 +52,7 @@ public class GetBGPMonitors200Response {
     return this;
   }
 
-  public GetBGPMonitors200Response addMonitorsItem(Monitor monitorsItem) {
+  public GetBGPMonitors200Response addmonitorsItem(Monitor monitorsItem) {
     if (this.monitors == null) {
       this.monitors = new ArrayList<>();
     }

@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetSuppressionWindows200Response.JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS,
   GetSuppressionWindows200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.783028+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.250800+01:00[Europe/Lisbon]")
 public class GetSuppressionWindows200Response {
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS = "alertSuppressionWindows";
-  private List<AlertSuppressionWindowsAlertSuppressionWindowsInner> alertSuppressionWindows;
+  private List<AlertSuppressionWindowsAlertSuppressionWindowsInner> alertSuppressionWindows = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -52,7 +52,7 @@ public class GetSuppressionWindows200Response {
     return this;
   }
 
-  public GetSuppressionWindows200Response addAlertSuppressionWindowsItem(AlertSuppressionWindowsAlertSuppressionWindowsInner alertSuppressionWindowsItem) {
+  public GetSuppressionWindows200Response addalertSuppressionWindowsItem(AlertSuppressionWindowsAlertSuppressionWindowsInner alertSuppressionWindowsItem) {
     if (this.alertSuppressionWindows == null) {
       this.alertSuppressionWindows = new ArrayList<>();
     }

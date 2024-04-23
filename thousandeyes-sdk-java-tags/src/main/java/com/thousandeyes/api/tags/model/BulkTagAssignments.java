@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   BulkTagAssignments.JSON_PROPERTY_TAGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.463430+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.771341+01:00[Europe/Lisbon]")
 public class BulkTagAssignments {
   public static final String JSON_PROPERTY_TAGS = "tags";
-  private List<BulkTagAssignment> tags;
+  private List<BulkTagAssignment> tags = new ArrayList<>();
 
   public BulkTagAssignments() { 
   }
@@ -47,7 +47,7 @@ public class BulkTagAssignments {
     return this;
   }
 
-  public BulkTagAssignments addTagsItem(BulkTagAssignment tagsItem) {
+  public BulkTagAssignments addtagsItem(BulkTagAssignment tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }

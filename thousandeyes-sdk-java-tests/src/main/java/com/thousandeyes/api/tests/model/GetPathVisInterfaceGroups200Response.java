@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetPathVisInterfaceGroups200Response.JSON_PROPERTY_PATH_VIS_INTERFACE_GROUPS,
   GetPathVisInterfaceGroups200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class GetPathVisInterfaceGroups200Response {
   public static final String JSON_PROPERTY_PATH_VIS_INTERFACE_GROUPS = "pathVisInterfaceGroups";
-  private List<InterfaceGroup> pathVisInterfaceGroups;
+  private List<InterfaceGroup> pathVisInterfaceGroups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -52,7 +52,7 @@ public class GetPathVisInterfaceGroups200Response {
     return this;
   }
 
-  public GetPathVisInterfaceGroups200Response addPathVisInterfaceGroupsItem(InterfaceGroup pathVisInterfaceGroupsItem) {
+  public GetPathVisInterfaceGroups200Response addpathVisInterfaceGroupsItem(InterfaceGroup pathVisInterfaceGroupsItem) {
     if (this.pathVisInterfaceGroups == null) {
       this.pathVisInterfaceGroups = new ArrayList<>();
     }

@@ -93,7 +93,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_AGENTS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_CREDENTIALS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.769480+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.146438+01:00[Europe/Lisbon]")
 public class WebTransactionInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -129,10 +129,10 @@ public class WebTransactionInstantTestRequest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels;
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts;
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -246,7 +246,7 @@ public class WebTransactionInstantTestRequest {
   private List<InstantTestRequestAgentsInner> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<String> credentials;
+  private List<String> credentials = new ArrayList<>();
 
   public WebTransactionInstantTestRequest() { 
   }
@@ -475,7 +475,7 @@ public class WebTransactionInstantTestRequest {
     return this;
   }
 
-  public WebTransactionInstantTestRequest addLabelsItem(String labelsItem) {
+  public WebTransactionInstantTestRequest addlabelsItem(String labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -508,7 +508,7 @@ public class WebTransactionInstantTestRequest {
     return this;
   }
 
-  public WebTransactionInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+  public WebTransactionInstantTestRequest addsharedWithAccountsItem(String sharedWithAccountsItem) {
     if (this.sharedWithAccounts == null) {
       this.sharedWithAccounts = new ArrayList<>();
     }
@@ -1445,7 +1445,7 @@ public class WebTransactionInstantTestRequest {
     return this;
   }
 
-  public WebTransactionInstantTestRequest addAgentsItem(InstantTestRequestAgentsInner agentsItem) {
+  public WebTransactionInstantTestRequest addagentsItem(InstantTestRequestAgentsInner agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1478,7 +1478,7 @@ public class WebTransactionInstantTestRequest {
     return this;
   }
 
-  public WebTransactionInstantTestRequest addCredentialsItem(String credentialsItem) {
+  public WebTransactionInstantTestRequest addcredentialsItem(String credentialsItem) {
     if (this.credentials == null) {
       this.credentials = new ArrayList<>();
     }

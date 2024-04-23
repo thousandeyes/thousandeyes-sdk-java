@@ -69,7 +69,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiMultiMetricTableWidget.JSON_PROPERTY_MULTI_METRIC_COLUMNS,
   ApiMultiMetricTableWidget.JSON_PROPERTY_DATA_SOURCE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiMultiMetricTableWidget {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -132,7 +132,7 @@ public class ApiMultiMetricTableWidget {
   private Integer limit;
 
   public static final String JSON_PROPERTY_MULTI_METRIC_COLUMNS = "multiMetricColumns";
-  private List<ApiMultiMetricColumn> multiMetricColumns;
+  private List<ApiMultiMetricColumn> multiMetricColumns = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DATA_SOURCE = "dataSource";
   private MultiMetricsTableDatasource dataSource;
@@ -337,7 +337,7 @@ public class ApiMultiMetricTableWidget {
     return this;
   }
 
-  public ApiMultiMetricTableWidget putFiltersItem(String key, Set<Object> filtersItem) {
+  public ApiMultiMetricTableWidget putfiltersItem(String key, Set<Object> filtersItem) {
     if (this.filters == null) {
       this.filters = new HashMap<>();
     }
@@ -641,7 +641,7 @@ public class ApiMultiMetricTableWidget {
     return this;
   }
 
-  public ApiMultiMetricTableWidget addMultiMetricColumnsItem(ApiMultiMetricColumn multiMetricColumnsItem) {
+  public ApiMultiMetricTableWidget addmultiMetricColumnsItem(ApiMultiMetricColumn multiMetricColumnsItem) {
     if (this.multiMetricColumns == null) {
       this.multiMetricColumns = new ArrayList<>();
     }

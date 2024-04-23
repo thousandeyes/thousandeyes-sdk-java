@@ -4,6 +4,8 @@ Dashboards API
 
 - API version: 7.0.0
 
+- Build date: 2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]
+
 Manage ThousandEyes Dashboards.
 
 

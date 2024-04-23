@@ -4,9 +4,6 @@ build.gradle
 docs/AdministrativeEndpointsApi.md
 docs/ManageAgentsApi.md
 docs/TransferApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/agents/AdministrativeEndpointsApi.java
 src/main/java/com/thousandeyes/api/endpoint/agents/ManageAgentsApi.java
 src/main/java/com/thousandeyes/api/endpoint/agents/TransferApi.java
@@ -21,12 +18,12 @@ src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentThresholdFilter.ja
 src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentThresholdFilters.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentTransfer.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentTransferRequest.java
+src/main/java/com/thousandeyes/api/endpoint/agents/model/AgentTransfers.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/BrowserType.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/ConditionalOperator.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgent.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgentBulkTransfer207Response.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgentBulkTransfer207ResponseItemsInner.java
-src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgentBulkTransferRequest.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgentGet200Response.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgentLocation.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/EndpointAgentUpdate.java
@@ -61,3 +58,6 @@ src/main/java/com/thousandeyes/api/endpoint/agents/model/ValidationError.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/ValidationErrorAllOfErrors.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/VpnType.java
 src/main/java/com/thousandeyes/api/endpoint/agents/model/WirelessProfile.java
+src/test/java/com/thousandeyes/api/endpoint/agents/AdministrativeEndpointsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/agents/ManageAgentsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/agents/TransferApiTest.java

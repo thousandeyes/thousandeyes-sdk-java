@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetLabels200Response.JSON_PROPERTY_LABELS,
   GetLabels200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.622566+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.046788+01:00[Europe/Lisbon]")
 public class GetLabels200Response {
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<Label> labels;
+  private List<Label> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -52,7 +52,7 @@ public class GetLabels200Response {
     return this;
   }
 
-  public GetLabels200Response addLabelsItem(Label labelsItem) {
+  public GetLabels200Response addlabelsItem(Label labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }

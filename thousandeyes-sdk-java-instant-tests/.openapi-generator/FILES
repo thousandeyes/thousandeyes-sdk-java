@@ -13,9 +13,6 @@ docs/RunApi.md
 docs/SipServerApi.md
 docs/VoiceApi.md
 docs/WebTransactionApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/tests/instant/AgentToAgentApi.java
 src/main/java/com/thousandeyes/api/tests/instant/AgentToServerApi.java
 src/main/java/com/thousandeyes/api/tests/instant/DnsSecurityApi.java
@@ -100,3 +97,15 @@ src/main/java/com/thousandeyes/api/tests/instant/model/VoiceProperties.java
 src/main/java/com/thousandeyes/api/tests/instant/model/WebTransactionInstantTest.java
 src/main/java/com/thousandeyes/api/tests/instant/model/WebTransactionInstantTestRequest.java
 src/main/java/com/thousandeyes/api/tests/instant/model/WebTransactionProperties.java
+src/test/java/com/thousandeyes/api/tests/instant/AgentToAgentApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/AgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/DnsSecurityApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/DnsServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/DnsTraceApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/FtpServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/HttpPageLoadApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/HttpServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/RunApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/SipServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/VoiceApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/WebTransactionApiTest.java

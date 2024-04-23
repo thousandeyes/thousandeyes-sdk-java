@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AlertIntegrationBase.JSON_PROPERTY_AUTH_TOKEN,
   AlertIntegrationBase.JSON_PROPERTY_CHANNEL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
 public class AlertIntegrationBase {
   public static final String JSON_PROPERTY_INTEGRATION_ID = "integrationId";
   private String integrationId;

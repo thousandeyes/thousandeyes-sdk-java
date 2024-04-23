@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestCustomHeaders.JSON_PROPERTY_DOMAINS,
   TestCustomHeaders.JSON_PROPERTY_ALL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class TestCustomHeaders {
   public static final String JSON_PROPERTY_ROOT = "root";
   private Map<String, String> root = new HashMap<>();
@@ -53,7 +53,7 @@ public class TestCustomHeaders {
     return this;
   }
 
-  public TestCustomHeaders putRootItem(String key, String rootItem) {
+  public TestCustomHeaders putrootItem(String key, String rootItem) {
     if (this.root == null) {
       this.root = new HashMap<>();
     }
@@ -86,7 +86,7 @@ public class TestCustomHeaders {
     return this;
   }
 
-  public TestCustomHeaders putDomainsItem(String key, Map<String, String> domainsItem) {
+  public TestCustomHeaders putdomainsItem(String key, Map<String, String> domainsItem) {
     if (this.domains == null) {
       this.domains = new HashMap<>();
     }
@@ -119,7 +119,7 @@ public class TestCustomHeaders {
     return this;
   }
 
-  public TestCustomHeaders putAllItem(String key, String allItem) {
+  public TestCustomHeaders putallItem(String key, String allItem) {
     if (this.all == null) {
       this.all = new HashMap<>();
     }

@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDataSourceFilters.JSON_PROPERTY_DATA_SOURCE_ID,
   ApiDataSourceFilters.JSON_PROPERTY_FILTERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class ApiDataSourceFilters {
   public static final String JSON_PROPERTY_DATA_SOURCE_ID = "dataSourceId";
   private String dataSourceId;
@@ -76,7 +76,7 @@ public class ApiDataSourceFilters {
     return this;
   }
 
-  public ApiDataSourceFilters addFiltersItem(ApiDataSourceFilter filtersItem) {
+  public ApiDataSourceFilters addfiltersItem(ApiDataSourceFilter filtersItem) {
     if (this.filters == null) {
       this.filters = new LinkedHashSet<>();
     }

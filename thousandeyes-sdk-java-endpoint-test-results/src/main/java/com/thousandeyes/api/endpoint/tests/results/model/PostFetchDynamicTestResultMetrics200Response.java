@@ -41,10 +41,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PostFetchDynamicTestResultMetrics200Response.JSON_PROPERTY_END_DATE,
   PostFetchDynamicTestResultMetrics200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class PostFetchDynamicTestResultMetrics200Response {
   public static final String JSON_PROPERTY_RESULTS = "results";
-  private List<NetworkDynamicTestResult> results;
+  private List<NetworkDynamicTestResult> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEST = "test";
   private DynamicTest test;
@@ -76,7 +76,7 @@ public class PostFetchDynamicTestResultMetrics200Response {
     return this;
   }
 
-  public PostFetchDynamicTestResultMetrics200Response addResultsItem(NetworkDynamicTestResult resultsItem) {
+  public PostFetchDynamicTestResultMetrics200Response addresultsItem(NetworkDynamicTestResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

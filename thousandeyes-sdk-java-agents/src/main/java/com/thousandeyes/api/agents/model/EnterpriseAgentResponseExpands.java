@@ -38,16 +38,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentResponseExpands.JSON_PROPERTY_NOTIFICATION_RULES,
   EnterpriseAgentResponseExpands.JSON_PROPERTY_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.628946+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.039729+01:00[Europe/Lisbon]")
 public class EnterpriseAgentResponseExpands {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<SimpleTest> tests;
+  private List<SimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NOTIFICATION_RULES = "notificationRules";
-  private List<NotificationRules> notificationRules;
+  private List<NotificationRules> notificationRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<Labels> labels;
+  private List<Labels> labels = new ArrayList<>();
 
   public EnterpriseAgentResponseExpands() { 
   }
@@ -65,7 +65,7 @@ public class EnterpriseAgentResponseExpands {
     return this;
   }
 
-  public EnterpriseAgentResponseExpands addTestsItem(SimpleTest testsItem) {
+  public EnterpriseAgentResponseExpands addtestsItem(SimpleTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -98,7 +98,7 @@ public class EnterpriseAgentResponseExpands {
     return this;
   }
 
-  public EnterpriseAgentResponseExpands addNotificationRulesItem(NotificationRules notificationRulesItem) {
+  public EnterpriseAgentResponseExpands addnotificationRulesItem(NotificationRules notificationRulesItem) {
     if (this.notificationRules == null) {
       this.notificationRules = new ArrayList<>();
     }

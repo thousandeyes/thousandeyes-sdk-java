@@ -37,13 +37,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DashboardSnapshotsPage.JSON_PROPERTY_PAGES,
   DashboardSnapshotsPage.JSON_PROPERTY_DASHBOARD_SNAPSHOTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.839647+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.219460+01:00[Europe/Lisbon]")
 public class DashboardSnapshotsPage {
   public static final String JSON_PROPERTY_PAGES = "pages";
   private Map<String, Object> pages = new HashMap<>();
 
   public static final String JSON_PROPERTY_DASHBOARD_SNAPSHOTS = "dashboardSnapshots";
-  private List<ApiDashboardSnapshot> dashboardSnapshots;
+  private List<ApiDashboardSnapshot> dashboardSnapshots = new ArrayList<>();
 
   public DashboardSnapshotsPage() { 
   }
@@ -53,7 +53,7 @@ public class DashboardSnapshotsPage {
     return this;
   }
 
-  public DashboardSnapshotsPage putPagesItem(String key, Object pagesItem) {
+  public DashboardSnapshotsPage putpagesItem(String key, Object pagesItem) {
     if (this.pages == null) {
       this.pages = new HashMap<>();
     }
@@ -88,7 +88,7 @@ public class DashboardSnapshotsPage {
     return this;
   }
 
-  public DashboardSnapshotsPage addDashboardSnapshotsItem(ApiDashboardSnapshot dashboardSnapshotsItem) {
+  public DashboardSnapshotsPage adddashboardSnapshotsItem(ApiDashboardSnapshot dashboardSnapshotsItem) {
     if (this.dashboardSnapshots == null) {
       this.dashboardSnapshots = new ArrayList<>();
     }

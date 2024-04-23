@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkInterface.JSON_PROPERTY_HARDWARE_TYPE,
   NetworkInterface.JSON_PROPERTY_INTERFACE_NAME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class NetworkInterface {
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
   private String ipAddress;
@@ -59,7 +59,7 @@ public class NetworkInterface {
   private String publicIpRange;
 
   public static final String JSON_PROPERTY_DNS_SERVERS = "dnsServers";
-  private List<String> dnsServers;
+  private List<String> dnsServers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HARDWARE_TYPE = "hardwareType";
   private InterfaceHardwareType hardwareType;

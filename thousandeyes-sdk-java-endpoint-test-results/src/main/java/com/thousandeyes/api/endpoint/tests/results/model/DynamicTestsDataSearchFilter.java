@@ -35,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
   DynamicTestsDataSearchFilter.JSON_PROPERTY_WEBEX_CONFERENCE_ID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.229088+01:00[Europe/Lisbon]")
 public class DynamicTestsDataSearchFilter {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
-  private List<UUID> agentId;
+  private List<UUID> agentId = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WEBEX_CONFERENCE_ID = "webexConferenceId";
-  private List<UUID> webexConferenceId;
+  private List<UUID> webexConferenceId = new ArrayList<>();
 
   public DynamicTestsDataSearchFilter() { 
   }
@@ -51,7 +51,7 @@ public class DynamicTestsDataSearchFilter {
     return this;
   }
 
-  public DynamicTestsDataSearchFilter addAgentIdItem(UUID agentIdItem) {
+  public DynamicTestsDataSearchFilter addagentIdItem(UUID agentIdItem) {
     if (this.agentId == null) {
       this.agentId = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class DynamicTestsDataSearchFilter {
     return this;
   }
 
-  public DynamicTestsDataSearchFilter addWebexConferenceIdItem(UUID webexConferenceIdItem) {
+  public DynamicTestsDataSearchFilter addwebexConferenceIdItem(UUID webexConferenceIdItem) {
     if (this.webexConferenceId == null) {
       this.webexConferenceId = new ArrayList<>();
     }

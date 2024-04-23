@@ -43,34 +43,34 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchRequestSearchFilters.JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE,
   AgentSearchRequestSearchFilters.JSON_PROPERTY_LOCATION_CITY
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.660146+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
 public class AgentSearchRequestSearchFilters {
   public static final String JSON_PROPERTY_ID = "id";
-  private List<UUID> id;
+  private List<UUID> id = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
-  private List<String> agentName;
+  private List<String> agentName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_COMPUTER_NAME = "computerName";
-  private List<String> computerName;
+  private List<String> computerName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_USERNAME = "username";
-  private List<String> username;
+  private List<String> username = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PLATFORM = "platform";
-  private List<Platform> platform;
+  private List<Platform> platform = new ArrayList<>();
 
   public static final String JSON_PROPERTY_OS_VERSION = "osVersion";
-  private List<String> osVersion;
+  private List<String> osVersion = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LOCATION_COUNTRY_I_S_O = "locationCountryISO";
-  private List<String> locationCountryISO;
+  private List<String> locationCountryISO = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE = "locationSubdivision1Code";
-  private List<String> locationSubdivision1Code;
+  private List<String> locationSubdivision1Code = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LOCATION_CITY = "locationCity";
-  private List<String> locationCity;
+  private List<String> locationCity = new ArrayList<>();
 
   public AgentSearchRequestSearchFilters() { 
   }
@@ -80,7 +80,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addIdItem(UUID idItem) {
+  public AgentSearchRequestSearchFilters addidItem(UUID idItem) {
     if (this.id == null) {
       this.id = new ArrayList<>();
     }
@@ -113,7 +113,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addAgentNameItem(String agentNameItem) {
+  public AgentSearchRequestSearchFilters addagentNameItem(String agentNameItem) {
     if (this.agentName == null) {
       this.agentName = new ArrayList<>();
     }
@@ -146,7 +146,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addComputerNameItem(String computerNameItem) {
+  public AgentSearchRequestSearchFilters addcomputerNameItem(String computerNameItem) {
     if (this.computerName == null) {
       this.computerName = new ArrayList<>();
     }
@@ -179,7 +179,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addUsernameItem(String usernameItem) {
+  public AgentSearchRequestSearchFilters addusernameItem(String usernameItem) {
     if (this.username == null) {
       this.username = new ArrayList<>();
     }
@@ -212,7 +212,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addPlatformItem(Platform platformItem) {
+  public AgentSearchRequestSearchFilters addplatformItem(Platform platformItem) {
     if (this.platform == null) {
       this.platform = new ArrayList<>();
     }
@@ -245,7 +245,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addOsVersionItem(String osVersionItem) {
+  public AgentSearchRequestSearchFilters addosVersionItem(String osVersionItem) {
     if (this.osVersion == null) {
       this.osVersion = new ArrayList<>();
     }
@@ -278,7 +278,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addLocationCountryISOItem(String locationCountryISOItem) {
+  public AgentSearchRequestSearchFilters addlocationCountryISOItem(String locationCountryISOItem) {
     if (this.locationCountryISO == null) {
       this.locationCountryISO = new ArrayList<>();
     }
@@ -311,7 +311,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addLocationSubdivision1CodeItem(String locationSubdivision1CodeItem) {
+  public AgentSearchRequestSearchFilters addlocationSubdivision1CodeItem(String locationSubdivision1CodeItem) {
     if (this.locationSubdivision1Code == null) {
       this.locationSubdivision1Code = new ArrayList<>();
     }
@@ -344,7 +344,7 @@ public class AgentSearchRequestSearchFilters {
     return this;
   }
 
-  public AgentSearchRequestSearchFilters addLocationCityItem(String locationCityItem) {
+  public AgentSearchRequestSearchFilters addlocationCityItem(String locationCityItem) {
     if (this.locationCity == null) {
       this.locationCity = new ArrayList<>();
     }

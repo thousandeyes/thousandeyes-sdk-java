@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetTestResultSipServer200Response.JSON_PROPERTY_TEST,
   GetTestResultSipServer200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.800492+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.036165+01:00[Europe/Lisbon]")
 public class GetTestResultSipServer200Response {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private OffsetDateTime startDate;
@@ -50,7 +50,7 @@ public class GetTestResultSipServer200Response {
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_RESULTS = "results";
-  private List<SipServerTestResult> results;
+  private List<SipServerTestResult> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEST = "test";
   private SimpleTest test;
@@ -106,7 +106,7 @@ public class GetTestResultSipServer200Response {
     return this;
   }
 
-  public GetTestResultSipServer200Response addResultsItem(SipServerTestResult resultsItem) {
+  public GetTestResultSipServer200Response addresultsItem(SipServerTestResult resultsItem) {
     if (this.results == null) {
       this.results = new ArrayList<>();
     }

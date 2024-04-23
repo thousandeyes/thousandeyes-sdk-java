@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateAgentLabel201Response.JSON_PROPERTY_IDS,
   CreateAgentLabel201Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.622566+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.046788+01:00[Europe/Lisbon]")
 public class CreateAgentLabel201Response {
   public static final String JSON_PROPERTY_LABEL_ID = "labelId";
   private String labelId;
@@ -55,7 +55,7 @@ public class CreateAgentLabel201Response {
   private LabelType type;
 
   public static final String JSON_PROPERTY_IDS = "ids";
-  private List<String> ids;
+  private List<String> ids = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -168,7 +168,7 @@ public class CreateAgentLabel201Response {
     return this;
   }
 
-  public CreateAgentLabel201Response addIdsItem(String idsItem) {
+  public CreateAgentLabel201Response addidsItem(String idsItem) {
     if (this.ids == null) {
       this.ids = new ArrayList<>();
     }

@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   EndpointAgentBulkTransfer207Response.JSON_PROPERTY_ITEMS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.660146+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.059460+01:00[Europe/Lisbon]")
 public class EndpointAgentBulkTransfer207Response {
   public static final String JSON_PROPERTY_ITEMS = "items";
-  private List<EndpointAgentBulkTransfer207ResponseItemsInner> items;
+  private List<EndpointAgentBulkTransfer207ResponseItemsInner> items = new ArrayList<>();
 
   public EndpointAgentBulkTransfer207Response() { 
   }
@@ -47,7 +47,7 @@ public class EndpointAgentBulkTransfer207Response {
     return this;
   }
 
-  public EndpointAgentBulkTransfer207Response addItemsItem(EndpointAgentBulkTransfer207ResponseItemsInner itemsItem) {
+  public EndpointAgentBulkTransfer207Response additemsItem(EndpointAgentBulkTransfer207ResponseItemsInner itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }

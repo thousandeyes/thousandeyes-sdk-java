@@ -42,13 +42,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointInstantTest.JSON_PROPERTY_PORT,
   EndpointInstantTest.JSON_PROPERTY_TEST_NAME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.537471+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:44.956104+01:00[Europe/Lisbon]")
 public class EndpointInstantTest {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
   private EndpointTestAgentSelectorType agentSelectorType;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<UUID> agents;
+  private List<UUID> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HAS_PING = "hasPing";
   private Boolean hasPing = true;
@@ -57,7 +57,7 @@ public class EndpointInstantTest {
   private Boolean hasTraceroute = true;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
-  private List<String> endpointAgentLabels;
+  private List<String> endpointAgentLabels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
   private Integer maxMachines;
@@ -101,7 +101,7 @@ public class EndpointInstantTest {
     return this;
   }
 
-  public EndpointInstantTest addAgentsItem(UUID agentsItem) {
+  public EndpointInstantTest addagentsItem(UUID agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -184,7 +184,7 @@ public class EndpointInstantTest {
     return this;
   }
 
-  public EndpointInstantTest addEndpointAgentLabelsItem(String endpointAgentLabelsItem) {
+  public EndpointInstantTest addendpointAgentLabelsItem(String endpointAgentLabelsItem) {
     if (this.endpointAgentLabels == null) {
       this.endpointAgentLabels = new ArrayList<>();
     }

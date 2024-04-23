@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetRoles200Response.JSON_PROPERTY_ROLES,
   GetRoles200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.662765+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:45.060968+01:00[Europe/Lisbon]")
 public class GetRoles200Response {
   public static final String JSON_PROPERTY_ROLES = "roles";
-  private List<Role> roles;
+  private List<Role> roles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;
@@ -52,7 +52,7 @@ public class GetRoles200Response {
     return this;
   }
 
-  public GetRoles200Response addRolesItem(Role rolesItem) {
+  public GetRoles200Response addrolesItem(Role rolesItem) {
     if (this.roles == null) {
       this.roles = new ArrayList<>();
     }

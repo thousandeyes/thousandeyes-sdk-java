@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AgentToAgentTests.JSON_PROPERTY_TESTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.921174+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T16:57:46.217350+01:00[Europe/Lisbon]")
 public class AgentToAgentTests {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<UnexpandedAgentToAgentTest> tests;
+  private List<UnexpandedAgentToAgentTest> tests = new ArrayList<>();
 
   public AgentToAgentTests() { 
   }
@@ -47,7 +47,7 @@ public class AgentToAgentTests {
     return this;
   }
 
-  public AgentToAgentTests addTestsItem(UnexpandedAgentToAgentTest testsItem) {
+  public AgentToAgentTests addtestsItem(UnexpandedAgentToAgentTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
