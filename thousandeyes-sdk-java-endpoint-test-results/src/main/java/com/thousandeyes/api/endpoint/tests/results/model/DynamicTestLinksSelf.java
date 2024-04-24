@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTestLinksSelf.JSON_PROPERTY_TITLE,
   DynamicTestLinksSelf.JSON_PROPERTY_HREFLANG
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.208767+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.214308+01:00[Europe/Lisbon]")
 public class DynamicTestLinksSelf {
   public static final String JSON_PROPERTY_HREF = "href";
   private String href;

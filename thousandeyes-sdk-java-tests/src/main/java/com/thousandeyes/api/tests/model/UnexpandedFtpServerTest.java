@@ -71,7 +71,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedFtpServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   UnexpandedFtpServerTest.JSON_PROPERTY_USE_PUBLIC_BGP
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:27.140198+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:30.065400+01:00[Europe/Lisbon]")
 public class UnexpandedFtpServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;

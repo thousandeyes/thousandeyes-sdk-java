@@ -56,7 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UsageUsage.JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED,
   UsageUsage.JSON_PROPERTY_ENTERPRISE_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.852676+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.837859+01:00[Europe/Lisbon]")
 public class UsageUsage {
   public static final String JSON_PROPERTY_QUOTA = "quota";
   private UsageUsageQuota quota;

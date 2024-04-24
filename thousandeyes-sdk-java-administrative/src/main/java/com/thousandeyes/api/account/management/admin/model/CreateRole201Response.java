@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateRole201Response.JSON_PROPERTY_PERMISSIONS,
   CreateRole201Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.092433+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.033819+01:00[Europe/Lisbon]")
 public class CreateRole201Response {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

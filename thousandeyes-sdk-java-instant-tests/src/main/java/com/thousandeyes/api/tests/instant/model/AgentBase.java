@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentBase.JSON_PROPERTY_PUBLIC_IP_ADDRESSES,
   AgentBase.JSON_PROPERTY_NETWORK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.129883+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.070368+01:00[Europe/Lisbon]")
 public class AgentBase {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
   private List<String> ipAddresses = new ArrayList<>();

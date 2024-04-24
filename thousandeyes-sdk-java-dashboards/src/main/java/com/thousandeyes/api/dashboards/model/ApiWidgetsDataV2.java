@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiWidgetsDataV2.JSON_PROPERTY_AGENTS,
   ApiWidgetsDataV2.JSON_PROPERTY_STATUS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.159899+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.195689+01:00[Europe/Lisbon]")
 public class ApiWidgetsDataV2 {
   public static final String JSON_PROPERTY_CARDS = "cards";
   private List<ApiNumbersCardData> cards = new ArrayList<>();

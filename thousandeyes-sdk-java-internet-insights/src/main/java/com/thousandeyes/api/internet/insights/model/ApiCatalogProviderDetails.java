@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiCatalogProviderDetails.JSON_PROPERTY_ASNS,
   ApiCatalogProviderDetails.JSON_PROPERTY_LOCATIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:25.859392+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:28.916545+01:00[Europe/Lisbon]")
 public class ApiCatalogProviderDetails {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;

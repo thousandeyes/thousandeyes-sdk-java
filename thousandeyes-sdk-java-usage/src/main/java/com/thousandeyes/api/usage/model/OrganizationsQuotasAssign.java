@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   OrganizationsQuotasAssign.JSON_PROPERTY_ORGANIZATIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.852676+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.837859+01:00[Europe/Lisbon]")
 public class OrganizationsQuotasAssign {
   public static final String JSON_PROPERTY_ORGANIZATIONS = "organizations";
   private List<OrganizationsQuotasAssignOrganizationsInner> organizations = new ArrayList<>();

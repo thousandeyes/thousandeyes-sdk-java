@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AlertLinksLinks.JSON_PROPERTY_APP_LINK,
   AlertLinksLinks.JSON_PROPERTY_SELF
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.150768+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.116811+01:00[Europe/Lisbon]")
 public class AlertLinksLinks {
   public static final String JSON_PROPERTY_TEST = "test";
   private Link test;

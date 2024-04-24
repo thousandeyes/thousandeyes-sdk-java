@@ -489,7 +489,22 @@ public class RealUserTestsResultsApiTest {
     {
         String requestBodyJson = """
                 {
-                  "searchFilters" : null
+                  "searchFilters" : {
+                    "agentId" : [ "3fde6422-f119-40e1-ae32-d08a1243c038", "236e6f18-9637-4a2f-b15f-7aa6a29c9fce" ],
+                    "bssid" : [ "8c:68:c8:a5:0a:8c", "0c:51:01:e4:3e:d0" ],
+                    "visitedSite" : [ "app.thousandeyes.com" ],
+                    "trigger" : [ "user" ],
+                    "ssid" : [ "wifi-name", "other-room-wifi" ],
+                    "platform" : [ "mac", "mac" ],
+                    "proxyTarget" : [ "78.153.54.204", "78.153.54.206" ],
+                    "destinationIp" : [ "84.255.241.1", "193.2.1.88" ],
+                    "domain" : [ "thousandeyes.com" ],
+                    "location" : [ "San Francisco Bay Area", "Germany" ],
+                    "connection" : [ "wireless", "wireless" ],
+                    "vpnTarget" : [ "78.153.54.204", "78.153.54.206" ],
+                    "networkId" : [ "660b34109d12", "660b34109d15" ],
+                    "gateway" : [ "78.153.54.204", "78.153.54.206" ]
+                  }
                 }
                                  """;
         EndpointRealUserTestResultsRequest mappedRequest = 
@@ -538,7 +553,22 @@ public class RealUserTestsResultsApiTest {
     {
         String requestBodyJson = """
                 {
-                  "searchFilters" : null
+                  "searchFilters" : {
+                    "agentId" : [ "3fde6422-f119-40e1-ae32-d08a1243c038", "236e6f18-9637-4a2f-b15f-7aa6a29c9fce" ],
+                    "bssid" : [ "8c:68:c8:a5:0a:8c", "0c:51:01:e4:3e:d0" ],
+                    "visitedSite" : [ "app.thousandeyes.com" ],
+                    "trigger" : [ "user" ],
+                    "ssid" : [ "wifi-name", "other-room-wifi" ],
+                    "platform" : [ "mac", "mac" ],
+                    "proxyTarget" : [ "78.153.54.204", "78.153.54.206" ],
+                    "destinationIp" : [ "84.255.241.1", "193.2.1.88" ],
+                    "domain" : [ "thousandeyes.com" ],
+                    "location" : [ "San Francisco Bay Area", "Germany" ],
+                    "connection" : [ "wireless", "wireless" ],
+                    "vpnTarget" : [ "78.153.54.204", "78.153.54.206" ],
+                    "networkId" : [ "660b34109d12", "660b34109d15" ],
+                    "gateway" : [ "78.153.54.204", "78.153.54.206" ]
+                  }
                 }
                                  """;
         EndpointRealUserTestResultsRequest mappedRequest = 

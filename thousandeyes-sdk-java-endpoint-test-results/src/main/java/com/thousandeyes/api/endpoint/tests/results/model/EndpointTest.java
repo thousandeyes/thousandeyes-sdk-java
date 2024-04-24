@@ -58,7 +58,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointTest.JSON_PROPERTY_TCP_PROBE_MODE,
   EndpointTest.JSON_PROPERTY_ALERT_RULES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.208767+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.214308+01:00[Europe/Lisbon]")
 public class EndpointTest {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;

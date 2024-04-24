@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetTestUnitsUsage200Response.JSON_PROPERTY_BREAKDOWNS,
   GetTestUnitsUsage200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.852676+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.837859+01:00[Europe/Lisbon]")
 public class GetTestUnitsUsage200Response {
   public static final String JSON_PROPERTY_BREAKDOWNS = "breakdowns";
   private List<UnitsByTestsBreakdownsInner> breakdowns = new ArrayList<>();

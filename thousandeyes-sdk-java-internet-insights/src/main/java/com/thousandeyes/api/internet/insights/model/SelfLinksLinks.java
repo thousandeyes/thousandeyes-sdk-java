@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   SelfLinksLinks.JSON_PROPERTY_SELF
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:25.859392+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:28.916545+01:00[Europe/Lisbon]")
 public class SelfLinksLinks {
   public static final String JSON_PROPERTY_SELF = "self";
   private Link self;

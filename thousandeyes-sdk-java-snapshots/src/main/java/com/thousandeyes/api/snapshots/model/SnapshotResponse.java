@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SnapshotResponse.JSON_PROPERTY_EXTRA_PARAMS,
   SnapshotResponse.JSON_PROPERTY_TEST
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:25.830107+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:28.893784+01:00[Europe/Lisbon]")
 public class SnapshotResponse {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private Object links;

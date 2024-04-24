@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VpnProfile.JSON_PROPERTY_VPN_GATEWAY_ADDRESS,
   VpnProfile.JSON_PROPERTY_VPN_TYPE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.208767+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.214308+01:00[Europe/Lisbon]")
 public class VpnProfile {
   public static final String JSON_PROPERTY_VPN_CLIENT_ADDRESSES = "vpnClientAddresses";
   private List<String> vpnClientAddresses = new ArrayList<>();

@@ -4,7 +4,7 @@ Agents API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-24T10:46:26.012068+01:00[Europe/Lisbon]
+- Build date: 2024-04-24T13:34:28.977486+01:00[Europe/Lisbon]
 
 
 ## Overview

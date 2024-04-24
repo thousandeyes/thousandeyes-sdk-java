@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestDnsServer.JSON_PROPERTY_SERVER_ID,
   TestDnsServer.JSON_PROPERTY_SERVER_NAME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.129883+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.070368+01:00[Europe/Lisbon]")
 public class TestDnsServer {
   public static final String JSON_PROPERTY_SERVER_ID = "serverId";
   private String serverId;

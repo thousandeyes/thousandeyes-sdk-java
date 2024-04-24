@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentData.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   EnterpriseAgentData.JSON_PROPERTY_INTERFACE_IP_MAPPINGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.092433+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.033819+01:00[Europe/Lisbon]")
 public class EnterpriseAgentData {
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
   private List<ClusterMember> clusterMembers = new ArrayList<>();

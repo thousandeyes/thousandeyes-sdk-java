@@ -262,10 +262,8 @@ public class NetworkDynamicTestsResultsApiTest {
         String requestBodyJson = """
                 {
                   "searchSort" : [ {
-                    "sort" : null,
                     "order" : "desc"
                   }, {
-                    "sort" : null,
                     "order" : "desc"
                   } ],
                   "searchFilters" : {
@@ -273,15 +271,10 @@ public class NetworkDynamicTestsResultsApiTest {
                     "webexConferenceId" : [ "52455b09-ff1b-4849-8194-99026cc890e0", "52455b09-ff1b-4849-8194-99026cc890e0" ]
                   },
                   "thresholdFilter" : {
-                    "conditionalOperator" : null,
                     "filters" : [ {
-                      "name" : null,
-                      "value" : 0.8008281904610115,
-                      "operator" : null
+                      "value" : 0.8008281904610115
                     }, {
-                      "name" : null,
-                      "value" : 0.8008281904610115,
-                      "operator" : null
+                      "value" : 0.8008281904610115
                     } ]
                   }
                 }

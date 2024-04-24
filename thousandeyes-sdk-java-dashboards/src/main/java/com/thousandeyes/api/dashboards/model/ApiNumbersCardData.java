@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNumbersCardData.JSON_PROPERTY_STATUS,
   ApiNumbersCardData.JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.159899+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.195689+01:00[Europe/Lisbon]")
 public class ApiNumbersCardData {
   public static final String JSON_PROPERTY_CARD_ID = "cardId";
   private String cardId;

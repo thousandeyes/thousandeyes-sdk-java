@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetEndpointTestsList200Response.JSON_PROPERTY_TESTS,
   GetEndpointTestsList200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.031539+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.008536+01:00[Europe/Lisbon]")
 public class GetEndpointTestsList200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<EndpointTest> tests = new ArrayList<>();

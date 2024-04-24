@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DashboardLinksLinks.JSON_PROPERTY_SELF,
   DashboardLinksLinks.JSON_PROPERTY_SNAPSHOTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.159899+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.195689+01:00[Europe/Lisbon]")
 public class DashboardLinksLinks {
   public static final String JSON_PROPERTY_SELF = "self";
   private Link self;

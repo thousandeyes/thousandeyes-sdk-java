@@ -61,7 +61,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpTestResult.JSON_PROPERTY_SSL_VERSION,
   HttpTestResult.JSON_PROPERTY_SSL_CERTIFICATES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.821951+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.870420+01:00[Europe/Lisbon]")
 public class HttpTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;

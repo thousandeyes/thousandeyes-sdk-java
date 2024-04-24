@@ -71,7 +71,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentClusterDetail.JSON_PROPERTY_LINKS,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_AGENT_TYPE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.012068+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:28.977486+01:00[Europe/Lisbon]")
 public class EnterpriseAgentClusterDetail {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
   private List<String> ipAddresses = new ArrayList<>();

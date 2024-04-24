@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpTestResultHeaders.JSON_PROPERTY_REQUEST_HEADERS,
   HttpTestResultHeaders.JSON_PROPERTY_RESPONSE_HEADERS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.821951+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.870420+01:00[Europe/Lisbon]")
 public class HttpTestResultHeaders {
   public static final String JSON_PROPERTY_REQUEST_HEADERS = "requestHeaders";
   private String requestHeaders;

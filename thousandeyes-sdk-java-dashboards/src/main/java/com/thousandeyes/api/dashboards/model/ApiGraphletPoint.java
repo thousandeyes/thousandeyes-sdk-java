@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiGraphletPoint.JSON_PROPERTY_X,
   ApiGraphletPoint.JSON_PROPERTY_Y
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.159899+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.195689+01:00[Europe/Lisbon]")
 public class ApiGraphletPoint {
   public static final String JSON_PROPERTY_X = "x";
   private Long x;
