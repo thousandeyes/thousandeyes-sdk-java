@@ -5,9 +5,6 @@ docs/CloudAndEnterpriseAgentNotificationRulesApi.md
 docs/CloudAndEnterpriseAgentsApi.md
 docs/EnterpriseAgentClusterApi.md
 docs/ProxiesApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/agents/CloudAndEnterpriseAgentNotificationRulesApi.java
 src/main/java/com/thousandeyes/api/agents/CloudAndEnterpriseAgentsApi.java
 src/main/java/com/thousandeyes/api/agents/EnterpriseAgentClusterApi.java

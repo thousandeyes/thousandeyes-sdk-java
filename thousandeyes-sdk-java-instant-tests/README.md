@@ -4,7 +4,7 @@ Instant Tests API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-22T10:43:50.769480+01:00[Europe/London]
+- Build date: 2024-04-23T10:36:00.321258+01:00[Europe/London]
 
 The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:
   * `API Access`
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-instant-tests</artifactId>
-  <version>7.0.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-instant-tests:7.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-instant-tests:1.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -70,7 +70,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-instant-tests-7.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-instant-tests-1.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

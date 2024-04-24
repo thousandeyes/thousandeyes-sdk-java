@@ -12,9 +12,6 @@ docs/WebFtpServerTestMetricsApi.md
 docs/WebHttpServerTestMetricsApi.md
 docs/WebPageLoadTestMetricsApi.md
 docs/WebTransactionsTestMetricsApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/tests/results/DnsServerTestMetricsApi.java
 src/main/java/com/thousandeyes/api/tests/results/DnsTraceTestMetricsApi.java
 src/main/java/com/thousandeyes/api/tests/results/DnssecTestMetricsApi.java

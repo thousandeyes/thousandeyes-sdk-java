@@ -4,7 +4,7 @@ Internet Insights API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-22T10:43:50.510438+01:00[Europe/London]
+- Build date: 2024-04-23T10:36:00.131336+01:00[Europe/London]
 
 We are happy to announce the release of the Internet Insights API set. This limited release includes endpoints that:
 
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-internet-insights</artifactId>
-  <version>7.0.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +61,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-internet-insights:7.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-internet-insights:1.0.0-SNAPSHOT"
 ```
 
 ### Others
@@ -74,7 +74,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-internet-insights-7.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-internet-insights-1.0.0-SNAPSHOT.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

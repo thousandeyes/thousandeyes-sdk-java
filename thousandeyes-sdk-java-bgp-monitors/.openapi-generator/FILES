@@ -2,9 +2,6 @@ README.md
 api/openapi.yaml
 build.gradle
 docs/ListBgpMonitorsApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/bgp/monitors/ListBgpMonitorsApi.java
 src/main/java/com/thousandeyes/api/bgp/monitors/model/Error.java
 src/main/java/com/thousandeyes/api/bgp/monitors/model/GetBGPMonitors200Response.java

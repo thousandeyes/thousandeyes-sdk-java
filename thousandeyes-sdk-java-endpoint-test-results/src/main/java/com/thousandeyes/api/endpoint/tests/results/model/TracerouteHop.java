@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TracerouteHop.JSON_PROPERTY_MPLS,
   TracerouteHop.JSON_PROPERTY_NAME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.862924+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
 public class TracerouteHop {
   public static final String JSON_PROPERTY_HOP = "hop";
   private Integer hop;

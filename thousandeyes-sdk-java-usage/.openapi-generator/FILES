@@ -3,9 +3,6 @@ api/openapi.yaml
 build.gradle
 docs/QuotasApi.md
 docs/UsageApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/usage/QuotasApi.java
 src/main/java/com/thousandeyes/api/usage/UsageApi.java
 src/main/java/com/thousandeyes/api/usage/model/AccountGroup.java

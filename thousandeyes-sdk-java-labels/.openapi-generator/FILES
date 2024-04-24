@@ -6,9 +6,6 @@ docs/AllLabelsApi.md
 docs/DashboardApi.md
 docs/EndpointTestApi.md
 docs/TestApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/labels/AgentApi.java
 src/main/java/com/thousandeyes/api/labels/AllLabelsApi.java
 src/main/java/com/thousandeyes/api/labels/DashboardApi.java

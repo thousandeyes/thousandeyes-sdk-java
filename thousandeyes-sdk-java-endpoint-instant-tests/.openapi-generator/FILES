@@ -4,9 +4,6 @@ build.gradle
 docs/AgentToServerInstantScheduledTestApi.md
 docs/HttpServerInstantScheduledTestApi.md
 docs/RunExistingTestApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/AgentToServerInstantScheduledTestApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/HttpServerInstantScheduledTestApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/RunExistingTestApi.java

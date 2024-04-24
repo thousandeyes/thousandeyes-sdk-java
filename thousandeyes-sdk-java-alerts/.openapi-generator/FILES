@@ -4,9 +4,6 @@ build.gradle
 docs/AlertRulesApi.md
 docs/AlertSuppressionWindowsApi.md
 docs/AlertsApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/alerts/AlertRulesApi.java
 src/main/java/com/thousandeyes/api/alerts/AlertSuppressionWindowsApi.java
 src/main/java/com/thousandeyes/api/alerts/AlertsApi.java

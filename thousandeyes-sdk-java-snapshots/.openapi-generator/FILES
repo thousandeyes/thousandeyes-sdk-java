@@ -2,9 +2,6 @@ README.md
 api/openapi.yaml
 build.gradle
 docs/CreateTestSnapshotApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/snapshots/CreateTestSnapshotApi.java
 src/main/java/com/thousandeyes/api/snapshots/model/AppAndSelfLinks.java
 src/main/java/com/thousandeyes/api/snapshots/model/AppAndSelfLinksLinks.java

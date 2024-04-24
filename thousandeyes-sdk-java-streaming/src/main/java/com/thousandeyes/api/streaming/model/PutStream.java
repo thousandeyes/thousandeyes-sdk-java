@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PutStream.JSON_PROPERTY_TAG_MATCH,
   PutStream.JSON_PROPERTY_ENABLED
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.462611+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.130497+01:00[Europe/London]")
 public class PutStream {
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();

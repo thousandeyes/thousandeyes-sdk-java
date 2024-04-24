@@ -4,9 +4,6 @@ build.gradle
 docs/AdministrativeEndpointsApi.md
 docs/ManageAgentsApi.md
 docs/TransferApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/agents/AdministrativeEndpointsApi.java
 src/main/java/com/thousandeyes/api/endpoint/agents/ManageAgentsApi.java
 src/main/java/com/thousandeyes/api/endpoint/agents/TransferApi.java

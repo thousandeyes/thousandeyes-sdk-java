@@ -5,9 +5,6 @@ docs/DynamicTestsAgentToServerApi.md
 docs/ListEndpointScheduledTestsApi.md
 docs/ScheduledTestsAgentToServerApi.md
 docs/ScheduledTestsHttpServerApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/endpoint/tests/DynamicTestsAgentToServerApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/ListEndpointScheduledTestsApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/ScheduledTestsAgentToServerApi.java

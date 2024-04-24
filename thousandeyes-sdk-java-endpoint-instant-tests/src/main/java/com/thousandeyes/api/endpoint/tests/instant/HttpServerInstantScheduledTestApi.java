@@ -53,7 +53,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-22T10:43:50.537471+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.130184+01:00[Europe/London]")
 public class HttpServerInstantScheduledTestApi {
   private final ApiClient apiClient;
 
@@ -113,7 +113,7 @@ public class HttpServerInstantScheduledTestApi {
 
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
-    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/7.0.0"));
+    requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(endpointHttpServerInstantTest);
     return requestBuilder;
   }

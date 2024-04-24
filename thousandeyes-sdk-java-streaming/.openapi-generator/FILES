@@ -2,9 +2,6 @@ README.md
 api/openapi.yaml
 build.gradle
 docs/StreamingApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/streaming/StreamingApi.java
 src/main/java/com/thousandeyes/api/streaming/model/ApiError.java
 src/main/java/com/thousandeyes/api/streaming/model/ApiErrorIntegrationLimits.java

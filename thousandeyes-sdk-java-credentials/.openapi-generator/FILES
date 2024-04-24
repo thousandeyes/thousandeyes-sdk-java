@@ -2,9 +2,6 @@ README.md
 api/openapi.yaml
 build.gradle
 docs/CredentialsApi.md
-pom.xml
-settings.gradle
-src/main/AndroidManifest.xml
 src/main/java/com/thousandeyes/api/credentials/CredentialsApi.java
 src/main/java/com/thousandeyes/api/credentials/model/Credential.java
 src/main/java/com/thousandeyes/api/credentials/model/CredentialRequest.java
