@@ -7,6 +7,7 @@ buildscript {
 ext {
     jacksonVersion = "2.16.1"
     junitVersion = "5.10.1"
+    jacocoVersion = "0.8.8"
     jacksonDatabindNullableVersion = "0.2.6"
     googleJsr305Version = "3.0.2"
     apacheCommonsLang3 = "3.14.0"
@@ -16,12 +17,13 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
     apply plugin: 'java'
+    apply plugin: 'jacoco'
 
     group = 'com.thousandeyes.api'
     version = '1.0.0-SNAPSHOT'
 
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 
     // Some text from the schema is copy pasted into the source files as UTF-8
     // but the default still seems to be to use platform encoding
@@ -49,5 +51,29 @@ allprojects {
     artifacts {
         archives sourcesJar
         archives javadocJar
+    }
+
+    def jacocoXmlReport = "${project.rootDir}/${project.name}/reports/jacoco/${project.name}.xml"
+
+    jacoco {
+        toolVersion = "$jacocoVersion"
+    }
+
+    jacocoTestReport {
+        sourceSets sourceSets.main
+        executionData.from = fileTree(project.buildDir).include("/jacoco/*.exec")
+        reports {
+            csv.required = false
+            html.required = false
+            xml.required = true
+            xml.outputLocation.set(file(jacocoXmlReport))
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+        ignoreFailures true
+        finalizedBy jacocoTestReport
+        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
     }
 }
