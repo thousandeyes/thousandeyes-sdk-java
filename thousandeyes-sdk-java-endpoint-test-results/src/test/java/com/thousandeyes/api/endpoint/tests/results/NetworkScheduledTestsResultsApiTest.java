@@ -23,6 +23,7 @@ import com.thousandeyes.api.endpoint.tests.results.model.PostFetchTestResultMetr
 import com.thousandeyes.api.endpoint.tests.results.model.PostFetchTestResultMetricsMultiTest200Response;
 import com.thousandeyes.api.endpoint.tests.results.model.TestsDataRoundsSearch;
 import com.thousandeyes.api.endpoint.tests.results.model.UnauthorizedError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -30,6 +31,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -44,8 +46,9 @@ import java.util.Set;
  */
 public class NetworkScheduledTestsResultsApiTest {
     // private final NetworkScheduledTestsResultsApi api = new NetworkScheduledTestsResultsApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * Retrieve path visualization network scheduled test results

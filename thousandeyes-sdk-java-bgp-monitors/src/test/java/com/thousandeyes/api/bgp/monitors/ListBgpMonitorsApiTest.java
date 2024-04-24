@@ -16,6 +16,7 @@ package com.thousandeyes.api.bgp.monitors;
 import com.thousandeyes.api.bgp.monitors.model.Error;
 import com.thousandeyes.api.bgp.monitors.model.GetBGPMonitors200Response;
 import com.thousandeyes.api.bgp.monitors.model.UnauthorizedError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -23,6 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -37,8 +39,9 @@ import java.util.Set;
  */
 public class ListBgpMonitorsApiTest {
     // private final ListBgpMonitorsApi api = new ListBgpMonitorsApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * List BGP monitors

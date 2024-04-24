@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetTestPathvisAgentRound200Response.JSON_PROPERTY_TEST,
   GetTestPathvisAgentRound200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.870420+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.983792+01:00[Europe/Lisbon]")
 public class GetTestPathvisAgentRound200Response {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<PathVisDetailTestResult> results = new ArrayList<>();

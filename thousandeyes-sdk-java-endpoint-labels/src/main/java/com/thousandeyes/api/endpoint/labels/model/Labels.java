@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   Labels.JSON_PROPERTY_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:28.896330+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.937504+01:00[Europe/Lisbon]")
 public class Labels {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<LabelsLabelsInner> labels = new ArrayList<>();

@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchSort.JSON_PROPERTY_SORT,
   AgentSearchSort.JSON_PROPERTY_ORDER
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:28.973584+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.094652+01:00[Europe/Lisbon]")
 public class AgentSearchSort {
   public static final String JSON_PROPERTY_SORT = "sort";
   private AgentSearchSortKey sort;

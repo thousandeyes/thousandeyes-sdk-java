@@ -21,6 +21,7 @@ import java.net.URI;
 import com.thousandeyes.api.tests.model.UnauthorizedError;
 import com.thousandeyes.api.tests.model.UpdateDnsServerTest;
 import com.thousandeyes.api.tests.model.ValidationError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;
@@ -28,6 +29,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -42,8 +44,9 @@ import java.util.Set;
  */
 public class DnsServerApiTest {
     // private final DnsServerApi api = new DnsServerApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * Create DNS Server test

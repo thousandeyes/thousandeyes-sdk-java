@@ -17,6 +17,7 @@ import com.thousandeyes.api.agents.model.Error;
 import com.thousandeyes.api.agents.model.GetAgentsNotificationRule200Response;
 import com.thousandeyes.api.agents.model.GetAgentsNotificationRules200Response;
 import com.thousandeyes.api.agents.model.UnauthorizedError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -24,6 +25,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -38,8 +40,9 @@ import java.util.Set;
  */
 public class CloudAndEnterpriseAgentNotificationRulesApiTest {
     // private final CloudAndEnterpriseAgentNotificationRulesApi api = new CloudAndEnterpriseAgentNotificationRulesApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * Retrieve agent notification rule

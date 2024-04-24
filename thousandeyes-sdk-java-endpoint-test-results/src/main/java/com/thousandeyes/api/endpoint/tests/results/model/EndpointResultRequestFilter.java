@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointResultRequestFilter.JSON_PROPERTY_SSID,
   EndpointResultRequestFilter.JSON_PROPERTY_BSSID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.214308+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
 public class EndpointResultRequestFilter {
   public static final String JSON_PROPERTY_LOCATION = "location";
   private List<String> location = new ArrayList<>();

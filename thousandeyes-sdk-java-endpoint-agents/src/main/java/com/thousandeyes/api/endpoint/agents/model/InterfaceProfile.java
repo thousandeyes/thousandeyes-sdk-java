@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InterfaceProfile.JSON_PROPERTY_ETHERNET_PROFILE,
   InterfaceProfile.JSON_PROPERTY_WIRELESS_PROFILE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:28.973584+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.094652+01:00[Europe/Lisbon]")
 public class InterfaceProfile {
   public static final String JSON_PROPERTY_INTERFACE_NAME = "interfaceName";
   private String interfaceName;

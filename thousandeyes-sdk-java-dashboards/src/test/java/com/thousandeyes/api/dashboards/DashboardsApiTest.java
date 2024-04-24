@@ -23,6 +23,7 @@ import java.time.OffsetDateTime;
 import java.net.URI;
 import com.thousandeyes.api.dashboards.model.UnauthorizedError;
 import com.thousandeyes.api.dashboards.model.ValidationError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;
@@ -30,6 +31,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -44,8 +46,9 @@ import java.util.Set;
  */
 public class DashboardsApiTest {
     // private final DashboardsApi api = new DashboardsApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * Create dashboard

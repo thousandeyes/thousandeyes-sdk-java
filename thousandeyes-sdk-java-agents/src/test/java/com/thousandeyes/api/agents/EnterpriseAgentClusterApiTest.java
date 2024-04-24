@@ -21,6 +21,7 @@ import com.thousandeyes.api.agents.model.Error;
 import com.thousandeyes.api.agents.model.GetAgents200Response;
 import com.thousandeyes.api.agents.model.UnauthorizedError;
 import com.thousandeyes.api.agents.model.ValidationError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;
@@ -28,6 +29,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -42,8 +44,9 @@ import java.util.Set;
  */
 public class EnterpriseAgentClusterApiTest {
     // private final EnterpriseAgentClusterApi api = new EnterpriseAgentClusterApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * Add member to Enterprise Agent cluster

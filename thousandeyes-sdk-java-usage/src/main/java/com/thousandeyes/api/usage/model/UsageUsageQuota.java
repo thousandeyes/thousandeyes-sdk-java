@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UsageUsageQuota.JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED_INCLUDED,
   UsageUsageQuota.JSON_PROPERTY_ENTERPRISE_AGENTS_INCLUDED
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.837859+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.908408+01:00[Europe/Lisbon]")
 public class UsageUsageQuota {
   public static final String JSON_PROPERTY_MONTH_START = "monthStart";
   private OffsetDateTime monthStart;

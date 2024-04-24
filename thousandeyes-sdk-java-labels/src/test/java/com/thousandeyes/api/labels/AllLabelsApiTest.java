@@ -17,6 +17,7 @@ import com.thousandeyes.api.labels.model.Error;
 import com.thousandeyes.api.labels.model.GetLabels200Response;
 import com.thousandeyes.api.labels.model.UnauthorizedError;
 import com.thousandeyes.api.labels.model.ValidationError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;
@@ -24,6 +25,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -38,8 +40,9 @@ import java.util.Set;
  */
 public class AllLabelsApiTest {
     // private final AllLabelsApi api = new AllLabelsApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * Get list of Labels

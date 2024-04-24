@@ -27,7 +27,8 @@ public class JSON {
                 .builder()
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false)
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true)
+                // false so new api fields will not break the sdk
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, true)
                 .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
                 .enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)

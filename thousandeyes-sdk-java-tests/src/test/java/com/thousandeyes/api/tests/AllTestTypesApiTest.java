@@ -16,6 +16,7 @@ package com.thousandeyes.api.tests;
 import com.thousandeyes.api.tests.model.Error;
 import com.thousandeyes.api.tests.model.GetTests200Response;
 import com.thousandeyes.api.tests.model.UnauthorizedError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;
@@ -23,6 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -37,8 +39,9 @@ import java.util.Set;
  */
 public class AllTestTypesApiTest {
     // private final AllTestTypesApi api = new AllTestTypesApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * List configured tests

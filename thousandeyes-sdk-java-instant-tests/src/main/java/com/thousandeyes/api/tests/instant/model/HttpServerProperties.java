@@ -72,7 +72,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerProperties.JSON_PROPERTY_FIXED_PACKET_RATE,
   HttpServerProperties.JSON_PROPERTY_TYPE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.070368+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.194632+01:00[Europe/Lisbon]")
 public class HttpServerProperties {
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;

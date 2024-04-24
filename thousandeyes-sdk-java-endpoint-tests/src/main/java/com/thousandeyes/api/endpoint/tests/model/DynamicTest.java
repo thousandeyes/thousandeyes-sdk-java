@@ -56,7 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTest.JSON_PROPERTY_TEST_NAME,
   DynamicTest.JSON_PROPERTY_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.008536+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.117799+01:00[Europe/Lisbon]")
 public class DynamicTest {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;

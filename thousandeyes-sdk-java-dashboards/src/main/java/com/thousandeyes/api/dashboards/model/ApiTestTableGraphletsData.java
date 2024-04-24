@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestTableGraphletsData.JSON_PROPERTY_TEST_ID,
   ApiTestTableGraphletsData.JSON_PROPERTY_POINTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.195689+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
 public class ApiTestTableGraphletsData {
   public static final String JSON_PROPERTY_METRIC = "metric";
   private String metric;

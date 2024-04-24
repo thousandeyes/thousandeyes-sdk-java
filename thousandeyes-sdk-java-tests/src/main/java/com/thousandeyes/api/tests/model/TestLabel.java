@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestLabel.JSON_PROPERTY_NAME,
   TestLabel.JSON_PROPERTY_IS_BUILTIN
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:30.065400+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:11.174036+01:00[Europe/Lisbon]")
 public class TestLabel {
   public static final String JSON_PROPERTY_LABEL_ID = "labelId";
   private String labelId;

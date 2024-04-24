@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndRepeat.JSON_PROPERTY_COUNT,
   EndRepeat.JSON_PROPERTY_DATE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.116811+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.220222+01:00[Europe/Lisbon]")
 public class EndRepeat {
   public static final String JSON_PROPERTY_TYPE = "type";
   private EndRepeatType type;

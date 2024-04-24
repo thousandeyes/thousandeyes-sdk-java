@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RealUserTestPageResult.JSON_PROPERTY_RESPONSE_TIME,
   RealUserTestPageResult.JSON_PROPERTY_SYSTEM_METRICS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.214308+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
 public class RealUserTestPageResult {
   public static final String JSON_PROPERTY_PAGE_ID = "pageId";
   private String pageId;

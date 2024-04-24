@@ -19,6 +19,7 @@ import com.thousandeyes.api.endpoint.tests.instant.model.Error;
 import java.net.URI;
 import com.thousandeyes.api.endpoint.tests.instant.model.UnauthorizedError;
 import com.thousandeyes.api.endpoint.tests.instant.model.ValidationError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -26,6 +27,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -40,8 +42,9 @@ import java.util.Set;
  */
 public class AgentToServerInstantScheduledTestApiTest {
     // private final AgentToServerInstantScheduledTestApi api = new AgentToServerInstantScheduledTestApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * Run agent to server instant scheduled test

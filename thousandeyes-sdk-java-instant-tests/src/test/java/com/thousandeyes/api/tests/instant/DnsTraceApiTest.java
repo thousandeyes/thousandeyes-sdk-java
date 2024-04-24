@@ -20,6 +20,7 @@ import com.thousandeyes.api.tests.instant.model.Expand;
 import java.net.URI;
 import com.thousandeyes.api.tests.instant.model.UnauthorizedError;
 import com.thousandeyes.api.tests.instant.model.ValidationError;
+import static com.thousandeyes.api.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -27,6 +28,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -41,8 +43,9 @@ import java.util.Set;
  */
 public class DnsTraceApiTest {
     // private final DnsTraceApi api = new DnsTraceApi();
-    private final ObjectMapper mapper = com.thousandeyes.api.serialization.JSON.getDefault()
-                                                                               .getMapper();
+    private final ObjectMapper mapper = getDefault()
+            .getMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     
     /**
      * Create DNS trace instant test

@@ -54,7 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsTraceInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.070368+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.194632+01:00[Europe/Lisbon]")
 public class DnsTraceInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;

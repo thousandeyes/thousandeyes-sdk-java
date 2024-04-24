@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiMultiSearchFilterApiTestTableFilterKey.JSON_PROPERTY_KEY,
   ApiMultiSearchFilterApiTestTableFilterKey.JSON_PROPERTY_VALUE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:29.195689+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
 public class ApiMultiSearchFilterApiTestTableFilterKey {
   public static final String JSON_PROPERTY_KEY = "key";
   private TestTableFilterKey key;

@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointLabelsList200Response.JSON_PROPERTY_LABELS,
   EndpointLabelsList200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:34:28.896330+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.937504+01:00[Europe/Lisbon]")
 public class EndpointLabelsList200Response {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<LabelsLabelsInner> labels = new ArrayList<>();
