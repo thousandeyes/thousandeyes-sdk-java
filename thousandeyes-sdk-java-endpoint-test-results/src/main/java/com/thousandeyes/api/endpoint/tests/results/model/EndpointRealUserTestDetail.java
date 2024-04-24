@@ -54,7 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointRealUserTestDetail.JSON_PROPERTY_PAGES,
   EndpointRealUserTestDetail.JSON_PROPERTY_NETWORK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
 public class EndpointRealUserTestDetail {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private UUID agentId;
@@ -99,7 +99,7 @@ public class EndpointRealUserTestDetail {
   private RealUserTestCoordinates coordinates;
 
   public static final String JSON_PROPERTY_PAGES = "pages";
-  private List<RealUserTestPage> pages;
+  private List<RealUserTestPage> pages = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
   private RealUserTestNetwork network;

@@ -84,7 +84,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -169,7 +169,7 @@ ApiResponse<[**SipServerTest**](SipServerTest.md)>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -249,7 +249,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -328,7 +328,7 @@ ApiResponse<Void>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -408,7 +408,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -492,7 +492,7 @@ ApiResponse<[**SipServerTest**](SipServerTest.md)>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -570,7 +570,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -650,7 +650,7 @@ ApiResponse<[**GetSipServerTests200Response**](GetSipServerTests200Response.md)>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -734,7 +734,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -821,7 +821,7 @@ ApiResponse<[**SipServerTest**](SipServerTest.md)>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiMultiMetricColumn.JSON_PROPERTY_FILTERS,
   ApiMultiMetricColumn.JSON_PROPERTY_MEASURE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
 public class ApiMultiMetricColumn {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

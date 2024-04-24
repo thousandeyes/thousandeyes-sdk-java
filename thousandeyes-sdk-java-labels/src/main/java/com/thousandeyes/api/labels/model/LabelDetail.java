@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LabelDetail.JSON_PROPERTY_TYPE,
   LabelDetail.JSON_PROPERTY_IDS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.185032+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.063107+01:00[Europe/Lisbon]")
 public class LabelDetail {
   public static final String JSON_PROPERTY_LABEL_ID = "labelId";
   private String labelId;
@@ -53,7 +53,7 @@ public class LabelDetail {
   private LabelType type;
 
   public static final String JSON_PROPERTY_IDS = "ids";
-  private List<String> ids;
+  private List<String> ids = new ArrayList<>();
 
   public LabelDetail() { 
   }

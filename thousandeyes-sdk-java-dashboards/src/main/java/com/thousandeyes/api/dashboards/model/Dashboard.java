@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Dashboard.JSON_PROPERTY_IS_GLOBAL_OVERRIDE,
   Dashboard.JSON_PROPERTY_IS_MIGRATED_REPORT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
 public class Dashboard {
   public static final String JSON_PROPERTY_GLOBAL_FILTER_ID = "globalFilterId";
   private String globalFilterId;
@@ -92,7 +92,7 @@ public class Dashboard {
   private Boolean isDefaultForAccount;
 
   public static final String JSON_PROPERTY_WIDGETS = "widgets";
-  private List<ApiWidget> widgets;
+  private List<ApiWidget> widgets = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;

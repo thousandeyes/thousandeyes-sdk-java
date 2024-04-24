@@ -64,16 +64,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgent.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   EnterpriseAgent.JSON_PROPERTY_INTERFACE_IP_MAPPINGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.152598+01:00[Europe/Lisbon]")
 public class EnterpriseAgent {
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
   private CloudEnterpriseAgentType agentType;
 
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
-  private List<String> ipAddresses;
+  private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESSES = "publicIpAddresses";
-  private List<String> publicIpAddresses;
+  private List<String> publicIpAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
   private String network;
@@ -100,19 +100,19 @@ public class EnterpriseAgent {
   private Boolean verifySslCertificates;
 
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
-  private List<ClusterMember> clusterMembers;
+  private List<ClusterMember> clusterMembers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_UTILIZATION = "utilization";
   private Integer utilization;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUPS = "accountGroups";
-  private List<AccountGroup1> accountGroups;
+  private List<AccountGroup1> accountGroups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private EnterpriseAgentIpv6Policy ipv6Policy;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
-  private List<ErrorDetail> errorDetails;
+  private List<ErrorDetail> errorDetails = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HOSTNAME = "hostname";
   private String hostname;
@@ -133,10 +133,10 @@ public class EnterpriseAgent {
   private String targetForTests;
 
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
-  private List<String> localResolutionPrefixes;
+  private List<String> localResolutionPrefixes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERFACE_IP_MAPPINGS = "interfaceIpMappings";
-  private List<InterfaceIpMapping> interfaceIpMappings;
+  private List<InterfaceIpMapping> interfaceIpMappings = new ArrayList<>();
 
   public EnterpriseAgent() { 
   }

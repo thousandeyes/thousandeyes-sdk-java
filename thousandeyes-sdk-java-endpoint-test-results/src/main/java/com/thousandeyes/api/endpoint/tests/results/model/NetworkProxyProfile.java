@@ -35,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkProxyProfile.JSON_PROPERTY_METHOD,
   NetworkProxyProfile.JSON_PROPERTY_PROXIES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
 public class NetworkProxyProfile {
   public static final String JSON_PROPERTY_METHOD = "method";
   private String method;
 
   public static final String JSON_PROPERTY_PROXIES = "proxies";
-  private List<NetworkProxyProfileProxiesInner> proxies;
+  private List<NetworkProxyProfileProxiesInner> proxies = new ArrayList<>();
 
   public NetworkProxyProfile() { 
   }

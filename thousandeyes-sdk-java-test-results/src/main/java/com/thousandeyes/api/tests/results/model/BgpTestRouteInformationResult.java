@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BgpTestRouteInformationResult.JSON_PROPERTY_IS_ACTIVE,
   BgpTestRouteInformationResult.JSON_PROPERTY_HOPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.392286+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.983792+01:00[Europe/Lisbon]")
 public class BgpTestRouteInformationResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;
@@ -67,7 +67,7 @@ public class BgpTestRouteInformationResult {
   private Boolean isActive;
 
   public static final String JSON_PROPERTY_HOPS = "hops";
-  private List<BgpHop> hops;
+  private List<BgpHop> hops = new ArrayList<>();
 
   public BgpTestRouteInformationResult() { 
   }

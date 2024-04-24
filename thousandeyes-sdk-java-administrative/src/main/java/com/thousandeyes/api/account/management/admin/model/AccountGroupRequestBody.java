@@ -34,13 +34,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AccountGroupRequestBody.JSON_PROPERTY_ACCOUNT_GROUP_NAME,
   AccountGroupRequestBody.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.152598+01:00[Europe/Lisbon]")
 public class AccountGroupRequestBody {
   public static final String JSON_PROPERTY_ACCOUNT_GROUP_NAME = "accountGroupName";
   private String accountGroupName;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<String> agents;
+  private List<String> agents = new ArrayList<>();
 
   public AccountGroupRequestBody() { 
   }

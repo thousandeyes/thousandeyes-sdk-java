@@ -45,3 +45,5 @@ src/main/java/com/thousandeyes/api/usage/model/UsageUsage.java
 src/main/java/com/thousandeyes/api/usage/model/UsageUsageQuota.java
 src/main/java/com/thousandeyes/api/usage/model/ValidationError.java
 src/main/java/com/thousandeyes/api/usage/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/usage/QuotasApiTest.java
+src/test/java/com/thousandeyes/api/usage/UsageApiTest.java

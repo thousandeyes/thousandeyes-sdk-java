@@ -86,7 +86,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -179,7 +179,7 @@ ApiResponse<[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Res
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -268,7 +268,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -359,7 +359,7 @@ ApiResponse<[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Res
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |

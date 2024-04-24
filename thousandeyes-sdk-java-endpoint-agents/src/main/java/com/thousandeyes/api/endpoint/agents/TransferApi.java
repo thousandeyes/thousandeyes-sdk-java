@@ -22,8 +22,8 @@ import com.thousandeyes.api.client.ApiRequest;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.thousandeyes.api.endpoint.agents.model.AgentTransferRequest;
+import com.thousandeyes.api.endpoint.agents.model.AgentTransfers;
 import com.thousandeyes.api.endpoint.agents.model.EndpointAgentBulkTransfer207Response;
-import com.thousandeyes.api.endpoint.agents.model.EndpointAgentBulkTransferRequest;
 import com.thousandeyes.api.endpoint.agents.model.Error;
 import java.util.UUID;
 import com.thousandeyes.api.endpoint.agents.model.UnauthorizedError;
@@ -54,7 +54,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.210211+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.094652+01:00[Europe/Lisbon]")
 public class TransferApi {
   private final ApiClient apiClient;
 
@@ -66,12 +66,12 @@ public class TransferApi {
    * Bulk transfer agents
    * Initiates the transfer of multiple agents between accounts. The following conditions apply:  * The requester must possess &#39;write&#39; permissions for both the &#39;from&#39; and &#39;to&#39; accounts involved in each transfer.  * Multiple transfers may involve a mix of different source and destination accounts. * For each transfer request, the &#39;from&#39; account must match the current account of the respective agent. * Transfers are executed asynchronously. * Progress tracking is not intended, but users can monitor the progress by periodically polling the &#39;get agent&#39; endpoint. * Each transfer request is individually validated and completed; this operation is not atomic, meaning transfers can succeed or fail individually. * The API response provides the status of each transfer request. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param endpointAgentBulkTransferRequest A collection of &#x60;AgentTransfers&#x60;. (optional)
+   * @param agentTransfers A collection of &#x60;AgentTransfers&#x60;. (optional)
    * @return EndpointAgentBulkTransfer207Response
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgentBulkTransfer207Response endpointAgentBulkTransfer(String aid, EndpointAgentBulkTransferRequest endpointAgentBulkTransferRequest) throws ApiException {
-    ApiResponse<EndpointAgentBulkTransfer207Response> response = endpointAgentBulkTransferWithHttpInfo(aid, endpointAgentBulkTransferRequest);
+  public EndpointAgentBulkTransfer207Response endpointAgentBulkTransfer(String aid, AgentTransfers agentTransfers) throws ApiException {
+    ApiResponse<EndpointAgentBulkTransfer207Response> response = endpointAgentBulkTransferWithHttpInfo(aid, agentTransfers);
     return response.getData();
   }
 
@@ -79,14 +79,14 @@ public class TransferApi {
    * Bulk transfer agents
    * Initiates the transfer of multiple agents between accounts. The following conditions apply:  * The requester must possess &#39;write&#39; permissions for both the &#39;from&#39; and &#39;to&#39; accounts involved in each transfer.  * Multiple transfers may involve a mix of different source and destination accounts. * For each transfer request, the &#39;from&#39; account must match the current account of the respective agent. * Transfers are executed asynchronously. * Progress tracking is not intended, but users can monitor the progress by periodically polling the &#39;get agent&#39; endpoint. * Each transfer request is individually validated and completed; this operation is not atomic, meaning transfers can succeed or fail individually. * The API response provides the status of each transfer request. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param endpointAgentBulkTransferRequest A collection of &#x60;AgentTransfers&#x60;. (optional)
+   * @param agentTransfers A collection of &#x60;AgentTransfers&#x60;. (optional)
    * @return ApiResponse&lt;EndpointAgentBulkTransfer207Response&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgentBulkTransfer207Response> endpointAgentBulkTransferWithHttpInfo(String aid, EndpointAgentBulkTransferRequest endpointAgentBulkTransferRequest) throws ApiException {
+  public ApiResponse<EndpointAgentBulkTransfer207Response> endpointAgentBulkTransferWithHttpInfo(String aid, AgentTransfers agentTransfers) throws ApiException {
     endpointAgentBulkTransferValidateRequest();
 
-    var requestBuilder = endpointAgentBulkTransferRequestBuilder(aid, endpointAgentBulkTransferRequest);
+    var requestBuilder = endpointAgentBulkTransferRequestBuilder(aid, agentTransfers);
 
     return apiClient.send(requestBuilder.build(), EndpointAgentBulkTransfer207Response.class);
   }
@@ -94,7 +94,7 @@ public class TransferApi {
   private void endpointAgentBulkTransferValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder endpointAgentBulkTransferRequestBuilder(String aid, EndpointAgentBulkTransferRequest endpointAgentBulkTransferRequest) throws ApiException {
+  private ApiRequest.ApiRequestBuilder endpointAgentBulkTransferRequestBuilder(String aid, AgentTransfers agentTransfers) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -109,9 +109,9 @@ public class TransferApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
-    requestBuilder.requestBody(endpointAgentBulkTransferRequest);
+    requestBuilder.requestBody(agentTransfers);
     return requestBuilder;
   }
   /**
@@ -170,7 +170,7 @@ public class TransferApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(agentTransferRequest);
     return requestBuilder;

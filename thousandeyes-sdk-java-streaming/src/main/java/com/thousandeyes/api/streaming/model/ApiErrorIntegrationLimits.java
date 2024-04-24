@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiErrorIntegrationLimits.JSON_PROPERTY_ERRORS,
   ApiErrorIntegrationLimits.JSON_PROPERTY_PATH
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.130497+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.915354+01:00[Europe/Lisbon]")
 public class ApiErrorIntegrationLimits {
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
@@ -45,7 +45,7 @@ public class ApiErrorIntegrationLimits {
   private String httpStatus;
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
-  private List<String> errors;
+  private List<String> errors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PATH = "path";
   private String path;

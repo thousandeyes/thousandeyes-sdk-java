@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetUser200Response.JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES,
   GetUser200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.152598+01:00[Europe/Lisbon]")
 public class GetUser200Response {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -67,10 +67,10 @@ public class GetUser200Response {
   private OffsetDateTime lastLogin;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUP_ROLES = "accountGroupRoles";
-  private List<AccountGroupRolesAccountGroupRolesInner> accountGroupRoles;
+  private List<AccountGroupRolesAccountGroupRolesInner> accountGroupRoles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES = "allAccountGroupRoles";
-  private List<Role> allAccountGroupRoles;
+  private List<Role> allAccountGroupRoles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;

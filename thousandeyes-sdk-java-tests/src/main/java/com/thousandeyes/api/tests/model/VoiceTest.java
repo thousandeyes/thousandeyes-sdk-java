@@ -24,10 +24,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.tests.model.Agent;
 import com.thousandeyes.api.tests.model.AlertRule;
 import com.thousandeyes.api.tests.model.Monitor;
+import com.thousandeyes.api.tests.model.SharedWithAccount;
 import com.thousandeyes.api.tests.model.TestDscpId;
 import com.thousandeyes.api.tests.model.TestInterval;
-import com.thousandeyes.api.tests.model.TestLabelsInner;
-import com.thousandeyes.api.tests.model.TestSharedAccountsInner;
+import com.thousandeyes.api.tests.model.TestLabel;
 import com.thousandeyes.api.tests.model.UnexpandedInstantTestLinks;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -71,7 +71,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   VoiceTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:11.174036+01:00[Europe/Lisbon]")
 public class VoiceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -83,7 +83,7 @@ public class VoiceTest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules;
+  private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -119,10 +119,10 @@ public class VoiceTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CODEC = "codec";
   private String codec;
@@ -152,7 +152,7 @@ public class VoiceTest {
   private String targetAgentId;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -161,7 +161,7 @@ public class VoiceTest {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors;
+  private List<Monitor> monitors = new ArrayList<>();
 
   public VoiceTest() { 
   }
@@ -176,8 +176,8 @@ public class VoiceTest {
     @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabelsInner> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<TestSharedAccountsInner> sharedWithAccounts, 
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_CODEC) String codec, 
     @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
     @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
@@ -511,7 +511,7 @@ public class VoiceTest {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestLabelsInner> getLabels() {
+  public List<TestLabel> getLabels() {
     return labels;
   }
 
@@ -526,7 +526,7 @@ public class VoiceTest {
   @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestSharedAccountsInner> getSharedWithAccounts() {
+  public List<SharedWithAccount> getSharedWithAccounts() {
     return sharedWithAccounts;
   }
 

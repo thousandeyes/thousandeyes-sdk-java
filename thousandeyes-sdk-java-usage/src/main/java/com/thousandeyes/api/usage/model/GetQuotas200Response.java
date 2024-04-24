@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetQuotas200Response.JSON_PROPERTY_QUOTAS,
   GetQuotas200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.178418+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.908408+01:00[Europe/Lisbon]")
 public class GetQuotas200Response {
   public static final String JSON_PROPERTY_QUOTAS = "quotas";
-  private List<QuotasQuotasInner> quotas;
+  private List<QuotasQuotasInner> quotas = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;

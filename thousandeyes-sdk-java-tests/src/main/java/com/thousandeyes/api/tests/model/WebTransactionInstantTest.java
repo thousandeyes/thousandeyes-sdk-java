@@ -22,14 +22,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.tests.model.Agent;
+import com.thousandeyes.api.tests.model.SharedWithAccount;
 import com.thousandeyes.api.tests.model.TestAuthType;
 import com.thousandeyes.api.tests.model.TestCustomHeaders;
-import com.thousandeyes.api.tests.model.TestLabelsInner;
+import com.thousandeyes.api.tests.model.TestLabel;
 import com.thousandeyes.api.tests.model.TestPageLoadingStrategy;
 import com.thousandeyes.api.tests.model.TestPathTraceMode;
 import com.thousandeyes.api.tests.model.TestProbeMode;
 import com.thousandeyes.api.tests.model.TestProtocol;
-import com.thousandeyes.api.tests.model.TestSharedAccountsInner;
 import com.thousandeyes.api.tests.model.TestSslVersionId;
 import com.thousandeyes.api.tests.model.UnexpandedInstantTestLinks;
 import java.time.OffsetDateTime;
@@ -95,7 +95,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTest.JSON_PROPERTY_AGENTS,
   WebTransactionInstantTest.JSON_PROPERTY_CREDENTIALS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:11.174036+01:00[Europe/Lisbon]")
 public class WebTransactionInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -131,10 +131,10 @@ public class WebTransactionInstantTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -245,10 +245,10 @@ public class WebTransactionInstantTest {
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<String> credentials;
+  private List<String> credentials = new ArrayList<>();
 
   public WebTransactionInstantTest() { 
   }
@@ -263,8 +263,8 @@ public class WebTransactionInstantTest {
     @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabelsInner> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<TestSharedAccountsInner> sharedWithAccounts, 
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion, 
     @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
   ) {
@@ -486,7 +486,7 @@ public class WebTransactionInstantTest {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestLabelsInner> getLabels() {
+  public List<TestLabel> getLabels() {
     return labels;
   }
 
@@ -501,7 +501,7 @@ public class WebTransactionInstantTest {
   @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestSharedAccountsInner> getSharedWithAccounts() {
+  public List<SharedWithAccount> getSharedWithAccounts() {
     return sharedWithAccounts;
   }
 

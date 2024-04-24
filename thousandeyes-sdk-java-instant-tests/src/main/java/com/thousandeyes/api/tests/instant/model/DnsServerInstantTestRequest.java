@@ -69,7 +69,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.321258+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.194632+01:00[Europe/Lisbon]")
 public class DnsServerInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -105,10 +105,10 @@ public class DnsServerInstantTestRequest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels;
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts;
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;

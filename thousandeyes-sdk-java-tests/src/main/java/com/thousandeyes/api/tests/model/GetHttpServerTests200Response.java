@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetHttpServerTests200Response.JSON_PROPERTY_TESTS,
   GetHttpServerTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:11.174036+01:00[Europe/Lisbon]")
 public class GetHttpServerTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<UnexpandedHttpServerTest> tests;
+  private List<UnexpandedHttpServerTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;

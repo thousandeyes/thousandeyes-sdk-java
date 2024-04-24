@@ -27,3 +27,5 @@ src/main/java/com/thousandeyes/api/tags/model/TagCollection.java
 src/main/java/com/thousandeyes/api/tags/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/tags/model/ValidationError.java
 src/main/java/com/thousandeyes/api/tags/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/tags/TagAssignmentApiTest.java
+src/test/java/com/thousandeyes/api/tags/TagsApiTest.java

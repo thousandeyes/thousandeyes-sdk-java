@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiApplicationOutageResponse.JSON_PROPERTY_AFFECTED_LOCATIONS,
   ApiApplicationOutageResponse.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.131336+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.963174+01:00[Europe/Lisbon]")
 public class ApiApplicationOutageResponse {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -81,19 +81,19 @@ public class ApiApplicationOutageResponse {
   private Long duration;
 
   public static final String JSON_PROPERTY_AFFECTED_TESTS = "affectedTests";
-  private Set<ApiAffectedTest> affectedTests;
+  private Set<ApiAffectedTest> affectedTests = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_DOMAINS = "affectedDomains";
-  private Set<String> affectedDomains;
+  private Set<String> affectedDomains = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_AGENTS = "affectedAgents";
-  private Set<ApiAffectedAgent> affectedAgents;
+  private Set<ApiAffectedAgent> affectedAgents = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
-  private Set<String> errors;
+  private Set<String> errors = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_LOCATIONS = "affectedLocations";
-  private Set<ApiApplicationOutageAffectedLocation> affectedLocations;
+  private Set<ApiApplicationOutageAffectedLocation> affectedLocations = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;

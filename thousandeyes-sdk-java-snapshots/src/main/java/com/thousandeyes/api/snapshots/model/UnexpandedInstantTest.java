@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedInstantTest.JSON_PROPERTY_TYPE,
   UnexpandedInstantTest.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.129251+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.918965+01:00[Europe/Lisbon]")
 public class UnexpandedInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;

@@ -54,7 +54,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.152598+01:00[Europe/Lisbon]")
 public class RolesApi {
   private final ApiClient apiClient;
 
@@ -113,7 +113,7 @@ public class RolesApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(roleRequestBody);
     return requestBuilder;
@@ -167,7 +167,7 @@ public class RolesApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -222,7 +222,7 @@ public class RolesApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -270,7 +270,7 @@ public class RolesApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -332,7 +332,7 @@ public class RolesApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(roleRequestBody);
     return requestBuilder;

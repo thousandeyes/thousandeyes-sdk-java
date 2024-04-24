@@ -78,7 +78,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -159,7 +159,7 @@ ApiResponse<[**GetEndpointLocalNetworkTopologyDetails200Response**](GetEndpointL
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -236,7 +236,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -315,7 +315,7 @@ ApiResponse<[**GetEndpointLocalNetworks200Response**](GetEndpointLocalNetworks20
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -331,7 +331,7 @@ ApiResponse<[**GetEndpointLocalNetworks200Response**](GetEndpointLocalNetworks20
 
 ## getEndpointLocalNetworksTopologies
 
-> GetEndpointLocalNetworksTopologies200Response getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, getEndpointLocalNetworksTopologiesRequest)
+> GetEndpointLocalNetworksTopologies200Response getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
 
 List endpoint network topologies probes
 
@@ -363,9 +363,9 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        GetEndpointLocalNetworksTopologiesRequest getEndpointLocalNetworksTopologiesRequest = new GetEndpointLocalNetworksTopologiesRequest(); // GetEndpointLocalNetworksTopologiesRequest | 
+        EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            GetEndpointLocalNetworksTopologies200Response result = apiInstance.getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, getEndpointLocalNetworksTopologiesRequest);
+            GetEndpointLocalNetworksTopologies200Response result = apiInstance.getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworksTopologies");
@@ -388,7 +388,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **getEndpointLocalNetworksTopologiesRequest** | [**GetEndpointLocalNetworksTopologiesRequest**](GetEndpointLocalNetworksTopologiesRequest.md)|  | [optional] |
+| **endpointNetworkTopologyResultRequest** | [**EndpointNetworkTopologyResultRequest**](EndpointNetworkTopologyResultRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -402,7 +402,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -418,7 +418,7 @@ public class Example {
 
 ## getEndpointLocalNetworksTopologiesWithHttpInfo
 
-> ApiResponse<GetEndpointLocalNetworksTopologies200Response> getEndpointLocalNetworksTopologies getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointLocalNetworksTopologiesRequest)
+> ApiResponse<GetEndpointLocalNetworksTopologies200Response> getEndpointLocalNetworksTopologies getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
 
 List endpoint network topologies probes
 
@@ -451,9 +451,9 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        GetEndpointLocalNetworksTopologiesRequest getEndpointLocalNetworksTopologiesRequest = new GetEndpointLocalNetworksTopologiesRequest(); // GetEndpointLocalNetworksTopologiesRequest | 
+        EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            ApiResponse<GetEndpointLocalNetworksTopologies200Response> response = apiInstance.getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointLocalNetworksTopologiesRequest);
+            ApiResponse<GetEndpointLocalNetworksTopologies200Response> response = apiInstance.getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -478,7 +478,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **getEndpointLocalNetworksTopologiesRequest** | [**GetEndpointLocalNetworksTopologiesRequest**](GetEndpointLocalNetworksTopologiesRequest.md)|  | [optional] |
+| **endpointNetworkTopologyResultRequest** | [**EndpointNetworkTopologyResultRequest**](EndpointNetworkTopologyResultRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -492,7 +492,7 @@ ApiResponse<[**GetEndpointLocalNetworksTopologies200Response**](GetEndpointLocal
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |

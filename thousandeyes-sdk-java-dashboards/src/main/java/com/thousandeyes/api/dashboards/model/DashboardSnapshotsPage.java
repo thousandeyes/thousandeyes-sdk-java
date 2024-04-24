@@ -37,13 +37,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DashboardSnapshotsPage.JSON_PROPERTY_PAGES,
   DashboardSnapshotsPage.JSON_PROPERTY_DASHBOARD_SNAPSHOTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
 public class DashboardSnapshotsPage {
   public static final String JSON_PROPERTY_PAGES = "pages";
   private Map<String, Object> pages = new HashMap<>();
 
   public static final String JSON_PROPERTY_DASHBOARD_SNAPSHOTS = "dashboardSnapshots";
-  private List<ApiDashboardSnapshot> dashboardSnapshots;
+  private List<ApiDashboardSnapshot> dashboardSnapshots = new ArrayList<>();
 
   public DashboardSnapshotsPage() { 
   }

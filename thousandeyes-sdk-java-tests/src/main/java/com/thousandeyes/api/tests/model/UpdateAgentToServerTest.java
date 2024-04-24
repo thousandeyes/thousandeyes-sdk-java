@@ -21,13 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.api.tests.model.AgentRequest;
 import com.thousandeyes.api.tests.model.TestDscpId;
 import com.thousandeyes.api.tests.model.TestInterval;
 import com.thousandeyes.api.tests.model.TestIpv6Policy;
 import com.thousandeyes.api.tests.model.TestPathTraceMode;
 import com.thousandeyes.api.tests.model.TestProbeMode;
 import com.thousandeyes.api.tests.model.TestProtocol;
-import com.thousandeyes.api.tests.model.TestRequestAllOfAgents;
 import com.thousandeyes.api.tests.model.UnexpandedInstantTestLinks;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateAgentToServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateAgentToServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:11.174036+01:00[Europe/Lisbon]")
 public class UpdateAgentToServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -89,7 +89,7 @@ public class UpdateAgentToServerTest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules;
+  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -125,10 +125,10 @@ public class UpdateAgentToServerTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels;
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts;
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -176,7 +176,7 @@ public class UpdateAgentToServerTest {
   private Boolean networkMeasurements = false;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
+  private List<AgentRequest> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -185,7 +185,7 @@ public class UpdateAgentToServerTest {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors;
+  private List<String> monitors = new ArrayList<>();
 
   public UpdateAgentToServerTest() { 
   }
@@ -956,12 +956,12 @@ public class UpdateAgentToServerTest {
   }
 
 
-  public UpdateAgentToServerTest agents(List<TestRequestAllOfAgents> agents) {
+  public UpdateAgentToServerTest agents(List<AgentRequest> agents) {
     this.agents = agents;
     return this;
   }
 
-  public UpdateAgentToServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateAgentToServerTest addAgentsItem(AgentRequest agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -970,21 +970,21 @@ public class UpdateAgentToServerTest {
   }
 
    /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * Get agents
    * @return agents
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestRequestAllOfAgents> getAgents() {
+  public List<AgentRequest> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
+  public void setAgents(List<AgentRequest> agents) {
     this.agents = agents;
   }
 

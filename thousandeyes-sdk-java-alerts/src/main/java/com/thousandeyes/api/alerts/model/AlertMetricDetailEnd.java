@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AlertMetricDetailEnd.JSON_PROPERTY_METRICS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.441845+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.220222+01:00[Europe/Lisbon]")
 public class AlertMetricDetailEnd {
   public static final String JSON_PROPERTY_METRICS = "metrics";
   private String metrics;

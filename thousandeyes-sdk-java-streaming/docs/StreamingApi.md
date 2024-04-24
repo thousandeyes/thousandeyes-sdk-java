@@ -82,7 +82,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -162,7 +162,7 @@ ApiResponse<[**CreateStreamResponse**](CreateStreamResponse.md)>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -239,7 +239,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -318,7 +318,7 @@ ApiResponse<Void>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -398,7 +398,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -480,7 +480,7 @@ ApiResponse<[**GetStreamResponse**](GetStreamResponse.md)>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -558,7 +558,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -639,7 +639,7 @@ ApiResponse<[**List&lt;GetStreamResponse&gt;**](GetStreamResponse.md)>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -720,7 +720,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -804,7 +804,7 @@ ApiResponse<[**GetStreamResponse**](GetStreamResponse.md)>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -126,3 +126,6 @@ src/main/java/com/thousandeyes/api/dashboards/model/VisualMode.java
 src/main/java/com/thousandeyes/api/dashboards/model/Widget.java
 src/main/java/com/thousandeyes/api/dashboards/model/WidgetMeasureType.java
 src/main/java/com/thousandeyes/api/dashboards/model/WidgetType.java
+src/test/java/com/thousandeyes/api/dashboards/DashboardSnapshotsApiTest.java
+src/test/java/com/thousandeyes/api/dashboards/DashboardsApiTest.java
+src/test/java/com/thousandeyes/api/dashboards/DashboardsFiltersApiTest.java

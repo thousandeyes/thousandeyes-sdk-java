@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiOutageFilter.JSON_PROPERTY_APPLICATION_NAME,
   ApiOutageFilter.JSON_PROPERTY_INTERFACE_NETWORK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.131336+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.963174+01:00[Europe/Lisbon]")
 public class ApiOutageFilter {
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private String startDate;
@@ -55,13 +55,13 @@ public class ApiOutageFilter {
   private OutageScope outageScope;
 
   public static final String JSON_PROPERTY_PROVIDER_NAME = "providerName";
-  private List<String> providerName;
+  private List<String> providerName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_APPLICATION_NAME = "applicationName";
-  private List<String> applicationName;
+  private List<String> applicationName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERFACE_NETWORK = "interfaceNetwork";
-  private List<String> interfaceNetwork;
+  private List<String> interfaceNetwork = new ArrayList<>();
 
   public ApiOutageFilter() { 
   }

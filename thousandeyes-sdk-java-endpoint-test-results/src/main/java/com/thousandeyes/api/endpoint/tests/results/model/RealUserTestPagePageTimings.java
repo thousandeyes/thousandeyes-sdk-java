@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RealUserTestPagePageTimings.JSON_PROPERTY_ON_CONTENT_LOAD,
   RealUserTestPagePageTimings.JSON_PROPERTY_ON_LOAD
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
 public class RealUserTestPagePageTimings {
   public static final String JSON_PROPERTY_ON_CONTENT_LOAD = "onContentLoad";
   private Integer onContentLoad;

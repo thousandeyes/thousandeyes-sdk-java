@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkTestResult.JSON_PROPERTY_SERVER,
   NetworkTestResult.JSON_PROPERTY_DIRECTION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.392286+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.983792+01:00[Europe/Lisbon]")
 public class NetworkTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;
@@ -95,7 +95,7 @@ public class NetworkTestResult {
   private Double minLatency;
 
   public static final String JSON_PROPERTY_PACKETS_BY_SECOND = "packetsBySecond";
-  private List<List<Integer>> packetsBySecond;
+  private List<List<Integer>> packetsBySecond = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private Agent agent;

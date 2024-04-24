@@ -32,7 +32,7 @@ import com.thousandeyes.api.endpoint.tests.results.model.EndpointTestAuthType;
 import com.thousandeyes.api.endpoint.tests.results.model.EndpointTestLinks;
 import com.thousandeyes.api.endpoint.tests.results.model.EndpointTestProtocol;
 import com.thousandeyes.api.endpoint.tests.results.model.TestInterval;
-import com.thousandeyes.api.endpoint.tests.results.model.TestLabelsInner;
+import com.thousandeyes.api.endpoint.tests.results.model.TestLabel;
 import com.thousandeyes.api.endpoint.tests.results.model.TestProbeModeResponse;
 import com.thousandeyes.api.endpoint.tests.results.model.TestSslVersionId;
 import java.time.OffsetDateTime;
@@ -66,7 +66,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.api.serialization.JSON;
 import com.thousandeyes.api.serialization.AbstractOpenApiSchema;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
 @JsonDeserialize(using = EndpointScheduledTest.EndpointScheduledTestDeserializer.class)
 @JsonSerialize(using = EndpointScheduledTest.EndpointScheduledTestSerializer.class)
 public class EndpointScheduledTest extends AbstractOpenApiSchema {
@@ -100,6 +100,22 @@ public class EndpointScheduledTest extends AbstractOpenApiSchema {
         public EndpointScheduledTest deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             JsonNode tree = jp.readValueAsTree();
             Object deserialized = null;
+            EndpointScheduledTest newEndpointScheduledTest = new EndpointScheduledTest();
+            Map<String,Object> result2 = tree.traverse(jp.getCodec()).readValueAs(new TypeReference<Map<String, Object>>() {});
+            String discriminatorValue = (String)result2.get("type");
+            switch (discriminatorValue) {
+                case "agent-to-server":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointAgentToServerTest.class);
+                    newEndpointScheduledTest.setActualInstance(deserialized);
+                    return newEndpointScheduledTest;
+                case "http-server":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointHttpServerTest.class);
+                    newEndpointScheduledTest.setActualInstance(deserialized);
+                    return newEndpointScheduledTest;
+                default:
+                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for EndpointScheduledTest. Possible values: agent-to-server http-server", discriminatorValue));
+            }
+
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
             JsonToken token = tree.traverse(jp.getCodec()).nextToken();

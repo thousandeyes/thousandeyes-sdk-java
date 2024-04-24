@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiOutagesResponseAllOfOutagesInner.JSON_PROPERTY_ASN,
   ApiOutagesResponseAllOfOutagesInner.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.131336+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.963174+01:00[Europe/Lisbon]")
 public class ApiOutagesResponseAllOfOutagesInner {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

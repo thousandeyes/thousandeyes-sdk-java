@@ -35,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiReportDataComponentLabelMap.JSON_PROPERTY_GROUP_PROPERTY,
   ApiReportDataComponentLabelMap.JSON_PROPERTY_GROUP_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
 public class ApiReportDataComponentLabelMap {
   public static final String JSON_PROPERTY_GROUP_PROPERTY = "groupProperty";
   private String groupProperty;
 
   public static final String JSON_PROPERTY_GROUP_LABELS = "groupLabels";
-  private List<ApiReportDataComponentLabelMapEntry> groupLabels;
+  private List<ApiReportDataComponentLabelMapEntry> groupLabels = new ArrayList<>();
 
   public ApiReportDataComponentLabelMap() { 
   }

@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   Permissions.JSON_PROPERTY_PERMISSIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.152598+01:00[Europe/Lisbon]")
 public class Permissions {
   public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
-  private List<Permission> permissions;
+  private List<Permission> permissions = new ArrayList<>();
 
   public Permissions() { 
   }

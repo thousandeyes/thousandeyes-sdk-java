@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RealUserTestNetworkVpnTraceroute.JSON_PROPERTY_INTERNAL_ERRORS,
   RealUserTestNetworkVpnTraceroute.JSON_PROPERTY_HOPS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
 public class RealUserTestNetworkVpnTraceroute {
   public static final String JSON_PROPERTY_DESTINATION = "destination";
   private String destination;
@@ -47,13 +47,13 @@ public class RealUserTestNetworkVpnTraceroute {
   private String error;
 
   public static final String JSON_PROPERTY_INFO_FLAGS = "infoFlags";
-  private List<String> infoFlags;
+  private List<String> infoFlags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERNAL_ERRORS = "internalErrors";
-  private List<String> internalErrors;
+  private List<String> internalErrors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HOPS = "hops";
-  private List<TracerouteHop> hops;
+  private List<TracerouteHop> hops = new ArrayList<>();
 
   public RealUserTestNetworkVpnTraceroute() { 
   }

@@ -57,13 +57,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerInstantTest.JSON_PROPERTY_TARGET_RESPONSE_TIME,
   EndpointHttpServerInstantTest.JSON_PROPERTY_PASSWORD
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.232828+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.117799+01:00[Europe/Lisbon]")
 public class EndpointHttpServerInstantTest {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
   private EndpointTestAgentSelectorType agentSelectorType;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<UUID> agents;
+  private List<UUID> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HAS_PING = "hasPing";
   private Boolean hasPing = true;
@@ -72,7 +72,7 @@ public class EndpointHttpServerInstantTest {
   private Boolean hasTraceroute = true;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
-  private List<String> endpointAgentLabels;
+  private List<String> endpointAgentLabels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
   private Integer maxMachines;

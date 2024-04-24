@@ -68,7 +68,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.api.serialization.JSON;
 import com.thousandeyes.api.serialization.AbstractOpenApiSchema;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.242511+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.086263+01:00[Europe/Lisbon]")
 @JsonDeserialize(using = AgentDetails.AgentDetailsDeserializer.class)
 @JsonSerialize(using = AgentDetails.AgentDetailsSerializer.class)
 public class AgentDetails extends AbstractOpenApiSchema {
@@ -102,6 +102,26 @@ public class AgentDetails extends AbstractOpenApiSchema {
         public AgentDetails deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             JsonNode tree = jp.readValueAsTree();
             Object deserialized = null;
+            AgentDetails newAgentDetails = new AgentDetails();
+            Map<String,Object> result2 = tree.traverse(jp.getCodec()).readValueAs(new TypeReference<Map<String, Object>>() {});
+            String discriminatorValue = (String)result2.get("agentType");
+            switch (discriminatorValue) {
+                case "cloud":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(CloudAgentDetail.class);
+                    newAgentDetails.setActualInstance(deserialized);
+                    return newAgentDetails;
+                case "enterprise":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EnterpriseAgentDetail.class);
+                    newAgentDetails.setActualInstance(deserialized);
+                    return newAgentDetails;
+                case "enterprise-cluster":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EnterpriseAgentClusterDetail.class);
+                    newAgentDetails.setActualInstance(deserialized);
+                    return newAgentDetails;
+                default:
+                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for AgentDetails. Possible values: cloud enterprise enterprise-cluster", discriminatorValue));
+            }
+
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
             JsonToken token = tree.traverse(jp.getCodec()).nextToken();

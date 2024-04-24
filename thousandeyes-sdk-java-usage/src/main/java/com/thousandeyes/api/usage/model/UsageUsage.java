@@ -56,7 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UsageUsage.JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED,
   UsageUsage.JSON_PROPERTY_ENTERPRISE_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.178418+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.908408+01:00[Europe/Lisbon]")
 public class UsageUsage {
   public static final String JSON_PROPERTY_QUOTA = "quota";
   private UsageUsageQuota quota;
@@ -92,22 +92,22 @@ public class UsageUsage {
   private Long enterpriseAgentsUsed;
 
   public static final String JSON_PROPERTY_ENTERPRISE_AGENT_UNITS = "enterpriseAgentUnits";
-  private List<EnterpriseAgentUnitsInner> enterpriseAgentUnits;
+  private List<EnterpriseAgentUnitsInner> enterpriseAgentUnits = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<TestsInner> tests;
+  private List<TestsInner> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS = "endpointAgents";
-  private List<EndpointAgentsInner> endpointAgents;
+  private List<EndpointAgentsInner> endpointAgents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS_ESSENTIALS = "endpointAgentsEssentials";
-  private List<EndpointAgentsEssentialsInner> endpointAgentsEssentials;
+  private List<EndpointAgentsEssentialsInner> endpointAgentsEssentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED = "endpointAgentsEmbedded";
-  private List<EndpointAgentsEmbeddedInner> endpointAgentsEmbedded;
+  private List<EndpointAgentsEmbeddedInner> endpointAgentsEmbedded = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENTERPRISE_AGENTS = "enterpriseAgents";
-  private List<EnterpriseAgentsInner> enterpriseAgents;
+  private List<EnterpriseAgentsInner> enterpriseAgents = new ArrayList<>();
 
   public UsageUsage() { 
   }

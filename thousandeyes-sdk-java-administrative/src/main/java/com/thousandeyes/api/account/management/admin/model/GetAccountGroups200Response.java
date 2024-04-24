@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetAccountGroups200Response.JSON_PROPERTY_ACCOUNT_GROUPS,
   GetAccountGroups200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.152598+01:00[Europe/Lisbon]")
 public class GetAccountGroups200Response {
   public static final String JSON_PROPERTY_ACCOUNT_GROUPS = "accountGroups";
-  private List<AccountGroup> accountGroups;
+  private List<AccountGroup> accountGroups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;

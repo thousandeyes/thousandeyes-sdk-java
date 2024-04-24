@@ -58,7 +58,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.api.serialization.JSON;
 import com.thousandeyes.api.serialization.AbstractOpenApiSchema;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.130184+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.945255+01:00[Europe/Lisbon]")
 @JsonDeserialize(using = EndpointAgentSelectorConfig.EndpointAgentSelectorConfigDeserializer.class)
 @JsonSerialize(using = EndpointAgentSelectorConfig.EndpointAgentSelectorConfigSerializer.class)
 public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
@@ -92,6 +92,26 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
         public EndpointAgentSelectorConfig deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             JsonNode tree = jp.readValueAsTree();
             Object deserialized = null;
+            EndpointAgentSelectorConfig newEndpointAgentSelectorConfig = new EndpointAgentSelectorConfig();
+            Map<String,Object> result2 = tree.traverse(jp.getCodec()).readValueAs(new TypeReference<Map<String, Object>>() {});
+            String discriminatorValue = (String)result2.get("agentSelectorType");
+            switch (discriminatorValue) {
+                case "agent-labels":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointAgentLabelsSelectorConfig.class);
+                    newEndpointAgentSelectorConfig.setActualInstance(deserialized);
+                    return newEndpointAgentSelectorConfig;
+                case "all-agents":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointAllAgentsSelectorConfig.class);
+                    newEndpointAgentSelectorConfig.setActualInstance(deserialized);
+                    return newEndpointAgentSelectorConfig;
+                case "specific-agents":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointSpecificAgentsSelectorConfig.class);
+                    newEndpointAgentSelectorConfig.setActualInstance(deserialized);
+                    return newEndpointAgentSelectorConfig;
+                default:
+                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for EndpointAgentSelectorConfig. Possible values: agent-labels all-agents specific-agents", discriminatorValue));
+            }
+
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
             JsonToken token = tree.traverse(jp.getCodec()).nextToken();

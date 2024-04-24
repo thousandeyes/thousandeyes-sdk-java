@@ -62,6 +62,7 @@ src/main/java/com/thousandeyes/api/tests/instant/model/PageLoadInstantTest.java
 src/main/java/com/thousandeyes/api/tests/instant/model/PageLoadInstantTestRequest.java
 src/main/java/com/thousandeyes/api/tests/instant/model/PageLoadProperties.java
 src/main/java/com/thousandeyes/api/tests/instant/model/ServerInstantTestRequest.java
+src/main/java/com/thousandeyes/api/tests/instant/model/SharedWithAccount.java
 src/main/java/com/thousandeyes/api/tests/instant/model/SimpleAgent.java
 src/main/java/com/thousandeyes/api/tests/instant/model/SipServerInstantTest.java
 src/main/java/com/thousandeyes/api/tests/instant/model/SipServerInstantTestRequest.java
@@ -76,12 +77,11 @@ src/main/java/com/thousandeyes/api/tests/instant/model/TestDnsServer.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestDnsTransportProtocol.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestDscpId.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestIpv6Policy.java
-src/main/java/com/thousandeyes/api/tests/instant/model/TestLabelsInner.java
+src/main/java/com/thousandeyes/api/tests/instant/model/TestLabel.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestPageLoadingStrategy.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestPathTraceMode.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestProbeMode.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestProtocol.java
-src/main/java/com/thousandeyes/api/tests/instant/model/TestSharedAccountsInner.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestSipCredentials.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestSslVersionId.java
 src/main/java/com/thousandeyes/api/tests/instant/model/TestType.java
@@ -97,3 +97,15 @@ src/main/java/com/thousandeyes/api/tests/instant/model/VoiceProperties.java
 src/main/java/com/thousandeyes/api/tests/instant/model/WebTransactionInstantTest.java
 src/main/java/com/thousandeyes/api/tests/instant/model/WebTransactionInstantTestRequest.java
 src/main/java/com/thousandeyes/api/tests/instant/model/WebTransactionProperties.java
+src/test/java/com/thousandeyes/api/tests/instant/AgentToAgentApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/AgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/DnsSecurityApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/DnsServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/DnsTraceApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/FtpServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/HttpPageLoadApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/HttpServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/RunApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/SipServerApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/VoiceApiTest.java
+src/test/java/com/thousandeyes/api/tests/instant/WebTransactionApiTest.java

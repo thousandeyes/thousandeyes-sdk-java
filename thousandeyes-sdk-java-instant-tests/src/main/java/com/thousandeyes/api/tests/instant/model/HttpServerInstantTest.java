@@ -22,14 +22,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.tests.instant.model.Agent;
+import com.thousandeyes.api.tests.instant.model.SharedWithAccount;
 import com.thousandeyes.api.tests.instant.model.TestAuthType;
 import com.thousandeyes.api.tests.instant.model.TestCustomHeaders;
 import com.thousandeyes.api.tests.instant.model.TestIpv6Policy;
-import com.thousandeyes.api.tests.instant.model.TestLabelsInner;
+import com.thousandeyes.api.tests.instant.model.TestLabel;
 import com.thousandeyes.api.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.api.tests.instant.model.TestProbeMode;
 import com.thousandeyes.api.tests.instant.model.TestProtocol;
-import com.thousandeyes.api.tests.instant.model.TestSharedAccountsInner;
 import com.thousandeyes.api.tests.instant.model.TestSslVersionId;
 import com.thousandeyes.api.tests.instant.model.UnexpandedInstantTestLinks;
 import java.time.OffsetDateTime;
@@ -90,7 +90,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE,
   HttpServerInstantTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.321258+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.194632+01:00[Europe/Lisbon]")
 public class HttpServerInstantTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -126,10 +126,10 @@ public class HttpServerInstantTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -144,7 +144,7 @@ public class HttpServerInstantTest {
   private String contentRegex;
 
   public static final String JSON_PROPERTY_HEADERS = "headers";
-  private List<String> headers;
+  private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private TestCustomHeaders customHeaders;
@@ -228,7 +228,7 @@ public class HttpServerInstantTest {
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public HttpServerInstantTest() { 
   }
@@ -243,8 +243,8 @@ public class HttpServerInstantTest {
     @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabelsInner> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<TestSharedAccountsInner> sharedWithAccounts, 
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion, 
     @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
   ) {
@@ -466,7 +466,7 @@ public class HttpServerInstantTest {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestLabelsInner> getLabels() {
+  public List<TestLabel> getLabels() {
     return labels;
   }
 
@@ -481,7 +481,7 @@ public class HttpServerInstantTest {
   @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestSharedAccountsInner> getSharedWithAccounts() {
+  public List<SharedWithAccount> getSharedWithAccounts() {
     return sharedWithAccounts;
   }
 

@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDefaultTimespan.JSON_PROPERTY_START,
   ApiDefaultTimespan.JSON_PROPERTY_END
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
 public class ApiDefaultTimespan {
   public static final String JSON_PROPERTY_DURATION = "duration";
   private Long duration;

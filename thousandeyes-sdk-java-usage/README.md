@@ -4,7 +4,7 @@ Usage API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T10:36:00.178418+01:00[Europe/London]
+- Build date: 2024-04-24T13:50:10.908408+01:00[Europe/Lisbon]
 
 
 These usage endpoints define the following operations:

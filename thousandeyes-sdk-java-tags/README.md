@@ -4,7 +4,7 @@ Tags API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T10:36:00.130474+01:00[Europe/London]
+- Build date: 2024-04-24T13:50:10.722558+01:00[Europe/Lisbon]
 
 The ThousandEyes Tags API provides a tagging system with key/value pairs. It allows you to tag assets within the ThousandEyes platform (such as agents, tests, or alert rules) with meaningful metadata. For example: `branch:sfo`, `branch:nyc`, and `team:netops`.
 
@@ -102,8 +102,7 @@ public class TagAssignmentApiExample {
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            BulkTagAssignment result = apiInstance.assignTag(id, tagAssignment, aid);
-            System.out.println(result);
+            apiInstance.assignTag(id, tagAssignment, aid);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#assignTag");
             System.err.println("Status code: " + e.getCode());

@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceProperties.JSON_PROPERTY_TARGET_AGENT_ID,
   VoiceProperties.JSON_PROPERTY_TYPE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:11.174036+01:00[Europe/Lisbon]")
 public class VoiceProperties {
   public static final String JSON_PROPERTY_CODEC = "codec";
   private String codec;

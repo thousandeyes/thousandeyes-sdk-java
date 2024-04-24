@@ -66,3 +66,6 @@ src/main/java/com/thousandeyes/api/alerts/model/UnexpandedTest.java
 src/main/java/com/thousandeyes/api/alerts/model/ValidationError.java
 src/main/java/com/thousandeyes/api/alerts/model/ValidationErrorAllOfErrors.java
 src/main/java/com/thousandeyes/api/alerts/model/WebhookIntegrationType.java
+src/test/java/com/thousandeyes/api/alerts/AlertRulesApiTest.java
+src/test/java/com/thousandeyes/api/alerts/AlertSuppressionWindowsApiTest.java
+src/test/java/com/thousandeyes/api/alerts/AlertsApiTest.java

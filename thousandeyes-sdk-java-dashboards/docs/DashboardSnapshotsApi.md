@@ -83,8 +83,8 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json
-- **Accept**: application/hal+json, application/problem+json
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -164,8 +164,8 @@ ApiResponse<[**CreateDashboardSnapshot201Response**](CreateDashboardSnapshot201R
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json
-- **Accept**: application/hal+json, application/problem+json
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -244,7 +244,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -325,7 +325,7 @@ ApiResponse<[**ApiDashboardSnapshot**](ApiDashboardSnapshot.md)>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -406,7 +406,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -489,7 +489,7 @@ ApiResponse<[**DashboardSnapshots200Response**](DashboardSnapshots200Response.md
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -567,7 +567,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -647,7 +647,7 @@ ApiResponse<Void>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -728,7 +728,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -811,7 +811,7 @@ ApiResponse<[**SnapshotDataByWidget200Response**](SnapshotDataByWidget200Respons
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -890,8 +890,8 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json
-- **Accept**: application/problem+json
+- **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -972,8 +972,8 @@ ApiResponse<Void>
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json
-- **Accept**: application/problem+json
+- **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |

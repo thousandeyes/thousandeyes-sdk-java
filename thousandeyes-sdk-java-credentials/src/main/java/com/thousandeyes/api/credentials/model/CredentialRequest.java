@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CredentialRequest.JSON_PROPERTY_NAME,
   CredentialRequest.JSON_PROPERTY_VALUE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.129395+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:09.935490+01:00[Europe/Lisbon]")
 public class CredentialRequest {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

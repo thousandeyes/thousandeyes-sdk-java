@@ -45,37 +45,37 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointResultRequestFilter.JSON_PROPERTY_SSID,
   EndpointResultRequestFilter.JSON_PROPERTY_BSSID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
 public class EndpointResultRequestFilter {
   public static final String JSON_PROPERTY_LOCATION = "location";
-  private List<String> location;
+  private List<String> location = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CONNECTION = "connection";
-  private List<InterfaceHardwareType> connection;
+  private List<InterfaceHardwareType> connection = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PLATFORM = "platform";
-  private List<Platform> platform;
+  private List<Platform> platform = new ArrayList<>();
 
   public static final String JSON_PROPERTY_GATEWAY = "gateway";
-  private List<String> gateway;
+  private List<String> gateway = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PROXY_TARGET = "proxyTarget";
-  private List<String> proxyTarget;
+  private List<String> proxyTarget = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VPN_TARGET = "vpnTarget";
-  private List<String> vpnTarget;
+  private List<String> vpnTarget = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
-  private List<UUID> agentId;
+  private List<UUID> agentId = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK_ID = "networkId";
-  private List<String> networkId;
+  private List<String> networkId = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SSID = "ssid";
-  private List<String> ssid;
+  private List<String> ssid = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BSSID = "bssid";
-  private List<String> bssid;
+  private List<String> bssid = new ArrayList<>();
 
   public EndpointResultRequestFilter() { 
   }

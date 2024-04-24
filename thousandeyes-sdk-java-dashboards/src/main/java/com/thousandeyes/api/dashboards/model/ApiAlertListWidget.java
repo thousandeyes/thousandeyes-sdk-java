@@ -63,7 +63,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiAlertListWidget.JSON_PROPERTY_ACTIVE_WITHIN,
   ApiAlertListWidget.JSON_PROPERTY_DATA_SOURCE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
 public class ApiAlertListWidget {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -111,7 +111,7 @@ public class ApiAlertListWidget {
   private String type;
 
   public static final String JSON_PROPERTY_ALERT_TYPES = "alertTypes";
-  private Set<LegacyAlertListAlertType> alertTypes;
+  private Set<LegacyAlertListAlertType> alertTypes = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_LIMIT_TO = "limitTo";
   private Integer limitTo;
