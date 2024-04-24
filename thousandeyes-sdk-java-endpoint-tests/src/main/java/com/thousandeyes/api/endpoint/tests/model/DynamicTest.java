@@ -25,7 +25,7 @@ import com.thousandeyes.api.endpoint.tests.model.DynamicTestLinks;
 import com.thousandeyes.api.endpoint.tests.model.EndpointAgentSelectorConfig;
 import com.thousandeyes.api.endpoint.tests.model.EndpointTestProtocol;
 import com.thousandeyes.api.endpoint.tests.model.TestInterval;
-import com.thousandeyes.api.endpoint.tests.model.TestLabelsInner;
+import com.thousandeyes.api.endpoint.tests.model.TestLabel;
 import com.thousandeyes.api.endpoint.tests.model.TestProbeModeResponse;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -56,7 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTest.JSON_PROPERTY_TEST_NAME,
   DynamicTest.JSON_PROPERTY_LABELS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.232828+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.031539+01:00[Europe/Lisbon]")
 public class DynamicTest {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -107,7 +107,7 @@ public class DynamicTest {
   private String testName;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabel> labels = new ArrayList<>();
 
   public DynamicTest() { 
   }
@@ -117,7 +117,7 @@ public class DynamicTest {
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabelsInner> labels
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels
   ) {
   this();
     this.createdDate = createdDate;
@@ -504,7 +504,7 @@ public class DynamicTest {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestLabelsInner> getLabels() {
+  public List<TestLabel> getLabels() {
     return labels;
   }
 

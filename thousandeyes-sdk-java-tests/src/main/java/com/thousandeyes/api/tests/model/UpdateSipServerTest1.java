@@ -24,12 +24,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.tests.model.Agent;
 import com.thousandeyes.api.tests.model.AlertRule;
 import com.thousandeyes.api.tests.model.Monitor;
+import com.thousandeyes.api.tests.model.SharedWithAccount;
 import com.thousandeyes.api.tests.model.TestInterval;
 import com.thousandeyes.api.tests.model.TestIpv6Policy;
-import com.thousandeyes.api.tests.model.TestLabelsInner;
+import com.thousandeyes.api.tests.model.TestLabel;
 import com.thousandeyes.api.tests.model.TestPathTraceMode;
 import com.thousandeyes.api.tests.model.TestProbeMode;
-import com.thousandeyes.api.tests.model.TestSharedAccountsInner;
 import com.thousandeyes.api.tests.model.TestSipCredentials;
 import com.thousandeyes.api.tests.model.UnexpandedInstantTestLinks;
 import java.time.OffsetDateTime;
@@ -77,7 +77,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateSipServerTest1.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateSipServerTest1.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:27.140198+01:00[Europe/Lisbon]")
 public class UpdateSipServerTest1 {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -89,7 +89,7 @@ public class UpdateSipServerTest1 {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules;
+  private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -125,10 +125,10 @@ public class UpdateSipServerTest1 {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MTU_MEASUREMENTS = "mtuMeasurements";
   private Boolean mtuMeasurements;
@@ -164,7 +164,7 @@ public class UpdateSipServerTest1 {
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
   private TestSipCredentials targetSipCredentials;
@@ -176,7 +176,7 @@ public class UpdateSipServerTest1 {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors;
+  private List<Monitor> monitors = new ArrayList<>();
 
   public UpdateSipServerTest1() { 
   }
@@ -191,8 +191,8 @@ public class UpdateSipServerTest1 {
     @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabelsInner> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<TestSharedAccountsInner> sharedWithAccounts, 
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
@@ -522,7 +522,7 @@ public class UpdateSipServerTest1 {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestLabelsInner> getLabels() {
+  public List<TestLabel> getLabels() {
     return labels;
   }
 
@@ -537,7 +537,7 @@ public class UpdateSipServerTest1 {
   @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestSharedAccountsInner> getSharedWithAccounts() {
+  public List<SharedWithAccount> getSharedWithAccounts() {
     return sharedWithAccounts;
   }
 

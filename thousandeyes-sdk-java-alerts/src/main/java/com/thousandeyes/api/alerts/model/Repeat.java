@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Repeat.JSON_PROPERTY_INTERVAL_LENGTH,
   Repeat.JSON_PROPERTY_DAYS_OF_WEEK
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.441845+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.150768+01:00[Europe/Lisbon]")
 public class Repeat {
   public static final String JSON_PROPERTY_TYPE = "type";
   private RepeatType type;
@@ -51,7 +51,7 @@ public class Repeat {
   private Integer intervalLength;
 
   public static final String JSON_PROPERTY_DAYS_OF_WEEK = "daysOfWeek";
-  private List<DaysOfWeek> daysOfWeek;
+  private List<DaysOfWeek> daysOfWeek = new ArrayList<>();
 
   public Repeat() { 
   }

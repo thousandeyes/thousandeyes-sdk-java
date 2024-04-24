@@ -52,25 +52,25 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiWidgetsDataV2.JSON_PROPERTY_AGENTS,
   ApiWidgetsDataV2.JSON_PROPERTY_STATUS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.159899+01:00[Europe/Lisbon]")
 public class ApiWidgetsDataV2 {
   public static final String JSON_PROPERTY_CARDS = "cards";
-  private List<ApiNumbersCardData> cards;
+  private List<ApiNumbersCardData> cards = new ArrayList<>();
 
   public static final String JSON_PROPERTY_COLUMNS = "columns";
-  private List<ApiMultiMetricColumnData> columns;
+  private List<ApiMultiMetricColumnData> columns = new ArrayList<>();
 
   public static final String JSON_PROPERTY_POINTS = "points";
-  private List<ApiWidgetDataPoint> points;
+  private List<ApiWidgetDataPoint> points = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<ApiTestTableData> tests;
+  private List<ApiTestTableData> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_START_ROUND = "startRound";
   private Long startRound;
 
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS = "alertSuppressionWindows";
-  private List<ApiDashboardAsw> alertSuppressionWindows;
+  private List<ApiDashboardAsw> alertSuppressionWindows = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOTAL_ALERTS = "totalAlerts";
   private Long totalAlerts;
@@ -79,13 +79,13 @@ public class ApiWidgetsDataV2 {
   private Long activeAlerts;
 
   public static final String JSON_PROPERTY_ALERTS = "alerts";
-  private List<ApiAlertListAlert> alerts;
+  private List<ApiAlertListAlert> alerts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SUMMARY = "summary";
   private ApiAgentStatusSummary summary;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<ApiAgentStatusAgent> agents;
+  private List<ApiAgentStatusAgent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STATUS = "status";
   private String status;

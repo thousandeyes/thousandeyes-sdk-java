@@ -54,7 +54,7 @@ src/main/java/com/thousandeyes/api/endpoint/tests/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/Severity.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/TestInterval.java
-src/main/java/com/thousandeyes/api/endpoint/tests/model/TestLabelsInner.java
+src/main/java/com/thousandeyes/api/endpoint/tests/model/TestLabel.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/TestProbeMode.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/TestProbeModeResponse.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/TestSslVersionId.java
@@ -62,3 +62,7 @@ src/main/java/com/thousandeyes/api/endpoint/tests/model/TestUpdate.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/ValidationError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/endpoint/tests/DynamicTestsAgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ListEndpointScheduledTestsApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ScheduledTestsAgentToServerApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/ScheduledTestsHttpServerApiTest.java

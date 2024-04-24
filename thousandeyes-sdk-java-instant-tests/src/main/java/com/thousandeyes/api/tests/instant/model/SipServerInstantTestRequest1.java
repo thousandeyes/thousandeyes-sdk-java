@@ -22,11 +22,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.api.tests.instant.model.Agent;
+import com.thousandeyes.api.tests.instant.model.SharedWithAccount;
 import com.thousandeyes.api.tests.instant.model.TestIpv6Policy;
-import com.thousandeyes.api.tests.instant.model.TestLabelsInner;
+import com.thousandeyes.api.tests.instant.model.TestLabel;
 import com.thousandeyes.api.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.api.tests.instant.model.TestProbeMode;
-import com.thousandeyes.api.tests.instant.model.TestSharedAccountsInner;
 import com.thousandeyes.api.tests.instant.model.TestSipCredentials;
 import com.thousandeyes.api.tests.instant.model.UnexpandedInstantTestLinks;
 import java.time.OffsetDateTime;
@@ -67,7 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerInstantTestRequest1.JSON_PROPERTY_AGENTS,
   SipServerInstantTestRequest1.JSON_PROPERTY_TARGET_SIP_CREDENTIALS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.321258+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.129883+01:00[Europe/Lisbon]")
 public class SipServerInstantTestRequest1 {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -103,10 +103,10 @@ public class SipServerInstantTestRequest1 {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabelsInner> labels;
+  private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<TestSharedAccountsInner> sharedWithAccounts;
+  private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MTU_MEASUREMENTS = "mtuMeasurements";
   private Boolean mtuMeasurements;
@@ -142,7 +142,7 @@ public class SipServerInstantTestRequest1 {
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents;
+  private List<Agent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
   private TestSipCredentials targetSipCredentials;
@@ -160,8 +160,8 @@ public class SipServerInstantTestRequest1 {
     @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabelsInner> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<TestSharedAccountsInner> sharedWithAccounts, 
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
   ) {
   this();
@@ -381,7 +381,7 @@ public class SipServerInstantTestRequest1 {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestLabelsInner> getLabels() {
+  public List<TestLabel> getLabels() {
     return labels;
   }
 
@@ -396,7 +396,7 @@ public class SipServerInstantTestRequest1 {
   @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestSharedAccountsInner> getSharedWithAccounts() {
+  public List<SharedWithAccount> getSharedWithAccounts() {
     return sharedWithAccounts;
   }
 

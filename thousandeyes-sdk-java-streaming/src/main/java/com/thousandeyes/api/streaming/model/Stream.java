@@ -43,13 +43,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Stream.JSON_PROPERTY_ENDPOINT_TYPE,
   Stream.JSON_PROPERTY_STREAM_ENDPOINT_URL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.130497+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:25.833111+01:00[Europe/Lisbon]")
 public class Stream {
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
 
   public static final String JSON_PROPERTY_TAG_MATCH = "tagMatch";
-  private List<PutStreamTagMatchInner> tagMatch;
+  private List<PutStreamTagMatchInner> tagMatch = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;

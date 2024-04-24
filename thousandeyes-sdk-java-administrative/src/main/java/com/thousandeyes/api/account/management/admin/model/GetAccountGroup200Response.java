@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetAccountGroup200Response.JSON_PROPERTY_AGENTS,
   GetAccountGroup200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.092433+01:00[Europe/Lisbon]")
 public class GetAccountGroup200Response {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -61,10 +61,10 @@ public class GetAccountGroup200Response {
   private String organizationName;
 
   public static final String JSON_PROPERTY_USERS = "users";
-  private List<UserAccountGroup> users;
+  private List<UserAccountGroup> users = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<EnterpriseAgent> agents;
+  private List<EnterpriseAgent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinksLinks links;

@@ -61,7 +61,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDashboard.JSON_PROPERTY_IS_GLOBAL_OVERRIDE,
   ApiDashboard.JSON_PROPERTY_IS_MIGRATED_REPORT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.159899+01:00[Europe/Lisbon]")
 public class ApiDashboard {
   public static final String JSON_PROPERTY_GLOBAL_FILTER_ID = "globalFilterId";
   private String globalFilterId;
@@ -85,7 +85,7 @@ public class ApiDashboard {
   private Boolean migratedReport;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
-  private List<Map<String, Object>> apiLink;
+  private List<Map<String, Object>> apiLink = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private DashboardLinksLinks links;
@@ -121,7 +121,7 @@ public class ApiDashboard {
   private Boolean isDefaultForAccount;
 
   public static final String JSON_PROPERTY_WIDGETS = "widgets";
-  private List<ApiWidget> widgets;
+  private List<ApiWidget> widgets = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;

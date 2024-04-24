@@ -21,12 +21,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.api.tests.model.AgentRequest;
 import com.thousandeyes.api.tests.model.Monitor;
 import com.thousandeyes.api.tests.model.TestInterval;
 import com.thousandeyes.api.tests.model.TestIpv6Policy;
 import com.thousandeyes.api.tests.model.TestPathTraceMode;
 import com.thousandeyes.api.tests.model.TestProbeMode;
-import com.thousandeyes.api.tests.model.TestRequestAllOfAgents;
 import com.thousandeyes.api.tests.model.TestSipCredentials;
 import com.thousandeyes.api.tests.model.UnexpandedInstantTestLinks;
 import java.time.OffsetDateTime;
@@ -74,7 +74,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateSipServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateSipServerTest.JSON_PROPERTY_MONITORS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:27.140198+01:00[Europe/Lisbon]")
 public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;
@@ -86,7 +86,7 @@ public class UpdateSipServerTest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules;
+  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -122,10 +122,10 @@ public class UpdateSipServerTest {
   private UnexpandedInstantTestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels;
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts;
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MTU_MEASUREMENTS = "mtuMeasurements";
   private Boolean mtuMeasurements;
@@ -161,7 +161,7 @@ public class UpdateSipServerTest {
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestRequestAllOfAgents> agents;
+  private List<AgentRequest> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
   private TestSipCredentials targetSipCredentials;
@@ -173,7 +173,7 @@ public class UpdateSipServerTest {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors;
+  private List<Monitor> monitors = new ArrayList<>();
 
   public UpdateSipServerTest() { 
   }
@@ -854,12 +854,12 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest agents(List<TestRequestAllOfAgents> agents) {
+  public UpdateSipServerTest agents(List<AgentRequest> agents) {
     this.agents = agents;
     return this;
   }
 
-  public UpdateSipServerTest addAgentsItem(TestRequestAllOfAgents agentsItem) {
+  public UpdateSipServerTest addAgentsItem(AgentRequest agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -868,21 +868,21 @@ public class UpdateSipServerTest {
   }
 
    /**
-   * Contains list of object with required &#x60;agentId&#x60; and optional &#x60;sourceIpAddress&#x60;
+   * Get agents
    * @return agents
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestRequestAllOfAgents> getAgents() {
+  public List<AgentRequest> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestRequestAllOfAgents> agents) {
+  public void setAgents(List<AgentRequest> agents) {
     this.agents = agents;
   }
 

@@ -10,6 +10,7 @@ src/main/java/com/thousandeyes/api/endpoint/labels/model/Filter.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/FilterType.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/Label.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/LabelFilterMode.java
+src/main/java/com/thousandeyes/api/endpoint/labels/model/LabelRequest.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/Labels.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/LabelsLabelsInner.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/Link.java
@@ -20,6 +21,6 @@ src/main/java/com/thousandeyes/api/endpoint/labels/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/V7EndpointLabelsPost201Response.java
-src/main/java/com/thousandeyes/api/endpoint/labels/model/V7EndpointLabelsPostRequest.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/ValidationError.java
 src/main/java/com/thousandeyes/api/endpoint/labels/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/endpoint/labels/ManageLabelsApiTest.java

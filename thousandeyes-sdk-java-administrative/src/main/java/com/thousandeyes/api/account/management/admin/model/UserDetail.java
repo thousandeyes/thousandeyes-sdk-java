@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserDetail.JSON_PROPERTY_ACCOUNT_GROUP_ROLES,
   UserDetail.JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.219923+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.092433+01:00[Europe/Lisbon]")
 public class UserDetail {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -65,10 +65,10 @@ public class UserDetail {
   private OffsetDateTime lastLogin;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUP_ROLES = "accountGroupRoles";
-  private List<AccountGroupRolesAccountGroupRolesInner> accountGroupRoles;
+  private List<AccountGroupRolesAccountGroupRolesInner> accountGroupRoles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ALL_ACCOUNT_GROUP_ROLES = "allAccountGroupRoles";
-  private List<Role> allAccountGroupRoles;
+  private List<Role> allAccountGroupRoles = new ArrayList<>();
 
   public UserDetail() { 
   }

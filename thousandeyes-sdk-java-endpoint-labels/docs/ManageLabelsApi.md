@@ -81,7 +81,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -159,7 +159,7 @@ ApiResponse<Void>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -238,7 +238,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -319,7 +319,7 @@ ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Respons
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -398,7 +398,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -480,7 +480,7 @@ ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Respons
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -562,7 +562,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -644,7 +644,7 @@ ApiResponse<[**EndpointLabelsList200Response**](EndpointLabelsList200Response.md
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -657,7 +657,7 @@ ApiResponse<[**EndpointLabelsList200Response**](EndpointLabelsList200Response.md
 
 ## v7EndpointLabelsPost
 
-> V7EndpointLabelsPost201Response v7EndpointLabelsPost(aid, v7EndpointLabelsPostRequest)
+> V7EndpointLabelsPost201Response v7EndpointLabelsPost(aid, labelRequest)
 
 Create label
 
@@ -685,9 +685,9 @@ public class Example {
 
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest = new V7EndpointLabelsPostRequest(); // V7EndpointLabelsPostRequest | Label settings
+        LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
-            V7EndpointLabelsPost201Response result = apiInstance.v7EndpointLabelsPost(aid, v7EndpointLabelsPostRequest);
+            V7EndpointLabelsPost201Response result = apiInstance.v7EndpointLabelsPost(aid, labelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageLabelsApi#v7EndpointLabelsPost");
@@ -706,7 +706,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **v7EndpointLabelsPostRequest** | [**V7EndpointLabelsPostRequest**](V7EndpointLabelsPostRequest.md)| Label settings | [optional] |
+| **labelRequest** | [**LabelRequest**](LabelRequest.md)| Label settings | [optional] |
 
 ### Return type
 
@@ -720,7 +720,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -733,7 +733,7 @@ public class Example {
 
 ## v7EndpointLabelsPostWithHttpInfo
 
-> ApiResponse<V7EndpointLabelsPost201Response> v7EndpointLabelsPost v7EndpointLabelsPostWithHttpInfo(aid, v7EndpointLabelsPostRequest)
+> ApiResponse<V7EndpointLabelsPost201Response> v7EndpointLabelsPost v7EndpointLabelsPostWithHttpInfo(aid, labelRequest)
 
 Create label
 
@@ -762,9 +762,9 @@ public class Example {
 
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest = new V7EndpointLabelsPostRequest(); // V7EndpointLabelsPostRequest | Label settings
+        LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
-            ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.v7EndpointLabelsPostWithHttpInfo(aid, v7EndpointLabelsPostRequest);
+            ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.v7EndpointLabelsPostWithHttpInfo(aid, labelRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -785,7 +785,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **v7EndpointLabelsPostRequest** | [**V7EndpointLabelsPostRequest**](V7EndpointLabelsPostRequest.md)| Label settings | [optional] |
+| **labelRequest** | [**LabelRequest**](LabelRequest.md)| Label settings | [optional] |
 
 ### Return type
 
@@ -799,7 +799,7 @@ ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Respons
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |

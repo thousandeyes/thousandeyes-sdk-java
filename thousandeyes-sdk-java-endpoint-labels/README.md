@@ -4,7 +4,7 @@ Endpoint Agent Labels API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T10:36:00.130073+01:00[Europe/London]
+- Build date: 2024-04-24T10:46:25.833226+01:00[Europe/Lisbon]
 
 Manage labels applied to endpoint agents using this API.
 

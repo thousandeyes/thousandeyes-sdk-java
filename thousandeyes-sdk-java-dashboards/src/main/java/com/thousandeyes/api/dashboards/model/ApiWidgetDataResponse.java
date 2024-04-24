@@ -37,10 +37,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiWidgetDataResponse.JSON_PROPERTY_BIN_SIZE,
   ApiWidgetDataResponse.JSON_PROPERTY_DATA
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.159899+01:00[Europe/Lisbon]")
 public class ApiWidgetDataResponse {
   public static final String JSON_PROPERTY_GROUP_LABELS = "groupLabels";
-  private List<ApiReportDataComponentLabelMap> groupLabels;
+  private List<ApiReportDataComponentLabelMap> groupLabels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BIN_SIZE = "binSize";
   private Long binSize;

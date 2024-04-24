@@ -34,3 +34,5 @@ src/main/java/com/thousandeyes/api/internet/insights/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/internet/insights/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/internet/insights/model/ValidationError.java
 src/main/java/com/thousandeyes/api/internet/insights/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/internet/insights/CatalogProvidersApiTest.java
+src/test/java/com/thousandeyes/api/internet/insights/OutagesApiPublicApiTest.java

@@ -37,13 +37,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Filter.JSON_PROPERTY_VALUES,
   Filter.JSON_PROPERTY_MODE
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.130073+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:25.833226+01:00[Europe/Lisbon]")
 public class Filter {
   public static final String JSON_PROPERTY_KEY = "key";
   private FilterType key;
 
   public static final String JSON_PROPERTY_VALUES = "values";
-  private List<String> values;
+  private List<String> values = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MODE = "mode";
   private LabelFilterMode mode;

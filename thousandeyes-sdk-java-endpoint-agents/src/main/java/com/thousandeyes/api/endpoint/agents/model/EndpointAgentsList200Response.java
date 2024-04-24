@@ -37,13 +37,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentsList200Response.JSON_PROPERTY_AGENTS,
   EndpointAgentsList200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.210211+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.016598+01:00[Europe/Lisbon]")
 public class EndpointAgentsList200Response {
   public static final String JSON_PROPERTY_TOTAL_AGENTS = "totalAgents";
   private Integer totalAgents;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<EndpointAgentsAgentsInner> agents;
+  private List<EndpointAgentsAgentsInner> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextAndSelfLinkLinks links;

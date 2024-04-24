@@ -92,7 +92,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.api.serialization.JSON;
 import com.thousandeyes.api.serialization.AbstractOpenApiSchema;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.397550+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.159899+01:00[Europe/Lisbon]")
 @JsonDeserialize(using = ApiWidget.ApiWidgetDeserializer.class)
 @JsonSerialize(using = ApiWidget.ApiWidgetSerializer.class)
 public class ApiWidget extends AbstractOpenApiSchema {
@@ -126,6 +126,70 @@ public class ApiWidget extends AbstractOpenApiSchema {
         public ApiWidget deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             JsonNode tree = jp.readValueAsTree();
             Object deserialized = null;
+            ApiWidget newApiWidget = new ApiWidget();
+            Map<String,Object> result2 = tree.traverse(jp.getCodec()).readValueAs(new TypeReference<Map<String, Object>>() {});
+            String discriminatorValue = (String)result2.get("type");
+            switch (discriminatorValue) {
+                case "Agent Status":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiAgentStatusWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Alert List":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiAlertListWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Bar Chart: Grouped":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiGroupedBarchartWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Bar Chart: Stacked":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiStackedBarchartWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Box and Whiskers":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiBoxAndWhiskersWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Color Grid":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiColorGridWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Map":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiGeoMapWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Multi Metric Table":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiMultiMetricTableWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Number":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiNumbersCardWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Pie Chart":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiPieChartWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Table":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTableWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Test Table":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTestTableWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Time Series: Line":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTimeseriesWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                case "Time Series: Stacked Area":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiStackedAreaChartWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
+                default:
+                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ApiWidget. Possible values: Agent Status Alert List Bar Chart: Grouped Bar Chart: Stacked Box and Whiskers Color Grid Map Multi Metric Table Number Pie Chart Table Test Table Time Series: Line Time Series: Stacked Area", discriminatorValue));
+            }
+
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
             JsonToken token = tree.traverse(jp.getCodec()).nextToken();

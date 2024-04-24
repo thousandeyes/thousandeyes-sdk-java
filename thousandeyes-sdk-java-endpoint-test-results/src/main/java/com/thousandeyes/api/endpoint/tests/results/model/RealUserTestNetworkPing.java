@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RealUserTestNetworkPing.JSON_PROPERTY_ERROR,
   RealUserTestNetworkPing.JSON_PROPERTY_INFO_FLAGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.208767+01:00[Europe/Lisbon]")
 public class RealUserTestNetworkPing {
   public static final String JSON_PROPERTY_AVG_RTT = "avgRtt";
   private Integer avgRtt;
@@ -64,7 +64,7 @@ public class RealUserTestNetworkPing {
   private String error;
 
   public static final String JSON_PROPERTY_INFO_FLAGS = "infoFlags";
-  private List<String> infoFlags;
+  private List<String> infoFlags = new ArrayList<>();
 
   public RealUserTestNetworkPing() { 
   }

@@ -52,22 +52,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentData.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   EnterpriseAgentData.JSON_PROPERTY_INTERFACE_IP_MAPPINGS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.242511+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.012068+01:00[Europe/Lisbon]")
 public class EnterpriseAgentData {
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
-  private List<ClusterMember> clusterMembers;
+  private List<ClusterMember> clusterMembers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_UTILIZATION = "utilization";
   private Integer utilization;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUPS = "accountGroups";
-  private List<AccountGroup> accountGroups;
+  private List<AccountGroup> accountGroups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private EnterpriseAgentIpv6Policy ipv6Policy;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
-  private List<ErrorDetail> errorDetails;
+  private List<ErrorDetail> errorDetails = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HOSTNAME = "hostname";
   private String hostname;
@@ -88,10 +88,10 @@ public class EnterpriseAgentData {
   private String targetForTests;
 
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
-  private List<String> localResolutionPrefixes;
+  private List<String> localResolutionPrefixes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERFACE_IP_MAPPINGS = "interfaceIpMappings";
-  private List<InterfaceIpMapping> interfaceIpMappings;
+  private List<InterfaceIpMapping> interfaceIpMappings = new ArrayList<>();
 
   public EnterpriseAgentData() { 
   }

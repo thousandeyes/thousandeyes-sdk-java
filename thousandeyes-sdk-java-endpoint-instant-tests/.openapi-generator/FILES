@@ -33,9 +33,12 @@ src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/Error.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/Link.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/Severity.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/TestInterval.java
-src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/TestLabelsInner.java
+src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/TestLabel.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/TestProbeModeResponse.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/TestSslVersionId.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/ValidationError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/ValidationErrorAllOfErrors.java
+src/test/java/com/thousandeyes/api/endpoint/tests/instant/AgentToServerInstantScheduledTestApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/instant/HttpServerInstantScheduledTestApiTest.java
+src/test/java/com/thousandeyes/api/endpoint/tests/instant/RunExistingTestApiTest.java

@@ -34,13 +34,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AlertEmail.JSON_PROPERTY_MESSAGE,
   AlertEmail.JSON_PROPERTY_RECIPIENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.242511+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.012068+01:00[Europe/Lisbon]")
 public class AlertEmail {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
   public static final String JSON_PROPERTY_RECIPIENTS = "recipients";
-  private List<String> recipients;
+  private List<String> recipients = new ArrayList<>();
 
   public AlertEmail() { 
   }

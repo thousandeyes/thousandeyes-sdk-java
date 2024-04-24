@@ -43,34 +43,34 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchRequestSearchFilters.JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE,
   AgentSearchRequestSearchFilters.JSON_PROPERTY_LOCATION_CITY
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.210211+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.016598+01:00[Europe/Lisbon]")
 public class AgentSearchRequestSearchFilters {
   public static final String JSON_PROPERTY_ID = "id";
-  private List<UUID> id;
+  private List<UUID> id = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
-  private List<String> agentName;
+  private List<String> agentName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_COMPUTER_NAME = "computerName";
-  private List<String> computerName;
+  private List<String> computerName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_USERNAME = "username";
-  private List<String> username;
+  private List<String> username = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PLATFORM = "platform";
-  private List<Platform> platform;
+  private List<Platform> platform = new ArrayList<>();
 
   public static final String JSON_PROPERTY_OS_VERSION = "osVersion";
-  private List<String> osVersion;
+  private List<String> osVersion = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LOCATION_COUNTRY_I_S_O = "locationCountryISO";
-  private List<String> locationCountryISO;
+  private List<String> locationCountryISO = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE = "locationSubdivision1Code";
-  private List<String> locationSubdivision1Code;
+  private List<String> locationSubdivision1Code = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LOCATION_CITY = "locationCity";
-  private List<String> locationCity;
+  private List<String> locationCity = new ArrayList<>();
 
   public AgentSearchRequestSearchFilters() { 
   }

@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestResult.JSON_PROPERTY_DOM_LOAD_TIME,
   PageLoadTestResult.JSON_PROPERTY_PAGE_LOAD_TIME
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.392286+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.821951+01:00[Europe/Lisbon]")
 public class PageLoadTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;

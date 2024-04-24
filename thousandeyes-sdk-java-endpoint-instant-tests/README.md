@@ -4,7 +4,7 @@ Endpoint Instant Scheduled Tests API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T10:36:00.130184+01:00[Europe/London]
+- Build date: 2024-04-24T10:46:25.910441+01:00[Europe/Lisbon]
 
 
 You can create and execute a new endpoint instant scheduled test within ThousandEyes using this API. The test parameters are specified in the `POST` data.

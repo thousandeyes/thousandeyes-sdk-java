@@ -4,7 +4,7 @@ Tests API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-23T10:36:00.628181+01:00[Europe/London]
+- Build date: 2024-04-24T10:46:27.140198+01:00[Europe/Lisbon]
 
 This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
 

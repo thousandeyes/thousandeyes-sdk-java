@@ -25,8 +25,6 @@ import com.thousandeyes.api.tags.model.ApiError;
 import com.thousandeyes.api.tags.model.BulkTagResponse;
 import com.thousandeyes.api.tags.model.Error;
 import com.thousandeyes.api.tags.model.Expand;
-import com.thousandeyes.api.tags.model.GetTag;
-import com.thousandeyes.api.tags.model.GetTags200Response;
 import com.thousandeyes.api.tags.model.Tag;
 import java.util.UUID;
 import com.thousandeyes.api.tags.model.UnauthorizedError;
@@ -57,7 +55,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.130474+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.658569+01:00[Europe/Lisbon]")
 public class TagsApi {
   private final ApiClient apiClient;
 
@@ -70,12 +68,10 @@ public class TagsApi {
    * Creates a new tag.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param body Tag resource (optional)
-   * @return Tag
    * @throws ApiException if fails to make API call
    */
-  public Tag createTag(String aid, Tag body) throws ApiException {
-    ApiResponse<Tag> response = createTagWithHttpInfo(aid, body);
-    return response.getData();
+  public void createTag(String aid, Tag body) throws ApiException {
+    createTagWithHttpInfo(aid, body);
   }
 
   /**
@@ -83,15 +79,15 @@ public class TagsApi {
    * Creates a new tag.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param body Tag resource (optional)
-   * @return ApiResponse&lt;Tag&gt;
+   * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Tag> createTagWithHttpInfo(String aid, Tag body) throws ApiException {
+  public ApiResponse<Void> createTagWithHttpInfo(String aid, Tag body) throws ApiException {
     createTagValidateRequest();
 
     var requestBuilder = createTagRequestBuilder(aid, body);
 
-    return apiClient.send(requestBuilder.build(), Tag.class);
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void createTagValidateRequest() throws ApiException {
@@ -122,12 +118,10 @@ public class TagsApi {
    * Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array.  
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param bulkTagResponse Tag resource (optional)
-   * @return BulkTagResponse
    * @throws ApiException if fails to make API call
    */
-  public BulkTagResponse createTagBulk(String aid, BulkTagResponse bulkTagResponse) throws ApiException {
-    ApiResponse<BulkTagResponse> response = createTagBulkWithHttpInfo(aid, bulkTagResponse);
-    return response.getData();
+  public void createTagBulk(String aid, BulkTagResponse bulkTagResponse) throws ApiException {
+    createTagBulkWithHttpInfo(aid, bulkTagResponse);
   }
 
   /**
@@ -135,15 +129,15 @@ public class TagsApi {
    * Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array.  
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param bulkTagResponse Tag resource (optional)
-   * @return ApiResponse&lt;BulkTagResponse&gt;
+   * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BulkTagResponse> createTagBulkWithHttpInfo(String aid, BulkTagResponse bulkTagResponse) throws ApiException {
+  public ApiResponse<Void> createTagBulkWithHttpInfo(String aid, BulkTagResponse bulkTagResponse) throws ApiException {
     createTagBulkValidateRequest();
 
     var requestBuilder = createTagBulkRequestBuilder(aid, bulkTagResponse);
 
-    return apiClient.send(requestBuilder.build(), BulkTagResponse.class);
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void createTagBulkValidateRequest() throws ApiException {
@@ -218,7 +212,7 @@ public class TagsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/problem+json, application/json"));
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -228,12 +222,10 @@ public class TagsApi {
    * @param id ID of tag to retrieve (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional, to retrieve associated assignments (optional
-   * @return GetTag
    * @throws ApiException if fails to make API call
    */
-  public GetTag getTag(UUID id, String aid, List<Expand> expand) throws ApiException {
-    ApiResponse<GetTag> response = getTagWithHttpInfo(id, aid, expand);
-    return response.getData();
+  public void getTag(UUID id, String aid, List<Expand> expand) throws ApiException {
+    getTagWithHttpInfo(id, aid, expand);
   }
 
   /**
@@ -242,15 +234,15 @@ public class TagsApi {
    * @param id ID of tag to retrieve (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional, to retrieve associated assignments (optional
-   * @return ApiResponse&lt;GetTag&gt;
+   * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetTag> getTagWithHttpInfo(UUID id, String aid, List<Expand> expand) throws ApiException {
+  public ApiResponse<Void> getTagWithHttpInfo(UUID id, String aid, List<Expand> expand) throws ApiException {
     getTagValidateRequest(id);
 
     var requestBuilder = getTagRequestBuilder(id, aid, expand);
 
-    return apiClient.send(requestBuilder.build(), GetTag.class);
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void getTagValidateRequest(UUID id) throws ApiException {
@@ -285,12 +277,10 @@ public class TagsApi {
    * This endpoint returns a list of tags in the specified account group (&#x60;aid&#x60;).
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional, to retrieve associated assignments (optional
-   * @return GetTags200Response
    * @throws ApiException if fails to make API call
    */
-  public GetTags200Response getTags(String aid, List<Expand> expand) throws ApiException {
-    ApiResponse<GetTags200Response> response = getTagsWithHttpInfo(aid, expand);
-    return response.getData();
+  public void getTags(String aid, List<Expand> expand) throws ApiException {
+    getTagsWithHttpInfo(aid, expand);
   }
 
   /**
@@ -298,15 +288,15 @@ public class TagsApi {
    * This endpoint returns a list of tags in the specified account group (&#x60;aid&#x60;).
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional, to retrieve associated assignments (optional
-   * @return ApiResponse&lt;GetTags200Response&gt;
+   * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetTags200Response> getTagsWithHttpInfo(String aid, List<Expand> expand) throws ApiException {
+  public ApiResponse<Void> getTagsWithHttpInfo(String aid, List<Expand> expand) throws ApiException {
     getTagsValidateRequest();
 
     var requestBuilder = getTagsRequestBuilder(aid, expand);
 
-    return apiClient.send(requestBuilder.build(), GetTags200Response.class);
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void getTagsValidateRequest() throws ApiException {
@@ -337,12 +327,10 @@ public class TagsApi {
    * @param id ID of tag to update (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param body  (optional)
-   * @return Tag
    * @throws ApiException if fails to make API call
    */
-  public Tag updateTag(String id, String aid, Tag body) throws ApiException {
-    ApiResponse<Tag> response = updateTagWithHttpInfo(id, aid, body);
-    return response.getData();
+  public void updateTag(String id, String aid, Tag body) throws ApiException {
+    updateTagWithHttpInfo(id, aid, body);
   }
 
   /**
@@ -351,15 +339,15 @@ public class TagsApi {
    * @param id ID of tag to update (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param body  (optional)
-   * @return ApiResponse&lt;Tag&gt;
+   * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Tag> updateTagWithHttpInfo(String id, String aid, Tag body) throws ApiException {
+  public ApiResponse<Void> updateTagWithHttpInfo(String id, String aid, Tag body) throws ApiException {
     updateTagValidateRequest(id);
 
     var requestBuilder = updateTagRequestBuilder(id, aid, body);
 
-    return apiClient.send(requestBuilder.build(), Tag.class);
+    return apiClient.send(requestBuilder.build(), Void.class);
   }
 
   private void updateTagValidateRequest(String id) throws ApiException {

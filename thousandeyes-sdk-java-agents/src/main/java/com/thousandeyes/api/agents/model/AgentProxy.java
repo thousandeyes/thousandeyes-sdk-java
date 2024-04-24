@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentProxy.JSON_PROPERTY_TYPE,
   AgentProxy.JSON_PROPERTY_USER
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.242511+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.012068+01:00[Europe/Lisbon]")
 public class AgentProxy {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -55,7 +55,7 @@ public class AgentProxy {
   private ProxyAuthType authType;
 
   public static final String JSON_PROPERTY_BYPASS_LIST = "bypassList";
-  private List<String> bypassList;
+  private List<String> bypassList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_MODIFIED = "lastModified";
   private OffsetDateTime lastModified;

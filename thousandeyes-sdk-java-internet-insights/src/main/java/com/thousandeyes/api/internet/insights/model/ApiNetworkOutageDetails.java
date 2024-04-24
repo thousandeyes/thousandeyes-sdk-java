@@ -49,7 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNetworkOutageDetails.JSON_PROPERTY_AFFECTED_AGENTS,
   ApiNetworkOutageDetails.JSON_PROPERTY_AFFECTED_LOCATIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.131336+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:25.859392+01:00[Europe/Lisbon]")
 public class ApiNetworkOutageDetails {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -82,16 +82,16 @@ public class ApiNetworkOutageDetails {
   private Long duration;
 
   public static final String JSON_PROPERTY_AFFECTED_TESTS = "affectedTests";
-  private Set<ApiAffectedTest> affectedTests;
+  private Set<ApiAffectedTest> affectedTests = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_DOMAINS = "affectedDomains";
-  private Set<String> affectedDomains;
+  private Set<String> affectedDomains = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_AGENTS = "affectedAgents";
-  private Set<ApiAffectedAgent> affectedAgents;
+  private Set<ApiAffectedAgent> affectedAgents = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_LOCATIONS = "affectedLocations";
-  private Set<ApiNetworkOutageAffectedLocation> affectedLocations;
+  private Set<ApiNetworkOutageAffectedLocation> affectedLocations = new LinkedHashSet<>();
 
   public ApiNetworkOutageDetails() { 
   }

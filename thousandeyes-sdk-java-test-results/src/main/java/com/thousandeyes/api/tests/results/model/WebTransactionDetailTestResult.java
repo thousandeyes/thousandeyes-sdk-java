@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionDetailTestResult.JSON_PROPERTY_MARKERS,
   WebTransactionDetailTestResult.JSON_PROPERTY_PAGES
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.392286+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.821951+01:00[Europe/Lisbon]")
 public class WebTransactionDetailTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
   private OffsetDateTime date;
@@ -73,10 +73,10 @@ public class WebTransactionDetailTestResult {
   private String errorDetails;
 
   public static final String JSON_PROPERTY_MARKERS = "markers";
-  private List<Marker> markers;
+  private List<Marker> markers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PAGES = "pages";
-  private List<Page> pages;
+  private List<Page> pages = new ArrayList<>();
 
   public WebTransactionDetailTestResult() { 
   }

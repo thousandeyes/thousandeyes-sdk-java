@@ -22,13 +22,13 @@ import com.thousandeyes.api.client.ApiRequest;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.thousandeyes.api.endpoint.tests.results.model.EndpointRealUserTestResultRequestFilter;
+import com.thousandeyes.api.endpoint.tests.results.model.EndpointRealUserTestResultsRequest;
 import com.thousandeyes.api.endpoint.tests.results.model.Error;
 import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointRealUserTestDetails200Response;
 import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointRealUserTestPagesDetails200Response;
 import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointRealUserTests200Response;
 import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointRealUserTestsNetwork200Response;
 import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointRealUserTestsPages200Response;
-import com.thousandeyes.api.endpoint.tests.results.model.GetEndpointRealUserTestsRequest;
 import java.time.OffsetDateTime;
 import com.thousandeyes.api.endpoint.tests.results.model.UnauthorizedError;
 import com.thousandeyes.api.endpoint.tests.results.model.ValidationError;
@@ -58,7 +58,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.417883+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.208767+01:00[Europe/Lisbon]")
 public class RealUserTestsResultsApi {
   private final ApiClient apiClient;
 
@@ -117,7 +117,7 @@ public class RealUserTestsResultsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -179,7 +179,7 @@ public class RealUserTestsResultsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -191,12 +191,12 @@ public class RealUserTestsResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param getEndpointRealUserTestsRequest  (optional)
+   * @param endpointRealUserTestResultsRequest  (optional)
    * @return GetEndpointRealUserTests200Response
    * @throws ApiException if fails to make API call
    */
-  public GetEndpointRealUserTests200Response getEndpointRealUserTests(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest) throws ApiException {
-    ApiResponse<GetEndpointRealUserTests200Response> response = getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest);
+  public GetEndpointRealUserTests200Response getEndpointRealUserTests(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest) throws ApiException {
+    ApiResponse<GetEndpointRealUserTests200Response> response = getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
     return response.getData();
   }
 
@@ -208,14 +208,14 @@ public class RealUserTestsResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param getEndpointRealUserTestsRequest  (optional)
+   * @param endpointRealUserTestResultsRequest  (optional)
    * @return ApiResponse&lt;GetEndpointRealUserTests200Response&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetEndpointRealUserTests200Response> getEndpointRealUserTestsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest) throws ApiException {
+  public ApiResponse<GetEndpointRealUserTests200Response> getEndpointRealUserTestsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest) throws ApiException {
     getEndpointRealUserTestsValidateRequest();
 
-    var requestBuilder = getEndpointRealUserTestsRequestBuilder(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest);
+    var requestBuilder = getEndpointRealUserTestsRequestBuilder(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
 
     return apiClient.send(requestBuilder.build(), GetEndpointRealUserTests200Response.class);
   }
@@ -223,7 +223,7 @@ public class RealUserTestsResultsApi {
   private void getEndpointRealUserTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointRealUserTestsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getEndpointRealUserTestsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -242,9 +242,9 @@ public class RealUserTestsResultsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
-    requestBuilder.requestBody(getEndpointRealUserTestsRequest);
+    requestBuilder.requestBody(endpointRealUserTestResultsRequest);
     return requestBuilder;
   }
   /**
@@ -255,12 +255,12 @@ public class RealUserTestsResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param getEndpointRealUserTestsRequest  (optional)
+   * @param endpointRealUserTestResultsRequest  (optional)
    * @return GetEndpointRealUserTestsNetwork200Response
    * @throws ApiException if fails to make API call
    */
-  public GetEndpointRealUserTestsNetwork200Response getEndpointRealUserTestsNetwork(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest) throws ApiException {
-    ApiResponse<GetEndpointRealUserTestsNetwork200Response> response = getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest);
+  public GetEndpointRealUserTestsNetwork200Response getEndpointRealUserTestsNetwork(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest) throws ApiException {
+    ApiResponse<GetEndpointRealUserTestsNetwork200Response> response = getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
     return response.getData();
   }
 
@@ -272,14 +272,14 @@ public class RealUserTestsResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param getEndpointRealUserTestsRequest  (optional)
+   * @param endpointRealUserTestResultsRequest  (optional)
    * @return ApiResponse&lt;GetEndpointRealUserTestsNetwork200Response&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetEndpointRealUserTestsNetwork200Response> getEndpointRealUserTestsNetworkWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest) throws ApiException {
+  public ApiResponse<GetEndpointRealUserTestsNetwork200Response> getEndpointRealUserTestsNetworkWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest) throws ApiException {
     getEndpointRealUserTestsNetworkValidateRequest();
 
-    var requestBuilder = getEndpointRealUserTestsNetworkRequestBuilder(aid, window, startDate, endDate, cursor, getEndpointRealUserTestsRequest);
+    var requestBuilder = getEndpointRealUserTestsNetworkRequestBuilder(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
 
     return apiClient.send(requestBuilder.build(), GetEndpointRealUserTestsNetwork200Response.class);
   }
@@ -287,7 +287,7 @@ public class RealUserTestsResultsApi {
   private void getEndpointRealUserTestsNetworkValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointRealUserTestsNetworkRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, GetEndpointRealUserTestsRequest getEndpointRealUserTestsRequest) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getEndpointRealUserTestsNetworkRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -306,9 +306,9 @@ public class RealUserTestsResultsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
-    requestBuilder.requestBody(getEndpointRealUserTestsRequest);
+    requestBuilder.requestBody(endpointRealUserTestResultsRequest);
     return requestBuilder;
   }
   /**
@@ -370,7 +370,7 @@ public class RealUserTestsResultsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(endpointRealUserTestResultRequestFilter);
     return requestBuilder;

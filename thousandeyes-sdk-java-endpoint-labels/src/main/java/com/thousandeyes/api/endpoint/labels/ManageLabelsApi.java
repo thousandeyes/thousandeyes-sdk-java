@@ -26,10 +26,10 @@ import com.thousandeyes.api.endpoint.labels.model.EndpointLabelsList200Response;
 import com.thousandeyes.api.endpoint.labels.model.Error;
 import com.thousandeyes.api.endpoint.labels.model.Expand;
 import com.thousandeyes.api.endpoint.labels.model.Label;
+import com.thousandeyes.api.endpoint.labels.model.LabelRequest;
 import java.net.URI;
 import com.thousandeyes.api.endpoint.labels.model.UnauthorizedError;
 import com.thousandeyes.api.endpoint.labels.model.V7EndpointLabelsPost201Response;
-import com.thousandeyes.api.endpoint.labels.model.V7EndpointLabelsPostRequest;
 import com.thousandeyes.api.endpoint.labels.model.ValidationError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -57,7 +57,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.130073+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:25.833226+01:00[Europe/Lisbon]")
 public class ManageLabelsApi {
   private final ApiClient apiClient;
 
@@ -114,7 +114,7 @@ public class ManageLabelsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -172,7 +172,7 @@ public class ManageLabelsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -230,7 +230,7 @@ public class ManageLabelsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     requestBuilder.requestBody(label);
     return requestBuilder;
@@ -288,7 +288,7 @@ public class ManageLabelsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
     return requestBuilder;
   }
@@ -296,12 +296,12 @@ public class ManageLabelsApi {
    * Create label
    * Creates a new label.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param v7EndpointLabelsPostRequest Label settings (optional)
+   * @param labelRequest Label settings (optional)
    * @return V7EndpointLabelsPost201Response
    * @throws ApiException if fails to make API call
    */
-  public V7EndpointLabelsPost201Response v7EndpointLabelsPost(String aid, V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest) throws ApiException {
-    ApiResponse<V7EndpointLabelsPost201Response> response = v7EndpointLabelsPostWithHttpInfo(aid, v7EndpointLabelsPostRequest);
+  public V7EndpointLabelsPost201Response v7EndpointLabelsPost(String aid, LabelRequest labelRequest) throws ApiException {
+    ApiResponse<V7EndpointLabelsPost201Response> response = v7EndpointLabelsPostWithHttpInfo(aid, labelRequest);
     return response.getData();
   }
 
@@ -309,14 +309,14 @@ public class ManageLabelsApi {
    * Create label
    * Creates a new label.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param v7EndpointLabelsPostRequest Label settings (optional)
+   * @param labelRequest Label settings (optional)
    * @return ApiResponse&lt;V7EndpointLabelsPost201Response&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<V7EndpointLabelsPost201Response> v7EndpointLabelsPostWithHttpInfo(String aid, V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest) throws ApiException {
+  public ApiResponse<V7EndpointLabelsPost201Response> v7EndpointLabelsPostWithHttpInfo(String aid, LabelRequest labelRequest) throws ApiException {
     v7EndpointLabelsPostValidateRequest();
 
-    var requestBuilder = v7EndpointLabelsPostRequestBuilder(aid, v7EndpointLabelsPostRequest);
+    var requestBuilder = v7EndpointLabelsPostRequestBuilder(aid, labelRequest);
 
     return apiClient.send(requestBuilder.build(), V7EndpointLabelsPost201Response.class);
   }
@@ -324,7 +324,7 @@ public class ManageLabelsApi {
   private void v7EndpointLabelsPostValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder v7EndpointLabelsPostRequestBuilder(String aid, V7EndpointLabelsPostRequest v7EndpointLabelsPostRequest) throws ApiException {
+  private ApiRequest.ApiRequestBuilder v7EndpointLabelsPostRequestBuilder(String aid, LabelRequest labelRequest) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -339,9 +339,9 @@ public class ManageLabelsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/hal+json, application/problem+json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of("ThousandEyesSDK-Java/1.0.0-SNAPSHOT"));
-    requestBuilder.requestBody(v7EndpointLabelsPostRequest);
+    requestBuilder.requestBody(labelRequest);
     return requestBuilder;
   }
 }

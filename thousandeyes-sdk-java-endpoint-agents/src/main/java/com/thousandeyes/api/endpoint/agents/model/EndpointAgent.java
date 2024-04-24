@@ -68,7 +68,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_TCP_DRIVER_AVAILABLE,
   EndpointAgent.JSON_PROPERTY_NPCAP_VERSION
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.210211+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:26.016598+01:00[Europe/Lisbon]")
 public class EndpointAgent {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
@@ -122,7 +122,7 @@ public class EndpointAgent {
   private EndpointAgentLocation location;
 
   public static final String JSON_PROPERTY_CLIENTS = "clients";
-  private List<EndpointClient> clients;
+  private List<EndpointClient> clients = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOTAL_MEMORY = "totalMemory";
   private String totalMemory;
@@ -131,10 +131,10 @@ public class EndpointAgent {
   private String agentType;
 
   public static final String JSON_PROPERTY_VPN_PROFILES = "vpnProfiles";
-  private List<EndpointVpnProfile> vpnProfiles;
+  private List<EndpointVpnProfile> vpnProfiles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK_INTERFACE_PROFILES = "networkInterfaceProfiles";
-  private List<InterfaceProfile> networkInterfaceProfiles;
+  private List<InterfaceProfile> networkInterfaceProfiles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ASN_DETAILS = "asnDetails";
   private EndpointAsnDetails asnDetails;

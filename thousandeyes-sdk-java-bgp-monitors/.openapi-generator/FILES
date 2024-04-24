@@ -12,3 +12,4 @@ src/main/java/com/thousandeyes/api/bgp/monitors/model/Monitors.java
 src/main/java/com/thousandeyes/api/bgp/monitors/model/SelfLinks.java
 src/main/java/com/thousandeyes/api/bgp/monitors/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/bgp/monitors/model/UnauthorizedError.java
+src/test/java/com/thousandeyes/api/bgp/monitors/ListBgpMonitorsApiTest.java

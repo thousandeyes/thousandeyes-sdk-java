@@ -36,13 +36,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedInstantTestLinks.JSON_PROPERTY_SELF,
   UnexpandedInstantTestLinks.JSON_PROPERTY_TEST_RESULTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-23T10:36:00.628181+01:00[Europe/London]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T10:46:27.140198+01:00[Europe/Lisbon]")
 public class UnexpandedInstantTestLinks {
   public static final String JSON_PROPERTY_SELF = "self";
   private UnexpandedInstantTestLinksSelf self;
 
   public static final String JSON_PROPERTY_TEST_RESULTS = "testResults";
-  private List<Link> testResults;
+  private List<Link> testResults = new ArrayList<>();
 
   public UnexpandedInstantTestLinks() { 
   }
