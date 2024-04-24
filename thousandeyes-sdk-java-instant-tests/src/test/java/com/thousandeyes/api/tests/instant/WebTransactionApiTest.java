@@ -61,40 +61,50 @@ public class WebTransactionApiTest {
     {
         String requestBodyJson = """
                 {
-                  "sharedWithAccounts" : [ "1234", "12345" ],
-                  "labels" : [ "9842", "1283" ],
-                  "agents" : [ {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
-                  }, {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
-                  } ]
-                }
-                                 """;
-        WebTransactionInstantTestRequest mappedRequest = 
-                mapper.readValue(requestBodyJson, WebTransactionInstantTestRequest.class);
-        assertNotNull(mappedRequest);
-
-        String responseBodyJson = """
-                {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "bandwidthMeasurements" : true,
+                  "includeHeaders" : true,
+                  "type" : "web-transactions",
+                  "password" : "password",
+                  "followRedirects" : true,
+                  "contentRegex" : "(regex)+",
+                  "testName" : "ThousandEyes Test",
+                  "allowMicAndCamera" : false,
+                  "browserLanguage" : "en-US",
+                  "verifyCertificate" : false,
+                  "liveShare" : false,
+                  "labels" : [ "9842", "1283" ],
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "sharedWithAccounts" : [ "1234", "12345" ],
                   "sslVersion" : "Auto",
                   "useNtlm" : false,
                   "credentials" : [ "3247", "1051" ],
-                  "bandwidthMeasurements" : true,
+                  "description" : "ThousandEyes Test",
                   "httpTimeLimit" : 9,
                   "blockDomains" : "domain.com/",
-                  "includeHeaders" : true,
-                  "type" : "web-transactions",
                   "allowGeolocation" : false,
-                  "password" : "password",
                   "allowUnsafeLegacyRenegotiation" : true,
                   "fixedPacketRate" : 50,
                   "httpVersion" : 1,
-                  "followRedirects" : true,
-                  "contentRegex" : "(regex)+",
+                  "modifiedBy" : "user@user.com",
                   "customHeaders" : {
                     "root" : {
                       "header1" : "value1"
@@ -108,16 +118,144 @@ public class WebTransactionApiTest {
                       "header3" : "value3"
                     }
                   },
-                  "allowMicAndCamera" : false,
-                  "browserLanguage" : "en-US",
                   "numPathTraces" : 2,
                   "transactionScript" : "if (true) { return true; }",
-                  "verifyCertificate" : false,
+                  "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
+                  "agents" : [ {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  }, {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  } ],
                   "timeLimit" : 109,
+                  "createdDate" : "2022-07-17T22:00:54Z",
                   "disableScreenshot" : false,
+                  "createdBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "desiredStatusCode" : "200",
+                  "httpTargetTime" : 100,
+                  "sslVersionId" : "0",
+                  "targetTime" : 1,
+                  "username" : "username"
+                }
+                                 """;
+        WebTransactionInstantTestRequest mappedRequest = 
+                mapper.readValue(requestBodyJson, WebTransactionInstantTestRequest.class);
+        assertNotNull(mappedRequest);
+
+        String responseBodyJson = """
+                {
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "bandwidthMeasurements" : true,
+                  "includeHeaders" : true,
+                  "type" : "web-transactions",
+                  "password" : "password",
+                  "followRedirects" : true,
+                  "contentRegex" : "(regex)+",
+                  "testName" : "ThousandEyes Test",
+                  "allowMicAndCamera" : false,
+                  "browserLanguage" : "en-US",
+                  "verifyCertificate" : false,
+                  "liveShare" : false,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
+                  "sslVersion" : "Auto",
+                  "useNtlm" : false,
+                  "credentials" : [ "3247", "1051" ],
+                  "description" : "ThousandEyes Test",
+                  "httpTimeLimit" : 9,
+                  "blockDomains" : "domain.com/",
+                  "allowGeolocation" : false,
+                  "allowUnsafeLegacyRenegotiation" : true,
+                  "fixedPacketRate" : 50,
+                  "httpVersion" : 1,
+                  "modifiedBy" : "user@user.com",
+                  "customHeaders" : {
+                    "root" : {
+                      "header1" : "value1"
+                    },
+                    "domains" : {
+                      "domain1.com" : {
+                        "header2" : "value2"
+                      }
+                    },
+                    "all" : {
+                      "header3" : "value3"
+                    }
+                  },
+                  "numPathTraces" : 2,
+                  "transactionScript" : "if (true) { return true; }",
+                  "savedEvent" : true,
+                  "userAgent" : "curl",
+                  "networkMeasurements" : true,
+                  "url" : "www.thousandeyes.com",
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "timeLimit" : 109,
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "disableScreenshot" : false,
+                  "createdBy" : "user@user.com",
+                  "testId" : "281474976710706",
                   "desiredStatusCode" : "200",
                   "httpTargetTime" : 100,
                   "sslVersionId" : "0",

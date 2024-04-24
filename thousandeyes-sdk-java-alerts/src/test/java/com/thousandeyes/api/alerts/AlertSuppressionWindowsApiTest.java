@@ -62,7 +62,24 @@ public class AlertSuppressionWindowsApiTest {
     {
         String requestBodyJson = """
                 {
-                  "tests" : [ "71687", "71687" ]
+                  "duration" : 0,
+                  "alertSuppressionWindowId" : "2411",
+                  "tests" : [ "71687", "71687" ],
+                  "isEnabled" : false,
+                  "repeat" : {
+                    "intervalType" : "day",
+                    "intervalLength" : 2,
+                    "type" : "week",
+                    "daysOfWeek" : [ "sun", "sun" ]
+                  },
+                  "endRepeat" : {
+                    "date" : "2017-07-01",
+                    "count" : 3,
+                    "type" : "never"
+                  },
+                  "name" : "Monthly maintenance",
+                  "startDate" : "2017-07-01T05:00:00Z",
+                  "status" : "ended"
                 }
                                  """;
         AlertSuppressionWindowRequest mappedRequest = 
@@ -71,6 +88,67 @@ public class AlertSuppressionWindowsApiTest {
 
         String responseBodyJson = """
                 {
+                  "duration" : 0,
+                  "alertSuppressionWindowId" : "2411",
+                  "tests" : [ {
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "interval" : 120,
+                    "alertsEnabled" : true,
+                    "enabled" : true
+                  }, {
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "interval" : 120,
+                    "alertsEnabled" : true,
+                    "enabled" : true
+                  } ],
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -82,7 +160,22 @@ public class AlertSuppressionWindowsApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "isEnabled" : false,
+                  "repeat" : {
+                    "intervalType" : "day",
+                    "intervalLength" : 2,
+                    "type" : "week",
+                    "daysOfWeek" : [ "sun", "sun" ]
+                  },
+                  "endRepeat" : {
+                    "date" : "2017-07-01",
+                    "count" : 3,
+                    "type" : "never"
+                  },
+                  "name" : "Monthly maintenance",
+                  "startDate" : "2017-07-01T05:00:00Z",
+                  "status" : "ended"
                 }
                                   """;
         CreateSuppressionWindows201Response mappedResponse = 
@@ -120,6 +213,67 @@ public class AlertSuppressionWindowsApiTest {
 
         String responseBodyJson = """
                 {
+                  "duration" : 0,
+                  "alertSuppressionWindowId" : "2411",
+                  "tests" : [ {
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "interval" : 120,
+                    "alertsEnabled" : true,
+                    "enabled" : true
+                  }, {
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "interval" : 120,
+                    "alertsEnabled" : true,
+                    "enabled" : true
+                  } ],
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -131,7 +285,22 @@ public class AlertSuppressionWindowsApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "isEnabled" : false,
+                  "repeat" : {
+                    "intervalType" : "day",
+                    "intervalLength" : 2,
+                    "type" : "week",
+                    "daysOfWeek" : [ "sun", "sun" ]
+                  },
+                  "endRepeat" : {
+                    "date" : "2017-07-01",
+                    "count" : 3,
+                    "type" : "never"
+                  },
+                  "name" : "Monthly maintenance",
+                  "startDate" : "2017-07-01T05:00:00Z",
+                  "status" : "ended"
                 }
                                   """;
         CreateSuppressionWindows201Response mappedResponse = 
@@ -167,6 +336,8 @@ public class AlertSuppressionWindowsApiTest {
                     }
                   },
                   "alertSuppressionWindows" : [ {
+                    "duration" : 0,
+                    "alertSuppressionWindowId" : "2411",
                     "_links" : {
                       "self" : {
                         "hreflang" : "hreflang",
@@ -178,8 +349,25 @@ public class AlertSuppressionWindowsApiTest {
                         "deprecation" : "deprecation",
                         "title" : "title"
                       }
-                    }
+                    },
+                    "isEnabled" : false,
+                    "repeat" : {
+                      "intervalType" : "day",
+                      "intervalLength" : 2,
+                      "type" : "week",
+                      "daysOfWeek" : [ "sun", "sun" ]
+                    },
+                    "endRepeat" : {
+                      "date" : "2017-07-01",
+                      "count" : 3,
+                      "type" : "never"
+                    },
+                    "name" : "Monthly maintenance",
+                    "startDate" : "2017-07-01T05:00:00Z",
+                    "status" : "ended"
                   }, {
+                    "duration" : 0,
+                    "alertSuppressionWindowId" : "2411",
                     "_links" : {
                       "self" : {
                         "hreflang" : "hreflang",
@@ -191,7 +379,22 @@ public class AlertSuppressionWindowsApiTest {
                         "deprecation" : "deprecation",
                         "title" : "title"
                       }
-                    }
+                    },
+                    "isEnabled" : false,
+                    "repeat" : {
+                      "intervalType" : "day",
+                      "intervalLength" : 2,
+                      "type" : "week",
+                      "daysOfWeek" : [ "sun", "sun" ]
+                    },
+                    "endRepeat" : {
+                      "date" : "2017-07-01",
+                      "count" : 3,
+                      "type" : "never"
+                    },
+                    "name" : "Monthly maintenance",
+                    "startDate" : "2017-07-01T05:00:00Z",
+                    "status" : "ended"
                   } ]
                 }
                                   """;
@@ -214,7 +417,24 @@ public class AlertSuppressionWindowsApiTest {
     {
         String requestBodyJson = """
                 {
-                  "tests" : [ "71687", "71687" ]
+                  "duration" : 0,
+                  "alertSuppressionWindowId" : "2411",
+                  "tests" : [ "71687", "71687" ],
+                  "isEnabled" : false,
+                  "repeat" : {
+                    "intervalType" : "day",
+                    "intervalLength" : 2,
+                    "type" : "week",
+                    "daysOfWeek" : [ "sun", "sun" ]
+                  },
+                  "endRepeat" : {
+                    "date" : "2017-07-01",
+                    "count" : 3,
+                    "type" : "never"
+                  },
+                  "name" : "Monthly maintenance",
+                  "startDate" : "2017-07-01T05:00:00Z",
+                  "status" : "ended"
                 }
                                  """;
         AlertSuppressionWindowRequest mappedRequest = 
@@ -223,6 +443,67 @@ public class AlertSuppressionWindowsApiTest {
 
         String responseBodyJson = """
                 {
+                  "duration" : 0,
+                  "alertSuppressionWindowId" : "2411",
+                  "tests" : [ {
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "interval" : 120,
+                    "alertsEnabled" : true,
+                    "enabled" : true
+                  }, {
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "interval" : 120,
+                    "alertsEnabled" : true,
+                    "enabled" : true
+                  } ],
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -234,7 +515,22 @@ public class AlertSuppressionWindowsApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "isEnabled" : false,
+                  "repeat" : {
+                    "intervalType" : "day",
+                    "intervalLength" : 2,
+                    "type" : "week",
+                    "daysOfWeek" : [ "sun", "sun" ]
+                  },
+                  "endRepeat" : {
+                    "date" : "2017-07-01",
+                    "count" : 3,
+                    "type" : "never"
+                  },
+                  "name" : "Monthly maintenance",
+                  "startDate" : "2017-07-01T05:00:00Z",
+                  "status" : "ended"
                 }
                                   """;
         CreateSuppressionWindows201Response mappedResponse = 

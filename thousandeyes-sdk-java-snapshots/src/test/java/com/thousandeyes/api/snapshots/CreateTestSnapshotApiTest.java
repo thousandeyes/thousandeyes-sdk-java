@@ -105,6 +105,14 @@ public class CreateTestSnapshotApiTest {
                     "alertsEnabled" : true,
                     "testName" : "ThousandEyes Test"
                   },
+                  "_links" : {
+                    "self" : {
+                      "href" : "http://api.thousandeyes.com/v7/tests/227103/snapshot"
+                    },
+                    "appLink" : {
+                      "href" : "https://app.stg.thousandeyes.com/view/tests/?testId=227103&__a=105"
+                    }
+                  },
                   "startRoundId" : 1538784000,
                   "displayName" : "Snapshot created through API",
                   "endRoundId" : 1538787600,

@@ -73,6 +73,8 @@ public class AccountGroupsApiTest {
 
         String responseBodyJson = """
                 {
+                  "isCurrentAccountGroup" : true,
+                  "organizationName" : "organizationName",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -84,7 +86,45 @@ public class AccountGroupsApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "accountGroupName" : "Account A",
+                  "isDefaultAccountGroup" : true,
+                  "aid" : "1234",
+                  "users" : [ {
+                    "uid" : "235",
+                    "lastLogin" : "2022-07-17T22:00:54Z",
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "name" : "User X",
+                    "email" : "userx@thousandeyes.com",
+                    "dateRegistered" : "2022-07-17T22:00:54Z"
+                  }, {
+                    "uid" : "235",
+                    "lastLogin" : "2022-07-17T22:00:54Z",
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "name" : "User X",
+                    "email" : "userx@thousandeyes.com",
+                    "dateRegistered" : "2022-07-17T22:00:54Z"
+                  } ]
                 }
                                   """;
         CreateAccountGroup201Response mappedResponse = 
@@ -122,6 +162,8 @@ public class AccountGroupsApiTest {
 
         String responseBodyJson = """
                 {
+                  "isCurrentAccountGroup" : true,
+                  "organizationName" : "organizationName",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -133,7 +175,200 @@ public class AccountGroupsApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "accountGroupName" : "Account A",
+                  "isDefaultAccountGroup" : true,
+                  "aid" : "1234",
+                  "users" : [ {
+                    "uid" : "235",
+                    "lastLogin" : "2022-07-17T22:00:54Z",
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "name" : "User X",
+                    "email" : "userx@thousandeyes.com",
+                    "dateRegistered" : "2022-07-17T22:00:54Z"
+                  }, {
+                    "uid" : "235",
+                    "lastLogin" : "2022-07-17T22:00:54Z",
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "name" : "User X",
+                    "email" : "userx@thousandeyes.com",
+                    "dateRegistered" : "2022-07-17T22:00:54Z"
+                  } ],
+                  "agents" : [ {
+                    "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "ipv6Policy" : "force-ipv4",
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "utilization" : 25,
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "clusterMembers" : [ {
+                      "lastSeen" : "2022-07-17T22:00:54Z",
+                      "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                      "agentState" : "online",
+                      "targetForTests" : "1.1.1.1",
+                      "name" : "Cluster member name",
+                      "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                      "utilization" : 25,
+                      "network" : "AT&T Services, Inc. (AS 7018)",
+                      "memberId" : "10",
+                      "errorDetails" : [ {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      }, {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      } ]
+                    }, {
+                      "lastSeen" : "2022-07-17T22:00:54Z",
+                      "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                      "agentState" : "online",
+                      "targetForTests" : "1.1.1.1",
+                      "name" : "Cluster member name",
+                      "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                      "utilization" : 25,
+                      "network" : "AT&T Services, Inc. (AS 7018)",
+                      "memberId" : "10",
+                      "errorDetails" : [ {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      }, {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      } ]
+                    } ],
+                    "hostname" : "thousandeyes.com",
+                    "lastSeen" : "2022-07-17T22:00:54Z",
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "keepBrowserCache" : true,
+                    "interfaceIpMappings" : [ {
+                      "ipAddresses" : [ "73.252.207.219", "2601:646:300:3ae0::b977" ],
+                      "interfaceName" : "wlp4s0"
+                    }, {
+                      "ipAddresses" : [ "73.252.207.219", "2601:646:300:3ae0::b977" ],
+                      "interfaceName" : "wlp4s0"
+                    } ],
+                    "agentState" : "online",
+                    "targetForTests" : "1.1.1.1",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "accountGroups" : [ {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }, {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    } ],
+                    "verifySslCertificates" : true,
+                    "errorDetails" : [ {
+                      "code" : "agent-version-outdated",
+                      "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                    }, {
+                      "code" : "agent-version-outdated",
+                      "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                    } ]
+                  }, {
+                    "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "ipv6Policy" : "force-ipv4",
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "utilization" : 25,
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "clusterMembers" : [ {
+                      "lastSeen" : "2022-07-17T22:00:54Z",
+                      "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                      "agentState" : "online",
+                      "targetForTests" : "1.1.1.1",
+                      "name" : "Cluster member name",
+                      "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                      "utilization" : 25,
+                      "network" : "AT&T Services, Inc. (AS 7018)",
+                      "memberId" : "10",
+                      "errorDetails" : [ {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      }, {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      } ]
+                    }, {
+                      "lastSeen" : "2022-07-17T22:00:54Z",
+                      "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                      "agentState" : "online",
+                      "targetForTests" : "1.1.1.1",
+                      "name" : "Cluster member name",
+                      "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                      "utilization" : 25,
+                      "network" : "AT&T Services, Inc. (AS 7018)",
+                      "memberId" : "10",
+                      "errorDetails" : [ {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      }, {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      } ]
+                    } ],
+                    "hostname" : "thousandeyes.com",
+                    "lastSeen" : "2022-07-17T22:00:54Z",
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "keepBrowserCache" : true,
+                    "interfaceIpMappings" : [ {
+                      "ipAddresses" : [ "73.252.207.219", "2601:646:300:3ae0::b977" ],
+                      "interfaceName" : "wlp4s0"
+                    }, {
+                      "ipAddresses" : [ "73.252.207.219", "2601:646:300:3ae0::b977" ],
+                      "interfaceName" : "wlp4s0"
+                    } ],
+                    "agentState" : "online",
+                    "targetForTests" : "1.1.1.1",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "accountGroups" : [ {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }, {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    } ],
+                    "verifySslCertificates" : true,
+                    "errorDetails" : [ {
+                      "code" : "agent-version-outdated",
+                      "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                    }, {
+                      "code" : "agent-version-outdated",
+                      "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                    } ]
+                  } ]
                 }
                                   """;
         GetAccountGroup200Response mappedResponse = 
@@ -171,11 +406,15 @@ public class AccountGroupsApiTest {
                   "accountGroups" : [ {
                     "isCurrentAccountGroup" : true,
                     "organizationName" : "organizationName",
-                    "isDefaultAccountGroup" : true
+                    "accountGroupName" : "Account A",
+                    "isDefaultAccountGroup" : true,
+                    "aid" : "1234"
                   }, {
                     "isCurrentAccountGroup" : true,
                     "organizationName" : "organizationName",
-                    "isDefaultAccountGroup" : true
+                    "accountGroupName" : "Account A",
+                    "isDefaultAccountGroup" : true,
+                    "aid" : "1234"
                   } ]
                 }
                                   """;
@@ -208,6 +447,8 @@ public class AccountGroupsApiTest {
 
         String responseBodyJson = """
                 {
+                  "isCurrentAccountGroup" : true,
+                  "organizationName" : "organizationName",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -219,7 +460,200 @@ public class AccountGroupsApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "accountGroupName" : "Account A",
+                  "isDefaultAccountGroup" : true,
+                  "aid" : "1234",
+                  "users" : [ {
+                    "uid" : "235",
+                    "lastLogin" : "2022-07-17T22:00:54Z",
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "name" : "User X",
+                    "email" : "userx@thousandeyes.com",
+                    "dateRegistered" : "2022-07-17T22:00:54Z"
+                  }, {
+                    "uid" : "235",
+                    "lastLogin" : "2022-07-17T22:00:54Z",
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "name" : "User X",
+                    "email" : "userx@thousandeyes.com",
+                    "dateRegistered" : "2022-07-17T22:00:54Z"
+                  } ],
+                  "agents" : [ {
+                    "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "ipv6Policy" : "force-ipv4",
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "utilization" : 25,
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "clusterMembers" : [ {
+                      "lastSeen" : "2022-07-17T22:00:54Z",
+                      "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                      "agentState" : "online",
+                      "targetForTests" : "1.1.1.1",
+                      "name" : "Cluster member name",
+                      "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                      "utilization" : 25,
+                      "network" : "AT&T Services, Inc. (AS 7018)",
+                      "memberId" : "10",
+                      "errorDetails" : [ {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      }, {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      } ]
+                    }, {
+                      "lastSeen" : "2022-07-17T22:00:54Z",
+                      "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                      "agentState" : "online",
+                      "targetForTests" : "1.1.1.1",
+                      "name" : "Cluster member name",
+                      "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                      "utilization" : 25,
+                      "network" : "AT&T Services, Inc. (AS 7018)",
+                      "memberId" : "10",
+                      "errorDetails" : [ {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      }, {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      } ]
+                    } ],
+                    "hostname" : "thousandeyes.com",
+                    "lastSeen" : "2022-07-17T22:00:54Z",
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "keepBrowserCache" : true,
+                    "interfaceIpMappings" : [ {
+                      "ipAddresses" : [ "73.252.207.219", "2601:646:300:3ae0::b977" ],
+                      "interfaceName" : "wlp4s0"
+                    }, {
+                      "ipAddresses" : [ "73.252.207.219", "2601:646:300:3ae0::b977" ],
+                      "interfaceName" : "wlp4s0"
+                    } ],
+                    "agentState" : "online",
+                    "targetForTests" : "1.1.1.1",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "accountGroups" : [ {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }, {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    } ],
+                    "verifySslCertificates" : true,
+                    "errorDetails" : [ {
+                      "code" : "agent-version-outdated",
+                      "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                    }, {
+                      "code" : "agent-version-outdated",
+                      "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                    } ]
+                  }, {
+                    "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "ipv6Policy" : "force-ipv4",
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "utilization" : 25,
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "clusterMembers" : [ {
+                      "lastSeen" : "2022-07-17T22:00:54Z",
+                      "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                      "agentState" : "online",
+                      "targetForTests" : "1.1.1.1",
+                      "name" : "Cluster member name",
+                      "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                      "utilization" : 25,
+                      "network" : "AT&T Services, Inc. (AS 7018)",
+                      "memberId" : "10",
+                      "errorDetails" : [ {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      }, {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      } ]
+                    }, {
+                      "lastSeen" : "2022-07-17T22:00:54Z",
+                      "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                      "agentState" : "online",
+                      "targetForTests" : "1.1.1.1",
+                      "name" : "Cluster member name",
+                      "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                      "utilization" : 25,
+                      "network" : "AT&T Services, Inc. (AS 7018)",
+                      "memberId" : "10",
+                      "errorDetails" : [ {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      }, {
+                        "code" : "agent-version-outdated",
+                        "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                      } ]
+                    } ],
+                    "hostname" : "thousandeyes.com",
+                    "lastSeen" : "2022-07-17T22:00:54Z",
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "keepBrowserCache" : true,
+                    "interfaceIpMappings" : [ {
+                      "ipAddresses" : [ "73.252.207.219", "2601:646:300:3ae0::b977" ],
+                      "interfaceName" : "wlp4s0"
+                    }, {
+                      "ipAddresses" : [ "73.252.207.219", "2601:646:300:3ae0::b977" ],
+                      "interfaceName" : "wlp4s0"
+                    } ],
+                    "agentState" : "online",
+                    "targetForTests" : "1.1.1.1",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "accountGroups" : [ {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }, {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    } ],
+                    "verifySslCertificates" : true,
+                    "errorDetails" : [ {
+                      "code" : "agent-version-outdated",
+                      "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                    }, {
+                      "code" : "agent-version-outdated",
+                      "description" : "Agent Version 0.1.1 (latest: 1.0.0)"
+                    } ]
+                  } ]
                 }
                                   """;
         GetAccountGroup200Response mappedResponse = 

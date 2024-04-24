@@ -59,6 +59,8 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
 
         String responseBodyJson = """
                 {
+                  "isDefault" : false,
+                  "expression" : "((lastContact >= 30 min))",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -70,7 +72,79 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "ruleName" : "Default Agent Offline Notification",
+                  "ruleId" : "281474976710706",
+                  "notifications" : {
+                    "thirdParty" : [ {
+                      "integrationType" : "slack",
+                      "integrationName" : "integrationSlack1",
+                      "authToken" : "0VqDYEpidpHVAK397x8PBsmZ",
+                      "channel" : "#slackChannel",
+                      "integrationId" : "wb-78",
+                      "authMethod" : "Basic",
+                      "authUser" : "user123",
+                      "target" : "https://hooks.slack.com/services/asd/0VqDYEpidpHVAK397x8PBsmZ"
+                    }, {
+                      "integrationType" : "slack",
+                      "integrationName" : "integrationSlack1",
+                      "authToken" : "0VqDYEpidpHVAK397x8PBsmZ",
+                      "channel" : "#slackChannel",
+                      "integrationId" : "wb-78",
+                      "authMethod" : "Basic",
+                      "authUser" : "user123",
+                      "target" : "https://hooks.slack.com/services/asd/0VqDYEpidpHVAK397x8PBsmZ"
+                    } ],
+                    "webhook" : [ {
+                      "integrationType" : "slack",
+                      "integrationName" : "integrationSlack1",
+                      "authToken" : "0VqDYEpidpHVAK397x8PBsmZ",
+                      "channel" : "#slackChannel",
+                      "integrationId" : "wb-78",
+                      "authMethod" : "Basic",
+                      "authUser" : "user123",
+                      "target" : "https://hooks.slack.com/services/asd/0VqDYEpidpHVAK397x8PBsmZ"
+                    }, {
+                      "integrationType" : "slack",
+                      "integrationName" : "integrationSlack1",
+                      "authToken" : "0VqDYEpidpHVAK397x8PBsmZ",
+                      "channel" : "#slackChannel",
+                      "integrationId" : "wb-78",
+                      "authMethod" : "Basic",
+                      "authUser" : "user123",
+                      "target" : "https://hooks.slack.com/services/asd/0VqDYEpidpHVAK397x8PBsmZ"
+                    } ],
+                    "email" : {
+                      "recipients" : [ "user1@thousandeyes.com", "user2@cisco.com" ],
+                      "message" : "This test is failing, check as soon as possible."
+                    }
+                  },
+                  "notifyOnClear" : true,
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ]
                 }
                                   """;
         GetAgentsNotificationRule200Response mappedResponse = 

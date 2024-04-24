@@ -63,7 +63,56 @@ public class AlertsApiTest {
 
         String responseBodyJson = """
                 {
+                  "duration" : 60,
                   "severity" : "major",
+                  "alertType" : "http-server",
+                  "violationCount" : 2,
+                  "endDate" : "2020-04-23T13:43:16Z",
+                  "_links" : {
+                    "appLink" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    },
+                    "test" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    },
+                    "rule" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    },
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "meta" : {
+                    "version" : 1
+                  },
                   "details" : [ {
                     "name" : "Bucharest, Romania",
                     "start" : {
@@ -87,7 +136,10 @@ public class AlertsApiTest {
                     "state" : "active",
                     "type" : "cea_agent"
                   } ],
-                  "state" : "active"
+                  "id" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
+                  "suppressed" : false,
+                  "state" : "active",
+                  "startDate" : "2020-04-23T13:43:16Z"
                 }
                                   """;
         AlertDetail mappedResponse = 
@@ -112,35 +164,139 @@ public class AlertsApiTest {
                 {
                   "alerts" : [ {
                     "severity" : "MAJOR",
-                    "dateStart" : "2020-04-23 13:43:16",
+                    "alertType" : "http-server",
+                    "endDate" : "2020-04-23T13:43:16Z",
+                    "_links" : {
+                      "appLink" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      },
+                      "test" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      },
+                      "rule" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      },
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
                     "apiLinks" : [ {
                       "key" : ""
                     }, {
                       "key" : ""
                     } ],
                     "alertSeverity" : "major",
-                    "alertId" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
                     "dateEnd" : "2020-04-23 13:43:16",
+                    "duration" : 60,
+                    "violationCount" : 2,
+                    "dateStart" : "2020-04-23 13:43:16",
+                    "meta" : {
+                      "version" : 1
+                    },
+                    "id" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
+                    "suppressed" : false,
+                    "alertId" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
                     "state" : "ACTIVE",
                     "ruleId" : 127094,
                     "permalink" : "https://app.thousandeyes.com/alerts/list?__a=75&alertId=2783&agentId=12",
                     "alertState" : "active",
+                    "startDate" : "2020-04-23T13:43:16Z",
                     "alertRuleId" : "127094"
                   }, {
                     "severity" : "MAJOR",
-                    "dateStart" : "2020-04-23 13:43:16",
+                    "alertType" : "http-server",
+                    "endDate" : "2020-04-23T13:43:16Z",
+                    "_links" : {
+                      "appLink" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      },
+                      "test" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      },
+                      "rule" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      },
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
                     "apiLinks" : [ {
                       "key" : ""
                     }, {
                       "key" : ""
                     } ],
                     "alertSeverity" : "major",
-                    "alertId" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
                     "dateEnd" : "2020-04-23 13:43:16",
+                    "duration" : 60,
+                    "violationCount" : 2,
+                    "dateStart" : "2020-04-23 13:43:16",
+                    "meta" : {
+                      "version" : 1
+                    },
+                    "id" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
+                    "suppressed" : false,
+                    "alertId" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
                     "state" : "ACTIVE",
                     "ruleId" : 127094,
                     "permalink" : "https://app.thousandeyes.com/alerts/list?__a=75&alertId=2783&agentId=12",
                     "alertState" : "active",
+                    "startDate" : "2020-04-23T13:43:16Z",
                     "alertRuleId" : "127094"
                   } ],
                   "_links" : {

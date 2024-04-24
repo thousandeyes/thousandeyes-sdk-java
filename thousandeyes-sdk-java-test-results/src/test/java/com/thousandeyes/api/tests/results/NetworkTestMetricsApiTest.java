@@ -109,6 +109,22 @@ public class NetworkTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "server" : "www.google.com:443",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "targetIsProxy" : true,
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "sourceIp" : "196.40.106.237",
                     "pathTraces" : [ {
                       "hops" : [ {
                         "rdns" : "core-router1.cpt2.host-h.net",
@@ -151,8 +167,29 @@ public class NetworkTestMetricsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803"
-                    } ]
+                    } ],
+                    "serverIp" : "172.217.170.68",
+                    "startTime" : 1384309800,
+                    "endTime" : 1384309800,
+                    "roundId" : 1384309800,
+                    "direction" : "to-target"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "server" : "www.google.com:443",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "targetIsProxy" : true,
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "sourceIp" : "196.40.106.237",
                     "pathTraces" : [ {
                       "hops" : [ {
                         "rdns" : "core-router1.cpt2.host-h.net",
@@ -195,7 +232,12 @@ public class NetworkTestMetricsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803"
-                    } ]
+                    } ],
+                    "serverIp" : "172.217.170.68",
+                    "startTime" : 1384309800,
+                    "endTime" : 1384309800,
+                    "roundId" : 1384309800,
+                    "direction" : "to-target"
                   } ]
                 }
                                   """;
@@ -298,6 +340,11 @@ public class NetworkTestMetricsApiTest {
                     "avgLatency" : 167.04,
                     "bandwidth" : 4.3313155,
                     "minLatency" : 167.0,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "maxLatency" : 168.0,
                     "capacity" : 210.10854,
                     "loss" : 0.0,
@@ -320,6 +367,11 @@ public class NetworkTestMetricsApiTest {
                     "avgLatency" : 167.04,
                     "bandwidth" : 4.3313155,
                     "minLatency" : 167.0,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "maxLatency" : 168.0,
                     "capacity" : 210.10854,
                     "loss" : 0.0,
@@ -418,6 +470,22 @@ public class NetworkTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "server" : "www.google.com:443",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "targetIsProxy" : true,
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "sourceIp" : "196.40.106.237",
                     "pathTraces" : [ {
                       "numberOfHops" : 15,
                       "responseTime" : 1500,
@@ -432,8 +500,29 @@ public class NetworkTestMetricsApiTest {
                       "pathMtu" : 1500,
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521",
                       "mss" : 1460
-                    } ]
+                    } ],
+                    "serverIp" : "172.217.170.68",
+                    "startTime" : 1384309800,
+                    "endTime" : 1384309800,
+                    "roundId" : 1384309800,
+                    "direction" : "to-target"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "server" : "www.google.com:443",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "targetIsProxy" : true,
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "sourceIp" : "196.40.106.237",
                     "pathTraces" : [ {
                       "numberOfHops" : 15,
                       "responseTime" : 1500,
@@ -448,7 +537,12 @@ public class NetworkTestMetricsApiTest {
                       "pathMtu" : 1500,
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521",
                       "mss" : 1460
-                    } ]
+                    } ],
+                    "serverIp" : "172.217.170.68",
+                    "startTime" : 1384309800,
+                    "endTime" : 1384309800,
+                    "roundId" : 1384309800,
+                    "direction" : "to-target"
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
                 }

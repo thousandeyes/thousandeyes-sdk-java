@@ -81,6 +81,15 @@ public class NetworkDynamicTestsResultsApiTest {
                         "title" : "title"
                       }
                     },
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "application" : "webex",
                     "isEnabled" : true,
@@ -119,6 +128,40 @@ public class NetworkDynamicTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
+                    "server" : "www.google.com:443",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "asnDetails" : {
+                      "asName" : "ThousandEyes, Inc",
+                      "asNumber" : 394101
+                    },
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "sourceIp" : "196.40.106.237",
                     "application" : "webex",
                     "pathTraces" : [ {
                       "numberOfHops" : 15,
@@ -131,14 +174,97 @@ public class NetworkDynamicTestsResultsApiTest {
                       "ipAddress" : "196.40.106.237",
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521"
                     } ],
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
                     "location" : "San Francisco Area",
                     "webex" : {
                       "remoteSipSessionId" : "22581707460321454",
                       "localSipSessionId" : "22581707460321454",
                       "conferenceId" : "225817074608419375",
                       "correlationId" : "22581707460321454"
-                    }
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800
                   }, {
+                    "server" : "www.google.com:443",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "asnDetails" : {
+                      "asName" : "ThousandEyes, Inc",
+                      "asNumber" : 394101
+                    },
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "sourceIp" : "196.40.106.237",
                     "application" : "webex",
                     "pathTraces" : [ {
                       "numberOfHops" : 15,
@@ -151,13 +277,62 @@ public class NetworkDynamicTestsResultsApiTest {
                       "ipAddress" : "196.40.106.237",
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521"
                     } ],
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
                     "location" : "San Francisco Area",
                     "webex" : {
                       "remoteSipSessionId" : "22581707460321454",
                       "localSipSessionId" : "22581707460321454",
                       "conferenceId" : "225817074608419375",
                       "correlationId" : "22581707460321454"
-                    }
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
@@ -200,6 +375,15 @@ public class NetworkDynamicTestsResultsApiTest {
                         "title" : "title"
                       }
                     },
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "application" : "webex",
                     "isEnabled" : true,
@@ -227,21 +411,343 @@ public class NetworkDynamicTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
+                    "server" : "www.google.com:443",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "asnDetails" : {
+                      "asName" : "ThousandEyes, Inc",
+                      "asNumber" : 394101
+                    },
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "sourceIp" : "196.40.106.237",
                     "application" : "webex",
+                    "pathTraces" : [ {
+                      "hops" : [ {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      }, {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      } ],
+                      "pathId" : "4711301366345855606023718047703941305741293841502186803"
+                    }, {
+                      "hops" : [ {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      }, {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      } ],
+                      "pathId" : "4711301366345855606023718047703941305741293841502186803"
+                    } ],
+                    "vpnPathTraces" : [ {
+                      "hops" : [ {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      }, {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      } ],
+                      "pathId" : "4711301366345855606023718047703941305741293841502186803"
+                    }, {
+                      "hops" : [ {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      }, {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      } ],
+                      "pathId" : "4711301366345855606023718047703941305741293841502186803"
+                    } ],
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
                     "webex" : {
                       "remoteSipSessionId" : "22581707460321454",
                       "localSipSessionId" : "22581707460321454",
                       "conferenceId" : "225817074608419375",
                       "correlationId" : "22581707460321454"
-                    }
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800
                   }, {
+                    "server" : "www.google.com:443",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "asnDetails" : {
+                      "asName" : "ThousandEyes, Inc",
+                      "asNumber" : 394101
+                    },
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "sourceIp" : "196.40.106.237",
                     "application" : "webex",
+                    "pathTraces" : [ {
+                      "hops" : [ {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      }, {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      } ],
+                      "pathId" : "4711301366345855606023718047703941305741293841502186803"
+                    }, {
+                      "hops" : [ {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      }, {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      } ],
+                      "pathId" : "4711301366345855606023718047703941305741293841502186803"
+                    } ],
+                    "vpnPathTraces" : [ {
+                      "hops" : [ {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      }, {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      } ],
+                      "pathId" : "4711301366345855606023718047703941305741293841502186803"
+                    }, {
+                      "hops" : [ {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      }, {
+                        "rdns" : "core-router1.cpt2.host-h.net",
+                        "prefix" : "196.40.96.0/20",
+                        "responseTime" : 1,
+                        "hop" : 1,
+                        "ipAddress" : "196.40.106.237",
+                        "location" : "Cape Town, South Africa",
+                        "network" : "HETZNER (Pty) Ltd (AS 37153)"
+                      } ],
+                      "pathId" : "4711301366345855606023718047703941305741293841502186803"
+                    } ],
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
                     "webex" : {
                       "remoteSipSessionId" : "22581707460321454",
                       "localSipSessionId" : "22581707460321454",
                       "conferenceId" : "225817074608419375",
                       "correlationId" : "22581707460321454"
-                    }
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800
                   } ]
                 }
                                   """;
@@ -306,6 +812,15 @@ public class NetworkDynamicTestsResultsApiTest {
                         "title" : "title"
                       }
                     },
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "application" : "webex",
                     "isEnabled" : true,
@@ -334,21 +849,187 @@ public class NetworkDynamicTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "isIcmpBlocked" : true,
+                    "avgLatency" : 167.04,
+                    "minLatency" : 167.0,
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "maxLatency" : 168.0,
+                    "loss" : 0.0,
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "jitter" : 0.076808,
                     "application" : "webex",
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
                     "webex" : {
                       "remoteSipSessionId" : "22581707460321454",
                       "localSipSessionId" : "22581707460321454",
                       "conferenceId" : "225817074608419375",
                       "correlationId" : "22581707460321454"
-                    }
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800,
+                    "errorDetails" : "Error"
                   }, {
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "isIcmpBlocked" : true,
+                    "avgLatency" : 167.04,
+                    "minLatency" : 167.0,
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "maxLatency" : 168.0,
+                    "loss" : 0.0,
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "jitter" : 0.076808,
                     "application" : "webex",
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
                     "webex" : {
                       "remoteSipSessionId" : "22581707460321454",
                       "localSipSessionId" : "22581707460321454",
                       "conferenceId" : "225817074608419375",
                       "correlationId" : "22581707460321454"
-                    }
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800,
+                    "errorDetails" : "Error"
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
                 }

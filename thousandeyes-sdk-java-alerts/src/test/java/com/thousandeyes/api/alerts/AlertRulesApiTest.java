@@ -104,6 +104,9 @@ public class AlertRulesApiTest {
 
         String responseBodyJson = """
                 {
+                  "severity" : "major",
+                  "expression" : "((hops((hopDelay >= 100 ms))))",
+                  "alertType" : "http-server",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -114,6 +117,37 @@ public class AlertRulesApiTest {
                       "type" : "type",
                       "deprecation" : "deprecation",
                       "title" : "title"
+                    }
+                  },
+                  "includeCoveredPrefixes" : true,
+                  "roundsViolatingMode" : "exact",
+                  "notifyOnClear" : true,
+                  "testIds" : [ "281474976710706", "271659" ],
+                  "roundsViolatingOutOf" : 5,
+                  "roundsViolatingRequired" : 2,
+                  "isDefault" : true,
+                  "minimumSourcesPct" : 99,
+                  "ruleName" : "The End of the Internet",
+                  "minimumSources" : 10,
+                  "ruleId" : "127094",
+                  "notifications" : {
+                    "thirdParty" : [ {
+                      "integrationType" : "slack",
+                      "integrationId" : "sl-101"
+                    }, {
+                      "integrationType" : "slack",
+                      "integrationId" : "sl-101"
+                    } ],
+                    "webhook" : [ {
+                      "integrationType" : "webhook",
+                      "integrationId" : "wb-201"
+                    }, {
+                      "integrationType" : "webhook",
+                      "integrationId" : "wb-201"
+                    } ],
+                    "email" : {
+                      "recipients" : [ "noreply@thousandeyes.com" ],
+                      "message" : "Notification message"
                     }
                   }
                 }
@@ -153,6 +187,9 @@ public class AlertRulesApiTest {
 
         String responseBodyJson = """
                 {
+                  "severity" : "major",
+                  "expression" : "((hops((hopDelay >= 100 ms))))",
+                  "alertType" : "http-server",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -163,6 +200,95 @@ public class AlertRulesApiTest {
                       "type" : "type",
                       "deprecation" : "deprecation",
                       "title" : "title"
+                    }
+                  },
+                  "includeCoveredPrefixes" : true,
+                  "roundsViolatingMode" : "exact",
+                  "notifyOnClear" : true,
+                  "roundsViolatingOutOf" : 5,
+                  "roundsViolatingRequired" : 2,
+                  "isDefault" : true,
+                  "tests" : [ {
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "interval" : 120,
+                    "alertsEnabled" : true,
+                    "enabled" : true
+                  }, {
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "interval" : 120,
+                    "alertsEnabled" : true,
+                    "enabled" : true
+                  } ],
+                  "minimumSourcesPct" : 99,
+                  "ruleName" : "The End of the Internet",
+                  "minimumSources" : 10,
+                  "ruleId" : "127094",
+                  "notifications" : {
+                    "thirdParty" : [ {
+                      "integrationType" : "slack",
+                      "integrationId" : "sl-101"
+                    }, {
+                      "integrationType" : "slack",
+                      "integrationId" : "sl-101"
+                    } ],
+                    "webhook" : [ {
+                      "integrationType" : "webhook",
+                      "integrationId" : "wb-201"
+                    }, {
+                      "integrationType" : "webhook",
+                      "integrationId" : "wb-201"
+                    } ],
+                    "email" : {
+                      "recipients" : [ "noreply@thousandeyes.com" ],
+                      "message" : "Notification message"
                     }
                   }
                 }
@@ -291,6 +417,9 @@ public class AlertRulesApiTest {
 
         String responseBodyJson = """
                 {
+                  "severity" : "major",
+                  "expression" : "((hops((hopDelay >= 100 ms))))",
+                  "alertType" : "http-server",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -301,6 +430,37 @@ public class AlertRulesApiTest {
                       "type" : "type",
                       "deprecation" : "deprecation",
                       "title" : "title"
+                    }
+                  },
+                  "includeCoveredPrefixes" : true,
+                  "roundsViolatingMode" : "exact",
+                  "notifyOnClear" : true,
+                  "testIds" : [ "281474976710706", "271659" ],
+                  "roundsViolatingOutOf" : 5,
+                  "roundsViolatingRequired" : 2,
+                  "isDefault" : true,
+                  "minimumSourcesPct" : 99,
+                  "ruleName" : "The End of the Internet",
+                  "minimumSources" : 10,
+                  "ruleId" : "127094",
+                  "notifications" : {
+                    "thirdParty" : [ {
+                      "integrationType" : "slack",
+                      "integrationId" : "sl-101"
+                    }, {
+                      "integrationType" : "slack",
+                      "integrationId" : "sl-101"
+                    } ],
+                    "webhook" : [ {
+                      "integrationType" : "webhook",
+                      "integrationId" : "wb-201"
+                    }, {
+                      "integrationType" : "webhook",
+                      "integrationId" : "wb-201"
+                    } ],
+                    "email" : {
+                      "recipients" : [ "noreply@thousandeyes.com" ],
+                      "message" : "Notification message"
                     }
                   }
                 }

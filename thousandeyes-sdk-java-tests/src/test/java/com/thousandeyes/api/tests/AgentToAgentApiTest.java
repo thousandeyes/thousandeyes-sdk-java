@@ -62,6 +62,57 @@ public class AgentToAgentApiTest {
     {
         String requestBodyJson = """
                 {
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ "344753", "212697" ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "agent-to-agent",
+                  "mss" : 130,
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "dscp" : "Best Effort (DSCP 0)",
+                  "throughputRate" : 567,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "throughputMeasurements" : false,
+                  "numPathTraces" : 6,
+                  "bgpMeasurements" : true,
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "throughputDuration" : 19905,
+                  "labels" : [ "9842", "1283" ],
+                  "agents" : [ {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  }, {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "port" : 9607,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "targetAgentId" : "2954",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ "1234", "12345" ],
                   "monitors" : [ "17410", "5" ]
                 }
                                  """;
@@ -71,8 +122,113 @@ public class AgentToAgentApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "agent-to-agent",
+                  "mss" : 130,
                   "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "dscp" : "Best Effort (DSCP 0)",
+                  "throughputRate" : 567,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "throughputMeasurements" : false,
+                  "numPathTraces" : 6,
+                  "bgpMeasurements" : true,
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "throughputDuration" : 19905,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "port" : 9607,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "targetAgentId" : "2954",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",
@@ -123,8 +279,113 @@ public class AgentToAgentApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "agent-to-agent",
+                  "mss" : 130,
                   "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "dscp" : "Best Effort (DSCP 0)",
+                  "throughputRate" : 567,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "throughputMeasurements" : false,
+                  "numPathTraces" : 6,
+                  "bgpMeasurements" : true,
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "throughputDuration" : 19905,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "port" : 9607,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "targetAgentId" : "2954",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",
@@ -274,6 +535,57 @@ public class AgentToAgentApiTest {
     {
         String requestBodyJson = """
                 {
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ "344753", "212697" ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "agent-to-agent",
+                  "mss" : 130,
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "dscp" : "Best Effort (DSCP 0)",
+                  "throughputRate" : 567,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "throughputMeasurements" : false,
+                  "numPathTraces" : 6,
+                  "bgpMeasurements" : true,
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "throughputDuration" : 19905,
+                  "labels" : [ "9842", "1283" ],
+                  "agents" : [ {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  }, {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "port" : 9607,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "targetAgentId" : "2954",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ "1234", "12345" ],
                   "monitors" : [ "17410", "5" ]
                 }
                                  """;
@@ -283,8 +595,113 @@ public class AgentToAgentApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "agent-to-agent",
+                  "mss" : 130,
                   "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "dscp" : "Best Effort (DSCP 0)",
+                  "throughputRate" : 567,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "throughputMeasurements" : false,
+                  "numPathTraces" : 6,
+                  "bgpMeasurements" : true,
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "throughputDuration" : 19905,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "port" : 9607,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "targetAgentId" : "2954",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",

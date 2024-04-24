@@ -126,6 +126,7 @@ public class DnsServerTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
                     "server" : "a1.verisigndns.com.",
                     "agent" : {
                       "agentId" : "281474976710706",
@@ -134,12 +135,19 @@ public class DnsServerTestMetricsApiTest {
                       "countryId" : "US"
                     },
                     "mappings" : "208.185.7.120",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "resolutionTime" : 3,
+                    "roundId" : 1384309800,
                     "serverId" : "456",
                     "errorDetails" : "Connection error"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
                     "server" : "a1.verisigndns.com.",
                     "agent" : {
                       "agentId" : "281474976710706",
@@ -148,9 +156,15 @@ public class DnsServerTestMetricsApiTest {
                       "countryId" : "US"
                     },
                     "mappings" : "208.185.7.120",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "resolutionTime" : 3,
+                    "roundId" : 1384309800,
                     "serverId" : "456",
                     "errorDetails" : "Connection error"
                   } ],
@@ -243,6 +257,7 @@ public class DnsServerTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
                     "server" : "a1.verisigndns.com.",
                     "agent" : {
                       "agentId" : "281474976710706",
@@ -251,12 +266,19 @@ public class DnsServerTestMetricsApiTest {
                       "countryId" : "US"
                     },
                     "mappings" : "208.185.7.120",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "resolutionTime" : 3,
+                    "roundId" : 1384309800,
                     "serverId" : "456",
                     "errorDetails" : "Connection error"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
                     "server" : "a1.verisigndns.com.",
                     "agent" : {
                       "agentId" : "281474976710706",
@@ -265,9 +287,15 @@ public class DnsServerTestMetricsApiTest {
                       "countryId" : "US"
                     },
                     "mappings" : "208.185.7.120",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "resolutionTime" : 3,
+                    "roundId" : 1384309800,
                     "serverId" : "456",
                     "errorDetails" : "Connection error"
                   } ],
