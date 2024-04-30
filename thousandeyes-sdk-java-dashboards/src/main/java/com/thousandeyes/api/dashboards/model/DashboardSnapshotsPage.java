@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DashboardSnapshotsPage.JSON_PROPERTY_PAGES,
   DashboardSnapshotsPage.JSON_PROPERTY_DASHBOARD_SNAPSHOTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.275061+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:13.271495+01:00[Europe/Lisbon]")
 public class DashboardSnapshotsPage {
   public static final String JSON_PROPERTY_PAGES = "pages";
   private Map<String, Object> pages = new HashMap<>();

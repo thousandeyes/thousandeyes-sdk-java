@@ -126,6 +126,7 @@ public class WebFtpServerTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -133,6 +134,11 @@ public class WebFtpServerTestMetricsApiTest {
                       "countryId" : "US"
                     },
                     "transferTime" : 99.865,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "negotiationTime" : 503.413,
                     "responseTime" : 0.589,
                     "totalTime" : 705.554,
@@ -144,10 +150,12 @@ public class WebFtpServerTestMetricsApiTest {
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "throughput" : 123,
+                    "roundId" : 1384309800,
                     "waitTime" : 52.1,
                     "wireSize" : 22172,
                     "errorDetails" : "Connection error"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -155,6 +163,11 @@ public class WebFtpServerTestMetricsApiTest {
                       "countryId" : "US"
                     },
                     "transferTime" : 99.865,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "negotiationTime" : 503.413,
                     "responseTime" : 0.589,
                     "totalTime" : 705.554,
@@ -166,6 +179,7 @@ public class WebFtpServerTestMetricsApiTest {
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "throughput" : 123,
+                    "roundId" : 1384309800,
                     "waitTime" : 52.1,
                     "wireSize" : 22172,
                     "errorDetails" : "Connection error"

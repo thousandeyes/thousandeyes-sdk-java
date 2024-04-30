@@ -111,6 +111,29 @@ public class DashboardsFiltersApiTest {
                       "title" : "title"
                     }
                   },
+                  "context" : [ {
+                    "dataSourceId" : "VIRTUAL_AGENT",
+                    "filters" : [ {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    }, {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    } ]
+                  }, {
+                    "dataSourceId" : "VIRTUAL_AGENT",
+                    "filters" : [ {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    }, {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    } ]
+                  } ],
                   "name" : "cea-filter",
                   "modifiedDate" : "2024-02-01T22:19:19Z",
                   "description" : "Global filter for CEA widgets",
@@ -175,6 +198,29 @@ public class DashboardsFiltersApiTest {
                         "title" : "title"
                       }
                     },
+                    "context" : [ {
+                      "dataSourceId" : "VIRTUAL_AGENT",
+                      "filters" : [ {
+                        "filterId" : "TEST_LABEL",
+                        "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                        "values" : [ "45862", "59749" ]
+                      }, {
+                        "filterId" : "TEST_LABEL",
+                        "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                        "values" : [ "45862", "59749" ]
+                      } ]
+                    }, {
+                      "dataSourceId" : "VIRTUAL_AGENT",
+                      "filters" : [ {
+                        "filterId" : "TEST_LABEL",
+                        "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                        "values" : [ "45862", "59749" ]
+                      }, {
+                        "filterId" : "TEST_LABEL",
+                        "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                        "values" : [ "45862", "59749" ]
+                      } ]
+                    } ],
                     "name" : "cea-filter",
                     "modifiedDate" : "2024-02-01T22:19:19Z",
                     "description" : "Global filter for CEA widgets",
@@ -202,6 +248,29 @@ public class DashboardsFiltersApiTest {
                         "title" : "title"
                       }
                     },
+                    "context" : [ {
+                      "dataSourceId" : "VIRTUAL_AGENT",
+                      "filters" : [ {
+                        "filterId" : "TEST_LABEL",
+                        "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                        "values" : [ "45862", "59749" ]
+                      }, {
+                        "filterId" : "TEST_LABEL",
+                        "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                        "values" : [ "45862", "59749" ]
+                      } ]
+                    }, {
+                      "dataSourceId" : "VIRTUAL_AGENT",
+                      "filters" : [ {
+                        "filterId" : "TEST_LABEL",
+                        "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                        "values" : [ "45862", "59749" ]
+                      }, {
+                        "filterId" : "TEST_LABEL",
+                        "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                        "values" : [ "45862", "59749" ]
+                      } ]
+                    } ],
                     "name" : "cea-filter",
                     "modifiedDate" : "2024-02-01T22:19:19Z",
                     "description" : "Global filter for CEA widgets",
@@ -251,6 +320,29 @@ public class DashboardsFiltersApiTest {
                       "title" : "title"
                     }
                   },
+                  "context" : [ {
+                    "dataSourceId" : "VIRTUAL_AGENT",
+                    "filters" : [ {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    }, {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    } ]
+                  }, {
+                    "dataSourceId" : "VIRTUAL_AGENT",
+                    "filters" : [ {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    }, {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    } ]
+                  } ],
                   "name" : "cea-filter",
                   "modifiedDate" : "2024-02-01T22:19:19Z",
                   "description" : "Global filter for CEA widgets",
@@ -331,6 +423,29 @@ public class DashboardsFiltersApiTest {
                       "title" : "title"
                     }
                   },
+                  "context" : [ {
+                    "dataSourceId" : "VIRTUAL_AGENT",
+                    "filters" : [ {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    }, {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    } ]
+                  }, {
+                    "dataSourceId" : "VIRTUAL_AGENT",
+                    "filters" : [ {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    }, {
+                      "filterId" : "TEST_LABEL",
+                      "metricIds" : [ "WEB_PAGE_LOAD_COMPLETION_RATE", "WEB_TTFB", "WEB_AVAILABILITY" ],
+                      "values" : [ "45862", "59749" ]
+                    } ]
+                  } ],
                   "name" : "cea-filter",
                   "modifiedDate" : "2024-02-01T22:19:19Z",
                   "description" : "Global filter for CEA widgets",

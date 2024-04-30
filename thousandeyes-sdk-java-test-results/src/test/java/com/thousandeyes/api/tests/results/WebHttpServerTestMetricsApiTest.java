@@ -127,20 +127,32 @@ public class WebHttpServerTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
-                    "headers" : {
-                      "requestHeaders" : "GET / HTTP/1.1\\r\\nHost: www.thousandeyes.com\\r\\nUser-Agent: curl/7.58.0-DEV\\r\\nAccept: */*\\r\\nAccept-Encoding: deflate, gzip\\r\\nX-ThousandEyes-Agent: yes\\r\\n",
-                      "responseHeaders" : "HTTP/1.1 200 OK\\r\\nContent-Type: text/html;charset=UTF-8\\r\\nContent-Length: 9993\\r\\nConnection: keep-alive\\r\\nDate: Mon, 04 May 2020 16:13:00 GMT\\r\\nServer: Apache\\r\\nContent-Language: en-US\\r\\nContent-Encoding: gzip\\r\\nX-Frame-Options: sameorigin\\r\\nCache-Control: max-age=600, must-revalidate\\r\\nStrict-Transport-Security: max-age=31536000\\r\\nX-Content-Type-Options: nosniff\\r\\nX-XSS-Protection: 1; mode=block\\r\\nVary: Accept-Encoding\\r\\nX-Cache: Hit from cloudfront\\r\\nVia: 1.1 7ba3caf71ae7a52dd411d1a543e80cd8.cloudfront.net (CloudFront)\\r\\nX-Amz-Cf-Pop: SFO5-C3\\r\\nX-Amz-Cf-Id: w4h42tkoJD-rEpkRDZUvnQBmy26GVGe6pUsuRr1Dphf7oajYbjXaOA==\\r\\nAge: 132\\r\\n"
-                    },
-                    "sslCipher" : "sslCipher",
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
                       "location" : "San Francisco Bay Area",
                       "countryId" : "US"
                     },
-                    "redirectTime" : 10,
                     "sslVersion" : "TLSv1.3",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "numRedirects" : 0,
+                    "errorType" : "None",
+                    "responseCode" : 200,
+                    "connectTime" : 2,
+                    "startTime" : 1384309800,
+                    "throughput" : 123,
+                    "roundId" : 1384309800,
+                    "headers" : {
+                      "requestHeaders" : "GET / HTTP/1.1\\r\\nHost: www.thousandeyes.com\\r\\nUser-Agent: curl/7.58.0-DEV\\r\\nAccept: */*\\r\\nAccept-Encoding: deflate, gzip\\r\\nX-ThousandEyes-Agent: yes\\r\\n",
+                      "responseHeaders" : "HTTP/1.1 200 OK\\r\\nContent-Type: text/html;charset=UTF-8\\r\\nContent-Length: 9993\\r\\nConnection: keep-alive\\r\\nDate: Mon, 04 May 2020 16:13:00 GMT\\r\\nServer: Apache\\r\\nContent-Language: en-US\\r\\nContent-Encoding: gzip\\r\\nX-Frame-Options: sameorigin\\r\\nCache-Control: max-age=600, must-revalidate\\r\\nStrict-Transport-Security: max-age=31536000\\r\\nX-Content-Type-Options: nosniff\\r\\nX-XSS-Protection: 1; mode=block\\r\\nVary: Accept-Encoding\\r\\nX-Cache: Hit from cloudfront\\r\\nVia: 1.1 7ba3caf71ae7a52dd411d1a543e80cd8.cloudfront.net (CloudFront)\\r\\nX-Amz-Cf-Pop: SFO5-C3\\r\\nX-Amz-Cf-Id: w4h42tkoJD-rEpkRDZUvnQBmy26GVGe6pUsuRr1Dphf7oajYbjXaOA==\\r\\nAge: 132\\r\\n"
+                    },
+                    "sslCipher" : "sslCipher",
+                    "redirectTime" : 10,
                     "sslCertificates" : [ {
                       "hasValidSigningCert" : false,
                       "issuerName" : "DigiCert SHA2 Extended Validation Server CA",
@@ -162,34 +174,41 @@ public class WebHttpServerTestMetricsApiTest {
                     } ],
                     "responseTime" : 14,
                     "totalTime" : 15,
-                    "errorType" : "None",
-                    "responseCode" : 200,
                     "receiveTime" : 1,
                     "dnsTime" : 0,
-                    "connectTime" : 2,
                     "serverIp" : "193.2.1.88",
-                    "startTime" : 1384309800,
                     "sslTime" : 9,
                     "endTime" : 1384309800,
-                    "throughput" : 123,
                     "waitTime" : 3,
                     "wireSize" : 9993,
                     "errorDetails" : "Connection error"
                   }, {
-                    "headers" : {
-                      "requestHeaders" : "GET / HTTP/1.1\\r\\nHost: www.thousandeyes.com\\r\\nUser-Agent: curl/7.58.0-DEV\\r\\nAccept: */*\\r\\nAccept-Encoding: deflate, gzip\\r\\nX-ThousandEyes-Agent: yes\\r\\n",
-                      "responseHeaders" : "HTTP/1.1 200 OK\\r\\nContent-Type: text/html;charset=UTF-8\\r\\nContent-Length: 9993\\r\\nConnection: keep-alive\\r\\nDate: Mon, 04 May 2020 16:13:00 GMT\\r\\nServer: Apache\\r\\nContent-Language: en-US\\r\\nContent-Encoding: gzip\\r\\nX-Frame-Options: sameorigin\\r\\nCache-Control: max-age=600, must-revalidate\\r\\nStrict-Transport-Security: max-age=31536000\\r\\nX-Content-Type-Options: nosniff\\r\\nX-XSS-Protection: 1; mode=block\\r\\nVary: Accept-Encoding\\r\\nX-Cache: Hit from cloudfront\\r\\nVia: 1.1 7ba3caf71ae7a52dd411d1a543e80cd8.cloudfront.net (CloudFront)\\r\\nX-Amz-Cf-Pop: SFO5-C3\\r\\nX-Amz-Cf-Id: w4h42tkoJD-rEpkRDZUvnQBmy26GVGe6pUsuRr1Dphf7oajYbjXaOA==\\r\\nAge: 132\\r\\n"
-                    },
-                    "sslCipher" : "sslCipher",
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
                       "location" : "San Francisco Bay Area",
                       "countryId" : "US"
                     },
-                    "redirectTime" : 10,
                     "sslVersion" : "TLSv1.3",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "numRedirects" : 0,
+                    "errorType" : "None",
+                    "responseCode" : 200,
+                    "connectTime" : 2,
+                    "startTime" : 1384309800,
+                    "throughput" : 123,
+                    "roundId" : 1384309800,
+                    "headers" : {
+                      "requestHeaders" : "GET / HTTP/1.1\\r\\nHost: www.thousandeyes.com\\r\\nUser-Agent: curl/7.58.0-DEV\\r\\nAccept: */*\\r\\nAccept-Encoding: deflate, gzip\\r\\nX-ThousandEyes-Agent: yes\\r\\n",
+                      "responseHeaders" : "HTTP/1.1 200 OK\\r\\nContent-Type: text/html;charset=UTF-8\\r\\nContent-Length: 9993\\r\\nConnection: keep-alive\\r\\nDate: Mon, 04 May 2020 16:13:00 GMT\\r\\nServer: Apache\\r\\nContent-Language: en-US\\r\\nContent-Encoding: gzip\\r\\nX-Frame-Options: sameorigin\\r\\nCache-Control: max-age=600, must-revalidate\\r\\nStrict-Transport-Security: max-age=31536000\\r\\nX-Content-Type-Options: nosniff\\r\\nX-XSS-Protection: 1; mode=block\\r\\nVary: Accept-Encoding\\r\\nX-Cache: Hit from cloudfront\\r\\nVia: 1.1 7ba3caf71ae7a52dd411d1a543e80cd8.cloudfront.net (CloudFront)\\r\\nX-Amz-Cf-Pop: SFO5-C3\\r\\nX-Amz-Cf-Id: w4h42tkoJD-rEpkRDZUvnQBmy26GVGe6pUsuRr1Dphf7oajYbjXaOA==\\r\\nAge: 132\\r\\n"
+                    },
+                    "sslCipher" : "sslCipher",
+                    "redirectTime" : 10,
                     "sslCertificates" : [ {
                       "hasValidSigningCert" : false,
                       "issuerName" : "DigiCert SHA2 Extended Validation Server CA",
@@ -211,16 +230,11 @@ public class WebHttpServerTestMetricsApiTest {
                     } ],
                     "responseTime" : 14,
                     "totalTime" : 15,
-                    "errorType" : "None",
-                    "responseCode" : 200,
                     "receiveTime" : 1,
                     "dnsTime" : 0,
-                    "connectTime" : 2,
                     "serverIp" : "193.2.1.88",
-                    "startTime" : 1384309800,
                     "sslTime" : 9,
                     "endTime" : 1384309800,
-                    "throughput" : 123,
                     "waitTime" : 3,
                     "wireSize" : 9993,
                     "errorDetails" : "Connection error"

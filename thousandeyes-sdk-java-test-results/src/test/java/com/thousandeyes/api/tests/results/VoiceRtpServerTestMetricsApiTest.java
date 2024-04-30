@@ -126,6 +126,7 @@ public class VoiceRtpServerTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -133,6 +134,11 @@ public class VoiceRtpServerTestMetricsApiTest {
                       "countryId" : "US"
                     },
                     "pdv" : 1,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "dscpName" : "EF (DSCP 46)",
                     "latency" : 103,
                     "mos" : 4.351024,
@@ -144,8 +150,10 @@ public class VoiceRtpServerTestMetricsApiTest {
                     "errorDetail" : "Connection error",
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
-                    "codecName" : "G.711 @ 64 Kbps"
+                    "codecName" : "G.711 @ 64 Kbps",
+                    "roundId" : 1384309800
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -153,6 +161,11 @@ public class VoiceRtpServerTestMetricsApiTest {
                       "countryId" : "US"
                     },
                     "pdv" : 1,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "dscpName" : "EF (DSCP 46)",
                     "latency" : 103,
                     "mos" : 4.351024,
@@ -164,7 +177,8 @@ public class VoiceRtpServerTestMetricsApiTest {
                     "errorDetail" : "Connection error",
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
-                    "codecName" : "G.711 @ 64 Kbps"
+                    "codecName" : "G.711 @ 64 Kbps",
+                    "roundId" : 1384309800
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
                 }

@@ -4,7 +4,7 @@ Endpoint Tests API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-24T13:50:10.117799+01:00[Europe/Lisbon]
+- Build date: 2024-04-30T10:06:13.128929+01:00[Europe/Lisbon]
 
 
 Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.

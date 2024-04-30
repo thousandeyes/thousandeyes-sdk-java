@@ -127,6 +127,7 @@ public class WebPageLoadTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -135,11 +136,18 @@ public class WebPageLoadTestMetricsApiTest {
                     },
                     "totalSize" : 403301,
                     "numErrors" : 0,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "responseTime" : 34.35,
                     "domLoadTime" : 352,
                     "pageLoadTime" : 352,
+                    "roundId" : 1384309800,
                     "numObjects" : 17
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -148,9 +156,15 @@ public class WebPageLoadTestMetricsApiTest {
                     },
                     "totalSize" : 403301,
                     "numErrors" : 0,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "responseTime" : 34.35,
                     "domLoadTime" : 352,
                     "pageLoadTime" : 352,
+                    "roundId" : 1384309800,
                     "numObjects" : 17
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
@@ -241,6 +255,22 @@ public class WebPageLoadTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "totalSize" : 403301,
+                    "numErrors" : 0,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "responseTime" : 34.35,
+                    "domLoadTime" : 352,
                     "har" : {
                       "log" : {
                         "creator" : {
@@ -456,8 +486,27 @@ public class WebPageLoadTestMetricsApiTest {
                         } ],
                         "version" : "1.2"
                       }
-                    }
+                    },
+                    "pageLoadTime" : 352,
+                    "roundId" : 1384309800,
+                    "numObjects" : 17
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "totalSize" : 403301,
+                    "numErrors" : 0,
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "responseTime" : 34.35,
+                    "domLoadTime" : 352,
                     "har" : {
                       "log" : {
                         "creator" : {
@@ -673,7 +722,10 @@ public class WebPageLoadTestMetricsApiTest {
                         } ],
                         "version" : "1.2"
                       }
-                    }
+                    },
+                    "pageLoadTime" : 352,
+                    "roundId" : 1384309800,
+                    "numObjects" : 17
                   } ]
                 }
                                   """;

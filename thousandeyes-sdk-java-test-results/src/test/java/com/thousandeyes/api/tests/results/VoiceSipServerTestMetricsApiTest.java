@@ -126,11 +126,17 @@ public class VoiceSipServerTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
                       "location" : "San Francisco Bay Area",
                       "countryId" : "US"
+                    },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
                     },
                     "numRedirects" : 0,
                     "registerTime" : 21,
@@ -148,14 +154,21 @@ public class VoiceSipServerTestMetricsApiTest {
                     "serverIp" : "193.2.1.88",
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
+                    "roundId" : 1384309800,
                     "waitTime" : 5,
                     "inviteTime" : 10
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
                       "location" : "San Francisco Bay Area",
                       "countryId" : "US"
+                    },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
                     },
                     "numRedirects" : 0,
                     "registerTime" : 21,
@@ -173,6 +186,7 @@ public class VoiceSipServerTestMetricsApiTest {
                     "serverIp" : "193.2.1.88",
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
+                    "roundId" : 1384309800,
                     "waitTime" : 5,
                     "inviteTime" : 10
                   } ],

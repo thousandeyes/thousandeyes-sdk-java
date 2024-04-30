@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDetailTestResults.JSON_PROPERTY_RESULTS,
   PathVisDetailTestResults.JSON_PROPERTY_TEST
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.983792+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:14.116034+01:00[Europe/Lisbon]")
 public class PathVisDetailTestResults {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<PathVisDetailTestResult> results = new ArrayList<>();

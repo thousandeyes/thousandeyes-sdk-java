@@ -107,6 +107,12 @@ public class TagsApiTest {
                     "responseCode" : 200
                   } ],
                   "tags" : [ {
+                    "assignments" : [ {
+                      "id" : "123"
+                    }, {
+                      "id" : "123"
+                    } ],
+                    "color" : "#FF0000",
                     "_links" : {
                       "self" : {
                         "hreflang" : "hreflang",
@@ -118,8 +124,21 @@ public class TagsApiTest {
                         "deprecation" : "deprecation",
                         "title" : "title"
                       }
-                    }
+                    },
+                    "icon" : "icon",
+                    "legacyId" : "legacyId",
+                    "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                    "aid" : 1234,
+                    "value" : "sfo",
+                    "key" : "branch",
+                    "createDate" : "2022-03-01T23:31:11Z"
                   }, {
+                    "assignments" : [ {
+                      "id" : "123"
+                    }, {
+                      "id" : "123"
+                    } ],
+                    "color" : "#FF0000",
                     "_links" : {
                       "self" : {
                         "hreflang" : "hreflang",
@@ -131,7 +150,14 @@ public class TagsApiTest {
                         "deprecation" : "deprecation",
                         "title" : "title"
                       }
-                    }
+                    },
+                    "icon" : "icon",
+                    "legacyId" : "legacyId",
+                    "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                    "aid" : 1234,
+                    "value" : "sfo",
+                    "key" : "branch",
+                    "createDate" : "2022-03-01T23:31:11Z"
                   } ]
                 }
                                  """;

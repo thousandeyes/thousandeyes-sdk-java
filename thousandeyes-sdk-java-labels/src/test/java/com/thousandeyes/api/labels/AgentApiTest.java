@@ -71,6 +71,7 @@ public class AgentApiTest {
 
         String responseBodyJson = """
                 {
+                  "labelId" : "961123",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -82,7 +83,11 @@ public class AgentApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "name" : "Label XYZ",
+                  "ids" : [ "231286", "6317a3ca0d2bfc6ab882d6ce", "6317a3ca0d2bfc6ab882d6ca" ],
+                  "isBuiltIn" : true,
+                  "type" : "endpoint-test"
                 }
                                   """;
         CreateAgentLabel201Response mappedResponse = 
@@ -120,6 +125,7 @@ public class AgentApiTest {
 
         String responseBodyJson = """
                 {
+                  "labelId" : "961123",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -131,7 +137,11 @@ public class AgentApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "name" : "Label XYZ",
+                  "ids" : [ "231286", "6317a3ca0d2bfc6ab882d6ce", "6317a3ca0d2bfc6ab882d6ca" ],
+                  "isBuiltIn" : true,
+                  "type" : "endpoint-test"
                 }
                                   """;
         CreateAgentLabel201Response mappedResponse = 
@@ -208,6 +218,7 @@ public class AgentApiTest {
 
         String responseBodyJson = """
                 {
+                  "labelId" : "961123",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -219,7 +230,11 @@ public class AgentApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "name" : "Label XYZ",
+                  "ids" : [ "231286", "6317a3ca0d2bfc6ab882d6ce", "6317a3ca0d2bfc6ab882d6ca" ],
+                  "isBuiltIn" : true,
+                  "type" : "endpoint-test"
                 }
                                   """;
         CreateAgentLabel201Response mappedResponse = 

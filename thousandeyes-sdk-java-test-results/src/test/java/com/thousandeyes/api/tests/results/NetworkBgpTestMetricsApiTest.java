@@ -127,17 +127,45 @@ public class NetworkBgpTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "prefix" : "99.128.0.0/11",
+                    "monitor" : {
+                      "monitorId" : "281474976710706",
+                      "monitorName" : "Vancouver, Canada - Bell Canada (AS 6539)",
+                      "countryId" : "US"
+                    },
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "reachability" : 0.0,
                     "updates" : 0.0,
-                    "pathChanges" : 0.0
+                    "pathChanges" : 0.0,
+                    "roundId" : 1384309800,
+                    "prefixId" : "215"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "prefix" : "99.128.0.0/11",
+                    "monitor" : {
+                      "monitorId" : "281474976710706",
+                      "monitorName" : "Vancouver, Canada - Bell Canada (AS 6539)",
+                      "countryId" : "US"
+                    },
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "reachability" : 0.0,
                     "updates" : 0.0,
-                    "pathChanges" : 0.0
+                    "pathChanges" : 0.0,
+                    "roundId" : 1384309800,
+                    "prefixId" : "215"
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
@@ -207,6 +235,18 @@ public class NetworkBgpTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "prefix" : "99.128.0.0/11",
+                    "monitor" : {
+                      "monitorId" : "281474976710706",
+                      "monitorName" : "Vancouver, Canada - Bell Canada (AS 6539)",
+                      "countryId" : "US"
+                    },
                     "hops" : [ {
                       "asName" : "Telus Advanced Communications",
                       "asn" : 852
@@ -214,8 +254,22 @@ public class NetworkBgpTestMetricsApiTest {
                       "asName" : "Telus Advanced Communications",
                       "asn" : 852
                     } ],
-                    "isActive" : true
+                    "isActive" : true,
+                    "roundId" : 1384309800,
+                    "prefixId" : "215"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "prefix" : "99.128.0.0/11",
+                    "monitor" : {
+                      "monitorId" : "281474976710706",
+                      "monitorName" : "Vancouver, Canada - Bell Canada (AS 6539)",
+                      "countryId" : "US"
+                    },
                     "hops" : [ {
                       "asName" : "Telus Advanced Communications",
                       "asn" : 852
@@ -223,7 +277,9 @@ public class NetworkBgpTestMetricsApiTest {
                       "asName" : "Telus Advanced Communications",
                       "asn" : 852
                     } ],
-                    "isActive" : true
+                    "isActive" : true,
+                    "roundId" : 1384309800,
+                    "prefixId" : "215"
                   } ]
                 }
                                   """;

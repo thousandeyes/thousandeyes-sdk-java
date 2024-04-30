@@ -81,6 +81,22 @@ public class UsersApiTest {
 
         String responseBodyJson = """
                 {
+                  "loginAccountGroup" : {
+                    "accountGroupName" : "Account A",
+                    "aid" : "1234"
+                  },
+                  "uid" : "245",
+                  "allAccountGroupRoles" : [ {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  }, {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  } ],
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -92,7 +108,43 @@ public class UsersApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "accountGroupRoles" : [ {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  }, {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  } ],
+                  "name" : "User X",
+                  "email" : "userx@thousandeyes.com",
+                  "dateRegistered" : "2020-07-17T22:00:54Z"
                 }
                                   """;
         CreateUser201Response mappedResponse = 
@@ -130,6 +182,23 @@ public class UsersApiTest {
 
         String responseBodyJson = """
                 {
+                  "loginAccountGroup" : {
+                    "accountGroupName" : "Account A",
+                    "aid" : "1234"
+                  },
+                  "uid" : "245",
+                  "lastLogin" : "2022-07-17T22:00:54Z",
+                  "allAccountGroupRoles" : [ {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  }, {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  } ],
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -141,7 +210,43 @@ public class UsersApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "accountGroupRoles" : [ {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  }, {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  } ],
+                  "name" : "User X",
+                  "email" : "userx@thousandeyes.com",
+                  "dateRegistered" : "2020-07-17T22:00:54Z"
                 }
                                   """;
         GetUser200Response mappedResponse = 
@@ -237,6 +342,23 @@ public class UsersApiTest {
 
         String responseBodyJson = """
                 {
+                  "loginAccountGroup" : {
+                    "accountGroupName" : "Account A",
+                    "aid" : "1234"
+                  },
+                  "uid" : "245",
+                  "lastLogin" : "2022-07-17T22:00:54Z",
+                  "allAccountGroupRoles" : [ {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  }, {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  } ],
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -248,7 +370,43 @@ public class UsersApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "accountGroupRoles" : [ {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  }, {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  } ],
+                  "name" : "User X",
+                  "email" : "userx@thousandeyes.com",
+                  "dateRegistered" : "2020-07-17T22:00:54Z"
                 }
                                   """;
         GetUser200Response mappedResponse = 

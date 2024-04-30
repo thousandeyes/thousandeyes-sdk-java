@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MultiTestIdTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
   MultiTestIdTestsDataSearchFilter.JSON_PROPERTY_TEST_ID
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:13.283389+01:00[Europe/Lisbon]")
 public class MultiTestIdTestsDataSearchFilter {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private List<UUID> agentId = new ArrayList<>();

@@ -79,31 +79,13 @@ public class RealUserTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
-                    "pages" : [ {
-                      "pageTimings" : {
-                        "onContentLoad" : 1483,
-                        "onLoad" : 4569
-                      },
-                      "pageTitle" : "Network Performance Resources | ThousandEyes",
-                      "pageUrl" : "https://app.thousandeyes.com/settings/integrations",
-                      "pageId" : "C31gBrYJ",
-                      "loadDate" : "2022-07-17T22:00:54Z",
-                      "responseCode" : 200
-                    }, {
-                      "pageTimings" : {
-                        "onContentLoad" : 1483,
-                        "onLoad" : 4569
-                      },
-                      "pageTitle" : "Network Performance Resources | ThousandEyes",
-                      "pageUrl" : "https://app.thousandeyes.com/settings/integrations",
-                      "pageId" : "C31gBrYJ",
-                      "loadDate" : "2022-07-17T22:00:54Z",
-                      "responseCode" : 200
-                    } ],
-                    "browser" : {
-                      "name" : "Google Chrome",
-                      "version" : "116.0.0.0"
-                    },
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "committed" : "2022-07-17T22:00:54Z",
+                    "experienceScore" : 0.5,
+                    "sourceAddress" : "84.255.241.1",
+                    "organizationName" : "T-2 Access Network",
+                    "visitedSite" : "www.thousandeyes.com",
                     "coordinates" : {
                       "latitude" : 46.0552778,
                       "location" : "Slovenia",
@@ -256,33 +238,45 @@ public class RealUserTestsResultsApiTest {
                         "pktsSent" : 10
                       },
                       "errors" : [ "ping: Request timed out before getting response" ]
-                    }
+                    },
+                    "protocol" : "https",
+                    "pages" : [ {
+                      "pageTimings" : {
+                        "onContentLoad" : 1483,
+                        "onLoad" : 4569
+                      },
+                      "pageTitle" : "Network Performance Resources | ThousandEyes",
+                      "pageUrl" : "https://app.thousandeyes.com/settings/integrations",
+                      "pageId" : "C31gBrYJ",
+                      "loadDate" : "2022-07-17T22:00:54Z",
+                      "responseCode" : 200
+                    }, {
+                      "pageTimings" : {
+                        "onContentLoad" : 1483,
+                        "onLoad" : 4569
+                      },
+                      "pageTitle" : "Network Performance Resources | ThousandEyes",
+                      "pageUrl" : "https://app.thousandeyes.com/settings/integrations",
+                      "pageId" : "C31gBrYJ",
+                      "loadDate" : "2022-07-17T22:00:54Z",
+                      "responseCode" : 200
+                    } ],
+                    "numberOfPages" : 2,
+                    "port" : 443,
+                    "browser" : {
+                      "name" : "Google Chrome",
+                      "version" : "116.0.0.0"
+                    },
+                    "id" : "07625:1490529480:aVDViw0i",
+                    "roundId" : 1384309800
                   }, {
-                    "pages" : [ {
-                      "pageTimings" : {
-                        "onContentLoad" : 1483,
-                        "onLoad" : 4569
-                      },
-                      "pageTitle" : "Network Performance Resources | ThousandEyes",
-                      "pageUrl" : "https://app.thousandeyes.com/settings/integrations",
-                      "pageId" : "C31gBrYJ",
-                      "loadDate" : "2022-07-17T22:00:54Z",
-                      "responseCode" : 200
-                    }, {
-                      "pageTimings" : {
-                        "onContentLoad" : 1483,
-                        "onLoad" : 4569
-                      },
-                      "pageTitle" : "Network Performance Resources | ThousandEyes",
-                      "pageUrl" : "https://app.thousandeyes.com/settings/integrations",
-                      "pageId" : "C31gBrYJ",
-                      "loadDate" : "2022-07-17T22:00:54Z",
-                      "responseCode" : 200
-                    } ],
-                    "browser" : {
-                      "name" : "Google Chrome",
-                      "version" : "116.0.0.0"
-                    },
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "committed" : "2022-07-17T22:00:54Z",
+                    "experienceScore" : 0.5,
+                    "sourceAddress" : "84.255.241.1",
+                    "organizationName" : "T-2 Access Network",
+                    "visitedSite" : "www.thousandeyes.com",
                     "coordinates" : {
                       "latitude" : 46.0552778,
                       "location" : "Slovenia",
@@ -435,7 +429,37 @@ public class RealUserTestsResultsApiTest {
                         "pktsSent" : 10
                       },
                       "errors" : [ "ping: Request timed out before getting response" ]
-                    }
+                    },
+                    "protocol" : "https",
+                    "pages" : [ {
+                      "pageTimings" : {
+                        "onContentLoad" : 1483,
+                        "onLoad" : 4569
+                      },
+                      "pageTitle" : "Network Performance Resources | ThousandEyes",
+                      "pageUrl" : "https://app.thousandeyes.com/settings/integrations",
+                      "pageId" : "C31gBrYJ",
+                      "loadDate" : "2022-07-17T22:00:54Z",
+                      "responseCode" : 200
+                    }, {
+                      "pageTimings" : {
+                        "onContentLoad" : 1483,
+                        "onLoad" : 4569
+                      },
+                      "pageTitle" : "Network Performance Resources | ThousandEyes",
+                      "pageUrl" : "https://app.thousandeyes.com/settings/integrations",
+                      "pageId" : "C31gBrYJ",
+                      "loadDate" : "2022-07-17T22:00:54Z",
+                      "responseCode" : 200
+                    } ],
+                    "numberOfPages" : 2,
+                    "port" : 443,
+                    "browser" : {
+                      "name" : "Google Chrome",
+                      "version" : "116.0.0.0"
+                    },
+                    "id" : "07625:1490529480:aVDViw0i",
+                    "roundId" : 1384309800
                   } ]
                 }
                                   """;
@@ -530,9 +554,33 @@ public class RealUserTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
-                    "pageId" : "C31gBrYJ"
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "committed" : "2022-07-17T22:00:54Z",
+                    "experienceScore" : 0.5,
+                    "sourceAddress" : "84.255.241.1",
+                    "organizationName" : "T-2 Access Network",
+                    "visitedSite" : "www.thousandeyes.com",
+                    "pageId" : "C31gBrYJ",
+                    "protocol" : "https",
+                    "numberOfPages" : 2,
+                    "port" : 443,
+                    "id" : "07625:1490529480:aVDViw0i",
+                    "roundId" : 1384309800
                   }, {
-                    "pageId" : "C31gBrYJ"
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "committed" : "2022-07-17T22:00:54Z",
+                    "experienceScore" : 0.5,
+                    "sourceAddress" : "84.255.241.1",
+                    "organizationName" : "T-2 Access Network",
+                    "visitedSite" : "www.thousandeyes.com",
+                    "pageId" : "C31gBrYJ",
+                    "protocol" : "https",
+                    "numberOfPages" : 2,
+                    "port" : 443,
+                    "id" : "07625:1490529480:aVDViw0i",
+                    "roundId" : 1384309800
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
                 }

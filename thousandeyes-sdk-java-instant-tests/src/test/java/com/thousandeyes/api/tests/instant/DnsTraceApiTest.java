@@ -61,7 +61,27 @@ public class DnsTraceApiTest {
     {
         String requestBodyJson = """
                 {
-                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "description" : "ThousandEyes Test",
+                  "type" : "dns-trace",
                   "labels" : [ "9842", "1283" ],
                   "agents" : [ {
                     "agentId" : "125",
@@ -69,7 +89,15 @@ public class DnsTraceApiTest {
                   }, {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"
-                  } ]
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "domain" : "www.thousandeyes.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "modifiedBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "testName" : "ThousandEyes Test"
                 }
                                  """;
         DnsTraceInstantTestRequest mappedRequest = 
@@ -78,8 +106,75 @@ public class DnsTraceApiTest {
 
         String responseBodyJson = """
                 {
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "description" : "ThousandEyes Test",
+                  "type" : "dns-trace",
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
                   "domain" : "www.thousandeyes.com",
-                  "type" : "dns-trace"
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "modifiedBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
+                  "testName" : "ThousandEyes Test"
                 }
                                   """;
         DnsTraceInstantTest mappedResponse = 

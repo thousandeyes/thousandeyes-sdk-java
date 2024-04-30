@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaginationNextAndSelfLinkLinks.JSON_PROPERTY_NEXT,
   PaginationNextAndSelfLinkLinks.JSON_PROPERTY_SELF
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.094652+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:13.026851+01:00[Europe/Lisbon]")
 public class PaginationNextAndSelfLinkLinks {
   public static final String JSON_PROPERTY_NEXT = "next";
   private Link next;

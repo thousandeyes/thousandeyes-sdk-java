@@ -126,26 +126,40 @@ public class DnssecTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
                       "location" : "San Francisco Bay Area",
                       "countryId" : "US"
                     },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "isValid" : true,
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
+                    "roundId" : 1384309800,
                     "errorDetails" : "Connection error"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
                       "location" : "San Francisco Bay Area",
                       "countryId" : "US"
                     },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "isValid" : true,
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
+                    "roundId" : 1384309800,
                     "errorDetails" : "Connection error"
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"

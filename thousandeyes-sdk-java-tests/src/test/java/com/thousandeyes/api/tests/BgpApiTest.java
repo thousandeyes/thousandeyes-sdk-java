@@ -63,9 +63,40 @@ public class BgpApiTest {
     {
         String requestBodyJson = """
                 {
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "liveShare" : false,
+                  "prefix" : "prefix",
+                  "savedEvent" : true,
+                  "includeCoveredPrefixes" : true,
                   "alertRules" : [ "344753", "212697" ],
-                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "bgp",
+                  "enabled" : true,
                   "labels" : [ "9842", "1283" ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "modifiedBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
                   "monitors" : [ "17410", "5" ]
                 }
                                  """;
@@ -75,7 +106,91 @@ public class BgpApiTest {
 
         String responseBodyJson = """
                 {
-                  "prefix" : "prefix"
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "liveShare" : false,
+                  "prefix" : "prefix",
+                  "savedEvent" : true,
+                  "includeCoveredPrefixes" : true,
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "bgp",
+                  "enabled" : true,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "modifiedBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "monitors" : [ {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  }, {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  } ]
                 }
                                   """;
         BgpTest mappedResponse = 
@@ -113,7 +228,91 @@ public class BgpApiTest {
 
         String responseBodyJson = """
                 {
-                  "prefix" : "prefix"
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "liveShare" : false,
+                  "prefix" : "prefix",
+                  "savedEvent" : true,
+                  "includeCoveredPrefixes" : true,
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "bgp",
+                  "enabled" : true,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "modifiedBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "monitors" : [ {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  }, {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  } ]
                 }
                                   """;
         BgpTest mappedResponse = 
@@ -234,9 +433,39 @@ public class BgpApiTest {
     {
         String requestBodyJson = """
                 {
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "includeCoveredPrefixes" : true,
                   "alertRules" : [ "344753", "212697" ],
-                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "bgp",
+                  "enabled" : true,
                   "labels" : [ "9842", "1283" ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "modifiedBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
                   "monitors" : [ "17410", "5" ]
                 }
                                  """;
@@ -246,7 +475,91 @@ public class BgpApiTest {
 
         String responseBodyJson = """
                 {
-                  "prefix" : "prefix"
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "liveShare" : false,
+                  "prefix" : "prefix",
+                  "savedEvent" : true,
+                  "includeCoveredPrefixes" : true,
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "bgp",
+                  "enabled" : true,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "modifiedBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "monitors" : [ {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  }, {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  } ]
                 }
                                   """;
         BgpTest mappedResponse = 

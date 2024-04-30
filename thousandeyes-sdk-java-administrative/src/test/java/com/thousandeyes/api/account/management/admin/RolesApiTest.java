@@ -82,7 +82,21 @@ public class RolesApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "roleId" : "35",
+                  "permissions" : [ {
+                    "label" : "View reports",
+                    "permissionId" : 1,
+                    "isManagementPermission" : true,
+                    "permission" : "REPORT_READ"
+                  }, {
+                    "label" : "View snapshots",
+                    "permissionId" : 51,
+                    "isManagementPermission" : false,
+                    "permission" : "REPORT_SNAPSHOTS_READ"
+                  } ],
+                  "name" : "Organization Admin",
+                  "isBuiltin" : true
                 }
                                   """;
         CreateRole201Response mappedResponse = 
@@ -131,7 +145,21 @@ public class RolesApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "roleId" : "35",
+                  "permissions" : [ {
+                    "label" : "View reports",
+                    "permissionId" : 1,
+                    "isManagementPermission" : true,
+                    "permission" : "REPORT_READ"
+                  }, {
+                    "label" : "View snapshots",
+                    "permissionId" : 51,
+                    "isManagementPermission" : false,
+                    "permission" : "REPORT_SNAPSHOTS_READ"
+                  } ],
+                  "name" : "Organization Admin",
+                  "isBuiltin" : true
                 }
                                   """;
         CreateRole201Response mappedResponse = 
@@ -219,7 +247,21 @@ public class RolesApiTest {
                       "deprecation" : "deprecation",
                       "title" : "title"
                     }
-                  }
+                  },
+                  "roleId" : "35",
+                  "permissions" : [ {
+                    "label" : "View reports",
+                    "permissionId" : 1,
+                    "isManagementPermission" : true,
+                    "permission" : "REPORT_READ"
+                  }, {
+                    "label" : "View snapshots",
+                    "permissionId" : 51,
+                    "isManagementPermission" : false,
+                    "permission" : "REPORT_SNAPSHOTS_READ"
+                  } ],
+                  "name" : "Organization Admin",
+                  "isBuiltin" : true
                 }
                                   """;
         CreateRole201Response mappedResponse = 
