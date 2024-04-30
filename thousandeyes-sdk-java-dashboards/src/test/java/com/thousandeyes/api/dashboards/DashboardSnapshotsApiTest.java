@@ -145,11 +145,79 @@ public class DashboardSnapshotsApiTest {
                   "snapshotExpirationDate" : "2023-05-16T10:14:28Z",
                   "isScheduled" : true,
                   "widgets" : [ {
+                    "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                    "shouldExcludeAlertSuppressionWindows" : true,
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "visualMode" : "Full",
+                    "filters" : {
+                      "TEST" : [ 5187, 5227 ],
+                      "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                    },
+                    "title" : "Widget Title",
                     "type" : "Agent Status",
-                    "dataSource" : "ENDPOINT_AGENTS"
+                    "metricGroup" : "BGP",
+                    "measure" : {
+                      "percentileValue" : 95.0,
+                      "type" : "MEAN"
+                    },
+                    "apiLink" : "apiLink",
+                    "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                    "isEmbedded" : true,
+                    "id" : "1234",
+                    "fixedTimespan" : {
+                      "unit" : "Days",
+                      "value" : 10
+                    },
+                    "dataSource" : "ENDPOINT_AGENTS",
+                    "direction" : "FROM_TARGET"
                   }, {
+                    "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                    "shouldExcludeAlertSuppressionWindows" : true,
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "visualMode" : "Full",
+                    "filters" : {
+                      "TEST" : [ 5187, 5227 ],
+                      "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                    },
+                    "title" : "Widget Title",
                     "type" : "Agent Status",
-                    "dataSource" : "ENDPOINT_AGENTS"
+                    "metricGroup" : "BGP",
+                    "measure" : {
+                      "percentileValue" : 95.0,
+                      "type" : "MEAN"
+                    },
+                    "apiLink" : "apiLink",
+                    "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                    "isEmbedded" : true,
+                    "id" : "1234",
+                    "fixedTimespan" : {
+                      "unit" : "Days",
+                      "value" : 10
+                    },
+                    "dataSource" : "ENDPOINT_AGENTS",
+                    "direction" : "FROM_TARGET"
                   } ],
                   "accountId" : 1234,
                   "createdDate" : "2023-05-16 10:14:28",
@@ -197,11 +265,79 @@ public class DashboardSnapshotsApiTest {
                     "title" : "HTTP Server Widgets",
                     "isBuiltIn" : true,
                     "widgets" : [ {
+                      "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                      "shouldExcludeAlertSuppressionWindows" : true,
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
+                      "visualMode" : "Full",
+                      "filters" : {
+                        "TEST" : [ 5187, 5227 ],
+                        "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                      },
+                      "title" : "Widget Title",
                       "type" : "Agent Status",
-                      "dataSource" : "ENDPOINT_AGENTS"
+                      "metricGroup" : "BGP",
+                      "measure" : {
+                        "percentileValue" : 95.0,
+                        "type" : "MEAN"
+                      },
+                      "apiLink" : "apiLink",
+                      "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                      "isEmbedded" : true,
+                      "id" : "1234",
+                      "fixedTimespan" : {
+                        "unit" : "Days",
+                        "value" : 10
+                      },
+                      "dataSource" : "ENDPOINT_AGENTS",
+                      "direction" : "FROM_TARGET"
                     }, {
+                      "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                      "shouldExcludeAlertSuppressionWindows" : true,
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
+                      "visualMode" : "Full",
+                      "filters" : {
+                        "TEST" : [ 5187, 5227 ],
+                        "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                      },
+                      "title" : "Widget Title",
                       "type" : "Agent Status",
-                      "dataSource" : "ENDPOINT_AGENTS"
+                      "metricGroup" : "BGP",
+                      "measure" : {
+                        "percentileValue" : 95.0,
+                        "type" : "MEAN"
+                      },
+                      "apiLink" : "apiLink",
+                      "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                      "isEmbedded" : true,
+                      "id" : "1234",
+                      "fixedTimespan" : {
+                        "unit" : "Days",
+                        "value" : 10
+                      },
+                      "dataSource" : "ENDPOINT_AGENTS",
+                      "direction" : "FROM_TARGET"
                     } ],
                     "defaultTimespan" : {
                       "duration" : 7200,
@@ -317,11 +453,79 @@ public class DashboardSnapshotsApiTest {
                     "snapshotExpirationDate" : "2023-05-16T10:14:28Z",
                     "isScheduled" : true,
                     "widgets" : [ {
+                      "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                      "shouldExcludeAlertSuppressionWindows" : true,
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
+                      "visualMode" : "Full",
+                      "filters" : {
+                        "TEST" : [ 5187, 5227 ],
+                        "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                      },
+                      "title" : "Widget Title",
                       "type" : "Agent Status",
-                      "dataSource" : "ENDPOINT_AGENTS"
+                      "metricGroup" : "BGP",
+                      "measure" : {
+                        "percentileValue" : 95.0,
+                        "type" : "MEAN"
+                      },
+                      "apiLink" : "apiLink",
+                      "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                      "isEmbedded" : true,
+                      "id" : "1234",
+                      "fixedTimespan" : {
+                        "unit" : "Days",
+                        "value" : 10
+                      },
+                      "dataSource" : "ENDPOINT_AGENTS",
+                      "direction" : "FROM_TARGET"
                     }, {
+                      "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                      "shouldExcludeAlertSuppressionWindows" : true,
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
+                      "visualMode" : "Full",
+                      "filters" : {
+                        "TEST" : [ 5187, 5227 ],
+                        "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                      },
+                      "title" : "Widget Title",
                       "type" : "Agent Status",
-                      "dataSource" : "ENDPOINT_AGENTS"
+                      "metricGroup" : "BGP",
+                      "measure" : {
+                        "percentileValue" : 95.0,
+                        "type" : "MEAN"
+                      },
+                      "apiLink" : "apiLink",
+                      "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                      "isEmbedded" : true,
+                      "id" : "1234",
+                      "fixedTimespan" : {
+                        "unit" : "Days",
+                        "value" : 10
+                      },
+                      "dataSource" : "ENDPOINT_AGENTS",
+                      "direction" : "FROM_TARGET"
                     } ],
                     "accountId" : 1234,
                     "createdDate" : "2023-05-16 10:14:28",
@@ -369,11 +573,79 @@ public class DashboardSnapshotsApiTest {
                       "title" : "HTTP Server Widgets",
                       "isBuiltIn" : true,
                       "widgets" : [ {
+                        "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                        "shouldExcludeAlertSuppressionWindows" : true,
+                        "_links" : {
+                          "self" : {
+                            "hreflang" : "hreflang",
+                            "templated" : true,
+                            "profile" : "profile",
+                            "name" : "name",
+                            "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                            "type" : "type",
+                            "deprecation" : "deprecation",
+                            "title" : "title"
+                          }
+                        },
+                        "visualMode" : "Full",
+                        "filters" : {
+                          "TEST" : [ 5187, 5227 ],
+                          "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                        },
+                        "title" : "Widget Title",
                         "type" : "Agent Status",
-                        "dataSource" : "ENDPOINT_AGENTS"
+                        "metricGroup" : "BGP",
+                        "measure" : {
+                          "percentileValue" : 95.0,
+                          "type" : "MEAN"
+                        },
+                        "apiLink" : "apiLink",
+                        "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                        "isEmbedded" : true,
+                        "id" : "1234",
+                        "fixedTimespan" : {
+                          "unit" : "Days",
+                          "value" : 10
+                        },
+                        "dataSource" : "ENDPOINT_AGENTS",
+                        "direction" : "FROM_TARGET"
                       }, {
+                        "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                        "shouldExcludeAlertSuppressionWindows" : true,
+                        "_links" : {
+                          "self" : {
+                            "hreflang" : "hreflang",
+                            "templated" : true,
+                            "profile" : "profile",
+                            "name" : "name",
+                            "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                            "type" : "type",
+                            "deprecation" : "deprecation",
+                            "title" : "title"
+                          }
+                        },
+                        "visualMode" : "Full",
+                        "filters" : {
+                          "TEST" : [ 5187, 5227 ],
+                          "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                        },
+                        "title" : "Widget Title",
                         "type" : "Agent Status",
-                        "dataSource" : "ENDPOINT_AGENTS"
+                        "metricGroup" : "BGP",
+                        "measure" : {
+                          "percentileValue" : 95.0,
+                          "type" : "MEAN"
+                        },
+                        "apiLink" : "apiLink",
+                        "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                        "isEmbedded" : true,
+                        "id" : "1234",
+                        "fixedTimespan" : {
+                          "unit" : "Days",
+                          "value" : 10
+                        },
+                        "dataSource" : "ENDPOINT_AGENTS",
+                        "direction" : "FROM_TARGET"
                       } ],
                       "defaultTimespan" : {
                         "duration" : 7200,
@@ -432,11 +704,79 @@ public class DashboardSnapshotsApiTest {
                     "snapshotExpirationDate" : "2023-05-16T10:14:28Z",
                     "isScheduled" : true,
                     "widgets" : [ {
+                      "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                      "shouldExcludeAlertSuppressionWindows" : true,
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
+                      "visualMode" : "Full",
+                      "filters" : {
+                        "TEST" : [ 5187, 5227 ],
+                        "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                      },
+                      "title" : "Widget Title",
                       "type" : "Agent Status",
-                      "dataSource" : "ENDPOINT_AGENTS"
+                      "metricGroup" : "BGP",
+                      "measure" : {
+                        "percentileValue" : 95.0,
+                        "type" : "MEAN"
+                      },
+                      "apiLink" : "apiLink",
+                      "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                      "isEmbedded" : true,
+                      "id" : "1234",
+                      "fixedTimespan" : {
+                        "unit" : "Days",
+                        "value" : 10
+                      },
+                      "dataSource" : "ENDPOINT_AGENTS",
+                      "direction" : "FROM_TARGET"
                     }, {
+                      "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                      "shouldExcludeAlertSuppressionWindows" : true,
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
+                      "visualMode" : "Full",
+                      "filters" : {
+                        "TEST" : [ 5187, 5227 ],
+                        "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                      },
+                      "title" : "Widget Title",
                       "type" : "Agent Status",
-                      "dataSource" : "ENDPOINT_AGENTS"
+                      "metricGroup" : "BGP",
+                      "measure" : {
+                        "percentileValue" : 95.0,
+                        "type" : "MEAN"
+                      },
+                      "apiLink" : "apiLink",
+                      "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                      "isEmbedded" : true,
+                      "id" : "1234",
+                      "fixedTimespan" : {
+                        "unit" : "Days",
+                        "value" : 10
+                      },
+                      "dataSource" : "ENDPOINT_AGENTS",
+                      "direction" : "FROM_TARGET"
                     } ],
                     "accountId" : 1234,
                     "createdDate" : "2023-05-16 10:14:28",
@@ -484,11 +824,79 @@ public class DashboardSnapshotsApiTest {
                       "title" : "HTTP Server Widgets",
                       "isBuiltIn" : true,
                       "widgets" : [ {
+                        "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                        "shouldExcludeAlertSuppressionWindows" : true,
+                        "_links" : {
+                          "self" : {
+                            "hreflang" : "hreflang",
+                            "templated" : true,
+                            "profile" : "profile",
+                            "name" : "name",
+                            "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                            "type" : "type",
+                            "deprecation" : "deprecation",
+                            "title" : "title"
+                          }
+                        },
+                        "visualMode" : "Full",
+                        "filters" : {
+                          "TEST" : [ 5187, 5227 ],
+                          "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                        },
+                        "title" : "Widget Title",
                         "type" : "Agent Status",
-                        "dataSource" : "ENDPOINT_AGENTS"
+                        "metricGroup" : "BGP",
+                        "measure" : {
+                          "percentileValue" : 95.0,
+                          "type" : "MEAN"
+                        },
+                        "apiLink" : "apiLink",
+                        "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                        "isEmbedded" : true,
+                        "id" : "1234",
+                        "fixedTimespan" : {
+                          "unit" : "Days",
+                          "value" : 10
+                        },
+                        "dataSource" : "ENDPOINT_AGENTS",
+                        "direction" : "FROM_TARGET"
                       }, {
+                        "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                        "shouldExcludeAlertSuppressionWindows" : true,
+                        "_links" : {
+                          "self" : {
+                            "hreflang" : "hreflang",
+                            "templated" : true,
+                            "profile" : "profile",
+                            "name" : "name",
+                            "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                            "type" : "type",
+                            "deprecation" : "deprecation",
+                            "title" : "title"
+                          }
+                        },
+                        "visualMode" : "Full",
+                        "filters" : {
+                          "TEST" : [ 5187, 5227 ],
+                          "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                        },
+                        "title" : "Widget Title",
                         "type" : "Agent Status",
-                        "dataSource" : "ENDPOINT_AGENTS"
+                        "metricGroup" : "BGP",
+                        "measure" : {
+                          "percentileValue" : 95.0,
+                          "type" : "MEAN"
+                        },
+                        "apiLink" : "apiLink",
+                        "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                        "isEmbedded" : true,
+                        "id" : "1234",
+                        "fixedTimespan" : {
+                          "unit" : "Days",
+                          "value" : 10
+                        },
+                        "dataSource" : "ENDPOINT_AGENTS",
+                        "direction" : "FROM_TARGET"
                       } ],
                       "defaultTimespan" : {
                         "duration" : 7200,

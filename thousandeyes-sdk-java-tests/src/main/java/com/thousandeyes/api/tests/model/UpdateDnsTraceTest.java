@@ -59,7 +59,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateDnsTraceTest.JSON_PROPERTY_DNS_QUERY_CLASS,
   UpdateDnsTraceTest.JSON_PROPERTY_AGENTS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:11.174036+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:14.524967+01:00[Europe/Lisbon]")
 public class UpdateDnsTraceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval;

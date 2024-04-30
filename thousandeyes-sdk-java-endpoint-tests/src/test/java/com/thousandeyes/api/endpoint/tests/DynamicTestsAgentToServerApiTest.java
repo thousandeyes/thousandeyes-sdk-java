@@ -95,6 +95,15 @@ public class DynamicTestsAgentToServerApiTest {
                       "title" : "title"
                     }
                   },
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "application" : "webex",
                   "isEnabled" : true,
@@ -148,6 +157,15 @@ public class DynamicTestsAgentToServerApiTest {
                         "title" : "title"
                       }
                     },
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "application" : "webex",
                     "isEnabled" : true,
@@ -179,6 +197,15 @@ public class DynamicTestsAgentToServerApiTest {
                         "title" : "title"
                       }
                     },
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "application" : "webex",
                     "isEnabled" : true,
@@ -226,10 +253,49 @@ public class DynamicTestsAgentToServerApiTest {
     {
         String requestBodyJson = """
                 {
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/dynamic-tests/281474976710706/network/filter"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/dynamic-tests/281474976710706/pathvis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "agentSelectorType" : "all-agents",
                   "maxMachines" : 250,
                   "endpointAgentLabels" : [ "567", "214" ],
-                  "agents" : [ "0a3b9998-dc3a-4ff2-b50d-ac4a7cd986e1", "66eec0f1-72b4-4755-aa83-3aed61d17f3c" ]
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "agents" : [ "0a3b9998-dc3a-4ff2-b50d-ac4a7cd986e1", "66eec0f1-72b4-4755-aa83-3aed61d17f3c" ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "application" : "webex",
+                  "isEnabled" : true,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "aid" : "1234",
+                  "agentSelectorConfig" : {
+                    "agentSelectorType" : "all-agents",
+                    "maxMachines" : 10
+                  },
+                  "hasPathTraceInSession" : true,
+                  "testName" : "Test name"
                 }
                                  """;
         DynamicTestRequest mappedRequest = 
@@ -255,6 +321,15 @@ public class DynamicTestsAgentToServerApiTest {
                       "title" : "title"
                     }
                   },
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "application" : "webex",
                   "isEnabled" : true,
@@ -318,6 +393,15 @@ public class DynamicTestsAgentToServerApiTest {
                       "title" : "title"
                     }
                   },
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "application" : "webex",
                   "isEnabled" : true,

@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointBrowserExtension.JSON_PROPERTY_ACTIVE,
   EndpointBrowserExtension.JSON_PROPERTY_ERROR
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.094652+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:13.026851+01:00[Europe/Lisbon]")
 public class EndpointBrowserExtension {
   public static final String JSON_PROPERTY_BROWSER = "browser";
   private BrowserType browser;

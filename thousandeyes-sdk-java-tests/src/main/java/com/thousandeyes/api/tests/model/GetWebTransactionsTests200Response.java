@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetWebTransactionsTests200Response.JSON_PROPERTY_TESTS,
   GetWebTransactionsTests200Response.JSON_PROPERTY_LINKS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:11.174036+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:14.524967+01:00[Europe/Lisbon]")
 public class GetWebTransactionsTests200Response {
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<UnexpandedWebTransactionTest> tests = new ArrayList<>();

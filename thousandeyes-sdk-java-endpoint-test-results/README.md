@@ -4,7 +4,7 @@ Endpoint Test Results API
 
 - API version: 7.0.0
 
-- Build date: 2024-04-24T13:50:10.282697+01:00[Europe/Lisbon]
+- Build date: 2024-04-30T10:06:13.283389+01:00[Europe/Lisbon]
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 

@@ -62,7 +62,94 @@ public class WebTransactionApiTest {
     {
         String requestBodyJson = """
                 {
-                  "monitors" : [ "17410", "5" ]
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "bandwidthMeasurements" : true,
+                  "includeHeaders" : true,
+                  "type" : "web-transactions",
+                  "password" : "password",
+                  "followRedirects" : true,
+                  "contentRegex" : "(regex)+",
+                  "testName" : "ThousandEyes Test",
+                  "allowMicAndCamera" : false,
+                  "browserLanguage" : "en-US",
+                  "verifyCertificate" : false,
+                  "liveShare" : false,
+                  "labels" : [ "9842", "1283" ],
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "monitors" : [ "17410", "5" ],
+                  "sslVersion" : "Auto",
+                  "useNtlm" : false,
+                  "credentials" : [ "3247", "1051" ],
+                  "alertRules" : [ "344753", "212697" ],
+                  "description" : "ThousandEyes Test",
+                  "httpTimeLimit" : 9,
+                  "blockDomains" : "domain.com/",
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "allowGeolocation" : false,
+                  "allowUnsafeLegacyRenegotiation" : true,
+                  "fixedPacketRate" : 50,
+                  "httpVersion" : 1,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "customHeaders" : {
+                    "root" : {
+                      "header1" : "value1"
+                    },
+                    "domains" : {
+                      "domain1.com" : {
+                        "header2" : "value2"
+                      }
+                    },
+                    "all" : {
+                      "header3" : "value3"
+                    }
+                  },
+                  "numPathTraces" : 2,
+                  "bgpMeasurements" : true,
+                  "transactionScript" : "if (true) { return true; }",
+                  "savedEvent" : true,
+                  "userAgent" : "curl",
+                  "networkMeasurements" : true,
+                  "url" : "www.thousandeyes.com",
+                  "agents" : [ {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  }, {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  } ],
+                  "timeLimit" : 109,
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "disableScreenshot" : false,
+                  "createdBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "subinterval" : 60,
+                  "desiredStatusCode" : "200",
+                  "httpTargetTime" : 100,
+                  "sslVersionId" : "0",
+                  "targetTime" : 1,
+                  "username" : "username"
                 }
                                  """;
         UpdateWebTransactionTest mappedRequest = 
@@ -71,9 +158,54 @@ public class WebTransactionApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
-                  "subinterval" : 60,
-                  "usePublicBgp" : true,
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "bandwidthMeasurements" : true,
+                  "includeHeaders" : true,
+                  "type" : "web-transactions",
+                  "password" : "password",
+                  "followRedirects" : true,
+                  "contentRegex" : "(regex)+",
+                  "testName" : "ThousandEyes Test",
+                  "allowMicAndCamera" : false,
+                  "browserLanguage" : "en-US",
+                  "verifyCertificate" : false,
+                  "liveShare" : false,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",
@@ -86,7 +218,102 @@ public class WebTransactionApiTest {
                     "ipAddress" : "4.69.184.193",
                     "countryId" : "GB",
                     "network" : "Level 3 Communications, Inc. (AS 3356)"
-                  } ]
+                  } ],
+                  "sslVersion" : "Auto",
+                  "useNtlm" : false,
+                  "credentials" : [ "3247", "1051" ],
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "httpTimeLimit" : 9,
+                  "blockDomains" : "domain.com/",
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "allowGeolocation" : false,
+                  "allowUnsafeLegacyRenegotiation" : true,
+                  "fixedPacketRate" : 50,
+                  "httpVersion" : 1,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "customHeaders" : {
+                    "root" : {
+                      "header1" : "value1"
+                    },
+                    "domains" : {
+                      "domain1.com" : {
+                        "header2" : "value2"
+                      }
+                    },
+                    "all" : {
+                      "header3" : "value3"
+                    }
+                  },
+                  "numPathTraces" : 2,
+                  "bgpMeasurements" : true,
+                  "transactionScript" : "if (true) { return true; }",
+                  "savedEvent" : true,
+                  "userAgent" : "curl",
+                  "networkMeasurements" : true,
+                  "url" : "www.thousandeyes.com",
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "timeLimit" : 109,
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "disableScreenshot" : false,
+                  "createdBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "subinterval" : 60,
+                  "desiredStatusCode" : "200",
+                  "httpTargetTime" : 100,
+                  "sslVersionId" : "0",
+                  "targetTime" : 1,
+                  "username" : "username"
                 }
                                   """;
         WebTransactionTest mappedResponse = 
@@ -124,9 +351,54 @@ public class WebTransactionApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
-                  "subinterval" : 60,
-                  "usePublicBgp" : true,
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "bandwidthMeasurements" : true,
+                  "includeHeaders" : true,
+                  "type" : "web-transactions",
+                  "password" : "password",
+                  "followRedirects" : true,
+                  "contentRegex" : "(regex)+",
+                  "testName" : "ThousandEyes Test",
+                  "allowMicAndCamera" : false,
+                  "browserLanguage" : "en-US",
+                  "verifyCertificate" : false,
+                  "liveShare" : false,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",
@@ -139,7 +411,102 @@ public class WebTransactionApiTest {
                     "ipAddress" : "4.69.184.193",
                     "countryId" : "GB",
                     "network" : "Level 3 Communications, Inc. (AS 3356)"
-                  } ]
+                  } ],
+                  "sslVersion" : "Auto",
+                  "useNtlm" : false,
+                  "credentials" : [ "3247", "1051" ],
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "httpTimeLimit" : 9,
+                  "blockDomains" : "domain.com/",
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "allowGeolocation" : false,
+                  "allowUnsafeLegacyRenegotiation" : true,
+                  "fixedPacketRate" : 50,
+                  "httpVersion" : 1,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "customHeaders" : {
+                    "root" : {
+                      "header1" : "value1"
+                    },
+                    "domains" : {
+                      "domain1.com" : {
+                        "header2" : "value2"
+                      }
+                    },
+                    "all" : {
+                      "header3" : "value3"
+                    }
+                  },
+                  "numPathTraces" : 2,
+                  "bgpMeasurements" : true,
+                  "transactionScript" : "if (true) { return true; }",
+                  "savedEvent" : true,
+                  "userAgent" : "curl",
+                  "networkMeasurements" : true,
+                  "url" : "www.thousandeyes.com",
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "timeLimit" : 109,
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "disableScreenshot" : false,
+                  "createdBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "subinterval" : 60,
+                  "desiredStatusCode" : "200",
+                  "httpTargetTime" : 100,
+                  "sslVersionId" : "0",
+                  "targetTime" : 1,
+                  "username" : "username"
                 }
                                   """;
         WebTransactionTest mappedResponse = 
@@ -346,7 +713,94 @@ public class WebTransactionApiTest {
     {
         String requestBodyJson = """
                 {
-                  "monitors" : [ "17410", "5" ]
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "bandwidthMeasurements" : true,
+                  "includeHeaders" : true,
+                  "type" : "web-transactions",
+                  "password" : "password",
+                  "followRedirects" : true,
+                  "contentRegex" : "(regex)+",
+                  "testName" : "ThousandEyes Test",
+                  "allowMicAndCamera" : false,
+                  "browserLanguage" : "en-US",
+                  "verifyCertificate" : false,
+                  "liveShare" : false,
+                  "labels" : [ "9842", "1283" ],
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "monitors" : [ "17410", "5" ],
+                  "sslVersion" : "Auto",
+                  "useNtlm" : false,
+                  "credentials" : [ "3247", "1051" ],
+                  "alertRules" : [ "344753", "212697" ],
+                  "description" : "ThousandEyes Test",
+                  "httpTimeLimit" : 9,
+                  "blockDomains" : "domain.com/",
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "allowGeolocation" : false,
+                  "allowUnsafeLegacyRenegotiation" : true,
+                  "fixedPacketRate" : 50,
+                  "httpVersion" : 1,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "customHeaders" : {
+                    "root" : {
+                      "header1" : "value1"
+                    },
+                    "domains" : {
+                      "domain1.com" : {
+                        "header2" : "value2"
+                      }
+                    },
+                    "all" : {
+                      "header3" : "value3"
+                    }
+                  },
+                  "numPathTraces" : 2,
+                  "bgpMeasurements" : true,
+                  "transactionScript" : "if (true) { return true; }",
+                  "savedEvent" : true,
+                  "userAgent" : "curl",
+                  "networkMeasurements" : true,
+                  "url" : "www.thousandeyes.com",
+                  "agents" : [ {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  }, {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  } ],
+                  "timeLimit" : 109,
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "disableScreenshot" : false,
+                  "createdBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "subinterval" : 60,
+                  "desiredStatusCode" : "200",
+                  "httpTargetTime" : 100,
+                  "sslVersionId" : "0",
+                  "targetTime" : 1,
+                  "username" : "username"
                 }
                                  """;
         UpdateWebTransactionTest mappedRequest = 
@@ -355,9 +809,54 @@ public class WebTransactionApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
-                  "subinterval" : 60,
-                  "usePublicBgp" : true,
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "bandwidthMeasurements" : true,
+                  "includeHeaders" : true,
+                  "type" : "web-transactions",
+                  "password" : "password",
+                  "followRedirects" : true,
+                  "contentRegex" : "(regex)+",
+                  "testName" : "ThousandEyes Test",
+                  "allowMicAndCamera" : false,
+                  "browserLanguage" : "en-US",
+                  "verifyCertificate" : false,
+                  "liveShare" : false,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",
@@ -370,7 +869,102 @@ public class WebTransactionApiTest {
                     "ipAddress" : "4.69.184.193",
                     "countryId" : "GB",
                     "network" : "Level 3 Communications, Inc. (AS 3356)"
-                  } ]
+                  } ],
+                  "sslVersion" : "Auto",
+                  "useNtlm" : false,
+                  "credentials" : [ "3247", "1051" ],
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "httpTimeLimit" : 9,
+                  "blockDomains" : "domain.com/",
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "allowGeolocation" : false,
+                  "allowUnsafeLegacyRenegotiation" : true,
+                  "fixedPacketRate" : 50,
+                  "httpVersion" : 1,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "customHeaders" : {
+                    "root" : {
+                      "header1" : "value1"
+                    },
+                    "domains" : {
+                      "domain1.com" : {
+                        "header2" : "value2"
+                      }
+                    },
+                    "all" : {
+                      "header3" : "value3"
+                    }
+                  },
+                  "numPathTraces" : 2,
+                  "bgpMeasurements" : true,
+                  "transactionScript" : "if (true) { return true; }",
+                  "savedEvent" : true,
+                  "userAgent" : "curl",
+                  "networkMeasurements" : true,
+                  "url" : "www.thousandeyes.com",
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "timeLimit" : 109,
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "disableScreenshot" : false,
+                  "createdBy" : "user@user.com",
+                  "testId" : "281474976710706",
+                  "subinterval" : 60,
+                  "desiredStatusCode" : "200",
+                  "httpTargetTime" : 100,
+                  "sslVersionId" : "0",
+                  "targetTime" : 1,
+                  "username" : "username"
                 }
                                   """;
         WebTransactionTest mappedResponse = 

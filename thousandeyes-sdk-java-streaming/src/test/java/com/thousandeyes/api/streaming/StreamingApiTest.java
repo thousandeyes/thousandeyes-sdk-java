@@ -88,17 +88,33 @@ public class StreamingApiTest {
 
         String responseBodyJson = """
                 {
+                  "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
                       "href" : "https://api.thousandeyes.com/v7/streams/575766da-9664-4e85-94fe-facbe1154799"
                     }
                   },
+                  "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
+                  "tagMatch" : [ {
+                    "objectType" : "test",
+                    "key" : "keyA",
+                    "value" : "valueA"
+                  }, {
+                    "objectType" : "test",
+                    "key" : "keyB",
+                    "value" : "valueB"
+                  } ],
                   "id" : "342ieu09",
+                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "createdBy" : 3962
                   },
-                  "enabled" : false
+                  "enabled" : false,
+                  "customHeaders" : {
+                    "Authorization" : "*****",
+                    "Content-Type" : "*****"
+                  }
                 }
                                   """;
         CreateStreamResponse mappedResponse = 
@@ -136,19 +152,35 @@ public class StreamingApiTest {
 
         String responseBodyJson = """
                 {
+                  "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
                       "href" : "https://api.thousandeyes.com/v7/streams/575766da-9664-4e85-94fe-facbe1154799"
                     }
                   },
+                  "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
+                  "tagMatch" : [ {
+                    "objectType" : "test",
+                    "key" : "keyA",
+                    "value" : "valueA"
+                  }, {
+                    "objectType" : "test",
+                    "key" : "keyB",
+                    "value" : "valueB"
+                  } ],
                   "id" : "342ieu09",
+                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
                     "createdBy" : 3962,
                     "updatedDate" : 1679677853573
                   },
-                  "enabled" : false
+                  "enabled" : false,
+                  "customHeaders" : {
+                    "Authorization" : "*****",
+                    "Content-Type" : "*****"
+                  }
                 }
                                   """;
         GetStreamResponse mappedResponse = 
@@ -171,33 +203,65 @@ public class StreamingApiTest {
 
         String responseBodyJson = """
                 [ {
+                  "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
                       "href" : "https://api.thousandeyes.com/v7/streams/575766da-9664-4e85-94fe-facbe1154799"
                     }
                   },
+                  "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
+                  "tagMatch" : [ {
+                    "objectType" : "test",
+                    "key" : "keyA",
+                    "value" : "valueA"
+                  }, {
+                    "objectType" : "test",
+                    "key" : "keyB",
+                    "value" : "valueB"
+                  } ],
                   "id" : "342ieu09",
+                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
                     "createdBy" : 3962,
                     "updatedDate" : 1679677853573
                   },
-                  "enabled" : false
+                  "enabled" : false,
+                  "customHeaders" : {
+                    "Authorization" : "*****",
+                    "Content-Type" : "*****"
+                  }
                 }, {
+                  "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
                       "href" : "https://api.thousandeyes.com/v7/streams/575766da-9664-4e85-94fe-facbe1154799"
                     }
                   },
+                  "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
+                  "tagMatch" : [ {
+                    "objectType" : "test",
+                    "key" : "keyA",
+                    "value" : "valueA"
+                  }, {
+                    "objectType" : "test",
+                    "key" : "keyB",
+                    "value" : "valueB"
+                  } ],
                   "id" : "342ieu09",
+                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
                     "createdBy" : 3962,
                     "updatedDate" : 1679677853573
                   },
-                  "enabled" : false
+                  "enabled" : false,
+                  "customHeaders" : {
+                    "Authorization" : "*****",
+                    "Content-Type" : "*****"
+                  }
                 } ]
                                   """;
         List<GetStreamResponse> mappedResponse = 
@@ -241,19 +305,35 @@ public class StreamingApiTest {
 
         String responseBodyJson = """
                 {
+                  "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
                       "href" : "https://api.thousandeyes.com/v7/streams/575766da-9664-4e85-94fe-facbe1154799"
                     }
                   },
+                  "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
+                  "tagMatch" : [ {
+                    "objectType" : "test",
+                    "key" : "keyA",
+                    "value" : "valueA"
+                  }, {
+                    "objectType" : "test",
+                    "key" : "keyB",
+                    "value" : "valueB"
+                  } ],
                   "id" : "342ieu09",
+                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
                     "createdBy" : 3962,
                     "updatedDate" : 1679677853573
                   },
-                  "enabled" : false
+                  "enabled" : false,
+                  "customHeaders" : {
+                    "Authorization" : "*****",
+                    "Content-Type" : "*****"
+                  }
                 }
                                   """;
         GetStreamResponse mappedResponse = 

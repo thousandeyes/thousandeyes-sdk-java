@@ -78,7 +78,73 @@ public class ScheduledTestsAgentToServerApiTest {
 
         String responseBodyJson = """
                 {
-                  "type" : "agent-to-server"
+                  "server" : "www.example.com",
+                  "isSavedEvent" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "type" : "agent-to-server",
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "port" : 80,
+                  "isEnabled" : true,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "aid" : "1234",
+                  "agentSelectorConfig" : {
+                    "agentSelectorType" : "all-agents",
+                    "maxMachines" : 10
+                  },
+                  "hasPathTraceInSession" : true,
+                  "testName" : "Test name"
                 }
                                   """;
         EndpointAgentToServerTest mappedResponse = 
@@ -102,9 +168,141 @@ public class ScheduledTestsAgentToServerApiTest {
         String responseBodyJson = """
                 {
                   "tests" : [ {
-                    "type" : "agent-to-server"
+                    "server" : "www.example.com",
+                    "isSavedEvent" : false,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "type" : "agent-to-server",
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "port" : 80,
+                    "isEnabled" : true,
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 120,
+                    "testId" : "281474976710706",
+                    "aid" : "1234",
+                    "agentSelectorConfig" : {
+                      "agentSelectorType" : "all-agents",
+                      "maxMachines" : 10
+                    },
+                    "hasPathTraceInSession" : true,
+                    "testName" : "Test name"
                   }, {
-                    "type" : "agent-to-server"
+                    "server" : "www.example.com",
+                    "isSavedEvent" : false,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "type" : "agent-to-server",
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "port" : 80,
+                    "isEnabled" : true,
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 120,
+                    "testId" : "281474976710706",
+                    "aid" : "1234",
+                    "agentSelectorConfig" : {
+                      "agentSelectorType" : "all-agents",
+                      "maxMachines" : 10
+                    },
+                    "hasPathTraceInSession" : true,
+                    "testName" : "Test name"
                   } ],
                   "_links" : {
                     "self" : {
@@ -139,7 +337,16 @@ public class ScheduledTestsAgentToServerApiTest {
     {
         String requestBodyJson = """
                 {
-                  "interval" : 120
+                  "hasPing" : true,
+                  "port" : 80,
+                  "agentSelectorType" : "all-agents",
+                  "hasTraceroute" : true,
+                  "maxMachines" : 10,
+                  "serverName" : "www.example.com",
+                  "interval" : 120,
+                  "endpointAgentLabels" : [ "567", "214" ],
+                  "agents" : [ "0a3b9998-dc3a-4ff2-b50d-ac4a7cd986e1", "66eec0f1-72b4-4755-aa83-3aed61d17f3c" ],
+                  "testName" : "Test name"
                 }
                                  """;
         EndpointAgentToServerTestRequest mappedRequest = 
@@ -148,7 +355,73 @@ public class ScheduledTestsAgentToServerApiTest {
 
         String responseBodyJson = """
                 {
-                  "type" : "agent-to-server"
+                  "server" : "www.example.com",
+                  "isSavedEvent" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "type" : "agent-to-server",
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "port" : 80,
+                  "isEnabled" : true,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "aid" : "1234",
+                  "agentSelectorConfig" : {
+                    "agentSelectorType" : "all-agents",
+                    "maxMachines" : 10
+                  },
+                  "hasPathTraceInSession" : true,
+                  "testName" : "Test name"
                 }
                                   """;
         EndpointAgentToServerTest mappedResponse = 
@@ -182,7 +455,73 @@ public class ScheduledTestsAgentToServerApiTest {
 
         String responseBodyJson = """
                 {
-                  "type" : "agent-to-server"
+                  "server" : "www.example.com",
+                  "isSavedEvent" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "type" : "agent-to-server",
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "port" : 80,
+                  "isEnabled" : true,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "aid" : "1234",
+                  "agentSelectorConfig" : {
+                    "agentSelectorType" : "all-agents",
+                    "maxMachines" : 10
+                  },
+                  "hasPathTraceInSession" : true,
+                  "testName" : "Test name"
                 }
                                   """;
         EndpointAgentToServerTest mappedResponse = 

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TestCustomHeaders.JSON_PROPERTY_DOMAINS,
   TestCustomHeaders.JSON_PROPERTY_ALL
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.194632+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:13.145468+01:00[Europe/Lisbon]")
 public class TestCustomHeaders {
   public static final String JSON_PROPERTY_ROOT = "root";
   private Map<String, String> root = new HashMap<>();

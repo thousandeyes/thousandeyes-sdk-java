@@ -77,7 +77,73 @@ public class AgentToServerInstantScheduledTestApiTest {
 
         String responseBodyJson = """
                 {
-                  "type" : "agent-to-server"
+                  "server" : "www.example.com",
+                  "isSavedEvent" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "type" : "agent-to-server",
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "port" : 80,
+                  "isEnabled" : true,
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "aid" : "1234",
+                  "agentSelectorConfig" : {
+                    "agentSelectorType" : "all-agents",
+                    "maxMachines" : 10
+                  },
+                  "hasPathTraceInSession" : true,
+                  "testName" : "Test name"
                 }
                                   """;
         EndpointAgentToServerTest mappedResponse = 

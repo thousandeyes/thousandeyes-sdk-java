@@ -128,26 +128,40 @@ public class WebTransactionsTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
                       "location" : "San Francisco Bay Area",
                       "countryId" : "US"
                     },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "componentErrors" : 5,
                     "errorType" : "None",
                     "transactionTime" : 2379,
+                    "roundId" : 1384309800,
                     "errorDetails" : "Connection error"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
                       "location" : "San Francisco Bay Area",
                       "countryId" : "US"
                     },
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
                     "componentErrors" : 5,
                     "errorType" : "None",
                     "transactionTime" : 2379,
+                    "roundId" : 1384309800,
                     "errorDetails" : "Connection error"
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
@@ -238,6 +252,13 @@ public class WebTransactionsTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
                     "pages" : [ {
                       "duration" : 1117.5660001039505,
                       "componentCount" : 136,
@@ -251,14 +272,31 @@ public class WebTransactionsTestMetricsApiTest {
                       "pageName" : "Google",
                       "errorCount" : 0
                     } ],
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "componentErrors" : 5,
+                    "errorType" : "None",
+                    "transactionTime" : 2379,
                     "markers" : [ {
                       "duration" : 0,
                       "name" : "SearchForWebdriver"
                     }, {
                       "duration" : 0,
                       "name" : "SearchForWebdriver"
-                    } ]
+                    } ],
+                    "roundId" : 1384309800,
+                    "errorDetails" : "Connection error"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
                     "pages" : [ {
                       "duration" : 1117.5660001039505,
                       "componentCount" : 136,
@@ -272,13 +310,23 @@ public class WebTransactionsTestMetricsApiTest {
                       "pageName" : "Google",
                       "errorCount" : 0
                     } ],
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "componentErrors" : 5,
+                    "errorType" : "None",
+                    "transactionTime" : 2379,
                     "markers" : [ {
                       "duration" : 0,
                       "name" : "SearchForWebdriver"
                     }, {
                       "duration" : 0,
                       "name" : "SearchForWebdriver"
-                    } ]
+                    } ],
+                    "roundId" : 1384309800,
+                    "errorDetails" : "Connection error"
                   } ]
                 }
                                   """;
@@ -367,6 +415,33 @@ public class WebTransactionsTestMetricsApiTest {
                     }
                   },
                   "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "pages" : [ {
+                      "duration" : 1117.5660001039505,
+                      "componentCount" : 136,
+                      "pageNum" : 0,
+                      "pageName" : "Google",
+                      "errorCount" : 0
+                    }, {
+                      "duration" : 1117.5660001039505,
+                      "componentCount" : 136,
+                      "pageNum" : 0,
+                      "pageName" : "Google",
+                      "errorCount" : 0
+                    } ],
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "componentErrors" : 5,
+                    "errorType" : "None",
                     "har" : {
                       "log" : {
                         "creator" : {
@@ -582,8 +657,45 @@ public class WebTransactionsTestMetricsApiTest {
                         } ],
                         "version" : "1.2"
                       }
-                    }
+                    },
+                    "transactionTime" : 2379,
+                    "markers" : [ {
+                      "duration" : 0,
+                      "name" : "SearchForWebdriver"
+                    }, {
+                      "duration" : 0,
+                      "name" : "SearchForWebdriver"
+                    } ],
+                    "roundId" : 1384309800,
+                    "errorDetails" : "Connection error"
                   }, {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "pages" : [ {
+                      "duration" : 1117.5660001039505,
+                      "componentCount" : 136,
+                      "pageNum" : 0,
+                      "pageName" : "Google",
+                      "errorCount" : 0
+                    }, {
+                      "duration" : 1117.5660001039505,
+                      "componentCount" : 136,
+                      "pageNum" : 0,
+                      "pageName" : "Google",
+                      "errorCount" : 0
+                    } ],
+                    "_links" : {
+                      "appLink" : {
+                        "href" : "https://app.thousandeyes.com/view/tests?__a=105&testId=195&roundId=1692916680&agentId=125"
+                      }
+                    },
+                    "componentErrors" : 5,
+                    "errorType" : "None",
                     "har" : {
                       "log" : {
                         "creator" : {
@@ -799,7 +911,17 @@ public class WebTransactionsTestMetricsApiTest {
                         } ],
                         "version" : "1.2"
                       }
-                    }
+                    },
+                    "transactionTime" : 2379,
+                    "markers" : [ {
+                      "duration" : 0,
+                      "name" : "SearchForWebdriver"
+                    }, {
+                      "duration" : 0,
+                      "name" : "SearchForWebdriver"
+                    } ],
+                    "roundId" : 1384309800,
+                    "errorDetails" : "Connection error"
                   } ]
                 }
                                   """;

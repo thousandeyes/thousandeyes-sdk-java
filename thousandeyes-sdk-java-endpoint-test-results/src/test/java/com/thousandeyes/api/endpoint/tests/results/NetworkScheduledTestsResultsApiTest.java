@@ -66,7 +66,73 @@ public class NetworkScheduledTestsResultsApiTest {
         String responseBodyJson = """
                 {
                   "test" : {
-                    "type" : "agent-to-server"
+                    "server" : "www.example.com",
+                    "isSavedEvent" : false,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "type" : "agent-to-server",
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "port" : 80,
+                    "isEnabled" : true,
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 120,
+                    "testId" : "281474976710706",
+                    "aid" : "1234",
+                    "agentSelectorConfig" : {
+                      "agentSelectorType" : "all-agents",
+                      "maxMachines" : 10
+                    },
+                    "hasPathTraceInSession" : true,
+                    "testName" : "Test name"
                   },
                   "endDate" : "2022-07-18T22:00:54Z",
                   "_links" : {
@@ -92,6 +158,40 @@ public class NetworkScheduledTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
+                    "server" : "www.google.com:443",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "asnDetails" : {
+                      "asName" : "ThousandEyes, Inc",
+                      "asNumber" : 394101
+                    },
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "sourceIp" : "196.40.106.237",
                     "pathTraces" : [ {
                       "numberOfHops" : 15,
                       "responseTime" : 1500,
@@ -103,8 +203,91 @@ public class NetworkScheduledTestsResultsApiTest {
                       "ipAddress" : "196.40.106.237",
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521"
                     } ],
-                    "location" : "San Francisco Area"
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
+                    "location" : "San Francisco Area",
+                    "aid" : "1234",
+                    "roundId" : 1384309800
                   }, {
+                    "server" : "www.google.com:443",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "asnDetails" : {
+                      "asName" : "ThousandEyes, Inc",
+                      "asNumber" : 394101
+                    },
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "sourceIp" : "196.40.106.237",
                     "pathTraces" : [ {
                       "numberOfHops" : 15,
                       "responseTime" : 1500,
@@ -116,7 +299,56 @@ public class NetworkScheduledTestsResultsApiTest {
                       "ipAddress" : "196.40.106.237",
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521"
                     } ],
-                    "location" : "San Francisco Area"
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
+                    "location" : "San Francisco Area",
+                    "aid" : "1234",
+                    "roundId" : 1384309800
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
@@ -142,7 +374,73 @@ public class NetworkScheduledTestsResultsApiTest {
         String responseBodyJson = """
                 {
                   "test" : {
-                    "type" : "agent-to-server"
+                    "server" : "www.example.com",
+                    "isSavedEvent" : false,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "type" : "agent-to-server",
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "port" : 80,
+                    "isEnabled" : true,
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 120,
+                    "testId" : "281474976710706",
+                    "aid" : "1234",
+                    "agentSelectorConfig" : {
+                      "agentSelectorType" : "all-agents",
+                      "maxMachines" : 10
+                    },
+                    "hasPathTraceInSession" : true,
+                    "testName" : "Test name"
                   },
                   "_links" : {
                     "self" : {
@@ -157,6 +455,40 @@ public class NetworkScheduledTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
+                    "server" : "www.google.com:443",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "asnDetails" : {
+                      "asName" : "ThousandEyes, Inc",
+                      "asNumber" : 394101
+                    },
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "sourceIp" : "196.40.106.237",
                     "pathTraces" : [ {
                       "hops" : [ {
                         "rdns" : "core-router1.cpt2.host-h.net",
@@ -234,8 +566,91 @@ public class NetworkScheduledTestsResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803"
-                    } ]
+                    } ],
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800
                   }, {
+                    "server" : "www.google.com:443",
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "asnDetails" : {
+                      "asName" : "ThousandEyes, Inc",
+                      "asNumber" : 394101
+                    },
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
+                    "sourcePrefix" : "196.40.96.0/20",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "sourceIp" : "196.40.106.237",
                     "pathTraces" : [ {
                       "hops" : [ {
                         "rdns" : "core-router1.cpt2.host-h.net",
@@ -313,7 +728,56 @@ public class NetworkScheduledTestsResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803"
-                    } ]
+                    } ],
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800
                   } ]
                 }
                                   """;
@@ -360,7 +824,73 @@ public class NetworkScheduledTestsResultsApiTest {
         String responseBodyJson = """
                 {
                   "test" : {
-                    "type" : "agent-to-server"
+                    "server" : "www.example.com",
+                    "isSavedEvent" : false,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/network/filter"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/endpoint/test-results/scheduled-tests/281474976710706/pathvis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "alertRules" : [ {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    }, {
+                      "severity" : "major",
+                      "roundsViolatingOutOf" : 5,
+                      "roundsViolatingRequired" : 2,
+                      "isDefault" : true,
+                      "expression" : "((hops((hopDelay >= 100 ms))))",
+                      "alertType" : "http-server",
+                      "minimumSourcesPct" : 99,
+                      "ruleName" : "The End of the Internet",
+                      "minimumSources" : 10,
+                      "roundsViolatingMode" : "exact",
+                      "ruleId" : "127094"
+                    } ],
+                    "type" : "agent-to-server",
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "port" : 80,
+                    "isEnabled" : true,
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 120,
+                    "testId" : "281474976710706",
+                    "aid" : "1234",
+                    "agentSelectorConfig" : {
+                      "agentSelectorType" : "all-agents",
+                      "maxMachines" : 10
+                    },
+                    "hasPathTraceInSession" : true,
+                    "testName" : "Test name"
                   },
                   "totalHits" : 12,
                   "endDate" : "2022-07-18T22:00:54Z",
@@ -377,20 +907,172 @@ public class NetworkScheduledTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
-                    "loss" : 0.0,
-                    "jitter" : 0.076808,
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
                     "isIcmpBlocked" : true,
                     "avgLatency" : 167.04,
                     "minLatency" : 167.0,
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
                     "maxLatency" : 168.0,
+                    "loss" : 0.0,
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "jitter" : 0.076808,
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800,
                     "errorDetails" : "Error"
                   }, {
-                    "loss" : 0.0,
-                    "jitter" : 0.076808,
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
                     "isIcmpBlocked" : true,
                     "avgLatency" : 167.04,
                     "minLatency" : 167.0,
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
                     "maxLatency" : 168.0,
+                    "loss" : 0.0,
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "jitter" : 0.076808,
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800,
                     "errorDetails" : "Error"
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
@@ -454,20 +1136,172 @@ public class NetworkScheduledTestsResultsApiTest {
                     }
                   },
                   "results" : [ {
-                    "loss" : 0.0,
-                    "jitter" : 0.076808,
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
                     "isIcmpBlocked" : true,
                     "avgLatency" : 167.04,
                     "minLatency" : 167.0,
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
                     "maxLatency" : 168.0,
+                    "loss" : 0.0,
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "jitter" : 0.076808,
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800,
                     "errorDetails" : "Error"
                   }, {
-                    "loss" : 0.0,
-                    "jitter" : 0.076808,
+                    "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
                     "isIcmpBlocked" : true,
                     "avgLatency" : 167.04,
                     "minLatency" : 167.0,
+                    "vpnProfile" : {
+                      "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
+                      "vpnGatewayAddress" : "120.98.134.7",
+                      "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
+                    },
                     "maxLatency" : 168.0,
+                    "loss" : 0.0,
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "jitter" : 0.076808,
+                    "serverIp" : "185.199.108.153",
+                    "networkProfile" : {
+                      "previousInterface" : {
+                        "publicIpAddress" : "84.255.241.1",
+                        "publicIpRange" : "84.255.241.0-84.255.241.255",
+                        "ipAddress" : "10.0.0.13",
+                        "hardwareType" : "wireless",
+                        "localPrefix" : "10.0.0.0",
+                        "interfaceName" : "en0",
+                        "subnetMask" : "255.255.255.0",
+                        "dnsServers" : [ "8.8.8.8", "8.8.8.4" ]
+                      },
+                      "ethernetProfile" : {
+                        "linkSpeed" : 860
+                      },
+                      "publicIpAddress" : "84.255.241.1",
+                      "publicIpRange" : "84.255.241.0-84.255.241.255",
+                      "ipAddress" : "10.0.0.13",
+                      "hardwareType" : "wireless",
+                      "localPrefix" : "10.0.0.0",
+                      "proxyProfile" : {
+                        "method" : "System",
+                        "proxies" : [ {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        }, {
+                          "bypass" : "*.local;169.254/16",
+                          "proxy" : "<direct>"
+                        } ]
+                      },
+                      "subnetMask" : "255.255.255.0",
+                      "error" : "An operation timed out.",
+                      "wirelessProfile" : {
+                        "rssi" : -38,
+                        "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "vendor" : "Cisco",
+                        "txRate" : 130,
+                        "channel" : 1,
+                        "noise" : -95,
+                        "phyMode" : "802.11n",
+                        "ssid" : "Internet for the masses",
+                        "quality" : 100
+                      },
+                      "interfaceName" : "en0",
+                      "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
+                      "gateway" : "10.0.0.1"
+                    },
+                    "aid" : "1234",
+                    "roundId" : 1384309800,
                     "errorDetails" : "Error"
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"

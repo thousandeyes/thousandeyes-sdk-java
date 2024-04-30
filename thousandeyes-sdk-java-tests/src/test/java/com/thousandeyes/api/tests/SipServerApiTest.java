@@ -61,7 +61,78 @@ public class SipServerApiTest {
             throws JsonProcessingException 
     {
         String requestBodyJson = """
-                { }
+                {
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "registerEnabled" : false,
+                  "alertRules" : [ "344753", "212697" ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "sip-server",
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "targetSipCredentials" : {
+                    "password" : "password",
+                    "port" : 39073,
+                    "sipRegistrar" : "voice.thousandeyes.com",
+                    "authUser" : "username",
+                    "user" : "username"
+                  },
+                  "testName" : "ThousandEyes Test",
+                  "sipTargetTime" : 3053,
+                  "numPathTraces" : 1,
+                  "bgpMeasurements" : true,
+                  "optionsRegex" : "[\\"a-z\\"]",
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "networkMeasurements" : true,
+                  "labels" : [ "9842", "1283" ],
+                  "agents" : [ {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  }, {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "sipTimeLimit" : 5,
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "monitors" : [ {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  }, {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  } ]
+                }
                                  """;
         UpdateSipServerTest mappedRequest = 
                 mapper.readValue(requestBodyJson, UpdateSipServerTest.class);
@@ -69,8 +140,116 @@ public class SipServerApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "registerEnabled" : false,
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "sip-server",
+                  "authUser" : "username",
                   "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "password" : "password",
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "sipTargetTime" : 3053,
+                  "numPathTraces" : 1,
+                  "bgpMeasurements" : true,
+                  "optionsRegex" : "[\\"a-z\\"]",
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "sipRegistrar" : "voice.thousandeyes.com",
+                  "networkMeasurements" : true,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "sipTimeLimit" : 5,
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
+                  "user" : "username",
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",
@@ -121,8 +300,116 @@ public class SipServerApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "registerEnabled" : false,
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "sip-server",
+                  "authUser" : "username",
                   "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "password" : "password",
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "sipTargetTime" : 3053,
+                  "numPathTraces" : 1,
+                  "bgpMeasurements" : true,
+                  "optionsRegex" : "[\\"a-z\\"]",
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "sipRegistrar" : "voice.thousandeyes.com",
+                  "networkMeasurements" : true,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "sipTimeLimit" : 5,
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
+                  "user" : "username",
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",
@@ -277,7 +564,78 @@ public class SipServerApiTest {
             throws JsonProcessingException 
     {
         String requestBodyJson = """
-                { }
+                {
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "registerEnabled" : false,
+                  "alertRules" : [ "344753", "212697" ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "sip-server",
+                  "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "targetSipCredentials" : {
+                    "password" : "password",
+                    "port" : 39073,
+                    "sipRegistrar" : "voice.thousandeyes.com",
+                    "authUser" : "username",
+                    "user" : "username"
+                  },
+                  "testName" : "ThousandEyes Test",
+                  "sipTargetTime" : 3053,
+                  "numPathTraces" : 1,
+                  "bgpMeasurements" : true,
+                  "optionsRegex" : "[\\"a-z\\"]",
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "networkMeasurements" : true,
+                  "labels" : [ "9842", "1283" ],
+                  "agents" : [ {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  }, {
+                    "agentId" : "125",
+                    "sourceIpAddress" : "1.1.1.1"
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "sipTimeLimit" : 5,
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ "1234", "12345" ],
+                  "monitors" : [ {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  }, {
+                    "monitorId" : "1234",
+                    "monitorName" : "Seattle, WA",
+                    "ipAddress" : "4.69.184.193",
+                    "countryId" : "GB",
+                    "network" : "Level 3 Communications, Inc. (AS 3356)"
+                  } ]
+                }
                                  """;
         UpdateSipServerTest mappedRequest = 
                 mapper.readValue(requestBodyJson, UpdateSipServerTest.class);
@@ -285,8 +643,116 @@ public class SipServerApiTest {
 
         String responseBodyJson = """
                 {
-                  "bgpMeasurements" : true,
+                  "mtuMeasurements" : false,
+                  "_links" : {
+                    "testResults" : [ {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                    }, {
+                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                    } ],
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "registerEnabled" : false,
+                  "alertRules" : [ {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  }, {
+                    "severity" : "major",
+                    "roundsViolatingOutOf" : 5,
+                    "roundsViolatingRequired" : 2,
+                    "isDefault" : true,
+                    "expression" : "((hops((hopDelay >= 100 ms))))",
+                    "alertType" : "http-server",
+                    "minimumSourcesPct" : 99,
+                    "ruleName" : "The End of the Internet",
+                    "minimumSources" : 10,
+                    "roundsViolatingMode" : "exact",
+                    "ruleId" : "127094"
+                  } ],
+                  "description" : "ThousandEyes Test",
+                  "type" : "sip-server",
+                  "authUser" : "username",
                   "usePublicBgp" : true,
+                  "enabled" : true,
+                  "fixedPacketRate" : 50,
+                  "password" : "password",
+                  "modifiedBy" : "user@user.com",
+                  "alertsEnabled" : true,
+                  "testName" : "ThousandEyes Test",
+                  "sipTargetTime" : 3053,
+                  "numPathTraces" : 1,
+                  "bgpMeasurements" : true,
+                  "optionsRegex" : "[\\"a-z\\"]",
+                  "liveShare" : false,
+                  "savedEvent" : true,
+                  "sipRegistrar" : "voice.thousandeyes.com",
+                  "networkMeasurements" : true,
+                  "labels" : [ {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  }, {
+                    "labelId" : "961",
+                    "name" : "Artem label",
+                    "isBuiltin" : false
+                  } ],
+                  "agents" : [ {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  }, {
+                    "agentId" : "281474976710706",
+                    "agentType" : "enterprise-cluster",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "prefix" : "99.128.0.0/11",
+                    "agentName" : "thousandeyes-stg-va-254",
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
+                    "countryId" : "US",
+                    "enabled" : true,
+                    "network" : "AT&T Services, Inc. (AS 7018)",
+                    "verifySslCertificates" : true
+                  } ],
+                  "createdDate" : "2022-07-17T22:00:54Z",
+                  "createdBy" : "user@user.com",
+                  "modifiedDate" : "2022-07-17T22:00:54Z",
+                  "sipTimeLimit" : 5,
+                  "interval" : 120,
+                  "testId" : "281474976710706",
+                  "sharedWithAccounts" : [ {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  }, {
+                    "name" : "Account name",
+                    "aid" : "1234"
+                  } ],
+                  "user" : "username",
                   "monitors" : [ {
                     "monitorId" : "1234",
                     "monitorName" : "Seattle, WA",

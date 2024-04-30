@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointClient.JSON_PROPERTY_USER_PROFILE,
   EndpointClient.JSON_PROPERTY_BROWSER_EXTENSIONS
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.094652+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:13.026851+01:00[Europe/Lisbon]")
 public class EndpointClient {
   public static final String JSON_PROPERTY_USER_PROFILE = "userProfile";
   private EndpointUserProfile userProfile;

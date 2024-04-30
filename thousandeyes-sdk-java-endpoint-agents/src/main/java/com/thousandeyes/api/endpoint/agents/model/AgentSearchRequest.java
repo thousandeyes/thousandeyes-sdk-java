@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchRequest.JSON_PROPERTY_THRESHOLD_FILTER,
   AgentSearchRequest.JSON_PROPERTY_SEARCH_SORT
 })
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-24T13:50:10.094652+01:00[Europe/Lisbon]")
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator", date = "2024-04-30T10:06:13.026851+01:00[Europe/Lisbon]")
 public class AgentSearchRequest {
   public static final String JSON_PROPERTY_SEARCH_FILTERS = "searchFilters";
   private AgentSearchRequestSearchFilters searchFilters;
