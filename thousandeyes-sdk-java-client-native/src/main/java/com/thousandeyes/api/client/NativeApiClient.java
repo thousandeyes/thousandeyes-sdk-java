@@ -10,6 +10,7 @@ import java.net.http.HttpResponse;
 import java.time.Instant;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -87,8 +88,7 @@ public class NativeApiClient implements ApiClient {
             }
 
             if (TOO_MANY_REQUESTS == response.statusCode()) {
-                var retryAfterInMilis = retryAfterInMillis(response.headers());
-                Thread.sleep(retryAfterInMilis);
+                TimeUnit.SECONDS.sleep(retryAfterInSeconds(response.headers()));
                 return sendRequestAndProcessResponse(httpRequest, reader);
             }
 
@@ -103,7 +103,7 @@ public class NativeApiClient implements ApiClient {
         }
     }
 
-    private Long retryAfterInMillis(HttpHeaders headers) {
+    private Long retryAfterInSeconds(HttpHeaders headers) {
         return headers.firstValueAsLong(ORG_RATE_LIMIT_RESET_HEADER)
                       .stream()
                       .boxed()
