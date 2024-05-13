@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Instant;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
@@ -20,6 +22,8 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public class NativeApiClient implements ApiClient {
+    public static final String ORG_RATE_LIMIT_RESET_HEADER = "x-organization-rate-limit-reset";
+    private static int TOO_MANY_REQUESTS = 429;
     @Getter
     private String baseUri;
     @Getter
@@ -82,6 +86,12 @@ public class NativeApiClient implements ApiClient {
                 responseInterceptor.accept(response);
             }
 
+            if (TOO_MANY_REQUESTS == response.statusCode()) {
+                var retryAfterInMilis = retryAfterInMillis(response.headers());
+                Thread.sleep(retryAfterInMilis);
+                return sendRequestAndProcessResponse(httpRequest, reader);
+            }
+
             return processResponse(response, reader);
         }
         catch (IOException e) {
@@ -91,6 +101,16 @@ public class NativeApiClient implements ApiClient {
             Thread.currentThread().interrupt();
             throw new ApiException(e);
         }
+    }
+
+    private Long retryAfterInMillis(HttpHeaders headers) {
+        return headers.firstValueAsLong(ORG_RATE_LIMIT_RESET_HEADER)
+                      .stream()
+                      .boxed()
+                      .findFirst()
+                      .map(rlResetInstant -> rlResetInstant -
+                                             Instant.now().getEpochSecond())
+                      .orElse(null);
     }
 
     private <T> ApiResponse<T> processResponse(HttpResponse<InputStream> response,
