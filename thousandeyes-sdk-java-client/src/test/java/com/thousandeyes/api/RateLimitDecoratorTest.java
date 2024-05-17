@@ -37,11 +37,6 @@ public class RateLimitDecoratorTest {
         return Long.toString(instant.getEpochSecond());
     }
 
-    //    @BeforeEach
-    //    public void setup() {
-    //        Mockito.reset(client);
-    //    }
-
     @Test
     void shouldNotAwaitOtherStatusCode() throws ApiException {
         when(client.send(any(), eq(String.class))).thenReturn(okResponse);
