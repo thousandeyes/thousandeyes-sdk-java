@@ -22,4 +22,4 @@ jobs:
         uses: gradle/gradle-build-action@v3
 
       - name: Build with Gradle
-        run: gradle build --parallel
+        run: gradle test --parallel
