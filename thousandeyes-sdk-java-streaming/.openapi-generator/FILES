@@ -12,12 +12,12 @@ src/main/java/com/thousandeyes/api/streaming/model/CreateStreamResponse.java
 src/main/java/com/thousandeyes/api/streaming/model/EndpointType.java
 src/main/java/com/thousandeyes/api/streaming/model/GetStreamResponse.java
 src/main/java/com/thousandeyes/api/streaming/model/PutStream.java
-src/main/java/com/thousandeyes/api/streaming/model/PutStreamTagMatchInner.java
 src/main/java/com/thousandeyes/api/streaming/model/Stream.java
+src/main/java/com/thousandeyes/api/streaming/model/StreamLinks.java
 src/main/java/com/thousandeyes/api/streaming/model/StreamResponse.java
-src/main/java/com/thousandeyes/api/streaming/model/StreamResponseLinks.java
-src/main/java/com/thousandeyes/api/streaming/model/StreamResponseLinksSelf.java
+src/main/java/com/thousandeyes/api/streaming/model/StreamSelfLink.java
 src/main/java/com/thousandeyes/api/streaming/model/StreamType.java
+src/main/java/com/thousandeyes/api/streaming/model/TagMatch.java
 src/main/java/com/thousandeyes/api/streaming/model/TagMatchObjectType.java
 src/main/java/com/thousandeyes/api/streaming/model/UnauthorizedError.java
 src/test/java/com/thousandeyes/api/streaming/StreamingApiTest.java

@@ -2,9 +2,9 @@
 
 Endpoint Agents API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:13.026851+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:26.298288+01:00[Europe/Lisbon]
 
 Manage ThousandEyes Endpoint Agents using this API. 
 
@@ -89,7 +89,7 @@ public class AdministrativeEndpointsApiExample {
         AdministrativeEndpointsApi apiInstance = new AdministrativeEndpointsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentsConnectionString200Response result = apiInstance.endpointAgentsConnectionString(aid);
+            ConnectionString result = apiInstance.endpointAgentsConnectionString(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdministrativeEndpointsApi#endpointAgentsConnectionString");

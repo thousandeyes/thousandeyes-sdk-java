@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getEndpointRealUserTestDetails
 
-> GetEndpointRealUserTestDetails200Response getEndpointRealUserTestDetails(id, aid)
+> EndpointRealUserTestDetailResults getEndpointRealUserTestDetails(id, aid)
 
 Retrieve endpoint real user test
 
@@ -49,7 +49,7 @@ public class Example {
         String id = "07625:1490529480:h3qJQTpl"; // String | The real user test id.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointRealUserTestDetails200Response result = apiInstance.getEndpointRealUserTestDetails(id, aid);
+            EndpointRealUserTestDetailResults result = apiInstance.getEndpointRealUserTestDetails(id, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserTestsResultsApi#getEndpointRealUserTestDetails");
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointRealUserTestDetails200Response**](GetEndpointRealUserTestDetails200Response.md)
+[**EndpointRealUserTestDetailResults**](EndpointRealUserTestDetailResults.md)
 
 
 ### Authorization
@@ -97,7 +97,7 @@ public class Example {
 
 ## getEndpointRealUserTestDetailsWithHttpInfo
 
-> ApiResponse<GetEndpointRealUserTestDetails200Response> getEndpointRealUserTestDetails getEndpointRealUserTestDetailsWithHttpInfo(id, aid)
+> ApiResponse<EndpointRealUserTestDetailResults> getEndpointRealUserTestDetails getEndpointRealUserTestDetailsWithHttpInfo(id, aid)
 
 Retrieve endpoint real user test
 
@@ -128,7 +128,7 @@ public class Example {
         String id = "07625:1490529480:h3qJQTpl"; // String | The real user test id.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointRealUserTestDetails200Response> response = apiInstance.getEndpointRealUserTestDetailsWithHttpInfo(id, aid);
+            ApiResponse<EndpointRealUserTestDetailResults> response = apiInstance.getEndpointRealUserTestDetailsWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -153,7 +153,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointRealUserTestDetails200Response**](GetEndpointRealUserTestDetails200Response.md)>
+ApiResponse<[**EndpointRealUserTestDetailResults**](EndpointRealUserTestDetailResults.md)>
 
 
 ### Authorization
@@ -179,7 +179,7 @@ ApiResponse<[**GetEndpointRealUserTestDetails200Response**](GetEndpointRealUserT
 
 ## getEndpointRealUserTestPagesDetails
 
-> GetEndpointRealUserTestPagesDetails200Response getEndpointRealUserTestPagesDetails(id, pageId, aid)
+> RealUserTestPageDetailResult getEndpointRealUserTestPagesDetails(id, pageId, aid)
 
 Retrieve endpoint real user test page
 
@@ -210,7 +210,7 @@ public class Example {
         String pageId = "281474976710706"; // String | Web page ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointRealUserTestPagesDetails200Response result = apiInstance.getEndpointRealUserTestPagesDetails(id, pageId, aid);
+            RealUserTestPageDetailResult result = apiInstance.getEndpointRealUserTestPagesDetails(id, pageId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserTestsResultsApi#getEndpointRealUserTestPagesDetails");
@@ -234,7 +234,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointRealUserTestPagesDetails200Response**](GetEndpointRealUserTestPagesDetails200Response.md)
+[**RealUserTestPageDetailResult**](RealUserTestPageDetailResult.md)
 
 
 ### Authorization
@@ -259,7 +259,7 @@ public class Example {
 
 ## getEndpointRealUserTestPagesDetailsWithHttpInfo
 
-> ApiResponse<GetEndpointRealUserTestPagesDetails200Response> getEndpointRealUserTestPagesDetails getEndpointRealUserTestPagesDetailsWithHttpInfo(id, pageId, aid)
+> ApiResponse<RealUserTestPageDetailResult> getEndpointRealUserTestPagesDetails getEndpointRealUserTestPagesDetailsWithHttpInfo(id, pageId, aid)
 
 Retrieve endpoint real user test page
 
@@ -291,7 +291,7 @@ public class Example {
         String pageId = "281474976710706"; // String | Web page ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointRealUserTestPagesDetails200Response> response = apiInstance.getEndpointRealUserTestPagesDetailsWithHttpInfo(id, pageId, aid);
+            ApiResponse<RealUserTestPageDetailResult> response = apiInstance.getEndpointRealUserTestPagesDetailsWithHttpInfo(id, pageId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -317,7 +317,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointRealUserTestPagesDetails200Response**](GetEndpointRealUserTestPagesDetails200Response.md)>
+ApiResponse<[**RealUserTestPageDetailResult**](RealUserTestPageDetailResult.md)>
 
 
 ### Authorization
@@ -343,7 +343,7 @@ ApiResponse<[**GetEndpointRealUserTestPagesDetails200Response**](GetEndpointReal
 
 ## getEndpointRealUserTests
 
-> GetEndpointRealUserTests200Response getEndpointRealUserTests(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
+> EndpointRealUserTestResults getEndpointRealUserTests(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
 
 List endpoint real user tests
 
@@ -377,7 +377,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest = new EndpointRealUserTestResultsRequest(); // EndpointRealUserTestResultsRequest | 
         try {
-            GetEndpointRealUserTests200Response result = apiInstance.getEndpointRealUserTests(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
+            EndpointRealUserTestResults result = apiInstance.getEndpointRealUserTests(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserTestsResultsApi#getEndpointRealUserTests");
@@ -404,7 +404,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointRealUserTests200Response**](GetEndpointRealUserTests200Response.md)
+[**EndpointRealUserTestResults**](EndpointRealUserTestResults.md)
 
 
 ### Authorization
@@ -430,7 +430,7 @@ public class Example {
 
 ## getEndpointRealUserTestsWithHttpInfo
 
-> ApiResponse<GetEndpointRealUserTests200Response> getEndpointRealUserTests getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
+> ApiResponse<EndpointRealUserTestResults> getEndpointRealUserTests getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
 
 List endpoint real user tests
 
@@ -465,7 +465,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest = new EndpointRealUserTestResultsRequest(); // EndpointRealUserTestResultsRequest | 
         try {
-            ApiResponse<GetEndpointRealUserTests200Response> response = apiInstance.getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
+            ApiResponse<EndpointRealUserTestResults> response = apiInstance.getEndpointRealUserTestsWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -494,7 +494,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointRealUserTests200Response**](GetEndpointRealUserTests200Response.md)>
+ApiResponse<[**EndpointRealUserTestResults**](EndpointRealUserTestResults.md)>
 
 
 ### Authorization
@@ -521,7 +521,7 @@ ApiResponse<[**GetEndpointRealUserTests200Response**](GetEndpointRealUserTests20
 
 ## getEndpointRealUserTestsNetwork
 
-> GetEndpointRealUserTestsNetwork200Response getEndpointRealUserTestsNetwork(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
+> RealUserTestNetworkResults getEndpointRealUserTestsNetwork(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
 
 List endpoint real user tests
 
@@ -555,7 +555,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest = new EndpointRealUserTestResultsRequest(); // EndpointRealUserTestResultsRequest | 
         try {
-            GetEndpointRealUserTestsNetwork200Response result = apiInstance.getEndpointRealUserTestsNetwork(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
+            RealUserTestNetworkResults result = apiInstance.getEndpointRealUserTestsNetwork(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserTestsResultsApi#getEndpointRealUserTestsNetwork");
@@ -582,7 +582,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointRealUserTestsNetwork200Response**](GetEndpointRealUserTestsNetwork200Response.md)
+[**RealUserTestNetworkResults**](RealUserTestNetworkResults.md)
 
 
 ### Authorization
@@ -608,7 +608,7 @@ public class Example {
 
 ## getEndpointRealUserTestsNetworkWithHttpInfo
 
-> ApiResponse<GetEndpointRealUserTestsNetwork200Response> getEndpointRealUserTestsNetwork getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
+> ApiResponse<RealUserTestNetworkResults> getEndpointRealUserTestsNetwork getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest)
 
 List endpoint real user tests
 
@@ -643,7 +643,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointRealUserTestResultsRequest endpointRealUserTestResultsRequest = new EndpointRealUserTestResultsRequest(); // EndpointRealUserTestResultsRequest | 
         try {
-            ApiResponse<GetEndpointRealUserTestsNetwork200Response> response = apiInstance.getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
+            ApiResponse<RealUserTestNetworkResults> response = apiInstance.getEndpointRealUserTestsNetworkWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultsRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -672,7 +672,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointRealUserTestsNetwork200Response**](GetEndpointRealUserTestsNetwork200Response.md)>
+ApiResponse<[**RealUserTestNetworkResults**](RealUserTestNetworkResults.md)>
 
 
 ### Authorization
@@ -699,7 +699,7 @@ ApiResponse<[**GetEndpointRealUserTestsNetwork200Response**](GetEndpointRealUser
 
 ## getEndpointRealUserTestsPages
 
-> GetEndpointRealUserTestsPages200Response getEndpointRealUserTestsPages(aid, window, startDate, endDate, cursor, endpointRealUserTestResultRequestFilter)
+> RealUserTestPageResults getEndpointRealUserTestsPages(aid, window, startDate, endDate, cursor, endpointRealUserTestResultRequestFilter)
 
 List endpoint real user tests visited pages
 
@@ -733,7 +733,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointRealUserTestResultRequestFilter endpointRealUserTestResultRequestFilter = new EndpointRealUserTestResultRequestFilter(); // EndpointRealUserTestResultRequestFilter | 
         try {
-            GetEndpointRealUserTestsPages200Response result = apiInstance.getEndpointRealUserTestsPages(aid, window, startDate, endDate, cursor, endpointRealUserTestResultRequestFilter);
+            RealUserTestPageResults result = apiInstance.getEndpointRealUserTestsPages(aid, window, startDate, endDate, cursor, endpointRealUserTestResultRequestFilter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserTestsResultsApi#getEndpointRealUserTestsPages");
@@ -760,7 +760,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointRealUserTestsPages200Response**](GetEndpointRealUserTestsPages200Response.md)
+[**RealUserTestPageResults**](RealUserTestPageResults.md)
 
 
 ### Authorization
@@ -786,7 +786,7 @@ public class Example {
 
 ## getEndpointRealUserTestsPagesWithHttpInfo
 
-> ApiResponse<GetEndpointRealUserTestsPages200Response> getEndpointRealUserTestsPages getEndpointRealUserTestsPagesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultRequestFilter)
+> ApiResponse<RealUserTestPageResults> getEndpointRealUserTestsPages getEndpointRealUserTestsPagesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultRequestFilter)
 
 List endpoint real user tests visited pages
 
@@ -821,7 +821,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointRealUserTestResultRequestFilter endpointRealUserTestResultRequestFilter = new EndpointRealUserTestResultRequestFilter(); // EndpointRealUserTestResultRequestFilter | 
         try {
-            ApiResponse<GetEndpointRealUserTestsPages200Response> response = apiInstance.getEndpointRealUserTestsPagesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultRequestFilter);
+            ApiResponse<RealUserTestPageResults> response = apiInstance.getEndpointRealUserTestsPagesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointRealUserTestResultRequestFilter);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -850,7 +850,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointRealUserTestsPages200Response**](GetEndpointRealUserTestsPages200Response.md)>
+ApiResponse<[**RealUserTestPageResults**](RealUserTestPageResults.md)>
 
 
 ### Authorization

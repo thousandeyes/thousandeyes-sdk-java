@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultsBgp
 
-> GetTestResultsBgp200Response getTestResultsBgp(testId, aid, window, startDate, endDate, cursor)
+> BgpTestResults getTestResultsBgp(testId, aid, window, startDate, endDate, cursor)
 
 Get BGP test results
 
@@ -47,7 +47,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultsBgp200Response result = apiInstance.getTestResultsBgp(testId, aid, window, startDate, endDate, cursor);
+            BgpTestResults result = apiInstance.getTestResultsBgp(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkBgpTestMetricsApi#getTestResultsBgp");
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultsBgp200Response**](GetTestResultsBgp200Response.md)
+[**BgpTestResults**](BgpTestResults.md)
 
 
 ### Authorization
@@ -101,7 +101,7 @@ public class Example {
 
 ## getTestResultsBgpWithHttpInfo
 
-> ApiResponse<GetTestResultsBgp200Response> getTestResultsBgp getTestResultsBgpWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<BgpTestResults> getTestResultsBgp getTestResultsBgpWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get BGP test results
 
@@ -136,7 +136,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultsBgp200Response> response = apiInstance.getTestResultsBgpWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<BgpTestResults> response = apiInstance.getTestResultsBgpWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -165,7 +165,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultsBgp200Response**](GetTestResultsBgp200Response.md)>
+ApiResponse<[**BgpTestResults**](BgpTestResults.md)>
 
 
 ### Authorization
@@ -193,7 +193,7 @@ ApiResponse<[**GetTestResultsBgp200Response**](GetTestResultsBgp200Response.md)>
 
 ## getTestResultsBgpPrefix
 
-> GetTestResultsBgpPrefix200Response getTestResultsBgpPrefix(testId, prefixId, roundId, aid)
+> BgpTestRouteInformationResults getTestResultsBgpPrefix(testId, prefixId, roundId, aid)
 
 Get BGP route test results by prefix
 
@@ -225,7 +225,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetTestResultsBgpPrefix200Response result = apiInstance.getTestResultsBgpPrefix(testId, prefixId, roundId, aid);
+            BgpTestRouteInformationResults result = apiInstance.getTestResultsBgpPrefix(testId, prefixId, roundId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkBgpTestMetricsApi#getTestResultsBgpPrefix");
@@ -250,7 +250,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultsBgpPrefix200Response**](GetTestResultsBgpPrefix200Response.md)
+[**BgpTestRouteInformationResults**](BgpTestRouteInformationResults.md)
 
 
 ### Authorization
@@ -277,7 +277,7 @@ public class Example {
 
 ## getTestResultsBgpPrefixWithHttpInfo
 
-> ApiResponse<GetTestResultsBgpPrefix200Response> getTestResultsBgpPrefix getTestResultsBgpPrefixWithHttpInfo(testId, prefixId, roundId, aid)
+> ApiResponse<BgpTestRouteInformationResults> getTestResultsBgpPrefix getTestResultsBgpPrefixWithHttpInfo(testId, prefixId, roundId, aid)
 
 Get BGP route test results by prefix
 
@@ -310,7 +310,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetTestResultsBgpPrefix200Response> response = apiInstance.getTestResultsBgpPrefixWithHttpInfo(testId, prefixId, roundId, aid);
+            ApiResponse<BgpTestRouteInformationResults> response = apiInstance.getTestResultsBgpPrefixWithHttpInfo(testId, prefixId, roundId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -337,7 +337,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultsBgpPrefix200Response**](GetTestResultsBgpPrefix200Response.md)>
+ApiResponse<[**BgpTestRouteInformationResults**](BgpTestRouteInformationResults.md)>
 
 
 ### Authorization

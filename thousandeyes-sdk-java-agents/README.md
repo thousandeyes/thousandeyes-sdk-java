@@ -2,9 +2,9 @@
 
 Agents API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:13.083499+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:26.207493+01:00[Europe/Lisbon]
 
 
 ## Overview
@@ -90,7 +90,7 @@ public class CloudAndEnterpriseAgentNotificationRulesApiExample {
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentsNotificationRule200Response result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
+            NotificationRuleDetail result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentNotificationRulesApi#getAgentsNotificationRule");

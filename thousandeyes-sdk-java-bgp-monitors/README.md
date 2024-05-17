@@ -2,9 +2,9 @@
 
 BGP Monitors API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:12.853407+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:25.263691+01:00[Europe/Lisbon]
 
 
 Retrieve information about BGP monitors available to your ThousandEyes account. ThousandEyes ingests BGP routing data from dozens of global BGP collectors and automatically integrates that visibility as a configurable layer under service, network, and path visualization layers.
@@ -93,7 +93,7 @@ public class ListBgpMonitorsApiExample {
         ListBgpMonitorsApi apiInstance = new ListBgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetBGPMonitors200Response result = apiInstance.getBGPMonitors(aid);
+            Monitors result = apiInstance.getBGPMonitors(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ListBgpMonitorsApi#getBGPMonitors");

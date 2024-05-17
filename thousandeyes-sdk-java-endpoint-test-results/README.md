@@ -2,9 +2,9 @@
 
 Endpoint Test Results API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:13.283389+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:26.589642+01:00[Europe/Lisbon]
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 
@@ -88,7 +88,7 @@ public class LocalNetworkTestsResultsApiExample {
         String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointLocalNetworkTopologyDetails200Response result = apiInstance.getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid);
+            LocalNetworkTopologyDetailResults result = apiInstance.getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworkTopologyDetails");

@@ -2,9 +2,9 @@
 
 Usage API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:14.323902+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:25.977275+01:00[Europe/Lisbon]
 
 
 These usage endpoints define the following operations:

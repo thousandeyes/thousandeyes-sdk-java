@@ -17,7 +17,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultNetworkPathvis
 
-> GetTestResultNetworkPathvis200Response getTestResultNetworkPathvis(testId, aid, window, startDate, endDate, cursor)
+> PathVisTestResults getTestResultNetworkPathvis(testId, aid, window, startDate, endDate, cursor)
 
 Retrieve path visualization network scheduled test results
 
@@ -51,7 +51,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultNetworkPathvis200Response result = apiInstance.getTestResultNetworkPathvis(testId, aid, window, startDate, endDate, cursor);
+            PathVisTestResults result = apiInstance.getTestResultNetworkPathvis(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkScheduledTestsResultsApi#getTestResultNetworkPathvis");
@@ -78,7 +78,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultNetworkPathvis200Response**](GetTestResultNetworkPathvis200Response.md)
+[**PathVisTestResults**](PathVisTestResults.md)
 
 
 ### Authorization
@@ -103,7 +103,7 @@ public class Example {
 
 ## getTestResultNetworkPathvisWithHttpInfo
 
-> ApiResponse<GetTestResultNetworkPathvis200Response> getTestResultNetworkPathvis getTestResultNetworkPathvisWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<PathVisTestResults> getTestResultNetworkPathvis getTestResultNetworkPathvisWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Retrieve path visualization network scheduled test results
 
@@ -138,7 +138,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultNetworkPathvis200Response> response = apiInstance.getTestResultNetworkPathvisWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<PathVisTestResults> response = apiInstance.getTestResultNetworkPathvisWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -167,7 +167,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultNetworkPathvis200Response**](GetTestResultNetworkPathvis200Response.md)>
+ApiResponse<[**PathVisTestResults**](PathVisTestResults.md)>
 
 
 ### Authorization
@@ -193,7 +193,7 @@ ApiResponse<[**GetTestResultNetworkPathvis200Response**](GetTestResultNetworkPat
 
 ## getTestResultPathvisAgentRound
 
-> GetTestResultPathvisAgentRound200Response getTestResultPathvisAgentRound(testId, agentId, roundId, aid)
+> PathVisDetailTestResults getTestResultPathvisAgentRound(testId, agentId, roundId, aid)
 
 Retrieve path visualization network scheduled test results details
 
@@ -225,7 +225,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetTestResultPathvisAgentRound200Response result = apiInstance.getTestResultPathvisAgentRound(testId, agentId, roundId, aid);
+            PathVisDetailTestResults result = apiInstance.getTestResultPathvisAgentRound(testId, agentId, roundId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkScheduledTestsResultsApi#getTestResultPathvisAgentRound");
@@ -250,7 +250,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultPathvisAgentRound200Response**](GetTestResultPathvisAgentRound200Response.md)
+[**PathVisDetailTestResults**](PathVisDetailTestResults.md)
 
 
 ### Authorization
@@ -275,7 +275,7 @@ public class Example {
 
 ## getTestResultPathvisAgentRoundWithHttpInfo
 
-> ApiResponse<GetTestResultPathvisAgentRound200Response> getTestResultPathvisAgentRound getTestResultPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid)
+> ApiResponse<PathVisDetailTestResults> getTestResultPathvisAgentRound getTestResultPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid)
 
 Retrieve path visualization network scheduled test results details
 
@@ -308,7 +308,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetTestResultPathvisAgentRound200Response> response = apiInstance.getTestResultPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid);
+            ApiResponse<PathVisDetailTestResults> response = apiInstance.getTestResultPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -335,7 +335,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultPathvisAgentRound200Response**](GetTestResultPathvisAgentRound200Response.md)>
+ApiResponse<[**PathVisDetailTestResults**](PathVisDetailTestResults.md)>
 
 
 ### Authorization
@@ -361,7 +361,7 @@ ApiResponse<[**GetTestResultPathvisAgentRound200Response**](GetTestResultPathvis
 
 ## postFetchTestResultMetrics
 
-> PostFetchTestResultMetrics200Response postFetchTestResultMetrics(testId, aid, window, startDate, endDate, cursor, testsDataRoundsSearch)
+> NetworkTestResults postFetchTestResultMetrics(testId, aid, window, startDate, endDate, cursor, testsDataRoundsSearch)
 
 Retrieve network scheduled test results
 
@@ -396,7 +396,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         TestsDataRoundsSearch testsDataRoundsSearch = new TestsDataRoundsSearch(); // TestsDataRoundsSearch | Tests data search filters.
         try {
-            PostFetchTestResultMetrics200Response result = apiInstance.postFetchTestResultMetrics(testId, aid, window, startDate, endDate, cursor, testsDataRoundsSearch);
+            NetworkTestResults result = apiInstance.postFetchTestResultMetrics(testId, aid, window, startDate, endDate, cursor, testsDataRoundsSearch);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkScheduledTestsResultsApi#postFetchTestResultMetrics");
@@ -424,7 +424,7 @@ public class Example {
 
 ### Return type
 
-[**PostFetchTestResultMetrics200Response**](PostFetchTestResultMetrics200Response.md)
+[**NetworkTestResults**](NetworkTestResults.md)
 
 
 ### Authorization
@@ -449,7 +449,7 @@ public class Example {
 
 ## postFetchTestResultMetricsWithHttpInfo
 
-> ApiResponse<PostFetchTestResultMetrics200Response> postFetchTestResultMetrics postFetchTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, testsDataRoundsSearch)
+> ApiResponse<NetworkTestResults> postFetchTestResultMetrics postFetchTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, testsDataRoundsSearch)
 
 Retrieve network scheduled test results
 
@@ -485,7 +485,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         TestsDataRoundsSearch testsDataRoundsSearch = new TestsDataRoundsSearch(); // TestsDataRoundsSearch | Tests data search filters.
         try {
-            ApiResponse<PostFetchTestResultMetrics200Response> response = apiInstance.postFetchTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, testsDataRoundsSearch);
+            ApiResponse<NetworkTestResults> response = apiInstance.postFetchTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, testsDataRoundsSearch);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -515,7 +515,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**PostFetchTestResultMetrics200Response**](PostFetchTestResultMetrics200Response.md)>
+ApiResponse<[**NetworkTestResults**](NetworkTestResults.md)>
 
 
 ### Authorization
@@ -541,7 +541,7 @@ ApiResponse<[**PostFetchTestResultMetrics200Response**](PostFetchTestResultMetri
 
 ## postFetchTestResultMetricsMultiTest
 
-> PostFetchTestResultMetricsMultiTest200Response postFetchTestResultMetricsMultiTest(aid, window, startDate, endDate, max, cursor, multiTestIdTestsDataRoundsSearch)
+> MultiTestIdNetworkTestResults postFetchTestResultMetricsMultiTest(aid, window, startDate, endDate, max, cursor, multiTestIdTestsDataRoundsSearch)
 
 Retrieve network scheduled test results from multiple tests
 
@@ -576,7 +576,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         MultiTestIdTestsDataRoundsSearch multiTestIdTestsDataRoundsSearch = new MultiTestIdTestsDataRoundsSearch(); // MultiTestIdTestsDataRoundsSearch | Test data search filters.
         try {
-            PostFetchTestResultMetricsMultiTest200Response result = apiInstance.postFetchTestResultMetricsMultiTest(aid, window, startDate, endDate, max, cursor, multiTestIdTestsDataRoundsSearch);
+            MultiTestIdNetworkTestResults result = apiInstance.postFetchTestResultMetricsMultiTest(aid, window, startDate, endDate, max, cursor, multiTestIdTestsDataRoundsSearch);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkScheduledTestsResultsApi#postFetchTestResultMetricsMultiTest");
@@ -604,7 +604,7 @@ public class Example {
 
 ### Return type
 
-[**PostFetchTestResultMetricsMultiTest200Response**](PostFetchTestResultMetricsMultiTest200Response.md)
+[**MultiTestIdNetworkTestResults**](MultiTestIdNetworkTestResults.md)
 
 
 ### Authorization
@@ -629,7 +629,7 @@ public class Example {
 
 ## postFetchTestResultMetricsMultiTestWithHttpInfo
 
-> ApiResponse<PostFetchTestResultMetricsMultiTest200Response> postFetchTestResultMetricsMultiTest postFetchTestResultMetricsMultiTestWithHttpInfo(aid, window, startDate, endDate, max, cursor, multiTestIdTestsDataRoundsSearch)
+> ApiResponse<MultiTestIdNetworkTestResults> postFetchTestResultMetricsMultiTest postFetchTestResultMetricsMultiTestWithHttpInfo(aid, window, startDate, endDate, max, cursor, multiTestIdTestsDataRoundsSearch)
 
 Retrieve network scheduled test results from multiple tests
 
@@ -665,7 +665,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         MultiTestIdTestsDataRoundsSearch multiTestIdTestsDataRoundsSearch = new MultiTestIdTestsDataRoundsSearch(); // MultiTestIdTestsDataRoundsSearch | Test data search filters.
         try {
-            ApiResponse<PostFetchTestResultMetricsMultiTest200Response> response = apiInstance.postFetchTestResultMetricsMultiTestWithHttpInfo(aid, window, startDate, endDate, max, cursor, multiTestIdTestsDataRoundsSearch);
+            ApiResponse<MultiTestIdNetworkTestResults> response = apiInstance.postFetchTestResultMetricsMultiTestWithHttpInfo(aid, window, startDate, endDate, max, cursor, multiTestIdTestsDataRoundsSearch);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -695,7 +695,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**PostFetchTestResultMetricsMultiTest200Response**](PostFetchTestResultMetricsMultiTest200Response.md)>
+ApiResponse<[**MultiTestIdNetworkTestResults**](MultiTestIdNetworkTestResults.md)>
 
 
 ### Authorization

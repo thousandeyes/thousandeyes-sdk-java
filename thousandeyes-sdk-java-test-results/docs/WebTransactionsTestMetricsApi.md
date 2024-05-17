@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultWebTransactions
 
-> GetTestResultWebTransactions200Response getTestResultWebTransactions(testId, aid, window, startDate, endDate, cursor)
+> WebTransactionTestResults getTestResultWebTransactions(testId, aid, window, startDate, endDate, cursor)
 
 Get web transactions test results
 
@@ -49,7 +49,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultWebTransactions200Response result = apiInstance.getTestResultWebTransactions(testId, aid, window, startDate, endDate, cursor);
+            WebTransactionTestResults result = apiInstance.getTestResultWebTransactions(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionsTestMetricsApi#getTestResultWebTransactions");
@@ -76,7 +76,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultWebTransactions200Response**](GetTestResultWebTransactions200Response.md)
+[**WebTransactionTestResults**](WebTransactionTestResults.md)
 
 
 ### Authorization
@@ -103,7 +103,7 @@ public class Example {
 
 ## getTestResultWebTransactionsWithHttpInfo
 
-> ApiResponse<GetTestResultWebTransactions200Response> getTestResultWebTransactions getTestResultWebTransactionsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<WebTransactionTestResults> getTestResultWebTransactions getTestResultWebTransactionsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get web transactions test results
 
@@ -138,7 +138,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultWebTransactions200Response> response = apiInstance.getTestResultWebTransactionsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<WebTransactionTestResults> response = apiInstance.getTestResultWebTransactionsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -167,7 +167,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultWebTransactions200Response**](GetTestResultWebTransactions200Response.md)>
+ApiResponse<[**WebTransactionTestResults**](WebTransactionTestResults.md)>
 
 
 ### Authorization
@@ -195,7 +195,7 @@ ApiResponse<[**GetTestResultWebTransactions200Response**](GetTestResultWebTransa
 
 ## getTestResultWebTransactionsComponentDetail
 
-> GetTestResultWebTransactionsComponentDetail200Response getTestResultWebTransactionsComponentDetail(testId, agentId, roundId, aid)
+> WebTransactionDetailTestResults getTestResultWebTransactionsComponentDetail(testId, agentId, roundId, aid)
 
 Get web transactions test results by agent and round
 
@@ -227,7 +227,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetTestResultWebTransactionsComponentDetail200Response result = apiInstance.getTestResultWebTransactionsComponentDetail(testId, agentId, roundId, aid);
+            WebTransactionDetailTestResults result = apiInstance.getTestResultWebTransactionsComponentDetail(testId, agentId, roundId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionsTestMetricsApi#getTestResultWebTransactionsComponentDetail");
@@ -252,7 +252,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultWebTransactionsComponentDetail200Response**](GetTestResultWebTransactionsComponentDetail200Response.md)
+[**WebTransactionDetailTestResults**](WebTransactionDetailTestResults.md)
 
 
 ### Authorization
@@ -279,7 +279,7 @@ public class Example {
 
 ## getTestResultWebTransactionsComponentDetailWithHttpInfo
 
-> ApiResponse<GetTestResultWebTransactionsComponentDetail200Response> getTestResultWebTransactionsComponentDetail getTestResultWebTransactionsComponentDetailWithHttpInfo(testId, agentId, roundId, aid)
+> ApiResponse<WebTransactionDetailTestResults> getTestResultWebTransactionsComponentDetail getTestResultWebTransactionsComponentDetailWithHttpInfo(testId, agentId, roundId, aid)
 
 Get web transactions test results by agent and round
 
@@ -312,7 +312,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetTestResultWebTransactionsComponentDetail200Response> response = apiInstance.getTestResultWebTransactionsComponentDetailWithHttpInfo(testId, agentId, roundId, aid);
+            ApiResponse<WebTransactionDetailTestResults> response = apiInstance.getTestResultWebTransactionsComponentDetailWithHttpInfo(testId, agentId, roundId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -339,7 +339,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultWebTransactionsComponentDetail200Response**](GetTestResultWebTransactionsComponentDetail200Response.md)>
+ApiResponse<[**WebTransactionDetailTestResults**](WebTransactionDetailTestResults.md)>
 
 
 ### Authorization
@@ -367,7 +367,7 @@ ApiResponse<[**GetTestResultWebTransactionsComponentDetail200Response**](GetTest
 
 ## getTestResultWebTransactionsComponentPageDetail
 
-> GetTestResultWebTransactionsComponentPageDetail200Response getTestResultWebTransactionsComponentPageDetail(testId, agentId, roundId, pageId, aid)
+> WebTransactionPageDetailTestResults getTestResultWebTransactionsComponentPageDetail(testId, agentId, roundId, pageId, aid)
 
 Get detailed web transactions test result by agent, round, and page
 
@@ -400,7 +400,7 @@ public class Example {
         String pageId = "281474976710706"; // String | Web page ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetTestResultWebTransactionsComponentPageDetail200Response result = apiInstance.getTestResultWebTransactionsComponentPageDetail(testId, agentId, roundId, pageId, aid);
+            WebTransactionPageDetailTestResults result = apiInstance.getTestResultWebTransactionsComponentPageDetail(testId, agentId, roundId, pageId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionsTestMetricsApi#getTestResultWebTransactionsComponentPageDetail");
@@ -426,7 +426,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultWebTransactionsComponentPageDetail200Response**](GetTestResultWebTransactionsComponentPageDetail200Response.md)
+[**WebTransactionPageDetailTestResults**](WebTransactionPageDetailTestResults.md)
 
 
 ### Authorization
@@ -453,7 +453,7 @@ public class Example {
 
 ## getTestResultWebTransactionsComponentPageDetailWithHttpInfo
 
-> ApiResponse<GetTestResultWebTransactionsComponentPageDetail200Response> getTestResultWebTransactionsComponentPageDetail getTestResultWebTransactionsComponentPageDetailWithHttpInfo(testId, agentId, roundId, pageId, aid)
+> ApiResponse<WebTransactionPageDetailTestResults> getTestResultWebTransactionsComponentPageDetail getTestResultWebTransactionsComponentPageDetailWithHttpInfo(testId, agentId, roundId, pageId, aid)
 
 Get detailed web transactions test result by agent, round, and page
 
@@ -487,7 +487,7 @@ public class Example {
         String pageId = "281474976710706"; // String | Web page ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetTestResultWebTransactionsComponentPageDetail200Response> response = apiInstance.getTestResultWebTransactionsComponentPageDetailWithHttpInfo(testId, agentId, roundId, pageId, aid);
+            ApiResponse<WebTransactionPageDetailTestResults> response = apiInstance.getTestResultWebTransactionsComponentPageDetailWithHttpInfo(testId, agentId, roundId, pageId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -515,7 +515,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultWebTransactionsComponentPageDetail200Response**](GetTestResultWebTransactionsComponentPageDetail200Response.md)>
+ApiResponse<[**WebTransactionPageDetailTestResults**](WebTransactionPageDetailTestResults.md)>
 
 
 ### Authorization

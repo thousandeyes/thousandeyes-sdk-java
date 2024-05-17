@@ -513,7 +513,7 @@ ApiResponse<[**AgentToServerTest**](AgentToServerTest.md)>
 
 ## getAgentToServerTests
 
-> GetAgentToServerTests200Response getAgentToServerTests(aid)
+> AgentToServerTests getAgentToServerTests(aid)
 
 List Agent to Server tests
 
@@ -542,7 +542,7 @@ public class Example {
         AgentToServerApi apiInstance = new AgentToServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentToServerTests200Response result = apiInstance.getAgentToServerTests(aid);
+            AgentToServerTests result = apiInstance.getAgentToServerTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerApi#getAgentToServerTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgentToServerTests200Response**](GetAgentToServerTests200Response.md)
+[**AgentToServerTests**](AgentToServerTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getAgentToServerTestsWithHttpInfo
 
-> ApiResponse<GetAgentToServerTests200Response> getAgentToServerTests getAgentToServerTestsWithHttpInfo(aid)
+> ApiResponse<AgentToServerTests> getAgentToServerTests getAgentToServerTestsWithHttpInfo(aid)
 
 List Agent to Server tests
 
@@ -620,7 +620,7 @@ public class Example {
         AgentToServerApi apiInstance = new AgentToServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetAgentToServerTests200Response> response = apiInstance.getAgentToServerTestsWithHttpInfo(aid);
+            ApiResponse<AgentToServerTests> response = apiInstance.getAgentToServerTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgentToServerTests200Response**](GetAgentToServerTests200Response.md)>
+ApiResponse<[**AgentToServerTests**](AgentToServerTests.md)>
 
 
 ### Authorization

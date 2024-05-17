@@ -2,9 +2,9 @@
 
 Test Results API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:14.116034+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:26.577562+01:00[Europe/Lisbon]
 
 Get test result metrics for Cloud and Enterprise Agent tests.
 
@@ -76,27 +76,26 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 import com.thousandeyes.api.tests.*;
 import com.thousandeyes.api.tests.results.model.*;
-import com.thousandeyes.api.tests.results.DnsServerTestMetricsApi;
+import com.thousandeyes.api.tests.results.ApiTestMetricsApi;
 
-public class DnsServerTestMetricsApiExample {
+public class ApiTestMetricsApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         // Configure clients using the `defaultClient` object, such as
         // overriding the host and port, timeout, etc.
-        DnsServerTestMetricsApi apiInstance = new DnsServerTestMetricsApi(defaultClient);
+        ApiTestMetricsApi apiInstance = new ApiTestMetricsApi(defaultClient);
         String testId = "202701"; // String | Test ID
-        String serverId = "281474976710706"; // String | DNS server ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultDnsServer200Response result = apiInstance.getTestResultDnsServer(testId, serverId, aid, window, startDate, endDate, cursor);
+            ApiTestResults result = apiInstance.getTestResultApi(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestResultDnsServer");
+            System.err.println("Exception when calling ApiTestMetricsApi#getTestResultApi");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -113,6 +112,10 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ApiTestMetricsApi* | [**getTestResultApi**](docs/ApiTestMetricsApi.md#getTestResultApi) | **GET** /v7/test-results/{testId}/api | Get API test results
+*ApiTestMetricsApi* | [**getTestResultApiWithHttpInfo**](docs/ApiTestMetricsApi.md#getTestResultApiWithHttpInfo) | **GET** /v7/test-results/{testId}/api | Get API test results
+*ApiTestMetricsApi* | [**getTestResultApiComponentDetail**](docs/ApiTestMetricsApi.md#getTestResultApiComponentDetail) | **GET** /v7/test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round
+*ApiTestMetricsApi* | [**getTestResultApiComponentDetailWithHttpInfo**](docs/ApiTestMetricsApi.md#getTestResultApiComponentDetailWithHttpInfo) | **GET** /v7/test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round
 *DnsServerTestMetricsApi* | [**getTestResultDnsServer**](docs/DnsServerTestMetricsApi.md#getTestResultDnsServer) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server
 *DnsServerTestMetricsApi* | [**getTestResultDnsServerWithHttpInfo**](docs/DnsServerTestMetricsApi.md#getTestResultDnsServerWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server
 *DnsServerTestMetricsApi* | [**getTestResultDnsServers**](docs/DnsServerTestMetricsApi.md#getTestResultDnsServers) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results

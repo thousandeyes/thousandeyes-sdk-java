@@ -2,9 +2,9 @@
 
 Alerts API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:13.188640+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:30.720072+01:00[Europe/Lisbon]
 
 You can manage the following alert functionalities on the ThousandEyes platform using the Alerts API:
 
@@ -97,7 +97,7 @@ public class AlertRulesApiExample {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateAlertRule201Response result = apiInstance.createAlertRule(ruleDetailUpdate, aid);
+            Rule result = apiInstance.createAlertRule(ruleDetailUpdate, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#createAlertRule");

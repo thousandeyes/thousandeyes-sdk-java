@@ -8,11 +8,9 @@ src/main/java/com/thousandeyes/api/credentials/model/CredentialRequest.java
 src/main/java/com/thousandeyes/api/credentials/model/CredentialWithoutValue.java
 src/main/java/com/thousandeyes/api/credentials/model/Credentials.java
 src/main/java/com/thousandeyes/api/credentials/model/Error.java
-src/main/java/com/thousandeyes/api/credentials/model/GetTransactionTestsCredentialsList200Response.java
 src/main/java/com/thousandeyes/api/credentials/model/Link.java
 src/main/java/com/thousandeyes/api/credentials/model/SelfLinks.java
-src/main/java/com/thousandeyes/api/credentials/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/credentials/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/credentials/model/ValidationError.java
-src/main/java/com/thousandeyes/api/credentials/model/ValidationErrorAllOfErrors.java
+src/main/java/com/thousandeyes/api/credentials/model/ValidationErrorItem.java
 src/test/java/com/thousandeyes/api/credentials/CredentialsApiTest.java

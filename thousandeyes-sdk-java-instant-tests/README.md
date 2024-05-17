@@ -2,9 +2,9 @@
 
 Instant Tests API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:13.145468+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:26.455641+01:00[Europe/Lisbon]
 
 The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:
   * `API Access`
@@ -118,6 +118,8 @@ Class | Method | HTTP request | Description
 *AgentToAgentApi* | [**postInstantTestAgentToAgentWithHttpInfo**](docs/AgentToAgentApi.md#postInstantTestAgentToAgentWithHttpInfo) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test
 *AgentToServerApi* | [**postInstantAgentToServer**](docs/AgentToServerApi.md#postInstantAgentToServer) | **POST** /v7/tests/agent-to-server/instant | Create agent-to-server instant test
 *AgentToServerApi* | [**postInstantAgentToServerWithHttpInfo**](docs/AgentToServerApi.md#postInstantAgentToServerWithHttpInfo) | **POST** /v7/tests/agent-to-server/instant | Create agent-to-server instant test
+*ApiApi* | [**postInstantApi**](docs/ApiApi.md#postInstantApi) | **POST** /v7/tests/api/instant | Create API instant test
+*ApiApi* | [**postInstantApiWithHttpInfo**](docs/ApiApi.md#postInstantApiWithHttpInfo) | **POST** /v7/tests/api/instant | Create API instant test
 *DnsSecurityApi* | [**postInstantDnsSec**](docs/DnsSecurityApi.md#postInstantDnsSec) | **POST** /v7/tests/dnssec/instant | Create DNS security instant test
 *DnsSecurityApi* | [**postInstantDnsSecWithHttpInfo**](docs/DnsSecurityApi.md#postInstantDnsSecWithHttpInfo) | **POST** /v7/tests/dnssec/instant | Create DNS security instant test
 *DnsServerApi* | [**postInstantDnsServer**](docs/DnsServerApi.md#postInstantDnsServer) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test

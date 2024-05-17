@@ -2,9 +2,9 @@
 
 Endpoint Tests API
 
-- API version: 7.0.0
+- API version: 7.0.4
 
-- Build date: 2024-04-30T10:06:13.128929+01:00[Europe/Lisbon]
+- Build date: 2024-05-17T09:32:26.288294+01:00[Europe/Lisbon]
 
 
 Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
@@ -125,8 +125,8 @@ Class | Method | HTTP request | Description
 *ScheduledTestsAgentToServerApi* | [**deleteEndpointAgentToServerTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#deleteEndpointAgentToServerTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test
 *ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerDetail**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerDetail) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test
 *ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerDetailWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerDetailWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test
-*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToserverTestsList**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToserverTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
-*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToserverTestsListWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToserverTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
+*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerTestsList**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
+*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerTestsListWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
 *ScheduledTestsAgentToServerApi* | [**postEndpointAgentToServerTest**](docs/ScheduledTestsAgentToServerApi.md#postEndpointAgentToServerTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
 *ScheduledTestsAgentToServerApi* | [**postEndpointAgentToServerTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#postEndpointAgentToServerTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
 *ScheduledTestsAgentToServerApi* | [**updateEndpointAgentToServerDetail**](docs/ScheduledTestsAgentToServerApi.md#updateEndpointAgentToServerDetail) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test
