@@ -5,12 +5,13 @@ buildscript {
 }
 
 ext {
+    apacheCommonsLang3 = "3.14.0"
+    googleJsr305Version = "3.0.2"
     jacksonVersion = "2.16.1"
     junitVersion = "5.10.1"
     jacocoVersion = "0.8.8"
     jacksonDatabindNullableVersion = "0.2.6"
-    googleJsr305Version = "3.0.2"
-    apacheCommonsLang3 = "3.14.0"
+    mockitoVersion = "3.2.4"
 }
 
 allprojects {
@@ -36,7 +37,7 @@ allprojects {
         options.encoding = 'UTF-8'
     }
 
-    task execute(type:JavaExec) {
+    task execute(type: JavaExec) {
         classpath = sourceSets.main.runtimeClasspath
     }
 

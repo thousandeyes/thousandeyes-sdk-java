@@ -1,7 +1,5 @@
 package com.thousandeyes.api.client;
 
-import static com.thousandeyes.api.client.RateLimitHandler.rateLimitResetAwait;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -82,10 +80,6 @@ public class NativeApiClient implements ApiClient {
                                                      HttpResponse.BodyHandlers.ofInputStream());
             if (responseInterceptor != null) {
                 responseInterceptor.accept(response);
-            }
-
-            if (rateLimitResetAwait(response.statusCode(), response.headers().map())) {
-                return sendRequestAndProcessResponse(httpRequest, reader);
             }
             return processResponse(response, reader);
         }
