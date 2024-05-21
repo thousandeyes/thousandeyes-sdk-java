@@ -36,7 +36,7 @@ public class NativeApiClientBuilder {
     private Consumer<HttpResponse<InputStream>> responseInterceptor;
     private Duration connectTimeout;
     private String bearerToken;
-    private boolean rateLimitingEnabled = true;
+    private boolean defaultRateLimitingEnabled = true;
 
     public ApiClient build() {
         var baseUri = parseBaseUri(this.baseUri);
@@ -54,7 +54,7 @@ public class NativeApiClientBuilder {
                 this.responseInterceptor
         );
 
-        if (this.rateLimitingEnabled) {
+        if (this.defaultRateLimitingEnabled) {
             client = new RateLimitDecorator(client);
         }
 
