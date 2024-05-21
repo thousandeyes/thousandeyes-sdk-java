@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -30,7 +29,6 @@ public class RateLimitDecoratorTest {
     private final ApiResponse<String> okResponse = new ApiResponse<>(200, Map.of(), "ok");
     @Mock
     private ApiClient client = Mockito.mock(ApiClient.class);
-    @InjectMocks
     private RateLimitDecorator rlClient = new RateLimitDecorator(client);
 
     private static String getTimeInSeconds(Instant instant) {
