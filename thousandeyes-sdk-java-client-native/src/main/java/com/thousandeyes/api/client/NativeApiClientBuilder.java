@@ -36,8 +36,9 @@ public class NativeApiClientBuilder {
     private Consumer<HttpResponse<InputStream>> responseInterceptor;
     private Duration connectTimeout;
     private String bearerToken;
+    private boolean rateLimitingEnabled = true;
 
-    public NativeApiClient build() {
+    public ApiClient build() {
         var baseUri = parseBaseUri(this.baseUri);
         if (this.connectTimeout != null) {
             this.httpClientBuilder.connectTimeout(this.connectTimeout);
@@ -45,22 +46,29 @@ public class NativeApiClientBuilder {
         if (StringUtils.isNotBlank(bearerToken)) {
             setBearerTokenInterceptor();
         }
-        return new NativeApiClient(
+        ApiClient client = new NativeApiClient(
                 baseUri,
                 this.httpClientBuilder.build(),
                 this.mapper,
                 this.interceptor,
                 this.responseInterceptor
         );
+
+        if (this.rateLimitingEnabled) {
+            client = new RateLimitDecorator(client);
+        }
+
+        return client;
     }
 
-    public String parseBaseUri(String baseUri) {
+    private String parseBaseUri(String baseUri) {
         URI uri = URI.create(baseUri);
         var port = uri.getPort();
-        return uri.getScheme() + "://" + uri.getHost() + (port == -1 ? "" : ":" + port) + uri.getRawPath();
+        return uri.getScheme() + "://" + uri.getHost() + (port == -1 ? "" : ":" + port) +
+               uri.getRawPath();
     }
-    
-    public void setBearerTokenInterceptor() {
+
+    private void setBearerTokenInterceptor() {
         var bearerAuth = authentications.get(HttpBearerAuth.class.getSimpleName());
         if (bearerAuth == null) {
             throw new RuntimeException("Client has no Bearer authentication configured!");
