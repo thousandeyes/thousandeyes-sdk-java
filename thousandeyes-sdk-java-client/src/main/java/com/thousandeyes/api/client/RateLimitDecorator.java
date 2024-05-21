@@ -3,13 +3,14 @@ package com.thousandeyes.api.client;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.OptionalLong;
+import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 
 
 public final class RateLimitDecorator extends ApiClientDecorator {
-    private static final List<String> rateLimitResetHeaders =
+    private static final List<String> RATE_LIMIT_RESET_HEADERS =
             List.of("x-organization-rate-limit-reset", "x-instant-test-rate-limit-reset");
     private static final int TOO_MANY_REQUESTS = 429;
 
@@ -17,64 +18,56 @@ public final class RateLimitDecorator extends ApiClientDecorator {
         super(apiClient);
     }
 
-    private boolean awaitIfRateLimitApiException(ApiException e)
+    private <T> T awaitAndRetry(ApiException apiException, Callable<T> requestCallable)
             throws ApiException
     {
-        Optional<Long> retryAfterInSeconds;
-        if (TOO_MANY_REQUESTS == e.getCode() &&
-            ((retryAfterInSeconds = retryAfterInSeconds(e.getResponseHeaders())).isPresent()))
-        {
+        OptionalLong retryAfterInSeconds = retryAfterInSeconds(apiException.getResponseHeaders());
+        if (retryAfterInSeconds.isPresent()) {
             try {
-                TimeUnit.SECONDS.sleep(retryAfterInSeconds.get());
+                TimeUnit.SECONDS.sleep(retryAfterInSeconds.getAsLong());
+                return requestCallable.call();
             }
             catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
                 throw new ApiException(ex);
             }
-            return true;
+            catch (ApiException e) {
+                throw e;
+            }
+            catch (Exception e) {
+                throw new ApiException(e);
+            }
         }
-        return false;
+        // If we can't find rate limit headers, just re-throw original exception
+        throw apiException;
     }
 
-    private Optional<Long> retryAfterInSeconds(Map<String, List<String>> headers) {
-        return rateLimitResetHeaders.stream()
-                                    .flatMap(headerName -> headers.getOrDefault(headerName,
-                                                                                List.of())
-                                                                  .stream())
-                                    .map(Long::parseLong)
-                                    .map(rlResetInstant -> rlResetInstant -
-                                                           Instant.now().getEpochSecond())
-                                    .max(Long::compareTo);
+    private OptionalLong retryAfterInSeconds(Map<String, List<String>> headers) {
+        return RATE_LIMIT_RESET_HEADERS.stream()
+                                       .flatMap(headerName -> headers.getOrDefault(headerName,
+                                                                                   List.of())
+                                                                     .stream())
+                                       .mapToLong(Long::parseLong)
+                                       .map(rlResetInstant -> rlResetInstant -
+                                                              Instant.now().getEpochSecond())
+                                       .max();
     }
 
-    @Override
-    public <T> ApiResponse<T> send(ApiRequest request, Class<T> returnType) throws ApiException {
-        return sendWithRateLimitHandling(() -> super.send(request, returnType));
-    }
-
-    @Override
-    public <T> ApiResponse<List<T>> sendForList(ApiRequest request, Class<T> returnType)
-            throws ApiException
-    {
-        return sendWithRateLimitHandling(() -> super.sendForList(request, returnType));
-    }
-
-    private <T> T sendWithRateLimitHandling(Supplier<T> requestSupplier)
+    public <T> ApiResponse<T> decorate(Callable<ApiResponse<T>> requestCallable)
             throws ApiException
     {
         try {
-            return requestSupplier.get();
+            return requestCallable.call();
         }
         catch (ApiException e) {
-            if (awaitIfRateLimitApiException(e)) {
-                return requestSupplier.get();
+            if (e.getCode() == TOO_MANY_REQUESTS) {
+                return awaitAndRetry(e, requestCallable);
             }
             throw e;
         }
-    }
-
-    @FunctionalInterface
-    private interface Supplier<T> {
-        T get() throws ApiException;
+        catch (Exception e) {
+            // This really shouldn't be possible, but Callable doesn't know that
+            throw new ApiException(e);
+        }
     }
 }
