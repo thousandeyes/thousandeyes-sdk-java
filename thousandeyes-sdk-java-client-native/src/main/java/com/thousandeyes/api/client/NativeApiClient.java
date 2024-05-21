@@ -81,7 +81,6 @@ public class NativeApiClient implements ApiClient {
             if (responseInterceptor != null) {
                 responseInterceptor.accept(response);
             }
-
             return processResponse(response, reader);
         }
         catch (IOException e) {
