@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -56,14 +58,11 @@ public class RateLimitDecoratorTest {
         assertThrows(ApiException.class, () -> rlClient.send(null, null));
     }
 
-    @Test
-    void shouldRetryProperRateLimitApiException() throws ApiException {
-        var now = Instant.now();
-        var headers =
-                Map.of("x-organization-rate-limit-reset",
-                       List.of(getTimeInSeconds(now.plusSeconds(2))),
-                       "x-instant-test-rate-limit-reset",
-                       List.of(getTimeInSeconds(now.plusSeconds(10))));
+    @ParameterizedTest
+    @ValueSource(strings = { "x-organization-rate-limit-reset", "x-instant-test-rate-limit-reset" })
+    void shouldRetryProperRateLimitApiException(String header) throws ApiException {
+        var resetTime = getTimeInSeconds(Instant.now().plusSeconds(2));
+        var headers = Map.of(header, List.of(resetTime));
 
         var exception = new ApiException(TOO_MANY_REQUESTS, headers, null);
 
