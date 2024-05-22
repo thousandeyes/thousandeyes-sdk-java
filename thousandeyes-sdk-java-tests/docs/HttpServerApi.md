@@ -513,7 +513,7 @@ ApiResponse<[**HttpServerTest**](HttpServerTest.md)>
 
 ## getHttpServerTests
 
-> GetHttpServerTests200Response getHttpServerTests(aid)
+> HttpServerTests getHttpServerTests(aid)
 
 List HTTP Server tests
 
@@ -542,7 +542,7 @@ public class Example {
         HttpServerApi apiInstance = new HttpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetHttpServerTests200Response result = apiInstance.getHttpServerTests(aid);
+            HttpServerTests result = apiInstance.getHttpServerTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerApi#getHttpServerTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetHttpServerTests200Response**](GetHttpServerTests200Response.md)
+[**HttpServerTests**](HttpServerTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getHttpServerTestsWithHttpInfo
 
-> ApiResponse<GetHttpServerTests200Response> getHttpServerTests getHttpServerTestsWithHttpInfo(aid)
+> ApiResponse<HttpServerTests> getHttpServerTests getHttpServerTestsWithHttpInfo(aid)
 
 List HTTP Server tests
 
@@ -620,7 +620,7 @@ public class Example {
         HttpServerApi apiInstance = new HttpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetHttpServerTests200Response> response = apiInstance.getHttpServerTestsWithHttpInfo(aid);
+            ApiResponse<HttpServerTests> response = apiInstance.getHttpServerTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetHttpServerTests200Response**](GetHttpServerTests200Response.md)>
+ApiResponse<[**HttpServerTests**](HttpServerTests.md)>
 
 
 ### Authorization

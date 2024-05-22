@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getEndpointLocalNetworkTopologyDetails
 
-> GetEndpointLocalNetworkTopologyDetails200Response getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid)
+> LocalNetworkTopologyDetailResults getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid)
 
 Retrieve endpoint local network topology
 
@@ -45,7 +45,7 @@ public class Example {
         String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointLocalNetworkTopologyDetails200Response result = apiInstance.getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid);
+            LocalNetworkTopologyDetailResults result = apiInstance.getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworkTopologyDetails");
@@ -68,7 +68,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointLocalNetworkTopologyDetails200Response**](GetEndpointLocalNetworkTopologyDetails200Response.md)
+[**LocalNetworkTopologyDetailResults**](LocalNetworkTopologyDetailResults.md)
 
 
 ### Authorization
@@ -93,7 +93,7 @@ public class Example {
 
 ## getEndpointLocalNetworkTopologyDetailsWithHttpInfo
 
-> ApiResponse<GetEndpointLocalNetworkTopologyDetails200Response> getEndpointLocalNetworkTopologyDetails getEndpointLocalNetworkTopologyDetailsWithHttpInfo(networkTopologyId, aid)
+> ApiResponse<LocalNetworkTopologyDetailResults> getEndpointLocalNetworkTopologyDetails getEndpointLocalNetworkTopologyDetailsWithHttpInfo(networkTopologyId, aid)
 
 Retrieve endpoint local network topology
 
@@ -124,7 +124,7 @@ public class Example {
         String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointLocalNetworkTopologyDetails200Response> response = apiInstance.getEndpointLocalNetworkTopologyDetailsWithHttpInfo(networkTopologyId, aid);
+            ApiResponse<LocalNetworkTopologyDetailResults> response = apiInstance.getEndpointLocalNetworkTopologyDetailsWithHttpInfo(networkTopologyId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -149,7 +149,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointLocalNetworkTopologyDetails200Response**](GetEndpointLocalNetworkTopologyDetails200Response.md)>
+ApiResponse<[**LocalNetworkTopologyDetailResults**](LocalNetworkTopologyDetailResults.md)>
 
 
 ### Authorization
@@ -175,7 +175,7 @@ ApiResponse<[**GetEndpointLocalNetworkTopologyDetails200Response**](GetEndpointL
 
 ## getEndpointLocalNetworks
 
-> GetEndpointLocalNetworks200Response getEndpointLocalNetworks(aid)
+> LocalNetworkResults getEndpointLocalNetworks(aid)
 
 List local networks
 
@@ -204,7 +204,7 @@ public class Example {
         LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointLocalNetworks200Response result = apiInstance.getEndpointLocalNetworks(aid);
+            LocalNetworkResults result = apiInstance.getEndpointLocalNetworks(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworks");
@@ -226,7 +226,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointLocalNetworks200Response**](GetEndpointLocalNetworks200Response.md)
+[**LocalNetworkResults**](LocalNetworkResults.md)
 
 
 ### Authorization
@@ -251,7 +251,7 @@ public class Example {
 
 ## getEndpointLocalNetworksWithHttpInfo
 
-> ApiResponse<GetEndpointLocalNetworks200Response> getEndpointLocalNetworks getEndpointLocalNetworksWithHttpInfo(aid)
+> ApiResponse<LocalNetworkResults> getEndpointLocalNetworks getEndpointLocalNetworksWithHttpInfo(aid)
 
 List local networks
 
@@ -281,7 +281,7 @@ public class Example {
         LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointLocalNetworks200Response> response = apiInstance.getEndpointLocalNetworksWithHttpInfo(aid);
+            ApiResponse<LocalNetworkResults> response = apiInstance.getEndpointLocalNetworksWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -305,7 +305,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointLocalNetworks200Response**](GetEndpointLocalNetworks200Response.md)>
+ApiResponse<[**LocalNetworkResults**](LocalNetworkResults.md)>
 
 
 ### Authorization
@@ -331,7 +331,7 @@ ApiResponse<[**GetEndpointLocalNetworks200Response**](GetEndpointLocalNetworks20
 
 ## getEndpointLocalNetworksTopologies
 
-> GetEndpointLocalNetworksTopologies200Response getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
+> LocalNetworkTopologyResults getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
 
 List endpoint network topologies probes
 
@@ -365,7 +365,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            GetEndpointLocalNetworksTopologies200Response result = apiInstance.getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+            LocalNetworkTopologyResults result = apiInstance.getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworksTopologies");
@@ -392,7 +392,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointLocalNetworksTopologies200Response**](GetEndpointLocalNetworksTopologies200Response.md)
+[**LocalNetworkTopologyResults**](LocalNetworkTopologyResults.md)
 
 
 ### Authorization
@@ -418,7 +418,7 @@ public class Example {
 
 ## getEndpointLocalNetworksTopologiesWithHttpInfo
 
-> ApiResponse<GetEndpointLocalNetworksTopologies200Response> getEndpointLocalNetworksTopologies getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
+> ApiResponse<LocalNetworkTopologyResults> getEndpointLocalNetworksTopologies getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
 
 List endpoint network topologies probes
 
@@ -453,7 +453,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            ApiResponse<GetEndpointLocalNetworksTopologies200Response> response = apiInstance.getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+            ApiResponse<LocalNetworkTopologyResults> response = apiInstance.getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -482,7 +482,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointLocalNetworksTopologies200Response**](GetEndpointLocalNetworksTopologies200Response.md)>
+ApiResponse<[**LocalNetworkTopologyResults**](LocalNetworkTopologyResults.md)>
 
 
 ### Authorization

@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getLabels
 
-> GetLabels200Response getLabels(aid)
+> Labels getLabels(aid)
 
 Get list of Labels
 
@@ -40,7 +40,7 @@ public class Example {
         AllLabelsApi apiInstance = new AllLabelsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetLabels200Response result = apiInstance.getLabels(aid);
+            Labels result = apiInstance.getLabels(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllLabelsApi#getLabels");
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetLabels200Response**](GetLabels200Response.md)
+[**Labels**](Labels.md)
 
 
 ### Authorization
@@ -87,7 +87,7 @@ public class Example {
 
 ## getLabelsWithHttpInfo
 
-> ApiResponse<GetLabels200Response> getLabels getLabelsWithHttpInfo(aid)
+> ApiResponse<Labels> getLabels getLabelsWithHttpInfo(aid)
 
 Get list of Labels
 
@@ -117,7 +117,7 @@ public class Example {
         AllLabelsApi apiInstance = new AllLabelsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetLabels200Response> response = apiInstance.getLabelsWithHttpInfo(aid);
+            ApiResponse<Labels> response = apiInstance.getLabelsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -141,7 +141,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetLabels200Response**](GetLabels200Response.md)>
+ApiResponse<[**Labels**](Labels.md)>
 
 
 ### Authorization

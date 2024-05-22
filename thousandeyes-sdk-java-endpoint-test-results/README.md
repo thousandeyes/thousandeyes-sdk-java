@@ -2,9 +2,7 @@
 
 Endpoint Test Results API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.283389+01:00[Europe/Lisbon]
+- API version: 7.0.4
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 
@@ -42,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-test-results</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -52,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-test-results:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-test-results:version"
 ```
 
 ### Others
@@ -65,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-test-results-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-test-results-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -88,7 +86,7 @@ public class LocalNetworkTestsResultsApiExample {
         String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointLocalNetworkTopologyDetails200Response result = apiInstance.getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid);
+            LocalNetworkTopologyDetailResults result = apiInstance.getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworkTopologyDetails");
