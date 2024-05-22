@@ -185,7 +185,7 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 
 ## unassignEnterpriseAgentFromCluster
 
-> GetAgents200Response unassignEnterpriseAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand)
+> CloudEnterpriseAgents unassignEnterpriseAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand)
 
 Remove member from Enterprise Agent cluster
 
@@ -217,7 +217,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            GetAgents200Response result = apiInstance.unassignEnterpriseAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand);
+            CloudEnterpriseAgents result = apiInstance.unassignEnterpriseAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EnterpriseAgentClusterApi#unassignEnterpriseAgentFromCluster");
@@ -242,7 +242,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgents200Response**](GetAgents200Response.md)
+[**CloudEnterpriseAgents**](CloudEnterpriseAgents.md)
 
 
 ### Authorization
@@ -269,7 +269,7 @@ public class Example {
 
 ## unassignEnterpriseAgentFromClusterWithHttpInfo
 
-> ApiResponse<GetAgents200Response> unassignEnterpriseAgentFromCluster unassignEnterpriseAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand)
+> ApiResponse<CloudEnterpriseAgents> unassignEnterpriseAgentFromCluster unassignEnterpriseAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand)
 
 Remove member from Enterprise Agent cluster
 
@@ -302,7 +302,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            ApiResponse<GetAgents200Response> response = apiInstance.unassignEnterpriseAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand);
+            ApiResponse<CloudEnterpriseAgents> response = apiInstance.unassignEnterpriseAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -329,7 +329,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgents200Response**](GetAgents200Response.md)>
+ApiResponse<[**CloudEnterpriseAgents**](CloudEnterpriseAgents.md)>
 
 
 ### Authorization

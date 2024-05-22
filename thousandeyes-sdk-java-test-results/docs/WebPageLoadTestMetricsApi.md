@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultPageLoad
 
-> GetTestResultPageLoad200Response getTestResultPageLoad(testId, aid, window, startDate, endDate, cursor)
+> PageLoadTestResults getTestResultPageLoad(testId, aid, window, startDate, endDate, cursor)
 
 Get page load server test results
 
@@ -47,7 +47,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultPageLoad200Response result = apiInstance.getTestResultPageLoad(testId, aid, window, startDate, endDate, cursor);
+            PageLoadTestResults result = apiInstance.getTestResultPageLoad(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebPageLoadTestMetricsApi#getTestResultPageLoad");
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultPageLoad200Response**](GetTestResultPageLoad200Response.md)
+[**PageLoadTestResults**](PageLoadTestResults.md)
 
 
 ### Authorization
@@ -101,7 +101,7 @@ public class Example {
 
 ## getTestResultPageLoadWithHttpInfo
 
-> ApiResponse<GetTestResultPageLoad200Response> getTestResultPageLoad getTestResultPageLoadWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<PageLoadTestResults> getTestResultPageLoad getTestResultPageLoadWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get page load server test results
 
@@ -136,7 +136,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultPageLoad200Response> response = apiInstance.getTestResultPageLoadWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<PageLoadTestResults> response = apiInstance.getTestResultPageLoadWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -165,7 +165,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultPageLoad200Response**](GetTestResultPageLoad200Response.md)>
+ApiResponse<[**PageLoadTestResults**](PageLoadTestResults.md)>
 
 
 ### Authorization
@@ -193,7 +193,7 @@ ApiResponse<[**GetTestResultPageLoad200Response**](GetTestResultPageLoad200Respo
 
 ## getTestResultPageLoadComponentDetail
 
-> GetTestResultPageLoadComponentDetail200Response getTestResultPageLoadComponentDetail(testId, agentId, roundId, aid)
+> PageLoadDetailTestResults getTestResultPageLoadComponentDetail(testId, agentId, roundId, aid)
 
 Get page load server test results by agent and round
 
@@ -225,7 +225,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetTestResultPageLoadComponentDetail200Response result = apiInstance.getTestResultPageLoadComponentDetail(testId, agentId, roundId, aid);
+            PageLoadDetailTestResults result = apiInstance.getTestResultPageLoadComponentDetail(testId, agentId, roundId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebPageLoadTestMetricsApi#getTestResultPageLoadComponentDetail");
@@ -250,7 +250,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultPageLoadComponentDetail200Response**](GetTestResultPageLoadComponentDetail200Response.md)
+[**PageLoadDetailTestResults**](PageLoadDetailTestResults.md)
 
 
 ### Authorization
@@ -277,7 +277,7 @@ public class Example {
 
 ## getTestResultPageLoadComponentDetailWithHttpInfo
 
-> ApiResponse<GetTestResultPageLoadComponentDetail200Response> getTestResultPageLoadComponentDetail getTestResultPageLoadComponentDetailWithHttpInfo(testId, agentId, roundId, aid)
+> ApiResponse<PageLoadDetailTestResults> getTestResultPageLoadComponentDetail getTestResultPageLoadComponentDetailWithHttpInfo(testId, agentId, roundId, aid)
 
 Get page load server test results by agent and round
 
@@ -310,7 +310,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetTestResultPageLoadComponentDetail200Response> response = apiInstance.getTestResultPageLoadComponentDetailWithHttpInfo(testId, agentId, roundId, aid);
+            ApiResponse<PageLoadDetailTestResults> response = apiInstance.getTestResultPageLoadComponentDetailWithHttpInfo(testId, agentId, roundId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -337,7 +337,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultPageLoadComponentDetail200Response**](GetTestResultPageLoadComponentDetail200Response.md)>
+ApiResponse<[**PageLoadDetailTestResults**](PageLoadDetailTestResults.md)>
 
 
 ### Authorization

@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getEndpointTestsList
 
-> GetEndpointTestsList200Response getEndpointTestsList(aid)
+> EndpointTests getEndpointTestsList(aid)
 
 List endpoint scheduled tests
 
@@ -40,7 +40,7 @@ public class Example {
         ListEndpointScheduledTestsApi apiInstance = new ListEndpointScheduledTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointTestsList200Response result = apiInstance.getEndpointTestsList(aid);
+            EndpointTests result = apiInstance.getEndpointTestsList(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ListEndpointScheduledTestsApi#getEndpointTestsList");
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointTestsList200Response**](GetEndpointTestsList200Response.md)
+[**EndpointTests**](EndpointTests.md)
 
 
 ### Authorization
@@ -87,7 +87,7 @@ public class Example {
 
 ## getEndpointTestsListWithHttpInfo
 
-> ApiResponse<GetEndpointTestsList200Response> getEndpointTestsList getEndpointTestsListWithHttpInfo(aid)
+> ApiResponse<EndpointTests> getEndpointTestsList getEndpointTestsListWithHttpInfo(aid)
 
 List endpoint scheduled tests
 
@@ -117,7 +117,7 @@ public class Example {
         ListEndpointScheduledTestsApi apiInstance = new ListEndpointScheduledTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointTestsList200Response> response = apiInstance.getEndpointTestsListWithHttpInfo(aid);
+            ApiResponse<EndpointTests> response = apiInstance.getEndpointTestsListWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -141,7 +141,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointTestsList200Response**](GetEndpointTestsList200Response.md)>
+ApiResponse<[**EndpointTests**](EndpointTests.md)>
 
 
 ### Authorization

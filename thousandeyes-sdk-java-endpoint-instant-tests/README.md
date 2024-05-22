@@ -2,9 +2,7 @@
 
 Endpoint Instant Scheduled Tests API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:12.868029+01:00[Europe/Lisbon]
+- API version: 7.0.4
 
 
 You can create and execute a new endpoint instant scheduled test within ThousandEyes using this API. The test parameters are specified in the `POST` data.
@@ -52,7 +50,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-instant-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -62,7 +60,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-instant-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-instant-tests:version"
 ```
 
 ### Others
@@ -75,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-instant-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-instant-tests-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

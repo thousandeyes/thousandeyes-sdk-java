@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## createUser
 
-> CreateUser201Response createUser(userRequestBody, aid)
+> CreatedUser createUser(userRequest, aid)
 
 Create user
 
@@ -46,10 +46,10 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        UserRequestBody userRequestBody = new UserRequestBody(); // UserRequestBody | 
+        UserRequest userRequest = new UserRequest(); // UserRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateUser201Response result = apiInstance.createUser(userRequestBody, aid);
+            CreatedUser result = apiInstance.createUser(userRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#createUser");
@@ -67,12 +67,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userRequestBody** | [**UserRequestBody**](UserRequestBody.md)|  | |
+| **userRequest** | [**UserRequest**](UserRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
 ### Return type
 
-[**CreateUser201Response**](CreateUser201Response.md)
+[**CreatedUser**](CreatedUser.md)
 
 
 ### Authorization
@@ -97,7 +97,7 @@ public class Example {
 
 ## createUserWithHttpInfo
 
-> ApiResponse<CreateUser201Response> createUser createUserWithHttpInfo(userRequestBody, aid)
+> ApiResponse<CreatedUser> createUser createUserWithHttpInfo(userRequest, aid)
 
 Create user
 
@@ -125,10 +125,10 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        UserRequestBody userRequestBody = new UserRequestBody(); // UserRequestBody | 
+        UserRequest userRequest = new UserRequest(); // UserRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CreateUser201Response> response = apiInstance.createUserWithHttpInfo(userRequestBody, aid);
+            ApiResponse<CreatedUser> response = apiInstance.createUserWithHttpInfo(userRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -148,12 +148,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userRequestBody** | [**UserRequestBody**](UserRequestBody.md)|  | |
+| **userRequest** | [**UserRequest**](UserRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
 ### Return type
 
-ApiResponse<[**CreateUser201Response**](CreateUser201Response.md)>
+ApiResponse<[**CreatedUser**](CreatedUser.md)>
 
 
 ### Authorization
@@ -337,7 +337,7 @@ ApiResponse<Void>
 
 ## getUser
 
-> GetUser200Response getUser(id, aid)
+> UserDetail getUser(id, aid)
 
 Retrieve user
 
@@ -367,7 +367,7 @@ public class Example {
         String id = "1234"; // String | Identifier for the user.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetUser200Response result = apiInstance.getUser(id, aid);
+            UserDetail result = apiInstance.getUser(id, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#getUser");
@@ -390,7 +390,7 @@ public class Example {
 
 ### Return type
 
-[**GetUser200Response**](GetUser200Response.md)
+[**UserDetail**](UserDetail.md)
 
 
 ### Authorization
@@ -415,7 +415,7 @@ public class Example {
 
 ## getUserWithHttpInfo
 
-> ApiResponse<GetUser200Response> getUser getUserWithHttpInfo(id, aid)
+> ApiResponse<UserDetail> getUser getUserWithHttpInfo(id, aid)
 
 Retrieve user
 
@@ -446,7 +446,7 @@ public class Example {
         String id = "1234"; // String | Identifier for the user.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetUser200Response> response = apiInstance.getUserWithHttpInfo(id, aid);
+            ApiResponse<UserDetail> response = apiInstance.getUserWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -471,7 +471,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetUser200Response**](GetUser200Response.md)>
+ApiResponse<[**UserDetail**](UserDetail.md)>
 
 
 ### Authorization
@@ -497,7 +497,7 @@ ApiResponse<[**GetUser200Response**](GetUser200Response.md)>
 
 ## getUsers
 
-> GetUsers200Response getUsers(aid)
+> Users getUsers(aid)
 
 List users
 
@@ -526,7 +526,7 @@ public class Example {
         UsersApi apiInstance = new UsersApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetUsers200Response result = apiInstance.getUsers(aid);
+            Users result = apiInstance.getUsers(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#getUsers");
@@ -548,7 +548,7 @@ public class Example {
 
 ### Return type
 
-[**GetUsers200Response**](GetUsers200Response.md)
+[**Users**](Users.md)
 
 
 ### Authorization
@@ -573,7 +573,7 @@ public class Example {
 
 ## getUsersWithHttpInfo
 
-> ApiResponse<GetUsers200Response> getUsers getUsersWithHttpInfo(aid)
+> ApiResponse<Users> getUsers getUsersWithHttpInfo(aid)
 
 List users
 
@@ -603,7 +603,7 @@ public class Example {
         UsersApi apiInstance = new UsersApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetUsers200Response> response = apiInstance.getUsersWithHttpInfo(aid);
+            ApiResponse<Users> response = apiInstance.getUsersWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -627,7 +627,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetUsers200Response**](GetUsers200Response.md)>
+ApiResponse<[**Users**](Users.md)>
 
 
 ### Authorization
@@ -653,7 +653,7 @@ ApiResponse<[**GetUsers200Response**](GetUsers200Response.md)>
 
 ## updateUser
 
-> GetUser200Response updateUser(id, userRequestBody, aid)
+> UserDetail updateUser(id, userRequest, aid)
 
 Update user
 
@@ -681,10 +681,10 @@ public class Example {
 
         UsersApi apiInstance = new UsersApi(defaultClient);
         String id = "1234"; // String | Identifier for the user.
-        UserRequestBody userRequestBody = new UserRequestBody(); // UserRequestBody | 
+        UserRequest userRequest = new UserRequest(); // UserRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetUser200Response result = apiInstance.updateUser(id, userRequestBody, aid);
+            UserDetail result = apiInstance.updateUser(id, userRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#updateUser");
@@ -703,12 +703,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Identifier for the user. | |
-| **userRequestBody** | [**UserRequestBody**](UserRequestBody.md)|  | |
+| **userRequest** | [**UserRequest**](UserRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
 ### Return type
 
-[**GetUser200Response**](GetUser200Response.md)
+[**UserDetail**](UserDetail.md)
 
 
 ### Authorization
@@ -733,7 +733,7 @@ public class Example {
 
 ## updateUserWithHttpInfo
 
-> ApiResponse<GetUser200Response> updateUser updateUserWithHttpInfo(id, userRequestBody, aid)
+> ApiResponse<UserDetail> updateUser updateUserWithHttpInfo(id, userRequest, aid)
 
 Update user
 
@@ -762,10 +762,10 @@ public class Example {
 
         UsersApi apiInstance = new UsersApi(defaultClient);
         String id = "1234"; // String | Identifier for the user.
-        UserRequestBody userRequestBody = new UserRequestBody(); // UserRequestBody | 
+        UserRequest userRequest = new UserRequest(); // UserRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetUser200Response> response = apiInstance.updateUserWithHttpInfo(id, userRequestBody, aid);
+            ApiResponse<UserDetail> response = apiInstance.updateUserWithHttpInfo(id, userRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -786,12 +786,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Identifier for the user. | |
-| **userRequestBody** | [**UserRequestBody**](UserRequestBody.md)|  | |
+| **userRequest** | [**UserRequest**](UserRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
 ### Return type
 
-ApiResponse<[**GetUser200Response**](GetUser200Response.md)>
+ApiResponse<[**UserDetail**](UserDetail.md)>
 
 
 ### Authorization

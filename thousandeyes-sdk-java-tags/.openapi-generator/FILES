@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 README.md
 api/openapi.yaml
 build.gradle
@@ -14,18 +15,16 @@ src/main/java/com/thousandeyes/api/tags/model/BulkTagAssignments.java
 src/main/java/com/thousandeyes/api/tags/model/BulkTagResponse.java
 src/main/java/com/thousandeyes/api/tags/model/Error.java
 src/main/java/com/thousandeyes/api/tags/model/Expand.java
-src/main/java/com/thousandeyes/api/tags/model/GetTag.java
-src/main/java/com/thousandeyes/api/tags/model/GetTags200Response.java
 src/main/java/com/thousandeyes/api/tags/model/Link.java
 src/main/java/com/thousandeyes/api/tags/model/ObjectType.java
 src/main/java/com/thousandeyes/api/tags/model/SelfLinks.java
-src/main/java/com/thousandeyes/api/tags/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/tags/model/Tag.java
 src/main/java/com/thousandeyes/api/tags/model/TagAssignment.java
 src/main/java/com/thousandeyes/api/tags/model/TagBulkCreateError.java
-src/main/java/com/thousandeyes/api/tags/model/TagCollection.java
+src/main/java/com/thousandeyes/api/tags/model/TagInfo.java
+src/main/java/com/thousandeyes/api/tags/model/Tags.java
 src/main/java/com/thousandeyes/api/tags/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/tags/model/ValidationError.java
-src/main/java/com/thousandeyes/api/tags/model/ValidationErrorAllOfErrors.java
+src/main/java/com/thousandeyes/api/tags/model/ValidationErrorItem.java
 src/test/java/com/thousandeyes/api/tags/TagAssignmentApiTest.java
 src/test/java/com/thousandeyes/api/tags/TagsApiTest.java
