@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultRtpStream
 
-> GetTestResultRtpStream200Response getTestResultRtpStream(testId, aid, window, startDate, endDate, cursor)
+> RtpStreamTestResults getTestResultRtpStream(testId, aid, window, startDate, endDate, cursor)
 
 Retrieve RTP server test metrics
 
@@ -45,7 +45,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultRtpStream200Response result = apiInstance.getTestResultRtpStream(testId, aid, window, startDate, endDate, cursor);
+            RtpStreamTestResults result = apiInstance.getTestResultRtpStream(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling VoiceRtpServerTestMetricsApi#getTestResultRtpStream");
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultRtpStream200Response**](GetTestResultRtpStream200Response.md)
+[**RtpStreamTestResults**](RtpStreamTestResults.md)
 
 
 ### Authorization
@@ -99,7 +99,7 @@ public class Example {
 
 ## getTestResultRtpStreamWithHttpInfo
 
-> ApiResponse<GetTestResultRtpStream200Response> getTestResultRtpStream getTestResultRtpStreamWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<RtpStreamTestResults> getTestResultRtpStream getTestResultRtpStreamWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Retrieve RTP server test metrics
 
@@ -134,7 +134,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultRtpStream200Response> response = apiInstance.getTestResultRtpStreamWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<RtpStreamTestResults> response = apiInstance.getTestResultRtpStreamWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -163,7 +163,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultRtpStream200Response**](GetTestResultRtpStream200Response.md)>
+ApiResponse<[**RtpStreamTestResults**](RtpStreamTestResults.md)>
 
 
 ### Authorization

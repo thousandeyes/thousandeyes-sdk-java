@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 README.md
 api/openapi.yaml
 build.gradle
@@ -7,7 +8,6 @@ docs/RunExistingTestApi.md
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/AgentToServerInstantScheduledTestApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/HttpServerInstantScheduledTestApi.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/RunExistingTestApi.java
-src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/AccountGroupId.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/AlertDirection.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/AlertRoundsViolationMode.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/AlertRule.java
@@ -27,8 +27,8 @@ src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/EndpointTest.jav
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/EndpointTestAgentSelectorType.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/EndpointTestAuthType.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/EndpointTestLinks.java
-src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/EndpointTestLinksSelf.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/EndpointTestProtocol.java
+src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/EndpointTestSelfLink.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/Error.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/Link.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/Severity.java
@@ -38,7 +38,9 @@ src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/TestProbeModeRes
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/TestSslVersionId.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/ValidationError.java
-src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/ValidationErrorAllOfErrors.java
+src/main/java/com/thousandeyes/api/endpoint/tests/instant/model/ValidationErrorItem.java
+src/main/java/com/thousandeyes/api/endpoint/tests/instant/utils/Config.java
+src/main/resources/config.properties
 src/test/java/com/thousandeyes/api/endpoint/tests/instant/AgentToServerInstantScheduledTestApiTest.java
 src/test/java/com/thousandeyes/api/endpoint/tests/instant/HttpServerInstantScheduledTestApiTest.java
 src/test/java/com/thousandeyes/api/endpoint/tests/instant/RunExistingTestApiTest.java

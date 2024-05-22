@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.*
+
 plugins {
     id "java-library"
     id "maven-publish"
@@ -18,6 +20,12 @@ publishing {
 
 repositories {
     mavenCentral()
+}
+
+processResources {
+    filter ReplaceTokens, tokens: [
+            "version": project.property("version")
+    ]
 }
 
 dependencies {

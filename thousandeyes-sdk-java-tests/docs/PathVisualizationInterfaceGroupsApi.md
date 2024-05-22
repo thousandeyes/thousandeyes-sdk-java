@@ -341,7 +341,7 @@ ApiResponse<Void>
 
 ## getPathVisInterfaceGroups
 
-> GetPathVisInterfaceGroups200Response getPathVisInterfaceGroups(aid)
+> InterfaceGroups getPathVisInterfaceGroups(aid)
 
 List interface groups for path visualization
 
@@ -370,7 +370,7 @@ public class Example {
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetPathVisInterfaceGroups200Response result = apiInstance.getPathVisInterfaceGroups(aid);
+            InterfaceGroups result = apiInstance.getPathVisInterfaceGroups(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PathVisualizationInterfaceGroupsApi#getPathVisInterfaceGroups");
@@ -392,7 +392,7 @@ public class Example {
 
 ### Return type
 
-[**GetPathVisInterfaceGroups200Response**](GetPathVisInterfaceGroups200Response.md)
+[**InterfaceGroups**](InterfaceGroups.md)
 
 
 ### Authorization
@@ -418,7 +418,7 @@ public class Example {
 
 ## getPathVisInterfaceGroupsWithHttpInfo
 
-> ApiResponse<GetPathVisInterfaceGroups200Response> getPathVisInterfaceGroups getPathVisInterfaceGroupsWithHttpInfo(aid)
+> ApiResponse<InterfaceGroups> getPathVisInterfaceGroups getPathVisInterfaceGroupsWithHttpInfo(aid)
 
 List interface groups for path visualization
 
@@ -448,7 +448,7 @@ public class Example {
         PathVisualizationInterfaceGroupsApi apiInstance = new PathVisualizationInterfaceGroupsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetPathVisInterfaceGroups200Response> response = apiInstance.getPathVisInterfaceGroupsWithHttpInfo(aid);
+            ApiResponse<InterfaceGroups> response = apiInstance.getPathVisInterfaceGroupsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -472,7 +472,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetPathVisInterfaceGroups200Response**](GetPathVisInterfaceGroups200Response.md)>
+ApiResponse<[**InterfaceGroups**](InterfaceGroups.md)>
 
 
 ### Authorization

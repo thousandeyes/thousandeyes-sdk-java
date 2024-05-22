@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getDynamicTestResultNetworkPathvis
 
-> GetDynamicTestResultNetworkPathvis200Response getDynamicTestResultNetworkPathvis(testId, aid, window, startDate, endDate, cursor)
+> PathVisDynamicTestResults getDynamicTestResultNetworkPathvis(testId, aid, window, startDate, endDate, cursor)
 
 Retrieve path visualization network dynamic test results
 
@@ -49,7 +49,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetDynamicTestResultNetworkPathvis200Response result = apiInstance.getDynamicTestResultNetworkPathvis(testId, aid, window, startDate, endDate, cursor);
+            PathVisDynamicTestResults result = apiInstance.getDynamicTestResultNetworkPathvis(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkDynamicTestsResultsApi#getDynamicTestResultNetworkPathvis");
@@ -76,7 +76,7 @@ public class Example {
 
 ### Return type
 
-[**GetDynamicTestResultNetworkPathvis200Response**](GetDynamicTestResultNetworkPathvis200Response.md)
+[**PathVisDynamicTestResults**](PathVisDynamicTestResults.md)
 
 
 ### Authorization
@@ -101,7 +101,7 @@ public class Example {
 
 ## getDynamicTestResultNetworkPathvisWithHttpInfo
 
-> ApiResponse<GetDynamicTestResultNetworkPathvis200Response> getDynamicTestResultNetworkPathvis getDynamicTestResultNetworkPathvisWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<PathVisDynamicTestResults> getDynamicTestResultNetworkPathvis getDynamicTestResultNetworkPathvisWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Retrieve path visualization network dynamic test results
 
@@ -136,7 +136,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetDynamicTestResultNetworkPathvis200Response> response = apiInstance.getDynamicTestResultNetworkPathvisWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<PathVisDynamicTestResults> response = apiInstance.getDynamicTestResultNetworkPathvisWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -165,7 +165,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetDynamicTestResultNetworkPathvis200Response**](GetDynamicTestResultNetworkPathvis200Response.md)>
+ApiResponse<[**PathVisDynamicTestResults**](PathVisDynamicTestResults.md)>
 
 
 ### Authorization
@@ -191,7 +191,7 @@ ApiResponse<[**GetDynamicTestResultNetworkPathvis200Response**](GetDynamicTestRe
 
 ## getDynamicTestResultPathvisAgentRound
 
-> GetDynamicTestResultPathvisAgentRound200Response getDynamicTestResultPathvisAgentRound(testId, agentId, roundId, aid)
+> PathVisDetailDynamicTestResults getDynamicTestResultPathvisAgentRound(testId, agentId, roundId, aid)
 
 Retrieve path visualization network dynamic test results details
 
@@ -223,7 +223,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetDynamicTestResultPathvisAgentRound200Response result = apiInstance.getDynamicTestResultPathvisAgentRound(testId, agentId, roundId, aid);
+            PathVisDetailDynamicTestResults result = apiInstance.getDynamicTestResultPathvisAgentRound(testId, agentId, roundId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkDynamicTestsResultsApi#getDynamicTestResultPathvisAgentRound");
@@ -248,7 +248,7 @@ public class Example {
 
 ### Return type
 
-[**GetDynamicTestResultPathvisAgentRound200Response**](GetDynamicTestResultPathvisAgentRound200Response.md)
+[**PathVisDetailDynamicTestResults**](PathVisDetailDynamicTestResults.md)
 
 
 ### Authorization
@@ -274,7 +274,7 @@ public class Example {
 
 ## getDynamicTestResultPathvisAgentRoundWithHttpInfo
 
-> ApiResponse<GetDynamicTestResultPathvisAgentRound200Response> getDynamicTestResultPathvisAgentRound getDynamicTestResultPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid)
+> ApiResponse<PathVisDetailDynamicTestResults> getDynamicTestResultPathvisAgentRound getDynamicTestResultPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid)
 
 Retrieve path visualization network dynamic test results details
 
@@ -307,7 +307,7 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetDynamicTestResultPathvisAgentRound200Response> response = apiInstance.getDynamicTestResultPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid);
+            ApiResponse<PathVisDetailDynamicTestResults> response = apiInstance.getDynamicTestResultPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -334,7 +334,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetDynamicTestResultPathvisAgentRound200Response**](GetDynamicTestResultPathvisAgentRound200Response.md)>
+ApiResponse<[**PathVisDetailDynamicTestResults**](PathVisDetailDynamicTestResults.md)>
 
 
 ### Authorization
@@ -361,7 +361,7 @@ ApiResponse<[**GetDynamicTestResultPathvisAgentRound200Response**](GetDynamicTes
 
 ## postFetchDynamicTestResultMetrics
 
-> PostFetchDynamicTestResultMetrics200Response postFetchDynamicTestResultMetrics(testId, aid, window, startDate, endDate, cursor, dynamicTestsDataRoundSearch)
+> NetworkDynamicTestResults postFetchDynamicTestResultMetrics(testId, aid, window, startDate, endDate, cursor, dynamicTestsDataRoundSearch)
 
 Retrieve network dynamic test results
 
@@ -396,7 +396,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         DynamicTestsDataRoundSearch dynamicTestsDataRoundSearch = new DynamicTestsDataRoundSearch(); // DynamicTestsDataRoundSearch | Tests data search filters.
         try {
-            PostFetchDynamicTestResultMetrics200Response result = apiInstance.postFetchDynamicTestResultMetrics(testId, aid, window, startDate, endDate, cursor, dynamicTestsDataRoundSearch);
+            NetworkDynamicTestResults result = apiInstance.postFetchDynamicTestResultMetrics(testId, aid, window, startDate, endDate, cursor, dynamicTestsDataRoundSearch);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkDynamicTestsResultsApi#postFetchDynamicTestResultMetrics");
@@ -424,7 +424,7 @@ public class Example {
 
 ### Return type
 
-[**PostFetchDynamicTestResultMetrics200Response**](PostFetchDynamicTestResultMetrics200Response.md)
+[**NetworkDynamicTestResults**](NetworkDynamicTestResults.md)
 
 
 ### Authorization
@@ -449,7 +449,7 @@ public class Example {
 
 ## postFetchDynamicTestResultMetricsWithHttpInfo
 
-> ApiResponse<PostFetchDynamicTestResultMetrics200Response> postFetchDynamicTestResultMetrics postFetchDynamicTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, dynamicTestsDataRoundSearch)
+> ApiResponse<NetworkDynamicTestResults> postFetchDynamicTestResultMetrics postFetchDynamicTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, dynamicTestsDataRoundSearch)
 
 Retrieve network dynamic test results
 
@@ -485,7 +485,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         DynamicTestsDataRoundSearch dynamicTestsDataRoundSearch = new DynamicTestsDataRoundSearch(); // DynamicTestsDataRoundSearch | Tests data search filters.
         try {
-            ApiResponse<PostFetchDynamicTestResultMetrics200Response> response = apiInstance.postFetchDynamicTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, dynamicTestsDataRoundSearch);
+            ApiResponse<NetworkDynamicTestResults> response = apiInstance.postFetchDynamicTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, dynamicTestsDataRoundSearch);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -515,7 +515,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**PostFetchDynamicTestResultMetrics200Response**](PostFetchDynamicTestResultMetrics200Response.md)>
+ApiResponse<[**NetworkDynamicTestResults**](NetworkDynamicTestResults.md)>
 
 
 ### Authorization

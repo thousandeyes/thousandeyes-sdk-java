@@ -21,7 +21,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## createDashboardSnapshot
 
-> CreateDashboardSnapshot201Response createDashboardSnapshot(generateDashboardSnapshotRequest, aid)
+> DashboardSnapshotResponse createDashboardSnapshot(generateDashboardSnapshotRequest, aid)
 
 Create dashboard snapshot
 
@@ -51,7 +51,7 @@ public class Example {
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateDashboardSnapshot201Response result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
+            DashboardSnapshotResponse result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#createDashboardSnapshot");
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**CreateDashboardSnapshot201Response**](CreateDashboardSnapshot201Response.md)
+[**DashboardSnapshotResponse**](DashboardSnapshotResponse.md)
 
 
 ### Authorization
@@ -99,7 +99,7 @@ public class Example {
 
 ## createDashboardSnapshotWithHttpInfo
 
-> ApiResponse<CreateDashboardSnapshot201Response> createDashboardSnapshot createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid)
+> ApiResponse<DashboardSnapshotResponse> createDashboardSnapshot createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid)
 
 Create dashboard snapshot
 
@@ -130,7 +130,7 @@ public class Example {
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CreateDashboardSnapshot201Response> response = apiInstance.createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid);
+            ApiResponse<DashboardSnapshotResponse> response = apiInstance.createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -155,7 +155,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateDashboardSnapshot201Response**](CreateDashboardSnapshot201Response.md)>
+ApiResponse<[**DashboardSnapshotResponse**](DashboardSnapshotResponse.md)>
 
 
 ### Authorization
@@ -341,7 +341,7 @@ ApiResponse<[**ApiDashboardSnapshot**](ApiDashboardSnapshot.md)>
 
 ## dashboardSnapshots
 
-> DashboardSnapshots200Response dashboardSnapshots(aid, dashboardId, cursor)
+> DashboardSnapshotsPage dashboardSnapshots(aid, dashboardId, cursor)
 
 List dashboard snapshots
 
@@ -372,7 +372,7 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            DashboardSnapshots200Response result = apiInstance.dashboardSnapshots(aid, dashboardId, cursor);
+            DashboardSnapshotsPage result = apiInstance.dashboardSnapshots(aid, dashboardId, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#dashboardSnapshots");
@@ -396,7 +396,7 @@ public class Example {
 
 ### Return type
 
-[**DashboardSnapshots200Response**](DashboardSnapshots200Response.md)
+[**DashboardSnapshotsPage**](DashboardSnapshotsPage.md)
 
 
 ### Authorization
@@ -421,7 +421,7 @@ public class Example {
 
 ## dashboardSnapshotsWithHttpInfo
 
-> ApiResponse<DashboardSnapshots200Response> dashboardSnapshots dashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor)
+> ApiResponse<DashboardSnapshotsPage> dashboardSnapshots dashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor)
 
 List dashboard snapshots
 
@@ -453,7 +453,7 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<DashboardSnapshots200Response> response = apiInstance.dashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor);
+            ApiResponse<DashboardSnapshotsPage> response = apiInstance.dashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -479,7 +479,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**DashboardSnapshots200Response**](DashboardSnapshots200Response.md)>
+ApiResponse<[**DashboardSnapshotsPage**](DashboardSnapshotsPage.md)>
 
 
 ### Authorization
@@ -663,7 +663,7 @@ ApiResponse<Void>
 
 ## snapshotDataByWidget
 
-> SnapshotDataByWidget200Response snapshotDataByWidget(snapshotId, widgetId, aid)
+> ApiWidgetDataSnapshotResponse snapshotDataByWidget(snapshotId, widgetId, aid)
 
 Retrieve dashboard snapshot data
 
@@ -694,7 +694,7 @@ public class Example {
         String widgetId = "unpmg"; // String | A Identifier for a widget.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            SnapshotDataByWidget200Response result = apiInstance.snapshotDataByWidget(snapshotId, widgetId, aid);
+            ApiWidgetDataSnapshotResponse result = apiInstance.snapshotDataByWidget(snapshotId, widgetId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#snapshotDataByWidget");
@@ -718,7 +718,7 @@ public class Example {
 
 ### Return type
 
-[**SnapshotDataByWidget200Response**](SnapshotDataByWidget200Response.md)
+[**ApiWidgetDataSnapshotResponse**](ApiWidgetDataSnapshotResponse.md)
 
 
 ### Authorization
@@ -743,7 +743,7 @@ public class Example {
 
 ## snapshotDataByWidgetWithHttpInfo
 
-> ApiResponse<SnapshotDataByWidget200Response> snapshotDataByWidget snapshotDataByWidgetWithHttpInfo(snapshotId, widgetId, aid)
+> ApiResponse<ApiWidgetDataSnapshotResponse> snapshotDataByWidget snapshotDataByWidgetWithHttpInfo(snapshotId, widgetId, aid)
 
 Retrieve dashboard snapshot data
 
@@ -775,7 +775,7 @@ public class Example {
         String widgetId = "unpmg"; // String | A Identifier for a widget.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<SnapshotDataByWidget200Response> response = apiInstance.snapshotDataByWidgetWithHttpInfo(snapshotId, widgetId, aid);
+            ApiResponse<ApiWidgetDataSnapshotResponse> response = apiInstance.snapshotDataByWidgetWithHttpInfo(snapshotId, widgetId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -801,7 +801,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**SnapshotDataByWidget200Response**](SnapshotDataByWidget200Response.md)>
+ApiResponse<[**ApiWidgetDataSnapshotResponse**](ApiWidgetDataSnapshotResponse.md)>
 
 
 ### Authorization
