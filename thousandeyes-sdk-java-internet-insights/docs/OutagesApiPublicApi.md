@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getOutagesApp
 
-> ApiApplicationOutageResponse getOutagesApp(outageId, aid)
+> ApiApplicationOutageDetails getOutagesApp(outageId, aid)
 
 Retrieve application outage
 
@@ -45,7 +45,7 @@ public class Example {
         String outageId = "F73E24F17E4996923196826A208BB572508A8EB13BEE14B0"; // String | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiApplicationOutageResponse result = apiInstance.getOutagesApp(outageId, aid);
+            ApiApplicationOutageDetails result = apiInstance.getOutagesApp(outageId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OutagesApiPublicApi#getOutagesApp");
@@ -68,7 +68,7 @@ public class Example {
 
 ### Return type
 
-[**ApiApplicationOutageResponse**](ApiApplicationOutageResponse.md)
+[**ApiApplicationOutageDetails**](ApiApplicationOutageDetails.md)
 
 
 ### Authorization
@@ -95,7 +95,7 @@ public class Example {
 
 ## getOutagesAppWithHttpInfo
 
-> ApiResponse<ApiApplicationOutageResponse> getOutagesApp getOutagesAppWithHttpInfo(outageId, aid)
+> ApiResponse<ApiApplicationOutageDetails> getOutagesApp getOutagesAppWithHttpInfo(outageId, aid)
 
 Retrieve application outage
 
@@ -126,7 +126,7 @@ public class Example {
         String outageId = "F73E24F17E4996923196826A208BB572508A8EB13BEE14B0"; // String | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiApplicationOutageResponse> response = apiInstance.getOutagesAppWithHttpInfo(outageId, aid);
+            ApiResponse<ApiApplicationOutageDetails> response = apiInstance.getOutagesAppWithHttpInfo(outageId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -151,7 +151,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**ApiApplicationOutageResponse**](ApiApplicationOutageResponse.md)>
+ApiResponse<[**ApiApplicationOutageDetails**](ApiApplicationOutageDetails.md)>
 
 
 ### Authorization
@@ -343,7 +343,7 @@ ApiResponse<[**ApiOutagesResponse**](ApiOutagesResponse.md)>
 
 ## getOutagesNet
 
-> ApiNetworkOutageResponse getOutagesNet(outageId, aid)
+> ApiNetworkOutageDetails getOutagesNet(outageId, aid)
 
 Retrieve network outage
 
@@ -373,7 +373,7 @@ public class Example {
         String outageId = "694D8656960F34F76489BCE5E9BCD58EC53027462740D75F"; // String | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiNetworkOutageResponse result = apiInstance.getOutagesNet(outageId, aid);
+            ApiNetworkOutageDetails result = apiInstance.getOutagesNet(outageId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OutagesApiPublicApi#getOutagesNet");
@@ -396,7 +396,7 @@ public class Example {
 
 ### Return type
 
-[**ApiNetworkOutageResponse**](ApiNetworkOutageResponse.md)
+[**ApiNetworkOutageDetails**](ApiNetworkOutageDetails.md)
 
 
 ### Authorization
@@ -423,7 +423,7 @@ public class Example {
 
 ## getOutagesNetWithHttpInfo
 
-> ApiResponse<ApiNetworkOutageResponse> getOutagesNet getOutagesNetWithHttpInfo(outageId, aid)
+> ApiResponse<ApiNetworkOutageDetails> getOutagesNet getOutagesNetWithHttpInfo(outageId, aid)
 
 Retrieve network outage
 
@@ -454,7 +454,7 @@ public class Example {
         String outageId = "694D8656960F34F76489BCE5E9BCD58EC53027462740D75F"; // String | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiNetworkOutageResponse> response = apiInstance.getOutagesNetWithHttpInfo(outageId, aid);
+            ApiResponse<ApiNetworkOutageDetails> response = apiInstance.getOutagesNetWithHttpInfo(outageId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -479,7 +479,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**ApiNetworkOutageResponse**](ApiNetworkOutageResponse.md)>
+ApiResponse<[**ApiNetworkOutageDetails**](ApiNetworkOutageDetails.md)>
 
 
 ### Authorization

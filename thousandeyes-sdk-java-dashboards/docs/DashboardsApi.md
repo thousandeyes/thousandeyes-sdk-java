@@ -499,7 +499,7 @@ ApiResponse<[**ApiDashboard**](ApiDashboard.md)>
 
 ## getDashboardData
 
-> GetDashboardData200Response getDashboardData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
+> ApiWidgetDataResponse getDashboardData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
 
 Retrieve dashboard widget data
 
@@ -537,7 +537,7 @@ public class Example {
         String sort = "alertStatus"; // String | Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by `alertStatus` or `startTime`. The default is `alertStatus`. * For the **Test Table** widget, you can sort by `alertStatus`, `testName`, or `testType`. The sequence might vary from the web application. The default sort attribute is `alertStatus`.
         DashboardOrder order = DashboardOrder.fromValue("asc"); // DashboardOrder | Optional sorting order parameter that accepts either `asc` (ascending) or `desc` (descending) values. This only applies to the **Alert List** and **Test Table** Widgets.
         try {
-            GetDashboardData200Response result = apiInstance.getDashboardData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
+            ApiWidgetDataResponse result = apiInstance.getDashboardData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#getDashboardData");
@@ -568,7 +568,7 @@ public class Example {
 
 ### Return type
 
-[**GetDashboardData200Response**](GetDashboardData200Response.md)
+[**ApiWidgetDataResponse**](ApiWidgetDataResponse.md)
 
 
 ### Authorization
@@ -593,7 +593,7 @@ public class Example {
 
 ## getDashboardDataWithHttpInfo
 
-> ApiResponse<GetDashboardData200Response> getDashboardData getDashboardDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
+> ApiResponse<ApiWidgetDataResponse> getDashboardData getDashboardDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
 
 Retrieve dashboard widget data
 
@@ -632,7 +632,7 @@ public class Example {
         String sort = "alertStatus"; // String | Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by `alertStatus` or `startTime`. The default is `alertStatus`. * For the **Test Table** widget, you can sort by `alertStatus`, `testName`, or `testType`. The sequence might vary from the web application. The default sort attribute is `alertStatus`.
         DashboardOrder order = DashboardOrder.fromValue("asc"); // DashboardOrder | Optional sorting order parameter that accepts either `asc` (ascending) or `desc` (descending) values. This only applies to the **Alert List** and **Test Table** Widgets.
         try {
-            ApiResponse<GetDashboardData200Response> response = apiInstance.getDashboardDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
+            ApiResponse<ApiWidgetDataResponse> response = apiInstance.getDashboardDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -665,7 +665,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetDashboardData200Response**](GetDashboardData200Response.md)>
+ApiResponse<[**ApiWidgetDataResponse**](ApiWidgetDataResponse.md)>
 
 
 ### Authorization

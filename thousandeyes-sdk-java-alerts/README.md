@@ -2,9 +2,7 @@
 
 Alerts API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.188640+01:00[Europe/Lisbon]
+- API version: 7.0.4
 
 You can manage the following alert functionalities on the ThousandEyes platform using the Alerts API:
 
@@ -51,7 +49,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-alerts</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +59,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-alerts:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-alerts:version"
 ```
 
 ### Others
@@ -74,7 +72,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-alerts-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-alerts-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -97,7 +95,7 @@ public class AlertRulesApiExample {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateAlertRule201Response result = apiInstance.createAlertRule(ruleDetailUpdate, aid);
+            Rule result = apiInstance.createAlertRule(ruleDetailUpdate, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#createAlertRule");

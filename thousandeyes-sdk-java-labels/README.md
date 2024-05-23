@@ -2,9 +2,7 @@
 
 Labels API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.079134+01:00[Europe/Lisbon]
+- API version: 7.0.4
 
 ### Overview
 This is API for the Labels API (formerly called groups).
@@ -43,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-labels</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-labels:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-labels:version"
 ```
 
 ### Others
@@ -66,7 +64,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-labels-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-labels-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -89,7 +87,7 @@ public class AgentApiExample {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label resource
         try {
-            CreateAgentLabel201Response result = apiInstance.createAgentLabel(aid, labelRequest);
+            LabelDetail result = apiInstance.createAgentLabel(aid, labelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentApi#createAgentLabel");

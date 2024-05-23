@@ -171,7 +171,7 @@ ApiResponse<[**AlertDetail**](AlertDetail.md)>
 
 ## getAlerts
 
-> GetAlerts200Response getAlerts(aid, window, startDate, endDate, max, state)
+> Alerts getAlerts(aid, window, startDate, endDate, max, state)
 
 List active alerts
 
@@ -205,7 +205,7 @@ public class Example {
         BigDecimal max = new BigDecimal("5"); // BigDecimal | (Optional) Maximum number of objects to return.
         State state = new State(); // State | Optional parameter to match a specific alert state. If not specified, it defaults to `trigger`.
         try {
-            GetAlerts200Response result = apiInstance.getAlerts(aid, window, startDate, endDate, max, state);
+            Alerts result = apiInstance.getAlerts(aid, window, startDate, endDate, max, state);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertsApi#getAlerts");
@@ -232,7 +232,7 @@ public class Example {
 
 ### Return type
 
-[**GetAlerts200Response**](GetAlerts200Response.md)
+[**Alerts**](Alerts.md)
 
 
 ### Authorization
@@ -256,7 +256,7 @@ public class Example {
 
 ## getAlertsWithHttpInfo
 
-> ApiResponse<GetAlerts200Response> getAlerts getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state)
+> ApiResponse<Alerts> getAlerts getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state)
 
 List active alerts
 
@@ -291,7 +291,7 @@ public class Example {
         BigDecimal max = new BigDecimal("5"); // BigDecimal | (Optional) Maximum number of objects to return.
         State state = new State(); // State | Optional parameter to match a specific alert state. If not specified, it defaults to `trigger`.
         try {
-            ApiResponse<GetAlerts200Response> response = apiInstance.getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state);
+            ApiResponse<Alerts> response = apiInstance.getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -320,7 +320,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAlerts200Response**](GetAlerts200Response.md)>
+ApiResponse<[**Alerts**](Alerts.md)>
 
 
 ### Authorization
