@@ -21,7 +21,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## createTag
 
-> void createTag(aid, body)
+> void createTag(aid, tagInfo)
 
 Create tag
 
@@ -49,9 +49,9 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        Tag body = new Tag(); // Tag | Tag resource
+        TagInfo tagInfo = new TagInfo(); // TagInfo | Tag resource
         try {
-            apiInstance.createTag(aid, body);
+            apiInstance.createTag(aid, tagInfo);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#createTag");
             System.err.println("Status code: " + e.getCode());
@@ -69,7 +69,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **body** | **Tag**| Tag resource | [optional] |
+| **tagInfo** | [**TagInfo**](TagInfo.md)| Tag resource | [optional] |
 
 ### Return type
 
@@ -96,7 +96,7 @@ null (empty response body)
 
 ## createTagWithHttpInfo
 
-> ApiResponse<Void> createTag createTagWithHttpInfo(aid, body)
+> ApiResponse<Void> createTag createTagWithHttpInfo(aid, tagInfo)
 
 Create tag
 
@@ -125,9 +125,9 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        Tag body = new Tag(); // Tag | Tag resource
+        TagInfo tagInfo = new TagInfo(); // TagInfo | Tag resource
         try {
-            ApiResponse<Void> response = apiInstance.createTagWithHttpInfo(aid, body);
+            ApiResponse<Void> response = apiInstance.createTagWithHttpInfo(aid, tagInfo);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -147,7 +147,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **body** | **Tag**| Tag resource | [optional] |
+| **tagInfo** | [**TagInfo**](TagInfo.md)| Tag resource | [optional] |
 
 ### Return type
 
@@ -799,7 +799,7 @@ ApiResponse<Void>
 
 ## updateTag
 
-> void updateTag(id, aid, body)
+> void updateTag(id, aid, tagInfo)
 
 Update tag
 
@@ -828,9 +828,9 @@ public class Example {
         TagsApi apiInstance = new TagsApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of tag to update
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        Tag body = new Tag(); // Tag | 
+        TagInfo tagInfo = new TagInfo(); // TagInfo | 
         try {
-            apiInstance.updateTag(id, aid, body);
+            apiInstance.updateTag(id, aid, tagInfo);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#updateTag");
             System.err.println("Status code: " + e.getCode());
@@ -849,7 +849,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| ID of tag to update | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **body** | **Tag**|  | [optional] |
+| **tagInfo** | [**TagInfo**](TagInfo.md)|  | [optional] |
 
 ### Return type
 
@@ -877,7 +877,7 @@ null (empty response body)
 
 ## updateTagWithHttpInfo
 
-> ApiResponse<Void> updateTag updateTagWithHttpInfo(id, aid, body)
+> ApiResponse<Void> updateTag updateTagWithHttpInfo(id, aid, tagInfo)
 
 Update tag
 
@@ -907,9 +907,9 @@ public class Example {
         TagsApi apiInstance = new TagsApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of tag to update
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        Tag body = new Tag(); // Tag | 
+        TagInfo tagInfo = new TagInfo(); // TagInfo | 
         try {
-            ApiResponse<Void> response = apiInstance.updateTagWithHttpInfo(id, aid, body);
+            ApiResponse<Void> response = apiInstance.updateTagWithHttpInfo(id, aid, tagInfo);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -930,7 +930,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| ID of tag to update | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **body** | **Tag**|  | [optional] |
+| **tagInfo** | [**TagInfo**](TagInfo.md)|  | [optional] |
 
 ### Return type
 

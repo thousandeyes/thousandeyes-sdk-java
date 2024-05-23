@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultHttpServer
 
-> GetTestResultHttpServer200Response getTestResultHttpServer(testId, aid, window, startDate, endDate, cursor, expand)
+> HttpTestResults getTestResultHttpServer(testId, aid, window, startDate, endDate, cursor, expand)
 
 Get HTTP server test results
 
@@ -46,7 +46,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter lets you decide if you want to see more details about test results. By default, no extra information is shown unless you use the query parameter. For instance, if you want more info about the \"header,\" add ?expand=header to the query.
         try {
-            GetTestResultHttpServer200Response result = apiInstance.getTestResultHttpServer(testId, aid, window, startDate, endDate, cursor, expand);
+            HttpTestResults result = apiInstance.getTestResultHttpServer(testId, aid, window, startDate, endDate, cursor, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebHttpServerTestMetricsApi#getTestResultHttpServer");
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultHttpServer200Response**](GetTestResultHttpServer200Response.md)
+[**HttpTestResults**](HttpTestResults.md)
 
 
 ### Authorization
@@ -101,7 +101,7 @@ public class Example {
 
 ## getTestResultHttpServerWithHttpInfo
 
-> ApiResponse<GetTestResultHttpServer200Response> getTestResultHttpServer getTestResultHttpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand)
+> ApiResponse<HttpTestResults> getTestResultHttpServer getTestResultHttpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand)
 
 Get HTTP server test results
 
@@ -137,7 +137,7 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter lets you decide if you want to see more details about test results. By default, no extra information is shown unless you use the query parameter. For instance, if you want more info about the \"header,\" add ?expand=header to the query.
         try {
-            ApiResponse<GetTestResultHttpServer200Response> response = apiInstance.getTestResultHttpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand);
+            ApiResponse<HttpTestResults> response = apiInstance.getTestResultHttpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -167,7 +167,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultHttpServer200Response**](GetTestResultHttpServer200Response.md)>
+ApiResponse<[**HttpTestResults**](HttpTestResults.md)>
 
 
 ### Authorization

@@ -509,7 +509,7 @@ ApiResponse<[**SipServerTest**](SipServerTest.md)>
 
 ## getSipServerTests
 
-> GetSipServerTests200Response getSipServerTests(aid)
+> SipServerTests getSipServerTests(aid)
 
 List SIP Server tests
 
@@ -538,7 +538,7 @@ public class Example {
         SipServerApi apiInstance = new SipServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetSipServerTests200Response result = apiInstance.getSipServerTests(aid);
+            SipServerTests result = apiInstance.getSipServerTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SipServerApi#getSipServerTests");
@@ -560,7 +560,7 @@ public class Example {
 
 ### Return type
 
-[**GetSipServerTests200Response**](GetSipServerTests200Response.md)
+[**SipServerTests**](SipServerTests.md)
 
 
 ### Authorization
@@ -586,7 +586,7 @@ public class Example {
 
 ## getSipServerTestsWithHttpInfo
 
-> ApiResponse<GetSipServerTests200Response> getSipServerTests getSipServerTestsWithHttpInfo(aid)
+> ApiResponse<SipServerTests> getSipServerTests getSipServerTestsWithHttpInfo(aid)
 
 List SIP Server tests
 
@@ -616,7 +616,7 @@ public class Example {
         SipServerApi apiInstance = new SipServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetSipServerTests200Response> response = apiInstance.getSipServerTestsWithHttpInfo(aid);
+            ApiResponse<SipServerTests> response = apiInstance.getSipServerTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -640,7 +640,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetSipServerTests200Response**](GetSipServerTests200Response.md)>
+ApiResponse<[**SipServerTests**](SipServerTests.md)>
 
 
 ### Authorization
