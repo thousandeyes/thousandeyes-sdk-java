@@ -6,14 +6,17 @@ import java.util.Properties;
 
 
 public class Config {
-    public String getVersion() {
-        Properties prop = new Properties();
+    private static final Properties properties = new Properties();
+    private static final String DEFAULT_VERSION = "1.0.0";
+
+    static {
         try {
-            prop.load(getClass().getResourceAsStream("/config.properties"));
-            return prop.getProperty("version");
+            properties.load(Config.class.getResourceAsStream("/config.properties"));
+        } catch (IOException ignored) {
         }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    }
+
+    public static String getVersion() {
+        return properties.getProperty("version", DEFAULT_VERSION);
     }
 }
