@@ -6,17 +6,17 @@ import java.util.Properties;
 
 
 public class Config {
-    private static final Properties properties = new Properties();
-    private static final String DEFAULT_VERSION = "1.0.0";
+    public static final String USER_AGENT;
+    public static final String SDK_VERSION;
+    private static final String DEFAULT_SDK_VERSION = "1.0.0";
 
     static {
+        Properties prop = new Properties();
         try {
-            properties.load(Config.class.getResourceAsStream("/config.properties"));
+            prop.load(Config.class.getResourceAsStream("/config.properties"));
         } catch (IOException ignored) {
         }
-    }
-
-    public static String getVersion() {
-        return properties.getProperty("version", DEFAULT_VERSION);
+        SDK_VERSION = prop.getProperty("version", DEFAULT_SDK_VERSION);
+        USER_AGENT = "ThousandEyesSDK-Java/" + SDK_VERSION;
     }
 }
