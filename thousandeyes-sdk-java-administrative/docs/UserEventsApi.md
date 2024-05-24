@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getUserEvents
 
-> GetUserEvents200Response getUserEvents(aid, useAllPermittedAids, window, startDate, endDate, cursor)
+> AuditUserEvents getUserEvents(aid, useAllPermittedAids, window, startDate, endDate, cursor)
 
 List activity log events
 
@@ -45,7 +45,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetUserEvents200Response result = apiInstance.getUserEvents(aid, useAllPermittedAids, window, startDate, endDate, cursor);
+            AuditUserEvents result = apiInstance.getUserEvents(aid, useAllPermittedAids, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserEventsApi#getUserEvents");
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**GetUserEvents200Response**](GetUserEvents200Response.md)
+[**AuditUserEvents**](AuditUserEvents.md)
 
 
 ### Authorization
@@ -97,7 +97,7 @@ public class Example {
 
 ## getUserEventsWithHttpInfo
 
-> ApiResponse<GetUserEvents200Response> getUserEvents getUserEventsWithHttpInfo(aid, useAllPermittedAids, window, startDate, endDate, cursor)
+> ApiResponse<AuditUserEvents> getUserEvents getUserEventsWithHttpInfo(aid, useAllPermittedAids, window, startDate, endDate, cursor)
 
 List activity log events
 
@@ -132,7 +132,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetUserEvents200Response> response = apiInstance.getUserEventsWithHttpInfo(aid, useAllPermittedAids, window, startDate, endDate, cursor);
+            ApiResponse<AuditUserEvents> response = apiInstance.getUserEventsWithHttpInfo(aid, useAllPermittedAids, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -161,7 +161,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetUserEvents200Response**](GetUserEvents200Response.md)>
+ApiResponse<[**AuditUserEvents**](AuditUserEvents.md)>
 
 
 ### Authorization

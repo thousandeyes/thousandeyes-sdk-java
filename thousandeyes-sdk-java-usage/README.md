@@ -2,9 +2,7 @@
 
 Usage API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:14.323902+01:00[Europe/Lisbon]
+- API version: 7.0.4
 
 
 These usage endpoints define the following operations:
@@ -56,7 +54,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-usage</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -66,7 +64,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-usage:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-usage:version"
 ```
 
 ### Others
@@ -79,7 +77,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-usage-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-usage-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

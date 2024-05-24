@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultDnsServer
 
-> GetTestResultDnsServer200Response getTestResultDnsServer(testId, serverId, aid, window, startDate, endDate, cursor)
+> DnsServerTestResults getTestResultDnsServer(testId, serverId, aid, window, startDate, endDate, cursor)
 
 Get DNS server test results by server
 
@@ -48,7 +48,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultDnsServer200Response result = apiInstance.getTestResultDnsServer(testId, serverId, aid, window, startDate, endDate, cursor);
+            DnsServerTestResults result = apiInstance.getTestResultDnsServer(testId, serverId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DnsServerTestMetricsApi#getTestResultDnsServer");
@@ -76,7 +76,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Response.md)
+[**DnsServerTestResults**](DnsServerTestResults.md)
 
 
 ### Authorization
@@ -103,7 +103,7 @@ public class Example {
 
 ## getTestResultDnsServerWithHttpInfo
 
-> ApiResponse<GetTestResultDnsServer200Response> getTestResultDnsServer getTestResultDnsServerWithHttpInfo(testId, serverId, aid, window, startDate, endDate, cursor)
+> ApiResponse<DnsServerTestResults> getTestResultDnsServer getTestResultDnsServerWithHttpInfo(testId, serverId, aid, window, startDate, endDate, cursor)
 
 Get DNS server test results by server
 
@@ -139,7 +139,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultDnsServer200Response> response = apiInstance.getTestResultDnsServerWithHttpInfo(testId, serverId, aid, window, startDate, endDate, cursor);
+            ApiResponse<DnsServerTestResults> response = apiInstance.getTestResultDnsServerWithHttpInfo(testId, serverId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -169,7 +169,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Response.md)>
+ApiResponse<[**DnsServerTestResults**](DnsServerTestResults.md)>
 
 
 ### Authorization
@@ -197,7 +197,7 @@ ApiResponse<[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Res
 
 ## getTestResultDnsServers
 
-> GetTestResultDnsServer200Response getTestResultDnsServers(testId, aid, window, startDate, endDate, cursor)
+> DnsServerTestResults getTestResultDnsServers(testId, aid, window, startDate, endDate, cursor)
 
 Get DNS server test results
 
@@ -231,7 +231,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultDnsServer200Response result = apiInstance.getTestResultDnsServers(testId, aid, window, startDate, endDate, cursor);
+            DnsServerTestResults result = apiInstance.getTestResultDnsServers(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DnsServerTestMetricsApi#getTestResultDnsServers");
@@ -258,7 +258,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Response.md)
+[**DnsServerTestResults**](DnsServerTestResults.md)
 
 
 ### Authorization
@@ -285,7 +285,7 @@ public class Example {
 
 ## getTestResultDnsServersWithHttpInfo
 
-> ApiResponse<GetTestResultDnsServer200Response> getTestResultDnsServers getTestResultDnsServersWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<DnsServerTestResults> getTestResultDnsServers getTestResultDnsServersWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get DNS server test results
 
@@ -320,7 +320,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultDnsServer200Response> response = apiInstance.getTestResultDnsServersWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<DnsServerTestResults> response = apiInstance.getTestResultDnsServersWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -349,7 +349,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Response.md)>
+ApiResponse<[**DnsServerTestResults**](DnsServerTestResults.md)>
 
 
 ### Authorization

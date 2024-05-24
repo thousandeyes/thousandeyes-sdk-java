@@ -343,7 +343,7 @@ ApiResponse<[**EndpointHttpServerTest**](EndpointHttpServerTest.md)>
 
 ## getEndpointHttpserverTestsList
 
-> GetEndpointHttpserverTestsList200Response getEndpointHttpserverTestsList(aid)
+> EndpointHttpServerTests getEndpointHttpserverTestsList(aid)
 
 List HTTP server endpoint scheduled tests
 
@@ -372,7 +372,7 @@ public class Example {
         ScheduledTestsHttpServerApi apiInstance = new ScheduledTestsHttpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointHttpserverTestsList200Response result = apiInstance.getEndpointHttpserverTestsList(aid);
+            EndpointHttpServerTests result = apiInstance.getEndpointHttpserverTestsList(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ScheduledTestsHttpServerApi#getEndpointHttpserverTestsList");
@@ -394,7 +394,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointHttpserverTestsList200Response**](GetEndpointHttpserverTestsList200Response.md)
+[**EndpointHttpServerTests**](EndpointHttpServerTests.md)
 
 
 ### Authorization
@@ -419,7 +419,7 @@ public class Example {
 
 ## getEndpointHttpserverTestsListWithHttpInfo
 
-> ApiResponse<GetEndpointHttpserverTestsList200Response> getEndpointHttpserverTestsList getEndpointHttpserverTestsListWithHttpInfo(aid)
+> ApiResponse<EndpointHttpServerTests> getEndpointHttpserverTestsList getEndpointHttpserverTestsListWithHttpInfo(aid)
 
 List HTTP server endpoint scheduled tests
 
@@ -449,7 +449,7 @@ public class Example {
         ScheduledTestsHttpServerApi apiInstance = new ScheduledTestsHttpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointHttpserverTestsList200Response> response = apiInstance.getEndpointHttpserverTestsListWithHttpInfo(aid);
+            ApiResponse<EndpointHttpServerTests> response = apiInstance.getEndpointHttpserverTestsListWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -473,7 +473,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointHttpserverTestsList200Response**](GetEndpointHttpserverTestsList200Response.md)>
+ApiResponse<[**EndpointHttpServerTests**](EndpointHttpServerTests.md)>
 
 
 ### Authorization

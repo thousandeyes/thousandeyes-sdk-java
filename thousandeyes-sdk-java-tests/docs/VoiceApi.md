@@ -513,7 +513,7 @@ ApiResponse<[**VoiceTest**](VoiceTest.md)>
 
 ## getVoiceTests
 
-> GetVoiceTests200Response getVoiceTests(aid)
+> VoiceTests getVoiceTests(aid)
 
 List Voice tests
 
@@ -542,7 +542,7 @@ public class Example {
         VoiceApi apiInstance = new VoiceApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetVoiceTests200Response result = apiInstance.getVoiceTests(aid);
+            VoiceTests result = apiInstance.getVoiceTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling VoiceApi#getVoiceTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetVoiceTests200Response**](GetVoiceTests200Response.md)
+[**VoiceTests**](VoiceTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getVoiceTestsWithHttpInfo
 
-> ApiResponse<GetVoiceTests200Response> getVoiceTests getVoiceTestsWithHttpInfo(aid)
+> ApiResponse<VoiceTests> getVoiceTests getVoiceTestsWithHttpInfo(aid)
 
 List Voice tests
 
@@ -620,7 +620,7 @@ public class Example {
         VoiceApi apiInstance = new VoiceApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetVoiceTests200Response> response = apiInstance.getVoiceTestsWithHttpInfo(aid);
+            ApiResponse<VoiceTests> response = apiInstance.getVoiceTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetVoiceTests200Response**](GetVoiceTests200Response.md)>
+ApiResponse<[**VoiceTests**](VoiceTests.md)>
 
 
 ### Authorization

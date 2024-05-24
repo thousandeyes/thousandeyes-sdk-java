@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getBGPMonitors
 
-> GetBGPMonitors200Response getBGPMonitors(aid)
+> Monitors getBGPMonitors(aid)
 
 List BGP monitors
 
@@ -40,7 +40,7 @@ public class Example {
         ListBgpMonitorsApi apiInstance = new ListBgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetBGPMonitors200Response result = apiInstance.getBGPMonitors(aid);
+            Monitors result = apiInstance.getBGPMonitors(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ListBgpMonitorsApi#getBGPMonitors");
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetBGPMonitors200Response**](GetBGPMonitors200Response.md)
+[**Monitors**](Monitors.md)
 
 
 ### Authorization
@@ -86,7 +86,7 @@ public class Example {
 
 ## getBGPMonitorsWithHttpInfo
 
-> ApiResponse<GetBGPMonitors200Response> getBGPMonitors getBGPMonitorsWithHttpInfo(aid)
+> ApiResponse<Monitors> getBGPMonitors getBGPMonitorsWithHttpInfo(aid)
 
 List BGP monitors
 
@@ -116,7 +116,7 @@ public class Example {
         ListBgpMonitorsApi apiInstance = new ListBgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetBGPMonitors200Response> response = apiInstance.getBGPMonitorsWithHttpInfo(aid);
+            ApiResponse<Monitors> response = apiInstance.getBGPMonitorsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -140,7 +140,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetBGPMonitors200Response**](GetBGPMonitors200Response.md)>
+ApiResponse<[**Monitors**](Monitors.md)>
 
 
 ### Authorization
