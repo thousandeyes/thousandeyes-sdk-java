@@ -343,7 +343,7 @@ ApiResponse<[**DynamicTest**](DynamicTest.md)>
 
 ## getDynamicTestsList
 
-> GetDynamicTestsList200Response getDynamicTestsList(aid)
+> DynamicTests getDynamicTestsList(aid)
 
 List endpoint dynamic tests
 
@@ -372,7 +372,7 @@ public class Example {
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetDynamicTestsList200Response result = apiInstance.getDynamicTestsList(aid);
+            DynamicTests result = apiInstance.getDynamicTestsList(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DynamicTestsAgentToServerApi#getDynamicTestsList");
@@ -394,7 +394,7 @@ public class Example {
 
 ### Return type
 
-[**GetDynamicTestsList200Response**](GetDynamicTestsList200Response.md)
+[**DynamicTests**](DynamicTests.md)
 
 
 ### Authorization
@@ -419,7 +419,7 @@ public class Example {
 
 ## getDynamicTestsListWithHttpInfo
 
-> ApiResponse<GetDynamicTestsList200Response> getDynamicTestsList getDynamicTestsListWithHttpInfo(aid)
+> ApiResponse<DynamicTests> getDynamicTestsList getDynamicTestsListWithHttpInfo(aid)
 
 List endpoint dynamic tests
 
@@ -449,7 +449,7 @@ public class Example {
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetDynamicTestsList200Response> response = apiInstance.getDynamicTestsListWithHttpInfo(aid);
+            ApiResponse<DynamicTests> response = apiInstance.getDynamicTestsListWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -473,7 +473,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetDynamicTestsList200Response**](GetDynamicTestsList200Response.md)>
+ApiResponse<[**DynamicTests**](DynamicTests.md)>
 
 
 ### Authorization

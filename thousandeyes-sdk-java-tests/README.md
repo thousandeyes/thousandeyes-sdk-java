@@ -2,9 +2,7 @@
 
 Tests API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:14.524967+01:00[Europe/Lisbon]
+- API version: 7.0.5
 
 This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
 
@@ -43,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-tests:version"
 ```
 
 ### Others
@@ -66,7 +64,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-tests-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -132,6 +130,16 @@ Class | Method | HTTP request | Description
 *AgentToServerApi* | [**updateAgentToServerTestWithHttpInfo**](docs/AgentToServerApi.md#updateAgentToServerTestWithHttpInfo) | **PUT** /v7/tests/agent-to-server/{testId} | Update Agent to Server test
 *AllTestTypesApi* | [**getTests**](docs/AllTestTypesApi.md#getTests) | **GET** /v7/tests | List configured tests
 *AllTestTypesApi* | [**getTestsWithHttpInfo**](docs/AllTestTypesApi.md#getTestsWithHttpInfo) | **GET** /v7/tests | List configured tests
+*ApiApi* | [**createApiTest**](docs/ApiApi.md#createApiTest) | **POST** /v7/tests/api | Create API test
+*ApiApi* | [**createApiTestWithHttpInfo**](docs/ApiApi.md#createApiTestWithHttpInfo) | **POST** /v7/tests/api | Create API test
+*ApiApi* | [**deleteApiTest**](docs/ApiApi.md#deleteApiTest) | **DELETE** /v7/tests/api/{testId} | Delete API test
+*ApiApi* | [**deleteApiTestWithHttpInfo**](docs/ApiApi.md#deleteApiTestWithHttpInfo) | **DELETE** /v7/tests/api/{testId} | Delete API test
+*ApiApi* | [**getApiTest**](docs/ApiApi.md#getApiTest) | **GET** /v7/tests/api/{testId} | Get API test
+*ApiApi* | [**getApiTestWithHttpInfo**](docs/ApiApi.md#getApiTestWithHttpInfo) | **GET** /v7/tests/api/{testId} | Get API test
+*ApiApi* | [**getApiTests**](docs/ApiApi.md#getApiTests) | **GET** /v7/tests/api | List API tests
+*ApiApi* | [**getApiTestsWithHttpInfo**](docs/ApiApi.md#getApiTestsWithHttpInfo) | **GET** /v7/tests/api | List API tests
+*ApiApi* | [**updateApiTest**](docs/ApiApi.md#updateApiTest) | **PUT** /v7/tests/api/{testId} | Update API test
+*ApiApi* | [**updateApiTestWithHttpInfo**](docs/ApiApi.md#updateApiTestWithHttpInfo) | **PUT** /v7/tests/api/{testId} | Update API test
 *BgpApi* | [**createBgpTest**](docs/BgpApi.md#createBgpTest) | **POST** /v7/tests/bgp | Create BGP test
 *BgpApi* | [**createBgpTestWithHttpInfo**](docs/BgpApi.md#createBgpTestWithHttpInfo) | **POST** /v7/tests/bgp | Create BGP test
 *BgpApi* | [**deleteBgpTest**](docs/BgpApi.md#deleteBgpTest) | **DELETE** /v7/tests/bgp/{testId} | Delete BGP test

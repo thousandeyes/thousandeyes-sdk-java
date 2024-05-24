@@ -173,7 +173,7 @@ ApiResponse<Void>
 
 ## endpointLabelGet
 
-> V7EndpointLabelsPost201Response endpointLabelGet(id, expand, aid)
+> LabelResponse endpointLabelGet(id, expand, aid)
 
 Retrieve label
 
@@ -204,7 +204,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            V7EndpointLabelsPost201Response result = apiInstance.endpointLabelGet(id, expand, aid);
+            LabelResponse result = apiInstance.endpointLabelGet(id, expand, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageLabelsApi#endpointLabelGet");
@@ -228,7 +228,7 @@ public class Example {
 
 ### Return type
 
-[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)
+[**LabelResponse**](LabelResponse.md)
 
 
 ### Authorization
@@ -251,7 +251,7 @@ public class Example {
 
 ## endpointLabelGetWithHttpInfo
 
-> ApiResponse<V7EndpointLabelsPost201Response> endpointLabelGet endpointLabelGetWithHttpInfo(id, expand, aid)
+> ApiResponse<LabelResponse> endpointLabelGet endpointLabelGetWithHttpInfo(id, expand, aid)
 
 Retrieve label
 
@@ -283,7 +283,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.endpointLabelGetWithHttpInfo(id, expand, aid);
+            ApiResponse<LabelResponse> response = apiInstance.endpointLabelGetWithHttpInfo(id, expand, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -309,7 +309,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)>
+ApiResponse<[**LabelResponse**](LabelResponse.md)>
 
 
 ### Authorization
@@ -333,7 +333,7 @@ ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Respons
 
 ## endpointLabelUpdate
 
-> V7EndpointLabelsPost201Response endpointLabelUpdate(id, aid, label)
+> LabelResponse endpointLabelUpdate(id, aid, label)
 
 Update label
 
@@ -364,7 +364,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Label label = new Label(); // Label | Fields to change on the agent
         try {
-            V7EndpointLabelsPost201Response result = apiInstance.endpointLabelUpdate(id, aid, label);
+            LabelResponse result = apiInstance.endpointLabelUpdate(id, aid, label);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageLabelsApi#endpointLabelUpdate");
@@ -388,7 +388,7 @@ public class Example {
 
 ### Return type
 
-[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)
+[**LabelResponse**](LabelResponse.md)
 
 
 ### Authorization
@@ -412,7 +412,7 @@ public class Example {
 
 ## endpointLabelUpdateWithHttpInfo
 
-> ApiResponse<V7EndpointLabelsPost201Response> endpointLabelUpdate endpointLabelUpdateWithHttpInfo(id, aid, label)
+> ApiResponse<LabelResponse> endpointLabelUpdate endpointLabelUpdateWithHttpInfo(id, aid, label)
 
 Update label
 
@@ -444,7 +444,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Label label = new Label(); // Label | Fields to change on the agent
         try {
-            ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.endpointLabelUpdateWithHttpInfo(id, aid, label);
+            ApiResponse<LabelResponse> response = apiInstance.endpointLabelUpdateWithHttpInfo(id, aid, label);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -470,7 +470,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)>
+ApiResponse<[**LabelResponse**](LabelResponse.md)>
 
 
 ### Authorization
@@ -495,7 +495,7 @@ ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Respons
 
 ## endpointLabelsList
 
-> EndpointLabelsList200Response endpointLabelsList(max, cursor, expand, aid)
+> Labels endpointLabelsList(max, cursor, expand, aid)
 
 List labels
 
@@ -527,7 +527,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointLabelsList200Response result = apiInstance.endpointLabelsList(max, cursor, expand, aid);
+            Labels result = apiInstance.endpointLabelsList(max, cursor, expand, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageLabelsApi#endpointLabelsList");
@@ -552,7 +552,7 @@ public class Example {
 
 ### Return type
 
-[**EndpointLabelsList200Response**](EndpointLabelsList200Response.md)
+[**Labels**](Labels.md)
 
 
 ### Authorization
@@ -574,7 +574,7 @@ public class Example {
 
 ## endpointLabelsListWithHttpInfo
 
-> ApiResponse<EndpointLabelsList200Response> endpointLabelsList endpointLabelsListWithHttpInfo(max, cursor, expand, aid)
+> ApiResponse<Labels> endpointLabelsList endpointLabelsListWithHttpInfo(max, cursor, expand, aid)
 
 List labels
 
@@ -607,7 +607,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointLabelsList200Response> response = apiInstance.endpointLabelsListWithHttpInfo(max, cursor, expand, aid);
+            ApiResponse<Labels> response = apiInstance.endpointLabelsListWithHttpInfo(max, cursor, expand, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -634,7 +634,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**EndpointLabelsList200Response**](EndpointLabelsList200Response.md)>
+ApiResponse<[**Labels**](Labels.md)>
 
 
 ### Authorization
@@ -657,7 +657,7 @@ ApiResponse<[**EndpointLabelsList200Response**](EndpointLabelsList200Response.md
 
 ## v7EndpointLabelsPost
 
-> V7EndpointLabelsPost201Response v7EndpointLabelsPost(aid, labelRequest)
+> LabelResponse v7EndpointLabelsPost(aid, labelRequest)
 
 Create label
 
@@ -687,7 +687,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
-            V7EndpointLabelsPost201Response result = apiInstance.v7EndpointLabelsPost(aid, labelRequest);
+            LabelResponse result = apiInstance.v7EndpointLabelsPost(aid, labelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageLabelsApi#v7EndpointLabelsPost");
@@ -710,7 +710,7 @@ public class Example {
 
 ### Return type
 
-[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)
+[**LabelResponse**](LabelResponse.md)
 
 
 ### Authorization
@@ -733,7 +733,7 @@ public class Example {
 
 ## v7EndpointLabelsPostWithHttpInfo
 
-> ApiResponse<V7EndpointLabelsPost201Response> v7EndpointLabelsPost v7EndpointLabelsPostWithHttpInfo(aid, labelRequest)
+> ApiResponse<LabelResponse> v7EndpointLabelsPost v7EndpointLabelsPostWithHttpInfo(aid, labelRequest)
 
 Create label
 
@@ -764,7 +764,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
-            ApiResponse<V7EndpointLabelsPost201Response> response = apiInstance.v7EndpointLabelsPostWithHttpInfo(aid, labelRequest);
+            ApiResponse<LabelResponse> response = apiInstance.v7EndpointLabelsPostWithHttpInfo(aid, labelRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -789,7 +789,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**V7EndpointLabelsPost201Response**](V7EndpointLabelsPost201Response.md)>
+ApiResponse<[**LabelResponse**](LabelResponse.md)>
 
 
 ### Authorization

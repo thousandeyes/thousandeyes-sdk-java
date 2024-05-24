@@ -2,9 +2,7 @@
 
 Instant Tests API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.145468+01:00[Europe/Lisbon]
+- API version: 7.0.5
 
 The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:
   * `API Access`
@@ -47,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-instant-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-instant-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-instant-tests:version"
 ```
 
 ### Others
@@ -70,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-instant-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-instant-tests-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -118,6 +116,8 @@ Class | Method | HTTP request | Description
 *AgentToAgentApi* | [**postInstantTestAgentToAgentWithHttpInfo**](docs/AgentToAgentApi.md#postInstantTestAgentToAgentWithHttpInfo) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test
 *AgentToServerApi* | [**postInstantAgentToServer**](docs/AgentToServerApi.md#postInstantAgentToServer) | **POST** /v7/tests/agent-to-server/instant | Create agent-to-server instant test
 *AgentToServerApi* | [**postInstantAgentToServerWithHttpInfo**](docs/AgentToServerApi.md#postInstantAgentToServerWithHttpInfo) | **POST** /v7/tests/agent-to-server/instant | Create agent-to-server instant test
+*ApiApi* | [**postInstantApi**](docs/ApiApi.md#postInstantApi) | **POST** /v7/tests/api/instant | Create API instant test
+*ApiApi* | [**postInstantApiWithHttpInfo**](docs/ApiApi.md#postInstantApiWithHttpInfo) | **POST** /v7/tests/api/instant | Create API instant test
 *DnsSecurityApi* | [**postInstantDnsSec**](docs/DnsSecurityApi.md#postInstantDnsSec) | **POST** /v7/tests/dnssec/instant | Create DNS security instant test
 *DnsSecurityApi* | [**postInstantDnsSecWithHttpInfo**](docs/DnsSecurityApi.md#postInstantDnsSecWithHttpInfo) | **POST** /v7/tests/dnssec/instant | Create DNS security instant test
 *DnsServerApi* | [**postInstantDnsServer**](docs/DnsServerApi.md#postInstantDnsServer) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test

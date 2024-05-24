@@ -331,7 +331,7 @@ ApiResponse<[**QuotasAssignResponse**](QuotasAssignResponse.md)>
 
 ## getQuotas
 
-> GetQuotas200Response getQuotas()
+> Quotas getQuotas()
 
 Get organization and account group usage quota
 
@@ -359,7 +359,7 @@ public class Example {
 
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         try {
-            GetQuotas200Response result = apiInstance.getQuotas();
+            Quotas result = apiInstance.getQuotas();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QuotasApi#getQuotas");
@@ -378,7 +378,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetQuotas200Response**](GetQuotas200Response.md)
+[**Quotas**](Quotas.md)
 
 
 ### Authorization
@@ -403,7 +403,7 @@ This endpoint does not need any parameter.
 
 ## getQuotasWithHttpInfo
 
-> ApiResponse<GetQuotas200Response> getQuotas getQuotasWithHttpInfo()
+> ApiResponse<Quotas> getQuotas getQuotasWithHttpInfo()
 
 Get organization and account group usage quota
 
@@ -432,7 +432,7 @@ public class Example {
 
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         try {
-            ApiResponse<GetQuotas200Response> response = apiInstance.getQuotasWithHttpInfo();
+            ApiResponse<Quotas> response = apiInstance.getQuotasWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -453,7 +453,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-ApiResponse<[**GetQuotas200Response**](GetQuotas200Response.md)>
+ApiResponse<[**Quotas**](Quotas.md)>
 
 
 ### Authorization

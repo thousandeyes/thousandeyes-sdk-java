@@ -513,7 +513,7 @@ ApiResponse<[**WebTransactionTest**](WebTransactionTest.md)>
 
 ## getWebTransactionsTests
 
-> GetWebTransactionsTests200Response getWebTransactionsTests(aid)
+> WebTransactionTests getWebTransactionsTests(aid)
 
 List Web Transactions tests
 
@@ -542,7 +542,7 @@ public class Example {
         WebTransactionApi apiInstance = new WebTransactionApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetWebTransactionsTests200Response result = apiInstance.getWebTransactionsTests(aid);
+            WebTransactionTests result = apiInstance.getWebTransactionsTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionApi#getWebTransactionsTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetWebTransactionsTests200Response**](GetWebTransactionsTests200Response.md)
+[**WebTransactionTests**](WebTransactionTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getWebTransactionsTestsWithHttpInfo
 
-> ApiResponse<GetWebTransactionsTests200Response> getWebTransactionsTests getWebTransactionsTestsWithHttpInfo(aid)
+> ApiResponse<WebTransactionTests> getWebTransactionsTests getWebTransactionsTestsWithHttpInfo(aid)
 
 List Web Transactions tests
 
@@ -620,7 +620,7 @@ public class Example {
         WebTransactionApi apiInstance = new WebTransactionApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetWebTransactionsTests200Response> response = apiInstance.getWebTransactionsTestsWithHttpInfo(aid);
+            ApiResponse<WebTransactionTests> response = apiInstance.getWebTransactionsTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetWebTransactionsTests200Response**](GetWebTransactionsTests200Response.md)>
+ApiResponse<[**WebTransactionTests**](WebTransactionTests.md)>
 
 
 ### Authorization

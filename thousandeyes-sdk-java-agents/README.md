@@ -2,9 +2,7 @@
 
 Agents API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.083499+01:00[Europe/Lisbon]
+- API version: 7.0.5
 
 
 ## Overview
@@ -44,7 +42,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-agents</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -54,7 +52,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-agents:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-agents:version"
 ```
 
 ### Others
@@ -67,7 +65,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-agents-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-agents-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -90,7 +88,7 @@ public class CloudAndEnterpriseAgentNotificationRulesApiExample {
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentsNotificationRule200Response result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
+            NotificationRuleDetail result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentNotificationRulesApi#getAgentsNotificationRule");

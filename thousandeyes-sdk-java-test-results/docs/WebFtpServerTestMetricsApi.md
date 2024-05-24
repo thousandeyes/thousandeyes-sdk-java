@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultFtpServer
 
-> GetTestResultFtpServer200Response getTestResultFtpServer(testId, aid, window, startDate, endDate, cursor)
+> FtpServerTestResults getTestResultFtpServer(testId, aid, window, startDate, endDate, cursor)
 
 Get FTP server test results
 
@@ -45,7 +45,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultFtpServer200Response result = apiInstance.getTestResultFtpServer(testId, aid, window, startDate, endDate, cursor);
+            FtpServerTestResults result = apiInstance.getTestResultFtpServer(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebFtpServerTestMetricsApi#getTestResultFtpServer");
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultFtpServer200Response**](GetTestResultFtpServer200Response.md)
+[**FtpServerTestResults**](FtpServerTestResults.md)
 
 
 ### Authorization
@@ -99,7 +99,7 @@ public class Example {
 
 ## getTestResultFtpServerWithHttpInfo
 
-> ApiResponse<GetTestResultFtpServer200Response> getTestResultFtpServer getTestResultFtpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<FtpServerTestResults> getTestResultFtpServer getTestResultFtpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get FTP server test results
 
@@ -134,7 +134,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultFtpServer200Response> response = apiInstance.getTestResultFtpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<FtpServerTestResults> response = apiInstance.getTestResultFtpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -163,7 +163,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultFtpServer200Response**](GetTestResultFtpServer200Response.md)>
+ApiResponse<[**FtpServerTestResults**](FtpServerTestResults.md)>
 
 
 ### Authorization

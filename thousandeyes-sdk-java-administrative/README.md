@@ -2,9 +2,7 @@
 
 Administrative API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.144945+01:00[Europe/Lisbon]
+- API version: 7.0.5
 
 ## Overview
 Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API.
@@ -52,7 +50,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-administrative</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -62,7 +60,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-administrative:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-administrative:version"
 ```
 
 ### Others
@@ -75,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-administrative-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-administrative-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -95,10 +93,10 @@ public class AccountGroupsApiExample {
         // Configure clients using the `defaultClient` object, such as
         // overriding the host and port, timeout, etc.
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        AccountGroupRequestBody accountGroupRequestBody = new AccountGroupRequestBody(); // AccountGroupRequestBody | 
+        AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
-            CreateAccountGroup201Response result = apiInstance.createAccountGroup(accountGroupRequestBody, expand);
+            CreatedAccountGroup result = apiInstance.createAccountGroup(accountGroupRequest, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountGroupsApi#createAccountGroup");

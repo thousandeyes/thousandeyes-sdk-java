@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getAgentsNotificationRule
 
-> GetAgentsNotificationRule200Response getAgentsNotificationRule(notificationRuleId, aid)
+> NotificationRuleDetail getAgentsNotificationRule(notificationRuleId, aid)
 
 Retrieve agent notification rule
 
@@ -43,7 +43,7 @@ public class Example {
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentsNotificationRule200Response result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
+            NotificationRuleDetail result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentNotificationRulesApi#getAgentsNotificationRule");
@@ -66,7 +66,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgentsNotificationRule200Response**](GetAgentsNotificationRule200Response.md)
+[**NotificationRuleDetail**](NotificationRuleDetail.md)
 
 
 ### Authorization
@@ -92,7 +92,7 @@ public class Example {
 
 ## getAgentsNotificationRuleWithHttpInfo
 
-> ApiResponse<GetAgentsNotificationRule200Response> getAgentsNotificationRule getAgentsNotificationRuleWithHttpInfo(notificationRuleId, aid)
+> ApiResponse<NotificationRuleDetail> getAgentsNotificationRule getAgentsNotificationRuleWithHttpInfo(notificationRuleId, aid)
 
 Retrieve agent notification rule
 
@@ -123,7 +123,7 @@ public class Example {
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetAgentsNotificationRule200Response> response = apiInstance.getAgentsNotificationRuleWithHttpInfo(notificationRuleId, aid);
+            ApiResponse<NotificationRuleDetail> response = apiInstance.getAgentsNotificationRuleWithHttpInfo(notificationRuleId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -148,7 +148,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgentsNotificationRule200Response**](GetAgentsNotificationRule200Response.md)>
+ApiResponse<[**NotificationRuleDetail**](NotificationRuleDetail.md)>
 
 
 ### Authorization
@@ -175,7 +175,7 @@ ApiResponse<[**GetAgentsNotificationRule200Response**](GetAgentsNotificationRule
 
 ## getAgentsNotificationRules
 
-> GetAgentsNotificationRules200Response getAgentsNotificationRules(aid)
+> ListNotificationRulesResponse getAgentsNotificationRules(aid)
 
 List agent notification rules
 
@@ -204,7 +204,7 @@ public class Example {
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentsNotificationRules200Response result = apiInstance.getAgentsNotificationRules(aid);
+            ListNotificationRulesResponse result = apiInstance.getAgentsNotificationRules(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentNotificationRulesApi#getAgentsNotificationRules");
@@ -226,7 +226,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgentsNotificationRules200Response**](GetAgentsNotificationRules200Response.md)
+[**ListNotificationRulesResponse**](ListNotificationRulesResponse.md)
 
 
 ### Authorization
@@ -252,7 +252,7 @@ public class Example {
 
 ## getAgentsNotificationRulesWithHttpInfo
 
-> ApiResponse<GetAgentsNotificationRules200Response> getAgentsNotificationRules getAgentsNotificationRulesWithHttpInfo(aid)
+> ApiResponse<ListNotificationRulesResponse> getAgentsNotificationRules getAgentsNotificationRulesWithHttpInfo(aid)
 
 List agent notification rules
 
@@ -282,7 +282,7 @@ public class Example {
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetAgentsNotificationRules200Response> response = apiInstance.getAgentsNotificationRulesWithHttpInfo(aid);
+            ApiResponse<ListNotificationRulesResponse> response = apiInstance.getAgentsNotificationRulesWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -306,7 +306,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgentsNotificationRules200Response**](GetAgentsNotificationRules200Response.md)>
+ApiResponse<[**ListNotificationRulesResponse**](ListNotificationRulesResponse.md)>
 
 
 ### Authorization

@@ -2,9 +2,7 @@
 
 Endpoint Agent Labels API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:12.873673+01:00[Europe/Lisbon]
+- API version: 7.0.5
 
 Manage labels applied to endpoint agents using this API.
 
@@ -43,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-labels</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-labels:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-labels:version"
 ```
 
 ### Others
@@ -66,7 +64,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-labels-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-labels-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
