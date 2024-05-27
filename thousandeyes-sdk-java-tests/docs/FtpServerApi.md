@@ -509,7 +509,7 @@ ApiResponse<[**FtpServerTest**](FtpServerTest.md)>
 
 ## getFtpServerTests
 
-> GetFtpServerTests200Response getFtpServerTests(aid)
+> FtpServerTests getFtpServerTests(aid)
 
 List FTP Server tests
 
@@ -538,7 +538,7 @@ public class Example {
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetFtpServerTests200Response result = apiInstance.getFtpServerTests(aid);
+            FtpServerTests result = apiInstance.getFtpServerTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FtpServerApi#getFtpServerTests");
@@ -560,7 +560,7 @@ public class Example {
 
 ### Return type
 
-[**GetFtpServerTests200Response**](GetFtpServerTests200Response.md)
+[**FtpServerTests**](FtpServerTests.md)
 
 
 ### Authorization
@@ -586,7 +586,7 @@ public class Example {
 
 ## getFtpServerTestsWithHttpInfo
 
-> ApiResponse<GetFtpServerTests200Response> getFtpServerTests getFtpServerTestsWithHttpInfo(aid)
+> ApiResponse<FtpServerTests> getFtpServerTests getFtpServerTestsWithHttpInfo(aid)
 
 List FTP Server tests
 
@@ -616,7 +616,7 @@ public class Example {
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetFtpServerTests200Response> response = apiInstance.getFtpServerTestsWithHttpInfo(aid);
+            ApiResponse<FtpServerTests> response = apiInstance.getFtpServerTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -640,7 +640,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetFtpServerTests200Response**](GetFtpServerTests200Response.md)>
+ApiResponse<[**FtpServerTests**](FtpServerTests.md)>
 
 
 ### Authorization

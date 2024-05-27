@@ -513,7 +513,7 @@ ApiResponse<[**DnsServerTest**](DnsServerTest.md)>
 
 ## getDNSServerTests
 
-> GetDNSServerTests200Response getDNSServerTests(aid)
+> DnsServerTests getDNSServerTests(aid)
 
 List DNS Server tests
 
@@ -542,7 +542,7 @@ public class Example {
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetDNSServerTests200Response result = apiInstance.getDNSServerTests(aid);
+            DnsServerTests result = apiInstance.getDNSServerTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DnsServerApi#getDNSServerTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetDNSServerTests200Response**](GetDNSServerTests200Response.md)
+[**DnsServerTests**](DnsServerTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getDNSServerTestsWithHttpInfo
 
-> ApiResponse<GetDNSServerTests200Response> getDNSServerTests getDNSServerTestsWithHttpInfo(aid)
+> ApiResponse<DnsServerTests> getDNSServerTests getDNSServerTestsWithHttpInfo(aid)
 
 List DNS Server tests
 
@@ -620,7 +620,7 @@ public class Example {
         DnsServerApi apiInstance = new DnsServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetDNSServerTests200Response> response = apiInstance.getDNSServerTestsWithHttpInfo(aid);
+            ApiResponse<DnsServerTests> response = apiInstance.getDNSServerTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetDNSServerTests200Response**](GetDNSServerTests200Response.md)>
+ApiResponse<[**DnsServerTests**](DnsServerTests.md)>
 
 
 ### Authorization

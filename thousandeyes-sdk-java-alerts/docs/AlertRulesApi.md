@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## createAlertRule
 
-> CreateAlertRule201Response createAlertRule(ruleDetailUpdate, aid)
+> Rule createAlertRule(ruleDetailUpdate, aid)
 
 Create alert rule
 
@@ -49,7 +49,7 @@ public class Example {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateAlertRule201Response result = apiInstance.createAlertRule(ruleDetailUpdate, aid);
+            Rule result = apiInstance.createAlertRule(ruleDetailUpdate, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#createAlertRule");
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**CreateAlertRule201Response**](CreateAlertRule201Response.md)
+[**Rule**](Rule.md)
 
 
 ### Authorization
@@ -97,7 +97,7 @@ public class Example {
 
 ## createAlertRuleWithHttpInfo
 
-> ApiResponse<CreateAlertRule201Response> createAlertRule createAlertRuleWithHttpInfo(ruleDetailUpdate, aid)
+> ApiResponse<Rule> createAlertRule createAlertRuleWithHttpInfo(ruleDetailUpdate, aid)
 
 Create alert rule
 
@@ -128,7 +128,7 @@ public class Example {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CreateAlertRule201Response> response = apiInstance.createAlertRuleWithHttpInfo(ruleDetailUpdate, aid);
+            ApiResponse<Rule> response = apiInstance.createAlertRuleWithHttpInfo(ruleDetailUpdate, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -153,7 +153,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateAlertRule201Response**](CreateAlertRule201Response.md)>
+ApiResponse<[**Rule**](Rule.md)>
 
 
 ### Authorization
@@ -337,7 +337,7 @@ ApiResponse<Void>
 
 ## getAlertRuleDetails
 
-> GetAlertRuleDetails200Response getAlertRuleDetails(ruleId, aid)
+> RuleDetail getAlertRuleDetails(ruleId, aid)
 
 Retrieve alert rule
 
@@ -367,7 +367,7 @@ public class Example {
         String ruleId = "127094"; // String | Unique alert rule ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAlertRuleDetails200Response result = apiInstance.getAlertRuleDetails(ruleId, aid);
+            RuleDetail result = apiInstance.getAlertRuleDetails(ruleId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#getAlertRuleDetails");
@@ -390,7 +390,7 @@ public class Example {
 
 ### Return type
 
-[**GetAlertRuleDetails200Response**](GetAlertRuleDetails200Response.md)
+[**RuleDetail**](RuleDetail.md)
 
 
 ### Authorization
@@ -414,7 +414,7 @@ public class Example {
 
 ## getAlertRuleDetailsWithHttpInfo
 
-> ApiResponse<GetAlertRuleDetails200Response> getAlertRuleDetails getAlertRuleDetailsWithHttpInfo(ruleId, aid)
+> ApiResponse<RuleDetail> getAlertRuleDetails getAlertRuleDetailsWithHttpInfo(ruleId, aid)
 
 Retrieve alert rule
 
@@ -445,7 +445,7 @@ public class Example {
         String ruleId = "127094"; // String | Unique alert rule ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetAlertRuleDetails200Response> response = apiInstance.getAlertRuleDetailsWithHttpInfo(ruleId, aid);
+            ApiResponse<RuleDetail> response = apiInstance.getAlertRuleDetailsWithHttpInfo(ruleId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -470,7 +470,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAlertRuleDetails200Response**](GetAlertRuleDetails200Response.md)>
+ApiResponse<[**RuleDetail**](RuleDetail.md)>
 
 
 ### Authorization
@@ -495,7 +495,7 @@ ApiResponse<[**GetAlertRuleDetails200Response**](GetAlertRuleDetails200Response.
 
 ## getAlertsRules
 
-> GetAlertsRules200Response getAlertsRules(aid)
+> Rules getAlertsRules(aid)
 
 List alert rules
 
@@ -524,7 +524,7 @@ public class Example {
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAlertsRules200Response result = apiInstance.getAlertsRules(aid);
+            Rules result = apiInstance.getAlertsRules(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#getAlertsRules");
@@ -546,7 +546,7 @@ public class Example {
 
 ### Return type
 
-[**GetAlertsRules200Response**](GetAlertsRules200Response.md)
+[**Rules**](Rules.md)
 
 
 ### Authorization
@@ -570,7 +570,7 @@ public class Example {
 
 ## getAlertsRulesWithHttpInfo
 
-> ApiResponse<GetAlertsRules200Response> getAlertsRules getAlertsRulesWithHttpInfo(aid)
+> ApiResponse<Rules> getAlertsRules getAlertsRulesWithHttpInfo(aid)
 
 List alert rules
 
@@ -600,7 +600,7 @@ public class Example {
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetAlertsRules200Response> response = apiInstance.getAlertsRulesWithHttpInfo(aid);
+            ApiResponse<Rules> response = apiInstance.getAlertsRulesWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -624,7 +624,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAlertsRules200Response**](GetAlertsRules200Response.md)>
+ApiResponse<[**Rules**](Rules.md)>
 
 
 ### Authorization
@@ -649,7 +649,7 @@ ApiResponse<[**GetAlertsRules200Response**](GetAlertsRules200Response.md)>
 
 ## updateAlertRule
 
-> CreateAlertRule201Response updateAlertRule(ruleId, ruleDetailUpdate, aid)
+> Rule updateAlertRule(ruleId, ruleDetailUpdate, aid)
 
 Update alert rule
 
@@ -680,7 +680,7 @@ public class Example {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateAlertRule201Response result = apiInstance.updateAlertRule(ruleId, ruleDetailUpdate, aid);
+            Rule result = apiInstance.updateAlertRule(ruleId, ruleDetailUpdate, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#updateAlertRule");
@@ -704,7 +704,7 @@ public class Example {
 
 ### Return type
 
-[**CreateAlertRule201Response**](CreateAlertRule201Response.md)
+[**Rule**](Rule.md)
 
 
 ### Authorization
@@ -729,7 +729,7 @@ public class Example {
 
 ## updateAlertRuleWithHttpInfo
 
-> ApiResponse<CreateAlertRule201Response> updateAlertRule updateAlertRuleWithHttpInfo(ruleId, ruleDetailUpdate, aid)
+> ApiResponse<Rule> updateAlertRule updateAlertRuleWithHttpInfo(ruleId, ruleDetailUpdate, aid)
 
 Update alert rule
 
@@ -761,7 +761,7 @@ public class Example {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CreateAlertRule201Response> response = apiInstance.updateAlertRuleWithHttpInfo(ruleId, ruleDetailUpdate, aid);
+            ApiResponse<Rule> response = apiInstance.updateAlertRuleWithHttpInfo(ruleId, ruleDetailUpdate, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -787,7 +787,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateAlertRule201Response**](CreateAlertRule201Response.md)>
+ApiResponse<[**Rule**](Rule.md)>
 
 
 ### Authorization

@@ -495,7 +495,7 @@ ApiResponse<[**Credential**](Credential.md)>
 
 ## getTransactionTestsCredentialsList
 
-> GetTransactionTestsCredentialsList200Response getTransactionTestsCredentialsList(aid)
+> Credentials getTransactionTestsCredentialsList(aid)
 
 List credentials
 
@@ -524,7 +524,7 @@ public class Example {
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetTransactionTestsCredentialsList200Response result = apiInstance.getTransactionTestsCredentialsList(aid);
+            Credentials result = apiInstance.getTransactionTestsCredentialsList(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialsApi#getTransactionTestsCredentialsList");
@@ -546,7 +546,7 @@ public class Example {
 
 ### Return type
 
-[**GetTransactionTestsCredentialsList200Response**](GetTransactionTestsCredentialsList200Response.md)
+[**Credentials**](Credentials.md)
 
 
 ### Authorization
@@ -570,7 +570,7 @@ public class Example {
 
 ## getTransactionTestsCredentialsListWithHttpInfo
 
-> ApiResponse<GetTransactionTestsCredentialsList200Response> getTransactionTestsCredentialsList getTransactionTestsCredentialsListWithHttpInfo(aid)
+> ApiResponse<Credentials> getTransactionTestsCredentialsList getTransactionTestsCredentialsListWithHttpInfo(aid)
 
 List credentials
 
@@ -600,7 +600,7 @@ public class Example {
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetTransactionTestsCredentialsList200Response> response = apiInstance.getTransactionTestsCredentialsListWithHttpInfo(aid);
+            ApiResponse<Credentials> response = apiInstance.getTransactionTestsCredentialsListWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -624,7 +624,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTransactionTestsCredentialsList200Response**](GetTransactionTestsCredentialsList200Response.md)>
+ApiResponse<[**Credentials**](Credentials.md)>
 
 
 ### Authorization

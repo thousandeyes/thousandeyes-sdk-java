@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTestResultDnssec
 
-> GetTestResultDnssec200Response getTestResultDnssec(testId, aid, window, startDate, endDate, cursor)
+> DnssecTestResults getTestResultDnssec(testId, aid, window, startDate, endDate, cursor)
 
 Get DNSSEC test results
 
@@ -45,7 +45,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultDnssec200Response result = apiInstance.getTestResultDnssec(testId, aid, window, startDate, endDate, cursor);
+            DnssecTestResults result = apiInstance.getTestResultDnssec(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DnssecTestMetricsApi#getTestResultDnssec");
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultDnssec200Response**](GetTestResultDnssec200Response.md)
+[**DnssecTestResults**](DnssecTestResults.md)
 
 
 ### Authorization
@@ -99,7 +99,7 @@ public class Example {
 
 ## getTestResultDnssecWithHttpInfo
 
-> ApiResponse<GetTestResultDnssec200Response> getTestResultDnssec getTestResultDnssecWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<DnssecTestResults> getTestResultDnssec getTestResultDnssecWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get DNSSEC test results
 
@@ -134,7 +134,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultDnssec200Response> response = apiInstance.getTestResultDnssecWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<DnssecTestResults> response = apiInstance.getTestResultDnssecWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -163,7 +163,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultDnssec200Response**](GetTestResultDnssec200Response.md)>
+ApiResponse<[**DnssecTestResults**](DnssecTestResults.md)>
 
 
 ### Authorization

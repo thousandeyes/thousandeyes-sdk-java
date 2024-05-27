@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getEnterpriseAgentsUnitsUsage
 
-> GetEnterpriseAgentsUnitsUsage200Response getEnterpriseAgentsUnitsUsage(startDate, endDate, cursor)
+> EnterpriseAgentsUsage getEnterpriseAgentsUnitsUsage(startDate, endDate, cursor)
 
 Get enterprise agent usage
 
@@ -46,7 +46,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetEnterpriseAgentsUnitsUsage200Response result = apiInstance.getEnterpriseAgentsUnitsUsage(startDate, endDate, cursor);
+            EnterpriseAgentsUsage result = apiInstance.getEnterpriseAgentsUnitsUsage(startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsageApi#getEnterpriseAgentsUnitsUsage");
@@ -70,7 +70,7 @@ public class Example {
 
 ### Return type
 
-[**GetEnterpriseAgentsUnitsUsage200Response**](GetEnterpriseAgentsUnitsUsage200Response.md)
+[**EnterpriseAgentsUsage**](EnterpriseAgentsUsage.md)
 
 
 ### Authorization
@@ -95,7 +95,7 @@ public class Example {
 
 ## getEnterpriseAgentsUnitsUsageWithHttpInfo
 
-> ApiResponse<GetEnterpriseAgentsUnitsUsage200Response> getEnterpriseAgentsUnitsUsage getEnterpriseAgentsUnitsUsageWithHttpInfo(startDate, endDate, cursor)
+> ApiResponse<EnterpriseAgentsUsage> getEnterpriseAgentsUnitsUsage getEnterpriseAgentsUnitsUsageWithHttpInfo(startDate, endDate, cursor)
 
 Get enterprise agent usage
 
@@ -127,7 +127,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetEnterpriseAgentsUnitsUsage200Response> response = apiInstance.getEnterpriseAgentsUnitsUsageWithHttpInfo(startDate, endDate, cursor);
+            ApiResponse<EnterpriseAgentsUsage> response = apiInstance.getEnterpriseAgentsUnitsUsageWithHttpInfo(startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -153,7 +153,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEnterpriseAgentsUnitsUsage200Response**](GetEnterpriseAgentsUnitsUsage200Response.md)>
+ApiResponse<[**EnterpriseAgentsUsage**](EnterpriseAgentsUsage.md)>
 
 
 ### Authorization
@@ -179,7 +179,7 @@ ApiResponse<[**GetEnterpriseAgentsUnitsUsage200Response**](GetEnterpriseAgentsUn
 
 ## getTestUnitsUsage
 
-> GetTestUnitsUsage200Response getTestUnitsUsage(aid, startDate, endDate, cursor)
+> TestsUsage getTestUnitsUsage(aid, startDate, endDate, cursor)
 
 Get cloud and enterprise agents units usage
 
@@ -211,7 +211,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestUnitsUsage200Response result = apiInstance.getTestUnitsUsage(aid, startDate, endDate, cursor);
+            TestsUsage result = apiInstance.getTestUnitsUsage(aid, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsageApi#getTestUnitsUsage");
@@ -236,7 +236,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestUnitsUsage200Response**](GetTestUnitsUsage200Response.md)
+[**TestsUsage**](TestsUsage.md)
 
 
 ### Authorization
@@ -261,7 +261,7 @@ public class Example {
 
 ## getTestUnitsUsageWithHttpInfo
 
-> ApiResponse<GetTestUnitsUsage200Response> getTestUnitsUsage getTestUnitsUsageWithHttpInfo(aid, startDate, endDate, cursor)
+> ApiResponse<TestsUsage> getTestUnitsUsage getTestUnitsUsageWithHttpInfo(aid, startDate, endDate, cursor)
 
 Get cloud and enterprise agents units usage
 
@@ -294,7 +294,7 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestUnitsUsage200Response> response = apiInstance.getTestUnitsUsageWithHttpInfo(aid, startDate, endDate, cursor);
+            ApiResponse<TestsUsage> response = apiInstance.getTestUnitsUsageWithHttpInfo(aid, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -321,7 +321,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestUnitsUsage200Response**](GetTestUnitsUsage200Response.md)>
+ApiResponse<[**TestsUsage**](TestsUsage.md)>
 
 
 ### Authorization
@@ -347,7 +347,7 @@ ApiResponse<[**GetTestUnitsUsage200Response**](GetTestUnitsUsage200Response.md)>
 
 ## getUsage
 
-> GetUsage200Response getUsage(aid, expand)
+> Usage getUsage(aid, expand)
 
 Get usage information for the last month
 
@@ -377,7 +377,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Expands the available resources. By default, no expansion takes place if the  `expand` query parameter is not passed. For example, to expand the \"tests\"  resource, pass the query '?expand=test'.
         try {
-            GetUsage200Response result = apiInstance.getUsage(aid, expand);
+            Usage result = apiInstance.getUsage(aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsageApi#getUsage");
@@ -400,7 +400,7 @@ public class Example {
 
 ### Return type
 
-[**GetUsage200Response**](GetUsage200Response.md)
+[**Usage**](Usage.md)
 
 
 ### Authorization
@@ -425,7 +425,7 @@ public class Example {
 
 ## getUsageWithHttpInfo
 
-> ApiResponse<GetUsage200Response> getUsage getUsageWithHttpInfo(aid, expand)
+> ApiResponse<Usage> getUsage getUsageWithHttpInfo(aid, expand)
 
 Get usage information for the last month
 
@@ -456,7 +456,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Expands the available resources. By default, no expansion takes place if the  `expand` query parameter is not passed. For example, to expand the \"tests\"  resource, pass the query '?expand=test'.
         try {
-            ApiResponse<GetUsage200Response> response = apiInstance.getUsageWithHttpInfo(aid, expand);
+            ApiResponse<Usage> response = apiInstance.getUsageWithHttpInfo(aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -481,7 +481,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetUsage200Response**](GetUsage200Response.md)>
+ApiResponse<[**Usage**](Usage.md)>
 
 
 ### Authorization

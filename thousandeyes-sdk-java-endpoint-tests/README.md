@@ -2,9 +2,7 @@
 
 Endpoint Tests API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.128929+01:00[Europe/Lisbon]
+- API version: 7.0.5
 
 
 Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
@@ -44,7 +42,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -54,7 +52,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-tests:version"
 ```
 
 ### Others
@@ -67,7 +65,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-tests-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -125,8 +123,8 @@ Class | Method | HTTP request | Description
 *ScheduledTestsAgentToServerApi* | [**deleteEndpointAgentToServerTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#deleteEndpointAgentToServerTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test
 *ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerDetail**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerDetail) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test
 *ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerDetailWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerDetailWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test
-*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToserverTestsList**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToserverTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
-*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToserverTestsListWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToserverTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
+*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerTestsList**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
+*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerTestsListWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
 *ScheduledTestsAgentToServerApi* | [**postEndpointAgentToServerTest**](docs/ScheduledTestsAgentToServerApi.md#postEndpointAgentToServerTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
 *ScheduledTestsAgentToServerApi* | [**postEndpointAgentToServerTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#postEndpointAgentToServerTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
 *ScheduledTestsAgentToServerApi* | [**updateEndpointAgentToServerDetail**](docs/ScheduledTestsAgentToServerApi.md#updateEndpointAgentToServerDetail) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test

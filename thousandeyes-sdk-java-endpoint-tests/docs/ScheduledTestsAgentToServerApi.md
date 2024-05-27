@@ -8,8 +8,8 @@ All URIs are relative to *https://api.thousandeyes.com*
 | [**deleteEndpointAgentToServerTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#deleteEndpointAgentToServerTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test |
 | [**getEndpointAgentToServerDetail**](ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerDetail) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test |
 | [**getEndpointAgentToServerDetailWithHttpInfo**](ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerDetailWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test |
-| [**getEndpointAgentToserverTestsList**](ScheduledTestsAgentToServerApi.md#getEndpointAgentToserverTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
-| [**getEndpointAgentToserverTestsListWithHttpInfo**](ScheduledTestsAgentToServerApi.md#getEndpointAgentToserverTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
+| [**getEndpointAgentToServerTestsList**](ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
+| [**getEndpointAgentToServerTestsListWithHttpInfo**](ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
 | [**postEndpointAgentToServerTest**](ScheduledTestsAgentToServerApi.md#postEndpointAgentToServerTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test |
 | [**postEndpointAgentToServerTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#postEndpointAgentToServerTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test |
 | [**updateEndpointAgentToServerDetail**](ScheduledTestsAgentToServerApi.md#updateEndpointAgentToServerDetail) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test |
@@ -341,9 +341,9 @@ ApiResponse<[**EndpointAgentToServerTest**](EndpointAgentToServerTest.md)>
 | **0** | An error occurred |  -  |
 
 
-## getEndpointAgentToserverTestsList
+## getEndpointAgentToServerTestsList
 
-> GetEndpointAgentToserverTestsList200Response getEndpointAgentToserverTestsList(aid)
+> EndpointAgentToServerTests getEndpointAgentToServerTestsList(aid)
 
 List agent to server endpoint scheduled tests
 
@@ -372,10 +372,10 @@ public class Example {
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointAgentToserverTestsList200Response result = apiInstance.getEndpointAgentToserverTestsList(aid);
+            EndpointAgentToServerTests result = apiInstance.getEndpointAgentToServerTestsList(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsAgentToServerApi#getEndpointAgentToserverTestsList");
+            System.err.println("Exception when calling ScheduledTestsAgentToServerApi#getEndpointAgentToServerTestsList");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -394,7 +394,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointAgentToserverTestsList200Response**](GetEndpointAgentToserverTestsList200Response.md)
+[**EndpointAgentToServerTests**](EndpointAgentToServerTests.md)
 
 
 ### Authorization
@@ -417,9 +417,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getEndpointAgentToserverTestsListWithHttpInfo
+## getEndpointAgentToServerTestsListWithHttpInfo
 
-> ApiResponse<GetEndpointAgentToserverTestsList200Response> getEndpointAgentToserverTestsList getEndpointAgentToserverTestsListWithHttpInfo(aid)
+> ApiResponse<EndpointAgentToServerTests> getEndpointAgentToServerTestsList getEndpointAgentToServerTestsListWithHttpInfo(aid)
 
 List agent to server endpoint scheduled tests
 
@@ -449,12 +449,12 @@ public class Example {
         ScheduledTestsAgentToServerApi apiInstance = new ScheduledTestsAgentToServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointAgentToserverTestsList200Response> response = apiInstance.getEndpointAgentToserverTestsListWithHttpInfo(aid);
+            ApiResponse<EndpointAgentToServerTests> response = apiInstance.getEndpointAgentToServerTestsListWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsAgentToServerApi#getEndpointAgentToserverTestsList");
+            System.err.println("Exception when calling ScheduledTestsAgentToServerApi#getEndpointAgentToServerTestsList");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -473,7 +473,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointAgentToserverTestsList200Response**](GetEndpointAgentToserverTestsList200Response.md)>
+ApiResponse<[**EndpointAgentToServerTests**](EndpointAgentToServerTests.md)>
 
 
 ### Authorization

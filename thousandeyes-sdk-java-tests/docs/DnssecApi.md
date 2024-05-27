@@ -513,7 +513,7 @@ ApiResponse<[**DnsSecTest**](DnsSecTest.md)>
 
 ## getDnsSecTests
 
-> GetDnsSecTests200Response getDnsSecTests(aid)
+> DnsSecTests getDnsSecTests(aid)
 
 List DNSSEC tests
 
@@ -542,7 +542,7 @@ public class Example {
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetDnsSecTests200Response result = apiInstance.getDnsSecTests(aid);
+            DnsSecTests result = apiInstance.getDnsSecTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DnssecApi#getDnsSecTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetDnsSecTests200Response**](GetDnsSecTests200Response.md)
+[**DnsSecTests**](DnsSecTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getDnsSecTestsWithHttpInfo
 
-> ApiResponse<GetDnsSecTests200Response> getDnsSecTests getDnsSecTestsWithHttpInfo(aid)
+> ApiResponse<DnsSecTests> getDnsSecTests getDnsSecTestsWithHttpInfo(aid)
 
 List DNSSEC tests
 
@@ -620,7 +620,7 @@ public class Example {
         DnssecApi apiInstance = new DnssecApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetDnsSecTests200Response> response = apiInstance.getDnsSecTestsWithHttpInfo(aid);
+            ApiResponse<DnsSecTests> response = apiInstance.getDnsSecTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetDnsSecTests200Response**](GetDnsSecTests200Response.md)>
+ApiResponse<[**DnsSecTests**](DnsSecTests.md)>
 
 
 ### Authorization

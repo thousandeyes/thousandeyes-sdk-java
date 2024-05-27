@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getAgentProxies
 
-> GetAgentProxies200Response getAgentProxies(aid)
+> AgentProxies getAgentProxies(aid)
 
 List agent proxies
 
@@ -40,7 +40,7 @@ public class Example {
         ProxiesApi apiInstance = new ProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentProxies200Response result = apiInstance.getAgentProxies(aid);
+            AgentProxies result = apiInstance.getAgentProxies(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProxiesApi#getAgentProxies");
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgentProxies200Response**](GetAgentProxies200Response.md)
+[**AgentProxies**](AgentProxies.md)
 
 
 ### Authorization
@@ -88,7 +88,7 @@ public class Example {
 
 ## getAgentProxiesWithHttpInfo
 
-> ApiResponse<GetAgentProxies200Response> getAgentProxies getAgentProxiesWithHttpInfo(aid)
+> ApiResponse<AgentProxies> getAgentProxies getAgentProxiesWithHttpInfo(aid)
 
 List agent proxies
 
@@ -118,7 +118,7 @@ public class Example {
         ProxiesApi apiInstance = new ProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetAgentProxies200Response> response = apiInstance.getAgentProxiesWithHttpInfo(aid);
+            ApiResponse<AgentProxies> response = apiInstance.getAgentProxiesWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -142,7 +142,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgentProxies200Response**](GetAgentProxies200Response.md)>
+ApiResponse<[**AgentProxies**](AgentProxies.md)>
 
 
 ### Authorization

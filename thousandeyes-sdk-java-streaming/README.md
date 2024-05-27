@@ -2,9 +2,7 @@
 
 ThousandEyes for OpenTelemetry API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:12.886638+01:00[Europe/Lisbon]
+- API version: 7.0.5
 
 ThousandEyes for OpenTelemetry provides machine-to-machine integration between ThousandEyes and its customers. It allows you to export ThousandEyes telemetry data in OTel format, which is widely used in the industry. With ThousandEyes for OTel, you can leverage frameworks widely used in the observability domain - such as Splunk, Grafana, and Honeycomb - to capture and analyze ThousandEyes data. Any client that supports OTel can use ThousandEyes for OpenTelemetry.
 
@@ -54,7 +52,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-streaming</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -64,7 +62,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-streaming:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-streaming:version"
 ```
 
 ### Others
@@ -77,7 +75,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-streaming-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-streaming-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

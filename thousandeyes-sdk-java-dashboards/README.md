@@ -2,9 +2,7 @@
 
 Dashboards API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.271495+01:00[Europe/Lisbon]
+- API version: 7.0.5
 
 Manage ThousandEyes Dashboards.
 
@@ -42,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-dashboards</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -52,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-dashboards:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-dashboards:version"
 ```
 
 ### Others
@@ -65,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-dashboards-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-dashboards-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -88,7 +86,7 @@ public class DashboardSnapshotsApiExample {
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateDashboardSnapshot201Response result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
+            DashboardSnapshotResponse result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#createDashboardSnapshot");

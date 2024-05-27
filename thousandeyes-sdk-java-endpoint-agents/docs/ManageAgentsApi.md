@@ -181,7 +181,7 @@ ApiResponse<Void>
 
 ## endpointAgentDisable
 
-> EndpointAgentGet200Response endpointAgentDisable(agentId, aid)
+> EndpointAgent endpointAgentDisable(agentId, aid)
 
 Disable endpoint agent
 
@@ -211,7 +211,7 @@ public class Example {
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentGet200Response result = apiInstance.endpointAgentDisable(agentId, aid);
+            EndpointAgent result = apiInstance.endpointAgentDisable(agentId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageAgentsApi#endpointAgentDisable");
@@ -234,7 +234,7 @@ public class Example {
 
 ### Return type
 
-[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)
+[**EndpointAgent**](EndpointAgent.md)
 
 
 ### Authorization
@@ -257,7 +257,7 @@ public class Example {
 
 ## endpointAgentDisableWithHttpInfo
 
-> ApiResponse<EndpointAgentGet200Response> endpointAgentDisable endpointAgentDisableWithHttpInfo(agentId, aid)
+> ApiResponse<EndpointAgent> endpointAgentDisable endpointAgentDisableWithHttpInfo(agentId, aid)
 
 Disable endpoint agent
 
@@ -288,7 +288,7 @@ public class Example {
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgentGet200Response> response = apiInstance.endpointAgentDisableWithHttpInfo(agentId, aid);
+            ApiResponse<EndpointAgent> response = apiInstance.endpointAgentDisableWithHttpInfo(agentId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -313,7 +313,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)>
+ApiResponse<[**EndpointAgent**](EndpointAgent.md)>
 
 
 ### Authorization
@@ -337,7 +337,7 @@ ApiResponse<[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)>
 
 ## endpointAgentEnable
 
-> EndpointAgentGet200Response endpointAgentEnable(agentId, aid)
+> EndpointAgent endpointAgentEnable(agentId, aid)
 
 Enable endpoint agent
 
@@ -367,7 +367,7 @@ public class Example {
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentGet200Response result = apiInstance.endpointAgentEnable(agentId, aid);
+            EndpointAgent result = apiInstance.endpointAgentEnable(agentId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageAgentsApi#endpointAgentEnable");
@@ -390,7 +390,7 @@ public class Example {
 
 ### Return type
 
-[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)
+[**EndpointAgent**](EndpointAgent.md)
 
 
 ### Authorization
@@ -413,7 +413,7 @@ public class Example {
 
 ## endpointAgentEnableWithHttpInfo
 
-> ApiResponse<EndpointAgentGet200Response> endpointAgentEnable endpointAgentEnableWithHttpInfo(agentId, aid)
+> ApiResponse<EndpointAgent> endpointAgentEnable endpointAgentEnableWithHttpInfo(agentId, aid)
 
 Enable endpoint agent
 
@@ -444,7 +444,7 @@ public class Example {
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgentGet200Response> response = apiInstance.endpointAgentEnableWithHttpInfo(agentId, aid);
+            ApiResponse<EndpointAgent> response = apiInstance.endpointAgentEnableWithHttpInfo(agentId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -469,7 +469,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)>
+ApiResponse<[**EndpointAgent**](EndpointAgent.md)>
 
 
 ### Authorization
@@ -493,7 +493,7 @@ ApiResponse<[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)>
 
 ## endpointAgentGet
 
-> EndpointAgentGet200Response endpointAgentGet(agentId, aid, expand, includeDeleted)
+> EndpointAgent endpointAgentGet(agentId, aid, expand, includeDeleted)
 
 Retrieve endpoint agent
 
@@ -525,7 +525,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         Boolean includeDeleted = false; // Boolean | When requesting entities, set to `true` if you want to see deleted entities.
         try {
-            EndpointAgentGet200Response result = apiInstance.endpointAgentGet(agentId, aid, expand, includeDeleted);
+            EndpointAgent result = apiInstance.endpointAgentGet(agentId, aid, expand, includeDeleted);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageAgentsApi#endpointAgentGet");
@@ -550,7 +550,7 @@ public class Example {
 
 ### Return type
 
-[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)
+[**EndpointAgent**](EndpointAgent.md)
 
 
 ### Authorization
@@ -573,7 +573,7 @@ public class Example {
 
 ## endpointAgentGetWithHttpInfo
 
-> ApiResponse<EndpointAgentGet200Response> endpointAgentGet endpointAgentGetWithHttpInfo(agentId, aid, expand, includeDeleted)
+> ApiResponse<EndpointAgent> endpointAgentGet endpointAgentGetWithHttpInfo(agentId, aid, expand, includeDeleted)
 
 Retrieve endpoint agent
 
@@ -606,7 +606,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         Boolean includeDeleted = false; // Boolean | When requesting entities, set to `true` if you want to see deleted entities.
         try {
-            ApiResponse<EndpointAgentGet200Response> response = apiInstance.endpointAgentGetWithHttpInfo(agentId, aid, expand, includeDeleted);
+            ApiResponse<EndpointAgent> response = apiInstance.endpointAgentGetWithHttpInfo(agentId, aid, expand, includeDeleted);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -633,7 +633,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)>
+ApiResponse<[**EndpointAgent**](EndpointAgent.md)>
 
 
 ### Authorization
@@ -657,7 +657,7 @@ ApiResponse<[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)>
 
 ## endpointAgentUpdate
 
-> EndpointAgentGet200Response endpointAgentUpdate(agentId, aid, expand, endpointAgentUpdate)
+> EndpointAgent endpointAgentUpdate(agentId, aid, expand, endpointAgentUpdate)
 
 Update endpoint agent
 
@@ -689,7 +689,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         EndpointAgentUpdate endpointAgentUpdate = new EndpointAgentUpdate(); // EndpointAgentUpdate | Fields to modify on the agent
         try {
-            EndpointAgentGet200Response result = apiInstance.endpointAgentUpdate(agentId, aid, expand, endpointAgentUpdate);
+            EndpointAgent result = apiInstance.endpointAgentUpdate(agentId, aid, expand, endpointAgentUpdate);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageAgentsApi#endpointAgentUpdate");
@@ -714,7 +714,7 @@ public class Example {
 
 ### Return type
 
-[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)
+[**EndpointAgent**](EndpointAgent.md)
 
 
 ### Authorization
@@ -737,7 +737,7 @@ public class Example {
 
 ## endpointAgentUpdateWithHttpInfo
 
-> ApiResponse<EndpointAgentGet200Response> endpointAgentUpdate endpointAgentUpdateWithHttpInfo(agentId, aid, expand, endpointAgentUpdate)
+> ApiResponse<EndpointAgent> endpointAgentUpdate endpointAgentUpdateWithHttpInfo(agentId, aid, expand, endpointAgentUpdate)
 
 Update endpoint agent
 
@@ -770,7 +770,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         EndpointAgentUpdate endpointAgentUpdate = new EndpointAgentUpdate(); // EndpointAgentUpdate | Fields to modify on the agent
         try {
-            ApiResponse<EndpointAgentGet200Response> response = apiInstance.endpointAgentUpdateWithHttpInfo(agentId, aid, expand, endpointAgentUpdate);
+            ApiResponse<EndpointAgent> response = apiInstance.endpointAgentUpdateWithHttpInfo(agentId, aid, expand, endpointAgentUpdate);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -797,7 +797,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)>
+ApiResponse<[**EndpointAgent**](EndpointAgent.md)>
 
 
 ### Authorization
@@ -821,7 +821,7 @@ ApiResponse<[**EndpointAgentGet200Response**](EndpointAgentGet200Response.md)>
 
 ## endpointAgentsList
 
-> EndpointAgentsList200Response endpointAgentsList(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName)
+> ListEndpointAgentsResponse endpointAgentsList(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName)
 
 List endpoint agents
 
@@ -857,7 +857,7 @@ public class Example {
         String agentName = "agentName_example"; // String | Returns only agents with the specified name.  This is an exact match only. 
         String computerName = "computerName_example"; // String | Returns only agents with the specified computer name. This is an exact match only. 
         try {
-            EndpointAgentsList200Response result = apiInstance.endpointAgentsList(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
+            ListEndpointAgentsResponse result = apiInstance.endpointAgentsList(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageAgentsApi#endpointAgentsList");
@@ -886,7 +886,7 @@ public class Example {
 
 ### Return type
 
-[**EndpointAgentsList200Response**](EndpointAgentsList200Response.md)
+[**ListEndpointAgentsResponse**](ListEndpointAgentsResponse.md)
 
 
 ### Authorization
@@ -908,7 +908,7 @@ public class Example {
 
 ## endpointAgentsListWithHttpInfo
 
-> ApiResponse<EndpointAgentsList200Response> endpointAgentsList endpointAgentsListWithHttpInfo(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName)
+> ApiResponse<ListEndpointAgentsResponse> endpointAgentsList endpointAgentsListWithHttpInfo(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName)
 
 List endpoint agents
 
@@ -945,7 +945,7 @@ public class Example {
         String agentName = "agentName_example"; // String | Returns only agents with the specified name.  This is an exact match only. 
         String computerName = "computerName_example"; // String | Returns only agents with the specified computer name. This is an exact match only. 
         try {
-            ApiResponse<EndpointAgentsList200Response> response = apiInstance.endpointAgentsListWithHttpInfo(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
+            ApiResponse<ListEndpointAgentsResponse> response = apiInstance.endpointAgentsListWithHttpInfo(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -976,7 +976,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**EndpointAgentsList200Response**](EndpointAgentsList200Response.md)>
+ApiResponse<[**ListEndpointAgentsResponse**](ListEndpointAgentsResponse.md)>
 
 
 ### Authorization
@@ -999,7 +999,7 @@ ApiResponse<[**EndpointAgentsList200Response**](EndpointAgentsList200Response.md
 
 ## endpointAgentsSearch
 
-> EndpointAgentsSearch200Response endpointAgentsSearch(agentSearchRequest, max, cursor, aid, expand, includeDeleted)
+> FilterEndpointAgentsResponse endpointAgentsSearch(agentSearchRequest, max, cursor, aid, expand, includeDeleted)
 
 Filter endpoint agents
 
@@ -1033,7 +1033,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         Boolean includeDeleted = false; // Boolean | When requesting entities, set to `true` if you want to see deleted entities.
         try {
-            EndpointAgentsSearch200Response result = apiInstance.endpointAgentsSearch(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
+            FilterEndpointAgentsResponse result = apiInstance.endpointAgentsSearch(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManageAgentsApi#endpointAgentsSearch");
@@ -1060,7 +1060,7 @@ public class Example {
 
 ### Return type
 
-[**EndpointAgentsSearch200Response**](EndpointAgentsSearch200Response.md)
+[**FilterEndpointAgentsResponse**](FilterEndpointAgentsResponse.md)
 
 
 ### Authorization
@@ -1083,7 +1083,7 @@ public class Example {
 
 ## endpointAgentsSearchWithHttpInfo
 
-> ApiResponse<EndpointAgentsSearch200Response> endpointAgentsSearch endpointAgentsSearchWithHttpInfo(agentSearchRequest, max, cursor, aid, expand, includeDeleted)
+> ApiResponse<FilterEndpointAgentsResponse> endpointAgentsSearch endpointAgentsSearchWithHttpInfo(agentSearchRequest, max, cursor, aid, expand, includeDeleted)
 
 Filter endpoint agents
 
@@ -1118,7 +1118,7 @@ public class Example {
         List<Expand> expand = Arrays.asList(); // List<Expand> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         Boolean includeDeleted = false; // Boolean | When requesting entities, set to `true` if you want to see deleted entities.
         try {
-            ApiResponse<EndpointAgentsSearch200Response> response = apiInstance.endpointAgentsSearchWithHttpInfo(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
+            ApiResponse<FilterEndpointAgentsResponse> response = apiInstance.endpointAgentsSearchWithHttpInfo(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1147,7 +1147,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**EndpointAgentsSearch200Response**](EndpointAgentsSearch200Response.md)>
+ApiResponse<[**FilterEndpointAgentsResponse**](FilterEndpointAgentsResponse.md)>
 
 
 ### Authorization
