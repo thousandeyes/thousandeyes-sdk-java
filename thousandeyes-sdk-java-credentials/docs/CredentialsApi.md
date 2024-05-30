@@ -4,22 +4,22 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createTransactionTestsCredential**](CredentialsApi.md#createTransactionTestsCredential) | **POST** /v7/credentials | Create credential |
-| [**createTransactionTestsCredentialWithHttpInfo**](CredentialsApi.md#createTransactionTestsCredentialWithHttpInfo) | **POST** /v7/credentials | Create credential |
-| [**deleteTransactionTestsCredential**](CredentialsApi.md#deleteTransactionTestsCredential) | **DELETE** /v7/credentials/{id} | Delete credential |
-| [**deleteTransactionTestsCredentialWithHttpInfo**](CredentialsApi.md#deleteTransactionTestsCredentialWithHttpInfo) | **DELETE** /v7/credentials/{id} | Delete credential |
-| [**getTransactionTestsCredentialDetails**](CredentialsApi.md#getTransactionTestsCredentialDetails) | **GET** /v7/credentials/{id} | Retrieve credential |
-| [**getTransactionTestsCredentialDetailsWithHttpInfo**](CredentialsApi.md#getTransactionTestsCredentialDetailsWithHttpInfo) | **GET** /v7/credentials/{id} | Retrieve credential |
-| [**getTransactionTestsCredentialsList**](CredentialsApi.md#getTransactionTestsCredentialsList) | **GET** /v7/credentials | List credentials |
-| [**getTransactionTestsCredentialsListWithHttpInfo**](CredentialsApi.md#getTransactionTestsCredentialsListWithHttpInfo) | **GET** /v7/credentials | List credentials |
-| [**updateTransactionTestsCredential**](CredentialsApi.md#updateTransactionTestsCredential) | **PUT** /v7/credentials/{id} | Update credential |
-| [**updateTransactionTestsCredentialWithHttpInfo**](CredentialsApi.md#updateTransactionTestsCredentialWithHttpInfo) | **PUT** /v7/credentials/{id} | Update credential |
+| [**createCredential**](CredentialsApi.md#createCredential) | **POST** /v7/credentials | Create credential |
+| [**createCredentialWithHttpInfo**](CredentialsApi.md#createCredentialWithHttpInfo) | **POST** /v7/credentials | Create credential |
+| [**deleteCredential**](CredentialsApi.md#deleteCredential) | **DELETE** /v7/credentials/{id} | Delete credential |
+| [**deleteCredentialWithHttpInfo**](CredentialsApi.md#deleteCredentialWithHttpInfo) | **DELETE** /v7/credentials/{id} | Delete credential |
+| [**getCredential**](CredentialsApi.md#getCredential) | **GET** /v7/credentials/{id} | Retrieve credential |
+| [**getCredentialWithHttpInfo**](CredentialsApi.md#getCredentialWithHttpInfo) | **GET** /v7/credentials/{id} | Retrieve credential |
+| [**getCredentials**](CredentialsApi.md#getCredentials) | **GET** /v7/credentials | List credentials |
+| [**getCredentialsWithHttpInfo**](CredentialsApi.md#getCredentialsWithHttpInfo) | **GET** /v7/credentials | List credentials |
+| [**updateCredential**](CredentialsApi.md#updateCredential) | **PUT** /v7/credentials/{id} | Update credential |
+| [**updateCredentialWithHttpInfo**](CredentialsApi.md#updateCredentialWithHttpInfo) | **PUT** /v7/credentials/{id} | Update credential |
 
 
 
-## createTransactionTestsCredential
+## createCredential
 
-> CredentialWithoutValue createTransactionTestsCredential(credentialRequest, aid)
+> CredentialWithoutValue createCredential(credentialRequest, aid)
 
 Create credential
 
@@ -49,10 +49,10 @@ public class Example {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialWithoutValue result = apiInstance.createTransactionTestsCredential(credentialRequest, aid);
+            CredentialWithoutValue result = apiInstance.createCredential(credentialRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#createTransactionTestsCredential");
+            System.err.println("Exception when calling CredentialsApi#createCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -95,9 +95,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## createTransactionTestsCredentialWithHttpInfo
+## createCredentialWithHttpInfo
 
-> ApiResponse<CredentialWithoutValue> createTransactionTestsCredential createTransactionTestsCredentialWithHttpInfo(credentialRequest, aid)
+> ApiResponse<CredentialWithoutValue> createCredential createCredentialWithHttpInfo(credentialRequest, aid)
 
 Create credential
 
@@ -128,12 +128,12 @@ public class Example {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CredentialWithoutValue> response = apiInstance.createTransactionTestsCredentialWithHttpInfo(credentialRequest, aid);
+            ApiResponse<CredentialWithoutValue> response = apiInstance.createCredentialWithHttpInfo(credentialRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#createTransactionTestsCredential");
+            System.err.println("Exception when calling CredentialsApi#createCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -177,9 +177,9 @@ ApiResponse<[**CredentialWithoutValue**](CredentialWithoutValue.md)>
 | **500** | Internal server error |  -  |
 
 
-## deleteTransactionTestsCredential
+## deleteCredential
 
-> void deleteTransactionTestsCredential(id, aid)
+> void deleteCredential(id, aid)
 
 Delete credential
 
@@ -209,9 +209,9 @@ public class Example {
         String id = "3247"; // String | The ID of the desired credential.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteTransactionTestsCredential(id, aid);
+            apiInstance.deleteCredential(id, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#deleteTransactionTestsCredential");
+            System.err.println("Exception when calling CredentialsApi#deleteCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -253,9 +253,9 @@ null (empty response body)
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## deleteTransactionTestsCredentialWithHttpInfo
+## deleteCredentialWithHttpInfo
 
-> ApiResponse<Void> deleteTransactionTestsCredential deleteTransactionTestsCredentialWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteCredential deleteCredentialWithHttpInfo(id, aid)
 
 Delete credential
 
@@ -286,11 +286,11 @@ public class Example {
         String id = "3247"; // String | The ID of the desired credential.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteTransactionTestsCredentialWithHttpInfo(id, aid);
+            ApiResponse<Void> response = apiInstance.deleteCredentialWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#deleteTransactionTestsCredential");
+            System.err.println("Exception when calling CredentialsApi#deleteCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -333,9 +333,9 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
-## getTransactionTestsCredentialDetails
+## getCredential
 
-> Credential getTransactionTestsCredentialDetails(id, aid)
+> Credential getCredential(id, aid)
 
 Retrieve credential
 
@@ -365,10 +365,10 @@ public class Example {
         String id = "3247"; // String | The ID of the desired credential.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Credential result = apiInstance.getTransactionTestsCredentialDetails(id, aid);
+            Credential result = apiInstance.getCredential(id, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#getTransactionTestsCredentialDetails");
+            System.err.println("Exception when calling CredentialsApi#getCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -411,9 +411,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getTransactionTestsCredentialDetailsWithHttpInfo
+## getCredentialWithHttpInfo
 
-> ApiResponse<Credential> getTransactionTestsCredentialDetails getTransactionTestsCredentialDetailsWithHttpInfo(id, aid)
+> ApiResponse<Credential> getCredential getCredentialWithHttpInfo(id, aid)
 
 Retrieve credential
 
@@ -444,12 +444,12 @@ public class Example {
         String id = "3247"; // String | The ID of the desired credential.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Credential> response = apiInstance.getTransactionTestsCredentialDetailsWithHttpInfo(id, aid);
+            ApiResponse<Credential> response = apiInstance.getCredentialWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#getTransactionTestsCredentialDetails");
+            System.err.println("Exception when calling CredentialsApi#getCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -493,9 +493,9 @@ ApiResponse<[**Credential**](Credential.md)>
 | **500** | Internal server error |  -  |
 
 
-## getTransactionTestsCredentialsList
+## getCredentials
 
-> GetTransactionTestsCredentialsList200Response getTransactionTestsCredentialsList(aid)
+> Credentials getCredentials(aid)
 
 List credentials
 
@@ -524,10 +524,10 @@ public class Example {
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetTransactionTestsCredentialsList200Response result = apiInstance.getTransactionTestsCredentialsList(aid);
+            Credentials result = apiInstance.getCredentials(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#getTransactionTestsCredentialsList");
+            System.err.println("Exception when calling CredentialsApi#getCredentials");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -546,7 +546,7 @@ public class Example {
 
 ### Return type
 
-[**GetTransactionTestsCredentialsList200Response**](GetTransactionTestsCredentialsList200Response.md)
+[**Credentials**](Credentials.md)
 
 
 ### Authorization
@@ -568,9 +568,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getTransactionTestsCredentialsListWithHttpInfo
+## getCredentialsWithHttpInfo
 
-> ApiResponse<GetTransactionTestsCredentialsList200Response> getTransactionTestsCredentialsList getTransactionTestsCredentialsListWithHttpInfo(aid)
+> ApiResponse<Credentials> getCredentials getCredentialsWithHttpInfo(aid)
 
 List credentials
 
@@ -600,12 +600,12 @@ public class Example {
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetTransactionTestsCredentialsList200Response> response = apiInstance.getTransactionTestsCredentialsListWithHttpInfo(aid);
+            ApiResponse<Credentials> response = apiInstance.getCredentialsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#getTransactionTestsCredentialsList");
+            System.err.println("Exception when calling CredentialsApi#getCredentials");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -624,7 +624,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTransactionTestsCredentialsList200Response**](GetTransactionTestsCredentialsList200Response.md)>
+ApiResponse<[**Credentials**](Credentials.md)>
 
 
 ### Authorization
@@ -647,9 +647,9 @@ ApiResponse<[**GetTransactionTestsCredentialsList200Response**](GetTransactionTe
 | **500** | Internal server error |  -  |
 
 
-## updateTransactionTestsCredential
+## updateCredential
 
-> CredentialWithoutValue updateTransactionTestsCredential(id, credentialRequest, aid)
+> CredentialWithoutValue updateCredential(id, credentialRequest, aid)
 
 Update credential
 
@@ -680,10 +680,10 @@ public class Example {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialWithoutValue result = apiInstance.updateTransactionTestsCredential(id, credentialRequest, aid);
+            CredentialWithoutValue result = apiInstance.updateCredential(id, credentialRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#updateTransactionTestsCredential");
+            System.err.println("Exception when calling CredentialsApi#updateCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -727,9 +727,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## updateTransactionTestsCredentialWithHttpInfo
+## updateCredentialWithHttpInfo
 
-> ApiResponse<CredentialWithoutValue> updateTransactionTestsCredential updateTransactionTestsCredentialWithHttpInfo(id, credentialRequest, aid)
+> ApiResponse<CredentialWithoutValue> updateCredential updateCredentialWithHttpInfo(id, credentialRequest, aid)
 
 Update credential
 
@@ -761,12 +761,12 @@ public class Example {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CredentialWithoutValue> response = apiInstance.updateTransactionTestsCredentialWithHttpInfo(id, credentialRequest, aid);
+            ApiResponse<CredentialWithoutValue> response = apiInstance.updateCredentialWithHttpInfo(id, credentialRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#updateTransactionTestsCredential");
+            System.err.println("Exception when calling CredentialsApi#updateCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

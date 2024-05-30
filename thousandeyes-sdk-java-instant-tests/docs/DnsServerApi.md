@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantDnsServer**](DnsServerApi.md#postInstantDnsServer) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test |
-| [**postInstantDnsServerWithHttpInfo**](DnsServerApi.md#postInstantDnsServerWithHttpInfo) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test |
+| [**createDnsServerInstantTest**](DnsServerApi.md#createDnsServerInstantTest) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test |
+| [**createDnsServerInstantTestWithHttpInfo**](DnsServerApi.md#createDnsServerInstantTestWithHttpInfo) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test |
 
 
 
-## postInstantDnsServer
+## createDnsServerInstantTest
 
-> DnsServerInstantTest postInstantDnsServer(dnsServerInstantTestRequest, aid, expand)
+> DnsServerInstantTest createDnsServerInstantTest(dnsServerInstantTestRequest, aid, expand)
 
 Create DNS server instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            DnsServerInstantTest result = apiInstance.postInstantDnsServer(dnsServerInstantTestRequest, aid, expand);
+            DnsServerInstantTest result = apiInstance.createDnsServerInstantTest(dnsServerInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsServerApi#postInstantDnsServer");
+            System.err.println("Exception when calling DnsServerApi#createDnsServerInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantDnsServerWithHttpInfo
+## createDnsServerInstantTestWithHttpInfo
 
-> ApiResponse<DnsServerInstantTest> postInstantDnsServer postInstantDnsServerWithHttpInfo(dnsServerInstantTestRequest, aid, expand)
+> ApiResponse<DnsServerInstantTest> createDnsServerInstantTest createDnsServerInstantTestWithHttpInfo(dnsServerInstantTestRequest, aid, expand)
 
 Create DNS server instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<DnsServerInstantTest> response = apiInstance.postInstantDnsServerWithHttpInfo(dnsServerInstantTestRequest, aid, expand);
+            ApiResponse<DnsServerInstantTest> response = apiInstance.createDnsServerInstantTestWithHttpInfo(dnsServerInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsServerApi#postInstantDnsServer");
+            System.err.println("Exception when calling DnsServerApi#createDnsServerInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

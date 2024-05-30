@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getEndpointTestsList**](ListEndpointScheduledTestsApi.md#getEndpointTestsList) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests |
-| [**getEndpointTestsListWithHttpInfo**](ListEndpointScheduledTestsApi.md#getEndpointTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests |
+| [**getEndpointScheduledTests**](ListEndpointScheduledTestsApi.md#getEndpointScheduledTests) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests |
+| [**getEndpointScheduledTestsWithHttpInfo**](ListEndpointScheduledTestsApi.md#getEndpointScheduledTestsWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests |
 
 
 
-## getEndpointTestsList
+## getEndpointScheduledTests
 
-> GetEndpointTestsList200Response getEndpointTestsList(aid)
+> EndpointTests getEndpointScheduledTests(aid)
 
 List endpoint scheduled tests
 
@@ -40,10 +40,10 @@ public class Example {
         ListEndpointScheduledTestsApi apiInstance = new ListEndpointScheduledTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointTestsList200Response result = apiInstance.getEndpointTestsList(aid);
+            EndpointTests result = apiInstance.getEndpointScheduledTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ListEndpointScheduledTestsApi#getEndpointTestsList");
+            System.err.println("Exception when calling ListEndpointScheduledTestsApi#getEndpointScheduledTests");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointTestsList200Response**](GetEndpointTestsList200Response.md)
+[**EndpointTests**](EndpointTests.md)
 
 
 ### Authorization
@@ -85,9 +85,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getEndpointTestsListWithHttpInfo
+## getEndpointScheduledTestsWithHttpInfo
 
-> ApiResponse<GetEndpointTestsList200Response> getEndpointTestsList getEndpointTestsListWithHttpInfo(aid)
+> ApiResponse<EndpointTests> getEndpointScheduledTests getEndpointScheduledTestsWithHttpInfo(aid)
 
 List endpoint scheduled tests
 
@@ -117,12 +117,12 @@ public class Example {
         ListEndpointScheduledTestsApi apiInstance = new ListEndpointScheduledTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointTestsList200Response> response = apiInstance.getEndpointTestsListWithHttpInfo(aid);
+            ApiResponse<EndpointTests> response = apiInstance.getEndpointScheduledTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ListEndpointScheduledTestsApi#getEndpointTestsList");
+            System.err.println("Exception when calling ListEndpointScheduledTestsApi#getEndpointScheduledTests");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -141,7 +141,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointTestsList200Response**](GetEndpointTestsList200Response.md)>
+ApiResponse<[**EndpointTests**](EndpointTests.md)>
 
 
 ### Authorization

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantRun**](RunApi.md#postInstantRun) | **POST** /v7/tests/{testId}/run | Run instant test |
-| [**postInstantRunWithHttpInfo**](RunApi.md#postInstantRunWithHttpInfo) | **POST** /v7/tests/{testId}/run | Run instant test |
+| [**runInstantTest**](RunApi.md#runInstantTest) | **POST** /v7/tests/{testId}/run | Run instant test |
+| [**runInstantTestWithHttpInfo**](RunApi.md#runInstantTestWithHttpInfo) | **POST** /v7/tests/{testId}/run | Run instant test |
 
 
 
-## postInstantRun
+## runInstantTest
 
-> void postInstantRun(testId, aid)
+> void runInstantTest(testId, aid)
 
 Run instant test
 
@@ -41,9 +41,9 @@ public class Example {
         String testId = "105"; // String | Identifier for the instant test you wish to rerun.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.postInstantRun(testId, aid);
+            apiInstance.runInstantTest(testId, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling RunApi#postInstantRun");
+            System.err.println("Exception when calling RunApi#runInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -87,9 +87,9 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantRunWithHttpInfo
+## runInstantTestWithHttpInfo
 
-> ApiResponse<Void> postInstantRun postInstantRunWithHttpInfo(testId, aid)
+> ApiResponse<Void> runInstantTest runInstantTestWithHttpInfo(testId, aid)
 
 Run instant test
 
@@ -120,11 +120,11 @@ public class Example {
         String testId = "105"; // String | Identifier for the instant test you wish to rerun.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.postInstantRunWithHttpInfo(testId, aid);
+            ApiResponse<Void> response = apiInstance.runInstantTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling RunApi#postInstantRun");
+            System.err.println("Exception when calling RunApi#runInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

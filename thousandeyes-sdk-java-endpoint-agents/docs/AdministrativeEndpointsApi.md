@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**endpointAgentsConnectionString**](AdministrativeEndpointsApi.md#endpointAgentsConnectionString) | **GET** /v7/endpoint/agents/connection-string | Get agent connection string |
-| [**endpointAgentsConnectionStringWithHttpInfo**](AdministrativeEndpointsApi.md#endpointAgentsConnectionStringWithHttpInfo) | **GET** /v7/endpoint/agents/connection-string | Get agent connection string |
+| [**getEndpointAgentsConnectionString**](AdministrativeEndpointsApi.md#getEndpointAgentsConnectionString) | **GET** /v7/endpoint/agents/connection-string | Get agent connection string |
+| [**getEndpointAgentsConnectionStringWithHttpInfo**](AdministrativeEndpointsApi.md#getEndpointAgentsConnectionStringWithHttpInfo) | **GET** /v7/endpoint/agents/connection-string | Get agent connection string |
 
 
 
-## endpointAgentsConnectionString
+## getEndpointAgentsConnectionString
 
-> EndpointAgentsConnectionString200Response endpointAgentsConnectionString(aid)
+> ConnectionString getEndpointAgentsConnectionString(aid)
 
 Get agent connection string
 
@@ -38,10 +38,10 @@ public class Example {
         AdministrativeEndpointsApi apiInstance = new AdministrativeEndpointsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentsConnectionString200Response result = apiInstance.endpointAgentsConnectionString(aid);
+            ConnectionString result = apiInstance.getEndpointAgentsConnectionString(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AdministrativeEndpointsApi#endpointAgentsConnectionString");
+            System.err.println("Exception when calling AdministrativeEndpointsApi#getEndpointAgentsConnectionString");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -60,7 +60,7 @@ public class Example {
 
 ### Return type
 
-[**EndpointAgentsConnectionString200Response**](EndpointAgentsConnectionString200Response.md)
+[**ConnectionString**](ConnectionString.md)
 
 
 ### Authorization
@@ -80,9 +80,9 @@ public class Example {
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 
-## endpointAgentsConnectionStringWithHttpInfo
+## getEndpointAgentsConnectionStringWithHttpInfo
 
-> ApiResponse<EndpointAgentsConnectionString200Response> endpointAgentsConnectionString endpointAgentsConnectionStringWithHttpInfo(aid)
+> ApiResponse<ConnectionString> getEndpointAgentsConnectionString getEndpointAgentsConnectionStringWithHttpInfo(aid)
 
 Get agent connection string
 
@@ -110,12 +110,12 @@ public class Example {
         AdministrativeEndpointsApi apiInstance = new AdministrativeEndpointsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgentsConnectionString200Response> response = apiInstance.endpointAgentsConnectionStringWithHttpInfo(aid);
+            ApiResponse<ConnectionString> response = apiInstance.getEndpointAgentsConnectionStringWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AdministrativeEndpointsApi#endpointAgentsConnectionString");
+            System.err.println("Exception when calling AdministrativeEndpointsApi#getEndpointAgentsConnectionString");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -134,7 +134,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**EndpointAgentsConnectionString200Response**](EndpointAgentsConnectionString200Response.md)>
+ApiResponse<[**ConnectionString**](ConnectionString.md)>
 
 
 ### Authorization

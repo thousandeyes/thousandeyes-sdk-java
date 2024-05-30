@@ -12,8 +12,8 @@ All URIs are relative to *https://api.thousandeyes.com*
 | [**getStreamWithHttpInfo**](StreamingApi.md#getStreamWithHttpInfo) | **GET** /v7/stream/{id} | Retrieve data stream |
 | [**getStreams**](StreamingApi.md#getStreams) | **GET** /v7/stream | List data streams |
 | [**getStreamsWithHttpInfo**](StreamingApi.md#getStreamsWithHttpInfo) | **GET** /v7/stream | List data streams |
-| [**putStream**](StreamingApi.md#putStream) | **PUT** /v7/stream/{id} | Update data stream |
-| [**putStreamWithHttpInfo**](StreamingApi.md#putStreamWithHttpInfo) | **PUT** /v7/stream/{id} | Update data stream |
+| [**updateStream**](StreamingApi.md#updateStream) | **PUT** /v7/stream/{id} | Update data stream |
+| [**updateStreamWithHttpInfo**](StreamingApi.md#updateStreamWithHttpInfo) | **PUT** /v7/stream/{id} | Update data stream |
 
 
 
@@ -653,9 +653,9 @@ ApiResponse<[**List&lt;GetStreamResponse&gt;**](GetStreamResponse.md)>
 | **500** | Internal Server Error |  -  |
 
 
-## putStream
+## updateStream
 
-> GetStreamResponse putStream(id, aid, putStream)
+> GetStreamResponse updateStream(id, aid, putStream)
 
 Update data stream
 
@@ -686,10 +686,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         PutStream putStream = new PutStream(); // PutStream | 
         try {
-            GetStreamResponse result = apiInstance.putStream(id, aid, putStream);
+            GetStreamResponse result = apiInstance.updateStream(id, aid, putStream);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling StreamingApi#putStream");
+            System.err.println("Exception when calling StreamingApi#updateStream");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -734,9 +734,9 @@ public class Example {
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
 
-## putStreamWithHttpInfo
+## updateStreamWithHttpInfo
 
-> ApiResponse<GetStreamResponse> putStream putStreamWithHttpInfo(id, aid, putStream)
+> ApiResponse<GetStreamResponse> updateStream updateStreamWithHttpInfo(id, aid, putStream)
 
 Update data stream
 
@@ -768,12 +768,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         PutStream putStream = new PutStream(); // PutStream | 
         try {
-            ApiResponse<GetStreamResponse> response = apiInstance.putStreamWithHttpInfo(id, aid, putStream);
+            ApiResponse<GetStreamResponse> response = apiInstance.updateStreamWithHttpInfo(id, aid, putStream);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling StreamingApi#putStream");
+            System.err.println("Exception when calling StreamingApi#updateStream");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

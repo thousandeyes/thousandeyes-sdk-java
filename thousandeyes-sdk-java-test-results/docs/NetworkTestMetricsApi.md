@@ -4,194 +4,18 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestPathvisAgentRound**](NetworkTestMetricsApi.md#getTestPathvisAgentRound) | **GET** /v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round |
-| [**getTestPathvisAgentRoundWithHttpInfo**](NetworkTestMetricsApi.md#getTestPathvisAgentRoundWithHttpInfo) | **GET** /v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round |
-| [**getTestResultMetrics**](NetworkTestMetricsApi.md#getTestResultMetrics) | **GET** /v7/test-results/{testId}/network | Get network test results |
-| [**getTestResultMetricsWithHttpInfo**](NetworkTestMetricsApi.md#getTestResultMetricsWithHttpInfo) | **GET** /v7/test-results/{testId}/network | Get network test results |
-| [**getTestResultNetworkPathVis**](NetworkTestMetricsApi.md#getTestResultNetworkPathVis) | **GET** /v7/test-results/{testId}/path-vis | Get path visualization network test results |
-| [**getTestResultNetworkPathVisWithHttpInfo**](NetworkTestMetricsApi.md#getTestResultNetworkPathVisWithHttpInfo) | **GET** /v7/test-results/{testId}/path-vis | Get path visualization network test results |
+| [**getTestNetworkResults**](NetworkTestMetricsApi.md#getTestNetworkResults) | **GET** /v7/test-results/{testId}/network | Get network test results |
+| [**getTestNetworkResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestNetworkResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/network | Get network test results |
+| [**getTestPathVisAgentRoundResults**](NetworkTestMetricsApi.md#getTestPathVisAgentRoundResults) | **GET** /v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round |
+| [**getTestPathVisAgentRoundResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round |
+| [**getTestPathVisResults**](NetworkTestMetricsApi.md#getTestPathVisResults) | **GET** /v7/test-results/{testId}/path-vis | Get path visualization network test results |
+| [**getTestPathVisResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestPathVisResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/path-vis | Get path visualization network test results |
 
 
 
-## getTestPathvisAgentRound
+## getTestNetworkResults
 
-> GetTestPathvisAgentRound200Response getTestPathvisAgentRound(testId, agentId, roundId, aid, direction)
-
-Get path visualization test results by agent and round
-
-Returns a summary of the path trace data collected during path visualization for a given agent and round. With each attempt, three tries are made to reach the destination. The entire path is displayed in order.  Bidirectional agent-to-agent tests also support the &#x60;direction&#x60; parameter. For example, if agents A, B, and C are testing agent D bidirectionally, and you want results from the route from agent A to agent D, you can use the query &#x60;direction&#x3D;to-target&#x60;. For results from agent D to agent A, you can use &#x60;direction&#x3D;from-target&#x60;. To get both results for both routes, query without the direction parameter. The source will always be agent A and the destination will be agent D, but the direction field will indicate which trace direction you want test results from. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.tests.Configuration;
-import com.thousandeyes.api.tests.authentication.*;
-import com.thousandeyes.api.tests.models.*;
-import com.thousandeyes.api.tests.results.NetworkTestMetricsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        NetworkTestMetricsApi apiInstance = new NetworkTestMetricsApi(defaultClient);
-        String testId = "202701"; // String | Test ID
-        String agentId = "11"; // String | Agent ID
-        String roundId = "1384309800"; // String | Round ID
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
-        try {
-            GetTestPathvisAgentRound200Response result = apiInstance.getTestPathvisAgentRound(testId, agentId, roundId, aid, direction);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NetworkTestMetricsApi#getTestPathvisAgentRound");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **direction** | [**PathVisDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
-
-### Return type
-
-[**GetTestPathvisAgentRound200Response**](GetTestPathvisAgentRound200Response.md)
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-| **0** | An error occurred |  -  |
-
-## getTestPathvisAgentRoundWithHttpInfo
-
-> ApiResponse<GetTestPathvisAgentRound200Response> getTestPathvisAgentRound getTestPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid, direction)
-
-Get path visualization test results by agent and round
-
-Returns a summary of the path trace data collected during path visualization for a given agent and round. With each attempt, three tries are made to reach the destination. The entire path is displayed in order.  Bidirectional agent-to-agent tests also support the &#x60;direction&#x60; parameter. For example, if agents A, B, and C are testing agent D bidirectionally, and you want results from the route from agent A to agent D, you can use the query &#x60;direction&#x3D;to-target&#x60;. For results from agent D to agent A, you can use &#x60;direction&#x3D;from-target&#x60;. To get both results for both routes, query without the direction parameter. The source will always be agent A and the destination will be agent D, but the direction field will indicate which trace direction you want test results from. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
-import com.thousandeyes.api.tests.Configuration;
-import com.thousandeyes.api.tests.authentication.*;
-import com.thousandeyes.api.tests.models.*;
-import com.thousandeyes.api.tests.results.NetworkTestMetricsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        NetworkTestMetricsApi apiInstance = new NetworkTestMetricsApi(defaultClient);
-        String testId = "202701"; // String | Test ID
-        String agentId = "11"; // String | Agent ID
-        String roundId = "1384309800"; // String | Round ID
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
-        try {
-            ApiResponse<GetTestPathvisAgentRound200Response> response = apiInstance.getTestPathvisAgentRoundWithHttpInfo(testId, agentId, roundId, aid, direction);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NetworkTestMetricsApi#getTestPathvisAgentRound");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **direction** | [**PathVisDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
-
-### Return type
-
-ApiResponse<[**GetTestPathvisAgentRound200Response**](GetTestPathvisAgentRound200Response.md)>
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-| **0** | An error occurred |  -  |
-
-
-## getTestResultMetrics
-
-> GetTestResultMetrics200Response getTestResultMetrics(testId, aid, window, startDate, endDate, cursor, direction)
+> NetworkTestResults getTestNetworkResults(testId, aid, window, startDate, endDate, cursor, direction)
 
 Get network test results
 
@@ -226,10 +50,10 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         TestDirection direction = TestDirection.fromValue("to-target"); // TestDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`, `bidirectional`]. This applies when you're doing bidirectional Agent-to-Agent tests. For bidirectional data, you'll get combined results; otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            GetTestResultMetrics200Response result = apiInstance.getTestResultMetrics(testId, aid, window, startDate, endDate, cursor, direction);
+            NetworkTestResults result = apiInstance.getTestNetworkResults(testId, aid, window, startDate, endDate, cursor, direction);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NetworkTestMetricsApi#getTestResultMetrics");
+            System.err.println("Exception when calling NetworkTestMetricsApi#getTestNetworkResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -254,7 +78,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultMetrics200Response**](GetTestResultMetrics200Response.md)
+[**NetworkTestResults**](NetworkTestResults.md)
 
 
 ### Authorization
@@ -279,9 +103,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getTestResultMetricsWithHttpInfo
+## getTestNetworkResultsWithHttpInfo
 
-> ApiResponse<GetTestResultMetrics200Response> getTestResultMetrics getTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction)
+> ApiResponse<NetworkTestResults> getTestNetworkResults getTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction)
 
 Get network test results
 
@@ -317,12 +141,12 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         TestDirection direction = TestDirection.fromValue("to-target"); // TestDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`, `bidirectional`]. This applies when you're doing bidirectional Agent-to-Agent tests. For bidirectional data, you'll get combined results; otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            ApiResponse<GetTestResultMetrics200Response> response = apiInstance.getTestResultMetricsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction);
+            ApiResponse<NetworkTestResults> response = apiInstance.getTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NetworkTestMetricsApi#getTestResultMetrics");
+            System.err.println("Exception when calling NetworkTestMetricsApi#getTestNetworkResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -347,7 +171,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultMetrics200Response**](GetTestResultMetrics200Response.md)>
+ApiResponse<[**NetworkTestResults**](NetworkTestResults.md)>
 
 
 ### Authorization
@@ -373,9 +197,185 @@ ApiResponse<[**GetTestResultMetrics200Response**](GetTestResultMetrics200Respons
 | **0** | An error occurred |  -  |
 
 
-## getTestResultNetworkPathVis
+## getTestPathVisAgentRoundResults
 
-> GetTestResultNetworkPathVis200Response getTestResultNetworkPathVis(testId, aid, window, startDate, endDate, cursor, direction)
+> PathVisDetailTestResults getTestPathVisAgentRoundResults(testId, agentId, roundId, aid, direction)
+
+Get path visualization test results by agent and round
+
+Returns a summary of the path trace data collected during path visualization for a given agent and round. With each attempt, three tries are made to reach the destination. The entire path is displayed in order.  Bidirectional agent-to-agent tests also support the &#x60;direction&#x60; parameter. For example, if agents A, B, and C are testing agent D bidirectionally, and you want results from the route from agent A to agent D, you can use the query &#x60;direction&#x3D;to-target&#x60;. For results from agent D to agent A, you can use &#x60;direction&#x3D;from-target&#x60;. To get both results for both routes, query without the direction parameter. The source will always be agent A and the destination will be agent D, but the direction field will indicate which trace direction you want test results from. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.tests.Configuration;
+import com.thousandeyes.api.tests.authentication.*;
+import com.thousandeyes.api.tests.models.*;
+import com.thousandeyes.api.tests.results.NetworkTestMetricsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        NetworkTestMetricsApi apiInstance = new NetworkTestMetricsApi(defaultClient);
+        String testId = "202701"; // String | Test ID
+        String agentId = "11"; // String | Agent ID
+        String roundId = "1384309800"; // String | Round ID
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
+        try {
+            PathVisDetailTestResults result = apiInstance.getTestPathVisAgentRoundResults(testId, agentId, roundId, aid, direction);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NetworkTestMetricsApi#getTestPathVisAgentRoundResults");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **testId** | **String**| Test ID | |
+| **agentId** | **String**| Agent ID | |
+| **roundId** | **String**| Round ID | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **direction** | [**PathVisDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
+
+### Return type
+
+[**PathVisDetailTestResults**](PathVisDetailTestResults.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+## getTestPathVisAgentRoundResultsWithHttpInfo
+
+> ApiResponse<PathVisDetailTestResults> getTestPathVisAgentRoundResults getTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid, direction)
+
+Get path visualization test results by agent and round
+
+Returns a summary of the path trace data collected during path visualization for a given agent and round. With each attempt, three tries are made to reach the destination. The entire path is displayed in order.  Bidirectional agent-to-agent tests also support the &#x60;direction&#x60; parameter. For example, if agents A, B, and C are testing agent D bidirectionally, and you want results from the route from agent A to agent D, you can use the query &#x60;direction&#x3D;to-target&#x60;. For results from agent D to agent A, you can use &#x60;direction&#x3D;from-target&#x60;. To get both results for both routes, query without the direction parameter. The source will always be agent A and the destination will be agent D, but the direction field will indicate which trace direction you want test results from. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.tests.Configuration;
+import com.thousandeyes.api.tests.authentication.*;
+import com.thousandeyes.api.tests.models.*;
+import com.thousandeyes.api.tests.results.NetworkTestMetricsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        NetworkTestMetricsApi apiInstance = new NetworkTestMetricsApi(defaultClient);
+        String testId = "202701"; // String | Test ID
+        String agentId = "11"; // String | Agent ID
+        String roundId = "1384309800"; // String | Round ID
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
+        try {
+            ApiResponse<PathVisDetailTestResults> response = apiInstance.getTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid, direction);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NetworkTestMetricsApi#getTestPathVisAgentRoundResults");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **testId** | **String**| Test ID | |
+| **agentId** | **String**| Agent ID | |
+| **roundId** | **String**| Round ID | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **direction** | [**PathVisDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
+
+### Return type
+
+ApiResponse<[**PathVisDetailTestResults**](PathVisDetailTestResults.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+
+## getTestPathVisResults
+
+> PathVisTestResults getTestPathVisResults(testId, aid, window, startDate, endDate, cursor, direction)
 
 Get path visualization network test results
 
@@ -410,10 +410,10 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            GetTestResultNetworkPathVis200Response result = apiInstance.getTestResultNetworkPathVis(testId, aid, window, startDate, endDate, cursor, direction);
+            PathVisTestResults result = apiInstance.getTestPathVisResults(testId, aid, window, startDate, endDate, cursor, direction);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NetworkTestMetricsApi#getTestResultNetworkPathVis");
+            System.err.println("Exception when calling NetworkTestMetricsApi#getTestPathVisResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -438,7 +438,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultNetworkPathVis200Response**](GetTestResultNetworkPathVis200Response.md)
+[**PathVisTestResults**](PathVisTestResults.md)
 
 
 ### Authorization
@@ -463,9 +463,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getTestResultNetworkPathVisWithHttpInfo
+## getTestPathVisResultsWithHttpInfo
 
-> ApiResponse<GetTestResultNetworkPathVis200Response> getTestResultNetworkPathVis getTestResultNetworkPathVisWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction)
+> ApiResponse<PathVisTestResults> getTestPathVisResults getTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction)
 
 Get path visualization network test results
 
@@ -501,12 +501,12 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            ApiResponse<GetTestResultNetworkPathVis200Response> response = apiInstance.getTestResultNetworkPathVisWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction);
+            ApiResponse<PathVisTestResults> response = apiInstance.getTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NetworkTestMetricsApi#getTestResultNetworkPathVis");
+            System.err.println("Exception when calling NetworkTestMetricsApi#getTestPathVisResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -531,7 +531,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultNetworkPathVis200Response**](GetTestResultNetworkPathVis200Response.md)>
+ApiResponse<[**PathVisTestResults**](PathVisTestResults.md)>
 
 
 ### Authorization

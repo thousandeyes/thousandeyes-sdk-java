@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 README.md
 api/openapi.yaml
 build.gradle
@@ -11,9 +12,7 @@ src/main/java/com/thousandeyes/api/labels/AllLabelsApi.java
 src/main/java/com/thousandeyes/api/labels/DashboardApi.java
 src/main/java/com/thousandeyes/api/labels/EndpointTestApi.java
 src/main/java/com/thousandeyes/api/labels/TestApi.java
-src/main/java/com/thousandeyes/api/labels/model/CreateAgentLabel201Response.java
 src/main/java/com/thousandeyes/api/labels/model/Error.java
-src/main/java/com/thousandeyes/api/labels/model/GetLabels200Response.java
 src/main/java/com/thousandeyes/api/labels/model/Label.java
 src/main/java/com/thousandeyes/api/labels/model/LabelDetail.java
 src/main/java/com/thousandeyes/api/labels/model/LabelRequest.java
@@ -21,10 +20,9 @@ src/main/java/com/thousandeyes/api/labels/model/LabelType.java
 src/main/java/com/thousandeyes/api/labels/model/Labels.java
 src/main/java/com/thousandeyes/api/labels/model/Link.java
 src/main/java/com/thousandeyes/api/labels/model/SelfLinks.java
-src/main/java/com/thousandeyes/api/labels/model/SelfLinksLinks.java
 src/main/java/com/thousandeyes/api/labels/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/api/labels/model/ValidationError.java
-src/main/java/com/thousandeyes/api/labels/model/ValidationErrorAllOfErrors.java
+src/main/java/com/thousandeyes/api/labels/model/ValidationErrorItem.java
 src/test/java/com/thousandeyes/api/labels/AgentApiTest.java
 src/test/java/com/thousandeyes/api/labels/AllLabelsApiTest.java
 src/test/java/com/thousandeyes/api/labels/DashboardApiTest.java

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantDnsTrace**](DnsTraceApi.md#postInstantDnsTrace) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test |
-| [**postInstantDnsTraceWithHttpInfo**](DnsTraceApi.md#postInstantDnsTraceWithHttpInfo) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test |
+| [**createDnsTraceInstantTest**](DnsTraceApi.md#createDnsTraceInstantTest) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test |
+| [**createDnsTraceInstantTestWithHttpInfo**](DnsTraceApi.md#createDnsTraceInstantTestWithHttpInfo) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test |
 
 
 
-## postInstantDnsTrace
+## createDnsTraceInstantTest
 
-> DnsTraceInstantTest postInstantDnsTrace(dnsTraceInstantTestRequest, aid, expand)
+> DnsTraceInstantTest createDnsTraceInstantTest(dnsTraceInstantTestRequest, aid, expand)
 
 Create DNS trace instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            DnsTraceInstantTest result = apiInstance.postInstantDnsTrace(dnsTraceInstantTestRequest, aid, expand);
+            DnsTraceInstantTest result = apiInstance.createDnsTraceInstantTest(dnsTraceInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsTraceApi#postInstantDnsTrace");
+            System.err.println("Exception when calling DnsTraceApi#createDnsTraceInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantDnsTraceWithHttpInfo
+## createDnsTraceInstantTestWithHttpInfo
 
-> ApiResponse<DnsTraceInstantTest> postInstantDnsTrace postInstantDnsTraceWithHttpInfo(dnsTraceInstantTestRequest, aid, expand)
+> ApiResponse<DnsTraceInstantTest> createDnsTraceInstantTest createDnsTraceInstantTestWithHttpInfo(dnsTraceInstantTestRequest, aid, expand)
 
 Create DNS trace instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<DnsTraceInstantTest> response = apiInstance.postInstantDnsTraceWithHttpInfo(dnsTraceInstantTestRequest, aid, expand);
+            ApiResponse<DnsTraceInstantTest> response = apiInstance.createDnsTraceInstantTestWithHttpInfo(dnsTraceInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsTraceApi#postInstantDnsTrace");
+            System.err.println("Exception when calling DnsTraceApi#createDnsTraceInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

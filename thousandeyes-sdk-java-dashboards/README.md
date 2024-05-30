@@ -2,9 +2,7 @@
 
 Dashboards API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.271495+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 Manage ThousandEyes Dashboards.
 
@@ -42,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-dashboards</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -52,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-dashboards:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-dashboards:version"
 ```
 
 ### Others
@@ -65,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-dashboards-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-dashboards-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -88,7 +86,7 @@ public class DashboardSnapshotsApiExample {
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateDashboardSnapshot201Response result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
+            DashboardSnapshotResponse result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#createDashboardSnapshot");
@@ -110,38 +108,38 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DashboardSnapshotsApi* | [**createDashboardSnapshot**](docs/DashboardSnapshotsApi.md#createDashboardSnapshot) | **POST** /v7/dashboard-snapshots | Create dashboard snapshot
 *DashboardSnapshotsApi* | [**createDashboardSnapshotWithHttpInfo**](docs/DashboardSnapshotsApi.md#createDashboardSnapshotWithHttpInfo) | **POST** /v7/dashboard-snapshots | Create dashboard snapshot
-*DashboardSnapshotsApi* | [**dashboardSnapshotById**](docs/DashboardSnapshotsApi.md#dashboardSnapshotById) | **GET** /v7/dashboard-snapshots/{snapshotId} | Retrieve dashboard snapshot
-*DashboardSnapshotsApi* | [**dashboardSnapshotByIdWithHttpInfo**](docs/DashboardSnapshotsApi.md#dashboardSnapshotByIdWithHttpInfo) | **GET** /v7/dashboard-snapshots/{snapshotId} | Retrieve dashboard snapshot
-*DashboardSnapshotsApi* | [**dashboardSnapshots**](docs/DashboardSnapshotsApi.md#dashboardSnapshots) | **GET** /v7/dashboard-snapshots | List dashboard snapshots
-*DashboardSnapshotsApi* | [**dashboardSnapshotsWithHttpInfo**](docs/DashboardSnapshotsApi.md#dashboardSnapshotsWithHttpInfo) | **GET** /v7/dashboard-snapshots | List dashboard snapshots
 *DashboardSnapshotsApi* | [**deleteDashboardSnapshot**](docs/DashboardSnapshotsApi.md#deleteDashboardSnapshot) | **DELETE** /v7/dashboard-snapshots/{snapshotId} | Delete dashboard snapshot
 *DashboardSnapshotsApi* | [**deleteDashboardSnapshotWithHttpInfo**](docs/DashboardSnapshotsApi.md#deleteDashboardSnapshotWithHttpInfo) | **DELETE** /v7/dashboard-snapshots/{snapshotId} | Delete dashboard snapshot
-*DashboardSnapshotsApi* | [**snapshotDataByWidget**](docs/DashboardSnapshotsApi.md#snapshotDataByWidget) | **GET** /v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId} | Retrieve dashboard snapshot data
-*DashboardSnapshotsApi* | [**snapshotDataByWidgetWithHttpInfo**](docs/DashboardSnapshotsApi.md#snapshotDataByWidgetWithHttpInfo) | **GET** /v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId} | Retrieve dashboard snapshot data
-*DashboardSnapshotsApi* | [**updateSnapshotExpirationDate**](docs/DashboardSnapshotsApi.md#updateSnapshotExpirationDate) | **PATCH** /v7/dashboard-snapshots/{snapshotId} | Update snapshot expiration
-*DashboardSnapshotsApi* | [**updateSnapshotExpirationDateWithHttpInfo**](docs/DashboardSnapshotsApi.md#updateSnapshotExpirationDateWithHttpInfo) | **PATCH** /v7/dashboard-snapshots/{snapshotId} | Update snapshot expiration
+*DashboardSnapshotsApi* | [**getDashboardSnapshot**](docs/DashboardSnapshotsApi.md#getDashboardSnapshot) | **GET** /v7/dashboard-snapshots/{snapshotId} | Retrieve dashboard snapshot
+*DashboardSnapshotsApi* | [**getDashboardSnapshotWithHttpInfo**](docs/DashboardSnapshotsApi.md#getDashboardSnapshotWithHttpInfo) | **GET** /v7/dashboard-snapshots/{snapshotId} | Retrieve dashboard snapshot
+*DashboardSnapshotsApi* | [**getDashboardSnapshotWidgetData**](docs/DashboardSnapshotsApi.md#getDashboardSnapshotWidgetData) | **GET** /v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId} | Retrieve dashboard snapshot data
+*DashboardSnapshotsApi* | [**getDashboardSnapshotWidgetDataWithHttpInfo**](docs/DashboardSnapshotsApi.md#getDashboardSnapshotWidgetDataWithHttpInfo) | **GET** /v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId} | Retrieve dashboard snapshot data
+*DashboardSnapshotsApi* | [**getDashboardSnapshots**](docs/DashboardSnapshotsApi.md#getDashboardSnapshots) | **GET** /v7/dashboard-snapshots | List dashboard snapshots
+*DashboardSnapshotsApi* | [**getDashboardSnapshotsWithHttpInfo**](docs/DashboardSnapshotsApi.md#getDashboardSnapshotsWithHttpInfo) | **GET** /v7/dashboard-snapshots | List dashboard snapshots
+*DashboardSnapshotsApi* | [**updateDashboardSnapshotExpirationDate**](docs/DashboardSnapshotsApi.md#updateDashboardSnapshotExpirationDate) | **PATCH** /v7/dashboard-snapshots/{snapshotId} | Update snapshot expiration
+*DashboardSnapshotsApi* | [**updateDashboardSnapshotExpirationDateWithHttpInfo**](docs/DashboardSnapshotsApi.md#updateDashboardSnapshotExpirationDateWithHttpInfo) | **PATCH** /v7/dashboard-snapshots/{snapshotId} | Update snapshot expiration
 *DashboardsApi* | [**createDashboard**](docs/DashboardsApi.md#createDashboard) | **POST** /v7/dashboards | Create dashboard
 *DashboardsApi* | [**createDashboardWithHttpInfo**](docs/DashboardsApi.md#createDashboardWithHttpInfo) | **POST** /v7/dashboards | Create dashboard
 *DashboardsApi* | [**deleteDashboard**](docs/DashboardsApi.md#deleteDashboard) | **DELETE** /v7/dashboards/{dashboardId} | Delete dashboard
 *DashboardsApi* | [**deleteDashboardWithHttpInfo**](docs/DashboardsApi.md#deleteDashboardWithHttpInfo) | **DELETE** /v7/dashboards/{dashboardId} | Delete dashboard
-*DashboardsApi* | [**getDashboardById**](docs/DashboardsApi.md#getDashboardById) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard
-*DashboardsApi* | [**getDashboardByIdWithHttpInfo**](docs/DashboardsApi.md#getDashboardByIdWithHttpInfo) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard
-*DashboardsApi* | [**getDashboardData**](docs/DashboardsApi.md#getDashboardData) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data
-*DashboardsApi* | [**getDashboardDataWithHttpInfo**](docs/DashboardsApi.md#getDashboardDataWithHttpInfo) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data
-*DashboardsApi* | [**getDashboardsForUser**](docs/DashboardsApi.md#getDashboardsForUser) | **GET** /v7/dashboards | List dashboards
-*DashboardsApi* | [**getDashboardsForUserWithHttpInfo**](docs/DashboardsApi.md#getDashboardsForUserWithHttpInfo) | **GET** /v7/dashboards | List dashboards
+*DashboardsApi* | [**getDashboard**](docs/DashboardsApi.md#getDashboard) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard
+*DashboardsApi* | [**getDashboardWithHttpInfo**](docs/DashboardsApi.md#getDashboardWithHttpInfo) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard
+*DashboardsApi* | [**getDashboardWidgetData**](docs/DashboardsApi.md#getDashboardWidgetData) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data
+*DashboardsApi* | [**getDashboardWidgetDataWithHttpInfo**](docs/DashboardsApi.md#getDashboardWidgetDataWithHttpInfo) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data
+*DashboardsApi* | [**getDashboards**](docs/DashboardsApi.md#getDashboards) | **GET** /v7/dashboards | List dashboards
+*DashboardsApi* | [**getDashboardsWithHttpInfo**](docs/DashboardsApi.md#getDashboardsWithHttpInfo) | **GET** /v7/dashboards | List dashboards
 *DashboardsApi* | [**updateDashboard**](docs/DashboardsApi.md#updateDashboard) | **PUT** /v7/dashboards/{dashboardId} | Update dashboard
 *DashboardsApi* | [**updateDashboardWithHttpInfo**](docs/DashboardsApi.md#updateDashboardWithHttpInfo) | **PUT** /v7/dashboards/{dashboardId} | Update dashboard
 *DashboardsFiltersApi* | [**createDashboardFilter**](docs/DashboardsFiltersApi.md#createDashboardFilter) | **POST** /v7/dashboards/filters | Create dashboard filter
 *DashboardsFiltersApi* | [**createDashboardFilterWithHttpInfo**](docs/DashboardsFiltersApi.md#createDashboardFilterWithHttpInfo) | **POST** /v7/dashboards/filters | Create dashboard filter
-*DashboardsFiltersApi* | [**deleteDashboardFilterById**](docs/DashboardsFiltersApi.md#deleteDashboardFilterById) | **DELETE** /v7/dashboards/filters/{id} | Delete dashboard filter
-*DashboardsFiltersApi* | [**deleteDashboardFilterByIdWithHttpInfo**](docs/DashboardsFiltersApi.md#deleteDashboardFilterByIdWithHttpInfo) | **DELETE** /v7/dashboards/filters/{id} | Delete dashboard filter
-*DashboardsFiltersApi* | [**getAllDashboardFilters**](docs/DashboardsFiltersApi.md#getAllDashboardFilters) | **GET** /v7/dashboards/filters | List dashboard filters
-*DashboardsFiltersApi* | [**getAllDashboardFiltersWithHttpInfo**](docs/DashboardsFiltersApi.md#getAllDashboardFiltersWithHttpInfo) | **GET** /v7/dashboards/filters | List dashboard filters
-*DashboardsFiltersApi* | [**getDashboardFilterById**](docs/DashboardsFiltersApi.md#getDashboardFilterById) | **GET** /v7/dashboards/filters/{id} | Get dashboard filter
-*DashboardsFiltersApi* | [**getDashboardFilterByIdWithHttpInfo**](docs/DashboardsFiltersApi.md#getDashboardFilterByIdWithHttpInfo) | **GET** /v7/dashboards/filters/{id} | Get dashboard filter
-*DashboardsFiltersApi* | [**updateDashboardFilterById**](docs/DashboardsFiltersApi.md#updateDashboardFilterById) | **PUT** /v7/dashboards/filters/{id} | Update dashboard filter
-*DashboardsFiltersApi* | [**updateDashboardFilterByIdWithHttpInfo**](docs/DashboardsFiltersApi.md#updateDashboardFilterByIdWithHttpInfo) | **PUT** /v7/dashboards/filters/{id} | Update dashboard filter
+*DashboardsFiltersApi* | [**deleteDashboardFilter**](docs/DashboardsFiltersApi.md#deleteDashboardFilter) | **DELETE** /v7/dashboards/filters/{id} | Delete dashboard filter
+*DashboardsFiltersApi* | [**deleteDashboardFilterWithHttpInfo**](docs/DashboardsFiltersApi.md#deleteDashboardFilterWithHttpInfo) | **DELETE** /v7/dashboards/filters/{id} | Delete dashboard filter
+*DashboardsFiltersApi* | [**getDashboardFilter**](docs/DashboardsFiltersApi.md#getDashboardFilter) | **GET** /v7/dashboards/filters/{id} | Get dashboard filter
+*DashboardsFiltersApi* | [**getDashboardFilterWithHttpInfo**](docs/DashboardsFiltersApi.md#getDashboardFilterWithHttpInfo) | **GET** /v7/dashboards/filters/{id} | Get dashboard filter
+*DashboardsFiltersApi* | [**getDashboardsFilters**](docs/DashboardsFiltersApi.md#getDashboardsFilters) | **GET** /v7/dashboards/filters | List dashboard filters
+*DashboardsFiltersApi* | [**getDashboardsFiltersWithHttpInfo**](docs/DashboardsFiltersApi.md#getDashboardsFiltersWithHttpInfo) | **GET** /v7/dashboards/filters | List dashboard filters
+*DashboardsFiltersApi* | [**updateDashboardFilter**](docs/DashboardsFiltersApi.md#updateDashboardFilter) | **PUT** /v7/dashboards/filters/{id} | Update dashboard filter
+*DashboardsFiltersApi* | [**updateDashboardFilterWithHttpInfo**](docs/DashboardsFiltersApi.md#updateDashboardFilterWithHttpInfo) | **PUT** /v7/dashboards/filters/{id} | Update dashboard filter
 
 
 <a id="documentation-for-authorization"></a>

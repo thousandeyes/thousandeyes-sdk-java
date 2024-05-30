@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantHTTPPageLoad**](HttpPageLoadApi.md#postInstantHTTPPageLoad) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test |
-| [**postInstantHTTPPageLoadWithHttpInfo**](HttpPageLoadApi.md#postInstantHTTPPageLoadWithHttpInfo) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test |
+| [**createPageLoadInstantTest**](HttpPageLoadApi.md#createPageLoadInstantTest) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test |
+| [**createPageLoadInstantTestWithHttpInfo**](HttpPageLoadApi.md#createPageLoadInstantTestWithHttpInfo) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test |
 
 
 
-## postInstantHTTPPageLoad
+## createPageLoadInstantTest
 
-> PageLoadInstantTest postInstantHTTPPageLoad(pageLoadInstantTestRequest, aid, expand)
+> PageLoadInstantTest createPageLoadInstantTest(pageLoadInstantTestRequest, aid, expand)
 
 Create HTTP page load instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            PageLoadInstantTest result = apiInstance.postInstantHTTPPageLoad(pageLoadInstantTestRequest, aid, expand);
+            PageLoadInstantTest result = apiInstance.createPageLoadInstantTest(pageLoadInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling HttpPageLoadApi#postInstantHTTPPageLoad");
+            System.err.println("Exception when calling HttpPageLoadApi#createPageLoadInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantHTTPPageLoadWithHttpInfo
+## createPageLoadInstantTestWithHttpInfo
 
-> ApiResponse<PageLoadInstantTest> postInstantHTTPPageLoad postInstantHTTPPageLoadWithHttpInfo(pageLoadInstantTestRequest, aid, expand)
+> ApiResponse<PageLoadInstantTest> createPageLoadInstantTest createPageLoadInstantTestWithHttpInfo(pageLoadInstantTestRequest, aid, expand)
 
 Create HTTP page load instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<PageLoadInstantTest> response = apiInstance.postInstantHTTPPageLoadWithHttpInfo(pageLoadInstantTestRequest, aid, expand);
+            ApiResponse<PageLoadInstantTest> response = apiInstance.createPageLoadInstantTestWithHttpInfo(pageLoadInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling HttpPageLoadApi#postInstantHTTPPageLoad");
+            System.err.println("Exception when calling HttpPageLoadApi#createPageLoadInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

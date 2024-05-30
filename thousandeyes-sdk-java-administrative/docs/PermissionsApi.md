@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getPermissions
 
-> GetPermissions200Response getPermissions(aid)
+> Permissions getPermissions(aid)
 
 List assignable permissions
 
@@ -40,7 +40,7 @@ public class Example {
         PermissionsApi apiInstance = new PermissionsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetPermissions200Response result = apiInstance.getPermissions(aid);
+            Permissions result = apiInstance.getPermissions(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PermissionsApi#getPermissions");
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetPermissions200Response**](GetPermissions200Response.md)
+[**Permissions**](Permissions.md)
 
 
 ### Authorization
@@ -87,7 +87,7 @@ public class Example {
 
 ## getPermissionsWithHttpInfo
 
-> ApiResponse<GetPermissions200Response> getPermissions getPermissionsWithHttpInfo(aid)
+> ApiResponse<Permissions> getPermissions getPermissionsWithHttpInfo(aid)
 
 List assignable permissions
 
@@ -117,7 +117,7 @@ public class Example {
         PermissionsApi apiInstance = new PermissionsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetPermissions200Response> response = apiInstance.getPermissionsWithHttpInfo(aid);
+            ApiResponse<Permissions> response = apiInstance.getPermissionsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -141,7 +141,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetPermissions200Response**](GetPermissions200Response.md)>
+ApiResponse<[**Permissions**](Permissions.md)>
 
 
 ### Authorization

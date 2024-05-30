@@ -513,7 +513,7 @@ ApiResponse<[**PageLoadTest**](PageLoadTest.md)>
 
 ## getPageLoadTests
 
-> GetPageLoadTests200Response getPageLoadTests(aid)
+> PageLoadTests getPageLoadTests(aid)
 
 List Page Load tests
 
@@ -542,7 +542,7 @@ public class Example {
         PageLoadApi apiInstance = new PageLoadApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetPageLoadTests200Response result = apiInstance.getPageLoadTests(aid);
+            PageLoadTests result = apiInstance.getPageLoadTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PageLoadApi#getPageLoadTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetPageLoadTests200Response**](GetPageLoadTests200Response.md)
+[**PageLoadTests**](PageLoadTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getPageLoadTestsWithHttpInfo
 
-> ApiResponse<GetPageLoadTests200Response> getPageLoadTests getPageLoadTestsWithHttpInfo(aid)
+> ApiResponse<PageLoadTests> getPageLoadTests getPageLoadTestsWithHttpInfo(aid)
 
 List Page Load tests
 
@@ -620,7 +620,7 @@ public class Example {
         PageLoadApi apiInstance = new PageLoadApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetPageLoadTests200Response> response = apiInstance.getPageLoadTestsWithHttpInfo(aid);
+            ApiResponse<PageLoadTests> response = apiInstance.getPageLoadTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetPageLoadTests200Response**](GetPageLoadTests200Response.md)>
+ApiResponse<[**PageLoadTests**](PageLoadTests.md)>
 
 
 ### Authorization

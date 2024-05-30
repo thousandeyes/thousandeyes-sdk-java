@@ -4,22 +4,186 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteEndpointHttpServerTest**](ScheduledTestsHttpServerApi.md#deleteEndpointHttpServerTest) | **DELETE** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test |
-| [**deleteEndpointHttpServerTestWithHttpInfo**](ScheduledTestsHttpServerApi.md#deleteEndpointHttpServerTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test |
-| [**getEndpointHttpserverTestDetail**](ScheduledTestsHttpServerApi.md#getEndpointHttpserverTestDetail) | **GET** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Retrieves HTTP server endpoint scheduled test |
-| [**getEndpointHttpserverTestDetailWithHttpInfo**](ScheduledTestsHttpServerApi.md#getEndpointHttpserverTestDetailWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Retrieves HTTP server endpoint scheduled test |
-| [**getEndpointHttpserverTestsList**](ScheduledTestsHttpServerApi.md#getEndpointHttpserverTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/http-server | List HTTP server endpoint scheduled tests |
-| [**getEndpointHttpserverTestsListWithHttpInfo**](ScheduledTestsHttpServerApi.md#getEndpointHttpserverTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/http-server | List HTTP server endpoint scheduled tests |
-| [**postEndpointHttpserverTest**](ScheduledTestsHttpServerApi.md#postEndpointHttpserverTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test |
-| [**postEndpointHttpserverTestWithHttpInfo**](ScheduledTestsHttpServerApi.md#postEndpointHttpserverTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test |
-| [**updateEndpointHttpServerDetail**](ScheduledTestsHttpServerApi.md#updateEndpointHttpServerDetail) | **PATCH** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Update HTTP server endpoint scheduled test |
-| [**updateEndpointHttpServerDetailWithHttpInfo**](ScheduledTestsHttpServerApi.md#updateEndpointHttpServerDetailWithHttpInfo) | **PATCH** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Update HTTP server endpoint scheduled test |
+| [**createHttpServerEndpointScheduledTest**](ScheduledTestsHttpServerApi.md#createHttpServerEndpointScheduledTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test |
+| [**createHttpServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsHttpServerApi.md#createHttpServerEndpointScheduledTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test |
+| [**deleteHttpServerEndpointScheduledTest**](ScheduledTestsHttpServerApi.md#deleteHttpServerEndpointScheduledTest) | **DELETE** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test |
+| [**deleteHttpServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsHttpServerApi.md#deleteHttpServerEndpointScheduledTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test |
+| [**getHttpServerEndpointScheduledTest**](ScheduledTestsHttpServerApi.md#getHttpServerEndpointScheduledTest) | **GET** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Retrieves HTTP server endpoint scheduled test |
+| [**getHttpServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsHttpServerApi.md#getHttpServerEndpointScheduledTestWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Retrieves HTTP server endpoint scheduled test |
+| [**getHttpServerEndpointScheduledTests**](ScheduledTestsHttpServerApi.md#getHttpServerEndpointScheduledTests) | **GET** /v7/endpoint/tests/scheduled-tests/http-server | List HTTP server endpoint scheduled tests |
+| [**getHttpServerEndpointScheduledTestsWithHttpInfo**](ScheduledTestsHttpServerApi.md#getHttpServerEndpointScheduledTestsWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/http-server | List HTTP server endpoint scheduled tests |
+| [**updateHttpServerEndpointScheduledTest**](ScheduledTestsHttpServerApi.md#updateHttpServerEndpointScheduledTest) | **PATCH** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Update HTTP server endpoint scheduled test |
+| [**updateHttpServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsHttpServerApi.md#updateHttpServerEndpointScheduledTestWithHttpInfo) | **PATCH** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Update HTTP server endpoint scheduled test |
 
 
 
-## deleteEndpointHttpServerTest
+## createHttpServerEndpointScheduledTest
 
-> void deleteEndpointHttpServerTest(testId, aid)
+> EndpointHttpServerTest createHttpServerEndpointScheduledTest(endpointHttpServerTestRequest, aid)
+
+Create HTTP server endpoint scheduled test
+
+Creates a new HTTP server endpoint test in ThousandEyes, using properties specified in the POST data. Please note that only users with Account Admin privileges have the authorization to create new tests; regular users are restricted from using POST-based methods. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.tests.ScheduledTestsHttpServerApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ScheduledTestsHttpServerApi apiInstance = new ScheduledTestsHttpServerApi(defaultClient);
+        EndpointHttpServerTestRequest endpointHttpServerTestRequest = new EndpointHttpServerTestRequest(); // EndpointHttpServerTestRequest | 
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            EndpointHttpServerTest result = apiInstance.createHttpServerEndpointScheduledTest(endpointHttpServerTestRequest, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#createHttpServerEndpointScheduledTest");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **endpointHttpServerTestRequest** | [**EndpointHttpServerTestRequest**](EndpointHttpServerTestRequest.md)|  | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**EndpointHttpServerTest**](EndpointHttpServerTest.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  * Location -  <br>  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+## createHttpServerEndpointScheduledTestWithHttpInfo
+
+> ApiResponse<EndpointHttpServerTest> createHttpServerEndpointScheduledTest createHttpServerEndpointScheduledTestWithHttpInfo(endpointHttpServerTestRequest, aid)
+
+Create HTTP server endpoint scheduled test
+
+Creates a new HTTP server endpoint test in ThousandEyes, using properties specified in the POST data. Please note that only users with Account Admin privileges have the authorization to create new tests; regular users are restricted from using POST-based methods. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.endpoint.Configuration;
+import com.thousandeyes.api.endpoint.authentication.*;
+import com.thousandeyes.api.endpoint.models.*;
+import com.thousandeyes.api.endpoint.tests.ScheduledTestsHttpServerApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        ScheduledTestsHttpServerApi apiInstance = new ScheduledTestsHttpServerApi(defaultClient);
+        EndpointHttpServerTestRequest endpointHttpServerTestRequest = new EndpointHttpServerTestRequest(); // EndpointHttpServerTestRequest | 
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<EndpointHttpServerTest> response = apiInstance.createHttpServerEndpointScheduledTestWithHttpInfo(endpointHttpServerTestRequest, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#createHttpServerEndpointScheduledTest");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **endpointHttpServerTestRequest** | [**EndpointHttpServerTestRequest**](EndpointHttpServerTestRequest.md)|  | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**EndpointHttpServerTest**](EndpointHttpServerTest.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  * Location -  <br>  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+
+## deleteHttpServerEndpointScheduledTest
+
+> void deleteHttpServerEndpointScheduledTest(testId, aid)
 
 Delete HTTP server scheduled test
 
@@ -49,9 +213,9 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteEndpointHttpServerTest(testId, aid);
+            apiInstance.deleteHttpServerEndpointScheduledTest(testId, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#deleteEndpointHttpServerTest");
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#deleteHttpServerEndpointScheduledTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -96,9 +260,9 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## deleteEndpointHttpServerTestWithHttpInfo
+## deleteHttpServerEndpointScheduledTestWithHttpInfo
 
-> ApiResponse<Void> deleteEndpointHttpServerTest deleteEndpointHttpServerTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteHttpServerEndpointScheduledTest deleteHttpServerEndpointScheduledTestWithHttpInfo(testId, aid)
 
 Delete HTTP server scheduled test
 
@@ -129,11 +293,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteEndpointHttpServerTestWithHttpInfo(testId, aid);
+            ApiResponse<Void> response = apiInstance.deleteHttpServerEndpointScheduledTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#deleteEndpointHttpServerTest");
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#deleteHttpServerEndpointScheduledTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -179,9 +343,9 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
-## getEndpointHttpserverTestDetail
+## getHttpServerEndpointScheduledTest
 
-> EndpointHttpServerTest getEndpointHttpserverTestDetail(testId, aid)
+> EndpointHttpServerTest getHttpServerEndpointScheduledTest(testId, aid)
 
 Retrieves HTTP server endpoint scheduled test
 
@@ -211,10 +375,10 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointHttpServerTest result = apiInstance.getEndpointHttpserverTestDetail(testId, aid);
+            EndpointHttpServerTest result = apiInstance.getHttpServerEndpointScheduledTest(testId, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#getEndpointHttpserverTestDetail");
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#getHttpServerEndpointScheduledTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -258,9 +422,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getEndpointHttpserverTestDetailWithHttpInfo
+## getHttpServerEndpointScheduledTestWithHttpInfo
 
-> ApiResponse<EndpointHttpServerTest> getEndpointHttpserverTestDetail getEndpointHttpserverTestDetailWithHttpInfo(testId, aid)
+> ApiResponse<EndpointHttpServerTest> getHttpServerEndpointScheduledTest getHttpServerEndpointScheduledTestWithHttpInfo(testId, aid)
 
 Retrieves HTTP server endpoint scheduled test
 
@@ -291,12 +455,12 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointHttpServerTest> response = apiInstance.getEndpointHttpserverTestDetailWithHttpInfo(testId, aid);
+            ApiResponse<EndpointHttpServerTest> response = apiInstance.getHttpServerEndpointScheduledTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#getEndpointHttpserverTestDetail");
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#getHttpServerEndpointScheduledTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -341,9 +505,9 @@ ApiResponse<[**EndpointHttpServerTest**](EndpointHttpServerTest.md)>
 | **0** | An error occurred |  -  |
 
 
-## getEndpointHttpserverTestsList
+## getHttpServerEndpointScheduledTests
 
-> GetEndpointHttpserverTestsList200Response getEndpointHttpserverTestsList(aid)
+> EndpointHttpServerTests getHttpServerEndpointScheduledTests(aid)
 
 List HTTP server endpoint scheduled tests
 
@@ -372,10 +536,10 @@ public class Example {
         ScheduledTestsHttpServerApi apiInstance = new ScheduledTestsHttpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetEndpointHttpserverTestsList200Response result = apiInstance.getEndpointHttpserverTestsList(aid);
+            EndpointHttpServerTests result = apiInstance.getHttpServerEndpointScheduledTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#getEndpointHttpserverTestsList");
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#getHttpServerEndpointScheduledTests");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -394,7 +558,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointHttpserverTestsList200Response**](GetEndpointHttpserverTestsList200Response.md)
+[**EndpointHttpServerTests**](EndpointHttpServerTests.md)
 
 
 ### Authorization
@@ -417,9 +581,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getEndpointHttpserverTestsListWithHttpInfo
+## getHttpServerEndpointScheduledTestsWithHttpInfo
 
-> ApiResponse<GetEndpointHttpserverTestsList200Response> getEndpointHttpserverTestsList getEndpointHttpserverTestsListWithHttpInfo(aid)
+> ApiResponse<EndpointHttpServerTests> getHttpServerEndpointScheduledTests getHttpServerEndpointScheduledTestsWithHttpInfo(aid)
 
 List HTTP server endpoint scheduled tests
 
@@ -449,12 +613,12 @@ public class Example {
         ScheduledTestsHttpServerApi apiInstance = new ScheduledTestsHttpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetEndpointHttpserverTestsList200Response> response = apiInstance.getEndpointHttpserverTestsListWithHttpInfo(aid);
+            ApiResponse<EndpointHttpServerTests> response = apiInstance.getHttpServerEndpointScheduledTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#getEndpointHttpserverTestsList");
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#getHttpServerEndpointScheduledTests");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -473,7 +637,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointHttpserverTestsList200Response**](GetEndpointHttpserverTestsList200Response.md)>
+ApiResponse<[**EndpointHttpServerTests**](EndpointHttpServerTests.md)>
 
 
 ### Authorization
@@ -497,173 +661,9 @@ ApiResponse<[**GetEndpointHttpserverTestsList200Response**](GetEndpointHttpserve
 | **0** | An error occurred |  -  |
 
 
-## postEndpointHttpserverTest
+## updateHttpServerEndpointScheduledTest
 
-> EndpointHttpServerTest postEndpointHttpserverTest(endpointHttpServerTestRequest, aid)
-
-Create HTTP server endpoint scheduled test
-
-Creates a new HTTP server endpoint test in ThousandEyes, using properties specified in the POST data. Please note that only users with Account Admin privileges have the authorization to create new tests; regular users are restricted from using POST-based methods. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.endpoint.Configuration;
-import com.thousandeyes.api.endpoint.authentication.*;
-import com.thousandeyes.api.endpoint.models.*;
-import com.thousandeyes.api.endpoint.tests.ScheduledTestsHttpServerApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        ScheduledTestsHttpServerApi apiInstance = new ScheduledTestsHttpServerApi(defaultClient);
-        EndpointHttpServerTestRequest endpointHttpServerTestRequest = new EndpointHttpServerTestRequest(); // EndpointHttpServerTestRequest | 
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            EndpointHttpServerTest result = apiInstance.postEndpointHttpserverTest(endpointHttpServerTestRequest, aid);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#postEndpointHttpserverTest");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **endpointHttpServerTestRequest** | [**EndpointHttpServerTestRequest**](EndpointHttpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-[**EndpointHttpServerTest**](EndpointHttpServerTest.md)
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  * Location -  <br>  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-| **0** | An error occurred |  -  |
-
-## postEndpointHttpserverTestWithHttpInfo
-
-> ApiResponse<EndpointHttpServerTest> postEndpointHttpserverTest postEndpointHttpserverTestWithHttpInfo(endpointHttpServerTestRequest, aid)
-
-Create HTTP server endpoint scheduled test
-
-Creates a new HTTP server endpoint test in ThousandEyes, using properties specified in the POST data. Please note that only users with Account Admin privileges have the authorization to create new tests; regular users are restricted from using POST-based methods. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
-import com.thousandeyes.api.endpoint.Configuration;
-import com.thousandeyes.api.endpoint.authentication.*;
-import com.thousandeyes.api.endpoint.models.*;
-import com.thousandeyes.api.endpoint.tests.ScheduledTestsHttpServerApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        ScheduledTestsHttpServerApi apiInstance = new ScheduledTestsHttpServerApi(defaultClient);
-        EndpointHttpServerTestRequest endpointHttpServerTestRequest = new EndpointHttpServerTestRequest(); // EndpointHttpServerTestRequest | 
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiResponse<EndpointHttpServerTest> response = apiInstance.postEndpointHttpserverTestWithHttpInfo(endpointHttpServerTestRequest, aid);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#postEndpointHttpserverTest");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **endpointHttpServerTestRequest** | [**EndpointHttpServerTestRequest**](EndpointHttpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-ApiResponse<[**EndpointHttpServerTest**](EndpointHttpServerTest.md)>
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  * Location -  <br>  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-| **0** | An error occurred |  -  |
-
-
-## updateEndpointHttpServerDetail
-
-> EndpointHttpServerTest updateEndpointHttpServerDetail(testId, endpointHttpTestUpdate, aid)
+> EndpointHttpServerTest updateHttpServerEndpointScheduledTest(testId, endpointHttpTestUpdate, aid)
 
 Update HTTP server endpoint scheduled test
 
@@ -694,10 +694,10 @@ public class Example {
         EndpointHttpTestUpdate endpointHttpTestUpdate = new EndpointHttpTestUpdate(); // EndpointHttpTestUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointHttpServerTest result = apiInstance.updateEndpointHttpServerDetail(testId, endpointHttpTestUpdate, aid);
+            EndpointHttpServerTest result = apiInstance.updateHttpServerEndpointScheduledTest(testId, endpointHttpTestUpdate, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#updateEndpointHttpServerDetail");
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#updateHttpServerEndpointScheduledTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -743,9 +743,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## updateEndpointHttpServerDetailWithHttpInfo
+## updateHttpServerEndpointScheduledTestWithHttpInfo
 
-> ApiResponse<EndpointHttpServerTest> updateEndpointHttpServerDetail updateEndpointHttpServerDetailWithHttpInfo(testId, endpointHttpTestUpdate, aid)
+> ApiResponse<EndpointHttpServerTest> updateHttpServerEndpointScheduledTest updateHttpServerEndpointScheduledTestWithHttpInfo(testId, endpointHttpTestUpdate, aid)
 
 Update HTTP server endpoint scheduled test
 
@@ -777,12 +777,12 @@ public class Example {
         EndpointHttpTestUpdate endpointHttpTestUpdate = new EndpointHttpTestUpdate(); // EndpointHttpTestUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointHttpServerTest> response = apiInstance.updateEndpointHttpServerDetailWithHttpInfo(testId, endpointHttpTestUpdate, aid);
+            ApiResponse<EndpointHttpServerTest> response = apiInstance.updateHttpServerEndpointScheduledTestWithHttpInfo(testId, endpointHttpTestUpdate, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ScheduledTestsHttpServerApi#updateEndpointHttpServerDetail");
+            System.err.println("Exception when calling ScheduledTestsHttpServerApi#updateHttpServerEndpointScheduledTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

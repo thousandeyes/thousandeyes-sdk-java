@@ -4,182 +4,18 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getOutagesApp**](OutagesApiPublicApi.md#getOutagesApp) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage |
-| [**getOutagesAppWithHttpInfo**](OutagesApiPublicApi.md#getOutagesAppWithHttpInfo) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage |
-| [**getOutagesFilter**](OutagesApiPublicApi.md#getOutagesFilter) | **POST** /v7/internet-insights/outages/filter | List network and application outages |
-| [**getOutagesFilterWithHttpInfo**](OutagesApiPublicApi.md#getOutagesFilterWithHttpInfo) | **POST** /v7/internet-insights/outages/filter | List network and application outages |
-| [**getOutagesNet**](OutagesApiPublicApi.md#getOutagesNet) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage |
-| [**getOutagesNetWithHttpInfo**](OutagesApiPublicApi.md#getOutagesNetWithHttpInfo) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage |
+| [**filterOutages**](OutagesApiPublicApi.md#filterOutages) | **POST** /v7/internet-insights/outages/filter | List network and application outages |
+| [**filterOutagesWithHttpInfo**](OutagesApiPublicApi.md#filterOutagesWithHttpInfo) | **POST** /v7/internet-insights/outages/filter | List network and application outages |
+| [**getAppOutage**](OutagesApiPublicApi.md#getAppOutage) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage |
+| [**getAppOutageWithHttpInfo**](OutagesApiPublicApi.md#getAppOutageWithHttpInfo) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage |
+| [**getNetworkOutage**](OutagesApiPublicApi.md#getNetworkOutage) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage |
+| [**getNetworkOutageWithHttpInfo**](OutagesApiPublicApi.md#getNetworkOutageWithHttpInfo) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage |
 
 
 
-## getOutagesApp
+## filterOutages
 
-> ApiApplicationOutageResponse getOutagesApp(outageId, aid)
-
-Retrieve application outage
-
-Returns the details of an application outage. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.internet.Configuration;
-import com.thousandeyes.api.internet.authentication.*;
-import com.thousandeyes.api.internet.models.*;
-import com.thousandeyes.api.internet.insights.OutagesApiPublicApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        OutagesApiPublicApi apiInstance = new OutagesApiPublicApi(defaultClient);
-        String outageId = "F73E24F17E4996923196826A208BB572508A8EB13BEE14B0"; // String | 
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiApplicationOutageResponse result = apiInstance.getOutagesApp(outageId, aid);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling OutagesApiPublicApi#getOutagesApp");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **outageId** | **String**|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-[**ApiApplicationOutageResponse**](ApiApplicationOutageResponse.md)
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-| **0** | An error occurred |  -  |
-
-## getOutagesAppWithHttpInfo
-
-> ApiResponse<ApiApplicationOutageResponse> getOutagesApp getOutagesAppWithHttpInfo(outageId, aid)
-
-Retrieve application outage
-
-Returns the details of an application outage. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
-import com.thousandeyes.api.internet.Configuration;
-import com.thousandeyes.api.internet.authentication.*;
-import com.thousandeyes.api.internet.models.*;
-import com.thousandeyes.api.internet.insights.OutagesApiPublicApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        OutagesApiPublicApi apiInstance = new OutagesApiPublicApi(defaultClient);
-        String outageId = "F73E24F17E4996923196826A208BB572508A8EB13BEE14B0"; // String | 
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiResponse<ApiApplicationOutageResponse> response = apiInstance.getOutagesAppWithHttpInfo(outageId, aid);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling OutagesApiPublicApi#getOutagesApp");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **outageId** | **String**|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-ApiResponse<[**ApiApplicationOutageResponse**](ApiApplicationOutageResponse.md)>
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-| **0** | An error occurred |  -  |
-
-
-## getOutagesFilter
-
-> ApiOutagesResponse getOutagesFilter(apiOutageFilter, aid)
+> ApiOutagesResponse filterOutages(apiOutageFilter, aid)
 
 List network and application outages
 
@@ -209,10 +45,10 @@ public class Example {
         ApiOutageFilter apiOutageFilter = new ApiOutageFilter(); // ApiOutageFilter | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiOutagesResponse result = apiInstance.getOutagesFilter(apiOutageFilter, aid);
+            ApiOutagesResponse result = apiInstance.filterOutages(apiOutageFilter, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OutagesApiPublicApi#getOutagesFilter");
+            System.err.println("Exception when calling OutagesApiPublicApi#filterOutages");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -257,9 +93,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getOutagesFilterWithHttpInfo
+## filterOutagesWithHttpInfo
 
-> ApiResponse<ApiOutagesResponse> getOutagesFilter getOutagesFilterWithHttpInfo(apiOutageFilter, aid)
+> ApiResponse<ApiOutagesResponse> filterOutages filterOutagesWithHttpInfo(apiOutageFilter, aid)
 
 List network and application outages
 
@@ -290,12 +126,12 @@ public class Example {
         ApiOutageFilter apiOutageFilter = new ApiOutageFilter(); // ApiOutageFilter | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiOutagesResponse> response = apiInstance.getOutagesFilterWithHttpInfo(apiOutageFilter, aid);
+            ApiResponse<ApiOutagesResponse> response = apiInstance.filterOutagesWithHttpInfo(apiOutageFilter, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OutagesApiPublicApi#getOutagesFilter");
+            System.err.println("Exception when calling OutagesApiPublicApi#filterOutages");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -341,9 +177,173 @@ ApiResponse<[**ApiOutagesResponse**](ApiOutagesResponse.md)>
 | **0** | An error occurred |  -  |
 
 
-## getOutagesNet
+## getAppOutage
 
-> ApiNetworkOutageResponse getOutagesNet(outageId, aid)
+> ApiApplicationOutageDetails getAppOutage(outageId, aid)
+
+Retrieve application outage
+
+Returns the details of an application outage. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.internet.Configuration;
+import com.thousandeyes.api.internet.authentication.*;
+import com.thousandeyes.api.internet.models.*;
+import com.thousandeyes.api.internet.insights.OutagesApiPublicApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        OutagesApiPublicApi apiInstance = new OutagesApiPublicApi(defaultClient);
+        String outageId = "F73E24F17E4996923196826A208BB572508A8EB13BEE14B0"; // String | 
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiApplicationOutageDetails result = apiInstance.getAppOutage(outageId, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OutagesApiPublicApi#getAppOutage");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **outageId** | **String**|  | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**ApiApplicationOutageDetails**](ApiApplicationOutageDetails.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+## getAppOutageWithHttpInfo
+
+> ApiResponse<ApiApplicationOutageDetails> getAppOutage getAppOutageWithHttpInfo(outageId, aid)
+
+Retrieve application outage
+
+Returns the details of an application outage. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.internet.Configuration;
+import com.thousandeyes.api.internet.authentication.*;
+import com.thousandeyes.api.internet.models.*;
+import com.thousandeyes.api.internet.insights.OutagesApiPublicApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        OutagesApiPublicApi apiInstance = new OutagesApiPublicApi(defaultClient);
+        String outageId = "F73E24F17E4996923196826A208BB572508A8EB13BEE14B0"; // String | 
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<ApiApplicationOutageDetails> response = apiInstance.getAppOutageWithHttpInfo(outageId, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OutagesApiPublicApi#getAppOutage");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **outageId** | **String**|  | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**ApiApplicationOutageDetails**](ApiApplicationOutageDetails.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+
+## getNetworkOutage
+
+> ApiNetworkOutageDetails getNetworkOutage(outageId, aid)
 
 Retrieve network outage
 
@@ -373,10 +373,10 @@ public class Example {
         String outageId = "694D8656960F34F76489BCE5E9BCD58EC53027462740D75F"; // String | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiNetworkOutageResponse result = apiInstance.getOutagesNet(outageId, aid);
+            ApiNetworkOutageDetails result = apiInstance.getNetworkOutage(outageId, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OutagesApiPublicApi#getOutagesNet");
+            System.err.println("Exception when calling OutagesApiPublicApi#getNetworkOutage");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -396,7 +396,7 @@ public class Example {
 
 ### Return type
 
-[**ApiNetworkOutageResponse**](ApiNetworkOutageResponse.md)
+[**ApiNetworkOutageDetails**](ApiNetworkOutageDetails.md)
 
 
 ### Authorization
@@ -421,9 +421,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getOutagesNetWithHttpInfo
+## getNetworkOutageWithHttpInfo
 
-> ApiResponse<ApiNetworkOutageResponse> getOutagesNet getOutagesNetWithHttpInfo(outageId, aid)
+> ApiResponse<ApiNetworkOutageDetails> getNetworkOutage getNetworkOutageWithHttpInfo(outageId, aid)
 
 Retrieve network outage
 
@@ -454,12 +454,12 @@ public class Example {
         String outageId = "694D8656960F34F76489BCE5E9BCD58EC53027462740D75F"; // String | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiNetworkOutageResponse> response = apiInstance.getOutagesNetWithHttpInfo(outageId, aid);
+            ApiResponse<ApiNetworkOutageDetails> response = apiInstance.getNetworkOutageWithHttpInfo(outageId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OutagesApiPublicApi#getOutagesNet");
+            System.err.println("Exception when calling OutagesApiPublicApi#getNetworkOutage");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -479,7 +479,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**ApiNetworkOutageResponse**](ApiNetworkOutageResponse.md)>
+ApiResponse<[**ApiNetworkOutageDetails**](ApiNetworkOutageDetails.md)>
 
 
 ### Authorization

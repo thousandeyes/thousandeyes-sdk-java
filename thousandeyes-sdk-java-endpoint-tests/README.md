@@ -2,9 +2,7 @@
 
 Endpoint Tests API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.128929+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 
 Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
@@ -44,7 +42,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -54,7 +52,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-tests:version"
 ```
 
 ### Others
@@ -67,7 +65,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-tests-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -87,12 +85,13 @@ public class DynamicTestsAgentToServerApiExample {
         // Configure clients using the `defaultClient` object, such as
         // overriding the host and port, timeout, etc.
         DynamicTestsAgentToServerApi apiInstance = new DynamicTestsAgentToServerApi(defaultClient);
-        String testId = "584739201"; // String | Unique ID of endpoint test.
+        DynamicTestRequest dynamicTestRequest = new DynamicTestRequest(); // DynamicTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteEndpointDynamicTest(testId, aid);
+            DynamicTest result = apiInstance.createAgentToServerEndpointDynamicTest(dynamicTestRequest, aid);
+            System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DynamicTestsAgentToServerApi#deleteEndpointDynamicTest");
+            System.err.println("Exception when calling DynamicTestsAgentToServerApi#createAgentToServerEndpointDynamicTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -109,38 +108,38 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DynamicTestsAgentToServerApi* | [**deleteEndpointDynamicTest**](docs/DynamicTestsAgentToServerApi.md#deleteEndpointDynamicTest) | **DELETE** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test
-*DynamicTestsAgentToServerApi* | [**deleteEndpointDynamicTestWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#deleteEndpointDynamicTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test
-*DynamicTestsAgentToServerApi* | [**getDynamicTestDetail**](docs/DynamicTestsAgentToServerApi.md#getDynamicTestDetail) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Retrieve endpoint dynamic test
-*DynamicTestsAgentToServerApi* | [**getDynamicTestDetailWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#getDynamicTestDetailWithHttpInfo) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Retrieve endpoint dynamic test
-*DynamicTestsAgentToServerApi* | [**getDynamicTestsList**](docs/DynamicTestsAgentToServerApi.md#getDynamicTestsList) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests
-*DynamicTestsAgentToServerApi* | [**getDynamicTestsListWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#getDynamicTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests
-*DynamicTestsAgentToServerApi* | [**postDynamicTest**](docs/DynamicTestsAgentToServerApi.md#postDynamicTest) | **POST** /v7/endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test
-*DynamicTestsAgentToServerApi* | [**postDynamicTestWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#postDynamicTestWithHttpInfo) | **POST** /v7/endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test
-*DynamicTestsAgentToServerApi* | [**updateEndpointDynamicTestDetail**](docs/DynamicTestsAgentToServerApi.md#updateEndpointDynamicTestDetail) | **PATCH** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test
-*DynamicTestsAgentToServerApi* | [**updateEndpointDynamicTestDetailWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#updateEndpointDynamicTestDetailWithHttpInfo) | **PATCH** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test
-*ListEndpointScheduledTestsApi* | [**getEndpointTestsList**](docs/ListEndpointScheduledTestsApi.md#getEndpointTestsList) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests
-*ListEndpointScheduledTestsApi* | [**getEndpointTestsListWithHttpInfo**](docs/ListEndpointScheduledTestsApi.md#getEndpointTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests
-*ScheduledTestsAgentToServerApi* | [**deleteEndpointAgentToServerTest**](docs/ScheduledTestsAgentToServerApi.md#deleteEndpointAgentToServerTest) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test
-*ScheduledTestsAgentToServerApi* | [**deleteEndpointAgentToServerTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#deleteEndpointAgentToServerTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test
-*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerDetail**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerDetail) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test
-*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToServerDetailWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToServerDetailWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test
-*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToserverTestsList**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToserverTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
-*ScheduledTestsAgentToServerApi* | [**getEndpointAgentToserverTestsListWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getEndpointAgentToserverTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
-*ScheduledTestsAgentToServerApi* | [**postEndpointAgentToServerTest**](docs/ScheduledTestsAgentToServerApi.md#postEndpointAgentToServerTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
-*ScheduledTestsAgentToServerApi* | [**postEndpointAgentToServerTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#postEndpointAgentToServerTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
-*ScheduledTestsAgentToServerApi* | [**updateEndpointAgentToServerDetail**](docs/ScheduledTestsAgentToServerApi.md#updateEndpointAgentToServerDetail) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test
-*ScheduledTestsAgentToServerApi* | [**updateEndpointAgentToServerDetailWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#updateEndpointAgentToServerDetailWithHttpInfo) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test
-*ScheduledTestsHttpServerApi* | [**deleteEndpointHttpServerTest**](docs/ScheduledTestsHttpServerApi.md#deleteEndpointHttpServerTest) | **DELETE** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test
-*ScheduledTestsHttpServerApi* | [**deleteEndpointHttpServerTestWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#deleteEndpointHttpServerTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test
-*ScheduledTestsHttpServerApi* | [**getEndpointHttpserverTestDetail**](docs/ScheduledTestsHttpServerApi.md#getEndpointHttpserverTestDetail) | **GET** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Retrieves HTTP server endpoint scheduled test
-*ScheduledTestsHttpServerApi* | [**getEndpointHttpserverTestDetailWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#getEndpointHttpserverTestDetailWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Retrieves HTTP server endpoint scheduled test
-*ScheduledTestsHttpServerApi* | [**getEndpointHttpserverTestsList**](docs/ScheduledTestsHttpServerApi.md#getEndpointHttpserverTestsList) | **GET** /v7/endpoint/tests/scheduled-tests/http-server | List HTTP server endpoint scheduled tests
-*ScheduledTestsHttpServerApi* | [**getEndpointHttpserverTestsListWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#getEndpointHttpserverTestsListWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/http-server | List HTTP server endpoint scheduled tests
-*ScheduledTestsHttpServerApi* | [**postEndpointHttpserverTest**](docs/ScheduledTestsHttpServerApi.md#postEndpointHttpserverTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test
-*ScheduledTestsHttpServerApi* | [**postEndpointHttpserverTestWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#postEndpointHttpserverTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test
-*ScheduledTestsHttpServerApi* | [**updateEndpointHttpServerDetail**](docs/ScheduledTestsHttpServerApi.md#updateEndpointHttpServerDetail) | **PATCH** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Update HTTP server endpoint scheduled test
-*ScheduledTestsHttpServerApi* | [**updateEndpointHttpServerDetailWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#updateEndpointHttpServerDetailWithHttpInfo) | **PATCH** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Update HTTP server endpoint scheduled test
+*DynamicTestsAgentToServerApi* | [**createAgentToServerEndpointDynamicTest**](docs/DynamicTestsAgentToServerApi.md#createAgentToServerEndpointDynamicTest) | **POST** /v7/endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test
+*DynamicTestsAgentToServerApi* | [**createAgentToServerEndpointDynamicTestWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#createAgentToServerEndpointDynamicTestWithHttpInfo) | **POST** /v7/endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test
+*DynamicTestsAgentToServerApi* | [**deleteAgentToServerEndpointDynamicTest**](docs/DynamicTestsAgentToServerApi.md#deleteAgentToServerEndpointDynamicTest) | **DELETE** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test
+*DynamicTestsAgentToServerApi* | [**deleteAgentToServerEndpointDynamicTestWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#deleteAgentToServerEndpointDynamicTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test
+*DynamicTestsAgentToServerApi* | [**getAgentToServerEndpointDynamicTest**](docs/DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTest) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Retrieve endpoint dynamic test
+*DynamicTestsAgentToServerApi* | [**getAgentToServerEndpointDynamicTestWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTestWithHttpInfo) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Retrieve endpoint dynamic test
+*DynamicTestsAgentToServerApi* | [**getAgentToServerEndpointDynamicTests**](docs/DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTests) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests
+*DynamicTestsAgentToServerApi* | [**getAgentToServerEndpointDynamicTestsWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTestsWithHttpInfo) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests
+*DynamicTestsAgentToServerApi* | [**updateAgentToServerEndpointDynamicTest**](docs/DynamicTestsAgentToServerApi.md#updateAgentToServerEndpointDynamicTest) | **PATCH** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test
+*DynamicTestsAgentToServerApi* | [**updateAgentToServerEndpointDynamicTestWithHttpInfo**](docs/DynamicTestsAgentToServerApi.md#updateAgentToServerEndpointDynamicTestWithHttpInfo) | **PATCH** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test
+*ListEndpointScheduledTestsApi* | [**getEndpointScheduledTests**](docs/ListEndpointScheduledTestsApi.md#getEndpointScheduledTests) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests
+*ListEndpointScheduledTestsApi* | [**getEndpointScheduledTestsWithHttpInfo**](docs/ListEndpointScheduledTestsApi.md#getEndpointScheduledTestsWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests
+*ScheduledTestsAgentToServerApi* | [**createAgentToServerEndpointScheduledTest**](docs/ScheduledTestsAgentToServerApi.md#createAgentToServerEndpointScheduledTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
+*ScheduledTestsAgentToServerApi* | [**createAgentToServerEndpointScheduledTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#createAgentToServerEndpointScheduledTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
+*ScheduledTestsAgentToServerApi* | [**deleteAgentToServerEndpointScheduledTest**](docs/ScheduledTestsAgentToServerApi.md#deleteAgentToServerEndpointScheduledTest) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test
+*ScheduledTestsAgentToServerApi* | [**deleteAgentToServerEndpointScheduledTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#deleteAgentToServerEndpointScheduledTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test
+*ScheduledTestsAgentToServerApi* | [**getAgentToServerEndpointScheduledTest**](docs/ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTest) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test
+*ScheduledTestsAgentToServerApi* | [**getAgentToServerEndpointScheduledTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTestWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test
+*ScheduledTestsAgentToServerApi* | [**getAgentToServerEndpointScheduledTests**](docs/ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTests) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
+*ScheduledTestsAgentToServerApi* | [**getAgentToServerEndpointScheduledTestsWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTestsWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
+*ScheduledTestsAgentToServerApi* | [**updateAgentToServerEndpointScheduledTest**](docs/ScheduledTestsAgentToServerApi.md#updateAgentToServerEndpointScheduledTest) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test
+*ScheduledTestsAgentToServerApi* | [**updateAgentToServerEndpointScheduledTestWithHttpInfo**](docs/ScheduledTestsAgentToServerApi.md#updateAgentToServerEndpointScheduledTestWithHttpInfo) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test
+*ScheduledTestsHttpServerApi* | [**createHttpServerEndpointScheduledTest**](docs/ScheduledTestsHttpServerApi.md#createHttpServerEndpointScheduledTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test
+*ScheduledTestsHttpServerApi* | [**createHttpServerEndpointScheduledTestWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#createHttpServerEndpointScheduledTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test
+*ScheduledTestsHttpServerApi* | [**deleteHttpServerEndpointScheduledTest**](docs/ScheduledTestsHttpServerApi.md#deleteHttpServerEndpointScheduledTest) | **DELETE** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test
+*ScheduledTestsHttpServerApi* | [**deleteHttpServerEndpointScheduledTestWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#deleteHttpServerEndpointScheduledTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test
+*ScheduledTestsHttpServerApi* | [**getHttpServerEndpointScheduledTest**](docs/ScheduledTestsHttpServerApi.md#getHttpServerEndpointScheduledTest) | **GET** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Retrieves HTTP server endpoint scheduled test
+*ScheduledTestsHttpServerApi* | [**getHttpServerEndpointScheduledTestWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#getHttpServerEndpointScheduledTestWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Retrieves HTTP server endpoint scheduled test
+*ScheduledTestsHttpServerApi* | [**getHttpServerEndpointScheduledTests**](docs/ScheduledTestsHttpServerApi.md#getHttpServerEndpointScheduledTests) | **GET** /v7/endpoint/tests/scheduled-tests/http-server | List HTTP server endpoint scheduled tests
+*ScheduledTestsHttpServerApi* | [**getHttpServerEndpointScheduledTestsWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#getHttpServerEndpointScheduledTestsWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/http-server | List HTTP server endpoint scheduled tests
+*ScheduledTestsHttpServerApi* | [**updateHttpServerEndpointScheduledTest**](docs/ScheduledTestsHttpServerApi.md#updateHttpServerEndpointScheduledTest) | **PATCH** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Update HTTP server endpoint scheduled test
+*ScheduledTestsHttpServerApi* | [**updateHttpServerEndpointScheduledTestWithHttpInfo**](docs/ScheduledTestsHttpServerApi.md#updateHttpServerEndpointScheduledTestWithHttpInfo) | **PATCH** /v7/endpoint/tests/scheduled-tests/http-server/{testId} | Update HTTP server endpoint scheduled test
 
 
 <a id="documentation-for-authorization"></a>

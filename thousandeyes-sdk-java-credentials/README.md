@@ -2,9 +2,7 @@
 
 Credentials API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:12.853507+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 Manage credentials for transaction tests using the Credentials API.
 
@@ -52,7 +50,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-credentials</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -62,7 +60,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-credentials:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-credentials:version"
 ```
 
 ### Others
@@ -75,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-credentials-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-credentials-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -98,10 +96,10 @@ public class CredentialsApiExample {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialWithoutValue result = apiInstance.createTransactionTestsCredential(credentialRequest, aid);
+            CredentialWithoutValue result = apiInstance.createCredential(credentialRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CredentialsApi#createTransactionTestsCredential");
+            System.err.println("Exception when calling CredentialsApi#createCredential");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -118,16 +116,16 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CredentialsApi* | [**createTransactionTestsCredential**](docs/CredentialsApi.md#createTransactionTestsCredential) | **POST** /v7/credentials | Create credential
-*CredentialsApi* | [**createTransactionTestsCredentialWithHttpInfo**](docs/CredentialsApi.md#createTransactionTestsCredentialWithHttpInfo) | **POST** /v7/credentials | Create credential
-*CredentialsApi* | [**deleteTransactionTestsCredential**](docs/CredentialsApi.md#deleteTransactionTestsCredential) | **DELETE** /v7/credentials/{id} | Delete credential
-*CredentialsApi* | [**deleteTransactionTestsCredentialWithHttpInfo**](docs/CredentialsApi.md#deleteTransactionTestsCredentialWithHttpInfo) | **DELETE** /v7/credentials/{id} | Delete credential
-*CredentialsApi* | [**getTransactionTestsCredentialDetails**](docs/CredentialsApi.md#getTransactionTestsCredentialDetails) | **GET** /v7/credentials/{id} | Retrieve credential
-*CredentialsApi* | [**getTransactionTestsCredentialDetailsWithHttpInfo**](docs/CredentialsApi.md#getTransactionTestsCredentialDetailsWithHttpInfo) | **GET** /v7/credentials/{id} | Retrieve credential
-*CredentialsApi* | [**getTransactionTestsCredentialsList**](docs/CredentialsApi.md#getTransactionTestsCredentialsList) | **GET** /v7/credentials | List credentials
-*CredentialsApi* | [**getTransactionTestsCredentialsListWithHttpInfo**](docs/CredentialsApi.md#getTransactionTestsCredentialsListWithHttpInfo) | **GET** /v7/credentials | List credentials
-*CredentialsApi* | [**updateTransactionTestsCredential**](docs/CredentialsApi.md#updateTransactionTestsCredential) | **PUT** /v7/credentials/{id} | Update credential
-*CredentialsApi* | [**updateTransactionTestsCredentialWithHttpInfo**](docs/CredentialsApi.md#updateTransactionTestsCredentialWithHttpInfo) | **PUT** /v7/credentials/{id} | Update credential
+*CredentialsApi* | [**createCredential**](docs/CredentialsApi.md#createCredential) | **POST** /v7/credentials | Create credential
+*CredentialsApi* | [**createCredentialWithHttpInfo**](docs/CredentialsApi.md#createCredentialWithHttpInfo) | **POST** /v7/credentials | Create credential
+*CredentialsApi* | [**deleteCredential**](docs/CredentialsApi.md#deleteCredential) | **DELETE** /v7/credentials/{id} | Delete credential
+*CredentialsApi* | [**deleteCredentialWithHttpInfo**](docs/CredentialsApi.md#deleteCredentialWithHttpInfo) | **DELETE** /v7/credentials/{id} | Delete credential
+*CredentialsApi* | [**getCredential**](docs/CredentialsApi.md#getCredential) | **GET** /v7/credentials/{id} | Retrieve credential
+*CredentialsApi* | [**getCredentialWithHttpInfo**](docs/CredentialsApi.md#getCredentialWithHttpInfo) | **GET** /v7/credentials/{id} | Retrieve credential
+*CredentialsApi* | [**getCredentials**](docs/CredentialsApi.md#getCredentials) | **GET** /v7/credentials | List credentials
+*CredentialsApi* | [**getCredentialsWithHttpInfo**](docs/CredentialsApi.md#getCredentialsWithHttpInfo) | **GET** /v7/credentials | List credentials
+*CredentialsApi* | [**updateCredential**](docs/CredentialsApi.md#updateCredential) | **PUT** /v7/credentials/{id} | Update credential
+*CredentialsApi* | [**updateCredentialWithHttpInfo**](docs/CredentialsApi.md#updateCredentialWithHttpInfo) | **PUT** /v7/credentials/{id} | Update credential
 
 
 <a id="documentation-for-authorization"></a>

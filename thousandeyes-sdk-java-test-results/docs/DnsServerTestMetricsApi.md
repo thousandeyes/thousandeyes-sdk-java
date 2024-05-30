@@ -4,16 +4,16 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestResultDnsServer**](DnsServerTestMetricsApi.md#getTestResultDnsServer) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server |
-| [**getTestResultDnsServerWithHttpInfo**](DnsServerTestMetricsApi.md#getTestResultDnsServerWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server |
-| [**getTestResultDnsServers**](DnsServerTestMetricsApi.md#getTestResultDnsServers) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results |
-| [**getTestResultDnsServersWithHttpInfo**](DnsServerTestMetricsApi.md#getTestResultDnsServersWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results |
+| [**getTestDnsServerResult**](DnsServerTestMetricsApi.md#getTestDnsServerResult) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server |
+| [**getTestDnsServerResultWithHttpInfo**](DnsServerTestMetricsApi.md#getTestDnsServerResultWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server |
+| [**getTestDnsServersResults**](DnsServerTestMetricsApi.md#getTestDnsServersResults) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results |
+| [**getTestDnsServersResultsWithHttpInfo**](DnsServerTestMetricsApi.md#getTestDnsServersResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results |
 
 
 
-## getTestResultDnsServer
+## getTestDnsServerResult
 
-> GetTestResultDnsServer200Response getTestResultDnsServer(testId, serverId, aid, window, startDate, endDate, cursor)
+> DnsServerTestResults getTestDnsServerResult(testId, serverId, aid, window, startDate, endDate, cursor)
 
 Get DNS server test results by server
 
@@ -48,10 +48,10 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultDnsServer200Response result = apiInstance.getTestResultDnsServer(testId, serverId, aid, window, startDate, endDate, cursor);
+            DnsServerTestResults result = apiInstance.getTestDnsServerResult(testId, serverId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestResultDnsServer");
+            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestDnsServerResult");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -76,7 +76,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Response.md)
+[**DnsServerTestResults**](DnsServerTestResults.md)
 
 
 ### Authorization
@@ -101,9 +101,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getTestResultDnsServerWithHttpInfo
+## getTestDnsServerResultWithHttpInfo
 
-> ApiResponse<GetTestResultDnsServer200Response> getTestResultDnsServer getTestResultDnsServerWithHttpInfo(testId, serverId, aid, window, startDate, endDate, cursor)
+> ApiResponse<DnsServerTestResults> getTestDnsServerResult getTestDnsServerResultWithHttpInfo(testId, serverId, aid, window, startDate, endDate, cursor)
 
 Get DNS server test results by server
 
@@ -139,12 +139,12 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultDnsServer200Response> response = apiInstance.getTestResultDnsServerWithHttpInfo(testId, serverId, aid, window, startDate, endDate, cursor);
+            ApiResponse<DnsServerTestResults> response = apiInstance.getTestDnsServerResultWithHttpInfo(testId, serverId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestResultDnsServer");
+            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestDnsServerResult");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -169,7 +169,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Response.md)>
+ApiResponse<[**DnsServerTestResults**](DnsServerTestResults.md)>
 
 
 ### Authorization
@@ -195,9 +195,9 @@ ApiResponse<[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Res
 | **0** | An error occurred |  -  |
 
 
-## getTestResultDnsServers
+## getTestDnsServersResults
 
-> GetTestResultDnsServer200Response getTestResultDnsServers(testId, aid, window, startDate, endDate, cursor)
+> DnsServerTestResults getTestDnsServersResults(testId, aid, window, startDate, endDate, cursor)
 
 Get DNS server test results
 
@@ -231,10 +231,10 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultDnsServer200Response result = apiInstance.getTestResultDnsServers(testId, aid, window, startDate, endDate, cursor);
+            DnsServerTestResults result = apiInstance.getTestDnsServersResults(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestResultDnsServers");
+            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestDnsServersResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -258,7 +258,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Response.md)
+[**DnsServerTestResults**](DnsServerTestResults.md)
 
 
 ### Authorization
@@ -283,9 +283,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getTestResultDnsServersWithHttpInfo
+## getTestDnsServersResultsWithHttpInfo
 
-> ApiResponse<GetTestResultDnsServer200Response> getTestResultDnsServers getTestResultDnsServersWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<DnsServerTestResults> getTestDnsServersResults getTestDnsServersResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get DNS server test results
 
@@ -320,12 +320,12 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultDnsServer200Response> response = apiInstance.getTestResultDnsServersWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<DnsServerTestResults> response = apiInstance.getTestDnsServersResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestResultDnsServers");
+            System.err.println("Exception when calling DnsServerTestMetricsApi#getTestDnsServersResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -349,7 +349,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultDnsServer200Response**](GetTestResultDnsServer200Response.md)>
+ApiResponse<[**DnsServerTestResults**](DnsServerTestResults.md)>
 
 
 ### Authorization

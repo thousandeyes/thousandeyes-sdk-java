@@ -4,20 +4,20 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteEnterpriseAgent**](CloudAndEnterpriseAgentsApi.md#deleteEnterpriseAgent) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent |
-| [**deleteEnterpriseAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#deleteEnterpriseAgentWithHttpInfo) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent |
-| [**getAgentDetails**](CloudAndEnterpriseAgentsApi.md#getAgentDetails) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent |
-| [**getAgentDetailsWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#getAgentDetailsWithHttpInfo) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent |
+| [**deleteAgent**](CloudAndEnterpriseAgentsApi.md#deleteAgent) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent |
+| [**deleteAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#deleteAgentWithHttpInfo) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent |
+| [**getAgent**](CloudAndEnterpriseAgentsApi.md#getAgent) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent |
+| [**getAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#getAgentWithHttpInfo) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent |
 | [**getAgents**](CloudAndEnterpriseAgentsApi.md#getAgents) | **GET** /v7/agents | List Cloud and Enterprise Agents |
 | [**getAgentsWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#getAgentsWithHttpInfo) | **GET** /v7/agents | List Cloud and Enterprise Agents |
-| [**updateEnterpriseAgentDetails**](CloudAndEnterpriseAgentsApi.md#updateEnterpriseAgentDetails) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent |
-| [**updateEnterpriseAgentDetailsWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#updateEnterpriseAgentDetailsWithHttpInfo) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent |
+| [**updateAgent**](CloudAndEnterpriseAgentsApi.md#updateAgent) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent |
+| [**updateAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#updateAgentWithHttpInfo) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent |
 
 
 
-## deleteEnterpriseAgent
+## deleteAgent
 
-> void deleteEnterpriseAgent(agentId, aid)
+> void deleteAgent(agentId, aid)
 
 Delete Enterprise Agent
 
@@ -47,9 +47,9 @@ public class Example {
         String agentId = "281474976710706"; // String | Unique ID for the agent.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteEnterpriseAgent(agentId, aid);
+            apiInstance.deleteAgent(agentId, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#deleteEnterpriseAgent");
+            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#deleteAgent");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -93,9 +93,9 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## deleteEnterpriseAgentWithHttpInfo
+## deleteAgentWithHttpInfo
 
-> ApiResponse<Void> deleteEnterpriseAgent deleteEnterpriseAgentWithHttpInfo(agentId, aid)
+> ApiResponse<Void> deleteAgent deleteAgentWithHttpInfo(agentId, aid)
 
 Delete Enterprise Agent
 
@@ -126,11 +126,11 @@ public class Example {
         String agentId = "281474976710706"; // String | Unique ID for the agent.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteEnterpriseAgentWithHttpInfo(agentId, aid);
+            ApiResponse<Void> response = apiInstance.deleteAgentWithHttpInfo(agentId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#deleteEnterpriseAgent");
+            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#deleteAgent");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -175,9 +175,9 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
-## getAgentDetails
+## getAgent
 
-> AgentDetails getAgentDetails(agentId, aid, expand)
+> AgentDetails getAgent(agentId, aid, expand)
 
 Retrieve Cloud and Enterprise Agent
 
@@ -208,10 +208,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            AgentDetails result = apiInstance.getAgentDetails(agentId, aid, expand);
+            AgentDetails result = apiInstance.getAgent(agentId, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#getAgentDetails");
+            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#getAgent");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -256,9 +256,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getAgentDetailsWithHttpInfo
+## getAgentWithHttpInfo
 
-> ApiResponse<AgentDetails> getAgentDetails getAgentDetailsWithHttpInfo(agentId, aid, expand)
+> ApiResponse<AgentDetails> getAgent getAgentWithHttpInfo(agentId, aid, expand)
 
 Retrieve Cloud and Enterprise Agent
 
@@ -290,12 +290,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            ApiResponse<AgentDetails> response = apiInstance.getAgentDetailsWithHttpInfo(agentId, aid, expand);
+            ApiResponse<AgentDetails> response = apiInstance.getAgentWithHttpInfo(agentId, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#getAgentDetails");
+            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#getAgent");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -343,7 +343,7 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 
 ## getAgents
 
-> GetAgents200Response getAgents(aid, expand, agentTypes)
+> CloudEnterpriseAgents getAgents(aid, expand, agentTypes)
 
 List Cloud and Enterprise Agents
 
@@ -374,7 +374,7 @@ public class Example {
         List<AgentListExpand> expand = Arrays.asList(); // List<AgentListExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         List<CloudEnterpriseAgentType> agentTypes = Arrays.asList(); // List<CloudEnterpriseAgentType> | Specifies the type of agent to request.
         try {
-            GetAgents200Response result = apiInstance.getAgents(aid, expand, agentTypes);
+            CloudEnterpriseAgents result = apiInstance.getAgents(aid, expand, agentTypes);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#getAgents");
@@ -398,7 +398,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgents200Response**](GetAgents200Response.md)
+[**CloudEnterpriseAgents**](CloudEnterpriseAgents.md)
 
 
 ### Authorization
@@ -424,7 +424,7 @@ public class Example {
 
 ## getAgentsWithHttpInfo
 
-> ApiResponse<GetAgents200Response> getAgents getAgentsWithHttpInfo(aid, expand, agentTypes)
+> ApiResponse<CloudEnterpriseAgents> getAgents getAgentsWithHttpInfo(aid, expand, agentTypes)
 
 List Cloud and Enterprise Agents
 
@@ -456,7 +456,7 @@ public class Example {
         List<AgentListExpand> expand = Arrays.asList(); // List<AgentListExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         List<CloudEnterpriseAgentType> agentTypes = Arrays.asList(); // List<CloudEnterpriseAgentType> | Specifies the type of agent to request.
         try {
-            ApiResponse<GetAgents200Response> response = apiInstance.getAgentsWithHttpInfo(aid, expand, agentTypes);
+            ApiResponse<CloudEnterpriseAgents> response = apiInstance.getAgentsWithHttpInfo(aid, expand, agentTypes);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -482,7 +482,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgents200Response**](GetAgents200Response.md)>
+ApiResponse<[**CloudEnterpriseAgents**](CloudEnterpriseAgents.md)>
 
 
 ### Authorization
@@ -507,9 +507,9 @@ ApiResponse<[**GetAgents200Response**](GetAgents200Response.md)>
 | **0** | An error occurred |  -  |
 
 
-## updateEnterpriseAgentDetails
+## updateAgent
 
-> AgentDetails updateEnterpriseAgentDetails(agentId, agentRequestBody, aid, expand)
+> AgentDetails updateAgent(agentId, agentRequest, aid, expand)
 
 Update Enterprise Agent
 
@@ -537,14 +537,14 @@ public class Example {
 
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the agent.
-        AgentRequestBody agentRequestBody = new AgentRequestBody(); // AgentRequestBody | 
+        AgentRequest agentRequest = new AgentRequest(); // AgentRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            AgentDetails result = apiInstance.updateEnterpriseAgentDetails(agentId, agentRequestBody, aid, expand);
+            AgentDetails result = apiInstance.updateAgent(agentId, agentRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#updateEnterpriseAgentDetails");
+            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#updateAgent");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -560,7 +560,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **agentId** | **String**| Unique ID for the agent. | |
-| **agentRequestBody** | [**AgentRequestBody**](AgentRequestBody.md)|  | |
+| **agentRequest** | [**AgentRequest**](AgentRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 | **expand** | [**List&lt;AgentDetailsExpand&gt;**](AgentDetailsExpand.md)| Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
 
@@ -591,9 +591,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## updateEnterpriseAgentDetailsWithHttpInfo
+## updateAgentWithHttpInfo
 
-> ApiResponse<AgentDetails> updateEnterpriseAgentDetails updateEnterpriseAgentDetailsWithHttpInfo(agentId, agentRequestBody, aid, expand)
+> ApiResponse<AgentDetails> updateAgent updateAgentWithHttpInfo(agentId, agentRequest, aid, expand)
 
 Update Enterprise Agent
 
@@ -622,16 +622,16 @@ public class Example {
 
         CloudAndEnterpriseAgentsApi apiInstance = new CloudAndEnterpriseAgentsApi(defaultClient);
         String agentId = "281474976710706"; // String | Unique ID for the agent.
-        AgentRequestBody agentRequestBody = new AgentRequestBody(); // AgentRequestBody | 
+        AgentRequest agentRequest = new AgentRequest(); // AgentRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            ApiResponse<AgentDetails> response = apiInstance.updateEnterpriseAgentDetailsWithHttpInfo(agentId, agentRequestBody, aid, expand);
+            ApiResponse<AgentDetails> response = apiInstance.updateAgentWithHttpInfo(agentId, agentRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#updateEnterpriseAgentDetails");
+            System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#updateAgent");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -647,7 +647,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **agentId** | **String**| Unique ID for the agent. | |
-| **agentRequestBody** | [**AgentRequestBody**](AgentRequestBody.md)|  | |
+| **agentRequest** | [**AgentRequest**](AgentRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 | **expand** | [**List&lt;AgentDetailsExpand&gt;**](AgentDetailsExpand.md)| Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
 

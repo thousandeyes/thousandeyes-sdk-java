@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantFtpServer**](FtpServerApi.md#postInstantFtpServer) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test |
-| [**postInstantFtpServerWithHttpInfo**](FtpServerApi.md#postInstantFtpServerWithHttpInfo) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test |
+| [**createFtpServerInstantTest**](FtpServerApi.md#createFtpServerInstantTest) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test |
+| [**createFtpServerInstantTestWithHttpInfo**](FtpServerApi.md#createFtpServerInstantTestWithHttpInfo) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test |
 
 
 
-## postInstantFtpServer
+## createFtpServerInstantTest
 
-> FtpServerInstantTest postInstantFtpServer(serverInstantTestRequest, aid, expand)
+> FtpServerInstantTest createFtpServerInstantTest(serverInstantTestRequest, aid, expand)
 
 Create FTP server instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            FtpServerInstantTest result = apiInstance.postInstantFtpServer(serverInstantTestRequest, aid, expand);
+            FtpServerInstantTest result = apiInstance.createFtpServerInstantTest(serverInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FtpServerApi#postInstantFtpServer");
+            System.err.println("Exception when calling FtpServerApi#createFtpServerInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantFtpServerWithHttpInfo
+## createFtpServerInstantTestWithHttpInfo
 
-> ApiResponse<FtpServerInstantTest> postInstantFtpServer postInstantFtpServerWithHttpInfo(serverInstantTestRequest, aid, expand)
+> ApiResponse<FtpServerInstantTest> createFtpServerInstantTest createFtpServerInstantTestWithHttpInfo(serverInstantTestRequest, aid, expand)
 
 Create FTP server instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<FtpServerInstantTest> response = apiInstance.postInstantFtpServerWithHttpInfo(serverInstantTestRequest, aid, expand);
+            ApiResponse<FtpServerInstantTest> response = apiInstance.createFtpServerInstantTestWithHttpInfo(serverInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FtpServerApi#postInstantFtpServer");
+            System.err.println("Exception when calling FtpServerApi#createFtpServerInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

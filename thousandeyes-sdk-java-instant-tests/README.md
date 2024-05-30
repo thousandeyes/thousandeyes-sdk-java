@@ -2,9 +2,7 @@
 
 Instant Tests API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.145468+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:
   * `API Access`
@@ -47,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-instant-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-instant-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-instant-tests:version"
 ```
 
 ### Others
@@ -70,7 +68,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-instant-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-instant-tests-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -94,10 +92,10 @@ public class AgentToAgentApiExample {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            AgentToAgentInstantTest result = apiInstance.postInstantTestAgentToAgent(agentToAgentInstantTestRequest, aid, expand);
+            AgentToAgentInstantTest result = apiInstance.createAgentToAgentInstantTest(agentToAgentInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToAgentApi#postInstantTestAgentToAgent");
+            System.err.println("Exception when calling AgentToAgentApi#createAgentToAgentInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -114,30 +112,32 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentToAgentApi* | [**postInstantTestAgentToAgent**](docs/AgentToAgentApi.md#postInstantTestAgentToAgent) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test
-*AgentToAgentApi* | [**postInstantTestAgentToAgentWithHttpInfo**](docs/AgentToAgentApi.md#postInstantTestAgentToAgentWithHttpInfo) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test
-*AgentToServerApi* | [**postInstantAgentToServer**](docs/AgentToServerApi.md#postInstantAgentToServer) | **POST** /v7/tests/agent-to-server/instant | Create agent-to-server instant test
-*AgentToServerApi* | [**postInstantAgentToServerWithHttpInfo**](docs/AgentToServerApi.md#postInstantAgentToServerWithHttpInfo) | **POST** /v7/tests/agent-to-server/instant | Create agent-to-server instant test
-*DnsSecurityApi* | [**postInstantDnsSec**](docs/DnsSecurityApi.md#postInstantDnsSec) | **POST** /v7/tests/dnssec/instant | Create DNS security instant test
-*DnsSecurityApi* | [**postInstantDnsSecWithHttpInfo**](docs/DnsSecurityApi.md#postInstantDnsSecWithHttpInfo) | **POST** /v7/tests/dnssec/instant | Create DNS security instant test
-*DnsServerApi* | [**postInstantDnsServer**](docs/DnsServerApi.md#postInstantDnsServer) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test
-*DnsServerApi* | [**postInstantDnsServerWithHttpInfo**](docs/DnsServerApi.md#postInstantDnsServerWithHttpInfo) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test
-*DnsTraceApi* | [**postInstantDnsTrace**](docs/DnsTraceApi.md#postInstantDnsTrace) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test
-*DnsTraceApi* | [**postInstantDnsTraceWithHttpInfo**](docs/DnsTraceApi.md#postInstantDnsTraceWithHttpInfo) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test
-*FtpServerApi* | [**postInstantFtpServer**](docs/FtpServerApi.md#postInstantFtpServer) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test
-*FtpServerApi* | [**postInstantFtpServerWithHttpInfo**](docs/FtpServerApi.md#postInstantFtpServerWithHttpInfo) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test
-*HttpPageLoadApi* | [**postInstantHTTPPageLoad**](docs/HttpPageLoadApi.md#postInstantHTTPPageLoad) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test
-*HttpPageLoadApi* | [**postInstantHTTPPageLoadWithHttpInfo**](docs/HttpPageLoadApi.md#postInstantHTTPPageLoadWithHttpInfo) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test
-*HttpServerApi* | [**postInstantHTTPServer**](docs/HttpServerApi.md#postInstantHTTPServer) | **POST** /v7/tests/http-server/instant | Create HTTP server instant test
-*HttpServerApi* | [**postInstantHTTPServerWithHttpInfo**](docs/HttpServerApi.md#postInstantHTTPServerWithHttpInfo) | **POST** /v7/tests/http-server/instant | Create HTTP server instant test
-*RunApi* | [**postInstantRun**](docs/RunApi.md#postInstantRun) | **POST** /v7/tests/{testId}/run | Run instant test
-*RunApi* | [**postInstantRunWithHttpInfo**](docs/RunApi.md#postInstantRunWithHttpInfo) | **POST** /v7/tests/{testId}/run | Run instant test
-*SipServerApi* | [**postInstantSIPServer**](docs/SipServerApi.md#postInstantSIPServer) | **POST** /v7/tests/sip-server/instant | Create SIP server instant test
-*SipServerApi* | [**postInstantSIPServerWithHttpInfo**](docs/SipServerApi.md#postInstantSIPServerWithHttpInfo) | **POST** /v7/tests/sip-server/instant | Create SIP server instant test
-*VoiceApi* | [**postInstantVoice**](docs/VoiceApi.md#postInstantVoice) | **POST** /v7/tests/voice/instant | Create voice instant test
-*VoiceApi* | [**postInstantVoiceWithHttpInfo**](docs/VoiceApi.md#postInstantVoiceWithHttpInfo) | **POST** /v7/tests/voice/instant | Create voice instant test
-*WebTransactionApi* | [**postInstantWebTransactions**](docs/WebTransactionApi.md#postInstantWebTransactions) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test
-*WebTransactionApi* | [**postInstantWebTransactionsWithHttpInfo**](docs/WebTransactionApi.md#postInstantWebTransactionsWithHttpInfo) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test
+*AgentToAgentApi* | [**createAgentToAgentInstantTest**](docs/AgentToAgentApi.md#createAgentToAgentInstantTest) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test
+*AgentToAgentApi* | [**createAgentToAgentInstantTestWithHttpInfo**](docs/AgentToAgentApi.md#createAgentToAgentInstantTestWithHttpInfo) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test
+*AgentToServerApi* | [**createAgentToServerInstantTest**](docs/AgentToServerApi.md#createAgentToServerInstantTest) | **POST** /v7/tests/agent-to-server/instant | Create agent-to-server instant test
+*AgentToServerApi* | [**createAgentToServerInstantTestWithHttpInfo**](docs/AgentToServerApi.md#createAgentToServerInstantTestWithHttpInfo) | **POST** /v7/tests/agent-to-server/instant | Create agent-to-server instant test
+*ApiApi* | [**createApiInstantTest**](docs/ApiApi.md#createApiInstantTest) | **POST** /v7/tests/api/instant | Create API instant test
+*ApiApi* | [**createApiInstantTestWithHttpInfo**](docs/ApiApi.md#createApiInstantTestWithHttpInfo) | **POST** /v7/tests/api/instant | Create API instant test
+*DnsSecurityApi* | [**createDnsSecInstantTest**](docs/DnsSecurityApi.md#createDnsSecInstantTest) | **POST** /v7/tests/dnssec/instant | Create DNS security instant test
+*DnsSecurityApi* | [**createDnsSecInstantTestWithHttpInfo**](docs/DnsSecurityApi.md#createDnsSecInstantTestWithHttpInfo) | **POST** /v7/tests/dnssec/instant | Create DNS security instant test
+*DnsServerApi* | [**createDnsServerInstantTest**](docs/DnsServerApi.md#createDnsServerInstantTest) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test
+*DnsServerApi* | [**createDnsServerInstantTestWithHttpInfo**](docs/DnsServerApi.md#createDnsServerInstantTestWithHttpInfo) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test
+*DnsTraceApi* | [**createDnsTraceInstantTest**](docs/DnsTraceApi.md#createDnsTraceInstantTest) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test
+*DnsTraceApi* | [**createDnsTraceInstantTestWithHttpInfo**](docs/DnsTraceApi.md#createDnsTraceInstantTestWithHttpInfo) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test
+*FtpServerApi* | [**createFtpServerInstantTest**](docs/FtpServerApi.md#createFtpServerInstantTest) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test
+*FtpServerApi* | [**createFtpServerInstantTestWithHttpInfo**](docs/FtpServerApi.md#createFtpServerInstantTestWithHttpInfo) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test
+*HttpPageLoadApi* | [**createPageLoadInstantTest**](docs/HttpPageLoadApi.md#createPageLoadInstantTest) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test
+*HttpPageLoadApi* | [**createPageLoadInstantTestWithHttpInfo**](docs/HttpPageLoadApi.md#createPageLoadInstantTestWithHttpInfo) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test
+*HttpServerApi* | [**createHttpServerInstantTest**](docs/HttpServerApi.md#createHttpServerInstantTest) | **POST** /v7/tests/http-server/instant | Create HTTP server instant test
+*HttpServerApi* | [**createHttpServerInstantTestWithHttpInfo**](docs/HttpServerApi.md#createHttpServerInstantTestWithHttpInfo) | **POST** /v7/tests/http-server/instant | Create HTTP server instant test
+*RunApi* | [**runInstantTest**](docs/RunApi.md#runInstantTest) | **POST** /v7/tests/{testId}/run | Run instant test
+*RunApi* | [**runInstantTestWithHttpInfo**](docs/RunApi.md#runInstantTestWithHttpInfo) | **POST** /v7/tests/{testId}/run | Run instant test
+*SipServerApi* | [**createSipServerInstantTest**](docs/SipServerApi.md#createSipServerInstantTest) | **POST** /v7/tests/sip-server/instant | Create SIP server instant test
+*SipServerApi* | [**createSipServerInstantTestWithHttpInfo**](docs/SipServerApi.md#createSipServerInstantTestWithHttpInfo) | **POST** /v7/tests/sip-server/instant | Create SIP server instant test
+*VoiceApi* | [**createVoiceInstantTest**](docs/VoiceApi.md#createVoiceInstantTest) | **POST** /v7/tests/voice/instant | Create voice instant test
+*VoiceApi* | [**createVoiceInstantTestWithHttpInfo**](docs/VoiceApi.md#createVoiceInstantTestWithHttpInfo) | **POST** /v7/tests/voice/instant | Create voice instant test
+*WebTransactionApi* | [**createWebTransactionInstantTest**](docs/WebTransactionApi.md#createWebTransactionInstantTest) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test
+*WebTransactionApi* | [**createWebTransactionInstantTestWithHttpInfo**](docs/WebTransactionApi.md#createWebTransactionInstantTestWithHttpInfo) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test
 
 
 <a id="documentation-for-authorization"></a>
