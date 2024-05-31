@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestResultHttpServer**](WebHttpServerTestMetricsApi.md#getTestResultHttpServer) | **GET** /v7/test-results/{testId}/http-server | Get HTTP server test results |
-| [**getTestResultHttpServerWithHttpInfo**](WebHttpServerTestMetricsApi.md#getTestResultHttpServerWithHttpInfo) | **GET** /v7/test-results/{testId}/http-server | Get HTTP server test results |
+| [**getTestHttpServerResults**](WebHttpServerTestMetricsApi.md#getTestHttpServerResults) | **GET** /v7/test-results/{testId}/http-server | Get HTTP server test results |
+| [**getTestHttpServerResultsWithHttpInfo**](WebHttpServerTestMetricsApi.md#getTestHttpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/http-server | Get HTTP server test results |
 
 
 
-## getTestResultHttpServer
+## getTestHttpServerResults
 
-> GetTestResultHttpServer200Response getTestResultHttpServer(testId, aid, window, startDate, endDate, cursor, expand)
+> HttpTestResults getTestHttpServerResults(testId, aid, window, startDate, endDate, cursor, expand)
 
 Get HTTP server test results
 
@@ -46,10 +46,10 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter lets you decide if you want to see more details about test results. By default, no extra information is shown unless you use the query parameter. For instance, if you want more info about the \"header,\" add ?expand=header to the query.
         try {
-            GetTestResultHttpServer200Response result = apiInstance.getTestResultHttpServer(testId, aid, window, startDate, endDate, cursor, expand);
+            HttpTestResults result = apiInstance.getTestHttpServerResults(testId, aid, window, startDate, endDate, cursor, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling WebHttpServerTestMetricsApi#getTestResultHttpServer");
+            System.err.println("Exception when calling WebHttpServerTestMetricsApi#getTestHttpServerResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultHttpServer200Response**](GetTestResultHttpServer200Response.md)
+[**HttpTestResults**](HttpTestResults.md)
 
 
 ### Authorization
@@ -99,9 +99,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getTestResultHttpServerWithHttpInfo
+## getTestHttpServerResultsWithHttpInfo
 
-> ApiResponse<GetTestResultHttpServer200Response> getTestResultHttpServer getTestResultHttpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand)
+> ApiResponse<HttpTestResults> getTestHttpServerResults getTestHttpServerResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand)
 
 Get HTTP server test results
 
@@ -137,12 +137,12 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter lets you decide if you want to see more details about test results. By default, no extra information is shown unless you use the query parameter. For instance, if you want more info about the \"header,\" add ?expand=header to the query.
         try {
-            ApiResponse<GetTestResultHttpServer200Response> response = apiInstance.getTestResultHttpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand);
+            ApiResponse<HttpTestResults> response = apiInstance.getTestHttpServerResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling WebHttpServerTestMetricsApi#getTestResultHttpServer");
+            System.err.println("Exception when calling WebHttpServerTestMetricsApi#getTestHttpServerResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -167,7 +167,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultHttpServer200Response**](GetTestResultHttpServer200Response.md)>
+ApiResponse<[**HttpTestResults**](HttpTestResults.md)>
 
 
 ### Authorization

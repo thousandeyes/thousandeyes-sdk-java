@@ -2,9 +2,7 @@
 
 BGP Monitors API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:12.853407+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 
 Retrieve information about BGP monitors available to your ThousandEyes account. ThousandEyes ingests BGP routing data from dozens of global BGP collectors and automatically integrates that visibility as a configurable layer under service, network, and path visualization layers.
@@ -48,7 +46,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-bgp-monitors</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +56,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-bgp-monitors:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-bgp-monitors:version"
 ```
 
 ### Others
@@ -71,7 +69,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-bgp-monitors-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-bgp-monitors-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -93,10 +91,10 @@ public class ListBgpMonitorsApiExample {
         ListBgpMonitorsApi apiInstance = new ListBgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetBGPMonitors200Response result = apiInstance.getBGPMonitors(aid);
+            Monitors result = apiInstance.getBgpMonitors(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ListBgpMonitorsApi#getBGPMonitors");
+            System.err.println("Exception when calling ListBgpMonitorsApi#getBgpMonitors");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -113,8 +111,8 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ListBgpMonitorsApi* | [**getBGPMonitors**](docs/ListBgpMonitorsApi.md#getBGPMonitors) | **GET** /v7/monitors | List BGP monitors
-*ListBgpMonitorsApi* | [**getBGPMonitorsWithHttpInfo**](docs/ListBgpMonitorsApi.md#getBGPMonitorsWithHttpInfo) | **GET** /v7/monitors | List BGP monitors
+*ListBgpMonitorsApi* | [**getBgpMonitors**](docs/ListBgpMonitorsApi.md#getBgpMonitors) | **GET** /v7/monitors | List BGP monitors
+*ListBgpMonitorsApi* | [**getBgpMonitorsWithHttpInfo**](docs/ListBgpMonitorsApi.md#getBgpMonitorsWithHttpInfo) | **GET** /v7/monitors | List BGP monitors
 
 
 <a id="documentation-for-authorization"></a>

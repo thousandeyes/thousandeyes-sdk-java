@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## createAgentLabel
 
-> CreateAgentLabel201Response createAgentLabel(aid, labelRequest)
+> LabelDetail createAgentLabel(aid, labelRequest)
 
 Create a Label of type &#x60;agent&#x60;
 
@@ -49,7 +49,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label resource
         try {
-            CreateAgentLabel201Response result = apiInstance.createAgentLabel(aid, labelRequest);
+            LabelDetail result = apiInstance.createAgentLabel(aid, labelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentApi#createAgentLabel");
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**CreateAgentLabel201Response**](CreateAgentLabel201Response.md)
+[**LabelDetail**](LabelDetail.md)
 
 
 ### Authorization
@@ -97,7 +97,7 @@ public class Example {
 
 ## createAgentLabelWithHttpInfo
 
-> ApiResponse<CreateAgentLabel201Response> createAgentLabel createAgentLabelWithHttpInfo(aid, labelRequest)
+> ApiResponse<LabelDetail> createAgentLabel createAgentLabelWithHttpInfo(aid, labelRequest)
 
 Create a Label of type &#x60;agent&#x60;
 
@@ -128,7 +128,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label resource
         try {
-            ApiResponse<CreateAgentLabel201Response> response = apiInstance.createAgentLabelWithHttpInfo(aid, labelRequest);
+            ApiResponse<LabelDetail> response = apiInstance.createAgentLabelWithHttpInfo(aid, labelRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -153,7 +153,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateAgentLabel201Response**](CreateAgentLabel201Response.md)>
+ApiResponse<[**LabelDetail**](LabelDetail.md)>
 
 
 ### Authorization
@@ -333,7 +333,7 @@ ApiResponse<Void>
 
 ## getAgentLabel
 
-> CreateAgentLabel201Response getAgentLabel(labelId, aid)
+> LabelDetail getAgentLabel(labelId, aid)
 
 Get a Label object of type &#x60;agent&#x60;
 
@@ -361,7 +361,7 @@ public class Example {
         String labelId = "961"; // String | ID of the label to get
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateAgentLabel201Response result = apiInstance.getAgentLabel(labelId, aid);
+            LabelDetail result = apiInstance.getAgentLabel(labelId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentApi#getAgentLabel");
@@ -384,7 +384,7 @@ public class Example {
 
 ### Return type
 
-[**CreateAgentLabel201Response**](CreateAgentLabel201Response.md)
+[**LabelDetail**](LabelDetail.md)
 
 
 ### Authorization
@@ -409,7 +409,7 @@ public class Example {
 
 ## getAgentLabelWithHttpInfo
 
-> ApiResponse<CreateAgentLabel201Response> getAgentLabel getAgentLabelWithHttpInfo(labelId, aid)
+> ApiResponse<LabelDetail> getAgentLabel getAgentLabelWithHttpInfo(labelId, aid)
 
 Get a Label object of type &#x60;agent&#x60;
 
@@ -438,7 +438,7 @@ public class Example {
         String labelId = "961"; // String | ID of the label to get
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CreateAgentLabel201Response> response = apiInstance.getAgentLabelWithHttpInfo(labelId, aid);
+            ApiResponse<LabelDetail> response = apiInstance.getAgentLabelWithHttpInfo(labelId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -463,7 +463,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateAgentLabel201Response**](CreateAgentLabel201Response.md)>
+ApiResponse<[**LabelDetail**](LabelDetail.md)>
 
 
 ### Authorization
@@ -489,7 +489,7 @@ ApiResponse<[**CreateAgentLabel201Response**](CreateAgentLabel201Response.md)>
 
 ## getAgentLabels
 
-> GetLabels200Response getAgentLabels(aid)
+> Labels getAgentLabels(aid)
 
 Get list of Labels of type &#x60;agent&#x60;
 
@@ -518,7 +518,7 @@ public class Example {
         AgentApi apiInstance = new AgentApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetLabels200Response result = apiInstance.getAgentLabels(aid);
+            Labels result = apiInstance.getAgentLabels(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentApi#getAgentLabels");
@@ -540,7 +540,7 @@ public class Example {
 
 ### Return type
 
-[**GetLabels200Response**](GetLabels200Response.md)
+[**Labels**](Labels.md)
 
 
 ### Authorization
@@ -565,7 +565,7 @@ public class Example {
 
 ## getAgentLabelsWithHttpInfo
 
-> ApiResponse<GetLabels200Response> getAgentLabels getAgentLabelsWithHttpInfo(aid)
+> ApiResponse<Labels> getAgentLabels getAgentLabelsWithHttpInfo(aid)
 
 Get list of Labels of type &#x60;agent&#x60;
 
@@ -595,7 +595,7 @@ public class Example {
         AgentApi apiInstance = new AgentApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetLabels200Response> response = apiInstance.getAgentLabelsWithHttpInfo(aid);
+            ApiResponse<Labels> response = apiInstance.getAgentLabelsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -619,7 +619,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetLabels200Response**](GetLabels200Response.md)>
+ApiResponse<[**Labels**](Labels.md)>
 
 
 ### Authorization
@@ -645,7 +645,7 @@ ApiResponse<[**GetLabels200Response**](GetLabels200Response.md)>
 
 ## updateAgentLabel
 
-> CreateAgentLabel201Response updateAgentLabel(labelId, aid, labelRequest)
+> LabelDetail updateAgentLabel(labelId, aid, labelRequest)
 
 Update a Label object of type &#x60;agent&#x60;
 
@@ -674,7 +674,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | 
         try {
-            CreateAgentLabel201Response result = apiInstance.updateAgentLabel(labelId, aid, labelRequest);
+            LabelDetail result = apiInstance.updateAgentLabel(labelId, aid, labelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentApi#updateAgentLabel");
@@ -698,7 +698,7 @@ public class Example {
 
 ### Return type
 
-[**CreateAgentLabel201Response**](CreateAgentLabel201Response.md)
+[**LabelDetail**](LabelDetail.md)
 
 
 ### Authorization
@@ -723,7 +723,7 @@ public class Example {
 
 ## updateAgentLabelWithHttpInfo
 
-> ApiResponse<CreateAgentLabel201Response> updateAgentLabel updateAgentLabelWithHttpInfo(labelId, aid, labelRequest)
+> ApiResponse<LabelDetail> updateAgentLabel updateAgentLabelWithHttpInfo(labelId, aid, labelRequest)
 
 Update a Label object of type &#x60;agent&#x60;
 
@@ -753,7 +753,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | 
         try {
-            ApiResponse<CreateAgentLabel201Response> response = apiInstance.updateAgentLabelWithHttpInfo(labelId, aid, labelRequest);
+            ApiResponse<LabelDetail> response = apiInstance.updateAgentLabelWithHttpInfo(labelId, aid, labelRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -779,7 +779,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateAgentLabel201Response**](CreateAgentLabel201Response.md)>
+ApiResponse<[**LabelDetail**](LabelDetail.md)>
 
 
 ### Authorization

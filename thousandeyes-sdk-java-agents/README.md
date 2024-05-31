@@ -2,9 +2,7 @@
 
 Agents API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.083499+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 
 ## Overview
@@ -44,7 +42,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-agents</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -54,7 +52,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-agents:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-agents:version"
 ```
 
 ### Others
@@ -67,7 +65,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-agents-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-agents-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -90,7 +88,7 @@ public class CloudAndEnterpriseAgentNotificationRulesApiExample {
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentsNotificationRule200Response result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
+            NotificationRuleDetail result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentNotificationRulesApi#getAgentsNotificationRule");
@@ -114,20 +112,20 @@ Class | Method | HTTP request | Description
 *CloudAndEnterpriseAgentNotificationRulesApi* | [**getAgentsNotificationRuleWithHttpInfo**](docs/CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRuleWithHttpInfo) | **GET** /v7/agents/notification-rules/{notificationRuleId} | Retrieve agent notification rule
 *CloudAndEnterpriseAgentNotificationRulesApi* | [**getAgentsNotificationRules**](docs/CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRules) | **GET** /v7/agents/notification-rules | List agent notification rules
 *CloudAndEnterpriseAgentNotificationRulesApi* | [**getAgentsNotificationRulesWithHttpInfo**](docs/CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRulesWithHttpInfo) | **GET** /v7/agents/notification-rules | List agent notification rules
-*CloudAndEnterpriseAgentsApi* | [**deleteEnterpriseAgent**](docs/CloudAndEnterpriseAgentsApi.md#deleteEnterpriseAgent) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent
-*CloudAndEnterpriseAgentsApi* | [**deleteEnterpriseAgentWithHttpInfo**](docs/CloudAndEnterpriseAgentsApi.md#deleteEnterpriseAgentWithHttpInfo) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent
-*CloudAndEnterpriseAgentsApi* | [**getAgentDetails**](docs/CloudAndEnterpriseAgentsApi.md#getAgentDetails) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent
-*CloudAndEnterpriseAgentsApi* | [**getAgentDetailsWithHttpInfo**](docs/CloudAndEnterpriseAgentsApi.md#getAgentDetailsWithHttpInfo) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent
+*CloudAndEnterpriseAgentsApi* | [**deleteAgent**](docs/CloudAndEnterpriseAgentsApi.md#deleteAgent) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent
+*CloudAndEnterpriseAgentsApi* | [**deleteAgentWithHttpInfo**](docs/CloudAndEnterpriseAgentsApi.md#deleteAgentWithHttpInfo) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent
+*CloudAndEnterpriseAgentsApi* | [**getAgent**](docs/CloudAndEnterpriseAgentsApi.md#getAgent) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent
+*CloudAndEnterpriseAgentsApi* | [**getAgentWithHttpInfo**](docs/CloudAndEnterpriseAgentsApi.md#getAgentWithHttpInfo) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent
 *CloudAndEnterpriseAgentsApi* | [**getAgents**](docs/CloudAndEnterpriseAgentsApi.md#getAgents) | **GET** /v7/agents | List Cloud and Enterprise Agents
 *CloudAndEnterpriseAgentsApi* | [**getAgentsWithHttpInfo**](docs/CloudAndEnterpriseAgentsApi.md#getAgentsWithHttpInfo) | **GET** /v7/agents | List Cloud and Enterprise Agents
-*CloudAndEnterpriseAgentsApi* | [**updateEnterpriseAgentDetails**](docs/CloudAndEnterpriseAgentsApi.md#updateEnterpriseAgentDetails) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent
-*CloudAndEnterpriseAgentsApi* | [**updateEnterpriseAgentDetailsWithHttpInfo**](docs/CloudAndEnterpriseAgentsApi.md#updateEnterpriseAgentDetailsWithHttpInfo) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent
-*EnterpriseAgentClusterApi* | [**assignEnterpriseAgentCluster**](docs/EnterpriseAgentClusterApi.md#assignEnterpriseAgentCluster) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster
-*EnterpriseAgentClusterApi* | [**assignEnterpriseAgentClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#assignEnterpriseAgentClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster
-*EnterpriseAgentClusterApi* | [**unassignEnterpriseAgentFromCluster**](docs/EnterpriseAgentClusterApi.md#unassignEnterpriseAgentFromCluster) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
-*EnterpriseAgentClusterApi* | [**unassignEnterpriseAgentFromClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#unassignEnterpriseAgentFromClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
-*ProxiesApi* | [**getAgentProxies**](docs/ProxiesApi.md#getAgentProxies) | **GET** /v7/agents/proxies | List agent proxies
-*ProxiesApi* | [**getAgentProxiesWithHttpInfo**](docs/ProxiesApi.md#getAgentProxiesWithHttpInfo) | **GET** /v7/agents/proxies | List agent proxies
+*CloudAndEnterpriseAgentsApi* | [**updateAgent**](docs/CloudAndEnterpriseAgentsApi.md#updateAgent) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent
+*CloudAndEnterpriseAgentsApi* | [**updateAgentWithHttpInfo**](docs/CloudAndEnterpriseAgentsApi.md#updateAgentWithHttpInfo) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent
+*EnterpriseAgentClusterApi* | [**assignAgentToCluster**](docs/EnterpriseAgentClusterApi.md#assignAgentToCluster) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster
+*EnterpriseAgentClusterApi* | [**assignAgentToClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#assignAgentToClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster
+*EnterpriseAgentClusterApi* | [**unassignAgentFromCluster**](docs/EnterpriseAgentClusterApi.md#unassignAgentFromCluster) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
+*EnterpriseAgentClusterApi* | [**unassignAgentFromClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#unassignAgentFromClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
+*ProxiesApi* | [**getAgentsProxies**](docs/ProxiesApi.md#getAgentsProxies) | **GET** /v7/agents/proxies | List agent proxies
+*ProxiesApi* | [**getAgentsProxiesWithHttpInfo**](docs/ProxiesApi.md#getAgentsProxiesWithHttpInfo) | **GET** /v7/agents/proxies | List agent proxies
 
 
 <a id="documentation-for-authorization"></a>

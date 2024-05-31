@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantHTTPServer**](HttpServerApi.md#postInstantHTTPServer) | **POST** /v7/tests/http-server/instant | Create HTTP server instant test |
-| [**postInstantHTTPServerWithHttpInfo**](HttpServerApi.md#postInstantHTTPServerWithHttpInfo) | **POST** /v7/tests/http-server/instant | Create HTTP server instant test |
+| [**createHttpServerInstantTest**](HttpServerApi.md#createHttpServerInstantTest) | **POST** /v7/tests/http-server/instant | Create HTTP server instant test |
+| [**createHttpServerInstantTestWithHttpInfo**](HttpServerApi.md#createHttpServerInstantTestWithHttpInfo) | **POST** /v7/tests/http-server/instant | Create HTTP server instant test |
 
 
 
-## postInstantHTTPServer
+## createHttpServerInstantTest
 
-> HttpServerInstantTest postInstantHTTPServer(httpServerInstantTestRequest, aid, expand)
+> HttpServerInstantTest createHttpServerInstantTest(httpServerInstantTestRequest, aid, expand)
 
 Create HTTP server instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            HttpServerInstantTest result = apiInstance.postInstantHTTPServer(httpServerInstantTestRequest, aid, expand);
+            HttpServerInstantTest result = apiInstance.createHttpServerInstantTest(httpServerInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling HttpServerApi#postInstantHTTPServer");
+            System.err.println("Exception when calling HttpServerApi#createHttpServerInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantHTTPServerWithHttpInfo
+## createHttpServerInstantTestWithHttpInfo
 
-> ApiResponse<HttpServerInstantTest> postInstantHTTPServer postInstantHTTPServerWithHttpInfo(httpServerInstantTestRequest, aid, expand)
+> ApiResponse<HttpServerInstantTest> createHttpServerInstantTest createHttpServerInstantTestWithHttpInfo(httpServerInstantTestRequest, aid, expand)
 
 Create HTTP server instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<HttpServerInstantTest> response = apiInstance.postInstantHTTPServerWithHttpInfo(httpServerInstantTestRequest, aid, expand);
+            ApiResponse<HttpServerInstantTest> response = apiInstance.createHttpServerInstantTestWithHttpInfo(httpServerInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling HttpServerApi#postInstantHTTPServer");
+            System.err.println("Exception when calling HttpServerApi#createHttpServerInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

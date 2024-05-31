@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantSIPServer**](SipServerApi.md#postInstantSIPServer) | **POST** /v7/tests/sip-server/instant | Create SIP server instant test |
-| [**postInstantSIPServerWithHttpInfo**](SipServerApi.md#postInstantSIPServerWithHttpInfo) | **POST** /v7/tests/sip-server/instant | Create SIP server instant test |
+| [**createSipServerInstantTest**](SipServerApi.md#createSipServerInstantTest) | **POST** /v7/tests/sip-server/instant | Create SIP server instant test |
+| [**createSipServerInstantTestWithHttpInfo**](SipServerApi.md#createSipServerInstantTestWithHttpInfo) | **POST** /v7/tests/sip-server/instant | Create SIP server instant test |
 
 
 
-## postInstantSIPServer
+## createSipServerInstantTest
 
-> SipServerInstantTestResponse postInstantSIPServer(sipServerInstantTestRequest, aid, expand)
+> SipServerInstantTestResponse createSipServerInstantTest(sipServerInstantTestRequest, aid, expand)
 
 Create SIP server instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            SipServerInstantTestResponse result = apiInstance.postInstantSIPServer(sipServerInstantTestRequest, aid, expand);
+            SipServerInstantTestResponse result = apiInstance.createSipServerInstantTest(sipServerInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling SipServerApi#postInstantSIPServer");
+            System.err.println("Exception when calling SipServerApi#createSipServerInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantSIPServerWithHttpInfo
+## createSipServerInstantTestWithHttpInfo
 
-> ApiResponse<SipServerInstantTestResponse> postInstantSIPServer postInstantSIPServerWithHttpInfo(sipServerInstantTestRequest, aid, expand)
+> ApiResponse<SipServerInstantTestResponse> createSipServerInstantTest createSipServerInstantTestWithHttpInfo(sipServerInstantTestRequest, aid, expand)
 
 Create SIP server instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<SipServerInstantTestResponse> response = apiInstance.postInstantSIPServerWithHttpInfo(sipServerInstantTestRequest, aid, expand);
+            ApiResponse<SipServerInstantTestResponse> response = apiInstance.createSipServerInstantTestWithHttpInfo(sipServerInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling SipServerApi#postInstantSIPServer");
+            System.err.println("Exception when calling SipServerApi#createSipServerInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

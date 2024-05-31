@@ -513,7 +513,7 @@ ApiResponse<[**AgentToAgentTest**](AgentToAgentTest.md)>
 
 ## getAgentToAgentTests
 
-> GetAgentToAgentTests200Response getAgentToAgentTests(aid)
+> AgentToAgentTests getAgentToAgentTests(aid)
 
 List Agent to Agent tests
 
@@ -542,7 +542,7 @@ public class Example {
         AgentToAgentApi apiInstance = new AgentToAgentApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentToAgentTests200Response result = apiInstance.getAgentToAgentTests(aid);
+            AgentToAgentTests result = apiInstance.getAgentToAgentTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToAgentApi#getAgentToAgentTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgentToAgentTests200Response**](GetAgentToAgentTests200Response.md)
+[**AgentToAgentTests**](AgentToAgentTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getAgentToAgentTestsWithHttpInfo
 
-> ApiResponse<GetAgentToAgentTests200Response> getAgentToAgentTests getAgentToAgentTestsWithHttpInfo(aid)
+> ApiResponse<AgentToAgentTests> getAgentToAgentTests getAgentToAgentTestsWithHttpInfo(aid)
 
 List Agent to Agent tests
 
@@ -620,7 +620,7 @@ public class Example {
         AgentToAgentApi apiInstance = new AgentToAgentApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetAgentToAgentTests200Response> response = apiInstance.getAgentToAgentTestsWithHttpInfo(aid);
+            ApiResponse<AgentToAgentTests> response = apiInstance.getAgentToAgentTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgentToAgentTests200Response**](GetAgentToAgentTests200Response.md)>
+ApiResponse<[**AgentToAgentTests**](AgentToAgentTests.md)>
 
 
 ### Authorization

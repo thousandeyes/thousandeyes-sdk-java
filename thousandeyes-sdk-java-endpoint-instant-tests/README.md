@@ -2,9 +2,7 @@
 
 Endpoint Instant Scheduled Tests API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:12.868029+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 
 You can create and execute a new endpoint instant scheduled test within ThousandEyes using this API. The test parameters are specified in the `POST` data.
@@ -52,7 +50,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-instant-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -62,7 +60,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-instant-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-instant-tests:version"
 ```
 
 ### Others
@@ -75,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-instant-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-instant-tests-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -98,10 +96,10 @@ public class AgentToServerInstantScheduledTestApiExample {
         EndpointAgentToServerInstantTest endpointAgentToServerInstantTest = new EndpointAgentToServerInstantTest(); // EndpointAgentToServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentToServerTest result = apiInstance.postAgentToServerInstantTest(endpointAgentToServerInstantTest, aid);
+            EndpointAgentToServerTest result = apiInstance.createAgentToServerScheduledInstantTest(endpointAgentToServerInstantTest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToServerInstantScheduledTestApi#postAgentToServerInstantTest");
+            System.err.println("Exception when calling AgentToServerInstantScheduledTestApi#createAgentToServerScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -118,12 +116,12 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentToServerInstantScheduledTestApi* | [**postAgentToServerInstantTest**](docs/AgentToServerInstantScheduledTestApi.md#postAgentToServerInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
-*AgentToServerInstantScheduledTestApi* | [**postAgentToServerInstantTestWithHttpInfo**](docs/AgentToServerInstantScheduledTestApi.md#postAgentToServerInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
-*HttpServerInstantScheduledTestApi* | [**postHttpServerInstantTest**](docs/HttpServerInstantScheduledTestApi.md#postHttpServerInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
-*HttpServerInstantScheduledTestApi* | [**postHttpServerInstantTestWithHttpInfo**](docs/HttpServerInstantScheduledTestApi.md#postHttpServerInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
-*RunExistingTestApi* | [**postEndpointInstantRun**](docs/RunExistingTestApi.md#postEndpointInstantRun) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
-*RunExistingTestApi* | [**postEndpointInstantRunWithHttpInfo**](docs/RunExistingTestApi.md#postEndpointInstantRunWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
+*AgentToServerInstantScheduledTestApi* | [**createAgentToServerScheduledInstantTest**](docs/AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
+*AgentToServerInstantScheduledTestApi* | [**createAgentToServerScheduledInstantTestWithHttpInfo**](docs/AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
+*HttpServerInstantScheduledTestApi* | [**createHttpServerScheduledInstantTest**](docs/HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
+*HttpServerInstantScheduledTestApi* | [**createHttpServerScheduledInstantTestWithHttpInfo**](docs/HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
+*RunExistingTestApi* | [**runEndpointScheduledInstantTest**](docs/RunExistingTestApi.md#runEndpointScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
+*RunExistingTestApi* | [**runEndpointScheduledInstantTestWithHttpInfo**](docs/RunExistingTestApi.md#runEndpointScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
 
 
 <a id="documentation-for-authorization"></a>

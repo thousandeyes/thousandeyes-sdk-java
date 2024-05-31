@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 ## getTests
 
-> GetTests200Response getTests(aid)
+> Tests getTests(aid)
 
 List configured tests
 
@@ -40,7 +40,7 @@ public class Example {
         AllTestTypesApi apiInstance = new AllTestTypesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetTests200Response result = apiInstance.getTests(aid);
+            Tests result = apiInstance.getTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllTestTypesApi#getTests");
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetTests200Response**](GetTests200Response.md)
+[**Tests**](Tests.md)
 
 
 ### Authorization
@@ -88,7 +88,7 @@ public class Example {
 
 ## getTestsWithHttpInfo
 
-> ApiResponse<GetTests200Response> getTests getTestsWithHttpInfo(aid)
+> ApiResponse<Tests> getTests getTestsWithHttpInfo(aid)
 
 List configured tests
 
@@ -118,7 +118,7 @@ public class Example {
         AllTestTypesApi apiInstance = new AllTestTypesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetTests200Response> response = apiInstance.getTestsWithHttpInfo(aid);
+            ApiResponse<Tests> response = apiInstance.getTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -142,7 +142,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTests200Response**](GetTests200Response.md)>
+ApiResponse<[**Tests**](Tests.md)>
 
 
 ### Authorization

@@ -4,16 +4,16 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAlertDetails**](AlertsApi.md#getAlertDetails) | **GET** /v7/alerts/{alertId} | Retrieve alert details |
-| [**getAlertDetailsWithHttpInfo**](AlertsApi.md#getAlertDetailsWithHttpInfo) | **GET** /v7/alerts/{alertId} | Retrieve alert details |
+| [**getAlert**](AlertsApi.md#getAlert) | **GET** /v7/alerts/{alertId} | Retrieve alert details |
+| [**getAlertWithHttpInfo**](AlertsApi.md#getAlertWithHttpInfo) | **GET** /v7/alerts/{alertId} | Retrieve alert details |
 | [**getAlerts**](AlertsApi.md#getAlerts) | **GET** /v7/alerts | List active alerts |
 | [**getAlertsWithHttpInfo**](AlertsApi.md#getAlertsWithHttpInfo) | **GET** /v7/alerts | List active alerts |
 
 
 
-## getAlertDetails
+## getAlert
 
-> AlertDetail getAlertDetails(alertId, aid)
+> AlertDetail getAlert(alertId, aid)
 
 Retrieve alert details
 
@@ -43,10 +43,10 @@ public class Example {
         UUID alertId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569"); // UUID | Unique alert ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AlertDetail result = apiInstance.getAlertDetails(alertId, aid);
+            AlertDetail result = apiInstance.getAlert(alertId, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertsApi#getAlertDetails");
+            System.err.println("Exception when calling AlertsApi#getAlert");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -88,9 +88,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getAlertDetailsWithHttpInfo
+## getAlertWithHttpInfo
 
-> ApiResponse<AlertDetail> getAlertDetails getAlertDetailsWithHttpInfo(alertId, aid)
+> ApiResponse<AlertDetail> getAlert getAlertWithHttpInfo(alertId, aid)
 
 Retrieve alert details
 
@@ -121,12 +121,12 @@ public class Example {
         UUID alertId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569"); // UUID | Unique alert ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AlertDetail> response = apiInstance.getAlertDetailsWithHttpInfo(alertId, aid);
+            ApiResponse<AlertDetail> response = apiInstance.getAlertWithHttpInfo(alertId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertsApi#getAlertDetails");
+            System.err.println("Exception when calling AlertsApi#getAlert");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -171,7 +171,7 @@ ApiResponse<[**AlertDetail**](AlertDetail.md)>
 
 ## getAlerts
 
-> GetAlerts200Response getAlerts(aid, window, startDate, endDate, max, state)
+> Alerts getAlerts(aid, window, startDate, endDate, max, state)
 
 List active alerts
 
@@ -202,10 +202,10 @@ public class Example {
         String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
-        BigDecimal max = new BigDecimal("5"); // BigDecimal | (Optional) Maximum number of objects to return.
+        Integer max = 5; // Integer | (Optional) Maximum number of objects to return.
         State state = new State(); // State | Optional parameter to match a specific alert state. If not specified, it defaults to `trigger`.
         try {
-            GetAlerts200Response result = apiInstance.getAlerts(aid, window, startDate, endDate, max, state);
+            Alerts result = apiInstance.getAlerts(aid, window, startDate, endDate, max, state);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertsApi#getAlerts");
@@ -227,12 +227,12 @@ public class Example {
 | **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **BigDecimal**| (Optional) Maximum number of objects to return. | [optional] |
+| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
 | **state** | [**State**](.md)| Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. | [optional] |
 
 ### Return type
 
-[**GetAlerts200Response**](GetAlerts200Response.md)
+[**Alerts**](Alerts.md)
 
 
 ### Authorization
@@ -256,7 +256,7 @@ public class Example {
 
 ## getAlertsWithHttpInfo
 
-> ApiResponse<GetAlerts200Response> getAlerts getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state)
+> ApiResponse<Alerts> getAlerts getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state)
 
 List active alerts
 
@@ -288,10 +288,10 @@ public class Example {
         String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
-        BigDecimal max = new BigDecimal("5"); // BigDecimal | (Optional) Maximum number of objects to return.
+        Integer max = 5; // Integer | (Optional) Maximum number of objects to return.
         State state = new State(); // State | Optional parameter to match a specific alert state. If not specified, it defaults to `trigger`.
         try {
-            ApiResponse<GetAlerts200Response> response = apiInstance.getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state);
+            ApiResponse<Alerts> response = apiInstance.getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -315,12 +315,12 @@ public class Example {
 | **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **BigDecimal**| (Optional) Maximum number of objects to return. | [optional] |
+| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
 | **state** | [**State**](.md)| Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. | [optional] |
 
 ### Return type
 
-ApiResponse<[**GetAlerts200Response**](GetAlerts200Response.md)>
+ApiResponse<[**Alerts**](Alerts.md)>
 
 
 ### Authorization

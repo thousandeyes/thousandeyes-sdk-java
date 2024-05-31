@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getBGPMonitors**](ListBgpMonitorsApi.md#getBGPMonitors) | **GET** /v7/monitors | List BGP monitors |
-| [**getBGPMonitorsWithHttpInfo**](ListBgpMonitorsApi.md#getBGPMonitorsWithHttpInfo) | **GET** /v7/monitors | List BGP monitors |
+| [**getBgpMonitors**](ListBgpMonitorsApi.md#getBgpMonitors) | **GET** /v7/monitors | List BGP monitors |
+| [**getBgpMonitorsWithHttpInfo**](ListBgpMonitorsApi.md#getBgpMonitorsWithHttpInfo) | **GET** /v7/monitors | List BGP monitors |
 
 
 
-## getBGPMonitors
+## getBgpMonitors
 
-> GetBGPMonitors200Response getBGPMonitors(aid)
+> Monitors getBgpMonitors(aid)
 
 List BGP monitors
 
@@ -40,10 +40,10 @@ public class Example {
         ListBgpMonitorsApi apiInstance = new ListBgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetBGPMonitors200Response result = apiInstance.getBGPMonitors(aid);
+            Monitors result = apiInstance.getBgpMonitors(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ListBgpMonitorsApi#getBGPMonitors");
+            System.err.println("Exception when calling ListBgpMonitorsApi#getBgpMonitors");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetBGPMonitors200Response**](GetBGPMonitors200Response.md)
+[**Monitors**](Monitors.md)
 
 
 ### Authorization
@@ -84,9 +84,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getBGPMonitorsWithHttpInfo
+## getBgpMonitorsWithHttpInfo
 
-> ApiResponse<GetBGPMonitors200Response> getBGPMonitors getBGPMonitorsWithHttpInfo(aid)
+> ApiResponse<Monitors> getBgpMonitors getBgpMonitorsWithHttpInfo(aid)
 
 List BGP monitors
 
@@ -116,12 +116,12 @@ public class Example {
         ListBgpMonitorsApi apiInstance = new ListBgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetBGPMonitors200Response> response = apiInstance.getBGPMonitorsWithHttpInfo(aid);
+            ApiResponse<Monitors> response = apiInstance.getBgpMonitorsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ListBgpMonitorsApi#getBGPMonitors");
+            System.err.println("Exception when calling ListBgpMonitorsApi#getBgpMonitors");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -140,7 +140,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetBGPMonitors200Response**](GetBGPMonitors200Response.md)>
+ApiResponse<[**Monitors**](Monitors.md)>
 
 
 ### Authorization

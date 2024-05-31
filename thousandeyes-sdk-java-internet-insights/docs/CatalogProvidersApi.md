@@ -4,16 +4,16 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**catalogProviderList**](CatalogProvidersApi.md#catalogProviderList) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers |
-| [**catalogProviderListWithHttpInfo**](CatalogProvidersApi.md#catalogProviderListWithHttpInfo) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers |
+| [**filterCatalogProviders**](CatalogProvidersApi.md#filterCatalogProviders) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers |
+| [**filterCatalogProvidersWithHttpInfo**](CatalogProvidersApi.md#filterCatalogProvidersWithHttpInfo) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers |
 | [**getCatalogProvider**](CatalogProvidersApi.md#getCatalogProvider) | **GET** /v7/internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider |
 | [**getCatalogProviderWithHttpInfo**](CatalogProvidersApi.md#getCatalogProviderWithHttpInfo) | **GET** /v7/internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider |
 
 
 
-## catalogProviderList
+## filterCatalogProviders
 
-> ApiCatalogProviderResponse catalogProviderList(apiCatalogProviderFilter, aid)
+> ApiCatalogProviderResponse filterCatalogProviders(apiCatalogProviderFilter, aid)
 
 List catalog providers
 
@@ -43,10 +43,10 @@ public class Example {
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiCatalogProviderResponse result = apiInstance.catalogProviderList(apiCatalogProviderFilter, aid);
+            ApiCatalogProviderResponse result = apiInstance.filterCatalogProviders(apiCatalogProviderFilter, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogProvidersApi#catalogProviderList");
+            System.err.println("Exception when calling CatalogProvidersApi#filterCatalogProviders");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## catalogProviderListWithHttpInfo
+## filterCatalogProvidersWithHttpInfo
 
-> ApiResponse<ApiCatalogProviderResponse> catalogProviderList catalogProviderListWithHttpInfo(apiCatalogProviderFilter, aid)
+> ApiResponse<ApiCatalogProviderResponse> filterCatalogProviders filterCatalogProvidersWithHttpInfo(apiCatalogProviderFilter, aid)
 
 List catalog providers
 
@@ -124,12 +124,12 @@ public class Example {
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiCatalogProviderResponse> response = apiInstance.catalogProviderListWithHttpInfo(apiCatalogProviderFilter, aid);
+            ApiResponse<ApiCatalogProviderResponse> response = apiInstance.filterCatalogProvidersWithHttpInfo(apiCatalogProviderFilter, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogProvidersApi#catalogProviderList");
+            System.err.println("Exception when calling CatalogProvidersApi#filterCatalogProviders");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -177,7 +177,7 @@ ApiResponse<[**ApiCatalogProviderResponse**](ApiCatalogProviderResponse.md)>
 
 ## getCatalogProvider
 
-> ApiCatalogProviderDetailsResponse getCatalogProvider(providerId, aid)
+> ApiCatalogProviderDetails getCatalogProvider(providerId, aid)
 
 Retrieve a catalog provider
 
@@ -207,7 +207,7 @@ public class Example {
         UUID providerId = UUID.fromString("85602a0a-54a7-4e97-946e-67492ef1fa26"); // UUID | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiCatalogProviderDetailsResponse result = apiInstance.getCatalogProvider(providerId, aid);
+            ApiCatalogProviderDetails result = apiInstance.getCatalogProvider(providerId, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CatalogProvidersApi#getCatalogProvider");
@@ -230,7 +230,7 @@ public class Example {
 
 ### Return type
 
-[**ApiCatalogProviderDetailsResponse**](ApiCatalogProviderDetailsResponse.md)
+[**ApiCatalogProviderDetails**](ApiCatalogProviderDetails.md)
 
 
 ### Authorization
@@ -257,7 +257,7 @@ public class Example {
 
 ## getCatalogProviderWithHttpInfo
 
-> ApiResponse<ApiCatalogProviderDetailsResponse> getCatalogProvider getCatalogProviderWithHttpInfo(providerId, aid)
+> ApiResponse<ApiCatalogProviderDetails> getCatalogProvider getCatalogProviderWithHttpInfo(providerId, aid)
 
 Retrieve a catalog provider
 
@@ -288,7 +288,7 @@ public class Example {
         UUID providerId = UUID.fromString("85602a0a-54a7-4e97-946e-67492ef1fa26"); // UUID | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiCatalogProviderDetailsResponse> response = apiInstance.getCatalogProviderWithHttpInfo(providerId, aid);
+            ApiResponse<ApiCatalogProviderDetails> response = apiInstance.getCatalogProviderWithHttpInfo(providerId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -313,7 +313,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**ApiCatalogProviderDetailsResponse**](ApiCatalogProviderDetailsResponse.md)>
+ApiResponse<[**ApiCatalogProviderDetails**](ApiCatalogProviderDetails.md)>
 
 
 ### Authorization

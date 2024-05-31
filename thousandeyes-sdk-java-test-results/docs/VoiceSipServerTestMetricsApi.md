@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestResultSipServer**](VoiceSipServerTestMetricsApi.md#getTestResultSipServer) | **GET** /v7/test-results/{testId}/sip-server | Get SIP server test results |
-| [**getTestResultSipServerWithHttpInfo**](VoiceSipServerTestMetricsApi.md#getTestResultSipServerWithHttpInfo) | **GET** /v7/test-results/{testId}/sip-server | Get SIP server test results |
+| [**getTestSipServerResults**](VoiceSipServerTestMetricsApi.md#getTestSipServerResults) | **GET** /v7/test-results/{testId}/sip-server | Get SIP server test results |
+| [**getTestSipServerResultsWithHttpInfo**](VoiceSipServerTestMetricsApi.md#getTestSipServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/sip-server | Get SIP server test results |
 
 
 
-## getTestResultSipServer
+## getTestSipServerResults
 
-> GetTestResultSipServer200Response getTestResultSipServer(testId, aid, window, startDate, endDate, cursor)
+> SipServerTestResults getTestSipServerResults(testId, aid, window, startDate, endDate, cursor)
 
 Get SIP server test results
 
@@ -45,10 +45,10 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultSipServer200Response result = apiInstance.getTestResultSipServer(testId, aid, window, startDate, endDate, cursor);
+            SipServerTestResults result = apiInstance.getTestSipServerResults(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling VoiceSipServerTestMetricsApi#getTestResultSipServer");
+            System.err.println("Exception when calling VoiceSipServerTestMetricsApi#getTestSipServerResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultSipServer200Response**](GetTestResultSipServer200Response.md)
+[**SipServerTestResults**](SipServerTestResults.md)
 
 
 ### Authorization
@@ -97,9 +97,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getTestResultSipServerWithHttpInfo
+## getTestSipServerResultsWithHttpInfo
 
-> ApiResponse<GetTestResultSipServer200Response> getTestResultSipServer getTestResultSipServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<SipServerTestResults> getTestSipServerResults getTestSipServerResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get SIP server test results
 
@@ -134,12 +134,12 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultSipServer200Response> response = apiInstance.getTestResultSipServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<SipServerTestResults> response = apiInstance.getTestSipServerResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling VoiceSipServerTestMetricsApi#getTestResultSipServer");
+            System.err.println("Exception when calling VoiceSipServerTestMetricsApi#getTestSipServerResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -163,7 +163,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultSipServer200Response**](GetTestResultSipServer200Response.md)>
+ApiResponse<[**SipServerTestResults**](SipServerTestResults.md)>
 
 
 ### Authorization

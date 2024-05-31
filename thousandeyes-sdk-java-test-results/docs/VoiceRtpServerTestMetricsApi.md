@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestResultRtpStream**](VoiceRtpServerTestMetricsApi.md#getTestResultRtpStream) | **GET** /v7/test-results/{testId}/rtp-server | Retrieve RTP server test metrics |
-| [**getTestResultRtpStreamWithHttpInfo**](VoiceRtpServerTestMetricsApi.md#getTestResultRtpStreamWithHttpInfo) | **GET** /v7/test-results/{testId}/rtp-server | Retrieve RTP server test metrics |
+| [**getTestRtpServerResults**](VoiceRtpServerTestMetricsApi.md#getTestRtpServerResults) | **GET** /v7/test-results/{testId}/rtp-server | Retrieve RTP server test metrics |
+| [**getTestRtpServerResultsWithHttpInfo**](VoiceRtpServerTestMetricsApi.md#getTestRtpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/rtp-server | Retrieve RTP server test metrics |
 
 
 
-## getTestResultRtpStream
+## getTestRtpServerResults
 
-> GetTestResultRtpStream200Response getTestResultRtpStream(testId, aid, window, startDate, endDate, cursor)
+> RtpStreamTestResults getTestRtpServerResults(testId, aid, window, startDate, endDate, cursor)
 
 Retrieve RTP server test metrics
 
@@ -45,10 +45,10 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultRtpStream200Response result = apiInstance.getTestResultRtpStream(testId, aid, window, startDate, endDate, cursor);
+            RtpStreamTestResults result = apiInstance.getTestRtpServerResults(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling VoiceRtpServerTestMetricsApi#getTestResultRtpStream");
+            System.err.println("Exception when calling VoiceRtpServerTestMetricsApi#getTestRtpServerResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultRtpStream200Response**](GetTestResultRtpStream200Response.md)
+[**RtpStreamTestResults**](RtpStreamTestResults.md)
 
 
 ### Authorization
@@ -97,9 +97,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getTestResultRtpStreamWithHttpInfo
+## getTestRtpServerResultsWithHttpInfo
 
-> ApiResponse<GetTestResultRtpStream200Response> getTestResultRtpStream getTestResultRtpStreamWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<RtpStreamTestResults> getTestRtpServerResults getTestRtpServerResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Retrieve RTP server test metrics
 
@@ -134,12 +134,12 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultRtpStream200Response> response = apiInstance.getTestResultRtpStreamWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<RtpStreamTestResults> response = apiInstance.getTestRtpServerResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling VoiceRtpServerTestMetricsApi#getTestResultRtpStream");
+            System.err.println("Exception when calling VoiceRtpServerTestMetricsApi#getTestRtpServerResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -163,7 +163,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultRtpStream200Response**](GetTestResultRtpStream200Response.md)>
+ApiResponse<[**RtpStreamTestResults**](RtpStreamTestResults.md)>
 
 
 ### Authorization

@@ -8,12 +8,12 @@ All URIs are relative to *https://api.thousandeyes.com*
 | [**createDashboardWithHttpInfo**](DashboardsApi.md#createDashboardWithHttpInfo) | **POST** /v7/dashboards | Create dashboard |
 | [**deleteDashboard**](DashboardsApi.md#deleteDashboard) | **DELETE** /v7/dashboards/{dashboardId} | Delete dashboard |
 | [**deleteDashboardWithHttpInfo**](DashboardsApi.md#deleteDashboardWithHttpInfo) | **DELETE** /v7/dashboards/{dashboardId} | Delete dashboard |
-| [**getDashboardById**](DashboardsApi.md#getDashboardById) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard |
-| [**getDashboardByIdWithHttpInfo**](DashboardsApi.md#getDashboardByIdWithHttpInfo) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard |
-| [**getDashboardData**](DashboardsApi.md#getDashboardData) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
-| [**getDashboardDataWithHttpInfo**](DashboardsApi.md#getDashboardDataWithHttpInfo) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
-| [**getDashboardsForUser**](DashboardsApi.md#getDashboardsForUser) | **GET** /v7/dashboards | List dashboards |
-| [**getDashboardsForUserWithHttpInfo**](DashboardsApi.md#getDashboardsForUserWithHttpInfo) | **GET** /v7/dashboards | List dashboards |
+| [**getDashboard**](DashboardsApi.md#getDashboard) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard |
+| [**getDashboardWithHttpInfo**](DashboardsApi.md#getDashboardWithHttpInfo) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard |
+| [**getDashboardWidgetData**](DashboardsApi.md#getDashboardWidgetData) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
+| [**getDashboardWidgetDataWithHttpInfo**](DashboardsApi.md#getDashboardWidgetDataWithHttpInfo) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
+| [**getDashboards**](DashboardsApi.md#getDashboards) | **GET** /v7/dashboards | List dashboards |
+| [**getDashboardsWithHttpInfo**](DashboardsApi.md#getDashboardsWithHttpInfo) | **GET** /v7/dashboards | List dashboards |
 | [**updateDashboard**](DashboardsApi.md#updateDashboard) | **PUT** /v7/dashboards/{dashboardId} | Update dashboard |
 | [**updateDashboardWithHttpInfo**](DashboardsApi.md#updateDashboardWithHttpInfo) | **PUT** /v7/dashboards/{dashboardId} | Update dashboard |
 
@@ -337,9 +337,9 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
-## getDashboardById
+## getDashboard
 
-> ApiDashboard getDashboardById(dashboardId, aid)
+> ApiDashboard getDashboard(dashboardId, aid)
 
 Retrieve dashboard
 
@@ -369,10 +369,10 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiDashboard result = apiInstance.getDashboardById(dashboardId, aid);
+            ApiDashboard result = apiInstance.getDashboard(dashboardId, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsApi#getDashboardById");
+            System.err.println("Exception when calling DashboardsApi#getDashboard");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -415,9 +415,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getDashboardByIdWithHttpInfo
+## getDashboardWithHttpInfo
 
-> ApiResponse<ApiDashboard> getDashboardById getDashboardByIdWithHttpInfo(dashboardId, aid)
+> ApiResponse<ApiDashboard> getDashboard getDashboardWithHttpInfo(dashboardId, aid)
 
 Retrieve dashboard
 
@@ -448,12 +448,12 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiDashboard> response = apiInstance.getDashboardByIdWithHttpInfo(dashboardId, aid);
+            ApiResponse<ApiDashboard> response = apiInstance.getDashboardWithHttpInfo(dashboardId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsApi#getDashboardById");
+            System.err.println("Exception when calling DashboardsApi#getDashboard");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -497,9 +497,9 @@ ApiResponse<[**ApiDashboard**](ApiDashboard.md)>
 | **500** | Internal server error |  -  |
 
 
-## getDashboardData
+## getDashboardWidgetData
 
-> GetDashboardData200Response getDashboardData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
+> ApiWidgetDataResponse getDashboardWidgetData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
 
 Retrieve dashboard widget data
 
@@ -537,10 +537,10 @@ public class Example {
         String sort = "alertStatus"; // String | Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by `alertStatus` or `startTime`. The default is `alertStatus`. * For the **Test Table** widget, you can sort by `alertStatus`, `testName`, or `testType`. The sequence might vary from the web application. The default sort attribute is `alertStatus`.
         DashboardOrder order = DashboardOrder.fromValue("asc"); // DashboardOrder | Optional sorting order parameter that accepts either `asc` (ascending) or `desc` (descending) values. This only applies to the **Alert List** and **Test Table** Widgets.
         try {
-            GetDashboardData200Response result = apiInstance.getDashboardData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
+            ApiWidgetDataResponse result = apiInstance.getDashboardWidgetData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsApi#getDashboardData");
+            System.err.println("Exception when calling DashboardsApi#getDashboardWidgetData");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -568,7 +568,7 @@ public class Example {
 
 ### Return type
 
-[**GetDashboardData200Response**](GetDashboardData200Response.md)
+[**ApiWidgetDataResponse**](ApiWidgetDataResponse.md)
 
 
 ### Authorization
@@ -591,9 +591,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getDashboardDataWithHttpInfo
+## getDashboardWidgetDataWithHttpInfo
 
-> ApiResponse<GetDashboardData200Response> getDashboardData getDashboardDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
+> ApiResponse<ApiWidgetDataResponse> getDashboardWidgetData getDashboardWidgetDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
 
 Retrieve dashboard widget data
 
@@ -632,12 +632,12 @@ public class Example {
         String sort = "alertStatus"; // String | Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by `alertStatus` or `startTime`. The default is `alertStatus`. * For the **Test Table** widget, you can sort by `alertStatus`, `testName`, or `testType`. The sequence might vary from the web application. The default sort attribute is `alertStatus`.
         DashboardOrder order = DashboardOrder.fromValue("asc"); // DashboardOrder | Optional sorting order parameter that accepts either `asc` (ascending) or `desc` (descending) values. This only applies to the **Alert List** and **Test Table** Widgets.
         try {
-            ApiResponse<GetDashboardData200Response> response = apiInstance.getDashboardDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
+            ApiResponse<ApiWidgetDataResponse> response = apiInstance.getDashboardWidgetDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsApi#getDashboardData");
+            System.err.println("Exception when calling DashboardsApi#getDashboardWidgetData");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -665,7 +665,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetDashboardData200Response**](GetDashboardData200Response.md)>
+ApiResponse<[**ApiWidgetDataResponse**](ApiWidgetDataResponse.md)>
 
 
 ### Authorization
@@ -689,9 +689,9 @@ ApiResponse<[**GetDashboardData200Response**](GetDashboardData200Response.md)>
 | **500** | Internal server error |  -  |
 
 
-## getDashboardsForUser
+## getDashboards
 
-> List<ApiDashboard> getDashboardsForUser(aid)
+> List<ApiDashboard> getDashboards(aid)
 
 List dashboards
 
@@ -720,10 +720,10 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            List<ApiDashboard> result = apiInstance.getDashboardsForUser(aid);
+            List<ApiDashboard> result = apiInstance.getDashboards(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsApi#getDashboardsForUser");
+            System.err.println("Exception when calling DashboardsApi#getDashboards");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -765,9 +765,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getDashboardsForUserWithHttpInfo
+## getDashboardsWithHttpInfo
 
-> ApiResponse<List<ApiDashboard>> getDashboardsForUser getDashboardsForUserWithHttpInfo(aid)
+> ApiResponse<List<ApiDashboard>> getDashboards getDashboardsWithHttpInfo(aid)
 
 List dashboards
 
@@ -797,12 +797,12 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<List<ApiDashboard>> response = apiInstance.getDashboardsForUserWithHttpInfo(aid);
+            ApiResponse<List<ApiDashboard>> response = apiInstance.getDashboardsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsApi#getDashboardsForUser");
+            System.err.println("Exception when calling DashboardsApi#getDashboards");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

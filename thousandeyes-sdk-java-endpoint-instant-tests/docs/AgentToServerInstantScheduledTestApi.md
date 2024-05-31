@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postAgentToServerInstantTest**](AgentToServerInstantScheduledTestApi.md#postAgentToServerInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test |
-| [**postAgentToServerInstantTestWithHttpInfo**](AgentToServerInstantScheduledTestApi.md#postAgentToServerInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test |
+| [**createAgentToServerScheduledInstantTest**](AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test |
+| [**createAgentToServerScheduledInstantTestWithHttpInfo**](AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test |
 
 
 
-## postAgentToServerInstantTest
+## createAgentToServerScheduledInstantTest
 
-> EndpointAgentToServerTest postAgentToServerInstantTest(endpointAgentToServerInstantTest, aid)
+> EndpointAgentToServerTest createAgentToServerScheduledInstantTest(endpointAgentToServerInstantTest, aid)
 
 Run agent to server instant scheduled test
 
@@ -41,10 +41,10 @@ public class Example {
         EndpointAgentToServerInstantTest endpointAgentToServerInstantTest = new EndpointAgentToServerInstantTest(); // EndpointAgentToServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentToServerTest result = apiInstance.postAgentToServerInstantTest(endpointAgentToServerInstantTest, aid);
+            EndpointAgentToServerTest result = apiInstance.createAgentToServerScheduledInstantTest(endpointAgentToServerInstantTest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToServerInstantScheduledTestApi#postAgentToServerInstantTest");
+            System.err.println("Exception when calling AgentToServerInstantScheduledTestApi#createAgentToServerScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -88,9 +88,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postAgentToServerInstantTestWithHttpInfo
+## createAgentToServerScheduledInstantTestWithHttpInfo
 
-> ApiResponse<EndpointAgentToServerTest> postAgentToServerInstantTest postAgentToServerInstantTestWithHttpInfo(endpointAgentToServerInstantTest, aid)
+> ApiResponse<EndpointAgentToServerTest> createAgentToServerScheduledInstantTest createAgentToServerScheduledInstantTestWithHttpInfo(endpointAgentToServerInstantTest, aid)
 
 Run agent to server instant scheduled test
 
@@ -121,12 +121,12 @@ public class Example {
         EndpointAgentToServerInstantTest endpointAgentToServerInstantTest = new EndpointAgentToServerInstantTest(); // EndpointAgentToServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgentToServerTest> response = apiInstance.postAgentToServerInstantTestWithHttpInfo(endpointAgentToServerInstantTest, aid);
+            ApiResponse<EndpointAgentToServerTest> response = apiInstance.createAgentToServerScheduledInstantTestWithHttpInfo(endpointAgentToServerInstantTest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToServerInstantScheduledTestApi#postAgentToServerInstantTest");
+            System.err.println("Exception when calling AgentToServerInstantScheduledTestApi#createAgentToServerScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

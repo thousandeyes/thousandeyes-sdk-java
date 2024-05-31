@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestResultFtpServer**](WebFtpServerTestMetricsApi.md#getTestResultFtpServer) | **GET** /v7/test-results/{testId}/ftp-server | Get FTP server test results |
-| [**getTestResultFtpServerWithHttpInfo**](WebFtpServerTestMetricsApi.md#getTestResultFtpServerWithHttpInfo) | **GET** /v7/test-results/{testId}/ftp-server | Get FTP server test results |
+| [**getTestFtpServerResults**](WebFtpServerTestMetricsApi.md#getTestFtpServerResults) | **GET** /v7/test-results/{testId}/ftp-server | Get FTP server test results |
+| [**getTestFtpServerResultsWithHttpInfo**](WebFtpServerTestMetricsApi.md#getTestFtpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/ftp-server | Get FTP server test results |
 
 
 
-## getTestResultFtpServer
+## getTestFtpServerResults
 
-> GetTestResultFtpServer200Response getTestResultFtpServer(testId, aid, window, startDate, endDate, cursor)
+> FtpServerTestResults getTestFtpServerResults(testId, aid, window, startDate, endDate, cursor)
 
 Get FTP server test results
 
@@ -45,10 +45,10 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            GetTestResultFtpServer200Response result = apiInstance.getTestResultFtpServer(testId, aid, window, startDate, endDate, cursor);
+            FtpServerTestResults result = apiInstance.getTestFtpServerResults(testId, aid, window, startDate, endDate, cursor);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling WebFtpServerTestMetricsApi#getTestResultFtpServer");
+            System.err.println("Exception when calling WebFtpServerTestMetricsApi#getTestFtpServerResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -72,7 +72,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultFtpServer200Response**](GetTestResultFtpServer200Response.md)
+[**FtpServerTestResults**](FtpServerTestResults.md)
 
 
 ### Authorization
@@ -97,9 +97,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getTestResultFtpServerWithHttpInfo
+## getTestFtpServerResultsWithHttpInfo
 
-> ApiResponse<GetTestResultFtpServer200Response> getTestResultFtpServer getTestResultFtpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<FtpServerTestResults> getTestFtpServerResults getTestFtpServerResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
 
 Get FTP server test results
 
@@ -134,12 +134,12 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<GetTestResultFtpServer200Response> response = apiInstance.getTestResultFtpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            ApiResponse<FtpServerTestResults> response = apiInstance.getTestFtpServerResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling WebFtpServerTestMetricsApi#getTestResultFtpServer");
+            System.err.println("Exception when calling WebFtpServerTestMetricsApi#getTestFtpServerResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -163,7 +163,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultFtpServer200Response**](GetTestResultFtpServer200Response.md)>
+ApiResponse<[**FtpServerTestResults**](FtpServerTestResults.md)>
 
 
 ### Authorization

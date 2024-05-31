@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAgentProxies**](ProxiesApi.md#getAgentProxies) | **GET** /v7/agents/proxies | List agent proxies |
-| [**getAgentProxiesWithHttpInfo**](ProxiesApi.md#getAgentProxiesWithHttpInfo) | **GET** /v7/agents/proxies | List agent proxies |
+| [**getAgentsProxies**](ProxiesApi.md#getAgentsProxies) | **GET** /v7/agents/proxies | List agent proxies |
+| [**getAgentsProxiesWithHttpInfo**](ProxiesApi.md#getAgentsProxiesWithHttpInfo) | **GET** /v7/agents/proxies | List agent proxies |
 
 
 
-## getAgentProxies
+## getAgentsProxies
 
-> GetAgentProxies200Response getAgentProxies(aid)
+> AgentProxies getAgentsProxies(aid)
 
 List agent proxies
 
@@ -40,10 +40,10 @@ public class Example {
         ProxiesApi apiInstance = new ProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetAgentProxies200Response result = apiInstance.getAgentProxies(aid);
+            AgentProxies result = apiInstance.getAgentsProxies(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProxiesApi#getAgentProxies");
+            System.err.println("Exception when calling ProxiesApi#getAgentsProxies");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgentProxies200Response**](GetAgentProxies200Response.md)
+[**AgentProxies**](AgentProxies.md)
 
 
 ### Authorization
@@ -86,9 +86,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## getAgentProxiesWithHttpInfo
+## getAgentsProxiesWithHttpInfo
 
-> ApiResponse<GetAgentProxies200Response> getAgentProxies getAgentProxiesWithHttpInfo(aid)
+> ApiResponse<AgentProxies> getAgentsProxies getAgentsProxiesWithHttpInfo(aid)
 
 List agent proxies
 
@@ -118,12 +118,12 @@ public class Example {
         ProxiesApi apiInstance = new ProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetAgentProxies200Response> response = apiInstance.getAgentProxiesWithHttpInfo(aid);
+            ApiResponse<AgentProxies> response = apiInstance.getAgentsProxiesWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProxiesApi#getAgentProxies");
+            System.err.println("Exception when calling ProxiesApi#getAgentsProxies");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -142,7 +142,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgentProxies200Response**](GetAgentProxies200Response.md)>
+ApiResponse<[**AgentProxies**](AgentProxies.md)>
 
 
 ### Authorization

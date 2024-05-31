@@ -6,22 +6,22 @@ All URIs are relative to *https://api.thousandeyes.com*
 |------------- | ------------- | -------------|
 | [**createDashboardSnapshot**](DashboardSnapshotsApi.md#createDashboardSnapshot) | **POST** /v7/dashboard-snapshots | Create dashboard snapshot |
 | [**createDashboardSnapshotWithHttpInfo**](DashboardSnapshotsApi.md#createDashboardSnapshotWithHttpInfo) | **POST** /v7/dashboard-snapshots | Create dashboard snapshot |
-| [**dashboardSnapshotById**](DashboardSnapshotsApi.md#dashboardSnapshotById) | **GET** /v7/dashboard-snapshots/{snapshotId} | Retrieve dashboard snapshot |
-| [**dashboardSnapshotByIdWithHttpInfo**](DashboardSnapshotsApi.md#dashboardSnapshotByIdWithHttpInfo) | **GET** /v7/dashboard-snapshots/{snapshotId} | Retrieve dashboard snapshot |
-| [**dashboardSnapshots**](DashboardSnapshotsApi.md#dashboardSnapshots) | **GET** /v7/dashboard-snapshots | List dashboard snapshots |
-| [**dashboardSnapshotsWithHttpInfo**](DashboardSnapshotsApi.md#dashboardSnapshotsWithHttpInfo) | **GET** /v7/dashboard-snapshots | List dashboard snapshots |
 | [**deleteDashboardSnapshot**](DashboardSnapshotsApi.md#deleteDashboardSnapshot) | **DELETE** /v7/dashboard-snapshots/{snapshotId} | Delete dashboard snapshot |
 | [**deleteDashboardSnapshotWithHttpInfo**](DashboardSnapshotsApi.md#deleteDashboardSnapshotWithHttpInfo) | **DELETE** /v7/dashboard-snapshots/{snapshotId} | Delete dashboard snapshot |
-| [**snapshotDataByWidget**](DashboardSnapshotsApi.md#snapshotDataByWidget) | **GET** /v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId} | Retrieve dashboard snapshot data |
-| [**snapshotDataByWidgetWithHttpInfo**](DashboardSnapshotsApi.md#snapshotDataByWidgetWithHttpInfo) | **GET** /v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId} | Retrieve dashboard snapshot data |
-| [**updateSnapshotExpirationDate**](DashboardSnapshotsApi.md#updateSnapshotExpirationDate) | **PATCH** /v7/dashboard-snapshots/{snapshotId} | Update snapshot expiration |
-| [**updateSnapshotExpirationDateWithHttpInfo**](DashboardSnapshotsApi.md#updateSnapshotExpirationDateWithHttpInfo) | **PATCH** /v7/dashboard-snapshots/{snapshotId} | Update snapshot expiration |
+| [**getDashboardSnapshot**](DashboardSnapshotsApi.md#getDashboardSnapshot) | **GET** /v7/dashboard-snapshots/{snapshotId} | Retrieve dashboard snapshot |
+| [**getDashboardSnapshotWithHttpInfo**](DashboardSnapshotsApi.md#getDashboardSnapshotWithHttpInfo) | **GET** /v7/dashboard-snapshots/{snapshotId} | Retrieve dashboard snapshot |
+| [**getDashboardSnapshotWidgetData**](DashboardSnapshotsApi.md#getDashboardSnapshotWidgetData) | **GET** /v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId} | Retrieve dashboard snapshot data |
+| [**getDashboardSnapshotWidgetDataWithHttpInfo**](DashboardSnapshotsApi.md#getDashboardSnapshotWidgetDataWithHttpInfo) | **GET** /v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId} | Retrieve dashboard snapshot data |
+| [**getDashboardSnapshots**](DashboardSnapshotsApi.md#getDashboardSnapshots) | **GET** /v7/dashboard-snapshots | List dashboard snapshots |
+| [**getDashboardSnapshotsWithHttpInfo**](DashboardSnapshotsApi.md#getDashboardSnapshotsWithHttpInfo) | **GET** /v7/dashboard-snapshots | List dashboard snapshots |
+| [**updateDashboardSnapshotExpirationDate**](DashboardSnapshotsApi.md#updateDashboardSnapshotExpirationDate) | **PATCH** /v7/dashboard-snapshots/{snapshotId} | Update snapshot expiration |
+| [**updateDashboardSnapshotExpirationDateWithHttpInfo**](DashboardSnapshotsApi.md#updateDashboardSnapshotExpirationDateWithHttpInfo) | **PATCH** /v7/dashboard-snapshots/{snapshotId} | Update snapshot expiration |
 
 
 
 ## createDashboardSnapshot
 
-> CreateDashboardSnapshot201Response createDashboardSnapshot(generateDashboardSnapshotRequest, aid)
+> DashboardSnapshotResponse createDashboardSnapshot(generateDashboardSnapshotRequest, aid)
 
 Create dashboard snapshot
 
@@ -51,7 +51,7 @@ public class Example {
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreateDashboardSnapshot201Response result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
+            DashboardSnapshotResponse result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#createDashboardSnapshot");
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**CreateDashboardSnapshot201Response**](CreateDashboardSnapshot201Response.md)
+[**DashboardSnapshotResponse**](DashboardSnapshotResponse.md)
 
 
 ### Authorization
@@ -99,7 +99,7 @@ public class Example {
 
 ## createDashboardSnapshotWithHttpInfo
 
-> ApiResponse<CreateDashboardSnapshot201Response> createDashboardSnapshot createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid)
+> ApiResponse<DashboardSnapshotResponse> createDashboardSnapshot createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid)
 
 Create dashboard snapshot
 
@@ -130,7 +130,7 @@ public class Example {
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CreateDashboardSnapshot201Response> response = apiInstance.createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid);
+            ApiResponse<DashboardSnapshotResponse> response = apiInstance.createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -155,7 +155,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateDashboardSnapshot201Response**](CreateDashboardSnapshot201Response.md)>
+ApiResponse<[**DashboardSnapshotResponse**](DashboardSnapshotResponse.md)>
 
 
 ### Authorization
@@ -171,330 +171,6 @@ ApiResponse<[**CreateDashboardSnapshot201Response**](CreateDashboardSnapshot201R
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  * Location -  <br>  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-
-
-## dashboardSnapshotById
-
-> ApiDashboardSnapshot dashboardSnapshotById(snapshotId, aid)
-
-Retrieve dashboard snapshot
-
-This endpoint returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.Configuration;
-import com.thousandeyes.api.authentication.*;
-import com.thousandeyes.api.models.*;
-import com.thousandeyes.api.dashboards.DashboardSnapshotsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
-        String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiDashboardSnapshot result = apiInstance.dashboardSnapshotById(snapshotId, aid);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardSnapshotsApi#dashboardSnapshotById");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-[**ApiDashboardSnapshot**](ApiDashboardSnapshot.md)
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-
-## dashboardSnapshotByIdWithHttpInfo
-
-> ApiResponse<ApiDashboardSnapshot> dashboardSnapshotById dashboardSnapshotByIdWithHttpInfo(snapshotId, aid)
-
-Retrieve dashboard snapshot
-
-This endpoint returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
-import com.thousandeyes.api.Configuration;
-import com.thousandeyes.api.authentication.*;
-import com.thousandeyes.api.models.*;
-import com.thousandeyes.api.dashboards.DashboardSnapshotsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
-        String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiResponse<ApiDashboardSnapshot> response = apiInstance.dashboardSnapshotByIdWithHttpInfo(snapshotId, aid);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardSnapshotsApi#dashboardSnapshotById");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-ApiResponse<[**ApiDashboardSnapshot**](ApiDashboardSnapshot.md)>
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-
-
-## dashboardSnapshots
-
-> DashboardSnapshots200Response dashboardSnapshots(aid, dashboardId, cursor)
-
-List dashboard snapshots
-
-Returns a list of dashboard snapshots within your account group. Use this data to identify a specific dashboard snapshot, which can be used in other endpoints to access aggregated data. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot; 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.Configuration;
-import com.thousandeyes.api.authentication.*;
-import com.thousandeyes.api.models.*;
-import com.thousandeyes.api.dashboards.DashboardSnapshotsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
-        String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        try {
-            DashboardSnapshots200Response result = apiInstance.dashboardSnapshots(aid, dashboardId, cursor);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardSnapshotsApi#dashboardSnapshots");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **dashboardId** | **String**|  | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-
-### Return type
-
-[**DashboardSnapshots200Response**](DashboardSnapshots200Response.md)
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-
-## dashboardSnapshotsWithHttpInfo
-
-> ApiResponse<DashboardSnapshots200Response> dashboardSnapshots dashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor)
-
-List dashboard snapshots
-
-Returns a list of dashboard snapshots within your account group. Use this data to identify a specific dashboard snapshot, which can be used in other endpoints to access aggregated data. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot; 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
-import com.thousandeyes.api.Configuration;
-import com.thousandeyes.api.authentication.*;
-import com.thousandeyes.api.models.*;
-import com.thousandeyes.api.dashboards.DashboardSnapshotsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
-        String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        try {
-            ApiResponse<DashboardSnapshots200Response> response = apiInstance.dashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardSnapshotsApi#dashboardSnapshots");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **dashboardId** | **String**|  | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-
-### Return type
-
-ApiResponse<[**DashboardSnapshots200Response**](DashboardSnapshots200Response.md)>
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
@@ -661,9 +337,169 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
-## snapshotDataByWidget
+## getDashboardSnapshot
 
-> SnapshotDataByWidget200Response snapshotDataByWidget(snapshotId, widgetId, aid)
+> ApiDashboardSnapshot getDashboardSnapshot(snapshotId, aid)
+
+Retrieve dashboard snapshot
+
+This endpoint returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.Configuration;
+import com.thousandeyes.api.authentication.*;
+import com.thousandeyes.api.models.*;
+import com.thousandeyes.api.dashboards.DashboardSnapshotsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
+        String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiDashboardSnapshot result = apiInstance.getDashboardSnapshot(snapshotId, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshot");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**ApiDashboardSnapshot**](ApiDashboardSnapshot.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## getDashboardSnapshotWithHttpInfo
+
+> ApiResponse<ApiDashboardSnapshot> getDashboardSnapshot getDashboardSnapshotWithHttpInfo(snapshotId, aid)
+
+Retrieve dashboard snapshot
+
+This endpoint returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.Configuration;
+import com.thousandeyes.api.authentication.*;
+import com.thousandeyes.api.models.*;
+import com.thousandeyes.api.dashboards.DashboardSnapshotsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
+        String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<ApiDashboardSnapshot> response = apiInstance.getDashboardSnapshotWithHttpInfo(snapshotId, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshot");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**ApiDashboardSnapshot**](ApiDashboardSnapshot.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+
+## getDashboardSnapshotWidgetData
+
+> ApiWidgetDataSnapshotResponse getDashboardSnapshotWidgetData(snapshotId, widgetId, aid)
 
 Retrieve dashboard snapshot data
 
@@ -694,10 +530,10 @@ public class Example {
         String widgetId = "unpmg"; // String | A Identifier for a widget.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            SnapshotDataByWidget200Response result = apiInstance.snapshotDataByWidget(snapshotId, widgetId, aid);
+            ApiWidgetDataSnapshotResponse result = apiInstance.getDashboardSnapshotWidgetData(snapshotId, widgetId, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardSnapshotsApi#snapshotDataByWidget");
+            System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshotWidgetData");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -718,7 +554,7 @@ public class Example {
 
 ### Return type
 
-[**SnapshotDataByWidget200Response**](SnapshotDataByWidget200Response.md)
+[**ApiWidgetDataSnapshotResponse**](ApiWidgetDataSnapshotResponse.md)
 
 
 ### Authorization
@@ -741,9 +577,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## snapshotDataByWidgetWithHttpInfo
+## getDashboardSnapshotWidgetDataWithHttpInfo
 
-> ApiResponse<SnapshotDataByWidget200Response> snapshotDataByWidget snapshotDataByWidgetWithHttpInfo(snapshotId, widgetId, aid)
+> ApiResponse<ApiWidgetDataSnapshotResponse> getDashboardSnapshotWidgetData getDashboardSnapshotWidgetDataWithHttpInfo(snapshotId, widgetId, aid)
 
 Retrieve dashboard snapshot data
 
@@ -775,12 +611,12 @@ public class Example {
         String widgetId = "unpmg"; // String | A Identifier for a widget.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<SnapshotDataByWidget200Response> response = apiInstance.snapshotDataByWidgetWithHttpInfo(snapshotId, widgetId, aid);
+            ApiResponse<ApiWidgetDataSnapshotResponse> response = apiInstance.getDashboardSnapshotWidgetDataWithHttpInfo(snapshotId, widgetId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardSnapshotsApi#snapshotDataByWidget");
+            System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshotWidgetData");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -801,7 +637,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**SnapshotDataByWidget200Response**](SnapshotDataByWidget200Response.md)>
+ApiResponse<[**ApiWidgetDataSnapshotResponse**](ApiWidgetDataSnapshotResponse.md)>
 
 
 ### Authorization
@@ -825,9 +661,173 @@ ApiResponse<[**SnapshotDataByWidget200Response**](SnapshotDataByWidget200Respons
 | **500** | Internal server error |  -  |
 
 
-## updateSnapshotExpirationDate
+## getDashboardSnapshots
 
-> void updateSnapshotExpirationDate(snapshotId, updateSnapshotExpirationDateApiRequest, aid)
+> DashboardSnapshotsPage getDashboardSnapshots(aid, dashboardId, cursor)
+
+List dashboard snapshots
+
+Returns a list of dashboard snapshots within your account group. Use this data to identify a specific dashboard snapshot, which can be used in other endpoints to access aggregated data. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot; 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.Configuration;
+import com.thousandeyes.api.authentication.*;
+import com.thousandeyes.api.models.*;
+import com.thousandeyes.api.dashboards.DashboardSnapshotsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
+        String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        try {
+            DashboardSnapshotsPage result = apiInstance.getDashboardSnapshots(aid, dashboardId, cursor);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshots");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **dashboardId** | **String**|  | [optional] |
+| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
+### Return type
+
+[**DashboardSnapshotsPage**](DashboardSnapshotsPage.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## getDashboardSnapshotsWithHttpInfo
+
+> ApiResponse<DashboardSnapshotsPage> getDashboardSnapshots getDashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor)
+
+List dashboard snapshots
+
+Returns a list of dashboard snapshots within your account group. Use this data to identify a specific dashboard snapshot, which can be used in other endpoints to access aggregated data. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot; 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.Configuration;
+import com.thousandeyes.api.authentication.*;
+import com.thousandeyes.api.models.*;
+import com.thousandeyes.api.dashboards.DashboardSnapshotsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardSnapshotsApi apiInstance = new DashboardSnapshotsApi(defaultClient);
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
+        String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        try {
+            ApiResponse<DashboardSnapshotsPage> response = apiInstance.getDashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshots");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **dashboardId** | **String**|  | [optional] |
+| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
+### Return type
+
+ApiResponse<[**DashboardSnapshotsPage**](DashboardSnapshotsPage.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+
+## updateDashboardSnapshotExpirationDate
+
+> void updateDashboardSnapshotExpirationDate(snapshotId, updateSnapshotExpirationDateApiRequest, aid)
 
 Update snapshot expiration
 
@@ -858,9 +858,9 @@ public class Example {
         UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest = new UpdateSnapshotExpirationDateApiRequest(); // UpdateSnapshotExpirationDateApiRequest | Request body schema to update a snapshot expiration.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.updateSnapshotExpirationDate(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
+            apiInstance.updateDashboardSnapshotExpirationDate(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardSnapshotsApi#updateSnapshotExpirationDate");
+            System.err.println("Exception when calling DashboardSnapshotsApi#updateDashboardSnapshotExpirationDate");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -904,9 +904,9 @@ null (empty response body)
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## updateSnapshotExpirationDateWithHttpInfo
+## updateDashboardSnapshotExpirationDateWithHttpInfo
 
-> ApiResponse<Void> updateSnapshotExpirationDate updateSnapshotExpirationDateWithHttpInfo(snapshotId, updateSnapshotExpirationDateApiRequest, aid)
+> ApiResponse<Void> updateDashboardSnapshotExpirationDate updateDashboardSnapshotExpirationDateWithHttpInfo(snapshotId, updateSnapshotExpirationDateApiRequest, aid)
 
 Update snapshot expiration
 
@@ -938,11 +938,11 @@ public class Example {
         UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest = new UpdateSnapshotExpirationDateApiRequest(); // UpdateSnapshotExpirationDateApiRequest | Request body schema to update a snapshot expiration.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.updateSnapshotExpirationDateWithHttpInfo(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
+            ApiResponse<Void> response = apiInstance.updateDashboardSnapshotExpirationDateWithHttpInfo(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardSnapshotsApi#updateSnapshotExpirationDate");
+            System.err.println("Exception when calling DashboardSnapshotsApi#updateDashboardSnapshotExpirationDate");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

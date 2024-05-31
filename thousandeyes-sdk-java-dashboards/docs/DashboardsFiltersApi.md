@@ -6,14 +6,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 |------------- | ------------- | -------------|
 | [**createDashboardFilter**](DashboardsFiltersApi.md#createDashboardFilter) | **POST** /v7/dashboards/filters | Create dashboard filter |
 | [**createDashboardFilterWithHttpInfo**](DashboardsFiltersApi.md#createDashboardFilterWithHttpInfo) | **POST** /v7/dashboards/filters | Create dashboard filter |
-| [**deleteDashboardFilterById**](DashboardsFiltersApi.md#deleteDashboardFilterById) | **DELETE** /v7/dashboards/filters/{id} | Delete dashboard filter |
-| [**deleteDashboardFilterByIdWithHttpInfo**](DashboardsFiltersApi.md#deleteDashboardFilterByIdWithHttpInfo) | **DELETE** /v7/dashboards/filters/{id} | Delete dashboard filter |
-| [**getAllDashboardFilters**](DashboardsFiltersApi.md#getAllDashboardFilters) | **GET** /v7/dashboards/filters | List dashboard filters |
-| [**getAllDashboardFiltersWithHttpInfo**](DashboardsFiltersApi.md#getAllDashboardFiltersWithHttpInfo) | **GET** /v7/dashboards/filters | List dashboard filters |
-| [**getDashboardFilterById**](DashboardsFiltersApi.md#getDashboardFilterById) | **GET** /v7/dashboards/filters/{id} | Get dashboard filter |
-| [**getDashboardFilterByIdWithHttpInfo**](DashboardsFiltersApi.md#getDashboardFilterByIdWithHttpInfo) | **GET** /v7/dashboards/filters/{id} | Get dashboard filter |
-| [**updateDashboardFilterById**](DashboardsFiltersApi.md#updateDashboardFilterById) | **PUT** /v7/dashboards/filters/{id} | Update dashboard filter |
-| [**updateDashboardFilterByIdWithHttpInfo**](DashboardsFiltersApi.md#updateDashboardFilterByIdWithHttpInfo) | **PUT** /v7/dashboards/filters/{id} | Update dashboard filter |
+| [**deleteDashboardFilter**](DashboardsFiltersApi.md#deleteDashboardFilter) | **DELETE** /v7/dashboards/filters/{id} | Delete dashboard filter |
+| [**deleteDashboardFilterWithHttpInfo**](DashboardsFiltersApi.md#deleteDashboardFilterWithHttpInfo) | **DELETE** /v7/dashboards/filters/{id} | Delete dashboard filter |
+| [**getDashboardFilter**](DashboardsFiltersApi.md#getDashboardFilter) | **GET** /v7/dashboards/filters/{id} | Get dashboard filter |
+| [**getDashboardFilterWithHttpInfo**](DashboardsFiltersApi.md#getDashboardFilterWithHttpInfo) | **GET** /v7/dashboards/filters/{id} | Get dashboard filter |
+| [**getDashboardsFilters**](DashboardsFiltersApi.md#getDashboardsFilters) | **GET** /v7/dashboards/filters | List dashboard filters |
+| [**getDashboardsFiltersWithHttpInfo**](DashboardsFiltersApi.md#getDashboardsFiltersWithHttpInfo) | **GET** /v7/dashboards/filters | List dashboard filters |
+| [**updateDashboardFilter**](DashboardsFiltersApi.md#updateDashboardFilter) | **PUT** /v7/dashboards/filters/{id} | Update dashboard filter |
+| [**updateDashboardFilterWithHttpInfo**](DashboardsFiltersApi.md#updateDashboardFilterWithHttpInfo) | **PUT** /v7/dashboards/filters/{id} | Update dashboard filter |
 
 
 
@@ -177,9 +177,9 @@ ApiResponse<[**ApiContextFilterResponse**](ApiContextFilterResponse.md)>
 | **500** | Internal server error |  -  |
 
 
-## deleteDashboardFilterById
+## deleteDashboardFilter
 
-> void deleteDashboardFilterById(id, aid)
+> void deleteDashboardFilter(id, aid)
 
 Delete dashboard filter
 
@@ -209,9 +209,9 @@ public class Example {
         String id = "65bc18e8f2073a4a469cd958"; // String | Unique dashboard filter ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteDashboardFilterById(id, aid);
+            apiInstance.deleteDashboardFilter(id, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsFiltersApi#deleteDashboardFilterById");
+            System.err.println("Exception when calling DashboardsFiltersApi#deleteDashboardFilter");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -254,9 +254,9 @@ null (empty response body)
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## deleteDashboardFilterByIdWithHttpInfo
+## deleteDashboardFilterWithHttpInfo
 
-> ApiResponse<Void> deleteDashboardFilterById deleteDashboardFilterByIdWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteDashboardFilter deleteDashboardFilterWithHttpInfo(id, aid)
 
 Delete dashboard filter
 
@@ -287,11 +287,11 @@ public class Example {
         String id = "65bc18e8f2073a4a469cd958"; // String | Unique dashboard filter ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteDashboardFilterByIdWithHttpInfo(id, aid);
+            ApiResponse<Void> response = apiInstance.deleteDashboardFilterWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsFiltersApi#deleteDashboardFilterById");
+            System.err.println("Exception when calling DashboardsFiltersApi#deleteDashboardFilter");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -335,169 +335,9 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
-## getAllDashboardFilters
+## getDashboardFilter
 
-> ApiContextFiltersResponse getAllDashboardFilters(searchPattern, aid)
-
-List dashboard filters
-
-Returns a list of dashboard filters and its context within your account group. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.Configuration;
-import com.thousandeyes.api.authentication.*;
-import com.thousandeyes.api.models.*;
-import com.thousandeyes.api.dashboards.DashboardsFiltersApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        DashboardsFiltersApi apiInstance = new DashboardsFiltersApi(defaultClient);
-        String searchPattern = "cea-filter"; // String | Optional search pattern parameter to filter list of dashboard filters by either name or description values.
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiContextFiltersResponse result = apiInstance.getAllDashboardFilters(searchPattern, aid);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsFiltersApi#getAllDashboardFilters");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **searchPattern** | **String**| Optional search pattern parameter to filter list of dashboard filters by either name or description values. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-[**ApiContextFiltersResponse**](ApiContextFiltersResponse.md)
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-
-## getAllDashboardFiltersWithHttpInfo
-
-> ApiResponse<ApiContextFiltersResponse> getAllDashboardFilters getAllDashboardFiltersWithHttpInfo(searchPattern, aid)
-
-List dashboard filters
-
-Returns a list of dashboard filters and its context within your account group. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
-import com.thousandeyes.api.Configuration;
-import com.thousandeyes.api.authentication.*;
-import com.thousandeyes.api.models.*;
-import com.thousandeyes.api.dashboards.DashboardsFiltersApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        DashboardsFiltersApi apiInstance = new DashboardsFiltersApi(defaultClient);
-        String searchPattern = "cea-filter"; // String | Optional search pattern parameter to filter list of dashboard filters by either name or description values.
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiResponse<ApiContextFiltersResponse> response = apiInstance.getAllDashboardFiltersWithHttpInfo(searchPattern, aid);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsFiltersApi#getAllDashboardFilters");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **searchPattern** | **String**| Optional search pattern parameter to filter list of dashboard filters by either name or description values. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-ApiResponse<[**ApiContextFiltersResponse**](ApiContextFiltersResponse.md)>
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-
-
-## getDashboardFilterById
-
-> ApiContextFilterResponse getDashboardFilterById(id, aid)
+> ApiContextFilterResponse getDashboardFilter(id, aid)
 
 Get dashboard filter
 
@@ -527,10 +367,10 @@ public class Example {
         String id = "65bc18e8f2073a4a469cd958"; // String | Unique dashboard filter ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiContextFilterResponse result = apiInstance.getDashboardFilterById(id, aid);
+            ApiContextFilterResponse result = apiInstance.getDashboardFilter(id, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsFiltersApi#getDashboardFilterById");
+            System.err.println("Exception when calling DashboardsFiltersApi#getDashboardFilter");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -573,9 +413,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getDashboardFilterByIdWithHttpInfo
+## getDashboardFilterWithHttpInfo
 
-> ApiResponse<ApiContextFilterResponse> getDashboardFilterById getDashboardFilterByIdWithHttpInfo(id, aid)
+> ApiResponse<ApiContextFilterResponse> getDashboardFilter getDashboardFilterWithHttpInfo(id, aid)
 
 Get dashboard filter
 
@@ -606,12 +446,12 @@ public class Example {
         String id = "65bc18e8f2073a4a469cd958"; // String | Unique dashboard filter ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiContextFilterResponse> response = apiInstance.getDashboardFilterByIdWithHttpInfo(id, aid);
+            ApiResponse<ApiContextFilterResponse> response = apiInstance.getDashboardFilterWithHttpInfo(id, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsFiltersApi#getDashboardFilterById");
+            System.err.println("Exception when calling DashboardsFiltersApi#getDashboardFilter");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -655,9 +495,169 @@ ApiResponse<[**ApiContextFilterResponse**](ApiContextFilterResponse.md)>
 | **500** | Internal server error |  -  |
 
 
-## updateDashboardFilterById
+## getDashboardsFilters
 
-> ApiContextFilterResponse updateDashboardFilterById(id, apiContextFilterRequest, aid)
+> ApiContextFiltersResponse getDashboardsFilters(searchPattern, aid)
+
+List dashboard filters
+
+Returns a list of dashboard filters and its context within your account group. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.Configuration;
+import com.thousandeyes.api.authentication.*;
+import com.thousandeyes.api.models.*;
+import com.thousandeyes.api.dashboards.DashboardsFiltersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsFiltersApi apiInstance = new DashboardsFiltersApi(defaultClient);
+        String searchPattern = "cea-filter"; // String | Optional search pattern parameter to filter list of dashboard filters by either name or description values.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiContextFiltersResponse result = apiInstance.getDashboardsFilters(searchPattern, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsFiltersApi#getDashboardsFilters");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **searchPattern** | **String**| Optional search pattern parameter to filter list of dashboard filters by either name or description values. | [optional] |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**ApiContextFiltersResponse**](ApiContextFiltersResponse.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## getDashboardsFiltersWithHttpInfo
+
+> ApiResponse<ApiContextFiltersResponse> getDashboardsFilters getDashboardsFiltersWithHttpInfo(searchPattern, aid)
+
+List dashboard filters
+
+Returns a list of dashboard filters and its context within your account group. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.Configuration;
+import com.thousandeyes.api.authentication.*;
+import com.thousandeyes.api.models.*;
+import com.thousandeyes.api.dashboards.DashboardsFiltersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsFiltersApi apiInstance = new DashboardsFiltersApi(defaultClient);
+        String searchPattern = "cea-filter"; // String | Optional search pattern parameter to filter list of dashboard filters by either name or description values.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<ApiContextFiltersResponse> response = apiInstance.getDashboardsFiltersWithHttpInfo(searchPattern, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsFiltersApi#getDashboardsFilters");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **searchPattern** | **String**| Optional search pattern parameter to filter list of dashboard filters by either name or description values. | [optional] |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**ApiContextFiltersResponse**](ApiContextFiltersResponse.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+
+## updateDashboardFilter
+
+> ApiContextFilterResponse updateDashboardFilter(id, apiContextFilterRequest, aid)
 
 Update dashboard filter
 
@@ -688,10 +688,10 @@ public class Example {
         ApiContextFilterRequest apiContextFilterRequest = new ApiContextFilterRequest(); // ApiContextFilterRequest | Updated dashboard filter context object
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiContextFilterResponse result = apiInstance.updateDashboardFilterById(id, apiContextFilterRequest, aid);
+            ApiContextFilterResponse result = apiInstance.updateDashboardFilter(id, apiContextFilterRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsFiltersApi#updateDashboardFilterById");
+            System.err.println("Exception when calling DashboardsFiltersApi#updateDashboardFilter");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -735,9 +735,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## updateDashboardFilterByIdWithHttpInfo
+## updateDashboardFilterWithHttpInfo
 
-> ApiResponse<ApiContextFilterResponse> updateDashboardFilterById updateDashboardFilterByIdWithHttpInfo(id, apiContextFilterRequest, aid)
+> ApiResponse<ApiContextFilterResponse> updateDashboardFilter updateDashboardFilterWithHttpInfo(id, apiContextFilterRequest, aid)
 
 Update dashboard filter
 
@@ -769,12 +769,12 @@ public class Example {
         ApiContextFilterRequest apiContextFilterRequest = new ApiContextFilterRequest(); // ApiContextFilterRequest | Updated dashboard filter context object
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiContextFilterResponse> response = apiInstance.updateDashboardFilterByIdWithHttpInfo(id, apiContextFilterRequest, aid);
+            ApiResponse<ApiContextFilterResponse> response = apiInstance.updateDashboardFilterWithHttpInfo(id, apiContextFilterRequest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DashboardsFiltersApi#updateDashboardFilterById");
+            System.err.println("Exception when calling DashboardsFiltersApi#updateDashboardFilter");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
