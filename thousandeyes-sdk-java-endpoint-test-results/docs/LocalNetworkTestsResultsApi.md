@@ -4,334 +4,18 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getEndpointLocalNetworkTopologyDetails**](LocalNetworkTestsResultsApi.md#getEndpointLocalNetworkTopologyDetails) | **GET** /v7/endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology |
-| [**getEndpointLocalNetworkTopologyDetailsWithHttpInfo**](LocalNetworkTestsResultsApi.md#getEndpointLocalNetworkTopologyDetailsWithHttpInfo) | **GET** /v7/endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology |
-| [**getEndpointLocalNetworks**](LocalNetworkTestsResultsApi.md#getEndpointLocalNetworks) | **GET** /v7/endpoint/test-results/local-networks | List local networks |
-| [**getEndpointLocalNetworksWithHttpInfo**](LocalNetworkTestsResultsApi.md#getEndpointLocalNetworksWithHttpInfo) | **GET** /v7/endpoint/test-results/local-networks | List local networks |
-| [**getEndpointLocalNetworksTopologies**](LocalNetworkTestsResultsApi.md#getEndpointLocalNetworksTopologies) | **POST** /v7/endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes |
-| [**getEndpointLocalNetworksTopologiesWithHttpInfo**](LocalNetworkTestsResultsApi.md#getEndpointLocalNetworksTopologiesWithHttpInfo) | **POST** /v7/endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes |
+| [**filterLocalNetworksTestResultsTopologies**](LocalNetworkTestsResultsApi.md#filterLocalNetworksTestResultsTopologies) | **POST** /v7/endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes |
+| [**filterLocalNetworksTestResultsTopologiesWithHttpInfo**](LocalNetworkTestsResultsApi.md#filterLocalNetworksTestResultsTopologiesWithHttpInfo) | **POST** /v7/endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes |
+| [**getLocalNetworksTestResults**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResults) | **GET** /v7/endpoint/test-results/local-networks | List local networks |
+| [**getLocalNetworksTestResultsWithHttpInfo**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/local-networks | List local networks |
+| [**getLocalNetworksTestResultsTopology**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsTopology) | **GET** /v7/endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology |
+| [**getLocalNetworksTestResultsTopologyWithHttpInfo**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsTopologyWithHttpInfo) | **GET** /v7/endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology |
 
 
 
-## getEndpointLocalNetworkTopologyDetails
+## filterLocalNetworksTestResultsTopologies
 
-> GetEndpointLocalNetworkTopologyDetails200Response getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid)
-
-Retrieve endpoint local network topology
-
-Returns detailed data of a local network topology. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.endpoint.tests.Configuration;
-import com.thousandeyes.api.endpoint.tests.authentication.*;
-import com.thousandeyes.api.endpoint.tests.models.*;
-import com.thousandeyes.api.endpoint.tests.results.LocalNetworkTestsResultsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
-        String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            GetEndpointLocalNetworkTopologyDetails200Response result = apiInstance.getEndpointLocalNetworkTopologyDetails(networkTopologyId, aid);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworkTopologyDetails");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **networkTopologyId** | **String**| The network topology ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-[**GetEndpointLocalNetworkTopologyDetails200Response**](GetEndpointLocalNetworkTopologyDetails200Response.md)
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-
-## getEndpointLocalNetworkTopologyDetailsWithHttpInfo
-
-> ApiResponse<GetEndpointLocalNetworkTopologyDetails200Response> getEndpointLocalNetworkTopologyDetails getEndpointLocalNetworkTopologyDetailsWithHttpInfo(networkTopologyId, aid)
-
-Retrieve endpoint local network topology
-
-Returns detailed data of a local network topology. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
-import com.thousandeyes.api.endpoint.tests.Configuration;
-import com.thousandeyes.api.endpoint.tests.authentication.*;
-import com.thousandeyes.api.endpoint.tests.models.*;
-import com.thousandeyes.api.endpoint.tests.results.LocalNetworkTestsResultsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
-        String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiResponse<GetEndpointLocalNetworkTopologyDetails200Response> response = apiInstance.getEndpointLocalNetworkTopologyDetailsWithHttpInfo(networkTopologyId, aid);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworkTopologyDetails");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **networkTopologyId** | **String**| The network topology ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-ApiResponse<[**GetEndpointLocalNetworkTopologyDetails200Response**](GetEndpointLocalNetworkTopologyDetails200Response.md)>
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-
-
-## getEndpointLocalNetworks
-
-> GetEndpointLocalNetworks200Response getEndpointLocalNetworks(aid)
-
-List local networks
-
-Returns a list of all the networks used by endpoint agents.  Sends back a &#x60;localNetworks&#x60; array. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.endpoint.tests.Configuration;
-import com.thousandeyes.api.endpoint.tests.authentication.*;
-import com.thousandeyes.api.endpoint.tests.models.*;
-import com.thousandeyes.api.endpoint.tests.results.LocalNetworkTestsResultsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            GetEndpointLocalNetworks200Response result = apiInstance.getEndpointLocalNetworks(aid);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworks");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-[**GetEndpointLocalNetworks200Response**](GetEndpointLocalNetworks200Response.md)
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-
-## getEndpointLocalNetworksWithHttpInfo
-
-> ApiResponse<GetEndpointLocalNetworks200Response> getEndpointLocalNetworks getEndpointLocalNetworksWithHttpInfo(aid)
-
-List local networks
-
-Returns a list of all the networks used by endpoint agents.  Sends back a &#x60;localNetworks&#x60; array. 
-
-### Example
-
-```java
-// Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
-import com.thousandeyes.api.endpoint.tests.Configuration;
-import com.thousandeyes.api.endpoint.tests.authentication.*;
-import com.thousandeyes.api.endpoint.tests.models.*;
-import com.thousandeyes.api.endpoint.tests.results.LocalNetworkTestsResultsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
-        
-        // Configure HTTP bearer authorization: BearerAuth
-        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
-        BearerAuth.setBearerToken("BEARER TOKEN");
-
-        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        try {
-            ApiResponse<GetEndpointLocalNetworks200Response> response = apiInstance.getEndpointLocalNetworksWithHttpInfo(aid);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworks");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-
-### Return type
-
-ApiResponse<[**GetEndpointLocalNetworks200Response**](GetEndpointLocalNetworks200Response.md)>
-
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/json, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Insufficient permissions to query endpoint |  -  |
-| **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
-| **500** | Internal server error |  -  |
-| **502** | Bad Gateway |  -  |
-
-
-## getEndpointLocalNetworksTopologies
-
-> GetEndpointLocalNetworksTopologies200Response getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
+> LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
 
 List endpoint network topologies probes
 
@@ -365,10 +49,10 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            GetEndpointLocalNetworksTopologies200Response result = apiInstance.getEndpointLocalNetworksTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+            LocalNetworkTopologyResults result = apiInstance.filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworksTopologies");
+            System.err.println("Exception when calling LocalNetworkTestsResultsApi#filterLocalNetworksTestResultsTopologies");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -392,7 +76,7 @@ public class Example {
 
 ### Return type
 
-[**GetEndpointLocalNetworksTopologies200Response**](GetEndpointLocalNetworksTopologies200Response.md)
+[**LocalNetworkTopologyResults**](LocalNetworkTopologyResults.md)
 
 
 ### Authorization
@@ -416,9 +100,9 @@ public class Example {
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 
-## getEndpointLocalNetworksTopologiesWithHttpInfo
+## filterLocalNetworksTestResultsTopologiesWithHttpInfo
 
-> ApiResponse<GetEndpointLocalNetworksTopologies200Response> getEndpointLocalNetworksTopologies getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
+> ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologies filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
 
 List endpoint network topologies probes
 
@@ -453,12 +137,12 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            ApiResponse<GetEndpointLocalNetworksTopologies200Response> response = apiInstance.getEndpointLocalNetworksTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+            ApiResponse<LocalNetworkTopologyResults> response = apiInstance.filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getEndpointLocalNetworksTopologies");
+            System.err.println("Exception when calling LocalNetworkTestsResultsApi#filterLocalNetworksTestResultsTopologies");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -482,7 +166,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetEndpointLocalNetworksTopologies200Response**](GetEndpointLocalNetworksTopologies200Response.md)>
+ApiResponse<[**LocalNetworkTopologyResults**](LocalNetworkTopologyResults.md)>
 
 
 ### Authorization
@@ -499,6 +183,322 @@ ApiResponse<[**GetEndpointLocalNetworksTopologies200Response**](GetEndpointLocal
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
 | **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+
+
+## getLocalNetworksTestResults
+
+> LocalNetworkResults getLocalNetworksTestResults(aid)
+
+List local networks
+
+Returns a list of all the networks used by endpoint agents.  Sends back a &#x60;localNetworks&#x60; array. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.endpoint.tests.Configuration;
+import com.thousandeyes.api.endpoint.tests.authentication.*;
+import com.thousandeyes.api.endpoint.tests.models.*;
+import com.thousandeyes.api.endpoint.tests.results.LocalNetworkTestsResultsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            LocalNetworkResults result = apiInstance.getLocalNetworksTestResults(aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getLocalNetworksTestResults");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**LocalNetworkResults**](LocalNetworkResults.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+
+## getLocalNetworksTestResultsWithHttpInfo
+
+> ApiResponse<LocalNetworkResults> getLocalNetworksTestResults getLocalNetworksTestResultsWithHttpInfo(aid)
+
+List local networks
+
+Returns a list of all the networks used by endpoint agents.  Sends back a &#x60;localNetworks&#x60; array. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.endpoint.tests.Configuration;
+import com.thousandeyes.api.endpoint.tests.authentication.*;
+import com.thousandeyes.api.endpoint.tests.models.*;
+import com.thousandeyes.api.endpoint.tests.results.LocalNetworkTestsResultsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<LocalNetworkResults> response = apiInstance.getLocalNetworksTestResultsWithHttpInfo(aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getLocalNetworksTestResults");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**LocalNetworkResults**](LocalNetworkResults.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+
+
+## getLocalNetworksTestResultsTopology
+
+> LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(networkTopologyId, aid)
+
+Retrieve endpoint local network topology
+
+Returns detailed data of a local network topology. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.endpoint.tests.Configuration;
+import com.thousandeyes.api.endpoint.tests.authentication.*;
+import com.thousandeyes.api.endpoint.tests.models.*;
+import com.thousandeyes.api.endpoint.tests.results.LocalNetworkTestsResultsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
+        String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            LocalNetworkTopologyDetailResults result = apiInstance.getLocalNetworksTestResultsTopology(networkTopologyId, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getLocalNetworksTestResultsTopology");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **networkTopologyId** | **String**| The network topology ID. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**LocalNetworkTopologyDetailResults**](LocalNetworkTopologyDetailResults.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+
+## getLocalNetworksTestResultsTopologyWithHttpInfo
+
+> ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopology getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid)
+
+Retrieve endpoint local network topology
+
+Returns detailed data of a local network topology. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.api.client.ApiClient;
+import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.api.endpoint.tests.Configuration;
+import com.thousandeyes.api.endpoint.tests.authentication.*;
+import com.thousandeyes.api.endpoint.tests.models.*;
+import com.thousandeyes.api.endpoint.tests.results.LocalNetworkTestsResultsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
+        String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<LocalNetworkTopologyDetailResults> response = apiInstance.getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling LocalNetworkTestsResultsApi#getLocalNetworksTestResultsTopology");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **networkTopologyId** | **String**| The network topology ID. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**LocalNetworkTopologyDetailResults**](LocalNetworkTopologyDetailResults.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |

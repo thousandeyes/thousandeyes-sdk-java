@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postEndpointInstantRun**](RunExistingTestApi.md#postEndpointInstantRun) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test |
-| [**postEndpointInstantRunWithHttpInfo**](RunExistingTestApi.md#postEndpointInstantRunWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test |
+| [**runEndpointScheduledInstantTest**](RunExistingTestApi.md#runEndpointScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test |
+| [**runEndpointScheduledInstantTestWithHttpInfo**](RunExistingTestApi.md#runEndpointScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test |
 
 
 
-## postEndpointInstantRun
+## runEndpointScheduledInstantTest
 
-> void postEndpointInstantRun(testId, aid)
+> void runEndpointScheduledInstantTest(testId, aid)
 
 Run endpoint instant scheduled test
 
@@ -41,9 +41,9 @@ public class Example {
         String testId = "765231567"; // String | ID of the endpoint instant scheduled test to rerun
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.postEndpointInstantRun(testId, aid);
+            apiInstance.runEndpointScheduledInstantTest(testId, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling RunExistingTestApi#postEndpointInstantRun");
+            System.err.println("Exception when calling RunExistingTestApi#runEndpointScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -87,9 +87,9 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postEndpointInstantRunWithHttpInfo
+## runEndpointScheduledInstantTestWithHttpInfo
 
-> ApiResponse<Void> postEndpointInstantRun postEndpointInstantRunWithHttpInfo(testId, aid)
+> ApiResponse<Void> runEndpointScheduledInstantTest runEndpointScheduledInstantTestWithHttpInfo(testId, aid)
 
 Run endpoint instant scheduled test
 
@@ -120,11 +120,11 @@ public class Example {
         String testId = "765231567"; // String | ID of the endpoint instant scheduled test to rerun
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.postEndpointInstantRunWithHttpInfo(testId, aid);
+            ApiResponse<Void> response = apiInstance.runEndpointScheduledInstantTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling RunExistingTestApi#postEndpointInstantRun");
+            System.err.println("Exception when calling RunExistingTestApi#runEndpointScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

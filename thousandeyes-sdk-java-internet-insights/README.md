@@ -2,9 +2,7 @@
 
 Internet Insights API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:12.882644+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 We are happy to announce the release of the Internet Insights API set. This limited release includes endpoints that:
 
@@ -51,7 +49,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-internet-insights</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +59,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-internet-insights:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-internet-insights:version"
 ```
 
 ### Others
@@ -74,7 +72,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-internet-insights-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-internet-insights-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -97,10 +95,10 @@ public class CatalogProvidersApiExample {
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiCatalogProviderResponse result = apiInstance.catalogProviderList(apiCatalogProviderFilter, aid);
+            ApiCatalogProviderResponse result = apiInstance.filterCatalogProviders(apiCatalogProviderFilter, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogProvidersApi#catalogProviderList");
+            System.err.println("Exception when calling CatalogProvidersApi#filterCatalogProviders");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -117,16 +115,16 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CatalogProvidersApi* | [**catalogProviderList**](docs/CatalogProvidersApi.md#catalogProviderList) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers
-*CatalogProvidersApi* | [**catalogProviderListWithHttpInfo**](docs/CatalogProvidersApi.md#catalogProviderListWithHttpInfo) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers
+*CatalogProvidersApi* | [**filterCatalogProviders**](docs/CatalogProvidersApi.md#filterCatalogProviders) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers
+*CatalogProvidersApi* | [**filterCatalogProvidersWithHttpInfo**](docs/CatalogProvidersApi.md#filterCatalogProvidersWithHttpInfo) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers
 *CatalogProvidersApi* | [**getCatalogProvider**](docs/CatalogProvidersApi.md#getCatalogProvider) | **GET** /v7/internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider
 *CatalogProvidersApi* | [**getCatalogProviderWithHttpInfo**](docs/CatalogProvidersApi.md#getCatalogProviderWithHttpInfo) | **GET** /v7/internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider
-*OutagesApiPublicApi* | [**getOutagesApp**](docs/OutagesApiPublicApi.md#getOutagesApp) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage
-*OutagesApiPublicApi* | [**getOutagesAppWithHttpInfo**](docs/OutagesApiPublicApi.md#getOutagesAppWithHttpInfo) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage
-*OutagesApiPublicApi* | [**getOutagesFilter**](docs/OutagesApiPublicApi.md#getOutagesFilter) | **POST** /v7/internet-insights/outages/filter | List network and application outages
-*OutagesApiPublicApi* | [**getOutagesFilterWithHttpInfo**](docs/OutagesApiPublicApi.md#getOutagesFilterWithHttpInfo) | **POST** /v7/internet-insights/outages/filter | List network and application outages
-*OutagesApiPublicApi* | [**getOutagesNet**](docs/OutagesApiPublicApi.md#getOutagesNet) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage
-*OutagesApiPublicApi* | [**getOutagesNetWithHttpInfo**](docs/OutagesApiPublicApi.md#getOutagesNetWithHttpInfo) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage
+*OutagesApiPublicApi* | [**filterOutages**](docs/OutagesApiPublicApi.md#filterOutages) | **POST** /v7/internet-insights/outages/filter | List network and application outages
+*OutagesApiPublicApi* | [**filterOutagesWithHttpInfo**](docs/OutagesApiPublicApi.md#filterOutagesWithHttpInfo) | **POST** /v7/internet-insights/outages/filter | List network and application outages
+*OutagesApiPublicApi* | [**getAppOutage**](docs/OutagesApiPublicApi.md#getAppOutage) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage
+*OutagesApiPublicApi* | [**getAppOutageWithHttpInfo**](docs/OutagesApiPublicApi.md#getAppOutageWithHttpInfo) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage
+*OutagesApiPublicApi* | [**getNetworkOutage**](docs/OutagesApiPublicApi.md#getNetworkOutage) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage
+*OutagesApiPublicApi* | [**getNetworkOutageWithHttpInfo**](docs/OutagesApiPublicApi.md#getNetworkOutageWithHttpInfo) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage
 
 
 <a id="documentation-for-authorization"></a>

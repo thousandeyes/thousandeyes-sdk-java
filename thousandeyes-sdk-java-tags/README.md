@@ -2,9 +2,7 @@
 
 Tags API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:13.737368+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 The ThousandEyes Tags API provides a tagging system with key/value pairs. It allows you to tag assets within the ThousandEyes platform (such as agents, tests, or alert rules) with meaningful metadata. For example: `branch:sfo`, `branch:nyc`, and `team:netops`.
 
@@ -55,7 +53,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-tags</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -65,7 +63,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-tags:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-tags:version"
 ```
 
 ### Others
@@ -78,7 +76,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-tags-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-tags-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -123,16 +121,16 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *TagAssignmentApi* | [**assignTag**](docs/TagAssignmentApi.md#assignTag) | **POST** /v7/tags/{id}/assign | Assign tag to multiple objects
 *TagAssignmentApi* | [**assignTagWithHttpInfo**](docs/TagAssignmentApi.md#assignTagWithHttpInfo) | **POST** /v7/tags/{id}/assign | Assign tag to multiple objects
-*TagAssignmentApi* | [**bulkAssignTag**](docs/TagAssignmentApi.md#bulkAssignTag) | **POST** /v7/tags/assign | Assign multiple tags to multiple objects
-*TagAssignmentApi* | [**bulkAssignTagWithHttpInfo**](docs/TagAssignmentApi.md#bulkAssignTagWithHttpInfo) | **POST** /v7/tags/assign | Assign multiple tags to multiple objects
-*TagAssignmentApi* | [**bulkUnAssignTag**](docs/TagAssignmentApi.md#bulkUnAssignTag) | **POST** /v7/tags/unassign | Remove multiple tags from multiple objects
-*TagAssignmentApi* | [**bulkUnAssignTagWithHttpInfo**](docs/TagAssignmentApi.md#bulkUnAssignTagWithHttpInfo) | **POST** /v7/tags/unassign | Remove multiple tags from multiple objects
+*TagAssignmentApi* | [**assignTags**](docs/TagAssignmentApi.md#assignTags) | **POST** /v7/tags/assign | Assign multiple tags to multiple objects
+*TagAssignmentApi* | [**assignTagsWithHttpInfo**](docs/TagAssignmentApi.md#assignTagsWithHttpInfo) | **POST** /v7/tags/assign | Assign multiple tags to multiple objects
 *TagAssignmentApi* | [**unassignTag**](docs/TagAssignmentApi.md#unassignTag) | **POST** /v7/tags/{id}/unassign | Remove tag from multiple objects
 *TagAssignmentApi* | [**unassignTagWithHttpInfo**](docs/TagAssignmentApi.md#unassignTagWithHttpInfo) | **POST** /v7/tags/{id}/unassign | Remove tag from multiple objects
+*TagAssignmentApi* | [**unassignTags**](docs/TagAssignmentApi.md#unassignTags) | **POST** /v7/tags/unassign | Remove multiple tags from multiple objects
+*TagAssignmentApi* | [**unassignTagsWithHttpInfo**](docs/TagAssignmentApi.md#unassignTagsWithHttpInfo) | **POST** /v7/tags/unassign | Remove multiple tags from multiple objects
 *TagsApi* | [**createTag**](docs/TagsApi.md#createTag) | **POST** /v7/tags | Create tag
 *TagsApi* | [**createTagWithHttpInfo**](docs/TagsApi.md#createTagWithHttpInfo) | **POST** /v7/tags | Create tag
-*TagsApi* | [**createTagBulk**](docs/TagsApi.md#createTagBulk) | **POST** /v7/tags/bulk | Create multiple tags
-*TagsApi* | [**createTagBulkWithHttpInfo**](docs/TagsApi.md#createTagBulkWithHttpInfo) | **POST** /v7/tags/bulk | Create multiple tags
+*TagsApi* | [**createTags**](docs/TagsApi.md#createTags) | **POST** /v7/tags/bulk | Create multiple tags
+*TagsApi* | [**createTagsWithHttpInfo**](docs/TagsApi.md#createTagsWithHttpInfo) | **POST** /v7/tags/bulk | Create multiple tags
 *TagsApi* | [**deleteTag**](docs/TagsApi.md#deleteTag) | **DELETE** /v7/tags/{id} | Delete tag
 *TagsApi* | [**deleteTagWithHttpInfo**](docs/TagsApi.md#deleteTagWithHttpInfo) | **DELETE** /v7/tags/{id} | Delete tag
 *TagsApi* | [**getTag**](docs/TagsApi.md#getTag) | **GET** /v7/tags/{id} | Retrieve tag

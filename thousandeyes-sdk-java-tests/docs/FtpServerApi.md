@@ -6,8 +6,8 @@ All URIs are relative to *https://api.thousandeyes.com*
 |------------- | ------------- | -------------|
 | [**createFtpServerTest**](FtpServerApi.md#createFtpServerTest) | **POST** /v7/tests/ftp-server | Create FTP Server test |
 | [**createFtpServerTestWithHttpInfo**](FtpServerApi.md#createFtpServerTestWithHttpInfo) | **POST** /v7/tests/ftp-server | Create FTP Server test |
-| [**deleteFTPServerTest**](FtpServerApi.md#deleteFTPServerTest) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test |
-| [**deleteFTPServerTestWithHttpInfo**](FtpServerApi.md#deleteFTPServerTestWithHttpInfo) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test |
+| [**deleteFtpServerTest**](FtpServerApi.md#deleteFtpServerTest) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test |
+| [**deleteFtpServerTestWithHttpInfo**](FtpServerApi.md#deleteFtpServerTestWithHttpInfo) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test |
 | [**getFtpServerTest**](FtpServerApi.md#getFtpServerTest) | **GET** /v7/tests/ftp-server/{testId} | Get FTP Server test |
 | [**getFtpServerTestWithHttpInfo**](FtpServerApi.md#getFtpServerTestWithHttpInfo) | **GET** /v7/tests/ftp-server/{testId} | Get FTP Server test |
 | [**getFtpServerTests**](FtpServerApi.md#getFtpServerTests) | **GET** /v7/tests/ftp-server | List FTP Server tests |
@@ -185,9 +185,9 @@ ApiResponse<[**FtpServerTest**](FtpServerTest.md)>
 | **0** | An error occurred |  -  |
 
 
-## deleteFTPServerTest
+## deleteFtpServerTest
 
-> void deleteFTPServerTest(testId, aid)
+> void deleteFtpServerTest(testId, aid)
 
 Delete FTP Server test
 
@@ -217,9 +217,9 @@ public class Example {
         String testId = "281474976710706"; // String | ID of the test
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteFTPServerTest(testId, aid);
+            apiInstance.deleteFtpServerTest(testId, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FtpServerApi#deleteFTPServerTest");
+            System.err.println("Exception when calling FtpServerApi#deleteFtpServerTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -261,9 +261,9 @@ null (empty response body)
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## deleteFTPServerTestWithHttpInfo
+## deleteFtpServerTestWithHttpInfo
 
-> ApiResponse<Void> deleteFTPServerTest deleteFTPServerTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteFtpServerTest deleteFtpServerTestWithHttpInfo(testId, aid)
 
 Delete FTP Server test
 
@@ -294,11 +294,11 @@ public class Example {
         String testId = "281474976710706"; // String | ID of the test
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteFTPServerTestWithHttpInfo(testId, aid);
+            ApiResponse<Void> response = apiInstance.deleteFtpServerTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FtpServerApi#deleteFTPServerTest");
+            System.err.println("Exception when calling FtpServerApi#deleteFtpServerTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -509,7 +509,7 @@ ApiResponse<[**FtpServerTest**](FtpServerTest.md)>
 
 ## getFtpServerTests
 
-> GetFtpServerTests200Response getFtpServerTests(aid)
+> FtpServerTests getFtpServerTests(aid)
 
 List FTP Server tests
 
@@ -538,7 +538,7 @@ public class Example {
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetFtpServerTests200Response result = apiInstance.getFtpServerTests(aid);
+            FtpServerTests result = apiInstance.getFtpServerTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FtpServerApi#getFtpServerTests");
@@ -560,7 +560,7 @@ public class Example {
 
 ### Return type
 
-[**GetFtpServerTests200Response**](GetFtpServerTests200Response.md)
+[**FtpServerTests**](FtpServerTests.md)
 
 
 ### Authorization
@@ -586,7 +586,7 @@ public class Example {
 
 ## getFtpServerTestsWithHttpInfo
 
-> ApiResponse<GetFtpServerTests200Response> getFtpServerTests getFtpServerTestsWithHttpInfo(aid)
+> ApiResponse<FtpServerTests> getFtpServerTests getFtpServerTestsWithHttpInfo(aid)
 
 List FTP Server tests
 
@@ -616,7 +616,7 @@ public class Example {
         FtpServerApi apiInstance = new FtpServerApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetFtpServerTests200Response> response = apiInstance.getFtpServerTestsWithHttpInfo(aid);
+            ApiResponse<FtpServerTests> response = apiInstance.getFtpServerTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -640,7 +640,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetFtpServerTests200Response**](GetFtpServerTests200Response.md)>
+ApiResponse<[**FtpServerTests**](FtpServerTests.md)>
 
 
 ### Authorization

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postHttpServerInstantTest**](HttpServerInstantScheduledTestApi.md#postHttpServerInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test |
-| [**postHttpServerInstantTestWithHttpInfo**](HttpServerInstantScheduledTestApi.md#postHttpServerInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test |
+| [**createHttpServerScheduledInstantTest**](HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test |
+| [**createHttpServerScheduledInstantTestWithHttpInfo**](HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test |
 
 
 
-## postHttpServerInstantTest
+## createHttpServerScheduledInstantTest
 
-> EndpointHttpServerTest postHttpServerInstantTest(endpointHttpServerInstantTest, aid)
+> EndpointHttpServerTest createHttpServerScheduledInstantTest(endpointHttpServerInstantTest, aid)
 
 Run http server instant scheduled test
 
@@ -41,10 +41,10 @@ public class Example {
         EndpointHttpServerInstantTest endpointHttpServerInstantTest = new EndpointHttpServerInstantTest(); // EndpointHttpServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointHttpServerTest result = apiInstance.postHttpServerInstantTest(endpointHttpServerInstantTest, aid);
+            EndpointHttpServerTest result = apiInstance.createHttpServerScheduledInstantTest(endpointHttpServerInstantTest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling HttpServerInstantScheduledTestApi#postHttpServerInstantTest");
+            System.err.println("Exception when calling HttpServerInstantScheduledTestApi#createHttpServerScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -88,9 +88,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postHttpServerInstantTestWithHttpInfo
+## createHttpServerScheduledInstantTestWithHttpInfo
 
-> ApiResponse<EndpointHttpServerTest> postHttpServerInstantTest postHttpServerInstantTestWithHttpInfo(endpointHttpServerInstantTest, aid)
+> ApiResponse<EndpointHttpServerTest> createHttpServerScheduledInstantTest createHttpServerScheduledInstantTestWithHttpInfo(endpointHttpServerInstantTest, aid)
 
 Run http server instant scheduled test
 
@@ -121,12 +121,12 @@ public class Example {
         EndpointHttpServerInstantTest endpointHttpServerInstantTest = new EndpointHttpServerInstantTest(); // EndpointHttpServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointHttpServerTest> response = apiInstance.postHttpServerInstantTestWithHttpInfo(endpointHttpServerInstantTest, aid);
+            ApiResponse<EndpointHttpServerTest> response = apiInstance.createHttpServerScheduledInstantTestWithHttpInfo(endpointHttpServerInstantTest, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling HttpServerInstantScheduledTestApi#postHttpServerInstantTest");
+            System.err.println("Exception when calling HttpServerInstantScheduledTestApi#createHttpServerScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

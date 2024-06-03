@@ -4,16 +4,16 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignEnterpriseAgentCluster**](EnterpriseAgentClusterApi.md#assignEnterpriseAgentCluster) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster |
-| [**assignEnterpriseAgentClusterWithHttpInfo**](EnterpriseAgentClusterApi.md#assignEnterpriseAgentClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster |
-| [**unassignEnterpriseAgentFromCluster**](EnterpriseAgentClusterApi.md#unassignEnterpriseAgentFromCluster) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster |
-| [**unassignEnterpriseAgentFromClusterWithHttpInfo**](EnterpriseAgentClusterApi.md#unassignEnterpriseAgentFromClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster |
+| [**assignAgentToCluster**](EnterpriseAgentClusterApi.md#assignAgentToCluster) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster |
+| [**assignAgentToClusterWithHttpInfo**](EnterpriseAgentClusterApi.md#assignAgentToClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster |
+| [**unassignAgentFromCluster**](EnterpriseAgentClusterApi.md#unassignAgentFromCluster) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster |
+| [**unassignAgentFromClusterWithHttpInfo**](EnterpriseAgentClusterApi.md#unassignAgentFromClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster |
 
 
 
-## assignEnterpriseAgentCluster
+## assignAgentToCluster
 
-> AgentDetails assignEnterpriseAgentCluster(agentId, agentClusterAssignRequest, aid, expand)
+> AgentDetails assignAgentToCluster(agentId, agentClusterAssignRequest, aid, expand)
 
 Add member to Enterprise Agent cluster
 
@@ -45,10 +45,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            AgentDetails result = apiInstance.assignEnterpriseAgentCluster(agentId, agentClusterAssignRequest, aid, expand);
+            AgentDetails result = apiInstance.assignAgentToCluster(agentId, agentClusterAssignRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling EnterpriseAgentClusterApi#assignEnterpriseAgentCluster");
+            System.err.println("Exception when calling EnterpriseAgentClusterApi#assignAgentToCluster");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -95,9 +95,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## assignEnterpriseAgentClusterWithHttpInfo
+## assignAgentToClusterWithHttpInfo
 
-> ApiResponse<AgentDetails> assignEnterpriseAgentCluster assignEnterpriseAgentClusterWithHttpInfo(agentId, agentClusterAssignRequest, aid, expand)
+> ApiResponse<AgentDetails> assignAgentToCluster assignAgentToClusterWithHttpInfo(agentId, agentClusterAssignRequest, aid, expand)
 
 Add member to Enterprise Agent cluster
 
@@ -130,12 +130,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            ApiResponse<AgentDetails> response = apiInstance.assignEnterpriseAgentClusterWithHttpInfo(agentId, agentClusterAssignRequest, aid, expand);
+            ApiResponse<AgentDetails> response = apiInstance.assignAgentToClusterWithHttpInfo(agentId, agentClusterAssignRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling EnterpriseAgentClusterApi#assignEnterpriseAgentCluster");
+            System.err.println("Exception when calling EnterpriseAgentClusterApi#assignAgentToCluster");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -183,9 +183,9 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 | **0** | An error occurred |  -  |
 
 
-## unassignEnterpriseAgentFromCluster
+## unassignAgentFromCluster
 
-> GetAgents200Response unassignEnterpriseAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand)
+> CloudEnterpriseAgents unassignAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand)
 
 Remove member from Enterprise Agent cluster
 
@@ -217,10 +217,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            GetAgents200Response result = apiInstance.unassignEnterpriseAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand);
+            CloudEnterpriseAgents result = apiInstance.unassignAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling EnterpriseAgentClusterApi#unassignEnterpriseAgentFromCluster");
+            System.err.println("Exception when calling EnterpriseAgentClusterApi#unassignAgentFromCluster");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -242,7 +242,7 @@ public class Example {
 
 ### Return type
 
-[**GetAgents200Response**](GetAgents200Response.md)
+[**CloudEnterpriseAgents**](CloudEnterpriseAgents.md)
 
 
 ### Authorization
@@ -267,9 +267,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## unassignEnterpriseAgentFromClusterWithHttpInfo
+## unassignAgentFromClusterWithHttpInfo
 
-> ApiResponse<GetAgents200Response> unassignEnterpriseAgentFromCluster unassignEnterpriseAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand)
+> ApiResponse<CloudEnterpriseAgents> unassignAgentFromCluster unassignAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand)
 
 Remove member from Enterprise Agent cluster
 
@@ -302,12 +302,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            ApiResponse<GetAgents200Response> response = apiInstance.unassignEnterpriseAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand);
+            ApiResponse<CloudEnterpriseAgents> response = apiInstance.unassignAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling EnterpriseAgentClusterApi#unassignEnterpriseAgentFromCluster");
+            System.err.println("Exception when calling EnterpriseAgentClusterApi#unassignAgentFromCluster");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -329,7 +329,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetAgents200Response**](GetAgents200Response.md)>
+ApiResponse<[**CloudEnterpriseAgents**](CloudEnterpriseAgents.md)>
 
 
 ### Authorization

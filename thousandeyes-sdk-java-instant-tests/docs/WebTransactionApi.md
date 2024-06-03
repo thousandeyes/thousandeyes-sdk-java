@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantWebTransactions**](WebTransactionApi.md#postInstantWebTransactions) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test |
-| [**postInstantWebTransactionsWithHttpInfo**](WebTransactionApi.md#postInstantWebTransactionsWithHttpInfo) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test |
+| [**createWebTransactionInstantTest**](WebTransactionApi.md#createWebTransactionInstantTest) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test |
+| [**createWebTransactionInstantTestWithHttpInfo**](WebTransactionApi.md#createWebTransactionInstantTestWithHttpInfo) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test |
 
 
 
-## postInstantWebTransactions
+## createWebTransactionInstantTest
 
-> WebTransactionInstantTest postInstantWebTransactions(webTransactionInstantTestRequest, aid, expand)
+> WebTransactionInstantTest createWebTransactionInstantTest(webTransactionInstantTestRequest, aid, expand)
 
 Create web transactions instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            WebTransactionInstantTest result = apiInstance.postInstantWebTransactions(webTransactionInstantTestRequest, aid, expand);
+            WebTransactionInstantTest result = apiInstance.createWebTransactionInstantTest(webTransactionInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling WebTransactionApi#postInstantWebTransactions");
+            System.err.println("Exception when calling WebTransactionApi#createWebTransactionInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantWebTransactionsWithHttpInfo
+## createWebTransactionInstantTestWithHttpInfo
 
-> ApiResponse<WebTransactionInstantTest> postInstantWebTransactions postInstantWebTransactionsWithHttpInfo(webTransactionInstantTestRequest, aid, expand)
+> ApiResponse<WebTransactionInstantTest> createWebTransactionInstantTest createWebTransactionInstantTestWithHttpInfo(webTransactionInstantTestRequest, aid, expand)
 
 Create web transactions instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<WebTransactionInstantTest> response = apiInstance.postInstantWebTransactionsWithHttpInfo(webTransactionInstantTestRequest, aid, expand);
+            ApiResponse<WebTransactionInstantTest> response = apiInstance.createWebTransactionInstantTestWithHttpInfo(webTransactionInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling WebTransactionApi#postInstantWebTransactions");
+            System.err.println("Exception when calling WebTransactionApi#createWebTransactionInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

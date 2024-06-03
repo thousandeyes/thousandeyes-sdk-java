@@ -513,7 +513,7 @@ ApiResponse<[**DnsTraceTest**](DnsTraceTest.md)>
 
 ## getDnsTraceTests
 
-> GetDnsTraceTests200Response getDnsTraceTests(aid)
+> DnsTraceTests getDnsTraceTests(aid)
 
 List DNS Trace tests
 
@@ -542,7 +542,7 @@ public class Example {
         DnsTraceApi apiInstance = new DnsTraceApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetDnsTraceTests200Response result = apiInstance.getDnsTraceTests(aid);
+            DnsTraceTests result = apiInstance.getDnsTraceTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DnsTraceApi#getDnsTraceTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetDnsTraceTests200Response**](GetDnsTraceTests200Response.md)
+[**DnsTraceTests**](DnsTraceTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getDnsTraceTestsWithHttpInfo
 
-> ApiResponse<GetDnsTraceTests200Response> getDnsTraceTests getDnsTraceTestsWithHttpInfo(aid)
+> ApiResponse<DnsTraceTests> getDnsTraceTests getDnsTraceTestsWithHttpInfo(aid)
 
 List DNS Trace tests
 
@@ -620,7 +620,7 @@ public class Example {
         DnsTraceApi apiInstance = new DnsTraceApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetDnsTraceTests200Response> response = apiInstance.getDnsTraceTestsWithHttpInfo(aid);
+            ApiResponse<DnsTraceTests> response = apiInstance.getDnsTraceTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetDnsTraceTests200Response**](GetDnsTraceTests200Response.md)>
+ApiResponse<[**DnsTraceTests**](DnsTraceTests.md)>
 
 
 ### Authorization

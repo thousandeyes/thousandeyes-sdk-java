@@ -513,7 +513,7 @@ ApiResponse<[**BgpTest**](BgpTest.md)>
 
 ## getBgpTests
 
-> GetBgpTests200Response getBgpTests(aid)
+> BgpTests getBgpTests(aid)
 
 List BGP tests
 
@@ -542,7 +542,7 @@ public class Example {
         BgpApi apiInstance = new BgpApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetBgpTests200Response result = apiInstance.getBgpTests(aid);
+            BgpTests result = apiInstance.getBgpTests(aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpApi#getBgpTests");
@@ -564,7 +564,7 @@ public class Example {
 
 ### Return type
 
-[**GetBgpTests200Response**](GetBgpTests200Response.md)
+[**BgpTests**](BgpTests.md)
 
 
 ### Authorization
@@ -590,7 +590,7 @@ public class Example {
 
 ## getBgpTestsWithHttpInfo
 
-> ApiResponse<GetBgpTests200Response> getBgpTests getBgpTestsWithHttpInfo(aid)
+> ApiResponse<BgpTests> getBgpTests getBgpTestsWithHttpInfo(aid)
 
 List BGP tests
 
@@ -620,7 +620,7 @@ public class Example {
         BgpApi apiInstance = new BgpApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetBgpTests200Response> response = apiInstance.getBgpTestsWithHttpInfo(aid);
+            ApiResponse<BgpTests> response = apiInstance.getBgpTestsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -644,7 +644,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetBgpTests200Response**](GetBgpTests200Response.md)>
+ApiResponse<[**BgpTests**](BgpTests.md)>
 
 
 ### Authorization

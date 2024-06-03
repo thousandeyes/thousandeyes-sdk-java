@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestResultHttpServer**](WebHttpServerScheduledTestResultsApi.md#getTestResultHttpServer) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results |
-| [**getTestResultHttpServerWithHttpInfo**](WebHttpServerScheduledTestResultsApi.md#getTestResultHttpServerWithHttpInfo) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results |
+| [**getHttpServerScheduledTestResults**](WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResults) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results |
+| [**getHttpServerScheduledTestResultsWithHttpInfo**](WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results |
 
 
 
-## getTestResultHttpServer
+## getHttpServerScheduledTestResults
 
-> GetTestResultHttpServer200Response getTestResultHttpServer(testId, aid, window, startDate, endDate, cursor, expand)
+> HttpTestResults getHttpServerScheduledTestResults(testId, aid, window, startDate, endDate, cursor, expand)
 
 Retrieve HTTP server scheduled test results
 
@@ -46,10 +46,10 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"header,\" append `?expand=header` to the query.
         try {
-            GetTestResultHttpServer200Response result = apiInstance.getTestResultHttpServer(testId, aid, window, startDate, endDate, cursor, expand);
+            HttpTestResults result = apiInstance.getHttpServerScheduledTestResults(testId, aid, window, startDate, endDate, cursor, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling WebHttpServerScheduledTestResultsApi#getTestResultHttpServer");
+            System.err.println("Exception when calling WebHttpServerScheduledTestResultsApi#getHttpServerScheduledTestResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**GetTestResultHttpServer200Response**](GetTestResultHttpServer200Response.md)
+[**HttpTestResults**](HttpTestResults.md)
 
 
 ### Authorization
@@ -97,9 +97,9 @@ public class Example {
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 
-## getTestResultHttpServerWithHttpInfo
+## getHttpServerScheduledTestResultsWithHttpInfo
 
-> ApiResponse<GetTestResultHttpServer200Response> getTestResultHttpServer getTestResultHttpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand)
+> ApiResponse<HttpTestResults> getHttpServerScheduledTestResults getHttpServerScheduledTestResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand)
 
 Retrieve HTTP server scheduled test results
 
@@ -135,12 +135,12 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<Expand> expand = Arrays.asList(); // List<Expand> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"header,\" append `?expand=header` to the query.
         try {
-            ApiResponse<GetTestResultHttpServer200Response> response = apiInstance.getTestResultHttpServerWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand);
+            ApiResponse<HttpTestResults> response = apiInstance.getHttpServerScheduledTestResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling WebHttpServerScheduledTestResultsApi#getTestResultHttpServer");
+            System.err.println("Exception when calling WebHttpServerScheduledTestResultsApi#getHttpServerScheduledTestResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -165,7 +165,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetTestResultHttpServer200Response**](GetTestResultHttpServer200Response.md)>
+ApiResponse<[**HttpTestResults**](HttpTestResults.md)>
 
 
 ### Authorization

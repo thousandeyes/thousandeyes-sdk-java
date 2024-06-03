@@ -4,22 +4,22 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createSuppressionWindows**](AlertSuppressionWindowsApi.md#createSuppressionWindows) | **POST** /v7/alert-suppression-windows | Create alert suppression window |
-| [**createSuppressionWindowsWithHttpInfo**](AlertSuppressionWindowsApi.md#createSuppressionWindowsWithHttpInfo) | **POST** /v7/alert-suppression-windows | Create alert suppression window |
-| [**deleteSuppressionWindow**](AlertSuppressionWindowsApi.md#deleteSuppressionWindow) | **DELETE** /v7/alert-suppression-windows/{windowId} | Delete alert suppression window |
-| [**deleteSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#deleteSuppressionWindowWithHttpInfo) | **DELETE** /v7/alert-suppression-windows/{windowId} | Delete alert suppression window |
-| [**getSuppressionWindowDetails**](AlertSuppressionWindowsApi.md#getSuppressionWindowDetails) | **GET** /v7/alert-suppression-windows/{windowId} | Retrieve alert suppression window |
-| [**getSuppressionWindowDetailsWithHttpInfo**](AlertSuppressionWindowsApi.md#getSuppressionWindowDetailsWithHttpInfo) | **GET** /v7/alert-suppression-windows/{windowId} | Retrieve alert suppression window |
-| [**getSuppressionWindows**](AlertSuppressionWindowsApi.md#getSuppressionWindows) | **GET** /v7/alert-suppression-windows | List alert suppression windows |
-| [**getSuppressionWindowsWithHttpInfo**](AlertSuppressionWindowsApi.md#getSuppressionWindowsWithHttpInfo) | **GET** /v7/alert-suppression-windows | List alert suppression windows |
-| [**updateSuppressionWindow**](AlertSuppressionWindowsApi.md#updateSuppressionWindow) | **PUT** /v7/alert-suppression-windows/{windowId} | Update alert suppression window |
-| [**updateSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#updateSuppressionWindowWithHttpInfo) | **PUT** /v7/alert-suppression-windows/{windowId} | Update alert suppression window |
+| [**createAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#createAlertSuppressionWindow) | **POST** /v7/alert-suppression-windows | Create alert suppression window |
+| [**createAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#createAlertSuppressionWindowWithHttpInfo) | **POST** /v7/alert-suppression-windows | Create alert suppression window |
+| [**deleteAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindow) | **DELETE** /v7/alert-suppression-windows/{windowId} | Delete alert suppression window |
+| [**deleteAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindowWithHttpInfo) | **DELETE** /v7/alert-suppression-windows/{windowId} | Delete alert suppression window |
+| [**getAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindow) | **GET** /v7/alert-suppression-windows/{windowId} | Retrieve alert suppression window |
+| [**getAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindowWithHttpInfo) | **GET** /v7/alert-suppression-windows/{windowId} | Retrieve alert suppression window |
+| [**getAlertSuppressionWindows**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindows) | **GET** /v7/alert-suppression-windows | List alert suppression windows |
+| [**getAlertSuppressionWindowsWithHttpInfo**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindowsWithHttpInfo) | **GET** /v7/alert-suppression-windows | List alert suppression windows |
+| [**updateAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#updateAlertSuppressionWindow) | **PUT** /v7/alert-suppression-windows/{windowId} | Update alert suppression window |
+| [**updateAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#updateAlertSuppressionWindowWithHttpInfo) | **PUT** /v7/alert-suppression-windows/{windowId} | Update alert suppression window |
 
 
 
-## createSuppressionWindows
+## createAlertSuppressionWindow
 
-> CreateSuppressionWindows201Response createSuppressionWindows(alertSuppressionWindowRequest, aid, expand)
+> AlertSuppressionWindowDetail createAlertSuppressionWindow(alertSuppressionWindowRequest, aid, expand)
 
 Create alert suppression window
 
@@ -50,10 +50,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            CreateSuppressionWindows201Response result = apiInstance.createSuppressionWindows(alertSuppressionWindowRequest, aid, expand);
+            AlertSuppressionWindowDetail result = apiInstance.createAlertSuppressionWindow(alertSuppressionWindowRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#createSuppressionWindows");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#createAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**CreateSuppressionWindows201Response**](CreateSuppressionWindows201Response.md)
+[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)
 
 
 ### Authorization
@@ -97,9 +97,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## createSuppressionWindowsWithHttpInfo
+## createAlertSuppressionWindowWithHttpInfo
 
-> ApiResponse<CreateSuppressionWindows201Response> createSuppressionWindows createSuppressionWindowsWithHttpInfo(alertSuppressionWindowRequest, aid, expand)
+> ApiResponse<AlertSuppressionWindowDetail> createAlertSuppressionWindow createAlertSuppressionWindowWithHttpInfo(alertSuppressionWindowRequest, aid, expand)
 
 Create alert suppression window
 
@@ -131,12 +131,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            ApiResponse<CreateSuppressionWindows201Response> response = apiInstance.createSuppressionWindowsWithHttpInfo(alertSuppressionWindowRequest, aid, expand);
+            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.createAlertSuppressionWindowWithHttpInfo(alertSuppressionWindowRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#createSuppressionWindows");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#createAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -157,7 +157,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateSuppressionWindows201Response**](CreateSuppressionWindows201Response.md)>
+ApiResponse<[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)>
 
 
 ### Authorization
@@ -181,9 +181,9 @@ ApiResponse<[**CreateSuppressionWindows201Response**](CreateSuppressionWindows20
 | **500** | Internal server error |  -  |
 
 
-## deleteSuppressionWindow
+## deleteAlertSuppressionWindow
 
-> void deleteSuppressionWindow(windowId, aid)
+> void deleteAlertSuppressionWindow(windowId, aid)
 
 Delete alert suppression window
 
@@ -213,9 +213,9 @@ public class Example {
         String windowId = "2411"; // String | Unique window ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteSuppressionWindow(windowId, aid);
+            apiInstance.deleteAlertSuppressionWindow(windowId, aid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#deleteSuppressionWindow");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#deleteAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -258,9 +258,9 @@ null (empty response body)
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## deleteSuppressionWindowWithHttpInfo
+## deleteAlertSuppressionWindowWithHttpInfo
 
-> ApiResponse<Void> deleteSuppressionWindow deleteSuppressionWindowWithHttpInfo(windowId, aid)
+> ApiResponse<Void> deleteAlertSuppressionWindow deleteAlertSuppressionWindowWithHttpInfo(windowId, aid)
 
 Delete alert suppression window
 
@@ -291,11 +291,11 @@ public class Example {
         String windowId = "2411"; // String | Unique window ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteSuppressionWindowWithHttpInfo(windowId, aid);
+            ApiResponse<Void> response = apiInstance.deleteAlertSuppressionWindowWithHttpInfo(windowId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#deleteSuppressionWindow");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#deleteAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -339,9 +339,9 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
-## getSuppressionWindowDetails
+## getAlertSuppressionWindow
 
-> CreateSuppressionWindows201Response getSuppressionWindowDetails(windowId, aid, expand)
+> AlertSuppressionWindowDetail getAlertSuppressionWindow(windowId, aid, expand)
 
 Retrieve alert suppression window
 
@@ -372,10 +372,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            CreateSuppressionWindows201Response result = apiInstance.getSuppressionWindowDetails(windowId, aid, expand);
+            AlertSuppressionWindowDetail result = apiInstance.getAlertSuppressionWindow(windowId, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#getSuppressionWindowDetails");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#getAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -396,7 +396,7 @@ public class Example {
 
 ### Return type
 
-[**CreateSuppressionWindows201Response**](CreateSuppressionWindows201Response.md)
+[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)
 
 
 ### Authorization
@@ -418,9 +418,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getSuppressionWindowDetailsWithHttpInfo
+## getAlertSuppressionWindowWithHttpInfo
 
-> ApiResponse<CreateSuppressionWindows201Response> getSuppressionWindowDetails getSuppressionWindowDetailsWithHttpInfo(windowId, aid, expand)
+> ApiResponse<AlertSuppressionWindowDetail> getAlertSuppressionWindow getAlertSuppressionWindowWithHttpInfo(windowId, aid, expand)
 
 Retrieve alert suppression window
 
@@ -452,12 +452,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            ApiResponse<CreateSuppressionWindows201Response> response = apiInstance.getSuppressionWindowDetailsWithHttpInfo(windowId, aid, expand);
+            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.getAlertSuppressionWindowWithHttpInfo(windowId, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#getSuppressionWindowDetails");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#getAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -478,7 +478,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateSuppressionWindows201Response**](CreateSuppressionWindows201Response.md)>
+ApiResponse<[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)>
 
 
 ### Authorization
@@ -501,9 +501,9 @@ ApiResponse<[**CreateSuppressionWindows201Response**](CreateSuppressionWindows20
 | **500** | Internal server error |  -  |
 
 
-## getSuppressionWindows
+## getAlertSuppressionWindows
 
-> GetSuppressionWindows200Response getSuppressionWindows(aid)
+> AlertSuppressionWindows getAlertSuppressionWindows(aid)
 
 List alert suppression windows
 
@@ -532,10 +532,10 @@ public class Example {
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GetSuppressionWindows200Response result = apiInstance.getSuppressionWindows(aid);
+            AlertSuppressionWindows result = apiInstance.getAlertSuppressionWindows(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#getSuppressionWindows");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#getAlertSuppressionWindows");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -554,7 +554,7 @@ public class Example {
 
 ### Return type
 
-[**GetSuppressionWindows200Response**](GetSuppressionWindows200Response.md)
+[**AlertSuppressionWindows**](AlertSuppressionWindows.md)
 
 
 ### Authorization
@@ -576,9 +576,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## getSuppressionWindowsWithHttpInfo
+## getAlertSuppressionWindowsWithHttpInfo
 
-> ApiResponse<GetSuppressionWindows200Response> getSuppressionWindows getSuppressionWindowsWithHttpInfo(aid)
+> ApiResponse<AlertSuppressionWindows> getAlertSuppressionWindows getAlertSuppressionWindowsWithHttpInfo(aid)
 
 List alert suppression windows
 
@@ -608,12 +608,12 @@ public class Example {
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GetSuppressionWindows200Response> response = apiInstance.getSuppressionWindowsWithHttpInfo(aid);
+            ApiResponse<AlertSuppressionWindows> response = apiInstance.getAlertSuppressionWindowsWithHttpInfo(aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#getSuppressionWindows");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#getAlertSuppressionWindows");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -632,7 +632,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**GetSuppressionWindows200Response**](GetSuppressionWindows200Response.md)>
+ApiResponse<[**AlertSuppressionWindows**](AlertSuppressionWindows.md)>
 
 
 ### Authorization
@@ -655,9 +655,9 @@ ApiResponse<[**GetSuppressionWindows200Response**](GetSuppressionWindows200Respo
 | **500** | Internal server error |  -  |
 
 
-## updateSuppressionWindow
+## updateAlertSuppressionWindow
 
-> CreateSuppressionWindows201Response updateSuppressionWindow(windowId, alertSuppressionWindowRequest, aid, expand)
+> AlertSuppressionWindowDetail updateAlertSuppressionWindow(windowId, alertSuppressionWindowRequest, aid, expand)
 
 Update alert suppression window
 
@@ -689,10 +689,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            CreateSuppressionWindows201Response result = apiInstance.updateSuppressionWindow(windowId, alertSuppressionWindowRequest, aid, expand);
+            AlertSuppressionWindowDetail result = apiInstance.updateAlertSuppressionWindow(windowId, alertSuppressionWindowRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#updateSuppressionWindow");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#updateAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -714,7 +714,7 @@ public class Example {
 
 ### Return type
 
-[**CreateSuppressionWindows201Response**](CreateSuppressionWindows201Response.md)
+[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)
 
 
 ### Authorization
@@ -737,9 +737,9 @@ public class Example {
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
-## updateSuppressionWindowWithHttpInfo
+## updateAlertSuppressionWindowWithHttpInfo
 
-> ApiResponse<CreateSuppressionWindows201Response> updateSuppressionWindow updateSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand)
+> ApiResponse<AlertSuppressionWindowDetail> updateAlertSuppressionWindow updateAlertSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand)
 
 Update alert suppression window
 
@@ -772,12 +772,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            ApiResponse<CreateSuppressionWindows201Response> response = apiInstance.updateSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand);
+            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.updateAlertSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AlertSuppressionWindowsApi#updateSuppressionWindow");
+            System.err.println("Exception when calling AlertSuppressionWindowsApi#updateAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -799,7 +799,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**CreateSuppressionWindows201Response**](CreateSuppressionWindows201Response.md)>
+ApiResponse<[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)>
 
 
 ### Authorization

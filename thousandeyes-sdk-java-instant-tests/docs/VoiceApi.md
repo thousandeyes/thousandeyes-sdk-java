@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantVoice**](VoiceApi.md#postInstantVoice) | **POST** /v7/tests/voice/instant | Create voice instant test |
-| [**postInstantVoiceWithHttpInfo**](VoiceApi.md#postInstantVoiceWithHttpInfo) | **POST** /v7/tests/voice/instant | Create voice instant test |
+| [**createVoiceInstantTest**](VoiceApi.md#createVoiceInstantTest) | **POST** /v7/tests/voice/instant | Create voice instant test |
+| [**createVoiceInstantTestWithHttpInfo**](VoiceApi.md#createVoiceInstantTestWithHttpInfo) | **POST** /v7/tests/voice/instant | Create voice instant test |
 
 
 
-## postInstantVoice
+## createVoiceInstantTest
 
-> VoiceInstantTest postInstantVoice(voiceInstantTestRequest, aid, expand)
+> VoiceInstantTest createVoiceInstantTest(voiceInstantTestRequest, aid, expand)
 
 Create voice instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            VoiceInstantTest result = apiInstance.postInstantVoice(voiceInstantTestRequest, aid, expand);
+            VoiceInstantTest result = apiInstance.createVoiceInstantTest(voiceInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling VoiceApi#postInstantVoice");
+            System.err.println("Exception when calling VoiceApi#createVoiceInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantVoiceWithHttpInfo
+## createVoiceInstantTestWithHttpInfo
 
-> ApiResponse<VoiceInstantTest> postInstantVoice postInstantVoiceWithHttpInfo(voiceInstantTestRequest, aid, expand)
+> ApiResponse<VoiceInstantTest> createVoiceInstantTest createVoiceInstantTestWithHttpInfo(voiceInstantTestRequest, aid, expand)
 
 Create voice instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<VoiceInstantTest> response = apiInstance.postInstantVoiceWithHttpInfo(voiceInstantTestRequest, aid, expand);
+            ApiResponse<VoiceInstantTest> response = apiInstance.createVoiceInstantTestWithHttpInfo(voiceInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling VoiceApi#postInstantVoice");
+            System.err.println("Exception when calling VoiceApi#createVoiceInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

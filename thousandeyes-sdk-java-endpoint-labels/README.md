@@ -2,9 +2,7 @@
 
 Endpoint Agent Labels API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:12.873673+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 Manage labels applied to endpoint agents using this API.
 
@@ -43,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-endpoint-labels</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-labels:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-endpoint-labels:version"
 ```
 
 ### Others
@@ -66,7 +64,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-endpoint-labels-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-endpoint-labels-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -86,12 +84,13 @@ public class ManageLabelsApiExample {
         // Configure clients using the `defaultClient` object, such as
         // overriding the host and port, timeout, etc.
         ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
-        String id = "id_example"; // String | The unique identifier of the label to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
-            apiInstance.endpointLabelDelete(id, aid);
+            LabelResponse result = apiInstance.createEndpointLabel(aid, labelRequest);
+            System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ManageLabelsApi#endpointLabelDelete");
+            System.err.println("Exception when calling ManageLabelsApi#createEndpointLabel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -108,16 +107,16 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ManageLabelsApi* | [**endpointLabelDelete**](docs/ManageLabelsApi.md#endpointLabelDelete) | **DELETE** /v7/endpoint/labels/{id} | Delete label
-*ManageLabelsApi* | [**endpointLabelDeleteWithHttpInfo**](docs/ManageLabelsApi.md#endpointLabelDeleteWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Delete label
-*ManageLabelsApi* | [**endpointLabelGet**](docs/ManageLabelsApi.md#endpointLabelGet) | **GET** /v7/endpoint/labels/{id} | Retrieve label
-*ManageLabelsApi* | [**endpointLabelGetWithHttpInfo**](docs/ManageLabelsApi.md#endpointLabelGetWithHttpInfo) | **GET** /v7/endpoint/labels/{id} | Retrieve label
-*ManageLabelsApi* | [**endpointLabelUpdate**](docs/ManageLabelsApi.md#endpointLabelUpdate) | **PATCH** /v7/endpoint/labels/{id} | Update label
-*ManageLabelsApi* | [**endpointLabelUpdateWithHttpInfo**](docs/ManageLabelsApi.md#endpointLabelUpdateWithHttpInfo) | **PATCH** /v7/endpoint/labels/{id} | Update label
-*ManageLabelsApi* | [**endpointLabelsList**](docs/ManageLabelsApi.md#endpointLabelsList) | **GET** /v7/endpoint/labels | List labels
-*ManageLabelsApi* | [**endpointLabelsListWithHttpInfo**](docs/ManageLabelsApi.md#endpointLabelsListWithHttpInfo) | **GET** /v7/endpoint/labels | List labels
-*ManageLabelsApi* | [**v7EndpointLabelsPost**](docs/ManageLabelsApi.md#v7EndpointLabelsPost) | **POST** /v7/endpoint/labels | Create label
-*ManageLabelsApi* | [**v7EndpointLabelsPostWithHttpInfo**](docs/ManageLabelsApi.md#v7EndpointLabelsPostWithHttpInfo) | **POST** /v7/endpoint/labels | Create label
+*ManageLabelsApi* | [**createEndpointLabel**](docs/ManageLabelsApi.md#createEndpointLabel) | **POST** /v7/endpoint/labels | Create label
+*ManageLabelsApi* | [**createEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#createEndpointLabelWithHttpInfo) | **POST** /v7/endpoint/labels | Create label
+*ManageLabelsApi* | [**deleteEndpointLabel**](docs/ManageLabelsApi.md#deleteEndpointLabel) | **DELETE** /v7/endpoint/labels/{id} | Delete label
+*ManageLabelsApi* | [**deleteEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#deleteEndpointLabelWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Delete label
+*ManageLabelsApi* | [**getEndpointLabel**](docs/ManageLabelsApi.md#getEndpointLabel) | **GET** /v7/endpoint/labels/{id} | Retrieve label
+*ManageLabelsApi* | [**getEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#getEndpointLabelWithHttpInfo) | **GET** /v7/endpoint/labels/{id} | Retrieve label
+*ManageLabelsApi* | [**getEndpointLabels**](docs/ManageLabelsApi.md#getEndpointLabels) | **GET** /v7/endpoint/labels | List labels
+*ManageLabelsApi* | [**getEndpointLabelsWithHttpInfo**](docs/ManageLabelsApi.md#getEndpointLabelsWithHttpInfo) | **GET** /v7/endpoint/labels | List labels
+*ManageLabelsApi* | [**updateEndpointLabel**](docs/ManageLabelsApi.md#updateEndpointLabel) | **PATCH** /v7/endpoint/labels/{id} | Update label
+*ManageLabelsApi* | [**updateEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#updateEndpointLabelWithHttpInfo) | **PATCH** /v7/endpoint/labels/{id} | Update label
 
 
 <a id="documentation-for-authorization"></a>

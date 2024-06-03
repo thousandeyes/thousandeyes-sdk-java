@@ -2,9 +2,7 @@
 
 Tests API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:14.524967+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
 
@@ -43,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-tests:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-tests:version"
 ```
 
 ### Others
@@ -66,7 +64,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-tests-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-tests-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -132,6 +130,16 @@ Class | Method | HTTP request | Description
 *AgentToServerApi* | [**updateAgentToServerTestWithHttpInfo**](docs/AgentToServerApi.md#updateAgentToServerTestWithHttpInfo) | **PUT** /v7/tests/agent-to-server/{testId} | Update Agent to Server test
 *AllTestTypesApi* | [**getTests**](docs/AllTestTypesApi.md#getTests) | **GET** /v7/tests | List configured tests
 *AllTestTypesApi* | [**getTestsWithHttpInfo**](docs/AllTestTypesApi.md#getTestsWithHttpInfo) | **GET** /v7/tests | List configured tests
+*ApiApi* | [**createApiTest**](docs/ApiApi.md#createApiTest) | **POST** /v7/tests/api | Create API test
+*ApiApi* | [**createApiTestWithHttpInfo**](docs/ApiApi.md#createApiTestWithHttpInfo) | **POST** /v7/tests/api | Create API test
+*ApiApi* | [**deleteApiTest**](docs/ApiApi.md#deleteApiTest) | **DELETE** /v7/tests/api/{testId} | Delete API test
+*ApiApi* | [**deleteApiTestWithHttpInfo**](docs/ApiApi.md#deleteApiTestWithHttpInfo) | **DELETE** /v7/tests/api/{testId} | Delete API test
+*ApiApi* | [**getApiTest**](docs/ApiApi.md#getApiTest) | **GET** /v7/tests/api/{testId} | Get API test
+*ApiApi* | [**getApiTestWithHttpInfo**](docs/ApiApi.md#getApiTestWithHttpInfo) | **GET** /v7/tests/api/{testId} | Get API test
+*ApiApi* | [**getApiTests**](docs/ApiApi.md#getApiTests) | **GET** /v7/tests/api | List API tests
+*ApiApi* | [**getApiTestsWithHttpInfo**](docs/ApiApi.md#getApiTestsWithHttpInfo) | **GET** /v7/tests/api | List API tests
+*ApiApi* | [**updateApiTest**](docs/ApiApi.md#updateApiTest) | **PUT** /v7/tests/api/{testId} | Update API test
+*ApiApi* | [**updateApiTestWithHttpInfo**](docs/ApiApi.md#updateApiTestWithHttpInfo) | **PUT** /v7/tests/api/{testId} | Update API test
 *BgpApi* | [**createBgpTest**](docs/BgpApi.md#createBgpTest) | **POST** /v7/tests/bgp | Create BGP test
 *BgpApi* | [**createBgpTestWithHttpInfo**](docs/BgpApi.md#createBgpTestWithHttpInfo) | **POST** /v7/tests/bgp | Create BGP test
 *BgpApi* | [**deleteBgpTest**](docs/BgpApi.md#deleteBgpTest) | **DELETE** /v7/tests/bgp/{testId} | Delete BGP test
@@ -142,16 +150,16 @@ Class | Method | HTTP request | Description
 *BgpApi* | [**getBgpTestsWithHttpInfo**](docs/BgpApi.md#getBgpTestsWithHttpInfo) | **GET** /v7/tests/bgp | List BGP tests
 *BgpApi* | [**updateBgpTest**](docs/BgpApi.md#updateBgpTest) | **PUT** /v7/tests/bgp/{testId} | Update BGP test
 *BgpApi* | [**updateBgpTestWithHttpInfo**](docs/BgpApi.md#updateBgpTestWithHttpInfo) | **PUT** /v7/tests/bgp/{testId} | Update BGP test
-*DnsServerApi* | [**createDNSServerTest**](docs/DnsServerApi.md#createDNSServerTest) | **POST** /v7/tests/dns-server | Create DNS Server test
-*DnsServerApi* | [**createDNSServerTestWithHttpInfo**](docs/DnsServerApi.md#createDNSServerTestWithHttpInfo) | **POST** /v7/tests/dns-server | Create DNS Server test
+*DnsServerApi* | [**createDnsServerTest**](docs/DnsServerApi.md#createDnsServerTest) | **POST** /v7/tests/dns-server | Create DNS Server test
+*DnsServerApi* | [**createDnsServerTestWithHttpInfo**](docs/DnsServerApi.md#createDnsServerTestWithHttpInfo) | **POST** /v7/tests/dns-server | Create DNS Server test
 *DnsServerApi* | [**deleteDnsServerTest**](docs/DnsServerApi.md#deleteDnsServerTest) | **DELETE** /v7/tests/dns-server/{testId} | Delete DNS Server test
 *DnsServerApi* | [**deleteDnsServerTestWithHttpInfo**](docs/DnsServerApi.md#deleteDnsServerTestWithHttpInfo) | **DELETE** /v7/tests/dns-server/{testId} | Delete DNS Server test
-*DnsServerApi* | [**getDNSServerTest**](docs/DnsServerApi.md#getDNSServerTest) | **GET** /v7/tests/dns-server/{testId} | Get DNS Server test
-*DnsServerApi* | [**getDNSServerTestWithHttpInfo**](docs/DnsServerApi.md#getDNSServerTestWithHttpInfo) | **GET** /v7/tests/dns-server/{testId} | Get DNS Server test
-*DnsServerApi* | [**getDNSServerTests**](docs/DnsServerApi.md#getDNSServerTests) | **GET** /v7/tests/dns-server | List DNS Server tests
-*DnsServerApi* | [**getDNSServerTestsWithHttpInfo**](docs/DnsServerApi.md#getDNSServerTestsWithHttpInfo) | **GET** /v7/tests/dns-server | List DNS Server tests
-*DnsServerApi* | [**updateDNSServerTest**](docs/DnsServerApi.md#updateDNSServerTest) | **PUT** /v7/tests/dns-server/{testId} | Update DNS Server test
-*DnsServerApi* | [**updateDNSServerTestWithHttpInfo**](docs/DnsServerApi.md#updateDNSServerTestWithHttpInfo) | **PUT** /v7/tests/dns-server/{testId} | Update DNS Server test
+*DnsServerApi* | [**getDnsServerTest**](docs/DnsServerApi.md#getDnsServerTest) | **GET** /v7/tests/dns-server/{testId} | Get DNS Server test
+*DnsServerApi* | [**getDnsServerTestWithHttpInfo**](docs/DnsServerApi.md#getDnsServerTestWithHttpInfo) | **GET** /v7/tests/dns-server/{testId} | Get DNS Server test
+*DnsServerApi* | [**getDnsServerTests**](docs/DnsServerApi.md#getDnsServerTests) | **GET** /v7/tests/dns-server | List DNS Server tests
+*DnsServerApi* | [**getDnsServerTestsWithHttpInfo**](docs/DnsServerApi.md#getDnsServerTestsWithHttpInfo) | **GET** /v7/tests/dns-server | List DNS Server tests
+*DnsServerApi* | [**updateDnsServerTest**](docs/DnsServerApi.md#updateDnsServerTest) | **PUT** /v7/tests/dns-server/{testId} | Update DNS Server test
+*DnsServerApi* | [**updateDnsServerTestWithHttpInfo**](docs/DnsServerApi.md#updateDnsServerTestWithHttpInfo) | **PUT** /v7/tests/dns-server/{testId} | Update DNS Server test
 *DnsTraceApi* | [**createDnsTraceTest**](docs/DnsTraceApi.md#createDnsTraceTest) | **POST** /v7/tests/dns-trace | Create DNS Trace test
 *DnsTraceApi* | [**createDnsTraceTestWithHttpInfo**](docs/DnsTraceApi.md#createDnsTraceTestWithHttpInfo) | **POST** /v7/tests/dns-trace | Create DNS Trace test
 *DnsTraceApi* | [**deleteDnsTraceTest**](docs/DnsTraceApi.md#deleteDnsTraceTest) | **DELETE** /v7/tests/dns-trace/{testId} | Delete DNS Trace test
@@ -174,8 +182,8 @@ Class | Method | HTTP request | Description
 *DnssecApi* | [**updateDnsSecTestWithHttpInfo**](docs/DnssecApi.md#updateDnsSecTestWithHttpInfo) | **PUT** /v7/tests/dnssec/{testId} | Update DNSSEC test
 *FtpServerApi* | [**createFtpServerTest**](docs/FtpServerApi.md#createFtpServerTest) | **POST** /v7/tests/ftp-server | Create FTP Server test
 *FtpServerApi* | [**createFtpServerTestWithHttpInfo**](docs/FtpServerApi.md#createFtpServerTestWithHttpInfo) | **POST** /v7/tests/ftp-server | Create FTP Server test
-*FtpServerApi* | [**deleteFTPServerTest**](docs/FtpServerApi.md#deleteFTPServerTest) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test
-*FtpServerApi* | [**deleteFTPServerTestWithHttpInfo**](docs/FtpServerApi.md#deleteFTPServerTestWithHttpInfo) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test
+*FtpServerApi* | [**deleteFtpServerTest**](docs/FtpServerApi.md#deleteFtpServerTest) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test
+*FtpServerApi* | [**deleteFtpServerTestWithHttpInfo**](docs/FtpServerApi.md#deleteFtpServerTestWithHttpInfo) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test
 *FtpServerApi* | [**getFtpServerTest**](docs/FtpServerApi.md#getFtpServerTest) | **GET** /v7/tests/ftp-server/{testId} | Get FTP Server test
 *FtpServerApi* | [**getFtpServerTestWithHttpInfo**](docs/FtpServerApi.md#getFtpServerTestWithHttpInfo) | **GET** /v7/tests/ftp-server/{testId} | Get FTP Server test
 *FtpServerApi* | [**getFtpServerTests**](docs/FtpServerApi.md#getFtpServerTests) | **GET** /v7/tests/ftp-server | List FTP Server tests

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**postInstantTestAgentToAgent**](AgentToAgentApi.md#postInstantTestAgentToAgent) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test |
-| [**postInstantTestAgentToAgentWithHttpInfo**](AgentToAgentApi.md#postInstantTestAgentToAgentWithHttpInfo) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test |
+| [**createAgentToAgentInstantTest**](AgentToAgentApi.md#createAgentToAgentInstantTest) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test |
+| [**createAgentToAgentInstantTestWithHttpInfo**](AgentToAgentApi.md#createAgentToAgentInstantTestWithHttpInfo) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test |
 
 
 
-## postInstantTestAgentToAgent
+## createAgentToAgentInstantTest
 
-> AgentToAgentInstantTest postInstantTestAgentToAgent(agentToAgentInstantTestRequest, aid, expand)
+> AgentToAgentInstantTest createAgentToAgentInstantTest(agentToAgentInstantTestRequest, aid, expand)
 
 Create agent-to-agent instant test
 
@@ -42,10 +42,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            AgentToAgentInstantTest result = apiInstance.postInstantTestAgentToAgent(agentToAgentInstantTestRequest, aid, expand);
+            AgentToAgentInstantTest result = apiInstance.createAgentToAgentInstantTest(agentToAgentInstantTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToAgentApi#postInstantTestAgentToAgent");
+            System.err.println("Exception when calling AgentToAgentApi#createAgentToAgentInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -91,9 +91,9 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
 
-## postInstantTestAgentToAgentWithHttpInfo
+## createAgentToAgentInstantTestWithHttpInfo
 
-> ApiResponse<AgentToAgentInstantTest> postInstantTestAgentToAgent postInstantTestAgentToAgentWithHttpInfo(agentToAgentInstantTestRequest, aid, expand)
+> ApiResponse<AgentToAgentInstantTest> createAgentToAgentInstantTest createAgentToAgentInstantTestWithHttpInfo(agentToAgentInstantTestRequest, aid, expand)
 
 Create agent-to-agent instant test
 
@@ -125,12 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<Expand> expand = Arrays.asList(); // List<Expand> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<AgentToAgentInstantTest> response = apiInstance.postInstantTestAgentToAgentWithHttpInfo(agentToAgentInstantTestRequest, aid, expand);
+            ApiResponse<AgentToAgentInstantTest> response = apiInstance.createAgentToAgentInstantTestWithHttpInfo(agentToAgentInstantTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToAgentApi#postInstantTestAgentToAgent");
+            System.err.println("Exception when calling AgentToAgentApi#createAgentToAgentInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

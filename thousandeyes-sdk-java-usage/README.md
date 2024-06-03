@@ -2,9 +2,7 @@
 
 Usage API
 
-- API version: 7.0.0
-
-- Build date: 2024-04-30T10:06:14.323902+01:00[Europe/Lisbon]
+- API version: 7.0.6
 
 
 These usage endpoints define the following operations:
@@ -56,7 +54,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.thousandeyes.api</groupId>
   <artifactId>thousandeyes-sdk-java-usage</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>version</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -66,7 +64,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.api:thousandeyes-sdk-java-usage:1.0.0-SNAPSHOT"
+compile "com.thousandeyes.api:thousandeyes-sdk-java-usage:version"
 ```
 
 ### Others
@@ -79,7 +77,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/thousandeyes-sdk-java-usage-1.0.0-SNAPSHOT.jar`
+- `target/thousandeyes-sdk-java-usage-version.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -133,8 +131,8 @@ Class | Method | HTTP request | Description
 *QuotasApi* | [**unassignOrganizationsQuotasWithHttpInfo**](docs/QuotasApi.md#unassignOrganizationsQuotasWithHttpInfo) | **POST** /v7/quotas/unassign | Remove organization quotas
 *UsageApi* | [**getEnterpriseAgentsUnitsUsage**](docs/UsageApi.md#getEnterpriseAgentsUnitsUsage) | **GET** /v7/usage/units/enterprise-agents | Get enterprise agent usage
 *UsageApi* | [**getEnterpriseAgentsUnitsUsageWithHttpInfo**](docs/UsageApi.md#getEnterpriseAgentsUnitsUsageWithHttpInfo) | **GET** /v7/usage/units/enterprise-agents | Get enterprise agent usage
-*UsageApi* | [**getTestUnitsUsage**](docs/UsageApi.md#getTestUnitsUsage) | **GET** /v7/usage/units/tests | Get cloud and enterprise agents units usage
-*UsageApi* | [**getTestUnitsUsageWithHttpInfo**](docs/UsageApi.md#getTestUnitsUsageWithHttpInfo) | **GET** /v7/usage/units/tests | Get cloud and enterprise agents units usage
+*UsageApi* | [**getTestsUnitsUsage**](docs/UsageApi.md#getTestsUnitsUsage) | **GET** /v7/usage/units/tests | Get cloud and enterprise agents units usage
+*UsageApi* | [**getTestsUnitsUsageWithHttpInfo**](docs/UsageApi.md#getTestsUnitsUsageWithHttpInfo) | **GET** /v7/usage/units/tests | Get cloud and enterprise agents units usage
 *UsageApi* | [**getUsage**](docs/UsageApi.md#getUsage) | **GET** /v7/usage | Get usage information for the last month
 *UsageApi* | [**getUsageWithHttpInfo**](docs/UsageApi.md#getUsageWithHttpInfo) | **GET** /v7/usage | Get usage information for the last month
 
