@@ -21,8 +21,7 @@ repositories {
 }
 
 dependencies {
-    implementation project(":thousandeyes-sdk-java-authentication")
-    implementation project(":thousandeyes-sdk-java-client")
+    implementation project(":core:client")
     implementation platform("com.fasterxml.jackson:jackson-bom:$jacksonVersion")
     implementation "com.fasterxml.jackson.core:jackson-core"
     implementation "com.fasterxml.jackson.core:jackson-annotations"

@@ -25,8 +25,8 @@ This endpoint returns the organization&#39;s enterprise agents usage for a speci
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
@@ -105,9 +105,9 @@ This endpoint returns the organization&#39;s enterprise agents usage for a speci
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
@@ -189,8 +189,8 @@ This endpoint returns the cloud and enterprise agents usage for all the tests fo
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
@@ -271,9 +271,9 @@ This endpoint returns the cloud and enterprise agents usage for all the tests fo
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
@@ -357,8 +357,8 @@ This endpoint returns the organization&#39;s usage data for a specified time per
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
@@ -435,9 +435,9 @@ This endpoint returns the organization&#39;s usage data for a specified time per
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;

@@ -21,8 +21,8 @@ Returns a list of activity log events in the current account group.   If &#x60;u
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
@@ -107,9 +107,9 @@ Returns a list of activity log events in the current account group.   If &#x60;u
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;

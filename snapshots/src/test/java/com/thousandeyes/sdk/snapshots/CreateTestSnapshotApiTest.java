@@ -18,7 +18,7 @@ import com.thousandeyes.sdk.snapshots.model.SnapshotRequest;
 import com.thousandeyes.sdk.snapshots.model.SnapshotResponse;
 import com.thousandeyes.sdk.snapshots.model.UnauthorizedError;
 import com.thousandeyes.sdk.snapshots.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

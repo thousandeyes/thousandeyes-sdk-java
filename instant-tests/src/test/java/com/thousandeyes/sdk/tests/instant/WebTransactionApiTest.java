@@ -20,7 +20,7 @@ import com.thousandeyes.sdk.tests.instant.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.instant.model.ValidationError;
 import com.thousandeyes.sdk.tests.instant.model.WebTransactionInstantTest;
 import com.thousandeyes.sdk.tests.instant.model.WebTransactionInstantTestRequest;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;

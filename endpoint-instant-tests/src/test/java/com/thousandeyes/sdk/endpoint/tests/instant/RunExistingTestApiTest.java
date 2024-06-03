@@ -15,7 +15,7 @@ package com.thousandeyes.sdk.endpoint.tests.instant;
 
 import com.thousandeyes.sdk.endpoint.tests.instant.model.Error;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.UnauthorizedError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;

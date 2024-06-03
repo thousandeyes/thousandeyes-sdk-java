@@ -55,8 +55,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import com.thousandeyes.api.serialization.JSON;
-import com.thousandeyes.api.serialization.AbstractOpenApiSchema;
+import com.thousandeyes.sdk.serialization.JSON;
+import com.thousandeyes.sdk.serialization.AbstractOpenApiSchema;
 
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 @JsonDeserialize(using=CloudEnterpriseAgent.CloudEnterpriseAgentDeserializer.class)

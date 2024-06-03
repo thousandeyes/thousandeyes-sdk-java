@@ -25,8 +25,8 @@ Returns a list of network and application outages using a filter object. Advance
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
 import com.thousandeyes.sdk.internet.models.*;
@@ -105,9 +105,9 @@ Returns a list of network and application outages using a filter object. Advance
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
 import com.thousandeyes.sdk.internet.models.*;
@@ -189,8 +189,8 @@ Returns the details of an application outage.
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
 import com.thousandeyes.sdk.internet.models.*;
@@ -269,9 +269,9 @@ Returns the details of an application outage.
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
 import com.thousandeyes.sdk.internet.models.*;
@@ -353,8 +353,8 @@ Returns the details of a network outage.
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
 import com.thousandeyes.sdk.internet.models.*;
@@ -433,9 +433,9 @@ Returns the details of a network outage.
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
 import com.thousandeyes.sdk.internet.models.*;

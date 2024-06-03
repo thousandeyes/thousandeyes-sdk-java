@@ -21,7 +21,7 @@ import com.thousandeyes.sdk.endpoint.tests.model.Error;
 import java.net.URI;
 import com.thousandeyes.sdk.endpoint.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;

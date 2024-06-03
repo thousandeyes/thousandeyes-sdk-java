@@ -12,14 +12,14 @@
 
 package com.thousandeyes.sdk.account.management.admin;
 
-import static com.thousandeyes.api.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.api.client.RequestUtil.urlEncode;
+import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
+import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.client.ApiException;
-import com.thousandeyes.api.client.ApiResponse;
-import com.thousandeyes.api.client.ApiRequest;
-import com.thousandeyes.api.utils.Config;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.ApiResponse;
+import com.thousandeyes.sdk.client.ApiRequest;
+import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.thousandeyes.sdk.account.management.admin.model.AuditUserEvents;

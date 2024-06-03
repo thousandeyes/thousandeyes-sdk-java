@@ -1,5 +1,8 @@
 rootProject.name = 'thousandeyes-sdk-java'
-include 'core'
+include 'core:client'
+include 'core:client-native'
+include 'core:authentication'
+include 'core:examples'
 
 include 'administrative'
 include 'agents'

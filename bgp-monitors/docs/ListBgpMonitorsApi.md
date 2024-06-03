@@ -21,8 +21,8 @@ Retrieves a list of BGP monitors available to your account in ThousandEyes, incl
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.bgp.Configuration;
 import com.thousandeyes.sdk.bgp.authentication.*;
 import com.thousandeyes.sdk.bgp.models.*;
@@ -96,9 +96,9 @@ Retrieves a list of BGP monitors available to your account in ThousandEyes, incl
 
 ```java
 // Import classes:
-import com.thousandeyes.api.client.ApiClient;
-import com.thousandeyes.api.common.ApiException;
-import com.thousandeyes.api.common.ApiResponse;
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.bgp.Configuration;
 import com.thousandeyes.sdk.bgp.authentication.*;
 import com.thousandeyes.sdk.bgp.models.*;

@@ -16,7 +16,7 @@ package com.thousandeyes.sdk.endpoint.agents;
 import com.thousandeyes.sdk.endpoint.agents.model.ConnectionString;
 import com.thousandeyes.sdk.endpoint.agents.model.Error;
 import com.thousandeyes.sdk.endpoint.agents.model.UnauthorizedError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

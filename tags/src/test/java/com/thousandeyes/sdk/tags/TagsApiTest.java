@@ -21,7 +21,7 @@ import com.thousandeyes.sdk.tags.model.TagInfo;
 import java.util.UUID;
 import com.thousandeyes.sdk.tags.model.UnauthorizedError;
 import com.thousandeyes.sdk.tags.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;

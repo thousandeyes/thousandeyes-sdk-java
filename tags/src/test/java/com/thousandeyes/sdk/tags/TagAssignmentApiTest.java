@@ -18,7 +18,7 @@ import com.thousandeyes.sdk.tags.model.BulkTagAssignments;
 import com.thousandeyes.sdk.tags.model.Error;
 import com.thousandeyes.sdk.tags.model.TagAssignment;
 import com.thousandeyes.sdk.tags.model.UnauthorizedError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

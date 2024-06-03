@@ -21,7 +21,7 @@ import com.thousandeyes.sdk.tests.model.UpdateVoiceTest;
 import com.thousandeyes.sdk.tests.model.ValidationError;
 import com.thousandeyes.sdk.tests.model.VoiceTest;
 import com.thousandeyes.sdk.tests.model.VoiceTests;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;

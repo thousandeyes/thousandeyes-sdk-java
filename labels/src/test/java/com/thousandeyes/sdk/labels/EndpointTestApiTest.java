@@ -20,7 +20,7 @@ import com.thousandeyes.sdk.labels.model.Labels;
 import java.net.URI;
 import com.thousandeyes.sdk.labels.model.UnauthorizedError;
 import com.thousandeyes.sdk.labels.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;

@@ -19,7 +19,7 @@ import com.thousandeyes.sdk.endpoint.tests.instant.model.Error;
 import java.net.URI;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

@@ -20,7 +20,7 @@ import com.thousandeyes.sdk.tests.results.model.ValidationError;
 import com.thousandeyes.sdk.tests.results.model.WebTransactionDetailTestResults;
 import com.thousandeyes.sdk.tests.results.model.WebTransactionPageDetailTestResults;
 import com.thousandeyes.sdk.tests.results.model.WebTransactionTestResults;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

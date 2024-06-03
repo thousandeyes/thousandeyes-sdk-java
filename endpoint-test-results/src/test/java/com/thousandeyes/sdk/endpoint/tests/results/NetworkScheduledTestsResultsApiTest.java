@@ -22,7 +22,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDetailTestResult
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisTestResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestsDataRoundsSearch;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

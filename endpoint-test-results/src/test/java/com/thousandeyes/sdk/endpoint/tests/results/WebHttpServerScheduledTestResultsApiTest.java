@@ -18,7 +18,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.Expand;
 import com.thousandeyes.sdk.endpoint.tests.results.model.HttpTestResults;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

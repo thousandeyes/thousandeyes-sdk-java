@@ -22,7 +22,7 @@ import com.thousandeyes.sdk.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.model.UpdateBgpTest;
 import com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest;
 import com.thousandeyes.sdk.tests.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;

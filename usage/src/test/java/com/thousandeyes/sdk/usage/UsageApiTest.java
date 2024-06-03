@@ -21,7 +21,7 @@ import com.thousandeyes.sdk.usage.model.TestsUsage;
 import com.thousandeyes.sdk.usage.model.UnauthorizedError;
 import com.thousandeyes.sdk.usage.model.Usage;
 import com.thousandeyes.sdk.usage.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

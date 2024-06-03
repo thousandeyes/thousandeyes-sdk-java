@@ -22,7 +22,7 @@ import com.thousandeyes.sdk.account.management.admin.model.Expand;
 import java.net.URI;
 import com.thousandeyes.sdk.account.management.admin.model.UnauthorizedError;
 import com.thousandeyes.sdk.account.management.admin.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Disabled;

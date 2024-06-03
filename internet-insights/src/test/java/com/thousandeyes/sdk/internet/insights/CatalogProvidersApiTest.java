@@ -20,7 +20,7 @@ import com.thousandeyes.sdk.internet.insights.model.Error;
 import java.util.UUID;
 import com.thousandeyes.sdk.internet.insights.model.UnauthorizedError;
 import com.thousandeyes.sdk.internet.insights.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

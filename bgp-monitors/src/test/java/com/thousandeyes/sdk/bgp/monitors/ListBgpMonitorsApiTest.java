@@ -16,7 +16,7 @@ package com.thousandeyes.sdk.bgp.monitors;
 import com.thousandeyes.sdk.bgp.monitors.model.Error;
 import com.thousandeyes.sdk.bgp.monitors.model.Monitors;
 import com.thousandeyes.sdk.bgp.monitors.model.UnauthorizedError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 

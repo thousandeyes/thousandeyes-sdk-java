@@ -22,7 +22,7 @@ import com.thousandeyes.sdk.usage.model.QuotasAssignResponse;
 import com.thousandeyes.sdk.usage.model.QuotasUnassign;
 import com.thousandeyes.sdk.usage.model.UnauthorizedError;
 import com.thousandeyes.sdk.usage.model.ValidationError;
-import static com.thousandeyes.api.serialization.JSON.getDefault;
+import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
