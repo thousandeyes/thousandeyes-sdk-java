@@ -7,18 +7,18 @@ buildscript {
 ext {
     apacheCommonsLang3 = "3.14.0"
     googleJsr305Version = "3.0.2"
-    jacksonVersion = "2.16.1"
-    junitVersion = "5.10.1"
-    jacocoVersion = "0.8.8"
-    jacksonDatabindNullableVersion = "0.2.6"
     mockitoVersion = "3.2.4"
+    jacksonDatabindNullableVersion = "0.2.6"
+    jacksonVersion = "2.16.1"
+    jacocoVersion = "0.8.8"
+    junitVersion = "5.10.1"
 }
 
 allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
 
-    group = 'com.thousandeyes.api'
+    group = 'com.thousandeyes.sdk'
 }
 
 subprojects {

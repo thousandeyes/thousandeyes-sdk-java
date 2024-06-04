@@ -1,0 +1,6 @@
+rootProject.name = 'core'
+include 'core:configuration'
+include 'core:client'
+include 'core:client-native'
+include 'core:authentication'
+include 'core:examples'

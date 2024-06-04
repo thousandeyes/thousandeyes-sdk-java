@@ -1,0 +1,15 @@
+plugins {
+    id "java-library"
+}
+
+ext {
+    apacheCommonsLang3 = "3.14.0"
+    mockitoVersion = "3.2.4"
+    jacksonDatabindNullableVersion = "0.2.6"
+    jacksonVersion = "2.16.1"
+    junitVersion = "5.10.1"
+}
+
+repositories {
+    mavenCentral()
+}
