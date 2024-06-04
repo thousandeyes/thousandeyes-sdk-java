@@ -21,6 +21,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(":core:configuration")
     implementation project(":core:client")
     implementation platform("com.fasterxml.jackson:jackson-bom:$jacksonVersion")
     implementation "com.fasterxml.jackson.core:jackson-core"
