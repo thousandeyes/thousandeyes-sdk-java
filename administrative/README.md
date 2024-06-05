@@ -83,8 +83,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 import com.thousandeyes.sdk.account.management.*;
-import com.thousandeyes.sdk.account.management.admin.model.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class AccountGroupsApiExample {
 
