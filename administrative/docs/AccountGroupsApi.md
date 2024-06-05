@@ -34,7 +34,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -113,7 +113,7 @@ import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -194,7 +194,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -270,7 +270,7 @@ import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -348,7 +348,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -427,7 +427,7 @@ import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -508,7 +508,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -585,7 +585,7 @@ import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -664,7 +664,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -745,7 +745,7 @@ import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
 import com.thousandeyes.sdk.account.management.models.*;
-import com.thousandeyes.sdk.account.management.admin.AccountGroupsApi;
+import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
