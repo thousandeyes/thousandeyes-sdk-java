@@ -2,7 +2,7 @@
 
 Internet Insights API
 
-- API version: 7.0.6
+- API version: 7.0.7
 
 We are happy to announce the release of the Internet Insights API set. This limited release includes endpoints that:
 
@@ -13,6 +13,8 @@ Internet Insights provide visibility into core Internet infrastructure, includin
 It tracks the macro-level impact of Internet events on individual users and enterprise networks connecting at the edge of the Internet. These events include Outages, Routing hijacks and leaks, DDoS attacks, And political interference, among others.
 
 Future releases of the Internet Insights API set will further unlock access to core Internet Insights functionality, unlocking potential integrations to enrich customer process flows.
+
+For more information about Internet Insights, see the [Internet Insights](https://docs.thousandeyes.com/product-documentation/internet-insights).
 
 
 
