@@ -8,7 +8,7 @@ This project is maintained by the ThousandEyes team at Cisco.
 
 ## Installation and usage
 
-Each of the APIs being published include a README file with instruction on how to install and use the API.
+Each of the APIs being published includes a README file with instructions on how to install and use the API.
 * [administrative](/administrative/README.md)
 * [agents](/agents/README.md)
 * [alerts](/alerts/README.md)
