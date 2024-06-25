@@ -384,7 +384,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| ID of stream to query | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry] |
+| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
 
 ### Return type
 
@@ -466,7 +466,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| ID of stream to query | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry] |
+| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
 
 ### Return type
 
@@ -544,7 +544,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry] |
+| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
 
 ### Return type
 
@@ -625,7 +625,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry] |
+| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
 
 ### Return type
 
