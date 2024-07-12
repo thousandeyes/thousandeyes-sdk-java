@@ -88,6 +88,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/FtpServerProperties.java
 src/main/java/com/thousandeyes/sdk/tests/model/FtpServerRequestType.java
 src/main/java/com/thousandeyes/sdk/tests/model/FtpServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/FtpServerTests.java
+src/main/java/com/thousandeyes/sdk/tests/model/HttpServerBaseProperties.java
 src/main/java/com/thousandeyes/sdk/tests/model/HttpServerInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/HttpServerProperties.java
 src/main/java/com/thousandeyes/sdk/tests/model/HttpServerTest.java
