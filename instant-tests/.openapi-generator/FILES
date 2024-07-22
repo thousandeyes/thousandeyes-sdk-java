@@ -30,6 +30,7 @@ src/main/java/com/thousandeyes/sdk/tests/instant/VoiceApi.java
 src/main/java/com/thousandeyes/sdk/tests/instant/WebTransactionApi.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/Agent.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentBase.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentInterfaces.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToAgentInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToAgentInstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToAgentProperties.java
@@ -73,9 +74,11 @@ src/main/java/com/thousandeyes/sdk/tests/instant/model/HttpServerProperties.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/InstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/InstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/Link.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/OAuth.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/PageLoadInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/PageLoadInstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/PageLoadProperties.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/RequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ServerInstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SharedWithAccount.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SimpleAgent.java
