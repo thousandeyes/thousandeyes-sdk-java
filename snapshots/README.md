@@ -2,7 +2,7 @@
 
 Test Snapshots API
 
-- API version: 7.0.9
+- API version: 7.0.10
 
 Creates a new test snapshot in ThousandEyes.
 
@@ -37,12 +37,26 @@ Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) f
 Add this dependency to your project's POM:
 
 ```xml
-<dependency>
-  <groupId>com.thousandeyes.sdk</groupId>
-  <artifactId>snapshots</artifactId>
-  <version>version</version>
-  <scope>compile</scope>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>snapshots</artifactId>
+        <version>version</version>
+    </dependency>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client</artifactId>
+        <version>version</version>
+    </dependency>
+
+    <!-- Example only, you can use your own client implementation -->
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client-native</artifactId>
+        <version>version</version>
+    </dependency>
+</dependencies>
+
 ```
 
 ### Gradle users
@@ -50,7 +64,9 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.sdk:snapshots:version"
+implementation "com.thousandeyes.sdk:client:<version>"
+implementation "com.thousandeyes.sdk:client-native:<version>" #Example only, you can use your own client implementation
+implementation "com.thousandeyes.sdk:snapshots:<version>"
 ```
 
 ### Others
@@ -73,15 +89,22 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 import com.thousandeyes.sdk.*;
+import com.thousandeyes.sdk.client.*;
 import com.thousandeyes.sdk.snapshots.model.*;
 import com.thousandeyes.sdk.snapshots.CreateTestSnapshotApi;
 
 public class CreateTestSnapshotApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         // Configure clients using the `defaultClient` object, such as
-        // overriding the host and port, timeout, etc.
+        // overriding the host and port, timeout, etc. In this example we are using the NativeApiClient
+        // but you can use your own client implementation
+        ApiClient defaultClient = NativeApiClient
+                .builder()
+                .baseUri("https://api.thousandeyes.com")
+                .bearerToken("<bearer-token>")
+                .build();
+
         CreateTestSnapshotApi apiInstance = new CreateTestSnapshotApi(defaultClient);
         String testId = "281474976710706"; // String | Test ID.
         SnapshotRequest snapshotRequest = new SnapshotRequest(); // SnapshotRequest | 

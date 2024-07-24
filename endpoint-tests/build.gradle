@@ -1,19 +1,5 @@
-plugins {
-    id "java-library"
-    id "maven-publish"
-}
-
 ext {
     jakartaAnnotationVersion = "2.1.1"
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            artifactId = 'endpoint-tests'
-            from components.java
-        }
-    }
 }
 
 repositories {

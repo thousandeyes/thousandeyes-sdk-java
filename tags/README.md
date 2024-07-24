@@ -2,7 +2,7 @@
 
 Tags API
 
-- API version: 7.0.9
+- API version: 7.0.10
 
 The ThousandEyes Tags API provides a tagging system with key/value pairs. It allows you to tag assets within the ThousandEyes platform (such as agents, tests, or alert rules) with meaningful metadata. For example: `branch:sfo`, `branch:nyc`, and `team:netops`.
 
@@ -50,12 +50,26 @@ Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) f
 Add this dependency to your project's POM:
 
 ```xml
-<dependency>
-  <groupId>com.thousandeyes.sdk</groupId>
-  <artifactId>tags</artifactId>
-  <version>version</version>
-  <scope>compile</scope>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>tags</artifactId>
+        <version>version</version>
+    </dependency>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client</artifactId>
+        <version>version</version>
+    </dependency>
+
+    <!-- Example only, you can use your own client implementation -->
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client-native</artifactId>
+        <version>version</version>
+    </dependency>
+</dependencies>
+
 ```
 
 ### Gradle users
@@ -63,7 +77,9 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.sdk:tags:version"
+implementation "com.thousandeyes.sdk:client:<version>"
+implementation "com.thousandeyes.sdk:client-native:<version>" #Example only, you can use your own client implementation
+implementation "com.thousandeyes.sdk:tags:<version>"
 ```
 
 ### Others
@@ -86,15 +102,22 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 import com.thousandeyes.sdk.*;
+import com.thousandeyes.sdk.client.*;
 import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class TagAssignmentApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         // Configure clients using the `defaultClient` object, such as
-        // overriding the host and port, timeout, etc.
+        // overriding the host and port, timeout, etc. In this example we are using the NativeApiClient
+        // but you can use your own client implementation
+        ApiClient defaultClient = NativeApiClient
+                .builder()
+                .baseUri("https://api.thousandeyes.com")
+                .bearerToken("<bearer-token>")
+                .build();
+
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of the tag to associate
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
