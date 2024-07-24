@@ -2,7 +2,7 @@
 
 Test Results API
 
-- API version: 7.0.9
+- API version: 7.0.10
 
 Get test result metrics for Cloud and Enterprise Agent tests.
 
@@ -37,12 +37,26 @@ Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) f
 Add this dependency to your project's POM:
 
 ```xml
-<dependency>
-  <groupId>com.thousandeyes.sdk</groupId>
-  <artifactId>test-results</artifactId>
-  <version>version</version>
-  <scope>compile</scope>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>test-results</artifactId>
+        <version>version</version>
+    </dependency>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client</artifactId>
+        <version>version</version>
+    </dependency>
+
+    <!-- Example only, you can use your own client implementation -->
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client-native</artifactId>
+        <version>version</version>
+    </dependency>
+</dependencies>
+
 ```
 
 ### Gradle users
@@ -50,7 +64,9 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.sdk:test-results:version"
+implementation "com.thousandeyes.sdk:client:<version>"
+implementation "com.thousandeyes.sdk:client-native:<version>" #Example only, you can use your own client implementation
+implementation "com.thousandeyes.sdk:test-results:<version>"
 ```
 
 ### Others
@@ -73,15 +89,22 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 import com.thousandeyes.sdk.tests.*;
+import com.thousandeyes.sdk.tests.client.*;
 import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.ApiTestMetricsApi;
 
 public class ApiTestMetricsApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         // Configure clients using the `defaultClient` object, such as
-        // overriding the host and port, timeout, etc.
+        // overriding the host and port, timeout, etc. In this example we are using the NativeApiClient
+        // but you can use your own client implementation
+        ApiClient defaultClient = NativeApiClient
+                .builder()
+                .baseUri("https://api.thousandeyes.com")
+                .bearerToken("<bearer-token>")
+                .build();
+
         ApiTestMetricsApi apiInstance = new ApiTestMetricsApi(defaultClient);
         String testId = "202701"; // String | Test ID
         String agentId = "11"; // String | Agent ID

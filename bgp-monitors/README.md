@@ -2,7 +2,7 @@
 
 BGP Monitors API
 
-- API version: 7.0.9
+- API version: 7.0.10
 
 
 Retrieve information about BGP monitors available to your ThousandEyes account. ThousandEyes ingests BGP routing data from dozens of global BGP collectors and automatically integrates that visibility as a configurable layer under service, network, and path visualization layers.
@@ -43,12 +43,26 @@ Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) f
 Add this dependency to your project's POM:
 
 ```xml
-<dependency>
-  <groupId>com.thousandeyes.sdk</groupId>
-  <artifactId>bgp-monitors</artifactId>
-  <version>version</version>
-  <scope>compile</scope>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>bgp-monitors</artifactId>
+        <version>version</version>
+    </dependency>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client</artifactId>
+        <version>version</version>
+    </dependency>
+
+    <!-- Example only, you can use your own client implementation -->
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client-native</artifactId>
+        <version>version</version>
+    </dependency>
+</dependencies>
+
 ```
 
 ### Gradle users
@@ -56,7 +70,9 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.sdk:bgp-monitors:version"
+implementation "com.thousandeyes.sdk:client:<version>"
+implementation "com.thousandeyes.sdk:client-native:<version>" #Example only, you can use your own client implementation
+implementation "com.thousandeyes.sdk:bgp-monitors:<version>"
 ```
 
 ### Others
@@ -79,15 +95,22 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 import com.thousandeyes.sdk.bgp.*;
+import com.thousandeyes.sdk.bgp.client.*;
 import com.thousandeyes.sdk.bgp.monitors.model.*;
 import com.thousandeyes.sdk.bgp.monitors.ListBgpMonitorsApi;
 
 public class ListBgpMonitorsApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         // Configure clients using the `defaultClient` object, such as
-        // overriding the host and port, timeout, etc.
+        // overriding the host and port, timeout, etc. In this example we are using the NativeApiClient
+        // but you can use your own client implementation
+        ApiClient defaultClient = NativeApiClient
+                .builder()
+                .baseUri("https://api.thousandeyes.com")
+                .bearerToken("<bearer-token>")
+                .build();
+
         ListBgpMonitorsApi apiInstance = new ListBgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {

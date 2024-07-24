@@ -2,7 +2,7 @@
 
 ThousandEyes for OpenTelemetry API
 
-- API version: 7.0.9
+- API version: 7.0.10
 
 ThousandEyes for OpenTelemetry provides machine-to-machine integration between ThousandEyes and its customers. It allows you to export ThousandEyes telemetry data in OTel format, which is widely used in the industry. With ThousandEyes for OTel, you can leverage frameworks widely used in the observability domain - such as Splunk, Grafana, and Honeycomb - to capture and analyze ThousandEyes data. Any client that supports OTel can use ThousandEyes for OpenTelemetry.
 
@@ -49,12 +49,26 @@ Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) f
 Add this dependency to your project's POM:
 
 ```xml
-<dependency>
-  <groupId>com.thousandeyes.sdk</groupId>
-  <artifactId>streaming</artifactId>
-  <version>version</version>
-  <scope>compile</scope>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>streaming</artifactId>
+        <version>version</version>
+    </dependency>
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client</artifactId>
+        <version>version</version>
+    </dependency>
+
+    <!-- Example only, you can use your own client implementation -->
+    <dependency>
+        <groupId>com.thousandeyes.sdk</groupId>
+        <artifactId>client-native</artifactId>
+        <version>version</version>
+    </dependency>
+</dependencies>
+
 ```
 
 ### Gradle users
@@ -62,7 +76,9 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.thousandeyes.sdk:streaming:version"
+implementation "com.thousandeyes.sdk:client:<version>"
+implementation "com.thousandeyes.sdk:client-native:<version>" #Example only, you can use your own client implementation
+implementation "com.thousandeyes.sdk:streaming:<version>"
 ```
 
 ### Others
@@ -85,15 +101,22 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 import com.thousandeyes.sdk.*;
+import com.thousandeyes.sdk.client.*;
 import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class StreamingApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         // Configure clients using the `defaultClient` object, such as
-        // overriding the host and port, timeout, etc.
+        // overriding the host and port, timeout, etc. In this example we are using the NativeApiClient
+        // but you can use your own client implementation
+        ApiClient defaultClient = NativeApiClient
+                .builder()
+                .baseUri("https://api.thousandeyes.com")
+                .bearerToken("<bearer-token>")
+                .build();
+
         StreamingApi apiInstance = new StreamingApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Stream stream = new Stream(); // Stream | Stream to configure

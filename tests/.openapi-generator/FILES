@@ -34,6 +34,7 @@ src/main/java/com/thousandeyes/sdk/tests/VoiceApi.java
 src/main/java/com/thousandeyes/sdk/tests/WebTransactionApi.java
 src/main/java/com/thousandeyes/sdk/tests/model/Agent.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentBase.java
+src/main/java/com/thousandeyes/sdk/tests/model/AgentInterfaces.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToAgentInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToAgentProperties.java
@@ -100,10 +101,12 @@ src/main/java/com/thousandeyes/sdk/tests/model/Link.java
 src/main/java/com/thousandeyes/sdk/tests/model/Monitor.java
 src/main/java/com/thousandeyes/sdk/tests/model/MonitorType.java
 src/main/java/com/thousandeyes/sdk/tests/model/MonitorsRequest.java
+src/main/java/com/thousandeyes/sdk/tests/model/OAuth.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadProperties.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTests.java
+src/main/java/com/thousandeyes/sdk/tests/model/RequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/tests/model/Severity.java
 src/main/java/com/thousandeyes/sdk/tests/model/SharedWithAccount.java
