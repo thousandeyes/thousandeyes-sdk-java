@@ -98,10 +98,16 @@ subprojects {
                     }
                     developers {
                         developer {
-                            id = 'api-team'
                             name = 'ThousandEyes API Team'
                             email = 'api-team@thousandeyes.com'
+                            organization = 'Cisco - ThousandEyes'
+                            organizationUrl = 'https://www.thousandeyes.com'
                         }
+                    }
+                    scm {
+                        connection = 'scm:git:git://github.com/thousandeyes/thousandeyes-sdk-java.git'
+                        developerConnection = 'scm:git:ssh://github.com/thousandeyes/thousandeyes-sdk-java.git'
+                        url = 'https://github.com/thousandeyes/thousandeyes-sdk-java/tree/main'
                     }
                 }
             }
