@@ -27,6 +27,7 @@ src/main/java/com/thousandeyes/sdk/alerts/model/BaseAlert.java
 src/main/java/com/thousandeyes/sdk/alerts/model/BaseAlertSuppressionWindow.java
 src/main/java/com/thousandeyes/sdk/alerts/model/BaseRule.java
 src/main/java/com/thousandeyes/sdk/alerts/model/BaseTest.java
+src/main/java/com/thousandeyes/sdk/alerts/model/CustomWebhookIntegrationType.java
 src/main/java/com/thousandeyes/sdk/alerts/model/DaysOfWeek.java
 src/main/java/com/thousandeyes/sdk/alerts/model/EndAlertMetrics.java
 src/main/java/com/thousandeyes/sdk/alerts/model/EndRepeat.java
@@ -37,6 +38,7 @@ src/main/java/com/thousandeyes/sdk/alerts/model/IntervalType.java
 src/main/java/com/thousandeyes/sdk/alerts/model/LegacyAlert.java
 src/main/java/com/thousandeyes/sdk/alerts/model/Link.java
 src/main/java/com/thousandeyes/sdk/alerts/model/Notification.java
+src/main/java/com/thousandeyes/sdk/alerts/model/NotificationCustomWebhook.java
 src/main/java/com/thousandeyes/sdk/alerts/model/NotificationEmail.java
 src/main/java/com/thousandeyes/sdk/alerts/model/NotificationThirdParty.java
 src/main/java/com/thousandeyes/sdk/alerts/model/NotificationWebhook.java
