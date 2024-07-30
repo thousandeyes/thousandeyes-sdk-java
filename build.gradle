@@ -17,14 +17,14 @@ ext {
 allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
-
+    apply plugin: 'maven-publish'
+    apply plugin: 'java-library'
+    apply plugin: 'signing'
+    apply plugin: 'jacoco'
     group = 'com.thousandeyes.sdk'
 }
 
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'jacoco'
-
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 
@@ -71,4 +71,64 @@ subprojects {
         finalizedBy jacocoTestReport
         maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
     }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                artifactId = project.name
+                from components.java
+                versionMapping {
+                    usage('java-api') {
+                        fromResolutionOf('runtimeClasspath')
+                    }
+                    usage('java-runtime') {
+                        fromResolutionResult()
+                    }
+                }
+                pom {
+                    name = 'ThousandEyes Java SDK - ${project.name}'
+                    description = 'A set of Java client libraries for the [Thousandeyes v7 API](https://developer.cisco.com/docs/thousandeyes/v7/).'
+                    url = 'https://github.com/thousandeyes/thousandeyes-sdk-java'
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            name = 'ThousandEyes API Team'
+                            email = 'api-team@thousandeyes.com'
+                            organization = 'Cisco - ThousandEyes'
+                            organizationUrl = 'https://www.thousandeyes.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:git://github.com/thousandeyes/thousandeyes-sdk-java.git'
+                        developerConnection = 'scm:git:ssh://github.com/thousandeyes/thousandeyes-sdk-java.git'
+                        url = 'https://github.com/thousandeyes/thousandeyes-sdk-java/tree/main'
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                name = "OSSRH"
+                url = "https://oss.sonatype.org/<needs-changing>"
+                credentials {
+                    username = System.getenv("MAVEN_USERNAME")
+                    password = System.getenv("MAVEN_PASSWORD")
+                }
+            }
+        }
+    }
+
+    signing {
+        def signingKeyId = findProperty("signingKeyId")
+        def signingKey = findProperty("signingKey")
+        def signingPassword = findProperty("signingPassword")
+        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+        sign publishing.publications.mavenJava
+    }
 }
+
