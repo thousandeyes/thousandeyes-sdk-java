@@ -2,7 +2,7 @@
 
 Agents API
 
-- API version: 7.0.10
+- API version: 7.0.11
 
 
 ## Overview
