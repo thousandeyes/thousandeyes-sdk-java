@@ -2,7 +2,7 @@
 
 Labels API
 
-- API version: 7.0.11
+- API version: 7.0.12
 
 ### Overview
 This is API for the Labels API (formerly called groups).
