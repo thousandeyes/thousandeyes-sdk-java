@@ -25,4 +25,4 @@ jobs:
         run: |
           echo "New version: ${GITHUB_REF_NAME}"
           echo "Github username: ${GITHUB_ACTOR}"
-          gradle -Pversion=${GITHUB_REF_NAME} publishMavenPublicationToMavenCentralRepository --parallel
+          gradle -Pversion=${GITHUB_REF_NAME} :administrative:publishMavenPublicationToMavenCentralRepository --parallel -d
