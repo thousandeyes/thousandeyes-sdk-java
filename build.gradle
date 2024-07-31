@@ -114,7 +114,7 @@ subprojects {
         repositories {
             maven {
                 name = "CentralPortal"
-                url = "https://central.portal.url/repository/maven-releases/
+                url = "https://central.portal.url/repository/maven-releases/"
                 credentials {
                     username = System.getenv("MAVEN_USERNAME")
                     password = System.getenv("MAVEN_PASSWORD")
