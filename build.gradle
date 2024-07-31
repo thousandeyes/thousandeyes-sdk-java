@@ -113,8 +113,8 @@ subprojects {
         }
         repositories {
             maven {
-                name = "OSSRH"
-                url = "https://s01.oss.sonatype.org"
+                name = "CentralPortal"
+                url = "https://central.portal.url/repository/maven-releases/
                 credentials {
                     username = System.getenv("MAVEN_USERNAME")
                     password = System.getenv("MAVEN_PASSWORD")
