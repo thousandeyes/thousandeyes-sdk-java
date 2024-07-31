@@ -71,7 +71,7 @@ subprojects {
     }
 
     mavenPublishing {
-        coordinates("com.thousandeyes.sdk", project.name, null)
+        coordinates("com.thousandeyes.sdk", project.name, project.version)
         pom {
             name = 'ThousandEyes Java SDK - ${project.name}'
             description = 'A set of Java client libraries for the [Thousandeyes v7 API](https://developer.cisco.com/docs/thousandeyes/v7/).'
