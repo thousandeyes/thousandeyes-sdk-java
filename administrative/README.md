@@ -2,7 +2,7 @@
 
 Administrative API
 
-- API version: 7.0.11
+- API version: 7.0.13
 
 Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API.
 This API provides the following endpoints that define the operations to manage your organization: 
