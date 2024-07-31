@@ -114,7 +114,7 @@ subprojects {
         repositories {
             maven {
                 name = "OSSRH"
-                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                url = "https://s01.oss.sonatype.org"
                 credentials {
                     username = System.getenv("MAVEN_USERNAME")
                     password = System.getenv("MAVEN_PASSWORD")
