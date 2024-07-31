@@ -1,7 +1,13 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 buildscript {
     repositories {
         mavenCentral()
     }
+}
+
+plugins {
+    id "com.vanniktech.maven.publish" version "0.29.0"
 }
 
 ext {
@@ -17,10 +23,9 @@ ext {
 allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
-    apply plugin: 'maven-publish'
     apply plugin: 'java-library'
-    apply plugin: 'signing'
     apply plugin: 'jacoco'
+    apply plugin: 'com.vanniktech.maven.publish'
     group = 'com.thousandeyes.sdk'
 }
 
@@ -31,9 +36,7 @@ subprojects {
     // Some text from the schema is copy pasted into the source files as UTF-8
     // but the default still seems to be to use platform encoding
     tasks.withType(JavaCompile) {
-        configure(options) {
-            options.encoding = 'UTF-8'
-        }
+        options.encoding = 'UTF-8'
     }
     javadoc {
         options.encoding = 'UTF-8'
@@ -41,11 +44,6 @@ subprojects {
 
     task execute(type: JavaExec) {
         classpath = sourceSets.main.runtimeClasspath
-    }
-
-    java {
-        withJavadocJar()
-        withSourcesJar()
     }
 
     def jacocoXmlReport = "${project.rootDir}/${project.name}/reports/jacoco/${project.name}.xml"
@@ -67,68 +65,39 @@ subprojects {
 
     test {
         useJUnitPlatform()
-        ignoreFailures true
+        ignoreFailures = true
         finalizedBy jacocoTestReport
         maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
     }
 
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                artifactId = project.name
-                from components.java
-                versionMapping {
-                    usage('java-api') {
-                        fromResolutionOf('runtimeClasspath')
-                    }
-                    usage('java-runtime') {
-                        fromResolutionResult()
-                    }
-                }
-                pom {
-                    name = 'ThousandEyes Java SDK - ${project.name}'
-                    description = 'A set of Java client libraries for the [Thousandeyes v7 API](https://developer.cisco.com/docs/thousandeyes/v7/).'
-                    url = 'https://github.com/thousandeyes/thousandeyes-sdk-java'
-                    licenses {
-                        license {
-                            name = 'The Apache License, Version 2.0'
-                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        }
-                    }
-                    developers {
-                        developer {
-                            name = 'ThousandEyes API Team'
-                            email = 'api-team@thousandeyes.com'
-                            organization = 'Cisco - ThousandEyes'
-                            organizationUrl = 'https://www.thousandeyes.com'
-                        }
-                    }
-                    scm {
-                        connection = 'scm:git:git://github.com/thousandeyes/thousandeyes-sdk-java.git'
-                        developerConnection = 'scm:git:ssh://github.com/thousandeyes/thousandeyes-sdk-java.git'
-                        url = 'https://github.com/thousandeyes/thousandeyes-sdk-java/tree/main'
-                    }
+    mavenPublishing {
+        coordinates("com.thousandeyes.sdk", project.name, null)
+        pom {
+            name = 'ThousandEyes Java SDK - ${project.name}'
+            description = 'A set of Java client libraries for the [Thousandeyes v7 API](https://developer.cisco.com/docs/thousandeyes/v7/).'
+            url = 'https://github.com/thousandeyes/thousandeyes-sdk-java'
+            licenses {
+                license {
+                    name = 'The Apache License, Version 2.0'
+                    url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                 }
             }
-        }
-        repositories {
-            maven {
-                name = "CentralPortal"
-                url = "https://central.sonatype.com/api/v1/publisher"
-                credentials {
-                    username = System.getenv("MAVEN_USERNAME")
-                    password = System.getenv("MAVEN_PASSWORD")
+            developers {
+                developer {
+                    name = 'ThousandEyes API Team'
+                    email = 'api-team@thousandeyes.com'
+                    organization = 'Cisco - ThousandEyes'
+                    organizationUrl = 'https://www.thousandeyes.com'
                 }
             }
+            scm {
+                connection = 'scm:git:git://github.com/thousandeyes/thousandeyes-sdk-java.git'
+                developerConnection = 'scm:git:ssh://github.com/thousandeyes/thousandeyes-sdk-java.git'
+                url = 'https://github.com/thousandeyes/thousandeyes-sdk-java/tree/main'
+            }
         }
-    }
+        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
-    signing {
-        def signingKeyId = findProperty("signingKeyId")
-        def signingKey = findProperty("signingKey")
-        def signingPassword = findProperty("signingPassword")
-        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-        sign publishing.publications.mavenJava
+        signAllPublications()
     }
 }
-
