@@ -2,7 +2,7 @@
 
 Test Results API
 
-- API version: 7.0.11
+- API version: 7.0.13
 
 Get test result metrics for Cloud and Enterprise Agent tests.
 

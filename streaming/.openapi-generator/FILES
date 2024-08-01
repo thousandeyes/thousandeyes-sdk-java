@@ -10,6 +10,7 @@ src/main/java/com/thousandeyes/sdk/streaming/model/AuditOperation.java
 src/main/java/com/thousandeyes/sdk/streaming/model/AuditOperationWithUpdate.java
 src/main/java/com/thousandeyes/sdk/streaming/model/BadRequestError.java
 src/main/java/com/thousandeyes/sdk/streaming/model/CreateStreamResponse.java
+src/main/java/com/thousandeyes/sdk/streaming/model/DataModelVersion.java
 src/main/java/com/thousandeyes/sdk/streaming/model/EndpointType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/GetStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/PutStream.java
