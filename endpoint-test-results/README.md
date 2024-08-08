@@ -2,7 +2,7 @@
 
 Endpoint Test Results API
 
-- API version: 7.0.13
+- API version: 7.0.14
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 
@@ -165,6 +165,8 @@ Class | Method | HTTP request | Description
 *RealUserTestsResultsApi* | [**getRealUserTestResultsWithHttpInfo**](docs/RealUserTestsResultsApi.md#getRealUserTestResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test
 *WebHttpServerScheduledTestResultsApi* | [**getHttpServerScheduledTestResults**](docs/WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResults) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results
 *WebHttpServerScheduledTestResultsApi* | [**getHttpServerScheduledTestResultsWithHttpInfo**](docs/WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results
+*WebHttpServerScheduledTestResultsApi* | [**getMultiTestFilteredHttpServerScheduledTestResults**](docs/WebHttpServerScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResults) | **POST** /v7/endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results
+*WebHttpServerScheduledTestResultsApi* | [**getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo**](docs/WebHttpServerScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo) | **POST** /v7/endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results
 
 
 <a id="documentation-for-authorization"></a>

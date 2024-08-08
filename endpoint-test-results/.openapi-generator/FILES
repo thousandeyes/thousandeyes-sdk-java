@@ -61,9 +61,17 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Expand.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/GatewayNetworkPing.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Hop.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpErrorType.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpMultiTestResults.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestResult.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestResultHeaders.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestResults.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestsDataRoundsSearch.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestsDataSearchFilter.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestsDataSearchSort.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestsDataSearchSortKey.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestsDataThresholdFilter.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpTestsDataThresholdFilters.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpThresholdFilterName.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/InterfaceHardwareType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Link.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkResult.java
