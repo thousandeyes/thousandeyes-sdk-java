@@ -17,6 +17,7 @@ Each of the APIs being published includes a README file with instructions on how
 * [credentials](/credentials/README.md)
 * [dashboards](/dashboards/README.md)
 * [emulation](/emulation/README.md)
+* [event-detection](/event-detection/README.md)
 * [endpoint-agents](/endpoint-agents/README.md)
 * [endpoint-instant-tests](/endpoint-instant-tests/README.md)
 * [endpoint-labels](/endpoint-labels/README.md)
