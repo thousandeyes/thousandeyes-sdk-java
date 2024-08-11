@@ -1,0 +1,36 @@
+ext {
+    jakartaAnnotationVersion = "2.1.1"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":core:configuration")
+    implementation project(":core:client")
+    implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+    implementation "com.google.code.findbugs:jsr305:$googleJsr305Version"
+    implementation "jakarta.annotation:jakarta.annotation-api:$jakartaAnnotationVersion"
+    implementation "org.openapitools:jackson-databind-nullable:$jacksonDatabindNullableVersion"
+    implementation "org.apache.commons:commons-lang3:$apacheCommonsLang3"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
+}
+
+test {
+    // Enable JUnit 5 (Gradle 4.6+).
+    useJUnitPlatform()
+
+    // Always run tests, even when nothing changed.
+    dependsOn 'cleanTest'
+
+    // Show test results.
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+
+}
