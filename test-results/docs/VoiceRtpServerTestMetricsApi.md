@@ -1,11 +1,11 @@
 # VoiceRtpServerTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestRtpServerResults**](VoiceRtpServerTestMetricsApi.md#getTestRtpServerResults) | **GET** /v7/test-results/{testId}/rtp-server | Retrieve RTP server test metrics |
-| [**getTestRtpServerResultsWithHttpInfo**](VoiceRtpServerTestMetricsApi.md#getTestRtpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/rtp-server | Retrieve RTP server test metrics |
+| [**getTestRtpServerResults**](VoiceRtpServerTestMetricsApi.md#getTestRtpServerResults) | **GET** /test-results/{testId}/rtp-server | Retrieve RTP server test metrics |
+| [**getTestRtpServerResultsWithHttpInfo**](VoiceRtpServerTestMetricsApi.md#getTestRtpServerResultsWithHttpInfo) | **GET** /test-results/{testId}/rtp-server | Retrieve RTP server test metrics |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.results.VoiceRtpServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -120,7 +120,7 @@ import com.thousandeyes.sdk.tests.results.VoiceRtpServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

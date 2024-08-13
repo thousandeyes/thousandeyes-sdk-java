@@ -99,7 +99,7 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/agents/notification-rules/{notificationRuleId}"
+    String path = "/agents/notification-rules/{notificationRuleId}"
         .replace("{notificationRuleId}", urlEncode(notificationRuleId.toString()));
     requestBuilder.path(path);
 
@@ -148,7 +148,7 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/agents/notification-rules";
+    String path = "/agents/notification-rules";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

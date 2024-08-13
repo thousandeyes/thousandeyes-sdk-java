@@ -2,7 +2,7 @@
 
 Emulation API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.
 
@@ -107,7 +107,7 @@ public class EmulationApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -131,16 +131,16 @@ public class EmulationApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EmulationApi* | [**createEmulatedDevice**](docs/EmulationApi.md#createEmulatedDevice) | **POST** /v7/emulated-devices | Create emulated device
-*EmulationApi* | [**createEmulatedDeviceWithHttpInfo**](docs/EmulationApi.md#createEmulatedDeviceWithHttpInfo) | **POST** /v7/emulated-devices | Create emulated device
-*EmulationApi* | [**getEmulatedDevices**](docs/EmulationApi.md#getEmulatedDevices) | **GET** /v7/emulated-devices | List emulated devices
-*EmulationApi* | [**getEmulatedDevicesWithHttpInfo**](docs/EmulationApi.md#getEmulatedDevicesWithHttpInfo) | **GET** /v7/emulated-devices | List emulated devices
-*EmulationApi* | [**getUserAgents**](docs/EmulationApi.md#getUserAgents) | **GET** /v7/user-agents | List user-agents
-*EmulationApi* | [**getUserAgentsWithHttpInfo**](docs/EmulationApi.md#getUserAgentsWithHttpInfo) | **GET** /v7/user-agents | List user-agents
+*EmulationApi* | [**createEmulatedDevice**](docs/EmulationApi.md#createEmulatedDevice) | **POST** /emulated-devices | Create emulated device
+*EmulationApi* | [**createEmulatedDeviceWithHttpInfo**](docs/EmulationApi.md#createEmulatedDeviceWithHttpInfo) | **POST** /emulated-devices | Create emulated device
+*EmulationApi* | [**getEmulatedDevices**](docs/EmulationApi.md#getEmulatedDevices) | **GET** /emulated-devices | List emulated devices
+*EmulationApi* | [**getEmulatedDevicesWithHttpInfo**](docs/EmulationApi.md#getEmulatedDevicesWithHttpInfo) | **GET** /emulated-devices | List emulated devices
+*EmulationApi* | [**getUserAgents**](docs/EmulationApi.md#getUserAgents) | **GET** /user-agents | List user-agents
+*EmulationApi* | [**getUserAgentsWithHttpInfo**](docs/EmulationApi.md#getUserAgentsWithHttpInfo) | **GET** /user-agents | List user-agents
 
 
 <a id="documentation-for-authorization"></a>

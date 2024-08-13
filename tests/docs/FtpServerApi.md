@@ -1,19 +1,19 @@
 # FtpServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createFtpServerTest**](FtpServerApi.md#createFtpServerTest) | **POST** /v7/tests/ftp-server | Create FTP Server test |
-| [**createFtpServerTestWithHttpInfo**](FtpServerApi.md#createFtpServerTestWithHttpInfo) | **POST** /v7/tests/ftp-server | Create FTP Server test |
-| [**deleteFtpServerTest**](FtpServerApi.md#deleteFtpServerTest) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test |
-| [**deleteFtpServerTestWithHttpInfo**](FtpServerApi.md#deleteFtpServerTestWithHttpInfo) | **DELETE** /v7/tests/ftp-server/{testId} | Delete FTP Server test |
-| [**getFtpServerTest**](FtpServerApi.md#getFtpServerTest) | **GET** /v7/tests/ftp-server/{testId} | Get FTP Server test |
-| [**getFtpServerTestWithHttpInfo**](FtpServerApi.md#getFtpServerTestWithHttpInfo) | **GET** /v7/tests/ftp-server/{testId} | Get FTP Server test |
-| [**getFtpServerTests**](FtpServerApi.md#getFtpServerTests) | **GET** /v7/tests/ftp-server | List FTP Server tests |
-| [**getFtpServerTestsWithHttpInfo**](FtpServerApi.md#getFtpServerTestsWithHttpInfo) | **GET** /v7/tests/ftp-server | List FTP Server tests |
-| [**updateFtpServerTest**](FtpServerApi.md#updateFtpServerTest) | **PUT** /v7/tests/ftp-server/{testId} | Update FTP Server test |
-| [**updateFtpServerTestWithHttpInfo**](FtpServerApi.md#updateFtpServerTestWithHttpInfo) | **PUT** /v7/tests/ftp-server/{testId} | Update FTP Server test |
+| [**createFtpServerTest**](FtpServerApi.md#createFtpServerTest) | **POST** /tests/ftp-server | Create FTP Server test |
+| [**createFtpServerTestWithHttpInfo**](FtpServerApi.md#createFtpServerTestWithHttpInfo) | **POST** /tests/ftp-server | Create FTP Server test |
+| [**deleteFtpServerTest**](FtpServerApi.md#deleteFtpServerTest) | **DELETE** /tests/ftp-server/{testId} | Delete FTP Server test |
+| [**deleteFtpServerTestWithHttpInfo**](FtpServerApi.md#deleteFtpServerTestWithHttpInfo) | **DELETE** /tests/ftp-server/{testId} | Delete FTP Server test |
+| [**getFtpServerTest**](FtpServerApi.md#getFtpServerTest) | **GET** /tests/ftp-server/{testId} | Get FTP Server test |
+| [**getFtpServerTestWithHttpInfo**](FtpServerApi.md#getFtpServerTestWithHttpInfo) | **GET** /tests/ftp-server/{testId} | Get FTP Server test |
+| [**getFtpServerTests**](FtpServerApi.md#getFtpServerTests) | **GET** /tests/ftp-server | List FTP Server tests |
+| [**getFtpServerTestsWithHttpInfo**](FtpServerApi.md#getFtpServerTestsWithHttpInfo) | **GET** /tests/ftp-server | List FTP Server tests |
+| [**updateFtpServerTest**](FtpServerApi.md#updateFtpServerTest) | **PUT** /tests/ftp-server/{testId} | Update FTP Server test |
+| [**updateFtpServerTestWithHttpInfo**](FtpServerApi.md#updateFtpServerTestWithHttpInfo) | **PUT** /tests/ftp-server/{testId} | Update FTP Server test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -284,7 +284,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -363,7 +363,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -445,7 +445,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -529,7 +529,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -607,7 +607,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -687,7 +687,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -772,7 +772,7 @@ import com.thousandeyes.sdk.tests.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

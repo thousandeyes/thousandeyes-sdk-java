@@ -106,7 +106,7 @@ public class CreateTestSnapshotApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/{testId}/snapshot"
+    String path = "/tests/{testId}/snapshot"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

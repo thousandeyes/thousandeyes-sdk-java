@@ -108,7 +108,7 @@ public class VoiceSipServerTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/sip-server"
+    String path = "/test-results/{testId}/sip-server"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

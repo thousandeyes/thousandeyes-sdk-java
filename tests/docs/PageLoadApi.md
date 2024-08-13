@@ -1,19 +1,19 @@
 # PageLoadApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createPageLoadTest**](PageLoadApi.md#createPageLoadTest) | **POST** /v7/tests/page-load | Create Page Load test |
-| [**createPageLoadTestWithHttpInfo**](PageLoadApi.md#createPageLoadTestWithHttpInfo) | **POST** /v7/tests/page-load | Create Page Load test |
-| [**deletePageLoadTest**](PageLoadApi.md#deletePageLoadTest) | **DELETE** /v7/tests/page-load/{testId} | Delete Page Load test |
-| [**deletePageLoadTestWithHttpInfo**](PageLoadApi.md#deletePageLoadTestWithHttpInfo) | **DELETE** /v7/tests/page-load/{testId} | Delete Page Load test |
-| [**getPageLoadTest**](PageLoadApi.md#getPageLoadTest) | **GET** /v7/tests/page-load/{testId} | Get Page Load test |
-| [**getPageLoadTestWithHttpInfo**](PageLoadApi.md#getPageLoadTestWithHttpInfo) | **GET** /v7/tests/page-load/{testId} | Get Page Load test |
-| [**getPageLoadTests**](PageLoadApi.md#getPageLoadTests) | **GET** /v7/tests/page-load | List Page Load tests |
-| [**getPageLoadTestsWithHttpInfo**](PageLoadApi.md#getPageLoadTestsWithHttpInfo) | **GET** /v7/tests/page-load | List Page Load tests |
-| [**updatePageLoadTest**](PageLoadApi.md#updatePageLoadTest) | **PUT** /v7/tests/page-load/{testId} | Update Page Load test |
-| [**updatePageLoadTestWithHttpInfo**](PageLoadApi.md#updatePageLoadTestWithHttpInfo) | **PUT** /v7/tests/page-load/{testId} | Update Page Load test |
+| [**createPageLoadTest**](PageLoadApi.md#createPageLoadTest) | **POST** /tests/page-load | Create Page Load test |
+| [**createPageLoadTestWithHttpInfo**](PageLoadApi.md#createPageLoadTestWithHttpInfo) | **POST** /tests/page-load | Create Page Load test |
+| [**deletePageLoadTest**](PageLoadApi.md#deletePageLoadTest) | **DELETE** /tests/page-load/{testId} | Delete Page Load test |
+| [**deletePageLoadTestWithHttpInfo**](PageLoadApi.md#deletePageLoadTestWithHttpInfo) | **DELETE** /tests/page-load/{testId} | Delete Page Load test |
+| [**getPageLoadTest**](PageLoadApi.md#getPageLoadTest) | **GET** /tests/page-load/{testId} | Get Page Load test |
+| [**getPageLoadTestWithHttpInfo**](PageLoadApi.md#getPageLoadTestWithHttpInfo) | **GET** /tests/page-load/{testId} | Get Page Load test |
+| [**getPageLoadTests**](PageLoadApi.md#getPageLoadTests) | **GET** /tests/page-load | List Page Load tests |
+| [**getPageLoadTestsWithHttpInfo**](PageLoadApi.md#getPageLoadTestsWithHttpInfo) | **GET** /tests/page-load | List Page Load tests |
+| [**updatePageLoadTest**](PageLoadApi.md#updatePageLoadTest) | **PUT** /tests/page-load/{testId} | Update Page Load test |
+| [**updatePageLoadTestWithHttpInfo**](PageLoadApi.md#updatePageLoadTestWithHttpInfo) | **PUT** /tests/page-load/{testId} | Update Page Load test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.PageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

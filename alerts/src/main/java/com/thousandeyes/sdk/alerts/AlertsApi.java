@@ -102,7 +102,7 @@ public class AlertsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/alerts/{alertId}"
+    String path = "/alerts/{alertId}"
         .replace("{alertId}", urlEncode(alertId.toString()));
     requestBuilder.path(path);
 
@@ -161,7 +161,7 @@ public class AlertsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/alerts";
+    String path = "/alerts";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

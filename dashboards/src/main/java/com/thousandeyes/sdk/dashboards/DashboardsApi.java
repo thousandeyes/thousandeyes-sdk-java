@@ -105,7 +105,7 @@ public class DashboardsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/dashboards";
+    String path = "/dashboards";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -159,7 +159,7 @@ public class DashboardsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/dashboards/{dashboardId}"
+    String path = "/dashboards/{dashboardId}"
         .replace("{dashboardId}", urlEncode(dashboardId.toString()));
     requestBuilder.path(path);
 
@@ -214,7 +214,7 @@ public class DashboardsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/dashboards/{dashboardId}"
+    String path = "/dashboards/{dashboardId}"
         .replace("{dashboardId}", urlEncode(dashboardId.toString()));
     requestBuilder.path(path);
 
@@ -289,7 +289,7 @@ public class DashboardsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/dashboards/{dashboardId}/widgets/{widgetId}"
+    String path = "/dashboards/{dashboardId}/widgets/{widgetId}"
         .replace("{dashboardId}", urlEncode(dashboardId.toString()))
         .replace("{widgetId}", urlEncode(widgetId.toString()));
     requestBuilder.path(path);
@@ -346,7 +346,7 @@ public class DashboardsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/dashboards";
+    String path = "/dashboards";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -406,7 +406,7 @@ public class DashboardsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/dashboards/{dashboardId}"
+    String path = "/dashboards/{dashboardId}"
         .replace("{dashboardId}", urlEncode(dashboardId.toString()));
     requestBuilder.path(path);
 

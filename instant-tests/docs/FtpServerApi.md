@@ -1,11 +1,11 @@
 # FtpServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createFtpServerInstantTest**](FtpServerApi.md#createFtpServerInstantTest) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test |
-| [**createFtpServerInstantTestWithHttpInfo**](FtpServerApi.md#createFtpServerInstantTestWithHttpInfo) | **POST** /v7/tests/ftp-server/instant | Create FTP server instant test |
+| [**createFtpServerInstantTest**](FtpServerApi.md#createFtpServerInstantTest) | **POST** /tests/ftp-server/instant | Create FTP server instant test |
+| [**createFtpServerInstantTestWithHttpInfo**](FtpServerApi.md#createFtpServerInstantTestWithHttpInfo) | **POST** /tests/ftp-server/instant | Create FTP server instant test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.instant.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.tests.instant.FtpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

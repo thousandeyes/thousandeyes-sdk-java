@@ -113,7 +113,7 @@ public class WebHttpServerScheduledTestResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/scheduled-tests/{testId}/http-server"
+    String path = "/endpoint/test-results/scheduled-tests/{testId}/http-server"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -179,7 +179,7 @@ public class WebHttpServerScheduledTestResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/test-results/scheduled-tests/http-server/filter";
+    String path = "/endpoint/test-results/scheduled-tests/http-server/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

@@ -1,11 +1,11 @@
 # AllTestTypesApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTests**](AllTestTypesApi.md#getTests) | **GET** /v7/tests | List configured tests |
-| [**getTestsWithHttpInfo**](AllTestTypesApi.md#getTestsWithHttpInfo) | **GET** /v7/tests | List configured tests |
+| [**getTests**](AllTestTypesApi.md#getTests) | **GET** /tests | List configured tests |
+| [**getTestsWithHttpInfo**](AllTestTypesApi.md#getTestsWithHttpInfo) | **GET** /tests | List configured tests |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.AllTestTypesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -109,7 +109,7 @@ import com.thousandeyes.sdk.tests.AllTestTypesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

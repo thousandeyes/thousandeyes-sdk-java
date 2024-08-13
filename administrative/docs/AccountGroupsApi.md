@@ -1,19 +1,19 @@
 # AccountGroupsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAccountGroup**](AccountGroupsApi.md#createAccountGroup) | **POST** /v7/account-groups | Create account group |
-| [**createAccountGroupWithHttpInfo**](AccountGroupsApi.md#createAccountGroupWithHttpInfo) | **POST** /v7/account-groups | Create account group |
-| [**deleteAccountGroup**](AccountGroupsApi.md#deleteAccountGroup) | **DELETE** /v7/account-groups/{id} | Delete account group |
-| [**deleteAccountGroupWithHttpInfo**](AccountGroupsApi.md#deleteAccountGroupWithHttpInfo) | **DELETE** /v7/account-groups/{id} | Delete account group |
-| [**getAccountGroup**](AccountGroupsApi.md#getAccountGroup) | **GET** /v7/account-groups/{id} | Retrieve account group |
-| [**getAccountGroupWithHttpInfo**](AccountGroupsApi.md#getAccountGroupWithHttpInfo) | **GET** /v7/account-groups/{id} | Retrieve account group |
-| [**getAccountGroups**](AccountGroupsApi.md#getAccountGroups) | **GET** /v7/account-groups | List account groups |
-| [**getAccountGroupsWithHttpInfo**](AccountGroupsApi.md#getAccountGroupsWithHttpInfo) | **GET** /v7/account-groups | List account groups |
-| [**updateAccountGroup**](AccountGroupsApi.md#updateAccountGroup) | **PUT** /v7/account-groups/{id} | Update account group |
-| [**updateAccountGroupWithHttpInfo**](AccountGroupsApi.md#updateAccountGroupWithHttpInfo) | **PUT** /v7/account-groups/{id} | Update account group |
+| [**createAccountGroup**](AccountGroupsApi.md#createAccountGroup) | **POST** /account-groups | Create account group |
+| [**createAccountGroupWithHttpInfo**](AccountGroupsApi.md#createAccountGroupWithHttpInfo) | **POST** /account-groups | Create account group |
+| [**deleteAccountGroup**](AccountGroupsApi.md#deleteAccountGroup) | **DELETE** /account-groups/{id} | Delete account group |
+| [**deleteAccountGroupWithHttpInfo**](AccountGroupsApi.md#deleteAccountGroupWithHttpInfo) | **DELETE** /account-groups/{id} | Delete account group |
+| [**getAccountGroup**](AccountGroupsApi.md#getAccountGroup) | **GET** /account-groups/{id} | Retrieve account group |
+| [**getAccountGroupWithHttpInfo**](AccountGroupsApi.md#getAccountGroupWithHttpInfo) | **GET** /account-groups/{id} | Retrieve account group |
+| [**getAccountGroups**](AccountGroupsApi.md#getAccountGroups) | **GET** /account-groups | List account groups |
+| [**getAccountGroupsWithHttpInfo**](AccountGroupsApi.md#getAccountGroupsWithHttpInfo) | **GET** /account-groups | List account groups |
+| [**updateAccountGroup**](AccountGroupsApi.md#updateAccountGroup) | **PUT** /account-groups/{id} | Update account group |
+| [**updateAccountGroupWithHttpInfo**](AccountGroupsApi.md#updateAccountGroupWithHttpInfo) | **PUT** /account-groups/{id} | Update account group |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -118,7 +118,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -199,7 +199,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -275,7 +275,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -353,7 +353,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -432,7 +432,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -513,7 +513,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -590,7 +590,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -669,7 +669,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -750,7 +750,7 @@ import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

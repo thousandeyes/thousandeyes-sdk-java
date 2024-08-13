@@ -121,6 +121,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/RealUserTestPage
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/RealUserTestPageResults.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/RealUserTestPageTimings.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/SelfLinks.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/SensitivityLevel.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Severity.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/SortOrder.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/SystemMetrics.java

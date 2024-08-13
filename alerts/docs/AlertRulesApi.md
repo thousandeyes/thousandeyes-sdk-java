@@ -1,19 +1,19 @@
 # AlertRulesApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAlertRule**](AlertRulesApi.md#createAlertRule) | **POST** /v7/alerts/rules | Create alert rule |
-| [**createAlertRuleWithHttpInfo**](AlertRulesApi.md#createAlertRuleWithHttpInfo) | **POST** /v7/alerts/rules | Create alert rule |
-| [**deleteAlertRule**](AlertRulesApi.md#deleteAlertRule) | **DELETE** /v7/alerts/rules/{ruleId} | Delete alert rule |
-| [**deleteAlertRuleWithHttpInfo**](AlertRulesApi.md#deleteAlertRuleWithHttpInfo) | **DELETE** /v7/alerts/rules/{ruleId} | Delete alert rule |
-| [**getAlertRule**](AlertRulesApi.md#getAlertRule) | **GET** /v7/alerts/rules/{ruleId} | Retrieve alert rule |
-| [**getAlertRuleWithHttpInfo**](AlertRulesApi.md#getAlertRuleWithHttpInfo) | **GET** /v7/alerts/rules/{ruleId} | Retrieve alert rule |
-| [**getAlertsRules**](AlertRulesApi.md#getAlertsRules) | **GET** /v7/alerts/rules | List alert rules |
-| [**getAlertsRulesWithHttpInfo**](AlertRulesApi.md#getAlertsRulesWithHttpInfo) | **GET** /v7/alerts/rules | List alert rules |
-| [**updateAlertRule**](AlertRulesApi.md#updateAlertRule) | **PUT** /v7/alerts/rules/{ruleId} | Update alert rule |
-| [**updateAlertRuleWithHttpInfo**](AlertRulesApi.md#updateAlertRuleWithHttpInfo) | **PUT** /v7/alerts/rules/{ruleId} | Update alert rule |
+| [**createAlertRule**](AlertRulesApi.md#createAlertRule) | **POST** /alerts/rules | Create alert rule |
+| [**createAlertRuleWithHttpInfo**](AlertRulesApi.md#createAlertRuleWithHttpInfo) | **POST** /alerts/rules | Create alert rule |
+| [**deleteAlertRule**](AlertRulesApi.md#deleteAlertRule) | **DELETE** /alerts/rules/{ruleId} | Delete alert rule |
+| [**deleteAlertRuleWithHttpInfo**](AlertRulesApi.md#deleteAlertRuleWithHttpInfo) | **DELETE** /alerts/rules/{ruleId} | Delete alert rule |
+| [**getAlertRule**](AlertRulesApi.md#getAlertRule) | **GET** /alerts/rules/{ruleId} | Retrieve alert rule |
+| [**getAlertRuleWithHttpInfo**](AlertRulesApi.md#getAlertRuleWithHttpInfo) | **GET** /alerts/rules/{ruleId} | Retrieve alert rule |
+| [**getAlertsRules**](AlertRulesApi.md#getAlertsRules) | **GET** /alerts/rules | List alert rules |
+| [**getAlertsRulesWithHttpInfo**](AlertRulesApi.md#getAlertsRulesWithHttpInfo) | **GET** /alerts/rules | List alert rules |
+| [**updateAlertRule**](AlertRulesApi.md#updateAlertRule) | **PUT** /alerts/rules/{ruleId} | Update alert rule |
+| [**updateAlertRuleWithHttpInfo**](AlertRulesApi.md#updateAlertRuleWithHttpInfo) | **PUT** /alerts/rules/{ruleId} | Update alert rule |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -118,7 +118,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -199,7 +199,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -277,7 +277,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -357,7 +357,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -435,7 +435,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -515,7 +515,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -591,7 +591,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -669,7 +669,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -750,7 +750,7 @@ import com.thousandeyes.sdk.alerts.AlertRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

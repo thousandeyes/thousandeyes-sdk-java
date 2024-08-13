@@ -1,11 +1,11 @@
 # WebTransactionApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createWebTransactionInstantTest**](WebTransactionApi.md#createWebTransactionInstantTest) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test |
-| [**createWebTransactionInstantTestWithHttpInfo**](WebTransactionApi.md#createWebTransactionInstantTestWithHttpInfo) | **POST** /v7/tests/web-transactions/instant | Create web transactions instant test |
+| [**createWebTransactionInstantTest**](WebTransactionApi.md#createWebTransactionInstantTest) | **POST** /tests/web-transactions/instant | Create web transactions instant test |
+| [**createWebTransactionInstantTestWithHttpInfo**](WebTransactionApi.md#createWebTransactionInstantTestWithHttpInfo) | **POST** /tests/web-transactions/instant | Create web transactions instant test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.instant.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.tests.instant.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

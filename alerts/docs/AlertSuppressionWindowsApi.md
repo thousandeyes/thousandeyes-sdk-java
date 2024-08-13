@@ -1,19 +1,19 @@
 # AlertSuppressionWindowsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#createAlertSuppressionWindow) | **POST** /v7/alert-suppression-windows | Create alert suppression window |
-| [**createAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#createAlertSuppressionWindowWithHttpInfo) | **POST** /v7/alert-suppression-windows | Create alert suppression window |
-| [**deleteAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindow) | **DELETE** /v7/alert-suppression-windows/{windowId} | Delete alert suppression window |
-| [**deleteAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindowWithHttpInfo) | **DELETE** /v7/alert-suppression-windows/{windowId} | Delete alert suppression window |
-| [**getAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindow) | **GET** /v7/alert-suppression-windows/{windowId} | Retrieve alert suppression window |
-| [**getAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindowWithHttpInfo) | **GET** /v7/alert-suppression-windows/{windowId} | Retrieve alert suppression window |
-| [**getAlertSuppressionWindows**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindows) | **GET** /v7/alert-suppression-windows | List alert suppression windows |
-| [**getAlertSuppressionWindowsWithHttpInfo**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindowsWithHttpInfo) | **GET** /v7/alert-suppression-windows | List alert suppression windows |
-| [**updateAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#updateAlertSuppressionWindow) | **PUT** /v7/alert-suppression-windows/{windowId} | Update alert suppression window |
-| [**updateAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#updateAlertSuppressionWindowWithHttpInfo) | **PUT** /v7/alert-suppression-windows/{windowId} | Update alert suppression window |
+| [**createAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#createAlertSuppressionWindow) | **POST** /alert-suppression-windows | Create alert suppression window |
+| [**createAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#createAlertSuppressionWindowWithHttpInfo) | **POST** /alert-suppression-windows | Create alert suppression window |
+| [**deleteAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindow) | **DELETE** /alert-suppression-windows/{windowId} | Delete alert suppression window |
+| [**deleteAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindowWithHttpInfo) | **DELETE** /alert-suppression-windows/{windowId} | Delete alert suppression window |
+| [**getAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindow) | **GET** /alert-suppression-windows/{windowId} | Retrieve alert suppression window |
+| [**getAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindowWithHttpInfo) | **GET** /alert-suppression-windows/{windowId} | Retrieve alert suppression window |
+| [**getAlertSuppressionWindows**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindows) | **GET** /alert-suppression-windows | List alert suppression windows |
+| [**getAlertSuppressionWindowsWithHttpInfo**](AlertSuppressionWindowsApi.md#getAlertSuppressionWindowsWithHttpInfo) | **GET** /alert-suppression-windows | List alert suppression windows |
+| [**updateAlertSuppressionWindow**](AlertSuppressionWindowsApi.md#updateAlertSuppressionWindow) | **PUT** /alert-suppression-windows/{windowId} | Update alert suppression window |
+| [**updateAlertSuppressionWindowWithHttpInfo**](AlertSuppressionWindowsApi.md#updateAlertSuppressionWindowWithHttpInfo) | **PUT** /alert-suppression-windows/{windowId} | Update alert suppression window |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -120,7 +120,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -203,7 +203,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -281,7 +281,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -361,7 +361,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -441,7 +441,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -523,7 +523,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -599,7 +599,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -677,7 +677,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -760,7 +760,7 @@ import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

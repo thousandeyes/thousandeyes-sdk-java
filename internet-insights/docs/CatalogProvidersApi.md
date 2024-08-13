@@ -1,13 +1,13 @@
 # CatalogProvidersApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**filterCatalogProviders**](CatalogProvidersApi.md#filterCatalogProviders) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers |
-| [**filterCatalogProvidersWithHttpInfo**](CatalogProvidersApi.md#filterCatalogProvidersWithHttpInfo) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers |
-| [**getCatalogProvider**](CatalogProvidersApi.md#getCatalogProvider) | **GET** /v7/internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider |
-| [**getCatalogProviderWithHttpInfo**](CatalogProvidersApi.md#getCatalogProviderWithHttpInfo) | **GET** /v7/internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider |
+| [**filterCatalogProviders**](CatalogProvidersApi.md#filterCatalogProviders) | **POST** /internet-insights/catalog/providers/filter | List catalog providers |
+| [**filterCatalogProvidersWithHttpInfo**](CatalogProvidersApi.md#filterCatalogProvidersWithHttpInfo) | **POST** /internet-insights/catalog/providers/filter | List catalog providers |
+| [**getCatalogProvider**](CatalogProvidersApi.md#getCatalogProvider) | **GET** /internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider |
+| [**getCatalogProviderWithHttpInfo**](CatalogProvidersApi.md#getCatalogProviderWithHttpInfo) | **GET** /internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.internet.insights.CatalogProvidersApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.internet.insights.CatalogProvidersApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -197,7 +197,7 @@ import com.thousandeyes.sdk.internet.insights.CatalogProvidersApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -278,7 +278,7 @@ import com.thousandeyes.sdk.internet.insights.CatalogProvidersApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

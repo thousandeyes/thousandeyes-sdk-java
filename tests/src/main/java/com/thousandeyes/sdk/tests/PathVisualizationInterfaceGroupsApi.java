@@ -101,7 +101,7 @@ public class PathVisualizationInterfaceGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/network/path-vis/interface-groups";
+    String path = "/network/path-vis/interface-groups";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -155,7 +155,7 @@ public class PathVisualizationInterfaceGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/network/path-vis/interface-groups/{interfaceGroupId}"
+    String path = "/network/path-vis/interface-groups/{interfaceGroupId}"
         .replace("{interfaceGroupId}", urlEncode(interfaceGroupId.toString()));
     requestBuilder.path(path);
 
@@ -204,7 +204,7 @@ public class PathVisualizationInterfaceGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/network/path-vis/interface-groups";
+    String path = "/network/path-vis/interface-groups";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -264,7 +264,7 @@ public class PathVisualizationInterfaceGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/network/path-vis/interface-groups/{interfaceGroupId}"
+    String path = "/network/path-vis/interface-groups/{interfaceGroupId}"
         .replace("{interfaceGroupId}", urlEncode(interfaceGroupId.toString()));
     requestBuilder.path(path);
 

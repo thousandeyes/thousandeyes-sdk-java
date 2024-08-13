@@ -1,19 +1,19 @@
 # DnsServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDnsServerTest**](DnsServerApi.md#createDnsServerTest) | **POST** /v7/tests/dns-server | Create DNS Server test |
-| [**createDnsServerTestWithHttpInfo**](DnsServerApi.md#createDnsServerTestWithHttpInfo) | **POST** /v7/tests/dns-server | Create DNS Server test |
-| [**deleteDnsServerTest**](DnsServerApi.md#deleteDnsServerTest) | **DELETE** /v7/tests/dns-server/{testId} | Delete DNS Server test |
-| [**deleteDnsServerTestWithHttpInfo**](DnsServerApi.md#deleteDnsServerTestWithHttpInfo) | **DELETE** /v7/tests/dns-server/{testId} | Delete DNS Server test |
-| [**getDnsServerTest**](DnsServerApi.md#getDnsServerTest) | **GET** /v7/tests/dns-server/{testId} | Get DNS Server test |
-| [**getDnsServerTestWithHttpInfo**](DnsServerApi.md#getDnsServerTestWithHttpInfo) | **GET** /v7/tests/dns-server/{testId} | Get DNS Server test |
-| [**getDnsServerTests**](DnsServerApi.md#getDnsServerTests) | **GET** /v7/tests/dns-server | List DNS Server tests |
-| [**getDnsServerTestsWithHttpInfo**](DnsServerApi.md#getDnsServerTestsWithHttpInfo) | **GET** /v7/tests/dns-server | List DNS Server tests |
-| [**updateDnsServerTest**](DnsServerApi.md#updateDnsServerTest) | **PUT** /v7/tests/dns-server/{testId} | Update DNS Server test |
-| [**updateDnsServerTestWithHttpInfo**](DnsServerApi.md#updateDnsServerTestWithHttpInfo) | **PUT** /v7/tests/dns-server/{testId} | Update DNS Server test |
+| [**createDnsServerTest**](DnsServerApi.md#createDnsServerTest) | **POST** /tests/dns-server | Create DNS Server test |
+| [**createDnsServerTestWithHttpInfo**](DnsServerApi.md#createDnsServerTestWithHttpInfo) | **POST** /tests/dns-server | Create DNS Server test |
+| [**deleteDnsServerTest**](DnsServerApi.md#deleteDnsServerTest) | **DELETE** /tests/dns-server/{testId} | Delete DNS Server test |
+| [**deleteDnsServerTestWithHttpInfo**](DnsServerApi.md#deleteDnsServerTestWithHttpInfo) | **DELETE** /tests/dns-server/{testId} | Delete DNS Server test |
+| [**getDnsServerTest**](DnsServerApi.md#getDnsServerTest) | **GET** /tests/dns-server/{testId} | Get DNS Server test |
+| [**getDnsServerTestWithHttpInfo**](DnsServerApi.md#getDnsServerTestWithHttpInfo) | **GET** /tests/dns-server/{testId} | Get DNS Server test |
+| [**getDnsServerTests**](DnsServerApi.md#getDnsServerTests) | **GET** /tests/dns-server | List DNS Server tests |
+| [**getDnsServerTestsWithHttpInfo**](DnsServerApi.md#getDnsServerTestsWithHttpInfo) | **GET** /tests/dns-server | List DNS Server tests |
+| [**updateDnsServerTest**](DnsServerApi.md#updateDnsServerTest) | **PUT** /tests/dns-server/{testId} | Update DNS Server test |
+| [**updateDnsServerTestWithHttpInfo**](DnsServerApi.md#updateDnsServerTestWithHttpInfo) | **PUT** /tests/dns-server/{testId} | Update DNS Server test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

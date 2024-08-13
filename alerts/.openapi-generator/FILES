@@ -50,6 +50,7 @@ src/main/java/com/thousandeyes/sdk/alerts/model/RuleDetail.java
 src/main/java/com/thousandeyes/sdk/alerts/model/RuleDetailUpdate.java
 src/main/java/com/thousandeyes/sdk/alerts/model/Rules.java
 src/main/java/com/thousandeyes/sdk/alerts/model/SelfLinks.java
+src/main/java/com/thousandeyes/sdk/alerts/model/SensitivityLevel.java
 src/main/java/com/thousandeyes/sdk/alerts/model/Severity.java
 src/main/java/com/thousandeyes/sdk/alerts/model/StartAlertMetrics.java
 src/main/java/com/thousandeyes/sdk/alerts/model/State.java

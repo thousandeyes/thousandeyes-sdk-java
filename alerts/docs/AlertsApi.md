@@ -1,13 +1,13 @@
 # AlertsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAlert**](AlertsApi.md#getAlert) | **GET** /v7/alerts/{alertId} | Retrieve alert details |
-| [**getAlertWithHttpInfo**](AlertsApi.md#getAlertWithHttpInfo) | **GET** /v7/alerts/{alertId} | Retrieve alert details |
-| [**getAlerts**](AlertsApi.md#getAlerts) | **GET** /v7/alerts | List active alerts |
-| [**getAlertsWithHttpInfo**](AlertsApi.md#getAlertsWithHttpInfo) | **GET** /v7/alerts | List active alerts |
+| [**getAlert**](AlertsApi.md#getAlert) | **GET** /alerts/{alertId} | Retrieve alert details |
+| [**getAlertWithHttpInfo**](AlertsApi.md#getAlertWithHttpInfo) | **GET** /alerts/{alertId} | Retrieve alert details |
+| [**getAlerts**](AlertsApi.md#getAlerts) | **GET** /alerts | List active alerts |
+| [**getAlertsWithHttpInfo**](AlertsApi.md#getAlertsWithHttpInfo) | **GET** /alerts | List active alerts |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.alerts.AlertsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -111,7 +111,7 @@ import com.thousandeyes.sdk.alerts.AlertsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -191,7 +191,7 @@ import com.thousandeyes.sdk.alerts.AlertsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -277,7 +277,7 @@ import com.thousandeyes.sdk.alerts.AlertsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

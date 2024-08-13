@@ -110,7 +110,7 @@ public class RealUserTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/test-results/real-user-tests/networks/filter";
+    String path = "/endpoint/test-results/real-user-tests/networks/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -174,7 +174,7 @@ public class RealUserTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/test-results/real-user-tests/filter";
+    String path = "/endpoint/test-results/real-user-tests/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -238,7 +238,7 @@ public class RealUserTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/test-results/real-user-tests/pages/filter";
+    String path = "/endpoint/test-results/real-user-tests/pages/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -304,7 +304,7 @@ public class RealUserTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/real-user-tests/{id}/pages/{pageId}"
+    String path = "/endpoint/test-results/real-user-tests/{id}/pages/{pageId}"
         .replace("{id}", urlEncode(id.toString()))
         .replace("{pageId}", urlEncode(pageId.toString()));
     requestBuilder.path(path);
@@ -360,7 +360,7 @@ public class RealUserTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/real-user-tests/{id}"
+    String path = "/endpoint/test-results/real-user-tests/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 

@@ -101,7 +101,7 @@ public class HttpServerInstantScheduledTestApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/tests/scheduled-tests/http-server/instant";
+    String path = "/endpoint/tests/scheduled-tests/http-server/instant";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

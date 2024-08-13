@@ -1,11 +1,11 @@
 # WebHttpServerTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestHttpServerResults**](WebHttpServerTestMetricsApi.md#getTestHttpServerResults) | **GET** /v7/test-results/{testId}/http-server | Get HTTP server test results |
-| [**getTestHttpServerResultsWithHttpInfo**](WebHttpServerTestMetricsApi.md#getTestHttpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/http-server | Get HTTP server test results |
+| [**getTestHttpServerResults**](WebHttpServerTestMetricsApi.md#getTestHttpServerResults) | **GET** /test-results/{testId}/http-server | Get HTTP server test results |
+| [**getTestHttpServerResultsWithHttpInfo**](WebHttpServerTestMetricsApi.md#getTestHttpServerResultsWithHttpInfo) | **GET** /test-results/{testId}/http-server | Get HTTP server test results |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.results.WebHttpServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.results.WebHttpServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

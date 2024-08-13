@@ -2,7 +2,7 @@
 
 Tags API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 The ThousandEyes Tags API provides a tagging system with key/value pairs. It allows you to tag assets within the ThousandEyes platform (such as agents, tests, or alert rules) with meaningful metadata. For example: `branch:sfo`, `branch:nyc`, and `team:netops`.
 
@@ -114,7 +114,7 @@ public class TagAssignmentApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -138,30 +138,30 @@ public class TagAssignmentApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*TagAssignmentApi* | [**assignTag**](docs/TagAssignmentApi.md#assignTag) | **POST** /v7/tags/{id}/assign | Assign tag to multiple objects
-*TagAssignmentApi* | [**assignTagWithHttpInfo**](docs/TagAssignmentApi.md#assignTagWithHttpInfo) | **POST** /v7/tags/{id}/assign | Assign tag to multiple objects
-*TagAssignmentApi* | [**assignTags**](docs/TagAssignmentApi.md#assignTags) | **POST** /v7/tags/assign | Assign multiple tags to multiple objects
-*TagAssignmentApi* | [**assignTagsWithHttpInfo**](docs/TagAssignmentApi.md#assignTagsWithHttpInfo) | **POST** /v7/tags/assign | Assign multiple tags to multiple objects
-*TagAssignmentApi* | [**unassignTag**](docs/TagAssignmentApi.md#unassignTag) | **POST** /v7/tags/{id}/unassign | Remove tag from multiple objects
-*TagAssignmentApi* | [**unassignTagWithHttpInfo**](docs/TagAssignmentApi.md#unassignTagWithHttpInfo) | **POST** /v7/tags/{id}/unassign | Remove tag from multiple objects
-*TagAssignmentApi* | [**unassignTags**](docs/TagAssignmentApi.md#unassignTags) | **POST** /v7/tags/unassign | Remove multiple tags from multiple objects
-*TagAssignmentApi* | [**unassignTagsWithHttpInfo**](docs/TagAssignmentApi.md#unassignTagsWithHttpInfo) | **POST** /v7/tags/unassign | Remove multiple tags from multiple objects
-*TagsApi* | [**createTag**](docs/TagsApi.md#createTag) | **POST** /v7/tags | Create tag
-*TagsApi* | [**createTagWithHttpInfo**](docs/TagsApi.md#createTagWithHttpInfo) | **POST** /v7/tags | Create tag
-*TagsApi* | [**createTags**](docs/TagsApi.md#createTags) | **POST** /v7/tags/bulk | Create multiple tags
-*TagsApi* | [**createTagsWithHttpInfo**](docs/TagsApi.md#createTagsWithHttpInfo) | **POST** /v7/tags/bulk | Create multiple tags
-*TagsApi* | [**deleteTag**](docs/TagsApi.md#deleteTag) | **DELETE** /v7/tags/{id} | Delete tag
-*TagsApi* | [**deleteTagWithHttpInfo**](docs/TagsApi.md#deleteTagWithHttpInfo) | **DELETE** /v7/tags/{id} | Delete tag
-*TagsApi* | [**getTag**](docs/TagsApi.md#getTag) | **GET** /v7/tags/{id} | Retrieve tag
-*TagsApi* | [**getTagWithHttpInfo**](docs/TagsApi.md#getTagWithHttpInfo) | **GET** /v7/tags/{id} | Retrieve tag
-*TagsApi* | [**getTags**](docs/TagsApi.md#getTags) | **GET** /v7/tags | List tags
-*TagsApi* | [**getTagsWithHttpInfo**](docs/TagsApi.md#getTagsWithHttpInfo) | **GET** /v7/tags | List tags
-*TagsApi* | [**updateTag**](docs/TagsApi.md#updateTag) | **PUT** /v7/tags/{id} | Update tag
-*TagsApi* | [**updateTagWithHttpInfo**](docs/TagsApi.md#updateTagWithHttpInfo) | **PUT** /v7/tags/{id} | Update tag
+*TagAssignmentApi* | [**assignTag**](docs/TagAssignmentApi.md#assignTag) | **POST** /tags/{id}/assign | Assign tag to multiple objects
+*TagAssignmentApi* | [**assignTagWithHttpInfo**](docs/TagAssignmentApi.md#assignTagWithHttpInfo) | **POST** /tags/{id}/assign | Assign tag to multiple objects
+*TagAssignmentApi* | [**assignTags**](docs/TagAssignmentApi.md#assignTags) | **POST** /tags/assign | Assign multiple tags to multiple objects
+*TagAssignmentApi* | [**assignTagsWithHttpInfo**](docs/TagAssignmentApi.md#assignTagsWithHttpInfo) | **POST** /tags/assign | Assign multiple tags to multiple objects
+*TagAssignmentApi* | [**unassignTag**](docs/TagAssignmentApi.md#unassignTag) | **POST** /tags/{id}/unassign | Remove tag from multiple objects
+*TagAssignmentApi* | [**unassignTagWithHttpInfo**](docs/TagAssignmentApi.md#unassignTagWithHttpInfo) | **POST** /tags/{id}/unassign | Remove tag from multiple objects
+*TagAssignmentApi* | [**unassignTags**](docs/TagAssignmentApi.md#unassignTags) | **POST** /tags/unassign | Remove multiple tags from multiple objects
+*TagAssignmentApi* | [**unassignTagsWithHttpInfo**](docs/TagAssignmentApi.md#unassignTagsWithHttpInfo) | **POST** /tags/unassign | Remove multiple tags from multiple objects
+*TagsApi* | [**createTag**](docs/TagsApi.md#createTag) | **POST** /tags | Create tag
+*TagsApi* | [**createTagWithHttpInfo**](docs/TagsApi.md#createTagWithHttpInfo) | **POST** /tags | Create tag
+*TagsApi* | [**createTags**](docs/TagsApi.md#createTags) | **POST** /tags/bulk | Create multiple tags
+*TagsApi* | [**createTagsWithHttpInfo**](docs/TagsApi.md#createTagsWithHttpInfo) | **POST** /tags/bulk | Create multiple tags
+*TagsApi* | [**deleteTag**](docs/TagsApi.md#deleteTag) | **DELETE** /tags/{id} | Delete tag
+*TagsApi* | [**deleteTagWithHttpInfo**](docs/TagsApi.md#deleteTagWithHttpInfo) | **DELETE** /tags/{id} | Delete tag
+*TagsApi* | [**getTag**](docs/TagsApi.md#getTag) | **GET** /tags/{id} | Retrieve tag
+*TagsApi* | [**getTagWithHttpInfo**](docs/TagsApi.md#getTagWithHttpInfo) | **GET** /tags/{id} | Retrieve tag
+*TagsApi* | [**getTags**](docs/TagsApi.md#getTags) | **GET** /tags | List tags
+*TagsApi* | [**getTagsWithHttpInfo**](docs/TagsApi.md#getTagsWithHttpInfo) | **GET** /tags | List tags
+*TagsApi* | [**updateTag**](docs/TagsApi.md#updateTag) | **PUT** /tags/{id} | Update tag
+*TagsApi* | [**updateTagWithHttpInfo**](docs/TagsApi.md#updateTagWithHttpInfo) | **PUT** /tags/{id} | Update tag
 
 
 <a id="documentation-for-authorization"></a>

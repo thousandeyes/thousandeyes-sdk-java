@@ -1,19 +1,19 @@
 # AgentToServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAgentToServerTest**](AgentToServerApi.md#createAgentToServerTest) | **POST** /v7/tests/agent-to-server | Create Agent to Server test |
-| [**createAgentToServerTestWithHttpInfo**](AgentToServerApi.md#createAgentToServerTestWithHttpInfo) | **POST** /v7/tests/agent-to-server | Create Agent to Server test |
-| [**deleteAgentToServerTest**](AgentToServerApi.md#deleteAgentToServerTest) | **DELETE** /v7/tests/agent-to-server/{testId} | Delete Agent to Server test |
-| [**deleteAgentToServerTestWithHttpInfo**](AgentToServerApi.md#deleteAgentToServerTestWithHttpInfo) | **DELETE** /v7/tests/agent-to-server/{testId} | Delete Agent to Server test |
-| [**getAgentToServerTest**](AgentToServerApi.md#getAgentToServerTest) | **GET** /v7/tests/agent-to-server/{testId} | Get Agent to Server test |
-| [**getAgentToServerTestWithHttpInfo**](AgentToServerApi.md#getAgentToServerTestWithHttpInfo) | **GET** /v7/tests/agent-to-server/{testId} | Get Agent to Server test |
-| [**getAgentToServerTests**](AgentToServerApi.md#getAgentToServerTests) | **GET** /v7/tests/agent-to-server | List Agent to Server tests |
-| [**getAgentToServerTestsWithHttpInfo**](AgentToServerApi.md#getAgentToServerTestsWithHttpInfo) | **GET** /v7/tests/agent-to-server | List Agent to Server tests |
-| [**updateAgentToServerTest**](AgentToServerApi.md#updateAgentToServerTest) | **PUT** /v7/tests/agent-to-server/{testId} | Update Agent to Server test |
-| [**updateAgentToServerTestWithHttpInfo**](AgentToServerApi.md#updateAgentToServerTestWithHttpInfo) | **PUT** /v7/tests/agent-to-server/{testId} | Update Agent to Server test |
+| [**createAgentToServerTest**](AgentToServerApi.md#createAgentToServerTest) | **POST** /tests/agent-to-server | Create Agent to Server test |
+| [**createAgentToServerTestWithHttpInfo**](AgentToServerApi.md#createAgentToServerTestWithHttpInfo) | **POST** /tests/agent-to-server | Create Agent to Server test |
+| [**deleteAgentToServerTest**](AgentToServerApi.md#deleteAgentToServerTest) | **DELETE** /tests/agent-to-server/{testId} | Delete Agent to Server test |
+| [**deleteAgentToServerTestWithHttpInfo**](AgentToServerApi.md#deleteAgentToServerTestWithHttpInfo) | **DELETE** /tests/agent-to-server/{testId} | Delete Agent to Server test |
+| [**getAgentToServerTest**](AgentToServerApi.md#getAgentToServerTest) | **GET** /tests/agent-to-server/{testId} | Get Agent to Server test |
+| [**getAgentToServerTestWithHttpInfo**](AgentToServerApi.md#getAgentToServerTestWithHttpInfo) | **GET** /tests/agent-to-server/{testId} | Get Agent to Server test |
+| [**getAgentToServerTests**](AgentToServerApi.md#getAgentToServerTests) | **GET** /tests/agent-to-server | List Agent to Server tests |
+| [**getAgentToServerTestsWithHttpInfo**](AgentToServerApi.md#getAgentToServerTestsWithHttpInfo) | **GET** /tests/agent-to-server | List Agent to Server tests |
+| [**updateAgentToServerTest**](AgentToServerApi.md#updateAgentToServerTest) | **PUT** /tests/agent-to-server/{testId} | Update Agent to Server test |
+| [**updateAgentToServerTestWithHttpInfo**](AgentToServerApi.md#updateAgentToServerTestWithHttpInfo) | **PUT** /tests/agent-to-server/{testId} | Update Agent to Server test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.AgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

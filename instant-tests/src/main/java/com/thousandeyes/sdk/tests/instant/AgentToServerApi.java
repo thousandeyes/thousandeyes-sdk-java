@@ -104,7 +104,7 @@ public class AgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/agent-to-server/instant";
+    String path = "/tests/agent-to-server/instant";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

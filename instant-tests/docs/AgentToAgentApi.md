@@ -1,11 +1,11 @@
 # AgentToAgentApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAgentToAgentInstantTest**](AgentToAgentApi.md#createAgentToAgentInstantTest) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test |
-| [**createAgentToAgentInstantTestWithHttpInfo**](AgentToAgentApi.md#createAgentToAgentInstantTestWithHttpInfo) | **POST** /v7/tests/agent-to-agent/instant | Create agent-to-agent instant test |
+| [**createAgentToAgentInstantTest**](AgentToAgentApi.md#createAgentToAgentInstantTest) | **POST** /tests/agent-to-agent/instant | Create agent-to-agent instant test |
+| [**createAgentToAgentInstantTestWithHttpInfo**](AgentToAgentApi.md#createAgentToAgentInstantTestWithHttpInfo) | **POST** /tests/agent-to-agent/instant | Create agent-to-agent instant test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.instant.AgentToAgentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.tests.instant.AgentToAgentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

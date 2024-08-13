@@ -1,6 +1,6 @@
 /*
  * Usage API
- *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View Billing` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View Billing` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API endpoints for detailed usage instructions and optional parameters. 
+ *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View organization usage` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View organization usage` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API endpoints for detailed usage instructions and optional parameters. 
  *
  * 
  *
@@ -98,7 +98,7 @@ public class QuotasApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/quotas/account-groups/assign";
+    String path = "/quotas/account-groups/assign";
     requestBuilder.path(path);
 
 
@@ -142,7 +142,7 @@ public class QuotasApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/quotas/assign";
+    String path = "/quotas/assign";
     requestBuilder.path(path);
 
 
@@ -184,7 +184,7 @@ public class QuotasApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/quotas";
+    String path = "/quotas";
     requestBuilder.path(path);
 
 
@@ -224,7 +224,7 @@ public class QuotasApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/quotas/account-groups/unassign";
+    String path = "/quotas/account-groups/unassign";
     requestBuilder.path(path);
 
 
@@ -266,7 +266,7 @@ public class QuotasApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/quotas/unassign";
+    String path = "/quotas/unassign";
     requestBuilder.path(path);
 
 

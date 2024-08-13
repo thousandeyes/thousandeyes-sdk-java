@@ -104,7 +104,7 @@ public class WebTransactionApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/web-transactions/instant";
+    String path = "/tests/web-transactions/instant";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

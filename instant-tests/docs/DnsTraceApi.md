@@ -1,11 +1,11 @@
 # DnsTraceApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDnsTraceInstantTest**](DnsTraceApi.md#createDnsTraceInstantTest) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test |
-| [**createDnsTraceInstantTestWithHttpInfo**](DnsTraceApi.md#createDnsTraceInstantTestWithHttpInfo) | **POST** /v7/tests/dns-trace/instant | Create DNS trace instant test |
+| [**createDnsTraceInstantTest**](DnsTraceApi.md#createDnsTraceInstantTest) | **POST** /tests/dns-trace/instant | Create DNS trace instant test |
+| [**createDnsTraceInstantTestWithHttpInfo**](DnsTraceApi.md#createDnsTraceInstantTestWithHttpInfo) | **POST** /tests/dns-trace/instant | Create DNS trace instant test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.instant.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.tests.instant.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

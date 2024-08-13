@@ -2,7 +2,7 @@
 
 Internet Insights API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 We are happy to announce the release of the Internet Insights API set. This limited release includes endpoints that:
 
@@ -112,7 +112,7 @@ public class CatalogProvidersApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -136,20 +136,20 @@ public class CatalogProvidersApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CatalogProvidersApi* | [**filterCatalogProviders**](docs/CatalogProvidersApi.md#filterCatalogProviders) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers
-*CatalogProvidersApi* | [**filterCatalogProvidersWithHttpInfo**](docs/CatalogProvidersApi.md#filterCatalogProvidersWithHttpInfo) | **POST** /v7/internet-insights/catalog/providers/filter | List catalog providers
-*CatalogProvidersApi* | [**getCatalogProvider**](docs/CatalogProvidersApi.md#getCatalogProvider) | **GET** /v7/internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider
-*CatalogProvidersApi* | [**getCatalogProviderWithHttpInfo**](docs/CatalogProvidersApi.md#getCatalogProviderWithHttpInfo) | **GET** /v7/internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider
-*OutagesApiPublicApi* | [**filterOutages**](docs/OutagesApiPublicApi.md#filterOutages) | **POST** /v7/internet-insights/outages/filter | List network and application outages
-*OutagesApiPublicApi* | [**filterOutagesWithHttpInfo**](docs/OutagesApiPublicApi.md#filterOutagesWithHttpInfo) | **POST** /v7/internet-insights/outages/filter | List network and application outages
-*OutagesApiPublicApi* | [**getAppOutage**](docs/OutagesApiPublicApi.md#getAppOutage) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage
-*OutagesApiPublicApi* | [**getAppOutageWithHttpInfo**](docs/OutagesApiPublicApi.md#getAppOutageWithHttpInfo) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage
-*OutagesApiPublicApi* | [**getNetworkOutage**](docs/OutagesApiPublicApi.md#getNetworkOutage) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage
-*OutagesApiPublicApi* | [**getNetworkOutageWithHttpInfo**](docs/OutagesApiPublicApi.md#getNetworkOutageWithHttpInfo) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage
+*CatalogProvidersApi* | [**filterCatalogProviders**](docs/CatalogProvidersApi.md#filterCatalogProviders) | **POST** /internet-insights/catalog/providers/filter | List catalog providers
+*CatalogProvidersApi* | [**filterCatalogProvidersWithHttpInfo**](docs/CatalogProvidersApi.md#filterCatalogProvidersWithHttpInfo) | **POST** /internet-insights/catalog/providers/filter | List catalog providers
+*CatalogProvidersApi* | [**getCatalogProvider**](docs/CatalogProvidersApi.md#getCatalogProvider) | **GET** /internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider
+*CatalogProvidersApi* | [**getCatalogProviderWithHttpInfo**](docs/CatalogProvidersApi.md#getCatalogProviderWithHttpInfo) | **GET** /internet-insights/catalog/providers/{providerId} | Retrieve a catalog provider
+*OutagesApiPublicApi* | [**filterOutages**](docs/OutagesApiPublicApi.md#filterOutages) | **POST** /internet-insights/outages/filter | List network and application outages
+*OutagesApiPublicApi* | [**filterOutagesWithHttpInfo**](docs/OutagesApiPublicApi.md#filterOutagesWithHttpInfo) | **POST** /internet-insights/outages/filter | List network and application outages
+*OutagesApiPublicApi* | [**getAppOutage**](docs/OutagesApiPublicApi.md#getAppOutage) | **GET** /internet-insights/outages/app/{outageId} | Retrieve application outage
+*OutagesApiPublicApi* | [**getAppOutageWithHttpInfo**](docs/OutagesApiPublicApi.md#getAppOutageWithHttpInfo) | **GET** /internet-insights/outages/app/{outageId} | Retrieve application outage
+*OutagesApiPublicApi* | [**getNetworkOutage**](docs/OutagesApiPublicApi.md#getNetworkOutage) | **GET** /internet-insights/outages/net/{outageId} | Retrieve network outage
+*OutagesApiPublicApi* | [**getNetworkOutageWithHttpInfo**](docs/OutagesApiPublicApi.md#getNetworkOutageWithHttpInfo) | **GET** /internet-insights/outages/net/{outageId} | Retrieve network outage
 
 
 <a id="documentation-for-authorization"></a>

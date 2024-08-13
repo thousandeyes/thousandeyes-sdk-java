@@ -107,7 +107,7 @@ public class LocalNetworkTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/test-results/local-networks/topologies/filter";
+    String path = "/endpoint/test-results/local-networks/topologies/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -161,7 +161,7 @@ public class LocalNetworkTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/local-networks";
+    String path = "/endpoint/test-results/local-networks";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -215,7 +215,7 @@ public class LocalNetworkTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/local-networks/topologies/{networkTopologyId}"
+    String path = "/endpoint/test-results/local-networks/topologies/{networkTopologyId}"
         .replace("{networkTopologyId}", urlEncode(networkTopologyId.toString()));
     requestBuilder.path(path);
 

@@ -108,7 +108,7 @@ public class WebFtpServerTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/ftp-server"
+    String path = "/test-results/{testId}/ftp-server"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

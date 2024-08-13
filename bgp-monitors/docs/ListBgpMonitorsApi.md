@@ -1,11 +1,11 @@
 # ListBgpMonitorsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getBgpMonitors**](ListBgpMonitorsApi.md#getBgpMonitors) | **GET** /v7/monitors | List BGP monitors |
-| [**getBgpMonitorsWithHttpInfo**](ListBgpMonitorsApi.md#getBgpMonitorsWithHttpInfo) | **GET** /v7/monitors | List BGP monitors |
+| [**getBgpMonitors**](ListBgpMonitorsApi.md#getBgpMonitors) | **GET** /monitors | List BGP monitors |
+| [**getBgpMonitorsWithHttpInfo**](ListBgpMonitorsApi.md#getBgpMonitorsWithHttpInfo) | **GET** /monitors | List BGP monitors |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.bgp.monitors.ListBgpMonitorsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -107,7 +107,7 @@ import com.thousandeyes.sdk.bgp.monitors.ListBgpMonitorsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

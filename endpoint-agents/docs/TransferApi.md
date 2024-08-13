@@ -1,13 +1,13 @@
 # TransferApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**transferEndpointAgent**](TransferApi.md#transferEndpointAgent) | **POST** /v7/endpoint/agents/{agentId}/transfer | Transfer endpoint agent |
-| [**transferEndpointAgentWithHttpInfo**](TransferApi.md#transferEndpointAgentWithHttpInfo) | **POST** /v7/endpoint/agents/{agentId}/transfer | Transfer endpoint agent |
-| [**transferEndpointAgents**](TransferApi.md#transferEndpointAgents) | **POST** /v7/endpoint/agents/transfer/bulk | Bulk transfer agents |
-| [**transferEndpointAgentsWithHttpInfo**](TransferApi.md#transferEndpointAgentsWithHttpInfo) | **POST** /v7/endpoint/agents/transfer/bulk | Bulk transfer agents |
+| [**transferEndpointAgent**](TransferApi.md#transferEndpointAgent) | **POST** /endpoint/agents/{agentId}/transfer | Transfer endpoint agent |
+| [**transferEndpointAgentWithHttpInfo**](TransferApi.md#transferEndpointAgentWithHttpInfo) | **POST** /endpoint/agents/{agentId}/transfer | Transfer endpoint agent |
+| [**transferEndpointAgents**](TransferApi.md#transferEndpointAgents) | **POST** /endpoint/agents/transfer/bulk | Bulk transfer agents |
+| [**transferEndpointAgentsWithHttpInfo**](TransferApi.md#transferEndpointAgentsWithHttpInfo) | **POST** /endpoint/agents/transfer/bulk | Bulk transfer agents |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.endpoint.agents.TransferApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -111,7 +111,7 @@ import com.thousandeyes.sdk.endpoint.agents.TransferApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -191,7 +191,7 @@ import com.thousandeyes.sdk.endpoint.agents.TransferApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -269,7 +269,7 @@ import com.thousandeyes.sdk.endpoint.agents.TransferApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

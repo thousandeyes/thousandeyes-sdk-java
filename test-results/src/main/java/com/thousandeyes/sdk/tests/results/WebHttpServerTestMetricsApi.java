@@ -111,7 +111,7 @@ public class WebHttpServerTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/http-server"
+    String path = "/test-results/{testId}/http-server"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

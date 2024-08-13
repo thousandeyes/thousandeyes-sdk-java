@@ -1,13 +1,13 @@
 # NetworkBgpTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestBgpResults**](NetworkBgpTestMetricsApi.md#getTestBgpResults) | **GET** /v7/test-results/{testId}/bgp | Get BGP test results |
-| [**getTestBgpResultsWithHttpInfo**](NetworkBgpTestMetricsApi.md#getTestBgpResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/bgp | Get BGP test results |
-| [**getTestBgpRoutesPrefixRoundResults**](NetworkBgpTestMetricsApi.md#getTestBgpRoutesPrefixRoundResults) | **GET** /v7/test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId} | Get BGP route test results by prefix |
-| [**getTestBgpRoutesPrefixRoundResultsWithHttpInfo**](NetworkBgpTestMetricsApi.md#getTestBgpRoutesPrefixRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId} | Get BGP route test results by prefix |
+| [**getTestBgpResults**](NetworkBgpTestMetricsApi.md#getTestBgpResults) | **GET** /test-results/{testId}/bgp | Get BGP test results |
+| [**getTestBgpResultsWithHttpInfo**](NetworkBgpTestMetricsApi.md#getTestBgpResultsWithHttpInfo) | **GET** /test-results/{testId}/bgp | Get BGP test results |
+| [**getTestBgpRoutesPrefixRoundResults**](NetworkBgpTestMetricsApi.md#getTestBgpRoutesPrefixRoundResults) | **GET** /test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId} | Get BGP route test results by prefix |
+| [**getTestBgpRoutesPrefixRoundResultsWithHttpInfo**](NetworkBgpTestMetricsApi.md#getTestBgpRoutesPrefixRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId} | Get BGP route test results by prefix |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.tests.results.NetworkBgpTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.results.NetworkBgpTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -213,7 +213,7 @@ import com.thousandeyes.sdk.tests.results.NetworkBgpTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -298,7 +298,7 @@ import com.thousandeyes.sdk.tests.results.NetworkBgpTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

@@ -2,7 +2,7 @@
 
 Credentials API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 Manage credentials for transaction tests using the Credentials API.
 
@@ -111,7 +111,7 @@ public class CredentialsApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -135,20 +135,20 @@ public class CredentialsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CredentialsApi* | [**createCredential**](docs/CredentialsApi.md#createCredential) | **POST** /v7/credentials | Create credential
-*CredentialsApi* | [**createCredentialWithHttpInfo**](docs/CredentialsApi.md#createCredentialWithHttpInfo) | **POST** /v7/credentials | Create credential
-*CredentialsApi* | [**deleteCredential**](docs/CredentialsApi.md#deleteCredential) | **DELETE** /v7/credentials/{id} | Delete credential
-*CredentialsApi* | [**deleteCredentialWithHttpInfo**](docs/CredentialsApi.md#deleteCredentialWithHttpInfo) | **DELETE** /v7/credentials/{id} | Delete credential
-*CredentialsApi* | [**getCredential**](docs/CredentialsApi.md#getCredential) | **GET** /v7/credentials/{id} | Retrieve credential
-*CredentialsApi* | [**getCredentialWithHttpInfo**](docs/CredentialsApi.md#getCredentialWithHttpInfo) | **GET** /v7/credentials/{id} | Retrieve credential
-*CredentialsApi* | [**getCredentials**](docs/CredentialsApi.md#getCredentials) | **GET** /v7/credentials | List credentials
-*CredentialsApi* | [**getCredentialsWithHttpInfo**](docs/CredentialsApi.md#getCredentialsWithHttpInfo) | **GET** /v7/credentials | List credentials
-*CredentialsApi* | [**updateCredential**](docs/CredentialsApi.md#updateCredential) | **PUT** /v7/credentials/{id} | Update credential
-*CredentialsApi* | [**updateCredentialWithHttpInfo**](docs/CredentialsApi.md#updateCredentialWithHttpInfo) | **PUT** /v7/credentials/{id} | Update credential
+*CredentialsApi* | [**createCredential**](docs/CredentialsApi.md#createCredential) | **POST** /credentials | Create credential
+*CredentialsApi* | [**createCredentialWithHttpInfo**](docs/CredentialsApi.md#createCredentialWithHttpInfo) | **POST** /credentials | Create credential
+*CredentialsApi* | [**deleteCredential**](docs/CredentialsApi.md#deleteCredential) | **DELETE** /credentials/{id} | Delete credential
+*CredentialsApi* | [**deleteCredentialWithHttpInfo**](docs/CredentialsApi.md#deleteCredentialWithHttpInfo) | **DELETE** /credentials/{id} | Delete credential
+*CredentialsApi* | [**getCredential**](docs/CredentialsApi.md#getCredential) | **GET** /credentials/{id} | Retrieve credential
+*CredentialsApi* | [**getCredentialWithHttpInfo**](docs/CredentialsApi.md#getCredentialWithHttpInfo) | **GET** /credentials/{id} | Retrieve credential
+*CredentialsApi* | [**getCredentials**](docs/CredentialsApi.md#getCredentials) | **GET** /credentials | List credentials
+*CredentialsApi* | [**getCredentialsWithHttpInfo**](docs/CredentialsApi.md#getCredentialsWithHttpInfo) | **GET** /credentials | List credentials
+*CredentialsApi* | [**updateCredential**](docs/CredentialsApi.md#updateCredential) | **PUT** /credentials/{id} | Update credential
+*CredentialsApi* | [**updateCredentialWithHttpInfo**](docs/CredentialsApi.md#updateCredentialWithHttpInfo) | **PUT** /credentials/{id} | Update credential
 
 
 <a id="documentation-for-authorization"></a>

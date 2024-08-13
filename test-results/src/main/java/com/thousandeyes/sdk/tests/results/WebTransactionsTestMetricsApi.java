@@ -120,7 +120,7 @@ public class WebTransactionsTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId}"
+    String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId}"
         .replace("{testId}", urlEncode(testId.toString()))
         .replace("{agentId}", urlEncode(agentId.toString()))
         .replace("{roundId}", urlEncode(roundId.toString()))
@@ -190,7 +190,7 @@ public class WebTransactionsTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}"
+    String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}"
         .replace("{testId}", urlEncode(testId.toString()))
         .replace("{agentId}", urlEncode(agentId.toString()))
         .replace("{roundId}", urlEncode(roundId.toString()));
@@ -255,7 +255,7 @@ public class WebTransactionsTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/web-transactions"
+    String path = "/test-results/{testId}/web-transactions"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

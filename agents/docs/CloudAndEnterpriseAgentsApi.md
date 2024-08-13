@@ -1,17 +1,17 @@
 # CloudAndEnterpriseAgentsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteAgent**](CloudAndEnterpriseAgentsApi.md#deleteAgent) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent |
-| [**deleteAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#deleteAgentWithHttpInfo) | **DELETE** /v7/agents/{agentId} | Delete Enterprise Agent |
-| [**getAgent**](CloudAndEnterpriseAgentsApi.md#getAgent) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent |
-| [**getAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#getAgentWithHttpInfo) | **GET** /v7/agents/{agentId} | Retrieve Cloud and Enterprise Agent |
-| [**getAgents**](CloudAndEnterpriseAgentsApi.md#getAgents) | **GET** /v7/agents | List Cloud and Enterprise Agents |
-| [**getAgentsWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#getAgentsWithHttpInfo) | **GET** /v7/agents | List Cloud and Enterprise Agents |
-| [**updateAgent**](CloudAndEnterpriseAgentsApi.md#updateAgent) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent |
-| [**updateAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#updateAgentWithHttpInfo) | **PUT** /v7/agents/{agentId} | Update Enterprise Agent |
+| [**deleteAgent**](CloudAndEnterpriseAgentsApi.md#deleteAgent) | **DELETE** /agents/{agentId} | Delete Enterprise Agent |
+| [**deleteAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#deleteAgentWithHttpInfo) | **DELETE** /agents/{agentId} | Delete Enterprise Agent |
+| [**getAgent**](CloudAndEnterpriseAgentsApi.md#getAgent) | **GET** /agents/{agentId} | Retrieve Cloud and Enterprise Agent |
+| [**getAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#getAgentWithHttpInfo) | **GET** /agents/{agentId} | Retrieve Cloud and Enterprise Agent |
+| [**getAgents**](CloudAndEnterpriseAgentsApi.md#getAgents) | **GET** /agents | List Cloud and Enterprise Agents |
+| [**getAgentsWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#getAgentsWithHttpInfo) | **GET** /agents | List Cloud and Enterprise Agents |
+| [**updateAgent**](CloudAndEnterpriseAgentsApi.md#updateAgent) | **PUT** /agents/{agentId} | Update Enterprise Agent |
+| [**updateAgentWithHttpInfo**](CloudAndEnterpriseAgentsApi.md#updateAgentWithHttpInfo) | **PUT** /agents/{agentId} | Update Enterprise Agent |
 
 
 
@@ -37,7 +37,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -116,7 +116,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -197,7 +197,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -279,7 +279,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -363,7 +363,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -445,7 +445,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -529,7 +529,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -614,7 +614,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

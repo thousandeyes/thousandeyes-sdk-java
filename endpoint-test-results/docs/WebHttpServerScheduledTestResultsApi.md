@@ -1,13 +1,13 @@
 # WebHttpServerScheduledTestResultsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getHttpServerScheduledTestResults**](WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResults) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results |
-| [**getHttpServerScheduledTestResultsWithHttpInfo**](WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results |
-| [**getMultiTestFilteredHttpServerScheduledTestResults**](WebHttpServerScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResults) | **POST** /v7/endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results |
-| [**getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo**](WebHttpServerScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo) | **POST** /v7/endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results |
+| [**getHttpServerScheduledTestResults**](WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results |
+| [**getHttpServerScheduledTestResultsWithHttpInfo**](WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results |
+| [**getMultiTestFilteredHttpServerScheduledTestResults**](WebHttpServerScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResults) | **POST** /endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results |
+| [**getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo**](WebHttpServerScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.WebHttpServerScheduledTestRes
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.WebHttpServerScheduledTestRes
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -213,7 +213,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.WebHttpServerScheduledTestRes
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -303,7 +303,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.WebHttpServerScheduledTestRes
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

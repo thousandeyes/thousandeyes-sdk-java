@@ -114,7 +114,7 @@ public class NetworkTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/network"
+    String path = "/test-results/{testId}/network"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -188,7 +188,7 @@ public class NetworkTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId}"
+    String path = "/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId}"
         .replace("{testId}", urlEncode(testId.toString()))
         .replace("{agentId}", urlEncode(agentId.toString()))
         .replace("{roundId}", urlEncode(roundId.toString()));
@@ -256,7 +256,7 @@ public class NetworkTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/path-vis"
+    String path = "/test-results/{testId}/path-vis"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

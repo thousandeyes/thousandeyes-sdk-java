@@ -102,7 +102,7 @@ public class CloudAndEnterpriseAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/agents/{agentId}"
+    String path = "/agents/{agentId}"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 
@@ -159,7 +159,7 @@ public class CloudAndEnterpriseAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/agents/{agentId}"
+    String path = "/agents/{agentId}"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 
@@ -213,7 +213,7 @@ public class CloudAndEnterpriseAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/agents";
+    String path = "/agents";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -277,7 +277,7 @@ public class CloudAndEnterpriseAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/agents/{agentId}"
+    String path = "/agents/{agentId}"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 

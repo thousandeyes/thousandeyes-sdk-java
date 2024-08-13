@@ -1,11 +1,11 @@
 # WebFtpServerTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestFtpServerResults**](WebFtpServerTestMetricsApi.md#getTestFtpServerResults) | **GET** /v7/test-results/{testId}/ftp-server | Get FTP server test results |
-| [**getTestFtpServerResultsWithHttpInfo**](WebFtpServerTestMetricsApi.md#getTestFtpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/ftp-server | Get FTP server test results |
+| [**getTestFtpServerResults**](WebFtpServerTestMetricsApi.md#getTestFtpServerResults) | **GET** /test-results/{testId}/ftp-server | Get FTP server test results |
+| [**getTestFtpServerResultsWithHttpInfo**](WebFtpServerTestMetricsApi.md#getTestFtpServerResultsWithHttpInfo) | **GET** /test-results/{testId}/ftp-server | Get FTP server test results |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.results.WebFtpServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -120,7 +120,7 @@ import com.thousandeyes.sdk.tests.results.WebFtpServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

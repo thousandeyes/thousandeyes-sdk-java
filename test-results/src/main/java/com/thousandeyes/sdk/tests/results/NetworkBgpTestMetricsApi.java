@@ -109,7 +109,7 @@ public class NetworkBgpTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/bgp"
+    String path = "/test-results/{testId}/bgp"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -180,7 +180,7 @@ public class NetworkBgpTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId}"
+    String path = "/test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId}"
         .replace("{testId}", urlEncode(testId.toString()))
         .replace("{prefixId}", urlEncode(prefixId.toString()))
         .replace("{roundId}", urlEncode(roundId.toString()));

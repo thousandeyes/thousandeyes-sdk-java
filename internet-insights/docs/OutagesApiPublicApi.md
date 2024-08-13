@@ -1,15 +1,15 @@
 # OutagesApiPublicApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**filterOutages**](OutagesApiPublicApi.md#filterOutages) | **POST** /v7/internet-insights/outages/filter | List network and application outages |
-| [**filterOutagesWithHttpInfo**](OutagesApiPublicApi.md#filterOutagesWithHttpInfo) | **POST** /v7/internet-insights/outages/filter | List network and application outages |
-| [**getAppOutage**](OutagesApiPublicApi.md#getAppOutage) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage |
-| [**getAppOutageWithHttpInfo**](OutagesApiPublicApi.md#getAppOutageWithHttpInfo) | **GET** /v7/internet-insights/outages/app/{outageId} | Retrieve application outage |
-| [**getNetworkOutage**](OutagesApiPublicApi.md#getNetworkOutage) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage |
-| [**getNetworkOutageWithHttpInfo**](OutagesApiPublicApi.md#getNetworkOutageWithHttpInfo) | **GET** /v7/internet-insights/outages/net/{outageId} | Retrieve network outage |
+| [**filterOutages**](OutagesApiPublicApi.md#filterOutages) | **POST** /internet-insights/outages/filter | List network and application outages |
+| [**filterOutagesWithHttpInfo**](OutagesApiPublicApi.md#filterOutagesWithHttpInfo) | **POST** /internet-insights/outages/filter | List network and application outages |
+| [**getAppOutage**](OutagesApiPublicApi.md#getAppOutage) | **GET** /internet-insights/outages/app/{outageId} | Retrieve application outage |
+| [**getAppOutageWithHttpInfo**](OutagesApiPublicApi.md#getAppOutageWithHttpInfo) | **GET** /internet-insights/outages/app/{outageId} | Retrieve application outage |
+| [**getNetworkOutage**](OutagesApiPublicApi.md#getNetworkOutage) | **GET** /internet-insights/outages/net/{outageId} | Retrieve network outage |
+| [**getNetworkOutageWithHttpInfo**](OutagesApiPublicApi.md#getNetworkOutageWithHttpInfo) | **GET** /internet-insights/outages/net/{outageId} | Retrieve network outage |
 
 
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.internet.insights.OutagesApiPublicApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -116,7 +116,7 @@ import com.thousandeyes.sdk.internet.insights.OutagesApiPublicApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -199,7 +199,7 @@ import com.thousandeyes.sdk.internet.insights.OutagesApiPublicApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -280,7 +280,7 @@ import com.thousandeyes.sdk.internet.insights.OutagesApiPublicApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -363,7 +363,7 @@ import com.thousandeyes.sdk.internet.insights.OutagesApiPublicApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -444,7 +444,7 @@ import com.thousandeyes.sdk.internet.insights.OutagesApiPublicApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

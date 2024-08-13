@@ -1,15 +1,15 @@
 # WebTransactionsTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestWebTransactionAgentRoundPageResults**](WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundPageResults) | **GET** /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page |
-| [**getTestWebTransactionAgentRoundPageResultsWithHttpInfo**](WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundPageResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page |
-| [**getTestWebTransactionAgentRoundResults**](WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundResults) | **GET** /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round |
-| [**getTestWebTransactionAgentRoundResultsWithHttpInfo**](WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round |
-| [**getTestWebTransactionResults**](WebTransactionsTestMetricsApi.md#getTestWebTransactionResults) | **GET** /v7/test-results/{testId}/web-transactions | Get web transactions test results |
-| [**getTestWebTransactionResultsWithHttpInfo**](WebTransactionsTestMetricsApi.md#getTestWebTransactionResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/web-transactions | Get web transactions test results |
+| [**getTestWebTransactionAgentRoundPageResults**](WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundPageResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page |
+| [**getTestWebTransactionAgentRoundPageResultsWithHttpInfo**](WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundPageResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page |
+| [**getTestWebTransactionAgentRoundResults**](WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round |
+| [**getTestWebTransactionAgentRoundResultsWithHttpInfo**](WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round |
+| [**getTestWebTransactionResults**](WebTransactionsTestMetricsApi.md#getTestWebTransactionResults) | **GET** /test-results/{testId}/web-transactions | Get web transactions test results |
+| [**getTestWebTransactionResultsWithHttpInfo**](WebTransactionsTestMetricsApi.md#getTestWebTransactionResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions | Get web transactions test results |
 
 
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.tests.results.WebTransactionsTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.results.WebTransactionsTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -211,7 +211,7 @@ import com.thousandeyes.sdk.tests.results.WebTransactionsTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -296,7 +296,7 @@ import com.thousandeyes.sdk.tests.results.WebTransactionsTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -383,7 +383,7 @@ import com.thousandeyes.sdk.tests.results.WebTransactionsTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -472,7 +472,7 @@ import com.thousandeyes.sdk.tests.results.WebTransactionsTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

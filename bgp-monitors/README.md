@@ -2,7 +2,7 @@
 
 BGP Monitors API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 
 Retrieve information about BGP monitors available to your ThousandEyes account. ThousandEyes ingests BGP routing data from dozens of global BGP collectors and automatically integrates that visibility as a configurable layer under service, network, and path visualization layers.
@@ -107,7 +107,7 @@ public class ListBgpMonitorsApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -130,12 +130,12 @@ public class ListBgpMonitorsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ListBgpMonitorsApi* | [**getBgpMonitors**](docs/ListBgpMonitorsApi.md#getBgpMonitors) | **GET** /v7/monitors | List BGP monitors
-*ListBgpMonitorsApi* | [**getBgpMonitorsWithHttpInfo**](docs/ListBgpMonitorsApi.md#getBgpMonitorsWithHttpInfo) | **GET** /v7/monitors | List BGP monitors
+*ListBgpMonitorsApi* | [**getBgpMonitors**](docs/ListBgpMonitorsApi.md#getBgpMonitors) | **GET** /monitors | List BGP monitors
+*ListBgpMonitorsApi* | [**getBgpMonitorsWithHttpInfo**](docs/ListBgpMonitorsApi.md#getBgpMonitorsWithHttpInfo) | **GET** /monitors | List BGP monitors
 
 
 <a id="documentation-for-authorization"></a>

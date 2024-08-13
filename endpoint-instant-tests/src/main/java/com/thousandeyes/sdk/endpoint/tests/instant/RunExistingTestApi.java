@@ -95,7 +95,7 @@ public class RunExistingTestApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/tests/scheduled-tests/{testId}/run"
+    String path = "/endpoint/tests/scheduled-tests/{testId}/run"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

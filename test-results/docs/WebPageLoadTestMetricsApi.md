@@ -1,13 +1,13 @@
 # WebPageLoadTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestPageLoadAgentRoundResults**](WebPageLoadTestMetricsApi.md#getTestPageLoadAgentRoundResults) | **GET** /v7/test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round |
-| [**getTestPageLoadAgentRoundResultsWithHttpInfo**](WebPageLoadTestMetricsApi.md#getTestPageLoadAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round |
-| [**getTestPageLoadResults**](WebPageLoadTestMetricsApi.md#getTestPageLoadResults) | **GET** /v7/test-results/{testId}/page-load | Get page load server test results |
-| [**getTestPageLoadResultsWithHttpInfo**](WebPageLoadTestMetricsApi.md#getTestPageLoadResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/page-load | Get page load server test results |
+| [**getTestPageLoadAgentRoundResults**](WebPageLoadTestMetricsApi.md#getTestPageLoadAgentRoundResults) | **GET** /test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round |
+| [**getTestPageLoadAgentRoundResultsWithHttpInfo**](WebPageLoadTestMetricsApi.md#getTestPageLoadAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round |
+| [**getTestPageLoadResults**](WebPageLoadTestMetricsApi.md#getTestPageLoadResults) | **GET** /test-results/{testId}/page-load | Get page load server test results |
+| [**getTestPageLoadResultsWithHttpInfo**](WebPageLoadTestMetricsApi.md#getTestPageLoadResultsWithHttpInfo) | **GET** /test-results/{testId}/page-load | Get page load server test results |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.tests.results.WebPageLoadTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -118,7 +118,7 @@ import com.thousandeyes.sdk.tests.results.WebPageLoadTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -205,7 +205,7 @@ import com.thousandeyes.sdk.tests.results.WebPageLoadTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -294,7 +294,7 @@ import com.thousandeyes.sdk.tests.results.WebPageLoadTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

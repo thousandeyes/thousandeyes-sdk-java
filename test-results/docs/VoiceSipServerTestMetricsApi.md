@@ -1,11 +1,11 @@
 # VoiceSipServerTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestSipServerResults**](VoiceSipServerTestMetricsApi.md#getTestSipServerResults) | **GET** /v7/test-results/{testId}/sip-server | Get SIP server test results |
-| [**getTestSipServerResultsWithHttpInfo**](VoiceSipServerTestMetricsApi.md#getTestSipServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/sip-server | Get SIP server test results |
+| [**getTestSipServerResults**](VoiceSipServerTestMetricsApi.md#getTestSipServerResults) | **GET** /test-results/{testId}/sip-server | Get SIP server test results |
+| [**getTestSipServerResultsWithHttpInfo**](VoiceSipServerTestMetricsApi.md#getTestSipServerResultsWithHttpInfo) | **GET** /test-results/{testId}/sip-server | Get SIP server test results |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.results.VoiceSipServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -120,7 +120,7 @@ import com.thousandeyes.sdk.tests.results.VoiceSipServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

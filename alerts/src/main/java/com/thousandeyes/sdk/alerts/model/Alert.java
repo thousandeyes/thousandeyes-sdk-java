@@ -578,7 +578,7 @@ public class Alert {
 
 
    /**
-   * Unique ID of the rule
+   * Unique ID of the rule.
    * @return alertRuleId
   **/
   @jakarta.annotation.Nullable

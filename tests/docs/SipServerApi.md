@@ -1,19 +1,19 @@
 # SipServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createSipServerTest**](SipServerApi.md#createSipServerTest) | **POST** /v7/tests/sip-server | Create SIP Server test |
-| [**createSipServerTestWithHttpInfo**](SipServerApi.md#createSipServerTestWithHttpInfo) | **POST** /v7/tests/sip-server | Create SIP Server test |
-| [**deleteSipServerTest**](SipServerApi.md#deleteSipServerTest) | **DELETE** /v7/tests/sip-server/{testId} | Delete SIP Server test |
-| [**deleteSipServerTestWithHttpInfo**](SipServerApi.md#deleteSipServerTestWithHttpInfo) | **DELETE** /v7/tests/sip-server/{testId} | Delete SIP Server test |
-| [**getSipServerTest**](SipServerApi.md#getSipServerTest) | **GET** /v7/tests/sip-server/{testId} | Get SIP Server test |
-| [**getSipServerTestWithHttpInfo**](SipServerApi.md#getSipServerTestWithHttpInfo) | **GET** /v7/tests/sip-server/{testId} | Get SIP Server test |
-| [**getSipServerTests**](SipServerApi.md#getSipServerTests) | **GET** /v7/tests/sip-server | List SIP Server tests |
-| [**getSipServerTestsWithHttpInfo**](SipServerApi.md#getSipServerTestsWithHttpInfo) | **GET** /v7/tests/sip-server | List SIP Server tests |
-| [**updateSipServerTest**](SipServerApi.md#updateSipServerTest) | **PUT** /v7/tests/sip-server/{testId} | Update SIP Server test |
-| [**updateSipServerTestWithHttpInfo**](SipServerApi.md#updateSipServerTestWithHttpInfo) | **PUT** /v7/tests/sip-server/{testId} | Update SIP Server test |
+| [**createSipServerTest**](SipServerApi.md#createSipServerTest) | **POST** /tests/sip-server | Create SIP Server test |
+| [**createSipServerTestWithHttpInfo**](SipServerApi.md#createSipServerTestWithHttpInfo) | **POST** /tests/sip-server | Create SIP Server test |
+| [**deleteSipServerTest**](SipServerApi.md#deleteSipServerTest) | **DELETE** /tests/sip-server/{testId} | Delete SIP Server test |
+| [**deleteSipServerTestWithHttpInfo**](SipServerApi.md#deleteSipServerTestWithHttpInfo) | **DELETE** /tests/sip-server/{testId} | Delete SIP Server test |
+| [**getSipServerTest**](SipServerApi.md#getSipServerTest) | **GET** /tests/sip-server/{testId} | Get SIP Server test |
+| [**getSipServerTestWithHttpInfo**](SipServerApi.md#getSipServerTestWithHttpInfo) | **GET** /tests/sip-server/{testId} | Get SIP Server test |
+| [**getSipServerTests**](SipServerApi.md#getSipServerTests) | **GET** /tests/sip-server | List SIP Server tests |
+| [**getSipServerTestsWithHttpInfo**](SipServerApi.md#getSipServerTestsWithHttpInfo) | **GET** /tests/sip-server | List SIP Server tests |
+| [**updateSipServerTest**](SipServerApi.md#updateSipServerTest) | **PUT** /tests/sip-server/{testId} | Update SIP Server test |
+| [**updateSipServerTestWithHttpInfo**](SipServerApi.md#updateSipServerTestWithHttpInfo) | **PUT** /tests/sip-server/{testId} | Update SIP Server test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -284,7 +284,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -363,7 +363,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -445,7 +445,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -529,7 +529,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -607,7 +607,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -687,7 +687,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -772,7 +772,7 @@ import com.thousandeyes.sdk.tests.SipServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

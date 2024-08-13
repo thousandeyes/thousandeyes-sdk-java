@@ -1,19 +1,19 @@
 # ManageLabelsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createEndpointLabel**](ManageLabelsApi.md#createEndpointLabel) | **POST** /v7/endpoint/labels | Create label |
-| [**createEndpointLabelWithHttpInfo**](ManageLabelsApi.md#createEndpointLabelWithHttpInfo) | **POST** /v7/endpoint/labels | Create label |
-| [**deleteEndpointLabel**](ManageLabelsApi.md#deleteEndpointLabel) | **DELETE** /v7/endpoint/labels/{id} | Delete label |
-| [**deleteEndpointLabelWithHttpInfo**](ManageLabelsApi.md#deleteEndpointLabelWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Delete label |
-| [**getEndpointLabel**](ManageLabelsApi.md#getEndpointLabel) | **GET** /v7/endpoint/labels/{id} | Retrieve label |
-| [**getEndpointLabelWithHttpInfo**](ManageLabelsApi.md#getEndpointLabelWithHttpInfo) | **GET** /v7/endpoint/labels/{id} | Retrieve label |
-| [**getEndpointLabels**](ManageLabelsApi.md#getEndpointLabels) | **GET** /v7/endpoint/labels | List labels |
-| [**getEndpointLabelsWithHttpInfo**](ManageLabelsApi.md#getEndpointLabelsWithHttpInfo) | **GET** /v7/endpoint/labels | List labels |
-| [**updateEndpointLabel**](ManageLabelsApi.md#updateEndpointLabel) | **PATCH** /v7/endpoint/labels/{id} | Update label |
-| [**updateEndpointLabelWithHttpInfo**](ManageLabelsApi.md#updateEndpointLabelWithHttpInfo) | **PATCH** /v7/endpoint/labels/{id} | Update label |
+| [**createEndpointLabel**](ManageLabelsApi.md#createEndpointLabel) | **POST** /endpoint/labels | Create label |
+| [**createEndpointLabelWithHttpInfo**](ManageLabelsApi.md#createEndpointLabelWithHttpInfo) | **POST** /endpoint/labels | Create label |
+| [**deleteEndpointLabel**](ManageLabelsApi.md#deleteEndpointLabel) | **DELETE** /endpoint/labels/{id} | Delete label |
+| [**deleteEndpointLabelWithHttpInfo**](ManageLabelsApi.md#deleteEndpointLabelWithHttpInfo) | **DELETE** /endpoint/labels/{id} | Delete label |
+| [**getEndpointLabel**](ManageLabelsApi.md#getEndpointLabel) | **GET** /endpoint/labels/{id} | Retrieve label |
+| [**getEndpointLabelWithHttpInfo**](ManageLabelsApi.md#getEndpointLabelWithHttpInfo) | **GET** /endpoint/labels/{id} | Retrieve label |
+| [**getEndpointLabels**](ManageLabelsApi.md#getEndpointLabels) | **GET** /endpoint/labels | List labels |
+| [**getEndpointLabelsWithHttpInfo**](ManageLabelsApi.md#getEndpointLabelsWithHttpInfo) | **GET** /endpoint/labels | List labels |
+| [**updateEndpointLabel**](ManageLabelsApi.md#updateEndpointLabel) | **PATCH** /endpoint/labels/{id} | Update label |
+| [**updateEndpointLabelWithHttpInfo**](ManageLabelsApi.md#updateEndpointLabelWithHttpInfo) | **PATCH** /endpoint/labels/{id} | Update label |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -116,7 +116,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -195,7 +195,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -271,7 +271,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -349,7 +349,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -428,7 +428,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -509,7 +509,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -589,7 +589,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -671,7 +671,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -751,7 +751,7 @@ import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

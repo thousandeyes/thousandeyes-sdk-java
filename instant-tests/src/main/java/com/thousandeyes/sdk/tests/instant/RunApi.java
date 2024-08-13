@@ -95,7 +95,7 @@ public class RunApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/{testId}/run"
+    String path = "/tests/{testId}/run"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

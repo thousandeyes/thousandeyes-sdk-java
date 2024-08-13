@@ -100,7 +100,7 @@ public class ManageLabelsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/labels";
+    String path = "/endpoint/labels";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -154,7 +154,7 @@ public class ManageLabelsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/endpoint/labels/{id}"
+    String path = "/endpoint/labels/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -211,7 +211,7 @@ public class ManageLabelsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/labels/{id}"
+    String path = "/endpoint/labels/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -267,7 +267,7 @@ public class ManageLabelsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/labels";
+    String path = "/endpoint/labels";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -326,7 +326,7 @@ public class ManageLabelsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PATCH");
 
-    String path = "/v7/endpoint/labels/{id}"
+    String path = "/endpoint/labels/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 

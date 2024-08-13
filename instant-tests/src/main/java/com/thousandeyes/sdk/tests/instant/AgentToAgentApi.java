@@ -104,7 +104,7 @@ public class AgentToAgentApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/agent-to-agent/instant";
+    String path = "/tests/agent-to-agent/instant";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

@@ -1,13 +1,13 @@
 # DnsServerTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestDnsServerResult**](DnsServerTestMetricsApi.md#getTestDnsServerResult) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server |
-| [**getTestDnsServerResultWithHttpInfo**](DnsServerTestMetricsApi.md#getTestDnsServerResultWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server |
-| [**getTestDnsServersResults**](DnsServerTestMetricsApi.md#getTestDnsServersResults) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results |
-| [**getTestDnsServersResultsWithHttpInfo**](DnsServerTestMetricsApi.md#getTestDnsServersResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results |
+| [**getTestDnsServerResult**](DnsServerTestMetricsApi.md#getTestDnsServerResult) | **GET** /test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server |
+| [**getTestDnsServerResultWithHttpInfo**](DnsServerTestMetricsApi.md#getTestDnsServerResultWithHttpInfo) | **GET** /test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server |
+| [**getTestDnsServersResults**](DnsServerTestMetricsApi.md#getTestDnsServersResults) | **GET** /test-results/{testId}/dns-server | Get DNS server test results |
+| [**getTestDnsServersResultsWithHttpInfo**](DnsServerTestMetricsApi.md#getTestDnsServersResultsWithHttpInfo) | **GET** /test-results/{testId}/dns-server | Get DNS server test results |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.tests.results.DnsServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -124,7 +124,7 @@ import com.thousandeyes.sdk.tests.results.DnsServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -217,7 +217,7 @@ import com.thousandeyes.sdk.tests.results.DnsServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -306,7 +306,7 @@ import com.thousandeyes.sdk.tests.results.DnsServerTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

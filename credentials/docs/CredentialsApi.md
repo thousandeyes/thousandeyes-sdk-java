@@ -1,19 +1,19 @@
 # CredentialsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createCredential**](CredentialsApi.md#createCredential) | **POST** /v7/credentials | Create credential |
-| [**createCredentialWithHttpInfo**](CredentialsApi.md#createCredentialWithHttpInfo) | **POST** /v7/credentials | Create credential |
-| [**deleteCredential**](CredentialsApi.md#deleteCredential) | **DELETE** /v7/credentials/{id} | Delete credential |
-| [**deleteCredentialWithHttpInfo**](CredentialsApi.md#deleteCredentialWithHttpInfo) | **DELETE** /v7/credentials/{id} | Delete credential |
-| [**getCredential**](CredentialsApi.md#getCredential) | **GET** /v7/credentials/{id} | Retrieve credential |
-| [**getCredentialWithHttpInfo**](CredentialsApi.md#getCredentialWithHttpInfo) | **GET** /v7/credentials/{id} | Retrieve credential |
-| [**getCredentials**](CredentialsApi.md#getCredentials) | **GET** /v7/credentials | List credentials |
-| [**getCredentialsWithHttpInfo**](CredentialsApi.md#getCredentialsWithHttpInfo) | **GET** /v7/credentials | List credentials |
-| [**updateCredential**](CredentialsApi.md#updateCredential) | **PUT** /v7/credentials/{id} | Update credential |
-| [**updateCredentialWithHttpInfo**](CredentialsApi.md#updateCredentialWithHttpInfo) | **PUT** /v7/credentials/{id} | Update credential |
+| [**createCredential**](CredentialsApi.md#createCredential) | **POST** /credentials | Create credential |
+| [**createCredentialWithHttpInfo**](CredentialsApi.md#createCredentialWithHttpInfo) | **POST** /credentials | Create credential |
+| [**deleteCredential**](CredentialsApi.md#deleteCredential) | **DELETE** /credentials/{id} | Delete credential |
+| [**deleteCredentialWithHttpInfo**](CredentialsApi.md#deleteCredentialWithHttpInfo) | **DELETE** /credentials/{id} | Delete credential |
+| [**getCredential**](CredentialsApi.md#getCredential) | **GET** /credentials/{id} | Retrieve credential |
+| [**getCredentialWithHttpInfo**](CredentialsApi.md#getCredentialWithHttpInfo) | **GET** /credentials/{id} | Retrieve credential |
+| [**getCredentials**](CredentialsApi.md#getCredentials) | **GET** /credentials | List credentials |
+| [**getCredentialsWithHttpInfo**](CredentialsApi.md#getCredentialsWithHttpInfo) | **GET** /credentials | List credentials |
+| [**updateCredential**](CredentialsApi.md#updateCredential) | **PUT** /credentials/{id} | Update credential |
+| [**updateCredentialWithHttpInfo**](CredentialsApi.md#updateCredentialWithHttpInfo) | **PUT** /credentials/{id} | Update credential |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -118,7 +118,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -199,7 +199,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -276,7 +276,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -355,7 +355,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -434,7 +434,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -515,7 +515,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -591,7 +591,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -669,7 +669,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -750,7 +750,7 @@ import com.thousandeyes.sdk.credentials.CredentialsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

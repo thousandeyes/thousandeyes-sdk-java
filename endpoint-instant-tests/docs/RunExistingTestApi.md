@@ -1,11 +1,11 @@
 # RunExistingTestApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**runEndpointScheduledInstantTest**](RunExistingTestApi.md#runEndpointScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test |
-| [**runEndpointScheduledInstantTestWithHttpInfo**](RunExistingTestApi.md#runEndpointScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test |
+| [**runEndpointScheduledInstantTest**](RunExistingTestApi.md#runEndpointScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test |
+| [**runEndpointScheduledInstantTestWithHttpInfo**](RunExistingTestApi.md#runEndpointScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.endpoint.tests.instant.RunExistingTestApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -110,7 +110,7 @@ import com.thousandeyes.sdk.endpoint.tests.instant.RunExistingTestApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

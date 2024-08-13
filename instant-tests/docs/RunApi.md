@@ -1,11 +1,11 @@
 # RunApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**runInstantTest**](RunApi.md#runInstantTest) | **POST** /v7/tests/{testId}/run | Run instant test |
-| [**runInstantTestWithHttpInfo**](RunApi.md#runInstantTestWithHttpInfo) | **POST** /v7/tests/{testId}/run | Run instant test |
+| [**runInstantTest**](RunApi.md#runInstantTest) | **POST** /tests/{testId}/run | Run instant test |
+| [**runInstantTestWithHttpInfo**](RunApi.md#runInstantTestWithHttpInfo) | **POST** /tests/{testId}/run | Run instant test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.instant.RunApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -110,7 +110,7 @@ import com.thousandeyes.sdk.tests.instant.RunApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

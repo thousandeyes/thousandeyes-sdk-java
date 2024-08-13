@@ -1,15 +1,15 @@
 # EmulationApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createEmulatedDevice**](EmulationApi.md#createEmulatedDevice) | **POST** /v7/emulated-devices | Create emulated device |
-| [**createEmulatedDeviceWithHttpInfo**](EmulationApi.md#createEmulatedDeviceWithHttpInfo) | **POST** /v7/emulated-devices | Create emulated device |
-| [**getEmulatedDevices**](EmulationApi.md#getEmulatedDevices) | **GET** /v7/emulated-devices | List emulated devices |
-| [**getEmulatedDevicesWithHttpInfo**](EmulationApi.md#getEmulatedDevicesWithHttpInfo) | **GET** /v7/emulated-devices | List emulated devices |
-| [**getUserAgents**](EmulationApi.md#getUserAgents) | **GET** /v7/user-agents | List user-agents |
-| [**getUserAgentsWithHttpInfo**](EmulationApi.md#getUserAgentsWithHttpInfo) | **GET** /v7/user-agents | List user-agents |
+| [**createEmulatedDevice**](EmulationApi.md#createEmulatedDevice) | **POST** /emulated-devices | Create emulated device |
+| [**createEmulatedDeviceWithHttpInfo**](EmulationApi.md#createEmulatedDeviceWithHttpInfo) | **POST** /emulated-devices | Create emulated device |
+| [**getEmulatedDevices**](EmulationApi.md#getEmulatedDevices) | **GET** /emulated-devices | List emulated devices |
+| [**getEmulatedDevicesWithHttpInfo**](EmulationApi.md#getEmulatedDevicesWithHttpInfo) | **GET** /emulated-devices | List emulated devices |
+| [**getUserAgents**](EmulationApi.md#getUserAgents) | **GET** /user-agents | List user-agents |
+| [**getUserAgentsWithHttpInfo**](EmulationApi.md#getUserAgentsWithHttpInfo) | **GET** /user-agents | List user-agents |
 
 
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.emulation.EmulationApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -113,7 +113,7 @@ import com.thousandeyes.sdk.emulation.EmulationApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -193,7 +193,7 @@ import com.thousandeyes.sdk.emulation.EmulationApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -269,7 +269,7 @@ import com.thousandeyes.sdk.emulation.EmulationApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -347,7 +347,7 @@ import com.thousandeyes.sdk.emulation.EmulationApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -423,7 +423,7 @@ import com.thousandeyes.sdk.emulation.EmulationApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

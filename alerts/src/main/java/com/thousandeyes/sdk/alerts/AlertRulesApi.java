@@ -103,7 +103,7 @@ public class AlertRulesApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/alerts/rules";
+    String path = "/alerts/rules";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -157,7 +157,7 @@ public class AlertRulesApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/alerts/rules/{ruleId}"
+    String path = "/alerts/rules/{ruleId}"
         .replace("{ruleId}", urlEncode(ruleId.toString()));
     requestBuilder.path(path);
 
@@ -212,7 +212,7 @@ public class AlertRulesApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/alerts/rules/{ruleId}"
+    String path = "/alerts/rules/{ruleId}"
         .replace("{ruleId}", urlEncode(ruleId.toString()));
     requestBuilder.path(path);
 
@@ -261,7 +261,7 @@ public class AlertRulesApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/alerts/rules";
+    String path = "/alerts/rules";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -321,7 +321,7 @@ public class AlertRulesApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/alerts/rules/{ruleId}"
+    String path = "/alerts/rules/{ruleId}"
         .replace("{ruleId}", urlEncode(ruleId.toString()));
     requestBuilder.path(path);
 

@@ -1,19 +1,19 @@
 # HttpServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createHttpServerTest**](HttpServerApi.md#createHttpServerTest) | **POST** /v7/tests/http-server | Create HTTP Server test |
-| [**createHttpServerTestWithHttpInfo**](HttpServerApi.md#createHttpServerTestWithHttpInfo) | **POST** /v7/tests/http-server | Create HTTP Server test |
-| [**deleteHttpServerTest**](HttpServerApi.md#deleteHttpServerTest) | **DELETE** /v7/tests/http-server/{testId} | Delete HTTP Server test |
-| [**deleteHttpServerTestWithHttpInfo**](HttpServerApi.md#deleteHttpServerTestWithHttpInfo) | **DELETE** /v7/tests/http-server/{testId} | Delete HTTP Server test |
-| [**getHttpServerTest**](HttpServerApi.md#getHttpServerTest) | **GET** /v7/tests/http-server/{testId} | Get HTTP Server test |
-| [**getHttpServerTestWithHttpInfo**](HttpServerApi.md#getHttpServerTestWithHttpInfo) | **GET** /v7/tests/http-server/{testId} | Get HTTP Server test |
-| [**getHttpServerTests**](HttpServerApi.md#getHttpServerTests) | **GET** /v7/tests/http-server | List HTTP Server tests |
-| [**getHttpServerTestsWithHttpInfo**](HttpServerApi.md#getHttpServerTestsWithHttpInfo) | **GET** /v7/tests/http-server | List HTTP Server tests |
-| [**updateHttpServerTest**](HttpServerApi.md#updateHttpServerTest) | **PUT** /v7/tests/http-server/{testId} | Update HTTP Server test |
-| [**updateHttpServerTestWithHttpInfo**](HttpServerApi.md#updateHttpServerTestWithHttpInfo) | **PUT** /v7/tests/http-server/{testId} | Update HTTP Server test |
+| [**createHttpServerTest**](HttpServerApi.md#createHttpServerTest) | **POST** /tests/http-server | Create HTTP Server test |
+| [**createHttpServerTestWithHttpInfo**](HttpServerApi.md#createHttpServerTestWithHttpInfo) | **POST** /tests/http-server | Create HTTP Server test |
+| [**deleteHttpServerTest**](HttpServerApi.md#deleteHttpServerTest) | **DELETE** /tests/http-server/{testId} | Delete HTTP Server test |
+| [**deleteHttpServerTestWithHttpInfo**](HttpServerApi.md#deleteHttpServerTestWithHttpInfo) | **DELETE** /tests/http-server/{testId} | Delete HTTP Server test |
+| [**getHttpServerTest**](HttpServerApi.md#getHttpServerTest) | **GET** /tests/http-server/{testId} | Get HTTP Server test |
+| [**getHttpServerTestWithHttpInfo**](HttpServerApi.md#getHttpServerTestWithHttpInfo) | **GET** /tests/http-server/{testId} | Get HTTP Server test |
+| [**getHttpServerTests**](HttpServerApi.md#getHttpServerTests) | **GET** /tests/http-server | List HTTP Server tests |
+| [**getHttpServerTestsWithHttpInfo**](HttpServerApi.md#getHttpServerTestsWithHttpInfo) | **GET** /tests/http-server | List HTTP Server tests |
+| [**updateHttpServerTest**](HttpServerApi.md#updateHttpServerTest) | **PUT** /tests/http-server/{testId} | Update HTTP Server test |
+| [**updateHttpServerTestWithHttpInfo**](HttpServerApi.md#updateHttpServerTestWithHttpInfo) | **PUT** /tests/http-server/{testId} | Update HTTP Server test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.HttpServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

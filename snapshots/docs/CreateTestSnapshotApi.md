@@ -1,11 +1,11 @@
 # CreateTestSnapshotApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createTestSnapshot**](CreateTestSnapshotApi.md#createTestSnapshot) | **POST** /v7/tests/{testId}/snapshot | Create test snapshot |
-| [**createTestSnapshotWithHttpInfo**](CreateTestSnapshotApi.md#createTestSnapshotWithHttpInfo) | **POST** /v7/tests/{testId}/snapshot | Create test snapshot |
+| [**createTestSnapshot**](CreateTestSnapshotApi.md#createTestSnapshot) | **POST** /tests/{testId}/snapshot | Create test snapshot |
+| [**createTestSnapshotWithHttpInfo**](CreateTestSnapshotApi.md#createTestSnapshotWithHttpInfo) | **POST** /tests/{testId}/snapshot | Create test snapshot |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.snapshots.CreateTestSnapshotApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.snapshots.CreateTestSnapshotApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

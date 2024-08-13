@@ -103,7 +103,7 @@ public class DynamicTestsAgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/tests/dynamic-tests/agent-to-server";
+    String path = "/endpoint/tests/dynamic-tests/agent-to-server";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -157,7 +157,7 @@ public class DynamicTestsAgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
+    String path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -212,7 +212,7 @@ public class DynamicTestsAgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
+    String path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -261,7 +261,7 @@ public class DynamicTestsAgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/tests/dynamic-tests/agent-to-server";
+    String path = "/endpoint/tests/dynamic-tests/agent-to-server";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -321,7 +321,7 @@ public class DynamicTestsAgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PATCH");
 
-    String path = "/v7/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
+    String path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

@@ -113,7 +113,7 @@ public class ApiTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/api/agent/{agentId}/round/{roundId}"
+    String path = "/test-results/{testId}/api/agent/{agentId}/round/{roundId}"
         .replace("{testId}", urlEncode(testId.toString()))
         .replace("{agentId}", urlEncode(agentId.toString()))
         .replace("{roundId}", urlEncode(roundId.toString()));
@@ -178,7 +178,7 @@ public class ApiTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/api"
+    String path = "/test-results/{testId}/api"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

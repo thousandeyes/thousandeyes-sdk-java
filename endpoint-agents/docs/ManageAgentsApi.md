@@ -1,23 +1,23 @@
 # ManageAgentsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteEndpointAgent**](ManageAgentsApi.md#deleteEndpointAgent) | **DELETE** /v7/endpoint/agents/{agentId} | Delete endpoint agent |
-| [**deleteEndpointAgentWithHttpInfo**](ManageAgentsApi.md#deleteEndpointAgentWithHttpInfo) | **DELETE** /v7/endpoint/agents/{agentId} | Delete endpoint agent |
-| [**disableEndpointAgent**](ManageAgentsApi.md#disableEndpointAgent) | **POST** /v7/endpoint/agents/{agentId}/disable | Disable endpoint agent |
-| [**disableEndpointAgentWithHttpInfo**](ManageAgentsApi.md#disableEndpointAgentWithHttpInfo) | **POST** /v7/endpoint/agents/{agentId}/disable | Disable endpoint agent |
-| [**enableEndpointAgent**](ManageAgentsApi.md#enableEndpointAgent) | **POST** /v7/endpoint/agents/{agentId}/enable | Enable endpoint agent |
-| [**enableEndpointAgentWithHttpInfo**](ManageAgentsApi.md#enableEndpointAgentWithHttpInfo) | **POST** /v7/endpoint/agents/{agentId}/enable | Enable endpoint agent |
-| [**filterEndpointAgents**](ManageAgentsApi.md#filterEndpointAgents) | **POST** /v7/endpoint/agents/filter | Filter endpoint agents |
-| [**filterEndpointAgentsWithHttpInfo**](ManageAgentsApi.md#filterEndpointAgentsWithHttpInfo) | **POST** /v7/endpoint/agents/filter | Filter endpoint agents |
-| [**getEndpointAgent**](ManageAgentsApi.md#getEndpointAgent) | **GET** /v7/endpoint/agents/{agentId} | Retrieve endpoint agent |
-| [**getEndpointAgentWithHttpInfo**](ManageAgentsApi.md#getEndpointAgentWithHttpInfo) | **GET** /v7/endpoint/agents/{agentId} | Retrieve endpoint agent |
-| [**getEndpointAgents**](ManageAgentsApi.md#getEndpointAgents) | **GET** /v7/endpoint/agents | List endpoint agents |
-| [**getEndpointAgentsWithHttpInfo**](ManageAgentsApi.md#getEndpointAgentsWithHttpInfo) | **GET** /v7/endpoint/agents | List endpoint agents |
-| [**updateEndpointAgent**](ManageAgentsApi.md#updateEndpointAgent) | **PATCH** /v7/endpoint/agents/{agentId} | Update endpoint agent |
-| [**updateEndpointAgentWithHttpInfo**](ManageAgentsApi.md#updateEndpointAgentWithHttpInfo) | **PATCH** /v7/endpoint/agents/{agentId} | Update endpoint agent |
+| [**deleteEndpointAgent**](ManageAgentsApi.md#deleteEndpointAgent) | **DELETE** /endpoint/agents/{agentId} | Delete endpoint agent |
+| [**deleteEndpointAgentWithHttpInfo**](ManageAgentsApi.md#deleteEndpointAgentWithHttpInfo) | **DELETE** /endpoint/agents/{agentId} | Delete endpoint agent |
+| [**disableEndpointAgent**](ManageAgentsApi.md#disableEndpointAgent) | **POST** /endpoint/agents/{agentId}/disable | Disable endpoint agent |
+| [**disableEndpointAgentWithHttpInfo**](ManageAgentsApi.md#disableEndpointAgentWithHttpInfo) | **POST** /endpoint/agents/{agentId}/disable | Disable endpoint agent |
+| [**enableEndpointAgent**](ManageAgentsApi.md#enableEndpointAgent) | **POST** /endpoint/agents/{agentId}/enable | Enable endpoint agent |
+| [**enableEndpointAgentWithHttpInfo**](ManageAgentsApi.md#enableEndpointAgentWithHttpInfo) | **POST** /endpoint/agents/{agentId}/enable | Enable endpoint agent |
+| [**filterEndpointAgents**](ManageAgentsApi.md#filterEndpointAgents) | **POST** /endpoint/agents/filter | Filter endpoint agents |
+| [**filterEndpointAgentsWithHttpInfo**](ManageAgentsApi.md#filterEndpointAgentsWithHttpInfo) | **POST** /endpoint/agents/filter | Filter endpoint agents |
+| [**getEndpointAgent**](ManageAgentsApi.md#getEndpointAgent) | **GET** /endpoint/agents/{agentId} | Retrieve endpoint agent |
+| [**getEndpointAgentWithHttpInfo**](ManageAgentsApi.md#getEndpointAgentWithHttpInfo) | **GET** /endpoint/agents/{agentId} | Retrieve endpoint agent |
+| [**getEndpointAgents**](ManageAgentsApi.md#getEndpointAgents) | **GET** /endpoint/agents | List endpoint agents |
+| [**getEndpointAgentsWithHttpInfo**](ManageAgentsApi.md#getEndpointAgentsWithHttpInfo) | **GET** /endpoint/agents | List endpoint agents |
+| [**updateEndpointAgent**](ManageAgentsApi.md#updateEndpointAgent) | **PATCH** /endpoint/agents/{agentId} | Update endpoint agent |
+| [**updateEndpointAgentWithHttpInfo**](ManageAgentsApi.md#updateEndpointAgentWithHttpInfo) | **PATCH** /endpoint/agents/{agentId} | Update endpoint agent |
 
 
 
@@ -43,7 +43,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -121,7 +121,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -201,7 +201,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -278,7 +278,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -357,7 +357,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -434,7 +434,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -513,7 +513,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -598,7 +598,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -685,7 +685,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -766,7 +766,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -849,7 +849,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -937,7 +937,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -1027,7 +1027,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -1108,7 +1108,7 @@ import com.thousandeyes.sdk.endpoint.agents.ManageAgentsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

@@ -102,7 +102,7 @@ public class CatalogProvidersApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/internet-insights/catalog/providers/filter";
+    String path = "/internet-insights/catalog/providers/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -158,7 +158,7 @@ public class CatalogProvidersApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/internet-insights/catalog/providers/{providerId}"
+    String path = "/internet-insights/catalog/providers/{providerId}"
         .replace("{providerId}", urlEncode(providerId.toString()));
     requestBuilder.path(path);
 

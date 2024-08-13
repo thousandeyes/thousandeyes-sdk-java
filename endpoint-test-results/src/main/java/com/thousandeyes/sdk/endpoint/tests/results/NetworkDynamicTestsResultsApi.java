@@ -113,7 +113,7 @@ public class NetworkDynamicTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/test-results/dynamic-tests/{testId}/network/filter"
+    String path = "/endpoint/test-results/dynamic-tests/{testId}/network/filter"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -186,7 +186,7 @@ public class NetworkDynamicTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId}"
+    String path = "/endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId}"
         .replace("{testId}", urlEncode(testId.toString()))
         .replace("{agentId}", urlEncode(agentId.toString()))
         .replace("{roundId}", urlEncode(roundId.toString()));
@@ -251,7 +251,7 @@ public class NetworkDynamicTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/dynamic-tests/{testId}/path-vis"
+    String path = "/endpoint/test-results/dynamic-tests/{testId}/path-vis"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

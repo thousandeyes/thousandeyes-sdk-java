@@ -92,7 +92,7 @@ public class AdministrativeEndpointsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/agents/connection-string";
+    String path = "/endpoint/agents/connection-string";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

@@ -1,19 +1,19 @@
 # DynamicTestsAgentToServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAgentToServerEndpointDynamicTest**](DynamicTestsAgentToServerApi.md#createAgentToServerEndpointDynamicTest) | **POST** /v7/endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test |
-| [**createAgentToServerEndpointDynamicTestWithHttpInfo**](DynamicTestsAgentToServerApi.md#createAgentToServerEndpointDynamicTestWithHttpInfo) | **POST** /v7/endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test |
-| [**deleteAgentToServerEndpointDynamicTest**](DynamicTestsAgentToServerApi.md#deleteAgentToServerEndpointDynamicTest) | **DELETE** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test |
-| [**deleteAgentToServerEndpointDynamicTestWithHttpInfo**](DynamicTestsAgentToServerApi.md#deleteAgentToServerEndpointDynamicTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test |
-| [**getAgentToServerEndpointDynamicTest**](DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTest) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Retrieve endpoint dynamic test |
-| [**getAgentToServerEndpointDynamicTestWithHttpInfo**](DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTestWithHttpInfo) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Retrieve endpoint dynamic test |
-| [**getAgentToServerEndpointDynamicTests**](DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTests) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests |
-| [**getAgentToServerEndpointDynamicTestsWithHttpInfo**](DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTestsWithHttpInfo) | **GET** /v7/endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests |
-| [**updateAgentToServerEndpointDynamicTest**](DynamicTestsAgentToServerApi.md#updateAgentToServerEndpointDynamicTest) | **PATCH** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test |
-| [**updateAgentToServerEndpointDynamicTestWithHttpInfo**](DynamicTestsAgentToServerApi.md#updateAgentToServerEndpointDynamicTestWithHttpInfo) | **PATCH** /v7/endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test |
+| [**createAgentToServerEndpointDynamicTest**](DynamicTestsAgentToServerApi.md#createAgentToServerEndpointDynamicTest) | **POST** /endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test |
+| [**createAgentToServerEndpointDynamicTestWithHttpInfo**](DynamicTestsAgentToServerApi.md#createAgentToServerEndpointDynamicTestWithHttpInfo) | **POST** /endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test |
+| [**deleteAgentToServerEndpointDynamicTest**](DynamicTestsAgentToServerApi.md#deleteAgentToServerEndpointDynamicTest) | **DELETE** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test |
+| [**deleteAgentToServerEndpointDynamicTestWithHttpInfo**](DynamicTestsAgentToServerApi.md#deleteAgentToServerEndpointDynamicTestWithHttpInfo) | **DELETE** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test |
+| [**getAgentToServerEndpointDynamicTest**](DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTest) | **GET** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Retrieve endpoint dynamic test |
+| [**getAgentToServerEndpointDynamicTestWithHttpInfo**](DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTestWithHttpInfo) | **GET** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Retrieve endpoint dynamic test |
+| [**getAgentToServerEndpointDynamicTests**](DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTests) | **GET** /endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests |
+| [**getAgentToServerEndpointDynamicTestsWithHttpInfo**](DynamicTestsAgentToServerApi.md#getAgentToServerEndpointDynamicTestsWithHttpInfo) | **GET** /endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests |
+| [**updateAgentToServerEndpointDynamicTest**](DynamicTestsAgentToServerApi.md#updateAgentToServerEndpointDynamicTest) | **PATCH** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test |
+| [**updateAgentToServerEndpointDynamicTestWithHttpInfo**](DynamicTestsAgentToServerApi.md#updateAgentToServerEndpointDynamicTestWithHttpInfo) | **PATCH** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -120,7 +120,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -203,7 +203,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -283,7 +283,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -365,7 +365,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -445,7 +445,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -527,7 +527,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -604,7 +604,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -683,7 +683,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -766,7 +766,7 @@ import com.thousandeyes.sdk.endpoint.tests.DynamicTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
