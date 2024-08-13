@@ -1,13 +1,13 @@
 # ApiTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestApiAgentRoundResults**](ApiTestMetricsApi.md#getTestApiAgentRoundResults) | **GET** /v7/test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round |
-| [**getTestApiAgentRoundResultsWithHttpInfo**](ApiTestMetricsApi.md#getTestApiAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round |
-| [**getTestApiResults**](ApiTestMetricsApi.md#getTestApiResults) | **GET** /v7/test-results/{testId}/api | Get API test results |
-| [**getTestApiResultsWithHttpInfo**](ApiTestMetricsApi.md#getTestApiResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/api | Get API test results |
+| [**getTestApiAgentRoundResults**](ApiTestMetricsApi.md#getTestApiAgentRoundResults) | **GET** /test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round |
+| [**getTestApiAgentRoundResultsWithHttpInfo**](ApiTestMetricsApi.md#getTestApiAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round |
+| [**getTestApiResults**](ApiTestMetricsApi.md#getTestApiResults) | **GET** /test-results/{testId}/api | Get API test results |
+| [**getTestApiResultsWithHttpInfo**](ApiTestMetricsApi.md#getTestApiResultsWithHttpInfo) | **GET** /test-results/{testId}/api | Get API test results |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.tests.results.ApiTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -118,7 +118,7 @@ import com.thousandeyes.sdk.tests.results.ApiTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -205,7 +205,7 @@ import com.thousandeyes.sdk.tests.results.ApiTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -294,7 +294,7 @@ import com.thousandeyes.sdk.tests.results.ApiTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

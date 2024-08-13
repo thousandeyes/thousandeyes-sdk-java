@@ -104,7 +104,7 @@ public class AccountGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/account-groups";
+    String path = "/account-groups";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -156,7 +156,7 @@ public class AccountGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/account-groups/{id}"
+    String path = "/account-groups/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -205,7 +205,7 @@ public class AccountGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/account-groups/{id}"
+    String path = "/account-groups/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -254,7 +254,7 @@ public class AccountGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/account-groups";
+    String path = "/account-groups";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -314,7 +314,7 @@ public class AccountGroupsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/account-groups/{id}"
+    String path = "/account-groups/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 

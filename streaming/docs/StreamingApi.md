@@ -1,19 +1,19 @@
 # StreamingApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createStream**](StreamingApi.md#createStream) | **POST** /v7/stream | Create data stream |
-| [**createStreamWithHttpInfo**](StreamingApi.md#createStreamWithHttpInfo) | **POST** /v7/stream | Create data stream |
-| [**deleteStream**](StreamingApi.md#deleteStream) | **DELETE** /v7/stream/{id} | Delete a data stream |
-| [**deleteStreamWithHttpInfo**](StreamingApi.md#deleteStreamWithHttpInfo) | **DELETE** /v7/stream/{id} | Delete a data stream |
-| [**getStream**](StreamingApi.md#getStream) | **GET** /v7/stream/{id} | Retrieve data stream |
-| [**getStreamWithHttpInfo**](StreamingApi.md#getStreamWithHttpInfo) | **GET** /v7/stream/{id} | Retrieve data stream |
-| [**getStreams**](StreamingApi.md#getStreams) | **GET** /v7/stream | List data streams |
-| [**getStreamsWithHttpInfo**](StreamingApi.md#getStreamsWithHttpInfo) | **GET** /v7/stream | List data streams |
-| [**updateStream**](StreamingApi.md#updateStream) | **PUT** /v7/stream/{id} | Update data stream |
-| [**updateStreamWithHttpInfo**](StreamingApi.md#updateStreamWithHttpInfo) | **PUT** /v7/stream/{id} | Update data stream |
+| [**createStream**](StreamingApi.md#createStream) | **POST** /stream | Create data stream |
+| [**createStreamWithHttpInfo**](StreamingApi.md#createStreamWithHttpInfo) | **POST** /stream | Create data stream |
+| [**deleteStream**](StreamingApi.md#deleteStream) | **DELETE** /stream/{id} | Delete a data stream |
+| [**deleteStreamWithHttpInfo**](StreamingApi.md#deleteStreamWithHttpInfo) | **DELETE** /stream/{id} | Delete a data stream |
+| [**getStream**](StreamingApi.md#getStream) | **GET** /stream/{id} | Retrieve data stream |
+| [**getStreamWithHttpInfo**](StreamingApi.md#getStreamWithHttpInfo) | **GET** /stream/{id} | Retrieve data stream |
+| [**getStreams**](StreamingApi.md#getStreams) | **GET** /stream | List data streams |
+| [**getStreamsWithHttpInfo**](StreamingApi.md#getStreamsWithHttpInfo) | **GET** /stream | List data streams |
+| [**updateStream**](StreamingApi.md#updateStream) | **PUT** /stream/{id} | Update data stream |
+| [**updateStreamWithHttpInfo**](StreamingApi.md#updateStreamWithHttpInfo) | **PUT** /stream/{id} | Update data stream |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -117,7 +117,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -197,7 +197,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -274,7 +274,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -353,7 +353,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -433,7 +433,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -515,7 +515,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -594,7 +594,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -675,7 +675,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -757,7 +757,7 @@ import com.thousandeyes.sdk.streaming.StreamingApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

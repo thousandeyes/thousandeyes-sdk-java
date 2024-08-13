@@ -1,17 +1,17 @@
 # TagAssignmentApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignTag**](TagAssignmentApi.md#assignTag) | **POST** /v7/tags/{id}/assign | Assign tag to multiple objects |
-| [**assignTagWithHttpInfo**](TagAssignmentApi.md#assignTagWithHttpInfo) | **POST** /v7/tags/{id}/assign | Assign tag to multiple objects |
-| [**assignTags**](TagAssignmentApi.md#assignTags) | **POST** /v7/tags/assign | Assign multiple tags to multiple objects |
-| [**assignTagsWithHttpInfo**](TagAssignmentApi.md#assignTagsWithHttpInfo) | **POST** /v7/tags/assign | Assign multiple tags to multiple objects |
-| [**unassignTag**](TagAssignmentApi.md#unassignTag) | **POST** /v7/tags/{id}/unassign | Remove tag from multiple objects |
-| [**unassignTagWithHttpInfo**](TagAssignmentApi.md#unassignTagWithHttpInfo) | **POST** /v7/tags/{id}/unassign | Remove tag from multiple objects |
-| [**unassignTags**](TagAssignmentApi.md#unassignTags) | **POST** /v7/tags/unassign | Remove multiple tags from multiple objects |
-| [**unassignTagsWithHttpInfo**](TagAssignmentApi.md#unassignTagsWithHttpInfo) | **POST** /v7/tags/unassign | Remove multiple tags from multiple objects |
+| [**assignTag**](TagAssignmentApi.md#assignTag) | **POST** /tags/{id}/assign | Assign tag to multiple objects |
+| [**assignTagWithHttpInfo**](TagAssignmentApi.md#assignTagWithHttpInfo) | **POST** /tags/{id}/assign | Assign tag to multiple objects |
+| [**assignTags**](TagAssignmentApi.md#assignTags) | **POST** /tags/assign | Assign multiple tags to multiple objects |
+| [**assignTagsWithHttpInfo**](TagAssignmentApi.md#assignTagsWithHttpInfo) | **POST** /tags/assign | Assign multiple tags to multiple objects |
+| [**unassignTag**](TagAssignmentApi.md#unassignTag) | **POST** /tags/{id}/unassign | Remove tag from multiple objects |
+| [**unassignTagWithHttpInfo**](TagAssignmentApi.md#unassignTagWithHttpInfo) | **POST** /tags/{id}/unassign | Remove tag from multiple objects |
+| [**unassignTags**](TagAssignmentApi.md#unassignTags) | **POST** /tags/unassign | Remove multiple tags from multiple objects |
+| [**unassignTagsWithHttpInfo**](TagAssignmentApi.md#unassignTagsWithHttpInfo) | **POST** /tags/unassign | Remove multiple tags from multiple objects |
 
 
 
@@ -37,7 +37,7 @@ import com.thousandeyes.sdk.tags.TagAssignmentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -116,7 +116,7 @@ import com.thousandeyes.sdk.tags.TagAssignmentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -197,7 +197,7 @@ import com.thousandeyes.sdk.tags.TagAssignmentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -274,7 +274,7 @@ import com.thousandeyes.sdk.tags.TagAssignmentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -353,7 +353,7 @@ import com.thousandeyes.sdk.tags.TagAssignmentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -432,7 +432,7 @@ import com.thousandeyes.sdk.tags.TagAssignmentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -513,7 +513,7 @@ import com.thousandeyes.sdk.tags.TagAssignmentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -590,7 +590,7 @@ import com.thousandeyes.sdk.tags.TagAssignmentApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

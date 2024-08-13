@@ -1,21 +1,21 @@
 # DashboardsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDashboard**](DashboardsApi.md#createDashboard) | **POST** /v7/dashboards | Create dashboard |
-| [**createDashboardWithHttpInfo**](DashboardsApi.md#createDashboardWithHttpInfo) | **POST** /v7/dashboards | Create dashboard |
-| [**deleteDashboard**](DashboardsApi.md#deleteDashboard) | **DELETE** /v7/dashboards/{dashboardId} | Delete dashboard |
-| [**deleteDashboardWithHttpInfo**](DashboardsApi.md#deleteDashboardWithHttpInfo) | **DELETE** /v7/dashboards/{dashboardId} | Delete dashboard |
-| [**getDashboard**](DashboardsApi.md#getDashboard) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard |
-| [**getDashboardWithHttpInfo**](DashboardsApi.md#getDashboardWithHttpInfo) | **GET** /v7/dashboards/{dashboardId} | Retrieve dashboard |
-| [**getDashboardWidgetData**](DashboardsApi.md#getDashboardWidgetData) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
-| [**getDashboardWidgetDataWithHttpInfo**](DashboardsApi.md#getDashboardWidgetDataWithHttpInfo) | **GET** /v7/dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
-| [**getDashboards**](DashboardsApi.md#getDashboards) | **GET** /v7/dashboards | List dashboards |
-| [**getDashboardsWithHttpInfo**](DashboardsApi.md#getDashboardsWithHttpInfo) | **GET** /v7/dashboards | List dashboards |
-| [**updateDashboard**](DashboardsApi.md#updateDashboard) | **PUT** /v7/dashboards/{dashboardId} | Update dashboard |
-| [**updateDashboardWithHttpInfo**](DashboardsApi.md#updateDashboardWithHttpInfo) | **PUT** /v7/dashboards/{dashboardId} | Update dashboard |
+| [**createDashboard**](DashboardsApi.md#createDashboard) | **POST** /dashboards | Create dashboard |
+| [**createDashboardWithHttpInfo**](DashboardsApi.md#createDashboardWithHttpInfo) | **POST** /dashboards | Create dashboard |
+| [**deleteDashboard**](DashboardsApi.md#deleteDashboard) | **DELETE** /dashboards/{dashboardId} | Delete dashboard |
+| [**deleteDashboardWithHttpInfo**](DashboardsApi.md#deleteDashboardWithHttpInfo) | **DELETE** /dashboards/{dashboardId} | Delete dashboard |
+| [**getDashboard**](DashboardsApi.md#getDashboard) | **GET** /dashboards/{dashboardId} | Retrieve dashboard |
+| [**getDashboardWithHttpInfo**](DashboardsApi.md#getDashboardWithHttpInfo) | **GET** /dashboards/{dashboardId} | Retrieve dashboard |
+| [**getDashboardWidgetData**](DashboardsApi.md#getDashboardWidgetData) | **GET** /dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
+| [**getDashboardWidgetDataWithHttpInfo**](DashboardsApi.md#getDashboardWidgetDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
+| [**getDashboards**](DashboardsApi.md#getDashboards) | **GET** /dashboards | List dashboards |
+| [**getDashboardsWithHttpInfo**](DashboardsApi.md#getDashboardsWithHttpInfo) | **GET** /dashboards | List dashboards |
+| [**updateDashboard**](DashboardsApi.md#updateDashboard) | **PUT** /dashboards/{dashboardId} | Update dashboard |
+| [**updateDashboardWithHttpInfo**](DashboardsApi.md#updateDashboardWithHttpInfo) | **PUT** /dashboards/{dashboardId} | Update dashboard |
 
 
 
@@ -41,7 +41,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -120,7 +120,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -201,7 +201,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -279,7 +279,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -359,7 +359,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -438,7 +438,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -519,7 +519,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -614,7 +614,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -711,7 +711,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -788,7 +788,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -867,7 +867,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -948,7 +948,7 @@ import com.thousandeyes.sdk.dashboards.DashboardsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

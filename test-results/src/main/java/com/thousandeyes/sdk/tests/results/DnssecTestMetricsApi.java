@@ -108,7 +108,7 @@ public class DnssecTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/dnssec"
+    String path = "/test-results/{testId}/dnssec"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

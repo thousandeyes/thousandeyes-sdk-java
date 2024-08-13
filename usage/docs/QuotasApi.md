@@ -1,19 +1,19 @@
 # QuotasApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignOrganizationsAccountGroupsQuotas**](QuotasApi.md#assignOrganizationsAccountGroupsQuotas) | **POST** /v7/quotas/account-groups/assign | Create or update accout group quotas |
-| [**assignOrganizationsAccountGroupsQuotasWithHttpInfo**](QuotasApi.md#assignOrganizationsAccountGroupsQuotasWithHttpInfo) | **POST** /v7/quotas/account-groups/assign | Create or update accout group quotas |
-| [**assignOrganizationsQuotas**](QuotasApi.md#assignOrganizationsQuotas) | **POST** /v7/quotas/assign | Create or update organizations quotas |
-| [**assignOrganizationsQuotasWithHttpInfo**](QuotasApi.md#assignOrganizationsQuotasWithHttpInfo) | **POST** /v7/quotas/assign | Create or update organizations quotas |
-| [**getQuotas**](QuotasApi.md#getQuotas) | **GET** /v7/quotas | Get organization and account group usage quota |
-| [**getQuotasWithHttpInfo**](QuotasApi.md#getQuotasWithHttpInfo) | **GET** /v7/quotas | Get organization and account group usage quota |
-| [**unassignOrganizationsAccountGroupsQuotas**](QuotasApi.md#unassignOrganizationsAccountGroupsQuotas) | **POST** /v7/quotas/account-groups/unassign | Remove account group quotas from organizations |
-| [**unassignOrganizationsAccountGroupsQuotasWithHttpInfo**](QuotasApi.md#unassignOrganizationsAccountGroupsQuotasWithHttpInfo) | **POST** /v7/quotas/account-groups/unassign | Remove account group quotas from organizations |
-| [**unassignOrganizationsQuotas**](QuotasApi.md#unassignOrganizationsQuotas) | **POST** /v7/quotas/unassign | Remove organization quotas |
-| [**unassignOrganizationsQuotasWithHttpInfo**](QuotasApi.md#unassignOrganizationsQuotasWithHttpInfo) | **POST** /v7/quotas/unassign | Remove organization quotas |
+| [**assignOrganizationsAccountGroupsQuotas**](QuotasApi.md#assignOrganizationsAccountGroupsQuotas) | **POST** /quotas/account-groups/assign | Create or update accout group quotas |
+| [**assignOrganizationsAccountGroupsQuotasWithHttpInfo**](QuotasApi.md#assignOrganizationsAccountGroupsQuotasWithHttpInfo) | **POST** /quotas/account-groups/assign | Create or update accout group quotas |
+| [**assignOrganizationsQuotas**](QuotasApi.md#assignOrganizationsQuotas) | **POST** /quotas/assign | Create or update organizations quotas |
+| [**assignOrganizationsQuotasWithHttpInfo**](QuotasApi.md#assignOrganizationsQuotasWithHttpInfo) | **POST** /quotas/assign | Create or update organizations quotas |
+| [**getQuotas**](QuotasApi.md#getQuotas) | **GET** /quotas | Get organization and account group usage quota |
+| [**getQuotasWithHttpInfo**](QuotasApi.md#getQuotasWithHttpInfo) | **GET** /quotas | Get organization and account group usage quota |
+| [**unassignOrganizationsAccountGroupsQuotas**](QuotasApi.md#unassignOrganizationsAccountGroupsQuotas) | **POST** /quotas/account-groups/unassign | Remove account group quotas from organizations |
+| [**unassignOrganizationsAccountGroupsQuotasWithHttpInfo**](QuotasApi.md#unassignOrganizationsAccountGroupsQuotasWithHttpInfo) | **POST** /quotas/account-groups/unassign | Remove account group quotas from organizations |
+| [**unassignOrganizationsQuotas**](QuotasApi.md#unassignOrganizationsQuotas) | **POST** /quotas/unassign | Remove organization quotas |
+| [**unassignOrganizationsQuotasWithHttpInfo**](QuotasApi.md#unassignOrganizationsQuotasWithHttpInfo) | **POST** /quotas/unassign | Remove organization quotas |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -116,7 +116,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -195,7 +195,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -272,7 +272,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -351,7 +351,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -424,7 +424,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -499,7 +499,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -575,7 +575,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -653,7 +653,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -729,7 +729,7 @@ import com.thousandeyes.sdk.usage.QuotasApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

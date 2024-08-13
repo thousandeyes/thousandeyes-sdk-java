@@ -102,7 +102,7 @@ public class OutagesApiPublicApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/internet-insights/outages/filter";
+    String path = "/internet-insights/outages/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -158,7 +158,7 @@ public class OutagesApiPublicApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/internet-insights/outages/app/{outageId}"
+    String path = "/internet-insights/outages/app/{outageId}"
         .replace("{outageId}", urlEncode(outageId.toString()));
     requestBuilder.path(path);
 
@@ -213,7 +213,7 @@ public class OutagesApiPublicApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/internet-insights/outages/net/{outageId}"
+    String path = "/internet-insights/outages/net/{outageId}"
         .replace("{outageId}", urlEncode(outageId.toString()));
     requestBuilder.path(path);
 

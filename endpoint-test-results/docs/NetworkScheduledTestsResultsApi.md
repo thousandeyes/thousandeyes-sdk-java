@@ -1,17 +1,17 @@
 # NetworkScheduledTestsResultsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**filterScheduledTestNetworkResults**](NetworkScheduledTestsResultsApi.md#filterScheduledTestNetworkResults) | **POST** /v7/endpoint/test-results/scheduled-tests/{testId}/network/filter | Retrieve network scheduled test results |
-| [**filterScheduledTestNetworkResultsWithHttpInfo**](NetworkScheduledTestsResultsApi.md#filterScheduledTestNetworkResultsWithHttpInfo) | **POST** /v7/endpoint/test-results/scheduled-tests/{testId}/network/filter | Retrieve network scheduled test results |
-| [**filterScheduledTestsNetworkResults**](NetworkScheduledTestsResultsApi.md#filterScheduledTestsNetworkResults) | **POST** /v7/endpoint/test-results/scheduled-tests/network/filter | Retrieve network scheduled test results from multiple tests |
-| [**filterScheduledTestsNetworkResultsWithHttpInfo**](NetworkScheduledTestsResultsApi.md#filterScheduledTestsNetworkResultsWithHttpInfo) | **POST** /v7/endpoint/test-results/scheduled-tests/network/filter | Retrieve network scheduled test results from multiple tests |
-| [**getScheduledTestPathVisAgentRoundResults**](NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisAgentRoundResults) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details |
-| [**getScheduledTestPathVisAgentRoundResultsWithHttpInfo**](NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details |
-| [**getScheduledTestPathVisResults**](NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisResults) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results |
-| [**getScheduledTestPathVisResultsWithHttpInfo**](NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results |
+| [**filterScheduledTestNetworkResults**](NetworkScheduledTestsResultsApi.md#filterScheduledTestNetworkResults) | **POST** /endpoint/test-results/scheduled-tests/{testId}/network/filter | Retrieve network scheduled test results |
+| [**filterScheduledTestNetworkResultsWithHttpInfo**](NetworkScheduledTestsResultsApi.md#filterScheduledTestNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/{testId}/network/filter | Retrieve network scheduled test results |
+| [**filterScheduledTestsNetworkResults**](NetworkScheduledTestsResultsApi.md#filterScheduledTestsNetworkResults) | **POST** /endpoint/test-results/scheduled-tests/network/filter | Retrieve network scheduled test results from multiple tests |
+| [**filterScheduledTestsNetworkResultsWithHttpInfo**](NetworkScheduledTestsResultsApi.md#filterScheduledTestsNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/network/filter | Retrieve network scheduled test results from multiple tests |
+| [**getScheduledTestPathVisAgentRoundResults**](NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisAgentRoundResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details |
+| [**getScheduledTestPathVisAgentRoundResultsWithHttpInfo**](NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details |
+| [**getScheduledTestPathVisResults**](NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results |
+| [**getScheduledTestPathVisResultsWithHttpInfo**](NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results |
 
 
 
@@ -37,7 +37,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkScheduledTestsResultsA
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -126,7 +126,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkScheduledTestsResultsA
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -217,7 +217,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkScheduledTestsResultsA
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -306,7 +306,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkScheduledTestsResultsA
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -397,7 +397,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkScheduledTestsResultsA
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -480,7 +480,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkScheduledTestsResultsA
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -565,7 +565,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkScheduledTestsResultsA
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -652,7 +652,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkScheduledTestsResultsA
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

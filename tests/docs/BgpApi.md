@@ -1,19 +1,19 @@
 # BgpApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createBgpTest**](BgpApi.md#createBgpTest) | **POST** /v7/tests/bgp | Create BGP test |
-| [**createBgpTestWithHttpInfo**](BgpApi.md#createBgpTestWithHttpInfo) | **POST** /v7/tests/bgp | Create BGP test |
-| [**deleteBgpTest**](BgpApi.md#deleteBgpTest) | **DELETE** /v7/tests/bgp/{testId} | Delete BGP test |
-| [**deleteBgpTestWithHttpInfo**](BgpApi.md#deleteBgpTestWithHttpInfo) | **DELETE** /v7/tests/bgp/{testId} | Delete BGP test |
-| [**getBgpTest**](BgpApi.md#getBgpTest) | **GET** /v7/tests/bgp/{testId} | Get BGP test |
-| [**getBgpTestWithHttpInfo**](BgpApi.md#getBgpTestWithHttpInfo) | **GET** /v7/tests/bgp/{testId} | Get BGP test |
-| [**getBgpTests**](BgpApi.md#getBgpTests) | **GET** /v7/tests/bgp | List BGP tests |
-| [**getBgpTestsWithHttpInfo**](BgpApi.md#getBgpTestsWithHttpInfo) | **GET** /v7/tests/bgp | List BGP tests |
-| [**updateBgpTest**](BgpApi.md#updateBgpTest) | **PUT** /v7/tests/bgp/{testId} | Update BGP test |
-| [**updateBgpTestWithHttpInfo**](BgpApi.md#updateBgpTestWithHttpInfo) | **PUT** /v7/tests/bgp/{testId} | Update BGP test |
+| [**createBgpTest**](BgpApi.md#createBgpTest) | **POST** /tests/bgp | Create BGP test |
+| [**createBgpTestWithHttpInfo**](BgpApi.md#createBgpTestWithHttpInfo) | **POST** /tests/bgp | Create BGP test |
+| [**deleteBgpTest**](BgpApi.md#deleteBgpTest) | **DELETE** /tests/bgp/{testId} | Delete BGP test |
+| [**deleteBgpTestWithHttpInfo**](BgpApi.md#deleteBgpTestWithHttpInfo) | **DELETE** /tests/bgp/{testId} | Delete BGP test |
+| [**getBgpTest**](BgpApi.md#getBgpTest) | **GET** /tests/bgp/{testId} | Get BGP test |
+| [**getBgpTestWithHttpInfo**](BgpApi.md#getBgpTestWithHttpInfo) | **GET** /tests/bgp/{testId} | Get BGP test |
+| [**getBgpTests**](BgpApi.md#getBgpTests) | **GET** /tests/bgp | List BGP tests |
+| [**getBgpTestsWithHttpInfo**](BgpApi.md#getBgpTestsWithHttpInfo) | **GET** /tests/bgp | List BGP tests |
+| [**updateBgpTest**](BgpApi.md#updateBgpTest) | **PUT** /tests/bgp/{testId} | Update BGP test |
+| [**updateBgpTestWithHttpInfo**](BgpApi.md#updateBgpTestWithHttpInfo) | **PUT** /tests/bgp/{testId} | Update BGP test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.BgpApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

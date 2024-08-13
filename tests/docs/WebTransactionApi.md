@@ -1,19 +1,19 @@
 # WebTransactionApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createWebTransactionsTest**](WebTransactionApi.md#createWebTransactionsTest) | **POST** /v7/tests/web-transactions | Create Web Transactions test |
-| [**createWebTransactionsTestWithHttpInfo**](WebTransactionApi.md#createWebTransactionsTestWithHttpInfo) | **POST** /v7/tests/web-transactions | Create Web Transactions test |
-| [**deleteWebTransactionsTest**](WebTransactionApi.md#deleteWebTransactionsTest) | **DELETE** /v7/tests/web-transactions/{testId} | Delete Web Transactions test |
-| [**deleteWebTransactionsTestWithHttpInfo**](WebTransactionApi.md#deleteWebTransactionsTestWithHttpInfo) | **DELETE** /v7/tests/web-transactions/{testId} | Delete Web Transactions test |
-| [**getWebTransactionsTest**](WebTransactionApi.md#getWebTransactionsTest) | **GET** /v7/tests/web-transactions/{testId} | Get Web Transactions test |
-| [**getWebTransactionsTestWithHttpInfo**](WebTransactionApi.md#getWebTransactionsTestWithHttpInfo) | **GET** /v7/tests/web-transactions/{testId} | Get Web Transactions test |
-| [**getWebTransactionsTests**](WebTransactionApi.md#getWebTransactionsTests) | **GET** /v7/tests/web-transactions | List Web Transactions tests |
-| [**getWebTransactionsTestsWithHttpInfo**](WebTransactionApi.md#getWebTransactionsTestsWithHttpInfo) | **GET** /v7/tests/web-transactions | List Web Transactions tests |
-| [**updateWebTransactionsTest**](WebTransactionApi.md#updateWebTransactionsTest) | **PUT** /v7/tests/web-transactions/{testId} | Update Web Transactions test |
-| [**updateWebTransactionsTestWithHttpInfo**](WebTransactionApi.md#updateWebTransactionsTestWithHttpInfo) | **PUT** /v7/tests/web-transactions/{testId} | Update Web Transactions test |
+| [**createWebTransactionsTest**](WebTransactionApi.md#createWebTransactionsTest) | **POST** /tests/web-transactions | Create Web Transactions test |
+| [**createWebTransactionsTestWithHttpInfo**](WebTransactionApi.md#createWebTransactionsTestWithHttpInfo) | **POST** /tests/web-transactions | Create Web Transactions test |
+| [**deleteWebTransactionsTest**](WebTransactionApi.md#deleteWebTransactionsTest) | **DELETE** /tests/web-transactions/{testId} | Delete Web Transactions test |
+| [**deleteWebTransactionsTestWithHttpInfo**](WebTransactionApi.md#deleteWebTransactionsTestWithHttpInfo) | **DELETE** /tests/web-transactions/{testId} | Delete Web Transactions test |
+| [**getWebTransactionsTest**](WebTransactionApi.md#getWebTransactionsTest) | **GET** /tests/web-transactions/{testId} | Get Web Transactions test |
+| [**getWebTransactionsTestWithHttpInfo**](WebTransactionApi.md#getWebTransactionsTestWithHttpInfo) | **GET** /tests/web-transactions/{testId} | Get Web Transactions test |
+| [**getWebTransactionsTests**](WebTransactionApi.md#getWebTransactionsTests) | **GET** /tests/web-transactions | List Web Transactions tests |
+| [**getWebTransactionsTestsWithHttpInfo**](WebTransactionApi.md#getWebTransactionsTestsWithHttpInfo) | **GET** /tests/web-transactions | List Web Transactions tests |
+| [**updateWebTransactionsTest**](WebTransactionApi.md#updateWebTransactionsTest) | **PUT** /tests/web-transactions/{testId} | Update Web Transactions test |
+| [**updateWebTransactionsTestWithHttpInfo**](WebTransactionApi.md#updateWebTransactionsTestWithHttpInfo) | **PUT** /tests/web-transactions/{testId} | Update Web Transactions test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.WebTransactionApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

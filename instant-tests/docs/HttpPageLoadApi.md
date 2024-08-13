@@ -1,11 +1,11 @@
 # HttpPageLoadApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createPageLoadInstantTest**](HttpPageLoadApi.md#createPageLoadInstantTest) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test |
-| [**createPageLoadInstantTestWithHttpInfo**](HttpPageLoadApi.md#createPageLoadInstantTestWithHttpInfo) | **POST** /v7/tests/page-load/instant | Create HTTP page load instant test |
+| [**createPageLoadInstantTest**](HttpPageLoadApi.md#createPageLoadInstantTest) | **POST** /tests/page-load/instant | Create HTTP page load instant test |
+| [**createPageLoadInstantTestWithHttpInfo**](HttpPageLoadApi.md#createPageLoadInstantTestWithHttpInfo) | **POST** /tests/page-load/instant | Create HTTP page load instant test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.instant.HttpPageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.tests.instant.HttpPageLoadApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

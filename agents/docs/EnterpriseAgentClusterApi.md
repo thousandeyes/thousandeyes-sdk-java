@@ -1,13 +1,13 @@
 # EnterpriseAgentClusterApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignAgentToCluster**](EnterpriseAgentClusterApi.md#assignAgentToCluster) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster |
-| [**assignAgentToClusterWithHttpInfo**](EnterpriseAgentClusterApi.md#assignAgentToClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster |
-| [**unassignAgentFromCluster**](EnterpriseAgentClusterApi.md#unassignAgentFromCluster) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster |
-| [**unassignAgentFromClusterWithHttpInfo**](EnterpriseAgentClusterApi.md#unassignAgentFromClusterWithHttpInfo) | **POST** /v7/agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster |
+| [**assignAgentToCluster**](EnterpriseAgentClusterApi.md#assignAgentToCluster) | **POST** /agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster |
+| [**assignAgentToClusterWithHttpInfo**](EnterpriseAgentClusterApi.md#assignAgentToClusterWithHttpInfo) | **POST** /agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster |
+| [**unassignAgentFromCluster**](EnterpriseAgentClusterApi.md#unassignAgentFromCluster) | **POST** /agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster |
+| [**unassignAgentFromClusterWithHttpInfo**](EnterpriseAgentClusterApi.md#unassignAgentFromClusterWithHttpInfo) | **POST** /agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.agents.EnterpriseAgentClusterApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -118,7 +118,7 @@ import com.thousandeyes.sdk.agents.EnterpriseAgentClusterApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -205,7 +205,7 @@ import com.thousandeyes.sdk.agents.EnterpriseAgentClusterApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -290,7 +290,7 @@ import com.thousandeyes.sdk.agents.EnterpriseAgentClusterApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

@@ -22,13 +22,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * &#x60;exact&#x60; requires that the same agent(s) meet the threshold in consecutive rounds; default is &#x60;any&#x60;
+ * &#x60;exact&#x60; requires the same agents to meet the threshold in consecutive rounds. &#x60;auto&#x60; is only enabled for CEA and Endpoint Scheduled test rules. The default is &#x60;any&#x60;.
  */
 public enum AlertRoundsViolationMode {
   
   EXACT("exact"),
   
-  ANY("any");
+  ANY("any"),
+  
+  AUTO("auto");
 
   private String value;
 

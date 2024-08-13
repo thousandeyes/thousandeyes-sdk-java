@@ -108,7 +108,7 @@ public class VoiceRtpServerTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/rtp-server"
+    String path = "/test-results/{testId}/rtp-server"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

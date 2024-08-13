@@ -2,7 +2,7 @@
 
 Endpoint Agent Labels API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 Manage labels applied to endpoint agents using this API.
 
@@ -102,7 +102,7 @@ public class ManageLabelsApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -126,20 +126,20 @@ public class ManageLabelsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ManageLabelsApi* | [**createEndpointLabel**](docs/ManageLabelsApi.md#createEndpointLabel) | **POST** /v7/endpoint/labels | Create label
-*ManageLabelsApi* | [**createEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#createEndpointLabelWithHttpInfo) | **POST** /v7/endpoint/labels | Create label
-*ManageLabelsApi* | [**deleteEndpointLabel**](docs/ManageLabelsApi.md#deleteEndpointLabel) | **DELETE** /v7/endpoint/labels/{id} | Delete label
-*ManageLabelsApi* | [**deleteEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#deleteEndpointLabelWithHttpInfo) | **DELETE** /v7/endpoint/labels/{id} | Delete label
-*ManageLabelsApi* | [**getEndpointLabel**](docs/ManageLabelsApi.md#getEndpointLabel) | **GET** /v7/endpoint/labels/{id} | Retrieve label
-*ManageLabelsApi* | [**getEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#getEndpointLabelWithHttpInfo) | **GET** /v7/endpoint/labels/{id} | Retrieve label
-*ManageLabelsApi* | [**getEndpointLabels**](docs/ManageLabelsApi.md#getEndpointLabels) | **GET** /v7/endpoint/labels | List labels
-*ManageLabelsApi* | [**getEndpointLabelsWithHttpInfo**](docs/ManageLabelsApi.md#getEndpointLabelsWithHttpInfo) | **GET** /v7/endpoint/labels | List labels
-*ManageLabelsApi* | [**updateEndpointLabel**](docs/ManageLabelsApi.md#updateEndpointLabel) | **PATCH** /v7/endpoint/labels/{id} | Update label
-*ManageLabelsApi* | [**updateEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#updateEndpointLabelWithHttpInfo) | **PATCH** /v7/endpoint/labels/{id} | Update label
+*ManageLabelsApi* | [**createEndpointLabel**](docs/ManageLabelsApi.md#createEndpointLabel) | **POST** /endpoint/labels | Create label
+*ManageLabelsApi* | [**createEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#createEndpointLabelWithHttpInfo) | **POST** /endpoint/labels | Create label
+*ManageLabelsApi* | [**deleteEndpointLabel**](docs/ManageLabelsApi.md#deleteEndpointLabel) | **DELETE** /endpoint/labels/{id} | Delete label
+*ManageLabelsApi* | [**deleteEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#deleteEndpointLabelWithHttpInfo) | **DELETE** /endpoint/labels/{id} | Delete label
+*ManageLabelsApi* | [**getEndpointLabel**](docs/ManageLabelsApi.md#getEndpointLabel) | **GET** /endpoint/labels/{id} | Retrieve label
+*ManageLabelsApi* | [**getEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#getEndpointLabelWithHttpInfo) | **GET** /endpoint/labels/{id} | Retrieve label
+*ManageLabelsApi* | [**getEndpointLabels**](docs/ManageLabelsApi.md#getEndpointLabels) | **GET** /endpoint/labels | List labels
+*ManageLabelsApi* | [**getEndpointLabelsWithHttpInfo**](docs/ManageLabelsApi.md#getEndpointLabelsWithHttpInfo) | **GET** /endpoint/labels | List labels
+*ManageLabelsApi* | [**updateEndpointLabel**](docs/ManageLabelsApi.md#updateEndpointLabel) | **PATCH** /endpoint/labels/{id} | Update label
+*ManageLabelsApi* | [**updateEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#updateEndpointLabelWithHttpInfo) | **PATCH** /endpoint/labels/{id} | Update label
 
 
 <a id="documentation-for-authorization"></a>

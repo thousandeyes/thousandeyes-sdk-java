@@ -1,19 +1,19 @@
 # VoiceApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createVoiceTest**](VoiceApi.md#createVoiceTest) | **POST** /v7/tests/voice | Create Voice test |
-| [**createVoiceTestWithHttpInfo**](VoiceApi.md#createVoiceTestWithHttpInfo) | **POST** /v7/tests/voice | Create Voice test |
-| [**deleteVoiceTest**](VoiceApi.md#deleteVoiceTest) | **DELETE** /v7/tests/voice/{testId} | Delete Voice test |
-| [**deleteVoiceTestWithHttpInfo**](VoiceApi.md#deleteVoiceTestWithHttpInfo) | **DELETE** /v7/tests/voice/{testId} | Delete Voice test |
-| [**getVoiceTest**](VoiceApi.md#getVoiceTest) | **GET** /v7/tests/voice/{testId} | Get Voice test |
-| [**getVoiceTestWithHttpInfo**](VoiceApi.md#getVoiceTestWithHttpInfo) | **GET** /v7/tests/voice/{testId} | Get Voice test |
-| [**getVoiceTests**](VoiceApi.md#getVoiceTests) | **GET** /v7/tests/voice | List Voice tests |
-| [**getVoiceTestsWithHttpInfo**](VoiceApi.md#getVoiceTestsWithHttpInfo) | **GET** /v7/tests/voice | List Voice tests |
-| [**updateVoiceTest**](VoiceApi.md#updateVoiceTest) | **PUT** /v7/tests/voice/{testId} | Update Voice test |
-| [**updateVoiceTestWithHttpInfo**](VoiceApi.md#updateVoiceTestWithHttpInfo) | **PUT** /v7/tests/voice/{testId} | Update Voice test |
+| [**createVoiceTest**](VoiceApi.md#createVoiceTest) | **POST** /tests/voice | Create Voice test |
+| [**createVoiceTestWithHttpInfo**](VoiceApi.md#createVoiceTestWithHttpInfo) | **POST** /tests/voice | Create Voice test |
+| [**deleteVoiceTest**](VoiceApi.md#deleteVoiceTest) | **DELETE** /tests/voice/{testId} | Delete Voice test |
+| [**deleteVoiceTestWithHttpInfo**](VoiceApi.md#deleteVoiceTestWithHttpInfo) | **DELETE** /tests/voice/{testId} | Delete Voice test |
+| [**getVoiceTest**](VoiceApi.md#getVoiceTest) | **GET** /tests/voice/{testId} | Get Voice test |
+| [**getVoiceTestWithHttpInfo**](VoiceApi.md#getVoiceTestWithHttpInfo) | **GET** /tests/voice/{testId} | Get Voice test |
+| [**getVoiceTests**](VoiceApi.md#getVoiceTests) | **GET** /tests/voice | List Voice tests |
+| [**getVoiceTestsWithHttpInfo**](VoiceApi.md#getVoiceTestsWithHttpInfo) | **GET** /tests/voice | List Voice tests |
+| [**updateVoiceTest**](VoiceApi.md#updateVoiceTest) | **PUT** /tests/voice/{testId} | Update Voice test |
+| [**updateVoiceTestWithHttpInfo**](VoiceApi.md#updateVoiceTestWithHttpInfo) | **PUT** /tests/voice/{testId} | Update Voice test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

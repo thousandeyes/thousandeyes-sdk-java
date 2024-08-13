@@ -1,17 +1,17 @@
 # PathVisualizationInterfaceGroupsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createPathVisInterfaceGroups**](PathVisualizationInterfaceGroupsApi.md#createPathVisInterfaceGroups) | **POST** /v7/network/path-vis/interface-groups | Create interface group for path visualization |
-| [**createPathVisInterfaceGroupsWithHttpInfo**](PathVisualizationInterfaceGroupsApi.md#createPathVisInterfaceGroupsWithHttpInfo) | **POST** /v7/network/path-vis/interface-groups | Create interface group for path visualization |
-| [**deletePathVisInterfaceGroup**](PathVisualizationInterfaceGroupsApi.md#deletePathVisInterfaceGroup) | **DELETE** /v7/network/path-vis/interface-groups/{interfaceGroupId} | Delete interface group |
-| [**deletePathVisInterfaceGroupWithHttpInfo**](PathVisualizationInterfaceGroupsApi.md#deletePathVisInterfaceGroupWithHttpInfo) | **DELETE** /v7/network/path-vis/interface-groups/{interfaceGroupId} | Delete interface group |
-| [**getPathVisInterfaceGroups**](PathVisualizationInterfaceGroupsApi.md#getPathVisInterfaceGroups) | **GET** /v7/network/path-vis/interface-groups | List interface groups for path visualization |
-| [**getPathVisInterfaceGroupsWithHttpInfo**](PathVisualizationInterfaceGroupsApi.md#getPathVisInterfaceGroupsWithHttpInfo) | **GET** /v7/network/path-vis/interface-groups | List interface groups for path visualization |
-| [**updatePathVisInterfaceGroup**](PathVisualizationInterfaceGroupsApi.md#updatePathVisInterfaceGroup) | **PUT** /v7/network/path-vis/interface-groups/{interfaceGroupId} | Update interface group |
-| [**updatePathVisInterfaceGroupWithHttpInfo**](PathVisualizationInterfaceGroupsApi.md#updatePathVisInterfaceGroupWithHttpInfo) | **PUT** /v7/network/path-vis/interface-groups/{interfaceGroupId} | Update interface group |
+| [**createPathVisInterfaceGroups**](PathVisualizationInterfaceGroupsApi.md#createPathVisInterfaceGroups) | **POST** /network/path-vis/interface-groups | Create interface group for path visualization |
+| [**createPathVisInterfaceGroupsWithHttpInfo**](PathVisualizationInterfaceGroupsApi.md#createPathVisInterfaceGroupsWithHttpInfo) | **POST** /network/path-vis/interface-groups | Create interface group for path visualization |
+| [**deletePathVisInterfaceGroup**](PathVisualizationInterfaceGroupsApi.md#deletePathVisInterfaceGroup) | **DELETE** /network/path-vis/interface-groups/{interfaceGroupId} | Delete interface group |
+| [**deletePathVisInterfaceGroupWithHttpInfo**](PathVisualizationInterfaceGroupsApi.md#deletePathVisInterfaceGroupWithHttpInfo) | **DELETE** /network/path-vis/interface-groups/{interfaceGroupId} | Delete interface group |
+| [**getPathVisInterfaceGroups**](PathVisualizationInterfaceGroupsApi.md#getPathVisInterfaceGroups) | **GET** /network/path-vis/interface-groups | List interface groups for path visualization |
+| [**getPathVisInterfaceGroupsWithHttpInfo**](PathVisualizationInterfaceGroupsApi.md#getPathVisInterfaceGroupsWithHttpInfo) | **GET** /network/path-vis/interface-groups | List interface groups for path visualization |
+| [**updatePathVisInterfaceGroup**](PathVisualizationInterfaceGroupsApi.md#updatePathVisInterfaceGroup) | **PUT** /network/path-vis/interface-groups/{interfaceGroupId} | Update interface group |
+| [**updatePathVisInterfaceGroupWithHttpInfo**](PathVisualizationInterfaceGroupsApi.md#updatePathVisInterfaceGroupWithHttpInfo) | **PUT** /network/path-vis/interface-groups/{interfaceGroupId} | Update interface group |
 
 
 
@@ -37,7 +37,7 @@ import com.thousandeyes.sdk.tests.PathVisualizationInterfaceGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -118,7 +118,7 @@ import com.thousandeyes.sdk.tests.PathVisualizationInterfaceGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -201,7 +201,7 @@ import com.thousandeyes.sdk.tests.PathVisualizationInterfaceGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -280,7 +280,7 @@ import com.thousandeyes.sdk.tests.PathVisualizationInterfaceGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -361,7 +361,7 @@ import com.thousandeyes.sdk.tests.PathVisualizationInterfaceGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -439,7 +439,7 @@ import com.thousandeyes.sdk.tests.PathVisualizationInterfaceGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -519,7 +519,7 @@ import com.thousandeyes.sdk.tests.PathVisualizationInterfaceGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -602,7 +602,7 @@ import com.thousandeyes.sdk.tests.PathVisualizationInterfaceGroupsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

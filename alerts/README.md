@@ -2,7 +2,7 @@
 
 Alerts API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 You can manage the following alert functionalities on the ThousandEyes platform using the Alerts API:
 
@@ -110,7 +110,7 @@ public class AlertRulesApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -134,34 +134,34 @@ public class AlertRulesApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AlertRulesApi* | [**createAlertRule**](docs/AlertRulesApi.md#createAlertRule) | **POST** /v7/alerts/rules | Create alert rule
-*AlertRulesApi* | [**createAlertRuleWithHttpInfo**](docs/AlertRulesApi.md#createAlertRuleWithHttpInfo) | **POST** /v7/alerts/rules | Create alert rule
-*AlertRulesApi* | [**deleteAlertRule**](docs/AlertRulesApi.md#deleteAlertRule) | **DELETE** /v7/alerts/rules/{ruleId} | Delete alert rule
-*AlertRulesApi* | [**deleteAlertRuleWithHttpInfo**](docs/AlertRulesApi.md#deleteAlertRuleWithHttpInfo) | **DELETE** /v7/alerts/rules/{ruleId} | Delete alert rule
-*AlertRulesApi* | [**getAlertRule**](docs/AlertRulesApi.md#getAlertRule) | **GET** /v7/alerts/rules/{ruleId} | Retrieve alert rule
-*AlertRulesApi* | [**getAlertRuleWithHttpInfo**](docs/AlertRulesApi.md#getAlertRuleWithHttpInfo) | **GET** /v7/alerts/rules/{ruleId} | Retrieve alert rule
-*AlertRulesApi* | [**getAlertsRules**](docs/AlertRulesApi.md#getAlertsRules) | **GET** /v7/alerts/rules | List alert rules
-*AlertRulesApi* | [**getAlertsRulesWithHttpInfo**](docs/AlertRulesApi.md#getAlertsRulesWithHttpInfo) | **GET** /v7/alerts/rules | List alert rules
-*AlertRulesApi* | [**updateAlertRule**](docs/AlertRulesApi.md#updateAlertRule) | **PUT** /v7/alerts/rules/{ruleId} | Update alert rule
-*AlertRulesApi* | [**updateAlertRuleWithHttpInfo**](docs/AlertRulesApi.md#updateAlertRuleWithHttpInfo) | **PUT** /v7/alerts/rules/{ruleId} | Update alert rule
-*AlertSuppressionWindowsApi* | [**createAlertSuppressionWindow**](docs/AlertSuppressionWindowsApi.md#createAlertSuppressionWindow) | **POST** /v7/alert-suppression-windows | Create alert suppression window
-*AlertSuppressionWindowsApi* | [**createAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#createAlertSuppressionWindowWithHttpInfo) | **POST** /v7/alert-suppression-windows | Create alert suppression window
-*AlertSuppressionWindowsApi* | [**deleteAlertSuppressionWindow**](docs/AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindow) | **DELETE** /v7/alert-suppression-windows/{windowId} | Delete alert suppression window
-*AlertSuppressionWindowsApi* | [**deleteAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindowWithHttpInfo) | **DELETE** /v7/alert-suppression-windows/{windowId} | Delete alert suppression window
-*AlertSuppressionWindowsApi* | [**getAlertSuppressionWindow**](docs/AlertSuppressionWindowsApi.md#getAlertSuppressionWindow) | **GET** /v7/alert-suppression-windows/{windowId} | Retrieve alert suppression window
-*AlertSuppressionWindowsApi* | [**getAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#getAlertSuppressionWindowWithHttpInfo) | **GET** /v7/alert-suppression-windows/{windowId} | Retrieve alert suppression window
-*AlertSuppressionWindowsApi* | [**getAlertSuppressionWindows**](docs/AlertSuppressionWindowsApi.md#getAlertSuppressionWindows) | **GET** /v7/alert-suppression-windows | List alert suppression windows
-*AlertSuppressionWindowsApi* | [**getAlertSuppressionWindowsWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#getAlertSuppressionWindowsWithHttpInfo) | **GET** /v7/alert-suppression-windows | List alert suppression windows
-*AlertSuppressionWindowsApi* | [**updateAlertSuppressionWindow**](docs/AlertSuppressionWindowsApi.md#updateAlertSuppressionWindow) | **PUT** /v7/alert-suppression-windows/{windowId} | Update alert suppression window
-*AlertSuppressionWindowsApi* | [**updateAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#updateAlertSuppressionWindowWithHttpInfo) | **PUT** /v7/alert-suppression-windows/{windowId} | Update alert suppression window
-*AlertsApi* | [**getAlert**](docs/AlertsApi.md#getAlert) | **GET** /v7/alerts/{alertId} | Retrieve alert details
-*AlertsApi* | [**getAlertWithHttpInfo**](docs/AlertsApi.md#getAlertWithHttpInfo) | **GET** /v7/alerts/{alertId} | Retrieve alert details
-*AlertsApi* | [**getAlerts**](docs/AlertsApi.md#getAlerts) | **GET** /v7/alerts | List active alerts
-*AlertsApi* | [**getAlertsWithHttpInfo**](docs/AlertsApi.md#getAlertsWithHttpInfo) | **GET** /v7/alerts | List active alerts
+*AlertRulesApi* | [**createAlertRule**](docs/AlertRulesApi.md#createAlertRule) | **POST** /alerts/rules | Create alert rule
+*AlertRulesApi* | [**createAlertRuleWithHttpInfo**](docs/AlertRulesApi.md#createAlertRuleWithHttpInfo) | **POST** /alerts/rules | Create alert rule
+*AlertRulesApi* | [**deleteAlertRule**](docs/AlertRulesApi.md#deleteAlertRule) | **DELETE** /alerts/rules/{ruleId} | Delete alert rule
+*AlertRulesApi* | [**deleteAlertRuleWithHttpInfo**](docs/AlertRulesApi.md#deleteAlertRuleWithHttpInfo) | **DELETE** /alerts/rules/{ruleId} | Delete alert rule
+*AlertRulesApi* | [**getAlertRule**](docs/AlertRulesApi.md#getAlertRule) | **GET** /alerts/rules/{ruleId} | Retrieve alert rule
+*AlertRulesApi* | [**getAlertRuleWithHttpInfo**](docs/AlertRulesApi.md#getAlertRuleWithHttpInfo) | **GET** /alerts/rules/{ruleId} | Retrieve alert rule
+*AlertRulesApi* | [**getAlertsRules**](docs/AlertRulesApi.md#getAlertsRules) | **GET** /alerts/rules | List alert rules
+*AlertRulesApi* | [**getAlertsRulesWithHttpInfo**](docs/AlertRulesApi.md#getAlertsRulesWithHttpInfo) | **GET** /alerts/rules | List alert rules
+*AlertRulesApi* | [**updateAlertRule**](docs/AlertRulesApi.md#updateAlertRule) | **PUT** /alerts/rules/{ruleId} | Update alert rule
+*AlertRulesApi* | [**updateAlertRuleWithHttpInfo**](docs/AlertRulesApi.md#updateAlertRuleWithHttpInfo) | **PUT** /alerts/rules/{ruleId} | Update alert rule
+*AlertSuppressionWindowsApi* | [**createAlertSuppressionWindow**](docs/AlertSuppressionWindowsApi.md#createAlertSuppressionWindow) | **POST** /alert-suppression-windows | Create alert suppression window
+*AlertSuppressionWindowsApi* | [**createAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#createAlertSuppressionWindowWithHttpInfo) | **POST** /alert-suppression-windows | Create alert suppression window
+*AlertSuppressionWindowsApi* | [**deleteAlertSuppressionWindow**](docs/AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindow) | **DELETE** /alert-suppression-windows/{windowId} | Delete alert suppression window
+*AlertSuppressionWindowsApi* | [**deleteAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#deleteAlertSuppressionWindowWithHttpInfo) | **DELETE** /alert-suppression-windows/{windowId} | Delete alert suppression window
+*AlertSuppressionWindowsApi* | [**getAlertSuppressionWindow**](docs/AlertSuppressionWindowsApi.md#getAlertSuppressionWindow) | **GET** /alert-suppression-windows/{windowId} | Retrieve alert suppression window
+*AlertSuppressionWindowsApi* | [**getAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#getAlertSuppressionWindowWithHttpInfo) | **GET** /alert-suppression-windows/{windowId} | Retrieve alert suppression window
+*AlertSuppressionWindowsApi* | [**getAlertSuppressionWindows**](docs/AlertSuppressionWindowsApi.md#getAlertSuppressionWindows) | **GET** /alert-suppression-windows | List alert suppression windows
+*AlertSuppressionWindowsApi* | [**getAlertSuppressionWindowsWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#getAlertSuppressionWindowsWithHttpInfo) | **GET** /alert-suppression-windows | List alert suppression windows
+*AlertSuppressionWindowsApi* | [**updateAlertSuppressionWindow**](docs/AlertSuppressionWindowsApi.md#updateAlertSuppressionWindow) | **PUT** /alert-suppression-windows/{windowId} | Update alert suppression window
+*AlertSuppressionWindowsApi* | [**updateAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#updateAlertSuppressionWindowWithHttpInfo) | **PUT** /alert-suppression-windows/{windowId} | Update alert suppression window
+*AlertsApi* | [**getAlert**](docs/AlertsApi.md#getAlert) | **GET** /alerts/{alertId} | Retrieve alert details
+*AlertsApi* | [**getAlertWithHttpInfo**](docs/AlertsApi.md#getAlertWithHttpInfo) | **GET** /alerts/{alertId} | Retrieve alert details
+*AlertsApi* | [**getAlerts**](docs/AlertsApi.md#getAlerts) | **GET** /alerts | List active alerts
+*AlertsApi* | [**getAlertsWithHttpInfo**](docs/AlertsApi.md#getAlertsWithHttpInfo) | **GET** /alerts | List active alerts
 
 
 <a id="documentation-for-authorization"></a>

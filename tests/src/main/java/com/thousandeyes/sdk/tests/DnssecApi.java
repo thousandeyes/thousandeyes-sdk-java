@@ -105,7 +105,7 @@ public class DnssecApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/dnssec";
+    String path = "/tests/dnssec";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -160,7 +160,7 @@ public class DnssecApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/tests/dnssec/{testId}"
+    String path = "/tests/dnssec/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -217,7 +217,7 @@ public class DnssecApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/tests/dnssec/{testId}"
+    String path = "/tests/dnssec/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -267,7 +267,7 @@ public class DnssecApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/tests/dnssec";
+    String path = "/tests/dnssec";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -329,7 +329,7 @@ public class DnssecApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/tests/dnssec/{testId}"
+    String path = "/tests/dnssec/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

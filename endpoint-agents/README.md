@@ -2,7 +2,7 @@
 
 Endpoint Agents API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 Manage ThousandEyes Endpoint Agents using this API. 
 
@@ -103,7 +103,7 @@ public class AdministrativeEndpointsApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -126,30 +126,30 @@ public class AdministrativeEndpointsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AdministrativeEndpointsApi* | [**getEndpointAgentsConnectionString**](docs/AdministrativeEndpointsApi.md#getEndpointAgentsConnectionString) | **GET** /v7/endpoint/agents/connection-string | Get agent connection string
-*AdministrativeEndpointsApi* | [**getEndpointAgentsConnectionStringWithHttpInfo**](docs/AdministrativeEndpointsApi.md#getEndpointAgentsConnectionStringWithHttpInfo) | **GET** /v7/endpoint/agents/connection-string | Get agent connection string
-*ManageAgentsApi* | [**deleteEndpointAgent**](docs/ManageAgentsApi.md#deleteEndpointAgent) | **DELETE** /v7/endpoint/agents/{agentId} | Delete endpoint agent
-*ManageAgentsApi* | [**deleteEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#deleteEndpointAgentWithHttpInfo) | **DELETE** /v7/endpoint/agents/{agentId} | Delete endpoint agent
-*ManageAgentsApi* | [**disableEndpointAgent**](docs/ManageAgentsApi.md#disableEndpointAgent) | **POST** /v7/endpoint/agents/{agentId}/disable | Disable endpoint agent
-*ManageAgentsApi* | [**disableEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#disableEndpointAgentWithHttpInfo) | **POST** /v7/endpoint/agents/{agentId}/disable | Disable endpoint agent
-*ManageAgentsApi* | [**enableEndpointAgent**](docs/ManageAgentsApi.md#enableEndpointAgent) | **POST** /v7/endpoint/agents/{agentId}/enable | Enable endpoint agent
-*ManageAgentsApi* | [**enableEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#enableEndpointAgentWithHttpInfo) | **POST** /v7/endpoint/agents/{agentId}/enable | Enable endpoint agent
-*ManageAgentsApi* | [**filterEndpointAgents**](docs/ManageAgentsApi.md#filterEndpointAgents) | **POST** /v7/endpoint/agents/filter | Filter endpoint agents
-*ManageAgentsApi* | [**filterEndpointAgentsWithHttpInfo**](docs/ManageAgentsApi.md#filterEndpointAgentsWithHttpInfo) | **POST** /v7/endpoint/agents/filter | Filter endpoint agents
-*ManageAgentsApi* | [**getEndpointAgent**](docs/ManageAgentsApi.md#getEndpointAgent) | **GET** /v7/endpoint/agents/{agentId} | Retrieve endpoint agent
-*ManageAgentsApi* | [**getEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#getEndpointAgentWithHttpInfo) | **GET** /v7/endpoint/agents/{agentId} | Retrieve endpoint agent
-*ManageAgentsApi* | [**getEndpointAgents**](docs/ManageAgentsApi.md#getEndpointAgents) | **GET** /v7/endpoint/agents | List endpoint agents
-*ManageAgentsApi* | [**getEndpointAgentsWithHttpInfo**](docs/ManageAgentsApi.md#getEndpointAgentsWithHttpInfo) | **GET** /v7/endpoint/agents | List endpoint agents
-*ManageAgentsApi* | [**updateEndpointAgent**](docs/ManageAgentsApi.md#updateEndpointAgent) | **PATCH** /v7/endpoint/agents/{agentId} | Update endpoint agent
-*ManageAgentsApi* | [**updateEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#updateEndpointAgentWithHttpInfo) | **PATCH** /v7/endpoint/agents/{agentId} | Update endpoint agent
-*TransferApi* | [**transferEndpointAgent**](docs/TransferApi.md#transferEndpointAgent) | **POST** /v7/endpoint/agents/{agentId}/transfer | Transfer endpoint agent
-*TransferApi* | [**transferEndpointAgentWithHttpInfo**](docs/TransferApi.md#transferEndpointAgentWithHttpInfo) | **POST** /v7/endpoint/agents/{agentId}/transfer | Transfer endpoint agent
-*TransferApi* | [**transferEndpointAgents**](docs/TransferApi.md#transferEndpointAgents) | **POST** /v7/endpoint/agents/transfer/bulk | Bulk transfer agents
-*TransferApi* | [**transferEndpointAgentsWithHttpInfo**](docs/TransferApi.md#transferEndpointAgentsWithHttpInfo) | **POST** /v7/endpoint/agents/transfer/bulk | Bulk transfer agents
+*AdministrativeEndpointsApi* | [**getEndpointAgentsConnectionString**](docs/AdministrativeEndpointsApi.md#getEndpointAgentsConnectionString) | **GET** /endpoint/agents/connection-string | Get agent connection string
+*AdministrativeEndpointsApi* | [**getEndpointAgentsConnectionStringWithHttpInfo**](docs/AdministrativeEndpointsApi.md#getEndpointAgentsConnectionStringWithHttpInfo) | **GET** /endpoint/agents/connection-string | Get agent connection string
+*ManageAgentsApi* | [**deleteEndpointAgent**](docs/ManageAgentsApi.md#deleteEndpointAgent) | **DELETE** /endpoint/agents/{agentId} | Delete endpoint agent
+*ManageAgentsApi* | [**deleteEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#deleteEndpointAgentWithHttpInfo) | **DELETE** /endpoint/agents/{agentId} | Delete endpoint agent
+*ManageAgentsApi* | [**disableEndpointAgent**](docs/ManageAgentsApi.md#disableEndpointAgent) | **POST** /endpoint/agents/{agentId}/disable | Disable endpoint agent
+*ManageAgentsApi* | [**disableEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#disableEndpointAgentWithHttpInfo) | **POST** /endpoint/agents/{agentId}/disable | Disable endpoint agent
+*ManageAgentsApi* | [**enableEndpointAgent**](docs/ManageAgentsApi.md#enableEndpointAgent) | **POST** /endpoint/agents/{agentId}/enable | Enable endpoint agent
+*ManageAgentsApi* | [**enableEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#enableEndpointAgentWithHttpInfo) | **POST** /endpoint/agents/{agentId}/enable | Enable endpoint agent
+*ManageAgentsApi* | [**filterEndpointAgents**](docs/ManageAgentsApi.md#filterEndpointAgents) | **POST** /endpoint/agents/filter | Filter endpoint agents
+*ManageAgentsApi* | [**filterEndpointAgentsWithHttpInfo**](docs/ManageAgentsApi.md#filterEndpointAgentsWithHttpInfo) | **POST** /endpoint/agents/filter | Filter endpoint agents
+*ManageAgentsApi* | [**getEndpointAgent**](docs/ManageAgentsApi.md#getEndpointAgent) | **GET** /endpoint/agents/{agentId} | Retrieve endpoint agent
+*ManageAgentsApi* | [**getEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#getEndpointAgentWithHttpInfo) | **GET** /endpoint/agents/{agentId} | Retrieve endpoint agent
+*ManageAgentsApi* | [**getEndpointAgents**](docs/ManageAgentsApi.md#getEndpointAgents) | **GET** /endpoint/agents | List endpoint agents
+*ManageAgentsApi* | [**getEndpointAgentsWithHttpInfo**](docs/ManageAgentsApi.md#getEndpointAgentsWithHttpInfo) | **GET** /endpoint/agents | List endpoint agents
+*ManageAgentsApi* | [**updateEndpointAgent**](docs/ManageAgentsApi.md#updateEndpointAgent) | **PATCH** /endpoint/agents/{agentId} | Update endpoint agent
+*ManageAgentsApi* | [**updateEndpointAgentWithHttpInfo**](docs/ManageAgentsApi.md#updateEndpointAgentWithHttpInfo) | **PATCH** /endpoint/agents/{agentId} | Update endpoint agent
+*TransferApi* | [**transferEndpointAgent**](docs/TransferApi.md#transferEndpointAgent) | **POST** /endpoint/agents/{agentId}/transfer | Transfer endpoint agent
+*TransferApi* | [**transferEndpointAgentWithHttpInfo**](docs/TransferApi.md#transferEndpointAgentWithHttpInfo) | **POST** /endpoint/agents/{agentId}/transfer | Transfer endpoint agent
+*TransferApi* | [**transferEndpointAgents**](docs/TransferApi.md#transferEndpointAgents) | **POST** /endpoint/agents/transfer/bulk | Bulk transfer agents
+*TransferApi* | [**transferEndpointAgentsWithHttpInfo**](docs/TransferApi.md#transferEndpointAgentsWithHttpInfo) | **POST** /endpoint/agents/transfer/bulk | Bulk transfer agents
 
 
 <a id="documentation-for-authorization"></a>

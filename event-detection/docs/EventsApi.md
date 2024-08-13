@@ -1,13 +1,13 @@
 # EventsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getEvent**](EventsApi.md#getEvent) | **GET** /v7/events/{id} | Retrieve event |
-| [**getEventWithHttpInfo**](EventsApi.md#getEventWithHttpInfo) | **GET** /v7/events/{id} | Retrieve event |
-| [**getEvents**](EventsApi.md#getEvents) | **GET** /v7/events | List events |
-| [**getEventsWithHttpInfo**](EventsApi.md#getEventsWithHttpInfo) | **GET** /v7/events | List events |
+| [**getEvent**](EventsApi.md#getEvent) | **GET** /events/{id} | Retrieve event |
+| [**getEventWithHttpInfo**](EventsApi.md#getEventWithHttpInfo) | **GET** /events/{id} | Retrieve event |
+| [**getEvents**](EventsApi.md#getEvents) | **GET** /events | List events |
+| [**getEventsWithHttpInfo**](EventsApi.md#getEventsWithHttpInfo) | **GET** /events | List events |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.event.detection.EventsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -113,7 +113,7 @@ import com.thousandeyes.sdk.event.detection.EventsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -195,7 +195,7 @@ import com.thousandeyes.sdk.event.detection.EventsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -284,7 +284,7 @@ import com.thousandeyes.sdk.event.detection.EventsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

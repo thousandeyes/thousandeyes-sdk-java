@@ -47,6 +47,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTests.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/Error.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/Link.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/SelfLinks.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/model/SensitivityLevel.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/Severity.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/TestInterval.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/TestLabel.java

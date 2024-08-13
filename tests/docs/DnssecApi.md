@@ -1,19 +1,19 @@
 # DnssecApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDnsSecTest**](DnssecApi.md#createDnsSecTest) | **POST** /v7/tests/dnssec | Create DNSSEC test |
-| [**createDnsSecTestWithHttpInfo**](DnssecApi.md#createDnsSecTestWithHttpInfo) | **POST** /v7/tests/dnssec | Create DNSSEC test |
-| [**deleteDnsSecTest**](DnssecApi.md#deleteDnsSecTest) | **DELETE** /v7/tests/dnssec/{testId} | Delete DNSSEC test |
-| [**deleteDnsSecTestWithHttpInfo**](DnssecApi.md#deleteDnsSecTestWithHttpInfo) | **DELETE** /v7/tests/dnssec/{testId} | Delete DNSSEC test |
-| [**getDnsSecTest**](DnssecApi.md#getDnsSecTest) | **GET** /v7/tests/dnssec/{testId} | Get DNSSEC test |
-| [**getDnsSecTestWithHttpInfo**](DnssecApi.md#getDnsSecTestWithHttpInfo) | **GET** /v7/tests/dnssec/{testId} | Get DNSSEC test |
-| [**getDnsSecTests**](DnssecApi.md#getDnsSecTests) | **GET** /v7/tests/dnssec | List DNSSEC tests |
-| [**getDnsSecTestsWithHttpInfo**](DnssecApi.md#getDnsSecTestsWithHttpInfo) | **GET** /v7/tests/dnssec | List DNSSEC tests |
-| [**updateDnsSecTest**](DnssecApi.md#updateDnsSecTest) | **PUT** /v7/tests/dnssec/{testId} | Update DNSSEC test |
-| [**updateDnsSecTestWithHttpInfo**](DnssecApi.md#updateDnsSecTestWithHttpInfo) | **PUT** /v7/tests/dnssec/{testId} | Update DNSSEC test |
+| [**createDnsSecTest**](DnssecApi.md#createDnsSecTest) | **POST** /tests/dnssec | Create DNSSEC test |
+| [**createDnsSecTestWithHttpInfo**](DnssecApi.md#createDnsSecTestWithHttpInfo) | **POST** /tests/dnssec | Create DNSSEC test |
+| [**deleteDnsSecTest**](DnssecApi.md#deleteDnsSecTest) | **DELETE** /tests/dnssec/{testId} | Delete DNSSEC test |
+| [**deleteDnsSecTestWithHttpInfo**](DnssecApi.md#deleteDnsSecTestWithHttpInfo) | **DELETE** /tests/dnssec/{testId} | Delete DNSSEC test |
+| [**getDnsSecTest**](DnssecApi.md#getDnsSecTest) | **GET** /tests/dnssec/{testId} | Get DNSSEC test |
+| [**getDnsSecTestWithHttpInfo**](DnssecApi.md#getDnsSecTestWithHttpInfo) | **GET** /tests/dnssec/{testId} | Get DNSSEC test |
+| [**getDnsSecTests**](DnssecApi.md#getDnsSecTests) | **GET** /tests/dnssec | List DNSSEC tests |
+| [**getDnsSecTestsWithHttpInfo**](DnssecApi.md#getDnsSecTestsWithHttpInfo) | **GET** /tests/dnssec | List DNSSEC tests |
+| [**updateDnsSecTest**](DnssecApi.md#updateDnsSecTest) | **PUT** /tests/dnssec/{testId} | Update DNSSEC test |
+| [**updateDnsSecTestWithHttpInfo**](DnssecApi.md#updateDnsSecTestWithHttpInfo) | **PUT** /tests/dnssec/{testId} | Update DNSSEC test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.DnssecApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

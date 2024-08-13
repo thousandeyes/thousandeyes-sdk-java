@@ -1,11 +1,11 @@
 # DnsServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDnsServerInstantTest**](DnsServerApi.md#createDnsServerInstantTest) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test |
-| [**createDnsServerInstantTestWithHttpInfo**](DnsServerApi.md#createDnsServerInstantTestWithHttpInfo) | **POST** /v7/tests/dns-server/instant | Create DNS server instant test |
+| [**createDnsServerInstantTest**](DnsServerApi.md#createDnsServerInstantTest) | **POST** /tests/dns-server/instant | Create DNS server instant test |
+| [**createDnsServerInstantTestWithHttpInfo**](DnsServerApi.md#createDnsServerInstantTestWithHttpInfo) | **POST** /tests/dns-server/instant | Create DNS server instant test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.instant.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.tests.instant.DnsServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

@@ -104,7 +104,7 @@ public class TagAssignmentApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tags/{id}/assign"
+    String path = "/tags/{id}/assign"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -159,7 +159,7 @@ public class TagAssignmentApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tags/assign";
+    String path = "/tags/assign";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -219,7 +219,7 @@ public class TagAssignmentApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tags/{id}/unassign"
+    String path = "/tags/{id}/unassign"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -274,7 +274,7 @@ public class TagAssignmentApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tags/unassign";
+    String path = "/tags/unassign";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

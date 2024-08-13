@@ -1,19 +1,19 @@
 # DnsTraceApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDnsTraceTest**](DnsTraceApi.md#createDnsTraceTest) | **POST** /v7/tests/dns-trace | Create DNS Trace test |
-| [**createDnsTraceTestWithHttpInfo**](DnsTraceApi.md#createDnsTraceTestWithHttpInfo) | **POST** /v7/tests/dns-trace | Create DNS Trace test |
-| [**deleteDnsTraceTest**](DnsTraceApi.md#deleteDnsTraceTest) | **DELETE** /v7/tests/dns-trace/{testId} | Delete DNS Trace test |
-| [**deleteDnsTraceTestWithHttpInfo**](DnsTraceApi.md#deleteDnsTraceTestWithHttpInfo) | **DELETE** /v7/tests/dns-trace/{testId} | Delete DNS Trace test |
-| [**getDnsTraceTest**](DnsTraceApi.md#getDnsTraceTest) | **GET** /v7/tests/dns-trace/{testId} | Get DNS Trace test |
-| [**getDnsTraceTestWithHttpInfo**](DnsTraceApi.md#getDnsTraceTestWithHttpInfo) | **GET** /v7/tests/dns-trace/{testId} | Get DNS Trace test |
-| [**getDnsTraceTests**](DnsTraceApi.md#getDnsTraceTests) | **GET** /v7/tests/dns-trace | List DNS Trace tests |
-| [**getDnsTraceTestsWithHttpInfo**](DnsTraceApi.md#getDnsTraceTestsWithHttpInfo) | **GET** /v7/tests/dns-trace | List DNS Trace tests |
-| [**updateDnsTraceTest**](DnsTraceApi.md#updateDnsTraceTest) | **PUT** /v7/tests/dns-trace/{testId} | Update DNS Trace test |
-| [**updateDnsTraceTestWithHttpInfo**](DnsTraceApi.md#updateDnsTraceTestWithHttpInfo) | **PUT** /v7/tests/dns-trace/{testId} | Update DNS Trace test |
+| [**createDnsTraceTest**](DnsTraceApi.md#createDnsTraceTest) | **POST** /tests/dns-trace | Create DNS Trace test |
+| [**createDnsTraceTestWithHttpInfo**](DnsTraceApi.md#createDnsTraceTestWithHttpInfo) | **POST** /tests/dns-trace | Create DNS Trace test |
+| [**deleteDnsTraceTest**](DnsTraceApi.md#deleteDnsTraceTest) | **DELETE** /tests/dns-trace/{testId} | Delete DNS Trace test |
+| [**deleteDnsTraceTestWithHttpInfo**](DnsTraceApi.md#deleteDnsTraceTestWithHttpInfo) | **DELETE** /tests/dns-trace/{testId} | Delete DNS Trace test |
+| [**getDnsTraceTest**](DnsTraceApi.md#getDnsTraceTest) | **GET** /tests/dns-trace/{testId} | Get DNS Trace test |
+| [**getDnsTraceTestWithHttpInfo**](DnsTraceApi.md#getDnsTraceTestWithHttpInfo) | **GET** /tests/dns-trace/{testId} | Get DNS Trace test |
+| [**getDnsTraceTests**](DnsTraceApi.md#getDnsTraceTests) | **GET** /tests/dns-trace | List DNS Trace tests |
+| [**getDnsTraceTestsWithHttpInfo**](DnsTraceApi.md#getDnsTraceTestsWithHttpInfo) | **GET** /tests/dns-trace | List DNS Trace tests |
+| [**updateDnsTraceTest**](DnsTraceApi.md#updateDnsTraceTest) | **PUT** /tests/dns-trace/{testId} | Update DNS Trace test |
+| [**updateDnsTraceTestWithHttpInfo**](DnsTraceApi.md#updateDnsTraceTestWithHttpInfo) | **PUT** /tests/dns-trace/{testId} | Update DNS Trace test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -122,7 +122,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -207,7 +207,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -286,7 +286,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -449,7 +449,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -533,7 +533,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -611,7 +611,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -691,7 +691,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -776,7 +776,7 @@ import com.thousandeyes.sdk.tests.DnsTraceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

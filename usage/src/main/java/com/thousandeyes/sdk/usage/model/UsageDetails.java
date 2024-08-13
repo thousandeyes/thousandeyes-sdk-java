@@ -1,6 +1,6 @@
 /*
  * Usage API
- *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View Billing` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View Billing` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API endpoints for detailed usage instructions and optional parameters. 
+ *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View organization usage` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View organization usage` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API endpoints for detailed usage instructions and optional parameters. 
  *
  * 
  *
@@ -44,6 +44,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UsageDetails.JSON_PROPERTY_ENTERPRISE_UNITS_USED,
   UsageDetails.JSON_PROPERTY_ENTERPRISE_UNITS_PROJECTED,
   UsageDetails.JSON_PROPERTY_ENTERPRISE_UNITS_NEXT_BILLING_PERIOD,
+  UsageDetails.JSON_PROPERTY_CONNECTED_DEVICES_UNITS_USED,
+  UsageDetails.JSON_PROPERTY_CONNECTED_DEVICES_UNITS_PROJECTED,
+  UsageDetails.JSON_PROPERTY_CONNECTED_DEVICES_UNITS_NEXT_BILLING_PERIOD,
   UsageDetails.JSON_PROPERTY_ENDPOINT_AGENTS_USED,
   UsageDetails.JSON_PROPERTY_ENDPOINT_AGENTS_ESSENTIALS_USED,
   UsageDetails.JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED_USED,
@@ -77,6 +80,15 @@ public class UsageDetails {
 
   public static final String JSON_PROPERTY_ENTERPRISE_UNITS_NEXT_BILLING_PERIOD = "enterpriseUnitsNextBillingPeriod";
   private Long enterpriseUnitsNextBillingPeriod;
+
+  public static final String JSON_PROPERTY_CONNECTED_DEVICES_UNITS_USED = "connectedDevicesUnitsUsed";
+  private Long connectedDevicesUnitsUsed;
+
+  public static final String JSON_PROPERTY_CONNECTED_DEVICES_UNITS_PROJECTED = "connectedDevicesUnitsProjected";
+  private Long connectedDevicesUnitsProjected;
+
+  public static final String JSON_PROPERTY_CONNECTED_DEVICES_UNITS_NEXT_BILLING_PERIOD = "connectedDevicesUnitsNextBillingPeriod";
+  private Long connectedDevicesUnitsNextBillingPeriod;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS_USED = "endpointAgentsUsed";
   private Long endpointAgentsUsed;
@@ -267,7 +279,7 @@ public class UsageDetails {
   }
 
    /**
-   * Number of enterprise units projected in the upcoming usage period, based on configuration of enabled tests. This value is updated hourly. Returns non-zero value only for organizations with metered billing.
+   * Projected number of enterprise units for the upcoming usage period, based on the configuration of enabled tests. This value is updated hourly and returns a non-zero value only for organizations with metered billing.
    * @return enterpriseUnitsNextBillingPeriod
   **/
   @jakarta.annotation.Nullable
@@ -283,6 +295,81 @@ public class UsageDetails {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnterpriseUnitsNextBillingPeriod(Long enterpriseUnitsNextBillingPeriod) {
     this.enterpriseUnitsNextBillingPeriod = enterpriseUnitsNextBillingPeriod;
+  }
+
+
+  public UsageDetails connectedDevicesUnitsUsed(Long connectedDevicesUnitsUsed) {
+    this.connectedDevicesUnitsUsed = connectedDevicesUnitsUsed;
+    return this;
+  }
+
+   /**
+   * Number of connected device units consumed in the usage period.
+   * @return connectedDevicesUnitsUsed
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CONNECTED_DEVICES_UNITS_USED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Long getConnectedDevicesUnitsUsed() {
+    return connectedDevicesUnitsUsed;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONNECTED_DEVICES_UNITS_USED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConnectedDevicesUnitsUsed(Long connectedDevicesUnitsUsed) {
+    this.connectedDevicesUnitsUsed = connectedDevicesUnitsUsed;
+  }
+
+
+  public UsageDetails connectedDevicesUnitsProjected(Long connectedDevicesUnitsProjected) {
+    this.connectedDevicesUnitsProjected = connectedDevicesUnitsProjected;
+    return this;
+  }
+
+   /**
+   * Projected number of connected device units for the current usage period. This projection is based on the units consumed to date and the configuration of enabled tests. The value is updated hourly.
+   * @return connectedDevicesUnitsProjected
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CONNECTED_DEVICES_UNITS_PROJECTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Long getConnectedDevicesUnitsProjected() {
+    return connectedDevicesUnitsProjected;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONNECTED_DEVICES_UNITS_PROJECTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConnectedDevicesUnitsProjected(Long connectedDevicesUnitsProjected) {
+    this.connectedDevicesUnitsProjected = connectedDevicesUnitsProjected;
+  }
+
+
+  public UsageDetails connectedDevicesUnitsNextBillingPeriod(Long connectedDevicesUnitsNextBillingPeriod) {
+    this.connectedDevicesUnitsNextBillingPeriod = connectedDevicesUnitsNextBillingPeriod;
+    return this;
+  }
+
+   /**
+   * Projected number of connected device units for the upcoming usage period. This projection is based on the configuration of enabled tests and is updated hourly.
+   * @return connectedDevicesUnitsNextBillingPeriod
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CONNECTED_DEVICES_UNITS_NEXT_BILLING_PERIOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Long getConnectedDevicesUnitsNextBillingPeriod() {
+    return connectedDevicesUnitsNextBillingPeriod;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONNECTED_DEVICES_UNITS_NEXT_BILLING_PERIOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConnectedDevicesUnitsNextBillingPeriod(Long connectedDevicesUnitsNextBillingPeriod) {
+    this.connectedDevicesUnitsNextBillingPeriod = connectedDevicesUnitsNextBillingPeriod;
   }
 
 
@@ -603,6 +690,9 @@ public class UsageDetails {
         Objects.equals(this.enterpriseUnitsUsed, usageDetails.enterpriseUnitsUsed) &&
         Objects.equals(this.enterpriseUnitsProjected, usageDetails.enterpriseUnitsProjected) &&
         Objects.equals(this.enterpriseUnitsNextBillingPeriod, usageDetails.enterpriseUnitsNextBillingPeriod) &&
+        Objects.equals(this.connectedDevicesUnitsUsed, usageDetails.connectedDevicesUnitsUsed) &&
+        Objects.equals(this.connectedDevicesUnitsProjected, usageDetails.connectedDevicesUnitsProjected) &&
+        Objects.equals(this.connectedDevicesUnitsNextBillingPeriod, usageDetails.connectedDevicesUnitsNextBillingPeriod) &&
         Objects.equals(this.endpointAgentsUsed, usageDetails.endpointAgentsUsed) &&
         Objects.equals(this.endpointAgentsEssentialsUsed, usageDetails.endpointAgentsEssentialsUsed) &&
         Objects.equals(this.endpointAgentsEmbeddedUsed, usageDetails.endpointAgentsEmbeddedUsed) &&
@@ -617,7 +707,7 @@ public class UsageDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quota, cloudUnitsUsed, cloudUnitsProjected, cloudUnitsNextBillingPeriod, enterpriseUnitsUsed, enterpriseUnitsProjected, enterpriseUnitsNextBillingPeriod, endpointAgentsUsed, endpointAgentsEssentialsUsed, endpointAgentsEmbeddedUsed, enterpriseAgentsUsed, enterpriseAgentUnits, tests, endpointAgents, endpointAgentsEssentials, endpointAgentsEmbedded, enterpriseAgents);
+    return Objects.hash(quota, cloudUnitsUsed, cloudUnitsProjected, cloudUnitsNextBillingPeriod, enterpriseUnitsUsed, enterpriseUnitsProjected, enterpriseUnitsNextBillingPeriod, connectedDevicesUnitsUsed, connectedDevicesUnitsProjected, connectedDevicesUnitsNextBillingPeriod, endpointAgentsUsed, endpointAgentsEssentialsUsed, endpointAgentsEmbeddedUsed, enterpriseAgentsUsed, enterpriseAgentUnits, tests, endpointAgents, endpointAgentsEssentials, endpointAgentsEmbedded, enterpriseAgents);
   }
 
   @Override
@@ -631,6 +721,9 @@ public class UsageDetails {
     sb.append("    enterpriseUnitsUsed: ").append(toIndentedString(enterpriseUnitsUsed)).append("\n");
     sb.append("    enterpriseUnitsProjected: ").append(toIndentedString(enterpriseUnitsProjected)).append("\n");
     sb.append("    enterpriseUnitsNextBillingPeriod: ").append(toIndentedString(enterpriseUnitsNextBillingPeriod)).append("\n");
+    sb.append("    connectedDevicesUnitsUsed: ").append(toIndentedString(connectedDevicesUnitsUsed)).append("\n");
+    sb.append("    connectedDevicesUnitsProjected: ").append(toIndentedString(connectedDevicesUnitsProjected)).append("\n");
+    sb.append("    connectedDevicesUnitsNextBillingPeriod: ").append(toIndentedString(connectedDevicesUnitsNextBillingPeriod)).append("\n");
     sb.append("    endpointAgentsUsed: ").append(toIndentedString(endpointAgentsUsed)).append("\n");
     sb.append("    endpointAgentsEssentialsUsed: ").append(toIndentedString(endpointAgentsEssentialsUsed)).append("\n");
     sb.append("    endpointAgentsEmbeddedUsed: ").append(toIndentedString(endpointAgentsEmbeddedUsed)).append("\n");

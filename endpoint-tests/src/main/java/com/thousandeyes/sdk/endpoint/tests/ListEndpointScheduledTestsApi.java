@@ -92,7 +92,7 @@ public class ListEndpointScheduledTestsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/tests/scheduled-tests";
+    String path = "/endpoint/tests/scheduled-tests";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

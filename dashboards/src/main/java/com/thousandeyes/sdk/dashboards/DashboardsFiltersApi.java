@@ -102,7 +102,7 @@ public class DashboardsFiltersApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/dashboards/filters";
+    String path = "/dashboards/filters";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -156,7 +156,7 @@ public class DashboardsFiltersApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/dashboards/filters/{id}"
+    String path = "/dashboards/filters/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -211,7 +211,7 @@ public class DashboardsFiltersApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/dashboards/filters/{id}"
+    String path = "/dashboards/filters/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -262,7 +262,7 @@ public class DashboardsFiltersApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/dashboards/filters";
+    String path = "/dashboards/filters";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -323,7 +323,7 @@ public class DashboardsFiltersApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/dashboards/filters/{id}"
+    String path = "/dashboards/filters/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 

@@ -105,7 +105,7 @@ public class AgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/agent-to-server";
+    String path = "/tests/agent-to-server";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -160,7 +160,7 @@ public class AgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/tests/agent-to-server/{testId}"
+    String path = "/tests/agent-to-server/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -217,7 +217,7 @@ public class AgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/tests/agent-to-server/{testId}"
+    String path = "/tests/agent-to-server/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -267,7 +267,7 @@ public class AgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/tests/agent-to-server";
+    String path = "/tests/agent-to-server";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -329,7 +329,7 @@ public class AgentToServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/tests/agent-to-server/{testId}"
+    String path = "/tests/agent-to-server/{testId}"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

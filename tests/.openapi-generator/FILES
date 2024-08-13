@@ -108,6 +108,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/RequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/model/SelfLinks.java
+src/main/java/com/thousandeyes/sdk/tests/model/SensitivityLevel.java
 src/main/java/com/thousandeyes/sdk/tests/model/Severity.java
 src/main/java/com/thousandeyes/sdk/tests/model/SharedWithAccount.java
 src/main/java/com/thousandeyes/sdk/tests/model/SimpleAgent.java

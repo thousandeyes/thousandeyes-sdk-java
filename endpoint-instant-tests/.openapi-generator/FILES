@@ -31,6 +31,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTestProt
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTestSelfLink.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/Error.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/Link.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/SensitivityLevel.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/Severity.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/TestInterval.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/TestLabel.java

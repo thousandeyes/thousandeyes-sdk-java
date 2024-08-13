@@ -111,7 +111,7 @@ public class EnterpriseAgentClusterApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/agents/{agentId}/cluster/assign"
+    String path = "/agents/{agentId}/cluster/assign"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 
@@ -177,7 +177,7 @@ public class EnterpriseAgentClusterApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/agents/{agentId}/cluster/unassign"
+    String path = "/agents/{agentId}/cluster/unassign"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 

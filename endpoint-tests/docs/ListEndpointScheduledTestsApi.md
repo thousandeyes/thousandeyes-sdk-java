@@ -1,11 +1,11 @@
 # ListEndpointScheduledTestsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getEndpointScheduledTests**](ListEndpointScheduledTestsApi.md#getEndpointScheduledTests) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests |
-| [**getEndpointScheduledTestsWithHttpInfo**](ListEndpointScheduledTestsApi.md#getEndpointScheduledTestsWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests | List endpoint scheduled tests |
+| [**getEndpointScheduledTests**](ListEndpointScheduledTestsApi.md#getEndpointScheduledTests) | **GET** /endpoint/tests/scheduled-tests | List endpoint scheduled tests |
+| [**getEndpointScheduledTestsWithHttpInfo**](ListEndpointScheduledTestsApi.md#getEndpointScheduledTestsWithHttpInfo) | **GET** /endpoint/tests/scheduled-tests | List endpoint scheduled tests |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.endpoint.tests.ListEndpointScheduledTestsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -108,7 +108,7 @@ import com.thousandeyes.sdk.endpoint.tests.ListEndpointScheduledTestsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

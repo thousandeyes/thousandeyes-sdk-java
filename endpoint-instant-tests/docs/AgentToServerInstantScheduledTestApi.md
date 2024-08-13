@@ -1,11 +1,11 @@
 # AgentToServerInstantScheduledTestApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAgentToServerScheduledInstantTest**](AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test |
-| [**createAgentToServerScheduledInstantTestWithHttpInfo**](AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test |
+| [**createAgentToServerScheduledInstantTest**](AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test |
+| [**createAgentToServerScheduledInstantTestWithHttpInfo**](AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.endpoint.tests.instant.AgentToServerInstantScheduled
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -111,7 +111,7 @@ import com.thousandeyes.sdk.endpoint.tests.instant.AgentToServerInstantScheduled
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

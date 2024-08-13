@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.alerts.model.AlertDirection;
 import com.thousandeyes.sdk.alerts.model.AlertRoundsViolationMode;
 import com.thousandeyes.sdk.alerts.model.AlertType;
+import com.thousandeyes.sdk.alerts.model.SensitivityLevel;
 import com.thousandeyes.sdk.alerts.model.Severity;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -44,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BaseRule.JSON_PROPERTY_ROUNDS_VIOLATING_OUT_OF,
   BaseRule.JSON_PROPERTY_ROUNDS_VIOLATING_REQUIRED,
   BaseRule.JSON_PROPERTY_INCLUDE_COVERED_PREFIXES,
+  BaseRule.JSON_PROPERTY_SENSITIVITY_LEVEL,
   BaseRule.JSON_PROPERTY_SEVERITY
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -87,6 +89,9 @@ public class BaseRule {
   public static final String JSON_PROPERTY_INCLUDE_COVERED_PREFIXES = "includeCoveredPrefixes";
   private Boolean includeCoveredPrefixes;
 
+  public static final String JSON_PROPERTY_SENSITIVITY_LEVEL = "sensitivityLevel";
+  private SensitivityLevel sensitivityLevel;
+
   public static final String JSON_PROPERTY_SEVERITY = "severity";
   private Severity severity;
 
@@ -102,7 +107,7 @@ public class BaseRule {
   }
 
    /**
-   * Unique ID of the rule
+   * Unique ID of the rule.
    * @return ruleId
   **/
   @jakarta.annotation.Nullable
@@ -416,6 +421,31 @@ public class BaseRule {
   }
 
 
+  public BaseRule sensitivityLevel(SensitivityLevel sensitivityLevel) {
+    this.sensitivityLevel = sensitivityLevel;
+    return this;
+  }
+
+   /**
+   * Get sensitivityLevel
+   * @return sensitivityLevel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SENSITIVITY_LEVEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SensitivityLevel getSensitivityLevel() {
+    return sensitivityLevel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SENSITIVITY_LEVEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSensitivityLevel(SensitivityLevel sensitivityLevel) {
+    this.sensitivityLevel = sensitivityLevel;
+  }
+
+
   public BaseRule severity(Severity severity) {
     this.severity = severity;
     return this;
@@ -466,12 +496,13 @@ public class BaseRule {
         Objects.equals(this.roundsViolatingOutOf, baseRule.roundsViolatingOutOf) &&
         Objects.equals(this.roundsViolatingRequired, baseRule.roundsViolatingRequired) &&
         Objects.equals(this.includeCoveredPrefixes, baseRule.includeCoveredPrefixes) &&
+        Objects.equals(this.sensitivityLevel, baseRule.sensitivityLevel) &&
         Objects.equals(this.severity, baseRule.severity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, severity);
+    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity);
   }
 
   @Override
@@ -491,6 +522,7 @@ public class BaseRule {
     sb.append("    roundsViolatingOutOf: ").append(toIndentedString(roundsViolatingOutOf)).append("\n");
     sb.append("    roundsViolatingRequired: ").append(toIndentedString(roundsViolatingRequired)).append("\n");
     sb.append("    includeCoveredPrefixes: ").append(toIndentedString(includeCoveredPrefixes)).append("\n");
+    sb.append("    sensitivityLevel: ").append(toIndentedString(sensitivityLevel)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("}");
     return sb.toString();

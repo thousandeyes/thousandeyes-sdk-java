@@ -105,7 +105,7 @@ public class DashboardSnapshotsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/dashboard-snapshots";
+    String path = "/dashboard-snapshots";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -159,7 +159,7 @@ public class DashboardSnapshotsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/dashboard-snapshots/{snapshotId}"
+    String path = "/dashboard-snapshots/{snapshotId}"
         .replace("{snapshotId}", urlEncode(snapshotId.toString()));
     requestBuilder.path(path);
 
@@ -214,7 +214,7 @@ public class DashboardSnapshotsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/dashboard-snapshots/{snapshotId}"
+    String path = "/dashboard-snapshots/{snapshotId}"
         .replace("{snapshotId}", urlEncode(snapshotId.toString()));
     requestBuilder.path(path);
 
@@ -275,7 +275,7 @@ public class DashboardSnapshotsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/dashboard-snapshots/{snapshotId}/widgets/{widgetId}"
+    String path = "/dashboard-snapshots/{snapshotId}/widgets/{widgetId}"
         .replace("{snapshotId}", urlEncode(snapshotId.toString()))
         .replace("{widgetId}", urlEncode(widgetId.toString()));
     requestBuilder.path(path);
@@ -329,7 +329,7 @@ public class DashboardSnapshotsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/dashboard-snapshots";
+    String path = "/dashboard-snapshots";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -389,7 +389,7 @@ public class DashboardSnapshotsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PATCH");
 
-    String path = "/v7/dashboard-snapshots/{snapshotId}"
+    String path = "/dashboard-snapshots/{snapshotId}"
         .replace("{snapshotId}", urlEncode(snapshotId.toString()));
     requestBuilder.path(path);
 

@@ -1,15 +1,15 @@
 # NetworkDynamicTestsResultsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**filterDynamicTestNetworkResults**](NetworkDynamicTestsResultsApi.md#filterDynamicTestNetworkResults) | **POST** /v7/endpoint/test-results/dynamic-tests/{testId}/network/filter | Retrieve network dynamic test results |
-| [**filterDynamicTestNetworkResultsWithHttpInfo**](NetworkDynamicTestsResultsApi.md#filterDynamicTestNetworkResultsWithHttpInfo) | **POST** /v7/endpoint/test-results/dynamic-tests/{testId}/network/filter | Retrieve network dynamic test results |
-| [**getDynamicTestPathVisAgentRoundResults**](NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisAgentRoundResults) | **GET** /v7/endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network dynamic test results details |
-| [**getDynamicTestPathVisAgentRoundResultsWithHttpInfo**](NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network dynamic test results details |
-| [**getDynamicTestPathVisResults**](NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisResults) | **GET** /v7/endpoint/test-results/dynamic-tests/{testId}/path-vis | Retrieve path visualization network dynamic test results |
-| [**getDynamicTestPathVisResultsWithHttpInfo**](NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/dynamic-tests/{testId}/path-vis | Retrieve path visualization network dynamic test results |
+| [**filterDynamicTestNetworkResults**](NetworkDynamicTestsResultsApi.md#filterDynamicTestNetworkResults) | **POST** /endpoint/test-results/dynamic-tests/{testId}/network/filter | Retrieve network dynamic test results |
+| [**filterDynamicTestNetworkResultsWithHttpInfo**](NetworkDynamicTestsResultsApi.md#filterDynamicTestNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/dynamic-tests/{testId}/network/filter | Retrieve network dynamic test results |
+| [**getDynamicTestPathVisAgentRoundResults**](NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisAgentRoundResults) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network dynamic test results details |
+| [**getDynamicTestPathVisAgentRoundResultsWithHttpInfo**](NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network dynamic test results details |
+| [**getDynamicTestPathVisResults**](NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisResults) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis | Retrieve path visualization network dynamic test results |
+| [**getDynamicTestPathVisResultsWithHttpInfo**](NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisResultsWithHttpInfo) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis | Retrieve path visualization network dynamic test results |
 
 
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicTestsResultsApi
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -124,7 +124,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicTestsResultsApi
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -215,7 +215,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicTestsResultsApi
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -299,7 +299,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicTestsResultsApi
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -385,7 +385,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicTestsResultsApi
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -472,7 +472,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicTestsResultsApi
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

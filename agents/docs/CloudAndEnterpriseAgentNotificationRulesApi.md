@@ -1,13 +1,13 @@
 # CloudAndEnterpriseAgentNotificationRulesApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAgentsNotificationRule**](CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRule) | **GET** /v7/agents/notification-rules/{notificationRuleId} | Retrieve agent notification rule |
-| [**getAgentsNotificationRuleWithHttpInfo**](CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRuleWithHttpInfo) | **GET** /v7/agents/notification-rules/{notificationRuleId} | Retrieve agent notification rule |
-| [**getAgentsNotificationRules**](CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRules) | **GET** /v7/agents/notification-rules | List agent notification rules |
-| [**getAgentsNotificationRulesWithHttpInfo**](CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRulesWithHttpInfo) | **GET** /v7/agents/notification-rules | List agent notification rules |
+| [**getAgentsNotificationRule**](CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRule) | **GET** /agents/notification-rules/{notificationRuleId} | Retrieve agent notification rule |
+| [**getAgentsNotificationRuleWithHttpInfo**](CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRuleWithHttpInfo) | **GET** /agents/notification-rules/{notificationRuleId} | Retrieve agent notification rule |
+| [**getAgentsNotificationRules**](CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRules) | **GET** /agents/notification-rules | List agent notification rules |
+| [**getAgentsNotificationRulesWithHttpInfo**](CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRulesWithHttpInfo) | **GET** /agents/notification-rules | List agent notification rules |
 
 
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -113,7 +113,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -195,7 +195,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -273,7 +273,7 @@ import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

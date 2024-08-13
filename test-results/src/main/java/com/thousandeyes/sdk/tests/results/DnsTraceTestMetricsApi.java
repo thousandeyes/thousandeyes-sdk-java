@@ -108,7 +108,7 @@ public class DnsTraceTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/dns-trace"
+    String path = "/test-results/{testId}/dns-trace"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

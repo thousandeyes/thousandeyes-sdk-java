@@ -114,7 +114,7 @@ public class DnsServerTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/dns-server/{serverId}"
+    String path = "/test-results/{testId}/dns-server/{serverId}"
         .replace("{testId}", urlEncode(testId.toString()))
         .replace("{serverId}", urlEncode(serverId.toString()));
     requestBuilder.path(path);
@@ -182,7 +182,7 @@ public class DnsServerTestMetricsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/test-results/{testId}/dns-server"
+    String path = "/test-results/{testId}/dns-server"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

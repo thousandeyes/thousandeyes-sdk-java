@@ -1,15 +1,15 @@
 # NetworkTestMetricsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getTestNetworkResults**](NetworkTestMetricsApi.md#getTestNetworkResults) | **GET** /v7/test-results/{testId}/network | Get network test results |
-| [**getTestNetworkResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestNetworkResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/network | Get network test results |
-| [**getTestPathVisAgentRoundResults**](NetworkTestMetricsApi.md#getTestPathVisAgentRoundResults) | **GET** /v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round |
-| [**getTestPathVisAgentRoundResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round |
-| [**getTestPathVisResults**](NetworkTestMetricsApi.md#getTestPathVisResults) | **GET** /v7/test-results/{testId}/path-vis | Get path visualization network test results |
-| [**getTestPathVisResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestPathVisResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/path-vis | Get path visualization network test results |
+| [**getTestNetworkResults**](NetworkTestMetricsApi.md#getTestNetworkResults) | **GET** /test-results/{testId}/network | Get network test results |
+| [**getTestNetworkResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestNetworkResultsWithHttpInfo) | **GET** /test-results/{testId}/network | Get network test results |
+| [**getTestPathVisAgentRoundResults**](NetworkTestMetricsApi.md#getTestPathVisAgentRoundResults) | **GET** /test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round |
+| [**getTestPathVisAgentRoundResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round |
+| [**getTestPathVisResults**](NetworkTestMetricsApi.md#getTestPathVisResults) | **GET** /test-results/{testId}/path-vis | Get path visualization network test results |
+| [**getTestPathVisResultsWithHttpInfo**](NetworkTestMetricsApi.md#getTestPathVisResultsWithHttpInfo) | **GET** /test-results/{testId}/path-vis | Get path visualization network test results |
 
 
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.tests.results.NetworkTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -126,7 +126,7 @@ import com.thousandeyes.sdk.tests.results.NetworkTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -219,7 +219,7 @@ import com.thousandeyes.sdk.tests.results.NetworkTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -306,7 +306,7 @@ import com.thousandeyes.sdk.tests.results.NetworkTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -395,7 +395,7 @@ import com.thousandeyes.sdk.tests.results.NetworkTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -486,7 +486,7 @@ import com.thousandeyes.sdk.tests.results.NetworkTestMetricsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

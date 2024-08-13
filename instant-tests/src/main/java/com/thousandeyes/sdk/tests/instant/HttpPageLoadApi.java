@@ -104,7 +104,7 @@ public class HttpPageLoadApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/page-load/instant";
+    String path = "/tests/page-load/instant";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

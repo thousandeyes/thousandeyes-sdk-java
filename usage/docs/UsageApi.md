@@ -1,15 +1,15 @@
 # UsageApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getEnterpriseAgentsUnitsUsage**](UsageApi.md#getEnterpriseAgentsUnitsUsage) | **GET** /v7/usage/units/enterprise-agents | Get enterprise agent usage |
-| [**getEnterpriseAgentsUnitsUsageWithHttpInfo**](UsageApi.md#getEnterpriseAgentsUnitsUsageWithHttpInfo) | **GET** /v7/usage/units/enterprise-agents | Get enterprise agent usage |
-| [**getTestsUnitsUsage**](UsageApi.md#getTestsUnitsUsage) | **GET** /v7/usage/units/tests | Get cloud and enterprise agents units usage |
-| [**getTestsUnitsUsageWithHttpInfo**](UsageApi.md#getTestsUnitsUsageWithHttpInfo) | **GET** /v7/usage/units/tests | Get cloud and enterprise agents units usage |
-| [**getUsage**](UsageApi.md#getUsage) | **GET** /v7/usage | Get usage information for the last month |
-| [**getUsageWithHttpInfo**](UsageApi.md#getUsageWithHttpInfo) | **GET** /v7/usage | Get usage information for the last month |
+| [**getEnterpriseAgentsUnitsUsage**](UsageApi.md#getEnterpriseAgentsUnitsUsage) | **GET** /usage/units/enterprise-agents | Get enterprise agent usage |
+| [**getEnterpriseAgentsUnitsUsageWithHttpInfo**](UsageApi.md#getEnterpriseAgentsUnitsUsageWithHttpInfo) | **GET** /usage/units/enterprise-agents | Get enterprise agent usage |
+| [**getTestsUnitsUsage**](UsageApi.md#getTestsUnitsUsage) | **GET** /usage/units/tests | Get cloud and enterprise agents units usage |
+| [**getTestsUnitsUsageWithHttpInfo**](UsageApi.md#getTestsUnitsUsageWithHttpInfo) | **GET** /usage/units/tests | Get cloud and enterprise agents units usage |
+| [**getUsage**](UsageApi.md#getUsage) | **GET** /usage | Get usage information for the last month |
+| [**getUsageWithHttpInfo**](UsageApi.md#getUsageWithHttpInfo) | **GET** /usage | Get usage information for the last month |
 
 
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.usage.UsageApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -116,7 +116,7 @@ import com.thousandeyes.sdk.usage.UsageApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -199,7 +199,7 @@ import com.thousandeyes.sdk.usage.UsageApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -282,7 +282,7 @@ import com.thousandeyes.sdk.usage.UsageApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -367,7 +367,7 @@ import com.thousandeyes.sdk.usage.UsageApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -446,7 +446,7 @@ import com.thousandeyes.sdk.usage.UsageApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

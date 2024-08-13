@@ -2,7 +2,7 @@
 
 Test Snapshots API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 Creates a new test snapshot in ThousandEyes.
 
@@ -101,7 +101,7 @@ public class CreateTestSnapshotApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -126,12 +126,12 @@ public class CreateTestSnapshotApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CreateTestSnapshotApi* | [**createTestSnapshot**](docs/CreateTestSnapshotApi.md#createTestSnapshot) | **POST** /v7/tests/{testId}/snapshot | Create test snapshot
-*CreateTestSnapshotApi* | [**createTestSnapshotWithHttpInfo**](docs/CreateTestSnapshotApi.md#createTestSnapshotWithHttpInfo) | **POST** /v7/tests/{testId}/snapshot | Create test snapshot
+*CreateTestSnapshotApi* | [**createTestSnapshot**](docs/CreateTestSnapshotApi.md#createTestSnapshot) | **POST** /tests/{testId}/snapshot | Create test snapshot
+*CreateTestSnapshotApi* | [**createTestSnapshotWithHttpInfo**](docs/CreateTestSnapshotApi.md#createTestSnapshotWithHttpInfo) | **POST** /tests/{testId}/snapshot | Create test snapshot
 
 
 <a id="documentation-for-authorization"></a>

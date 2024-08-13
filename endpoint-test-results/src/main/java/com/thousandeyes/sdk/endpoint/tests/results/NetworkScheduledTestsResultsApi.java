@@ -114,7 +114,7 @@ public class NetworkScheduledTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/test-results/scheduled-tests/{testId}/network/filter"
+    String path = "/endpoint/test-results/scheduled-tests/{testId}/network/filter"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
@@ -181,7 +181,7 @@ public class NetworkScheduledTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/test-results/scheduled-tests/network/filter";
+    String path = "/endpoint/test-results/scheduled-tests/network/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -254,7 +254,7 @@ public class NetworkScheduledTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId}"
+    String path = "/endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId}"
         .replace("{testId}", urlEncode(testId.toString()))
         .replace("{agentId}", urlEncode(agentId.toString()))
         .replace("{roundId}", urlEncode(roundId.toString()));
@@ -319,7 +319,7 @@ public class NetworkScheduledTestsResultsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/test-results/scheduled-tests/{testId}/path-vis"
+    String path = "/endpoint/test-results/scheduled-tests/{testId}/path-vis"
         .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 

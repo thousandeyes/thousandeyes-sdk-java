@@ -105,7 +105,7 @@ public class ManageAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/endpoint/agents/{agentId}"
+    String path = "/endpoint/agents/{agentId}"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 
@@ -161,7 +161,7 @@ public class ManageAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/agents/{agentId}/disable"
+    String path = "/endpoint/agents/{agentId}/disable"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 
@@ -216,7 +216,7 @@ public class ManageAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/agents/{agentId}/enable"
+    String path = "/endpoint/agents/{agentId}/enable"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 
@@ -279,7 +279,7 @@ public class ManageAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/agents/filter";
+    String path = "/endpoint/agents/filter";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -343,7 +343,7 @@ public class ManageAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/agents/{agentId}"
+    String path = "/endpoint/agents/{agentId}"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 
@@ -408,7 +408,7 @@ public class ManageAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/endpoint/agents";
+    String path = "/endpoint/agents";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -473,7 +473,7 @@ public class ManageAgentsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PATCH");
 
-    String path = "/v7/endpoint/agents/{agentId}"
+    String path = "/endpoint/agents/{agentId}"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 

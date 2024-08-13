@@ -1,11 +1,11 @@
 # PermissionsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getPermissions**](PermissionsApi.md#getPermissions) | **GET** /v7/permissions | List assignable permissions |
-| [**getPermissionsWithHttpInfo**](PermissionsApi.md#getPermissionsWithHttpInfo) | **GET** /v7/permissions | List assignable permissions |
+| [**getPermissions**](PermissionsApi.md#getPermissions) | **GET** /permissions | List assignable permissions |
+| [**getPermissionsWithHttpInfo**](PermissionsApi.md#getPermissionsWithHttpInfo) | **GET** /permissions | List assignable permissions |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.account.management.administrative.PermissionsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -108,7 +108,7 @@ import com.thousandeyes.sdk.account.management.administrative.PermissionsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

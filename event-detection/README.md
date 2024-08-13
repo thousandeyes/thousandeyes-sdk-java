@@ -2,7 +2,7 @@
 
 Event Detection API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 
 Event detection occurs when ThousandEyes identifies that error signals related to a component (proxy, network node, AS, server etc) have deviated from the baselines established by events.
@@ -110,7 +110,7 @@ public class EventsApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -134,14 +134,14 @@ public class EventsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EventsApi* | [**getEvent**](docs/EventsApi.md#getEvent) | **GET** /v7/events/{id} | Retrieve event
-*EventsApi* | [**getEventWithHttpInfo**](docs/EventsApi.md#getEventWithHttpInfo) | **GET** /v7/events/{id} | Retrieve event
-*EventsApi* | [**getEvents**](docs/EventsApi.md#getEvents) | **GET** /v7/events | List events
-*EventsApi* | [**getEventsWithHttpInfo**](docs/EventsApi.md#getEventsWithHttpInfo) | **GET** /v7/events | List events
+*EventsApi* | [**getEvent**](docs/EventsApi.md#getEvent) | **GET** /events/{id} | Retrieve event
+*EventsApi* | [**getEventWithHttpInfo**](docs/EventsApi.md#getEventWithHttpInfo) | **GET** /events/{id} | Retrieve event
+*EventsApi* | [**getEvents**](docs/EventsApi.md#getEvents) | **GET** /events | List events
+*EventsApi* | [**getEventsWithHttpInfo**](docs/EventsApi.md#getEventsWithHttpInfo) | **GET** /events | List events
 
 
 <a id="documentation-for-authorization"></a>

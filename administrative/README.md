@@ -2,7 +2,7 @@
 
 Administrative API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API.
 This API provides the following endpoints that define the operations to manage your organization: 
@@ -110,7 +110,7 @@ public class AccountGroupsApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -134,44 +134,44 @@ public class AccountGroupsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountGroupsApi* | [**createAccountGroup**](docs/AccountGroupsApi.md#createAccountGroup) | **POST** /v7/account-groups | Create account group
-*AccountGroupsApi* | [**createAccountGroupWithHttpInfo**](docs/AccountGroupsApi.md#createAccountGroupWithHttpInfo) | **POST** /v7/account-groups | Create account group
-*AccountGroupsApi* | [**deleteAccountGroup**](docs/AccountGroupsApi.md#deleteAccountGroup) | **DELETE** /v7/account-groups/{id} | Delete account group
-*AccountGroupsApi* | [**deleteAccountGroupWithHttpInfo**](docs/AccountGroupsApi.md#deleteAccountGroupWithHttpInfo) | **DELETE** /v7/account-groups/{id} | Delete account group
-*AccountGroupsApi* | [**getAccountGroup**](docs/AccountGroupsApi.md#getAccountGroup) | **GET** /v7/account-groups/{id} | Retrieve account group
-*AccountGroupsApi* | [**getAccountGroupWithHttpInfo**](docs/AccountGroupsApi.md#getAccountGroupWithHttpInfo) | **GET** /v7/account-groups/{id} | Retrieve account group
-*AccountGroupsApi* | [**getAccountGroups**](docs/AccountGroupsApi.md#getAccountGroups) | **GET** /v7/account-groups | List account groups
-*AccountGroupsApi* | [**getAccountGroupsWithHttpInfo**](docs/AccountGroupsApi.md#getAccountGroupsWithHttpInfo) | **GET** /v7/account-groups | List account groups
-*AccountGroupsApi* | [**updateAccountGroup**](docs/AccountGroupsApi.md#updateAccountGroup) | **PUT** /v7/account-groups/{id} | Update account group
-*AccountGroupsApi* | [**updateAccountGroupWithHttpInfo**](docs/AccountGroupsApi.md#updateAccountGroupWithHttpInfo) | **PUT** /v7/account-groups/{id} | Update account group
-*PermissionsApi* | [**getPermissions**](docs/PermissionsApi.md#getPermissions) | **GET** /v7/permissions | List assignable permissions
-*PermissionsApi* | [**getPermissionsWithHttpInfo**](docs/PermissionsApi.md#getPermissionsWithHttpInfo) | **GET** /v7/permissions | List assignable permissions
-*RolesApi* | [**createRole**](docs/RolesApi.md#createRole) | **POST** /v7/roles | Create role
-*RolesApi* | [**createRoleWithHttpInfo**](docs/RolesApi.md#createRoleWithHttpInfo) | **POST** /v7/roles | Create role
-*RolesApi* | [**deleteRole**](docs/RolesApi.md#deleteRole) | **DELETE** /v7/roles/{id} | Delete role
-*RolesApi* | [**deleteRoleWithHttpInfo**](docs/RolesApi.md#deleteRoleWithHttpInfo) | **DELETE** /v7/roles/{id} | Delete role
-*RolesApi* | [**getRole**](docs/RolesApi.md#getRole) | **GET** /v7/roles/{id} | Retrieve role
-*RolesApi* | [**getRoleWithHttpInfo**](docs/RolesApi.md#getRoleWithHttpInfo) | **GET** /v7/roles/{id} | Retrieve role
-*RolesApi* | [**getRoles**](docs/RolesApi.md#getRoles) | **GET** /v7/roles | List roles
-*RolesApi* | [**getRolesWithHttpInfo**](docs/RolesApi.md#getRolesWithHttpInfo) | **GET** /v7/roles | List roles
-*RolesApi* | [**updateRole**](docs/RolesApi.md#updateRole) | **PUT** /v7/roles/{id} | Update role
-*RolesApi* | [**updateRoleWithHttpInfo**](docs/RolesApi.md#updateRoleWithHttpInfo) | **PUT** /v7/roles/{id} | Update role
-*UserEventsApi* | [**getUserEvents**](docs/UserEventsApi.md#getUserEvents) | **GET** /v7/audit-user-events | List activity log events
-*UserEventsApi* | [**getUserEventsWithHttpInfo**](docs/UserEventsApi.md#getUserEventsWithHttpInfo) | **GET** /v7/audit-user-events | List activity log events
-*UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /v7/users | Create user
-*UsersApi* | [**createUserWithHttpInfo**](docs/UsersApi.md#createUserWithHttpInfo) | **POST** /v7/users | Create user
-*UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /v7/users/{id} | Delete user
-*UsersApi* | [**deleteUserWithHttpInfo**](docs/UsersApi.md#deleteUserWithHttpInfo) | **DELETE** /v7/users/{id} | Delete user
-*UsersApi* | [**getUser**](docs/UsersApi.md#getUser) | **GET** /v7/users/{id} | Retrieve user
-*UsersApi* | [**getUserWithHttpInfo**](docs/UsersApi.md#getUserWithHttpInfo) | **GET** /v7/users/{id} | Retrieve user
-*UsersApi* | [**getUsers**](docs/UsersApi.md#getUsers) | **GET** /v7/users | List users
-*UsersApi* | [**getUsersWithHttpInfo**](docs/UsersApi.md#getUsersWithHttpInfo) | **GET** /v7/users | List users
-*UsersApi* | [**updateUser**](docs/UsersApi.md#updateUser) | **PUT** /v7/users/{id} | Update user
-*UsersApi* | [**updateUserWithHttpInfo**](docs/UsersApi.md#updateUserWithHttpInfo) | **PUT** /v7/users/{id} | Update user
+*AccountGroupsApi* | [**createAccountGroup**](docs/AccountGroupsApi.md#createAccountGroup) | **POST** /account-groups | Create account group
+*AccountGroupsApi* | [**createAccountGroupWithHttpInfo**](docs/AccountGroupsApi.md#createAccountGroupWithHttpInfo) | **POST** /account-groups | Create account group
+*AccountGroupsApi* | [**deleteAccountGroup**](docs/AccountGroupsApi.md#deleteAccountGroup) | **DELETE** /account-groups/{id} | Delete account group
+*AccountGroupsApi* | [**deleteAccountGroupWithHttpInfo**](docs/AccountGroupsApi.md#deleteAccountGroupWithHttpInfo) | **DELETE** /account-groups/{id} | Delete account group
+*AccountGroupsApi* | [**getAccountGroup**](docs/AccountGroupsApi.md#getAccountGroup) | **GET** /account-groups/{id} | Retrieve account group
+*AccountGroupsApi* | [**getAccountGroupWithHttpInfo**](docs/AccountGroupsApi.md#getAccountGroupWithHttpInfo) | **GET** /account-groups/{id} | Retrieve account group
+*AccountGroupsApi* | [**getAccountGroups**](docs/AccountGroupsApi.md#getAccountGroups) | **GET** /account-groups | List account groups
+*AccountGroupsApi* | [**getAccountGroupsWithHttpInfo**](docs/AccountGroupsApi.md#getAccountGroupsWithHttpInfo) | **GET** /account-groups | List account groups
+*AccountGroupsApi* | [**updateAccountGroup**](docs/AccountGroupsApi.md#updateAccountGroup) | **PUT** /account-groups/{id} | Update account group
+*AccountGroupsApi* | [**updateAccountGroupWithHttpInfo**](docs/AccountGroupsApi.md#updateAccountGroupWithHttpInfo) | **PUT** /account-groups/{id} | Update account group
+*PermissionsApi* | [**getPermissions**](docs/PermissionsApi.md#getPermissions) | **GET** /permissions | List assignable permissions
+*PermissionsApi* | [**getPermissionsWithHttpInfo**](docs/PermissionsApi.md#getPermissionsWithHttpInfo) | **GET** /permissions | List assignable permissions
+*RolesApi* | [**createRole**](docs/RolesApi.md#createRole) | **POST** /roles | Create role
+*RolesApi* | [**createRoleWithHttpInfo**](docs/RolesApi.md#createRoleWithHttpInfo) | **POST** /roles | Create role
+*RolesApi* | [**deleteRole**](docs/RolesApi.md#deleteRole) | **DELETE** /roles/{id} | Delete role
+*RolesApi* | [**deleteRoleWithHttpInfo**](docs/RolesApi.md#deleteRoleWithHttpInfo) | **DELETE** /roles/{id} | Delete role
+*RolesApi* | [**getRole**](docs/RolesApi.md#getRole) | **GET** /roles/{id} | Retrieve role
+*RolesApi* | [**getRoleWithHttpInfo**](docs/RolesApi.md#getRoleWithHttpInfo) | **GET** /roles/{id} | Retrieve role
+*RolesApi* | [**getRoles**](docs/RolesApi.md#getRoles) | **GET** /roles | List roles
+*RolesApi* | [**getRolesWithHttpInfo**](docs/RolesApi.md#getRolesWithHttpInfo) | **GET** /roles | List roles
+*RolesApi* | [**updateRole**](docs/RolesApi.md#updateRole) | **PUT** /roles/{id} | Update role
+*RolesApi* | [**updateRoleWithHttpInfo**](docs/RolesApi.md#updateRoleWithHttpInfo) | **PUT** /roles/{id} | Update role
+*UserEventsApi* | [**getUserEvents**](docs/UserEventsApi.md#getUserEvents) | **GET** /audit-user-events | List activity log events
+*UserEventsApi* | [**getUserEventsWithHttpInfo**](docs/UserEventsApi.md#getUserEventsWithHttpInfo) | **GET** /audit-user-events | List activity log events
+*UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /users | Create user
+*UsersApi* | [**createUserWithHttpInfo**](docs/UsersApi.md#createUserWithHttpInfo) | **POST** /users | Create user
+*UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /users/{id} | Delete user
+*UsersApi* | [**deleteUserWithHttpInfo**](docs/UsersApi.md#deleteUserWithHttpInfo) | **DELETE** /users/{id} | Delete user
+*UsersApi* | [**getUser**](docs/UsersApi.md#getUser) | **GET** /users/{id} | Retrieve user
+*UsersApi* | [**getUserWithHttpInfo**](docs/UsersApi.md#getUserWithHttpInfo) | **GET** /users/{id} | Retrieve user
+*UsersApi* | [**getUsers**](docs/UsersApi.md#getUsers) | **GET** /users | List users
+*UsersApi* | [**getUsersWithHttpInfo**](docs/UsersApi.md#getUsersWithHttpInfo) | **GET** /users | List users
+*UsersApi* | [**updateUser**](docs/UsersApi.md#updateUser) | **PUT** /users/{id} | Update user
+*UsersApi* | [**updateUserWithHttpInfo**](docs/UsersApi.md#updateUserWithHttpInfo) | **PUT** /users/{id} | Update user
 
 
 <a id="documentation-for-authorization"></a>

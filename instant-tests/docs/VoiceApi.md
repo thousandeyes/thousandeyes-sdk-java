@@ -1,11 +1,11 @@
 # VoiceApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createVoiceInstantTest**](VoiceApi.md#createVoiceInstantTest) | **POST** /v7/tests/voice/instant | Create voice instant test |
-| [**createVoiceInstantTestWithHttpInfo**](VoiceApi.md#createVoiceInstantTestWithHttpInfo) | **POST** /v7/tests/voice/instant | Create voice instant test |
+| [**createVoiceInstantTest**](VoiceApi.md#createVoiceInstantTest) | **POST** /tests/voice/instant | Create voice instant test |
+| [**createVoiceInstantTestWithHttpInfo**](VoiceApi.md#createVoiceInstantTestWithHttpInfo) | **POST** /tests/voice/instant | Create voice instant test |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.tests.instant.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -114,7 +114,7 @@ import com.thousandeyes.sdk.tests.instant.VoiceApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

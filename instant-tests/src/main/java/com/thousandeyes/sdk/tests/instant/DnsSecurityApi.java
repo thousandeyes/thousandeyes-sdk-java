@@ -104,7 +104,7 @@ public class DnsSecurityApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/dnssec/instant";
+    String path = "/tests/dnssec/instant";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

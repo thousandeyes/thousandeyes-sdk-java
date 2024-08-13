@@ -1,11 +1,11 @@
 # ProxiesApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAgentsProxies**](ProxiesApi.md#getAgentsProxies) | **GET** /v7/agents/proxies | List agent proxies |
-| [**getAgentsProxiesWithHttpInfo**](ProxiesApi.md#getAgentsProxiesWithHttpInfo) | **GET** /v7/agents/proxies | List agent proxies |
+| [**getAgentsProxies**](ProxiesApi.md#getAgentsProxies) | **GET** /agents/proxies | List agent proxies |
+| [**getAgentsProxiesWithHttpInfo**](ProxiesApi.md#getAgentsProxiesWithHttpInfo) | **GET** /agents/proxies | List agent proxies |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.agents.ProxiesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -109,7 +109,7 @@ import com.thousandeyes.sdk.agents.ProxiesApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

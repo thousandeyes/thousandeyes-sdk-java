@@ -1,15 +1,15 @@
 # LocalNetworkTestsResultsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**filterLocalNetworksTestResultsTopologies**](LocalNetworkTestsResultsApi.md#filterLocalNetworksTestResultsTopologies) | **POST** /v7/endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes |
-| [**filterLocalNetworksTestResultsTopologiesWithHttpInfo**](LocalNetworkTestsResultsApi.md#filterLocalNetworksTestResultsTopologiesWithHttpInfo) | **POST** /v7/endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes |
-| [**getLocalNetworksTestResults**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResults) | **GET** /v7/endpoint/test-results/local-networks | List local networks |
-| [**getLocalNetworksTestResultsWithHttpInfo**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/local-networks | List local networks |
-| [**getLocalNetworksTestResultsTopology**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsTopology) | **GET** /v7/endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology |
-| [**getLocalNetworksTestResultsTopologyWithHttpInfo**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsTopologyWithHttpInfo) | **GET** /v7/endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology |
+| [**filterLocalNetworksTestResultsTopologies**](LocalNetworkTestsResultsApi.md#filterLocalNetworksTestResultsTopologies) | **POST** /endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes |
+| [**filterLocalNetworksTestResultsTopologiesWithHttpInfo**](LocalNetworkTestsResultsApi.md#filterLocalNetworksTestResultsTopologiesWithHttpInfo) | **POST** /endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes |
+| [**getLocalNetworksTestResults**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResults) | **GET** /endpoint/test-results/local-networks | List local networks |
+| [**getLocalNetworksTestResultsWithHttpInfo**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsWithHttpInfo) | **GET** /endpoint/test-results/local-networks | List local networks |
+| [**getLocalNetworksTestResultsTopology**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsTopology) | **GET** /endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology |
+| [**getLocalNetworksTestResultsTopologyWithHttpInfo**](LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsTopologyWithHttpInfo) | **GET** /endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology |
 
 
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -123,7 +123,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -213,7 +213,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -290,7 +290,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -369,7 +369,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -448,7 +448,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

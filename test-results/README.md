@@ -2,7 +2,7 @@
 
 Test Results API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 Get test result metrics for Cloud and Enterprise Agent tests.
 
@@ -101,7 +101,7 @@ public class ApiTestMetricsApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -127,50 +127,50 @@ public class ApiTestMetricsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ApiTestMetricsApi* | [**getTestApiAgentRoundResults**](docs/ApiTestMetricsApi.md#getTestApiAgentRoundResults) | **GET** /v7/test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round
-*ApiTestMetricsApi* | [**getTestApiAgentRoundResultsWithHttpInfo**](docs/ApiTestMetricsApi.md#getTestApiAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round
-*ApiTestMetricsApi* | [**getTestApiResults**](docs/ApiTestMetricsApi.md#getTestApiResults) | **GET** /v7/test-results/{testId}/api | Get API test results
-*ApiTestMetricsApi* | [**getTestApiResultsWithHttpInfo**](docs/ApiTestMetricsApi.md#getTestApiResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/api | Get API test results
-*DnsServerTestMetricsApi* | [**getTestDnsServerResult**](docs/DnsServerTestMetricsApi.md#getTestDnsServerResult) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server
-*DnsServerTestMetricsApi* | [**getTestDnsServerResultWithHttpInfo**](docs/DnsServerTestMetricsApi.md#getTestDnsServerResultWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server
-*DnsServerTestMetricsApi* | [**getTestDnsServersResults**](docs/DnsServerTestMetricsApi.md#getTestDnsServersResults) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results
-*DnsServerTestMetricsApi* | [**getTestDnsServersResultsWithHttpInfo**](docs/DnsServerTestMetricsApi.md#getTestDnsServersResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-server | Get DNS server test results
-*DnsTraceTestMetricsApi* | [**getTestDnsTraceResults**](docs/DnsTraceTestMetricsApi.md#getTestDnsTraceResults) | **GET** /v7/test-results/{testId}/dns-trace | Get DNS trace test results
-*DnsTraceTestMetricsApi* | [**getTestDnsTraceResultsWithHttpInfo**](docs/DnsTraceTestMetricsApi.md#getTestDnsTraceResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/dns-trace | Get DNS trace test results
-*DnssecTestMetricsApi* | [**getTestDnsSecResults**](docs/DnssecTestMetricsApi.md#getTestDnsSecResults) | **GET** /v7/test-results/{testId}/dnssec | Get DNSSEC test results
-*DnssecTestMetricsApi* | [**getTestDnsSecResultsWithHttpInfo**](docs/DnssecTestMetricsApi.md#getTestDnsSecResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/dnssec | Get DNSSEC test results
-*NetworkBgpTestMetricsApi* | [**getTestBgpResults**](docs/NetworkBgpTestMetricsApi.md#getTestBgpResults) | **GET** /v7/test-results/{testId}/bgp | Get BGP test results
-*NetworkBgpTestMetricsApi* | [**getTestBgpResultsWithHttpInfo**](docs/NetworkBgpTestMetricsApi.md#getTestBgpResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/bgp | Get BGP test results
-*NetworkBgpTestMetricsApi* | [**getTestBgpRoutesPrefixRoundResults**](docs/NetworkBgpTestMetricsApi.md#getTestBgpRoutesPrefixRoundResults) | **GET** /v7/test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId} | Get BGP route test results by prefix
-*NetworkBgpTestMetricsApi* | [**getTestBgpRoutesPrefixRoundResultsWithHttpInfo**](docs/NetworkBgpTestMetricsApi.md#getTestBgpRoutesPrefixRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId} | Get BGP route test results by prefix
-*NetworkTestMetricsApi* | [**getTestNetworkResults**](docs/NetworkTestMetricsApi.md#getTestNetworkResults) | **GET** /v7/test-results/{testId}/network | Get network test results
-*NetworkTestMetricsApi* | [**getTestNetworkResultsWithHttpInfo**](docs/NetworkTestMetricsApi.md#getTestNetworkResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/network | Get network test results
-*NetworkTestMetricsApi* | [**getTestPathVisAgentRoundResults**](docs/NetworkTestMetricsApi.md#getTestPathVisAgentRoundResults) | **GET** /v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round
-*NetworkTestMetricsApi* | [**getTestPathVisAgentRoundResultsWithHttpInfo**](docs/NetworkTestMetricsApi.md#getTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round
-*NetworkTestMetricsApi* | [**getTestPathVisResults**](docs/NetworkTestMetricsApi.md#getTestPathVisResults) | **GET** /v7/test-results/{testId}/path-vis | Get path visualization network test results
-*NetworkTestMetricsApi* | [**getTestPathVisResultsWithHttpInfo**](docs/NetworkTestMetricsApi.md#getTestPathVisResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/path-vis | Get path visualization network test results
-*VoiceRtpServerTestMetricsApi* | [**getTestRtpServerResults**](docs/VoiceRtpServerTestMetricsApi.md#getTestRtpServerResults) | **GET** /v7/test-results/{testId}/rtp-server | Retrieve RTP server test metrics
-*VoiceRtpServerTestMetricsApi* | [**getTestRtpServerResultsWithHttpInfo**](docs/VoiceRtpServerTestMetricsApi.md#getTestRtpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/rtp-server | Retrieve RTP server test metrics
-*VoiceSipServerTestMetricsApi* | [**getTestSipServerResults**](docs/VoiceSipServerTestMetricsApi.md#getTestSipServerResults) | **GET** /v7/test-results/{testId}/sip-server | Get SIP server test results
-*VoiceSipServerTestMetricsApi* | [**getTestSipServerResultsWithHttpInfo**](docs/VoiceSipServerTestMetricsApi.md#getTestSipServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/sip-server | Get SIP server test results
-*WebFtpServerTestMetricsApi* | [**getTestFtpServerResults**](docs/WebFtpServerTestMetricsApi.md#getTestFtpServerResults) | **GET** /v7/test-results/{testId}/ftp-server | Get FTP server test results
-*WebFtpServerTestMetricsApi* | [**getTestFtpServerResultsWithHttpInfo**](docs/WebFtpServerTestMetricsApi.md#getTestFtpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/ftp-server | Get FTP server test results
-*WebHttpServerTestMetricsApi* | [**getTestHttpServerResults**](docs/WebHttpServerTestMetricsApi.md#getTestHttpServerResults) | **GET** /v7/test-results/{testId}/http-server | Get HTTP server test results
-*WebHttpServerTestMetricsApi* | [**getTestHttpServerResultsWithHttpInfo**](docs/WebHttpServerTestMetricsApi.md#getTestHttpServerResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/http-server | Get HTTP server test results
-*WebPageLoadTestMetricsApi* | [**getTestPageLoadAgentRoundResults**](docs/WebPageLoadTestMetricsApi.md#getTestPageLoadAgentRoundResults) | **GET** /v7/test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round
-*WebPageLoadTestMetricsApi* | [**getTestPageLoadAgentRoundResultsWithHttpInfo**](docs/WebPageLoadTestMetricsApi.md#getTestPageLoadAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round
-*WebPageLoadTestMetricsApi* | [**getTestPageLoadResults**](docs/WebPageLoadTestMetricsApi.md#getTestPageLoadResults) | **GET** /v7/test-results/{testId}/page-load | Get page load server test results
-*WebPageLoadTestMetricsApi* | [**getTestPageLoadResultsWithHttpInfo**](docs/WebPageLoadTestMetricsApi.md#getTestPageLoadResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/page-load | Get page load server test results
-*WebTransactionsTestMetricsApi* | [**getTestWebTransactionAgentRoundPageResults**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundPageResults) | **GET** /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page
-*WebTransactionsTestMetricsApi* | [**getTestWebTransactionAgentRoundPageResultsWithHttpInfo**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundPageResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page
-*WebTransactionsTestMetricsApi* | [**getTestWebTransactionAgentRoundResults**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundResults) | **GET** /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round
-*WebTransactionsTestMetricsApi* | [**getTestWebTransactionAgentRoundResultsWithHttpInfo**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round
-*WebTransactionsTestMetricsApi* | [**getTestWebTransactionResults**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionResults) | **GET** /v7/test-results/{testId}/web-transactions | Get web transactions test results
-*WebTransactionsTestMetricsApi* | [**getTestWebTransactionResultsWithHttpInfo**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionResultsWithHttpInfo) | **GET** /v7/test-results/{testId}/web-transactions | Get web transactions test results
+*ApiTestMetricsApi* | [**getTestApiAgentRoundResults**](docs/ApiTestMetricsApi.md#getTestApiAgentRoundResults) | **GET** /test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round
+*ApiTestMetricsApi* | [**getTestApiAgentRoundResultsWithHttpInfo**](docs/ApiTestMetricsApi.md#getTestApiAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/api/agent/{agentId}/round/{roundId} | Get API test results by agent and round
+*ApiTestMetricsApi* | [**getTestApiResults**](docs/ApiTestMetricsApi.md#getTestApiResults) | **GET** /test-results/{testId}/api | Get API test results
+*ApiTestMetricsApi* | [**getTestApiResultsWithHttpInfo**](docs/ApiTestMetricsApi.md#getTestApiResultsWithHttpInfo) | **GET** /test-results/{testId}/api | Get API test results
+*DnsServerTestMetricsApi* | [**getTestDnsServerResult**](docs/DnsServerTestMetricsApi.md#getTestDnsServerResult) | **GET** /test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server
+*DnsServerTestMetricsApi* | [**getTestDnsServerResultWithHttpInfo**](docs/DnsServerTestMetricsApi.md#getTestDnsServerResultWithHttpInfo) | **GET** /test-results/{testId}/dns-server/{serverId} | Get DNS server test results by server
+*DnsServerTestMetricsApi* | [**getTestDnsServersResults**](docs/DnsServerTestMetricsApi.md#getTestDnsServersResults) | **GET** /test-results/{testId}/dns-server | Get DNS server test results
+*DnsServerTestMetricsApi* | [**getTestDnsServersResultsWithHttpInfo**](docs/DnsServerTestMetricsApi.md#getTestDnsServersResultsWithHttpInfo) | **GET** /test-results/{testId}/dns-server | Get DNS server test results
+*DnsTraceTestMetricsApi* | [**getTestDnsTraceResults**](docs/DnsTraceTestMetricsApi.md#getTestDnsTraceResults) | **GET** /test-results/{testId}/dns-trace | Get DNS trace test results
+*DnsTraceTestMetricsApi* | [**getTestDnsTraceResultsWithHttpInfo**](docs/DnsTraceTestMetricsApi.md#getTestDnsTraceResultsWithHttpInfo) | **GET** /test-results/{testId}/dns-trace | Get DNS trace test results
+*DnssecTestMetricsApi* | [**getTestDnsSecResults**](docs/DnssecTestMetricsApi.md#getTestDnsSecResults) | **GET** /test-results/{testId}/dnssec | Get DNSSEC test results
+*DnssecTestMetricsApi* | [**getTestDnsSecResultsWithHttpInfo**](docs/DnssecTestMetricsApi.md#getTestDnsSecResultsWithHttpInfo) | **GET** /test-results/{testId}/dnssec | Get DNSSEC test results
+*NetworkBgpTestMetricsApi* | [**getTestBgpResults**](docs/NetworkBgpTestMetricsApi.md#getTestBgpResults) | **GET** /test-results/{testId}/bgp | Get BGP test results
+*NetworkBgpTestMetricsApi* | [**getTestBgpResultsWithHttpInfo**](docs/NetworkBgpTestMetricsApi.md#getTestBgpResultsWithHttpInfo) | **GET** /test-results/{testId}/bgp | Get BGP test results
+*NetworkBgpTestMetricsApi* | [**getTestBgpRoutesPrefixRoundResults**](docs/NetworkBgpTestMetricsApi.md#getTestBgpRoutesPrefixRoundResults) | **GET** /test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId} | Get BGP route test results by prefix
+*NetworkBgpTestMetricsApi* | [**getTestBgpRoutesPrefixRoundResultsWithHttpInfo**](docs/NetworkBgpTestMetricsApi.md#getTestBgpRoutesPrefixRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId} | Get BGP route test results by prefix
+*NetworkTestMetricsApi* | [**getTestNetworkResults**](docs/NetworkTestMetricsApi.md#getTestNetworkResults) | **GET** /test-results/{testId}/network | Get network test results
+*NetworkTestMetricsApi* | [**getTestNetworkResultsWithHttpInfo**](docs/NetworkTestMetricsApi.md#getTestNetworkResultsWithHttpInfo) | **GET** /test-results/{testId}/network | Get network test results
+*NetworkTestMetricsApi* | [**getTestPathVisAgentRoundResults**](docs/NetworkTestMetricsApi.md#getTestPathVisAgentRoundResults) | **GET** /test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round
+*NetworkTestMetricsApi* | [**getTestPathVisAgentRoundResultsWithHttpInfo**](docs/NetworkTestMetricsApi.md#getTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/path-vis/agent/{agentId}/round/{roundId} | Get path visualization test results by agent and round
+*NetworkTestMetricsApi* | [**getTestPathVisResults**](docs/NetworkTestMetricsApi.md#getTestPathVisResults) | **GET** /test-results/{testId}/path-vis | Get path visualization network test results
+*NetworkTestMetricsApi* | [**getTestPathVisResultsWithHttpInfo**](docs/NetworkTestMetricsApi.md#getTestPathVisResultsWithHttpInfo) | **GET** /test-results/{testId}/path-vis | Get path visualization network test results
+*VoiceRtpServerTestMetricsApi* | [**getTestRtpServerResults**](docs/VoiceRtpServerTestMetricsApi.md#getTestRtpServerResults) | **GET** /test-results/{testId}/rtp-server | Retrieve RTP server test metrics
+*VoiceRtpServerTestMetricsApi* | [**getTestRtpServerResultsWithHttpInfo**](docs/VoiceRtpServerTestMetricsApi.md#getTestRtpServerResultsWithHttpInfo) | **GET** /test-results/{testId}/rtp-server | Retrieve RTP server test metrics
+*VoiceSipServerTestMetricsApi* | [**getTestSipServerResults**](docs/VoiceSipServerTestMetricsApi.md#getTestSipServerResults) | **GET** /test-results/{testId}/sip-server | Get SIP server test results
+*VoiceSipServerTestMetricsApi* | [**getTestSipServerResultsWithHttpInfo**](docs/VoiceSipServerTestMetricsApi.md#getTestSipServerResultsWithHttpInfo) | **GET** /test-results/{testId}/sip-server | Get SIP server test results
+*WebFtpServerTestMetricsApi* | [**getTestFtpServerResults**](docs/WebFtpServerTestMetricsApi.md#getTestFtpServerResults) | **GET** /test-results/{testId}/ftp-server | Get FTP server test results
+*WebFtpServerTestMetricsApi* | [**getTestFtpServerResultsWithHttpInfo**](docs/WebFtpServerTestMetricsApi.md#getTestFtpServerResultsWithHttpInfo) | **GET** /test-results/{testId}/ftp-server | Get FTP server test results
+*WebHttpServerTestMetricsApi* | [**getTestHttpServerResults**](docs/WebHttpServerTestMetricsApi.md#getTestHttpServerResults) | **GET** /test-results/{testId}/http-server | Get HTTP server test results
+*WebHttpServerTestMetricsApi* | [**getTestHttpServerResultsWithHttpInfo**](docs/WebHttpServerTestMetricsApi.md#getTestHttpServerResultsWithHttpInfo) | **GET** /test-results/{testId}/http-server | Get HTTP server test results
+*WebPageLoadTestMetricsApi* | [**getTestPageLoadAgentRoundResults**](docs/WebPageLoadTestMetricsApi.md#getTestPageLoadAgentRoundResults) | **GET** /test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round
+*WebPageLoadTestMetricsApi* | [**getTestPageLoadAgentRoundResultsWithHttpInfo**](docs/WebPageLoadTestMetricsApi.md#getTestPageLoadAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round
+*WebPageLoadTestMetricsApi* | [**getTestPageLoadResults**](docs/WebPageLoadTestMetricsApi.md#getTestPageLoadResults) | **GET** /test-results/{testId}/page-load | Get page load server test results
+*WebPageLoadTestMetricsApi* | [**getTestPageLoadResultsWithHttpInfo**](docs/WebPageLoadTestMetricsApi.md#getTestPageLoadResultsWithHttpInfo) | **GET** /test-results/{testId}/page-load | Get page load server test results
+*WebTransactionsTestMetricsApi* | [**getTestWebTransactionAgentRoundPageResults**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundPageResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page
+*WebTransactionsTestMetricsApi* | [**getTestWebTransactionAgentRoundPageResultsWithHttpInfo**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundPageResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page
+*WebTransactionsTestMetricsApi* | [**getTestWebTransactionAgentRoundResults**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round
+*WebTransactionsTestMetricsApi* | [**getTestWebTransactionAgentRoundResultsWithHttpInfo**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round
+*WebTransactionsTestMetricsApi* | [**getTestWebTransactionResults**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionResults) | **GET** /test-results/{testId}/web-transactions | Get web transactions test results
+*WebTransactionsTestMetricsApi* | [**getTestWebTransactionResultsWithHttpInfo**](docs/WebTransactionsTestMetricsApi.md#getTestWebTransactionResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions | Get web transactions test results
 
 
 <a id="documentation-for-authorization"></a>

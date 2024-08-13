@@ -100,7 +100,7 @@ public class StreamingApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/stream";
+    String path = "/stream";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -154,7 +154,7 @@ public class StreamingApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/stream/{id}"
+    String path = "/stream/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -211,7 +211,7 @@ public class StreamingApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/stream/{id}"
+    String path = "/stream/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -263,7 +263,7 @@ public class StreamingApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/stream";
+    String path = "/stream";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -320,7 +320,7 @@ public class StreamingApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/stream/{id}"
+    String path = "/stream/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 

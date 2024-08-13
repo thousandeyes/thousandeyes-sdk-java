@@ -1,19 +1,19 @@
 # ScheduledTestsAgentToServerApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAgentToServerEndpointScheduledTest**](ScheduledTestsAgentToServerApi.md#createAgentToServerEndpointScheduledTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test |
-| [**createAgentToServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#createAgentToServerEndpointScheduledTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test |
-| [**deleteAgentToServerEndpointScheduledTest**](ScheduledTestsAgentToServerApi.md#deleteAgentToServerEndpointScheduledTest) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test |
-| [**deleteAgentToServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#deleteAgentToServerEndpointScheduledTestWithHttpInfo) | **DELETE** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test |
-| [**getAgentToServerEndpointScheduledTest**](ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTest) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test |
-| [**getAgentToServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTestWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test |
-| [**getAgentToServerEndpointScheduledTests**](ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTests) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
-| [**getAgentToServerEndpointScheduledTestsWithHttpInfo**](ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTestsWithHttpInfo) | **GET** /v7/endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
-| [**updateAgentToServerEndpointScheduledTest**](ScheduledTestsAgentToServerApi.md#updateAgentToServerEndpointScheduledTest) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test |
-| [**updateAgentToServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#updateAgentToServerEndpointScheduledTestWithHttpInfo) | **PATCH** /v7/endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test |
+| [**createAgentToServerEndpointScheduledTest**](ScheduledTestsAgentToServerApi.md#createAgentToServerEndpointScheduledTest) | **POST** /endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test |
+| [**createAgentToServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#createAgentToServerEndpointScheduledTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test |
+| [**deleteAgentToServerEndpointScheduledTest**](ScheduledTestsAgentToServerApi.md#deleteAgentToServerEndpointScheduledTest) | **DELETE** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test |
+| [**deleteAgentToServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#deleteAgentToServerEndpointScheduledTestWithHttpInfo) | **DELETE** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test |
+| [**getAgentToServerEndpointScheduledTest**](ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTest) | **GET** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test |
+| [**getAgentToServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTestWithHttpInfo) | **GET** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Retrieve agent to server endpoint scheduled test |
+| [**getAgentToServerEndpointScheduledTests**](ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTests) | **GET** /endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
+| [**getAgentToServerEndpointScheduledTestsWithHttpInfo**](ScheduledTestsAgentToServerApi.md#getAgentToServerEndpointScheduledTestsWithHttpInfo) | **GET** /endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
+| [**updateAgentToServerEndpointScheduledTest**](ScheduledTestsAgentToServerApi.md#updateAgentToServerEndpointScheduledTest) | **PATCH** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test |
+| [**updateAgentToServerEndpointScheduledTestWithHttpInfo**](ScheduledTestsAgentToServerApi.md#updateAgentToServerEndpointScheduledTestWithHttpInfo) | **PATCH** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -120,7 +120,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -203,7 +203,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -283,7 +283,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -365,7 +365,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -445,7 +445,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -527,7 +527,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -604,7 +604,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -683,7 +683,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -766,7 +766,7 @@ import com.thousandeyes.sdk.endpoint.tests.ScheduledTestsAgentToServerApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

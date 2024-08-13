@@ -104,7 +104,7 @@ public class SipServerApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/sip-server/instant";
+    String path = "/tests/sip-server/instant";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

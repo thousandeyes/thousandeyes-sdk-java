@@ -104,7 +104,7 @@ public class DnsTraceApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tests/dns-trace/instant";
+    String path = "/tests/dns-trace/instant";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

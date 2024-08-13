@@ -97,7 +97,7 @@ public class TagsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tags";
+    String path = "/tags";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -147,7 +147,7 @@ public class TagsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/tags/bulk";
+    String path = "/tags/bulk";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -201,7 +201,7 @@ public class TagsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/v7/tags/{id}"
+    String path = "/tags/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -256,7 +256,7 @@ public class TagsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/tags/{id}"
+    String path = "/tags/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 
@@ -306,7 +306,7 @@ public class TagsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
-    String path = "/v7/tags";
+    String path = "/tags";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
@@ -361,7 +361,7 @@ public class TagsApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
-    String path = "/v7/tags/{id}"
+    String path = "/tags/{id}"
         .replace("{id}", urlEncode(id.toString()));
     requestBuilder.path(path);
 

@@ -2,7 +2,7 @@
 
 Endpoint Instant Scheduled Tests API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 
 You can create and execute a new endpoint instant scheduled test within ThousandEyes using this API. The test parameters are specified in the `POST` data.
@@ -111,7 +111,7 @@ public class AgentToServerInstantScheduledTestApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -135,16 +135,16 @@ public class AgentToServerInstantScheduledTestApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentToServerInstantScheduledTestApi* | [**createAgentToServerScheduledInstantTest**](docs/AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
-*AgentToServerInstantScheduledTestApi* | [**createAgentToServerScheduledInstantTestWithHttpInfo**](docs/AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
-*HttpServerInstantScheduledTestApi* | [**createHttpServerScheduledInstantTest**](docs/HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
-*HttpServerInstantScheduledTestApi* | [**createHttpServerScheduledInstantTestWithHttpInfo**](docs/HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
-*RunExistingTestApi* | [**runEndpointScheduledInstantTest**](docs/RunExistingTestApi.md#runEndpointScheduledInstantTest) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
-*RunExistingTestApi* | [**runEndpointScheduledInstantTestWithHttpInfo**](docs/RunExistingTestApi.md#runEndpointScheduledInstantTestWithHttpInfo) | **POST** /v7/endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
+*AgentToServerInstantScheduledTestApi* | [**createAgentToServerScheduledInstantTest**](docs/AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
+*AgentToServerInstantScheduledTestApi* | [**createAgentToServerScheduledInstantTestWithHttpInfo**](docs/AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
+*HttpServerInstantScheduledTestApi* | [**createHttpServerScheduledInstantTest**](docs/HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
+*HttpServerInstantScheduledTestApi* | [**createHttpServerScheduledInstantTestWithHttpInfo**](docs/HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
+*RunExistingTestApi* | [**runEndpointScheduledInstantTest**](docs/RunExistingTestApi.md#runEndpointScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
+*RunExistingTestApi* | [**runEndpointScheduledInstantTestWithHttpInfo**](docs/RunExistingTestApi.md#runEndpointScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
 
 
 <a id="documentation-for-authorization"></a>

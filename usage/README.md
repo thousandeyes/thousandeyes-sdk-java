@@ -2,16 +2,16 @@
 
 Usage API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 
 These usage endpoints define the following operations:
 
 * **Usage**: Retrieve usage data for the specified time period (default is one month).
     
-    * Users must have the `View Billing` permission to access this endpoint.
+    * Users must have the `View organization usage` permission to access this endpoint.
     * This endpoint offers visibility across all account groups within the organization.
-    * Users with `View Billing` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.
+    * Users with `View organization usage` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.
 
 * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.
     
@@ -115,7 +115,7 @@ public class QuotasApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -138,26 +138,26 @@ public class QuotasApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*QuotasApi* | [**assignOrganizationsAccountGroupsQuotas**](docs/QuotasApi.md#assignOrganizationsAccountGroupsQuotas) | **POST** /v7/quotas/account-groups/assign | Create or update accout group quotas
-*QuotasApi* | [**assignOrganizationsAccountGroupsQuotasWithHttpInfo**](docs/QuotasApi.md#assignOrganizationsAccountGroupsQuotasWithHttpInfo) | **POST** /v7/quotas/account-groups/assign | Create or update accout group quotas
-*QuotasApi* | [**assignOrganizationsQuotas**](docs/QuotasApi.md#assignOrganizationsQuotas) | **POST** /v7/quotas/assign | Create or update organizations quotas
-*QuotasApi* | [**assignOrganizationsQuotasWithHttpInfo**](docs/QuotasApi.md#assignOrganizationsQuotasWithHttpInfo) | **POST** /v7/quotas/assign | Create or update organizations quotas
-*QuotasApi* | [**getQuotas**](docs/QuotasApi.md#getQuotas) | **GET** /v7/quotas | Get organization and account group usage quota
-*QuotasApi* | [**getQuotasWithHttpInfo**](docs/QuotasApi.md#getQuotasWithHttpInfo) | **GET** /v7/quotas | Get organization and account group usage quota
-*QuotasApi* | [**unassignOrganizationsAccountGroupsQuotas**](docs/QuotasApi.md#unassignOrganizationsAccountGroupsQuotas) | **POST** /v7/quotas/account-groups/unassign | Remove account group quotas from organizations
-*QuotasApi* | [**unassignOrganizationsAccountGroupsQuotasWithHttpInfo**](docs/QuotasApi.md#unassignOrganizationsAccountGroupsQuotasWithHttpInfo) | **POST** /v7/quotas/account-groups/unassign | Remove account group quotas from organizations
-*QuotasApi* | [**unassignOrganizationsQuotas**](docs/QuotasApi.md#unassignOrganizationsQuotas) | **POST** /v7/quotas/unassign | Remove organization quotas
-*QuotasApi* | [**unassignOrganizationsQuotasWithHttpInfo**](docs/QuotasApi.md#unassignOrganizationsQuotasWithHttpInfo) | **POST** /v7/quotas/unassign | Remove organization quotas
-*UsageApi* | [**getEnterpriseAgentsUnitsUsage**](docs/UsageApi.md#getEnterpriseAgentsUnitsUsage) | **GET** /v7/usage/units/enterprise-agents | Get enterprise agent usage
-*UsageApi* | [**getEnterpriseAgentsUnitsUsageWithHttpInfo**](docs/UsageApi.md#getEnterpriseAgentsUnitsUsageWithHttpInfo) | **GET** /v7/usage/units/enterprise-agents | Get enterprise agent usage
-*UsageApi* | [**getTestsUnitsUsage**](docs/UsageApi.md#getTestsUnitsUsage) | **GET** /v7/usage/units/tests | Get cloud and enterprise agents units usage
-*UsageApi* | [**getTestsUnitsUsageWithHttpInfo**](docs/UsageApi.md#getTestsUnitsUsageWithHttpInfo) | **GET** /v7/usage/units/tests | Get cloud and enterprise agents units usage
-*UsageApi* | [**getUsage**](docs/UsageApi.md#getUsage) | **GET** /v7/usage | Get usage information for the last month
-*UsageApi* | [**getUsageWithHttpInfo**](docs/UsageApi.md#getUsageWithHttpInfo) | **GET** /v7/usage | Get usage information for the last month
+*QuotasApi* | [**assignOrganizationsAccountGroupsQuotas**](docs/QuotasApi.md#assignOrganizationsAccountGroupsQuotas) | **POST** /quotas/account-groups/assign | Create or update accout group quotas
+*QuotasApi* | [**assignOrganizationsAccountGroupsQuotasWithHttpInfo**](docs/QuotasApi.md#assignOrganizationsAccountGroupsQuotasWithHttpInfo) | **POST** /quotas/account-groups/assign | Create or update accout group quotas
+*QuotasApi* | [**assignOrganizationsQuotas**](docs/QuotasApi.md#assignOrganizationsQuotas) | **POST** /quotas/assign | Create or update organizations quotas
+*QuotasApi* | [**assignOrganizationsQuotasWithHttpInfo**](docs/QuotasApi.md#assignOrganizationsQuotasWithHttpInfo) | **POST** /quotas/assign | Create or update organizations quotas
+*QuotasApi* | [**getQuotas**](docs/QuotasApi.md#getQuotas) | **GET** /quotas | Get organization and account group usage quota
+*QuotasApi* | [**getQuotasWithHttpInfo**](docs/QuotasApi.md#getQuotasWithHttpInfo) | **GET** /quotas | Get organization and account group usage quota
+*QuotasApi* | [**unassignOrganizationsAccountGroupsQuotas**](docs/QuotasApi.md#unassignOrganizationsAccountGroupsQuotas) | **POST** /quotas/account-groups/unassign | Remove account group quotas from organizations
+*QuotasApi* | [**unassignOrganizationsAccountGroupsQuotasWithHttpInfo**](docs/QuotasApi.md#unassignOrganizationsAccountGroupsQuotasWithHttpInfo) | **POST** /quotas/account-groups/unassign | Remove account group quotas from organizations
+*QuotasApi* | [**unassignOrganizationsQuotas**](docs/QuotasApi.md#unassignOrganizationsQuotas) | **POST** /quotas/unassign | Remove organization quotas
+*QuotasApi* | [**unassignOrganizationsQuotasWithHttpInfo**](docs/QuotasApi.md#unassignOrganizationsQuotasWithHttpInfo) | **POST** /quotas/unassign | Remove organization quotas
+*UsageApi* | [**getEnterpriseAgentsUnitsUsage**](docs/UsageApi.md#getEnterpriseAgentsUnitsUsage) | **GET** /usage/units/enterprise-agents | Get enterprise agent usage
+*UsageApi* | [**getEnterpriseAgentsUnitsUsageWithHttpInfo**](docs/UsageApi.md#getEnterpriseAgentsUnitsUsageWithHttpInfo) | **GET** /usage/units/enterprise-agents | Get enterprise agent usage
+*UsageApi* | [**getTestsUnitsUsage**](docs/UsageApi.md#getTestsUnitsUsage) | **GET** /usage/units/tests | Get cloud and enterprise agents units usage
+*UsageApi* | [**getTestsUnitsUsageWithHttpInfo**](docs/UsageApi.md#getTestsUnitsUsageWithHttpInfo) | **GET** /usage/units/tests | Get cloud and enterprise agents units usage
+*UsageApi* | [**getUsage**](docs/UsageApi.md#getUsage) | **GET** /usage | Get usage information for the last month
+*UsageApi* | [**getUsageWithHttpInfo**](docs/UsageApi.md#getUsageWithHttpInfo) | **GET** /usage | Get usage information for the last month
 
 
 <a id="documentation-for-authorization"></a>

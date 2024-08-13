@@ -1,11 +1,11 @@
 # UserEventsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getUserEvents**](UserEventsApi.md#getUserEvents) | **GET** /v7/audit-user-events | List activity log events |
-| [**getUserEventsWithHttpInfo**](UserEventsApi.md#getUserEventsWithHttpInfo) | **GET** /v7/audit-user-events | List activity log events |
+| [**getUserEvents**](UserEventsApi.md#getUserEvents) | **GET** /audit-user-events | List activity log events |
+| [**getUserEventsWithHttpInfo**](UserEventsApi.md#getUserEventsWithHttpInfo) | **GET** /audit-user-events | List activity log events |
 
 
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.account.management.administrative.UserEventsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -118,7 +118,7 @@ import com.thousandeyes.sdk.account.management.administrative.UserEventsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

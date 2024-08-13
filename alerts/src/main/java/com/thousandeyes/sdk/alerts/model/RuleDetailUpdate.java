@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.alerts.model.AlertDirection;
 import com.thousandeyes.sdk.alerts.model.AlertRoundsViolationMode;
 import com.thousandeyes.sdk.alerts.model.AlertType;
 import com.thousandeyes.sdk.alerts.model.Notification;
+import com.thousandeyes.sdk.alerts.model.SensitivityLevel;
 import com.thousandeyes.sdk.alerts.model.Severity;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RuleDetailUpdate.JSON_PROPERTY_ROUNDS_VIOLATING_OUT_OF,
   RuleDetailUpdate.JSON_PROPERTY_ROUNDS_VIOLATING_REQUIRED,
   RuleDetailUpdate.JSON_PROPERTY_INCLUDE_COVERED_PREFIXES,
+  RuleDetailUpdate.JSON_PROPERTY_SENSITIVITY_LEVEL,
   RuleDetailUpdate.JSON_PROPERTY_SEVERITY,
   RuleDetailUpdate.JSON_PROPERTY_NOTIFICATIONS,
   RuleDetailUpdate.JSON_PROPERTY_TEST_IDS
@@ -93,6 +95,9 @@ public class RuleDetailUpdate {
   public static final String JSON_PROPERTY_INCLUDE_COVERED_PREFIXES = "includeCoveredPrefixes";
   private Boolean includeCoveredPrefixes;
 
+  public static final String JSON_PROPERTY_SENSITIVITY_LEVEL = "sensitivityLevel";
+  private SensitivityLevel sensitivityLevel;
+
   public static final String JSON_PROPERTY_SEVERITY = "severity";
   private Severity severity;
 
@@ -114,7 +119,7 @@ public class RuleDetailUpdate {
   }
 
    /**
-   * Unique ID of the rule
+   * Unique ID of the rule.
    * @return ruleId
   **/
   @jakarta.annotation.Nullable
@@ -428,6 +433,31 @@ public class RuleDetailUpdate {
   }
 
 
+  public RuleDetailUpdate sensitivityLevel(SensitivityLevel sensitivityLevel) {
+    this.sensitivityLevel = sensitivityLevel;
+    return this;
+  }
+
+   /**
+   * Get sensitivityLevel
+   * @return sensitivityLevel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SENSITIVITY_LEVEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SensitivityLevel getSensitivityLevel() {
+    return sensitivityLevel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SENSITIVITY_LEVEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSensitivityLevel(SensitivityLevel sensitivityLevel) {
+    this.sensitivityLevel = sensitivityLevel;
+  }
+
+
   public RuleDetailUpdate severity(Severity severity) {
     this.severity = severity;
     return this;
@@ -536,6 +566,7 @@ public class RuleDetailUpdate {
         Objects.equals(this.roundsViolatingOutOf, ruleDetailUpdate.roundsViolatingOutOf) &&
         Objects.equals(this.roundsViolatingRequired, ruleDetailUpdate.roundsViolatingRequired) &&
         Objects.equals(this.includeCoveredPrefixes, ruleDetailUpdate.includeCoveredPrefixes) &&
+        Objects.equals(this.sensitivityLevel, ruleDetailUpdate.sensitivityLevel) &&
         Objects.equals(this.severity, ruleDetailUpdate.severity) &&
         Objects.equals(this.notifications, ruleDetailUpdate.notifications) &&
         Objects.equals(this.testIds, ruleDetailUpdate.testIds);
@@ -543,7 +574,7 @@ public class RuleDetailUpdate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, severity, notifications, testIds);
+    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, notifications, testIds);
   }
 
   @Override
@@ -563,6 +594,7 @@ public class RuleDetailUpdate {
     sb.append("    roundsViolatingOutOf: ").append(toIndentedString(roundsViolatingOutOf)).append("\n");
     sb.append("    roundsViolatingRequired: ").append(toIndentedString(roundsViolatingRequired)).append("\n");
     sb.append("    includeCoveredPrefixes: ").append(toIndentedString(includeCoveredPrefixes)).append("\n");
+    sb.append("    sensitivityLevel: ").append(toIndentedString(sensitivityLevel)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    notifications: ").append(toIndentedString(notifications)).append("\n");
     sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");

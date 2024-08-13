@@ -106,7 +106,7 @@ public class TransferApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/agents/{agentId}/transfer"
+    String path = "/endpoint/agents/{agentId}/transfer"
         .replace("{agentId}", urlEncode(agentId.toString()));
     requestBuilder.path(path);
 
@@ -159,7 +159,7 @@ public class TransferApi {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
-    String path = "/v7/endpoint/agents/transfer/bulk";
+    String path = "/endpoint/agents/transfer/bulk";
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

@@ -1,19 +1,19 @@
 # RealUserTestsResultsApi
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**filterRealUserTestsNetworkResults**](RealUserTestsResultsApi.md#filterRealUserTestsNetworkResults) | **POST** /v7/endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests |
-| [**filterRealUserTestsNetworkResultsWithHttpInfo**](RealUserTestsResultsApi.md#filterRealUserTestsNetworkResultsWithHttpInfo) | **POST** /v7/endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests |
-| [**filterRealUserTestsResults**](RealUserTestsResultsApi.md#filterRealUserTestsResults) | **POST** /v7/endpoint/test-results/real-user-tests/filter | List endpoint real user tests |
-| [**filterRealUserTestsResultsWithHttpInfo**](RealUserTestsResultsApi.md#filterRealUserTestsResultsWithHttpInfo) | **POST** /v7/endpoint/test-results/real-user-tests/filter | List endpoint real user tests |
-| [**filterRealUserTestsVisitedPagesResults**](RealUserTestsResultsApi.md#filterRealUserTestsVisitedPagesResults) | **POST** /v7/endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages |
-| [**filterRealUserTestsVisitedPagesResultsWithHttpInfo**](RealUserTestsResultsApi.md#filterRealUserTestsVisitedPagesResultsWithHttpInfo) | **POST** /v7/endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages |
-| [**getRealUserTestPageResults**](RealUserTestsResultsApi.md#getRealUserTestPageResults) | **GET** /v7/endpoint/test-results/real-user-tests/{id}/pages/{pageId} | Retrieve endpoint real user test page |
-| [**getRealUserTestPageResultsWithHttpInfo**](RealUserTestsResultsApi.md#getRealUserTestPageResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/real-user-tests/{id}/pages/{pageId} | Retrieve endpoint real user test page |
-| [**getRealUserTestResults**](RealUserTestsResultsApi.md#getRealUserTestResults) | **GET** /v7/endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test |
-| [**getRealUserTestResultsWithHttpInfo**](RealUserTestsResultsApi.md#getRealUserTestResultsWithHttpInfo) | **GET** /v7/endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test |
+| [**filterRealUserTestsNetworkResults**](RealUserTestsResultsApi.md#filterRealUserTestsNetworkResults) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests |
+| [**filterRealUserTestsNetworkResultsWithHttpInfo**](RealUserTestsResultsApi.md#filterRealUserTestsNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests |
+| [**filterRealUserTestsResults**](RealUserTestsResultsApi.md#filterRealUserTestsResults) | **POST** /endpoint/test-results/real-user-tests/filter | List endpoint real user tests |
+| [**filterRealUserTestsResultsWithHttpInfo**](RealUserTestsResultsApi.md#filterRealUserTestsResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/filter | List endpoint real user tests |
+| [**filterRealUserTestsVisitedPagesResults**](RealUserTestsResultsApi.md#filterRealUserTestsVisitedPagesResults) | **POST** /endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages |
+| [**filterRealUserTestsVisitedPagesResultsWithHttpInfo**](RealUserTestsResultsApi.md#filterRealUserTestsVisitedPagesResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages |
+| [**getRealUserTestPageResults**](RealUserTestsResultsApi.md#getRealUserTestPageResults) | **GET** /endpoint/test-results/real-user-tests/{id}/pages/{pageId} | Retrieve endpoint real user test page |
+| [**getRealUserTestPageResultsWithHttpInfo**](RealUserTestsResultsApi.md#getRealUserTestPageResultsWithHttpInfo) | **GET** /endpoint/test-results/real-user-tests/{id}/pages/{pageId} | Retrieve endpoint real user test page |
+| [**getRealUserTestResults**](RealUserTestsResultsApi.md#getRealUserTestResults) | **GET** /endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test |
+| [**getRealUserTestResultsWithHttpInfo**](RealUserTestsResultsApi.md#getRealUserTestResultsWithHttpInfo) | **GET** /endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test |
 
 
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -127,7 +127,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -217,7 +217,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -305,7 +305,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -395,7 +395,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -483,7 +483,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -573,7 +573,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -654,7 +654,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -737,7 +737,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
@@ -816,7 +816,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.RealUserTestsResultsApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.thousandeyes.com");
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
         
         // Configure HTTP bearer authorization: BearerAuth
         HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");

@@ -2,7 +2,7 @@
 
 ThousandEyes for OpenTelemetry API
 
-- API version: 7.0.14
+- API version: 7.0.15
 
 ThousandEyes for OpenTelemetry provides machine-to-machine integration between ThousandEyes and its customers. It allows you to export ThousandEyes telemetry data in OTel format, which is widely used in the industry. With ThousandEyes for OTel, you can leverage frameworks widely used in the observability domain - such as Splunk, Grafana, and Honeycomb - to capture and analyze ThousandEyes data. Any client that supports OTel can use ThousandEyes for OpenTelemetry.
 
@@ -113,7 +113,7 @@ public class StreamingApiExample {
         // but you can use your own client implementation
         ApiClient defaultClient = NativeApiClient
                 .builder()
-                .baseUri("https://api.thousandeyes.com")
+                .baseUri("https://api.thousandeyes.com/v7")
                 .bearerToken("<bearer-token>")
                 .build();
 
@@ -137,20 +137,20 @@ public class StreamingApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.thousandeyes.com*
+All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*StreamingApi* | [**createStream**](docs/StreamingApi.md#createStream) | **POST** /v7/stream | Create data stream
-*StreamingApi* | [**createStreamWithHttpInfo**](docs/StreamingApi.md#createStreamWithHttpInfo) | **POST** /v7/stream | Create data stream
-*StreamingApi* | [**deleteStream**](docs/StreamingApi.md#deleteStream) | **DELETE** /v7/stream/{id} | Delete a data stream
-*StreamingApi* | [**deleteStreamWithHttpInfo**](docs/StreamingApi.md#deleteStreamWithHttpInfo) | **DELETE** /v7/stream/{id} | Delete a data stream
-*StreamingApi* | [**getStream**](docs/StreamingApi.md#getStream) | **GET** /v7/stream/{id} | Retrieve data stream
-*StreamingApi* | [**getStreamWithHttpInfo**](docs/StreamingApi.md#getStreamWithHttpInfo) | **GET** /v7/stream/{id} | Retrieve data stream
-*StreamingApi* | [**getStreams**](docs/StreamingApi.md#getStreams) | **GET** /v7/stream | List data streams
-*StreamingApi* | [**getStreamsWithHttpInfo**](docs/StreamingApi.md#getStreamsWithHttpInfo) | **GET** /v7/stream | List data streams
-*StreamingApi* | [**updateStream**](docs/StreamingApi.md#updateStream) | **PUT** /v7/stream/{id} | Update data stream
-*StreamingApi* | [**updateStreamWithHttpInfo**](docs/StreamingApi.md#updateStreamWithHttpInfo) | **PUT** /v7/stream/{id} | Update data stream
+*StreamingApi* | [**createStream**](docs/StreamingApi.md#createStream) | **POST** /stream | Create data stream
+*StreamingApi* | [**createStreamWithHttpInfo**](docs/StreamingApi.md#createStreamWithHttpInfo) | **POST** /stream | Create data stream
+*StreamingApi* | [**deleteStream**](docs/StreamingApi.md#deleteStream) | **DELETE** /stream/{id} | Delete a data stream
+*StreamingApi* | [**deleteStreamWithHttpInfo**](docs/StreamingApi.md#deleteStreamWithHttpInfo) | **DELETE** /stream/{id} | Delete a data stream
+*StreamingApi* | [**getStream**](docs/StreamingApi.md#getStream) | **GET** /stream/{id} | Retrieve data stream
+*StreamingApi* | [**getStreamWithHttpInfo**](docs/StreamingApi.md#getStreamWithHttpInfo) | **GET** /stream/{id} | Retrieve data stream
+*StreamingApi* | [**getStreams**](docs/StreamingApi.md#getStreams) | **GET** /stream | List data streams
+*StreamingApi* | [**getStreamsWithHttpInfo**](docs/StreamingApi.md#getStreamsWithHttpInfo) | **GET** /stream | List data streams
+*StreamingApi* | [**updateStream**](docs/StreamingApi.md#updateStream) | **PUT** /stream/{id} | Update data stream
+*StreamingApi* | [**updateStreamWithHttpInfo**](docs/StreamingApi.md#updateStreamWithHttpInfo) | **PUT** /stream/{id} | Update data stream
 
 
 <a id="documentation-for-authorization"></a>
