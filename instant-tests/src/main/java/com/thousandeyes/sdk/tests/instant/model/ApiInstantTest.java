@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.Agent;
 import com.thousandeyes.sdk.tests.instant.model.ApiPredefinedVariable;
 import com.thousandeyes.sdk.tests.instant.model.ApiRequest;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
@@ -67,7 +66,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTest.JSON_PROPERTY_TARGET_TIME,
   ApiInstantTest.JSON_PROPERTY_TIME_LIMIT,
   ApiInstantTest.JSON_PROPERTY_URL,
-  ApiInstantTest.JSON_PROPERTY_AGENTS,
   ApiInstantTest.JSON_PROPERTY_CREDENTIALS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -139,7 +137,7 @@ public class ApiInstantTest {
   private List<ApiRequest> requests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TARGET_TIME = "targetTime";
   private Integer targetTime;
@@ -149,9 +147,6 @@ public class ApiInstantTest {
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
-
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
@@ -170,8 +165,7 @@ public class ApiInstantTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
     this.createdBy = createdBy;
@@ -184,7 +178,6 @@ public class ApiInstantTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
   }
 
    /**
@@ -759,21 +752,6 @@ public class ApiInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public ApiInstantTest credentials(List<String> credentials) {
     this.credentials = credentials;
     return this;
@@ -845,13 +823,12 @@ public class ApiInstantTest {
         Objects.equals(this.targetTime, apiInstantTest.targetTime) &&
         Objects.equals(this.timeLimit, apiInstantTest.timeLimit) &&
         Objects.equals(this.url, apiInstantTest.url) &&
-        Objects.equals(this.agents, apiInstantTest.agents) &&
         Objects.equals(this.credentials, apiInstantTest.credentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, agents, credentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, credentials);
   }
 
   @Override
@@ -884,7 +861,6 @@ public class ApiInstantTest {
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("}");
     return sb.toString();

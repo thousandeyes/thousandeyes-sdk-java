@@ -99,8 +99,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_ALLOW_GEOLOCATION,
   WebTransactionInstantTestRequest.JSON_PROPERTY_BROWSER_LANGUAGE,
   WebTransactionInstantTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
-  WebTransactionInstantTestRequest.JSON_PROPERTY_AGENTS,
-  WebTransactionInstantTestRequest.JSON_PROPERTY_CREDENTIALS
+  WebTransactionInstantTestRequest.JSON_PROPERTY_CREDENTIALS,
+  WebTransactionInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class WebTransactionInstantTestRequest {
@@ -210,7 +210,7 @@ public class WebTransactionInstantTestRequest {
   private String sslVersion;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
@@ -275,11 +275,11 @@ public class WebTransactionInstantTestRequest {
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestAgent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestAgent> agents = new ArrayList<>();
 
   public WebTransactionInstantTestRequest() { 
   }
@@ -1673,39 +1673,6 @@ public class WebTransactionInstantTestRequest {
   }
 
 
-  public WebTransactionInstantTestRequest agents(List<TestAgent> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public WebTransactionInstantTestRequest addAgentsItem(TestAgent agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<TestAgent> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<TestAgent> agents) {
-    this.agents = agents;
-  }
-
-
   public WebTransactionInstantTestRequest credentials(List<String> credentials) {
     this.credentials = credentials;
     return this;
@@ -1736,6 +1703,39 @@ public class WebTransactionInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentials(List<String> credentials) {
     this.credentials = credentials;
+  }
+
+
+  public WebTransactionInstantTestRequest agents(List<TestAgent> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public WebTransactionInstantTestRequest addAgentsItem(TestAgent agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<TestAgent> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<TestAgent> agents) {
+    this.agents = agents;
   }
 
 
@@ -1808,13 +1808,13 @@ public class WebTransactionInstantTestRequest {
         Objects.equals(this.allowGeolocation, webTransactionInstantTestRequest.allowGeolocation) &&
         Objects.equals(this.browserLanguage, webTransactionInstantTestRequest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, webTransactionInstantTestRequest.pageLoadingStrategy) &&
-        Objects.equals(this.agents, webTransactionInstantTestRequest.agents) &&
-        Objects.equals(this.credentials, webTransactionInstantTestRequest.credentials);
+        Objects.equals(this.credentials, webTransactionInstantTestRequest.credentials) &&
+        Objects.equals(this.agents, webTransactionInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, agents, credentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, credentials, agents);
   }
 
   @Override
@@ -1878,8 +1878,8 @@ public class WebTransactionInstantTestRequest {
     sb.append("    allowGeolocation: ").append(toIndentedString(allowGeolocation)).append("\n");
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -65,8 +65,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTestRequest.JSON_PROPERTY_TARGET_TIME,
   ApiInstantTestRequest.JSON_PROPERTY_TIME_LIMIT,
   ApiInstantTestRequest.JSON_PROPERTY_URL,
-  ApiInstantTestRequest.JSON_PROPERTY_AGENTS,
-  ApiInstantTestRequest.JSON_PROPERTY_CREDENTIALS
+  ApiInstantTestRequest.JSON_PROPERTY_CREDENTIALS,
+  ApiInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiInstantTestRequest {
@@ -137,7 +137,7 @@ public class ApiInstantTestRequest {
   private List<ApiRequest> requests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TARGET_TIME = "targetTime";
   private Integer targetTime;
@@ -148,11 +148,11 @@ public class ApiInstantTestRequest {
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestAgent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestAgent> agents = new ArrayList<>();
 
   public ApiInstantTestRequest() { 
   }
@@ -787,39 +787,6 @@ public class ApiInstantTestRequest {
   }
 
 
-  public ApiInstantTestRequest agents(List<TestAgent> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public ApiInstantTestRequest addAgentsItem(TestAgent agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<TestAgent> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<TestAgent> agents) {
-    this.agents = agents;
-  }
-
-
   public ApiInstantTestRequest credentials(List<String> credentials) {
     this.credentials = credentials;
     return this;
@@ -850,6 +817,39 @@ public class ApiInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentials(List<String> credentials) {
     this.credentials = credentials;
+  }
+
+
+  public ApiInstantTestRequest agents(List<TestAgent> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public ApiInstantTestRequest addAgentsItem(TestAgent agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<TestAgent> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<TestAgent> agents) {
+    this.agents = agents;
   }
 
 
@@ -891,13 +891,13 @@ public class ApiInstantTestRequest {
         Objects.equals(this.targetTime, apiInstantTestRequest.targetTime) &&
         Objects.equals(this.timeLimit, apiInstantTestRequest.timeLimit) &&
         Objects.equals(this.url, apiInstantTestRequest.url) &&
-        Objects.equals(this.agents, apiInstantTestRequest.agents) &&
-        Objects.equals(this.credentials, apiInstantTestRequest.credentials);
+        Objects.equals(this.credentials, apiInstantTestRequest.credentials) &&
+        Objects.equals(this.agents, apiInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, agents, credentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, credentials, agents);
   }
 
   @Override
@@ -930,8 +930,8 @@ public class ApiInstantTestRequest {
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

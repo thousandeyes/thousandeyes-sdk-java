@@ -2,7 +2,7 @@
 
 Tests API
 
-- API version: 7.0.15
+- API version: 7.0.16
 
 This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
 
@@ -92,9 +92,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.*;
 import com.thousandeyes.sdk.client.*;
 import com.thousandeyes.sdk.tests.model.*;
-import com.thousandeyes.sdk.tests.AgentToAgentApi;
+import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
-public class AgentToAgentApiExample {
+public class AgentToAgentTestsApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -106,15 +106,15 @@ public class AgentToAgentApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        AgentToAgentApi apiInstance = new AgentToAgentApi(defaultClient);
-        UpdateAgentToAgentTest updateAgentToAgentTest = new UpdateAgentToAgentTest(); // UpdateAgentToAgentTest | 
+        AgentToAgentTestsApi apiInstance = new AgentToAgentTestsApi(defaultClient);
+        AgentToAgentTestRequest agentToAgentTestRequest = new AgentToAgentTestRequest(); // AgentToAgentTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
+        List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            AgentToAgentTest result = apiInstance.createAgentToAgentTest(updateAgentToAgentTest, aid, expand);
+            AgentToAgentTestResponse result = apiInstance.createAgentToAgentTest(agentToAgentTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToAgentApi#createAgentToAgentTest");
+            System.err.println("Exception when calling AgentToAgentTestsApi#createAgentToAgentTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -131,108 +131,106 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentToAgentApi* | [**createAgentToAgentTest**](docs/AgentToAgentApi.md#createAgentToAgentTest) | **POST** /tests/agent-to-agent | Create Agent to Agent test
-*AgentToAgentApi* | [**createAgentToAgentTestWithHttpInfo**](docs/AgentToAgentApi.md#createAgentToAgentTestWithHttpInfo) | **POST** /tests/agent-to-agent | Create Agent to Agent test
-*AgentToAgentApi* | [**deleteAgentToAgentTest**](docs/AgentToAgentApi.md#deleteAgentToAgentTest) | **DELETE** /tests/agent-to-agent/{testId} | Delete Agent to Agent test
-*AgentToAgentApi* | [**deleteAgentToAgentTestWithHttpInfo**](docs/AgentToAgentApi.md#deleteAgentToAgentTestWithHttpInfo) | **DELETE** /tests/agent-to-agent/{testId} | Delete Agent to Agent test
-*AgentToAgentApi* | [**getAgentToAgentTest**](docs/AgentToAgentApi.md#getAgentToAgentTest) | **GET** /tests/agent-to-agent/{testId} | Get Agent to Agent test
-*AgentToAgentApi* | [**getAgentToAgentTestWithHttpInfo**](docs/AgentToAgentApi.md#getAgentToAgentTestWithHttpInfo) | **GET** /tests/agent-to-agent/{testId} | Get Agent to Agent test
-*AgentToAgentApi* | [**getAgentToAgentTests**](docs/AgentToAgentApi.md#getAgentToAgentTests) | **GET** /tests/agent-to-agent | List Agent to Agent tests
-*AgentToAgentApi* | [**getAgentToAgentTestsWithHttpInfo**](docs/AgentToAgentApi.md#getAgentToAgentTestsWithHttpInfo) | **GET** /tests/agent-to-agent | List Agent to Agent tests
-*AgentToAgentApi* | [**updateAgentToAgentTest**](docs/AgentToAgentApi.md#updateAgentToAgentTest) | **PUT** /tests/agent-to-agent/{testId} | Update Agent to Agent test
-*AgentToAgentApi* | [**updateAgentToAgentTestWithHttpInfo**](docs/AgentToAgentApi.md#updateAgentToAgentTestWithHttpInfo) | **PUT** /tests/agent-to-agent/{testId} | Update Agent to Agent test
-*AgentToServerApi* | [**createAgentToServerTest**](docs/AgentToServerApi.md#createAgentToServerTest) | **POST** /tests/agent-to-server | Create Agent to Server test
-*AgentToServerApi* | [**createAgentToServerTestWithHttpInfo**](docs/AgentToServerApi.md#createAgentToServerTestWithHttpInfo) | **POST** /tests/agent-to-server | Create Agent to Server test
-*AgentToServerApi* | [**deleteAgentToServerTest**](docs/AgentToServerApi.md#deleteAgentToServerTest) | **DELETE** /tests/agent-to-server/{testId} | Delete Agent to Server test
-*AgentToServerApi* | [**deleteAgentToServerTestWithHttpInfo**](docs/AgentToServerApi.md#deleteAgentToServerTestWithHttpInfo) | **DELETE** /tests/agent-to-server/{testId} | Delete Agent to Server test
-*AgentToServerApi* | [**getAgentToServerTest**](docs/AgentToServerApi.md#getAgentToServerTest) | **GET** /tests/agent-to-server/{testId} | Get Agent to Server test
-*AgentToServerApi* | [**getAgentToServerTestWithHttpInfo**](docs/AgentToServerApi.md#getAgentToServerTestWithHttpInfo) | **GET** /tests/agent-to-server/{testId} | Get Agent to Server test
-*AgentToServerApi* | [**getAgentToServerTests**](docs/AgentToServerApi.md#getAgentToServerTests) | **GET** /tests/agent-to-server | List Agent to Server tests
-*AgentToServerApi* | [**getAgentToServerTestsWithHttpInfo**](docs/AgentToServerApi.md#getAgentToServerTestsWithHttpInfo) | **GET** /tests/agent-to-server | List Agent to Server tests
-*AgentToServerApi* | [**updateAgentToServerTest**](docs/AgentToServerApi.md#updateAgentToServerTest) | **PUT** /tests/agent-to-server/{testId} | Update Agent to Server test
-*AgentToServerApi* | [**updateAgentToServerTestWithHttpInfo**](docs/AgentToServerApi.md#updateAgentToServerTestWithHttpInfo) | **PUT** /tests/agent-to-server/{testId} | Update Agent to Server test
-*AllTestTypesApi* | [**getTests**](docs/AllTestTypesApi.md#getTests) | **GET** /tests | List configured tests
-*AllTestTypesApi* | [**getTestsWithHttpInfo**](docs/AllTestTypesApi.md#getTestsWithHttpInfo) | **GET** /tests | List configured tests
-*ApiApi* | [**createApiTest**](docs/ApiApi.md#createApiTest) | **POST** /tests/api | Create API test
-*ApiApi* | [**createApiTestWithHttpInfo**](docs/ApiApi.md#createApiTestWithHttpInfo) | **POST** /tests/api | Create API test
-*ApiApi* | [**deleteApiTest**](docs/ApiApi.md#deleteApiTest) | **DELETE** /tests/api/{testId} | Delete API test
-*ApiApi* | [**deleteApiTestWithHttpInfo**](docs/ApiApi.md#deleteApiTestWithHttpInfo) | **DELETE** /tests/api/{testId} | Delete API test
-*ApiApi* | [**getApiTest**](docs/ApiApi.md#getApiTest) | **GET** /tests/api/{testId} | Get API test
-*ApiApi* | [**getApiTestWithHttpInfo**](docs/ApiApi.md#getApiTestWithHttpInfo) | **GET** /tests/api/{testId} | Get API test
-*ApiApi* | [**getApiTests**](docs/ApiApi.md#getApiTests) | **GET** /tests/api | List API tests
-*ApiApi* | [**getApiTestsWithHttpInfo**](docs/ApiApi.md#getApiTestsWithHttpInfo) | **GET** /tests/api | List API tests
-*ApiApi* | [**updateApiTest**](docs/ApiApi.md#updateApiTest) | **PUT** /tests/api/{testId} | Update API test
-*ApiApi* | [**updateApiTestWithHttpInfo**](docs/ApiApi.md#updateApiTestWithHttpInfo) | **PUT** /tests/api/{testId} | Update API test
-*BgpApi* | [**createBgpTest**](docs/BgpApi.md#createBgpTest) | **POST** /tests/bgp | Create BGP test
-*BgpApi* | [**createBgpTestWithHttpInfo**](docs/BgpApi.md#createBgpTestWithHttpInfo) | **POST** /tests/bgp | Create BGP test
-*BgpApi* | [**deleteBgpTest**](docs/BgpApi.md#deleteBgpTest) | **DELETE** /tests/bgp/{testId} | Delete BGP test
-*BgpApi* | [**deleteBgpTestWithHttpInfo**](docs/BgpApi.md#deleteBgpTestWithHttpInfo) | **DELETE** /tests/bgp/{testId} | Delete BGP test
-*BgpApi* | [**getBgpTest**](docs/BgpApi.md#getBgpTest) | **GET** /tests/bgp/{testId} | Get BGP test
-*BgpApi* | [**getBgpTestWithHttpInfo**](docs/BgpApi.md#getBgpTestWithHttpInfo) | **GET** /tests/bgp/{testId} | Get BGP test
-*BgpApi* | [**getBgpTests**](docs/BgpApi.md#getBgpTests) | **GET** /tests/bgp | List BGP tests
-*BgpApi* | [**getBgpTestsWithHttpInfo**](docs/BgpApi.md#getBgpTestsWithHttpInfo) | **GET** /tests/bgp | List BGP tests
-*BgpApi* | [**updateBgpTest**](docs/BgpApi.md#updateBgpTest) | **PUT** /tests/bgp/{testId} | Update BGP test
-*BgpApi* | [**updateBgpTestWithHttpInfo**](docs/BgpApi.md#updateBgpTestWithHttpInfo) | **PUT** /tests/bgp/{testId} | Update BGP test
-*DnsServerApi* | [**createDnsServerTest**](docs/DnsServerApi.md#createDnsServerTest) | **POST** /tests/dns-server | Create DNS Server test
-*DnsServerApi* | [**createDnsServerTestWithHttpInfo**](docs/DnsServerApi.md#createDnsServerTestWithHttpInfo) | **POST** /tests/dns-server | Create DNS Server test
-*DnsServerApi* | [**deleteDnsServerTest**](docs/DnsServerApi.md#deleteDnsServerTest) | **DELETE** /tests/dns-server/{testId} | Delete DNS Server test
-*DnsServerApi* | [**deleteDnsServerTestWithHttpInfo**](docs/DnsServerApi.md#deleteDnsServerTestWithHttpInfo) | **DELETE** /tests/dns-server/{testId} | Delete DNS Server test
-*DnsServerApi* | [**getDnsServerTest**](docs/DnsServerApi.md#getDnsServerTest) | **GET** /tests/dns-server/{testId} | Get DNS Server test
-*DnsServerApi* | [**getDnsServerTestWithHttpInfo**](docs/DnsServerApi.md#getDnsServerTestWithHttpInfo) | **GET** /tests/dns-server/{testId} | Get DNS Server test
-*DnsServerApi* | [**getDnsServerTests**](docs/DnsServerApi.md#getDnsServerTests) | **GET** /tests/dns-server | List DNS Server tests
-*DnsServerApi* | [**getDnsServerTestsWithHttpInfo**](docs/DnsServerApi.md#getDnsServerTestsWithHttpInfo) | **GET** /tests/dns-server | List DNS Server tests
-*DnsServerApi* | [**updateDnsServerTest**](docs/DnsServerApi.md#updateDnsServerTest) | **PUT** /tests/dns-server/{testId} | Update DNS Server test
-*DnsServerApi* | [**updateDnsServerTestWithHttpInfo**](docs/DnsServerApi.md#updateDnsServerTestWithHttpInfo) | **PUT** /tests/dns-server/{testId} | Update DNS Server test
-*DnsTraceApi* | [**createDnsTraceTest**](docs/DnsTraceApi.md#createDnsTraceTest) | **POST** /tests/dns-trace | Create DNS Trace test
-*DnsTraceApi* | [**createDnsTraceTestWithHttpInfo**](docs/DnsTraceApi.md#createDnsTraceTestWithHttpInfo) | **POST** /tests/dns-trace | Create DNS Trace test
-*DnsTraceApi* | [**deleteDnsTraceTest**](docs/DnsTraceApi.md#deleteDnsTraceTest) | **DELETE** /tests/dns-trace/{testId} | Delete DNS Trace test
-*DnsTraceApi* | [**deleteDnsTraceTestWithHttpInfo**](docs/DnsTraceApi.md#deleteDnsTraceTestWithHttpInfo) | **DELETE** /tests/dns-trace/{testId} | Delete DNS Trace test
-*DnsTraceApi* | [**getDnsTraceTest**](docs/DnsTraceApi.md#getDnsTraceTest) | **GET** /tests/dns-trace/{testId} | Get DNS Trace test
-*DnsTraceApi* | [**getDnsTraceTestWithHttpInfo**](docs/DnsTraceApi.md#getDnsTraceTestWithHttpInfo) | **GET** /tests/dns-trace/{testId} | Get DNS Trace test
-*DnsTraceApi* | [**getDnsTraceTests**](docs/DnsTraceApi.md#getDnsTraceTests) | **GET** /tests/dns-trace | List DNS Trace tests
-*DnsTraceApi* | [**getDnsTraceTestsWithHttpInfo**](docs/DnsTraceApi.md#getDnsTraceTestsWithHttpInfo) | **GET** /tests/dns-trace | List DNS Trace tests
-*DnsTraceApi* | [**updateDnsTraceTest**](docs/DnsTraceApi.md#updateDnsTraceTest) | **PUT** /tests/dns-trace/{testId} | Update DNS Trace test
-*DnsTraceApi* | [**updateDnsTraceTestWithHttpInfo**](docs/DnsTraceApi.md#updateDnsTraceTestWithHttpInfo) | **PUT** /tests/dns-trace/{testId} | Update DNS Trace test
-*DnssecApi* | [**createDnsSecTest**](docs/DnssecApi.md#createDnsSecTest) | **POST** /tests/dnssec | Create DNSSEC test
-*DnssecApi* | [**createDnsSecTestWithHttpInfo**](docs/DnssecApi.md#createDnsSecTestWithHttpInfo) | **POST** /tests/dnssec | Create DNSSEC test
-*DnssecApi* | [**deleteDnsSecTest**](docs/DnssecApi.md#deleteDnsSecTest) | **DELETE** /tests/dnssec/{testId} | Delete DNSSEC test
-*DnssecApi* | [**deleteDnsSecTestWithHttpInfo**](docs/DnssecApi.md#deleteDnsSecTestWithHttpInfo) | **DELETE** /tests/dnssec/{testId} | Delete DNSSEC test
-*DnssecApi* | [**getDnsSecTest**](docs/DnssecApi.md#getDnsSecTest) | **GET** /tests/dnssec/{testId} | Get DNSSEC test
-*DnssecApi* | [**getDnsSecTestWithHttpInfo**](docs/DnssecApi.md#getDnsSecTestWithHttpInfo) | **GET** /tests/dnssec/{testId} | Get DNSSEC test
-*DnssecApi* | [**getDnsSecTests**](docs/DnssecApi.md#getDnsSecTests) | **GET** /tests/dnssec | List DNSSEC tests
-*DnssecApi* | [**getDnsSecTestsWithHttpInfo**](docs/DnssecApi.md#getDnsSecTestsWithHttpInfo) | **GET** /tests/dnssec | List DNSSEC tests
-*DnssecApi* | [**updateDnsSecTest**](docs/DnssecApi.md#updateDnsSecTest) | **PUT** /tests/dnssec/{testId} | Update DNSSEC test
-*DnssecApi* | [**updateDnsSecTestWithHttpInfo**](docs/DnssecApi.md#updateDnsSecTestWithHttpInfo) | **PUT** /tests/dnssec/{testId} | Update DNSSEC test
-*FtpServerApi* | [**createFtpServerTest**](docs/FtpServerApi.md#createFtpServerTest) | **POST** /tests/ftp-server | Create FTP Server test
-*FtpServerApi* | [**createFtpServerTestWithHttpInfo**](docs/FtpServerApi.md#createFtpServerTestWithHttpInfo) | **POST** /tests/ftp-server | Create FTP Server test
-*FtpServerApi* | [**deleteFtpServerTest**](docs/FtpServerApi.md#deleteFtpServerTest) | **DELETE** /tests/ftp-server/{testId} | Delete FTP Server test
-*FtpServerApi* | [**deleteFtpServerTestWithHttpInfo**](docs/FtpServerApi.md#deleteFtpServerTestWithHttpInfo) | **DELETE** /tests/ftp-server/{testId} | Delete FTP Server test
-*FtpServerApi* | [**getFtpServerTest**](docs/FtpServerApi.md#getFtpServerTest) | **GET** /tests/ftp-server/{testId} | Get FTP Server test
-*FtpServerApi* | [**getFtpServerTestWithHttpInfo**](docs/FtpServerApi.md#getFtpServerTestWithHttpInfo) | **GET** /tests/ftp-server/{testId} | Get FTP Server test
-*FtpServerApi* | [**getFtpServerTests**](docs/FtpServerApi.md#getFtpServerTests) | **GET** /tests/ftp-server | List FTP Server tests
-*FtpServerApi* | [**getFtpServerTestsWithHttpInfo**](docs/FtpServerApi.md#getFtpServerTestsWithHttpInfo) | **GET** /tests/ftp-server | List FTP Server tests
-*FtpServerApi* | [**updateFtpServerTest**](docs/FtpServerApi.md#updateFtpServerTest) | **PUT** /tests/ftp-server/{testId} | Update FTP Server test
-*FtpServerApi* | [**updateFtpServerTestWithHttpInfo**](docs/FtpServerApi.md#updateFtpServerTestWithHttpInfo) | **PUT** /tests/ftp-server/{testId} | Update FTP Server test
-*HttpServerApi* | [**createHttpServerTest**](docs/HttpServerApi.md#createHttpServerTest) | **POST** /tests/http-server | Create HTTP Server test
-*HttpServerApi* | [**createHttpServerTestWithHttpInfo**](docs/HttpServerApi.md#createHttpServerTestWithHttpInfo) | **POST** /tests/http-server | Create HTTP Server test
-*HttpServerApi* | [**deleteHttpServerTest**](docs/HttpServerApi.md#deleteHttpServerTest) | **DELETE** /tests/http-server/{testId} | Delete HTTP Server test
-*HttpServerApi* | [**deleteHttpServerTestWithHttpInfo**](docs/HttpServerApi.md#deleteHttpServerTestWithHttpInfo) | **DELETE** /tests/http-server/{testId} | Delete HTTP Server test
-*HttpServerApi* | [**getHttpServerTest**](docs/HttpServerApi.md#getHttpServerTest) | **GET** /tests/http-server/{testId} | Get HTTP Server test
-*HttpServerApi* | [**getHttpServerTestWithHttpInfo**](docs/HttpServerApi.md#getHttpServerTestWithHttpInfo) | **GET** /tests/http-server/{testId} | Get HTTP Server test
-*HttpServerApi* | [**getHttpServerTests**](docs/HttpServerApi.md#getHttpServerTests) | **GET** /tests/http-server | List HTTP Server tests
-*HttpServerApi* | [**getHttpServerTestsWithHttpInfo**](docs/HttpServerApi.md#getHttpServerTestsWithHttpInfo) | **GET** /tests/http-server | List HTTP Server tests
-*HttpServerApi* | [**updateHttpServerTest**](docs/HttpServerApi.md#updateHttpServerTest) | **PUT** /tests/http-server/{testId} | Update HTTP Server test
-*HttpServerApi* | [**updateHttpServerTestWithHttpInfo**](docs/HttpServerApi.md#updateHttpServerTestWithHttpInfo) | **PUT** /tests/http-server/{testId} | Update HTTP Server test
-*PageLoadApi* | [**createPageLoadTest**](docs/PageLoadApi.md#createPageLoadTest) | **POST** /tests/page-load | Create Page Load test
-*PageLoadApi* | [**createPageLoadTestWithHttpInfo**](docs/PageLoadApi.md#createPageLoadTestWithHttpInfo) | **POST** /tests/page-load | Create Page Load test
-*PageLoadApi* | [**deletePageLoadTest**](docs/PageLoadApi.md#deletePageLoadTest) | **DELETE** /tests/page-load/{testId} | Delete Page Load test
-*PageLoadApi* | [**deletePageLoadTestWithHttpInfo**](docs/PageLoadApi.md#deletePageLoadTestWithHttpInfo) | **DELETE** /tests/page-load/{testId} | Delete Page Load test
-*PageLoadApi* | [**getPageLoadTest**](docs/PageLoadApi.md#getPageLoadTest) | **GET** /tests/page-load/{testId} | Get Page Load test
-*PageLoadApi* | [**getPageLoadTestWithHttpInfo**](docs/PageLoadApi.md#getPageLoadTestWithHttpInfo) | **GET** /tests/page-load/{testId} | Get Page Load test
-*PageLoadApi* | [**getPageLoadTests**](docs/PageLoadApi.md#getPageLoadTests) | **GET** /tests/page-load | List Page Load tests
-*PageLoadApi* | [**getPageLoadTestsWithHttpInfo**](docs/PageLoadApi.md#getPageLoadTestsWithHttpInfo) | **GET** /tests/page-load | List Page Load tests
-*PageLoadApi* | [**updatePageLoadTest**](docs/PageLoadApi.md#updatePageLoadTest) | **PUT** /tests/page-load/{testId} | Update Page Load test
-*PageLoadApi* | [**updatePageLoadTestWithHttpInfo**](docs/PageLoadApi.md#updatePageLoadTestWithHttpInfo) | **PUT** /tests/page-load/{testId} | Update Page Load test
+*AgentToAgentTestsApi* | [**createAgentToAgentTest**](docs/AgentToAgentTestsApi.md#createAgentToAgentTest) | **POST** /tests/agent-to-agent | Create Agent to Agent test
+*AgentToAgentTestsApi* | [**createAgentToAgentTestWithHttpInfo**](docs/AgentToAgentTestsApi.md#createAgentToAgentTestWithHttpInfo) | **POST** /tests/agent-to-agent | Create Agent to Agent test
+*AgentToAgentTestsApi* | [**deleteAgentToAgentTest**](docs/AgentToAgentTestsApi.md#deleteAgentToAgentTest) | **DELETE** /tests/agent-to-agent/{testId} | Delete Agent to Agent test
+*AgentToAgentTestsApi* | [**deleteAgentToAgentTestWithHttpInfo**](docs/AgentToAgentTestsApi.md#deleteAgentToAgentTestWithHttpInfo) | **DELETE** /tests/agent-to-agent/{testId} | Delete Agent to Agent test
+*AgentToAgentTestsApi* | [**getAgentToAgentTest**](docs/AgentToAgentTestsApi.md#getAgentToAgentTest) | **GET** /tests/agent-to-agent/{testId} | Get Agent to Agent test
+*AgentToAgentTestsApi* | [**getAgentToAgentTestWithHttpInfo**](docs/AgentToAgentTestsApi.md#getAgentToAgentTestWithHttpInfo) | **GET** /tests/agent-to-agent/{testId} | Get Agent to Agent test
+*AgentToAgentTestsApi* | [**getAgentToAgentTests**](docs/AgentToAgentTestsApi.md#getAgentToAgentTests) | **GET** /tests/agent-to-agent | List Agent to Agent tests
+*AgentToAgentTestsApi* | [**getAgentToAgentTestsWithHttpInfo**](docs/AgentToAgentTestsApi.md#getAgentToAgentTestsWithHttpInfo) | **GET** /tests/agent-to-agent | List Agent to Agent tests
+*AgentToAgentTestsApi* | [**updateAgentToAgentTest**](docs/AgentToAgentTestsApi.md#updateAgentToAgentTest) | **PUT** /tests/agent-to-agent/{testId} | Update Agent to Agent test
+*AgentToAgentTestsApi* | [**updateAgentToAgentTestWithHttpInfo**](docs/AgentToAgentTestsApi.md#updateAgentToAgentTestWithHttpInfo) | **PUT** /tests/agent-to-agent/{testId} | Update Agent to Agent test
+*AgentToServerTestsApi* | [**createAgentToServerTest**](docs/AgentToServerTestsApi.md#createAgentToServerTest) | **POST** /tests/agent-to-server | Create Agent to Server test
+*AgentToServerTestsApi* | [**createAgentToServerTestWithHttpInfo**](docs/AgentToServerTestsApi.md#createAgentToServerTestWithHttpInfo) | **POST** /tests/agent-to-server | Create Agent to Server test
+*AgentToServerTestsApi* | [**deleteAgentToServerTest**](docs/AgentToServerTestsApi.md#deleteAgentToServerTest) | **DELETE** /tests/agent-to-server/{testId} | Delete Agent to Server test
+*AgentToServerTestsApi* | [**deleteAgentToServerTestWithHttpInfo**](docs/AgentToServerTestsApi.md#deleteAgentToServerTestWithHttpInfo) | **DELETE** /tests/agent-to-server/{testId} | Delete Agent to Server test
+*AgentToServerTestsApi* | [**getAgentToServerTest**](docs/AgentToServerTestsApi.md#getAgentToServerTest) | **GET** /tests/agent-to-server/{testId} | Get Agent to Server test
+*AgentToServerTestsApi* | [**getAgentToServerTestWithHttpInfo**](docs/AgentToServerTestsApi.md#getAgentToServerTestWithHttpInfo) | **GET** /tests/agent-to-server/{testId} | Get Agent to Server test
+*AgentToServerTestsApi* | [**getAgentToServerTests**](docs/AgentToServerTestsApi.md#getAgentToServerTests) | **GET** /tests/agent-to-server | List Agent to Server tests
+*AgentToServerTestsApi* | [**getAgentToServerTestsWithHttpInfo**](docs/AgentToServerTestsApi.md#getAgentToServerTestsWithHttpInfo) | **GET** /tests/agent-to-server | List Agent to Server tests
+*AgentToServerTestsApi* | [**updateAgentToServerTest**](docs/AgentToServerTestsApi.md#updateAgentToServerTest) | **PUT** /tests/agent-to-server/{testId} | Update Agent to Server test
+*AgentToServerTestsApi* | [**updateAgentToServerTestWithHttpInfo**](docs/AgentToServerTestsApi.md#updateAgentToServerTestWithHttpInfo) | **PUT** /tests/agent-to-server/{testId} | Update Agent to Server test
+*ApiTestsApi* | [**createApiTest**](docs/ApiTestsApi.md#createApiTest) | **POST** /tests/api | Create API test
+*ApiTestsApi* | [**createApiTestWithHttpInfo**](docs/ApiTestsApi.md#createApiTestWithHttpInfo) | **POST** /tests/api | Create API test
+*ApiTestsApi* | [**deleteApiTest**](docs/ApiTestsApi.md#deleteApiTest) | **DELETE** /tests/api/{testId} | Delete API test
+*ApiTestsApi* | [**deleteApiTestWithHttpInfo**](docs/ApiTestsApi.md#deleteApiTestWithHttpInfo) | **DELETE** /tests/api/{testId} | Delete API test
+*ApiTestsApi* | [**getApiTest**](docs/ApiTestsApi.md#getApiTest) | **GET** /tests/api/{testId} | Get API test
+*ApiTestsApi* | [**getApiTestWithHttpInfo**](docs/ApiTestsApi.md#getApiTestWithHttpInfo) | **GET** /tests/api/{testId} | Get API test
+*ApiTestsApi* | [**getApiTests**](docs/ApiTestsApi.md#getApiTests) | **GET** /tests/api | List API tests
+*ApiTestsApi* | [**getApiTestsWithHttpInfo**](docs/ApiTestsApi.md#getApiTestsWithHttpInfo) | **GET** /tests/api | List API tests
+*ApiTestsApi* | [**updateApiTest**](docs/ApiTestsApi.md#updateApiTest) | **PUT** /tests/api/{testId} | Update API test
+*ApiTestsApi* | [**updateApiTestWithHttpInfo**](docs/ApiTestsApi.md#updateApiTestWithHttpInfo) | **PUT** /tests/api/{testId} | Update API test
+*BgpTestsApi* | [**createBgpTest**](docs/BgpTestsApi.md#createBgpTest) | **POST** /tests/bgp | Create BGP test
+*BgpTestsApi* | [**createBgpTestWithHttpInfo**](docs/BgpTestsApi.md#createBgpTestWithHttpInfo) | **POST** /tests/bgp | Create BGP test
+*BgpTestsApi* | [**deleteBgpTest**](docs/BgpTestsApi.md#deleteBgpTest) | **DELETE** /tests/bgp/{testId} | Delete BGP test
+*BgpTestsApi* | [**deleteBgpTestWithHttpInfo**](docs/BgpTestsApi.md#deleteBgpTestWithHttpInfo) | **DELETE** /tests/bgp/{testId} | Delete BGP test
+*BgpTestsApi* | [**getBgpTest**](docs/BgpTestsApi.md#getBgpTest) | **GET** /tests/bgp/{testId} | Get BGP test
+*BgpTestsApi* | [**getBgpTestWithHttpInfo**](docs/BgpTestsApi.md#getBgpTestWithHttpInfo) | **GET** /tests/bgp/{testId} | Get BGP test
+*BgpTestsApi* | [**getBgpTests**](docs/BgpTestsApi.md#getBgpTests) | **GET** /tests/bgp | List BGP tests
+*BgpTestsApi* | [**getBgpTestsWithHttpInfo**](docs/BgpTestsApi.md#getBgpTestsWithHttpInfo) | **GET** /tests/bgp | List BGP tests
+*BgpTestsApi* | [**updateBgpTest**](docs/BgpTestsApi.md#updateBgpTest) | **PUT** /tests/bgp/{testId} | Update BGP test
+*BgpTestsApi* | [**updateBgpTestWithHttpInfo**](docs/BgpTestsApi.md#updateBgpTestWithHttpInfo) | **PUT** /tests/bgp/{testId} | Update BGP test
+*DnsServerTestsApi* | [**createDnsServerTest**](docs/DnsServerTestsApi.md#createDnsServerTest) | **POST** /tests/dns-server | Create DNS Server test
+*DnsServerTestsApi* | [**createDnsServerTestWithHttpInfo**](docs/DnsServerTestsApi.md#createDnsServerTestWithHttpInfo) | **POST** /tests/dns-server | Create DNS Server test
+*DnsServerTestsApi* | [**deleteDnsServerTest**](docs/DnsServerTestsApi.md#deleteDnsServerTest) | **DELETE** /tests/dns-server/{testId} | Delete DNS Server test
+*DnsServerTestsApi* | [**deleteDnsServerTestWithHttpInfo**](docs/DnsServerTestsApi.md#deleteDnsServerTestWithHttpInfo) | **DELETE** /tests/dns-server/{testId} | Delete DNS Server test
+*DnsServerTestsApi* | [**getDnsServerTest**](docs/DnsServerTestsApi.md#getDnsServerTest) | **GET** /tests/dns-server/{testId} | Get DNS Server test
+*DnsServerTestsApi* | [**getDnsServerTestWithHttpInfo**](docs/DnsServerTestsApi.md#getDnsServerTestWithHttpInfo) | **GET** /tests/dns-server/{testId} | Get DNS Server test
+*DnsServerTestsApi* | [**getDnsServerTests**](docs/DnsServerTestsApi.md#getDnsServerTests) | **GET** /tests/dns-server | List DNS Server tests
+*DnsServerTestsApi* | [**getDnsServerTestsWithHttpInfo**](docs/DnsServerTestsApi.md#getDnsServerTestsWithHttpInfo) | **GET** /tests/dns-server | List DNS Server tests
+*DnsServerTestsApi* | [**updateDnsServerTest**](docs/DnsServerTestsApi.md#updateDnsServerTest) | **PUT** /tests/dns-server/{testId} | Update DNS Server test
+*DnsServerTestsApi* | [**updateDnsServerTestWithHttpInfo**](docs/DnsServerTestsApi.md#updateDnsServerTestWithHttpInfo) | **PUT** /tests/dns-server/{testId} | Update DNS Server test
+*DnsTraceTestsApi* | [**createDnsTraceTest**](docs/DnsTraceTestsApi.md#createDnsTraceTest) | **POST** /tests/dns-trace | Create DNS Trace test
+*DnsTraceTestsApi* | [**createDnsTraceTestWithHttpInfo**](docs/DnsTraceTestsApi.md#createDnsTraceTestWithHttpInfo) | **POST** /tests/dns-trace | Create DNS Trace test
+*DnsTraceTestsApi* | [**deleteDnsTraceTest**](docs/DnsTraceTestsApi.md#deleteDnsTraceTest) | **DELETE** /tests/dns-trace/{testId} | Delete DNS Trace test
+*DnsTraceTestsApi* | [**deleteDnsTraceTestWithHttpInfo**](docs/DnsTraceTestsApi.md#deleteDnsTraceTestWithHttpInfo) | **DELETE** /tests/dns-trace/{testId} | Delete DNS Trace test
+*DnsTraceTestsApi* | [**getDnsTraceTest**](docs/DnsTraceTestsApi.md#getDnsTraceTest) | **GET** /tests/dns-trace/{testId} | Get DNS Trace test
+*DnsTraceTestsApi* | [**getDnsTraceTestWithHttpInfo**](docs/DnsTraceTestsApi.md#getDnsTraceTestWithHttpInfo) | **GET** /tests/dns-trace/{testId} | Get DNS Trace test
+*DnsTraceTestsApi* | [**getDnsTraceTests**](docs/DnsTraceTestsApi.md#getDnsTraceTests) | **GET** /tests/dns-trace | List DNS Trace tests
+*DnsTraceTestsApi* | [**getDnsTraceTestsWithHttpInfo**](docs/DnsTraceTestsApi.md#getDnsTraceTestsWithHttpInfo) | **GET** /tests/dns-trace | List DNS Trace tests
+*DnsTraceTestsApi* | [**updateDnsTraceTest**](docs/DnsTraceTestsApi.md#updateDnsTraceTest) | **PUT** /tests/dns-trace/{testId} | Update DNS Trace test
+*DnsTraceTestsApi* | [**updateDnsTraceTestWithHttpInfo**](docs/DnsTraceTestsApi.md#updateDnsTraceTestWithHttpInfo) | **PUT** /tests/dns-trace/{testId} | Update DNS Trace test
+*DnssecTestsApi* | [**createDnsSecTest**](docs/DnssecTestsApi.md#createDnsSecTest) | **POST** /tests/dnssec | Create DNSSEC test
+*DnssecTestsApi* | [**createDnsSecTestWithHttpInfo**](docs/DnssecTestsApi.md#createDnsSecTestWithHttpInfo) | **POST** /tests/dnssec | Create DNSSEC test
+*DnssecTestsApi* | [**deleteDnsSecTest**](docs/DnssecTestsApi.md#deleteDnsSecTest) | **DELETE** /tests/dnssec/{testId} | Delete DNSSEC test
+*DnssecTestsApi* | [**deleteDnsSecTestWithHttpInfo**](docs/DnssecTestsApi.md#deleteDnsSecTestWithHttpInfo) | **DELETE** /tests/dnssec/{testId} | Delete DNSSEC test
+*DnssecTestsApi* | [**getDnsSecTest**](docs/DnssecTestsApi.md#getDnsSecTest) | **GET** /tests/dnssec/{testId} | Get DNSSEC test
+*DnssecTestsApi* | [**getDnsSecTestWithHttpInfo**](docs/DnssecTestsApi.md#getDnsSecTestWithHttpInfo) | **GET** /tests/dnssec/{testId} | Get DNSSEC test
+*DnssecTestsApi* | [**getDnsSecTests**](docs/DnssecTestsApi.md#getDnsSecTests) | **GET** /tests/dnssec | List DNSSEC tests
+*DnssecTestsApi* | [**getDnsSecTestsWithHttpInfo**](docs/DnssecTestsApi.md#getDnsSecTestsWithHttpInfo) | **GET** /tests/dnssec | List DNSSEC tests
+*DnssecTestsApi* | [**updateDnsSecTest**](docs/DnssecTestsApi.md#updateDnsSecTest) | **PUT** /tests/dnssec/{testId} | Update DNSSEC test
+*DnssecTestsApi* | [**updateDnsSecTestWithHttpInfo**](docs/DnssecTestsApi.md#updateDnsSecTestWithHttpInfo) | **PUT** /tests/dnssec/{testId} | Update DNSSEC test
+*FtpServerTestsApi* | [**createFtpServerTest**](docs/FtpServerTestsApi.md#createFtpServerTest) | **POST** /tests/ftp-server | Create FTP Server test
+*FtpServerTestsApi* | [**createFtpServerTestWithHttpInfo**](docs/FtpServerTestsApi.md#createFtpServerTestWithHttpInfo) | **POST** /tests/ftp-server | Create FTP Server test
+*FtpServerTestsApi* | [**deleteFtpServerTest**](docs/FtpServerTestsApi.md#deleteFtpServerTest) | **DELETE** /tests/ftp-server/{testId} | Delete FTP Server test
+*FtpServerTestsApi* | [**deleteFtpServerTestWithHttpInfo**](docs/FtpServerTestsApi.md#deleteFtpServerTestWithHttpInfo) | **DELETE** /tests/ftp-server/{testId} | Delete FTP Server test
+*FtpServerTestsApi* | [**getFtpServerTest**](docs/FtpServerTestsApi.md#getFtpServerTest) | **GET** /tests/ftp-server/{testId} | Get FTP Server test
+*FtpServerTestsApi* | [**getFtpServerTestWithHttpInfo**](docs/FtpServerTestsApi.md#getFtpServerTestWithHttpInfo) | **GET** /tests/ftp-server/{testId} | Get FTP Server test
+*FtpServerTestsApi* | [**getFtpServerTests**](docs/FtpServerTestsApi.md#getFtpServerTests) | **GET** /tests/ftp-server | List FTP Server tests
+*FtpServerTestsApi* | [**getFtpServerTestsWithHttpInfo**](docs/FtpServerTestsApi.md#getFtpServerTestsWithHttpInfo) | **GET** /tests/ftp-server | List FTP Server tests
+*FtpServerTestsApi* | [**updateFtpServerTest**](docs/FtpServerTestsApi.md#updateFtpServerTest) | **PUT** /tests/ftp-server/{testId} | Update FTP Server test
+*FtpServerTestsApi* | [**updateFtpServerTestWithHttpInfo**](docs/FtpServerTestsApi.md#updateFtpServerTestWithHttpInfo) | **PUT** /tests/ftp-server/{testId} | Update FTP Server test
+*HttpServerTestsApi* | [**createHttpServerTest**](docs/HttpServerTestsApi.md#createHttpServerTest) | **POST** /tests/http-server | Create HTTP Server test
+*HttpServerTestsApi* | [**createHttpServerTestWithHttpInfo**](docs/HttpServerTestsApi.md#createHttpServerTestWithHttpInfo) | **POST** /tests/http-server | Create HTTP Server test
+*HttpServerTestsApi* | [**deleteHttpServerTest**](docs/HttpServerTestsApi.md#deleteHttpServerTest) | **DELETE** /tests/http-server/{testId} | Delete HTTP Server test
+*HttpServerTestsApi* | [**deleteHttpServerTestWithHttpInfo**](docs/HttpServerTestsApi.md#deleteHttpServerTestWithHttpInfo) | **DELETE** /tests/http-server/{testId} | Delete HTTP Server test
+*HttpServerTestsApi* | [**getHttpServerTest**](docs/HttpServerTestsApi.md#getHttpServerTest) | **GET** /tests/http-server/{testId} | Get HTTP Server test
+*HttpServerTestsApi* | [**getHttpServerTestWithHttpInfo**](docs/HttpServerTestsApi.md#getHttpServerTestWithHttpInfo) | **GET** /tests/http-server/{testId} | Get HTTP Server test
+*HttpServerTestsApi* | [**getHttpServerTests**](docs/HttpServerTestsApi.md#getHttpServerTests) | **GET** /tests/http-server | List HTTP Server tests
+*HttpServerTestsApi* | [**getHttpServerTestsWithHttpInfo**](docs/HttpServerTestsApi.md#getHttpServerTestsWithHttpInfo) | **GET** /tests/http-server | List HTTP Server tests
+*HttpServerTestsApi* | [**updateHttpServerTest**](docs/HttpServerTestsApi.md#updateHttpServerTest) | **PUT** /tests/http-server/{testId} | Update HTTP Server test
+*HttpServerTestsApi* | [**updateHttpServerTestWithHttpInfo**](docs/HttpServerTestsApi.md#updateHttpServerTestWithHttpInfo) | **PUT** /tests/http-server/{testId} | Update HTTP Server test
+*PageLoadTestsApi* | [**createPageLoadTest**](docs/PageLoadTestsApi.md#createPageLoadTest) | **POST** /tests/page-load | Create Page Load test
+*PageLoadTestsApi* | [**createPageLoadTestWithHttpInfo**](docs/PageLoadTestsApi.md#createPageLoadTestWithHttpInfo) | **POST** /tests/page-load | Create Page Load test
+*PageLoadTestsApi* | [**deletePageLoadTest**](docs/PageLoadTestsApi.md#deletePageLoadTest) | **DELETE** /tests/page-load/{testId} | Delete Page Load test
+*PageLoadTestsApi* | [**deletePageLoadTestWithHttpInfo**](docs/PageLoadTestsApi.md#deletePageLoadTestWithHttpInfo) | **DELETE** /tests/page-load/{testId} | Delete Page Load test
+*PageLoadTestsApi* | [**getPageLoadTest**](docs/PageLoadTestsApi.md#getPageLoadTest) | **GET** /tests/page-load/{testId} | Get Page Load test
+*PageLoadTestsApi* | [**getPageLoadTestWithHttpInfo**](docs/PageLoadTestsApi.md#getPageLoadTestWithHttpInfo) | **GET** /tests/page-load/{testId} | Get Page Load test
+*PageLoadTestsApi* | [**getPageLoadTests**](docs/PageLoadTestsApi.md#getPageLoadTests) | **GET** /tests/page-load | List Page Load tests
+*PageLoadTestsApi* | [**getPageLoadTestsWithHttpInfo**](docs/PageLoadTestsApi.md#getPageLoadTestsWithHttpInfo) | **GET** /tests/page-load | List Page Load tests
+*PageLoadTestsApi* | [**updatePageLoadTest**](docs/PageLoadTestsApi.md#updatePageLoadTest) | **PUT** /tests/page-load/{testId} | Update Page Load test
+*PageLoadTestsApi* | [**updatePageLoadTestWithHttpInfo**](docs/PageLoadTestsApi.md#updatePageLoadTestWithHttpInfo) | **PUT** /tests/page-load/{testId} | Update Page Load test
 *PathVisualizationInterfaceGroupsApi* | [**createPathVisInterfaceGroups**](docs/PathVisualizationInterfaceGroupsApi.md#createPathVisInterfaceGroups) | **POST** /network/path-vis/interface-groups | Create interface group for path visualization
 *PathVisualizationInterfaceGroupsApi* | [**createPathVisInterfaceGroupsWithHttpInfo**](docs/PathVisualizationInterfaceGroupsApi.md#createPathVisInterfaceGroupsWithHttpInfo) | **POST** /network/path-vis/interface-groups | Create interface group for path visualization
 *PathVisualizationInterfaceGroupsApi* | [**deletePathVisInterfaceGroup**](docs/PathVisualizationInterfaceGroupsApi.md#deletePathVisInterfaceGroup) | **DELETE** /network/path-vis/interface-groups/{interfaceGroupId} | Delete interface group
@@ -241,36 +239,38 @@ Class | Method | HTTP request | Description
 *PathVisualizationInterfaceGroupsApi* | [**getPathVisInterfaceGroupsWithHttpInfo**](docs/PathVisualizationInterfaceGroupsApi.md#getPathVisInterfaceGroupsWithHttpInfo) | **GET** /network/path-vis/interface-groups | List interface groups for path visualization
 *PathVisualizationInterfaceGroupsApi* | [**updatePathVisInterfaceGroup**](docs/PathVisualizationInterfaceGroupsApi.md#updatePathVisInterfaceGroup) | **PUT** /network/path-vis/interface-groups/{interfaceGroupId} | Update interface group
 *PathVisualizationInterfaceGroupsApi* | [**updatePathVisInterfaceGroupWithHttpInfo**](docs/PathVisualizationInterfaceGroupsApi.md#updatePathVisInterfaceGroupWithHttpInfo) | **PUT** /network/path-vis/interface-groups/{interfaceGroupId} | Update interface group
-*SipServerApi* | [**createSipServerTest**](docs/SipServerApi.md#createSipServerTest) | **POST** /tests/sip-server | Create SIP Server test
-*SipServerApi* | [**createSipServerTestWithHttpInfo**](docs/SipServerApi.md#createSipServerTestWithHttpInfo) | **POST** /tests/sip-server | Create SIP Server test
-*SipServerApi* | [**deleteSipServerTest**](docs/SipServerApi.md#deleteSipServerTest) | **DELETE** /tests/sip-server/{testId} | Delete SIP Server test
-*SipServerApi* | [**deleteSipServerTestWithHttpInfo**](docs/SipServerApi.md#deleteSipServerTestWithHttpInfo) | **DELETE** /tests/sip-server/{testId} | Delete SIP Server test
-*SipServerApi* | [**getSipServerTest**](docs/SipServerApi.md#getSipServerTest) | **GET** /tests/sip-server/{testId} | Get SIP Server test
-*SipServerApi* | [**getSipServerTestWithHttpInfo**](docs/SipServerApi.md#getSipServerTestWithHttpInfo) | **GET** /tests/sip-server/{testId} | Get SIP Server test
-*SipServerApi* | [**getSipServerTests**](docs/SipServerApi.md#getSipServerTests) | **GET** /tests/sip-server | List SIP Server tests
-*SipServerApi* | [**getSipServerTestsWithHttpInfo**](docs/SipServerApi.md#getSipServerTestsWithHttpInfo) | **GET** /tests/sip-server | List SIP Server tests
-*SipServerApi* | [**updateSipServerTest**](docs/SipServerApi.md#updateSipServerTest) | **PUT** /tests/sip-server/{testId} | Update SIP Server test
-*SipServerApi* | [**updateSipServerTestWithHttpInfo**](docs/SipServerApi.md#updateSipServerTestWithHttpInfo) | **PUT** /tests/sip-server/{testId} | Update SIP Server test
-*VoiceApi* | [**createVoiceTest**](docs/VoiceApi.md#createVoiceTest) | **POST** /tests/voice | Create Voice test
-*VoiceApi* | [**createVoiceTestWithHttpInfo**](docs/VoiceApi.md#createVoiceTestWithHttpInfo) | **POST** /tests/voice | Create Voice test
-*VoiceApi* | [**deleteVoiceTest**](docs/VoiceApi.md#deleteVoiceTest) | **DELETE** /tests/voice/{testId} | Delete Voice test
-*VoiceApi* | [**deleteVoiceTestWithHttpInfo**](docs/VoiceApi.md#deleteVoiceTestWithHttpInfo) | **DELETE** /tests/voice/{testId} | Delete Voice test
-*VoiceApi* | [**getVoiceTest**](docs/VoiceApi.md#getVoiceTest) | **GET** /tests/voice/{testId} | Get Voice test
-*VoiceApi* | [**getVoiceTestWithHttpInfo**](docs/VoiceApi.md#getVoiceTestWithHttpInfo) | **GET** /tests/voice/{testId} | Get Voice test
-*VoiceApi* | [**getVoiceTests**](docs/VoiceApi.md#getVoiceTests) | **GET** /tests/voice | List Voice tests
-*VoiceApi* | [**getVoiceTestsWithHttpInfo**](docs/VoiceApi.md#getVoiceTestsWithHttpInfo) | **GET** /tests/voice | List Voice tests
-*VoiceApi* | [**updateVoiceTest**](docs/VoiceApi.md#updateVoiceTest) | **PUT** /tests/voice/{testId} | Update Voice test
-*VoiceApi* | [**updateVoiceTestWithHttpInfo**](docs/VoiceApi.md#updateVoiceTestWithHttpInfo) | **PUT** /tests/voice/{testId} | Update Voice test
-*WebTransactionApi* | [**createWebTransactionsTest**](docs/WebTransactionApi.md#createWebTransactionsTest) | **POST** /tests/web-transactions | Create Web Transactions test
-*WebTransactionApi* | [**createWebTransactionsTestWithHttpInfo**](docs/WebTransactionApi.md#createWebTransactionsTestWithHttpInfo) | **POST** /tests/web-transactions | Create Web Transactions test
-*WebTransactionApi* | [**deleteWebTransactionsTest**](docs/WebTransactionApi.md#deleteWebTransactionsTest) | **DELETE** /tests/web-transactions/{testId} | Delete Web Transactions test
-*WebTransactionApi* | [**deleteWebTransactionsTestWithHttpInfo**](docs/WebTransactionApi.md#deleteWebTransactionsTestWithHttpInfo) | **DELETE** /tests/web-transactions/{testId} | Delete Web Transactions test
-*WebTransactionApi* | [**getWebTransactionsTest**](docs/WebTransactionApi.md#getWebTransactionsTest) | **GET** /tests/web-transactions/{testId} | Get Web Transactions test
-*WebTransactionApi* | [**getWebTransactionsTestWithHttpInfo**](docs/WebTransactionApi.md#getWebTransactionsTestWithHttpInfo) | **GET** /tests/web-transactions/{testId} | Get Web Transactions test
-*WebTransactionApi* | [**getWebTransactionsTests**](docs/WebTransactionApi.md#getWebTransactionsTests) | **GET** /tests/web-transactions | List Web Transactions tests
-*WebTransactionApi* | [**getWebTransactionsTestsWithHttpInfo**](docs/WebTransactionApi.md#getWebTransactionsTestsWithHttpInfo) | **GET** /tests/web-transactions | List Web Transactions tests
-*WebTransactionApi* | [**updateWebTransactionsTest**](docs/WebTransactionApi.md#updateWebTransactionsTest) | **PUT** /tests/web-transactions/{testId} | Update Web Transactions test
-*WebTransactionApi* | [**updateWebTransactionsTestWithHttpInfo**](docs/WebTransactionApi.md#updateWebTransactionsTestWithHttpInfo) | **PUT** /tests/web-transactions/{testId} | Update Web Transactions test
+*SipServerTestsApi* | [**createSipServerTest**](docs/SipServerTestsApi.md#createSipServerTest) | **POST** /tests/sip-server | Create SIP Server test
+*SipServerTestsApi* | [**createSipServerTestWithHttpInfo**](docs/SipServerTestsApi.md#createSipServerTestWithHttpInfo) | **POST** /tests/sip-server | Create SIP Server test
+*SipServerTestsApi* | [**deleteSipServerTest**](docs/SipServerTestsApi.md#deleteSipServerTest) | **DELETE** /tests/sip-server/{testId} | Delete SIP Server test
+*SipServerTestsApi* | [**deleteSipServerTestWithHttpInfo**](docs/SipServerTestsApi.md#deleteSipServerTestWithHttpInfo) | **DELETE** /tests/sip-server/{testId} | Delete SIP Server test
+*SipServerTestsApi* | [**getSipServerTest**](docs/SipServerTestsApi.md#getSipServerTest) | **GET** /tests/sip-server/{testId} | Get SIP Server test
+*SipServerTestsApi* | [**getSipServerTestWithHttpInfo**](docs/SipServerTestsApi.md#getSipServerTestWithHttpInfo) | **GET** /tests/sip-server/{testId} | Get SIP Server test
+*SipServerTestsApi* | [**getSipServerTests**](docs/SipServerTestsApi.md#getSipServerTests) | **GET** /tests/sip-server | List SIP Server tests
+*SipServerTestsApi* | [**getSipServerTestsWithHttpInfo**](docs/SipServerTestsApi.md#getSipServerTestsWithHttpInfo) | **GET** /tests/sip-server | List SIP Server tests
+*SipServerTestsApi* | [**updateSipServerTest**](docs/SipServerTestsApi.md#updateSipServerTest) | **PUT** /tests/sip-server/{testId} | Update SIP Server test
+*SipServerTestsApi* | [**updateSipServerTestWithHttpInfo**](docs/SipServerTestsApi.md#updateSipServerTestWithHttpInfo) | **PUT** /tests/sip-server/{testId} | Update SIP Server test
+*TestsApi* | [**getTests**](docs/TestsApi.md#getTests) | **GET** /tests | List configured tests
+*TestsApi* | [**getTestsWithHttpInfo**](docs/TestsApi.md#getTestsWithHttpInfo) | **GET** /tests | List configured tests
+*VoiceTestsApi* | [**createVoiceTest**](docs/VoiceTestsApi.md#createVoiceTest) | **POST** /tests/voice | Create Voice test
+*VoiceTestsApi* | [**createVoiceTestWithHttpInfo**](docs/VoiceTestsApi.md#createVoiceTestWithHttpInfo) | **POST** /tests/voice | Create Voice test
+*VoiceTestsApi* | [**deleteVoiceTest**](docs/VoiceTestsApi.md#deleteVoiceTest) | **DELETE** /tests/voice/{testId} | Delete Voice test
+*VoiceTestsApi* | [**deleteVoiceTestWithHttpInfo**](docs/VoiceTestsApi.md#deleteVoiceTestWithHttpInfo) | **DELETE** /tests/voice/{testId} | Delete Voice test
+*VoiceTestsApi* | [**getVoiceTest**](docs/VoiceTestsApi.md#getVoiceTest) | **GET** /tests/voice/{testId} | Get Voice test
+*VoiceTestsApi* | [**getVoiceTestWithHttpInfo**](docs/VoiceTestsApi.md#getVoiceTestWithHttpInfo) | **GET** /tests/voice/{testId} | Get Voice test
+*VoiceTestsApi* | [**getVoiceTests**](docs/VoiceTestsApi.md#getVoiceTests) | **GET** /tests/voice | List Voice tests
+*VoiceTestsApi* | [**getVoiceTestsWithHttpInfo**](docs/VoiceTestsApi.md#getVoiceTestsWithHttpInfo) | **GET** /tests/voice | List Voice tests
+*VoiceTestsApi* | [**updateVoiceTest**](docs/VoiceTestsApi.md#updateVoiceTest) | **PUT** /tests/voice/{testId} | Update Voice test
+*VoiceTestsApi* | [**updateVoiceTestWithHttpInfo**](docs/VoiceTestsApi.md#updateVoiceTestWithHttpInfo) | **PUT** /tests/voice/{testId} | Update Voice test
+*WebTransactionTestsApi* | [**createWebTransactionsTest**](docs/WebTransactionTestsApi.md#createWebTransactionsTest) | **POST** /tests/web-transactions | Create Web Transactions test
+*WebTransactionTestsApi* | [**createWebTransactionsTestWithHttpInfo**](docs/WebTransactionTestsApi.md#createWebTransactionsTestWithHttpInfo) | **POST** /tests/web-transactions | Create Web Transactions test
+*WebTransactionTestsApi* | [**deleteWebTransactionsTest**](docs/WebTransactionTestsApi.md#deleteWebTransactionsTest) | **DELETE** /tests/web-transactions/{testId} | Delete Web Transactions test
+*WebTransactionTestsApi* | [**deleteWebTransactionsTestWithHttpInfo**](docs/WebTransactionTestsApi.md#deleteWebTransactionsTestWithHttpInfo) | **DELETE** /tests/web-transactions/{testId} | Delete Web Transactions test
+*WebTransactionTestsApi* | [**getWebTransactionsTest**](docs/WebTransactionTestsApi.md#getWebTransactionsTest) | **GET** /tests/web-transactions/{testId} | Get Web Transactions test
+*WebTransactionTestsApi* | [**getWebTransactionsTestWithHttpInfo**](docs/WebTransactionTestsApi.md#getWebTransactionsTestWithHttpInfo) | **GET** /tests/web-transactions/{testId} | Get Web Transactions test
+*WebTransactionTestsApi* | [**getWebTransactionsTests**](docs/WebTransactionTestsApi.md#getWebTransactionsTests) | **GET** /tests/web-transactions | List Web Transactions tests
+*WebTransactionTestsApi* | [**getWebTransactionsTestsWithHttpInfo**](docs/WebTransactionTestsApi.md#getWebTransactionsTestsWithHttpInfo) | **GET** /tests/web-transactions | List Web Transactions tests
+*WebTransactionTestsApi* | [**updateWebTransactionsTest**](docs/WebTransactionTestsApi.md#updateWebTransactionsTest) | **PUT** /tests/web-transactions/{testId} | Update Web Transactions test
+*WebTransactionTestsApi* | [**updateWebTransactionsTestWithHttpInfo**](docs/WebTransactionTestsApi.md#updateWebTransactionsTestWithHttpInfo) | **PUT** /tests/web-transactions/{testId} | Update Web Transactions test
 
 
 <a id="documentation-for-authorization"></a>

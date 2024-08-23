@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.results.model.AlertRule;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointAgentSelectorConfig;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestAuthType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestLinks;
@@ -57,21 +56,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTest.JSON_PROPERTY_TEST_NAME,
   EndpointHttpServerTest.JSON_PROPERTY_TYPE,
   EndpointHttpServerTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointHttpServerTest.JSON_PROPERTY_ALERT_RULES,
   EndpointHttpServerTest.JSON_PROPERTY_AUTH_TYPE,
   EndpointHttpServerTest.JSON_PROPERTY_HTTP_TIME_LIMIT,
   EndpointHttpServerTest.JSON_PROPERTY_URL,
   EndpointHttpServerTest.JSON_PROPERTY_USERNAME,
   EndpointHttpServerTest.JSON_PROPERTY_SSL_VERSION_ID,
   EndpointHttpServerTest.JSON_PROPERTY_VERIFY_CERTIFICATE,
-  EndpointHttpServerTest.JSON_PROPERTY_CONTENT_REGEX,
   EndpointHttpServerTest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   EndpointHttpServerTest.JSON_PROPERTY_HTTP_TARGET_TIME,
   EndpointHttpServerTest.JSON_PROPERTY_HTTP_VERSION,
-  EndpointHttpServerTest.JSON_PROPERTY_POST_BODY,
   EndpointHttpServerTest.JSON_PROPERTY_SSL_VERSION,
   EndpointHttpServerTest.JSON_PROPERTY_USE_NTLM,
-  EndpointHttpServerTest.JSON_PROPERTY_USER_AGENT,
   EndpointHttpServerTest.JSON_PROPERTY_LABELS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -89,7 +84,7 @@ public class EndpointHttpServerTest {
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_IS_ENABLED = "isEnabled";
   private Boolean isEnabled = true;
@@ -127,14 +122,11 @@ public class EndpointHttpServerTest {
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules = new ArrayList<>();
-
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private EndpointTestAuthType authType = EndpointTestAuthType.NONE;
 
   public static final String JSON_PROPERTY_HTTP_TIME_LIMIT = "httpTimeLimit";
-  private Integer httpTimeLimit;
+  private Integer httpTimeLimit = 5000;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
@@ -143,13 +135,10 @@ public class EndpointHttpServerTest {
   private String username;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
-  private Boolean verifyCertificate;
-
-  public static final String JSON_PROPERTY_CONTENT_REGEX = "contentRegex";
-  private String contentRegex;
+  private Boolean verifyCertificate = true;
 
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
@@ -160,17 +149,11 @@ public class EndpointHttpServerTest {
   public static final String JSON_PROPERTY_HTTP_VERSION = "httpVersion";
   private Integer httpVersion = 2;
 
-  public static final String JSON_PROPERTY_POST_BODY = "postBody";
-  private String postBody;
-
   public static final String JSON_PROPERTY_SSL_VERSION = "sslVersion";
   private String sslVersion;
 
   public static final String JSON_PROPERTY_USE_NTLM = "useNtlm";
   private Boolean useNtlm;
-
-  public static final String JSON_PROPERTY_USER_AGENT = "userAgent";
-  private String userAgent;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
@@ -573,39 +556,6 @@ public class EndpointHttpServerTest {
   }
 
 
-  public EndpointHttpServerTest alertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public EndpointHttpServerTest addAlertRulesItem(AlertRule alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * Contains list of enabled alert rule objects.
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<AlertRule> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
-  }
-
-
   public EndpointHttpServerTest authType(EndpointTestAuthType authType) {
     this.authType = authType;
     return this;
@@ -756,31 +706,6 @@ public class EndpointHttpServerTest {
   }
 
 
-  public EndpointHttpServerTest contentRegex(String contentRegex) {
-    this.contentRegex = contentRegex;
-    return this;
-  }
-
-   /**
-   * Content regex, this field does not require escaping.
-   * @return contentRegex
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONTENT_REGEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getContentRegex() {
-    return contentRegex;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONTENT_REGEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setContentRegex(String contentRegex) {
-    this.contentRegex = contentRegex;
-  }
-
-
   public EndpointHttpServerTest followRedirects(Boolean followRedirects) {
     this.followRedirects = followRedirects;
     return this;
@@ -860,31 +785,6 @@ public class EndpointHttpServerTest {
   }
 
 
-  public EndpointHttpServerTest postBody(String postBody) {
-    this.postBody = postBody;
-    return this;
-  }
-
-   /**
-   * Enter the body for the HTTP POST request in this field. No special escaping is necessary. If the post body is provided with content, the &#x60;requestMethod&#x60; is automatically set to POST.
-   * @return postBody
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_POST_BODY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPostBody() {
-    return postBody;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_POST_BODY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPostBody(String postBody) {
-    this.postBody = postBody;
-  }
-
-
    /**
    * Reflects the verbose SSL protocol version used by a test.
    * @return sslVersion
@@ -922,31 +822,6 @@ public class EndpointHttpServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUseNtlm(Boolean useNtlm) {
     this.useNtlm = useNtlm;
-  }
-
-
-  public EndpointHttpServerTest userAgent(String userAgent) {
-    this.userAgent = userAgent;
-    return this;
-  }
-
-   /**
-   * User-agent string to be provided during the test.
-   * @return userAgent
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_AGENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getUserAgent() {
-    return userAgent;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER_AGENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserAgent(String userAgent) {
-    this.userAgent = userAgent;
   }
 
 
@@ -994,27 +869,23 @@ public class EndpointHttpServerTest {
         Objects.equals(this.testName, endpointHttpServerTest.testName) &&
         Objects.equals(this.type, endpointHttpServerTest.type) &&
         Objects.equals(this.tcpProbeMode, endpointHttpServerTest.tcpProbeMode) &&
-        Objects.equals(this.alertRules, endpointHttpServerTest.alertRules) &&
         Objects.equals(this.authType, endpointHttpServerTest.authType) &&
         Objects.equals(this.httpTimeLimit, endpointHttpServerTest.httpTimeLimit) &&
         Objects.equals(this.url, endpointHttpServerTest.url) &&
         Objects.equals(this.username, endpointHttpServerTest.username) &&
         Objects.equals(this.sslVersionId, endpointHttpServerTest.sslVersionId) &&
         Objects.equals(this.verifyCertificate, endpointHttpServerTest.verifyCertificate) &&
-        Objects.equals(this.contentRegex, endpointHttpServerTest.contentRegex) &&
         Objects.equals(this.followRedirects, endpointHttpServerTest.followRedirects) &&
         Objects.equals(this.httpTargetTime, endpointHttpServerTest.httpTargetTime) &&
         Objects.equals(this.httpVersion, endpointHttpServerTest.httpVersion) &&
-        Objects.equals(this.postBody, endpointHttpServerTest.postBody) &&
         Objects.equals(this.sslVersion, endpointHttpServerTest.sslVersion) &&
         Objects.equals(this.useNtlm, endpointHttpServerTest.useNtlm) &&
-        Objects.equals(this.userAgent, endpointHttpServerTest.userAgent) &&
         Objects.equals(this.labels, endpointHttpServerTest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, port, protocol, server, testId, testName, type, tcpProbeMode, alertRules, authType, httpTimeLimit, url, username, sslVersionId, verifyCertificate, contentRegex, followRedirects, httpTargetTime, httpVersion, postBody, sslVersion, useNtlm, userAgent, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, port, protocol, server, testId, testName, type, tcpProbeMode, authType, httpTimeLimit, url, username, sslVersionId, verifyCertificate, followRedirects, httpTargetTime, httpVersion, sslVersion, useNtlm, labels);
   }
 
   @Override
@@ -1038,21 +909,17 @@ public class EndpointHttpServerTest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    httpTimeLimit: ").append(toIndentedString(httpTimeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    sslVersionId: ").append(toIndentedString(sslVersionId)).append("\n");
     sb.append("    verifyCertificate: ").append(toIndentedString(verifyCertificate)).append("\n");
-    sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    httpTargetTime: ").append(toIndentedString(httpTargetTime)).append("\n");
     sb.append("    httpVersion: ").append(toIndentedString(httpVersion)).append("\n");
-    sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    sslVersion: ").append(toIndentedString(sslVersion)).append("\n");
     sb.append("    useNtlm: ").append(toIndentedString(useNtlm)).append("\n");
-    sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("}");
     return sb.toString();

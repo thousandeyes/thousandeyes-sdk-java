@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.Monitor;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
@@ -65,7 +64,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceTest.JSON_PROPERTY_NUM_PATH_TRACES,
   VoiceTest.JSON_PROPERTY_PORT,
   VoiceTest.JSON_PROPERTY_TARGET_AGENT_ID,
-  VoiceTest.JSON_PROPERTY_AGENTS,
   VoiceTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   VoiceTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   VoiceTest.JSON_PROPERTY_MONITORS
@@ -73,7 +71,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class VoiceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -150,9 +148,6 @@ public class VoiceTest {
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
 
@@ -179,7 +174,6 @@ public class VoiceTest {
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_CODEC) String codec, 
     @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
   this();
@@ -195,7 +189,6 @@ public class VoiceTest {
     this.sharedWithAccounts = sharedWithAccounts;
     this.codec = codec;
     this.dscp = dscp;
-    this.agents = agents;
     this.monitors = monitors;
   }
 
@@ -745,21 +738,6 @@ public class VoiceTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public VoiceTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -863,7 +841,6 @@ public class VoiceTest {
         Objects.equals(this.numPathTraces, voiceTest.numPathTraces) &&
         Objects.equals(this.port, voiceTest.port) &&
         Objects.equals(this.targetAgentId, voiceTest.targetAgentId) &&
-        Objects.equals(this.agents, voiceTest.agents) &&
         Objects.equals(this.bgpMeasurements, voiceTest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, voiceTest.usePublicBgp) &&
         Objects.equals(this.monitors, voiceTest.monitors);
@@ -871,7 +848,7 @@ public class VoiceTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId, agents, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -904,7 +881,6 @@ public class VoiceTest {
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");

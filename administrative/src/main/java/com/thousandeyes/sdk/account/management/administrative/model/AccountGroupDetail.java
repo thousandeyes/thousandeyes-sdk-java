@@ -40,7 +40,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AccountGroupDetail.JSON_PROPERTY_ORGANIZATION_NAME,
   AccountGroupDetail.JSON_PROPERTY_USERS,
   AccountGroupDetail.JSON_PROPERTY_LINKS,
-  AccountGroupDetail.JSON_PROPERTY_AGENTS
+  AccountGroupDetail.JSON_PROPERTY_AGENTS,
+  AccountGroupDetail.JSON_PROPERTY_ACCOUNT_TOKEN
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AccountGroupDetail {
@@ -67,6 +68,9 @@ public class AccountGroupDetail {
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<EnterpriseAgent> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ACCOUNT_TOKEN = "accountToken";
+  private String accountToken;
 
   public AccountGroupDetail() { 
   }
@@ -287,6 +291,31 @@ public class AccountGroupDetail {
   }
 
 
+  public AccountGroupDetail accountToken(String accountToken) {
+    this.accountToken = accountToken;
+    return this;
+  }
+
+   /**
+   * The account group token is an alphanumeric string used to bind an Enterprise Agent to a specific account group. This token is not a password that must be kept secret. You can retrieve your &#x60;AccountGroupToken&#x60; from the &#x60;/account-groups/{id}&#x60; endpoint.
+   * @return accountToken
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getAccountToken() {
+    return accountToken;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccountToken(String accountToken) {
+    this.accountToken = accountToken;
+  }
+
+
   /**
    * Return true if this AccountGroupDetail object is equal to o.
    */
@@ -306,12 +335,13 @@ public class AccountGroupDetail {
         Objects.equals(this.organizationName, accountGroupDetail.organizationName) &&
         Objects.equals(this.users, accountGroupDetail.users) &&
         Objects.equals(this.links, accountGroupDetail.links) &&
-        Objects.equals(this.agents, accountGroupDetail.agents);
+        Objects.equals(this.agents, accountGroupDetail.agents) &&
+        Objects.equals(this.accountToken, accountGroupDetail.accountToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, accountGroupName, isCurrentAccountGroup, isDefaultAccountGroup, organizationName, users, links, agents);
+    return Objects.hash(aid, accountGroupName, isCurrentAccountGroup, isDefaultAccountGroup, organizationName, users, links, agents, accountToken);
   }
 
   @Override
@@ -326,6 +356,7 @@ public class AccountGroupDetail {
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    accountToken: ").append(toIndentedString(accountToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }

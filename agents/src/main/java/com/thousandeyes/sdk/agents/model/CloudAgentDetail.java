@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.agents.model.Labels;
+import com.thousandeyes.sdk.agents.model.AgentLabel;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class CloudAgentDetail {
   private List<SimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<Labels> labels = new ArrayList<>();
+  private List<AgentLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
@@ -105,7 +105,7 @@ public class CloudAgentDetail {
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
     @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<Labels> labels
+    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels
   ) {
   this();
     this.ipAddresses = ipAddresses;
@@ -355,7 +355,7 @@ public class CloudAgentDetail {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Labels> getLabels() {
+  public List<AgentLabel> getLabels() {
     return labels;
   }
 

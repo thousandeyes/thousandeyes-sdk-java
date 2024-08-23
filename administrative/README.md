@@ -2,7 +2,7 @@
 
 Administrative API
 
-- API version: 7.0.15
+- API version: 7.0.16
 
 Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API.
 This API provides the following endpoints that define the operations to manage your organization: 
@@ -116,7 +116,7 @@ public class AccountGroupsApiExample {
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
+        List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             CreatedAccountGroup result = apiInstance.createAccountGroup(accountGroupRequest, expand);
             System.out.println(result);

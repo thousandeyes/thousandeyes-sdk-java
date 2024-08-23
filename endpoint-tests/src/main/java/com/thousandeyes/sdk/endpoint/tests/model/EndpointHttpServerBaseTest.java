@@ -50,7 +50,7 @@ public class EndpointHttpServerBaseTest {
   private Boolean hasPathTraceInSession;
 
   public static final String JSON_PROPERTY_HTTP_TIME_LIMIT = "httpTimeLimit";
-  private Integer httpTimeLimit;
+  private Integer httpTimeLimit = 5000;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
@@ -62,13 +62,13 @@ public class EndpointHttpServerBaseTest {
   private String username;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
-  private Boolean verifyCertificate;
+  private Boolean verifyCertificate = true;
 
   public EndpointHttpServerBaseTest() { 
   }
