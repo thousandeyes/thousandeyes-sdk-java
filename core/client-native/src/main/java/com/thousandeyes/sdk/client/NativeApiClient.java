@@ -123,7 +123,7 @@ public class NativeApiClient implements ApiClient {
             return new ApiResponse<>(
                     response.statusCode(),
                     response.headers().map(),
-                    body == null ? null : reader.readValue(body)
+                    reader.getValueType().hasRawClass(Void.class) ? null : reader.readValue(body)
             );
         }
     }
