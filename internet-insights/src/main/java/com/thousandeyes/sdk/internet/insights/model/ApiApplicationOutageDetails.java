@@ -21,9 +21,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.thousandeyes.sdk.internet.insights.model.ApiAffectedAgent;
-import com.thousandeyes.sdk.internet.insights.model.ApiAffectedTest;
 import com.thousandeyes.sdk.internet.insights.model.ApiApplicationOutageAffectedLocation;
+import com.thousandeyes.sdk.internet.insights.model.InternetInsightsApiAffectedAgent;
+import com.thousandeyes.sdk.internet.insights.model.InternetInsightsApiAffectedTest;
 import com.thousandeyes.sdk.internet.insights.model.SelfLinks;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -80,13 +80,13 @@ public class ApiApplicationOutageDetails {
   private Long duration;
 
   public static final String JSON_PROPERTY_AFFECTED_TESTS = "affectedTests";
-  private Set<ApiAffectedTest> affectedTests = new LinkedHashSet<>();
+  private Set<InternetInsightsApiAffectedTest> affectedTests = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_DOMAINS = "affectedDomains";
   private Set<String> affectedDomains = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_AFFECTED_AGENTS = "affectedAgents";
-  private Set<ApiAffectedAgent> affectedAgents = new LinkedHashSet<>();
+  private Set<InternetInsightsApiAffectedAgent> affectedAgents = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
   private Set<String> errors = new LinkedHashSet<>();
@@ -325,12 +325,12 @@ public class ApiApplicationOutageDetails {
   }
 
 
-  public ApiApplicationOutageDetails affectedTests(Set<ApiAffectedTest> affectedTests) {
+  public ApiApplicationOutageDetails affectedTests(Set<InternetInsightsApiAffectedTest> affectedTests) {
     this.affectedTests = affectedTests;
     return this;
   }
 
-  public ApiApplicationOutageDetails addAffectedTestsItem(ApiAffectedTest affectedTestsItem) {
+  public ApiApplicationOutageDetails addAffectedTestsItem(InternetInsightsApiAffectedTest affectedTestsItem) {
     if (this.affectedTests == null) {
       this.affectedTests = new LinkedHashSet<>();
     }
@@ -346,7 +346,7 @@ public class ApiApplicationOutageDetails {
   @JsonProperty(JSON_PROPERTY_AFFECTED_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<ApiAffectedTest> getAffectedTests() {
+  public Set<InternetInsightsApiAffectedTest> getAffectedTests() {
     return affectedTests;
   }
 
@@ -354,7 +354,7 @@ public class ApiApplicationOutageDetails {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_AFFECTED_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAffectedTests(Set<ApiAffectedTest> affectedTests) {
+  public void setAffectedTests(Set<InternetInsightsApiAffectedTest> affectedTests) {
     this.affectedTests = affectedTests;
   }
 
@@ -393,12 +393,12 @@ public class ApiApplicationOutageDetails {
   }
 
 
-  public ApiApplicationOutageDetails affectedAgents(Set<ApiAffectedAgent> affectedAgents) {
+  public ApiApplicationOutageDetails affectedAgents(Set<InternetInsightsApiAffectedAgent> affectedAgents) {
     this.affectedAgents = affectedAgents;
     return this;
   }
 
-  public ApiApplicationOutageDetails addAffectedAgentsItem(ApiAffectedAgent affectedAgentsItem) {
+  public ApiApplicationOutageDetails addAffectedAgentsItem(InternetInsightsApiAffectedAgent affectedAgentsItem) {
     if (this.affectedAgents == null) {
       this.affectedAgents = new LinkedHashSet<>();
     }
@@ -414,7 +414,7 @@ public class ApiApplicationOutageDetails {
   @JsonProperty(JSON_PROPERTY_AFFECTED_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<ApiAffectedAgent> getAffectedAgents() {
+  public Set<InternetInsightsApiAffectedAgent> getAffectedAgents() {
     return affectedAgents;
   }
 
@@ -422,7 +422,7 @@ public class ApiApplicationOutageDetails {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_AFFECTED_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAffectedAgents(Set<ApiAffectedAgent> affectedAgents) {
+  public void setAffectedAgents(Set<InternetInsightsApiAffectedAgent> affectedAgents) {
     this.affectedAgents = affectedAgents;
   }
 

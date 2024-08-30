@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindowDetail;
 import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindowRequest;
 import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindows;
 import com.thousandeyes.sdk.alerts.model.Error;
-import com.thousandeyes.sdk.alerts.model.Expand;
+import com.thousandeyes.sdk.alerts.model.ExpandAlertTestOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
 import com.thousandeyes.sdk.alerts.model.ValidationError;
@@ -72,7 +72,7 @@ public class AlertSuppressionWindowsApi {
    * @return AlertSuppressionWindowDetail
    * @throws ApiException if fails to make API call
    */
-  public AlertSuppressionWindowDetail createAlertSuppressionWindow(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<Expand> expand) throws ApiException {
+  public AlertSuppressionWindowDetail createAlertSuppressionWindow(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     ApiResponse<AlertSuppressionWindowDetail> response = createAlertSuppressionWindowWithHttpInfo(alertSuppressionWindowRequest, aid, expand);
     return response.getData();
   }
@@ -86,7 +86,7 @@ public class AlertSuppressionWindowsApi {
    * @return ApiResponse&lt;AlertSuppressionWindowDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AlertSuppressionWindowDetail> createAlertSuppressionWindowWithHttpInfo(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<Expand> expand) throws ApiException {
+  public ApiResponse<AlertSuppressionWindowDetail> createAlertSuppressionWindowWithHttpInfo(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     createAlertSuppressionWindowValidateRequest(alertSuppressionWindowRequest);
 
     var requestBuilder = createAlertSuppressionWindowRequestBuilder(alertSuppressionWindowRequest, aid, expand);
@@ -101,7 +101,7 @@ public class AlertSuppressionWindowsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAlertSuppressionWindowRequestBuilder(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder createAlertSuppressionWindowRequestBuilder(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -184,7 +184,7 @@ public class AlertSuppressionWindowsApi {
    * @return AlertSuppressionWindowDetail
    * @throws ApiException if fails to make API call
    */
-  public AlertSuppressionWindowDetail getAlertSuppressionWindow(String windowId, String aid, List<Expand> expand) throws ApiException {
+  public AlertSuppressionWindowDetail getAlertSuppressionWindow(String windowId, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     ApiResponse<AlertSuppressionWindowDetail> response = getAlertSuppressionWindowWithHttpInfo(windowId, aid, expand);
     return response.getData();
   }
@@ -198,7 +198,7 @@ public class AlertSuppressionWindowsApi {
    * @return ApiResponse&lt;AlertSuppressionWindowDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AlertSuppressionWindowDetail> getAlertSuppressionWindowWithHttpInfo(String windowId, String aid, List<Expand> expand) throws ApiException {
+  public ApiResponse<AlertSuppressionWindowDetail> getAlertSuppressionWindowWithHttpInfo(String windowId, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     getAlertSuppressionWindowValidateRequest(windowId);
 
     var requestBuilder = getAlertSuppressionWindowRequestBuilder(windowId, aid, expand);
@@ -213,7 +213,7 @@ public class AlertSuppressionWindowsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertSuppressionWindowRequestBuilder(String windowId, String aid, List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getAlertSuppressionWindowRequestBuilder(String windowId, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
@@ -291,7 +291,7 @@ public class AlertSuppressionWindowsApi {
    * @return AlertSuppressionWindowDetail
    * @throws ApiException if fails to make API call
    */
-  public AlertSuppressionWindowDetail updateAlertSuppressionWindow(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<Expand> expand) throws ApiException {
+  public AlertSuppressionWindowDetail updateAlertSuppressionWindow(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     ApiResponse<AlertSuppressionWindowDetail> response = updateAlertSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand);
     return response.getData();
   }
@@ -306,7 +306,7 @@ public class AlertSuppressionWindowsApi {
    * @return ApiResponse&lt;AlertSuppressionWindowDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AlertSuppressionWindowDetail> updateAlertSuppressionWindowWithHttpInfo(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<Expand> expand) throws ApiException {
+  public ApiResponse<AlertSuppressionWindowDetail> updateAlertSuppressionWindowWithHttpInfo(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     updateAlertSuppressionWindowValidateRequest(windowId, alertSuppressionWindowRequest);
 
     var requestBuilder = updateAlertSuppressionWindowRequestBuilder(windowId, alertSuppressionWindowRequest, aid, expand);
@@ -325,7 +325,7 @@ public class AlertSuppressionWindowsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAlertSuppressionWindowRequestBuilder(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder updateAlertSuppressionWindowRequestBuilder(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 

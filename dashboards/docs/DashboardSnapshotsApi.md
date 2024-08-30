@@ -89,12 +89,12 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Created |  * Location -  <br>  |
+| **201** | Created |  * Location -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Limit -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Remaining -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Reset -  <br>  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
+| **429** | Exhausted rate limit for snapshot creation |  * X-Dashboard-Snapshot-Rate-Limit-Limit -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Remaining -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Reset -  <br>  |
 | **500** | Internal server error |  -  |
 
 ## createDashboardSnapshotWithHttpInfo
@@ -170,12 +170,12 @@ ApiResponse<[**DashboardSnapshotResponse**](DashboardSnapshotResponse.md)>
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Created |  * Location -  <br>  |
+| **201** | Created |  * Location -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Limit -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Remaining -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Reset -  <br>  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
+| **429** | Exhausted rate limit for snapshot creation |  * X-Dashboard-Snapshot-Rate-Limit-Limit -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Remaining -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Reset -  <br>  |
 | **500** | Internal server error |  -  |
 
 

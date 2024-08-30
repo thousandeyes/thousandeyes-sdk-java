@@ -34,8 +34,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   EndpointInstantTest.JSON_PROPERTY_AGENT_SELECTOR_TYPE,
   EndpointInstantTest.JSON_PROPERTY_AGENTS,
-  EndpointInstantTest.JSON_PROPERTY_HAS_PING,
-  EndpointInstantTest.JSON_PROPERTY_HAS_TRACEROUTE,
   EndpointInstantTest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
   EndpointInstantTest.JSON_PROPERTY_MAX_MACHINES,
   EndpointInstantTest.JSON_PROPERTY_PORT,
@@ -44,22 +42,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointInstantTest {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
-  private EndpointTestAgentSelectorType agentSelectorType;
+  private EndpointTestAgentSelectorType agentSelectorType = EndpointTestAgentSelectorType.ALL_AGENTS;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<UUID> agents = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_HAS_PING = "hasPing";
-  private Boolean hasPing = true;
-
-  public static final String JSON_PROPERTY_HAS_TRACEROUTE = "hasTraceroute";
-  private Boolean hasTraceroute = true;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
   private List<String> endpointAgentLabels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
-  private Integer maxMachines;
+  private Integer maxMachines = 25;
 
   public static final String JSON_PROPERTY_PORT = "port";
   private Integer port;
@@ -79,9 +71,9 @@ public class EndpointInstantTest {
    * Get agentSelectorType
    * @return agentSelectorType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_AGENT_SELECTOR_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public EndpointTestAgentSelectorType getAgentSelectorType() {
     return agentSelectorType;
@@ -89,7 +81,7 @@ public class EndpointInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_AGENT_SELECTOR_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgentSelectorType(EndpointTestAgentSelectorType agentSelectorType) {
     this.agentSelectorType = agentSelectorType;
   }
@@ -125,56 +117,6 @@ public class EndpointInstantTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgents(List<UUID> agents) {
     this.agents = agents;
-  }
-
-
-  public EndpointInstantTest hasPing(Boolean hasPing) {
-    this.hasPing = hasPing;
-    return this;
-  }
-
-   /**
-   * Optional flag indicating if the test should run ping.
-   * @return hasPing
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HAS_PING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getHasPing() {
-    return hasPing;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HAS_PING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasPing(Boolean hasPing) {
-    this.hasPing = hasPing;
-  }
-
-
-  public EndpointInstantTest hasTraceroute(Boolean hasTraceroute) {
-    this.hasTraceroute = hasTraceroute;
-    return this;
-  }
-
-   /**
-   * Optional flag indicating if the test should run traceroute.
-   * @return hasTraceroute
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HAS_TRACEROUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getHasTraceroute() {
-    return hasTraceroute;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HAS_TRACEROUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasTraceroute(Boolean hasTraceroute) {
-    this.hasTraceroute = hasTraceroute;
   }
 
 
@@ -222,9 +164,9 @@ public class EndpointInstantTest {
    * maximum: 50000
    * @return maxMachines
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MAX_MACHINES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMaxMachines() {
     return maxMachines;
@@ -232,7 +174,7 @@ public class EndpointInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_MAX_MACHINES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMaxMachines(Integer maxMachines) {
     this.maxMachines = maxMachines;
   }
@@ -302,8 +244,6 @@ public class EndpointInstantTest {
     EndpointInstantTest endpointInstantTest = (EndpointInstantTest) o;
     return Objects.equals(this.agentSelectorType, endpointInstantTest.agentSelectorType) &&
         Objects.equals(this.agents, endpointInstantTest.agents) &&
-        Objects.equals(this.hasPing, endpointInstantTest.hasPing) &&
-        Objects.equals(this.hasTraceroute, endpointInstantTest.hasTraceroute) &&
         Objects.equals(this.endpointAgentLabels, endpointInstantTest.endpointAgentLabels) &&
         Objects.equals(this.maxMachines, endpointInstantTest.maxMachines) &&
         Objects.equals(this.port, endpointInstantTest.port) &&
@@ -312,7 +252,7 @@ public class EndpointInstantTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, hasPing, hasTraceroute, endpointAgentLabels, maxMachines, port, testName);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, port, testName);
   }
 
   @Override
@@ -321,8 +261,6 @@ public class EndpointInstantTest {
     sb.append("class EndpointInstantTest {\n");
     sb.append("    agentSelectorType: ").append(toIndentedString(agentSelectorType)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
-    sb.append("    hasPing: ").append(toIndentedString(hasPing)).append("\n");
-    sb.append("    hasTraceroute: ").append(toIndentedString(hasTraceroute)).append("\n");
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");

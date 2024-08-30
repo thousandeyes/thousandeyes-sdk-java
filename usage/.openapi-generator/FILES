@@ -7,15 +7,15 @@ docs/UsageApi.md
 src/main/java/com/thousandeyes/sdk/usage/QuotasApi.java
 src/main/java/com/thousandeyes/sdk/usage/UsageApi.java
 src/main/java/com/thousandeyes/sdk/usage/model/AccountGroupQuota.java
-src/main/java/com/thousandeyes/sdk/usage/model/EndpointAgents.java
 src/main/java/com/thousandeyes/sdk/usage/model/EndpointAgentsEmbedded.java
 src/main/java/com/thousandeyes/sdk/usage/model/EndpointAgentsEssentials.java
+src/main/java/com/thousandeyes/sdk/usage/model/EndpointAgentsUsage.java
 src/main/java/com/thousandeyes/sdk/usage/model/EnterpriseAgentUnits.java
 src/main/java/com/thousandeyes/sdk/usage/model/EnterpriseAgentUnitsByTestOwnerAccountGroup.java
 src/main/java/com/thousandeyes/sdk/usage/model/EnterpriseAgents.java
 src/main/java/com/thousandeyes/sdk/usage/model/EnterpriseAgentsUsage.java
 src/main/java/com/thousandeyes/sdk/usage/model/Error.java
-src/main/java/com/thousandeyes/sdk/usage/model/Expand.java
+src/main/java/com/thousandeyes/sdk/usage/model/ExpandUsageOptions.java
 src/main/java/com/thousandeyes/sdk/usage/model/Link.java
 src/main/java/com/thousandeyes/sdk/usage/model/OrganizationQuota.java
 src/main/java/com/thousandeyes/sdk/usage/model/OrganizationQuotaAssignment.java
@@ -29,7 +29,7 @@ src/main/java/com/thousandeyes/sdk/usage/model/QuotasAssignRequest.java
 src/main/java/com/thousandeyes/sdk/usage/model/QuotasAssignResponse.java
 src/main/java/com/thousandeyes/sdk/usage/model/QuotasUnassign.java
 src/main/java/com/thousandeyes/sdk/usage/model/SelfLinks.java
-src/main/java/com/thousandeyes/sdk/usage/model/Tests.java
+src/main/java/com/thousandeyes/sdk/usage/model/TestUsage.java
 src/main/java/com/thousandeyes/sdk/usage/model/TestsUsage.java
 src/main/java/com/thousandeyes/sdk/usage/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/sdk/usage/model/UnitsByTests.java

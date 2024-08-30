@@ -14,7 +14,7 @@ package com.thousandeyes.sdk.usage;
 
 import com.thousandeyes.sdk.usage.model.EnterpriseAgentsUsage;
 import com.thousandeyes.sdk.usage.model.Error;
-import com.thousandeyes.sdk.usage.model.Expand;
+import com.thousandeyes.sdk.usage.model.ExpandUsageOptions;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.usage.model.TestsUsage;
 import com.thousandeyes.sdk.usage.model.UnauthorizedError;

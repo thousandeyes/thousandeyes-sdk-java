@@ -2,7 +2,7 @@
 
 Test Snapshots API
 
-- API version: 7.0.15
+- API version: 7.0.17
 
 Creates a new test snapshot in ThousandEyes.
 
@@ -91,9 +91,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.*;
 import com.thousandeyes.sdk.client.*;
 import com.thousandeyes.sdk.snapshots.model.*;
-import com.thousandeyes.sdk.snapshots.CreateTestSnapshotApi;
+import com.thousandeyes.sdk.snapshots.TestSnapshotsApi;
 
-public class CreateTestSnapshotApiExample {
+public class TestSnapshotsApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -105,15 +105,15 @@ public class CreateTestSnapshotApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        CreateTestSnapshotApi apiInstance = new CreateTestSnapshotApi(defaultClient);
-        String testId = "281474976710706"; // String | Test ID.
+        TestSnapshotsApi apiInstance = new TestSnapshotsApi(defaultClient);
+        String testId = "202701"; // String | Test ID
         SnapshotRequest snapshotRequest = new SnapshotRequest(); // SnapshotRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             SnapshotResponse result = apiInstance.createTestSnapshot(testId, snapshotRequest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CreateTestSnapshotApi#createTestSnapshot");
+            System.err.println("Exception when calling TestSnapshotsApi#createTestSnapshot");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -130,8 +130,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CreateTestSnapshotApi* | [**createTestSnapshot**](docs/CreateTestSnapshotApi.md#createTestSnapshot) | **POST** /tests/{testId}/snapshot | Create test snapshot
-*CreateTestSnapshotApi* | [**createTestSnapshotWithHttpInfo**](docs/CreateTestSnapshotApi.md#createTestSnapshotWithHttpInfo) | **POST** /tests/{testId}/snapshot | Create test snapshot
+*TestSnapshotsApi* | [**createTestSnapshot**](docs/TestSnapshotsApi.md#createTestSnapshot) | **POST** /tests/{testId}/snapshot | Create test snapshot
+*TestSnapshotsApi* | [**createTestSnapshotWithHttpInfo**](docs/TestSnapshotsApi.md#createTestSnapshotWithHttpInfo) | **POST** /tests/{testId}/snapshot | Create test snapshot
 
 
 <a id="documentation-for-authorization"></a>
