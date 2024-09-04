@@ -2,7 +2,7 @@
 
 Endpoint Instant Scheduled Tests API
 
-- API version: 7.0.15
+- API version: 7.0.17
 
 
 You can create and execute a new endpoint instant scheduled test within ThousandEyes using this API. The test parameters are specified in the `POST` data.
@@ -101,9 +101,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.endpoint.tests.*;
 import com.thousandeyes.sdk.endpoint.tests.client.*;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.*;
-import com.thousandeyes.sdk.endpoint.tests.instant.AgentToServerInstantScheduledTestApi;
+import com.thousandeyes.sdk.endpoint.tests.instant.AgentToServerEndpointInstantScheduledTestsApi;
 
-public class AgentToServerInstantScheduledTestApiExample {
+public class AgentToServerEndpointInstantScheduledTestsApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -115,14 +115,14 @@ public class AgentToServerInstantScheduledTestApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        AgentToServerInstantScheduledTestApi apiInstance = new AgentToServerInstantScheduledTestApi(defaultClient);
+        AgentToServerEndpointInstantScheduledTestsApi apiInstance = new AgentToServerEndpointInstantScheduledTestsApi(defaultClient);
         EndpointAgentToServerInstantTest endpointAgentToServerInstantTest = new EndpointAgentToServerInstantTest(); // EndpointAgentToServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             EndpointAgentToServerTest result = apiInstance.createAgentToServerScheduledInstantTest(endpointAgentToServerInstantTest, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToServerInstantScheduledTestApi#createAgentToServerScheduledInstantTest");
+            System.err.println("Exception when calling AgentToServerEndpointInstantScheduledTestsApi#createAgentToServerScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -139,12 +139,12 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentToServerInstantScheduledTestApi* | [**createAgentToServerScheduledInstantTest**](docs/AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
-*AgentToServerInstantScheduledTestApi* | [**createAgentToServerScheduledInstantTestWithHttpInfo**](docs/AgentToServerInstantScheduledTestApi.md#createAgentToServerScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
-*HttpServerInstantScheduledTestApi* | [**createHttpServerScheduledInstantTest**](docs/HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
-*HttpServerInstantScheduledTestApi* | [**createHttpServerScheduledInstantTestWithHttpInfo**](docs/HttpServerInstantScheduledTestApi.md#createHttpServerScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
-*RunExistingTestApi* | [**runEndpointScheduledInstantTest**](docs/RunExistingTestApi.md#runEndpointScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
-*RunExistingTestApi* | [**runEndpointScheduledInstantTestWithHttpInfo**](docs/RunExistingTestApi.md#runEndpointScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
+*AgentToServerEndpointInstantScheduledTestsApi* | [**createAgentToServerScheduledInstantTest**](docs/AgentToServerEndpointInstantScheduledTestsApi.md#createAgentToServerScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
+*AgentToServerEndpointInstantScheduledTestsApi* | [**createAgentToServerScheduledInstantTestWithHttpInfo**](docs/AgentToServerEndpointInstantScheduledTestsApi.md#createAgentToServerScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/agent-to-server/instant | Run agent to server instant scheduled test
+*HttpServerEndpointInstantScheduledTestsApi* | [**createHttpServerScheduledInstantTest**](docs/HttpServerEndpointInstantScheduledTestsApi.md#createHttpServerScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
+*HttpServerEndpointInstantScheduledTestsApi* | [**createHttpServerScheduledInstantTestWithHttpInfo**](docs/HttpServerEndpointInstantScheduledTestsApi.md#createHttpServerScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/http-server/instant | Run http server instant scheduled test
+*RunEndpointInstantScheduledTestsApi* | [**runEndpointScheduledInstantTest**](docs/RunEndpointInstantScheduledTestsApi.md#runEndpointScheduledInstantTest) | **POST** /endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
+*RunEndpointInstantScheduledTestsApi* | [**runEndpointScheduledInstantTestWithHttpInfo**](docs/RunEndpointInstantScheduledTestsApi.md#runEndpointScheduledInstantTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/{testId}/run | Run endpoint instant scheduled test
 
 
 <a id="documentation-for-authorization"></a>

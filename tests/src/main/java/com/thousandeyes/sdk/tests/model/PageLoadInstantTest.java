@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
@@ -99,8 +98,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTest.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
   PageLoadInstantTest.JSON_PROPERTY_ALLOW_GEOLOCATION,
   PageLoadInstantTest.JSON_PROPERTY_BROWSER_LANGUAGE,
-  PageLoadInstantTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
-  PageLoadInstantTest.JSON_PROPERTY_AGENTS
+  PageLoadInstantTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PageLoadInstantTest {
@@ -162,7 +160,7 @@ public class PageLoadInstantTest {
   private TestCustomHeaders customHeaders;
 
   public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
-  private String desiredStatusCode = "200";
+  private String desiredStatusCode = "default";
 
   public static final String JSON_PROPERTY_DOWNLOAD_LIMIT = "downloadLimit";
   private Integer downloadLimit;
@@ -210,7 +208,7 @@ public class PageLoadInstantTest {
   private String sslVersion;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
@@ -272,9 +270,6 @@ public class PageLoadInstantTest {
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public PageLoadInstantTest() { 
   }
 
@@ -290,8 +285,7 @@ public class PageLoadInstantTest {
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion
   ) {
   this();
     this.createdBy = createdBy;
@@ -305,7 +299,6 @@ public class PageLoadInstantTest {
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
     this.sslVersion = sslVersion;
-    this.agents = agents;
   }
 
    /**
@@ -689,7 +682,7 @@ public class PageLoadInstantTest {
   }
 
    /**
-   * Specify the HTTP status code value that indicates a successful response.
+   * Specify the HTTP status code value that indicates a successful response. The default value accepts any 2xx or 3xx status code.
    * @return desiredStatusCode
   **/
   @jakarta.annotation.Nullable
@@ -1612,21 +1605,6 @@ public class PageLoadInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this PageLoadInstantTest object is equal to o.
    */
@@ -1694,13 +1672,12 @@ public class PageLoadInstantTest {
         Objects.equals(this.allowMicAndCamera, pageLoadInstantTest.allowMicAndCamera) &&
         Objects.equals(this.allowGeolocation, pageLoadInstantTest.allowGeolocation) &&
         Objects.equals(this.browserLanguage, pageLoadInstantTest.browserLanguage) &&
-        Objects.equals(this.pageLoadingStrategy, pageLoadInstantTest.pageLoadingStrategy) &&
-        Objects.equals(this.agents, pageLoadInstantTest.agents);
+        Objects.equals(this.pageLoadingStrategy, pageLoadInstantTest.pageLoadingStrategy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy);
   }
 
   @Override
@@ -1763,7 +1740,6 @@ public class PageLoadInstantTest {
     sb.append("    allowGeolocation: ").append(toIndentedString(allowGeolocation)).append("\n");
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

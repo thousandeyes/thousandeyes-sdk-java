@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.AlertRule;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointAgentSelectorConfig;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointScheduledTestType;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointTestLinks;
@@ -28,9 +27,6 @@ import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointTestProtocol;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.TestInterval;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.TestProbeModeResponse;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -54,8 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointTest.JSON_PROPERTY_TEST_ID,
   EndpointTest.JSON_PROPERTY_TEST_NAME,
   EndpointTest.JSON_PROPERTY_TYPE,
-  EndpointTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointTest.JSON_PROPERTY_ALERT_RULES
+  EndpointTest.JSON_PROPERTY_TCP_PROBE_MODE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointTest {
@@ -72,7 +67,7 @@ public class EndpointTest {
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_IS_ENABLED = "isEnabled";
   private Boolean isEnabled = true;
@@ -109,9 +104,6 @@ public class EndpointTest {
 
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules = new ArrayList<>();
 
   public EndpointTest() { 
   }
@@ -515,39 +507,6 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest alertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public EndpointTest addAlertRulesItem(AlertRule alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * Contains list of enabled alert rule objects.
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<AlertRule> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
-  }
-
-
   /**
    * Return true if this EndpointTest object is equal to o.
    */
@@ -576,13 +535,12 @@ public class EndpointTest {
         Objects.equals(this.testId, endpointTest.testId) &&
         Objects.equals(this.testName, endpointTest.testName) &&
         Objects.equals(this.type, endpointTest.type) &&
-        Objects.equals(this.tcpProbeMode, endpointTest.tcpProbeMode) &&
-        Objects.equals(this.alertRules, endpointTest.alertRules);
+        Objects.equals(this.tcpProbeMode, endpointTest.tcpProbeMode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, port, protocol, server, testId, testName, type, tcpProbeMode, alertRules);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, port, protocol, server, testId, testName, type, tcpProbeMode);
   }
 
   @Override
@@ -606,7 +564,6 @@ public class EndpointTest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("}");
     return sb.toString();
   }

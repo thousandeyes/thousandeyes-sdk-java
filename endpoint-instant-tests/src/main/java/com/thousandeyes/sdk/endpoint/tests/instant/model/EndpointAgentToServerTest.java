@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.AlertRule;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointAgentSelectorConfig;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointTestProtocol;
@@ -55,7 +54,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTest.JSON_PROPERTY_TEST_NAME,
   EndpointAgentToServerTest.JSON_PROPERTY_TYPE,
   EndpointAgentToServerTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointAgentToServerTest.JSON_PROPERTY_ALERT_RULES,
   EndpointAgentToServerTest.JSON_PROPERTY_LABELS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -73,7 +71,7 @@ public class EndpointAgentToServerTest {
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_IS_ENABLED = "isEnabled";
   private Boolean isEnabled = true;
@@ -110,9 +108,6 @@ public class EndpointAgentToServerTest {
 
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
@@ -513,39 +508,6 @@ public class EndpointAgentToServerTest {
   }
 
 
-  public EndpointAgentToServerTest alertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public EndpointAgentToServerTest addAlertRulesItem(AlertRule alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * Contains list of enabled alert rule objects.
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<AlertRule> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
-  }
-
-
    /**
    * Get labels
    * @return labels
@@ -590,13 +552,12 @@ public class EndpointAgentToServerTest {
         Objects.equals(this.testName, endpointAgentToServerTest.testName) &&
         Objects.equals(this.type, endpointAgentToServerTest.type) &&
         Objects.equals(this.tcpProbeMode, endpointAgentToServerTest.tcpProbeMode) &&
-        Objects.equals(this.alertRules, endpointAgentToServerTest.alertRules) &&
         Objects.equals(this.labels, endpointAgentToServerTest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, port, protocol, server, testId, testName, type, tcpProbeMode, alertRules, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, port, protocol, server, testId, testName, type, tcpProbeMode, labels);
   }
 
   @Override
@@ -620,7 +581,6 @@ public class EndpointAgentToServerTest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("}");
     return sb.toString();
