@@ -79,7 +79,7 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "type" : "opentelemetry",
-                  "dataModelVersion" : "v1",
+                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -121,7 +121,7 @@ public class StreamingApiTest {
                     "createdBy" : 3962
                   },
                   "enabled" : true,
-                  "dataModelVersion" : "v1",
+                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -193,7 +193,7 @@ public class StreamingApiTest {
                     "updatedDate" : 1679677853573
                   },
                   "enabled" : true,
-                  "dataModelVersion" : "v1",
+                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -250,7 +250,7 @@ public class StreamingApiTest {
                     "updatedDate" : 1679677853573
                   },
                   "enabled" : true,
-                  "dataModelVersion" : "v1",
+                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -286,7 +286,7 @@ public class StreamingApiTest {
                     "updatedDate" : 1679677853573
                   },
                   "enabled" : true,
-                  "dataModelVersion" : "v1",
+                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -369,7 +369,7 @@ public class StreamingApiTest {
                     "updatedDate" : 1679677853573
                   },
                   "enabled" : true,
-                  "dataModelVersion" : "v1",
+                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"

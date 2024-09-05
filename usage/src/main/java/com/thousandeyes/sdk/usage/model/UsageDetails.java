@@ -20,12 +20,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.usage.model.EndpointAgents;
 import com.thousandeyes.sdk.usage.model.EndpointAgentsEmbedded;
 import com.thousandeyes.sdk.usage.model.EndpointAgentsEssentials;
+import com.thousandeyes.sdk.usage.model.EndpointAgentsUsage;
 import com.thousandeyes.sdk.usage.model.EnterpriseAgentUnits;
 import com.thousandeyes.sdk.usage.model.EnterpriseAgents;
-import com.thousandeyes.sdk.usage.model.Tests;
+import com.thousandeyes.sdk.usage.model.TestUsage;
 import com.thousandeyes.sdk.usage.model.UsageQuota;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -106,10 +106,10 @@ public class UsageDetails {
   private List<EnterpriseAgentUnits> enterpriseAgentUnits = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<Tests> tests = new ArrayList<>();
+  private List<TestUsage> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS = "endpointAgents";
-  private List<EndpointAgents> endpointAgents = new ArrayList<>();
+  private List<EndpointAgentsUsage> endpointAgents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS_ESSENTIALS = "endpointAgentsEssentials";
   private List<EndpointAgentsEssentials> endpointAgentsEssentials = new ArrayList<>();
@@ -506,12 +506,12 @@ public class UsageDetails {
   }
 
 
-  public UsageDetails tests(List<Tests> tests) {
+  public UsageDetails tests(List<TestUsage> tests) {
     this.tests = tests;
     return this;
   }
 
-  public UsageDetails addTestsItem(Tests testsItem) {
+  public UsageDetails addTestsItem(TestUsage testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -527,24 +527,24 @@ public class UsageDetails {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Tests> getTests() {
+  public List<TestUsage> getTests() {
     return tests;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<Tests> tests) {
+  public void setTests(List<TestUsage> tests) {
     this.tests = tests;
   }
 
 
-  public UsageDetails endpointAgents(List<EndpointAgents> endpointAgents) {
+  public UsageDetails endpointAgents(List<EndpointAgentsUsage> endpointAgents) {
     this.endpointAgents = endpointAgents;
     return this;
   }
 
-  public UsageDetails addEndpointAgentsItem(EndpointAgents endpointAgentsItem) {
+  public UsageDetails addEndpointAgentsItem(EndpointAgentsUsage endpointAgentsItem) {
     if (this.endpointAgents == null) {
       this.endpointAgents = new ArrayList<>();
     }
@@ -560,14 +560,14 @@ public class UsageDetails {
   @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<EndpointAgents> getEndpointAgents() {
+  public List<EndpointAgentsUsage> getEndpointAgents() {
     return endpointAgents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndpointAgents(List<EndpointAgents> endpointAgents) {
+  public void setEndpointAgents(List<EndpointAgentsUsage> endpointAgents) {
     this.endpointAgents = endpointAgents;
   }
 

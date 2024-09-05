@@ -35,11 +35,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerBaseTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
   EndpointHttpServerBaseTest.JSON_PROPERTY_HTTP_TIME_LIMIT,
   EndpointHttpServerBaseTest.JSON_PROPERTY_PROTOCOL,
-  EndpointHttpServerBaseTest.JSON_PROPERTY_URL,
   EndpointHttpServerBaseTest.JSON_PROPERTY_USERNAME,
   EndpointHttpServerBaseTest.JSON_PROPERTY_SSL_VERSION_ID,
   EndpointHttpServerBaseTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointHttpServerBaseTest.JSON_PROPERTY_VERIFY_CERTIFICATE
+  EndpointHttpServerBaseTest.JSON_PROPERTY_VERIFY_CERTIFICATE,
+  EndpointHttpServerBaseTest.JSON_PROPERTY_URL
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointHttpServerBaseTest {
@@ -50,25 +50,25 @@ public class EndpointHttpServerBaseTest {
   private Boolean hasPathTraceInSession;
 
   public static final String JSON_PROPERTY_HTTP_TIME_LIMIT = "httpTimeLimit";
-  private Integer httpTimeLimit;
+  private Integer httpTimeLimit = 5000;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
-
-  public static final String JSON_PROPERTY_URL = "url";
-  private String url;
 
   public static final String JSON_PROPERTY_USERNAME = "username";
   private String username;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
-  private Boolean verifyCertificate;
+  private Boolean verifyCertificate = true;
+
+  public static final String JSON_PROPERTY_URL = "url";
+  private String url;
 
   public EndpointHttpServerBaseTest() { 
   }
@@ -173,31 +173,6 @@ public class EndpointHttpServerBaseTest {
   }
 
 
-  public EndpointHttpServerBaseTest url(String url) {
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * Test target URL. Optionally, you can specify a protocol (http or https). If no protocol is provided, the default &#x60;https&#x60; protocol is used.
-   * @return url
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getUrl() {
-    return url;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-
   public EndpointHttpServerBaseTest username(String username) {
     this.username = username;
     return this;
@@ -298,6 +273,31 @@ public class EndpointHttpServerBaseTest {
   }
 
 
+  public EndpointHttpServerBaseTest url(String url) {
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * The test target URL.
+   * @return url
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUrl() {
+    return url;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+
   /**
    * Return true if this EndpointHttpServerBaseTest object is equal to o.
    */
@@ -314,16 +314,16 @@ public class EndpointHttpServerBaseTest {
         Objects.equals(this.hasPathTraceInSession, endpointHttpServerBaseTest.hasPathTraceInSession) &&
         Objects.equals(this.httpTimeLimit, endpointHttpServerBaseTest.httpTimeLimit) &&
         Objects.equals(this.protocol, endpointHttpServerBaseTest.protocol) &&
-        Objects.equals(this.url, endpointHttpServerBaseTest.url) &&
         Objects.equals(this.username, endpointHttpServerBaseTest.username) &&
         Objects.equals(this.sslVersionId, endpointHttpServerBaseTest.sslVersionId) &&
         Objects.equals(this.tcpProbeMode, endpointHttpServerBaseTest.tcpProbeMode) &&
-        Objects.equals(this.verifyCertificate, endpointHttpServerBaseTest.verifyCertificate);
+        Objects.equals(this.verifyCertificate, endpointHttpServerBaseTest.verifyCertificate) &&
+        Objects.equals(this.url, endpointHttpServerBaseTest.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authType, hasPathTraceInSession, httpTimeLimit, protocol, url, username, sslVersionId, tcpProbeMode, verifyCertificate);
+    return Objects.hash(authType, hasPathTraceInSession, httpTimeLimit, protocol, username, sslVersionId, tcpProbeMode, verifyCertificate, url);
   }
 
   @Override
@@ -334,11 +334,11 @@ public class EndpointHttpServerBaseTest {
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
     sb.append("    httpTimeLimit: ").append(toIndentedString(httpTimeLimit)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    sslVersionId: ").append(toIndentedString(sslVersionId)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
     sb.append("    verifyCertificate: ").append(toIndentedString(verifyCertificate)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

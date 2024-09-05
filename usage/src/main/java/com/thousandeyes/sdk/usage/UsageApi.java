@@ -23,7 +23,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import com.thousandeyes.sdk.usage.model.EnterpriseAgentsUsage;
 import com.thousandeyes.sdk.usage.model.Error;
-import com.thousandeyes.sdk.usage.model.Expand;
+import com.thousandeyes.sdk.usage.model.ExpandUsageOptions;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.usage.model.TestsUsage;
 import com.thousandeyes.sdk.usage.model.UnauthorizedError;
@@ -182,7 +182,7 @@ public class UsageApi {
    * @return Usage
    * @throws ApiException if fails to make API call
    */
-  public Usage getUsage(String aid, List<Expand> expand) throws ApiException {
+  public Usage getUsage(String aid, List<ExpandUsageOptions> expand) throws ApiException {
     ApiResponse<Usage> response = getUsageWithHttpInfo(aid, expand);
     return response.getData();
   }
@@ -195,7 +195,7 @@ public class UsageApi {
    * @return ApiResponse&lt;Usage&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Usage> getUsageWithHttpInfo(String aid, List<Expand> expand) throws ApiException {
+  public ApiResponse<Usage> getUsageWithHttpInfo(String aid, List<ExpandUsageOptions> expand) throws ApiException {
     getUsageValidateRequest();
 
     var requestBuilder = getUsageRequestBuilder(aid, expand);
@@ -206,7 +206,7 @@ public class UsageApi {
   private void getUsageValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getUsageRequestBuilder(String aid, List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getUsageRequestBuilder(String aid, List<ExpandUsageOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 

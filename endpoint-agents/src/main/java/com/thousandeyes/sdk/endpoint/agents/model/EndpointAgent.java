@@ -200,7 +200,7 @@ public class EndpointAgent {
   }
 
    /**
-   * Identifier of the agent this applies to.
+   * Unique ID of endpoint agent, from &#x60;/endpoint/agents&#x60; endpoint.
    * @return id
   **/
   @jakarta.annotation.Nullable

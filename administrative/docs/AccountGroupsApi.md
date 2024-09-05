@@ -47,7 +47,7 @@ public class Example {
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
+        List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             CreatedAccountGroup result = apiInstance.createAccountGroup(accountGroupRequest, expand);
             System.out.println(result);
@@ -68,7 +68,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md)|  | |
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
 
 ### Return type
 
@@ -126,7 +126,7 @@ public class Example {
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
+        List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             ApiResponse<CreatedAccountGroup> response = apiInstance.createAccountGroupWithHttpInfo(accountGroupRequest, expand);
             System.out.println("Status code: " + response.getStatusCode());
@@ -149,7 +149,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md)|  | |
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
 
 ### Return type
 
@@ -361,7 +361,7 @@ public class Example {
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         String id = "1234"; // String | Identifier for the account group.
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
+        List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             AccountGroupDetail result = apiInstance.getAccountGroup(id, expand);
             System.out.println(result);
@@ -382,7 +382,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Identifier for the account group. | |
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
 
 ### Return type
 
@@ -440,7 +440,7 @@ public class Example {
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         String id = "1234"; // String | Identifier for the account group.
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
+        List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             ApiResponse<AccountGroupDetail> response = apiInstance.getAccountGroupWithHttpInfo(id, expand);
             System.out.println("Status code: " + response.getStatusCode());
@@ -463,7 +463,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Identifier for the account group. | |
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
 
 ### Return type
 
@@ -678,7 +678,7 @@ public class Example {
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         String id = "1234"; // String | Identifier for the account group.
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
+        List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             AccountGroupDetail result = apiInstance.updateAccountGroup(id, accountGroupRequest, expand);
             System.out.println(result);
@@ -700,7 +700,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Identifier for the account group. | |
 | **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md)|  | |
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
 
 ### Return type
 
@@ -759,7 +759,7 @@ public class Example {
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         String id = "1234"; // String | Identifier for the account group.
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
+        List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
             ApiResponse<AccountGroupDetail> response = apiInstance.updateAccountGroupWithHttpInfo(id, accountGroupRequest, expand);
             System.out.println("Status code: " + response.getStatusCode());
@@ -783,7 +783,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Identifier for the account group. | |
 | **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md)|  | |
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
 
 ### Return type
 

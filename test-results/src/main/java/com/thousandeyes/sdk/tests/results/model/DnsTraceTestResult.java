@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.results.model.Agent;
+import com.thousandeyes.sdk.tests.results.model.TestResultAgent;
 import com.thousandeyes.sdk.tests.results.model.TestResultAppLinks;
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -62,7 +62,7 @@ public class DnsTraceTestResult {
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
-  private Agent agent;
+  private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_OUTPUT = "output";
   private String output;
@@ -201,7 +201,7 @@ public class DnsTraceTestResult {
 
 
 
-  public DnsTraceTestResult agent(Agent agent) {
+  public DnsTraceTestResult agent(TestResultAgent agent) {
     this.agent = agent;
     return this;
   }
@@ -214,14 +214,14 @@ public class DnsTraceTestResult {
   @JsonProperty(JSON_PROPERTY_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Agent getAgent() {
+  public TestResultAgent getAgent() {
     return agent;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgent(Agent agent) {
+  public void setAgent(TestResultAgent agent) {
     this.agent = agent;
   }
 

@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.results.model.Agent;
 import com.thousandeyes.sdk.tests.results.model.SipServerErrorType;
+import com.thousandeyes.sdk.tests.results.model.TestResultAgent;
 import com.thousandeyes.sdk.tests.results.model.TestResultAppLinks;
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -75,7 +75,7 @@ public class SipServerTestResult {
   private String serverIp;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
-  private Agent agent;
+  private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_AVAILABILITY = "availability";
   private Float availability;
@@ -269,7 +269,7 @@ public class SipServerTestResult {
 
 
 
-  public SipServerTestResult agent(Agent agent) {
+  public SipServerTestResult agent(TestResultAgent agent) {
     this.agent = agent;
     return this;
   }
@@ -282,14 +282,14 @@ public class SipServerTestResult {
   @JsonProperty(JSON_PROPERTY_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Agent getAgent() {
+  public TestResultAgent getAgent() {
     return agent;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgent(Agent agent) {
+  public void setAgent(TestResultAgent agent) {
     this.agent = agent;
   }
 
