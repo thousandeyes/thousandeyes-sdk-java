@@ -53,7 +53,7 @@ public enum UdpPathTraceModeResponse {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

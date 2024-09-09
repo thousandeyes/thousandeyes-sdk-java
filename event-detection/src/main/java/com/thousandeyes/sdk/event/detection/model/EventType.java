@@ -38,7 +38,9 @@ public enum EventType {
   
   TARGET_NETWORK("target-network"),
   
-  PROXY("proxy");
+  PROXY("proxy"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -63,7 +65,7 @@ public enum EventType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

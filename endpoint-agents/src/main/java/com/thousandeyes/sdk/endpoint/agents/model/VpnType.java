@@ -34,7 +34,9 @@ public enum VpnType {
   
   ZSCALER_INTERNET_ACCESS("zscaler-internet-access"),
   
-  F5_BIG_IP("f5-big-ip");
+  F5_BIG_IP("f5-big-ip"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -59,7 +61,7 @@ public enum VpnType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

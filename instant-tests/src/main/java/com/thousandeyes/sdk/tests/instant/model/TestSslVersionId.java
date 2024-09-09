@@ -34,7 +34,9 @@ public enum TestSslVersionId {
   
   _5("5"),
   
-  _6("6");
+  _6("6"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -59,7 +61,7 @@ public enum TestSslVersionId {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

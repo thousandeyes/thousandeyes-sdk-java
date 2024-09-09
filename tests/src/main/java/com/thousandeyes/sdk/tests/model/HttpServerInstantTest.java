@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
@@ -93,8 +92,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
   HttpServerInstantTest.JSON_PROPERTY_HEADERS,
   HttpServerInstantTest.JSON_PROPERTY_POST_BODY,
-  HttpServerInstantTest.JSON_PROPERTY_IPV6_POLICY,
-  HttpServerInstantTest.JSON_PROPERTY_AGENTS
+  HttpServerInstantTest.JSON_PROPERTY_IPV6_POLICY
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class HttpServerInstantTest {
@@ -156,7 +154,7 @@ public class HttpServerInstantTest {
   private TestCustomHeaders customHeaders;
 
   public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
-  private String desiredStatusCode = "200";
+  private String desiredStatusCode = "default";
 
   public static final String JSON_PROPERTY_DOWNLOAD_LIMIT = "downloadLimit";
   private Integer downloadLimit;
@@ -204,7 +202,7 @@ public class HttpServerInstantTest {
   private String sslVersion;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
@@ -248,9 +246,6 @@ public class HttpServerInstantTest {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public HttpServerInstantTest() { 
   }
 
@@ -266,8 +261,7 @@ public class HttpServerInstantTest {
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion
   ) {
   this();
     this.createdBy = createdBy;
@@ -281,7 +275,6 @@ public class HttpServerInstantTest {
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
     this.sslVersion = sslVersion;
-    this.agents = agents;
   }
 
    /**
@@ -665,7 +658,7 @@ public class HttpServerInstantTest {
   }
 
    /**
-   * Specify the HTTP status code value that indicates a successful response.
+   * Specify the HTTP status code value that indicates a successful response. The default value accepts any 2xx or 3xx status code.
    * @return desiredStatusCode
   **/
   @jakarta.annotation.Nullable
@@ -1442,21 +1435,6 @@ public class HttpServerInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this HttpServerInstantTest object is equal to o.
    */
@@ -1518,13 +1496,12 @@ public class HttpServerInstantTest {
         Objects.equals(this.collectProxyNetworkData, httpServerInstantTest.collectProxyNetworkData) &&
         Objects.equals(this.headers, httpServerInstantTest.headers) &&
         Objects.equals(this.postBody, httpServerInstantTest.postBody) &&
-        Objects.equals(this.ipv6Policy, httpServerInstantTest.ipv6Policy) &&
-        Objects.equals(this.agents, httpServerInstantTest.agents);
+        Objects.equals(this.ipv6Policy, httpServerInstantTest.ipv6Policy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, postBody, ipv6Policy, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, postBody, ipv6Policy);
   }
 
   @Override
@@ -1581,7 +1558,6 @@ public class HttpServerInstantTest {
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

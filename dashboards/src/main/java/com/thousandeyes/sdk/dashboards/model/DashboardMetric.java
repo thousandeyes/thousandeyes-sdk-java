@@ -456,7 +456,9 @@ public enum DashboardMetric {
   
   APPLICATION_OUTAGES_OUTAGES("APPLICATION_OUTAGES_OUTAGES"),
   
-  APPDYNAMICS_SERVICE_HEALTH("APPDYNAMICS_SERVICE_HEALTH");
+  APPDYNAMICS_SERVICE_HEALTH("APPDYNAMICS_SERVICE_HEALTH"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -481,7 +483,7 @@ public enum DashboardMetric {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

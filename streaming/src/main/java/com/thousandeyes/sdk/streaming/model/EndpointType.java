@@ -28,7 +28,9 @@ public enum EndpointType {
   
   GRPC("grpc"),
   
-  HTTP("http");
+  HTTP("http"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum EndpointType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

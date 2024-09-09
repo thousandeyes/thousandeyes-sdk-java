@@ -2,7 +2,7 @@
 
 Endpoint Test Results API
 
-- API version: 7.0.15
+- API version: 7.0.18
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 
@@ -91,9 +91,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.endpoint.tests.*;
 import com.thousandeyes.sdk.endpoint.tests.client.*;
 import com.thousandeyes.sdk.endpoint.tests.results.model.*;
-import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkTestsResultsApi;
+import com.thousandeyes.sdk.endpoint.tests.results.HttpServerEndpointScheduledTestResultsApi;
 
-public class LocalNetworkTestsResultsApiExample {
+public class HttpServerEndpointScheduledTestResultsApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -105,18 +105,19 @@ public class LocalNetworkTestsResultsApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        LocalNetworkTestsResultsApi apiInstance = new LocalNetworkTestsResultsApi(defaultClient);
+        HttpServerEndpointScheduledTestResultsApi apiInstance = new HttpServerEndpointScheduledTestResultsApi(defaultClient);
+        String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
-        EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
+        List<ExpandEndpointHttpServerOptions> expand = Arrays.asList(); // List<ExpandEndpointHttpServerOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"header,\" append `?expand=header` to the query.
         try {
-            LocalNetworkTopologyResults result = apiInstance.filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+            HttpEndpointTestResults result = apiInstance.getHttpServerScheduledTestResults(testId, aid, window, startDate, endDate, cursor, expand);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LocalNetworkTestsResultsApi#filterLocalNetworksTestResultsTopologies");
+            System.err.println("Exception when calling HttpServerEndpointScheduledTestResultsApi#getHttpServerScheduledTestResults");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -133,40 +134,40 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*LocalNetworkTestsResultsApi* | [**filterLocalNetworksTestResultsTopologies**](docs/LocalNetworkTestsResultsApi.md#filterLocalNetworksTestResultsTopologies) | **POST** /endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes
-*LocalNetworkTestsResultsApi* | [**filterLocalNetworksTestResultsTopologiesWithHttpInfo**](docs/LocalNetworkTestsResultsApi.md#filterLocalNetworksTestResultsTopologiesWithHttpInfo) | **POST** /endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes
-*LocalNetworkTestsResultsApi* | [**getLocalNetworksTestResults**](docs/LocalNetworkTestsResultsApi.md#getLocalNetworksTestResults) | **GET** /endpoint/test-results/local-networks | List local networks
-*LocalNetworkTestsResultsApi* | [**getLocalNetworksTestResultsWithHttpInfo**](docs/LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsWithHttpInfo) | **GET** /endpoint/test-results/local-networks | List local networks
-*LocalNetworkTestsResultsApi* | [**getLocalNetworksTestResultsTopology**](docs/LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsTopology) | **GET** /endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology
-*LocalNetworkTestsResultsApi* | [**getLocalNetworksTestResultsTopologyWithHttpInfo**](docs/LocalNetworkTestsResultsApi.md#getLocalNetworksTestResultsTopologyWithHttpInfo) | **GET** /endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology
-*NetworkDynamicTestsResultsApi* | [**filterDynamicTestNetworkResults**](docs/NetworkDynamicTestsResultsApi.md#filterDynamicTestNetworkResults) | **POST** /endpoint/test-results/dynamic-tests/{testId}/network/filter | Retrieve network dynamic test results
-*NetworkDynamicTestsResultsApi* | [**filterDynamicTestNetworkResultsWithHttpInfo**](docs/NetworkDynamicTestsResultsApi.md#filterDynamicTestNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/dynamic-tests/{testId}/network/filter | Retrieve network dynamic test results
-*NetworkDynamicTestsResultsApi* | [**getDynamicTestPathVisAgentRoundResults**](docs/NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisAgentRoundResults) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network dynamic test results details
-*NetworkDynamicTestsResultsApi* | [**getDynamicTestPathVisAgentRoundResultsWithHttpInfo**](docs/NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network dynamic test results details
-*NetworkDynamicTestsResultsApi* | [**getDynamicTestPathVisResults**](docs/NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisResults) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis | Retrieve path visualization network dynamic test results
-*NetworkDynamicTestsResultsApi* | [**getDynamicTestPathVisResultsWithHttpInfo**](docs/NetworkDynamicTestsResultsApi.md#getDynamicTestPathVisResultsWithHttpInfo) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis | Retrieve path visualization network dynamic test results
-*NetworkScheduledTestsResultsApi* | [**filterScheduledTestNetworkResults**](docs/NetworkScheduledTestsResultsApi.md#filterScheduledTestNetworkResults) | **POST** /endpoint/test-results/scheduled-tests/{testId}/network/filter | Retrieve network scheduled test results
-*NetworkScheduledTestsResultsApi* | [**filterScheduledTestNetworkResultsWithHttpInfo**](docs/NetworkScheduledTestsResultsApi.md#filterScheduledTestNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/{testId}/network/filter | Retrieve network scheduled test results
-*NetworkScheduledTestsResultsApi* | [**filterScheduledTestsNetworkResults**](docs/NetworkScheduledTestsResultsApi.md#filterScheduledTestsNetworkResults) | **POST** /endpoint/test-results/scheduled-tests/network/filter | Retrieve network scheduled test results from multiple tests
-*NetworkScheduledTestsResultsApi* | [**filterScheduledTestsNetworkResultsWithHttpInfo**](docs/NetworkScheduledTestsResultsApi.md#filterScheduledTestsNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/network/filter | Retrieve network scheduled test results from multiple tests
-*NetworkScheduledTestsResultsApi* | [**getScheduledTestPathVisAgentRoundResults**](docs/NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisAgentRoundResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details
-*NetworkScheduledTestsResultsApi* | [**getScheduledTestPathVisAgentRoundResultsWithHttpInfo**](docs/NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details
-*NetworkScheduledTestsResultsApi* | [**getScheduledTestPathVisResults**](docs/NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results
-*NetworkScheduledTestsResultsApi* | [**getScheduledTestPathVisResultsWithHttpInfo**](docs/NetworkScheduledTestsResultsApi.md#getScheduledTestPathVisResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results
-*RealUserTestsResultsApi* | [**filterRealUserTestsNetworkResults**](docs/RealUserTestsResultsApi.md#filterRealUserTestsNetworkResults) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests
-*RealUserTestsResultsApi* | [**filterRealUserTestsNetworkResultsWithHttpInfo**](docs/RealUserTestsResultsApi.md#filterRealUserTestsNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests
-*RealUserTestsResultsApi* | [**filterRealUserTestsResults**](docs/RealUserTestsResultsApi.md#filterRealUserTestsResults) | **POST** /endpoint/test-results/real-user-tests/filter | List endpoint real user tests
-*RealUserTestsResultsApi* | [**filterRealUserTestsResultsWithHttpInfo**](docs/RealUserTestsResultsApi.md#filterRealUserTestsResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/filter | List endpoint real user tests
-*RealUserTestsResultsApi* | [**filterRealUserTestsVisitedPagesResults**](docs/RealUserTestsResultsApi.md#filterRealUserTestsVisitedPagesResults) | **POST** /endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages
-*RealUserTestsResultsApi* | [**filterRealUserTestsVisitedPagesResultsWithHttpInfo**](docs/RealUserTestsResultsApi.md#filterRealUserTestsVisitedPagesResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages
-*RealUserTestsResultsApi* | [**getRealUserTestPageResults**](docs/RealUserTestsResultsApi.md#getRealUserTestPageResults) | **GET** /endpoint/test-results/real-user-tests/{id}/pages/{pageId} | Retrieve endpoint real user test page
-*RealUserTestsResultsApi* | [**getRealUserTestPageResultsWithHttpInfo**](docs/RealUserTestsResultsApi.md#getRealUserTestPageResultsWithHttpInfo) | **GET** /endpoint/test-results/real-user-tests/{id}/pages/{pageId} | Retrieve endpoint real user test page
-*RealUserTestsResultsApi* | [**getRealUserTestResults**](docs/RealUserTestsResultsApi.md#getRealUserTestResults) | **GET** /endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test
-*RealUserTestsResultsApi* | [**getRealUserTestResultsWithHttpInfo**](docs/RealUserTestsResultsApi.md#getRealUserTestResultsWithHttpInfo) | **GET** /endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test
-*WebHttpServerScheduledTestResultsApi* | [**getHttpServerScheduledTestResults**](docs/WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results
-*WebHttpServerScheduledTestResultsApi* | [**getHttpServerScheduledTestResultsWithHttpInfo**](docs/WebHttpServerScheduledTestResultsApi.md#getHttpServerScheduledTestResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results
-*WebHttpServerScheduledTestResultsApi* | [**getMultiTestFilteredHttpServerScheduledTestResults**](docs/WebHttpServerScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResults) | **POST** /endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results
-*WebHttpServerScheduledTestResultsApi* | [**getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo**](docs/WebHttpServerScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results
+*HttpServerEndpointScheduledTestResultsApi* | [**getHttpServerScheduledTestResults**](docs/HttpServerEndpointScheduledTestResultsApi.md#getHttpServerScheduledTestResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results
+*HttpServerEndpointScheduledTestResultsApi* | [**getHttpServerScheduledTestResultsWithHttpInfo**](docs/HttpServerEndpointScheduledTestResultsApi.md#getHttpServerScheduledTestResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results
+*HttpServerEndpointScheduledTestResultsApi* | [**getMultiTestFilteredHttpServerScheduledTestResults**](docs/HttpServerEndpointScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResults) | **POST** /endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results
+*HttpServerEndpointScheduledTestResultsApi* | [**getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo**](docs/HttpServerEndpointScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results
+*LocalNetworkEndpointTestResultsApi* | [**filterLocalNetworksTestResultsTopologies**](docs/LocalNetworkEndpointTestResultsApi.md#filterLocalNetworksTestResultsTopologies) | **POST** /endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes
+*LocalNetworkEndpointTestResultsApi* | [**filterLocalNetworksTestResultsTopologiesWithHttpInfo**](docs/LocalNetworkEndpointTestResultsApi.md#filterLocalNetworksTestResultsTopologiesWithHttpInfo) | **POST** /endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes
+*LocalNetworkEndpointTestResultsApi* | [**getLocalNetworksTestResults**](docs/LocalNetworkEndpointTestResultsApi.md#getLocalNetworksTestResults) | **GET** /endpoint/test-results/local-networks | List local networks
+*LocalNetworkEndpointTestResultsApi* | [**getLocalNetworksTestResultsWithHttpInfo**](docs/LocalNetworkEndpointTestResultsApi.md#getLocalNetworksTestResultsWithHttpInfo) | **GET** /endpoint/test-results/local-networks | List local networks
+*LocalNetworkEndpointTestResultsApi* | [**getLocalNetworksTestResultsTopology**](docs/LocalNetworkEndpointTestResultsApi.md#getLocalNetworksTestResultsTopology) | **GET** /endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology
+*LocalNetworkEndpointTestResultsApi* | [**getLocalNetworksTestResultsTopologyWithHttpInfo**](docs/LocalNetworkEndpointTestResultsApi.md#getLocalNetworksTestResultsTopologyWithHttpInfo) | **GET** /endpoint/test-results/local-networks/topologies/{networkTopologyId} | Retrieve endpoint local network topology
+*NetworkDynamicEndpointTestResultsApi* | [**filterDynamicTestNetworkResults**](docs/NetworkDynamicEndpointTestResultsApi.md#filterDynamicTestNetworkResults) | **POST** /endpoint/test-results/dynamic-tests/{testId}/network/filter | Retrieve network dynamic test results
+*NetworkDynamicEndpointTestResultsApi* | [**filterDynamicTestNetworkResultsWithHttpInfo**](docs/NetworkDynamicEndpointTestResultsApi.md#filterDynamicTestNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/dynamic-tests/{testId}/network/filter | Retrieve network dynamic test results
+*NetworkDynamicEndpointTestResultsApi* | [**getDynamicTestPathVisAgentRoundResults**](docs/NetworkDynamicEndpointTestResultsApi.md#getDynamicTestPathVisAgentRoundResults) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network dynamic test results details
+*NetworkDynamicEndpointTestResultsApi* | [**getDynamicTestPathVisAgentRoundResultsWithHttpInfo**](docs/NetworkDynamicEndpointTestResultsApi.md#getDynamicTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network dynamic test results details
+*NetworkDynamicEndpointTestResultsApi* | [**getDynamicTestPathVisResults**](docs/NetworkDynamicEndpointTestResultsApi.md#getDynamicTestPathVisResults) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis | Retrieve path visualization network dynamic test results
+*NetworkDynamicEndpointTestResultsApi* | [**getDynamicTestPathVisResultsWithHttpInfo**](docs/NetworkDynamicEndpointTestResultsApi.md#getDynamicTestPathVisResultsWithHttpInfo) | **GET** /endpoint/test-results/dynamic-tests/{testId}/path-vis | Retrieve path visualization network dynamic test results
+*NetworkEndpointScheduledTestResultsApi* | [**filterScheduledTestNetworkResults**](docs/NetworkEndpointScheduledTestResultsApi.md#filterScheduledTestNetworkResults) | **POST** /endpoint/test-results/scheduled-tests/{testId}/network/filter | Retrieve network scheduled test results
+*NetworkEndpointScheduledTestResultsApi* | [**filterScheduledTestNetworkResultsWithHttpInfo**](docs/NetworkEndpointScheduledTestResultsApi.md#filterScheduledTestNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/{testId}/network/filter | Retrieve network scheduled test results
+*NetworkEndpointScheduledTestResultsApi* | [**filterScheduledTestsNetworkResults**](docs/NetworkEndpointScheduledTestResultsApi.md#filterScheduledTestsNetworkResults) | **POST** /endpoint/test-results/scheduled-tests/network/filter | Retrieve network scheduled test results from multiple tests
+*NetworkEndpointScheduledTestResultsApi* | [**filterScheduledTestsNetworkResultsWithHttpInfo**](docs/NetworkEndpointScheduledTestResultsApi.md#filterScheduledTestsNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/network/filter | Retrieve network scheduled test results from multiple tests
+*NetworkEndpointScheduledTestResultsApi* | [**getScheduledTestPathVisAgentRoundResults**](docs/NetworkEndpointScheduledTestResultsApi.md#getScheduledTestPathVisAgentRoundResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details
+*NetworkEndpointScheduledTestResultsApi* | [**getScheduledTestPathVisAgentRoundResultsWithHttpInfo**](docs/NetworkEndpointScheduledTestResultsApi.md#getScheduledTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details
+*NetworkEndpointScheduledTestResultsApi* | [**getScheduledTestPathVisResults**](docs/NetworkEndpointScheduledTestResultsApi.md#getScheduledTestPathVisResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results
+*NetworkEndpointScheduledTestResultsApi* | [**getScheduledTestPathVisResultsWithHttpInfo**](docs/NetworkEndpointScheduledTestResultsApi.md#getScheduledTestPathVisResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results
+*RealUserEndpointTestResultsApi* | [**filterRealUserTestsNetworkResults**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsNetworkResults) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests
+*RealUserEndpointTestResultsApi* | [**filterRealUserTestsNetworkResultsWithHttpInfo**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests
+*RealUserEndpointTestResultsApi* | [**filterRealUserTestsResults**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsResults) | **POST** /endpoint/test-results/real-user-tests/filter | List endpoint real user tests
+*RealUserEndpointTestResultsApi* | [**filterRealUserTestsResultsWithHttpInfo**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/filter | List endpoint real user tests
+*RealUserEndpointTestResultsApi* | [**filterRealUserTestsVisitedPagesResults**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsVisitedPagesResults) | **POST** /endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages
+*RealUserEndpointTestResultsApi* | [**filterRealUserTestsVisitedPagesResultsWithHttpInfo**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsVisitedPagesResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages
+*RealUserEndpointTestResultsApi* | [**getRealUserTestPageResults**](docs/RealUserEndpointTestResultsApi.md#getRealUserTestPageResults) | **GET** /endpoint/test-results/real-user-tests/{id}/pages/{pageId} | Retrieve endpoint real user test page
+*RealUserEndpointTestResultsApi* | [**getRealUserTestPageResultsWithHttpInfo**](docs/RealUserEndpointTestResultsApi.md#getRealUserTestPageResultsWithHttpInfo) | **GET** /endpoint/test-results/real-user-tests/{id}/pages/{pageId} | Retrieve endpoint real user test page
+*RealUserEndpointTestResultsApi* | [**getRealUserTestResults**](docs/RealUserEndpointTestResultsApi.md#getRealUserTestResults) | **GET** /endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test
+*RealUserEndpointTestResultsApi* | [**getRealUserTestResultsWithHttpInfo**](docs/RealUserEndpointTestResultsApi.md#getRealUserTestResultsWithHttpInfo) | **GET** /endpoint/test-results/real-user-tests/{id} | Retrieve endpoint real user test
 
 
 <a id="documentation-for-authorization"></a>

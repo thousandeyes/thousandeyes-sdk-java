@@ -24,9 +24,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.event.detection.model.AffectedAgents;
 import com.thousandeyes.sdk.event.detection.model.AffectedTargets;
 import com.thousandeyes.sdk.event.detection.model.AffectedTests;
+import com.thousandeyes.sdk.event.detection.model.EventAlertSeverity;
 import com.thousandeyes.sdk.event.detection.model.EventState;
 import com.thousandeyes.sdk.event.detection.model.SelfLinks;
-import com.thousandeyes.sdk.event.detection.model.Severity;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -70,7 +70,7 @@ public class EventDetailBase {
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
-  private Severity severity;
+  private EventAlertSeverity severity;
 
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
@@ -197,7 +197,7 @@ public class EventDetailBase {
 
 
 
-  public EventDetailBase severity(Severity severity) {
+  public EventDetailBase severity(EventAlertSeverity severity) {
     this.severity = severity;
     return this;
   }
@@ -210,14 +210,14 @@ public class EventDetailBase {
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Severity getSeverity() {
+  public EventAlertSeverity getSeverity() {
     return severity;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSeverity(Severity severity) {
+  public void setSeverity(EventAlertSeverity severity) {
     this.severity = severity;
   }
 

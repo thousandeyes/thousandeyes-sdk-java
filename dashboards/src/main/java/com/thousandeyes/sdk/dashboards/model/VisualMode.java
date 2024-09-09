@@ -28,7 +28,9 @@ public enum VisualMode {
   
   FULL("Full"),
   
-  HALF_SCREEN("Half screen");
+  HALF_SCREEN("Half screen"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum VisualMode {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -22,11 +22,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The version of the data model used in the data stream. **Note**: The data model version is currently fixed at &#x60;v1&#x60;.
+ * The version of the data model used in the data stream.
  */
 public enum DataModelVersion {
   
-  V1("v1");
+  V1("v1"),
+  
+  V2("v2"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -51,7 +55,7 @@ public enum DataModelVersion {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

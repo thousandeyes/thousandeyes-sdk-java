@@ -18,8 +18,8 @@ src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Accou
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/AccountGroupRequest.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/AccountGroupRole.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/AccountGroups.java
-src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Agent.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/AgentBase.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/AgentResponse.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/AuditUserEvents.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/BaseRole.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/CloudEnterpriseAgentType.java
@@ -33,7 +33,7 @@ src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Enter
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Error.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/ErrorDetail.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/ErrorDetailCode.java
-src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Expand.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/ExpandAccountGroupOptions.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/ExtendedUser.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/InterfaceIpMapping.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Link.java

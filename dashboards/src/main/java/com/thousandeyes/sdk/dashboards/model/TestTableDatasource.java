@@ -50,7 +50,9 @@ public enum TestTableDatasource {
   
   INTERNET_INSIGHTS("INTERNET_INSIGHTS"),
   
-  APPDYNAMICS_SERVICE_HEALTH("APPDYNAMICS_SERVICE_HEALTH");
+  APPDYNAMICS_SERVICE_HEALTH("APPDYNAMICS_SERVICE_HEALTH"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -75,7 +77,7 @@ public enum TestTableDatasource {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

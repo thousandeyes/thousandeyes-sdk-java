@@ -2,7 +2,7 @@
 
 Agents API
 
-- API version: 7.0.15
+- API version: 7.0.18
 
 
 ## Overview
@@ -93,9 +93,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.*;
 import com.thousandeyes.sdk.client.*;
 import com.thousandeyes.sdk.agents.model.*;
-import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
+import com.thousandeyes.sdk.agents.AgentProxiesApi;
 
-public class CloudAndEnterpriseAgentNotificationRulesApiExample {
+public class AgentProxiesApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -107,14 +107,13 @@ public class CloudAndEnterpriseAgentNotificationRulesApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
-        String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
+        AgentProxiesApi apiInstance = new AgentProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            NotificationRuleDetail result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
+            AgentProxies result = apiInstance.getAgentsProxies(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CloudAndEnterpriseAgentNotificationRulesApi#getAgentsNotificationRule");
+            System.err.println("Exception when calling AgentProxiesApi#getAgentsProxies");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -131,6 +130,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AgentProxiesApi* | [**getAgentsProxies**](docs/AgentProxiesApi.md#getAgentsProxies) | **GET** /agents/proxies | List agent proxies
+*AgentProxiesApi* | [**getAgentsProxiesWithHttpInfo**](docs/AgentProxiesApi.md#getAgentsProxiesWithHttpInfo) | **GET** /agents/proxies | List agent proxies
 *CloudAndEnterpriseAgentNotificationRulesApi* | [**getAgentsNotificationRule**](docs/CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRule) | **GET** /agents/notification-rules/{notificationRuleId} | Retrieve agent notification rule
 *CloudAndEnterpriseAgentNotificationRulesApi* | [**getAgentsNotificationRuleWithHttpInfo**](docs/CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRuleWithHttpInfo) | **GET** /agents/notification-rules/{notificationRuleId} | Retrieve agent notification rule
 *CloudAndEnterpriseAgentNotificationRulesApi* | [**getAgentsNotificationRules**](docs/CloudAndEnterpriseAgentNotificationRulesApi.md#getAgentsNotificationRules) | **GET** /agents/notification-rules | List agent notification rules
@@ -147,8 +148,6 @@ Class | Method | HTTP request | Description
 *EnterpriseAgentClusterApi* | [**assignAgentToClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#assignAgentToClusterWithHttpInfo) | **POST** /agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster
 *EnterpriseAgentClusterApi* | [**unassignAgentFromCluster**](docs/EnterpriseAgentClusterApi.md#unassignAgentFromCluster) | **POST** /agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
 *EnterpriseAgentClusterApi* | [**unassignAgentFromClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#unassignAgentFromClusterWithHttpInfo) | **POST** /agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
-*ProxiesApi* | [**getAgentsProxies**](docs/ProxiesApi.md#getAgentsProxies) | **GET** /agents/proxies | List agent proxies
-*ProxiesApi* | [**getAgentsProxiesWithHttpInfo**](docs/ProxiesApi.md#getAgentsProxiesWithHttpInfo) | **GET** /agents/proxies | List agent proxies
 
 
 <a id="documentation-for-authorization"></a>

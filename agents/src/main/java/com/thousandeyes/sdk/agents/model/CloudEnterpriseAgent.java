@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AccountGroup;
-import com.thousandeyes.sdk.agents.model.Agent;
+import com.thousandeyes.sdk.agents.model.AgentResponse;
 import com.thousandeyes.sdk.agents.model.CloudEnterpriseAgentType;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgent;
@@ -92,9 +92,9 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
             JsonNode tree = jp.readValueAsTree();
 
             Object deserialized = null;
-            // deserialize Agent
+            // deserialize AgentResponse
             try {
-                deserialized = tree.traverse(jp.getCodec()).readValueAs(Agent.class);
+                deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentResponse.class);
                 CloudEnterpriseAgent ret = new CloudEnterpriseAgent();
                 ret.setActualInstance(deserialized);
                 return ret;
@@ -133,7 +133,7 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
         super("anyOf", Boolean.FALSE);
     }
 
-    public CloudEnterpriseAgent(Agent o) {
+    public CloudEnterpriseAgent(AgentResponse o) {
         super("anyOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -144,7 +144,7 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("Agent", Agent.class);
+        schemas.put("AgentResponse", AgentResponse.class);
         schemas.put("EnterpriseAgent", EnterpriseAgent.class);
         JSON.registerDescendants(CloudEnterpriseAgent.class, Collections.unmodifiableMap(schemas));
     }
@@ -157,14 +157,14 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the anyOf child schema, check
      * the instance parameter is valid against the anyOf child schemas:
-     * Agent, EnterpriseAgent
+     * AgentResponse, EnterpriseAgent
      *
      * It could be an instance of the 'anyOf' schemas.
      * The anyOf child schemas may themselves be a composed schema (allOf, anyOf, anyOf).
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (JSON.isInstanceOf(Agent.class, instance, new HashSet<Class<?>>())) {
+        if (JSON.isInstanceOf(AgentResponse.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
         }
@@ -174,14 +174,14 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be Agent, EnterpriseAgent");
+        throw new RuntimeException("Invalid instance type. Must be AgentResponse, EnterpriseAgent");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * Agent, EnterpriseAgent
+     * AgentResponse, EnterpriseAgent
      *
-     * @return The actual instance (Agent, EnterpriseAgent)
+     * @return The actual instance (AgentResponse, EnterpriseAgent)
      */
     @Override
     public Object getActualInstance() {
@@ -189,14 +189,14 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `Agent`. If the actual instance is not `Agent`,
+     * Get the actual instance of `AgentResponse`. If the actual instance is not `AgentResponse`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `Agent`
-     * @throws ClassCastException if the instance is not `Agent`
+     * @return The actual instance of `AgentResponse`
+     * @throws ClassCastException if the instance is not `AgentResponse`
      */
-    public Agent getAgent() throws ClassCastException {
-        return (Agent)super.getActualInstance();
+    public AgentResponse getAgentResponse() throws ClassCastException {
+        return (AgentResponse)super.getActualInstance();
     }
 
     /**

@@ -44,7 +44,9 @@ public enum WidgetMeasureType {
   
   TOTAL("TOTAL"),
   
-  VALUES("VALUES");
+  VALUES("VALUES"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -69,7 +71,7 @@ public enum WidgetMeasureType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

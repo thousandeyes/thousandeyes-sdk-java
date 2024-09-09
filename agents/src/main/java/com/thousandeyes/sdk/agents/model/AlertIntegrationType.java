@@ -28,7 +28,9 @@ public enum AlertIntegrationType {
   
   PAGER_DUTY("pager-duty"),
   
-  SLACK("slack");
+  SLACK("slack"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum AlertIntegrationType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

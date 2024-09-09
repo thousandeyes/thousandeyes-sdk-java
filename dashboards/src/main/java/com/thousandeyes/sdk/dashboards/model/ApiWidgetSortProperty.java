@@ -28,7 +28,9 @@ public enum ApiWidgetSortProperty {
   
   ALPHABETICAL("alphabetical"),
   
-  VALUE("value");
+  VALUE("value"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ApiWidgetSortProperty {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

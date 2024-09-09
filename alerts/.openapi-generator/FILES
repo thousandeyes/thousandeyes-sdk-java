@@ -14,6 +14,7 @@ src/main/java/com/thousandeyes/sdk/alerts/model/AlertDirection.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertLinks.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertMeta.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertMetricDetail.java
+src/main/java/com/thousandeyes/sdk/alerts/model/AlertNotification.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertRoundsViolationMode.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertRule.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertSuppressionWindow.java
@@ -33,11 +34,10 @@ src/main/java/com/thousandeyes/sdk/alerts/model/EndAlertMetrics.java
 src/main/java/com/thousandeyes/sdk/alerts/model/EndRepeat.java
 src/main/java/com/thousandeyes/sdk/alerts/model/EndRepeatType.java
 src/main/java/com/thousandeyes/sdk/alerts/model/Error.java
-src/main/java/com/thousandeyes/sdk/alerts/model/Expand.java
+src/main/java/com/thousandeyes/sdk/alerts/model/ExpandAlertTestOptions.java
 src/main/java/com/thousandeyes/sdk/alerts/model/IntervalType.java
 src/main/java/com/thousandeyes/sdk/alerts/model/LegacyAlert.java
 src/main/java/com/thousandeyes/sdk/alerts/model/Link.java
-src/main/java/com/thousandeyes/sdk/alerts/model/Notification.java
 src/main/java/com/thousandeyes/sdk/alerts/model/NotificationCustomWebhook.java
 src/main/java/com/thousandeyes/sdk/alerts/model/NotificationEmail.java
 src/main/java/com/thousandeyes/sdk/alerts/model/NotificationThirdParty.java

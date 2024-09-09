@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.Monitor;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
@@ -75,7 +74,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerTest.JSON_PROPERTY_IPV6_POLICY,
   AgentToServerTest.JSON_PROPERTY_PING_PAYLOAD_SIZE,
   AgentToServerTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
-  AgentToServerTest.JSON_PROPERTY_AGENTS,
   AgentToServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   AgentToServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   AgentToServerTest.JSON_PROPERTY_MONITORS
@@ -83,7 +81,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentToServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -178,9 +176,6 @@ public class AgentToServerTest {
   public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
   private Boolean networkMeasurements = false;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
 
@@ -206,7 +201,6 @@ public class AgentToServerTest {
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
   this();
@@ -221,7 +215,6 @@ public class AgentToServerTest {
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
     this.dscp = dscp;
-    this.agents = agents;
     this.monitors = monitors;
   }
 
@@ -931,21 +924,6 @@ public class AgentToServerTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public AgentToServerTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1055,7 +1033,6 @@ public class AgentToServerTest {
         Objects.equals(this.ipv6Policy, agentToServerTest.ipv6Policy) &&
         Objects.equals(this.pingPayloadSize, agentToServerTest.pingPayloadSize) &&
         Objects.equals(this.networkMeasurements, agentToServerTest.networkMeasurements) &&
-        Objects.equals(this.agents, agentToServerTest.agents) &&
         Objects.equals(this.bgpMeasurements, agentToServerTest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, agentToServerTest.usePublicBgp) &&
         Objects.equals(this.monitors, agentToServerTest.monitors);
@@ -1063,7 +1040,7 @@ public class AgentToServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, agents, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1102,7 +1079,6 @@ public class AgentToServerTest {
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    pingPayloadSize: ").append(toIndentedString(pingPayloadSize)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");

@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.ApiPredefinedVariable;
 import com.thousandeyes.sdk.tests.model.ApiRequest;
@@ -61,10 +60,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTest.JSON_PROPERTY_LINKS,
   ApiTest.JSON_PROPERTY_LABELS,
   ApiTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  ApiTest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
   ApiTest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   ApiTest.JSON_PROPERTY_MTU_MEASUREMENTS,
   ApiTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   ApiTest.JSON_PROPERTY_NUM_PATH_TRACES,
+  ApiTest.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
+  ApiTest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   ApiTest.JSON_PROPERTY_PATH_TRACE_MODE,
   ApiTest.JSON_PROPERTY_PREDEFINED_VARIABLES,
   ApiTest.JSON_PROPERTY_PROBE_MODE,
@@ -74,7 +76,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTest.JSON_PROPERTY_TARGET_TIME,
   ApiTest.JSON_PROPERTY_TIME_LIMIT,
   ApiTest.JSON_PROPERTY_URL,
-  ApiTest.JSON_PROPERTY_AGENTS,
   ApiTest.JSON_PROPERTY_CREDENTIALS,
   ApiTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   ApiTest.JSON_PROPERTY_USE_PUBLIC_BGP,
@@ -83,7 +84,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -133,6 +134,9 @@ public class ApiTest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
+  private Boolean collectProxyNetworkData = false;
+
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
 
@@ -144,6 +148,12 @@ public class ApiTest {
 
   public static final String JSON_PROPERTY_NUM_PATH_TRACES = "numPathTraces";
   private Integer numPathTraces = 3;
+
+  public static final String JSON_PROPERTY_OVERRIDE_AGENT_PROXY = "overrideAgentProxy";
+  private Boolean overrideAgentProxy = false;
+
+  public static final String JSON_PROPERTY_OVERRIDE_PROXY_ID = "overrideProxyId";
+  private String overrideProxyId;
 
   public static final String JSON_PROPERTY_PATH_TRACE_MODE = "pathTraceMode";
   private TestPathTraceMode pathTraceMode = TestPathTraceMode.CLASSIC;
@@ -161,7 +171,7 @@ public class ApiTest {
   private List<ApiRequest> requests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TARGET_TIME = "targetTime";
   private Integer targetTime;
@@ -171,9 +181,6 @@ public class ApiTest {
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
-
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
@@ -202,7 +209,6 @@ public class ApiTest {
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
   this();
@@ -216,7 +222,6 @@ public class ApiTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
     this.monitors = monitors;
   }
 
@@ -553,6 +558,31 @@ public class ApiTest {
 
 
 
+  public ApiTest collectProxyNetworkData(Boolean collectProxyNetworkData) {
+    this.collectProxyNetworkData = collectProxyNetworkData;
+    return this;
+  }
+
+   /**
+   * Indicates whether network data to the proxy should be collected.
+   * @return collectProxyNetworkData
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getCollectProxyNetworkData() {
+    return collectProxyNetworkData;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCollectProxyNetworkData(Boolean collectProxyNetworkData) {
+    this.collectProxyNetworkData = collectProxyNetworkData;
+  }
+
+
   public ApiTest followRedirects(Boolean followRedirects) {
     this.followRedirects = followRedirects;
     return this;
@@ -652,6 +682,56 @@ public class ApiTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNumPathTraces(Integer numPathTraces) {
     this.numPathTraces = numPathTraces;
+  }
+
+
+  public ApiTest overrideAgentProxy(Boolean overrideAgentProxy) {
+    this.overrideAgentProxy = overrideAgentProxy;
+    return this;
+  }
+
+   /**
+   * Flag indicating if a proxy other than the default should be used. To override the default proxy for agents, set to &#x60;true&#x60; and specify a value for &#x60;overrideProxyId&#x60;.
+   * @return overrideAgentProxy
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_AGENT_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getOverrideAgentProxy() {
+    return overrideAgentProxy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_AGENT_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOverrideAgentProxy(Boolean overrideAgentProxy) {
+    this.overrideAgentProxy = overrideAgentProxy;
+  }
+
+
+  public ApiTest overrideProxyId(String overrideProxyId) {
+    this.overrideProxyId = overrideProxyId;
+    return this;
+  }
+
+   /**
+   * ID of the proxy to be used if the default proxy is overridden.
+   * @return overrideProxyId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_PROXY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getOverrideProxyId() {
+    return overrideProxyId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_PROXY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOverrideProxyId(String overrideProxyId) {
+    this.overrideProxyId = overrideProxyId;
   }
 
 
@@ -900,21 +980,6 @@ public class ApiTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public ApiTest credentials(List<String> credentials) {
     this.credentials = credentials;
     return this;
@@ -1042,10 +1107,13 @@ public class ApiTest {
         Objects.equals(this.links, apiTest.links) &&
         Objects.equals(this.labels, apiTest.labels) &&
         Objects.equals(this.sharedWithAccounts, apiTest.sharedWithAccounts) &&
+        Objects.equals(this.collectProxyNetworkData, apiTest.collectProxyNetworkData) &&
         Objects.equals(this.followRedirects, apiTest.followRedirects) &&
         Objects.equals(this.mtuMeasurements, apiTest.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, apiTest.networkMeasurements) &&
         Objects.equals(this.numPathTraces, apiTest.numPathTraces) &&
+        Objects.equals(this.overrideAgentProxy, apiTest.overrideAgentProxy) &&
+        Objects.equals(this.overrideProxyId, apiTest.overrideProxyId) &&
         Objects.equals(this.pathTraceMode, apiTest.pathTraceMode) &&
         Objects.equals(this.predefinedVariables, apiTest.predefinedVariables) &&
         Objects.equals(this.probeMode, apiTest.probeMode) &&
@@ -1055,7 +1123,6 @@ public class ApiTest {
         Objects.equals(this.targetTime, apiTest.targetTime) &&
         Objects.equals(this.timeLimit, apiTest.timeLimit) &&
         Objects.equals(this.url, apiTest.url) &&
-        Objects.equals(this.agents, apiTest.agents) &&
         Objects.equals(this.credentials, apiTest.credentials) &&
         Objects.equals(this.bgpMeasurements, apiTest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, apiTest.usePublicBgp) &&
@@ -1064,7 +1131,7 @@ public class ApiTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, agents, credentials, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, credentials, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1088,10 +1155,13 @@ public class ApiTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
+    sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
+    sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    predefinedVariables: ").append(toIndentedString(predefinedVariables)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
@@ -1101,7 +1171,6 @@ public class ApiTest {
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");

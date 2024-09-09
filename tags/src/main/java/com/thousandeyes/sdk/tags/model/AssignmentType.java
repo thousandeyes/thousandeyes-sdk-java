@@ -32,7 +32,9 @@ public enum AssignmentType {
   
   ENDPOINT_TEST("endpoint-test"),
   
-  DASHBOARD("dashboard");
+  DASHBOARD("dashboard"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum AssignmentType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }
