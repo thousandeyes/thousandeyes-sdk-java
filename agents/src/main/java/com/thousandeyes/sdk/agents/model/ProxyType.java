@@ -28,7 +28,9 @@ public enum ProxyType {
   
   STATIC("static"),
   
-  PAC("pac");
+  PAC("pac"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ProxyType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -2,7 +2,7 @@
 
 BGP Monitors API
 
-- API version: 7.0.15
+- API version: 7.0.18
 
 
 Retrieve information about BGP monitors available to your ThousandEyes account. ThousandEyes ingests BGP routing data from dozens of global BGP collectors and automatically integrates that visibility as a configurable layer under service, network, and path visualization layers.
@@ -97,9 +97,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.bgp.*;
 import com.thousandeyes.sdk.bgp.client.*;
 import com.thousandeyes.sdk.bgp.monitors.model.*;
-import com.thousandeyes.sdk.bgp.monitors.ListBgpMonitorsApi;
+import com.thousandeyes.sdk.bgp.monitors.BgpMonitorsApi;
 
-public class ListBgpMonitorsApiExample {
+public class BgpMonitorsApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -111,13 +111,13 @@ public class ListBgpMonitorsApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        ListBgpMonitorsApi apiInstance = new ListBgpMonitorsApi(defaultClient);
+        BgpMonitorsApi apiInstance = new BgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
             Monitors result = apiInstance.getBgpMonitors(aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ListBgpMonitorsApi#getBgpMonitors");
+            System.err.println("Exception when calling BgpMonitorsApi#getBgpMonitors");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -134,8 +134,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ListBgpMonitorsApi* | [**getBgpMonitors**](docs/ListBgpMonitorsApi.md#getBgpMonitors) | **GET** /monitors | List BGP monitors
-*ListBgpMonitorsApi* | [**getBgpMonitorsWithHttpInfo**](docs/ListBgpMonitorsApi.md#getBgpMonitorsWithHttpInfo) | **GET** /monitors | List BGP monitors
+*BgpMonitorsApi* | [**getBgpMonitors**](docs/BgpMonitorsApi.md#getBgpMonitors) | **GET** /monitors | List BGP monitors
+*BgpMonitorsApi* | [**getBgpMonitorsWithHttpInfo**](docs/BgpMonitorsApi.md#getBgpMonitorsWithHttpInfo) | **GET** /monitors | List BGP monitors
 
 
 <a id="documentation-for-authorization"></a>

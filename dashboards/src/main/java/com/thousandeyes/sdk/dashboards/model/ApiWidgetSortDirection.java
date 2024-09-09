@@ -28,7 +28,9 @@ public enum ApiWidgetSortDirection {
   
   ASCENDING("ascending"),
   
-  DESCENDING("descending");
+  DESCENDING("descending"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ApiWidgetSortDirection {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

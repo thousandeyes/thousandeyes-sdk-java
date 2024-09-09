@@ -167,6 +167,93 @@ public class UsersApiTest {
     }
     
     /**
+     * Retrieve current user
+     * <p>
+     * Retrieves detailed information about the current user.
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    
+    @Test
+    public void getCurrentUserRequestAndResponseDeserializationTest()
+            throws JsonProcessingException 
+    {
+
+        String responseBodyJson = """
+                {
+                  "loginAccountGroup" : {
+                    "accountGroupName" : "Account A",
+                    "aid" : "1234"
+                  },
+                  "uid" : "245",
+                  "lastLogin" : "2022-07-17T22:00:54Z",
+                  "allAccountGroupRoles" : [ {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  }, {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  } ],
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "accountGroupRoles" : [ {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  }, {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  } ],
+                  "name" : "User X",
+                  "email" : "userx@thousandeyes.com",
+                  "dateRegistered" : "2020-07-17T22:00:54Z"
+                }
+                                  """;
+        UserDetail mappedResponse = 
+                mapper.readValue(responseBodyJson, UserDetail.class);
+        assertNotNull(mappedResponse);
+    }
+    
+    /**
      * Retrieve user
      * <p>
      * Retrieves detailed information about a user. This operation requires the &#x60;API Access&#x60; and &#x60;View All Users&#x60; permissions.

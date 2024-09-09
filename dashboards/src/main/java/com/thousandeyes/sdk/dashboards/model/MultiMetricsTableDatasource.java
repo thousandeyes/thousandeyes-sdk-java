@@ -46,7 +46,9 @@ public enum MultiMetricsTableDatasource {
   
   INTERNET_INSIGHTS("INTERNET_INSIGHTS"),
   
-  ROUTING("ROUTING");
+  ROUTING("ROUTING"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -71,7 +73,7 @@ public enum MultiMetricsTableDatasource {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

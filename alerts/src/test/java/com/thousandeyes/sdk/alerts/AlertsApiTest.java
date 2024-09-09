@@ -65,7 +65,7 @@ public class AlertsApiTest {
                   "severity" : "major",
                   "alertType" : "http-server",
                   "violationCount" : 2,
-                  "endDate" : "2020-04-23T13:43:16Z",
+                  "endDate" : "2022-07-18T22:00:54Z",
                   "_links" : {
                     "appLink" : {
                       "hreflang" : "hreflang",
@@ -137,7 +137,7 @@ public class AlertsApiTest {
                   "id" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
                   "suppressed" : false,
                   "state" : "active",
-                  "startDate" : "2020-04-23T13:43:16Z"
+                  "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
         AlertDetail mappedResponse = 
@@ -163,7 +163,7 @@ public class AlertsApiTest {
                   "alerts" : [ {
                     "severity" : "MAJOR",
                     "alertType" : "http-server",
-                    "endDate" : "2020-04-23T13:43:16Z",
+                    "endDate" : "2022-07-18T22:00:54Z",
                     "_links" : {
                       "appLink" : {
                         "hreflang" : "hreflang",
@@ -226,12 +226,12 @@ public class AlertsApiTest {
                     "ruleId" : 127094,
                     "permalink" : "https://app.thousandeyes.com/alerts/list?__a=75&alertId=2783&agentId=12",
                     "alertState" : "active",
-                    "startDate" : "2020-04-23T13:43:16Z",
+                    "startDate" : "2022-07-17T22:00:54Z",
                     "alertRuleId" : "127094"
                   }, {
                     "severity" : "MAJOR",
                     "alertType" : "http-server",
-                    "endDate" : "2020-04-23T13:43:16Z",
+                    "endDate" : "2022-07-18T22:00:54Z",
                     "_links" : {
                       "appLink" : {
                         "hreflang" : "hreflang",
@@ -294,7 +294,7 @@ public class AlertsApiTest {
                     "ruleId" : 127094,
                     "permalink" : "https://app.thousandeyes.com/alerts/list?__a=75&alertId=2783&agentId=12",
                     "alertState" : "active",
-                    "startDate" : "2020-04-23T13:43:16Z",
+                    "startDate" : "2022-07-17T22:00:54Z",
                     "alertRuleId" : "127094"
                   } ],
                   "_links" : {

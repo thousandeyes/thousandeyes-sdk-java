@@ -30,7 +30,9 @@ public enum AgentDetailsExpand {
   
   TEST("test"),
   
-  NOTIFICATION_RULE("notification-rule");
+  NOTIFICATION_RULE("notification-rule"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum AgentDetailsExpand {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

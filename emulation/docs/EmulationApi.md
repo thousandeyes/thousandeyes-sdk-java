@@ -200,7 +200,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         EmulationApi apiInstance = new EmulationApi(defaultClient);
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add `?expand=user-agent` to the request. 
+        List<ExpandEmulatedDeviceOptions> expand = Arrays.asList(); // List<ExpandEmulatedDeviceOptions> | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add `?expand=user-agent` to the request. 
         try {
             EmulatedDeviceResponses result = apiInstance.getEmulatedDevices(expand);
             System.out.println(result);
@@ -220,7 +220,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  | [optional] |
+| **expand** | [**List&lt;ExpandEmulatedDeviceOptions&gt;**](ExpandEmulatedDeviceOptions.md)| Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  | [optional] |
 
 ### Return type
 
@@ -276,7 +276,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         EmulationApi apiInstance = new EmulationApi(defaultClient);
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add `?expand=user-agent` to the request. 
+        List<ExpandEmulatedDeviceOptions> expand = Arrays.asList(); // List<ExpandEmulatedDeviceOptions> | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add `?expand=user-agent` to the request. 
         try {
             ApiResponse<EmulatedDeviceResponses> response = apiInstance.getEmulatedDevicesWithHttpInfo(expand);
             System.out.println("Status code: " + response.getStatusCode());
@@ -298,7 +298,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  | [optional] |
+| **expand** | [**List&lt;ExpandEmulatedDeviceOptions&gt;**](ExpandEmulatedDeviceOptions.md)| Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  | [optional] |
 
 ### Return type
 

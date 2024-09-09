@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.Agent;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.instant.model.TestDscpId;
 import com.thousandeyes.sdk.tests.instant.model.TestIpv6Policy;
@@ -67,8 +66,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerInstantTest.JSON_PROPERTY_DSCP_ID,
   AgentToServerInstantTest.JSON_PROPERTY_IPV6_POLICY,
   AgentToServerInstantTest.JSON_PROPERTY_PING_PAYLOAD_SIZE,
-  AgentToServerInstantTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
-  AgentToServerInstantTest.JSON_PROPERTY_AGENTS
+  AgentToServerInstantTest.JSON_PROPERTY_NETWORK_MEASUREMENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentToServerInstantTest {
@@ -156,9 +154,6 @@ public class AgentToServerInstantTest {
   public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
   private Boolean networkMeasurements = false;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public AgentToServerInstantTest() { 
   }
 
@@ -174,8 +169,7 @@ public class AgentToServerInstantTest {
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_DSCP) String dscp
   ) {
   this();
     this.createdBy = createdBy;
@@ -189,7 +183,6 @@ public class AgentToServerInstantTest {
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
     this.dscp = dscp;
-    this.agents = agents;
   }
 
    /**
@@ -790,21 +783,6 @@ public class AgentToServerInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this AgentToServerInstantTest object is equal to o.
    */
@@ -844,13 +822,12 @@ public class AgentToServerInstantTest {
         Objects.equals(this.dscpId, agentToServerInstantTest.dscpId) &&
         Objects.equals(this.ipv6Policy, agentToServerInstantTest.ipv6Policy) &&
         Objects.equals(this.pingPayloadSize, agentToServerInstantTest.pingPayloadSize) &&
-        Objects.equals(this.networkMeasurements, agentToServerInstantTest.networkMeasurements) &&
-        Objects.equals(this.agents, agentToServerInstantTest.agents);
+        Objects.equals(this.networkMeasurements, agentToServerInstantTest.networkMeasurements);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements);
   }
 
   @Override
@@ -885,7 +862,6 @@ public class AgentToServerInstantTest {
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    pingPayloadSize: ").append(toIndentedString(pingPayloadSize)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

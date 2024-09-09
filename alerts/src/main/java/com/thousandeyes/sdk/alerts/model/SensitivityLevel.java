@@ -30,7 +30,9 @@ public enum SensitivityLevel {
   
   MEDIUM("medium"),
   
-  LOW("low");
+  LOW("low"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum SensitivityLevel {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

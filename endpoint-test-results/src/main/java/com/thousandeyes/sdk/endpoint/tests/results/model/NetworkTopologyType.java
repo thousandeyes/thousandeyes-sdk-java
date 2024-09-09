@@ -30,7 +30,9 @@ public enum NetworkTopologyType {
   
   PROXY("proxy"),
   
-  GATEWAY("gateway");
+  GATEWAY("gateway"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum NetworkTopologyType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

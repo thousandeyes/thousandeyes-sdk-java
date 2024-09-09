@@ -32,7 +32,9 @@ public enum TestIpv6Policy {
   
   FORCE_IPV6("force-ipv6"),
   
-  USE_AGENT_POLICY("use-agent-policy");
+  USE_AGENT_POLICY("use-agent-policy"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum TestIpv6Policy {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

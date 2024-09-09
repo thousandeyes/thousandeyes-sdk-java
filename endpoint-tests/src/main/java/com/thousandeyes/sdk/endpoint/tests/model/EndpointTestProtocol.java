@@ -36,7 +36,9 @@ public enum EndpointTestProtocol {
   
   AST_AUTODETECT("ast-autodetect"),
   
-  AUTODETECT("autodetect");
+  AUTODETECT("autodetect"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -61,7 +63,7 @@ public enum EndpointTestProtocol {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

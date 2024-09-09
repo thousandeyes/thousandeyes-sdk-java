@@ -70,7 +70,9 @@ public enum LegacyAlertListAlertType {
   
   BROWSER_SESSIONS_APPLICATION("Browser Sessions - Application"),
   
-  ROUTING_BGP("Routing - BGP");
+  ROUTING_BGP("Routing - BGP"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -95,7 +97,7 @@ public enum LegacyAlertListAlertType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

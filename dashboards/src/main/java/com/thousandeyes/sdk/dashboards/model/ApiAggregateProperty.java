@@ -170,7 +170,9 @@ public enum ApiAggregateProperty {
   
   EYEBROW_AGENT("EYEBROW_AGENT"),
   
-  EYEBROW_COMPUTER_NAME("EYEBROW_COMPUTER_NAME");
+  EYEBROW_COMPUTER_NAME("EYEBROW_COMPUTER_NAME"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -195,7 +197,7 @@ public enum ApiAggregateProperty {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -30,7 +30,9 @@ public enum EndpointTestAgentSelectorType {
   
   SPECIFIC_AGENTS("specific-agents"),
   
-  AGENT_LABELS("agent-labels");
+  AGENT_LABELS("agent-labels"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum EndpointTestAgentSelectorType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

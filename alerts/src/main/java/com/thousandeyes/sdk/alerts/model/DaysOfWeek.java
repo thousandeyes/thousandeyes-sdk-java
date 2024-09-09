@@ -38,7 +38,9 @@ public enum DaysOfWeek {
   
   FRI("fri"),
   
-  SAT("sat");
+  SAT("sat"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -63,7 +65,7 @@ public enum DaysOfWeek {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

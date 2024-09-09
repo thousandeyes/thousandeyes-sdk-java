@@ -36,7 +36,6 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/ApiDataSourceFilter.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiDataSourceFilters.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiDefaultTimespan.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiDuration.java
-src/main/java/com/thousandeyes/sdk/dashboards/model/ApiDurationUnit.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiGeoMapWidget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiGraphletPoint.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiGroupedBarchartWidget.java

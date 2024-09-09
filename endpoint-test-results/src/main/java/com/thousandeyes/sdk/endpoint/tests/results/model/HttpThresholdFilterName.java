@@ -34,7 +34,9 @@ public enum HttpThresholdFilterName {
   
   SSL_TIME("ssl-time"),
   
-  WAIT_TIME("wait-time");
+  WAIT_TIME("wait-time"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -59,7 +61,7 @@ public enum HttpThresholdFilterName {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

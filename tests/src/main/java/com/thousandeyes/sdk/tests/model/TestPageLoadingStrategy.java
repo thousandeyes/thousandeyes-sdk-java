@@ -30,7 +30,9 @@ public enum TestPageLoadingStrategy {
   
   EAGER("eager"),
   
-  NONE("none");
+  NONE("none"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum TestPageLoadingStrategy {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

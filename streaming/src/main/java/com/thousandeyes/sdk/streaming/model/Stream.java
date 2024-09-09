@@ -70,7 +70,7 @@ public class Stream {
   private String streamEndpointUrl;
 
   public static final String JSON_PROPERTY_DATA_MODEL_VERSION = "dataModelVersion";
-  private DataModelVersion dataModelVersion;
+  private DataModelVersion dataModelVersion = DataModelVersion.V2;
 
   public Stream() { 
   }

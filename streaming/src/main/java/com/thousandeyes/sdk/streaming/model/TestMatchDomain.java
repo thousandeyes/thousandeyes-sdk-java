@@ -28,7 +28,9 @@ public enum TestMatchDomain {
   
   CEA("cea"),
   
-  ENDPOINT("endpoint");
+  ENDPOINT("endpoint"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum TestMatchDomain {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

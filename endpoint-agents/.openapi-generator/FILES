@@ -2,12 +2,10 @@
 README.md
 api/openapi.yaml
 build.gradle
-docs/AdministrativeEndpointsApi.md
-docs/ManageAgentsApi.md
-docs/TransferApi.md
-src/main/java/com/thousandeyes/sdk/endpoint/agents/AdministrativeEndpointsApi.java
-src/main/java/com/thousandeyes/sdk/endpoint/agents/ManageAgentsApi.java
-src/main/java/com/thousandeyes/sdk/endpoint/agents/TransferApi.java
+docs/EndpointAgentsApi.md
+docs/EndpointAgentsTransferApi.md
+src/main/java/com/thousandeyes/sdk/endpoint/agents/EndpointAgentsApi.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/EndpointAgentsTransferApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AddressProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AddressType.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentLicenseType.java
@@ -26,6 +24,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/agents/model/BulkAgentTransferRespon
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ConditionalOperator.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ConnectionString.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgent.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgentEthernetProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgentLocation.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgentUpdate.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgents.java
@@ -35,8 +34,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointClient.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointUserProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointVpnProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/Error.java
-src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EthernetProfile.java
-src/main/java/com/thousandeyes/sdk/endpoint/agents/model/Expand.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ExpandEndpointAgentOptions.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/FilterEndpointAgentsResponse.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/InterfaceHardwareType.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/InterfaceProfile.java
@@ -54,6 +52,5 @@ src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ValidationErrorItem.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/VpnType.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/WirelessProfile.java
-src/test/java/com/thousandeyes/sdk/endpoint/agents/AdministrativeEndpointsApiTest.java
-src/test/java/com/thousandeyes/sdk/endpoint/agents/ManageAgentsApiTest.java
-src/test/java/com/thousandeyes/sdk/endpoint/agents/TransferApiTest.java
+src/test/java/com/thousandeyes/sdk/endpoint/agents/EndpointAgentsApiTest.java
+src/test/java/com/thousandeyes/sdk/endpoint/agents/EndpointAgentsTransferApiTest.java
