@@ -28,7 +28,9 @@ public enum DnsQueryClass {
   
   IN("in"),
   
-  CH("ch");
+  CH("ch"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum DnsQueryClass {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

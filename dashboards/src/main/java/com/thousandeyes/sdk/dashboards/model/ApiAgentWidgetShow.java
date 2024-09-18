@@ -28,7 +28,9 @@ public enum ApiAgentWidgetShow {
   
   OWNED("owned"),
   
-  ALL("all");
+  ALL("all"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ApiAgentWidgetShow {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

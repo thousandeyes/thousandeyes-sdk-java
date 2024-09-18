@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.streaming.model.AuditOperationWithUpdate;
 import com.thousandeyes.sdk.streaming.model.DataModelVersion;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
+import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.StreamLinks;
 import com.thousandeyes.sdk.streaming.model.StreamType;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
@@ -49,6 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetStreamResponse.JSON_PROPERTY_CUSTOM_HEADERS,
   GetStreamResponse.JSON_PROPERTY_TAG_MATCH,
   GetStreamResponse.JSON_PROPERTY_TEST_MATCH,
+  GetStreamResponse.JSON_PROPERTY_EXPORTER_CONFIG,
   GetStreamResponse.JSON_PROPERTY_AUDIT_OPERATION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -72,7 +74,7 @@ public class GetStreamResponse {
   private String streamEndpointUrl;
 
   public static final String JSON_PROPERTY_DATA_MODEL_VERSION = "dataModelVersion";
-  private DataModelVersion dataModelVersion;
+  private DataModelVersion dataModelVersion = DataModelVersion.V2;
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
@@ -82,6 +84,9 @@ public class GetStreamResponse {
 
   public static final String JSON_PROPERTY_TEST_MATCH = "testMatch";
   private List<TestMatch> testMatch = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
+  private ExporterConfig exporterConfig;
 
   public static final String JSON_PROPERTY_AUDIT_OPERATION = "auditOperation";
   private AuditOperationWithUpdate auditOperation;
@@ -361,6 +366,31 @@ public class GetStreamResponse {
   }
 
 
+  public GetStreamResponse exporterConfig(ExporterConfig exporterConfig) {
+    this.exporterConfig = exporterConfig;
+    return this;
+  }
+
+   /**
+   * Get exporterConfig
+   * @return exporterConfig
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXPORTER_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ExporterConfig getExporterConfig() {
+    return exporterConfig;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXPORTER_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExporterConfig(ExporterConfig exporterConfig) {
+    this.exporterConfig = exporterConfig;
+  }
+
+
   public GetStreamResponse auditOperation(AuditOperationWithUpdate auditOperation) {
     this.auditOperation = auditOperation;
     return this;
@@ -408,12 +438,13 @@ public class GetStreamResponse {
         Objects.equals(this.customHeaders, getStreamResponse.customHeaders) &&
         Objects.equals(this.tagMatch, getStreamResponse.tagMatch) &&
         Objects.equals(this.testMatch, getStreamResponse.testMatch) &&
+        Objects.equals(this.exporterConfig, getStreamResponse.exporterConfig) &&
         Objects.equals(this.auditOperation, getStreamResponse.auditOperation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, auditOperation);
+    return Objects.hash(id, enabled, links, type, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, exporterConfig, auditOperation);
   }
 
   @Override
@@ -430,6 +461,7 @@ public class GetStreamResponse {
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
+    sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    auditOperation: ").append(toIndentedString(auditOperation)).append("\n");
     sb.append("}");
     return sb.toString();

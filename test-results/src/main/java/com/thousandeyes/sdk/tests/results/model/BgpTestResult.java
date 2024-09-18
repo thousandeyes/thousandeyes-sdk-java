@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.results.model.Monitor;
 import com.thousandeyes.sdk.tests.results.model.TestResultAppLinks;
+import com.thousandeyes.sdk.tests.results.model.TestResultMonitor;
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -54,7 +54,7 @@ public class BgpTestResult {
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_MONITOR = "monitor";
-  private Monitor monitor;
+  private TestResultMonitor monitor;
 
   public static final String JSON_PROPERTY_PREFIX_ID = "prefixId";
   private String prefixId;
@@ -149,7 +149,7 @@ public class BgpTestResult {
   }
 
 
-  public BgpTestResult monitor(Monitor monitor) {
+  public BgpTestResult monitor(TestResultMonitor monitor) {
     this.monitor = monitor;
     return this;
   }
@@ -162,14 +162,14 @@ public class BgpTestResult {
   @JsonProperty(JSON_PROPERTY_MONITOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Monitor getMonitor() {
+  public TestResultMonitor getMonitor() {
     return monitor;
   }
 
 
   @JsonProperty(JSON_PROPERTY_MONITOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonitor(Monitor monitor) {
+  public void setMonitor(TestResultMonitor monitor) {
     this.monitor = monitor;
   }
 

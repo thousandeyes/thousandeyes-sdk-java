@@ -38,7 +38,9 @@ public enum TestInterval {
   
   NUMBER_1800(1800),
   
-  NUMBER_3600(3600);
+  NUMBER_3600(3600),
+  
+  NUMBER_unknown(11184809);
 
   private Integer value;
 
@@ -63,7 +65,7 @@ public enum TestInterval {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return NUMBER_unknown;
   }
 
 }

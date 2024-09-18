@@ -28,7 +28,9 @@ public enum Status {
   
   ENABLED("enabled"),
   
-  DISABLED("disabled");
+  DISABLED("disabled"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum Status {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

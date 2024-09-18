@@ -41,7 +41,7 @@ public class EndpointSpecificAgentsSelectorConfig {
   private String agentSelectorType;
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
-  private Integer maxMachines;
+  private Integer maxMachines = 25;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<UUID> agents = new ArrayList<>();

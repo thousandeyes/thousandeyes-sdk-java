@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.thousandeyes.sdk.event.detection.model.ApiAffectedAgent;
+import com.thousandeyes.sdk.event.detection.model.EventApiAffectedAgent;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -44,7 +44,7 @@ public class AffectedAgents {
   private Integer inAccountGroup;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private Set<ApiAffectedAgent> agents = new LinkedHashSet<>();
+  private Set<EventApiAffectedAgent> agents = new LinkedHashSet<>();
 
   public AffectedAgents() { 
   }
@@ -89,12 +89,12 @@ public class AffectedAgents {
 
 
 
-  public AffectedAgents agents(Set<ApiAffectedAgent> agents) {
+  public AffectedAgents agents(Set<EventApiAffectedAgent> agents) {
     this.agents = agents;
     return this;
   }
 
-  public AffectedAgents addAgentsItem(ApiAffectedAgent agentsItem) {
+  public AffectedAgents addAgentsItem(EventApiAffectedAgent agentsItem) {
     if (this.agents == null) {
       this.agents = new LinkedHashSet<>();
     }
@@ -110,7 +110,7 @@ public class AffectedAgents {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<ApiAffectedAgent> getAgents() {
+  public Set<EventApiAffectedAgent> getAgents() {
     return agents;
   }
 
@@ -118,7 +118,7 @@ public class AffectedAgents {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(Set<ApiAffectedAgent> agents) {
+  public void setAgents(Set<EventApiAffectedAgent> agents) {
     this.agents = agents;
   }
 

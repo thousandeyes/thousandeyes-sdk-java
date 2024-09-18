@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.agents.model.AddressProfile;
-import com.thousandeyes.sdk.endpoint.agents.model.EthernetProfile;
+import com.thousandeyes.sdk.endpoint.agents.model.EndpointAgentEthernetProfile;
 import com.thousandeyes.sdk.endpoint.agents.model.InterfaceHardwareType;
 import com.thousandeyes.sdk.endpoint.agents.model.WirelessProfile;
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class InterfaceProfile {
   private InterfaceHardwareType hardwareType;
 
   public static final String JSON_PROPERTY_ETHERNET_PROFILE = "ethernetProfile";
-  private EthernetProfile ethernetProfile;
+  private EndpointAgentEthernetProfile ethernetProfile;
 
   public static final String JSON_PROPERTY_WIRELESS_PROFILE = "wirelessProfile";
   private WirelessProfile wirelessProfile;
@@ -143,7 +143,7 @@ public class InterfaceProfile {
   }
 
 
-  public InterfaceProfile ethernetProfile(EthernetProfile ethernetProfile) {
+  public InterfaceProfile ethernetProfile(EndpointAgentEthernetProfile ethernetProfile) {
     this.ethernetProfile = ethernetProfile;
     return this;
   }
@@ -156,14 +156,14 @@ public class InterfaceProfile {
   @JsonProperty(JSON_PROPERTY_ETHERNET_PROFILE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public EthernetProfile getEthernetProfile() {
+  public EndpointAgentEthernetProfile getEthernetProfile() {
     return ethernetProfile;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ETHERNET_PROFILE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEthernetProfile(EthernetProfile ethernetProfile) {
+  public void setEthernetProfile(EndpointAgentEthernetProfile ethernetProfile) {
     this.ethernetProfile = ethernetProfile;
   }
 

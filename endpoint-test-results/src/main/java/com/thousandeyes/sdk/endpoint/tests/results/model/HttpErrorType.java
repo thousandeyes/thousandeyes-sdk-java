@@ -38,7 +38,9 @@ public enum HttpErrorType {
   
   SSL("ssl"),
   
-  RECEIVE("receive");
+  RECEIVE("receive"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -63,7 +65,7 @@ public enum HttpErrorType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

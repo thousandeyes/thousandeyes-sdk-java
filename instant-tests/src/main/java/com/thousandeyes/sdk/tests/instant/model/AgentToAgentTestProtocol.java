@@ -28,7 +28,9 @@ public enum AgentToAgentTestProtocol {
   
   TCP("tcp"),
   
-  UDP("udp");
+  UDP("udp"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum AgentToAgentTestProtocol {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

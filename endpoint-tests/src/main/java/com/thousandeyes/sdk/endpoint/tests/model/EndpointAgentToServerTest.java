@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.model.AlertRule;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointAgentSelectorConfig;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestProtocol;
@@ -48,14 +47,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
   EndpointAgentToServerTest.JSON_PROPERTY_MODIFIED_DATE,
   EndpointAgentToServerTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
-  EndpointAgentToServerTest.JSON_PROPERTY_PORT,
   EndpointAgentToServerTest.JSON_PROPERTY_PROTOCOL,
   EndpointAgentToServerTest.JSON_PROPERTY_SERVER,
   EndpointAgentToServerTest.JSON_PROPERTY_TEST_ID,
   EndpointAgentToServerTest.JSON_PROPERTY_TEST_NAME,
   EndpointAgentToServerTest.JSON_PROPERTY_TYPE,
   EndpointAgentToServerTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointAgentToServerTest.JSON_PROPERTY_ALERT_RULES,
+  EndpointAgentToServerTest.JSON_PROPERTY_PORT,
   EndpointAgentToServerTest.JSON_PROPERTY_LABELS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -73,7 +71,7 @@ public class EndpointAgentToServerTest {
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_IS_ENABLED = "isEnabled";
   private Boolean isEnabled = true;
@@ -89,9 +87,6 @@ public class EndpointAgentToServerTest {
 
   public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
   private Boolean networkMeasurements = true;
-
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
@@ -111,8 +106,8 @@ public class EndpointAgentToServerTest {
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules = new ArrayList<>();
+  public static final String JSON_PROPERTY_PORT = "port";
+  private Integer port = 443;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
@@ -358,31 +353,6 @@ public class EndpointAgentToServerTest {
   }
 
 
-  public EndpointAgentToServerTest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Port number, if not specified, the port is selected based on a protocol (HTTP 80, HTTPS 443).
-   * @return port
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
-
   public EndpointAgentToServerTest protocol(EndpointTestProtocol protocol) {
     this.protocol = protocol;
     return this;
@@ -513,36 +483,28 @@ public class EndpointAgentToServerTest {
   }
 
 
-  public EndpointAgentToServerTest alertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public EndpointAgentToServerTest addAlertRulesItem(AlertRule alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
+  public EndpointAgentToServerTest port(Integer port) {
+    this.port = port;
     return this;
   }
 
    /**
-   * Contains list of enabled alert rule objects.
-   * @return alertRules
+   * Port number.
+   * @return port
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonProperty(JSON_PROPERTY_PORT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AlertRule> getAlertRules() {
-    return alertRules;
+  public Integer getPort() {
+    return port;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonProperty(JSON_PROPERTY_PORT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
+  public void setPort(Integer port) {
+    this.port = port;
   }
 
 
@@ -583,20 +545,19 @@ public class EndpointAgentToServerTest {
         Objects.equals(this.hasPathTraceInSession, endpointAgentToServerTest.hasPathTraceInSession) &&
         Objects.equals(this.modifiedDate, endpointAgentToServerTest.modifiedDate) &&
         Objects.equals(this.networkMeasurements, endpointAgentToServerTest.networkMeasurements) &&
-        Objects.equals(this.port, endpointAgentToServerTest.port) &&
         Objects.equals(this.protocol, endpointAgentToServerTest.protocol) &&
         Objects.equals(this.server, endpointAgentToServerTest.server) &&
         Objects.equals(this.testId, endpointAgentToServerTest.testId) &&
         Objects.equals(this.testName, endpointAgentToServerTest.testName) &&
         Objects.equals(this.type, endpointAgentToServerTest.type) &&
         Objects.equals(this.tcpProbeMode, endpointAgentToServerTest.tcpProbeMode) &&
-        Objects.equals(this.alertRules, endpointAgentToServerTest.alertRules) &&
+        Objects.equals(this.port, endpointAgentToServerTest.port) &&
         Objects.equals(this.labels, endpointAgentToServerTest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, port, protocol, server, testId, testName, type, tcpProbeMode, alertRules, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, server, testId, testName, type, tcpProbeMode, port, labels);
   }
 
   @Override
@@ -613,14 +574,13 @@ public class EndpointAgentToServerTest {
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
     sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    testId: ").append(toIndentedString(testId)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("}");
     return sb.toString();

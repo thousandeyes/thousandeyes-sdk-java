@@ -52,7 +52,9 @@ public enum WidgetType {
   
   MAP("Map"),
   
-  BOX_AND_WHISKERS("Box and Whiskers");
+  BOX_AND_WHISKERS("Box and Whiskers"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -77,7 +79,7 @@ public enum WidgetType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

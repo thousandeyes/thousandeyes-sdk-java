@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.FtpServerRequestType;
 import com.thousandeyes.sdk.tests.model.Monitor;
@@ -78,7 +77,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FtpServerTest.JSON_PROPERTY_USERNAME,
   FtpServerTest.JSON_PROPERTY_FIXED_PACKET_RATE,
   FtpServerTest.JSON_PROPERTY_IPV6_POLICY,
-  FtpServerTest.JSON_PROPERTY_AGENTS,
   FtpServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   FtpServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   FtpServerTest.JSON_PROPERTY_MONITORS
@@ -86,7 +84,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class FtpServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -190,9 +188,6 @@ public class FtpServerTest {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
 
@@ -217,7 +212,6 @@ public class FtpServerTest {
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
   this();
@@ -231,7 +225,6 @@ public class FtpServerTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
     this.monitors = monitors;
   }
 
@@ -1026,21 +1019,6 @@ public class FtpServerTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public FtpServerTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1153,7 +1131,6 @@ public class FtpServerTest {
         Objects.equals(this.username, ftpServerTest.username) &&
         Objects.equals(this.fixedPacketRate, ftpServerTest.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, ftpServerTest.ipv6Policy) &&
-        Objects.equals(this.agents, ftpServerTest.agents) &&
         Objects.equals(this.bgpMeasurements, ftpServerTest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, ftpServerTest.usePublicBgp) &&
         Objects.equals(this.monitors, ftpServerTest.monitors);
@@ -1161,7 +1138,7 @@ public class FtpServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, agents, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1203,7 +1180,6 @@ public class FtpServerTest {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");

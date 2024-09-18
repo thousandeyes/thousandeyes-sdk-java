@@ -58,7 +58,9 @@ public enum FilterType {
   
   USERNAME("username"),
   
-  ASN("asn");
+  ASN("asn"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -83,7 +85,7 @@ public enum FilterType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

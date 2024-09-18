@@ -28,7 +28,9 @@ public enum TestPathTraceMode {
   
   CLASSIC("classic"),
   
-  IN_SESSION("in-session");
+  IN_SESSION("in-session"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum TestPathTraceMode {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

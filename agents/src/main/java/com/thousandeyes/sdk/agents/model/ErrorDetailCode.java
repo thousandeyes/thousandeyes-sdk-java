@@ -40,7 +40,9 @@ public enum ErrorDetailCode {
   
   OS_END_OF_LIFE("os-end-of-life"),
   
-  NAT_TRAVERSAL_ERROR("nat-traversal-error");
+  NAT_TRAVERSAL_ERROR("nat-traversal-error"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -65,7 +67,7 @@ public enum ErrorDetailCode {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

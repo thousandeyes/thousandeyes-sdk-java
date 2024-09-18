@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointNetworkTestUpdate {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;

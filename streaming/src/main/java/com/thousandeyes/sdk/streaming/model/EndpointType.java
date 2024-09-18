@@ -22,13 +22,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The type of connection used to send data to the endpoint. **Note**: When using the &#x60;splunk-hec&#x60; &#39;type&#39;, the &#x60;EndpointType&#x60; must be &#x60;http&#x60;.
+ * The type of connection used to send data to the endpoint. Default: &#x60;grpc&#x60; **Note**: When using the &#x60;splunk-hec&#x60; &#39;type&#39;, the &#x60;EndpointType&#x60; must be &#x60;http&#x60;.
  */
 public enum EndpointType {
   
   GRPC("grpc"),
   
-  HTTP("http");
+  HTTP("http"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum EndpointType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

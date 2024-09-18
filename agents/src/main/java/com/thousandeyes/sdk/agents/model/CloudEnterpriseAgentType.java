@@ -30,7 +30,9 @@ public enum CloudEnterpriseAgentType {
   
   ENTERPRISE_CLUSTER("enterprise-cluster"),
   
-  ENTERPRISE("enterprise");
+  ENTERPRISE("enterprise"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum CloudEnterpriseAgentType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.results.model.Agent;
+import com.thousandeyes.sdk.tests.results.model.PathTrace;
 import com.thousandeyes.sdk.tests.results.model.PathVisDirection;
-import com.thousandeyes.sdk.tests.results.model.PathVisEndpoint;
+import com.thousandeyes.sdk.tests.results.model.TestResultAgent;
 import com.thousandeyes.sdk.tests.results.model.TestResultAppLinks;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class PathVisTestResult {
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
-  private Agent agent;
+  private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_SERVER = "server";
   private String server;
@@ -88,7 +88,7 @@ public class PathVisTestResult {
   private PathVisDirection direction;
 
   public static final String JSON_PROPERTY_PATH_TRACES = "pathTraces";
-  private List<PathVisEndpoint> pathTraces = new ArrayList<>();
+  private List<PathTrace> pathTraces = new ArrayList<>();
 
   public PathVisTestResult() { 
   }
@@ -202,7 +202,7 @@ public class PathVisTestResult {
 
 
 
-  public PathVisTestResult agent(Agent agent) {
+  public PathVisTestResult agent(TestResultAgent agent) {
     this.agent = agent;
     return this;
   }
@@ -215,14 +215,14 @@ public class PathVisTestResult {
   @JsonProperty(JSON_PROPERTY_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Agent getAgent() {
+  public TestResultAgent getAgent() {
     return agent;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgent(Agent agent) {
+  public void setAgent(TestResultAgent agent) {
     this.agent = agent;
   }
 
@@ -327,12 +327,12 @@ public class PathVisTestResult {
   }
 
 
-  public PathVisTestResult pathTraces(List<PathVisEndpoint> pathTraces) {
+  public PathVisTestResult pathTraces(List<PathTrace> pathTraces) {
     this.pathTraces = pathTraces;
     return this;
   }
 
-  public PathVisTestResult addPathTracesItem(PathVisEndpoint pathTracesItem) {
+  public PathVisTestResult addPathTracesItem(PathTrace pathTracesItem) {
     if (this.pathTraces == null) {
       this.pathTraces = new ArrayList<>();
     }
@@ -348,14 +348,14 @@ public class PathVisTestResult {
   @JsonProperty(JSON_PROPERTY_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<PathVisEndpoint> getPathTraces() {
+  public List<PathTrace> getPathTraces() {
     return pathTraces;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PATH_TRACES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPathTraces(List<PathVisEndpoint> pathTraces) {
+  public void setPathTraces(List<PathTrace> pathTraces) {
     this.pathTraces = pathTraces;
   }
 
