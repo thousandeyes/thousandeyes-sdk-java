@@ -53,10 +53,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedApiTest.JSON_PROPERTY_TEST_NAME,
   UnexpandedApiTest.JSON_PROPERTY_TYPE,
   UnexpandedApiTest.JSON_PROPERTY_LINKS,
+  UnexpandedApiTest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
   UnexpandedApiTest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   UnexpandedApiTest.JSON_PROPERTY_MTU_MEASUREMENTS,
   UnexpandedApiTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   UnexpandedApiTest.JSON_PROPERTY_NUM_PATH_TRACES,
+  UnexpandedApiTest.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
+  UnexpandedApiTest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   UnexpandedApiTest.JSON_PROPERTY_PATH_TRACE_MODE,
   UnexpandedApiTest.JSON_PROPERTY_PREDEFINED_VARIABLES,
   UnexpandedApiTest.JSON_PROPERTY_PROBE_MODE,
@@ -72,7 +75,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class UnexpandedApiTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -113,6 +116,9 @@ public class UnexpandedApiTest {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
+  public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
+  private Boolean collectProxyNetworkData = false;
+
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
 
@@ -124,6 +130,12 @@ public class UnexpandedApiTest {
 
   public static final String JSON_PROPERTY_NUM_PATH_TRACES = "numPathTraces";
   private Integer numPathTraces = 3;
+
+  public static final String JSON_PROPERTY_OVERRIDE_AGENT_PROXY = "overrideAgentProxy";
+  private Boolean overrideAgentProxy = false;
+
+  public static final String JSON_PROPERTY_OVERRIDE_PROXY_ID = "overrideProxyId";
+  private String overrideProxyId;
 
   public static final String JSON_PROPERTY_PATH_TRACE_MODE = "pathTraceMode";
   private TestPathTraceMode pathTraceMode = TestPathTraceMode.CLASSIC;
@@ -141,7 +153,7 @@ public class UnexpandedApiTest {
   private List<ApiRequest> requests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TARGET_TIME = "targetTime";
   private Integer targetTime;
@@ -453,6 +465,31 @@ public class UnexpandedApiTest {
   }
 
 
+  public UnexpandedApiTest collectProxyNetworkData(Boolean collectProxyNetworkData) {
+    this.collectProxyNetworkData = collectProxyNetworkData;
+    return this;
+  }
+
+   /**
+   * Indicates whether network data to the proxy should be collected.
+   * @return collectProxyNetworkData
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getCollectProxyNetworkData() {
+    return collectProxyNetworkData;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCollectProxyNetworkData(Boolean collectProxyNetworkData) {
+    this.collectProxyNetworkData = collectProxyNetworkData;
+  }
+
+
   public UnexpandedApiTest followRedirects(Boolean followRedirects) {
     this.followRedirects = followRedirects;
     return this;
@@ -552,6 +589,56 @@ public class UnexpandedApiTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNumPathTraces(Integer numPathTraces) {
     this.numPathTraces = numPathTraces;
+  }
+
+
+  public UnexpandedApiTest overrideAgentProxy(Boolean overrideAgentProxy) {
+    this.overrideAgentProxy = overrideAgentProxy;
+    return this;
+  }
+
+   /**
+   * Flag indicating if a proxy other than the default should be used. To override the default proxy for agents, set to &#x60;true&#x60; and specify a value for &#x60;overrideProxyId&#x60;.
+   * @return overrideAgentProxy
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_AGENT_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getOverrideAgentProxy() {
+    return overrideAgentProxy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_AGENT_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOverrideAgentProxy(Boolean overrideAgentProxy) {
+    this.overrideAgentProxy = overrideAgentProxy;
+  }
+
+
+  public UnexpandedApiTest overrideProxyId(String overrideProxyId) {
+    this.overrideProxyId = overrideProxyId;
+    return this;
+  }
+
+   /**
+   * ID of the proxy to be used if the default proxy is overridden.
+   * @return overrideProxyId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_PROXY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getOverrideProxyId() {
+    return overrideProxyId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_PROXY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOverrideProxyId(String overrideProxyId) {
+    this.overrideProxyId = overrideProxyId;
   }
 
 
@@ -876,10 +963,13 @@ public class UnexpandedApiTest {
         Objects.equals(this.testName, unexpandedApiTest.testName) &&
         Objects.equals(this.type, unexpandedApiTest.type) &&
         Objects.equals(this.links, unexpandedApiTest.links) &&
+        Objects.equals(this.collectProxyNetworkData, unexpandedApiTest.collectProxyNetworkData) &&
         Objects.equals(this.followRedirects, unexpandedApiTest.followRedirects) &&
         Objects.equals(this.mtuMeasurements, unexpandedApiTest.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, unexpandedApiTest.networkMeasurements) &&
         Objects.equals(this.numPathTraces, unexpandedApiTest.numPathTraces) &&
+        Objects.equals(this.overrideAgentProxy, unexpandedApiTest.overrideAgentProxy) &&
+        Objects.equals(this.overrideProxyId, unexpandedApiTest.overrideProxyId) &&
         Objects.equals(this.pathTraceMode, unexpandedApiTest.pathTraceMode) &&
         Objects.equals(this.predefinedVariables, unexpandedApiTest.predefinedVariables) &&
         Objects.equals(this.probeMode, unexpandedApiTest.probeMode) &&
@@ -895,7 +985,7 @@ public class UnexpandedApiTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -916,10 +1006,13 @@ public class UnexpandedApiTest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
+    sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
+    sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    predefinedVariables: ").append(toIndentedString(predefinedVariables)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");

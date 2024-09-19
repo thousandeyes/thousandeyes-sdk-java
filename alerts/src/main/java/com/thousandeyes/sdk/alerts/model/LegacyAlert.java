@@ -63,7 +63,9 @@ public class LegacyAlert {
   public enum StateEnum {
     ACTIVE("ACTIVE"),
     
-    CLEARED("CLEARED");
+    CLEARED("CLEARED"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 
@@ -88,7 +90,7 @@ public class LegacyAlert {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN;
     }
   }
 
@@ -132,7 +134,7 @@ public class LegacyAlert {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN;
     }
   }
 

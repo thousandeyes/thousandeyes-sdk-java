@@ -28,7 +28,9 @@ public enum PathVisDirection {
   
   TO_TARGET("to-target"),
   
-  FROM_TARGET("from-target");
+  FROM_TARGET("from-target"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum PathVisDirection {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

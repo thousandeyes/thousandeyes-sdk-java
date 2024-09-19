@@ -32,7 +32,9 @@ public enum ApiRequestAssertionOperator {
   
   INCLUDES("includes"),
   
-  NOT_INCLUDES("not-includes");
+  NOT_INCLUDES("not-includes"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum ApiRequestAssertionOperator {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

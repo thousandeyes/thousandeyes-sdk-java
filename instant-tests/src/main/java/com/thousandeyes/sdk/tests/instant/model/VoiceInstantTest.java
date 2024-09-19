@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.Agent;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.instant.model.TestDscpId;
 import com.thousandeyes.sdk.tests.instant.model.TestLabel;
@@ -57,8 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceInstantTest.JSON_PROPERTY_JITTER_BUFFER,
   VoiceInstantTest.JSON_PROPERTY_NUM_PATH_TRACES,
   VoiceInstantTest.JSON_PROPERTY_PORT,
-  VoiceInstantTest.JSON_PROPERTY_TARGET_AGENT_ID,
-  VoiceInstantTest.JSON_PROPERTY_AGENTS
+  VoiceInstantTest.JSON_PROPERTY_TARGET_AGENT_ID
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class VoiceInstantTest {
@@ -128,9 +126,6 @@ public class VoiceInstantTest {
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public VoiceInstantTest() { 
   }
 
@@ -147,8 +142,7 @@ public class VoiceInstantTest {
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_CODEC) String codec, 
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_DSCP) String dscp
   ) {
   this();
     this.createdBy = createdBy;
@@ -163,7 +157,6 @@ public class VoiceInstantTest {
     this.sharedWithAccounts = sharedWithAccounts;
     this.codec = codec;
     this.dscp = dscp;
-    this.agents = agents;
   }
 
    /**
@@ -604,21 +597,6 @@ public class VoiceInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this VoiceInstantTest object is equal to o.
    */
@@ -652,13 +630,12 @@ public class VoiceInstantTest {
         Objects.equals(this.jitterBuffer, voiceInstantTest.jitterBuffer) &&
         Objects.equals(this.numPathTraces, voiceInstantTest.numPathTraces) &&
         Objects.equals(this.port, voiceInstantTest.port) &&
-        Objects.equals(this.targetAgentId, voiceInstantTest.targetAgentId) &&
-        Objects.equals(this.agents, voiceInstantTest.agents);
+        Objects.equals(this.targetAgentId, voiceInstantTest.targetAgentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId);
   }
 
   @Override
@@ -687,7 +664,6 @@ public class VoiceInstantTest {
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

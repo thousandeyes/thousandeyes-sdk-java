@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
 import com.thousandeyes.sdk.streaming.model.TestMatch;
 import java.util.ArrayList;
@@ -37,7 +38,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PutStream.JSON_PROPERTY_CUSTOM_HEADERS,
   PutStream.JSON_PROPERTY_TAG_MATCH,
   PutStream.JSON_PROPERTY_TEST_MATCH,
-  PutStream.JSON_PROPERTY_ENABLED
+  PutStream.JSON_PROPERTY_ENABLED,
+  PutStream.JSON_PROPERTY_EXPORTER_CONFIG
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PutStream {
@@ -52,6 +54,9 @@ public class PutStream {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
+
+  public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
+  private ExporterConfig exporterConfig;
 
   public PutStream() { 
   }
@@ -180,6 +185,31 @@ public class PutStream {
   }
 
 
+  public PutStream exporterConfig(ExporterConfig exporterConfig) {
+    this.exporterConfig = exporterConfig;
+    return this;
+  }
+
+   /**
+   * Get exporterConfig
+   * @return exporterConfig
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXPORTER_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ExporterConfig getExporterConfig() {
+    return exporterConfig;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXPORTER_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExporterConfig(ExporterConfig exporterConfig) {
+    this.exporterConfig = exporterConfig;
+  }
+
+
   /**
    * Return true if this PutStream object is equal to o.
    */
@@ -195,12 +225,13 @@ public class PutStream {
     return Objects.equals(this.customHeaders, putStream.customHeaders) &&
         Objects.equals(this.tagMatch, putStream.tagMatch) &&
         Objects.equals(this.testMatch, putStream.testMatch) &&
-        Objects.equals(this.enabled, putStream.enabled);
+        Objects.equals(this.enabled, putStream.enabled) &&
+        Objects.equals(this.exporterConfig, putStream.exporterConfig);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, tagMatch, testMatch, enabled);
+    return Objects.hash(customHeaders, tagMatch, testMatch, enabled, exporterConfig);
   }
 
   @Override
@@ -211,6 +242,7 @@ public class PutStream {
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("}");
     return sb.toString();
   }

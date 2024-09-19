@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.agents.model.Agent;
-import com.thousandeyes.sdk.agents.model.Notification;
+import com.thousandeyes.sdk.agents.model.AgentNotification;
+import com.thousandeyes.sdk.agents.model.AgentResponse;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,10 +60,10 @@ public class NotificationRuleDetail {
   private Boolean isDefault;
 
   public static final String JSON_PROPERTY_NOTIFICATIONS = "notifications";
-  private Notification notifications;
+  private AgentNotification notifications;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
+  private List<AgentResponse> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
@@ -194,7 +194,7 @@ public class NotificationRuleDetail {
   }
 
 
-  public NotificationRuleDetail notifications(Notification notifications) {
+  public NotificationRuleDetail notifications(AgentNotification notifications) {
     this.notifications = notifications;
     return this;
   }
@@ -207,24 +207,24 @@ public class NotificationRuleDetail {
   @JsonProperty(JSON_PROPERTY_NOTIFICATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Notification getNotifications() {
+  public AgentNotification getNotifications() {
     return notifications;
   }
 
 
   @JsonProperty(JSON_PROPERTY_NOTIFICATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotifications(Notification notifications) {
+  public void setNotifications(AgentNotification notifications) {
     this.notifications = notifications;
   }
 
 
-  public NotificationRuleDetail agents(List<Agent> agents) {
+  public NotificationRuleDetail agents(List<AgentResponse> agents) {
     this.agents = agents;
     return this;
   }
 
-  public NotificationRuleDetail addAgentsItem(Agent agentsItem) {
+  public NotificationRuleDetail addAgentsItem(AgentResponse agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -240,14 +240,14 @@ public class NotificationRuleDetail {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Agent> getAgents() {
+  public List<AgentResponse> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<Agent> agents) {
+  public void setAgents(List<AgentResponse> agents) {
     this.agents = agents;
   }
 

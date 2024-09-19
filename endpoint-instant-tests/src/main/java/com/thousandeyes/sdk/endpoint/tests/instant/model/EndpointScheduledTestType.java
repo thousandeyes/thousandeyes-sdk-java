@@ -28,7 +28,9 @@ public enum EndpointScheduledTestType {
   
   AGENT_TO_SERVER("agent-to-server"),
   
-  HTTP_SERVER("http-server");
+  HTTP_SERVER("http-server"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum EndpointScheduledTestType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

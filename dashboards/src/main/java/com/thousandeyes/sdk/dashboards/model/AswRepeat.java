@@ -40,7 +40,9 @@ public enum AswRepeat {
   
   EVERY_THREE_MONTH("every-three-month"),
   
-  CUSTOM("custom");
+  CUSTOM("custom"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -65,7 +67,7 @@ public enum AswRepeat {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

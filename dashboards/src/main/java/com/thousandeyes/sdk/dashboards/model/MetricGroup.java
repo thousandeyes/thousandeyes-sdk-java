@@ -96,7 +96,9 @@ public enum MetricGroup {
   
   APPLICATION_OUTAGES("APPLICATION_OUTAGES"),
   
-  APPDYNAMICS_SERVICE_HEALTH("APPDYNAMICS_SERVICE_HEALTH");
+  APPDYNAMICS_SERVICE_HEALTH("APPDYNAMICS_SERVICE_HEALTH"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -121,7 +123,7 @@ public enum MetricGroup {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

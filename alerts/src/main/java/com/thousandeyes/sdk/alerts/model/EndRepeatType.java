@@ -30,7 +30,9 @@ public enum EndRepeatType {
   
   NEVER("never"),
   
-  DATE("date");
+  DATE("date"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum EndRepeatType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

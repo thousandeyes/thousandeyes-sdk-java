@@ -30,7 +30,9 @@ public enum DashboardMetricDirection {
   
   FROM_TARGET("FROM_TARGET"),
   
-  BIDIRECTIONAL("BIDIRECTIONAL");
+  BIDIRECTIONAL("BIDIRECTIONAL"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum DashboardMetricDirection {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

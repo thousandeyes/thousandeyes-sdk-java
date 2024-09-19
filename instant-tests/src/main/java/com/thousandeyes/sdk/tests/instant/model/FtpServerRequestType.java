@@ -30,7 +30,9 @@ public enum FtpServerRequestType {
   
   UPLOAD("upload"),
   
-  LIST("list");
+  LIST("list"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum FtpServerRequestType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

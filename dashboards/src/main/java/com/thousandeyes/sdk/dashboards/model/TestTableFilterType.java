@@ -28,7 +28,9 @@ public enum TestTableFilterType {
   
   ALL("all"),
   
-  ANY("any");
+  ANY("any"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum TestTableFilterType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AgentToAgentTestProtocol;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.Monitor;
@@ -72,7 +71,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentTest.JSON_PROPERTY_THROUGHPUT_DURATION,
   AgentToAgentTest.JSON_PROPERTY_THROUGHPUT_RATE,
   AgentToAgentTest.JSON_PROPERTY_FIXED_PACKET_RATE,
-  AgentToAgentTest.JSON_PROPERTY_AGENTS,
   AgentToAgentTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   AgentToAgentTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   AgentToAgentTest.JSON_PROPERTY_MONITORS
@@ -80,7 +78,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentToAgentTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -169,9 +167,6 @@ public class AgentToAgentTest {
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
 
@@ -197,7 +192,6 @@ public class AgentToAgentTest {
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
   this();
@@ -212,7 +206,6 @@ public class AgentToAgentTest {
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
     this.dscp = dscp;
-    this.agents = agents;
     this.monitors = monitors;
   }
 
@@ -876,21 +869,6 @@ public class AgentToAgentTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public AgentToAgentTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -998,7 +976,6 @@ public class AgentToAgentTest {
         Objects.equals(this.throughputDuration, agentToAgentTest.throughputDuration) &&
         Objects.equals(this.throughputRate, agentToAgentTest.throughputRate) &&
         Objects.equals(this.fixedPacketRate, agentToAgentTest.fixedPacketRate) &&
-        Objects.equals(this.agents, agentToAgentTest.agents) &&
         Objects.equals(this.bgpMeasurements, agentToAgentTest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, agentToAgentTest.usePublicBgp) &&
         Objects.equals(this.monitors, agentToAgentTest.monitors);
@@ -1006,7 +983,7 @@ public class AgentToAgentTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, agents, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1043,7 +1020,6 @@ public class AgentToAgentTest {
     sb.append("    throughputDuration: ").append(toIndentedString(throughputDuration)).append("\n");
     sb.append("    throughputRate: ").append(toIndentedString(throughputRate)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");

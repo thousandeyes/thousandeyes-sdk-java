@@ -2,8 +2,8 @@
 README.md
 api/openapi.yaml
 build.gradle
-docs/ListBgpMonitorsApi.md
-src/main/java/com/thousandeyes/sdk/bgp/monitors/ListBgpMonitorsApi.java
+docs/BgpMonitorsApi.md
+src/main/java/com/thousandeyes/sdk/bgp/monitors/BgpMonitorsApi.java
 src/main/java/com/thousandeyes/sdk/bgp/monitors/model/Error.java
 src/main/java/com/thousandeyes/sdk/bgp/monitors/model/Link.java
 src/main/java/com/thousandeyes/sdk/bgp/monitors/model/Monitor.java
@@ -11,4 +11,4 @@ src/main/java/com/thousandeyes/sdk/bgp/monitors/model/MonitorType.java
 src/main/java/com/thousandeyes/sdk/bgp/monitors/model/Monitors.java
 src/main/java/com/thousandeyes/sdk/bgp/monitors/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/bgp/monitors/model/UnauthorizedError.java
-src/test/java/com/thousandeyes/sdk/bgp/monitors/ListBgpMonitorsApiTest.java
+src/test/java/com/thousandeyes/sdk/bgp/monitors/BgpMonitorsApiTest.java

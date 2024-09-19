@@ -32,7 +32,9 @@ public enum RepeatType {
   
   MONTH("month"),
   
-  CUSTOM("custom");
+  CUSTOM("custom"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum RepeatType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

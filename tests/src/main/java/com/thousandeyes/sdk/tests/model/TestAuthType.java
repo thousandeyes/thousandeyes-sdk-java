@@ -34,7 +34,9 @@ public enum TestAuthType {
   
   KERBEROS("kerberos"),
   
-  OAUTH("oauth");
+  OAUTH("oauth"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -59,7 +61,7 @@ public enum TestAuthType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

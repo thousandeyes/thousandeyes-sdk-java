@@ -28,7 +28,9 @@ public enum TestDnsTransportProtocol {
   
   UDP("udp"),
   
-  TCP("tcp");
+  TCP("tcp"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum TestDnsTransportProtocol {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }
