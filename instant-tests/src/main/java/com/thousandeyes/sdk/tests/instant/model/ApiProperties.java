@@ -36,10 +36,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * ApiProperties
  */
 @JsonPropertyOrder({
+  ApiProperties.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
   ApiProperties.JSON_PROPERTY_FOLLOW_REDIRECTS,
   ApiProperties.JSON_PROPERTY_MTU_MEASUREMENTS,
   ApiProperties.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   ApiProperties.JSON_PROPERTY_NUM_PATH_TRACES,
+  ApiProperties.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
+  ApiProperties.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   ApiProperties.JSON_PROPERTY_PATH_TRACE_MODE,
   ApiProperties.JSON_PROPERTY_PREDEFINED_VARIABLES,
   ApiProperties.JSON_PROPERTY_PROBE_MODE,
@@ -53,6 +56,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiProperties {
+  public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
+  private Boolean collectProxyNetworkData = false;
+
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
 
@@ -64,6 +70,12 @@ public class ApiProperties {
 
   public static final String JSON_PROPERTY_NUM_PATH_TRACES = "numPathTraces";
   private Integer numPathTraces = 3;
+
+  public static final String JSON_PROPERTY_OVERRIDE_AGENT_PROXY = "overrideAgentProxy";
+  private Boolean overrideAgentProxy = false;
+
+  public static final String JSON_PROPERTY_OVERRIDE_PROXY_ID = "overrideProxyId";
+  private String overrideProxyId;
 
   public static final String JSON_PROPERTY_PATH_TRACE_MODE = "pathTraceMode";
   private TestPathTraceMode pathTraceMode = TestPathTraceMode.CLASSIC;
@@ -81,7 +93,7 @@ public class ApiProperties {
   private List<ApiRequest> requests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TARGET_TIME = "targetTime";
   private Integer targetTime;
@@ -105,6 +117,31 @@ public class ApiProperties {
   this();
     this.type = type;
   }
+
+  public ApiProperties collectProxyNetworkData(Boolean collectProxyNetworkData) {
+    this.collectProxyNetworkData = collectProxyNetworkData;
+    return this;
+  }
+
+   /**
+   * Indicates whether network data to the proxy should be collected.
+   * @return collectProxyNetworkData
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getCollectProxyNetworkData() {
+    return collectProxyNetworkData;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCollectProxyNetworkData(Boolean collectProxyNetworkData) {
+    this.collectProxyNetworkData = collectProxyNetworkData;
+  }
+
 
   public ApiProperties followRedirects(Boolean followRedirects) {
     this.followRedirects = followRedirects;
@@ -205,6 +242,56 @@ public class ApiProperties {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNumPathTraces(Integer numPathTraces) {
     this.numPathTraces = numPathTraces;
+  }
+
+
+  public ApiProperties overrideAgentProxy(Boolean overrideAgentProxy) {
+    this.overrideAgentProxy = overrideAgentProxy;
+    return this;
+  }
+
+   /**
+   * Flag indicating if a proxy other than the default should be used. To override the default proxy for agents, set to &#x60;true&#x60; and specify a value for &#x60;overrideProxyId&#x60;.
+   * @return overrideAgentProxy
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_AGENT_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getOverrideAgentProxy() {
+    return overrideAgentProxy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_AGENT_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOverrideAgentProxy(Boolean overrideAgentProxy) {
+    this.overrideAgentProxy = overrideAgentProxy;
+  }
+
+
+  public ApiProperties overrideProxyId(String overrideProxyId) {
+    this.overrideProxyId = overrideProxyId;
+    return this;
+  }
+
+   /**
+   * ID of the proxy to be used if the default proxy is overridden.
+   * @return overrideProxyId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_PROXY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getOverrideProxyId() {
+    return overrideProxyId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_PROXY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOverrideProxyId(String overrideProxyId) {
+    this.overrideProxyId = overrideProxyId;
   }
 
 
@@ -480,10 +567,13 @@ public class ApiProperties {
       return false;
     }
     ApiProperties apiProperties = (ApiProperties) o;
-    return Objects.equals(this.followRedirects, apiProperties.followRedirects) &&
+    return Objects.equals(this.collectProxyNetworkData, apiProperties.collectProxyNetworkData) &&
+        Objects.equals(this.followRedirects, apiProperties.followRedirects) &&
         Objects.equals(this.mtuMeasurements, apiProperties.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, apiProperties.networkMeasurements) &&
         Objects.equals(this.numPathTraces, apiProperties.numPathTraces) &&
+        Objects.equals(this.overrideAgentProxy, apiProperties.overrideAgentProxy) &&
+        Objects.equals(this.overrideProxyId, apiProperties.overrideProxyId) &&
         Objects.equals(this.pathTraceMode, apiProperties.pathTraceMode) &&
         Objects.equals(this.predefinedVariables, apiProperties.predefinedVariables) &&
         Objects.equals(this.probeMode, apiProperties.probeMode) &&
@@ -498,17 +588,20 @@ public class ApiProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, type);
+    return Objects.hash(collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApiProperties {\n");
+    sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
+    sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
+    sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    predefinedVariables: ").append(toIndentedString(predefinedVariables)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");

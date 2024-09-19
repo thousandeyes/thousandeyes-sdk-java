@@ -40,7 +40,9 @@ public enum SipServerErrorType {
   
   SERVER("server"),
   
-  SSL("ssl");
+  SSL("ssl"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -65,7 +67,7 @@ public enum SipServerErrorType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

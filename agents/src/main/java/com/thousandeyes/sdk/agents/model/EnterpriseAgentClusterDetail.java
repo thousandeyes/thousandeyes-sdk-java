@@ -21,12 +21,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AccountGroup;
+import com.thousandeyes.sdk.agents.model.AgentLabel;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;
 import com.thousandeyes.sdk.agents.model.ErrorDetail;
 import com.thousandeyes.sdk.agents.model.InterfaceIpMapping;
-import com.thousandeyes.sdk.agents.model.Labels;
 import com.thousandeyes.sdk.agents.model.NotificationRules;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
@@ -148,7 +148,7 @@ public class EnterpriseAgentClusterDetail {
   private List<NotificationRules> notificationRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<Labels> labels = new ArrayList<>();
+  private List<AgentLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
   private String agentType;
@@ -176,7 +176,7 @@ public class EnterpriseAgentClusterDetail {
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPINGS) List<InterfaceIpMapping> interfaceIpMappings, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<Labels> labels
+    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels
   ) {
   this();
     this.ipAddresses = ipAddresses;
@@ -712,7 +712,7 @@ public class EnterpriseAgentClusterDetail {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Labels> getLabels() {
+  public List<AgentLabel> getLabels() {
     return labels;
   }
 

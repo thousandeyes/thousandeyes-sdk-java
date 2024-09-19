@@ -2,8 +2,8 @@
 README.md
 api/openapi.yaml
 build.gradle
-docs/CreateTestSnapshotApi.md
-src/main/java/com/thousandeyes/sdk/snapshots/CreateTestSnapshotApi.java
+docs/TestSnapshotsApi.md
+src/main/java/com/thousandeyes/sdk/snapshots/TestSnapshotsApi.java
 src/main/java/com/thousandeyes/sdk/snapshots/model/AppAndSelfLinks.java
 src/main/java/com/thousandeyes/sdk/snapshots/model/Error.java
 src/main/java/com/thousandeyes/sdk/snapshots/model/Link.java
@@ -20,4 +20,4 @@ src/main/java/com/thousandeyes/sdk/snapshots/model/UnexpandedInstantTest.java
 src/main/java/com/thousandeyes/sdk/snapshots/model/UnexpandedTest.java
 src/main/java/com/thousandeyes/sdk/snapshots/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/snapshots/model/ValidationErrorItem.java
-src/test/java/com/thousandeyes/sdk/snapshots/CreateTestSnapshotApiTest.java
+src/test/java/com/thousandeyes/sdk/snapshots/TestSnapshotsApiTest.java

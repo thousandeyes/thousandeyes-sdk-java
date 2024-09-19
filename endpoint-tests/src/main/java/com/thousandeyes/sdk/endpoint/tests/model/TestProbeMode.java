@@ -30,7 +30,9 @@ public enum TestProbeMode {
   
   SACK("sack"),
   
-  SYN("syn");
+  SYN("syn"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum TestProbeMode {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

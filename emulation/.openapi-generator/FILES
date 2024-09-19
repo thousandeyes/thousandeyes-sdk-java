@@ -9,7 +9,7 @@ src/main/java/com/thousandeyes/sdk/emulation/model/EmulatedDeviceCategory.java
 src/main/java/com/thousandeyes/sdk/emulation/model/EmulatedDeviceResponse.java
 src/main/java/com/thousandeyes/sdk/emulation/model/EmulatedDeviceResponses.java
 src/main/java/com/thousandeyes/sdk/emulation/model/Error.java
-src/main/java/com/thousandeyes/sdk/emulation/model/Expand.java
+src/main/java/com/thousandeyes/sdk/emulation/model/ExpandEmulatedDeviceOptions.java
 src/main/java/com/thousandeyes/sdk/emulation/model/Link.java
 src/main/java/com/thousandeyes/sdk/emulation/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/emulation/model/UnauthorizedError.java

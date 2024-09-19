@@ -68,7 +68,9 @@ public enum TestDscpId {
   
   _46("46"),
   
-  _44("44");
+  _44("44"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -93,7 +95,7 @@ public enum TestDscpId {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

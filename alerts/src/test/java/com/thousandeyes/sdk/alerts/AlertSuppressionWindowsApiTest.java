@@ -16,7 +16,7 @@ import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindowDetail;
 import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindowRequest;
 import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindows;
 import com.thousandeyes.sdk.alerts.model.Error;
-import com.thousandeyes.sdk.alerts.model.Expand;
+import com.thousandeyes.sdk.alerts.model.ExpandAlertTestOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
 import com.thousandeyes.sdk.alerts.model.ValidationError;
@@ -119,7 +119,7 @@ public class AlertSuppressionWindowsApiTest {
                       "ruleId" : "127094",
                       "direction" : "to-target"
                     } ],
-                    "interval" : 120,
+                    "interval" : 60,
                     "alertsEnabled" : true,
                     "enabled" : true
                   }, {
@@ -152,7 +152,7 @@ public class AlertSuppressionWindowsApiTest {
                       "ruleId" : "127094",
                       "direction" : "to-target"
                     } ],
-                    "interval" : 120,
+                    "interval" : 60,
                     "alertsEnabled" : true,
                     "enabled" : true
                   } ],
@@ -252,7 +252,7 @@ public class AlertSuppressionWindowsApiTest {
                       "ruleId" : "127094",
                       "direction" : "to-target"
                     } ],
-                    "interval" : 120,
+                    "interval" : 60,
                     "alertsEnabled" : true,
                     "enabled" : true
                   }, {
@@ -285,7 +285,7 @@ public class AlertSuppressionWindowsApiTest {
                       "ruleId" : "127094",
                       "direction" : "to-target"
                     } ],
-                    "interval" : 120,
+                    "interval" : 60,
                     "alertsEnabled" : true,
                     "enabled" : true
                   } ],
@@ -490,7 +490,7 @@ public class AlertSuppressionWindowsApiTest {
                       "ruleId" : "127094",
                       "direction" : "to-target"
                     } ],
-                    "interval" : 120,
+                    "interval" : 60,
                     "alertsEnabled" : true,
                     "enabled" : true
                   }, {
@@ -523,7 +523,7 @@ public class AlertSuppressionWindowsApiTest {
                       "ruleId" : "127094",
                       "direction" : "to-target"
                     } ],
-                    "interval" : 120,
+                    "interval" : 60,
                     "alertsEnabled" : true,
                     "enabled" : true
                   } ],

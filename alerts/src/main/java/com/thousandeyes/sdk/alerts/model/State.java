@@ -30,7 +30,9 @@ public enum State {
   
   CLEAR("clear"),
   
-  TRIGGER("trigger");
+  TRIGGER("trigger"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum State {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

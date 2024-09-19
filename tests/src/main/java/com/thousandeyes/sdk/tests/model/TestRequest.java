@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.AgentRequest;
+import com.thousandeyes.sdk.tests.model.TestAgentRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +48,7 @@ public class TestRequest {
   private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<AgentRequest> agents = new ArrayList<>();
+  private List<TestAgentRequest> agents = new ArrayList<>();
 
   public TestRequest() { 
   }
@@ -152,12 +152,12 @@ public class TestRequest {
   }
 
 
-  public TestRequest agents(List<AgentRequest> agents) {
+  public TestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
   }
 
-  public TestRequest addAgentsItem(AgentRequest agentsItem) {
+  public TestRequest addAgentsItem(TestAgentRequest agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -166,21 +166,21 @@ public class TestRequest {
   }
 
    /**
-   * Get agents
+   * Contains list of Agent IDs (get &#x60;agentId&#x60; from &#x60;/agents&#x60; endpoint).
    * @return agents
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<AgentRequest> getAgents() {
+  public List<TestAgentRequest> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<AgentRequest> agents) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<TestAgentRequest> agents) {
     this.agents = agents;
   }
 

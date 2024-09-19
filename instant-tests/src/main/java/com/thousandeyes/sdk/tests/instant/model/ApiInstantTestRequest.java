@@ -52,10 +52,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTestRequest.JSON_PROPERTY_LINKS,
   ApiInstantTestRequest.JSON_PROPERTY_LABELS,
   ApiInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  ApiInstantTestRequest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
   ApiInstantTestRequest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   ApiInstantTestRequest.JSON_PROPERTY_MTU_MEASUREMENTS,
   ApiInstantTestRequest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   ApiInstantTestRequest.JSON_PROPERTY_NUM_PATH_TRACES,
+  ApiInstantTestRequest.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
+  ApiInstantTestRequest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   ApiInstantTestRequest.JSON_PROPERTY_PATH_TRACE_MODE,
   ApiInstantTestRequest.JSON_PROPERTY_PREDEFINED_VARIABLES,
   ApiInstantTestRequest.JSON_PROPERTY_PROBE_MODE,
@@ -65,8 +68,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTestRequest.JSON_PROPERTY_TARGET_TIME,
   ApiInstantTestRequest.JSON_PROPERTY_TIME_LIMIT,
   ApiInstantTestRequest.JSON_PROPERTY_URL,
-  ApiInstantTestRequest.JSON_PROPERTY_AGENTS,
-  ApiInstantTestRequest.JSON_PROPERTY_CREDENTIALS
+  ApiInstantTestRequest.JSON_PROPERTY_CREDENTIALS,
+  ApiInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiInstantTestRequest {
@@ -109,6 +112,9 @@ public class ApiInstantTestRequest {
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
+  private Boolean collectProxyNetworkData = false;
+
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
 
@@ -120,6 +126,12 @@ public class ApiInstantTestRequest {
 
   public static final String JSON_PROPERTY_NUM_PATH_TRACES = "numPathTraces";
   private Integer numPathTraces = 3;
+
+  public static final String JSON_PROPERTY_OVERRIDE_AGENT_PROXY = "overrideAgentProxy";
+  private Boolean overrideAgentProxy = false;
+
+  public static final String JSON_PROPERTY_OVERRIDE_PROXY_ID = "overrideProxyId";
+  private String overrideProxyId;
 
   public static final String JSON_PROPERTY_PATH_TRACE_MODE = "pathTraceMode";
   private TestPathTraceMode pathTraceMode = TestPathTraceMode.CLASSIC;
@@ -137,7 +149,7 @@ public class ApiInstantTestRequest {
   private List<ApiRequest> requests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TARGET_TIME = "targetTime";
   private Integer targetTime;
@@ -148,11 +160,11 @@ public class ApiInstantTestRequest {
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestAgent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<TestAgent> agents = new ArrayList<>();
 
   public ApiInstantTestRequest() { 
   }
@@ -440,6 +452,31 @@ public class ApiInstantTestRequest {
   }
 
 
+  public ApiInstantTestRequest collectProxyNetworkData(Boolean collectProxyNetworkData) {
+    this.collectProxyNetworkData = collectProxyNetworkData;
+    return this;
+  }
+
+   /**
+   * Indicates whether network data to the proxy should be collected.
+   * @return collectProxyNetworkData
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getCollectProxyNetworkData() {
+    return collectProxyNetworkData;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCollectProxyNetworkData(Boolean collectProxyNetworkData) {
+    this.collectProxyNetworkData = collectProxyNetworkData;
+  }
+
+
   public ApiInstantTestRequest followRedirects(Boolean followRedirects) {
     this.followRedirects = followRedirects;
     return this;
@@ -539,6 +576,56 @@ public class ApiInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNumPathTraces(Integer numPathTraces) {
     this.numPathTraces = numPathTraces;
+  }
+
+
+  public ApiInstantTestRequest overrideAgentProxy(Boolean overrideAgentProxy) {
+    this.overrideAgentProxy = overrideAgentProxy;
+    return this;
+  }
+
+   /**
+   * Flag indicating if a proxy other than the default should be used. To override the default proxy for agents, set to &#x60;true&#x60; and specify a value for &#x60;overrideProxyId&#x60;.
+   * @return overrideAgentProxy
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_AGENT_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getOverrideAgentProxy() {
+    return overrideAgentProxy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_AGENT_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOverrideAgentProxy(Boolean overrideAgentProxy) {
+    this.overrideAgentProxy = overrideAgentProxy;
+  }
+
+
+  public ApiInstantTestRequest overrideProxyId(String overrideProxyId) {
+    this.overrideProxyId = overrideProxyId;
+    return this;
+  }
+
+   /**
+   * ID of the proxy to be used if the default proxy is overridden.
+   * @return overrideProxyId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_PROXY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getOverrideProxyId() {
+    return overrideProxyId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OVERRIDE_PROXY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOverrideProxyId(String overrideProxyId) {
+    this.overrideProxyId = overrideProxyId;
   }
 
 
@@ -787,39 +874,6 @@ public class ApiInstantTestRequest {
   }
 
 
-  public ApiInstantTestRequest agents(List<TestAgent> agents) {
-    this.agents = agents;
-    return this;
-  }
-
-  public ApiInstantTestRequest addAgentsItem(TestAgent agentsItem) {
-    if (this.agents == null) {
-      this.agents = new ArrayList<>();
-    }
-    this.agents.add(agentsItem);
-    return this;
-  }
-
-   /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
-   * @return agents
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<TestAgent> getAgents() {
-    return agents;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<TestAgent> agents) {
-    this.agents = agents;
-  }
-
-
   public ApiInstantTestRequest credentials(List<String> credentials) {
     this.credentials = credentials;
     return this;
@@ -853,6 +907,39 @@ public class ApiInstantTestRequest {
   }
 
 
+  public ApiInstantTestRequest agents(List<TestAgent> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public ApiInstantTestRequest addAgentsItem(TestAgent agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * @return agents
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<TestAgent> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAgents(List<TestAgent> agents) {
+    this.agents = agents;
+  }
+
+
   /**
    * Return true if this ApiInstantTestRequest object is equal to o.
    */
@@ -878,10 +965,13 @@ public class ApiInstantTestRequest {
         Objects.equals(this.links, apiInstantTestRequest.links) &&
         Objects.equals(this.labels, apiInstantTestRequest.labels) &&
         Objects.equals(this.sharedWithAccounts, apiInstantTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.collectProxyNetworkData, apiInstantTestRequest.collectProxyNetworkData) &&
         Objects.equals(this.followRedirects, apiInstantTestRequest.followRedirects) &&
         Objects.equals(this.mtuMeasurements, apiInstantTestRequest.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, apiInstantTestRequest.networkMeasurements) &&
         Objects.equals(this.numPathTraces, apiInstantTestRequest.numPathTraces) &&
+        Objects.equals(this.overrideAgentProxy, apiInstantTestRequest.overrideAgentProxy) &&
+        Objects.equals(this.overrideProxyId, apiInstantTestRequest.overrideProxyId) &&
         Objects.equals(this.pathTraceMode, apiInstantTestRequest.pathTraceMode) &&
         Objects.equals(this.predefinedVariables, apiInstantTestRequest.predefinedVariables) &&
         Objects.equals(this.probeMode, apiInstantTestRequest.probeMode) &&
@@ -891,13 +981,13 @@ public class ApiInstantTestRequest {
         Objects.equals(this.targetTime, apiInstantTestRequest.targetTime) &&
         Objects.equals(this.timeLimit, apiInstantTestRequest.timeLimit) &&
         Objects.equals(this.url, apiInstantTestRequest.url) &&
-        Objects.equals(this.agents, apiInstantTestRequest.agents) &&
-        Objects.equals(this.credentials, apiInstantTestRequest.credentials);
+        Objects.equals(this.credentials, apiInstantTestRequest.credentials) &&
+        Objects.equals(this.agents, apiInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, agents, credentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, credentials, agents);
   }
 
   @Override
@@ -917,10 +1007,13 @@ public class ApiInstantTestRequest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
+    sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
+    sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    predefinedVariables: ").append(toIndentedString(predefinedVariables)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
@@ -930,8 +1023,8 @@ public class ApiInstantTestRequest {
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

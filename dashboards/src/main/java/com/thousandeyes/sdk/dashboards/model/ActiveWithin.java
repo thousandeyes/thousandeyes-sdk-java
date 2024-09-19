@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * ActiveWithin
+ * Timespan in which alerts must have been active to appear in the widget.
  */
 @JsonPropertyOrder({
   ActiveWithin.JSON_PROPERTY_VALUE,

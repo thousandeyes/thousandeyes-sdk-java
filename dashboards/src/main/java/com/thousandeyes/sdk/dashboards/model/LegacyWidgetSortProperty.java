@@ -28,7 +28,9 @@ public enum LegacyWidgetSortProperty {
   
   ALPHABETICAL("Alphabetical"),
   
-  VALUE("Value");
+  VALUE("Value"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum LegacyWidgetSortProperty {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

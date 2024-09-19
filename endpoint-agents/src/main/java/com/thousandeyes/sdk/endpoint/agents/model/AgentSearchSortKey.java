@@ -34,7 +34,9 @@ public enum AgentSearchSortKey {
   
   USERNAME("userName"),
   
-  CITY("city");
+  CITY("city"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -59,7 +61,7 @@ public enum AgentSearchSortKey {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

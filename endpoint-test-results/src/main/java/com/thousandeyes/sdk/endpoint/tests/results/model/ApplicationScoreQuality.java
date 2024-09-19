@@ -30,7 +30,9 @@ public enum ApplicationScoreQuality {
   
   GOOD("good"),
   
-  POOR("poor");
+  POOR("poor"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum ApplicationScoreQuality {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

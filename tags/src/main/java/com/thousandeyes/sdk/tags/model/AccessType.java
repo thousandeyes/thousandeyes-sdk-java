@@ -30,7 +30,9 @@ public enum AccessType {
   
   PARTNER("partner"),
   
-  SYSTEM("system");
+  SYSTEM("system"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum AccessType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

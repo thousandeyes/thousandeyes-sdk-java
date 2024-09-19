@@ -17,7 +17,7 @@ import com.thousandeyes.sdk.account.management.administrative.model.AccountGroup
 import com.thousandeyes.sdk.account.management.administrative.model.AccountGroups;
 import com.thousandeyes.sdk.account.management.administrative.model.CreatedAccountGroup;
 import com.thousandeyes.sdk.account.management.administrative.model.Error;
-import com.thousandeyes.sdk.account.management.administrative.model.Expand;
+import com.thousandeyes.sdk.account.management.administrative.model.ExpandAccountGroupOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.account.management.administrative.model.UnauthorizedError;
 import com.thousandeyes.sdk.account.management.administrative.model.ValidationError;
@@ -177,6 +177,7 @@ public class AccountGroupsApiTest {
                   },
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
+                  "accountToken" : "6j052y4vfgyuhefghue",
                   "aid" : "1234",
                   "users" : [ {
                     "uid" : "235",
@@ -462,6 +463,7 @@ public class AccountGroupsApiTest {
                   },
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
+                  "accountToken" : "6j052y4vfgyuhefghue",
                   "aid" : "1234",
                   "users" : [ {
                     "uid" : "235",

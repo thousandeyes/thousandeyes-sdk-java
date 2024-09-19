@@ -38,46 +38,38 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   EndpointHttpServerInstantTest.JSON_PROPERTY_AGENT_SELECTOR_TYPE,
   EndpointHttpServerInstantTest.JSON_PROPERTY_AGENTS,
-  EndpointHttpServerInstantTest.JSON_PROPERTY_HAS_PING,
-  EndpointHttpServerInstantTest.JSON_PROPERTY_HAS_TRACEROUTE,
   EndpointHttpServerInstantTest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
   EndpointHttpServerInstantTest.JSON_PROPERTY_MAX_MACHINES,
-  EndpointHttpServerInstantTest.JSON_PROPERTY_PORT,
   EndpointHttpServerInstantTest.JSON_PROPERTY_TEST_NAME,
   EndpointHttpServerInstantTest.JSON_PROPERTY_AUTH_TYPE,
   EndpointHttpServerInstantTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
   EndpointHttpServerInstantTest.JSON_PROPERTY_HTTP_TIME_LIMIT,
   EndpointHttpServerInstantTest.JSON_PROPERTY_PROTOCOL,
-  EndpointHttpServerInstantTest.JSON_PROPERTY_URL,
   EndpointHttpServerInstantTest.JSON_PROPERTY_USERNAME,
   EndpointHttpServerInstantTest.JSON_PROPERTY_SSL_VERSION_ID,
   EndpointHttpServerInstantTest.JSON_PROPERTY_TCP_PROBE_MODE,
   EndpointHttpServerInstantTest.JSON_PROPERTY_VERIFY_CERTIFICATE,
+  EndpointHttpServerInstantTest.JSON_PROPERTY_URL,
+  EndpointHttpServerInstantTest.JSON_PROPERTY_HAS_PING,
+  EndpointHttpServerInstantTest.JSON_PROPERTY_HAS_TRACEROUTE,
+  EndpointHttpServerInstantTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   EndpointHttpServerInstantTest.JSON_PROPERTY_TARGET_RESPONSE_TIME,
-  EndpointHttpServerInstantTest.JSON_PROPERTY_PASSWORD
+  EndpointHttpServerInstantTest.JSON_PROPERTY_PASSWORD,
+  EndpointHttpServerInstantTest.JSON_PROPERTY_PORT
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointHttpServerInstantTest {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
-  private EndpointTestAgentSelectorType agentSelectorType;
+  private EndpointTestAgentSelectorType agentSelectorType = EndpointTestAgentSelectorType.ALL_AGENTS;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<UUID> agents = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_HAS_PING = "hasPing";
-  private Boolean hasPing = true;
-
-  public static final String JSON_PROPERTY_HAS_TRACEROUTE = "hasTraceroute";
-  private Boolean hasTraceroute = true;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
   private List<String> endpointAgentLabels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
-  private Integer maxMachines;
-
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port;
+  private Integer maxMachines = 25;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
@@ -89,31 +81,43 @@ public class EndpointHttpServerInstantTest {
   private Boolean hasPathTraceInSession;
 
   public static final String JSON_PROPERTY_HTTP_TIME_LIMIT = "httpTimeLimit";
-  private Integer httpTimeLimit;
+  private Integer httpTimeLimit = 5000;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
-
-  public static final String JSON_PROPERTY_URL = "url";
-  private String url;
 
   public static final String JSON_PROPERTY_USERNAME = "username";
   private String username;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
-  private Boolean verifyCertificate;
+  private Boolean verifyCertificate = true;
+
+  public static final String JSON_PROPERTY_URL = "url";
+  private String url;
+
+  public static final String JSON_PROPERTY_HAS_PING = "hasPing";
+  private Boolean hasPing = true;
+
+  public static final String JSON_PROPERTY_HAS_TRACEROUTE = "hasTraceroute";
+  private Boolean hasTraceroute = true;
+
+  public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
+  private Boolean networkMeasurements = true;
 
   public static final String JSON_PROPERTY_TARGET_RESPONSE_TIME = "targetResponseTime";
-  private Integer targetResponseTime;
+  private Integer targetResponseTime = 1000;
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
+
+  public static final String JSON_PROPERTY_PORT = "port";
+  private Integer port;
 
   public EndpointHttpServerInstantTest() { 
   }
@@ -127,9 +131,9 @@ public class EndpointHttpServerInstantTest {
    * Get agentSelectorType
    * @return agentSelectorType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_AGENT_SELECTOR_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public EndpointTestAgentSelectorType getAgentSelectorType() {
     return agentSelectorType;
@@ -137,7 +141,7 @@ public class EndpointHttpServerInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_AGENT_SELECTOR_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgentSelectorType(EndpointTestAgentSelectorType agentSelectorType) {
     this.agentSelectorType = agentSelectorType;
   }
@@ -173,56 +177,6 @@ public class EndpointHttpServerInstantTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgents(List<UUID> agents) {
     this.agents = agents;
-  }
-
-
-  public EndpointHttpServerInstantTest hasPing(Boolean hasPing) {
-    this.hasPing = hasPing;
-    return this;
-  }
-
-   /**
-   * Optional flag indicating if the test should run ping.
-   * @return hasPing
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HAS_PING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getHasPing() {
-    return hasPing;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HAS_PING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasPing(Boolean hasPing) {
-    this.hasPing = hasPing;
-  }
-
-
-  public EndpointHttpServerInstantTest hasTraceroute(Boolean hasTraceroute) {
-    this.hasTraceroute = hasTraceroute;
-    return this;
-  }
-
-   /**
-   * Optional flag indicating if the test should run traceroute.
-   * @return hasTraceroute
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HAS_TRACEROUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getHasTraceroute() {
-    return hasTraceroute;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HAS_TRACEROUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasTraceroute(Boolean hasTraceroute) {
-    this.hasTraceroute = hasTraceroute;
   }
 
 
@@ -270,9 +224,9 @@ public class EndpointHttpServerInstantTest {
    * maximum: 50000
    * @return maxMachines
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MAX_MACHINES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMaxMachines() {
     return maxMachines;
@@ -280,34 +234,9 @@ public class EndpointHttpServerInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_MAX_MACHINES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMaxMachines(Integer maxMachines) {
     this.maxMachines = maxMachines;
-  }
-
-
-  public EndpointHttpServerInstantTest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Port number, if not specified, the port is selected based on a protocol (HTTP 80, HTTPS 443).
-   * @return port
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPort(Integer port) {
-    this.port = port;
   }
 
 
@@ -395,9 +324,9 @@ public class EndpointHttpServerInstantTest {
    * Maximum amount of time in milliseconds the agents wait before a request times out.
    * @return httpTimeLimit
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_HTTP_TIME_LIMIT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getHttpTimeLimit() {
     return httpTimeLimit;
@@ -405,7 +334,7 @@ public class EndpointHttpServerInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_HTTP_TIME_LIMIT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHttpTimeLimit(Integer httpTimeLimit) {
     this.httpTimeLimit = httpTimeLimit;
   }
@@ -433,31 +362,6 @@ public class EndpointHttpServerInstantTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProtocol(EndpointTestProtocol protocol) {
     this.protocol = protocol;
-  }
-
-
-  public EndpointHttpServerInstantTest url(String url) {
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * Test target URL. Optionally, you can specify a protocol (http or https). If no protocol is provided, the default &#x60;https&#x60; protocol is used.
-   * @return url
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getUrl() {
-    return url;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUrl(String url) {
-    this.url = url;
   }
 
 
@@ -495,9 +399,9 @@ public class EndpointHttpServerInstantTest {
    * Get sslVersionId
    * @return sslVersionId
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SSL_VERSION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public TestSslVersionId getSslVersionId() {
     return sslVersionId;
@@ -505,7 +409,7 @@ public class EndpointHttpServerInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_SSL_VERSION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSslVersionId(TestSslVersionId sslVersionId) {
     this.sslVersionId = sslVersionId;
   }
@@ -545,9 +449,9 @@ public class EndpointHttpServerInstantTest {
    * Flag indicating if a certificate should be verified.
    * @return verifyCertificate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VERIFY_CERTIFICATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getVerifyCertificate() {
     return verifyCertificate;
@@ -555,9 +459,113 @@ public class EndpointHttpServerInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_VERIFY_CERTIFICATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVerifyCertificate(Boolean verifyCertificate) {
     this.verifyCertificate = verifyCertificate;
+  }
+
+
+  public EndpointHttpServerInstantTest url(String url) {
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * The test target URL. You can optionally specify the protocol (&#x60;http&#x60; or &#x60;https&#x60;).   - **Default Protocol:** If no protocol is specified, &#x60;https&#x60; is used by default.  - **Port Number:** To specify a port, append it to the URL with a colon after the hostname or IP address (e.g., &#x60;https://example.com:443&#x60;).      - If no port is specified in the URL, the &#x60;port&#x60; is determined by either the deprecated &#x60;port&#x60; field or the default protocol (HTTP: 80, HTTPS: 443). 
+   * @return url
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUrl() {
+    return url;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+
+  public EndpointHttpServerInstantTest hasPing(Boolean hasPing) {
+    this.hasPing = hasPing;
+    return this;
+  }
+
+   /**
+   * Optional flag indicating if the test should run ping.
+   * @return hasPing
+   * @deprecated
+  **/
+  @Deprecated
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_HAS_PING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getHasPing() {
+    return hasPing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HAS_PING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHasPing(Boolean hasPing) {
+    this.hasPing = hasPing;
+  }
+
+
+  public EndpointHttpServerInstantTest hasTraceroute(Boolean hasTraceroute) {
+    this.hasTraceroute = hasTraceroute;
+    return this;
+  }
+
+   /**
+   * Optional flag indicating if the test should run traceroute.
+   * @return hasTraceroute
+   * @deprecated
+  **/
+  @Deprecated
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_HAS_TRACEROUTE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getHasTraceroute() {
+    return hasTraceroute;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HAS_TRACEROUTE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHasTraceroute(Boolean hasTraceroute) {
+    this.hasTraceroute = hasTraceroute;
+  }
+
+
+  public EndpointHttpServerInstantTest networkMeasurements(Boolean networkMeasurements) {
+    this.networkMeasurements = networkMeasurements;
+    return this;
+  }
+
+   /**
+   * Enable or disable network measurements. Set to true to enable or false to disable network measurements.
+   * @return networkMeasurements
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NETWORK_MEASUREMENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getNetworkMeasurements() {
+    return networkMeasurements;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NETWORK_MEASUREMENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNetworkMeasurements(Boolean networkMeasurements) {
+    this.networkMeasurements = networkMeasurements;
   }
 
 
@@ -570,9 +578,9 @@ public class EndpointHttpServerInstantTest {
    * Response time target in milliseconds. Affects the colors of agents and legends on the view page. The value is compared with actual response time in order to determine the color scale (from green to red).
    * @return targetResponseTime
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TARGET_RESPONSE_TIME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getTargetResponseTime() {
     return targetResponseTime;
@@ -580,7 +588,7 @@ public class EndpointHttpServerInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_TARGET_RESPONSE_TIME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTargetResponseTime(Integer targetResponseTime) {
     this.targetResponseTime = targetResponseTime;
   }
@@ -611,6 +619,33 @@ public class EndpointHttpServerInstantTest {
   }
 
 
+  public EndpointHttpServerInstantTest port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * **(Deprecated)** The port number to use for the test. It&#39;s recommended to specify the port directly in the &#x60;url&#x60; field instead. If this field is set, it will override the default protocol ports (HTTP: 80, HTTPS: 443) and any port specified in the &#x60;url&#x60;. 
+   * @return port
+   * @deprecated
+  **/
+  @Deprecated
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getPort() {
+    return port;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPort(Integer port) {
+    this.port = port;
+  }
+
+
   /**
    * Return true if this EndpointHttpServerInstantTest object is equal to o.
    */
@@ -625,28 +660,29 @@ public class EndpointHttpServerInstantTest {
     EndpointHttpServerInstantTest endpointHttpServerInstantTest = (EndpointHttpServerInstantTest) o;
     return Objects.equals(this.agentSelectorType, endpointHttpServerInstantTest.agentSelectorType) &&
         Objects.equals(this.agents, endpointHttpServerInstantTest.agents) &&
-        Objects.equals(this.hasPing, endpointHttpServerInstantTest.hasPing) &&
-        Objects.equals(this.hasTraceroute, endpointHttpServerInstantTest.hasTraceroute) &&
         Objects.equals(this.endpointAgentLabels, endpointHttpServerInstantTest.endpointAgentLabels) &&
         Objects.equals(this.maxMachines, endpointHttpServerInstantTest.maxMachines) &&
-        Objects.equals(this.port, endpointHttpServerInstantTest.port) &&
         Objects.equals(this.testName, endpointHttpServerInstantTest.testName) &&
         Objects.equals(this.authType, endpointHttpServerInstantTest.authType) &&
         Objects.equals(this.hasPathTraceInSession, endpointHttpServerInstantTest.hasPathTraceInSession) &&
         Objects.equals(this.httpTimeLimit, endpointHttpServerInstantTest.httpTimeLimit) &&
         Objects.equals(this.protocol, endpointHttpServerInstantTest.protocol) &&
-        Objects.equals(this.url, endpointHttpServerInstantTest.url) &&
         Objects.equals(this.username, endpointHttpServerInstantTest.username) &&
         Objects.equals(this.sslVersionId, endpointHttpServerInstantTest.sslVersionId) &&
         Objects.equals(this.tcpProbeMode, endpointHttpServerInstantTest.tcpProbeMode) &&
         Objects.equals(this.verifyCertificate, endpointHttpServerInstantTest.verifyCertificate) &&
+        Objects.equals(this.url, endpointHttpServerInstantTest.url) &&
+        Objects.equals(this.hasPing, endpointHttpServerInstantTest.hasPing) &&
+        Objects.equals(this.hasTraceroute, endpointHttpServerInstantTest.hasTraceroute) &&
+        Objects.equals(this.networkMeasurements, endpointHttpServerInstantTest.networkMeasurements) &&
         Objects.equals(this.targetResponseTime, endpointHttpServerInstantTest.targetResponseTime) &&
-        Objects.equals(this.password, endpointHttpServerInstantTest.password);
+        Objects.equals(this.password, endpointHttpServerInstantTest.password) &&
+        Objects.equals(this.port, endpointHttpServerInstantTest.port);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, hasPing, hasTraceroute, endpointAgentLabels, maxMachines, port, testName, authType, hasPathTraceInSession, httpTimeLimit, protocol, url, username, sslVersionId, tcpProbeMode, verifyCertificate, targetResponseTime, password);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, authType, hasPathTraceInSession, httpTimeLimit, protocol, username, sslVersionId, tcpProbeMode, verifyCertificate, url, hasPing, hasTraceroute, networkMeasurements, targetResponseTime, password, port);
   }
 
   @Override
@@ -655,23 +691,24 @@ public class EndpointHttpServerInstantTest {
     sb.append("class EndpointHttpServerInstantTest {\n");
     sb.append("    agentSelectorType: ").append(toIndentedString(agentSelectorType)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
-    sb.append("    hasPing: ").append(toIndentedString(hasPing)).append("\n");
-    sb.append("    hasTraceroute: ").append(toIndentedString(hasTraceroute)).append("\n");
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
     sb.append("    httpTimeLimit: ").append(toIndentedString(httpTimeLimit)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    sslVersionId: ").append(toIndentedString(sslVersionId)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
     sb.append("    verifyCertificate: ").append(toIndentedString(verifyCertificate)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    hasPing: ").append(toIndentedString(hasPing)).append("\n");
+    sb.append("    hasTraceroute: ").append(toIndentedString(hasTraceroute)).append("\n");
+    sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    targetResponseTime: ").append(toIndentedString(targetResponseTime)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("}");
     return sb.toString();
   }

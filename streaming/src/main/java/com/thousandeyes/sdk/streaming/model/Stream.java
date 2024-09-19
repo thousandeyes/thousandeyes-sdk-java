@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.streaming.model.DataModelVersion;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
+import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.StreamType;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
 import com.thousandeyes.sdk.streaming.model.TestMatch;
@@ -41,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Stream.JSON_PROPERTY_TAG_MATCH,
   Stream.JSON_PROPERTY_TEST_MATCH,
   Stream.JSON_PROPERTY_ENABLED,
+  Stream.JSON_PROPERTY_EXPORTER_CONFIG,
   Stream.JSON_PROPERTY_TYPE,
   Stream.JSON_PROPERTY_ENDPOINT_TYPE,
   Stream.JSON_PROPERTY_STREAM_ENDPOINT_URL,
@@ -60,6 +62,9 @@ public class Stream {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
 
+  public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
+  private ExporterConfig exporterConfig;
+
   public static final String JSON_PROPERTY_TYPE = "type";
   private StreamType type;
 
@@ -70,7 +75,7 @@ public class Stream {
   private String streamEndpointUrl;
 
   public static final String JSON_PROPERTY_DATA_MODEL_VERSION = "dataModelVersion";
-  private DataModelVersion dataModelVersion;
+  private DataModelVersion dataModelVersion = DataModelVersion.V2;
 
   public Stream() { 
   }
@@ -199,6 +204,31 @@ public class Stream {
   }
 
 
+  public Stream exporterConfig(ExporterConfig exporterConfig) {
+    this.exporterConfig = exporterConfig;
+    return this;
+  }
+
+   /**
+   * Get exporterConfig
+   * @return exporterConfig
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXPORTER_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ExporterConfig getExporterConfig() {
+    return exporterConfig;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXPORTER_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExporterConfig(ExporterConfig exporterConfig) {
+    this.exporterConfig = exporterConfig;
+  }
+
+
   public Stream type(StreamType type) {
     this.type = type;
     return this;
@@ -315,6 +345,7 @@ public class Stream {
         Objects.equals(this.tagMatch, stream.tagMatch) &&
         Objects.equals(this.testMatch, stream.testMatch) &&
         Objects.equals(this.enabled, stream.enabled) &&
+        Objects.equals(this.exporterConfig, stream.exporterConfig) &&
         Objects.equals(this.type, stream.type) &&
         Objects.equals(this.endpointType, stream.endpointType) &&
         Objects.equals(this.streamEndpointUrl, stream.streamEndpointUrl) &&
@@ -323,7 +354,7 @@ public class Stream {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, tagMatch, testMatch, enabled, type, endpointType, streamEndpointUrl, dataModelVersion);
+    return Objects.hash(customHeaders, tagMatch, testMatch, enabled, exporterConfig, type, endpointType, streamEndpointUrl, dataModelVersion);
   }
 
   @Override
@@ -334,6 +365,7 @@ public class Stream {
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    endpointType: ").append(toIndentedString(endpointType)).append("\n");
     sb.append("    streamEndpointUrl: ").append(toIndentedString(streamEndpointUrl)).append("\n");
