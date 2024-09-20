@@ -30,7 +30,9 @@ public enum EnterpriseAgentIpv6Policy {
   
   PREFER_IPV6("prefer-ipv6"),
   
-  FORCE_IPV6("force-ipv6");
+  FORCE_IPV6("force-ipv6"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum EnterpriseAgentIpv6Policy {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -173,6 +173,46 @@ public class UsersApi {
     return requestBuilder;
   }
   /**
+   * Retrieve current user
+   * Retrieves detailed information about the current user.
+   * @return UserDetail
+   * @throws ApiException if fails to make API call
+   */
+  public UserDetail getCurrentUser() throws ApiException {
+    ApiResponse<UserDetail> response = getCurrentUserWithHttpInfo();
+    return response.getData();
+  }
+
+  /**
+   * Retrieve current user
+   * Retrieves detailed information about the current user.
+   * @return ApiResponse&lt;UserDetail&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<UserDetail> getCurrentUserWithHttpInfo() throws ApiException {
+    getCurrentUserValidateRequest();
+
+    var requestBuilder = getCurrentUserRequestBuilder();
+
+    return apiClient.send(requestBuilder.build(), UserDetail.class);
+  }
+
+  private void getCurrentUserValidateRequest() throws ApiException {
+  }
+
+  private ApiRequest.ApiRequestBuilder getCurrentUserRequestBuilder() throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("GET");
+
+    String path = "/users/current";
+    requestBuilder.path(path);
+
+
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    return requestBuilder;
+  }
+  /**
    * Retrieve user
    * Retrieves detailed information about a user. This operation requires the &#x60;API Access&#x60; and &#x60;View All Users&#x60; permissions.
    * @param id Identifier for the user. (required)

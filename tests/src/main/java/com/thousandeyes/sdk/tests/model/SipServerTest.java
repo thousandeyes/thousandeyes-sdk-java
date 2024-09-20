@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.Monitor;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
@@ -46,6 +45,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerTest.JSON_PROPERTY_ALERTS_ENABLED,
   SipServerTest.JSON_PROPERTY_ENABLED,
   SipServerTest.JSON_PROPERTY_ALERT_RULES,
+  SipServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  SipServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
+  SipServerTest.JSON_PROPERTY_MONITORS,
   SipServerTest.JSON_PROPERTY_CREATED_BY,
   SipServerTest.JSON_PROPERTY_CREATED_DATE,
   SipServerTest.JSON_PROPERTY_DESCRIPTION,
@@ -70,21 +72,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerTest.JSON_PROPERTY_SIP_TIME_LIMIT,
   SipServerTest.JSON_PROPERTY_FIXED_PACKET_RATE,
   SipServerTest.JSON_PROPERTY_IPV6_POLICY,
-  SipServerTest.JSON_PROPERTY_AGENTS,
   SipServerTest.JSON_PROPERTY_AUTH_USER,
   SipServerTest.JSON_PROPERTY_PASSWORD,
   SipServerTest.JSON_PROPERTY_PORT,
   SipServerTest.JSON_PROPERTY_PROTOCOL,
   SipServerTest.JSON_PROPERTY_SIP_REGISTRAR,
-  SipServerTest.JSON_PROPERTY_USER,
-  SipServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
-  SipServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  SipServerTest.JSON_PROPERTY_MONITORS
+  SipServerTest.JSON_PROPERTY_USER
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class SipServerTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -94,6 +92,15 @@ public class SipServerTest {
 
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
   private List<AlertRule> alertRules = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
+  private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<Monitor> monitors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -167,9 +174,6 @@ public class SipServerTest {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_AUTH_USER = "authUser";
   private String authUser;
 
@@ -188,20 +192,12 @@ public class SipServerTest {
   public static final String JSON_PROPERTY_USER = "user";
   private String user;
 
-  public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
-  private Boolean bgpMeasurements = true;
-
-  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
-  private Boolean usePublicBgp = true;
-
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors = new ArrayList<>();
-
   public SipServerTest() { 
   }
 
   @JsonCreator
   public SipServerTest(
+    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors, 
     @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
@@ -211,11 +207,10 @@ public class SipServerTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents, 
-    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
+    this.monitors = monitors;
     this.createdBy = createdBy;
     this.createdDate = createdDate;
     this.liveShare = liveShare;
@@ -226,8 +221,6 @@ public class SipServerTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
-    this.monitors = monitors;
   }
 
   public SipServerTest interval(TestInterval interval) {
@@ -336,6 +329,71 @@ public class SipServerTest {
   public void setAlertRules(List<AlertRule> alertRules) {
     this.alertRules = alertRules;
   }
+
+
+  public SipServerTest bgpMeasurements(Boolean bgpMeasurements) {
+    this.bgpMeasurements = bgpMeasurements;
+    return this;
+  }
+
+   /**
+   * Set to &#x60;true&#x60; to enable bgp measurements.
+   * @return bgpMeasurements
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BGP_MEASUREMENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getBgpMeasurements() {
+    return bgpMeasurements;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BGP_MEASUREMENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBgpMeasurements(Boolean bgpMeasurements) {
+    this.bgpMeasurements = bgpMeasurements;
+  }
+
+
+  public SipServerTest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+  }
+
+
+   /**
+   * Contains list of enabled BGP monitors.
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Monitor> getMonitors() {
+    return monitors;
+  }
+
+
 
 
    /**
@@ -846,21 +904,6 @@ public class SipServerTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public SipServerTest authUser(String authUser) {
     this.authUser = authUser;
     return this;
@@ -1013,71 +1056,6 @@ public class SipServerTest {
   }
 
 
-  public SipServerTest bgpMeasurements(Boolean bgpMeasurements) {
-    this.bgpMeasurements = bgpMeasurements;
-    return this;
-  }
-
-   /**
-   * Set to &#x60;true&#x60; to enable bgp measurements.
-   * @return bgpMeasurements
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BGP_MEASUREMENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getBgpMeasurements() {
-    return bgpMeasurements;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_BGP_MEASUREMENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBgpMeasurements(Boolean bgpMeasurements) {
-    this.bgpMeasurements = bgpMeasurements;
-  }
-
-
-  public SipServerTest usePublicBgp(Boolean usePublicBgp) {
-    this.usePublicBgp = usePublicBgp;
-    return this;
-  }
-
-   /**
-   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
-   * @return usePublicBgp
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getUsePublicBgp() {
-    return usePublicBgp;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsePublicBgp(Boolean usePublicBgp) {
-    this.usePublicBgp = usePublicBgp;
-  }
-
-
-   /**
-   * Contains list of enabled BGP monitors.
-   * @return monitors
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Monitor> getMonitors() {
-    return monitors;
-  }
-
-
-
-
   /**
    * Return true if this SipServerTest object is equal to o.
    */
@@ -1094,6 +1072,9 @@ public class SipServerTest {
         Objects.equals(this.alertsEnabled, sipServerTest.alertsEnabled) &&
         Objects.equals(this.enabled, sipServerTest.enabled) &&
         Objects.equals(this.alertRules, sipServerTest.alertRules) &&
+        Objects.equals(this.bgpMeasurements, sipServerTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, sipServerTest.usePublicBgp) &&
+        Objects.equals(this.monitors, sipServerTest.monitors) &&
         Objects.equals(this.createdBy, sipServerTest.createdBy) &&
         Objects.equals(this.createdDate, sipServerTest.createdDate) &&
         Objects.equals(this.description, sipServerTest.description) &&
@@ -1118,21 +1099,17 @@ public class SipServerTest {
         Objects.equals(this.sipTimeLimit, sipServerTest.sipTimeLimit) &&
         Objects.equals(this.fixedPacketRate, sipServerTest.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, sipServerTest.ipv6Policy) &&
-        Objects.equals(this.agents, sipServerTest.agents) &&
         Objects.equals(this.authUser, sipServerTest.authUser) &&
         Objects.equals(this.password, sipServerTest.password) &&
         Objects.equals(this.port, sipServerTest.port) &&
         Objects.equals(this.protocol, sipServerTest.protocol) &&
         Objects.equals(this.sipRegistrar, sipServerTest.sipRegistrar) &&
-        Objects.equals(this.user, sipServerTest.user) &&
-        Objects.equals(this.bgpMeasurements, sipServerTest.bgpMeasurements) &&
-        Objects.equals(this.usePublicBgp, sipServerTest.usePublicBgp) &&
-        Objects.equals(this.monitors, sipServerTest.monitors);
+        Objects.equals(this.user, sipServerTest.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, agents, authUser, password, port, protocol, sipRegistrar, user, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, bgpMeasurements, usePublicBgp, monitors, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, authUser, password, port, protocol, sipRegistrar, user);
   }
 
   @Override
@@ -1143,6 +1120,9 @@ public class SipServerTest {
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
+    sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -1167,16 +1147,12 @@ public class SipServerTest {
     sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    authUser: ").append(toIndentedString(authUser)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    sipRegistrar: ").append(toIndentedString(sipRegistrar)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
-    sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
-    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

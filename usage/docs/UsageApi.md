@@ -375,7 +375,7 @@ public class Example {
 
         UsageApi apiInstance = new UsageApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Expands the available resources. By default, no expansion takes place if the  `expand` query parameter is not passed. For example, to expand the \"tests\"  resource, pass the query '?expand=test'.
+        List<ExpandUsageOptions> expand = Arrays.asList(); // List<ExpandUsageOptions> | Expands the available resources. By default, no expansion takes place if the  `expand` query parameter is not passed. For example, to expand the \"tests\"  resource, pass the query '?expand=test'.
         try {
             Usage result = apiInstance.getUsage(aid, expand);
             System.out.println(result);
@@ -396,7 +396,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. | [optional] |
+| **expand** | [**List&lt;ExpandUsageOptions&gt;**](ExpandUsageOptions.md)| Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. | [optional] |
 
 ### Return type
 
@@ -454,7 +454,7 @@ public class Example {
 
         UsageApi apiInstance = new UsageApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        List<Expand> expand = Arrays.asList(); // List<Expand> | Expands the available resources. By default, no expansion takes place if the  `expand` query parameter is not passed. For example, to expand the \"tests\"  resource, pass the query '?expand=test'.
+        List<ExpandUsageOptions> expand = Arrays.asList(); // List<ExpandUsageOptions> | Expands the available resources. By default, no expansion takes place if the  `expand` query parameter is not passed. For example, to expand the \"tests\"  resource, pass the query '?expand=test'.
         try {
             ApiResponse<Usage> response = apiInstance.getUsageWithHttpInfo(aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
@@ -477,7 +477,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;Expand&gt;**](Expand.md)| Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. | [optional] |
+| **expand** | [**List&lt;ExpandUsageOptions&gt;**](ExpandUsageOptions.md)| Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. | [optional] |
 
 ### Return type
 

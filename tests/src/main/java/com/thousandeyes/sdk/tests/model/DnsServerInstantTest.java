@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.DnsQueryClass;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.model.TestDnsServer;
@@ -68,8 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerInstantTest.JSON_PROPERTY_RECURSIVE_QUERIES,
   DnsServerInstantTest.JSON_PROPERTY_IPV6_POLICY,
   DnsServerInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE,
-  DnsServerInstantTest.JSON_PROPERTY_DNS_QUERY_CLASS,
-  DnsServerInstantTest.JSON_PROPERTY_AGENTS
+  DnsServerInstantTest.JSON_PROPERTY_DNS_QUERY_CLASS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsServerInstantTest {
@@ -154,9 +152,6 @@ public class DnsServerInstantTest {
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public DnsServerInstantTest() { 
   }
 
@@ -171,8 +166,7 @@ public class DnsServerInstantTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
     this.createdBy = createdBy;
@@ -185,7 +179,6 @@ public class DnsServerInstantTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
   }
 
    /**
@@ -775,21 +768,6 @@ public class DnsServerInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this DnsServerInstantTest object is equal to o.
    */
@@ -828,13 +806,12 @@ public class DnsServerInstantTest {
         Objects.equals(this.recursiveQueries, dnsServerInstantTest.recursiveQueries) &&
         Objects.equals(this.ipv6Policy, dnsServerInstantTest.ipv6Policy) &&
         Objects.equals(this.fixedPacketRate, dnsServerInstantTest.fixedPacketRate) &&
-        Objects.equals(this.dnsQueryClass, dnsServerInstantTest.dnsQueryClass) &&
-        Objects.equals(this.agents, dnsServerInstantTest.agents);
+        Objects.equals(this.dnsQueryClass, dnsServerInstantTest.dnsQueryClass);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass);
   }
 
   @Override
@@ -868,7 +845,6 @@ public class DnsServerInstantTest {
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

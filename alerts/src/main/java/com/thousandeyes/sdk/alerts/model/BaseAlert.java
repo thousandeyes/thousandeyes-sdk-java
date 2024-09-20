@@ -127,7 +127,7 @@ public class BaseAlert {
 
 
    /**
-   * The start date and time (in UTC, ISO 8601 format) for querying alerts.
+   * (Optional) When passing &#x60;window&#x60; or &#x60;startDate&#x60; parameter,  the client will also receive the &#x60;startDate&#x60; field indicating the UTC start date of the data&#39;s time range being retrieved  (ISO date-time format).
    * @return startDate
   **/
   @jakarta.annotation.Nullable
@@ -142,7 +142,7 @@ public class BaseAlert {
 
 
    /**
-   * The end date and time (in UTC, ISO 8601 format) for querying alerts.
+   * (Optional) When passing &#x60;window&#x60; or &#x60;endDate&#x60; parameter,  the client will also receive the &#x60;endDate&#x60; field indicating the UTC end date of the data&#39;s time range being retrieved  (ISO date-time format).
    * @return endDate
   **/
   @jakarta.annotation.Nullable

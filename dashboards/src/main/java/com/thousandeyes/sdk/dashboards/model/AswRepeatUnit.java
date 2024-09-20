@@ -30,7 +30,9 @@ public enum AswRepeatUnit {
   
   WEEK("week"),
   
-  MONTH("month");
+  MONTH("month"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum AswRepeatUnit {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

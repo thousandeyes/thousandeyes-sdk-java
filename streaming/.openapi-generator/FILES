@@ -12,6 +12,8 @@ src/main/java/com/thousandeyes/sdk/streaming/model/BadRequestError.java
 src/main/java/com/thousandeyes/sdk/streaming/model/CreateStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/DataModelVersion.java
 src/main/java/com/thousandeyes/sdk/streaming/model/EndpointType.java
+src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfig.java
+src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigSplunkHec.java
 src/main/java/com/thousandeyes/sdk/streaming/model/GetStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/PutStream.java
 src/main/java/com/thousandeyes/sdk/streaming/model/Stream.java

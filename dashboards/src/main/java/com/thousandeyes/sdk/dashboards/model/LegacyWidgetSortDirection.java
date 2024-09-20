@@ -28,7 +28,9 @@ public enum LegacyWidgetSortDirection {
   
   ASCENDING("Ascending"),
   
-  DESCENDING("Descending");
+  DESCENDING("Descending"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum LegacyWidgetSortDirection {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

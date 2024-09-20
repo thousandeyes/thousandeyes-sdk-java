@@ -32,7 +32,9 @@ public enum StackedAreaChartDatasource {
   
   ENDPOINT_BROWSER_SESSION("ENDPOINT_BROWSER_SESSION"),
   
-  ENDPOINT_SCHEDULED_TEST("ENDPOINT_SCHEDULED_TEST");
+  ENDPOINT_SCHEDULED_TEST("ENDPOINT_SCHEDULED_TEST"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum StackedAreaChartDatasource {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

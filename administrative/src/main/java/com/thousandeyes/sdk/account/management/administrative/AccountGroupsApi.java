@@ -26,7 +26,7 @@ import com.thousandeyes.sdk.account.management.administrative.model.AccountGroup
 import com.thousandeyes.sdk.account.management.administrative.model.AccountGroups;
 import com.thousandeyes.sdk.account.management.administrative.model.CreatedAccountGroup;
 import com.thousandeyes.sdk.account.management.administrative.model.Error;
-import com.thousandeyes.sdk.account.management.administrative.model.Expand;
+import com.thousandeyes.sdk.account.management.administrative.model.ExpandAccountGroupOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.account.management.administrative.model.UnauthorizedError;
 import com.thousandeyes.sdk.account.management.administrative.model.ValidationError;
@@ -72,7 +72,7 @@ public class AccountGroupsApi {
    * @return CreatedAccountGroup
    * @throws ApiException if fails to make API call
    */
-  public CreatedAccountGroup createAccountGroup(AccountGroupRequest accountGroupRequest, List<Expand> expand) throws ApiException {
+  public CreatedAccountGroup createAccountGroup(AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
     ApiResponse<CreatedAccountGroup> response = createAccountGroupWithHttpInfo(accountGroupRequest, expand);
     return response.getData();
   }
@@ -85,7 +85,7 @@ public class AccountGroupsApi {
    * @return ApiResponse&lt;CreatedAccountGroup&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CreatedAccountGroup> createAccountGroupWithHttpInfo(AccountGroupRequest accountGroupRequest, List<Expand> expand) throws ApiException {
+  public ApiResponse<CreatedAccountGroup> createAccountGroupWithHttpInfo(AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
     createAccountGroupValidateRequest(accountGroupRequest);
 
     var requestBuilder = createAccountGroupRequestBuilder(accountGroupRequest, expand);
@@ -100,7 +100,7 @@ public class AccountGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAccountGroupRequestBuilder(AccountGroupRequest accountGroupRequest, List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder createAccountGroupRequestBuilder(AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -173,7 +173,7 @@ public class AccountGroupsApi {
    * @return AccountGroupDetail
    * @throws ApiException if fails to make API call
    */
-  public AccountGroupDetail getAccountGroup(String id, List<Expand> expand) throws ApiException {
+  public AccountGroupDetail getAccountGroup(String id, List<ExpandAccountGroupOptions> expand) throws ApiException {
     ApiResponse<AccountGroupDetail> response = getAccountGroupWithHttpInfo(id, expand);
     return response.getData();
   }
@@ -186,7 +186,7 @@ public class AccountGroupsApi {
    * @return ApiResponse&lt;AccountGroupDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AccountGroupDetail> getAccountGroupWithHttpInfo(String id, List<Expand> expand) throws ApiException {
+  public ApiResponse<AccountGroupDetail> getAccountGroupWithHttpInfo(String id, List<ExpandAccountGroupOptions> expand) throws ApiException {
     getAccountGroupValidateRequest(id);
 
     var requestBuilder = getAccountGroupRequestBuilder(id, expand);
@@ -201,7 +201,7 @@ public class AccountGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAccountGroupRequestBuilder(String id, List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getAccountGroupRequestBuilder(String id, List<ExpandAccountGroupOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
@@ -277,7 +277,7 @@ public class AccountGroupsApi {
    * @return AccountGroupDetail
    * @throws ApiException if fails to make API call
    */
-  public AccountGroupDetail updateAccountGroup(String id, AccountGroupRequest accountGroupRequest, List<Expand> expand) throws ApiException {
+  public AccountGroupDetail updateAccountGroup(String id, AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
     ApiResponse<AccountGroupDetail> response = updateAccountGroupWithHttpInfo(id, accountGroupRequest, expand);
     return response.getData();
   }
@@ -291,7 +291,7 @@ public class AccountGroupsApi {
    * @return ApiResponse&lt;AccountGroupDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AccountGroupDetail> updateAccountGroupWithHttpInfo(String id, AccountGroupRequest accountGroupRequest, List<Expand> expand) throws ApiException {
+  public ApiResponse<AccountGroupDetail> updateAccountGroupWithHttpInfo(String id, AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
     updateAccountGroupValidateRequest(id, accountGroupRequest);
 
     var requestBuilder = updateAccountGroupRequestBuilder(id, accountGroupRequest, expand);
@@ -310,7 +310,7 @@ public class AccountGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAccountGroupRequestBuilder(String id, AccountGroupRequest accountGroupRequest, List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder updateAccountGroupRequestBuilder(String id, AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 

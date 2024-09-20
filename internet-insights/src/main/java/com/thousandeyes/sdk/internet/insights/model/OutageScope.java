@@ -28,7 +28,9 @@ public enum OutageScope {
   
   ALL("all"),
   
-  WITH_AFFECTED_TEST("with-affected-test");
+  WITH_AFFECTED_TEST("with-affected-test"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum OutageScope {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

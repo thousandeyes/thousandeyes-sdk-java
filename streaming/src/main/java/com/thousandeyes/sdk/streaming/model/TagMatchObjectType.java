@@ -26,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum TagMatchObjectType {
   
-  TEST("test");
+  TEST("test"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -51,7 +53,7 @@ public enum TagMatchObjectType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

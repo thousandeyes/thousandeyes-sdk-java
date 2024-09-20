@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiError {
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
-  private Integer timestamp;
+  private Long timestamp;
 
   public static final String JSON_PROPERTY_STATUS = "status";
   private Integer status;
@@ -49,7 +49,7 @@ public class ApiError {
   public ApiError() { 
   }
 
-  public ApiError timestamp(Integer timestamp) {
+  public ApiError timestamp(Long timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -62,14 +62,14 @@ public class ApiError {
   @JsonProperty(JSON_PROPERTY_TIMESTAMP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getTimestamp() {
+  public Long getTimestamp() {
     return timestamp;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TIMESTAMP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimestamp(Integer timestamp) {
+  public void setTimestamp(Long timestamp) {
     this.timestamp = timestamp;
   }
 

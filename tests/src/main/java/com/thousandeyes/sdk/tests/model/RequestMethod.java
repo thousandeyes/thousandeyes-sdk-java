@@ -38,7 +38,9 @@ public enum RequestMethod {
   
   OPTIONS("options"),
   
-  TRACE("trace");
+  TRACE("trace"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -63,7 +65,7 @@ public enum RequestMethod {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

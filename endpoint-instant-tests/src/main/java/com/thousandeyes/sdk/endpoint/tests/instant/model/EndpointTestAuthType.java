@@ -30,7 +30,9 @@ public enum EndpointTestAuthType {
   
   BASIC("basic"),
   
-  NTLM("ntlm");
+  NTLM("ntlm"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum EndpointTestAuthType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

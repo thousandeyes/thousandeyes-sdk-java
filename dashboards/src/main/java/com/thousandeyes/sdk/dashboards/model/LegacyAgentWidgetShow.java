@@ -28,7 +28,9 @@ public enum LegacyAgentWidgetShow {
   
   OWNED_AGENTS("Owned Agents"),
   
-  ALL_ASSIGNED_AGENTS("All Assigned Agents");
+  ALL_ASSIGNED_AGENTS("All Assigned Agents"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum LegacyAgentWidgetShow {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

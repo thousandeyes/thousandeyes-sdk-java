@@ -14,7 +14,7 @@ src/main/java/com/thousandeyes/sdk/tags/model/BulkTagAssignment.java
 src/main/java/com/thousandeyes/sdk/tags/model/BulkTagAssignments.java
 src/main/java/com/thousandeyes/sdk/tags/model/BulkTagResponse.java
 src/main/java/com/thousandeyes/sdk/tags/model/Error.java
-src/main/java/com/thousandeyes/sdk/tags/model/Expand.java
+src/main/java/com/thousandeyes/sdk/tags/model/ExpandTagsOptions.java
 src/main/java/com/thousandeyes/sdk/tags/model/Link.java
 src/main/java/com/thousandeyes/sdk/tags/model/ObjectType.java
 src/main/java/com/thousandeyes/sdk/tags/model/SelfLinks.java
