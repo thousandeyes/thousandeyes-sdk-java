@@ -70,7 +70,9 @@ public enum AlertListAlertType {
   
   BROWSER_SESSION_APPLICATION("browser-session-application"),
   
-  ROUTING_BGP("routing-bgp");
+  ROUTING_BGP("routing-bgp"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -95,7 +97,7 @@ public enum AlertListAlertType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -36,7 +36,9 @@ public enum TestTableFilterKey {
   
   TEST_TYPE("Test type"),
   
-  LABEL_ID("Label ID");
+  LABEL_ID("Label ID"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -61,7 +63,7 @@ public enum TestTableFilterKey {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

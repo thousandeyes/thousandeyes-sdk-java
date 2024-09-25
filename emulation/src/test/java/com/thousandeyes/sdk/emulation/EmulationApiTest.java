@@ -16,7 +16,7 @@ import com.thousandeyes.sdk.emulation.model.EmulatedDevice;
 import com.thousandeyes.sdk.emulation.model.EmulatedDeviceResponse;
 import com.thousandeyes.sdk.emulation.model.EmulatedDeviceResponses;
 import com.thousandeyes.sdk.emulation.model.Error;
-import com.thousandeyes.sdk.emulation.model.Expand;
+import com.thousandeyes.sdk.emulation.model.ExpandEmulatedDeviceOptions;
 import com.thousandeyes.sdk.emulation.model.UnauthorizedError;
 import com.thousandeyes.sdk.emulation.model.UserAgents;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;

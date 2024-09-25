@@ -32,7 +32,9 @@ public enum EmulatedDeviceCategory {
   
   PHONE("phone"),
   
-  TABLET("tablet");
+  TABLET("tablet"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum EmulatedDeviceCategory {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

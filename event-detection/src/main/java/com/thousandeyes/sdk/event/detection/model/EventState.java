@@ -28,7 +28,9 @@ public enum EventState {
   
   ACTIVE("active"),
   
-  RESOLVED("resolved");
+  RESOLVED("resolved"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum EventState {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

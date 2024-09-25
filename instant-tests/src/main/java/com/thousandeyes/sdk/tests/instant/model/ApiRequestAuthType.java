@@ -30,7 +30,9 @@ public enum ApiRequestAuthType {
   
   BASIC("basic"),
   
-  BEARER_TOKEN("bearer-token");
+  BEARER_TOKEN("bearer-token"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum ApiRequestAuthType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

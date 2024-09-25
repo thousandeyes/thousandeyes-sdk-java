@@ -28,7 +28,9 @@ public enum ConditionalOperator {
   
   AND("and"),
   
-  OR("or");
+  OR("or"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ConditionalOperator {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

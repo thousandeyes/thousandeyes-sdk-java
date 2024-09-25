@@ -30,7 +30,9 @@ public enum TestProtocol {
   
   ICMP("icmp"),
   
-  UDP("udp");
+  UDP("udp"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum TestProtocol {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

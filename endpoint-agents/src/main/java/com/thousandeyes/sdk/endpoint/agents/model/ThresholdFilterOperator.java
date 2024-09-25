@@ -28,7 +28,9 @@ public enum ThresholdFilterOperator {
   
   GTE("gte"),
   
-  LTE("lte");
+  LTE("lte"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ThresholdFilterOperator {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

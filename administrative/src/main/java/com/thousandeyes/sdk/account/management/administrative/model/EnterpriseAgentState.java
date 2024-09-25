@@ -30,7 +30,9 @@ public enum EnterpriseAgentState {
   
   OFFLINE("offline"),
   
-  DISABLED("disabled");
+  DISABLED("disabled"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum EnterpriseAgentState {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

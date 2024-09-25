@@ -38,7 +38,9 @@ public class AgentThresholdFilter {
    * Gets or Sets name
    */
   public enum NameEnum {
-    LAST_SEEN_MS("last-seen-ms");
+    LAST_SEEN_MS("last-seen-ms"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 
@@ -63,7 +65,7 @@ public class AgentThresholdFilter {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN;
     }
   }
 

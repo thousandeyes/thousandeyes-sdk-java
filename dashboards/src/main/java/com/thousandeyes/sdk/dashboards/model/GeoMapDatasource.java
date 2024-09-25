@@ -44,7 +44,9 @@ public enum GeoMapDatasource {
   
   INTERNET_INSIGHTS("INTERNET_INSIGHTS"),
   
-  ROUTING("ROUTING");
+  ROUTING("ROUTING"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -69,7 +71,7 @@ public enum GeoMapDatasource {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

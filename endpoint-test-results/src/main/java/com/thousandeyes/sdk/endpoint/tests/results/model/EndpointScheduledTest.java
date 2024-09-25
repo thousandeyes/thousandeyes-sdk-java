@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.results.model.AlertRule;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointAgentSelectorConfig;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointAgentToServerTest;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointHttpServerTest;

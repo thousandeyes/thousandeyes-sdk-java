@@ -32,7 +32,9 @@ public enum ObjectType {
   
   ENDPOINT_TEST("endpoint-test"),
   
-  V_AGENT("v-agent");
+  V_AGENT("v-agent"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum ObjectType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -50,7 +50,9 @@ public enum TestType {
   
   SIP_SERVER("sip-server"),
   
-  VOICE("voice");
+  VOICE("voice"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -75,7 +77,7 @@ public enum TestType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

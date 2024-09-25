@@ -30,7 +30,9 @@ public enum TestDirection {
   
   FROM_TARGET("from-target"),
   
-  BIDIRECTIONAL("bidirectional");
+  BIDIRECTIONAL("bidirectional"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum TestDirection {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

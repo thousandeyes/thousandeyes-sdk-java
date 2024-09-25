@@ -34,7 +34,9 @@ public enum ApiRequestMethod {
   
   DELETE("delete"),
   
-  PATCH("patch");
+  PATCH("patch"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -59,7 +61,7 @@ public enum ApiRequestMethod {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

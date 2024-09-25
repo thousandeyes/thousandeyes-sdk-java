@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.DnsQueryClass;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.model.TestDnsTransportProtocol;
@@ -52,8 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceInstantTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsTraceInstantTest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   DnsTraceInstantTest.JSON_PROPERTY_DOMAIN,
-  DnsTraceInstantTest.JSON_PROPERTY_DNS_QUERY_CLASS,
-  DnsTraceInstantTest.JSON_PROPERTY_AGENTS
+  DnsTraceInstantTest.JSON_PROPERTY_DNS_QUERY_CLASS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsTraceInstantTest {
@@ -105,9 +103,6 @@ public class DnsTraceInstantTest {
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public DnsTraceInstantTest() { 
   }
 
@@ -122,8 +117,7 @@ public class DnsTraceInstantTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
     this.createdBy = createdBy;
@@ -136,7 +130,6 @@ public class DnsTraceInstantTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
   }
 
    /**
@@ -439,21 +432,6 @@ public class DnsTraceInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this DnsTraceInstantTest object is equal to o.
    */
@@ -481,13 +459,12 @@ public class DnsTraceInstantTest {
         Objects.equals(this.sharedWithAccounts, dnsTraceInstantTest.sharedWithAccounts) &&
         Objects.equals(this.dnsTransportProtocol, dnsTraceInstantTest.dnsTransportProtocol) &&
         Objects.equals(this.domain, dnsTraceInstantTest.domain) &&
-        Objects.equals(this.dnsQueryClass, dnsTraceInstantTest.dnsQueryClass) &&
-        Objects.equals(this.agents, dnsTraceInstantTest.agents);
+        Objects.equals(this.dnsQueryClass, dnsTraceInstantTest.dnsQueryClass);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass);
   }
 
   @Override
@@ -510,7 +487,6 @@ public class DnsTraceInstantTest {
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

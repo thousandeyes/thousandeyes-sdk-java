@@ -36,7 +36,9 @@ public enum ApiWidgetFixedYScalePrefix {
   
   MPPS("Mpps"),
   
-  GPPS("Gpps");
+  GPPS("Gpps"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -61,7 +63,7 @@ public enum ApiWidgetFixedYScalePrefix {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }
