@@ -39,6 +39,8 @@ class NativeApiClientTest {
     private HttpResponse<InputStream> httpResponse;
     @Mock
     private HttpClient httpClient;
+    @Mock
+    private HttpClient.Builder httpClientBuilder;
     private final ObjectMapper objectMapper = new ObjectMapper()
             .findAndRegisterModules();
     private ApiClient apiClient;
@@ -52,9 +54,15 @@ class NativeApiClientTest {
 
     @BeforeEach
     public void setUp() {
-        apiClient = new NativeApiClient("http://localhost", httpClient, objectMapper, builder -> {
-        }, inputStreamHttpResponse -> {
-        });
+        doReturn(httpClient)
+                .when(httpClientBuilder)
+                .build();
+        
+        apiClient = NativeApiClient.builder()
+                                   .baseUri("http://localhost")
+                                   .httpClientBuilder(httpClientBuilder)
+                                   .mapper(objectMapper)
+                                   .build();
     }
 
     public static Stream<Arguments> validRequestProvider() {
