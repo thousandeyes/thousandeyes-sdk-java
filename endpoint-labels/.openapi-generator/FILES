@@ -2,10 +2,10 @@
 README.md
 api/openapi.yaml
 build.gradle
-docs/ManageLabelsApi.md
-src/main/java/com/thousandeyes/sdk/endpoint/labels/ManageLabelsApi.java
+docs/EndpointAgentLabelsApi.md
+src/main/java/com/thousandeyes/sdk/endpoint/labels/EndpointAgentLabelsApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/labels/model/Error.java
-src/main/java/com/thousandeyes/sdk/endpoint/labels/model/Expand.java
+src/main/java/com/thousandeyes/sdk/endpoint/labels/model/ExpandLabelOptions.java
 src/main/java/com/thousandeyes/sdk/endpoint/labels/model/Filter.java
 src/main/java/com/thousandeyes/sdk/endpoint/labels/model/FilterType.java
 src/main/java/com/thousandeyes/sdk/endpoint/labels/model/Label.java
@@ -20,4 +20,4 @@ src/main/java/com/thousandeyes/sdk/endpoint/labels/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/endpoint/labels/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/sdk/endpoint/labels/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/endpoint/labels/model/ValidationErrorItem.java
-src/test/java/com/thousandeyes/sdk/endpoint/labels/ManageLabelsApiTest.java
+src/test/java/com/thousandeyes/sdk/endpoint/labels/EndpointAgentLabelsApiTest.java

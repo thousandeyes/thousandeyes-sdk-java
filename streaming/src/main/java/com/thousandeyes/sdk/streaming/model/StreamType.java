@@ -28,7 +28,9 @@ public enum StreamType {
   
   OPENTELEMETRY("opentelemetry"),
   
-  SPLUNK_HEC("splunk-hec");
+  SPLUNK_HEC("splunk-hec"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum StreamType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

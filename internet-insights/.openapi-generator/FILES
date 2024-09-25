@@ -2,12 +2,10 @@
 README.md
 api/openapi.yaml
 build.gradle
-docs/CatalogProvidersApi.md
-docs/OutagesApiPublicApi.md
-src/main/java/com/thousandeyes/sdk/internet/insights/CatalogProvidersApi.java
-src/main/java/com/thousandeyes/sdk/internet/insights/OutagesApiPublicApi.java
-src/main/java/com/thousandeyes/sdk/internet/insights/model/ApiAffectedAgent.java
-src/main/java/com/thousandeyes/sdk/internet/insights/model/ApiAffectedTest.java
+docs/InternetInsightsCatalogProvidersApi.md
+docs/InternetInsightsOutagesApi.md
+src/main/java/com/thousandeyes/sdk/internet/insights/InternetInsightsCatalogProvidersApi.java
+src/main/java/com/thousandeyes/sdk/internet/insights/InternetInsightsOutagesApi.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/ApiApplicationOutageAffectedLocation.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/ApiApplicationOutageAffectedServer.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/ApiApplicationOutageDetails.java
@@ -22,6 +20,8 @@ src/main/java/com/thousandeyes/sdk/internet/insights/model/ApiOutage.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/ApiOutageFilter.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/ApiOutagesResponse.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/Error.java
+src/main/java/com/thousandeyes/sdk/internet/insights/model/InternetInsightsApiAffectedAgent.java
+src/main/java/com/thousandeyes/sdk/internet/insights/model/InternetInsightsApiAffectedTest.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/Link.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/OutageScope.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/ProviderLocation.java
@@ -29,5 +29,5 @@ src/main/java/com/thousandeyes/sdk/internet/insights/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/internet/insights/model/ValidationErrorItem.java
-src/test/java/com/thousandeyes/sdk/internet/insights/CatalogProvidersApiTest.java
-src/test/java/com/thousandeyes/sdk/internet/insights/OutagesApiPublicApiTest.java
+src/test/java/com/thousandeyes/sdk/internet/insights/InternetInsightsCatalogProvidersApiTest.java
+src/test/java/com/thousandeyes/sdk/internet/insights/InternetInsightsOutagesApiTest.java

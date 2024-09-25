@@ -62,8 +62,8 @@ public class TagAssignmentApi {
 
   /**
    * Assign tag to multiple objects
-   * Assigns a tag to one or more objects. This endpoint has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
-   * @param id ID of the tag to associate (required)
+   * Assigns a tag to one or more objects. This operation has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+   * @param id Tag ID (required)
    * @param tagAssignment  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @throws ApiException if fails to make API call
@@ -74,8 +74,8 @@ public class TagAssignmentApi {
 
   /**
    * Assign tag to multiple objects
-   * Assigns a tag to one or more objects. This endpoint has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
-   * @param id ID of the tag to associate (required)
+   * Assigns a tag to one or more objects. This operation has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+   * @param id Tag ID (required)
    * @param tagAssignment  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;Void&gt;
@@ -123,7 +123,7 @@ public class TagAssignmentApi {
   }
   /**
    * Assign multiple tags to multiple objects
-   * Assigns the specified tags to the specified objects. This endpoint has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+   * Assigns the specified tags to the specified objects. This operation has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
    * @param bulkTagAssignments  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @throws ApiException if fails to make API call
@@ -134,7 +134,7 @@ public class TagAssignmentApi {
 
   /**
    * Assign multiple tags to multiple objects
-   * Assigns the specified tags to the specified objects. This endpoint has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+   * Assigns the specified tags to the specified objects. This operation has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
    * @param bulkTagAssignments  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;Void&gt;
@@ -178,7 +178,7 @@ public class TagAssignmentApi {
   /**
    * Remove tag from multiple objects
    * Removes a tag from one or more objects.
-   * @param id ID of the tag to associate (required)
+   * @param id Tag ID (required)
    * @param tagAssignment  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @throws ApiException if fails to make API call
@@ -190,7 +190,7 @@ public class TagAssignmentApi {
   /**
    * Remove tag from multiple objects
    * Removes a tag from one or more objects.
-   * @param id ID of the tag to associate (required)
+   * @param id Tag ID (required)
    * @param tagAssignment  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;Void&gt;

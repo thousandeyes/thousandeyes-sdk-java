@@ -28,7 +28,9 @@ public enum ApiAgentWidgetType {
   
   ENTERPRISE("enterprise"),
   
-  ENDPOINT("endpoint");
+  ENDPOINT("endpoint"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ApiAgentWidgetType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -34,7 +34,9 @@ public enum AddressType {
   
   LINK_LOCAL("link-local"),
   
-  UNIQUE_GLOBAL("unique-global");
+  UNIQUE_GLOBAL("unique-global"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -59,7 +61,7 @@ public enum AddressType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

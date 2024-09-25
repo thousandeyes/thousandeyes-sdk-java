@@ -66,7 +66,7 @@ public class CloudAndEnterpriseAgentsApiTest {
     /**
      * Retrieve Cloud and Enterprise Agent
      * <p>
-     * Returns details for an agent, including assigned tests.  For Enterprise Agents, this endpoint returns additional details, including utilization data, assigned accounts, a list of account groups the agent is assigned to, and utilization details. 
+     * Returns details for an agent, including assigned tests.  For Enterprise Agents, this operation returns additional details, including utilization data, assigned accounts, a list of account groups the agent is assigned to, and utilization details. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -130,7 +130,7 @@ public class CloudAndEnterpriseAgentsApiTest {
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "createdBy" : "user@user.com",
                     "modifiedDate" : "2022-07-17T22:00:54Z",
-                    "interval" : 120,
+                    "interval" : 60,
                     "modifiedBy" : "user@user.com",
                     "testId" : "281474976710706",
                     "alertsEnabled" : true,
@@ -161,7 +161,7 @@ public class CloudAndEnterpriseAgentsApiTest {
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "createdBy" : "user@user.com",
                     "modifiedDate" : "2022-07-17T22:00:54Z",
-                    "interval" : 120,
+                    "interval" : 60,
                     "modifiedBy" : "user@user.com",
                     "testId" : "281474976710706",
                     "alertsEnabled" : true,
@@ -181,7 +181,7 @@ public class CloudAndEnterpriseAgentsApiTest {
     /**
      * List Cloud and Enterprise Agents
      * <p>
-     * Returns a list of all agents available to your ThousandEyes account, including both Enterprise and Cloud Agents.  If an agent is an Enterprise Agent, this endpoint returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
+     * Returns a list of all agents available to your ThousandEyes account, including both Enterprise and Cloud Agents.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -240,7 +240,7 @@ public class CloudAndEnterpriseAgentsApiTest {
     /**
      * Update Enterprise Agent
      * <p>
-     * Updates details for an Enterprise Agent. This endpoint can only be used for Enterprise Agents, and only for users in a role that permits modification of Enterprise Agents.  Important notes related to agent modification on tests: * if an agent is removed from a test, the modification date for tests using that agent at the time it was removed will be changed. * If an agent is removed from an entire account group, then all tests using this agent in the removed account group will be updated to reflect the removed agent. * If a removed agent is the final remaining agent on a test, then the test will be disabled when the agent is removed.  Users can update the following fields: * &#x60;agentName&#x60;: String representation of an agent. No two agents can have the same display name. * &#x60;enabled&#x60;: Boolean representation of agent state. * &#x60;accountGroups&#x60;: An array of account group ids. See &#x60;v7/account-groups&#x60; to pull a list of account IDs. * &#x60;tests&#x60;: An array of test Is. See &#x60;v7/tests&#x60; to retrieve a list tests available in the current account context. * &#x60;ipv6Policy&#x60;: Enum representation of the IP version policy. * &#x60;keepBrowserCache&#x60;: Boolean representation of the Keep browser cache state. * &#x60;targetForTests&#x60;: String representation of the target IP address or domain name. This represents the test destination when agent is acting as a test target in an agent-to-agent test. * &#x60;localResolutionPrefixes&#x60;: This array of strings represents the public IP ranges where the Enterprise Agent performs rDNS (Reverse DNS) lookups. The range should be in CIDR notation, such as &#x60;10.1.1.0/24&#x60;. Please note that a maximum of 5 prefixes is allowed. This only applies to Enterprise Agents and Enterprise Agent clusters.
+     * Updates details for an Enterprise Agent. This operation can only be used for Enterprise Agents, and only for users in a role that permits modification of Enterprise Agents.  Important notes related to agent modification on tests: * if an agent is removed from a test, the modification date for tests using that agent at the time it was removed will be changed. * If an agent is removed from an entire account group, then all tests using this agent in the removed account group will be updated to reflect the removed agent. * If a removed agent is the final remaining agent on a test, then the test will be disabled when the agent is removed.  Users can update the following fields: * &#x60;agentName&#x60;: String representation of an agent. No two agents can have the same display name. * &#x60;enabled&#x60;: Boolean representation of agent state. * &#x60;accountGroups&#x60;: An array of account group ids. See &#x60;v7/account-groups&#x60; to pull a list of account IDs. * &#x60;tests&#x60;: An array of test Is. See &#x60;v7/tests&#x60; to retrieve a list tests available in the current account context. * &#x60;ipv6Policy&#x60;: Enum representation of the IP version policy. * &#x60;keepBrowserCache&#x60;: Boolean representation of the Keep browser cache state. * &#x60;targetForTests&#x60;: String representation of the target IP address or domain name. This represents the test destination when agent is acting as a test target in an agent-to-agent test. * &#x60;localResolutionPrefixes&#x60;: This array of strings represents the public IP ranges where the Enterprise Agent performs rDNS (Reverse DNS) lookups. The range should be in CIDR notation, such as &#x60;10.1.1.0/24&#x60;. Please note that a maximum of 5 prefixes is allowed. This only applies to Enterprise Agents and Enterprise Agent clusters.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -319,7 +319,7 @@ public class CloudAndEnterpriseAgentsApiTest {
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "createdBy" : "user@user.com",
                     "modifiedDate" : "2022-07-17T22:00:54Z",
-                    "interval" : 120,
+                    "interval" : 60,
                     "modifiedBy" : "user@user.com",
                     "testId" : "281474976710706",
                     "alertsEnabled" : true,
@@ -350,7 +350,7 @@ public class CloudAndEnterpriseAgentsApiTest {
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "createdBy" : "user@user.com",
                     "modifiedDate" : "2022-07-17T22:00:54Z",
-                    "interval" : 120,
+                    "interval" : 60,
                     "modifiedBy" : "user@user.com",
                     "testId" : "281474976710706",
                     "alertsEnabled" : true,

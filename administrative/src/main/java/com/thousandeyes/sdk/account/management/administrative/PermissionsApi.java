@@ -1,6 +1,6 @@
 /*
  * Administrative API
- * Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following endpoints that define the operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These endpoints can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
+ * Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These operations can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
  *
  * 
  *
@@ -61,7 +61,7 @@ public class PermissionsApi {
 
   /**
    * List assignable permissions
-   * Users must be in a role assigned management permissions to access this endpoint. Users without management permissions who attempt to access this endpoint receive an HTTP/403 response code.
+   * Users must be in a role assigned management permissions to access this operation. Users without management permissions who attempt to access this operation receive an HTTP/403 response code.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return Permissions
    * @throws ApiException if fails to make API call
@@ -73,7 +73,7 @@ public class PermissionsApi {
 
   /**
    * List assignable permissions
-   * Users must be in a role assigned management permissions to access this endpoint. Users without management permissions who attempt to access this endpoint receive an HTTP/403 response code.
+   * Users must be in a role assigned management permissions to access this operation. Users without management permissions who attempt to access this operation receive an HTTP/403 response code.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;Permissions&gt;
    * @throws ApiException if fails to make API call

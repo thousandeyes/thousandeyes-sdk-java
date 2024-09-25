@@ -28,7 +28,9 @@ public enum ApiRequestAssertionName {
   
   STATUS_CODE("status-code"),
   
-  RESPONSE_BODY("response-body");
+  RESPONSE_BODY("response-body"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ApiRequestAssertionName {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

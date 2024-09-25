@@ -2,7 +2,7 @@
 
 Endpoint Agent Labels API
 
-- API version: 7.0.15
+- API version: 7.0.20
 
 Manage labels applied to endpoint agents using this API.
 
@@ -92,9 +92,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.endpoint.*;
 import com.thousandeyes.sdk.endpoint.client.*;
 import com.thousandeyes.sdk.endpoint.labels.model.*;
-import com.thousandeyes.sdk.endpoint.labels.ManageLabelsApi;
+import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
-public class ManageLabelsApiExample {
+public class EndpointAgentLabelsApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -106,14 +106,14 @@ public class ManageLabelsApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        ManageLabelsApi apiInstance = new ManageLabelsApi(defaultClient);
+        EndpointAgentLabelsApi apiInstance = new EndpointAgentLabelsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
             LabelResponse result = apiInstance.createEndpointLabel(aid, labelRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ManageLabelsApi#createEndpointLabel");
+            System.err.println("Exception when calling EndpointAgentLabelsApi#createEndpointLabel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -130,16 +130,16 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ManageLabelsApi* | [**createEndpointLabel**](docs/ManageLabelsApi.md#createEndpointLabel) | **POST** /endpoint/labels | Create label
-*ManageLabelsApi* | [**createEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#createEndpointLabelWithHttpInfo) | **POST** /endpoint/labels | Create label
-*ManageLabelsApi* | [**deleteEndpointLabel**](docs/ManageLabelsApi.md#deleteEndpointLabel) | **DELETE** /endpoint/labels/{id} | Delete label
-*ManageLabelsApi* | [**deleteEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#deleteEndpointLabelWithHttpInfo) | **DELETE** /endpoint/labels/{id} | Delete label
-*ManageLabelsApi* | [**getEndpointLabel**](docs/ManageLabelsApi.md#getEndpointLabel) | **GET** /endpoint/labels/{id} | Retrieve label
-*ManageLabelsApi* | [**getEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#getEndpointLabelWithHttpInfo) | **GET** /endpoint/labels/{id} | Retrieve label
-*ManageLabelsApi* | [**getEndpointLabels**](docs/ManageLabelsApi.md#getEndpointLabels) | **GET** /endpoint/labels | List labels
-*ManageLabelsApi* | [**getEndpointLabelsWithHttpInfo**](docs/ManageLabelsApi.md#getEndpointLabelsWithHttpInfo) | **GET** /endpoint/labels | List labels
-*ManageLabelsApi* | [**updateEndpointLabel**](docs/ManageLabelsApi.md#updateEndpointLabel) | **PATCH** /endpoint/labels/{id} | Update label
-*ManageLabelsApi* | [**updateEndpointLabelWithHttpInfo**](docs/ManageLabelsApi.md#updateEndpointLabelWithHttpInfo) | **PATCH** /endpoint/labels/{id} | Update label
+*EndpointAgentLabelsApi* | [**createEndpointLabel**](docs/EndpointAgentLabelsApi.md#createEndpointLabel) | **POST** /endpoint/labels | Create label
+*EndpointAgentLabelsApi* | [**createEndpointLabelWithHttpInfo**](docs/EndpointAgentLabelsApi.md#createEndpointLabelWithHttpInfo) | **POST** /endpoint/labels | Create label
+*EndpointAgentLabelsApi* | [**deleteEndpointLabel**](docs/EndpointAgentLabelsApi.md#deleteEndpointLabel) | **DELETE** /endpoint/labels/{id} | Delete label
+*EndpointAgentLabelsApi* | [**deleteEndpointLabelWithHttpInfo**](docs/EndpointAgentLabelsApi.md#deleteEndpointLabelWithHttpInfo) | **DELETE** /endpoint/labels/{id} | Delete label
+*EndpointAgentLabelsApi* | [**getEndpointLabel**](docs/EndpointAgentLabelsApi.md#getEndpointLabel) | **GET** /endpoint/labels/{id} | Retrieve label
+*EndpointAgentLabelsApi* | [**getEndpointLabelWithHttpInfo**](docs/EndpointAgentLabelsApi.md#getEndpointLabelWithHttpInfo) | **GET** /endpoint/labels/{id} | Retrieve label
+*EndpointAgentLabelsApi* | [**getEndpointLabels**](docs/EndpointAgentLabelsApi.md#getEndpointLabels) | **GET** /endpoint/labels | List labels
+*EndpointAgentLabelsApi* | [**getEndpointLabelsWithHttpInfo**](docs/EndpointAgentLabelsApi.md#getEndpointLabelsWithHttpInfo) | **GET** /endpoint/labels | List labels
+*EndpointAgentLabelsApi* | [**updateEndpointLabel**](docs/EndpointAgentLabelsApi.md#updateEndpointLabel) | **PATCH** /endpoint/labels/{id} | Update label
+*EndpointAgentLabelsApi* | [**updateEndpointLabelWithHttpInfo**](docs/EndpointAgentLabelsApi.md#updateEndpointLabelWithHttpInfo) | **PATCH** /endpoint/labels/{id} | Update label
 
 
 <a id="documentation-for-authorization"></a>

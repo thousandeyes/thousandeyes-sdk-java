@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Tag.JSON_PROPERTY_COLOR,
   Tag.JSON_PROPERTY_CREATE_DATE,
   Tag.JSON_PROPERTY_ICON,
+  Tag.JSON_PROPERTY_DESCRIPTION,
   Tag.JSON_PROPERTY_ID,
   Tag.JSON_PROPERTY_KEY,
   Tag.JSON_PROPERTY_LEGACY_ID,
@@ -69,6 +70,9 @@ public class Tag {
   public static final String JSON_PROPERTY_ICON = "icon";
   private String icon;
 
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
+
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
 
@@ -95,7 +99,6 @@ public class Tag {
     @JsonProperty(JSON_PROPERTY_ASSIGNMENTS) List<Assignment> assignments, 
     @JsonProperty(JSON_PROPERTY_AID) Integer aid, 
     @JsonProperty(JSON_PROPERTY_CREATE_DATE) String createDate, 
-    @JsonProperty(JSON_PROPERTY_ICON) String icon, 
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
     @JsonProperty(JSON_PROPERTY_LEGACY_ID) BigDecimal legacyId
   ) {
@@ -103,7 +106,6 @@ public class Tag {
     this.assignments = assignments;
     this.aid = aid;
     this.createDate = createDate;
-    this.icon = icon;
     this.id = id;
     this.legacyId = legacyId;
   }
@@ -203,6 +205,11 @@ public class Tag {
 
 
 
+  public Tag icon(String icon) {
+    this.icon = icon;
+    return this;
+  }
+
    /**
    * Get icon
    * @return icon
@@ -216,6 +223,36 @@ public class Tag {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ICON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIcon(String icon) {
+    this.icon = icon;
+  }
+
+
+  public Tag description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * The tag&#39;s description.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
 
    /**
@@ -366,6 +403,7 @@ public class Tag {
         Objects.equals(this.color, tag.color) &&
         Objects.equals(this.createDate, tag.createDate) &&
         Objects.equals(this.icon, tag.icon) &&
+        Objects.equals(this.description, tag.description) &&
         Objects.equals(this.id, tag.id) &&
         Objects.equals(this.key, tag.key) &&
         Objects.equals(this.legacyId, tag.legacyId) &&
@@ -376,7 +414,7 @@ public class Tag {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assignments, accessType, aid, color, createDate, icon, id, key, legacyId, objectType, value, links);
+    return Objects.hash(assignments, accessType, aid, color, createDate, icon, description, id, key, legacyId, objectType, value, links);
   }
 
   @Override
@@ -389,6 +427,7 @@ public class Tag {
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    legacyId: ").append(toIndentedString(legacyId)).append("\n");

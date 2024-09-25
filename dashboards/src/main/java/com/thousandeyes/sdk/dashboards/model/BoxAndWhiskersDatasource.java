@@ -46,7 +46,11 @@ public enum BoxAndWhiskersDatasource {
   
   INTERNET_INSIGHTS("INTERNET_INSIGHTS"),
   
-  ROUTING("ROUTING");
+  ROUTING("ROUTING"),
+  
+  CLOUD_NATIVE_MONITORING("CLOUD_NATIVE_MONITORING"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -71,7 +75,7 @@ public enum BoxAndWhiskersDatasource {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -26,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum WebhookIntegrationType {
   
-  WEBHOOK("webhook");
+  WEBHOOK("webhook"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -51,7 +53,7 @@ public enum WebhookIntegrationType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

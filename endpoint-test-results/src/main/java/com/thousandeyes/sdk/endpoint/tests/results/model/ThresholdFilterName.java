@@ -36,7 +36,9 @@ public enum ThresholdFilterName {
   
   MEMORY("memory"),
   
-  SIGNAL_QUALITY("signal-quality");
+  SIGNAL_QUALITY("signal-quality"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -61,7 +63,7 @@ public enum ThresholdFilterName {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

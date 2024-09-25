@@ -28,7 +28,9 @@ public enum Trigger {
   
   AUTO("auto"),
   
-  USER("user");
+  USER("user"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum Trigger {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

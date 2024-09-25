@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.results.model.EthernetProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestEthernetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.InterfaceHardwareType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkInterface;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProxyProfile;
@@ -89,7 +89,7 @@ public class NetworkProfile {
   private NetworkProxyProfile proxyProfile;
 
   public static final String JSON_PROPERTY_ETHERNET_PROFILE = "ethernetProfile";
-  private EthernetProfile ethernetProfile;
+  private EndpointTestEthernetProfile ethernetProfile;
 
   public static final String JSON_PROPERTY_PREVIOUS_INTERFACE = "previousInterface";
   private NetworkInterface previousInterface;
@@ -331,7 +331,7 @@ public class NetworkProfile {
   }
 
 
-  public NetworkProfile ethernetProfile(EthernetProfile ethernetProfile) {
+  public NetworkProfile ethernetProfile(EndpointTestEthernetProfile ethernetProfile) {
     this.ethernetProfile = ethernetProfile;
     return this;
   }
@@ -344,14 +344,14 @@ public class NetworkProfile {
   @JsonProperty(JSON_PROPERTY_ETHERNET_PROFILE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public EthernetProfile getEthernetProfile() {
+  public EndpointTestEthernetProfile getEthernetProfile() {
     return ethernetProfile;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ETHERNET_PROFILE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEthernetProfile(EthernetProfile ethernetProfile) {
+  public void setEthernetProfile(EndpointTestEthernetProfile ethernetProfile) {
     this.ethernetProfile = ethernetProfile;
   }
 

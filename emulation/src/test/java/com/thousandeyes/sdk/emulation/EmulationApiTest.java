@@ -1,6 +1,6 @@
 /*
  * Emulation API
- * The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API endpoints, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
+ * The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
  *
  * 
  *
@@ -16,7 +16,7 @@ import com.thousandeyes.sdk.emulation.model.EmulatedDevice;
 import com.thousandeyes.sdk.emulation.model.EmulatedDeviceResponse;
 import com.thousandeyes.sdk.emulation.model.EmulatedDeviceResponses;
 import com.thousandeyes.sdk.emulation.model.Error;
-import com.thousandeyes.sdk.emulation.model.Expand;
+import com.thousandeyes.sdk.emulation.model.ExpandEmulatedDeviceOptions;
 import com.thousandeyes.sdk.emulation.model.UnauthorizedError;
 import com.thousandeyes.sdk.emulation.model.UserAgents;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;

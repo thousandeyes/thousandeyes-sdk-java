@@ -22,15 +22,23 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * OS platform types
+ * OS platform types. Platform \&quot;linux\&quot; was recently renamed to \&quot;roomos\&quot;.
  */
 public enum Platform {
   
   WINDOWS("windows"),
   
+  ROOMOS("roomos"),
+  
+  PHONEOS("phoneos"),
+  
+  ELUX("elux"),
+  
   LINUX("linux"),
   
-  MAC("mac");
+  MAC("mac"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +63,7 @@ public enum Platform {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

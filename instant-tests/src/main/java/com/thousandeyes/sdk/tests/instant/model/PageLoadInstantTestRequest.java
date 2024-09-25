@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
+ * The Instant Tests API operations lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * 
  *
@@ -160,7 +160,7 @@ public class PageLoadInstantTestRequest {
   private TestCustomHeaders customHeaders;
 
   public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
-  private String desiredStatusCode = "200";
+  private String desiredStatusCode = "default";
 
   public static final String JSON_PROPERTY_DOWNLOAD_LIMIT = "downloadLimit";
   private Integer downloadLimit;
@@ -208,7 +208,7 @@ public class PageLoadInstantTestRequest {
   private String sslVersion;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
@@ -717,7 +717,7 @@ public class PageLoadInstantTestRequest {
   }
 
    /**
-   * Specify the HTTP status code value that indicates a successful response.
+   * Specify the HTTP status code value that indicates a successful response. The default value accepts any 2xx or 3xx status code.
    * @return desiredStatusCode
   **/
   @jakarta.annotation.Nullable

@@ -30,7 +30,9 @@ public enum ThirdPartyIntegrationType {
   
   SLACK("slack"),
   
-  APP_DYNAMICS("app-dynamics");
+  APP_DYNAMICS("app-dynamics"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum ThirdPartyIntegrationType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

@@ -1,6 +1,6 @@
 /*
  * Usage API
- *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View organization usage` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View organization usage` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API endpoints for detailed usage instructions and optional parameters. 
+ *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View organization usage` permission to access this endpoint.     * This operation offers visibility across all account groups within the organization.     * Users with `View organization usage` permission in multiple organizations should query the operation with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API operations for detailed usage instructions and optional parameters. 
  *
  * 
  *
@@ -14,7 +14,7 @@ package com.thousandeyes.sdk.usage;
 
 import com.thousandeyes.sdk.usage.model.EnterpriseAgentsUsage;
 import com.thousandeyes.sdk.usage.model.Error;
-import com.thousandeyes.sdk.usage.model.Expand;
+import com.thousandeyes.sdk.usage.model.ExpandUsageOptions;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.usage.model.TestsUsage;
 import com.thousandeyes.sdk.usage.model.UnauthorizedError;
@@ -50,7 +50,7 @@ public class UsageApiTest {
     /**
      * Get enterprise agent usage
      * <p>
-     * This endpoint returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
+     * This operation returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -121,7 +121,7 @@ public class UsageApiTest {
     /**
      * Get cloud and enterprise agents units usage
      * <p>
-     * This endpoint returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
+     * This operation returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -196,7 +196,7 @@ public class UsageApiTest {
     /**
      * Get usage information for the last month
      * <p>
-     * This endpoint returns usage for the current period. It provides visibility across all account groups within an organization. To access this endpoint, you need the &#x60;View Billing&#x60; permission (a management permission). If you have access to view billing in multiple organizations, query the endpoint using an &#x60;aid&#x60; querystring parameter (see optional parameters, below) from each organization. **Note:** Access to billing information older than one month is not supported by this endpoint.
+     * This operation returns usage for the current period. It provides visibility across all account groups within an organization. To access this endpoint, you need the &#x60;View Billing&#x60; permission (a management permission). If you have access to view billing in multiple organizations, query the endpoint using an &#x60;aid&#x60; querystring parameter (see optional parameters, below) from each organization. **Note:** Access to billing information older than one month is not supported by this endpoint.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -273,6 +273,7 @@ public class UsageApiTest {
                       "enterpriseAgentsIncluded" : 25,
                       "monthStart" : "2020-01-05T08:00:00Z",
                       "cloudUnitsIncluded" : 4320000000,
+                      "deviceAgentsIncluded" : 100,
                       "endpointAgentsIncluded" : 200,
                       "endpointAgentsEssentialsIncluded" : 10
                     },

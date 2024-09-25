@@ -2,11 +2,11 @@
 
 Credentials API
 
-- API version: 7.0.15
+- API version: 7.0.20
 
 Manage credentials for transaction tests using the Credentials API.
 
-The following permissions are required to access Credentials API endpoints:
+The following permissions are required to access Credentials API operations:
 
 * `Settings Tests Read` for read operations.
 * `Settings Tests Update` for write operations.

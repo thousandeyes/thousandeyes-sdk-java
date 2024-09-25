@@ -26,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum AgentListExpand {
   
-  CLUSTER_MEMBER("cluster-member");
+  CLUSTER_MEMBER("cluster-member"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -51,7 +53,7 @@ public enum AgentListExpand {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

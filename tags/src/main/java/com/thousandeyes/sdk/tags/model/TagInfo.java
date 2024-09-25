@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TagInfo.JSON_PROPERTY_COLOR,
   TagInfo.JSON_PROPERTY_CREATE_DATE,
   TagInfo.JSON_PROPERTY_ICON,
+  TagInfo.JSON_PROPERTY_DESCRIPTION,
   TagInfo.JSON_PROPERTY_ID,
   TagInfo.JSON_PROPERTY_KEY,
   TagInfo.JSON_PROPERTY_LEGACY_ID,
@@ -67,6 +68,9 @@ public class TagInfo {
   public static final String JSON_PROPERTY_ICON = "icon";
   private String icon;
 
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
+
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
 
@@ -90,7 +94,6 @@ public class TagInfo {
     @JsonProperty(JSON_PROPERTY_ASSIGNMENTS) List<Assignment> assignments, 
     @JsonProperty(JSON_PROPERTY_AID) Integer aid, 
     @JsonProperty(JSON_PROPERTY_CREATE_DATE) String createDate, 
-    @JsonProperty(JSON_PROPERTY_ICON) String icon, 
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
     @JsonProperty(JSON_PROPERTY_LEGACY_ID) BigDecimal legacyId
   ) {
@@ -98,7 +101,6 @@ public class TagInfo {
     this.assignments = assignments;
     this.aid = aid;
     this.createDate = createDate;
-    this.icon = icon;
     this.id = id;
     this.legacyId = legacyId;
   }
@@ -198,6 +200,11 @@ public class TagInfo {
 
 
 
+  public TagInfo icon(String icon) {
+    this.icon = icon;
+    return this;
+  }
+
    /**
    * Get icon
    * @return icon
@@ -211,6 +218,36 @@ public class TagInfo {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ICON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIcon(String icon) {
+    this.icon = icon;
+  }
+
+
+  public TagInfo description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * The tag&#39;s description.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
 
    /**
@@ -336,6 +373,7 @@ public class TagInfo {
         Objects.equals(this.color, tagInfo.color) &&
         Objects.equals(this.createDate, tagInfo.createDate) &&
         Objects.equals(this.icon, tagInfo.icon) &&
+        Objects.equals(this.description, tagInfo.description) &&
         Objects.equals(this.id, tagInfo.id) &&
         Objects.equals(this.key, tagInfo.key) &&
         Objects.equals(this.legacyId, tagInfo.legacyId) &&
@@ -345,7 +383,7 @@ public class TagInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assignments, accessType, aid, color, createDate, icon, id, key, legacyId, objectType, value);
+    return Objects.hash(assignments, accessType, aid, color, createDate, icon, description, id, key, legacyId, objectType, value);
   }
 
   @Override
@@ -358,6 +396,7 @@ public class TagInfo {
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    legacyId: ").append(toIndentedString(legacyId)).append("\n");

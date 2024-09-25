@@ -16,7 +16,7 @@ import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindowDetail;
 import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindowRequest;
 import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindows;
 import com.thousandeyes.sdk.alerts.model.Error;
-import com.thousandeyes.sdk.alerts.model.Expand;
+import com.thousandeyes.sdk.alerts.model.ExpandAlertTestOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
 import com.thousandeyes.sdk.alerts.model.ValidationError;
@@ -90,71 +90,67 @@ public class AlertSuppressionWindowsApiTest {
                   "duration" : 0,
                   "alertSuppressionWindowId" : "2411",
                   "tests" : [ {
-                    "alertRules" : [ {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    }, {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    } ],
-                    "interval" : 120,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
                     "alertsEnabled" : true,
-                    "enabled" : true
+                    "testName" : "ThousandEyes Test"
                   }, {
-                    "alertRules" : [ {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    }, {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    } ],
-                    "interval" : 120,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
                     "alertsEnabled" : true,
-                    "enabled" : true
+                    "testName" : "ThousandEyes Test"
                   } ],
                   "_links" : {
                     "self" : {
@@ -223,71 +219,67 @@ public class AlertSuppressionWindowsApiTest {
                   "duration" : 0,
                   "alertSuppressionWindowId" : "2411",
                   "tests" : [ {
-                    "alertRules" : [ {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    }, {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    } ],
-                    "interval" : 120,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
                     "alertsEnabled" : true,
-                    "enabled" : true
+                    "testName" : "ThousandEyes Test"
                   }, {
-                    "alertRules" : [ {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    }, {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    } ],
-                    "interval" : 120,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
                     "alertsEnabled" : true,
-                    "enabled" : true
+                    "testName" : "ThousandEyes Test"
                   } ],
                   "_links" : {
                     "self" : {
@@ -461,71 +453,67 @@ public class AlertSuppressionWindowsApiTest {
                   "duration" : 0,
                   "alertSuppressionWindowId" : "2411",
                   "tests" : [ {
-                    "alertRules" : [ {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    }, {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    } ],
-                    "interval" : 120,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
                     "alertsEnabled" : true,
-                    "enabled" : true
+                    "testName" : "ThousandEyes Test"
                   }, {
-                    "alertRules" : [ {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    }, {
-                      "severity" : "major",
-                      "expression" : "((hops((hopDelay >= 100 ms))))",
-                      "alertType" : "http-server",
-                      "roundsViolatingMode" : "exact",
-                      "sensitivityLevel" : "medium",
-                      "roundsViolatingOutOf" : 5,
-                      "roundsViolatingRequired" : 2,
-                      "isDefault" : true,
-                      "minimumSourcesPct" : 99,
-                      "ruleName" : "The End of the Internet",
-                      "minimumSources" : 10,
-                      "ruleId" : "127094",
-                      "direction" : "to-target"
-                    } ],
-                    "interval" : 120,
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
                     "alertsEnabled" : true,
-                    "enabled" : true
+                    "testName" : "ThousandEyes Test"
                   } ],
                   "_links" : {
                     "self" : {

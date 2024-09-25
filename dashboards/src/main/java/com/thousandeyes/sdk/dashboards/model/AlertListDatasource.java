@@ -50,7 +50,11 @@ public enum AlertListDatasource {
   
   INTERNET_INSIGHTS("INTERNET_INSIGHTS"),
   
-  APPDYNAMICS_SERVICE_HEALTH("APPDYNAMICS_SERVICE_HEALTH");
+  APPDYNAMICS_SERVICE_HEALTH("APPDYNAMICS_SERVICE_HEALTH"),
+  
+  CLOUD_NATIVE_MONITORING("CLOUD_NATIVE_MONITORING"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -75,7 +79,7 @@ public enum AlertListDatasource {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

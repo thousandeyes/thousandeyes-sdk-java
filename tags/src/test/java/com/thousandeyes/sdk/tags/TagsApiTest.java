@@ -15,9 +15,8 @@ package com.thousandeyes.sdk.tags;
 import com.thousandeyes.sdk.tags.model.ApiError;
 import com.thousandeyes.sdk.tags.model.BulkTagResponse;
 import com.thousandeyes.sdk.tags.model.Error;
-import com.thousandeyes.sdk.tags.model.Expand;
+import com.thousandeyes.sdk.tags.model.ExpandTagsOptions;
 import com.thousandeyes.sdk.tags.model.TagInfo;
-import java.util.UUID;
 import com.thousandeyes.sdk.tags.model.UnauthorizedError;
 import com.thousandeyes.sdk.tags.model.ValidationError;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
@@ -71,6 +70,7 @@ public class TagsApiTest {
                   } ],
                   "color" : "#FF0000",
                   "icon" : "icon",
+                  "description" : "To tag assets in San Francisco",
                   "legacyId" : 0.8008281904610115,
                   "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                   "aid" : 1234,
@@ -113,6 +113,7 @@ public class TagsApiTest {
                         } ],
                         "color" : "#FF0000",
                         "icon" : "icon",
+                        "description" : "To tag assets in San Francisco",
                         "legacyId" : 0.8008281904610115,
                         "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                         "aid" : 1234,
@@ -137,6 +138,7 @@ public class TagsApiTest {
                         } ],
                         "color" : "#FF0000",
                         "icon" : "icon",
+                        "description" : "To tag assets in San Francisco",
                         "legacyId" : 0.8008281904610115,
                         "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                         "aid" : 1234,
@@ -150,7 +152,6 @@ public class TagsApiTest {
                     "responseCode" : 200
                   } ],
                   "tags" : [ {
-                    "accessType" : "all",
                     "assignments" : [ {
                       "id" : "123",
                       "type" : "test"
@@ -172,15 +173,16 @@ public class TagsApiTest {
                       }
                     },
                     "icon" : "icon",
+                    "description" : "To tag assets in San Francisco",
+                    "objectType" : "test",
+                    "accessType" : "all",
                     "legacyId" : 0.8008281904610115,
                     "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                     "aid" : 1234,
                     "value" : "sfo",
                     "key" : "branch",
-                    "createDate" : "2022-03-01T23:31:11Z",
-                    "objectType" : "test"
+                    "createDate" : "2022-03-01T23:31:11Z"
                   }, {
-                    "accessType" : "all",
                     "assignments" : [ {
                       "id" : "123",
                       "type" : "test"
@@ -202,13 +204,15 @@ public class TagsApiTest {
                       }
                     },
                     "icon" : "icon",
+                    "description" : "To tag assets in San Francisco",
+                    "objectType" : "test",
+                    "accessType" : "all",
                     "legacyId" : 0.8008281904610115,
                     "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                     "aid" : 1234,
                     "value" : "sfo",
                     "key" : "branch",
-                    "createDate" : "2022-03-01T23:31:11Z",
-                    "objectType" : "test"
+                    "createDate" : "2022-03-01T23:31:11Z"
                   } ]
                 }
                                  """;
@@ -251,7 +255,7 @@ public class TagsApiTest {
     /**
      * List tags
      * <p>
-     * This endpoint returns a list of tags in the specified account group (&#x60;aid&#x60;).
+     * This operation returns a list of tags in the specified account group (&#x60;aid&#x60;).
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -287,6 +291,7 @@ public class TagsApiTest {
                   } ],
                   "color" : "#FF0000",
                   "icon" : "icon",
+                  "description" : "To tag assets in San Francisco",
                   "legacyId" : 0.8008281904610115,
                   "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                   "aid" : 1234,

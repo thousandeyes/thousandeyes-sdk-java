@@ -1,6 +1,6 @@
 /*
  * Emulation API
- * The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API endpoints, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
+ * The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
  *
  * 
  *
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.emulation.model.EmulatedDevice;
 import com.thousandeyes.sdk.emulation.model.EmulatedDeviceResponse;
 import com.thousandeyes.sdk.emulation.model.EmulatedDeviceResponses;
 import com.thousandeyes.sdk.emulation.model.Error;
-import com.thousandeyes.sdk.emulation.model.Expand;
+import com.thousandeyes.sdk.emulation.model.ExpandEmulatedDeviceOptions;
 import com.thousandeyes.sdk.emulation.model.UnauthorizedError;
 import com.thousandeyes.sdk.emulation.model.UserAgents;
 
@@ -125,7 +125,7 @@ public class EmulationApi {
    * @return EmulatedDeviceResponses
    * @throws ApiException if fails to make API call
    */
-  public EmulatedDeviceResponses getEmulatedDevices(List<Expand> expand) throws ApiException {
+  public EmulatedDeviceResponses getEmulatedDevices(List<ExpandEmulatedDeviceOptions> expand) throws ApiException {
     ApiResponse<EmulatedDeviceResponses> response = getEmulatedDevicesWithHttpInfo(expand);
     return response.getData();
   }
@@ -137,7 +137,7 @@ public class EmulationApi {
    * @return ApiResponse&lt;EmulatedDeviceResponses&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EmulatedDeviceResponses> getEmulatedDevicesWithHttpInfo(List<Expand> expand) throws ApiException {
+  public ApiResponse<EmulatedDeviceResponses> getEmulatedDevicesWithHttpInfo(List<ExpandEmulatedDeviceOptions> expand) throws ApiException {
     getEmulatedDevicesValidateRequest();
 
     var requestBuilder = getEmulatedDevicesRequestBuilder(expand);
@@ -148,7 +148,7 @@ public class EmulationApi {
   private void getEmulatedDevicesValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEmulatedDevicesRequestBuilder(List<Expand> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getEmulatedDevicesRequestBuilder(List<ExpandEmulatedDeviceOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 

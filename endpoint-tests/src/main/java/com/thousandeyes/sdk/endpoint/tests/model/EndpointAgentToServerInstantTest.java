@@ -34,42 +34,34 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   EndpointAgentToServerInstantTest.JSON_PROPERTY_AGENT_SELECTOR_TYPE,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_AGENTS,
-  EndpointAgentToServerInstantTest.JSON_PROPERTY_HAS_PING,
-  EndpointAgentToServerInstantTest.JSON_PROPERTY_HAS_TRACEROUTE,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_MAX_MACHINES,
-  EndpointAgentToServerInstantTest.JSON_PROPERTY_PORT,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_TEST_NAME,
-  EndpointAgentToServerInstantTest.JSON_PROPERTY_SERVER_NAME
+  EndpointAgentToServerInstantTest.JSON_PROPERTY_SERVER_NAME,
+  EndpointAgentToServerInstantTest.JSON_PROPERTY_PORT
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointAgentToServerInstantTest {
   public static final String JSON_PROPERTY_AGENT_SELECTOR_TYPE = "agentSelectorType";
-  private EndpointTestAgentSelectorType agentSelectorType;
+  private EndpointTestAgentSelectorType agentSelectorType = EndpointTestAgentSelectorType.ALL_AGENTS;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<UUID> agents = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_HAS_PING = "hasPing";
-  private Boolean hasPing = true;
-
-  public static final String JSON_PROPERTY_HAS_TRACEROUTE = "hasTraceroute";
-  private Boolean hasTraceroute = true;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
   private List<String> endpointAgentLabels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
-  private Integer maxMachines;
-
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port;
+  private Integer maxMachines = 25;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_SERVER_NAME = "serverName";
   private String serverName;
+
+  public static final String JSON_PROPERTY_PORT = "port";
+  private Integer port = 443;
 
   public EndpointAgentToServerInstantTest() { 
   }
@@ -83,9 +75,9 @@ public class EndpointAgentToServerInstantTest {
    * Get agentSelectorType
    * @return agentSelectorType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_AGENT_SELECTOR_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public EndpointTestAgentSelectorType getAgentSelectorType() {
     return agentSelectorType;
@@ -93,7 +85,7 @@ public class EndpointAgentToServerInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_AGENT_SELECTOR_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgentSelectorType(EndpointTestAgentSelectorType agentSelectorType) {
     this.agentSelectorType = agentSelectorType;
   }
@@ -129,56 +121,6 @@ public class EndpointAgentToServerInstantTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgents(List<UUID> agents) {
     this.agents = agents;
-  }
-
-
-  public EndpointAgentToServerInstantTest hasPing(Boolean hasPing) {
-    this.hasPing = hasPing;
-    return this;
-  }
-
-   /**
-   * Optional flag indicating if the test should run ping.
-   * @return hasPing
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HAS_PING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getHasPing() {
-    return hasPing;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HAS_PING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasPing(Boolean hasPing) {
-    this.hasPing = hasPing;
-  }
-
-
-  public EndpointAgentToServerInstantTest hasTraceroute(Boolean hasTraceroute) {
-    this.hasTraceroute = hasTraceroute;
-    return this;
-  }
-
-   /**
-   * Optional flag indicating if the test should run traceroute.
-   * @return hasTraceroute
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HAS_TRACEROUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getHasTraceroute() {
-    return hasTraceroute;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HAS_TRACEROUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasTraceroute(Boolean hasTraceroute) {
-    this.hasTraceroute = hasTraceroute;
   }
 
 
@@ -222,13 +164,11 @@ public class EndpointAgentToServerInstantTest {
 
    /**
    * Maximum number of agents which can execute the test.
-   * minimum: 1
-   * maximum: 50000
    * @return maxMachines
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MAX_MACHINES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMaxMachines() {
     return maxMachines;
@@ -236,34 +176,9 @@ public class EndpointAgentToServerInstantTest {
 
 
   @JsonProperty(JSON_PROPERTY_MAX_MACHINES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMaxMachines(Integer maxMachines) {
     this.maxMachines = maxMachines;
-  }
-
-
-  public EndpointAgentToServerInstantTest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Port number, if not specified, the port is selected based on a protocol (HTTP 80, HTTPS 443).
-   * @return port
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPort(Integer port) {
-    this.port = port;
   }
 
 
@@ -317,6 +232,31 @@ public class EndpointAgentToServerInstantTest {
   }
 
 
+  public EndpointAgentToServerInstantTest port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * Port number.
+   * @return port
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getPort() {
+    return port;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPort(Integer port) {
+    this.port = port;
+  }
+
+
   /**
    * Return true if this EndpointAgentToServerInstantTest object is equal to o.
    */
@@ -331,18 +271,16 @@ public class EndpointAgentToServerInstantTest {
     EndpointAgentToServerInstantTest endpointAgentToServerInstantTest = (EndpointAgentToServerInstantTest) o;
     return Objects.equals(this.agentSelectorType, endpointAgentToServerInstantTest.agentSelectorType) &&
         Objects.equals(this.agents, endpointAgentToServerInstantTest.agents) &&
-        Objects.equals(this.hasPing, endpointAgentToServerInstantTest.hasPing) &&
-        Objects.equals(this.hasTraceroute, endpointAgentToServerInstantTest.hasTraceroute) &&
         Objects.equals(this.endpointAgentLabels, endpointAgentToServerInstantTest.endpointAgentLabels) &&
         Objects.equals(this.maxMachines, endpointAgentToServerInstantTest.maxMachines) &&
-        Objects.equals(this.port, endpointAgentToServerInstantTest.port) &&
         Objects.equals(this.testName, endpointAgentToServerInstantTest.testName) &&
-        Objects.equals(this.serverName, endpointAgentToServerInstantTest.serverName);
+        Objects.equals(this.serverName, endpointAgentToServerInstantTest.serverName) &&
+        Objects.equals(this.port, endpointAgentToServerInstantTest.port);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, hasPing, hasTraceroute, endpointAgentLabels, maxMachines, port, testName, serverName);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, serverName, port);
   }
 
   @Override
@@ -351,13 +289,11 @@ public class EndpointAgentToServerInstantTest {
     sb.append("class EndpointAgentToServerInstantTest {\n");
     sb.append("    agentSelectorType: ").append(toIndentedString(agentSelectorType)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
-    sb.append("    hasPing: ").append(toIndentedString(hasPing)).append("\n");
-    sb.append("    hasTraceroute: ").append(toIndentedString(hasTraceroute)).append("\n");
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    serverName: ").append(toIndentedString(serverName)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("}");
     return sb.toString();
   }

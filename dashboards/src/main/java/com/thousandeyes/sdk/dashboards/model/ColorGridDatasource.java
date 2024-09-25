@@ -48,7 +48,11 @@ public enum ColorGridDatasource {
   
   INTERNET_INSIGHTS("INTERNET_INSIGHTS"),
   
-  ROUTING("ROUTING");
+  ROUTING("ROUTING"),
+  
+  CLOUD_NATIVE_MONITORING("CLOUD_NATIVE_MONITORING"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -73,7 +77,7 @@ public enum ColorGridDatasource {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

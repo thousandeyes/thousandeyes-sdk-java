@@ -21,10 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.alerts.model.AlertSuppressionWindowState;
-import com.thousandeyes.sdk.alerts.model.BaseTest;
 import com.thousandeyes.sdk.alerts.model.EndRepeat;
 import com.thousandeyes.sdk.alerts.model.Repeat;
 import com.thousandeyes.sdk.alerts.model.SelfLinks;
+import com.thousandeyes.sdk.alerts.model.SimpleTest;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,7 +77,7 @@ public class AlertSuppressionWindowDetail {
   private SelfLinks links;
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<BaseTest> tests = new ArrayList<>();
+  private List<SimpleTest> tests = new ArrayList<>();
 
   public AlertSuppressionWindowDetail() { 
   }
@@ -305,12 +305,12 @@ public class AlertSuppressionWindowDetail {
   }
 
 
-  public AlertSuppressionWindowDetail tests(List<BaseTest> tests) {
+  public AlertSuppressionWindowDetail tests(List<SimpleTest> tests) {
     this.tests = tests;
     return this;
   }
 
-  public AlertSuppressionWindowDetail addTestsItem(BaseTest testsItem) {
+  public AlertSuppressionWindowDetail addTestsItem(SimpleTest testsItem) {
     if (this.tests == null) {
       this.tests = new ArrayList<>();
     }
@@ -326,14 +326,14 @@ public class AlertSuppressionWindowDetail {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<BaseTest> getTests() {
+  public List<SimpleTest> getTests() {
     return tests;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<BaseTest> tests) {
+  public void setTests(List<SimpleTest> tests) {
     this.tests = tests;
   }
 

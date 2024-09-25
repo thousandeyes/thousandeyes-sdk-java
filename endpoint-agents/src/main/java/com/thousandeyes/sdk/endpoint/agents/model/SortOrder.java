@@ -28,7 +28,9 @@ public enum SortOrder {
   
   ASC("asc"),
   
-  DESC("desc");
+  DESC("desc"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum SortOrder {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

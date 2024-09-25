@@ -30,7 +30,9 @@ public enum AlertSuppressionWindowState {
   
   INACTIVE("inactive"),
   
-  ENDED("ended");
+  ENDED("ended"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum AlertSuppressionWindowState {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

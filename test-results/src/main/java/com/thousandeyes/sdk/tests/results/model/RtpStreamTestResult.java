@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.results.model.Agent;
+import com.thousandeyes.sdk.tests.results.model.TestResultAgent;
 import com.thousandeyes.sdk.tests.results.model.TestResultAppLinks;
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -66,7 +66,7 @@ public class RtpStreamTestResult {
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
-  private Agent agent;
+  private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
   private String serverIp;
@@ -225,7 +225,7 @@ public class RtpStreamTestResult {
 
 
 
-  public RtpStreamTestResult agent(Agent agent) {
+  public RtpStreamTestResult agent(TestResultAgent agent) {
     this.agent = agent;
     return this;
   }
@@ -238,14 +238,14 @@ public class RtpStreamTestResult {
   @JsonProperty(JSON_PROPERTY_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Agent getAgent() {
+  public TestResultAgent getAgent() {
     return agent;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgent(Agent agent) {
+  public void setAgent(TestResultAgent agent) {
     this.agent = agent;
   }
 

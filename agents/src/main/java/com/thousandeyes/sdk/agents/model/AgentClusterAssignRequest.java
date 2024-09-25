@@ -54,7 +54,7 @@ public class AgentClusterAssignRequest {
   }
 
    /**
-   * Contains list of agent IDs (get &#x60;agentId&#x60; from &#x60;/agents&#x60; endpoint)
+   * Contains list of agent IDs (get &#x60;agentId&#x60; from &#x60;/agents&#x60; operation)
    * @return agents
   **/
   @jakarta.annotation.Nullable

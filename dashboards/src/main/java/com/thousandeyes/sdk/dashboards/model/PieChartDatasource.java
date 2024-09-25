@@ -32,7 +32,11 @@ public enum PieChartDatasource {
   
   ENDPOINT_BROWSER_SESSION("ENDPOINT_BROWSER_SESSION"),
   
-  ENDPOINT_SCHEDULED_TEST("ENDPOINT_SCHEDULED_TEST");
+  ENDPOINT_SCHEDULED_TEST("ENDPOINT_SCHEDULED_TEST"),
+  
+  CLOUD_NATIVE_MONITORING("CLOUD_NATIVE_MONITORING"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -57,7 +61,7 @@ public enum PieChartDatasource {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }
