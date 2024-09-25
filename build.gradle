@@ -96,7 +96,7 @@ subprojects {
                 url = 'https://github.com/thousandeyes/thousandeyes-sdk-java/tree/main'
             }
         }
-        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, true)
 
         signAllPublications()
     }
