@@ -3,8 +3,10 @@ package com.thousandeyes.sdk.client;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.verify;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -21,6 +23,7 @@ import java.util.stream.Stream;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -57,7 +60,7 @@ class NativeApiClientTest {
         doReturn(httpClient)
                 .when(httpClientBuilder)
                 .build();
-        
+
         apiClient = NativeApiClient.builder()
                                    .baseUri("http://localhost")
                                    .httpClientBuilder(httpClientBuilder)
@@ -145,6 +148,34 @@ class NativeApiClientTest {
         assertEquals(statusCode, exception.getCode());
     }
 
+    @Test
+    public void shouldAllowDifferentApiClientInstancesWithDifferentBearerTokens()
+            throws ApiException, IOException, InterruptedException
+    {
+        sendRequestAndVerifyBearerToken("BearerTokenA");
+        sendRequestAndVerifyBearerToken("BearerTokenB");
+    }
+
+    private void sendRequestAndVerifyBearerToken(String bearerToken)
+            throws IOException, InterruptedException, ApiException
+    {
+        stubHttpClient(new Response("name", OffsetDateTime.now(ZoneId.of("UTC"))));
+        var apiClient = NativeApiClient.builder()
+                                       .baseUri("http://localhost")
+                                       .bearerToken(bearerToken)
+                                       .httpClientBuilder(httpClientBuilder)
+                                       .mapper(objectMapper)
+                                       .build();
+
+        apiClient.send(baseRequestBuilder().build(), Response.class);
+
+        verify(httpClient).send(argThat(request -> request.headers()
+                                                          .firstValue("Authorization")
+                                                          .orElse("")
+                                                          .equals("Bearer " + bearerToken)),
+                                any());
+    }
+
     private void stubHttpClient(Class<Throwable> expectedException) throws IOException,
                                                                            InterruptedException
     {
@@ -164,19 +195,11 @@ class NativeApiClientTest {
     {
         var expectedResponseBytes = objectMapper.writeValueAsBytes(expectedResponse);
         var body = new ByteArrayInputStream(expectedResponseBytes);
-        doReturn(body)
-                .when(httpResponse)
-                .body();
+        doReturn(body).when(httpResponse).body();
         var headers = HttpHeaders.of(Map.of(), (s, s2) -> true);
-        doReturn(headers)
-                .when(httpResponse)
-                .headers();
-        doReturn(statusCode)
-                .when(httpResponse)
-                .statusCode();
-        doReturn(httpResponse)
-                .when(httpClient)
-                .send(any(), any());
+        doReturn(headers).when(httpResponse).headers();
+        doReturn(statusCode).when(httpResponse).statusCode();
+        doReturn(httpResponse).when(httpClient).send(any(), any());
     }
 
     private static ApiRequest.ApiRequestBuilder baseRequestBuilder() {

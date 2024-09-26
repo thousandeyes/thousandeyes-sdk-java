@@ -7,8 +7,6 @@ include 'client-native'
 project(':client-native').projectDir = file("core/client-native")
 include 'authentication'
 project(':authentication').projectDir = file("core/authentication")
-include('examples')
-project(':examples').projectDir = file("core/examples")
 
 include 'administrative'
 include 'agents'
