@@ -25,16 +25,10 @@ import java.util.function.Supplier;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import lombok.Getter;
-import lombok.Setter;
-
 
 
 public class HttpBearerAuth implements Authentication {
     private final String scheme;
-
-    @Getter
-    @Setter
     private Supplier<String> tokenSupplier;
 
     public HttpBearerAuth(String scheme) {
