@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.agents.model.Labels;
+import com.thousandeyes.sdk.agents.model.AgentLabel;
 import com.thousandeyes.sdk.agents.model.NotificationRules;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.util.ArrayList;
@@ -46,14 +46,14 @@ public class EnterpriseAgentResponseExpands {
   private List<NotificationRules> notificationRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<Labels> labels = new ArrayList<>();
+  private List<AgentLabel> labels = new ArrayList<>();
 
   public EnterpriseAgentResponseExpands() { 
   }
 
   @JsonCreator
   public EnterpriseAgentResponseExpands(
-    @JsonProperty(JSON_PROPERTY_LABELS) List<Labels> labels
+    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels
   ) {
   this();
     this.labels = labels;
@@ -133,7 +133,7 @@ public class EnterpriseAgentResponseExpands {
   @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Labels> getLabels() {
+  public List<AgentLabel> getLabels() {
     return labels;
   }
 

@@ -54,7 +54,7 @@ public class AgentClusterUnassignRequest {
   }
 
    /**
-   * Contains list of member IDs. (get &#x60;memberId&#x60; from &#x60;/agents/{agentId}&#x60; endpoint)
+   * Contains list of member IDs. (get &#x60;memberId&#x60; from &#x60;/agents/{agentId}&#x60; operation)
    * @return members
   **/
   @jakarta.annotation.Nullable

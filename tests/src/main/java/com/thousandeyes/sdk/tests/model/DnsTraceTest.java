@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.DnsQueryClass;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
@@ -58,13 +57,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsTraceTest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   DnsTraceTest.JSON_PROPERTY_DOMAIN,
-  DnsTraceTest.JSON_PROPERTY_DNS_QUERY_CLASS,
-  DnsTraceTest.JSON_PROPERTY_AGENTS
+  DnsTraceTest.JSON_PROPERTY_DNS_QUERY_CLASS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsTraceTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -123,9 +121,6 @@ public class DnsTraceTest {
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public DnsTraceTest() { 
   }
 
@@ -140,8 +135,7 @@ public class DnsTraceTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
     this.createdBy = createdBy;
@@ -154,7 +148,6 @@ public class DnsTraceTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
   }
 
   public DnsTraceTest interval(TestInterval interval) {
@@ -565,21 +558,6 @@ public class DnsTraceTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this DnsTraceTest object is equal to o.
    */
@@ -611,13 +589,12 @@ public class DnsTraceTest {
         Objects.equals(this.sharedWithAccounts, dnsTraceTest.sharedWithAccounts) &&
         Objects.equals(this.dnsTransportProtocol, dnsTraceTest.dnsTransportProtocol) &&
         Objects.equals(this.domain, dnsTraceTest.domain) &&
-        Objects.equals(this.dnsQueryClass, dnsTraceTest.dnsQueryClass) &&
-        Objects.equals(this.agents, dnsTraceTest.agents);
+        Objects.equals(this.dnsQueryClass, dnsTraceTest.dnsQueryClass);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass);
   }
 
   @Override
@@ -644,7 +621,6 @@ public class DnsTraceTest {
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

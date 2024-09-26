@@ -40,7 +40,7 @@ public class EndpointAgentLabelsSelectorConfig {
   private String agentSelectorType;
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
-  private Integer maxMachines;
+  private Integer maxMachines = 25;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
   private List<String> endpointAgentLabels = new ArrayList<>();
@@ -80,8 +80,6 @@ public class EndpointAgentLabelsSelectorConfig {
 
    /**
    * Maximum number of agents which can execute the test.
-   * minimum: 1
-   * maximum: 50000
    * @return maxMachines
   **/
   @jakarta.annotation.Nullable

@@ -30,7 +30,9 @@ public enum AgentLicenseType {
   
   ADVANTAGE("advantage"),
   
-  EMBEDDED("embedded");
+  EMBEDDED("embedded"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum AgentLicenseType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

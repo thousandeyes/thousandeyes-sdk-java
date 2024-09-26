@@ -2,11 +2,11 @@
 
 Emulation API
 
-- API version: 7.0.15
+- API version: 7.0.20
 
 The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.
 
-To access Emulation API endpoints, the following permissions are required:
+To access Emulation API operations, the following permissions are required:
 
 * `Settings Tests Read` for read operations.
 * `Settings Tests Update` for write operations.

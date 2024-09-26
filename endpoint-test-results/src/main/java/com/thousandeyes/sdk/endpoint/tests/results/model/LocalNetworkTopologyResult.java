@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkPing;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkTopologyType;
-import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserTestCoordinates;
+import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserEndpointTestCoordinates;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TcpConnect;
 import com.thousandeyes.sdk.endpoint.tests.results.model.Traceroute;
@@ -91,7 +91,7 @@ public class LocalNetworkTopologyResult {
   private SystemMetrics systemMetrics;
 
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
-  private RealUserTestCoordinates coordinates;
+  private RealUserEndpointTestCoordinates coordinates;
 
   public static final String JSON_PROPERTY_NETWORK_PROFILE = "networkProfile";
   private NetworkProfile networkProfile;
@@ -330,7 +330,7 @@ public class LocalNetworkTopologyResult {
   }
 
 
-  public LocalNetworkTopologyResult coordinates(RealUserTestCoordinates coordinates) {
+  public LocalNetworkTopologyResult coordinates(RealUserEndpointTestCoordinates coordinates) {
     this.coordinates = coordinates;
     return this;
   }
@@ -343,14 +343,14 @@ public class LocalNetworkTopologyResult {
   @JsonProperty(JSON_PROPERTY_COORDINATES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public RealUserTestCoordinates getCoordinates() {
+  public RealUserEndpointTestCoordinates getCoordinates() {
     return coordinates;
   }
 
 
   @JsonProperty(JSON_PROPERTY_COORDINATES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCoordinates(RealUserTestCoordinates coordinates) {
+  public void setCoordinates(RealUserEndpointTestCoordinates coordinates) {
     this.coordinates = coordinates;
   }
 

@@ -89,12 +89,12 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Created |  * Location -  <br>  |
+| **201** | Created |  * Location -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Limit -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Remaining -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Reset -  <br>  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
+| **429** | Exhausted rate limit for snapshot creation |  * X-Dashboard-Snapshot-Rate-Limit-Limit -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Remaining -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Reset -  <br>  |
 | **500** | Internal server error |  -  |
 
 ## createDashboardSnapshotWithHttpInfo
@@ -170,12 +170,12 @@ ApiResponse<[**DashboardSnapshotResponse**](DashboardSnapshotResponse.md)>
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Created |  * Location -  <br>  |
+| **201** | Created |  * Location -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Limit -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Remaining -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Reset -  <br>  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
-| **429** | Exhausted rate limit for the organization |  -  |
+| **429** | Exhausted rate limit for snapshot creation |  * X-Dashboard-Snapshot-Rate-Limit-Limit -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Remaining -  <br>  * X-Dashboard-Snapshot-Rate-Limit-Reset -  <br>  |
 | **500** | Internal server error |  -  |
 
 
@@ -343,7 +343,7 @@ ApiResponse<Void>
 
 Retrieve dashboard snapshot
 
-This endpoint returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
+This operation returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
 
 ### Example
 
@@ -421,7 +421,7 @@ public class Example {
 
 Retrieve dashboard snapshot
 
-This endpoint returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
+This operation returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
 
 ### Example
 

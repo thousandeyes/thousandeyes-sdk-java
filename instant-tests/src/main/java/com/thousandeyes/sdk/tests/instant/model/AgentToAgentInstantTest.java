@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
+ * The Instant Tests API operations lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * 
  *
@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.Agent;
 import com.thousandeyes.sdk.tests.instant.model.AgentToAgentTestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.instant.model.TestDirection;
@@ -64,8 +63,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentInstantTest.JSON_PROPERTY_THROUGHPUT_MEASUREMENTS,
   AgentToAgentInstantTest.JSON_PROPERTY_THROUGHPUT_DURATION,
   AgentToAgentInstantTest.JSON_PROPERTY_THROUGHPUT_RATE,
-  AgentToAgentInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE,
-  AgentToAgentInstantTest.JSON_PROPERTY_AGENTS
+  AgentToAgentInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentToAgentInstantTest {
@@ -147,9 +145,6 @@ public class AgentToAgentInstantTest {
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public AgentToAgentInstantTest() { 
   }
 
@@ -165,8 +160,7 @@ public class AgentToAgentInstantTest {
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_DSCP) String dscp
   ) {
   this();
     this.createdBy = createdBy;
@@ -180,7 +174,6 @@ public class AgentToAgentInstantTest {
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
     this.dscp = dscp;
-    this.agents = agents;
   }
 
    /**
@@ -735,21 +728,6 @@ public class AgentToAgentInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this AgentToAgentInstantTest object is equal to o.
    */
@@ -787,13 +765,12 @@ public class AgentToAgentInstantTest {
         Objects.equals(this.throughputMeasurements, agentToAgentInstantTest.throughputMeasurements) &&
         Objects.equals(this.throughputDuration, agentToAgentInstantTest.throughputDuration) &&
         Objects.equals(this.throughputRate, agentToAgentInstantTest.throughputRate) &&
-        Objects.equals(this.fixedPacketRate, agentToAgentInstantTest.fixedPacketRate) &&
-        Objects.equals(this.agents, agentToAgentInstantTest.agents);
+        Objects.equals(this.fixedPacketRate, agentToAgentInstantTest.fixedPacketRate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate);
   }
 
   @Override
@@ -826,7 +803,6 @@ public class AgentToAgentInstantTest {
     sb.append("    throughputDuration: ").append(toIndentedString(throughputDuration)).append("\n");
     sb.append("    throughputRate: ").append(toIndentedString(throughputRate)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

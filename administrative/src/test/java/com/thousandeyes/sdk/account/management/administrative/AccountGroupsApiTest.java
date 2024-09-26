@@ -1,6 +1,6 @@
 /*
  * Administrative API
- * Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following endpoints that define the operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These endpoints can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
+ * Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These operations can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
  *
  * 
  *
@@ -17,7 +17,7 @@ import com.thousandeyes.sdk.account.management.administrative.model.AccountGroup
 import com.thousandeyes.sdk.account.management.administrative.model.AccountGroups;
 import com.thousandeyes.sdk.account.management.administrative.model.CreatedAccountGroup;
 import com.thousandeyes.sdk.account.management.administrative.model.Error;
-import com.thousandeyes.sdk.account.management.administrative.model.Expand;
+import com.thousandeyes.sdk.account.management.administrative.model.ExpandAccountGroupOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.account.management.administrative.model.UnauthorizedError;
 import com.thousandeyes.sdk.account.management.administrative.model.ValidationError;
@@ -177,6 +177,7 @@ public class AccountGroupsApiTest {
                   },
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
+                  "accountToken" : "6j052y4vfgyuhefghue",
                   "aid" : "1234",
                   "users" : [ {
                     "uid" : "235",
@@ -462,6 +463,7 @@ public class AccountGroupsApiTest {
                   },
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
+                  "accountToken" : "6j052y4vfgyuhefghue",
                   "aid" : "1234",
                   "users" : [ {
                     "uid" : "235",

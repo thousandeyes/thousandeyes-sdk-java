@@ -1,6 +1,6 @@
 /*
  * Instant Tests API
- * The Instant Tests API endpoint lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
+ * The Instant Tests API operations lets you create and run new instant tests. You will need to be a regular user or have the following permissions:   * `API Access`   * `View tests`  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * 
  *
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.Agent;
+import com.thousandeyes.sdk.tests.instant.model.AgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.instant.model.SipTestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.TestIpv6Policy;
@@ -63,13 +63,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerInstantTestResponse.JSON_PROPERTY_SIP_TIME_LIMIT,
   SipServerInstantTestResponse.JSON_PROPERTY_FIXED_PACKET_RATE,
   SipServerInstantTestResponse.JSON_PROPERTY_IPV6_POLICY,
-  SipServerInstantTestResponse.JSON_PROPERTY_AGENTS,
   SipServerInstantTestResponse.JSON_PROPERTY_AUTH_USER,
   SipServerInstantTestResponse.JSON_PROPERTY_PASSWORD,
   SipServerInstantTestResponse.JSON_PROPERTY_PORT,
   SipServerInstantTestResponse.JSON_PROPERTY_PROTOCOL,
   SipServerInstantTestResponse.JSON_PROPERTY_SIP_REGISTRAR,
-  SipServerInstantTestResponse.JSON_PROPERTY_USER
+  SipServerInstantTestResponse.JSON_PROPERTY_USER,
+  SipServerInstantTestResponse.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class SipServerInstantTestResponse {
@@ -145,9 +145,6 @@ public class SipServerInstantTestResponse {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public static final String JSON_PROPERTY_AUTH_USER = "authUser";
   private String authUser;
 
@@ -166,6 +163,9 @@ public class SipServerInstantTestResponse {
   public static final String JSON_PROPERTY_USER = "user";
   private String user;
 
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  private List<AgentResponse> agents = new ArrayList<>();
+
   public SipServerInstantTestResponse() { 
   }
 
@@ -180,8 +180,7 @@ public class SipServerInstantTestResponse {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
     this.createdBy = createdBy;
@@ -194,7 +193,6 @@ public class SipServerInstantTestResponse {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
   }
 
    /**
@@ -705,21 +703,6 @@ public class SipServerInstantTestResponse {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   public SipServerInstantTestResponse authUser(String authUser) {
     this.authUser = authUser;
     return this;
@@ -872,6 +855,39 @@ public class SipServerInstantTestResponse {
   }
 
 
+  public SipServerInstantTestResponse agents(List<AgentResponse> agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  public SipServerInstantTestResponse addAgentsItem(AgentResponse agentsItem) {
+    if (this.agents == null) {
+      this.agents = new ArrayList<>();
+    }
+    this.agents.add(agentsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of agents.
+   * @return agents
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<AgentResponse> getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(List<AgentResponse> agents) {
+    this.agents = agents;
+  }
+
+
   /**
    * Return true if this SipServerInstantTestResponse object is equal to o.
    */
@@ -908,18 +924,18 @@ public class SipServerInstantTestResponse {
         Objects.equals(this.sipTimeLimit, sipServerInstantTestResponse.sipTimeLimit) &&
         Objects.equals(this.fixedPacketRate, sipServerInstantTestResponse.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, sipServerInstantTestResponse.ipv6Policy) &&
-        Objects.equals(this.agents, sipServerInstantTestResponse.agents) &&
         Objects.equals(this.authUser, sipServerInstantTestResponse.authUser) &&
         Objects.equals(this.password, sipServerInstantTestResponse.password) &&
         Objects.equals(this.port, sipServerInstantTestResponse.port) &&
         Objects.equals(this.protocol, sipServerInstantTestResponse.protocol) &&
         Objects.equals(this.sipRegistrar, sipServerInstantTestResponse.sipRegistrar) &&
-        Objects.equals(this.user, sipServerInstantTestResponse.user);
+        Objects.equals(this.user, sipServerInstantTestResponse.user) &&
+        Objects.equals(this.agents, sipServerInstantTestResponse.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, agents, authUser, password, port, protocol, sipRegistrar, user);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, authUser, password, port, protocol, sipRegistrar, user, agents);
   }
 
   @Override
@@ -950,13 +966,13 @@ public class SipServerInstantTestResponse {
     sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    authUser: ").append(toIndentedString(authUser)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    sipRegistrar: ").append(toIndentedString(sipRegistrar)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.streaming.model.AuditOperation;
 import com.thousandeyes.sdk.streaming.model.DataModelVersion;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
+import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.StreamLinks;
 import com.thousandeyes.sdk.streaming.model.StreamType;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
@@ -49,6 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateStreamResponse.JSON_PROPERTY_CUSTOM_HEADERS,
   CreateStreamResponse.JSON_PROPERTY_TAG_MATCH,
   CreateStreamResponse.JSON_PROPERTY_TEST_MATCH,
+  CreateStreamResponse.JSON_PROPERTY_EXPORTER_CONFIG,
   CreateStreamResponse.JSON_PROPERTY_AUDIT_OPERATION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -72,7 +74,7 @@ public class CreateStreamResponse {
   private String streamEndpointUrl;
 
   public static final String JSON_PROPERTY_DATA_MODEL_VERSION = "dataModelVersion";
-  private DataModelVersion dataModelVersion;
+  private DataModelVersion dataModelVersion = DataModelVersion.V2;
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
@@ -82,6 +84,9 @@ public class CreateStreamResponse {
 
   public static final String JSON_PROPERTY_TEST_MATCH = "testMatch";
   private List<TestMatch> testMatch = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
+  private ExporterConfig exporterConfig;
 
   public static final String JSON_PROPERTY_AUDIT_OPERATION = "auditOperation";
   private AuditOperation auditOperation;
@@ -218,7 +223,7 @@ public class CreateStreamResponse {
   }
 
    /**
-   * The URL ThousandEyes sends data stream to. For a URL to be valid, it needs to: - Be syntactically correct. - Be reachable. - Use the HTTPS protocol. - When using the &#x60;grpc&#x60; endpointType, streamEndpointUrl cannot contain paths:     - Valid . &#x60;grpc&#x60; - &#x60;https://example.com&#x60;     - Invalid . &#x60;grpc&#x60; - &#x60;https://example.com/collector&#x60;.     - Valid . &#x60;http&#x60; - &#x60;https://example.com/collector&#x60;.      - When using the &#x60;http&#x60; endpointType, the endpoint must match the exact final full URL (including the path if there is one) to which the metrics will be sent. Examples below:     - &#x60;https://api.honeycomb.io:443/v1/metrics&#x60;     - &#x60;https://ingest.eu0.signalfx.com/v2/datapoint/otlp&#x60;
+   * The URL ThousandEyes sends data stream to. For a URL to be valid, it needs to: - Be syntactically correct. - Be reachable. - Use the HTTPS protocol. - When using the &#x60;grpc&#x60; endpointType, streamEndpointUrl cannot contain paths:     - Valid . &#x60;grpc&#x60; - &#x60;https://example.com&#x60;     - Invalid . &#x60;grpc&#x60; - &#x60;https://example.com/collector&#x60;.     - Valid . &#x60;http&#x60; - &#x60;https://example.com/collector&#x60;.      - When using the &#x60;http&#x60; endpointType, the operation must match the exact final full URL (including the path if there is one) to which the metrics will be sent. Examples below:     - &#x60;https://api.honeycomb.io:443/v1/metrics&#x60;     - &#x60;https://ingest.eu0.signalfx.com/v2/datapoint/otlp&#x60;
    * @return streamEndpointUrl
   **/
   @jakarta.annotation.Nullable
@@ -361,6 +366,31 @@ public class CreateStreamResponse {
   }
 
 
+  public CreateStreamResponse exporterConfig(ExporterConfig exporterConfig) {
+    this.exporterConfig = exporterConfig;
+    return this;
+  }
+
+   /**
+   * Get exporterConfig
+   * @return exporterConfig
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXPORTER_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ExporterConfig getExporterConfig() {
+    return exporterConfig;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXPORTER_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExporterConfig(ExporterConfig exporterConfig) {
+    this.exporterConfig = exporterConfig;
+  }
+
+
   public CreateStreamResponse auditOperation(AuditOperation auditOperation) {
     this.auditOperation = auditOperation;
     return this;
@@ -408,12 +438,13 @@ public class CreateStreamResponse {
         Objects.equals(this.customHeaders, createStreamResponse.customHeaders) &&
         Objects.equals(this.tagMatch, createStreamResponse.tagMatch) &&
         Objects.equals(this.testMatch, createStreamResponse.testMatch) &&
+        Objects.equals(this.exporterConfig, createStreamResponse.exporterConfig) &&
         Objects.equals(this.auditOperation, createStreamResponse.auditOperation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, auditOperation);
+    return Objects.hash(id, enabled, links, type, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, exporterConfig, auditOperation);
   }
 
   @Override
@@ -430,6 +461,7 @@ public class CreateStreamResponse {
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
+    sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    auditOperation: ").append(toIndentedString(auditOperation)).append("\n");
     sb.append("}");
     return sb.toString();

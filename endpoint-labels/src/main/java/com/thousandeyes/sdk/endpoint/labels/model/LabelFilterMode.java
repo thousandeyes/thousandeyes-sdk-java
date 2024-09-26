@@ -28,7 +28,9 @@ public enum LabelFilterMode {
   
   IN("in"),
   
-  NOT_IN("not-in");
+  NOT_IN("not-in"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum LabelFilterMode {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

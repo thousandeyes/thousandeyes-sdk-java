@@ -8,6 +8,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 | [**createUserWithHttpInfo**](UsersApi.md#createUserWithHttpInfo) | **POST** /users | Create user |
 | [**deleteUser**](UsersApi.md#deleteUser) | **DELETE** /users/{id} | Delete user |
 | [**deleteUserWithHttpInfo**](UsersApi.md#deleteUserWithHttpInfo) | **DELETE** /users/{id} | Delete user |
+| [**getCurrentUser**](UsersApi.md#getCurrentUser) | **GET** /users/current | Retrieve current user |
+| [**getCurrentUserWithHttpInfo**](UsersApi.md#getCurrentUserWithHttpInfo) | **GET** /users/current | Retrieve current user |
 | [**getUser**](UsersApi.md#getUser) | **GET** /users/{id} | Retrieve user |
 | [**getUserWithHttpInfo**](UsersApi.md#getUserWithHttpInfo) | **GET** /users/{id} | Retrieve user |
 | [**getUsers**](UsersApi.md#getUsers) | **GET** /users | List users |
@@ -183,7 +185,7 @@ ApiResponse<[**CreatedUser**](CreatedUser.md)>
 
 Delete user
 
-Deletes a user using the user ID. This endpoint requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
+Deletes a user using the user ID. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
 
 ### Example
 
@@ -260,7 +262,7 @@ null (empty response body)
 
 Delete user
 
-Deletes a user using the user ID. This endpoint requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
+Deletes a user using the user ID. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
 
 ### Example
 
@@ -327,6 +329,154 @@ ApiResponse<Void>
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+
+## getCurrentUser
+
+> UserDetail getCurrentUser()
+
+Retrieve current user
+
+Retrieves detailed information about the current user.
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.account.management.Configuration;
+import com.thousandeyes.sdk.account.management.authentication.*;
+import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.UsersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        UsersApi apiInstance = new UsersApi(defaultClient);
+        try {
+            UserDetail result = apiInstance.getCurrentUser();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#getCurrentUser");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**UserDetail**](UserDetail.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## getCurrentUserWithHttpInfo
+
+> ApiResponse<UserDetail> getCurrentUser getCurrentUserWithHttpInfo()
+
+Retrieve current user
+
+Retrieves detailed information about the current user.
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.account.management.Configuration;
+import com.thousandeyes.sdk.account.management.authentication.*;
+import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.UsersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        UsersApi apiInstance = new UsersApi(defaultClient);
+        try {
+            ApiResponse<UserDetail> response = apiInstance.getCurrentUserWithHttpInfo();
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#getCurrentUser");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+ApiResponse<[**UserDetail**](UserDetail.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
@@ -657,7 +807,7 @@ ApiResponse<[**Users**](Users.md)>
 
 Update user
 
-Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This endpoint requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.   When updating a user, the following applies: * When updating a user&#39;s email address, the user must confirm the username change before they can subsequently log in or perform API operations. * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
+Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.   When updating a user, the following applies: * When updating a user&#39;s email address, the user must confirm the username change before they can subsequently log in or perform API operations. * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
 
 ### Example
 
@@ -737,7 +887,7 @@ public class Example {
 
 Update user
 
-Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This endpoint requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.   When updating a user, the following applies: * When updating a user&#39;s email address, the user must confirm the username change before they can subsequently log in or perform API operations. * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
+Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.   When updating a user, the following applies: * When updating a user&#39;s email address, the user must confirm the username change before they can subsequently log in or perform API operations. * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
 
 ### Example
 

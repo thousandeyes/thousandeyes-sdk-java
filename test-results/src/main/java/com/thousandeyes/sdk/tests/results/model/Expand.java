@@ -28,7 +28,9 @@ public enum Expand {
   
   HEADER("header"),
   
-  CERTIFICATE("certificate");
+  CERTIFICATE("certificate"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum Expand {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

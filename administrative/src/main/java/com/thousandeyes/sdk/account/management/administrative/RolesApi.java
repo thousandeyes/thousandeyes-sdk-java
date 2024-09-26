@@ -1,6 +1,6 @@
 /*
  * Administrative API
- * Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following endpoints that define the operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These endpoints can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
+ * Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These operations can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
  *
  * 
  *
@@ -120,7 +120,7 @@ public class RolesApi {
   }
   /**
    * Delete role
-   * Deletes a role using its ID. The user needs appropriate permissions to successfully call this endpoint.
+   * Deletes a role using its ID. The user needs appropriate permissions to successfully call this operation.
    * @param id The ID of the desired role. (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @throws ApiException if fails to make API call
@@ -131,7 +131,7 @@ public class RolesApi {
 
   /**
    * Delete role
-   * Deletes a role using its ID. The user needs appropriate permissions to successfully call this endpoint.
+   * Deletes a role using its ID. The user needs appropriate permissions to successfully call this operation.
    * @param id The ID of the desired role. (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;Void&gt;
@@ -276,7 +276,7 @@ public class RolesApi {
   }
   /**
    * Update role
-   * Updates a user-defined role using its ID.  When updating a role, the following applies:  * The full list of permissions must be sent, This endpoint does not support delta-based grant or revoking of permissions.  * Permission definitions and details can be obtained from the Permissions endpoint.
+   * Updates a user-defined role using its ID.  When updating a role, the following applies:  * The full list of permissions must be sent, This operation does not support delta-based grant or revoking of permissions.  * Permission definitions and details can be obtained from the Permissions operation.
    * @param id The ID of the desired role. (required)
    * @param roleRequestBody  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
@@ -290,7 +290,7 @@ public class RolesApi {
 
   /**
    * Update role
-   * Updates a user-defined role using its ID.  When updating a role, the following applies:  * The full list of permissions must be sent, This endpoint does not support delta-based grant or revoking of permissions.  * Permission definitions and details can be obtained from the Permissions endpoint.
+   * Updates a user-defined role using its ID.  When updating a role, the following applies:  * The full list of permissions must be sent, This operation does not support delta-based grant or revoking of permissions.  * Permission definitions and details can be obtained from the Permissions operation.
    * @param id The ID of the desired role. (required)
    * @param roleRequestBody  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)

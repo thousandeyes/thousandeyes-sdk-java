@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.Agent;
 import com.thousandeyes.sdk.tests.model.FtpServerRequestType;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.model.TestIpv6Policy;
@@ -70,8 +69,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FtpServerInstantTest.JSON_PROPERTY_USE_EXPLICIT_FTPS,
   FtpServerInstantTest.JSON_PROPERTY_USERNAME,
   FtpServerInstantTest.JSON_PROPERTY_FIXED_PACKET_RATE,
-  FtpServerInstantTest.JSON_PROPERTY_IPV6_POLICY,
-  FtpServerInstantTest.JSON_PROPERTY_AGENTS
+  FtpServerInstantTest.JSON_PROPERTY_IPV6_POLICY
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class FtpServerInstantTest {
@@ -168,9 +166,6 @@ public class FtpServerInstantTest {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
-  public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<Agent> agents = new ArrayList<>();
-
   public FtpServerInstantTest() { 
   }
 
@@ -185,8 +180,7 @@ public class FtpServerInstantTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_AGENTS) List<Agent> agents
+    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
     this.createdBy = createdBy;
@@ -199,7 +193,6 @@ public class FtpServerInstantTest {
     this.type = type;
     this.labels = labels;
     this.sharedWithAccounts = sharedWithAccounts;
-    this.agents = agents;
   }
 
    /**
@@ -885,21 +878,6 @@ public class FtpServerInstantTest {
   }
 
 
-   /**
-   * Contains list of agents.
-   * @return agents
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Agent> getAgents() {
-    return agents;
-  }
-
-
-
-
   /**
    * Return true if this FtpServerInstantTest object is equal to o.
    */
@@ -942,13 +920,12 @@ public class FtpServerInstantTest {
         Objects.equals(this.useExplicitFtps, ftpServerInstantTest.useExplicitFtps) &&
         Objects.equals(this.username, ftpServerInstantTest.username) &&
         Objects.equals(this.fixedPacketRate, ftpServerInstantTest.fixedPacketRate) &&
-        Objects.equals(this.ipv6Policy, ftpServerInstantTest.ipv6Policy) &&
-        Objects.equals(this.agents, ftpServerInstantTest.agents);
+        Objects.equals(this.ipv6Policy, ftpServerInstantTest.ipv6Policy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy);
   }
 
   @Override
@@ -986,7 +963,6 @@ public class FtpServerInstantTest {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
-    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
   }

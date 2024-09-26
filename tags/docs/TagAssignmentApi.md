@@ -21,7 +21,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Assign tag to multiple objects
 
-Assigns a tag to one or more objects. This endpoint has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+Assigns a tag to one or more objects. This operation has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
 
 ### Example
 
@@ -44,7 +44,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
-        String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of the tag to associate
+        String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | Tag ID
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
@@ -65,7 +65,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of the tag to associate | |
+| **id** | **String**| Tag ID | |
 | **tagAssignment** | [**TagAssignment**](TagAssignment.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
@@ -99,7 +99,7 @@ null (empty response body)
 
 Assign tag to multiple objects
 
-Assigns a tag to one or more objects. This endpoint has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+Assigns a tag to one or more objects. This operation has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
 
 ### Example
 
@@ -123,7 +123,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
-        String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | ID of the tag to associate
+        String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | Tag ID
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
@@ -146,7 +146,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of the tag to associate | |
+| **id** | **String**| Tag ID | |
 | **tagAssignment** | [**TagAssignment**](TagAssignment.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
@@ -181,7 +181,7 @@ ApiResponse<Void>
 
 Assign multiple tags to multiple objects
 
-Assigns the specified tags to the specified objects. This endpoint has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+Assigns the specified tags to the specified objects. This operation has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
 
 ### Example
 
@@ -257,7 +257,7 @@ null (empty response body)
 
 Assign multiple tags to multiple objects
 
-Assigns the specified tags to the specified objects. This endpoint has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+Assigns the specified tags to the specified objects. This operation has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
 
 ### Example
 
@@ -360,7 +360,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
-        String id = "2983u1"; // String | ID of the tag to associate
+        String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | Tag ID
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
@@ -381,7 +381,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of the tag to associate | |
+| **id** | **String**| Tag ID | |
 | **tagAssignment** | [**TagAssignment**](TagAssignment.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
@@ -439,7 +439,7 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         TagAssignmentApi apiInstance = new TagAssignmentApi(defaultClient);
-        String id = "2983u1"; // String | ID of the tag to associate
+        String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | Tag ID
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
@@ -462,7 +462,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of the tag to associate | |
+| **id** | **String**| Tag ID | |
 | **tagAssignment** | [**TagAssignment**](TagAssignment.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 

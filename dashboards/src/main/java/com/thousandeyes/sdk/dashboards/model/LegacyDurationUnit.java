@@ -30,7 +30,9 @@ public enum LegacyDurationUnit {
   
   HOURS("Hours"),
   
-  DAYS("Days");
+  DAYS("Days"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum LegacyDurationUnit {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

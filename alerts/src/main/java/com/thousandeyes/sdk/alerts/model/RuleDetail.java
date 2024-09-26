@@ -21,13 +21,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.alerts.model.AlertDirection;
+import com.thousandeyes.sdk.alerts.model.AlertNotification;
 import com.thousandeyes.sdk.alerts.model.AlertRoundsViolationMode;
 import com.thousandeyes.sdk.alerts.model.AlertType;
-import com.thousandeyes.sdk.alerts.model.BaseTest;
-import com.thousandeyes.sdk.alerts.model.Notification;
 import com.thousandeyes.sdk.alerts.model.SelfLinks;
 import com.thousandeyes.sdk.alerts.model.SensitivityLevel;
 import com.thousandeyes.sdk.alerts.model.Severity;
+import com.thousandeyes.sdk.alerts.model.SimpleTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -105,10 +105,10 @@ public class RuleDetail {
   private Severity severity;
 
   public static final String JSON_PROPERTY_NOTIFICATIONS = "notifications";
-  private Notification notifications;
+  private AlertNotification notifications;
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<BaseTest> tests = new ArrayList<>();
+  private List<SimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
@@ -119,7 +119,7 @@ public class RuleDetail {
   @JsonCreator
   public RuleDetail(
     @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId, 
-    @JsonProperty(JSON_PROPERTY_TESTS) List<BaseTest> tests
+    @JsonProperty(JSON_PROPERTY_TESTS) List<SimpleTest> tests
   ) {
   this();
     this.ruleId = ruleId;
@@ -491,7 +491,7 @@ public class RuleDetail {
   }
 
 
-  public RuleDetail notifications(Notification notifications) {
+  public RuleDetail notifications(AlertNotification notifications) {
     this.notifications = notifications;
     return this;
   }
@@ -504,14 +504,14 @@ public class RuleDetail {
   @JsonProperty(JSON_PROPERTY_NOTIFICATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Notification getNotifications() {
+  public AlertNotification getNotifications() {
     return notifications;
   }
 
 
   @JsonProperty(JSON_PROPERTY_NOTIFICATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotifications(Notification notifications) {
+  public void setNotifications(AlertNotification notifications) {
     this.notifications = notifications;
   }
 
@@ -524,7 +524,7 @@ public class RuleDetail {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<BaseTest> getTests() {
+  public List<SimpleTest> getTests() {
     return tests;
   }
 

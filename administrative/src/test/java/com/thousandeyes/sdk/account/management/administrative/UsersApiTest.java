@@ -1,6 +1,6 @@
 /*
  * Administrative API
- * Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following endpoints that define the operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These endpoints can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
+ * Manage users, accounts, and account groups in the ThousandEyes platform using the Administrative API. This API provides the following operations to manage your organization:     * `/account-groups`: Account groups are used to divide an organization into different sections. These operations can be used to create, retrieve, update and delete account groups.   * `/users`: Create, retrieve, update and delete users within an organization.    * `/roles`: Create, retrieve and update roles for the current user.    * `/permissions`: Retrieve all assignable permissions. Used in the context of modifying roles.    * `/audit-user-events`: Retrieve all activity log events.    For more information about the administrative models, see [Account Management](https://docs.thousandeyes.com/product-documentation/user-management).
  *
  * 
  *
@@ -154,7 +154,7 @@ public class UsersApiTest {
     /**
      * Delete user
      * <p>
-     * Deletes a user using the user ID. This endpoint requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
+     * Deletes a user using the user ID. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -164,6 +164,93 @@ public class UsersApiTest {
             throws JsonProcessingException 
     {
 
+    }
+    
+    /**
+     * Retrieve current user
+     * <p>
+     * Retrieves detailed information about the current user.
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    
+    @Test
+    public void getCurrentUserRequestAndResponseDeserializationTest()
+            throws JsonProcessingException 
+    {
+
+        String responseBodyJson = """
+                {
+                  "loginAccountGroup" : {
+                    "accountGroupName" : "Account A",
+                    "aid" : "1234"
+                  },
+                  "uid" : "245",
+                  "lastLogin" : "2022-07-17T22:00:54Z",
+                  "allAccountGroupRoles" : [ {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  }, {
+                    "roleId" : "35",
+                    "name" : "Organization Admin",
+                    "isBuiltin" : true,
+                    "hasManagementPermissions" : true
+                  } ],
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "accountGroupRoles" : [ {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  }, {
+                    "roles" : [ {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    }, {
+                      "roleId" : "35",
+                      "name" : "Organization Admin",
+                      "isBuiltin" : true,
+                      "hasManagementPermissions" : true
+                    } ],
+                    "accountGroup" : {
+                      "accountGroupName" : "Account A",
+                      "aid" : "1234"
+                    }
+                  } ],
+                  "name" : "User X",
+                  "email" : "userx@thousandeyes.com",
+                  "dateRegistered" : "2020-07-17T22:00:54Z"
+                }
+                                  """;
+        UserDetail mappedResponse = 
+                mapper.readValue(responseBodyJson, UserDetail.class);
+        assertNotNull(mappedResponse);
     }
     
     /**
@@ -311,7 +398,7 @@ public class UsersApiTest {
     /**
      * Update user
      * <p>
-     * Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This endpoint requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.   When updating a user, the following applies: * When updating a user&#39;s email address, the user must confirm the username change before they can subsequently log in or perform API operations. * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
+     * Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.   When updating a user, the following applies: * When updating a user&#39;s email address, the user must confirm the username change before they can subsequently log in or perform API operations. * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
      *
      * @throws JsonProcessingException if the deserialization fails
      */

@@ -2,7 +2,7 @@
 
 Usage API
 
-- API version: 7.0.15
+- API version: 7.0.20
 
 
 These usage endpoints define the following operations:
@@ -10,14 +10,14 @@ These usage endpoints define the following operations:
 * **Usage**: Retrieve usage data for the specified time period (default is one month).
     
     * Users must have the `View organization usage` permission to access this endpoint.
-    * This endpoint offers visibility across all account groups within the organization.
-    * Users with `View organization usage` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.
+    * This operation offers visibility across all account groups within the organization.
+    * Users with `View organization usage` permission in multiple organizations should query the operation with the `aid` query string parameter (see optional parameters) for each organization.
 
 * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.
     
     * Users must have the necessary permissions to perform quota-related actions.
 
-Refer to the Usage API endpoints for detailed usage instructions and optional parameters.
+Refer to the Usage API operations for detailed usage instructions and optional parameters.
 
 
 

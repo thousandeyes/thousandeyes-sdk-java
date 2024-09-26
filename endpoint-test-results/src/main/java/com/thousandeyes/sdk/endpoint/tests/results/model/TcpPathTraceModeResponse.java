@@ -59,7 +59,7 @@ public enum TcpPathTraceModeResponse {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

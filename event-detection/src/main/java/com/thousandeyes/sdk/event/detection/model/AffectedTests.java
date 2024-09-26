@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.thousandeyes.sdk.event.detection.model.ApiAffectedTest;
+import com.thousandeyes.sdk.event.detection.model.EventApiAffectedTest;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -44,7 +44,7 @@ public class AffectedTests {
   private Integer inAccountGroup;
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private Set<ApiAffectedTest> tests = new LinkedHashSet<>();
+  private Set<EventApiAffectedTest> tests = new LinkedHashSet<>();
 
   public AffectedTests() { 
   }
@@ -89,12 +89,12 @@ public class AffectedTests {
 
 
 
-  public AffectedTests tests(Set<ApiAffectedTest> tests) {
+  public AffectedTests tests(Set<EventApiAffectedTest> tests) {
     this.tests = tests;
     return this;
   }
 
-  public AffectedTests addTestsItem(ApiAffectedTest testsItem) {
+  public AffectedTests addTestsItem(EventApiAffectedTest testsItem) {
     if (this.tests == null) {
       this.tests = new LinkedHashSet<>();
     }
@@ -110,7 +110,7 @@ public class AffectedTests {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<ApiAffectedTest> getTests() {
+  public Set<EventApiAffectedTest> getTests() {
     return tests;
   }
 
@@ -118,7 +118,7 @@ public class AffectedTests {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(Set<ApiAffectedTest> tests) {
+  public void setTests(Set<EventApiAffectedTest> tests) {
     this.tests = tests;
   }
 

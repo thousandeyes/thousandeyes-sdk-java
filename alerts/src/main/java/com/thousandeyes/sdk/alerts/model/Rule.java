@@ -21,9 +21,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.alerts.model.AlertDirection;
+import com.thousandeyes.sdk.alerts.model.AlertNotification;
 import com.thousandeyes.sdk.alerts.model.AlertRoundsViolationMode;
 import com.thousandeyes.sdk.alerts.model.AlertType;
-import com.thousandeyes.sdk.alerts.model.Notification;
 import com.thousandeyes.sdk.alerts.model.SelfLinks;
 import com.thousandeyes.sdk.alerts.model.SensitivityLevel;
 import com.thousandeyes.sdk.alerts.model.Severity;
@@ -104,7 +104,7 @@ public class Rule {
   private Severity severity;
 
   public static final String JSON_PROPERTY_NOTIFICATIONS = "notifications";
-  private Notification notifications;
+  private AlertNotification notifications;
 
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
   private List<String> testIds = new ArrayList<>();
@@ -488,7 +488,7 @@ public class Rule {
   }
 
 
-  public Rule notifications(Notification notifications) {
+  public Rule notifications(AlertNotification notifications) {
     this.notifications = notifications;
     return this;
   }
@@ -501,14 +501,14 @@ public class Rule {
   @JsonProperty(JSON_PROPERTY_NOTIFICATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Notification getNotifications() {
+  public AlertNotification getNotifications() {
     return notifications;
   }
 
 
   @JsonProperty(JSON_PROPERTY_NOTIFICATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotifications(Notification notifications) {
+  public void setNotifications(AlertNotification notifications) {
     this.notifications = notifications;
   }
 

@@ -44,7 +44,13 @@ public enum WidgetMeasureType {
   
   TOTAL("TOTAL"),
   
-  VALUES("VALUES");
+  VALUES("VALUES"),
+  
+  CLOUD_NATIVE_MONITORING_MEAN("CLOUD_NATIVE_MONITORING-MEAN"),
+  
+  CLOUD_NATIVE_MONITORING_SUM("CLOUD_NATIVE_MONITORING-SUM"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -69,7 +75,7 @@ public enum WidgetMeasureType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

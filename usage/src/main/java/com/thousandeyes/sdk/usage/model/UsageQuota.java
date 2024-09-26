@@ -1,6 +1,6 @@
 /*
  * Usage API
- *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View organization usage` permission to access this endpoint.     * This endpoint offers visibility across all account groups within the organization.     * Users with `View organization usage` permission in multiple organizations should query the endpoint with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API endpoints for detailed usage instructions and optional parameters. 
+ *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View organization usage` permission to access this endpoint.     * This operation offers visibility across all account groups within the organization.     * Users with `View organization usage` permission in multiple organizations should query the operation with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API operations for detailed usage instructions and optional parameters. 
  *
  * 
  *
@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UsageQuota.JSON_PROPERTY_MONTH_START,
   UsageQuota.JSON_PROPERTY_MONTH_END,
   UsageQuota.JSON_PROPERTY_CLOUD_UNITS_INCLUDED,
+  UsageQuota.JSON_PROPERTY_DEVICE_AGENTS_INCLUDED,
   UsageQuota.JSON_PROPERTY_ENDPOINT_AGENTS_INCLUDED,
   UsageQuota.JSON_PROPERTY_ENDPOINT_AGENTS_ESSENTIALS_INCLUDED,
   UsageQuota.JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED_INCLUDED,
@@ -46,6 +47,9 @@ public class UsageQuota {
 
   public static final String JSON_PROPERTY_CLOUD_UNITS_INCLUDED = "cloudUnitsIncluded";
   private Long cloudUnitsIncluded;
+
+  public static final String JSON_PROPERTY_DEVICE_AGENTS_INCLUDED = "deviceAgentsIncluded";
+  private Long deviceAgentsIncluded;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENTS_INCLUDED = "endpointAgentsIncluded";
   private Long endpointAgentsIncluded;
@@ -134,6 +138,31 @@ public class UsageQuota {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCloudUnitsIncluded(Long cloudUnitsIncluded) {
     this.cloudUnitsIncluded = cloudUnitsIncluded;
+  }
+
+
+  public UsageQuota deviceAgentsIncluded(Long deviceAgentsIncluded) {
+    this.deviceAgentsIncluded = deviceAgentsIncluded;
+    return this;
+  }
+
+   /**
+   * Number of device agents (connected devices product) allocated monthly, as specified in the contract.
+   * @return deviceAgentsIncluded
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DEVICE_AGENTS_INCLUDED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Long getDeviceAgentsIncluded() {
+    return deviceAgentsIncluded;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DEVICE_AGENTS_INCLUDED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeviceAgentsIncluded(Long deviceAgentsIncluded) {
+    this.deviceAgentsIncluded = deviceAgentsIncluded;
   }
 
 
@@ -252,6 +281,7 @@ public class UsageQuota {
     return Objects.equals(this.monthStart, usageQuota.monthStart) &&
         Objects.equals(this.monthEnd, usageQuota.monthEnd) &&
         Objects.equals(this.cloudUnitsIncluded, usageQuota.cloudUnitsIncluded) &&
+        Objects.equals(this.deviceAgentsIncluded, usageQuota.deviceAgentsIncluded) &&
         Objects.equals(this.endpointAgentsIncluded, usageQuota.endpointAgentsIncluded) &&
         Objects.equals(this.endpointAgentsEssentialsIncluded, usageQuota.endpointAgentsEssentialsIncluded) &&
         Objects.equals(this.endpointAgentsEmbeddedIncluded, usageQuota.endpointAgentsEmbeddedIncluded) &&
@@ -260,7 +290,7 @@ public class UsageQuota {
 
   @Override
   public int hashCode() {
-    return Objects.hash(monthStart, monthEnd, cloudUnitsIncluded, endpointAgentsIncluded, endpointAgentsEssentialsIncluded, endpointAgentsEmbeddedIncluded, enterpriseAgentsIncluded);
+    return Objects.hash(monthStart, monthEnd, cloudUnitsIncluded, deviceAgentsIncluded, endpointAgentsIncluded, endpointAgentsEssentialsIncluded, endpointAgentsEmbeddedIncluded, enterpriseAgentsIncluded);
   }
 
   @Override
@@ -270,6 +300,7 @@ public class UsageQuota {
     sb.append("    monthStart: ").append(toIndentedString(monthStart)).append("\n");
     sb.append("    monthEnd: ").append(toIndentedString(monthEnd)).append("\n");
     sb.append("    cloudUnitsIncluded: ").append(toIndentedString(cloudUnitsIncluded)).append("\n");
+    sb.append("    deviceAgentsIncluded: ").append(toIndentedString(deviceAgentsIncluded)).append("\n");
     sb.append("    endpointAgentsIncluded: ").append(toIndentedString(endpointAgentsIncluded)).append("\n");
     sb.append("    endpointAgentsEssentialsIncluded: ").append(toIndentedString(endpointAgentsEssentialsIncluded)).append("\n");
     sb.append("    endpointAgentsEmbeddedIncluded: ").append(toIndentedString(endpointAgentsEmbeddedIncluded)).append("\n");

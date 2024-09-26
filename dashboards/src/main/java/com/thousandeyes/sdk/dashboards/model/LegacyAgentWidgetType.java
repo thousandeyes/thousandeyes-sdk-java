@@ -28,7 +28,9 @@ public enum LegacyAgentWidgetType {
   
   ENTERPRISE_AGENTS("Enterprise Agents"),
   
-  ENDPOINT_AGENTS("Endpoint Agents");
+  ENDPOINT_AGENTS("Endpoint Agents"),
+  
+  UNKNOWN("unknown");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum LegacyAgentWidgetType {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN;
   }
 
 }

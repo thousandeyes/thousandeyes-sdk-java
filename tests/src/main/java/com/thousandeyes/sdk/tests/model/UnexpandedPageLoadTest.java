@@ -106,7 +106,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class UnexpandedPageLoadTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval;
+  private TestInterval interval = TestInterval.NUMBER_60;
 
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
@@ -166,7 +166,7 @@ public class UnexpandedPageLoadTest {
   private TestCustomHeaders customHeaders;
 
   public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
-  private String desiredStatusCode = "200";
+  private String desiredStatusCode = "default";
 
   public static final String JSON_PROPERTY_DOWNLOAD_LIMIT = "downloadLimit";
   private Integer downloadLimit;
@@ -214,7 +214,7 @@ public class UnexpandedPageLoadTest {
   private String sslVersion;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
-  private TestSslVersionId sslVersionId;
+  private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
@@ -741,7 +741,7 @@ public class UnexpandedPageLoadTest {
   }
 
    /**
-   * Specify the HTTP status code value that indicates a successful response.
+   * Specify the HTTP status code value that indicates a successful response. The default value accepts any 2xx or 3xx status code.
    * @return desiredStatusCode
   **/
   @jakarta.annotation.Nullable
