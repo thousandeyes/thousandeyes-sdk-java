@@ -20,79 +20,62 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.streaming.model.TestType;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * TagMatch
+ * Test types that can be used for filtering data points.
  */
 @JsonPropertyOrder({
-  TagMatch.JSON_PROPERTY_KEY,
-  TagMatch.JSON_PROPERTY_VALUE
+  FiltersTestTypes.JSON_PROPERTY_VALUES
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class TagMatch {
-  public static final String JSON_PROPERTY_KEY = "key";
-  private String key;
+public class FiltersTestTypes {
+  public static final String JSON_PROPERTY_VALUES = "values";
+  private List<TestType> values = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private String value;
-
-  public TagMatch() { 
+  public FiltersTestTypes() { 
   }
 
-  public TagMatch key(String key) {
-    this.key = key;
+  public FiltersTestTypes values(List<TestType> values) {
+    this.values = values;
+    return this;
+  }
+
+  public FiltersTestTypes addValuesItem(TestType valuesItem) {
+    if (this.values == null) {
+      this.values = new ArrayList<>();
+    }
+    this.values.add(valuesItem);
     return this;
   }
 
    /**
-   * The name of the tag key to match
-   * @return key
+   * A list of test types to filter data points.
+   * @return values
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_KEY)
+  @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getKey() {
-    return key;
+  public List<TestType> getValues() {
+    return values;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KEY)
+  @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(String key) {
-    this.key = key;
-  }
-
-
-  public TagMatch value(String value) {
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * The value of the tag to match
-   * @return value
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getValue() {
-    return value;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValue(String value) {
-    this.value = value;
+  public void setValues(List<TestType> values) {
+    this.values = values;
   }
 
 
   /**
-   * Return true if this TagMatch object is equal to o.
+   * Return true if this FiltersTestTypes object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -102,22 +85,20 @@ public class TagMatch {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TagMatch tagMatch = (TagMatch) o;
-    return Objects.equals(this.key, tagMatch.key) &&
-        Objects.equals(this.value, tagMatch.value);
+    FiltersTestTypes filtersTestTypes = (FiltersTestTypes) o;
+    return Objects.equals(this.values, filtersTestTypes.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, value);
+    return Objects.hash(values);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TagMatch {\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class FiltersTestTypes {\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

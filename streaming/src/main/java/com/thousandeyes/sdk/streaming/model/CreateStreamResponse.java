@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.streaming.model.AuditOperation;
 import com.thousandeyes.sdk.streaming.model.DataModelVersion;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
+import com.thousandeyes.sdk.streaming.model.Filters;
 import com.thousandeyes.sdk.streaming.model.StreamLinks;
 import com.thousandeyes.sdk.streaming.model.StreamType;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
@@ -50,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateStreamResponse.JSON_PROPERTY_CUSTOM_HEADERS,
   CreateStreamResponse.JSON_PROPERTY_TAG_MATCH,
   CreateStreamResponse.JSON_PROPERTY_TEST_MATCH,
+  CreateStreamResponse.JSON_PROPERTY_FILTERS,
   CreateStreamResponse.JSON_PROPERTY_EXPORTER_CONFIG,
   CreateStreamResponse.JSON_PROPERTY_AUDIT_OPERATION
 })
@@ -84,6 +86,9 @@ public class CreateStreamResponse {
 
   public static final String JSON_PROPERTY_TEST_MATCH = "testMatch";
   private List<TestMatch> testMatch = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_FILTERS = "filters";
+  private Filters filters;
 
   public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
   private ExporterConfig exporterConfig;
@@ -366,6 +371,31 @@ public class CreateStreamResponse {
   }
 
 
+  public CreateStreamResponse filters(Filters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FILTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Filters getFilters() {
+    return filters;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FILTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFilters(Filters filters) {
+    this.filters = filters;
+  }
+
+
   public CreateStreamResponse exporterConfig(ExporterConfig exporterConfig) {
     this.exporterConfig = exporterConfig;
     return this;
@@ -438,13 +468,14 @@ public class CreateStreamResponse {
         Objects.equals(this.customHeaders, createStreamResponse.customHeaders) &&
         Objects.equals(this.tagMatch, createStreamResponse.tagMatch) &&
         Objects.equals(this.testMatch, createStreamResponse.testMatch) &&
+        Objects.equals(this.filters, createStreamResponse.filters) &&
         Objects.equals(this.exporterConfig, createStreamResponse.exporterConfig) &&
         Objects.equals(this.auditOperation, createStreamResponse.auditOperation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, exporterConfig, auditOperation);
+    return Objects.hash(id, enabled, links, type, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, auditOperation);
   }
 
   @Override
@@ -461,6 +492,7 @@ public class CreateStreamResponse {
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    auditOperation: ").append(toIndentedString(auditOperation)).append("\n");
     sb.append("}");
