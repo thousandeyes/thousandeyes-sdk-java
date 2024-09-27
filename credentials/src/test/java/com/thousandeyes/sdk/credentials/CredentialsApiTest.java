@@ -1,6 +1,6 @@
 /*
  * Credentials API
- * Manage credentials for transaction tests using the Credentials API.  The following permissions are required to access Credentials API endpoints:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. * `View sensitive data in web transaction scripts` to view the encrypted value property of credentials. * `Settings Tests Create Transaction (Tx) Tests` to create credentials.  For more information about credentials, see [Working With Secure Credentials](https://docs.thousandeyes.com/product-documentation/browser-synthetics/transaction-tests/getting-started/working-with-secure-credentials). 
+ * Manage credentials for transaction tests using the Credentials API.  The following permissions are required to access Credentials API operations:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. * `View sensitive data in web transaction scripts` to view the encrypted value property of credentials. * `Settings Tests Create Transaction (Tx) Tests` to create credentials.  For more information about credentials, see [Working With Secure Credentials](https://docs.thousandeyes.com/product-documentation/browser-synthetics/transaction-tests/getting-started/working-with-secure-credentials). 
  *
  * 
  *
@@ -21,6 +21,7 @@ import java.net.URI;
 import com.thousandeyes.sdk.credentials.model.UnauthorizedError;
 import com.thousandeyes.sdk.credentials.model.ValidationError;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.ACCEPT;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
@@ -84,17 +85,18 @@ public class CredentialsApiTest {
             throws JsonProcessingException, ApiException
     {
 
-        String requestBodyJson = """
+        var requestBodyJson = """
                 {
                   "name" : "Example Credential 1",
                   "value" : "Example Credential 1 Password"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         CredentialRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, CredentialRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -112,18 +114,19 @@ public class CredentialsApiTest {
                   "id" : "3247"
                 }
                                   """;
-        int statusCode = 201;
-        String contentType = "application/json";
+        var statusCode = 201;
+        var responseContentType = "application/json";
         CredentialWithoutValue mappedResponse = 
                 mapper.readValue(responseBodyJson, CredentialWithoutValue.class);
         assertNotNull(mappedResponse);
 
-        String path = "/credentials";
+        var path = "/credentials";
         stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
                         .withRequestBody(equalToJson(requestBodyJson))
                         .willReturn(aResponse()
-                                            .withHeader(AUTHORIZATION, BEARER_TOKEN)
-                                            .withHeader(CONTENT_TYPE, contentType)
+                                            .withHeader(CONTENT_TYPE, responseContentType)
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
@@ -145,13 +148,13 @@ public class CredentialsApiTest {
         String id = "3247";
 
 
-        int statusCode = 204;
+        var statusCode = 204;
 
-        String path = "/credentials/{id}";
+        var path = "/credentials/{id}";
         stubFor(delete(urlPathTemplate(path))
                         .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
                         .willReturn(aResponse()
-                                            .withHeader(AUTHORIZATION, BEARER_TOKEN)
                                             .withStatus(statusCode)));
 
         var apiResponse = api.deleteCredentialWithHttpInfo(id, null);
@@ -172,7 +175,7 @@ public class CredentialsApiTest {
         String id = "3247";
 
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -191,18 +194,18 @@ public class CredentialsApiTest {
                   "value" : "rwhR12uDm1Im47p5IVXgzz4ORgC7m48ajzzeWVUt"
                 }
                                   """;
-        int statusCode = 200;
-        String contentType = "application/json";
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Credential mappedResponse = 
                 mapper.readValue(responseBodyJson, Credential.class);
         assertNotNull(mappedResponse);
 
-        String path = "/credentials/{id}";
+        var path = "/credentials/{id}";
         stubFor(get(urlPathTemplate(path))
                         .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
                         .willReturn(aResponse()
-                                            .withHeader(AUTHORIZATION, BEARER_TOKEN)
-                                            .withHeader(CONTENT_TYPE, contentType)
+                                            .withHeader(CONTENT_TYPE, responseContentType)
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
@@ -223,7 +226,7 @@ public class CredentialsApiTest {
     {
 
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "credentials" : [ {
                     "_links" : {
@@ -272,17 +275,17 @@ public class CredentialsApiTest {
                   }
                 }
                                   """;
-        int statusCode = 200;
-        String contentType = "application/json";
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Credentials mappedResponse = 
                 mapper.readValue(responseBodyJson, Credentials.class);
         assertNotNull(mappedResponse);
 
-        String path = "/credentials";
+        var path = "/credentials";
         stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
                         .willReturn(aResponse()
-                                            .withHeader(AUTHORIZATION, BEARER_TOKEN)
-                                            .withHeader(CONTENT_TYPE, contentType)
+                                            .withHeader(CONTENT_TYPE, responseContentType)
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
@@ -303,17 +306,18 @@ public class CredentialsApiTest {
     {
         String id = "3247";
 
-        String requestBodyJson = """
+        var requestBodyJson = """
                 {
                   "name" : "Example Credential 1",
                   "value" : "Example Credential 1 Password"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         CredentialRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, CredentialRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -331,19 +335,20 @@ public class CredentialsApiTest {
                   "id" : "3247"
                 }
                                   """;
-        int statusCode = 200;
-        String contentType = "application/json";
+        var statusCode = 200;
+        var responseContentType = "application/json";
         CredentialWithoutValue mappedResponse = 
                 mapper.readValue(responseBodyJson, CredentialWithoutValue.class);
         assertNotNull(mappedResponse);
 
-        String path = "/credentials/{id}";
+        var path = "/credentials/{id}";
         stubFor(put(urlPathTemplate(path))
                         .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
                         .withRequestBody(equalToJson(requestBodyJson))
                         .willReturn(aResponse()
-                                            .withHeader(AUTHORIZATION, BEARER_TOKEN)
-                                            .withHeader(CONTENT_TYPE, contentType)
+                                            .withHeader(CONTENT_TYPE, responseContentType)
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
