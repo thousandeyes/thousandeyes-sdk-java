@@ -13,7 +13,7 @@ plugins {
 ext {
     apacheCommonsLang3 = "3.14.0"
     googleJsr305Version = "3.0.2"
-    mockitoVersion = "3.2.4"
+    mockitoVersion = "5.3.0"
     jacksonDatabindNullableVersion = "0.2.6"
     jacksonVersion = "2.16.1"
     jacocoVersion = "0.8.8"
@@ -46,26 +46,17 @@ subprojects {
         classpath = sourceSets.main.runtimeClasspath
     }
 
-    def jacocoXmlReport = "${project.rootDir}/${project.name}/reports/jacoco/${project.name}.xml"
-
-    jacoco {
-        toolVersion = "$jacocoVersion"
-    }
-
     jacocoTestReport {
-        sourceSets sourceSets.main
-        executionData.from = fileTree(project.buildDir).include("/jacoco/*.exec")
+        dependsOn test
         reports {
             csv.required = false
             html.required = false
             xml.required = true
-            xml.outputLocation.set(file(jacocoXmlReport))
         }
     }
 
     test {
         useJUnitPlatform()
-        ignoreFailures = true
         finalizedBy jacocoTestReport
         maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
     }
