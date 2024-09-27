@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## runEndpointScheduledInstantTest
 
-> void runEndpointScheduledInstantTest(testId, aid)
+> EndpointRunScheduledInstantTestResult runEndpointScheduledInstantTest(testId, aid)
 
 Run endpoint instant scheduled test
 
@@ -41,7 +41,8 @@ public class Example {
         String testId = "765231567"; // String | ID of the endpoint instant scheduled test to rerun
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.runEndpointScheduledInstantTest(testId, aid);
+            EndpointRunScheduledInstantTestResult result = apiInstance.runEndpointScheduledInstantTest(testId, aid);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RunEndpointInstantScheduledTestsApi#runEndpointScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
@@ -63,8 +64,8 @@ public class Example {
 
 ### Return type
 
+[**EndpointRunScheduledInstantTestResult**](EndpointRunScheduledInstantTestResult.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -90,7 +91,7 @@ null (empty response body)
 
 ## runEndpointScheduledInstantTestWithHttpInfo
 
-> ApiResponse<Void> runEndpointScheduledInstantTest runEndpointScheduledInstantTestWithHttpInfo(testId, aid)
+> ApiResponse<EndpointRunScheduledInstantTestResult> runEndpointScheduledInstantTest runEndpointScheduledInstantTestWithHttpInfo(testId, aid)
 
 Run endpoint instant scheduled test
 
@@ -121,9 +122,10 @@ public class Example {
         String testId = "765231567"; // String | ID of the endpoint instant scheduled test to rerun
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.runEndpointScheduledInstantTestWithHttpInfo(testId, aid);
+            ApiResponse<EndpointRunScheduledInstantTestResult> response = apiInstance.runEndpointScheduledInstantTestWithHttpInfo(testId, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling RunEndpointInstantScheduledTestsApi#runEndpointScheduledInstantTest");
             System.err.println("Status code: " + e.getCode());
@@ -145,8 +147,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**EndpointRunScheduledInstantTestResult**](EndpointRunScheduledInstantTestResult.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 

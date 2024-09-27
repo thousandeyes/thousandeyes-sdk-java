@@ -86,6 +86,11 @@ public class StreamingApiTest {
                     "key" : "keyB",
                     "value" : "valueB"
                   } ],
+                  "filters" : {
+                    "testTypes" : {
+                      "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    }
+                  },
                   "type" : "opentelemetry",
                   "dataModelVersion" : "v2",
                   "customHeaders" : {
@@ -101,13 +106,6 @@ public class StreamingApiTest {
 
         String responseBodyJson = """
                 {
-                  "testMatch" : [ {
-                    "id" : "1234",
-                    "domain" : "cea"
-                  }, {
-                    "id" : "5678",
-                    "domain" : "endpoint"
-                  } ],
                   "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
@@ -123,6 +121,21 @@ public class StreamingApiTest {
                       "token" : "d0a91307-be2f-4218-a9f8-71c02d98846b"
                     }
                   },
+                  "filters" : {
+                    "testTypes" : {
+                      "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    }
+                  },
+                  "type" : "opentelemetry",
+                  "enabled" : true,
+                  "dataModelVersion" : "v2",
+                  "testMatch" : [ {
+                    "id" : "1234",
+                    "domain" : "cea"
+                  }, {
+                    "id" : "5678",
+                    "domain" : "endpoint"
+                  } ],
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -131,13 +144,10 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
-                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "createdBy" : 3962
                   },
-                  "enabled" : true,
-                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -179,13 +189,6 @@ public class StreamingApiTest {
 
         String responseBodyJson = """
                 {
-                  "testMatch" : [ {
-                    "id" : "1234",
-                    "domain" : "cea"
-                  }, {
-                    "id" : "5678",
-                    "domain" : "endpoint"
-                  } ],
                   "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
@@ -201,6 +204,21 @@ public class StreamingApiTest {
                       "token" : "d0a91307-be2f-4218-a9f8-71c02d98846b"
                     }
                   },
+                  "filters" : {
+                    "testTypes" : {
+                      "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    }
+                  },
+                  "type" : "opentelemetry",
+                  "enabled" : true,
+                  "dataModelVersion" : "v2",
+                  "testMatch" : [ {
+                    "id" : "1234",
+                    "domain" : "cea"
+                  }, {
+                    "id" : "5678",
+                    "domain" : "endpoint"
+                  } ],
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -209,15 +227,12 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
-                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
                     "createdBy" : 3962,
                     "updatedDate" : 1679677853573
                   },
-                  "enabled" : true,
-                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -244,13 +259,6 @@ public class StreamingApiTest {
 
         String responseBodyJson = """
                 [ {
-                  "testMatch" : [ {
-                    "id" : "1234",
-                    "domain" : "cea"
-                  }, {
-                    "id" : "5678",
-                    "domain" : "endpoint"
-                  } ],
                   "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
@@ -266,6 +274,21 @@ public class StreamingApiTest {
                       "token" : "d0a91307-be2f-4218-a9f8-71c02d98846b"
                     }
                   },
+                  "filters" : {
+                    "testTypes" : {
+                      "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    }
+                  },
+                  "type" : "opentelemetry",
+                  "enabled" : true,
+                  "dataModelVersion" : "v2",
+                  "testMatch" : [ {
+                    "id" : "1234",
+                    "domain" : "cea"
+                  }, {
+                    "id" : "5678",
+                    "domain" : "endpoint"
+                  } ],
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -274,27 +297,17 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
-                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
                     "createdBy" : 3962,
                     "updatedDate" : 1679677853573
                   },
-                  "enabled" : true,
-                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
                   }
                 }, {
-                  "testMatch" : [ {
-                    "id" : "1234",
-                    "domain" : "cea"
-                  }, {
-                    "id" : "5678",
-                    "domain" : "endpoint"
-                  } ],
                   "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
@@ -310,6 +323,21 @@ public class StreamingApiTest {
                       "token" : "d0a91307-be2f-4218-a9f8-71c02d98846b"
                     }
                   },
+                  "filters" : {
+                    "testTypes" : {
+                      "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    }
+                  },
+                  "type" : "opentelemetry",
+                  "enabled" : true,
+                  "dataModelVersion" : "v2",
+                  "testMatch" : [ {
+                    "id" : "1234",
+                    "domain" : "cea"
+                  }, {
+                    "id" : "5678",
+                    "domain" : "endpoint"
+                  } ],
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -318,15 +346,12 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
-                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
                     "createdBy" : 3962,
                     "updatedDate" : 1679677853573
                   },
-                  "enabled" : true,
-                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -374,6 +399,11 @@ public class StreamingApiTest {
                     "key" : "keyB",
                     "value" : "valueB"
                   } ],
+                  "filters" : {
+                    "testTypes" : {
+                      "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    }
+                  },
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
@@ -387,13 +417,6 @@ public class StreamingApiTest {
 
         String responseBodyJson = """
                 {
-                  "testMatch" : [ {
-                    "id" : "1234",
-                    "domain" : "cea"
-                  }, {
-                    "id" : "5678",
-                    "domain" : "endpoint"
-                  } ],
                   "endpointType" : "grpc",
                   "_links" : {
                     "self" : {
@@ -409,6 +432,21 @@ public class StreamingApiTest {
                       "token" : "d0a91307-be2f-4218-a9f8-71c02d98846b"
                     }
                   },
+                  "filters" : {
+                    "testTypes" : {
+                      "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    }
+                  },
+                  "type" : "opentelemetry",
+                  "enabled" : true,
+                  "dataModelVersion" : "v2",
+                  "testMatch" : [ {
+                    "id" : "1234",
+                    "domain" : "cea"
+                  }, {
+                    "id" : "5678",
+                    "domain" : "endpoint"
+                  } ],
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -417,15 +455,12 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
-                  "type" : "opentelemetry",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
                     "createdBy" : 3962,
                     "updatedDate" : 1679677853573
                   },
-                  "enabled" : true,
-                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"

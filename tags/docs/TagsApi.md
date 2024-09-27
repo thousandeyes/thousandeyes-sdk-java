@@ -21,7 +21,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createTag
 
-> void createTag(aid, tagInfo)
+> TagInfo createTag(aid, tagInfo)
 
 Create tag
 
@@ -51,7 +51,8 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         TagInfo tagInfo = new TagInfo(); // TagInfo | Tag resource
         try {
-            apiInstance.createTag(aid, tagInfo);
+            TagInfo result = apiInstance.createTag(aid, tagInfo);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#createTag");
             System.err.println("Status code: " + e.getCode());
@@ -73,8 +74,8 @@ public class Example {
 
 ### Return type
 
+[**TagInfo**](TagInfo.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -96,7 +97,7 @@ null (empty response body)
 
 ## createTagWithHttpInfo
 
-> ApiResponse<Void> createTag createTagWithHttpInfo(aid, tagInfo)
+> ApiResponse<TagInfo> createTag createTagWithHttpInfo(aid, tagInfo)
 
 Create tag
 
@@ -127,9 +128,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         TagInfo tagInfo = new TagInfo(); // TagInfo | Tag resource
         try {
-            ApiResponse<Void> response = apiInstance.createTagWithHttpInfo(aid, tagInfo);
+            ApiResponse<TagInfo> response = apiInstance.createTagWithHttpInfo(aid, tagInfo);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#createTag");
             System.err.println("Status code: " + e.getCode());
@@ -151,8 +153,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**TagInfo**](TagInfo.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 
@@ -175,7 +177,7 @@ ApiResponse<Void>
 
 ## createTags
 
-> void createTags(aid, bulkTagResponse)
+> BulkTagResponse createTags(aid, bulkTagResponse)
 
 Create multiple tags
 
@@ -205,7 +207,8 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         BulkTagResponse bulkTagResponse = new BulkTagResponse(); // BulkTagResponse | Tag resource
         try {
-            apiInstance.createTags(aid, bulkTagResponse);
+            BulkTagResponse result = apiInstance.createTags(aid, bulkTagResponse);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#createTags");
             System.err.println("Status code: " + e.getCode());
@@ -227,8 +230,8 @@ public class Example {
 
 ### Return type
 
+[**BulkTagResponse**](BulkTagResponse.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -249,7 +252,7 @@ null (empty response body)
 
 ## createTagsWithHttpInfo
 
-> ApiResponse<Void> createTags createTagsWithHttpInfo(aid, bulkTagResponse)
+> ApiResponse<BulkTagResponse> createTags createTagsWithHttpInfo(aid, bulkTagResponse)
 
 Create multiple tags
 
@@ -280,9 +283,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         BulkTagResponse bulkTagResponse = new BulkTagResponse(); // BulkTagResponse | Tag resource
         try {
-            ApiResponse<Void> response = apiInstance.createTagsWithHttpInfo(aid, bulkTagResponse);
+            ApiResponse<BulkTagResponse> response = apiInstance.createTagsWithHttpInfo(aid, bulkTagResponse);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#createTags");
             System.err.println("Status code: " + e.getCode());
@@ -304,8 +308,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**BulkTagResponse**](BulkTagResponse.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 
@@ -483,7 +487,7 @@ ApiResponse<Void>
 
 ## getTag
 
-> void getTag(id, aid, expand)
+> Tag getTag(id, aid, expand)
 
 Retrieve tag
 
@@ -514,7 +518,8 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments
         try {
-            apiInstance.getTag(id, aid, expand);
+            Tag result = apiInstance.getTag(id, aid, expand);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#getTag");
             System.err.println("Status code: " + e.getCode());
@@ -537,8 +542,8 @@ public class Example {
 
 ### Return type
 
+[**Tag**](Tag.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -561,7 +566,7 @@ null (empty response body)
 
 ## getTagWithHttpInfo
 
-> ApiResponse<Void> getTag getTagWithHttpInfo(id, aid, expand)
+> ApiResponse<Tag> getTag getTagWithHttpInfo(id, aid, expand)
 
 Retrieve tag
 
@@ -593,9 +598,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments
         try {
-            ApiResponse<Void> response = apiInstance.getTagWithHttpInfo(id, aid, expand);
+            ApiResponse<Tag> response = apiInstance.getTagWithHttpInfo(id, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#getTag");
             System.err.println("Status code: " + e.getCode());
@@ -618,8 +624,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**Tag**](Tag.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 
@@ -643,7 +649,7 @@ ApiResponse<Void>
 
 ## getTags
 
-> void getTags(aid, expand)
+> Tags getTags(aid, expand)
 
 List tags
 
@@ -673,7 +679,8 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments
         try {
-            apiInstance.getTags(aid, expand);
+            Tags result = apiInstance.getTags(aid, expand);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#getTags");
             System.err.println("Status code: " + e.getCode());
@@ -695,8 +702,8 @@ public class Example {
 
 ### Return type
 
+[**Tags**](Tags.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -719,7 +726,7 @@ null (empty response body)
 
 ## getTagsWithHttpInfo
 
-> ApiResponse<Void> getTags getTagsWithHttpInfo(aid, expand)
+> ApiResponse<Tags> getTags getTagsWithHttpInfo(aid, expand)
 
 List tags
 
@@ -750,9 +757,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments
         try {
-            ApiResponse<Void> response = apiInstance.getTagsWithHttpInfo(aid, expand);
+            ApiResponse<Tags> response = apiInstance.getTagsWithHttpInfo(aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#getTags");
             System.err.println("Status code: " + e.getCode());
@@ -774,8 +782,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**Tags**](Tags.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 
@@ -799,7 +807,7 @@ ApiResponse<Void>
 
 ## updateTag
 
-> void updateTag(id, aid, tagInfo)
+> TagInfo updateTag(id, aid, tagInfo)
 
 Update tag
 
@@ -830,7 +838,8 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         TagInfo tagInfo = new TagInfo(); // TagInfo | 
         try {
-            apiInstance.updateTag(id, aid, tagInfo);
+            TagInfo result = apiInstance.updateTag(id, aid, tagInfo);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#updateTag");
             System.err.println("Status code: " + e.getCode());
@@ -853,8 +862,8 @@ public class Example {
 
 ### Return type
 
+[**TagInfo**](TagInfo.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -877,7 +886,7 @@ null (empty response body)
 
 ## updateTagWithHttpInfo
 
-> ApiResponse<Void> updateTag updateTagWithHttpInfo(id, aid, tagInfo)
+> ApiResponse<TagInfo> updateTag updateTagWithHttpInfo(id, aid, tagInfo)
 
 Update tag
 
@@ -909,9 +918,10 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         TagInfo tagInfo = new TagInfo(); // TagInfo | 
         try {
-            ApiResponse<Void> response = apiInstance.updateTagWithHttpInfo(id, aid, tagInfo);
+            ApiResponse<TagInfo> response = apiInstance.updateTagWithHttpInfo(id, aid, tagInfo);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#updateTag");
             System.err.println("Status code: " + e.getCode());
@@ -934,8 +944,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**TagInfo**](TagInfo.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 

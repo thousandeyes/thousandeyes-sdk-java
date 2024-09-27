@@ -12,13 +12,14 @@
 
 package com.thousandeyes.sdk.endpoint.tests.instant;
 
+import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointRunScheduledInstantTestResult;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.Error;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.ValidationError;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -49,12 +50,20 @@ public class RunEndpointInstantScheduledTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
+    
     @Test
     public void runEndpointScheduledInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException 
     {
 
+        String responseBodyJson = """
+                {
+                  "message" : "Successfully reran the instant scheduled test with testId=765231567"
+                }
+                                  """;
+        EndpointRunScheduledInstantTestResult mappedResponse = 
+                mapper.readValue(responseBodyJson, EndpointRunScheduledInstantTestResult.class);
+        assertNotNull(mappedResponse);
     }
     
 }

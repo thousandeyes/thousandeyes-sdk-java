@@ -22,6 +22,7 @@ import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.thousandeyes.sdk.tags.model.ApiError;
+import com.thousandeyes.sdk.tags.model.BulkTagAssignment;
 import com.thousandeyes.sdk.tags.model.BulkTagAssignments;
 import com.thousandeyes.sdk.tags.model.Error;
 import com.thousandeyes.sdk.tags.model.TagAssignment;
@@ -66,10 +67,12 @@ public class TagAssignmentApi {
    * @param id Tag ID (required)
    * @param tagAssignment  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return BulkTagAssignment
    * @throws ApiException if fails to make API call
    */
-  public void assignTag(String id, TagAssignment tagAssignment, String aid) throws ApiException {
-    assignTagWithHttpInfo(id, tagAssignment, aid);
+  public BulkTagAssignment assignTag(String id, TagAssignment tagAssignment, String aid) throws ApiException {
+    ApiResponse<BulkTagAssignment> response = assignTagWithHttpInfo(id, tagAssignment, aid);
+    return response.getData();
   }
 
   /**
@@ -78,15 +81,15 @@ public class TagAssignmentApi {
    * @param id Tag ID (required)
    * @param tagAssignment  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @return ApiResponse&lt;Void&gt;
+   * @return ApiResponse&lt;BulkTagAssignment&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> assignTagWithHttpInfo(String id, TagAssignment tagAssignment, String aid) throws ApiException {
+  public ApiResponse<BulkTagAssignment> assignTagWithHttpInfo(String id, TagAssignment tagAssignment, String aid) throws ApiException {
     assignTagValidateRequest(id, tagAssignment);
 
     var requestBuilder = assignTagRequestBuilder(id, tagAssignment, aid);
 
-    return apiClient.send(requestBuilder.build(), Void.class);
+    return apiClient.send(requestBuilder.build(), BulkTagAssignment.class);
   }
 
   private void assignTagValidateRequest(String id, TagAssignment tagAssignment) throws ApiException {
@@ -126,10 +129,12 @@ public class TagAssignmentApi {
    * Assigns the specified tags to the specified objects. This operation has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
    * @param bulkTagAssignments  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return BulkTagAssignments
    * @throws ApiException if fails to make API call
    */
-  public void assignTags(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
-    assignTagsWithHttpInfo(bulkTagAssignments, aid);
+  public BulkTagAssignments assignTags(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
+    ApiResponse<BulkTagAssignments> response = assignTagsWithHttpInfo(bulkTagAssignments, aid);
+    return response.getData();
   }
 
   /**
@@ -137,15 +142,15 @@ public class TagAssignmentApi {
    * Assigns the specified tags to the specified objects. This operation has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
    * @param bulkTagAssignments  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @return ApiResponse&lt;Void&gt;
+   * @return ApiResponse&lt;BulkTagAssignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> assignTagsWithHttpInfo(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
+  public ApiResponse<BulkTagAssignments> assignTagsWithHttpInfo(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
     assignTagsValidateRequest(bulkTagAssignments);
 
     var requestBuilder = assignTagsRequestBuilder(bulkTagAssignments, aid);
 
-    return apiClient.send(requestBuilder.build(), Void.class);
+    return apiClient.send(requestBuilder.build(), BulkTagAssignments.class);
   }
 
   private void assignTagsValidateRequest(BulkTagAssignments bulkTagAssignments) throws ApiException {
@@ -241,10 +246,12 @@ public class TagAssignmentApi {
    * Removes the specified tags from one or more objects.
    * @param bulkTagAssignments  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return BulkTagAssignments
    * @throws ApiException if fails to make API call
    */
-  public void unassignTags(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
-    unassignTagsWithHttpInfo(bulkTagAssignments, aid);
+  public BulkTagAssignments unassignTags(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
+    ApiResponse<BulkTagAssignments> response = unassignTagsWithHttpInfo(bulkTagAssignments, aid);
+    return response.getData();
   }
 
   /**
@@ -252,15 +259,15 @@ public class TagAssignmentApi {
    * Removes the specified tags from one or more objects.
    * @param bulkTagAssignments  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @return ApiResponse&lt;Void&gt;
+   * @return ApiResponse&lt;BulkTagAssignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> unassignTagsWithHttpInfo(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
+  public ApiResponse<BulkTagAssignments> unassignTagsWithHttpInfo(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
     unassignTagsValidateRequest(bulkTagAssignments);
 
     var requestBuilder = unassignTagsRequestBuilder(bulkTagAssignments, aid);
 
-    return apiClient.send(requestBuilder.build(), Void.class);
+    return apiClient.send(requestBuilder.build(), BulkTagAssignments.class);
   }
 
   private void unassignTagsValidateRequest(BulkTagAssignments bulkTagAssignments) throws ApiException {

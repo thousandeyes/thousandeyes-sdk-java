@@ -14,6 +14,8 @@ src/main/java/com/thousandeyes/sdk/streaming/model/DataModelVersion.java
 src/main/java/com/thousandeyes/sdk/streaming/model/EndpointType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfig.java
 src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigSplunkHec.java
+src/main/java/com/thousandeyes/sdk/streaming/model/Filters.java
+src/main/java/com/thousandeyes/sdk/streaming/model/FiltersTestTypes.java
 src/main/java/com/thousandeyes/sdk/streaming/model/GetStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/PutStream.java
 src/main/java/com/thousandeyes/sdk/streaming/model/Stream.java
@@ -25,5 +27,6 @@ src/main/java/com/thousandeyes/sdk/streaming/model/TagMatch.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TagMatchObjectType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TestMatch.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TestMatchDomain.java
+src/main/java/com/thousandeyes/sdk/streaming/model/TestType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/UnauthorizedError.java
 src/test/java/com/thousandeyes/sdk/streaming/StreamingApiTest.java
