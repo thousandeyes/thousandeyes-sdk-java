@@ -24,7 +24,7 @@ jobs:
         run: gradle clean build test --warning-mode none --parallel
 
       - name: Add coverage to PR
-        id: jacoco-pr
+        id: jacoco
         uses: madrapps/jacoco-report@v1.7.1
         with:
           paths: |
