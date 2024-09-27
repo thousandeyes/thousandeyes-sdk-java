@@ -36,17 +36,13 @@ import lombok.Getter;
 
 
 
+@Getter
 @AllArgsConstructor
 public class NativeApiClient implements ApiClient {
-    @Getter
     private String baseUri;
-    @Getter
     private HttpClient httpClient;
-    @Getter
     private ObjectMapper mapper;
-    @Getter
     private Consumer<HttpRequest.Builder> interceptor;
-    @Getter
     private Consumer<HttpResponse<InputStream>> responseInterceptor;
 
     public static NativeApiClientBuilder builder() {

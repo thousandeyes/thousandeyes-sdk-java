@@ -35,16 +35,8 @@ public class HttpBearerAuth implements Authentication {
         this.scheme = scheme;
     }
 
-    public String getBearerToken() {
-        return tokenSupplier.get();
-    }
-
     public void setBearerToken(String bearerToken) {
         this.tokenSupplier = () -> bearerToken;
-    }
-
-    public void setBearerToken(Supplier<String> tokenSupplier) {
-        this.tokenSupplier = tokenSupplier;
     }
 
     @Override

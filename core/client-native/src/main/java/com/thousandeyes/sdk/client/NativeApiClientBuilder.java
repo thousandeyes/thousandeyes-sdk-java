@@ -41,19 +41,34 @@ import com.thousandeyes.sdk.serialization.JSON;
 
 
 
-@Setter
 @Accessors(fluent = true)
 public class NativeApiClientBuilder {
-    private static Map<String, Authentication> authentications = Map.of(
+    private Map<String, Authentication> authentications = Map.of(
             HttpBearerAuth.class.getSimpleName(), new HttpBearerAuth("Bearer")
     );
+
+    @Setter
     private HttpClient.Builder httpClientBuilder = HttpClient.newBuilder();
+
+    @Setter
     private ObjectMapper mapper = JSON.getDefault().getMapper();
-    private String baseUri = "https://api.thousandeyes.com";
+
+    @Setter
+    private String baseUri = "https://api.thousandeyes.com/v7";
+
+    @Setter
     private Consumer<HttpRequest.Builder> interceptor;
+
+    @Setter
     private Consumer<HttpResponse<InputStream>> responseInterceptor;
+
+    @Setter
     private Duration connectTimeout;
+
+    @Setter
     private String bearerToken;
+
+    @Setter
     private boolean defaultRateLimitingEnabled = true;
 
     public ApiClient build() {
