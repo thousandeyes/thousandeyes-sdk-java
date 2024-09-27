@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request_target:
-    branches: [ "main" ]
+    branches: [ "main", "test" ]
 
 jobs:
   build:
@@ -32,4 +32,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 40
           min-coverage-changed-files: 60
-          debug: true
+          debug-mode: true
