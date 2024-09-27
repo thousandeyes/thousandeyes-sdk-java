@@ -3,8 +3,8 @@ name: Java CI with Gradle
 on:
   push:
     branches: [ "main" ]
-  pull_request_target:
-    branches: [ "main", "test" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
         run: gradle clean build test --warning-mode none --parallel
 
       - name: Add coverage to PR
-        id: jacoco
+        id: jacoco-pr
         uses: madrapps/jacoco-report@v1.7.1
         with:
           paths: |
@@ -32,4 +32,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 40
           min-coverage-changed-files: 60
-          debug-mode: true
+          comment-type: both
