@@ -20,7 +20,7 @@ import com.thousandeyes.sdk.client.ApiResponse;
 import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
-
+import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointAgentToServerInstantTest;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointAgentToServerTest;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.Error;

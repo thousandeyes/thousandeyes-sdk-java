@@ -20,7 +20,7 @@ import com.thousandeyes.sdk.client.ApiResponse;
 import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
-
+import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.streaming.model.ApiError;
 import com.thousandeyes.sdk.streaming.model.ApiErrorIntegrationLimits;
 import com.thousandeyes.sdk.streaming.model.BadRequestError;
@@ -253,7 +253,7 @@ public class StreamingApi {
 
     var requestBuilder = getStreamsRequestBuilder(aid, type);
 
-    return apiClient.sendForList(requestBuilder.build(), GetStreamResponse.class);
+    return apiClient.send(requestBuilder.build(), TypeUtils.parameterize(List.class, GetStreamResponse.class));
   }
 
   private void getStreamsValidateRequest() throws ApiException {
