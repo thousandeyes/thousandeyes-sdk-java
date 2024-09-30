@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import org.apache.commons.lang3.reflect.TypeUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -114,7 +115,7 @@ class NativeApiClientTest {
         var expectedResponse = List.of(new Response("name", OffsetDateTime.now(ZoneId.of("UTC"))));
         stubHttpClient(expectedResponse);
 
-        var response = apiClient.sendForList(request, Response.class);
+        var response = apiClient.send(request, TypeUtils.parameterize(List.class, Response.class));
 
         assertEquals(expectedResponse, response.getData());
     }

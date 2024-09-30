@@ -18,13 +18,10 @@
 
 package com.thousandeyes.sdk.client;
 
-import java.util.List;
+import java.lang.reflect.Type;
 
 
 
 public interface ApiClient {
-    <T> ApiResponse<T> send(ApiRequest request, Class<T> returnType) throws ApiException;
-
-    <T> ApiResponse<List<T>> sendForList(ApiRequest request, Class<T> returnType)
-            throws ApiException;
+    <T> ApiResponse<T> send(ApiRequest request, Type returnType) throws ApiException;
 }

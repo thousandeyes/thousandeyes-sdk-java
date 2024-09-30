@@ -19,8 +19,10 @@
 package com.thousandeyes.sdk.client;
 
 import java.time.Instant;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.OptionalLong;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
@@ -60,11 +62,11 @@ public final class RateLimitDecorator extends ApiClientDecorator {
         throw apiException;
     }
 
-    private OptionalLong retryAfterInSeconds(Map<String, List<String>> headers) {
+    private OptionalLong retryAfterInSeconds(Map<String, ? extends Collection<String>> headers) {
         return RATE_LIMIT_RESET_HEADERS.stream()
-                                       .flatMap(headerName -> headers.getOrDefault(headerName,
-                                                                                   List.of())
-                                                                     .stream())
+                                       .flatMap(headerName -> Optional.ofNullable(
+                                               headers.get(headerName)).stream())
+                                       .flatMap(Collection::stream)
                                        .mapToLong(Long::parseLong)
                                        .map(rlResetInstant -> rlResetInstant -
                                                               Instant.now().getEpochSecond())

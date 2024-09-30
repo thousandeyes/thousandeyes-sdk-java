@@ -26,6 +26,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.time.Instant;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -57,7 +58,7 @@ public class RateLimitDecoratorTest {
 
     @Test
     void shouldNotAwaitOtherStatusCode() throws ApiException {
-        when(client.send(any(), eq(String.class))).thenReturn(okResponse);
+        when(client.<String>send(any(), eq(String.class))).thenReturn(okResponse);
         var response = rlClient.send(mock(ApiRequest.class), String.class);
         assertEquals(response, okResponse);
     }
@@ -80,12 +81,12 @@ public class RateLimitDecoratorTest {
     @ValueSource(strings = { "x-organization-rate-limit-reset", "x-instant-test-rate-limit-reset" })
     void shouldRetryProperRateLimitApiException(String header) throws ApiException {
         var resetTime = getTimeInSeconds(Instant.now().plusSeconds(2));
-        var headers = Map.of(header, List.of(resetTime));
+        Map<String, Collection<String>> headers = Map.of(header, List.of(resetTime));
 
         var exception = new ApiException(TOO_MANY_REQUESTS, headers, null);
 
-        when(client.send(any(), eq(String.class))).thenThrow(exception)
-                                                  .thenReturn(okResponse);
+        when(client.<String>send(any(), eq(String.class))).thenThrow(exception)
+                                                          .thenReturn(okResponse);
 
         var response = rlClient.send(mock(ApiRequest.class), String.class);
         assertEquals(response, okResponse);
