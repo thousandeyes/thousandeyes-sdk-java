@@ -20,7 +20,7 @@ import com.thousandeyes.sdk.client.ApiResponse;
 import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
-
+import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.dashboards.model.ApiDashboard;
 import com.thousandeyes.sdk.dashboards.model.ApiWidgetDataResponse;
 import java.math.BigDecimal;
@@ -336,7 +336,7 @@ public class DashboardsApi {
 
     var requestBuilder = getDashboardsRequestBuilder(aid);
 
-    return apiClient.sendForList(requestBuilder.build(), ApiDashboard.class);
+    return apiClient.send(requestBuilder.build(), TypeUtils.parameterize(List.class, ApiDashboard.class));
   }
 
   private void getDashboardsValidateRequest() throws ApiException {

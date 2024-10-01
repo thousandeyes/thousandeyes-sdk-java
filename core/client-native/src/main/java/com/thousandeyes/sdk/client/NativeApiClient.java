@@ -20,11 +20,11 @@ package com.thousandeyes.sdk.client;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
@@ -50,19 +50,10 @@ public class NativeApiClient implements ApiClient {
     }
 
     @Override
-    public <T> ApiResponse<T> send(ApiRequest request, Class<T> returnType) throws ApiException {
+    public <T> ApiResponse<T> send(ApiRequest request, Type returnType) throws ApiException {
         return sendRequestAndProcessResponse(
                 getRequestBuilder(request),
-                mapper.readerFor(returnType));
-    }
-
-    @Override
-    public <T> ApiResponse<List<T>> sendForList(ApiRequest request, Class<T> returnType)
-            throws ApiException
-    {
-        return sendRequestAndProcessResponse(
-                getRequestBuilder(request),
-                mapper.readerForListOf(returnType));
+                mapper.readerFor(mapper.constructType(returnType)));
     }
 
     private HttpRequest.Builder getRequestBuilder(ApiRequest request) throws ApiException {

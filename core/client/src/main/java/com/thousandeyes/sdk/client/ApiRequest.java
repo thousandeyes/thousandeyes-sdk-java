@@ -19,6 +19,7 @@
 package com.thousandeyes.sdk.client;
 
 import java.time.Duration;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,6 @@ public class ApiRequest {
     Object requestBody;
     List<Pair<String, String>> queryParams;
     @Singular
-    Map<String, List<String>> headers;
+    Map<String, ? extends Collection<String>> headers;
     Duration readTimeout;
 }

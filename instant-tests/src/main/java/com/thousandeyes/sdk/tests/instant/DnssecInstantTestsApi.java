@@ -20,7 +20,7 @@ import com.thousandeyes.sdk.client.ApiResponse;
 import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
-
+import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.tests.instant.model.DnsSecInstantTestRequest;
 import com.thousandeyes.sdk.tests.instant.model.DnsSecInstantTestResponse;
 import com.thousandeyes.sdk.tests.instant.model.Error;
