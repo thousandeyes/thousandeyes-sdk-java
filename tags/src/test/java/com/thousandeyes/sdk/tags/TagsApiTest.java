@@ -16,7 +16,9 @@ import com.thousandeyes.sdk.tags.model.ApiError;
 import com.thousandeyes.sdk.tags.model.BulkTagResponse;
 import com.thousandeyes.sdk.tags.model.Error;
 import com.thousandeyes.sdk.tags.model.ExpandTagsOptions;
+import com.thousandeyes.sdk.tags.model.Tag;
 import com.thousandeyes.sdk.tags.model.TagInfo;
+import com.thousandeyes.sdk.tags.model.Tags;
 import com.thousandeyes.sdk.tags.model.UnauthorizedError;
 import com.thousandeyes.sdk.tags.model.ValidationError;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
@@ -84,6 +86,31 @@ public class TagsApiTest {
                 mapper.readValue(requestBodyJson, TagInfo.class);
         assertNotNull(mappedRequest);
 
+        String responseBodyJson = """
+                {
+                  "accessType" : "all",
+                  "assignments" : [ {
+                    "id" : "123",
+                    "type" : "test"
+                  }, {
+                    "id" : "123",
+                    "type" : "test"
+                  } ],
+                  "color" : "#FF0000",
+                  "icon" : "icon",
+                  "description" : "To tag assets in San Francisco",
+                  "legacyId" : 0.8008281904610115,
+                  "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                  "aid" : 1234,
+                  "value" : "sfo",
+                  "key" : "branch",
+                  "createDate" : "2022-03-01T23:31:11Z",
+                  "objectType" : "test"
+                }
+                                  """;
+        TagInfo mappedResponse = 
+                mapper.readValue(responseBodyJson, TagInfo.class);
+        assertNotNull(mappedResponse);
     }
     
     /**
@@ -220,6 +247,127 @@ public class TagsApiTest {
                 mapper.readValue(requestBodyJson, BulkTagResponse.class);
         assertNotNull(mappedRequest);
 
+        String responseBodyJson = """
+                {
+                  "errors" : [ {
+                    "tag" : {
+                      "key" : {
+                        "accessType" : "all",
+                        "assignments" : [ {
+                          "id" : "123",
+                          "type" : "test"
+                        }, {
+                          "id" : "123",
+                          "type" : "test"
+                        } ],
+                        "color" : "#FF0000",
+                        "icon" : "icon",
+                        "description" : "To tag assets in San Francisco",
+                        "legacyId" : 0.8008281904610115,
+                        "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                        "aid" : 1234,
+                        "value" : "sfo",
+                        "key" : "branch",
+                        "createDate" : "2022-03-01T23:31:11Z",
+                        "objectType" : "test"
+                      }
+                    },
+                    "message" : "Object successfully created",
+                    "responseCode" : 200
+                  }, {
+                    "tag" : {
+                      "key" : {
+                        "accessType" : "all",
+                        "assignments" : [ {
+                          "id" : "123",
+                          "type" : "test"
+                        }, {
+                          "id" : "123",
+                          "type" : "test"
+                        } ],
+                        "color" : "#FF0000",
+                        "icon" : "icon",
+                        "description" : "To tag assets in San Francisco",
+                        "legacyId" : 0.8008281904610115,
+                        "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                        "aid" : 1234,
+                        "value" : "sfo",
+                        "key" : "branch",
+                        "createDate" : "2022-03-01T23:31:11Z",
+                        "objectType" : "test"
+                      }
+                    },
+                    "message" : "Object successfully created",
+                    "responseCode" : 200
+                  } ],
+                  "tags" : [ {
+                    "assignments" : [ {
+                      "id" : "123",
+                      "type" : "test"
+                    }, {
+                      "id" : "123",
+                      "type" : "test"
+                    } ],
+                    "color" : "#FF0000",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "icon" : "icon",
+                    "description" : "To tag assets in San Francisco",
+                    "objectType" : "test",
+                    "accessType" : "all",
+                    "legacyId" : 0.8008281904610115,
+                    "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                    "aid" : 1234,
+                    "value" : "sfo",
+                    "key" : "branch",
+                    "createDate" : "2022-03-01T23:31:11Z"
+                  }, {
+                    "assignments" : [ {
+                      "id" : "123",
+                      "type" : "test"
+                    }, {
+                      "id" : "123",
+                      "type" : "test"
+                    } ],
+                    "color" : "#FF0000",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "icon" : "icon",
+                    "description" : "To tag assets in San Francisco",
+                    "objectType" : "test",
+                    "accessType" : "all",
+                    "legacyId" : 0.8008281904610115,
+                    "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                    "aid" : 1234,
+                    "value" : "sfo",
+                    "key" : "branch",
+                    "createDate" : "2022-03-01T23:31:11Z"
+                  } ]
+                }
+                                  """;
+        BulkTagResponse mappedResponse = 
+                mapper.readValue(responseBodyJson, BulkTagResponse.class);
+        assertNotNull(mappedResponse);
     }
     
     /**
@@ -244,12 +392,49 @@ public class TagsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
+    
     @Test
     public void getTagRequestAndResponseDeserializationTest()
             throws JsonProcessingException 
     {
 
+        String responseBodyJson = """
+                {
+                  "assignments" : [ {
+                    "id" : "123",
+                    "type" : "test"
+                  }, {
+                    "id" : "123",
+                    "type" : "test"
+                  } ],
+                  "color" : "#FF0000",
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "icon" : "icon",
+                  "description" : "To tag assets in San Francisco",
+                  "objectType" : "test",
+                  "accessType" : "all",
+                  "legacyId" : 0.8008281904610115,
+                  "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                  "aid" : 1234,
+                  "value" : "sfo",
+                  "key" : "branch",
+                  "createDate" : "2022-03-01T23:31:11Z"
+                }
+                                  """;
+        Tag mappedResponse = 
+                mapper.readValue(responseBodyJson, Tag.class);
+        assertNotNull(mappedResponse);
     }
     
     /**
@@ -259,12 +444,94 @@ public class TagsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
+    
     @Test
     public void getTagsRequestAndResponseDeserializationTest()
             throws JsonProcessingException 
     {
 
+        String responseBodyJson = """
+                {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "tags" : [ {
+                    "assignments" : [ {
+                      "id" : "123",
+                      "type" : "test"
+                    }, {
+                      "id" : "123",
+                      "type" : "test"
+                    } ],
+                    "color" : "#FF0000",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "icon" : "icon",
+                    "description" : "To tag assets in San Francisco",
+                    "objectType" : "test",
+                    "accessType" : "all",
+                    "legacyId" : 0.8008281904610115,
+                    "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                    "aid" : 1234,
+                    "value" : "sfo",
+                    "key" : "branch",
+                    "createDate" : "2022-03-01T23:31:11Z"
+                  }, {
+                    "assignments" : [ {
+                      "id" : "123",
+                      "type" : "test"
+                    }, {
+                      "id" : "123",
+                      "type" : "test"
+                    } ],
+                    "color" : "#FF0000",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "icon" : "icon",
+                    "description" : "To tag assets in San Francisco",
+                    "objectType" : "test",
+                    "accessType" : "all",
+                    "legacyId" : 0.8008281904610115,
+                    "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                    "aid" : 1234,
+                    "value" : "sfo",
+                    "key" : "branch",
+                    "createDate" : "2022-03-01T23:31:11Z"
+                  } ]
+                }
+                                  """;
+        Tags mappedResponse = 
+                mapper.readValue(responseBodyJson, Tags.class);
+        assertNotNull(mappedResponse);
     }
     
     /**
@@ -305,6 +572,31 @@ public class TagsApiTest {
                 mapper.readValue(requestBodyJson, TagInfo.class);
         assertNotNull(mappedRequest);
 
+        String responseBodyJson = """
+                {
+                  "accessType" : "all",
+                  "assignments" : [ {
+                    "id" : "123",
+                    "type" : "test"
+                  }, {
+                    "id" : "123",
+                    "type" : "test"
+                  } ],
+                  "color" : "#FF0000",
+                  "icon" : "icon",
+                  "description" : "To tag assets in San Francisco",
+                  "legacyId" : 0.8008281904610115,
+                  "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                  "aid" : 1234,
+                  "value" : "sfo",
+                  "key" : "branch",
+                  "createDate" : "2022-03-01T23:31:11Z",
+                  "objectType" : "test"
+                }
+                                  """;
+        TagInfo mappedResponse = 
+                mapper.readValue(responseBodyJson, TagInfo.class);
+        assertNotNull(mappedResponse);
     }
     
 }

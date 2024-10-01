@@ -13,6 +13,7 @@
 package com.thousandeyes.sdk.tags;
 
 import com.thousandeyes.sdk.tags.model.ApiError;
+import com.thousandeyes.sdk.tags.model.BulkTagAssignment;
 import com.thousandeyes.sdk.tags.model.BulkTagAssignments;
 import com.thousandeyes.sdk.tags.model.Error;
 import com.thousandeyes.sdk.tags.model.TagAssignment;
@@ -71,6 +72,21 @@ public class TagAssignmentApiTest {
                 mapper.readValue(requestBodyJson, TagAssignment.class);
         assertNotNull(mappedRequest);
 
+        String responseBodyJson = """
+                {
+                  "assignments" : [ {
+                    "id" : "123",
+                    "type" : "test"
+                  }, {
+                    "id" : "123",
+                    "type" : "test"
+                  } ],
+                  "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                }
+                                  """;
+        BulkTagAssignment mappedResponse = 
+                mapper.readValue(responseBodyJson, BulkTagAssignment.class);
+        assertNotNull(mappedResponse);
     }
     
     /**
@@ -112,6 +128,32 @@ public class TagAssignmentApiTest {
                 mapper.readValue(requestBodyJson, BulkTagAssignments.class);
         assertNotNull(mappedRequest);
 
+        String responseBodyJson = """
+                {
+                  "tags" : [ {
+                    "assignments" : [ {
+                      "id" : "123",
+                      "type" : "test"
+                    }, {
+                      "id" : "123",
+                      "type" : "test"
+                    } ],
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                  }, {
+                    "assignments" : [ {
+                      "id" : "123",
+                      "type" : "test"
+                    }, {
+                      "id" : "123",
+                      "type" : "test"
+                    } ],
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                  } ]
+                }
+                                  """;
+        BulkTagAssignments mappedResponse = 
+                mapper.readValue(responseBodyJson, BulkTagAssignments.class);
+        assertNotNull(mappedResponse);
     }
     
     /**
@@ -182,6 +224,32 @@ public class TagAssignmentApiTest {
                 mapper.readValue(requestBodyJson, BulkTagAssignments.class);
         assertNotNull(mappedRequest);
 
+        String responseBodyJson = """
+                {
+                  "tags" : [ {
+                    "assignments" : [ {
+                      "id" : "123",
+                      "type" : "test"
+                    }, {
+                      "id" : "123",
+                      "type" : "test"
+                    } ],
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                  }, {
+                    "assignments" : [ {
+                      "id" : "123",
+                      "type" : "test"
+                    }, {
+                      "id" : "123",
+                      "type" : "test"
+                    } ],
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                  } ]
+                }
+                                  """;
+        BulkTagAssignments mappedResponse = 
+                mapper.readValue(responseBodyJson, BulkTagAssignments.class);
+        assertNotNull(mappedResponse);
     }
     
 }

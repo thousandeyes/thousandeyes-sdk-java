@@ -21,6 +21,7 @@ import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 
+import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointRunScheduledInstantTestResult;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.Error;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.instant.model.ValidationError;
@@ -63,10 +64,12 @@ public class RunEndpointInstantScheduledTestsApi {
    * Runs an existing endpoint instant scheduled test in ThousandEyes.
    * @param testId ID of the endpoint instant scheduled test to rerun (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return EndpointRunScheduledInstantTestResult
    * @throws ApiException if fails to make API call
    */
-  public void runEndpointScheduledInstantTest(String testId, String aid) throws ApiException {
-    runEndpointScheduledInstantTestWithHttpInfo(testId, aid);
+  public EndpointRunScheduledInstantTestResult runEndpointScheduledInstantTest(String testId, String aid) throws ApiException {
+    ApiResponse<EndpointRunScheduledInstantTestResult> response = runEndpointScheduledInstantTestWithHttpInfo(testId, aid);
+    return response.getData();
   }
 
   /**
@@ -74,15 +77,15 @@ public class RunEndpointInstantScheduledTestsApi {
    * Runs an existing endpoint instant scheduled test in ThousandEyes.
    * @param testId ID of the endpoint instant scheduled test to rerun (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @return ApiResponse&lt;Void&gt;
+   * @return ApiResponse&lt;EndpointRunScheduledInstantTestResult&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> runEndpointScheduledInstantTestWithHttpInfo(String testId, String aid) throws ApiException {
+  public ApiResponse<EndpointRunScheduledInstantTestResult> runEndpointScheduledInstantTestWithHttpInfo(String testId, String aid) throws ApiException {
     runEndpointScheduledInstantTestValidateRequest(testId);
 
     var requestBuilder = runEndpointScheduledInstantTestRequestBuilder(testId, aid);
 
-    return apiClient.send(requestBuilder.build(), Void.class);
+    return apiClient.send(requestBuilder.build(), EndpointRunScheduledInstantTestResult.class);
   }
 
   private void runEndpointScheduledInstantTestValidateRequest(String testId) throws ApiException {

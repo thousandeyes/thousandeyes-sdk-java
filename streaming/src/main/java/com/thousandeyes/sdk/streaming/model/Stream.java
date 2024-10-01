@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.streaming.model.DataModelVersion;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
+import com.thousandeyes.sdk.streaming.model.Filters;
 import com.thousandeyes.sdk.streaming.model.StreamType;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
 import com.thousandeyes.sdk.streaming.model.TestMatch;
@@ -42,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Stream.JSON_PROPERTY_TAG_MATCH,
   Stream.JSON_PROPERTY_TEST_MATCH,
   Stream.JSON_PROPERTY_ENABLED,
+  Stream.JSON_PROPERTY_FILTERS,
   Stream.JSON_PROPERTY_EXPORTER_CONFIG,
   Stream.JSON_PROPERTY_TYPE,
   Stream.JSON_PROPERTY_ENDPOINT_TYPE,
@@ -61,6 +63,9 @@ public class Stream {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
+
+  public static final String JSON_PROPERTY_FILTERS = "filters";
+  private Filters filters;
 
   public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
   private ExporterConfig exporterConfig;
@@ -201,6 +206,31 @@ public class Stream {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
+  }
+
+
+  public Stream filters(Filters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FILTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Filters getFilters() {
+    return filters;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FILTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFilters(Filters filters) {
+    this.filters = filters;
   }
 
 
@@ -345,6 +375,7 @@ public class Stream {
         Objects.equals(this.tagMatch, stream.tagMatch) &&
         Objects.equals(this.testMatch, stream.testMatch) &&
         Objects.equals(this.enabled, stream.enabled) &&
+        Objects.equals(this.filters, stream.filters) &&
         Objects.equals(this.exporterConfig, stream.exporterConfig) &&
         Objects.equals(this.type, stream.type) &&
         Objects.equals(this.endpointType, stream.endpointType) &&
@@ -354,7 +385,7 @@ public class Stream {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, tagMatch, testMatch, enabled, exporterConfig, type, endpointType, streamEndpointUrl, dataModelVersion);
+    return Objects.hash(customHeaders, tagMatch, testMatch, enabled, filters, exporterConfig, type, endpointType, streamEndpointUrl, dataModelVersion);
   }
 
   @Override
@@ -365,6 +396,7 @@ public class Stream {
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    endpointType: ").append(toIndentedString(endpointType)).append("\n");

@@ -17,7 +17,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## assignTag
 
-> void assignTag(id, tagAssignment, aid)
+> BulkTagAssignment assignTag(id, tagAssignment, aid)
 
 Assign tag to multiple objects
 
@@ -48,7 +48,8 @@ public class Example {
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.assignTag(id, tagAssignment, aid);
+            BulkTagAssignment result = apiInstance.assignTag(id, tagAssignment, aid);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#assignTag");
             System.err.println("Status code: " + e.getCode());
@@ -71,8 +72,8 @@ public class Example {
 
 ### Return type
 
+[**BulkTagAssignment**](BulkTagAssignment.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -95,7 +96,7 @@ null (empty response body)
 
 ## assignTagWithHttpInfo
 
-> ApiResponse<Void> assignTag assignTagWithHttpInfo(id, tagAssignment, aid)
+> ApiResponse<BulkTagAssignment> assignTag assignTagWithHttpInfo(id, tagAssignment, aid)
 
 Assign tag to multiple objects
 
@@ -127,9 +128,10 @@ public class Example {
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.assignTagWithHttpInfo(id, tagAssignment, aid);
+            ApiResponse<BulkTagAssignment> response = apiInstance.assignTagWithHttpInfo(id, tagAssignment, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#assignTag");
             System.err.println("Status code: " + e.getCode());
@@ -152,8 +154,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**BulkTagAssignment**](BulkTagAssignment.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 
@@ -177,7 +179,7 @@ ApiResponse<Void>
 
 ## assignTags
 
-> void assignTags(bulkTagAssignments, aid)
+> BulkTagAssignments assignTags(bulkTagAssignments, aid)
 
 Assign multiple tags to multiple objects
 
@@ -207,7 +209,8 @@ public class Example {
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.assignTags(bulkTagAssignments, aid);
+            BulkTagAssignments result = apiInstance.assignTags(bulkTagAssignments, aid);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#assignTags");
             System.err.println("Status code: " + e.getCode());
@@ -229,8 +232,8 @@ public class Example {
 
 ### Return type
 
+[**BulkTagAssignments**](BulkTagAssignments.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -253,7 +256,7 @@ null (empty response body)
 
 ## assignTagsWithHttpInfo
 
-> ApiResponse<Void> assignTags assignTagsWithHttpInfo(bulkTagAssignments, aid)
+> ApiResponse<BulkTagAssignments> assignTags assignTagsWithHttpInfo(bulkTagAssignments, aid)
 
 Assign multiple tags to multiple objects
 
@@ -284,9 +287,10 @@ public class Example {
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.assignTagsWithHttpInfo(bulkTagAssignments, aid);
+            ApiResponse<BulkTagAssignments> response = apiInstance.assignTagsWithHttpInfo(bulkTagAssignments, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#assignTags");
             System.err.println("Status code: " + e.getCode());
@@ -308,8 +312,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**BulkTagAssignments**](BulkTagAssignments.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 
@@ -493,7 +497,7 @@ ApiResponse<Void>
 
 ## unassignTags
 
-> void unassignTags(bulkTagAssignments, aid)
+> BulkTagAssignments unassignTags(bulkTagAssignments, aid)
 
 Remove multiple tags from multiple objects
 
@@ -523,7 +527,8 @@ public class Example {
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.unassignTags(bulkTagAssignments, aid);
+            BulkTagAssignments result = apiInstance.unassignTags(bulkTagAssignments, aid);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#unassignTags");
             System.err.println("Status code: " + e.getCode());
@@ -545,8 +550,8 @@ public class Example {
 
 ### Return type
 
+[**BulkTagAssignments**](BulkTagAssignments.md)
 
-null (empty response body)
 
 ### Authorization
 
@@ -569,7 +574,7 @@ null (empty response body)
 
 ## unassignTagsWithHttpInfo
 
-> ApiResponse<Void> unassignTags unassignTagsWithHttpInfo(bulkTagAssignments, aid)
+> ApiResponse<BulkTagAssignments> unassignTags unassignTagsWithHttpInfo(bulkTagAssignments, aid)
 
 Remove multiple tags from multiple objects
 
@@ -600,9 +605,10 @@ public class Example {
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.unassignTagsWithHttpInfo(bulkTagAssignments, aid);
+            ApiResponse<BulkTagAssignments> response = apiInstance.unassignTagsWithHttpInfo(bulkTagAssignments, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#unassignTags");
             System.err.println("Status code: " + e.getCode());
@@ -624,8 +630,8 @@ public class Example {
 
 ### Return type
 
+ApiResponse<[**BulkTagAssignments**](BulkTagAssignments.md)>
 
-ApiResponse<Void>
 
 ### Authorization
 
