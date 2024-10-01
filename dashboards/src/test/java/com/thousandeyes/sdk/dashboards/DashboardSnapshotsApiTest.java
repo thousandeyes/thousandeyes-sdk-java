@@ -22,16 +22,25 @@ import java.net.URI;
 import com.thousandeyes.sdk.dashboards.model.UnauthorizedError;
 import com.thousandeyes.sdk.dashboards.model.UpdateSnapshotExpirationDateApiRequest;
 import com.thousandeyes.sdk.dashboards.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,15 +48,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for DashboardSnapshotsApi
  */
+@WireMockTest
 public class DashboardSnapshotsApiTest {
-    // private final DashboardSnapshotsApi api = new DashboardSnapshotsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static DashboardSnapshotsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new DashboardSnapshotsApi(client);
+    }
     
     /**
      * Create dashboard snapshot
@@ -56,12 +81,12 @@ public class DashboardSnapshotsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createDashboardSnapshotRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "endDate" : "2023-05-16T10:14:28Z",
                   "dashboardId" : "646f4d2ce3c99b0536c3821e",
@@ -72,11 +97,12 @@ public class DashboardSnapshotsApiTest {
                   "expirationDate" : "2023-05-16T10:14:28Z"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         GenerateDashboardSnapshotRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, GenerateDashboardSnapshotRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "snapshotId" : "d28bb71f-5a47-4783-8f12-d4b115e61b0c",
                   "_links" : {
@@ -93,9 +119,24 @@ public class DashboardSnapshotsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         DashboardSnapshotResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, DashboardSnapshotResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/dashboard-snapshots";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createDashboardSnapshot(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -105,12 +146,24 @@ public class DashboardSnapshotsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteDashboardSnapshotRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c";
 
+
+        var statusCode = 204;
+
+        var path = "/dashboard-snapshots/{snapshotId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("snapshotId", equalTo(URLEncoder.encode(snapshotId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteDashboardSnapshotWithHttpInfo(snapshotId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -120,13 +173,14 @@ public class DashboardSnapshotsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getDashboardSnapshotRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "snapshotId" : "d28bb71f-5a47-4783-8f12-d4b115e61b0c",
                   "_links" : {
@@ -380,9 +434,23 @@ public class DashboardSnapshotsApiTest {
                   "expirationDate" : "2023-05-16 10:14:28"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiDashboardSnapshot mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiDashboardSnapshot.class);
         assertNotNull(mappedResponse);
+
+        var path = "/dashboard-snapshots/{snapshotId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("snapshotId", equalTo(URLEncoder.encode(snapshotId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getDashboardSnapshot(snapshotId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -392,13 +460,15 @@ public class DashboardSnapshotsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getDashboardSnapshotWidgetDataRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c";
+        String widgetId = "unpmg";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "groupLabels" : [ {
                     "groupProperty" : "AGENT",
@@ -750,9 +820,24 @@ public class DashboardSnapshotsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiWidgetDataSnapshotResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiWidgetDataSnapshotResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/dashboard-snapshots/{snapshotId}/widgets/{widgetId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("snapshotId", equalTo(URLEncoder.encode(snapshotId, StandardCharsets.UTF_8)))
+                        .withPathParam("widgetId", equalTo(URLEncoder.encode(widgetId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getDashboardSnapshotWidgetData(snapshotId, widgetId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -762,13 +847,13 @@ public class DashboardSnapshotsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getDashboardSnapshotsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "pages" : {
                     "key" : ""
@@ -1310,9 +1395,22 @@ public class DashboardSnapshotsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         DashboardSnapshotsPage mappedResponse = 
                 mapper.readValue(responseBodyJson, DashboardSnapshotsPage.class);
         assertNotNull(mappedResponse);
+
+        var path = "/dashboard-snapshots";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getDashboardSnapshots(null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -1322,21 +1420,36 @@ public class DashboardSnapshotsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateDashboardSnapshotExpirationDateRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c";
+
+        var requestBodyJson = """
                 {
                   "snapshotExpirationDate" : "2023-05-16T10:14:28Z",
                   "expirationDate" : "2023-05-16 10:14:28"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         UpdateSnapshotExpirationDateApiRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, UpdateSnapshotExpirationDateApiRequest.class);
         assertNotNull(mappedRequest);
 
+        var statusCode = 204;
+
+        var path = "/dashboard-snapshots/{snapshotId}";
+        stubFor(patch(urlPathTemplate(path))
+                        .withPathParam("snapshotId", equalTo(URLEncoder.encode(snapshotId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateDashboardSnapshotExpirationDateWithHttpInfo(snapshotId, mappedRequest, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
 }

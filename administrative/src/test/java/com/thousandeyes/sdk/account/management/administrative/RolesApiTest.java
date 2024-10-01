@@ -19,16 +19,25 @@ import com.thousandeyes.sdk.account.management.administrative.model.Roles;
 import java.net.URI;
 import com.thousandeyes.sdk.account.management.administrative.model.UnauthorizedError;
 import com.thousandeyes.sdk.account.management.administrative.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +45,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for RolesApi
  */
+@WireMockTest
 public class RolesApiTest {
-    // private final RolesApi api = new RolesApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static RolesApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new RolesApi(client);
+    }
     
     /**
      * Create role
@@ -53,22 +78,23 @@ public class RolesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createRoleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "permissions" : [ "56", "315" ],
                   "name" : "Organization Admin"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         RoleRequestBody mappedRequest = 
                 mapper.readValue(requestBodyJson, RoleRequestBody.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -98,9 +124,24 @@ public class RolesApiTest {
                   "isBuiltin" : true
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         RoleDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, RoleDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/roles";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createRole(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -110,12 +151,24 @@ public class RolesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteRoleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String id = "23";
 
+
+        var statusCode = 204;
+
+        var path = "/roles/{id}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteRoleWithHttpInfo(id, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -125,13 +178,14 @@ public class RolesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getRoleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String id = "23";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -161,9 +215,23 @@ public class RolesApiTest {
                   "isBuiltin" : true
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         RoleDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, RoleDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/roles/{id}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getRole(id, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -173,13 +241,13 @@ public class RolesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getRolesRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -206,9 +274,22 @@ public class RolesApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Roles mappedResponse = 
                 mapper.readValue(responseBodyJson, Roles.class);
         assertNotNull(mappedResponse);
+
+        var path = "/roles";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getRoles(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -218,22 +299,24 @@ public class RolesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateRoleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String id = "23";
+
+        var requestBodyJson = """
                 {
                   "permissions" : [ "56", "315" ],
                   "name" : "Organization Admin"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         RoleRequestBody mappedRequest = 
                 mapper.readValue(requestBodyJson, RoleRequestBody.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -263,9 +346,25 @@ public class RolesApiTest {
                   "isBuiltin" : true
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         RoleDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, RoleDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/roles/{id}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateRole(id, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

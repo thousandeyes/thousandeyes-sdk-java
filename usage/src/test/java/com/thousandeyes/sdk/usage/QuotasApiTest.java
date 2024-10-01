@@ -21,16 +21,25 @@ import com.thousandeyes.sdk.usage.model.QuotasAssignResponse;
 import com.thousandeyes.sdk.usage.model.QuotasUnassign;
 import com.thousandeyes.sdk.usage.model.UnauthorizedError;
 import com.thousandeyes.sdk.usage.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,15 +47,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for QuotasApi
  */
+@WireMockTest
 public class QuotasApiTest {
-    // private final QuotasApi api = new QuotasApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static QuotasApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new QuotasApi(client);
+    }
     
     /**
      * Create or update accout group quotas
@@ -55,12 +80,12 @@ public class QuotasApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void assignOrganizationsAccountGroupsQuotasRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "organizations" : [ {
                     "orgId" : "1234",
@@ -83,11 +108,12 @@ public class QuotasApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         OrganizationsQuotasAssign mappedRequest = 
                 mapper.readValue(requestBodyJson, OrganizationsQuotasAssign.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "organizations" : [ {
                     "orgId" : "1234",
@@ -110,9 +136,24 @@ public class QuotasApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         OrganizationsQuotasAssign mappedResponse = 
                 mapper.readValue(responseBodyJson, OrganizationsQuotasAssign.class);
         assertNotNull(mappedResponse);
+
+        var path = "/quotas/account-groups/assign";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.assignOrganizationsAccountGroupsQuotas(mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -122,12 +163,12 @@ public class QuotasApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void assignOrganizationsQuotasRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "organizations" : [ {
                     "value" : 12000
@@ -137,11 +178,12 @@ public class QuotasApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         QuotasAssignRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, QuotasAssignRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "organizations" : [ {
                     "orgId" : "1234",
@@ -152,9 +194,24 @@ public class QuotasApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         QuotasAssignResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, QuotasAssignResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/quotas/assign";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.assignOrganizationsQuotas(mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -164,13 +221,13 @@ public class QuotasApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getQuotasRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "quotas" : [ {
                     "accountGroupQuotas" : [ {
@@ -211,9 +268,22 @@ public class QuotasApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Quotas mappedResponse = 
                 mapper.readValue(responseBodyJson, Quotas.class);
         assertNotNull(mappedResponse);
+
+        var path = "/quotas";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getQuotas();
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -223,12 +293,12 @@ public class QuotasApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void unassignOrganizationsAccountGroupsQuotasRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "organizations" : [ {
                     "orgId" : "1234",
@@ -239,10 +309,23 @@ public class QuotasApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         OrganizationsQuotasUnassign mappedRequest = 
                 mapper.readValue(requestBodyJson, OrganizationsQuotasUnassign.class);
         assertNotNull(mappedRequest);
 
+        var statusCode = 204;
+
+        var path = "/quotas/account-groups/unassign";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.unassignOrganizationsAccountGroupsQuotasWithHttpInfo(mappedRequest);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -252,20 +335,33 @@ public class QuotasApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void unassignOrganizationsQuotasRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "organizations" : [ "1234", "12345" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         QuotasUnassign mappedRequest = 
                 mapper.readValue(requestBodyJson, QuotasUnassign.class);
         assertNotNull(mappedRequest);
 
+        var statusCode = 204;
+
+        var path = "/quotas/unassign";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.unassignOrganizationsQuotasWithHttpInfo(mappedRequest);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
 }

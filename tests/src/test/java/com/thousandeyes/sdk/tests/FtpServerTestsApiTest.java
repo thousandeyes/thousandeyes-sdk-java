@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.tests.model.FtpServerTests;
 import java.net.URI;
 import com.thousandeyes.sdk.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for FtpServerTestsApi
  */
+@WireMockTest
 public class FtpServerTestsApiTest {
-    // private final FtpServerTestsApi api = new FtpServerTestsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static FtpServerTestsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new FtpServerTestsApi(client);
+    }
     
     /**
      * Create FTP Server test
@@ -54,12 +79,12 @@ public class FtpServerTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createFtpServerTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
@@ -124,11 +149,12 @@ public class FtpServerTestsApiTest {
                   "monitors" : [ "17410", "5" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         FtpServerTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, FtpServerTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
@@ -267,9 +293,24 @@ public class FtpServerTestsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         FtpServerTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, FtpServerTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/ftp-server";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createFtpServerTest(mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -279,12 +320,24 @@ public class FtpServerTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteFtpServerTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
+
+        var statusCode = 204;
+
+        var path = "/tests/ftp-server/{testId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteFtpServerTestWithHttpInfo(testId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -294,13 +347,14 @@ public class FtpServerTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getFtpServerTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
@@ -439,9 +493,23 @@ public class FtpServerTestsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         FtpServerTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, FtpServerTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/ftp-server/{testId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getFtpServerTest(testId, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -451,13 +519,13 @@ public class FtpServerTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getFtpServerTestsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "tests" : [ {
                     "mtuMeasurements" : false,
@@ -576,9 +644,22 @@ public class FtpServerTestsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         FtpServerTests mappedResponse = 
                 mapper.readValue(responseBodyJson, FtpServerTests.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/ftp-server";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getFtpServerTests(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -588,12 +669,13 @@ public class FtpServerTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateFtpServerTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String testId = "202701";
+
+        var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
@@ -658,11 +740,12 @@ public class FtpServerTestsApiTest {
                   "monitors" : [ "17410", "5" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         FtpServerTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, FtpServerTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
@@ -801,9 +884,25 @@ public class FtpServerTestsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         FtpServerTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, FtpServerTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/ftp-server/{testId}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateFtpServerTest(testId, mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

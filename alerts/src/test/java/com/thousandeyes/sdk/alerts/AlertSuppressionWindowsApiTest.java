@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.alerts.model.ExpandAlertTestOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
 import com.thousandeyes.sdk.alerts.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for AlertSuppressionWindowsApi
  */
+@WireMockTest
 public class AlertSuppressionWindowsApiTest {
-    // private final AlertSuppressionWindowsApi api = new AlertSuppressionWindowsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static AlertSuppressionWindowsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new AlertSuppressionWindowsApi(client);
+    }
     
     /**
      * Create alert suppression window
@@ -54,12 +79,12 @@ public class AlertSuppressionWindowsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createAlertSuppressionWindowRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "duration" : 0,
                   "alertSuppressionWindowId" : "2411",
@@ -81,11 +106,12 @@ public class AlertSuppressionWindowsApiTest {
                   "status" : "ended"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         AlertSuppressionWindowRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, AlertSuppressionWindowRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "duration" : 0,
                   "alertSuppressionWindowId" : "2411",
@@ -181,9 +207,24 @@ public class AlertSuppressionWindowsApiTest {
                   "status" : "ended"
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         AlertSuppressionWindowDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, AlertSuppressionWindowDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/alert-suppression-windows";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createAlertSuppressionWindow(mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -193,12 +234,24 @@ public class AlertSuppressionWindowsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteAlertSuppressionWindowRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String windowId = "2411";
 
+
+        var statusCode = 204;
+
+        var path = "/alert-suppression-windows/{windowId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("windowId", equalTo(URLEncoder.encode(windowId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteAlertSuppressionWindowWithHttpInfo(windowId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -208,13 +261,14 @@ public class AlertSuppressionWindowsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAlertSuppressionWindowRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String windowId = "2411";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "duration" : 0,
                   "alertSuppressionWindowId" : "2411",
@@ -310,9 +364,23 @@ public class AlertSuppressionWindowsApiTest {
                   "status" : "ended"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         AlertSuppressionWindowDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, AlertSuppressionWindowDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/alert-suppression-windows/{windowId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("windowId", equalTo(URLEncoder.encode(windowId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAlertSuppressionWindow(windowId, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -322,13 +390,13 @@ public class AlertSuppressionWindowsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAlertSuppressionWindowsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -405,9 +473,22 @@ public class AlertSuppressionWindowsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         AlertSuppressionWindows mappedResponse = 
                 mapper.readValue(responseBodyJson, AlertSuppressionWindows.class);
         assertNotNull(mappedResponse);
+
+        var path = "/alert-suppression-windows";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAlertSuppressionWindows(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -417,12 +498,13 @@ public class AlertSuppressionWindowsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateAlertSuppressionWindowRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String windowId = "2411";
+
+        var requestBodyJson = """
                 {
                   "duration" : 0,
                   "alertSuppressionWindowId" : "2411",
@@ -444,11 +526,12 @@ public class AlertSuppressionWindowsApiTest {
                   "status" : "ended"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         AlertSuppressionWindowRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, AlertSuppressionWindowRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "duration" : 0,
                   "alertSuppressionWindowId" : "2411",
@@ -544,9 +627,25 @@ public class AlertSuppressionWindowsApiTest {
                   "status" : "ended"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         AlertSuppressionWindowDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, AlertSuppressionWindowDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/alert-suppression-windows/{windowId}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("windowId", equalTo(URLEncoder.encode(windowId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateAlertSuppressionWindow(windowId, mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

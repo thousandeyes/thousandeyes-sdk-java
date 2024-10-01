@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.tests.model.ValidationError;
 import com.thousandeyes.sdk.tests.model.WebTransactionTestRequest;
 import com.thousandeyes.sdk.tests.model.WebTransactionTestResponse;
 import com.thousandeyes.sdk.tests.model.WebTransactionTests;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for WebTransactionTestsApi
  */
+@WireMockTest
 public class WebTransactionTestsApiTest {
-    // private final WebTransactionTestsApi api = new WebTransactionTestsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static WebTransactionTestsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new WebTransactionTestsApi(client);
+    }
     
     /**
      * Create Web Transactions test
@@ -54,12 +79,12 @@ public class WebTransactionTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createWebTransactionsTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
@@ -176,11 +201,12 @@ public class WebTransactionTestsApiTest {
                   "targetTime" : 1
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         WebTransactionTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, WebTransactionTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
@@ -371,9 +397,24 @@ public class WebTransactionTestsApiTest {
                   "targetTime" : 1
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         WebTransactionTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, WebTransactionTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/web-transactions";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createWebTransactionsTest(mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -383,12 +424,24 @@ public class WebTransactionTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteWebTransactionsTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
+
+        var statusCode = 204;
+
+        var path = "/tests/web-transactions/{testId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteWebTransactionsTestWithHttpInfo(testId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -398,13 +451,14 @@ public class WebTransactionTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getWebTransactionsTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
@@ -595,9 +649,23 @@ public class WebTransactionTestsApiTest {
                   "targetTime" : 1
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         WebTransactionTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, WebTransactionTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/web-transactions/{testId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getWebTransactionsTest(testId, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -607,13 +675,13 @@ public class WebTransactionTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getWebTransactionsTestsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "tests" : [ {
                     "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -834,9 +902,22 @@ public class WebTransactionTestsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         WebTransactionTests mappedResponse = 
                 mapper.readValue(responseBodyJson, WebTransactionTests.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/web-transactions";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getWebTransactionsTests(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -846,12 +927,13 @@ public class WebTransactionTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateWebTransactionsTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String testId = "202701";
+
+        var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
@@ -968,11 +1050,12 @@ public class WebTransactionTestsApiTest {
                   "targetTime" : 1
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         WebTransactionTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, WebTransactionTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
@@ -1163,9 +1246,25 @@ public class WebTransactionTestsApiTest {
                   "targetTime" : 1
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         WebTransactionTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, WebTransactionTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/web-transactions/{testId}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateWebTransactionsTest(testId, mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

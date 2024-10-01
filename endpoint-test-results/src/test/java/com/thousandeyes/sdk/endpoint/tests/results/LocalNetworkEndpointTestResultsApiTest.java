@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.LocalNetworkTopologyRes
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.results.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for LocalNetworkEndpointTestResultsApi
  */
+@WireMockTest
 public class LocalNetworkEndpointTestResultsApiTest {
-    // private final LocalNetworkEndpointTestResultsApi api = new LocalNetworkEndpointTestResultsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static LocalNetworkEndpointTestResultsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new LocalNetworkEndpointTestResultsApi(client);
+    }
     
     /**
      * List endpoint network topologies probes
@@ -54,12 +79,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void filterLocalNetworksTestResultsTopologiesRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "searchFilters" : {
                     "agentId" : [ "3fde6422-f119-40e1-ae32-d08a1243c038", "236e6f18-9637-4a2f-b15f-7aa6a29c9fce" ],
@@ -76,11 +101,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
                   }
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         EndpointNetworkTopologyResultRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, EndpointNetworkTopologyResultRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "endDate" : "2022-07-18T22:00:54Z",
                   "_links" : {
@@ -191,9 +217,24 @@ public class LocalNetworkEndpointTestResultsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         LocalNetworkTopologyResults mappedResponse = 
                 mapper.readValue(responseBodyJson, LocalNetworkTopologyResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/local-networks/topologies/filter";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.filterLocalNetworksTestResultsTopologies(null, null, null, null, null, mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -203,13 +244,13 @@ public class LocalNetworkEndpointTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getLocalNetworksTestResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "localNetworks" : [ {
                     "publicIpRange" : "178.216.56.0-178.216.63.255",
@@ -236,9 +277,22 @@ public class LocalNetworkEndpointTestResultsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         LocalNetworkResults mappedResponse = 
                 mapper.readValue(responseBodyJson, LocalNetworkResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/local-networks";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getLocalNetworksTestResults(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -248,13 +302,14 @@ public class LocalNetworkEndpointTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getLocalNetworksTestResultsTopologyRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -601,9 +656,23 @@ public class LocalNetworkEndpointTestResultsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         LocalNetworkTopologyDetailResults mappedResponse = 
                 mapper.readValue(responseBodyJson, LocalNetworkTopologyDetailResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/local-networks/topologies/{networkTopologyId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("networkTopologyId", equalTo(URLEncoder.encode(networkTopologyId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getLocalNetworksTestResultsTopology(networkTopologyId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

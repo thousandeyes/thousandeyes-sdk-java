@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.tests.model.ExpandTestOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for DnsTraceTestsApi
  */
+@WireMockTest
 public class DnsTraceTestsApiTest {
-    // private final DnsTraceTestsApi api = new DnsTraceTestsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static DnsTraceTestsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new DnsTraceTestsApi(client);
+    }
     
     /**
      * Create DNS Trace test
@@ -54,12 +79,12 @@ public class DnsTraceTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createDnsTraceTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "dnsQueryClass" : "in",
                   "_links" : {
@@ -106,11 +131,12 @@ public class DnsTraceTestsApiTest {
                   "testName" : "ThousandEyes Test"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         DnsTraceTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, DnsTraceTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "dnsQueryClass" : "in",
                   "_links" : {
@@ -217,9 +243,24 @@ public class DnsTraceTestsApiTest {
                   "testName" : "ThousandEyes Test"
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         DnsTraceTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, DnsTraceTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/dns-trace";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createDnsTraceTest(mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -229,12 +270,24 @@ public class DnsTraceTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteDnsTraceTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
+
+        var statusCode = 204;
+
+        var path = "/tests/dns-trace/{testId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteDnsTraceTestWithHttpInfo(testId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -244,13 +297,14 @@ public class DnsTraceTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getDnsTraceTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "dnsQueryClass" : "in",
                   "_links" : {
@@ -357,9 +411,23 @@ public class DnsTraceTestsApiTest {
                   "testName" : "ThousandEyes Test"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         DnsTraceTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, DnsTraceTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/dns-trace/{testId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getDnsTraceTest(testId, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -369,13 +437,13 @@ public class DnsTraceTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getDnsTraceTestsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "tests" : [ {
                     "dnsQueryClass" : "in",
@@ -460,9 +528,22 @@ public class DnsTraceTestsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         DnsTraceTests mappedResponse = 
                 mapper.readValue(responseBodyJson, DnsTraceTests.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/dns-trace";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getDnsTraceTests(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -472,12 +553,13 @@ public class DnsTraceTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateDnsTraceTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String testId = "202701";
+
+        var requestBodyJson = """
                 {
                   "dnsQueryClass" : "in",
                   "_links" : {
@@ -524,11 +606,12 @@ public class DnsTraceTestsApiTest {
                   "testName" : "ThousandEyes Test"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         DnsTraceTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, DnsTraceTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "dnsQueryClass" : "in",
                   "_links" : {
@@ -635,9 +718,25 @@ public class DnsTraceTestsApiTest {
                   "testName" : "ThousandEyes Test"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         DnsTraceTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, DnsTraceTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/dns-trace/{testId}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateDnsTraceTest(testId, mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

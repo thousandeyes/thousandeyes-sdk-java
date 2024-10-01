@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.account.management.administrative.model.UserDetail;
 import com.thousandeyes.sdk.account.management.administrative.model.UserRequest;
 import com.thousandeyes.sdk.account.management.administrative.model.Users;
 import com.thousandeyes.sdk.account.management.administrative.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for UsersApi
  */
+@WireMockTest
 public class UsersApiTest {
-    // private final UsersApi api = new UsersApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static UsersApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new UsersApi(client);
+    }
     
     /**
      * Create user
@@ -54,12 +79,12 @@ public class UsersApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createUserRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "loginAccountGroupId" : "691",
                   "accountGroupRoles" : [ {
@@ -74,11 +99,12 @@ public class UsersApiTest {
                   "email" : "userx@thousandeyes.com"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         UserRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, UserRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "loginAccountGroup" : {
                     "accountGroupName" : "Account A",
@@ -146,9 +172,24 @@ public class UsersApiTest {
                   "dateRegistered" : "2020-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         CreatedUser mappedResponse = 
                 mapper.readValue(responseBodyJson, CreatedUser.class);
         assertNotNull(mappedResponse);
+
+        var path = "/users";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createUser(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -158,12 +199,24 @@ public class UsersApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteUserRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String id = "1234";
 
+
+        var statusCode = 204;
+
+        var path = "/users/{id}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteUserWithHttpInfo(id, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -173,13 +226,13 @@ public class UsersApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getCurrentUserRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "loginAccountGroup" : {
                     "accountGroupName" : "Account A",
@@ -248,9 +301,22 @@ public class UsersApiTest {
                   "dateRegistered" : "2020-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         UserDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, UserDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/users/current";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getCurrentUser();
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -260,13 +326,14 @@ public class UsersApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getUserRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String id = "1234";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "loginAccountGroup" : {
                     "accountGroupName" : "Account A",
@@ -335,9 +402,23 @@ public class UsersApiTest {
                   "dateRegistered" : "2020-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         UserDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, UserDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/users/{id}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getUser(id, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -347,13 +428,13 @@ public class UsersApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getUsersRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -390,9 +471,22 @@ public class UsersApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Users mappedResponse = 
                 mapper.readValue(responseBodyJson, Users.class);
         assertNotNull(mappedResponse);
+
+        var path = "/users";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getUsers(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -402,12 +496,13 @@ public class UsersApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateUserRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String id = "1234";
+
+        var requestBodyJson = """
                 {
                   "loginAccountGroupId" : "691",
                   "accountGroupRoles" : [ {
@@ -422,11 +517,12 @@ public class UsersApiTest {
                   "email" : "userx@thousandeyes.com"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         UserRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, UserRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "loginAccountGroup" : {
                     "accountGroupName" : "Account A",
@@ -495,9 +591,25 @@ public class UsersApiTest {
                   "dateRegistered" : "2020-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         UserDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, UserDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/users/{id}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateUser(id, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

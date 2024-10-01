@@ -19,16 +19,25 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 import com.thousandeyes.sdk.event.detection.model.UnauthorizedError;
 import com.thousandeyes.sdk.event.detection.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +45,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for EventsApi
  */
+@WireMockTest
 public class EventsApiTest {
-    // private final EventsApi api = new EventsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static EventsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new EventsApi(client);
+    }
     
     /**
      * Retrieve event
@@ -53,13 +78,14 @@ public class EventsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getEventRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        UUID id = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "severity" : "medium",
                   "summary" : "Significant number of issues detected with 66.29.146.15",
@@ -191,9 +217,23 @@ public class EventsApiTest {
                   "startDate" : "2020-04-23T13:43:16Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         EventDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, EventDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/events/{id}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getEvent(id, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -203,13 +243,13 @@ public class EventsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getEventsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "endDate" : "2022-07-18T22:00:54Z",
                   "_links" : {
@@ -305,9 +345,22 @@ public class EventsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Events mappedResponse = 
                 mapper.readValue(responseBodyJson, Events.class);
         assertNotNull(mappedResponse);
+
+        var path = "/events";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getEvents(null, null, null, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

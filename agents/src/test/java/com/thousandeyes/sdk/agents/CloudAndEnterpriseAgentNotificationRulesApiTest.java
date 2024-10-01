@@ -16,16 +16,25 @@ import com.thousandeyes.sdk.agents.model.Error;
 import com.thousandeyes.sdk.agents.model.ListNotificationRulesResponse;
 import com.thousandeyes.sdk.agents.model.NotificationRuleDetail;
 import com.thousandeyes.sdk.agents.model.UnauthorizedError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,15 +42,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for CloudAndEnterpriseAgentNotificationRulesApi
  */
+@WireMockTest
 public class CloudAndEnterpriseAgentNotificationRulesApiTest {
-    // private final CloudAndEnterpriseAgentNotificationRulesApi api = new CloudAndEnterpriseAgentNotificationRulesApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static CloudAndEnterpriseAgentNotificationRulesApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new CloudAndEnterpriseAgentNotificationRulesApi(client);
+    }
     
     /**
      * Retrieve agent notification rule
@@ -50,13 +75,14 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAgentsNotificationRuleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String notificationRuleId = "281474976710706";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "isDefault" : false,
                   "expression" : "((lastContact >= 30 min))",
@@ -146,9 +172,23 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         NotificationRuleDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, NotificationRuleDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/agents/notification-rules/{notificationRuleId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("notificationRuleId", equalTo(URLEncoder.encode(notificationRuleId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAgentsNotificationRule(notificationRuleId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -158,13 +198,13 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAgentsNotificationRulesRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "agentAlertRules" : [ {
                     "ruleId" : "281474976710706",
@@ -193,9 +233,22 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ListNotificationRulesResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ListNotificationRulesResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/agents/notification-rules";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAgentsNotificationRules(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

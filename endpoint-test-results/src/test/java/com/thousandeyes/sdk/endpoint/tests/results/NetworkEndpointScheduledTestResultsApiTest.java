@@ -21,16 +21,25 @@ import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDetailEndpointTestResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisEndpointTestResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,15 +47,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for NetworkEndpointScheduledTestResultsApi
  */
+@WireMockTest
 public class NetworkEndpointScheduledTestResultsApiTest {
-    // private final NetworkEndpointScheduledTestResultsApi api = new NetworkEndpointScheduledTestResultsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static NetworkEndpointScheduledTestResultsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new NetworkEndpointScheduledTestResultsApi(client);
+    }
     
     /**
      * Retrieve network scheduled test results
@@ -55,12 +80,13 @@ public class NetworkEndpointScheduledTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void filterScheduledTestNetworkResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String testId = "202701";
+
+        var requestBodyJson = """
                 {
                   "searchSort" : [ {
                     "sort" : "round-id",
@@ -86,11 +112,12 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                   }
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         EndpointTestsDataRoundsSearch mappedRequest = 
                 mapper.readValue(requestBodyJson, EndpointTestsDataRoundsSearch.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "test" : {
                     "server" : "www.example.com",
@@ -339,9 +366,25 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         NetworkEndpointTestResults mappedResponse = 
                 mapper.readValue(responseBodyJson, NetworkEndpointTestResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/scheduled-tests/{testId}/network/filter";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.filterScheduledTestNetworkResults(testId, null, null, null, null, null, mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -351,12 +394,12 @@ public class NetworkEndpointScheduledTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void filterScheduledTestsNetworkResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "searchSort" : [ {
                     "sort" : "round-id",
@@ -383,11 +426,12 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                   }
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         MultiTestIdEndpointTestsDataRoundsSearch mappedRequest = 
                 mapper.readValue(requestBodyJson, MultiTestIdEndpointTestsDataRoundsSearch.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "totalHits" : 12,
                   "endDate" : "2022-07-18T22:00:54Z",
@@ -589,9 +633,24 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         MultiTestIdNetworkEndpointTestResults mappedResponse = 
                 mapper.readValue(responseBodyJson, MultiTestIdNetworkEndpointTestResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/scheduled-tests/network/filter";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.filterScheduledTestsNetworkResults(null, null, null, null, null, null, mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -601,13 +660,16 @@ public class NetworkEndpointScheduledTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getScheduledTestPathVisAgentRoundResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
+        String agentId = "11";
+        String roundId = "1384309800";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "test" : {
                     "server" : "www.example.com",
@@ -1033,9 +1095,25 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         PathVisDetailEndpointTestResults mappedResponse = 
                 mapper.readValue(responseBodyJson, PathVisDetailEndpointTestResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
+                        .withPathParam("roundId", equalTo(URLEncoder.encode(roundId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getScheduledTestPathVisAgentRoundResults(testId, agentId, roundId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -1045,13 +1123,14 @@ public class NetworkEndpointScheduledTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getScheduledTestPathVisResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "test" : {
                     "server" : "www.example.com",
@@ -1345,9 +1424,23 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         PathVisEndpointTestResults mappedResponse = 
                 mapper.readValue(responseBodyJson, PathVisEndpointTestResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/scheduled-tests/{testId}/path-vis";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getScheduledTestPathVisResults(testId, null, null, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }
