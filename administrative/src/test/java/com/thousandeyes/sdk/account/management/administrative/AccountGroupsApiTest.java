@@ -500,7 +500,7 @@ public class AccountGroupsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAccountGroups(null);
+        var apiResponse = api.getAccountGroups();
         assertEquals(mappedResponse, apiResponse);
     }
     
