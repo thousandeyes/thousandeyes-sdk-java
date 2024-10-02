@@ -18,16 +18,25 @@ import com.thousandeyes.sdk.tags.model.BulkTagAssignments;
 import com.thousandeyes.sdk.tags.model.Error;
 import com.thousandeyes.sdk.tags.model.TagAssignment;
 import com.thousandeyes.sdk.tags.model.UnauthorizedError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,15 +44,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for TagAssignmentApi
  */
+@WireMockTest
 public class TagAssignmentApiTest {
-    // private final TagAssignmentApi api = new TagAssignmentApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static TagAssignmentApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new TagAssignmentApi(client);
+    }
     
     /**
      * Assign tag to multiple objects
@@ -52,12 +77,13 @@ public class TagAssignmentApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void assignTagRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
+
+        var requestBodyJson = """
                 {
                   "assignments" : [ {
                     "id" : "123",
@@ -68,11 +94,12 @@ public class TagAssignmentApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         TagAssignment mappedRequest = 
                 mapper.readValue(requestBodyJson, TagAssignment.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "assignments" : [ {
                     "id" : "123",
@@ -84,9 +111,25 @@ public class TagAssignmentApiTest {
                   "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
                 }
                                   """;
+        var statusCode = 207;
+        var responseContentType = "application/json";
         BulkTagAssignment mappedResponse = 
                 mapper.readValue(responseBodyJson, BulkTagAssignment.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tags/{id}/assign";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.assignTag(id, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -96,12 +139,12 @@ public class TagAssignmentApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void assignTagsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "tags" : [ {
                     "assignments" : [ {
@@ -124,11 +167,12 @@ public class TagAssignmentApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         BulkTagAssignments mappedRequest = 
                 mapper.readValue(requestBodyJson, BulkTagAssignments.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "tags" : [ {
                     "assignments" : [ {
@@ -151,9 +195,24 @@ public class TagAssignmentApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 207;
+        var responseContentType = "application/json";
         BulkTagAssignments mappedResponse = 
                 mapper.readValue(responseBodyJson, BulkTagAssignments.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tags/assign";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.assignTags(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -163,12 +222,13 @@ public class TagAssignmentApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void unassignTagRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
+
+        var requestBodyJson = """
                 {
                   "assignments" : [ {
                     "id" : "123",
@@ -179,10 +239,24 @@ public class TagAssignmentApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         TagAssignment mappedRequest = 
                 mapper.readValue(requestBodyJson, TagAssignment.class);
         assertNotNull(mappedRequest);
 
+        var statusCode = 204;
+
+        var path = "/tags/{id}/unassign";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.unassignTagWithHttpInfo(id, mappedRequest, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -192,12 +266,12 @@ public class TagAssignmentApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void unassignTagsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "tags" : [ {
                     "assignments" : [ {
@@ -220,11 +294,12 @@ public class TagAssignmentApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         BulkTagAssignments mappedRequest = 
                 mapper.readValue(requestBodyJson, BulkTagAssignments.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "tags" : [ {
                     "assignments" : [ {
@@ -247,9 +322,24 @@ public class TagAssignmentApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 207;
+        var responseContentType = "application/json";
         BulkTagAssignments mappedResponse = 
                 mapper.readValue(responseBodyJson, BulkTagAssignments.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tags/unassign";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.unassignTags(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

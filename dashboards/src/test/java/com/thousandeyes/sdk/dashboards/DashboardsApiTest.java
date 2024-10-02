@@ -22,16 +22,25 @@ import java.time.OffsetDateTime;
 import java.net.URI;
 import com.thousandeyes.sdk.dashboards.model.UnauthorizedError;
 import com.thousandeyes.sdk.dashboards.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,15 +48,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for DashboardsApi
  */
+@WireMockTest
 public class DashboardsApiTest {
-    // private final DashboardsApi api = new DashboardsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static DashboardsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new DashboardsApi(client);
+    }
     
     /**
      * Create dashboard
@@ -56,12 +81,12 @@ public class DashboardsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "isMigratedReport" : false,
                   "_links" : {
@@ -184,11 +209,12 @@ public class DashboardsApiTest {
                   "aid" : "1234"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         Dashboard mappedRequest = 
                 mapper.readValue(requestBodyJson, Dashboard.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "isMigratedReport" : false,
                   "_links" : {
@@ -311,9 +337,24 @@ public class DashboardsApiTest {
                   "aid" : "1234"
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         Dashboard mappedResponse = 
                 mapper.readValue(responseBodyJson, Dashboard.class);
         assertNotNull(mappedResponse);
+
+        var path = "/dashboards";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createDashboard(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -323,12 +364,24 @@ public class DashboardsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
 
+
+        var statusCode = 204;
+
+        var path = "/dashboards/{dashboardId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteDashboardWithHttpInfo(dashboardId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -338,13 +391,14 @@ public class DashboardsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "isMigratedReport" : false,
                   "dashboardCreatedBy" : "1",
@@ -478,9 +532,23 @@ public class DashboardsApiTest {
                   "dashboardModifiedDate" : "2023-05-16T10:14:28Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiDashboard mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiDashboard.class);
         assertNotNull(mappedResponse);
+
+        var path = "/dashboards/{dashboardId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getDashboard(dashboardId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -490,13 +558,15 @@ public class DashboardsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getDashboardWidgetDataRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
+        String widgetId = "unpmg";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "groupLabels" : [ {
                     "groupProperty" : "AGENT",
@@ -868,9 +938,24 @@ public class DashboardsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiWidgetDataResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiWidgetDataResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/dashboards/{dashboardId}/widgets/{widgetId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withPathParam("widgetId", equalTo(URLEncoder.encode(widgetId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getDashboardWidgetData(dashboardId, widgetId, null, null, null, null, null, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -880,13 +965,13 @@ public class DashboardsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getDashboardsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 [ {
                   "isMigratedReport" : false,
                   "dashboardCreatedBy" : "1",
@@ -1151,9 +1236,22 @@ public class DashboardsApiTest {
                   "dashboardModifiedDate" : "2023-05-16T10:14:28Z"
                 } ]
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         List<ApiDashboard> mappedResponse = 
                 mapper.readValue(responseBodyJson, new TypeReference<List<ApiDashboard>>(){});
         assertNotNull(mappedResponse);
+
+        var path = "/dashboards";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getDashboards(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -1163,12 +1261,13 @@ public class DashboardsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
+
+        var requestBodyJson = """
                 {
                   "isMigratedReport" : false,
                   "_links" : {
@@ -1291,11 +1390,12 @@ public class DashboardsApiTest {
                   "aid" : "1234"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         Dashboard mappedRequest = 
                 mapper.readValue(requestBodyJson, Dashboard.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "isMigratedReport" : false,
                   "_links" : {
@@ -1418,9 +1518,25 @@ public class DashboardsApiTest {
                   "aid" : "1234"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Dashboard mappedResponse = 
                 mapper.readValue(responseBodyJson, Dashboard.class);
         assertNotNull(mappedResponse);
+
+        var path = "/dashboards/{dashboardId}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateDashboard(dashboardId, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

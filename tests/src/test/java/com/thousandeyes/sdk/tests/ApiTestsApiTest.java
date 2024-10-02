@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.tests.model.ExpandTestOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for ApiTestsApi
  */
+@WireMockTest
 public class ApiTestsApiTest {
-    // private final ApiTestsApi api = new ApiTestsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static ApiTestsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new ApiTestsApi(client);
+    }
     
     /**
      * Create API test
@@ -54,12 +79,12 @@ public class ApiTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createApiTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "_links" : {
@@ -211,11 +236,12 @@ public class ApiTestsApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         ApiTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, ApiTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "_links" : {
@@ -427,9 +453,24 @@ public class ApiTestsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         ApiTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/api";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createApiTest(mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -439,12 +480,24 @@ public class ApiTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteApiTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
+
+        var statusCode = 204;
+
+        var path = "/tests/api/{testId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteApiTestWithHttpInfo(testId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -454,13 +507,14 @@ public class ApiTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getApiTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "_links" : {
@@ -672,9 +726,23 @@ public class ApiTestsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/api/{testId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getApiTest(testId, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -684,13 +752,13 @@ public class ApiTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getApiTestsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "tests" : [ {
                     "mtuMeasurements" : false,
@@ -953,9 +1021,22 @@ public class ApiTestsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiTests mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiTests.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/api";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getApiTests(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -965,12 +1046,13 @@ public class ApiTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateApiTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String testId = "202701";
+
+        var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "_links" : {
@@ -1122,11 +1204,12 @@ public class ApiTestsApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         ApiTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, ApiTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "_links" : {
@@ -1338,9 +1421,25 @@ public class ApiTestsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/api/{testId}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateApiTest(testId, mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

@@ -19,16 +19,25 @@ import com.thousandeyes.sdk.endpoint.agents.model.Error;
 import java.util.UUID;
 import com.thousandeyes.sdk.endpoint.agents.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.agents.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +45,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for EndpointAgentsTransferApi
  */
+@WireMockTest
 public class EndpointAgentsTransferApiTest {
-    // private final EndpointAgentsTransferApi api = new EndpointAgentsTransferApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static EndpointAgentsTransferApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new EndpointAgentsTransferApi(client);
+    }
     
     /**
      * Transfer endpoint agent
@@ -53,20 +78,35 @@ public class EndpointAgentsTransferApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void transferEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
+
+        var requestBodyJson = """
                 {
                   "toAid" : "1234"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         AgentTransferRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, AgentTransferRequest.class);
         assertNotNull(mappedRequest);
 
+        var statusCode = 204;
+
+        var path = "/endpoint/agents/{agentId}/transfer";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.transferEndpointAgentWithHttpInfo(agentId, mappedRequest, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -76,12 +116,12 @@ public class EndpointAgentsTransferApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void transferEndpointAgentsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "transfers" : [ {
                     "agentId" : "5d0764ac-7e42-4ec8-a0d4-39fc53edccba",
@@ -94,11 +134,12 @@ public class EndpointAgentsTransferApiTest {
                   } ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         BulkAgentTransferRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, BulkAgentTransferRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "items" : [ {
                     "status" : 200,
@@ -127,9 +168,24 @@ public class EndpointAgentsTransferApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 207;
+        var responseContentType = "application/json";
         BulkAgentTransferResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, BulkAgentTransferResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/agents/transfer/bulk";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.transferEndpointAgents(null, mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

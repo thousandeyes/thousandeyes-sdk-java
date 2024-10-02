@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.agents.model.CloudEnterpriseAgents;
 import com.thousandeyes.sdk.agents.model.Error;
 import com.thousandeyes.sdk.agents.model.UnauthorizedError;
 import com.thousandeyes.sdk.agents.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for EnterpriseAgentClusterApi
  */
+@WireMockTest
 public class EnterpriseAgentClusterApiTest {
-    // private final EnterpriseAgentClusterApi api = new EnterpriseAgentClusterApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static EnterpriseAgentClusterApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new EnterpriseAgentClusterApi(client);
+    }
     
     /**
      * Add member to Enterprise Agent cluster
@@ -54,21 +79,23 @@ public class EnterpriseAgentClusterApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void assignAgentToClusterRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String agentId = "281474976710706";
+
+        var requestBodyJson = """
                 {
                   "agents" : [ "281474976710706" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         AgentClusterAssignRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, AgentClusterAssignRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "agentId" : "281474976710706",
                   "agentType" : "cloud",
@@ -165,9 +192,25 @@ public class EnterpriseAgentClusterApiTest {
                   "verifySslCertificates" : true
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         AgentDetails mappedResponse = 
                 mapper.readValue(responseBodyJson, AgentDetails.class);
         assertNotNull(mappedResponse);
+
+        var path = "/agents/{agentId}/cluster/assign";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.assignAgentToCluster(agentId, mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -177,21 +220,23 @@ public class EnterpriseAgentClusterApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void unassignAgentFromClusterRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String agentId = "281474976710706";
+
+        var requestBodyJson = """
                 {
                   "members" : [ "281474976710706" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         AgentClusterUnassignRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, AgentClusterUnassignRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -232,9 +277,25 @@ public class EnterpriseAgentClusterApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         CloudEnterpriseAgents mappedResponse = 
                 mapper.readValue(responseBodyJson, CloudEnterpriseAgents.class);
         assertNotNull(mappedResponse);
+
+        var path = "/agents/{agentId}/cluster/unassign";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.unassignAgentFromCluster(agentId, mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

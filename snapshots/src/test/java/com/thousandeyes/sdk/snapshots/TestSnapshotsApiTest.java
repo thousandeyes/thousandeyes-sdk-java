@@ -17,16 +17,25 @@ import com.thousandeyes.sdk.snapshots.model.SnapshotRequest;
 import com.thousandeyes.sdk.snapshots.model.SnapshotResponse;
 import com.thousandeyes.sdk.snapshots.model.UnauthorizedError;
 import com.thousandeyes.sdk.snapshots.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,15 +43,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for TestSnapshotsApi
  */
+@WireMockTest
 public class TestSnapshotsApiTest {
-    // private final TestSnapshotsApi api = new TestSnapshotsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static TestSnapshotsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new TestSnapshotsApi(client);
+    }
     
     /**
      * Create test snapshot
@@ -51,12 +76,13 @@ public class TestSnapshotsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createTestSnapshotRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String testId = "202701";
+
+        var requestBodyJson = """
                 {
                   "endDate" : "2023-06-06T01:00:00Z",
                   "displayName" : "Snapshot created through API",
@@ -64,11 +90,12 @@ public class TestSnapshotsApiTest {
                   "startDate" : "2023-06-06T00:00:00Z"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         SnapshotRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, SnapshotRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "shareDate" : "2023-06-06T00:00:00Z",
                   "uid" : "281474976810911",
@@ -136,9 +163,25 @@ public class TestSnapshotsApiTest {
                   "sourceTestId" : "281474976710706"
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         SnapshotResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, SnapshotResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/{testId}/snapshot";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createTestSnapshot(testId, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

@@ -19,16 +19,25 @@ import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.alerts.model.State;
 import java.util.UUID;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +45,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for AlertsApi
  */
+@WireMockTest
 public class AlertsApiTest {
-    // private final AlertsApi api = new AlertsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static AlertsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new AlertsApi(client);
+    }
     
     /**
      * Retrieve alert details
@@ -53,13 +78,14 @@ public class AlertsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAlertRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        UUID alertId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "duration" : 60,
                   "severity" : "major",
@@ -140,9 +166,23 @@ public class AlertsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         AlertDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, AlertDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/alerts/{alertId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("alertId", equalTo(URLEncoder.encode(alertId.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAlert(alertId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -152,13 +192,13 @@ public class AlertsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAlertsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "alerts" : [ {
                     "severity" : "MAJOR",
@@ -331,9 +371,22 @@ public class AlertsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Alerts mappedResponse = 
                 mapper.readValue(responseBodyJson, Alerts.class);
         assertNotNull(mappedResponse);
+
+        var path = "/alerts";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAlerts(null, null, null, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

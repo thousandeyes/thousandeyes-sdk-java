@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.credentials.model.Error;
 import java.net.URI;
 import com.thousandeyes.sdk.credentials.model.UnauthorizedError;
 import com.thousandeyes.sdk.credentials.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for CredentialsApi
  */
+@WireMockTest
 public class CredentialsApiTest {
-    // private final CredentialsApi api = new CredentialsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static CredentialsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new CredentialsApi(client);
+    }
     
     /**
      * Create credential
@@ -54,22 +79,23 @@ public class CredentialsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createCredentialRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "name" : "Example Credential 1",
                   "value" : "Example Credential 1 Password"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         CredentialRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, CredentialRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -87,9 +113,24 @@ public class CredentialsApiTest {
                   "id" : "3247"
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         CredentialWithoutValue mappedResponse = 
                 mapper.readValue(responseBodyJson, CredentialWithoutValue.class);
         assertNotNull(mappedResponse);
+
+        var path = "/credentials";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createCredential(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -99,12 +140,24 @@ public class CredentialsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteCredentialRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String id = "3247";
 
+
+        var statusCode = 204;
+
+        var path = "/credentials/{id}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteCredentialWithHttpInfo(id, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -114,13 +167,14 @@ public class CredentialsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getCredentialRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String id = "3247";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -139,9 +193,23 @@ public class CredentialsApiTest {
                   "value" : "rwhR12uDm1Im47p5IVXgzz4ORgC7m48ajzzeWVUt"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Credential mappedResponse = 
                 mapper.readValue(responseBodyJson, Credential.class);
         assertNotNull(mappedResponse);
+
+        var path = "/credentials/{id}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getCredential(id, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -151,13 +219,13 @@ public class CredentialsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getCredentialsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "credentials" : [ {
                     "_links" : {
@@ -206,9 +274,22 @@ public class CredentialsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         Credentials mappedResponse = 
                 mapper.readValue(responseBodyJson, Credentials.class);
         assertNotNull(mappedResponse);
+
+        var path = "/credentials";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getCredentials(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -218,22 +299,24 @@ public class CredentialsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateCredentialRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String id = "3247";
+
+        var requestBodyJson = """
                 {
                   "name" : "Example Credential 1",
                   "value" : "Example Credential 1 Password"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         CredentialRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, CredentialRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -251,9 +334,25 @@ public class CredentialsApiTest {
                   "id" : "3247"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         CredentialWithoutValue mappedResponse = 
                 mapper.readValue(responseBodyJson, CredentialWithoutValue.class);
         assertNotNull(mappedResponse);
+
+        var path = "/credentials/{id}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateCredential(id, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

@@ -23,16 +23,25 @@ import com.thousandeyes.sdk.endpoint.agents.model.ListEndpointAgentsResponse;
 import java.util.UUID;
 import com.thousandeyes.sdk.endpoint.agents.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.agents.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,15 +49,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for EndpointAgentsApi
  */
+@WireMockTest
 public class EndpointAgentsApiTest {
-    // private final EndpointAgentsApi api = new EndpointAgentsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static EndpointAgentsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new EndpointAgentsApi(client);
+    }
     
     /**
      * Delete endpoint agent
@@ -57,12 +82,24 @@ public class EndpointAgentsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
+
+        var statusCode = 204;
+
+        var path = "/endpoint/agents/{agentId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteEndpointAgentWithHttpInfo(agentId, null, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -72,13 +109,14 @@ public class EndpointAgentsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void disableEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "npcapVersion" : "npcapVersion",
                   "asnDetails" : {
@@ -229,9 +267,23 @@ public class EndpointAgentsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         EndpointAgent mappedResponse = 
                 mapper.readValue(responseBodyJson, EndpointAgent.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/agents/{agentId}/disable";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.disableEndpointAgent(agentId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -241,13 +293,14 @@ public class EndpointAgentsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void enableEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "npcapVersion" : "npcapVersion",
                   "asnDetails" : {
@@ -398,9 +451,23 @@ public class EndpointAgentsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         EndpointAgent mappedResponse = 
                 mapper.readValue(responseBodyJson, EndpointAgent.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/agents/{agentId}/enable";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.enableEndpointAgent(agentId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -410,12 +477,12 @@ public class EndpointAgentsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void filterEndpointAgentsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "searchSort" : [ {
                     "sort" : "platform",
@@ -450,11 +517,12 @@ public class EndpointAgentsApiTest {
                   }
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         AgentSearchRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, AgentSearchRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "next" : {
@@ -768,9 +836,24 @@ public class EndpointAgentsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         FilterEndpointAgentsResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, FilterEndpointAgentsResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/agents/filter";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.filterEndpointAgents(mappedRequest, null, null, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -780,13 +863,14 @@ public class EndpointAgentsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "npcapVersion" : "npcapVersion",
                   "asnDetails" : {
@@ -937,9 +1021,23 @@ public class EndpointAgentsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         EndpointAgent mappedResponse = 
                 mapper.readValue(responseBodyJson, EndpointAgent.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/agents/{agentId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getEndpointAgent(agentId, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -949,13 +1047,13 @@ public class EndpointAgentsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getEndpointAgentsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "next" : {
@@ -1279,9 +1377,22 @@ public class EndpointAgentsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ListEndpointAgentsResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ListEndpointAgentsResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/agents";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getEndpointAgents(null, null, null, null, null, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -1291,13 +1402,13 @@ public class EndpointAgentsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getEndpointAgentsConnectionStringRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "connectionString" : "D2xZSLlqo64Xe2EnYisklA==",
                   "_links" : {
@@ -1314,9 +1425,22 @@ public class EndpointAgentsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ConnectionString mappedResponse = 
                 mapper.readValue(responseBodyJson, ConnectionString.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/agents/connection-string";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getEndpointAgentsConnectionString(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -1326,22 +1450,24 @@ public class EndpointAgentsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
+
+        var requestBodyJson = """
                 {
                   "licenseType" : "essentials",
                   "name" : "Office Printer"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         EndpointAgentUpdate mappedRequest = 
                 mapper.readValue(requestBodyJson, EndpointAgentUpdate.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "npcapVersion" : "npcapVersion",
                   "asnDetails" : {
@@ -1492,9 +1618,25 @@ public class EndpointAgentsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         EndpointAgent mappedResponse = 
                 mapper.readValue(responseBodyJson, EndpointAgent.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/agents/{agentId}";
+        stubFor(patch(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateEndpointAgent(agentId, null, null, mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.HttpMultiEndpointTestRe
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.results.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for HttpServerEndpointScheduledTestResultsApi
  */
+@WireMockTest
 public class HttpServerEndpointScheduledTestResultsApiTest {
-    // private final HttpServerEndpointScheduledTestResultsApi api = new HttpServerEndpointScheduledTestResultsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static HttpServerEndpointScheduledTestResultsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new HttpServerEndpointScheduledTestResultsApi(client);
+    }
     
     /**
      * Retrieve HTTP server scheduled test results
@@ -54,13 +79,14 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getHttpServerScheduledTestResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "202701";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "test" : {
                     "server" : "www.example.com",
@@ -349,9 +375,23 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         HttpEndpointTestResults mappedResponse = 
                 mapper.readValue(responseBodyJson, HttpEndpointTestResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/scheduled-tests/{testId}/http-server";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getHttpServerScheduledTestResults(testId, null, null, null, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -361,12 +401,12 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getMultiTestFilteredHttpServerScheduledTestResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "searchSort" : [ {
                     "sort" : "round-id",
@@ -393,11 +433,12 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                   }
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         HttpEndpointTestsDataRoundsSearch mappedRequest = 
                 mapper.readValue(requestBodyJson, HttpEndpointTestsDataRoundsSearch.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "totalHits" : 12,
                   "endDate" : "2022-07-18T22:00:54Z",
@@ -629,9 +670,24 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         HttpMultiEndpointTestResults mappedResponse = 
                 mapper.readValue(responseBodyJson, HttpMultiEndpointTestResults.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/test-results/scheduled-tests/http-server/filter";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getMultiTestFilteredHttpServerScheduledTestResults(null, null, null, null, null, null, mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

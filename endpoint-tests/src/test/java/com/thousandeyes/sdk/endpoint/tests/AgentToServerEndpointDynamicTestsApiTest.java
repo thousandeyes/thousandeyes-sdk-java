@@ -20,16 +20,25 @@ import com.thousandeyes.sdk.endpoint.tests.model.Error;
 import java.net.URI;
 import com.thousandeyes.sdk.endpoint.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,15 +46,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for AgentToServerEndpointDynamicTestsApi
  */
+@WireMockTest
 public class AgentToServerEndpointDynamicTestsApiTest {
-    // private final AgentToServerEndpointDynamicTestsApi api = new AgentToServerEndpointDynamicTestsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static AgentToServerEndpointDynamicTestsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new AgentToServerEndpointDynamicTestsApi(client);
+    }
     
     /**
      * Create endpoint dynamic test
@@ -54,12 +79,12 @@ public class AgentToServerEndpointDynamicTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createAgentToServerEndpointDynamicTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "protocol" : "icmp",
                   "application" : "webex",
@@ -73,11 +98,12 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                   "testName" : "Test name"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         DynamicTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, DynamicTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "hasPing" : true,
                   "_links" : {
@@ -125,9 +151,24 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                   "testName" : "Test name"
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         DynamicTest mappedResponse = 
                 mapper.readValue(responseBodyJson, DynamicTest.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/tests/dynamic-tests/agent-to-server";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createAgentToServerEndpointDynamicTest(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -137,12 +178,24 @@ public class AgentToServerEndpointDynamicTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteAgentToServerEndpointDynamicTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "584739201";
 
+
+        var statusCode = 204;
+
+        var path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteAgentToServerEndpointDynamicTestWithHttpInfo(testId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -152,13 +205,14 @@ public class AgentToServerEndpointDynamicTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAgentToServerEndpointDynamicTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String testId = "584739201";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "hasPing" : true,
                   "_links" : {
@@ -206,9 +260,23 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                   "testName" : "Test name"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         DynamicTest mappedResponse = 
                 mapper.readValue(responseBodyJson, DynamicTest.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAgentToServerEndpointDynamicTest(testId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -218,13 +286,13 @@ public class AgentToServerEndpointDynamicTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAgentToServerEndpointDynamicTestsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "tests" : [ {
                     "hasPing" : true,
@@ -331,9 +399,22 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                   }
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         DynamicTests mappedResponse = 
                 mapper.readValue(responseBodyJson, DynamicTests.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/tests/dynamic-tests/agent-to-server";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAgentToServerEndpointDynamicTests(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -343,12 +424,13 @@ public class AgentToServerEndpointDynamicTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateAgentToServerEndpointDynamicTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String testId = "584739201";
+
+        var requestBodyJson = """
                 {
                   "protocol" : "icmp",
                   "application" : "webex",
@@ -358,11 +440,12 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                   "testName" : "Test name"
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         EndpointDynamicTestUpdate mappedRequest = 
                 mapper.readValue(requestBodyJson, EndpointDynamicTestUpdate.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "hasPing" : true,
                   "_links" : {
@@ -410,9 +493,25 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                   "testName" : "Test name"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         DynamicTest mappedResponse = 
                 mapper.readValue(responseBodyJson, DynamicTest.class);
         assertNotNull(mappedResponse);
+
+        var path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}";
+        stubFor(patch(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateAgentToServerEndpointDynamicTest(testId, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

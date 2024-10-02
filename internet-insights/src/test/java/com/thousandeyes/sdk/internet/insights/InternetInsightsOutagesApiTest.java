@@ -19,16 +19,25 @@ import com.thousandeyes.sdk.internet.insights.model.ApiOutagesResponse;
 import com.thousandeyes.sdk.internet.insights.model.Error;
 import com.thousandeyes.sdk.internet.insights.model.UnauthorizedError;
 import com.thousandeyes.sdk.internet.insights.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +45,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for InternetInsightsOutagesApi
  */
+@WireMockTest
 public class InternetInsightsOutagesApiTest {
-    // private final InternetInsightsOutagesApi api = new InternetInsightsOutagesApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static InternetInsightsOutagesApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new InternetInsightsOutagesApi(client);
+    }
     
     /**
      * List network and application outages
@@ -53,12 +78,12 @@ public class InternetInsightsOutagesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void filterOutagesRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "startDate" : "2022-03-01T01:30:00Z",
                   "endDate" : "2022-03-01T23:30:15Z",
@@ -68,11 +93,12 @@ public class InternetInsightsOutagesApiTest {
                   "applicationName" : [ "slack", "facebook" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         ApiOutageFilter mappedRequest = 
                 mapper.readValue(requestBodyJson, ApiOutageFilter.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -145,9 +171,24 @@ public class InternetInsightsOutagesApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiOutagesResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiOutagesResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/internet-insights/outages/filter";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.filterOutages(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -157,19 +198,17 @@ public class InternetInsightsOutagesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAppOutageRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String outageId = "F73E24F17E4996923196826A208BB572508A8EB13BEE14B0";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
-                  "affectedDomains" : [ "amazon.com", "amazon.com" ],
+                  "affectedDomains" : [ "amazon.com" ],
                   "affectedTests" : [ {
-                    "name" : "amazon-test2",
-                    "id" : 5
-                  }, {
                     "name" : "amazon-test2",
                     "id" : 5
                   } ],
@@ -193,25 +232,13 @@ public class InternetInsightsOutagesApiTest {
                   "affectedAgents" : [ {
                     "name" : "London, England",
                     "id" : 11
-                  }, {
-                    "name" : "London, England",
-                    "id" : 11
                   } ],
                   "id" : "0CC4C4209887126DE42E92252FB43962CBB3193147F318EA",
                   "providerName" : "Amazon Web Services",
                   "applicationName" : "Amazon Web Services",
                   "startDate" : "2023-01-27T20:50:51.256Z",
-                  "errors" : [ "HTTP_SERVER_TIMEOUT", "HTTP_SERVER_TIMEOUT" ],
+                  "errors" : [ "HTTP_SERVER_TIMEOUT" ],
                   "affectedLocations" : [ {
-                    "location" : "Chicago, Illinois, US",
-                    "affectedServers" : [ {
-                      "prefix" : "123.176.185.0/23",
-                      "domain" : "amazon.com"
-                    }, {
-                      "prefix" : "123.176.185.0/23",
-                      "domain" : "amazon.com"
-                    } ]
-                  }, {
                     "location" : "Chicago, Illinois, US",
                     "affectedServers" : [ {
                       "prefix" : "123.176.185.0/23",
@@ -223,9 +250,23 @@ public class InternetInsightsOutagesApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiApplicationOutageDetails mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiApplicationOutageDetails.class);
         assertNotNull(mappedResponse);
+
+        var path = "/internet-insights/outages/app/{outageId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("outageId", equalTo(URLEncoder.encode(outageId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAppOutage(outageId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -235,19 +276,17 @@ public class InternetInsightsOutagesApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getNetworkOutageRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String outageId = "694D8656960F34F76489BCE5E9BCD58EC53027462740D75F";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
-                  "affectedDomains" : [ "periodic-failure.com", "periodic-failure.com" ],
+                  "affectedDomains" : [ "periodic-failure.com" ],
                   "affectedTests" : [ {
-                    "name" : "amazon-test2",
-                    "id" : 5
-                  }, {
                     "name" : "amazon-test2",
                     "id" : 5
                   } ],
@@ -272,9 +311,6 @@ public class InternetInsightsOutagesApiTest {
                   "affectedAgents" : [ {
                     "name" : "London, England",
                     "id" : 11
-                  }, {
-                    "name" : "London, England",
-                    "id" : 11
                   } ],
                   "id" : "8EF2760862C705783A2F8BCBAAABB44F28DBC670DBA3B610",
                   "asn" : 19994,
@@ -283,15 +319,26 @@ public class InternetInsightsOutagesApiTest {
                   "affectedLocations" : [ {
                     "affectedInterfaces" : [ "50.51.52.53", "50.51.52.53" ],
                     "location" : "Chicago, Illinois, US"
-                  }, {
-                    "affectedInterfaces" : [ "50.51.52.53", "50.51.52.53" ],
-                    "location" : "Chicago, Illinois, US"
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiNetworkOutageDetails mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiNetworkOutageDetails.class);
         assertNotNull(mappedResponse);
+
+        var path = "/internet-insights/outages/net/{outageId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("outageId", equalTo(URLEncoder.encode(outageId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getNetworkOutage(outageId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

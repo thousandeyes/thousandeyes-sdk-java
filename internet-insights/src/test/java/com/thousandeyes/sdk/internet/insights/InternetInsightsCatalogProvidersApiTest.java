@@ -19,16 +19,25 @@ import com.thousandeyes.sdk.internet.insights.model.Error;
 import java.util.UUID;
 import com.thousandeyes.sdk.internet.insights.model.UnauthorizedError;
 import com.thousandeyes.sdk.internet.insights.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +45,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for InternetInsightsCatalogProvidersApi
  */
+@WireMockTest
 public class InternetInsightsCatalogProvidersApiTest {
-    // private final InternetInsightsCatalogProvidersApi api = new InternetInsightsCatalogProvidersApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static InternetInsightsCatalogProvidersApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new InternetInsightsCatalogProvidersApi(client);
+    }
     
     /**
      * List catalog providers
@@ -53,12 +78,12 @@ public class InternetInsightsCatalogProvidersApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void filterCatalogProvidersRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "providerName" : "Amazon Web Services",
                   "providerType" : "IAAS",
@@ -68,11 +93,12 @@ public class InternetInsightsCatalogProvidersApiTest {
                   "included" : true
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         ApiCatalogProviderFilter mappedRequest = 
                 mapper.readValue(requestBodyJson, ApiCatalogProviderFilter.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -135,9 +161,24 @@ public class InternetInsightsCatalogProvidersApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiCatalogProviderResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiCatalogProviderResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/internet-insights/catalog/providers/filter";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.filterCatalogProviders(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -147,13 +188,14 @@ public class InternetInsightsCatalogProvidersApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getCatalogProviderRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        UUID providerId = UUID.fromString("85602a0a-54a7-4e97-946e-67492ef1fa26");
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -171,14 +213,8 @@ public class InternetInsightsCatalogProvidersApiTest {
                   "asns" : [ {
                     "name" : "LVLT-1 - Level 3 Communications, Inc.",
                     "id" : 1
-                  }, {
-                    "name" : "LVLT-1 - Level 3 Communications, Inc.",
-                    "id" : 1
                   } ],
                   "locations" : [ {
-                    "interfacesCount" : 5,
-                    "location" : "San Jose, US"
-                  }, {
                     "interfacesCount" : 5,
                     "location" : "San Jose, US"
                   } ],
@@ -188,9 +224,23 @@ public class InternetInsightsCatalogProvidersApiTest {
                   "providerType" : "IAAS"
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         ApiCatalogProviderDetails mappedResponse = 
                 mapper.readValue(responseBodyJson, ApiCatalogProviderDetails.class);
         assertNotNull(mappedResponse);
+
+        var path = "/internet-insights/catalog/providers/{providerId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("providerId", equalTo(URLEncoder.encode(providerId.toString(), StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getCatalogProvider(providerId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

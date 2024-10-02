@@ -19,16 +19,25 @@ import com.thousandeyes.sdk.tests.instant.model.SipServerInstantTestResponse;
 import java.net.URI;
 import com.thousandeyes.sdk.tests.instant.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.instant.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +45,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for SipServerInstantTestsApi
  */
+@WireMockTest
 public class SipServerInstantTestsApiTest {
-    // private final SipServerInstantTestsApi api = new SipServerInstantTestsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static SipServerInstantTestsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new SipServerInstantTestsApi(client);
+    }
     
     /**
      * Create SIP server instant test
@@ -53,12 +78,12 @@ public class SipServerInstantTestsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createSipServerInstantTestRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
@@ -117,11 +142,12 @@ public class SipServerInstantTestsApiTest {
                   "sharedWithAccounts" : [ "1234", "12345" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         SipServerInstantTestRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, SipServerInstantTestRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
@@ -210,9 +236,24 @@ public class SipServerInstantTestsApiTest {
                   "user" : "username"
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         SipServerInstantTestResponse mappedResponse = 
                 mapper.readValue(responseBodyJson, SipServerInstantTestResponse.class);
         assertNotNull(mappedResponse);
+
+        var path = "/tests/sip-server/instant";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createSipServerInstantTest(mappedRequest, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }

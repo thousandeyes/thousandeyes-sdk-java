@@ -21,16 +21,25 @@ import com.thousandeyes.sdk.account.management.administrative.model.ExpandAccoun
 import java.net.URI;
 import com.thousandeyes.sdk.account.management.administrative.model.UnauthorizedError;
 import com.thousandeyes.sdk.account.management.administrative.model.ValidationError;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static com.thousandeyes.sdk.serialization.JSON.getDefault;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,15 +47,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.client.NativeApiClient;
+
 
 /**
  * Request and Response model deserialization tests for AccountGroupsApi
  */
+@WireMockTest
 public class AccountGroupsApiTest {
-    // private final AccountGroupsApi api = new AccountGroupsApi();
+    private static final String TOKEN = "valid-token";
+    private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
+    private static AccountGroupsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+    @BeforeAll
+    public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
+        ApiClient client = NativeApiClient.builder()
+                                .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
+                                .bearerToken(TOKEN)
+                                .build();
+        api = new AccountGroupsApi(client);
+    }
     
     /**
      * Create account group
@@ -55,22 +80,23 @@ public class AccountGroupsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void createAccountGroupRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+
+        var requestBodyJson = """
                 {
                   "accountGroupName" : "My testing account group",
                   "agents" : [ "105", "719" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         AccountGroupRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, AccountGroupRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "isCurrentAccountGroup" : true,
                   "organizationName" : "organizationName",
@@ -126,9 +152,24 @@ public class AccountGroupsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
         CreatedAccountGroup mappedResponse = 
                 mapper.readValue(responseBodyJson, CreatedAccountGroup.class);
         assertNotNull(mappedResponse);
+
+        var path = "/account-groups";
+        stubFor(post(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.createAccountGroup(mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -138,12 +179,24 @@ public class AccountGroupsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    @Disabled
     @Test
     public void deleteAccountGroupRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String id = "1234";
 
+
+        var statusCode = 204;
+
+        var path = "/account-groups/{id}";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteAccountGroupWithHttpInfo(id);
+        assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
     /**
@@ -153,13 +206,14 @@ public class AccountGroupsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAccountGroupRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
+        String id = "1234";
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "isCurrentAccountGroup" : true,
                   "organizationName" : "organizationName",
@@ -371,9 +425,23 @@ public class AccountGroupsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         AccountGroupDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, AccountGroupDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/account-groups/{id}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAccountGroup(id, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -383,13 +451,13 @@ public class AccountGroupsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void getAccountGroupsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
 
-        String responseBodyJson = """
+
+        var responseBodyJson = """
                 {
                   "_links" : {
                     "self" : {
@@ -418,9 +486,22 @@ public class AccountGroupsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         AccountGroups mappedResponse = 
                 mapper.readValue(responseBodyJson, AccountGroups.class);
         assertNotNull(mappedResponse);
+
+        var path = "/account-groups";
+        stubFor(get(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getAccountGroups(null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -430,22 +511,24 @@ public class AccountGroupsApiTest {
      *
      * @throws JsonProcessingException if the deserialization fails
      */
-    
     @Test
     public void updateAccountGroupRequestAndResponseDeserializationTest()
-            throws JsonProcessingException 
+            throws JsonProcessingException, ApiException
     {
-        String requestBodyJson = """
+        String id = "1234";
+
+        var requestBodyJson = """
                 {
                   "accountGroupName" : "My testing account group",
                   "agents" : [ "105", "719" ]
                 }
                                  """;
+        var requestBodyContentType = "application/json";
         AccountGroupRequest mappedRequest = 
                 mapper.readValue(requestBodyJson, AccountGroupRequest.class);
         assertNotNull(mappedRequest);
 
-        String responseBodyJson = """
+        var responseBodyJson = """
                 {
                   "isCurrentAccountGroup" : true,
                   "organizationName" : "organizationName",
@@ -657,9 +740,25 @@ public class AccountGroupsApiTest {
                   } ]
                 }
                                   """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
         AccountGroupDetail mappedResponse = 
                 mapper.readValue(responseBodyJson, AccountGroupDetail.class);
         assertNotNull(mappedResponse);
+
+        var path = "/account-groups/{id}";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateAccountGroup(id, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
 }
