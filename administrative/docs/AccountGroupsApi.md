@@ -493,7 +493,7 @@ ApiResponse<[**AccountGroupDetail**](AccountGroupDetail.md)>
 
 ## getAccountGroups
 
-> AccountGroups getAccountGroups(aid)
+> AccountGroups getAccountGroups()
 
 List account groups
 
@@ -520,9 +520,8 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AccountGroups result = apiInstance.getAccountGroups(aid);
+            AccountGroups result = apiInstance.getAccountGroups();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountGroupsApi#getAccountGroups");
@@ -537,10 +536,7 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -569,7 +565,7 @@ public class Example {
 
 ## getAccountGroupsWithHttpInfo
 
-> ApiResponse<AccountGroups> getAccountGroups getAccountGroupsWithHttpInfo(aid)
+> ApiResponse<AccountGroups> getAccountGroups getAccountGroupsWithHttpInfo()
 
 List account groups
 
@@ -597,9 +593,8 @@ public class Example {
         BearerAuth.setBearerToken("BEARER TOKEN");
 
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
-        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AccountGroups> response = apiInstance.getAccountGroupsWithHttpInfo(aid);
+            ApiResponse<AccountGroups> response = apiInstance.getAccountGroupsWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -616,10 +611,7 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+This endpoint does not need any parameter.
 
 ### Return type
 

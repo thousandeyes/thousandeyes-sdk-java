@@ -2,7 +2,7 @@
 
 Instant Tests API
 
-- API version: 7.0.21
+- API version: 7.0.22
 
 The Instant Tests API operations lets you create and run new instant tests. You will need to be a regular user or have the following permissions:
   * `API Access`

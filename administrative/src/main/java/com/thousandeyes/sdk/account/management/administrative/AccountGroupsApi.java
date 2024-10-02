@@ -223,26 +223,24 @@ public class AccountGroupsApi {
   /**
    * List account groups
    * Retrieves a list of account groups available to the current user.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return AccountGroups
    * @throws ApiException if fails to make API call
    */
-  public AccountGroups getAccountGroups(String aid) throws ApiException {
-    ApiResponse<AccountGroups> response = getAccountGroupsWithHttpInfo(aid);
+  public AccountGroups getAccountGroups() throws ApiException {
+    ApiResponse<AccountGroups> response = getAccountGroupsWithHttpInfo();
     return response.getData();
   }
 
   /**
    * List account groups
    * Retrieves a list of account groups available to the current user.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;AccountGroups&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AccountGroups> getAccountGroupsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<AccountGroups> getAccountGroupsWithHttpInfo() throws ApiException {
     getAccountGroupsValidateRequest();
 
-    var requestBuilder = getAccountGroupsRequestBuilder(aid);
+    var requestBuilder = getAccountGroupsRequestBuilder();
 
     return apiClient.send(requestBuilder.build(), AccountGroups.class);
   }
@@ -250,19 +248,13 @@ public class AccountGroupsApi {
   private void getAccountGroupsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAccountGroupsRequestBuilder(String aid) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getAccountGroupsRequestBuilder() throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
     String path = "/account-groups";
     requestBuilder.path(path);
 
-    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
-    localVarQueryParams.addAll(parameterToPairs("aid", aid));
-
-    if (!localVarQueryParams.isEmpty()) {
-      requestBuilder.queryParams(localVarQueryParams);
-    }
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
