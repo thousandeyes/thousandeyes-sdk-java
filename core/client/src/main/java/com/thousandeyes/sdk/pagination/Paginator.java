@@ -90,7 +90,6 @@ public class Paginator<T, R> implements Iterable<T> {
                 }
                 else {
                     hasNextBatch = false;
-
                 }
             }
             catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException |
