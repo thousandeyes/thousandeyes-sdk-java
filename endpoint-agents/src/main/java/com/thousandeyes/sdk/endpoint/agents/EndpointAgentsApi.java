@@ -239,7 +239,6 @@ public class EndpointAgentsApi {
   /**
    * Filter endpoint agents with pagination
    * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
-   
    * @param agentSearchRequest The filter options for advanced search filtering for agents. (required)
    * @param max (Optional) Maximum number of objects to return. (optional)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
@@ -249,43 +248,43 @@ public class EndpointAgentsApi {
    * @throws ApiException if fails to make API call
    */
   public Paginator<EndpointAgent, FilterEndpointAgentsResponse> filterEndpointAgentsPaginated(AgentSearchRequest agentSearchRequest, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
-    return new Paginator<>(cursor -> filterEndpointAgents(cursor, agentSearchRequest, max, aid, expand, includeDeleted),
-                          FilterEndpointAgentsResponse::getAgents);
+    return new Paginator<>(cursor -> filterEndpointAgents(agentSearchRequest, max, cursor, aid, expand, includeDeleted),
+                           FilterEndpointAgentsResponse::getAgents);
 
   }
   /**
    * Filter endpoint agents
    * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param agentSearchRequest The filter options for advanced search filtering for agents. (required)
    * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
    * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
    * @return FilterEndpointAgentsResponse
    * @throws ApiException if fails to make API call
    */
-  public FilterEndpointAgentsResponse filterEndpointAgents(String cursor, AgentSearchRequest agentSearchRequest, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
-    ApiResponse<FilterEndpointAgentsResponse> response = filterEndpointAgentsWithHttpInfo(cursor, agentSearchRequest, max, aid, expand, includeDeleted);
+  public FilterEndpointAgentsResponse filterEndpointAgents(AgentSearchRequest agentSearchRequest, Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
+    ApiResponse<FilterEndpointAgentsResponse> response = filterEndpointAgentsWithHttpInfo(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
     return response.getData();
   }
 
   /**
    * Filter endpoint agents
    * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param agentSearchRequest The filter options for advanced search filtering for agents. (required)
    * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
    * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
    * @return ApiResponse&lt;FilterEndpointAgentsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<FilterEndpointAgentsResponse> filterEndpointAgentsWithHttpInfo(String cursor, AgentSearchRequest agentSearchRequest, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
+  public ApiResponse<FilterEndpointAgentsResponse> filterEndpointAgentsWithHttpInfo(AgentSearchRequest agentSearchRequest, Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
     filterEndpointAgentsValidateRequest(agentSearchRequest);
 
-    var requestBuilder = filterEndpointAgentsRequestBuilder(cursor, agentSearchRequest, max, aid, expand, includeDeleted);
+    var requestBuilder = filterEndpointAgentsRequestBuilder(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
 
     return apiClient.send(requestBuilder.build(), FilterEndpointAgentsResponse.class);
   }
@@ -297,7 +296,7 @@ public class EndpointAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder filterEndpointAgentsRequestBuilder(String cursor, AgentSearchRequest agentSearchRequest, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
+  private ApiRequest.ApiRequestBuilder filterEndpointAgentsRequestBuilder(AgentSearchRequest agentSearchRequest, Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -385,7 +384,6 @@ public class EndpointAgentsApi {
   /**
    * List endpoint agents with pagination
    * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
-   
    * @param max (Optional) Maximum number of objects to return. (optional)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
@@ -397,15 +395,15 @@ public class EndpointAgentsApi {
    * @throws ApiException if fails to make API call
    */
   public Paginator<EndpointAgent, ListEndpointAgentsResponse> getEndpointAgentsPaginated(Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
-    return new Paginator<>(cursor -> getEndpointAgents(cursor, max, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName),
-                          ListEndpointAgentsResponse::getAgents);
+    return new Paginator<>(cursor -> getEndpointAgents(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName),
+                           ListEndpointAgentsResponse::getAgents);
 
   }
   /**
    * List endpoint agents
    * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
    * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
@@ -415,16 +413,16 @@ public class EndpointAgentsApi {
    * @return ListEndpointAgentsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListEndpointAgentsResponse getEndpointAgents(String cursor, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
-    ApiResponse<ListEndpointAgentsResponse> response = getEndpointAgentsWithHttpInfo(cursor, max, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
+  public ListEndpointAgentsResponse getEndpointAgents(Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
+    ApiResponse<ListEndpointAgentsResponse> response = getEndpointAgentsWithHttpInfo(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
     return response.getData();
   }
 
   /**
    * List endpoint agents
    * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
    * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
@@ -434,10 +432,10 @@ public class EndpointAgentsApi {
    * @return ApiResponse&lt;ListEndpointAgentsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListEndpointAgentsResponse> getEndpointAgentsWithHttpInfo(String cursor, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
+  public ApiResponse<ListEndpointAgentsResponse> getEndpointAgentsWithHttpInfo(Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
     getEndpointAgentsValidateRequest();
 
-    var requestBuilder = getEndpointAgentsRequestBuilder(cursor, max, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
+    var requestBuilder = getEndpointAgentsRequestBuilder(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
 
     return apiClient.send(requestBuilder.build(), ListEndpointAgentsResponse.class);
   }
@@ -445,7 +443,7 @@ public class EndpointAgentsApi {
   private void getEndpointAgentsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointAgentsRequestBuilder(String cursor, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getEndpointAgentsRequestBuilder(Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
