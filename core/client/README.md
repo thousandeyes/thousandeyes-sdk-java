@@ -13,7 +13,7 @@ waiting the appropriate amount of time. E.g:
 class Example {
     private static final ApiClient apiClient = NativeApiClient
             .builder()
-            .baseUri("https://api.stg.thousandeyes.com")
+            .baseUri("https://api.thousandeyes.com")
             .bearerToken("<token>")
             .build();
 
@@ -50,7 +50,7 @@ import java.util.stream.Collectors;
 class Example {
     private static final ApiClient apiClient = NativeApiClient
             .builder()
-            .baseUri("https://api.stg.thousandeyes.com")
+            .baseUri("https://api.thousandeyes.com")
             .bearerToken("<token>")
             .build();
 

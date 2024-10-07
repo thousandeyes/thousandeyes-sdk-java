@@ -26,20 +26,8 @@ public class Paginator<T, R> implements Iterable<T> {
         this.dataExtractor = dataExtractor;
     }
 
-    private String extractCursor(String href) {
-        if (href == null) {
-            return null;
-        }
-
-        var matcher = CURSOR_PATTERN.matcher(href);
-        if (matcher.find()) {
-            return URLDecoder.decode(matcher.group(1), StandardCharsets.UTF_8);
-        }
-
-        return null;
-    }
-
-    @Override public Iterator<T> iterator() {
+    @Override
+    public Iterator<T> iterator() {
         return new PaginatorIterator();
     }
 
@@ -49,17 +37,15 @@ public class Paginator<T, R> implements Iterable<T> {
 
     private class PaginatorIterator implements Iterator<T> {
         private String cursor = null;
-        private Iterator<T> currentBatchIterator = null;
-        private boolean hasNextBatch = true;
+        private Iterator<T> currentPageIterator = null;
+        private boolean hasNextPage = true;
 
         @Override
         public boolean hasNext() {
-            if (currentBatchIterator == null || !currentBatchIterator.hasNext()) {
-                if (hasNextBatch) {
-                    fetchNextBatch();
-                }
+            if (!currentPageHasNext() && hasNextPage) {
+                fetchNextPage();
             }
-            return currentBatchIterator != null && currentBatchIterator.hasNext();
+            return currentPageHasNext();
         }
 
         @Override
@@ -67,14 +53,18 @@ public class Paginator<T, R> implements Iterable<T> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            return currentBatchIterator.next();
+            return currentPageIterator.next();
         }
 
-        private void fetchNextBatch() {
+        private boolean currentPageHasNext() {
+            return currentPageIterator != null && currentPageIterator.hasNext();
+        }
+
+        private void fetchNextPage() {
             try {
                 R result = apiCall.call(cursor);
-                List<T> currentBatch = dataExtractor.apply(result);
-                currentBatchIterator = currentBatch.iterator();
+                List<T> currentPage = dataExtractor.apply(result);
+                currentPageIterator = currentPage.iterator();
 
                 var clazz = result.getClass();
                 var getLinks = clazz.getMethod("getLinks");
@@ -83,19 +73,35 @@ public class Paginator<T, R> implements Iterable<T> {
                 var getNext = links.getClass().getMethod("getNext");
                 var next = getNext.invoke(links);
 
-                if (next != null) {
-                    var getHref = next.getClass().getMethod("getHref");
-                    String nextHref = (String) getHref.invoke(next);
-                    cursor = extractCursor(nextHref);
-                }
-                else {
-                    hasNextBatch = false;
+                cursor = extractCursor(next);
+                if (cursor == null) {
+                    hasNextPage = false;
                 }
             }
             catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException |
                    ApiException e) {
-                throw new RuntimeException("Error fetching next batch", e);
+                throw new RuntimeException("Error fetching next page", e);
             }
         }
+
+        private String extractCursor(Object next)
+                throws InvocationTargetException, IllegalAccessException, NoSuchMethodException
+        {
+            if (next != null) {
+                var getHref = next.getClass().getMethod("getHref");
+                String href = (String) getHref.invoke(next);
+
+                if (href == null) {
+                    return null;
+                }
+
+                var matcher = CURSOR_PATTERN.matcher(href);
+                if (matcher.find()) {
+                    return URLDecoder.decode(matcher.group(1), StandardCharsets.UTF_8);
+                }
+            }
+            return null;
+        }
     }
+
 }

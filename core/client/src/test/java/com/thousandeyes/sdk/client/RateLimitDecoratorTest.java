@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.thousandeyes.sdk;
+package com.thousandeyes.sdk.client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -35,12 +35,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-
-import com.thousandeyes.sdk.client.ApiClient;
-import com.thousandeyes.sdk.client.ApiException;
-import com.thousandeyes.sdk.client.ApiRequest;
-import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.RateLimitDecorator;
 
 
 

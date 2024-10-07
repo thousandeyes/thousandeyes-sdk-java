@@ -1,0 +1,8 @@
+{
+  "auditEvents": [],
+  "_links": {
+    "self": {
+      "href": "https://api.com/v7/audit-user-events"
+    }
+  }
+}

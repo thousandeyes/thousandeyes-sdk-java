@@ -1,0 +1,39 @@
+{
+  "auditEvents": [
+    {
+      "accountGroupName": "group",
+      "aid": "1",
+      "event": "Login",
+      "date": "2024-10-04T08:42:38Z",
+      "ipAddress": "1.1.1.1",
+      "uid": "2",
+      "user": "User (user@user.com)",
+      "resources": [
+        {
+          "type": "name",
+          "name": "User"
+        }
+      ]
+    },
+    {
+      "accountGroupName": "group",
+      "aid": "1",
+      "event": "Login",
+      "date": "2024-10-03T07:20:05Z",
+      "ipAddress": "1.1.1.1",
+      "uid": "2",
+      "user": "User (user@user.com)",
+      "resources": [
+        {
+          "type": "name",
+          "name": "User"
+        }
+      ]
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "https://api.com/v7/audit-user-events"
+    }
+  }
+}
