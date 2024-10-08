@@ -20,6 +20,10 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDetailDynamicEnd
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDynamicEndpointTestResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.results.model.ValidationError;
+import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkDynamicEndpointTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDynamicEndpointTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;

@@ -30,6 +30,8 @@ import com.thousandeyes.sdk.endpoint.labels.model.Labels;
 import java.net.URI;
 import com.thousandeyes.sdk.endpoint.labels.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.labels.model.ValidationError;
+import com.thousandeyes.sdk.endpoint.labels.model.LabelResponse;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -226,6 +228,19 @@ public class EndpointAgentLabelsApi {
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
+  }
+  /**
+   * List labels with pagination
+   * Returns a list of labels.
+   * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param expand This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. (optional
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return Paginator<LabelResponse, Labels>
+   */
+  public Paginator<LabelResponse, Labels> getEndpointLabelsPaginated(Integer max, List<ExpandLabelOptions> expand, String aid) {
+    return new Paginator<>(cursor -> getEndpointLabels(max, cursor, expand, aid),
+                           Labels::getLabels);
+
   }
   /**
    * List labels

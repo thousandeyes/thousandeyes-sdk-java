@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.alerts.model.CustomWebhookIntegrationType;
+import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -36,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NotificationCustomWebhook {
   public static final String JSON_PROPERTY_INTEGRATION_ID = "integrationId";
-  private String integrationId;
+  private UUID integrationId;
 
   public static final String JSON_PROPERTY_INTEGRATION_TYPE = "integrationType";
   private CustomWebhookIntegrationType integrationType;
@@ -50,7 +51,7 @@ public class NotificationCustomWebhook {
   public NotificationCustomWebhook() { 
   }
 
-  public NotificationCustomWebhook integrationId(String integrationId) {
+  public NotificationCustomWebhook integrationId(UUID integrationId) {
     this.integrationId = integrationId;
     return this;
   }
@@ -63,14 +64,14 @@ public class NotificationCustomWebhook {
   @JsonProperty(JSON_PROPERTY_INTEGRATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getIntegrationId() {
+  public UUID getIntegrationId() {
     return integrationId;
   }
 
 
   @JsonProperty(JSON_PROPERTY_INTEGRATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIntegrationId(String integrationId) {
+  public void setIntegrationId(UUID integrationId) {
     this.integrationId = integrationId;
   }
 

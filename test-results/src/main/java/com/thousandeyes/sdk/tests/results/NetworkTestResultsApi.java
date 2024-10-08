@@ -30,6 +30,10 @@ import com.thousandeyes.sdk.tests.results.model.PathVisTestResults;
 import com.thousandeyes.sdk.tests.results.model.TestDirection;
 import com.thousandeyes.sdk.tests.results.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.results.model.ValidationError;
+import com.thousandeyes.sdk.tests.results.model.NetworkTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.tests.results.model.PathVisTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,6 +68,22 @@ public class NetworkTestResultsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Get network test results with pagination
+   * Returns network test results for every agent and round. If you do not specify a window or a start and end date, data is displayed for the most recent testing round. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param direction Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;, &#x60;bidirectional&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. For bidirectional data, you&#39;ll get combined results; otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. (optional, default to to-target)
+   * @return Paginator<NetworkTestResult, NetworkTestResults>
+   */
+  public Paginator<NetworkTestResult, NetworkTestResults> getTestNetworkResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, TestDirection direction) {
+    return new Paginator<>(cursor -> getTestNetworkResults(testId, aid, window, startDate, endDate, cursor, direction),
+                           NetworkTestResults::getResults);
+
+  }
   /**
    * Get network test results
    * Returns network test results for every agent and round. If you do not specify a window or a start and end date, data is displayed for the most recent testing round. 
@@ -205,6 +225,22 @@ public class NetworkTestResultsApi {
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
+  }
+  /**
+   * Get path visualization network test results with pagination
+   * Returns a summary of the path trace data collected during path visualization for a given time range. With each attempt, three tries are made to reach the destination. The entire path is displayed in order. If you do not specify a window or a start and end date, data is displayed for the most recent testing round.   Bidirectional agent-to-agent tests also support the &#x60;direction&#x60; parameter. For example, if agents A, B, and C are testing agent D bidirectionally, and you want results from the route from agent A to agent D, you can use the query &#x60;direction&#x3D;to-target&#x60;. For results from agent D to agent A, you can use &#x60;direction&#x3D;from-target&#x60;. To get both results for both routes, query without the direction parameter. The source will always be agent A and the destination will be agent D, but the direction field will indicate which trace direction you want test results from. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param direction Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. (optional)
+   * @return Paginator<PathVisTestResult, PathVisTestResults>
+   */
+  public Paginator<PathVisTestResult, PathVisTestResults> getTestPathVisResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, PathVisDirection direction) {
+    return new Paginator<>(cursor -> getTestPathVisResults(testId, aid, window, startDate, endDate, cursor, direction),
+                           PathVisTestResults::getResults);
+
   }
   /**
    * Get path visualization network test results

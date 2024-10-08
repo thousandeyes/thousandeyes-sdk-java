@@ -32,6 +32,8 @@ public enum ThirdPartyIntegrationType {
   
   APP_DYNAMICS("app-dynamics"),
   
+  SERVICE_NOW("service-now"),
+  
   UNKNOWN("unknown");
 
   private String value;

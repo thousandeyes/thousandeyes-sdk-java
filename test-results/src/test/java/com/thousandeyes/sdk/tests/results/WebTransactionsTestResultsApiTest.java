@@ -19,6 +19,8 @@ import com.thousandeyes.sdk.tests.results.model.ValidationError;
 import com.thousandeyes.sdk.tests.results.model.WebTransactionDetailTestResults;
 import com.thousandeyes.sdk.tests.results.model.WebTransactionPageDetailTestResults;
 import com.thousandeyes.sdk.tests.results.model.WebTransactionTestResults;
+import com.thousandeyes.sdk.tests.results.model.WebTransactionTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;

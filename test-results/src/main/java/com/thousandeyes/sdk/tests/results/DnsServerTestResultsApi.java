@@ -26,6 +26,10 @@ import com.thousandeyes.sdk.tests.results.model.Error;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.tests.results.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.results.model.ValidationError;
+import com.thousandeyes.sdk.tests.results.model.DnsServerTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.tests.results.model.DnsServerTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,6 +64,22 @@ public class DnsServerTestResultsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Get DNS server test results by server with pagination
+   * Returns mappings for a DNS record and resolution time to the specified server, measured from the requesting agent&#39;s point of view. This is similar to dig @server. 
+   * @param testId Test ID (required)
+   * @param serverId DNS server ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return Paginator<DnsServerTestResult, DnsServerTestResults>
+   */
+  public Paginator<DnsServerTestResult, DnsServerTestResults> getTestDnsServerResultPaginated(String testId, String serverId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
+    return new Paginator<>(cursor -> getTestDnsServerResult(testId, serverId, aid, window, startDate, endDate, cursor),
+                           DnsServerTestResults::getResults);
+
+  }
   /**
    * Get DNS server test results by server
    * Returns mappings for a DNS record and resolution time to the specified server, measured from the requesting agent&#39;s point of view. This is similar to dig @server. 
@@ -133,6 +153,21 @@ public class DnsServerTestResultsApi {
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
+  }
+  /**
+   * Get DNS server test results with pagination
+   * Returns the mappings for a DNS record, along with the resolution time to each authoritative server, measured from the agent&#39;s point of view. Similar to dig @server. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return Paginator<DnsServerTestResult, DnsServerTestResults>
+   */
+  public Paginator<DnsServerTestResult, DnsServerTestResults> getTestDnsServersResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
+    return new Paginator<>(cursor -> getTestDnsServersResults(testId, aid, window, startDate, endDate, cursor),
+                           DnsServerTestResults::getResults);
+
   }
   /**
    * Get DNS server test results
