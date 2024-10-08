@@ -24,18 +24,17 @@ import org.mockito.Mockito;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.thousandeyes.sdk.account.management.administrative.UserEventsApi;
-import com.thousandeyes.sdk.account.management.administrative.model.AuditUserEvents;
-import com.thousandeyes.sdk.account.management.administrative.model.UserEvent;
 import com.thousandeyes.sdk.client.ApiException;
+import com.thousandeyes.sdk.pagination.PaginatedApi.Item;
+import com.thousandeyes.sdk.pagination.PaginatedApi.PaginatedResponse;
 
 
 
 public class PaginatorTest {
 
-    private static UserEventsApi api;
-    private static AuditUserEvents withNextLink = null;
-    private static AuditUserEvents noNextLink = null;
+    private static PaginatedApi api;
+    private static PaginatedResponse withNextLink = null;
+    private static PaginatedResponse noNextLink = null;
     private static final ObjectMapper mapper = getDefault().getMapper();
 
     @BeforeAll
@@ -43,13 +42,13 @@ public class PaginatorTest {
         var withNextLinkJson = readJson("with-next-link.json");
         var noNextLinkJson = readJson("no-next-link.json");
 
-        withNextLink = mapper.readValue(withNextLinkJson, AuditUserEvents.class);
-        noNextLink = mapper.readValue(noNextLinkJson, AuditUserEvents.class);
+        withNextLink = mapper.readValue(withNextLinkJson, PaginatedResponse.class);
+        noNextLink = mapper.readValue(noNextLinkJson, PaginatedResponse.class);
     }
 
     @BeforeEach
-    public void clear() {
-        api = Mockito.mock(UserEventsApi.class);
+    public void mock() {
+        api = Mockito.mock(PaginatedApi.class);
     }
 
     @Test
@@ -64,14 +63,14 @@ public class PaginatorTest {
         var elements = paginator.stream().toList();
 
         assertEquals(4, elements.size());
-        verify(api).getUserEvents(aid, false, window, null, null, null);
-        verify(api).getUserEvents(aid, false, window, null, null, cursor);
+        verify(api).getItems(aid, window, null);
+        verify(api).getItems(aid, window, cursor);
         verifyNoMoreInteractions(api);
     }
 
     @ParameterizedTest
     @MethodSource("provideNoNextLinkResponses")
-    void shouldNotMakeExtraCallsWhenThereIsNoNextLink(AuditUserEvents response)
+    void shouldNotMakeExtraCallsWhenThereIsNoNextLink(PaginatedResponse response)
             throws ApiException
     {
         var aid = "2";
@@ -82,7 +81,7 @@ public class PaginatorTest {
         var elements = paginator.stream().toList();
 
         assertEquals(2, elements.size());
-        verify(api).getUserEvents(aid, false, window, null, null, null);
+        verify(api).getItems(aid, window, null);
         verifyNoMoreInteractions(api);
     }
 
@@ -92,7 +91,7 @@ public class PaginatorTest {
         var window = "3h";
         doThrow(ApiException.class)
                 .when(api)
-                .getUserEvents(aid, false, window, null, null, null);
+                .getItems(aid, window, null);
 
         var paginator = buildPaginator(aid, window);
         var exception = assertThrows(PaginationException.class, () -> paginator.iterator().next());
@@ -108,13 +107,13 @@ public class PaginatorTest {
         var aid = "4";
         var window = "4m";
         var emptyResponseJson = readJson("empty-response.json");
-        var emptyResponse = mapper.readValue(emptyResponseJson, AuditUserEvents.class);
+        var emptyResponse = mapper.readValue(emptyResponseJson, PaginatedResponse.class);
         mockApiResponse(emptyResponse, aid, window, null);
 
         var paginator = buildPaginator(aid, window);
         var elements = paginator.stream().toList();
         assertEquals(0, elements.size());
-        verify(api).getUserEvents(aid, false, window, null, null, null);
+        verify(api).getItems(aid, window, null);
         verifyNoMoreInteractions(api);
     }
 
@@ -125,39 +124,43 @@ public class PaginatorTest {
         var aid = "5";
         var window = "5s";
         var emptyResponseJson = readJson("empty-response.json");
-        var emptyResponse = mapper.readValue(emptyResponseJson, AuditUserEvents.class);
+        var emptyResponse = mapper.readValue(emptyResponseJson, PaginatedResponse.class);
         mockApiResponse(emptyResponse, aid, window, null);
 
         var paginator = buildPaginator(aid, window);
         var iterator = paginator.iterator();
 
         assertThrows(NoSuchElementException.class, iterator::next);
-        verify(api).getUserEvents(aid, false, window, null, null, null);
+        verify(api).getItems(aid, window, null);
         verifyNoMoreInteractions(api);
     }
 
-    private static Stream<AuditUserEvents> provideNoNextLinkResponses() throws IOException {
+    private static Stream<PaginatedResponse> provideNoNextLinkResponses()
+            throws IOException
+    {
         var emptyNextLinkJson = readJson("empty-next-link.json");
         var missingNextLinkCursorJson = readJson("missing-next-link-cursor.json");
 
-        var emptyNextLink = mapper.readValue(emptyNextLinkJson, AuditUserEvents.class);
+        var emptyNextLink = mapper.readValue(emptyNextLinkJson, PaginatedResponse.class);
         var missingNextLinkCursor =
-                mapper.readValue(missingNextLinkCursorJson, AuditUserEvents.class);
+                mapper.readValue(missingNextLinkCursorJson, PaginatedResponse.class);
 
         return Stream.of(noNextLink, emptyNextLink, missingNextLinkCursor);
     }
 
-    private Paginator<UserEvent, AuditUserEvents> buildPaginator(String aid, String window) {
-        return new Paginator<>(cursor -> api.getUserEvents(aid, false, window, null, null, cursor),
-                               AuditUserEvents::getAuditEvents);
+    private Paginator<Item, PaginatedResponse> buildPaginator(String aid, String window)
+    {
+        return new Paginator<>(cursor -> api.getItems(aid, window, cursor),
+                               PaginatedResponse::items);
     }
 
-    private void mockApiResponse(AuditUserEvents response, String aid, String window, String cursor)
+    private void mockApiResponse(PaginatedResponse response, String aid, String window,
+                                 String cursor)
             throws ApiException
     {
         doReturn(response)
                 .when(api)
-                .getUserEvents(aid, false, window, null, null, cursor);
+                .getItems(aid, window, cursor);
     }
 
     private static String readJson(String fileName) throws IOException {

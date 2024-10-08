@@ -19,7 +19,6 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:1.18.30"
     testAnnotationProcessor "org.projectlombok:lombok:1.18.30"
 
-    testImplementation project(":administrative")
     testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
 }
