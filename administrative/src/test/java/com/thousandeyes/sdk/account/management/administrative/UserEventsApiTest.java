@@ -17,6 +17,8 @@ import com.thousandeyes.sdk.account.management.administrative.model.Error;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.account.management.administrative.model.UnauthorizedError;
 import com.thousandeyes.sdk.account.management.administrative.model.ValidationError;
+import com.thousandeyes.sdk.account.management.administrative.model.UserEvent;
+import com.thousandeyes.sdk.pagination.Paginator;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;

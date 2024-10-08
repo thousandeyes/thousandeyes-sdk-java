@@ -19,6 +19,8 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 import com.thousandeyes.sdk.event.detection.model.UnauthorizedError;
 import com.thousandeyes.sdk.event.detection.model.ValidationError;
+import com.thousandeyes.sdk.event.detection.model.Event;
+import com.thousandeyes.sdk.pagination.Paginator;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;

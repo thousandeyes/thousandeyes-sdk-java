@@ -29,6 +29,10 @@ import com.thousandeyes.sdk.usage.model.TestsUsage;
 import com.thousandeyes.sdk.usage.model.UnauthorizedError;
 import com.thousandeyes.sdk.usage.model.Usage;
 import com.thousandeyes.sdk.usage.model.ValidationError;
+import com.thousandeyes.sdk.usage.model.EnterpriseAgentUnitsByTestOwnerAccountGroup;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.usage.model.UnitsByTests;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,6 +67,18 @@ public class UsageApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Get enterprise agent usage with pagination
+   * This operation returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return Paginator<EnterpriseAgentUnitsByTestOwnerAccountGroup, EnterpriseAgentsUsage>
+   */
+  public Paginator<EnterpriseAgentUnitsByTestOwnerAccountGroup, EnterpriseAgentsUsage> getEnterpriseAgentsUnitsUsagePaginated(OffsetDateTime startDate, OffsetDateTime endDate) {
+    return new Paginator<>(cursor -> getEnterpriseAgentsUnitsUsage(startDate, endDate, cursor),
+                           EnterpriseAgentsUsage::getBreakdowns);
+
+  }
   /**
    * Get enterprise agent usage
    * This operation returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
@@ -116,6 +132,19 @@ public class UsageApi {
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
+  }
+  /**
+   * Get cloud and enterprise agents units usage with pagination
+   * This operation returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return Paginator<UnitsByTests, TestsUsage>
+   */
+  public Paginator<UnitsByTests, TestsUsage> getTestsUnitsUsagePaginated(String aid, OffsetDateTime startDate, OffsetDateTime endDate) {
+    return new Paginator<>(cursor -> getTestsUnitsUsage(aid, startDate, endDate, cursor),
+                           TestsUsage::getBreakdowns);
+
   }
   /**
    * Get cloud and enterprise agents units usage

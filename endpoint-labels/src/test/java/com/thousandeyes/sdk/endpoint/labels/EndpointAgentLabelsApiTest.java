@@ -21,6 +21,8 @@ import com.thousandeyes.sdk.endpoint.labels.model.Labels;
 import java.net.URI;
 import com.thousandeyes.sdk.endpoint.labels.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.labels.model.ValidationError;
+import com.thousandeyes.sdk.endpoint.labels.model.LabelResponse;
+import com.thousandeyes.sdk.pagination.Paginator;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;

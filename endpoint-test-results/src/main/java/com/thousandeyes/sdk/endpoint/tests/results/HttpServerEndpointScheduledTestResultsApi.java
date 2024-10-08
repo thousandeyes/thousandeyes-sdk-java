@@ -29,6 +29,10 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.HttpMultiEndpointTestRe
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.results.model.ValidationError;
+import com.thousandeyes.sdk.endpoint.tests.results.model.HttpEndpointTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.endpoint.tests.results.model.HttpEndpointTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,6 +67,22 @@ public class HttpServerEndpointScheduledTestResultsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Retrieve HTTP server scheduled test results with pagination
+   * Returns component-level (DNS, Connect, Wait and Receive) timing for the load of an object over HTTP. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;header,\&quot; append &#x60;?expand&#x3D;header&#x60; to the query. (optional
+   * @return Paginator<HttpEndpointTestResult, HttpEndpointTestResults>
+   */
+  public Paginator<HttpEndpointTestResult, HttpEndpointTestResults> getHttpServerScheduledTestResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandEndpointHttpServerOptions> expand) {
+    return new Paginator<>(cursor -> getHttpServerScheduledTestResults(testId, aid, window, startDate, endDate, cursor, expand),
+                           HttpEndpointTestResults::getResults);
+
+  }
   /**
    * Retrieve HTTP server scheduled test results
    * Returns component-level (DNS, Connect, Wait and Receive) timing for the load of an object over HTTP. 
@@ -132,6 +152,22 @@ public class HttpServerEndpointScheduledTestResultsApi {
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
+  }
+  /**
+   * Filter HTTP server scheduled test results with pagination
+   * Returns component-level (DNS, Connect, Wait and Receive) timing for the load of an object over HTTP. 
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;header,\&quot; append &#x60;?expand&#x3D;header&#x60; to the query. (optional
+   * @param httpEndpointTestsDataRoundsSearch Test data search filters. (optional)
+   * @return Paginator<HttpEndpointTestResult, HttpMultiEndpointTestResults>
+   */
+  public Paginator<HttpEndpointTestResult, HttpMultiEndpointTestResults> getMultiTestFilteredHttpServerScheduledTestResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) {
+    return new Paginator<>(cursor -> getMultiTestFilteredHttpServerScheduledTestResults(aid, window, startDate, endDate, cursor, expand, httpEndpointTestsDataRoundsSearch),
+                           HttpMultiEndpointTestResults::getResults);
+
   }
   /**
    * Filter HTTP server scheduled test results

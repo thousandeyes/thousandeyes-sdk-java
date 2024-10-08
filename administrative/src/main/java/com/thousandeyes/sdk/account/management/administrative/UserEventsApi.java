@@ -26,6 +26,8 @@ import com.thousandeyes.sdk.account.management.administrative.model.Error;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.account.management.administrative.model.UnauthorizedError;
 import com.thousandeyes.sdk.account.management.administrative.model.ValidationError;
+import com.thousandeyes.sdk.account.management.administrative.model.UserEvent;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,6 +62,21 @@ public class UserEventsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * List activity log events with pagination
+   * Returns a list of activity log events in the current account group.   If &#x60;useAllPermittedAids&#x3D;true&#x60; query parameter is passed and the user has permission &#x60;View activity log for all users in account group&#x60; the logs returned include events across all the account groups they belong to.  For more information about changing the account group context, see [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext).
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return Paginator<UserEvent, AuditUserEvents>
+   */
+  public Paginator<UserEvent, AuditUserEvents> getUserEventsPaginated(String aid, Boolean useAllPermittedAids, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
+    return new Paginator<>(cursor -> getUserEvents(aid, useAllPermittedAids, window, startDate, endDate, cursor),
+                           AuditUserEvents::getAuditEvents);
+
+  }
   /**
    * List activity log events
    * Returns a list of activity log events in the current account group.   If &#x60;useAllPermittedAids&#x3D;true&#x60; query parameter is passed and the user has permission &#x60;View activity log for all users in account group&#x60; the logs returned include events across all the account groups they belong to.  For more information about changing the account group context, see [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext).

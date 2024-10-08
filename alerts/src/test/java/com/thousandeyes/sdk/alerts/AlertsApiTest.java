@@ -19,6 +19,8 @@ import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.alerts.model.State;
 import java.util.UUID;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
+import com.thousandeyes.sdk.alerts.model.Alert;
+import com.thousandeyes.sdk.pagination.Paginator;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
@@ -385,7 +387,7 @@ public class AlertsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAlerts(null, null, null, null, null, null);
+        var apiResponse = api.getAlerts(null, null, null, null, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

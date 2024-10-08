@@ -30,6 +30,12 @@ import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDetailEndpointTestResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisEndpointTestResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
+import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkEndpointTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkEndpointTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisEndpointTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,6 +70,22 @@ public class NetworkEndpointScheduledTestResultsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Retrieve network scheduled test results with pagination
+   * Returns network metrics (loss, latency, and jitter) from each endpoint agent, for each roundId within the specified time window, as determined by search filters. If a time frame is provided, the rounds relevant to that time frame are returned, and the order is not predefined unless the user specifies a sort order in the filter. When no time frame is provided, the latest rounds are returned. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endpointTestsDataRoundsSearch Tests data search filters. (optional)
+   * @return Paginator<NetworkEndpointTestResult, NetworkEndpointTestResults>
+   */
+  public Paginator<NetworkEndpointTestResult, NetworkEndpointTestResults> filterScheduledTestNetworkResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch) {
+    return new Paginator<>(cursor -> filterScheduledTestNetworkResults(testId, aid, window, startDate, endDate, cursor, endpointTestsDataRoundsSearch),
+                           NetworkEndpointTestResults::getResults);
+
+  }
   /**
    * Retrieve network scheduled test results
    * Returns network metrics (loss, latency, and jitter) from each endpoint agent, for each roundId within the specified time window, as determined by search filters. If a time frame is provided, the rounds relevant to that time frame are returned, and the order is not predefined unless the user specifies a sort order in the filter. When no time frame is provided, the latest rounds are returned. 
@@ -134,6 +156,22 @@ public class NetworkEndpointScheduledTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     requestBuilder.requestBody(endpointTestsDataRoundsSearch);
     return requestBuilder;
+  }
+  /**
+   * Retrieve network scheduled test results from multiple tests with pagination
+   * Returns network metrics, including loss, latency, and jitter, for multiple test IDs obtained from each endpoint agent. It allows you to specify a time window using search filters to retrieve metrics for specific round IDs within that time frame. The default order of results is unspecified unless you include a sorting preference in the filter. When no time frame is provided, the API returns metrics for the most recent rounds. Access to all accounts associated with the specified test IDs is required to use this endpoint. 
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param multiTestIdEndpointTestsDataRoundsSearch Test data search filters. (optional)
+   * @return Paginator<NetworkEndpointTestResult, MultiTestIdNetworkEndpointTestResults>
+   */
+  public Paginator<NetworkEndpointTestResult, MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) {
+    return new Paginator<>(cursor -> filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, multiTestIdEndpointTestsDataRoundsSearch),
+                           MultiTestIdNetworkEndpointTestResults::getResults);
+
   }
   /**
    * Retrieve network scheduled test results from multiple tests
@@ -270,6 +308,21 @@ public class NetworkEndpointScheduledTestResultsApi {
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
+  }
+  /**
+   * Retrieve path visualization network scheduled test results with pagination
+   * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours is returned. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return Paginator<PathVisEndpointTestResult, PathVisEndpointTestResults>
+   */
+  public Paginator<PathVisEndpointTestResult, PathVisEndpointTestResults> getScheduledTestPathVisResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
+    return new Paginator<>(cursor -> getScheduledTestPathVisResults(testId, aid, window, startDate, endDate, cursor),
+                           PathVisEndpointTestResults::getResults);
+
   }
   /**
    * Retrieve path visualization network scheduled test results

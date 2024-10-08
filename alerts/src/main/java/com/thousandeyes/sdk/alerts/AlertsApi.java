@@ -28,6 +28,8 @@ import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.alerts.model.State;
 import java.util.UUID;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
+import com.thousandeyes.sdk.alerts.model.Alert;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -118,7 +120,7 @@ public class AlertsApi {
     return requestBuilder;
   }
   /**
-   * List active alerts
+   * List active alerts with pagination
    * Returns a list of active alerts. If no alerts are active within the  specified time range, an empty response is returned.  Note that time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, or &#x60;endDate&#x60;) are only applied to cleared alerts.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
@@ -126,11 +128,28 @@ public class AlertsApi {
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
    * @param state Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. (optional)
+   * @return Paginator<Alert, Alerts>
+   */
+  public Paginator<Alert, Alerts> getAlertsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, State state) {
+    return new Paginator<>(cursor -> getAlerts(aid, window, startDate, endDate, max, cursor, state),
+                           Alerts::getAlerts);
+
+  }
+  /**
+   * List active alerts
+   * Returns a list of active alerts. If no alerts are active within the  specified time range, an empty response is returned.  Note that time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, or &#x60;endDate&#x60;) are only applied to cleared alerts.
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param state Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. (optional)
    * @return Alerts
    * @throws ApiException if fails to make API call
    */
-  public Alerts getAlerts(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, State state) throws ApiException {
-    ApiResponse<Alerts> response = getAlertsWithHttpInfo(aid, window, startDate, endDate, max, state);
+  public Alerts getAlerts(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
+    ApiResponse<Alerts> response = getAlertsWithHttpInfo(aid, window, startDate, endDate, max, cursor, state);
     return response.getData();
   }
 
@@ -142,14 +161,15 @@ public class AlertsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
    * @param state Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. (optional)
    * @return ApiResponse&lt;Alerts&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Alerts> getAlertsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, State state) throws ApiException {
+  public ApiResponse<Alerts> getAlertsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
     getAlertsValidateRequest();
 
-    var requestBuilder = getAlertsRequestBuilder(aid, window, startDate, endDate, max, state);
+    var requestBuilder = getAlertsRequestBuilder(aid, window, startDate, endDate, max, cursor, state);
 
     return apiClient.send(requestBuilder.build(), Alerts.class);
   }
@@ -157,7 +177,7 @@ public class AlertsApi {
   private void getAlertsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, State state) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getAlertsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
@@ -170,6 +190,7 @@ public class AlertsApi {
     localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
     localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
     localVarQueryParams.addAll(parameterToPairs("max", max));
+    localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
     localVarQueryParams.addAll(parameterToPairs("state", state));
 
     if (!localVarQueryParams.isEmpty()) {

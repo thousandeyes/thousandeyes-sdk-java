@@ -23,6 +23,12 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserEndpointTestRes
 import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserEndpointTestResultsRequest;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.results.model.ValidationError;
+import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserEndpointTestNetworkResult;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserEndpointTest;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserEndpointTestPageResult;
+import com.thousandeyes.sdk.pagination.Paginator;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
@@ -520,11 +526,11 @@ public class RealUserEndpointTestResultsApiTest {
                     "log" : {
                       "browser" : {
                         "name" : "Google Chrome",
-                        "version" : "7.0.22.98"
+                        "version" : "7.0.25.98"
                       },
                       "creator" : {
                         "name" : "ThousandEyes Endpoint Agent",
-                        "version" : "7.0.22"
+                        "version" : "7.0.25"
                       },
                       "entries" : [ {
                         "pageref" : "page_1",

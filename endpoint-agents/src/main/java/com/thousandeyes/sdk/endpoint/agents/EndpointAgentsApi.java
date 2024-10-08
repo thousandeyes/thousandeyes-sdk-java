@@ -32,6 +32,10 @@ import com.thousandeyes.sdk.endpoint.agents.model.ListEndpointAgentsResponse;
 import java.util.UUID;
 import com.thousandeyes.sdk.endpoint.agents.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.agents.model.ValidationError;
+import com.thousandeyes.sdk.endpoint.agents.model.EndpointAgent;
+import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.endpoint.agents.model.EndpointAgent;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -233,6 +237,21 @@ public class EndpointAgentsApi {
     return requestBuilder;
   }
   /**
+   * Filter endpoint agents with pagination
+   * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
+   * @param agentSearchRequest The filter options for advanced search filtering for agents. (required)
+   * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
+   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
+   * @return Paginator<EndpointAgent, FilterEndpointAgentsResponse>
+   */
+  public Paginator<EndpointAgent, FilterEndpointAgentsResponse> filterEndpointAgentsPaginated(AgentSearchRequest agentSearchRequest, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) {
+    return new Paginator<>(cursor -> filterEndpointAgents(agentSearchRequest, max, cursor, aid, expand, includeDeleted),
+                           FilterEndpointAgentsResponse::getAgents);
+
+  }
+  /**
    * Filter endpoint agents
    * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
    * @param agentSearchRequest The filter options for advanced search filtering for agents. (required)
@@ -360,6 +379,23 @@ public class EndpointAgentsApi {
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
+  }
+  /**
+   * List endpoint agents with pagination
+   * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
+   * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
+   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
+   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
+   * @param agentName Returns only agents with the specified name.  This is an exact match only.  (optional)
+   * @param computerName Returns only agents with the specified computer name. This is an exact match only.  (optional)
+   * @return Paginator<EndpointAgent, ListEndpointAgentsResponse>
+   */
+  public Paginator<EndpointAgent, ListEndpointAgentsResponse> getEndpointAgentsPaginated(Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) {
+    return new Paginator<>(cursor -> getEndpointAgents(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName),
+                           ListEndpointAgentsResponse::getAgents);
+
   }
   /**
    * List endpoint agents
