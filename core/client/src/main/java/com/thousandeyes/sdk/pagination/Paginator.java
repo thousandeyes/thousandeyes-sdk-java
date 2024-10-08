@@ -66,14 +66,7 @@ public class Paginator<T, R> implements Iterable<T> {
                 List<T> currentPage = dataExtractor.apply(result);
                 currentPageIterator = currentPage.iterator();
 
-                var clazz = result.getClass();
-                var getLinks = clazz.getMethod("getLinks");
-                var links = getLinks.invoke(result);
-
-                var getNext = links.getClass().getMethod("getNext");
-                var next = getNext.invoke(links);
-
-                cursor = extractCursor(next);
+                cursor = extractCursor(result);
                 if (cursor == null) {
                     hasNextPage = false;
                 }
@@ -84,9 +77,16 @@ public class Paginator<T, R> implements Iterable<T> {
             }
         }
 
-        private String extractCursor(Object next)
+        private String extractCursor(R result)
                 throws InvocationTargetException, IllegalAccessException, NoSuchMethodException
         {
+            var clazz = result.getClass();
+            var getLinks = clazz.getMethod("getLinks");
+            var links = getLinks.invoke(result);
+
+            var getNext = links.getClass().getMethod("getNext");
+            var next = getNext.invoke(links);
+
             if (next != null) {
                 var getHref = next.getClass().getMethod("getHref");
                 String href = (String) getHref.invoke(next);

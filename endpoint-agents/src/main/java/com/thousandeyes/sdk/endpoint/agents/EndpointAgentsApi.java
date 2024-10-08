@@ -244,10 +244,9 @@ public class EndpointAgentsApi {
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
    * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
-   * @return FilterEndpointAgentsResponse
-   * @throws ApiException if fails to make API call
+   * @return Paginator<EndpointAgent, FilterEndpointAgentsResponse>
    */
-  public Paginator<EndpointAgent, FilterEndpointAgentsResponse> filterEndpointAgentsPaginated(AgentSearchRequest agentSearchRequest, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
+  public Paginator<EndpointAgent, FilterEndpointAgentsResponse> filterEndpointAgentsPaginated(AgentSearchRequest agentSearchRequest, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) {
     return new Paginator<>(cursor -> filterEndpointAgents(agentSearchRequest, max, cursor, aid, expand, includeDeleted),
                            FilterEndpointAgentsResponse::getAgents);
 
@@ -391,10 +390,9 @@ public class EndpointAgentsApi {
    * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
    * @param agentName Returns only agents with the specified name.  This is an exact match only.  (optional)
    * @param computerName Returns only agents with the specified computer name. This is an exact match only.  (optional)
-   * @return ListEndpointAgentsResponse
-   * @throws ApiException if fails to make API call
+   * @return Paginator<EndpointAgent, ListEndpointAgentsResponse>
    */
-  public Paginator<EndpointAgent, ListEndpointAgentsResponse> getEndpointAgentsPaginated(Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
+  public Paginator<EndpointAgent, ListEndpointAgentsResponse> getEndpointAgentsPaginated(Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) {
     return new Paginator<>(cursor -> getEndpointAgents(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName),
                            ListEndpointAgentsResponse::getAgents);
 
