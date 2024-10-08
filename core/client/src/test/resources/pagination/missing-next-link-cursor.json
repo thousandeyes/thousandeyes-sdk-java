@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "name": "group",
+      "id": "1"
+    },
+    {
+      "name": "group 2",
+      "id": "2"
+    }
+  ],
+  "_links": {
+    "next": {
+      "href": "https://api.com/v7/items"
+    },
+    "self": {
+      "href": "https://api.com/v7/items"
+    }
+  }
+}
