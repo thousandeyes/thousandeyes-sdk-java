@@ -95,7 +95,7 @@ public class PaginatorTest {
                 .getUserEvents(aid, false, window, null, null, null);
 
         var paginator = buildPaginator(aid, window);
-        var exception = assertThrows(RuntimeException.class, () -> paginator.iterator().next());
+        var exception = assertThrows(PaginationException.class, () -> paginator.iterator().next());
 
         assertEquals("Error fetching next page", exception.getMessage());
         assertEquals(ApiException.class, exception.getCause().getClass());

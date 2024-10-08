@@ -40,6 +40,11 @@ public class Paginator<T, R> implements Iterable<T> {
         private Iterator<T> currentPageIterator = null;
         private boolean hasNextPage = true;
 
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * @return boolean
+         * @throws PaginationException if an error occurs fetching the next page or parsing the cursor
+         */
         @Override
         public boolean hasNext() {
             if (!currentPageHasNext() && hasNextPage) {
@@ -48,6 +53,11 @@ public class Paginator<T, R> implements Iterable<T> {
             return currentPageHasNext();
         }
 
+        /**
+         * Returns the next element in the iteration.
+         * @return T
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
         @Override
         public T next() {
             if (!hasNext()) {
@@ -73,7 +83,7 @@ public class Paginator<T, R> implements Iterable<T> {
             }
             catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException |
                    ApiException e) {
-                throw new RuntimeException("Error fetching next page", e);
+                throw new PaginationException("Error fetching next page", e);
             }
         }
 

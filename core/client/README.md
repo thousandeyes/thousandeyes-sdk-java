@@ -71,6 +71,10 @@ class Example {
 }
 ```
 
+## Error Handling
+The `Paginator` class will automatically handle API errors and stop iterating if an error occurs. If an error occurs while fetching a page of results or parsing the cursor, the `Paginator` will throw an `PaginationException`. You can catch this exception and handle it as needed.
+
+
 ## Built-in Pagination Support
 Some APIs have built-in support for pagination, the API class exposes a method that will return the `Paginator` object for you. For example, the `EndpointAgentsApi` class has a `getEndpointAgentsPaginated` method that returns a `Paginator` object for fetching paginated endpoint agents.
 
