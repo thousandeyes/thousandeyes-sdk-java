@@ -78,4 +78,10 @@ The `Paginator` class will automatically handle API errors and stop iterating if
 ## Built-in Pagination Support
 Some APIs have built-in support for pagination, the API class exposes a method that will return the `Paginator` object for you. For example, the `EndpointAgentsApi` class has a `getEndpointAgentsPaginated` method that returns a `Paginator` object for fetching paginated endpoint agents.
 
-
+### Example
+```java
+public Paginator<EndpointAgent, ListEndpointAgentsResponse> getEndpointAgentsPaginated(Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) {
+    return new Paginator<>(cursor -> getEndpointAgents(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName),
+                           ListEndpointAgentsResponse::getAgents);
+}
+```
