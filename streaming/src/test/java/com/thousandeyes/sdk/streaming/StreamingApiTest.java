@@ -117,6 +117,7 @@ public class StreamingApiTest {
                     }
                   },
                   "type" : "opentelemetry",
+                  "signal" : "metric",
                   "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
@@ -170,6 +171,7 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "createdBy" : 3962
@@ -281,6 +283,7 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
@@ -365,6 +368,7 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
@@ -414,6 +418,7 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,
@@ -538,6 +543,7 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
                     "updatedBy" : 3962,

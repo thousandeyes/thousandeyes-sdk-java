@@ -22,19 +22,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The version of the data model used in the data stream. When using &#x60;v1&#x60;:   - The &#x60;signal&#x60; cannot be &#x60;trace&#x60;.  Default: &#x60;v2&#x60;
+ * The OpenTelemetry signal of the stream integration. When using &#x60;trace&#x60;:   - &#x60;dataModelVersion&#x60; must be &#x60;v2&#x60;.  Default: &#x60;metric&#x60;
  */
-public enum DataModelVersion {
+public enum Signal {
   
-  V1("v1"),
+  METRIC("metric"),
   
-  V2("v2"),
+  TRACE("trace"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  DataModelVersion(String value) {
+  Signal(String value) {
     this.value = value;
   }
 
@@ -49,8 +49,8 @@ public enum DataModelVersion {
   }
 
   @JsonCreator
-  public static DataModelVersion fromValue(String value) {
-    for (DataModelVersion b : DataModelVersion.values()) {
+  public static Signal fromValue(String value) {
+    for (Signal b : Signal.values()) {
       if (b.value.equals(value)) {
         return b;
       }

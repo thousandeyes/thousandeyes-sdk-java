@@ -25,6 +25,7 @@ import com.thousandeyes.sdk.streaming.model.DataModelVersion;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.Filters;
+import com.thousandeyes.sdk.streaming.model.Signal;
 import com.thousandeyes.sdk.streaming.model.StreamLinks;
 import com.thousandeyes.sdk.streaming.model.StreamType;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
@@ -45,6 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetStreamResponse.JSON_PROPERTY_ENABLED,
   GetStreamResponse.JSON_PROPERTY_LINKS,
   GetStreamResponse.JSON_PROPERTY_TYPE,
+  GetStreamResponse.JSON_PROPERTY_SIGNAL,
   GetStreamResponse.JSON_PROPERTY_ENDPOINT_TYPE,
   GetStreamResponse.JSON_PROPERTY_STREAM_ENDPOINT_URL,
   GetStreamResponse.JSON_PROPERTY_DATA_MODEL_VERSION,
@@ -68,6 +70,9 @@ public class GetStreamResponse {
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private StreamType type;
+
+  public static final String JSON_PROPERTY_SIGNAL = "signal";
+  private Signal signal = Signal.METRIC;
 
   public static final String JSON_PROPERTY_ENDPOINT_TYPE = "endpointType";
   private EndpointType endpointType = EndpointType.GRPC;
@@ -194,6 +199,31 @@ public class GetStreamResponse {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setType(StreamType type) {
     this.type = type;
+  }
+
+
+  public GetStreamResponse signal(Signal signal) {
+    this.signal = signal;
+    return this;
+  }
+
+   /**
+   * Get signal
+   * @return signal
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SIGNAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Signal getSignal() {
+    return signal;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SIGNAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSignal(Signal signal) {
+    this.signal = signal;
   }
 
 
@@ -462,6 +492,7 @@ public class GetStreamResponse {
         Objects.equals(this.enabled, getStreamResponse.enabled) &&
         Objects.equals(this.links, getStreamResponse.links) &&
         Objects.equals(this.type, getStreamResponse.type) &&
+        Objects.equals(this.signal, getStreamResponse.signal) &&
         Objects.equals(this.endpointType, getStreamResponse.endpointType) &&
         Objects.equals(this.streamEndpointUrl, getStreamResponse.streamEndpointUrl) &&
         Objects.equals(this.dataModelVersion, getStreamResponse.dataModelVersion) &&
@@ -475,7 +506,7 @@ public class GetStreamResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, auditOperation);
+    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, auditOperation);
   }
 
   @Override
@@ -486,6 +517,7 @@ public class GetStreamResponse {
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    signal: ").append(toIndentedString(signal)).append("\n");
     sb.append("    endpointType: ").append(toIndentedString(endpointType)).append("\n");
     sb.append("    streamEndpointUrl: ").append(toIndentedString(streamEndpointUrl)).append("\n");
     sb.append("    dataModelVersion: ").append(toIndentedString(dataModelVersion)).append("\n");

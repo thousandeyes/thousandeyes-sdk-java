@@ -18,6 +18,7 @@ src/main/java/com/thousandeyes/sdk/streaming/model/Filters.java
 src/main/java/com/thousandeyes/sdk/streaming/model/FiltersTestTypes.java
 src/main/java/com/thousandeyes/sdk/streaming/model/GetStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/PutStream.java
+src/main/java/com/thousandeyes/sdk/streaming/model/Signal.java
 src/main/java/com/thousandeyes/sdk/streaming/model/Stream.java
 src/main/java/com/thousandeyes/sdk/streaming/model/StreamLinks.java
 src/main/java/com/thousandeyes/sdk/streaming/model/StreamResponse.java
