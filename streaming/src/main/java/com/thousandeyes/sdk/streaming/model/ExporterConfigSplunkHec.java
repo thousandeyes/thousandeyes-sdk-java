@@ -80,7 +80,7 @@ public class ExporterConfigSplunkHec {
   }
 
    /**
-   * The Splunk HEC &#x60;source&#x60;. This field is optional. Default: &#x60;ThousandEyesOTel&#x60;
+   * The Splunk HEC &#x60;source&#x60;. This field is optional.
    * @return source
   **/
   @jakarta.annotation.Nullable
@@ -105,7 +105,7 @@ public class ExporterConfigSplunkHec {
   }
 
    /**
-   * The Splunk HEC &#x60;sourceType&#x60;. This field is optional. Default: &#x60;ThousandEyesOTel&#x60;
+   * The Splunk HEC &#x60;sourceType&#x60;. This field is optional.
    * @return sourceType
   **/
   @jakarta.annotation.Nullable

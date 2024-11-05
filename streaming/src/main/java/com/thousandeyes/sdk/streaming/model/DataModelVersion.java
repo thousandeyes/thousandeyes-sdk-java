@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The version of the data model used in the data stream. When using &#x60;v1&#x60;:   - The &#x60;signal&#x60; cannot be &#x60;trace&#x60;.  Default: &#x60;v2&#x60;
+ * The version of the data model used in the data stream. When using &#x60;v1&#x60;:   - The &#x60;signal&#x60; cannot be &#x60;trace&#x60;.
  */
 public enum DataModelVersion {
   

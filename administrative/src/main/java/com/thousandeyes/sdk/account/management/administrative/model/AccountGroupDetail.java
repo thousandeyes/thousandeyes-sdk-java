@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AccountGroupDetail.JSON_PROPERTY_IS_CURRENT_ACCOUNT_GROUP,
   AccountGroupDetail.JSON_PROPERTY_IS_DEFAULT_ACCOUNT_GROUP,
   AccountGroupDetail.JSON_PROPERTY_ORGANIZATION_NAME,
+  AccountGroupDetail.JSON_PROPERTY_ORG_ID,
   AccountGroupDetail.JSON_PROPERTY_USERS,
   AccountGroupDetail.JSON_PROPERTY_LINKS,
   AccountGroupDetail.JSON_PROPERTY_AGENTS,
@@ -59,6 +60,9 @@ public class AccountGroupDetail {
 
   public static final String JSON_PROPERTY_ORGANIZATION_NAME = "organizationName";
   private String organizationName;
+
+  public static final String JSON_PROPERTY_ORG_ID = "orgId";
+  private String orgId;
 
   public static final String JSON_PROPERTY_USERS = "users";
   private List<UserAccountGroup> users = new ArrayList<>();
@@ -181,7 +185,7 @@ public class AccountGroupDetail {
   }
 
    /**
-   * (Optional) Indicates whether the aid is the default one for the requesting user.
+   * (Optional) The name of the organization associated with the account group.
    * @return organizationName
   **/
   @jakarta.annotation.Nullable
@@ -197,6 +201,31 @@ public class AccountGroupDetail {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOrganizationName(String organizationName) {
     this.organizationName = organizationName;
+  }
+
+
+  public AccountGroupDetail orgId(String orgId) {
+    this.orgId = orgId;
+    return this;
+  }
+
+   /**
+   * (Optional) The ID for the organization associated with the account group.
+   * @return orgId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getOrgId() {
+    return orgId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOrgId(String orgId) {
+    this.orgId = orgId;
   }
 
 
@@ -333,6 +362,7 @@ public class AccountGroupDetail {
         Objects.equals(this.isCurrentAccountGroup, accountGroupDetail.isCurrentAccountGroup) &&
         Objects.equals(this.isDefaultAccountGroup, accountGroupDetail.isDefaultAccountGroup) &&
         Objects.equals(this.organizationName, accountGroupDetail.organizationName) &&
+        Objects.equals(this.orgId, accountGroupDetail.orgId) &&
         Objects.equals(this.users, accountGroupDetail.users) &&
         Objects.equals(this.links, accountGroupDetail.links) &&
         Objects.equals(this.agents, accountGroupDetail.agents) &&
@@ -341,7 +371,7 @@ public class AccountGroupDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, accountGroupName, isCurrentAccountGroup, isDefaultAccountGroup, organizationName, users, links, agents, accountToken);
+    return Objects.hash(aid, accountGroupName, isCurrentAccountGroup, isDefaultAccountGroup, organizationName, orgId, users, links, agents, accountToken);
   }
 
   @Override
@@ -353,6 +383,7 @@ public class AccountGroupDetail {
     sb.append("    isCurrentAccountGroup: ").append(toIndentedString(isCurrentAccountGroup)).append("\n");
     sb.append("    isDefaultAccountGroup: ").append(toIndentedString(isDefaultAccountGroup)).append("\n");
     sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
+    sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
