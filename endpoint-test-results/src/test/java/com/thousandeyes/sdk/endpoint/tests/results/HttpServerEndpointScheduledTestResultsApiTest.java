@@ -135,6 +135,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "isBuiltin" : false
                     } ],
                     "createdDate" : "2022-07-17T22:00:54Z",
+                    "ipVersion" : "V4_ONLY",
                     "port" : 443,
                     "isEnabled" : true,
                     "modifiedDate" : "2022-07-17T22:00:54Z",

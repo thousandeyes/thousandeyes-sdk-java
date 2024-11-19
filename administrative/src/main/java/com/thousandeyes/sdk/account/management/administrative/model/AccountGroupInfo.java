@@ -31,7 +31,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AccountGroupInfo.JSON_PROPERTY_ACCOUNT_GROUP_NAME,
   AccountGroupInfo.JSON_PROPERTY_IS_CURRENT_ACCOUNT_GROUP,
   AccountGroupInfo.JSON_PROPERTY_IS_DEFAULT_ACCOUNT_GROUP,
-  AccountGroupInfo.JSON_PROPERTY_ORGANIZATION_NAME
+  AccountGroupInfo.JSON_PROPERTY_ORGANIZATION_NAME,
+  AccountGroupInfo.JSON_PROPERTY_ORG_ID
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AccountGroupInfo {
@@ -49,6 +50,9 @@ public class AccountGroupInfo {
 
   public static final String JSON_PROPERTY_ORGANIZATION_NAME = "organizationName";
   private String organizationName;
+
+  public static final String JSON_PROPERTY_ORG_ID = "orgId";
+  private String orgId;
 
   public AccountGroupInfo() { 
   }
@@ -159,7 +163,7 @@ public class AccountGroupInfo {
   }
 
    /**
-   * (Optional) Indicates whether the aid is the default one for the requesting user.
+   * (Optional) The name of the organization associated with the account group.
    * @return organizationName
   **/
   @jakarta.annotation.Nullable
@@ -175,6 +179,31 @@ public class AccountGroupInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOrganizationName(String organizationName) {
     this.organizationName = organizationName;
+  }
+
+
+  public AccountGroupInfo orgId(String orgId) {
+    this.orgId = orgId;
+    return this;
+  }
+
+   /**
+   * (Optional) The ID for the organization associated with the account group.
+   * @return orgId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getOrgId() {
+    return orgId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOrgId(String orgId) {
+    this.orgId = orgId;
   }
 
 
@@ -194,12 +223,13 @@ public class AccountGroupInfo {
         Objects.equals(this.accountGroupName, accountGroupInfo.accountGroupName) &&
         Objects.equals(this.isCurrentAccountGroup, accountGroupInfo.isCurrentAccountGroup) &&
         Objects.equals(this.isDefaultAccountGroup, accountGroupInfo.isDefaultAccountGroup) &&
-        Objects.equals(this.organizationName, accountGroupInfo.organizationName);
+        Objects.equals(this.organizationName, accountGroupInfo.organizationName) &&
+        Objects.equals(this.orgId, accountGroupInfo.orgId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, accountGroupName, isCurrentAccountGroup, isDefaultAccountGroup, organizationName);
+    return Objects.hash(aid, accountGroupName, isCurrentAccountGroup, isDefaultAccountGroup, organizationName, orgId);
   }
 
   @Override
@@ -211,6 +241,7 @@ public class AccountGroupInfo {
     sb.append("    isCurrentAccountGroup: ").append(toIndentedString(isCurrentAccountGroup)).append("\n");
     sb.append("    isDefaultAccountGroup: ").append(toIndentedString(isDefaultAccountGroup)).append("\n");
     sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
+    sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

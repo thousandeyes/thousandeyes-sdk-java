@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointAgentSelectorConfig;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointIpVersionTemplate;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAuthType;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestProtocol;
@@ -50,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTest.JSON_PROPERTY_MODIFIED_DATE,
   EndpointHttpServerTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   EndpointHttpServerTest.JSON_PROPERTY_PROTOCOL,
+  EndpointHttpServerTest.JSON_PROPERTY_IP_VERSION,
   EndpointHttpServerTest.JSON_PROPERTY_SERVER,
   EndpointHttpServerTest.JSON_PROPERTY_TEST_ID,
   EndpointHttpServerTest.JSON_PROPERTY_TEST_NAME,
@@ -103,6 +105,9 @@ public class EndpointHttpServerTest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
+
+  public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
+  private EndpointIpVersionTemplate ipVersion;
 
   public static final String JSON_PROPERTY_SERVER = "server";
   private String server;
@@ -423,6 +428,31 @@ public class EndpointHttpServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProtocol(EndpointTestProtocol protocol) {
     this.protocol = protocol;
+  }
+
+
+  public EndpointHttpServerTest ipVersion(EndpointIpVersionTemplate ipVersion) {
+    this.ipVersion = ipVersion;
+    return this;
+  }
+
+   /**
+   * Get ipVersion
+   * @return ipVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointIpVersionTemplate getIpVersion() {
+    return ipVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpVersion(EndpointIpVersionTemplate ipVersion) {
+    this.ipVersion = ipVersion;
   }
 
 
@@ -863,6 +893,7 @@ public class EndpointHttpServerTest {
         Objects.equals(this.modifiedDate, endpointHttpServerTest.modifiedDate) &&
         Objects.equals(this.networkMeasurements, endpointHttpServerTest.networkMeasurements) &&
         Objects.equals(this.protocol, endpointHttpServerTest.protocol) &&
+        Objects.equals(this.ipVersion, endpointHttpServerTest.ipVersion) &&
         Objects.equals(this.server, endpointHttpServerTest.server) &&
         Objects.equals(this.testId, endpointHttpServerTest.testId) &&
         Objects.equals(this.testName, endpointHttpServerTest.testName) &&
@@ -885,7 +916,7 @@ public class EndpointHttpServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, server, testId, testName, type, tcpProbeMode, port, authType, httpTimeLimit, username, sslVersionId, verifyCertificate, url, followRedirects, httpTargetTime, httpVersion, sslVersion, useNtlm, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port, authType, httpTimeLimit, username, sslVersionId, verifyCertificate, url, followRedirects, httpTargetTime, httpVersion, sslVersion, useNtlm, labels);
   }
 
   @Override
@@ -903,6 +934,7 @@ public class EndpointHttpServerTest {
     sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    testId: ").append(toIndentedString(testId)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");

@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointAgentSelectorConfig;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointAgentToServerTest;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointHttpServerTest;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointIpVersionTemplate;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestAuthType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestProtocol;

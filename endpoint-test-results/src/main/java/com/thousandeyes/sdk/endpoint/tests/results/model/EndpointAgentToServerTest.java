@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointAgentSelectorConfig;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointIpVersionTemplate;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestProtocol;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestInterval;
@@ -48,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTest.JSON_PROPERTY_MODIFIED_DATE,
   EndpointAgentToServerTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   EndpointAgentToServerTest.JSON_PROPERTY_PROTOCOL,
+  EndpointAgentToServerTest.JSON_PROPERTY_IP_VERSION,
   EndpointAgentToServerTest.JSON_PROPERTY_SERVER,
   EndpointAgentToServerTest.JSON_PROPERTY_TEST_ID,
   EndpointAgentToServerTest.JSON_PROPERTY_TEST_NAME,
@@ -90,6 +92,9 @@ public class EndpointAgentToServerTest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
+
+  public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
+  private EndpointIpVersionTemplate ipVersion;
 
   public static final String JSON_PROPERTY_SERVER = "server";
   private String server;
@@ -378,6 +383,31 @@ public class EndpointAgentToServerTest {
   }
 
 
+  public EndpointAgentToServerTest ipVersion(EndpointIpVersionTemplate ipVersion) {
+    this.ipVersion = ipVersion;
+    return this;
+  }
+
+   /**
+   * Get ipVersion
+   * @return ipVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointIpVersionTemplate getIpVersion() {
+    return ipVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpVersion(EndpointIpVersionTemplate ipVersion) {
+    this.ipVersion = ipVersion;
+  }
+
+
   public EndpointAgentToServerTest server(String server) {
     this.server = server;
     return this;
@@ -546,6 +576,7 @@ public class EndpointAgentToServerTest {
         Objects.equals(this.modifiedDate, endpointAgentToServerTest.modifiedDate) &&
         Objects.equals(this.networkMeasurements, endpointAgentToServerTest.networkMeasurements) &&
         Objects.equals(this.protocol, endpointAgentToServerTest.protocol) &&
+        Objects.equals(this.ipVersion, endpointAgentToServerTest.ipVersion) &&
         Objects.equals(this.server, endpointAgentToServerTest.server) &&
         Objects.equals(this.testId, endpointAgentToServerTest.testId) &&
         Objects.equals(this.testName, endpointAgentToServerTest.testName) &&
@@ -557,7 +588,7 @@ public class EndpointAgentToServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, server, testId, testName, type, tcpProbeMode, port, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port, labels);
   }
 
   @Override
@@ -575,6 +606,7 @@ public class EndpointAgentToServerTest {
     sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    testId: ").append(toIndentedString(testId)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");

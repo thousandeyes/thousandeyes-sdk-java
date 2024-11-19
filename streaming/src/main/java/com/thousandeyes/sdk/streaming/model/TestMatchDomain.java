@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The domain of the test to match.
+ * The domain of the test to match.  &#x60;cea&#x60; - Cloud and Enterprise Agent  &#x60;endpoint&#x60; - Endpoint Agent
  */
 public enum TestMatchDomain {
   
