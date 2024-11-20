@@ -1,6 +1,6 @@
 /*
- * Dashboards API
- * Manage ThousandEyes Dashboards.
+ * Endpoint Tests API
+ *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.dashboards.model;
+package com.thousandeyes.sdk.endpoint.tests.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -22,33 +22,23 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Prefix denoting the unit of measurement for the fixed Y-axis scale.
+ * IP version the test should use for network tests.
  */
-public enum ApiWidgetFixedYScalePrefix {
+public enum EndpointIpVersionTemplate {
   
-  KBPS("Kbps"),
+  V4_ONLY("V4_ONLY"),
   
-  MBPS("Mbps"),
+  V6_ONLY("V6_ONLY"),
   
-  GBPS("Gbps"),
+  V6_PREFER("V6_PREFER"),
   
-  KBITPS("Kbitps"),
-  
-  MBITPS("Mbitps"),
-  
-  GBITPS("Gbitps"),
-  
-  KPPS("Kpps"),
-  
-  MPPS("Mpps"),
-  
-  GPPS("Gpps"),
+  OS_DEFAULT("OS_DEFAULT"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  ApiWidgetFixedYScalePrefix(String value) {
+  EndpointIpVersionTemplate(String value) {
     this.value = value;
   }
 
@@ -63,8 +53,8 @@ public enum ApiWidgetFixedYScalePrefix {
   }
 
   @JsonCreator
-  public static ApiWidgetFixedYScalePrefix fromValue(String value) {
-    for (ApiWidgetFixedYScalePrefix b : ApiWidgetFixedYScalePrefix.values()) {
+  public static EndpointIpVersionTemplate fromValue(String value) {
+    for (EndpointIpVersionTemplate b : EndpointIpVersionTemplate.values()) {
       if (b.value.equals(value)) {
         return b;
       }

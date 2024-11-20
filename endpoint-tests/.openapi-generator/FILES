@@ -30,6 +30,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointHttpServerTestRe
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointHttpServerTests.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointHttpTestUpdate.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointInstantTest.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointIpVersionTemplate.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointNetworkTestUpdate.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointScheduledTestType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointSpecificAgentsSelectorConfig.java

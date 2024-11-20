@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreatedAccountGroup.JSON_PROPERTY_IS_CURRENT_ACCOUNT_GROUP,
   CreatedAccountGroup.JSON_PROPERTY_IS_DEFAULT_ACCOUNT_GROUP,
   CreatedAccountGroup.JSON_PROPERTY_ORGANIZATION_NAME,
+  CreatedAccountGroup.JSON_PROPERTY_ORG_ID,
   CreatedAccountGroup.JSON_PROPERTY_USERS,
   CreatedAccountGroup.JSON_PROPERTY_LINKS
 })
@@ -56,6 +57,9 @@ public class CreatedAccountGroup {
 
   public static final String JSON_PROPERTY_ORGANIZATION_NAME = "organizationName";
   private String organizationName;
+
+  public static final String JSON_PROPERTY_ORG_ID = "orgId";
+  private String orgId;
 
   public static final String JSON_PROPERTY_USERS = "users";
   private List<UserAccountGroup> users = new ArrayList<>();
@@ -172,7 +176,7 @@ public class CreatedAccountGroup {
   }
 
    /**
-   * (Optional) Indicates whether the aid is the default one for the requesting user.
+   * (Optional) The name of the organization associated with the account group.
    * @return organizationName
   **/
   @jakarta.annotation.Nullable
@@ -188,6 +192,31 @@ public class CreatedAccountGroup {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOrganizationName(String organizationName) {
     this.organizationName = organizationName;
+  }
+
+
+  public CreatedAccountGroup orgId(String orgId) {
+    this.orgId = orgId;
+    return this;
+  }
+
+   /**
+   * (Optional) The ID for the organization associated with the account group.
+   * @return orgId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getOrgId() {
+    return orgId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOrgId(String orgId) {
+    this.orgId = orgId;
   }
 
 
@@ -266,13 +295,14 @@ public class CreatedAccountGroup {
         Objects.equals(this.isCurrentAccountGroup, createdAccountGroup.isCurrentAccountGroup) &&
         Objects.equals(this.isDefaultAccountGroup, createdAccountGroup.isDefaultAccountGroup) &&
         Objects.equals(this.organizationName, createdAccountGroup.organizationName) &&
+        Objects.equals(this.orgId, createdAccountGroup.orgId) &&
         Objects.equals(this.users, createdAccountGroup.users) &&
         Objects.equals(this.links, createdAccountGroup.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, accountGroupName, isCurrentAccountGroup, isDefaultAccountGroup, organizationName, users, links);
+    return Objects.hash(aid, accountGroupName, isCurrentAccountGroup, isDefaultAccountGroup, organizationName, orgId, users, links);
   }
 
   @Override
@@ -284,6 +314,7 @@ public class CreatedAccountGroup {
     sb.append("    isCurrentAccountGroup: ").append(toIndentedString(isCurrentAccountGroup)).append("\n");
     sb.append("    isDefaultAccountGroup: ").append(toIndentedString(isDefaultAccountGroup)).append("\n");
     sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
+    sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");

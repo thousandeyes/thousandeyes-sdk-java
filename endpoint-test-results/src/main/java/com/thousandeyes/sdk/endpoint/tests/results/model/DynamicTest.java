@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.DynamicTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointAgentSelectorConfig;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointIpVersionTemplate;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestProtocol;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestInterval;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestLabel;
@@ -50,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTest.JSON_PROPERTY_MODIFIED_DATE,
   DynamicTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   DynamicTest.JSON_PROPERTY_PROTOCOL,
+  DynamicTest.JSON_PROPERTY_IP_VERSION,
   DynamicTest.JSON_PROPERTY_TCP_PROBE_MODE,
   DynamicTest.JSON_PROPERTY_TEST_ID,
   DynamicTest.JSON_PROPERTY_TEST_NAME,
@@ -95,6 +97,9 @@ public class DynamicTest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
+
+  public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
+  private EndpointIpVersionTemplate ipVersion;
 
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
@@ -430,6 +435,31 @@ public class DynamicTest {
   }
 
 
+  public DynamicTest ipVersion(EndpointIpVersionTemplate ipVersion) {
+    this.ipVersion = ipVersion;
+    return this;
+  }
+
+   /**
+   * Get ipVersion
+   * @return ipVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointIpVersionTemplate getIpVersion() {
+    return ipVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpVersion(EndpointIpVersionTemplate ipVersion) {
+    this.ipVersion = ipVersion;
+  }
+
+
   public DynamicTest tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
     this.tcpProbeMode = tcpProbeMode;
     return this;
@@ -535,6 +565,7 @@ public class DynamicTest {
         Objects.equals(this.modifiedDate, dynamicTest.modifiedDate) &&
         Objects.equals(this.networkMeasurements, dynamicTest.networkMeasurements) &&
         Objects.equals(this.protocol, dynamicTest.protocol) &&
+        Objects.equals(this.ipVersion, dynamicTest.ipVersion) &&
         Objects.equals(this.tcpProbeMode, dynamicTest.tcpProbeMode) &&
         Objects.equals(this.testId, dynamicTest.testId) &&
         Objects.equals(this.testName, dynamicTest.testName) &&
@@ -543,7 +574,7 @@ public class DynamicTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, application, createdDate, interval, isEnabled, hasPathTraceInSession, hasPing, hasTraceroute, modifiedDate, networkMeasurements, protocol, tcpProbeMode, testId, testName, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, application, createdDate, interval, isEnabled, hasPathTraceInSession, hasPing, hasTraceroute, modifiedDate, networkMeasurements, protocol, ipVersion, tcpProbeMode, testId, testName, labels);
   }
 
   @Override
@@ -563,6 +594,7 @@ public class DynamicTest {
     sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
     sb.append("    testId: ").append(toIndentedString(testId)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");

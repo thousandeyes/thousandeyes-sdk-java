@@ -115,6 +115,7 @@ public class AccountGroupsApiTest {
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
                   "aid" : "1234",
+                  "orgId" : "12345",
                   "users" : [ {
                     "uid" : "235",
                     "lastLogin" : "2022-07-17T22:00:54Z",
@@ -233,6 +234,7 @@ public class AccountGroupsApiTest {
                   "isDefaultAccountGroup" : true,
                   "accountToken" : "6j052y4vfgyuhefghue",
                   "aid" : "1234",
+                  "orgId" : "12345",
                   "users" : [ {
                     "uid" : "235",
                     "lastLogin" : "2022-07-17T22:00:54Z",
@@ -476,13 +478,15 @@ public class AccountGroupsApiTest {
                     "organizationName" : "organizationName",
                     "accountGroupName" : "Account A",
                     "isDefaultAccountGroup" : true,
-                    "aid" : "1234"
+                    "aid" : "1234",
+                    "orgId" : "12345"
                   }, {
                     "isCurrentAccountGroup" : true,
                     "organizationName" : "organizationName",
                     "accountGroupName" : "Account A",
                     "isDefaultAccountGroup" : true,
-                    "aid" : "1234"
+                    "aid" : "1234",
+                    "orgId" : "12345"
                   } ]
                 }
                                   """;
@@ -548,6 +552,7 @@ public class AccountGroupsApiTest {
                   "isDefaultAccountGroup" : true,
                   "accountToken" : "6j052y4vfgyuhefghue",
                   "aid" : "1234",
+                  "orgId" : "12345",
                   "users" : [ {
                     "uid" : "235",
                     "lastLogin" : "2022-07-17T22:00:54Z",

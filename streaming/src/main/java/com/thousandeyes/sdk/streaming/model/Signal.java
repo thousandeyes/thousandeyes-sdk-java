@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The OpenTelemetry signal of the stream integration. When using &#x60;trace&#x60;:   - &#x60;dataModelVersion&#x60; must be &#x60;v2&#x60;.  Default: &#x60;metric&#x60;
+ * The OpenTelemetry signal of the stream integration. When using &#x60;trace&#x60;:   - &#x60;dataModelVersion&#x60; must be &#x60;v2&#x60;.
  */
 public enum Signal {
   
