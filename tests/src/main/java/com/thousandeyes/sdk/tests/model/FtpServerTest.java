@@ -70,6 +70,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FtpServerTest.JSON_PROPERTY_PATH_TRACE_MODE,
   FtpServerTest.JSON_PROPERTY_PROBE_MODE,
   FtpServerTest.JSON_PROPERTY_PROTOCOL,
+  FtpServerTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   FtpServerTest.JSON_PROPERTY_REQUEST_TYPE,
   FtpServerTest.JSON_PROPERTY_URL,
   FtpServerTest.JSON_PROPERTY_USE_ACTIVE_FTP,
@@ -166,6 +167,9 @@ public class FtpServerTest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_REQUEST_TYPE = "requestType";
   private FtpServerRequestType requestType;
@@ -842,6 +846,31 @@ public class FtpServerTest {
   }
 
 
+  public FtpServerTest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public FtpServerTest requestType(FtpServerRequestType requestType) {
     this.requestType = requestType;
     return this;
@@ -1124,6 +1153,7 @@ public class FtpServerTest {
         Objects.equals(this.pathTraceMode, ftpServerTest.pathTraceMode) &&
         Objects.equals(this.probeMode, ftpServerTest.probeMode) &&
         Objects.equals(this.protocol, ftpServerTest.protocol) &&
+        Objects.equals(this.randomizedStartTime, ftpServerTest.randomizedStartTime) &&
         Objects.equals(this.requestType, ftpServerTest.requestType) &&
         Objects.equals(this.url, ftpServerTest.url) &&
         Objects.equals(this.useActiveFtp, ftpServerTest.useActiveFtp) &&
@@ -1138,7 +1168,7 @@ public class FtpServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, randomizedStartTime, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1173,6 +1203,7 @@ public class FtpServerTest {
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    requestType: ").append(toIndentedString(requestType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    useActiveFtp: ").append(toIndentedString(useActiveFtp)).append("\n");

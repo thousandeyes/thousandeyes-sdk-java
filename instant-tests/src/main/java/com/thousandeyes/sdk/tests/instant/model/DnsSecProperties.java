@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DnsSecProperties.JSON_PROPERTY_DOMAIN,
   DnsSecProperties.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsSecProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
   DnsSecProperties.JSON_PROPERTY_TYPE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -39,6 +40,9 @@ public class DnsSecProperties {
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
@@ -104,6 +108,31 @@ public class DnsSecProperties {
   }
 
 
+  public DnsSecProperties randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
    /**
    * Get type
    * @return type
@@ -133,12 +162,13 @@ public class DnsSecProperties {
     DnsSecProperties dnsSecProperties = (DnsSecProperties) o;
     return Objects.equals(this.domain, dnsSecProperties.domain) &&
         Objects.equals(this.dnsQueryClass, dnsSecProperties.dnsQueryClass) &&
+        Objects.equals(this.randomizedStartTime, dnsSecProperties.randomizedStartTime) &&
         Objects.equals(this.type, dnsSecProperties.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(domain, dnsQueryClass, type);
+    return Objects.hash(domain, dnsQueryClass, randomizedStartTime, type);
   }
 
   @Override
@@ -147,6 +177,7 @@ public class DnsSecProperties {
     sb.append("class DnsSecProperties {\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();

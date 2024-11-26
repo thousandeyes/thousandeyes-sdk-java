@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FtpServerProperties.JSON_PROPERTY_PATH_TRACE_MODE,
   FtpServerProperties.JSON_PROPERTY_PROBE_MODE,
   FtpServerProperties.JSON_PROPERTY_PROTOCOL,
+  FtpServerProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
   FtpServerProperties.JSON_PROPERTY_REQUEST_TYPE,
   FtpServerProperties.JSON_PROPERTY_URL,
   FtpServerProperties.JSON_PROPERTY_USE_ACTIVE_FTP,
@@ -86,6 +87,9 @@ public class FtpServerProperties {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_REQUEST_TYPE = "requestType";
   private FtpServerRequestType requestType;
@@ -403,6 +407,31 @@ public class FtpServerProperties {
   }
 
 
+  public FtpServerProperties randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public FtpServerProperties requestType(FtpServerRequestType requestType) {
     this.requestType = requestType;
     return this;
@@ -618,6 +647,7 @@ public class FtpServerProperties {
         Objects.equals(this.pathTraceMode, ftpServerProperties.pathTraceMode) &&
         Objects.equals(this.probeMode, ftpServerProperties.probeMode) &&
         Objects.equals(this.protocol, ftpServerProperties.protocol) &&
+        Objects.equals(this.randomizedStartTime, ftpServerProperties.randomizedStartTime) &&
         Objects.equals(this.requestType, ftpServerProperties.requestType) &&
         Objects.equals(this.url, ftpServerProperties.url) &&
         Objects.equals(this.useActiveFtp, ftpServerProperties.useActiveFtp) &&
@@ -630,7 +660,7 @@ public class FtpServerProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, type);
+    return Objects.hash(bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, randomizedStartTime, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, type);
   }
 
   @Override
@@ -648,6 +678,7 @@ public class FtpServerProperties {
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    requestType: ").append(toIndentedString(requestType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    useActiveFtp: ").append(toIndentedString(useActiveFtp)).append("\n");

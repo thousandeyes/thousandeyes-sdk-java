@@ -49,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsSecInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsSecInstantTestRequest.JSON_PROPERTY_DOMAIN,
   DnsSecInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsSecInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   DnsSecInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -97,6 +98,9 @@ public class DnsSecInstantTestRequest {
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -437,6 +441,31 @@ public class DnsSecInstantTestRequest {
   }
 
 
+  public DnsSecInstantTestRequest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public DnsSecInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -497,12 +526,13 @@ public class DnsSecInstantTestRequest {
         Objects.equals(this.sharedWithAccounts, dnsSecInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.domain, dnsSecInstantTestRequest.domain) &&
         Objects.equals(this.dnsQueryClass, dnsSecInstantTestRequest.dnsQueryClass) &&
+        Objects.equals(this.randomizedStartTime, dnsSecInstantTestRequest.randomizedStartTime) &&
         Objects.equals(this.agents, dnsSecInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, domain, dnsQueryClass, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, domain, dnsQueryClass, randomizedStartTime, agents);
   }
 
   @Override
@@ -524,6 +554,7 @@ public class DnsSecInstantTestRequest {
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

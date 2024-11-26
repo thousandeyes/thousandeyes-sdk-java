@@ -64,6 +64,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedApiTest.JSON_PROPERTY_PREDEFINED_VARIABLES,
   UnexpandedApiTest.JSON_PROPERTY_PROBE_MODE,
   UnexpandedApiTest.JSON_PROPERTY_PROTOCOL,
+  UnexpandedApiTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   UnexpandedApiTest.JSON_PROPERTY_REQUESTS,
   UnexpandedApiTest.JSON_PROPERTY_SSL_VERSION_ID,
   UnexpandedApiTest.JSON_PROPERTY_TARGET_TIME,
@@ -148,6 +149,9 @@ public class UnexpandedApiTest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_REQUESTS = "requests";
   private List<ApiRequest> requests = new ArrayList<>();
@@ -750,6 +754,31 @@ public class UnexpandedApiTest {
   }
 
 
+  public UnexpandedApiTest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public UnexpandedApiTest requests(List<ApiRequest> requests) {
     this.requests = requests;
     return this;
@@ -974,6 +1003,7 @@ public class UnexpandedApiTest {
         Objects.equals(this.predefinedVariables, unexpandedApiTest.predefinedVariables) &&
         Objects.equals(this.probeMode, unexpandedApiTest.probeMode) &&
         Objects.equals(this.protocol, unexpandedApiTest.protocol) &&
+        Objects.equals(this.randomizedStartTime, unexpandedApiTest.randomizedStartTime) &&
         Objects.equals(this.requests, unexpandedApiTest.requests) &&
         Objects.equals(this.sslVersionId, unexpandedApiTest.sslVersionId) &&
         Objects.equals(this.targetTime, unexpandedApiTest.targetTime) &&
@@ -985,7 +1015,7 @@ public class UnexpandedApiTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -1017,6 +1047,7 @@ public class UnexpandedApiTest {
     sb.append("    predefinedVariables: ").append(toIndentedString(predefinedVariables)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    requests: ").append(toIndentedString(requests)).append("\n");
     sb.append("    sslVersionId: ").append(toIndentedString(sslVersionId)).append("\n");
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");

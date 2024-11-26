@@ -63,6 +63,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTestRequest.JSON_PROPERTY_PREDEFINED_VARIABLES,
   ApiInstantTestRequest.JSON_PROPERTY_PROBE_MODE,
   ApiInstantTestRequest.JSON_PROPERTY_PROTOCOL,
+  ApiInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   ApiInstantTestRequest.JSON_PROPERTY_REQUESTS,
   ApiInstantTestRequest.JSON_PROPERTY_SSL_VERSION_ID,
   ApiInstantTestRequest.JSON_PROPERTY_TARGET_TIME,
@@ -144,6 +145,9 @@ public class ApiInstantTestRequest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_REQUESTS = "requests";
   private List<ApiRequest> requests = new ArrayList<>();
@@ -737,6 +741,31 @@ public class ApiInstantTestRequest {
   }
 
 
+  public ApiInstantTestRequest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public ApiInstantTestRequest requests(List<ApiRequest> requests) {
     this.requests = requests;
     return this;
@@ -976,6 +1005,7 @@ public class ApiInstantTestRequest {
         Objects.equals(this.predefinedVariables, apiInstantTestRequest.predefinedVariables) &&
         Objects.equals(this.probeMode, apiInstantTestRequest.probeMode) &&
         Objects.equals(this.protocol, apiInstantTestRequest.protocol) &&
+        Objects.equals(this.randomizedStartTime, apiInstantTestRequest.randomizedStartTime) &&
         Objects.equals(this.requests, apiInstantTestRequest.requests) &&
         Objects.equals(this.sslVersionId, apiInstantTestRequest.sslVersionId) &&
         Objects.equals(this.targetTime, apiInstantTestRequest.targetTime) &&
@@ -987,7 +1017,7 @@ public class ApiInstantTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, credentials, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, agents);
   }
 
   @Override
@@ -1018,6 +1048,7 @@ public class ApiInstantTestRequest {
     sb.append("    predefinedVariables: ").append(toIndentedString(predefinedVariables)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    requests: ").append(toIndentedString(requests)).append("\n");
     sb.append("    sslVersionId: ").append(toIndentedString(sslVersionId)).append("\n");
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");

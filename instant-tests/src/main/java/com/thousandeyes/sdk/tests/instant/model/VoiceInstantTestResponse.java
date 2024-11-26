@@ -57,6 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceInstantTestResponse.JSON_PROPERTY_JITTER_BUFFER,
   VoiceInstantTestResponse.JSON_PROPERTY_NUM_PATH_TRACES,
   VoiceInstantTestResponse.JSON_PROPERTY_PORT,
+  VoiceInstantTestResponse.JSON_PROPERTY_RANDOMIZED_START_TIME,
   VoiceInstantTestResponse.JSON_PROPERTY_TARGET_AGENT_ID,
   VoiceInstantTestResponse.JSON_PROPERTY_AGENTS
 })
@@ -124,6 +125,9 @@ public class VoiceInstantTestResponse {
 
   public static final String JSON_PROPERTY_PORT = "port";
   private Integer port;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
@@ -577,6 +581,31 @@ public class VoiceInstantTestResponse {
   }
 
 
+  public VoiceInstantTestResponse randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public VoiceInstantTestResponse targetAgentId(String targetAgentId) {
     this.targetAgentId = targetAgentId;
     return this;
@@ -668,13 +697,14 @@ public class VoiceInstantTestResponse {
         Objects.equals(this.jitterBuffer, voiceInstantTestResponse.jitterBuffer) &&
         Objects.equals(this.numPathTraces, voiceInstantTestResponse.numPathTraces) &&
         Objects.equals(this.port, voiceInstantTestResponse.port) &&
+        Objects.equals(this.randomizedStartTime, voiceInstantTestResponse.randomizedStartTime) &&
         Objects.equals(this.targetAgentId, voiceInstantTestResponse.targetAgentId) &&
         Objects.equals(this.agents, voiceInstantTestResponse.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, targetAgentId, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, randomizedStartTime, targetAgentId, agents);
   }
 
   @Override
@@ -702,6 +732,7 @@ public class VoiceInstantTestResponse {
     sb.append("    jitterBuffer: ").append(toIndentedString(jitterBuffer)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");

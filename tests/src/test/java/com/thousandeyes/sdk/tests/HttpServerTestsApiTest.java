@@ -133,6 +133,7 @@ public class HttpServerTestsApiTest {
                     "ipAddress" : "192.1.1.0"
                   },
                   "labels" : [ "9842", "1283" ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "sharedWithAccounts" : [ "1234", "12345" ],
@@ -254,6 +255,7 @@ public class HttpServerTestsApiTest {
                     "name" : "Artem label",
                     "isBuiltin" : false
                   } ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "sharedWithAccounts" : [ {
@@ -497,6 +499,7 @@ public class HttpServerTestsApiTest {
                     "name" : "Artem label",
                     "isBuiltin" : false
                   } ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "sharedWithAccounts" : [ {
@@ -703,6 +706,7 @@ public class HttpServerTestsApiTest {
                       "agentId" : "2954",
                       "ipAddress" : "192.1.1.0"
                     },
+                    "randomizedStartTime" : false,
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
                     "overrideProxyId" : "281474976710706",
@@ -797,6 +801,7 @@ public class HttpServerTestsApiTest {
                       "agentId" : "2954",
                       "ipAddress" : "192.1.1.0"
                     },
+                    "randomizedStartTime" : false,
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
                     "overrideProxyId" : "281474976710706",
@@ -939,6 +944,7 @@ public class HttpServerTestsApiTest {
                     "ipAddress" : "192.1.1.0"
                   },
                   "labels" : [ "9842", "1283" ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "sharedWithAccounts" : [ "1234", "12345" ],
@@ -1060,6 +1066,7 @@ public class HttpServerTestsApiTest {
                     "name" : "Artem label",
                     "isBuiltin" : false
                   } ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "sharedWithAccounts" : [ {

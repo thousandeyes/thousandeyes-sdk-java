@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.results.model.ApiRequestDetailAssertion;
+import com.thousandeyes.sdk.tests.results.model.ApiRequestStepType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiRequestDetail.JSON_PROPERTY_SEND_TIME,
   ApiRequestDetail.JSON_PROPERTY_STEP_NUMBER,
   ApiRequestDetail.JSON_PROPERTY_STEP_TIME,
+  ApiRequestDetail.JSON_PROPERTY_STEP_TYPE,
   ApiRequestDetail.JSON_PROPERTY_URL,
   ApiRequestDetail.JSON_PROPERTY_WAIT_TIME,
   ApiRequestDetail.JSON_PROPERTY_ASSERTIONS
@@ -88,6 +90,9 @@ public class ApiRequestDetail {
 
   public static final String JSON_PROPERTY_STEP_TIME = "stepTime";
   private Float stepTime;
+
+  public static final String JSON_PROPERTY_STEP_TYPE = "stepType";
+  private ApiRequestStepType stepType;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
@@ -426,6 +431,31 @@ public class ApiRequestDetail {
   }
 
 
+  public ApiRequestDetail stepType(ApiRequestStepType stepType) {
+    this.stepType = stepType;
+    return this;
+  }
+
+   /**
+   * Get stepType
+   * @return stepType
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STEP_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ApiRequestStepType getStepType() {
+    return stepType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STEP_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStepType(ApiRequestStepType stepType) {
+    this.stepType = stepType;
+  }
+
+
   public ApiRequestDetail url(String url) {
     this.url = url;
     return this;
@@ -534,6 +564,7 @@ public class ApiRequestDetail {
         Objects.equals(this.sendTime, apiRequestDetail.sendTime) &&
         Objects.equals(this.stepNumber, apiRequestDetail.stepNumber) &&
         Objects.equals(this.stepTime, apiRequestDetail.stepTime) &&
+        Objects.equals(this.stepType, apiRequestDetail.stepType) &&
         Objects.equals(this.url, apiRequestDetail.url) &&
         Objects.equals(this.waitTime, apiRequestDetail.waitTime) &&
         Objects.equals(this.assertions, apiRequestDetail.assertions);
@@ -541,7 +572,7 @@ public class ApiRequestDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiCallTime, assertErrorCount, blockedTime, connectTime, completion, dnsTime, name, processingTime, receiveTime, responseTime, sendTime, stepNumber, stepTime, url, waitTime, assertions);
+    return Objects.hash(apiCallTime, assertErrorCount, blockedTime, connectTime, completion, dnsTime, name, processingTime, receiveTime, responseTime, sendTime, stepNumber, stepTime, stepType, url, waitTime, assertions);
   }
 
   @Override
@@ -561,6 +592,7 @@ public class ApiRequestDetail {
     sb.append("    sendTime: ").append(toIndentedString(sendTime)).append("\n");
     sb.append("    stepNumber: ").append(toIndentedString(stepNumber)).append("\n");
     sb.append("    stepTime: ").append(toIndentedString(stepTime)).append("\n");
+    sb.append("    stepType: ").append(toIndentedString(stepType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    waitTime: ").append(toIndentedString(waitTime)).append("\n");
     sb.append("    assertions: ").append(toIndentedString(assertions)).append("\n");

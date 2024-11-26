@@ -98,6 +98,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedWebTransactionTest.JSON_PROPERTY_ALLOW_GEOLOCATION,
   UnexpandedWebTransactionTest.JSON_PROPERTY_BROWSER_LANGUAGE,
   UnexpandedWebTransactionTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
+  UnexpandedWebTransactionTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   UnexpandedWebTransactionTest.JSON_PROPERTY_SUBINTERVAL,
   UnexpandedWebTransactionTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   UnexpandedWebTransactionTest.JSON_PROPERTY_USE_PUBLIC_BGP
@@ -277,6 +278,9 @@ public class UnexpandedWebTransactionTest {
 
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_SUBINTERVAL = "subinterval";
   private TestSubInterval subinterval;
@@ -1688,6 +1692,31 @@ public class UnexpandedWebTransactionTest {
   }
 
 
+  public UnexpandedWebTransactionTest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public UnexpandedWebTransactionTest subinterval(TestSubInterval subinterval) {
     this.subinterval = subinterval;
     return this;
@@ -1833,6 +1862,7 @@ public class UnexpandedWebTransactionTest {
         Objects.equals(this.allowGeolocation, unexpandedWebTransactionTest.allowGeolocation) &&
         Objects.equals(this.browserLanguage, unexpandedWebTransactionTest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, unexpandedWebTransactionTest.pageLoadingStrategy) &&
+        Objects.equals(this.randomizedStartTime, unexpandedWebTransactionTest.randomizedStartTime) &&
         Objects.equals(this.subinterval, unexpandedWebTransactionTest.subinterval) &&
         Objects.equals(this.bgpMeasurements, unexpandedWebTransactionTest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, unexpandedWebTransactionTest.usePublicBgp);
@@ -1840,7 +1870,7 @@ public class UnexpandedWebTransactionTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, subinterval, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, subinterval, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -1905,6 +1935,7 @@ public class UnexpandedWebTransactionTest {
     sb.append("    allowGeolocation: ").append(toIndentedString(allowGeolocation)).append("\n");
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");

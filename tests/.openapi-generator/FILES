@@ -52,6 +52,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/AlertDirection.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRoundsViolationMode.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRule.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertType.java
+src/main/java/com/thousandeyes/sdk/tests/model/ApiClientAuthentication.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiPredefinedVariable.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiProperties.java

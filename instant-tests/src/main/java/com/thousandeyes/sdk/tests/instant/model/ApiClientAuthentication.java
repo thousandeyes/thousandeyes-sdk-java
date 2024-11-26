@@ -22,23 +22,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Will override the Authorization request header.
+ * The OAuth2 client authentication location type.
  */
-public enum ApiRequestAuthType {
+public enum ApiClientAuthentication {
   
-  NONE("none"),
+  BASIC_AUTH_HEADER("basic-auth-header"),
   
-  BASIC("basic"),
-  
-  BEARER_TOKEN("bearer-token"),
-  
-  OAUTH2("oauth2"),
+  IN_BODY("in-body"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  ApiRequestAuthType(String value) {
+  ApiClientAuthentication(String value) {
     this.value = value;
   }
 
@@ -53,8 +49,8 @@ public enum ApiRequestAuthType {
   }
 
   @JsonCreator
-  public static ApiRequestAuthType fromValue(String value) {
-    for (ApiRequestAuthType b : ApiRequestAuthType.values()) {
+  public static ApiClientAuthentication fromValue(String value) {
+    for (ApiClientAuthentication b : ApiClientAuthentication.values()) {
       if (b.value.equals(value)) {
         return b;
       }

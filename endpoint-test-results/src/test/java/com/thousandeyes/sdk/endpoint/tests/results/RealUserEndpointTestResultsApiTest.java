@@ -526,11 +526,11 @@ public class RealUserEndpointTestResultsApiTest {
                     "log" : {
                       "browser" : {
                         "name" : "Google Chrome",
-                        "version" : "7.0.28.98"
+                        "version" : "7.0.29.98"
                       },
                       "creator" : {
                         "name" : "ThousandEyes Endpoint Agent",
-                        "version" : "7.0.28"
+                        "version" : "7.0.29"
                       },
                       "entries" : [ {
                         "pageref" : "page_1",

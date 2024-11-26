@@ -95,6 +95,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerTestRequest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   HttpServerTestRequest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
   HttpServerTestRequest.JSON_PROPERTY_HEADERS,
+  HttpServerTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   HttpServerTestRequest.JSON_PROPERTY_POST_BODY,
   HttpServerTestRequest.JSON_PROPERTY_IPV6_POLICY,
   HttpServerTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
@@ -259,6 +260,9 @@ public class HttpServerTestRequest {
 
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private List<String> headers = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -1557,6 +1561,31 @@ public class HttpServerTestRequest {
   }
 
 
+  public HttpServerTestRequest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public HttpServerTestRequest postBody(String postBody) {
     this.postBody = postBody;
     return this;
@@ -1787,6 +1816,7 @@ public class HttpServerTestRequest {
         Objects.equals(this.overrideProxyId, httpServerTestRequest.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, httpServerTestRequest.collectProxyNetworkData) &&
         Objects.equals(this.headers, httpServerTestRequest.headers) &&
+        Objects.equals(this.randomizedStartTime, httpServerTestRequest.randomizedStartTime) &&
         Objects.equals(this.postBody, httpServerTestRequest.postBody) &&
         Objects.equals(this.ipv6Policy, httpServerTestRequest.ipv6Policy) &&
         Objects.equals(this.bgpMeasurements, httpServerTestRequest.bgpMeasurements) &&
@@ -1797,7 +1827,7 @@ public class HttpServerTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, postBody, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, agents);
   }
 
   @Override
@@ -1856,6 +1886,7 @@ public class HttpServerTestRequest {
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");

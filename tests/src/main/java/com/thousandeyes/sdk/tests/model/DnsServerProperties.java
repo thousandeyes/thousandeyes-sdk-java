@@ -47,6 +47,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerProperties.JSON_PROPERTY_PATH_TRACE_MODE,
   DnsServerProperties.JSON_PROPERTY_PROBE_MODE,
   DnsServerProperties.JSON_PROPERTY_PROTOCOL,
+  DnsServerProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
   DnsServerProperties.JSON_PROPERTY_RECURSIVE_QUERIES,
   DnsServerProperties.JSON_PROPERTY_IPV6_POLICY,
   DnsServerProperties.JSON_PROPERTY_FIXED_PACKET_RATE,
@@ -84,6 +85,9 @@ public class DnsServerProperties {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_RECURSIVE_QUERIES = "recursiveQueries";
   private Boolean recursiveQueries;
@@ -371,6 +375,31 @@ public class DnsServerProperties {
   }
 
 
+  public DnsServerProperties randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public DnsServerProperties recursiveQueries(Boolean recursiveQueries) {
     this.recursiveQueries = recursiveQueries;
     return this;
@@ -510,6 +539,7 @@ public class DnsServerProperties {
         Objects.equals(this.pathTraceMode, dnsServerProperties.pathTraceMode) &&
         Objects.equals(this.probeMode, dnsServerProperties.probeMode) &&
         Objects.equals(this.protocol, dnsServerProperties.protocol) &&
+        Objects.equals(this.randomizedStartTime, dnsServerProperties.randomizedStartTime) &&
         Objects.equals(this.recursiveQueries, dnsServerProperties.recursiveQueries) &&
         Objects.equals(this.ipv6Policy, dnsServerProperties.ipv6Policy) &&
         Objects.equals(this.fixedPacketRate, dnsServerProperties.fixedPacketRate) &&
@@ -519,7 +549,7 @@ public class DnsServerProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, type);
+    return Objects.hash(bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, type);
   }
 
   @Override
@@ -536,6 +566,7 @@ public class DnsServerProperties {
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    recursiveQueries: ").append(toIndentedString(recursiveQueries)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
