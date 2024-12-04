@@ -72,6 +72,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerTestResponse.JSON_PROPERTY_PATH_TRACE_MODE,
   DnsServerTestResponse.JSON_PROPERTY_PROBE_MODE,
   DnsServerTestResponse.JSON_PROPERTY_PROTOCOL,
+  DnsServerTestResponse.JSON_PROPERTY_RANDOMIZED_START_TIME,
   DnsServerTestResponse.JSON_PROPERTY_RECURSIVE_QUERIES,
   DnsServerTestResponse.JSON_PROPERTY_IPV6_POLICY,
   DnsServerTestResponse.JSON_PROPERTY_FIXED_PACKET_RATE,
@@ -163,6 +164,9 @@ public class DnsServerTestResponse {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_RECURSIVE_QUERIES = "recursiveQueries";
   private Boolean recursiveQueries;
@@ -812,6 +816,31 @@ public class DnsServerTestResponse {
   }
 
 
+  public DnsServerTestResponse randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public DnsServerTestResponse recursiveQueries(Boolean recursiveQueries) {
     this.recursiveQueries = recursiveQueries;
     return this;
@@ -1051,6 +1080,7 @@ public class DnsServerTestResponse {
         Objects.equals(this.pathTraceMode, dnsServerTestResponse.pathTraceMode) &&
         Objects.equals(this.probeMode, dnsServerTestResponse.probeMode) &&
         Objects.equals(this.protocol, dnsServerTestResponse.protocol) &&
+        Objects.equals(this.randomizedStartTime, dnsServerTestResponse.randomizedStartTime) &&
         Objects.equals(this.recursiveQueries, dnsServerTestResponse.recursiveQueries) &&
         Objects.equals(this.ipv6Policy, dnsServerTestResponse.ipv6Policy) &&
         Objects.equals(this.fixedPacketRate, dnsServerTestResponse.fixedPacketRate) &&
@@ -1063,7 +1093,7 @@ public class DnsServerTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors, agents);
   }
 
   @Override
@@ -1097,6 +1127,7 @@ public class DnsServerTestResponse {
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    recursiveQueries: ").append(toIndentedString(recursiveQueries)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");

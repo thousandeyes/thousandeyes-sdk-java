@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentProperties.JSON_PROPERTY_PATH_TRACE_MODE,
   AgentToAgentProperties.JSON_PROPERTY_PORT,
   AgentToAgentProperties.JSON_PROPERTY_PROTOCOL,
+  AgentToAgentProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
   AgentToAgentProperties.JSON_PROPERTY_TARGET_AGENT_ID,
   AgentToAgentProperties.JSON_PROPERTY_THROUGHPUT_MEASUREMENTS,
   AgentToAgentProperties.JSON_PROPERTY_THROUGHPUT_DURATION,
@@ -71,6 +72,9 @@ public class AgentToAgentProperties {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private AgentToAgentTestProtocol protocol = AgentToAgentTestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
@@ -299,6 +303,31 @@ public class AgentToAgentProperties {
   }
 
 
+  public AgentToAgentProperties randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public AgentToAgentProperties targetAgentId(String targetAgentId) {
     this.targetAgentId = targetAgentId;
     return this;
@@ -465,6 +494,7 @@ public class AgentToAgentProperties {
         Objects.equals(this.pathTraceMode, agentToAgentProperties.pathTraceMode) &&
         Objects.equals(this.port, agentToAgentProperties.port) &&
         Objects.equals(this.protocol, agentToAgentProperties.protocol) &&
+        Objects.equals(this.randomizedStartTime, agentToAgentProperties.randomizedStartTime) &&
         Objects.equals(this.targetAgentId, agentToAgentProperties.targetAgentId) &&
         Objects.equals(this.throughputMeasurements, agentToAgentProperties.throughputMeasurements) &&
         Objects.equals(this.throughputDuration, agentToAgentProperties.throughputDuration) &&
@@ -475,7 +505,7 @@ public class AgentToAgentProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, type);
+    return Objects.hash(direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, randomizedStartTime, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, type);
   }
 
   @Override
@@ -490,6 +520,7 @@ public class AgentToAgentProperties {
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
     sb.append("    throughputMeasurements: ").append(toIndentedString(throughputMeasurements)).append("\n");
     sb.append("    throughputDuration: ").append(toIndentedString(throughputDuration)).append("\n");

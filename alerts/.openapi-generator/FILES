@@ -11,6 +11,7 @@ src/main/java/com/thousandeyes/sdk/alerts/AlertsApi.java
 src/main/java/com/thousandeyes/sdk/alerts/model/Alert.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertDetail.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertDirection.java
+src/main/java/com/thousandeyes/sdk/alerts/model/AlertGroupType.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertLinks.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertMeta.java
 src/main/java/com/thousandeyes/sdk/alerts/model/AlertMetricDetail.java

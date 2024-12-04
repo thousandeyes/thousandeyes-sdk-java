@@ -68,6 +68,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerTest.JSON_PROPERTY_PORT,
   AgentToServerTest.JSON_PROPERTY_PROBE_MODE,
   AgentToServerTest.JSON_PROPERTY_PROTOCOL,
+  AgentToServerTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   AgentToServerTest.JSON_PROPERTY_SERVER,
   AgentToServerTest.JSON_PROPERTY_DSCP,
   AgentToServerTest.JSON_PROPERTY_DSCP_ID,
@@ -157,6 +158,9 @@ public class AgentToServerTest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_SERVER = "server";
   private String server;
@@ -782,6 +786,31 @@ public class AgentToServerTest {
   }
 
 
+  public AgentToServerTest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public AgentToServerTest server(String server) {
     this.server = server;
     return this;
@@ -1027,6 +1056,7 @@ public class AgentToServerTest {
         Objects.equals(this.port, agentToServerTest.port) &&
         Objects.equals(this.probeMode, agentToServerTest.probeMode) &&
         Objects.equals(this.protocol, agentToServerTest.protocol) &&
+        Objects.equals(this.randomizedStartTime, agentToServerTest.randomizedStartTime) &&
         Objects.equals(this.server, agentToServerTest.server) &&
         Objects.equals(this.dscp, agentToServerTest.dscp) &&
         Objects.equals(this.dscpId, agentToServerTest.dscpId) &&
@@ -1040,7 +1070,7 @@ public class AgentToServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1073,6 +1103,7 @@ public class AgentToServerTest {
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    dscp: ").append(toIndentedString(dscp)).append("\n");
     sb.append("    dscpId: ").append(toIndentedString(dscpId)).append("\n");

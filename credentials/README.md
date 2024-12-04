@@ -2,7 +2,7 @@
 
 Credentials API
 
-- API version: 7.0.28
+- API version: 7.0.29
 
 Manage credentials for transaction tests using the Credentials API.
 

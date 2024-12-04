@@ -74,6 +74,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerProperties.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   HttpServerProperties.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
   HttpServerProperties.JSON_PROPERTY_HEADERS,
+  HttpServerProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
   HttpServerProperties.JSON_PROPERTY_POST_BODY,
   HttpServerProperties.JSON_PROPERTY_IPV6_POLICY,
   HttpServerProperties.JSON_PROPERTY_TYPE
@@ -184,6 +185,9 @@ public class HttpServerProperties {
 
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private List<String> headers = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -1090,6 +1094,31 @@ public class HttpServerProperties {
   }
 
 
+  public HttpServerProperties randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public HttpServerProperties postBody(String postBody) {
     this.postBody = postBody;
     return this;
@@ -1202,6 +1231,7 @@ public class HttpServerProperties {
         Objects.equals(this.overrideProxyId, httpServerProperties.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, httpServerProperties.collectProxyNetworkData) &&
         Objects.equals(this.headers, httpServerProperties.headers) &&
+        Objects.equals(this.randomizedStartTime, httpServerProperties.randomizedStartTime) &&
         Objects.equals(this.postBody, httpServerProperties.postBody) &&
         Objects.equals(this.ipv6Policy, httpServerProperties.ipv6Policy) &&
         Objects.equals(this.type, httpServerProperties.type);
@@ -1209,7 +1239,7 @@ public class HttpServerProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, postBody, ipv6Policy, type);
+    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, type);
   }
 
   @Override
@@ -1251,6 +1281,7 @@ public class HttpServerProperties {
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

@@ -30,6 +30,7 @@ src/main/java/com/thousandeyes/sdk/tests/results/model/ApiDetailTestResult.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/ApiDetailTestResults.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/ApiRequestDetail.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/ApiRequestDetailAssertion.java
+src/main/java/com/thousandeyes/sdk/tests/results/model/ApiRequestStepType.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/ApiTestResult.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/ApiTestResults.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/AppLinks.java

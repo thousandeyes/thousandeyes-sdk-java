@@ -137,6 +137,7 @@ public class PageLoadTestsApiTest {
                   },
                   "labels" : [ "9842", "1283" ],
                   "httpInterval" : 120,
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",
@@ -266,6 +267,7 @@ public class PageLoadTestsApiTest {
                     "isBuiltin" : false
                   } ],
                   "httpInterval" : 120,
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",
@@ -517,6 +519,7 @@ public class PageLoadTestsApiTest {
                     "isBuiltin" : false
                   } ],
                   "httpInterval" : 120,
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",
@@ -731,6 +734,7 @@ public class PageLoadTestsApiTest {
                       "ipAddress" : "192.1.1.0"
                     },
                     "httpInterval" : 120,
+                    "randomizedStartTime" : false,
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
                     "emulatedDeviceId" : "2",
@@ -833,6 +837,7 @@ public class PageLoadTestsApiTest {
                       "ipAddress" : "192.1.1.0"
                     },
                     "httpInterval" : 120,
+                    "randomizedStartTime" : false,
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
                     "emulatedDeviceId" : "2",
@@ -983,6 +988,7 @@ public class PageLoadTestsApiTest {
                   },
                   "labels" : [ "9842", "1283" ],
                   "httpInterval" : 120,
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",
@@ -1112,6 +1118,7 @@ public class PageLoadTestsApiTest {
                     "isBuiltin" : false
                   } ],
                   "httpInterval" : 120,
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",

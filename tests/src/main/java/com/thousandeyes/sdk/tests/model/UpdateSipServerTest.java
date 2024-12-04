@@ -64,6 +64,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateSipServerTest.JSON_PROPERTY_OPTIONS_REGEX,
   UpdateSipServerTest.JSON_PROPERTY_PATH_TRACE_MODE,
   UpdateSipServerTest.JSON_PROPERTY_PROBE_MODE,
+  UpdateSipServerTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   UpdateSipServerTest.JSON_PROPERTY_REGISTER_ENABLED,
   UpdateSipServerTest.JSON_PROPERTY_SIP_TARGET_TIME,
   UpdateSipServerTest.JSON_PROPERTY_SIP_TIME_LIMIT,
@@ -144,6 +145,9 @@ public class UpdateSipServerTest {
 
   public static final String JSON_PROPERTY_PROBE_MODE = "probeMode";
   private TestProbeMode probeMode = TestProbeMode.AUTO;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_REGISTER_ENABLED = "registerEnabled";
   private Boolean registerEnabled = false;
@@ -688,6 +692,31 @@ public class UpdateSipServerTest {
   }
 
 
+  public UpdateSipServerTest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public UpdateSipServerTest registerEnabled(Boolean registerEnabled) {
     this.registerEnabled = registerEnabled;
     return this;
@@ -944,6 +973,7 @@ public class UpdateSipServerTest {
         Objects.equals(this.optionsRegex, updateSipServerTest.optionsRegex) &&
         Objects.equals(this.pathTraceMode, updateSipServerTest.pathTraceMode) &&
         Objects.equals(this.probeMode, updateSipServerTest.probeMode) &&
+        Objects.equals(this.randomizedStartTime, updateSipServerTest.randomizedStartTime) &&
         Objects.equals(this.registerEnabled, updateSipServerTest.registerEnabled) &&
         Objects.equals(this.sipTargetTime, updateSipServerTest.sipTargetTime) &&
         Objects.equals(this.sipTimeLimit, updateSipServerTest.sipTimeLimit) &&
@@ -957,7 +987,7 @@ public class UpdateSipServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, targetSipCredentials);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, targetSipCredentials);
   }
 
   @Override
@@ -987,6 +1017,7 @@ public class UpdateSipServerTest {
     sb.append("    optionsRegex: ").append(toIndentedString(optionsRegex)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    registerEnabled: ").append(toIndentedString(registerEnabled)).append("\n");
     sb.append("    sipTargetTime: ").append(toIndentedString(sipTargetTime)).append("\n");
     sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");

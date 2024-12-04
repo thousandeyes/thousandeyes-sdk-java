@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.alerts.model.AlertDirection;
+import com.thousandeyes.sdk.alerts.model.AlertGroupType;
 import com.thousandeyes.sdk.alerts.model.AlertNotification;
 import com.thousandeyes.sdk.alerts.model.AlertRoundsViolationMode;
 import com.thousandeyes.sdk.alerts.model.AlertType;
@@ -44,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Rule.JSON_PROPERTY_NOTIFY_ON_CLEAR,
   Rule.JSON_PROPERTY_IS_DEFAULT,
   Rule.JSON_PROPERTY_ALERT_TYPE,
+  Rule.JSON_PROPERTY_ALERT_GROUP_TYPE,
   Rule.JSON_PROPERTY_MINIMUM_SOURCES,
   Rule.JSON_PROPERTY_MINIMUM_SOURCES_PCT,
   Rule.JSON_PROPERTY_ROUNDS_VIOLATING_MODE,
@@ -78,6 +80,9 @@ public class Rule {
 
   public static final String JSON_PROPERTY_ALERT_TYPE = "alertType";
   private AlertType alertType;
+
+  public static final String JSON_PROPERTY_ALERT_GROUP_TYPE = "alertGroupType";
+  private AlertGroupType alertGroupType;
 
   public static final String JSON_PROPERTY_MINIMUM_SOURCES = "minimumSources";
   private Integer minimumSources;
@@ -285,6 +290,31 @@ public class Rule {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAlertType(AlertType alertType) {
     this.alertType = alertType;
+  }
+
+
+  public Rule alertGroupType(AlertGroupType alertGroupType) {
+    this.alertGroupType = alertGroupType;
+    return this;
+  }
+
+   /**
+   * Get alertGroupType
+   * @return alertGroupType
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_GROUP_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public AlertGroupType getAlertGroupType() {
+    return alertGroupType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_GROUP_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertGroupType(AlertGroupType alertGroupType) {
+    this.alertGroupType = alertGroupType;
   }
 
 
@@ -590,6 +620,7 @@ public class Rule {
         Objects.equals(this.notifyOnClear, rule.notifyOnClear) &&
         Objects.equals(this.isDefault, rule.isDefault) &&
         Objects.equals(this.alertType, rule.alertType) &&
+        Objects.equals(this.alertGroupType, rule.alertGroupType) &&
         Objects.equals(this.minimumSources, rule.minimumSources) &&
         Objects.equals(this.minimumSourcesPct, rule.minimumSourcesPct) &&
         Objects.equals(this.roundsViolatingMode, rule.roundsViolatingMode) &&
@@ -605,7 +636,7 @@ public class Rule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, notifications, testIds, links);
+    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, notifications, testIds, links);
   }
 
   @Override
@@ -619,6 +650,7 @@ public class Rule {
     sb.append("    notifyOnClear: ").append(toIndentedString(notifyOnClear)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    alertType: ").append(toIndentedString(alertType)).append("\n");
+    sb.append("    alertGroupType: ").append(toIndentedString(alertGroupType)).append("\n");
     sb.append("    minimumSources: ").append(toIndentedString(minimumSources)).append("\n");
     sb.append("    minimumSourcesPct: ").append(toIndentedString(minimumSourcesPct)).append("\n");
     sb.append("    roundsViolatingMode: ").append(toIndentedString(roundsViolatingMode)).append("\n");

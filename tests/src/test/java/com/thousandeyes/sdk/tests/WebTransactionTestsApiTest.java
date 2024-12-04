@@ -136,6 +136,7 @@ public class WebTransactionTestsApiTest {
                     "ipAddress" : "192.1.1.0"
                   },
                   "labels" : [ "9842", "1283" ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",
@@ -266,6 +267,7 @@ public class WebTransactionTestsApiTest {
                     "name" : "Artem label",
                     "isBuiltin" : false
                   } ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",
@@ -518,6 +520,7 @@ public class WebTransactionTestsApiTest {
                     "name" : "Artem label",
                     "isBuiltin" : false
                   } ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",
@@ -733,6 +736,7 @@ public class WebTransactionTestsApiTest {
                       "agentId" : "2954",
                       "ipAddress" : "192.1.1.0"
                     },
+                    "randomizedStartTime" : false,
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
                     "emulatedDeviceId" : "2",
@@ -835,6 +839,7 @@ public class WebTransactionTestsApiTest {
                       "agentId" : "2954",
                       "ipAddress" : "192.1.1.0"
                     },
+                    "randomizedStartTime" : false,
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
                     "emulatedDeviceId" : "2",
@@ -985,6 +990,7 @@ public class WebTransactionTestsApiTest {
                     "ipAddress" : "192.1.1.0"
                   },
                   "labels" : [ "9842", "1283" ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",
@@ -1115,6 +1121,7 @@ public class WebTransactionTestsApiTest {
                     "name" : "Artem label",
                     "isBuiltin" : false
                   } ],
+                  "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "emulatedDeviceId" : "2",

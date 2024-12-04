@@ -105,6 +105,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestRequest.JSON_PROPERTY_ALLOW_GEOLOCATION,
   PageLoadTestRequest.JSON_PROPERTY_BROWSER_LANGUAGE,
   PageLoadTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
+  PageLoadTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   PageLoadTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   PageLoadTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
   PageLoadTestRequest.JSON_PROPERTY_MONITORS,
@@ -293,6 +294,9 @@ public class PageLoadTestRequest {
 
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -1787,6 +1791,31 @@ public class PageLoadTestRequest {
   }
 
 
+  public PageLoadTestRequest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public PageLoadTestRequest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -2025,6 +2054,7 @@ public class PageLoadTestRequest {
         Objects.equals(this.allowGeolocation, pageLoadTestRequest.allowGeolocation) &&
         Objects.equals(this.browserLanguage, pageLoadTestRequest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, pageLoadTestRequest.pageLoadingStrategy) &&
+        Objects.equals(this.randomizedStartTime, pageLoadTestRequest.randomizedStartTime) &&
         Objects.equals(this.bgpMeasurements, pageLoadTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, pageLoadTestRequest.usePublicBgp) &&
         Objects.equals(this.monitors, pageLoadTestRequest.monitors) &&
@@ -2035,7 +2065,7 @@ public class PageLoadTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval, agents);
   }
 
   @Override
@@ -2102,6 +2132,7 @@ public class PageLoadTestRequest {
     sb.append("    allowGeolocation: ").append(toIndentedString(allowGeolocation)).append("\n");
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");

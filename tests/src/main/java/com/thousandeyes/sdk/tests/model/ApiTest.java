@@ -71,6 +71,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTest.JSON_PROPERTY_PREDEFINED_VARIABLES,
   ApiTest.JSON_PROPERTY_PROBE_MODE,
   ApiTest.JSON_PROPERTY_PROTOCOL,
+  ApiTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   ApiTest.JSON_PROPERTY_REQUESTS,
   ApiTest.JSON_PROPERTY_SSL_VERSION_ID,
   ApiTest.JSON_PROPERTY_TARGET_TIME,
@@ -166,6 +167,9 @@ public class ApiTest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_REQUESTS = "requests";
   private List<ApiRequest> requests = new ArrayList<>();
@@ -843,6 +847,31 @@ public class ApiTest {
   }
 
 
+  public ApiTest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public ApiTest requests(List<ApiRequest> requests) {
     this.requests = requests;
     return this;
@@ -1118,6 +1147,7 @@ public class ApiTest {
         Objects.equals(this.predefinedVariables, apiTest.predefinedVariables) &&
         Objects.equals(this.probeMode, apiTest.probeMode) &&
         Objects.equals(this.protocol, apiTest.protocol) &&
+        Objects.equals(this.randomizedStartTime, apiTest.randomizedStartTime) &&
         Objects.equals(this.requests, apiTest.requests) &&
         Objects.equals(this.sslVersionId, apiTest.sslVersionId) &&
         Objects.equals(this.targetTime, apiTest.targetTime) &&
@@ -1131,7 +1161,7 @@ public class ApiTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, requests, sslVersionId, targetTime, timeLimit, url, credentials, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1166,6 +1196,7 @@ public class ApiTest {
     sb.append("    predefinedVariables: ").append(toIndentedString(predefinedVariables)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    requests: ").append(toIndentedString(requests)).append("\n");
     sb.append("    sslVersionId: ").append(toIndentedString(sslVersionId)).append("\n");
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");

@@ -2,7 +2,7 @@
 
 Tags API
 
-- API version: 7.0.28
+- API version: 7.0.29
 
 The ThousandEyes Tags API provides a tagging system with key/value pairs. It allows you to tag assets within the ThousandEyes platform (such as agents, tests, or alert rules) with meaningful metadata. For example: `branch:sfo`, `branch:nyc`, and `team:netops`.
 

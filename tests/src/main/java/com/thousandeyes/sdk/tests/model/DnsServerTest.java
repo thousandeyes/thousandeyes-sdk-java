@@ -71,6 +71,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerTest.JSON_PROPERTY_PATH_TRACE_MODE,
   DnsServerTest.JSON_PROPERTY_PROBE_MODE,
   DnsServerTest.JSON_PROPERTY_PROTOCOL,
+  DnsServerTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   DnsServerTest.JSON_PROPERTY_RECURSIVE_QUERIES,
   DnsServerTest.JSON_PROPERTY_IPV6_POLICY,
   DnsServerTest.JSON_PROPERTY_FIXED_PACKET_RATE,
@@ -161,6 +162,9 @@ public class DnsServerTest {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_RECURSIVE_QUERIES = "recursiveQueries";
   private Boolean recursiveQueries;
@@ -807,6 +811,31 @@ public class DnsServerTest {
   }
 
 
+  public DnsServerTest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public DnsServerTest recursiveQueries(Boolean recursiveQueries) {
     this.recursiveQueries = recursiveQueries;
     return this;
@@ -1013,6 +1042,7 @@ public class DnsServerTest {
         Objects.equals(this.pathTraceMode, dnsServerTest.pathTraceMode) &&
         Objects.equals(this.probeMode, dnsServerTest.probeMode) &&
         Objects.equals(this.protocol, dnsServerTest.protocol) &&
+        Objects.equals(this.randomizedStartTime, dnsServerTest.randomizedStartTime) &&
         Objects.equals(this.recursiveQueries, dnsServerTest.recursiveQueries) &&
         Objects.equals(this.ipv6Policy, dnsServerTest.ipv6Policy) &&
         Objects.equals(this.fixedPacketRate, dnsServerTest.fixedPacketRate) &&
@@ -1024,7 +1054,7 @@ public class DnsServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1058,6 +1088,7 @@ public class DnsServerTest {
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    recursiveQueries: ").append(toIndentedString(recursiveQueries)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");

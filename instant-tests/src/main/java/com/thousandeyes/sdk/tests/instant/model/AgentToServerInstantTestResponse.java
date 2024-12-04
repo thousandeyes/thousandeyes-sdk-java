@@ -62,6 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerInstantTestResponse.JSON_PROPERTY_PORT,
   AgentToServerInstantTestResponse.JSON_PROPERTY_PROBE_MODE,
   AgentToServerInstantTestResponse.JSON_PROPERTY_PROTOCOL,
+  AgentToServerInstantTestResponse.JSON_PROPERTY_RANDOMIZED_START_TIME,
   AgentToServerInstantTestResponse.JSON_PROPERTY_SERVER,
   AgentToServerInstantTestResponse.JSON_PROPERTY_DSCP,
   AgentToServerInstantTestResponse.JSON_PROPERTY_DSCP_ID,
@@ -137,6 +138,9 @@ public class AgentToServerInstantTestResponse {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_SERVER = "server";
   private String server;
@@ -646,6 +650,31 @@ public class AgentToServerInstantTestResponse {
   }
 
 
+  public AgentToServerInstantTestResponse randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public AgentToServerInstantTestResponse server(String server) {
     this.server = server;
     return this;
@@ -855,6 +884,7 @@ public class AgentToServerInstantTestResponse {
         Objects.equals(this.port, agentToServerInstantTestResponse.port) &&
         Objects.equals(this.probeMode, agentToServerInstantTestResponse.probeMode) &&
         Objects.equals(this.protocol, agentToServerInstantTestResponse.protocol) &&
+        Objects.equals(this.randomizedStartTime, agentToServerInstantTestResponse.randomizedStartTime) &&
         Objects.equals(this.server, agentToServerInstantTestResponse.server) &&
         Objects.equals(this.dscp, agentToServerInstantTestResponse.dscp) &&
         Objects.equals(this.dscpId, agentToServerInstantTestResponse.dscpId) &&
@@ -866,7 +896,7 @@ public class AgentToServerInstantTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, agents);
   }
 
   @Override
@@ -895,6 +925,7 @@ public class AgentToServerInstantTestResponse {
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    dscp: ").append(toIndentedString(dscp)).append("\n");
     sb.append("    dscpId: ").append(toIndentedString(dscpId)).append("\n");

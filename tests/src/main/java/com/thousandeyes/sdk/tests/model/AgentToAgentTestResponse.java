@@ -67,6 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentTestResponse.JSON_PROPERTY_PATH_TRACE_MODE,
   AgentToAgentTestResponse.JSON_PROPERTY_PORT,
   AgentToAgentTestResponse.JSON_PROPERTY_PROTOCOL,
+  AgentToAgentTestResponse.JSON_PROPERTY_RANDOMIZED_START_TIME,
   AgentToAgentTestResponse.JSON_PROPERTY_TARGET_AGENT_ID,
   AgentToAgentTestResponse.JSON_PROPERTY_THROUGHPUT_MEASUREMENTS,
   AgentToAgentTestResponse.JSON_PROPERTY_THROUGHPUT_DURATION,
@@ -153,6 +154,9 @@ public class AgentToAgentTestResponse {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private AgentToAgentTestProtocol protocol = AgentToAgentTestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
@@ -743,6 +747,31 @@ public class AgentToAgentTestResponse {
   }
 
 
+  public AgentToAgentTestResponse randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public AgentToAgentTestResponse targetAgentId(String targetAgentId) {
     this.targetAgentId = targetAgentId;
     return this;
@@ -1009,6 +1038,7 @@ public class AgentToAgentTestResponse {
         Objects.equals(this.pathTraceMode, agentToAgentTestResponse.pathTraceMode) &&
         Objects.equals(this.port, agentToAgentTestResponse.port) &&
         Objects.equals(this.protocol, agentToAgentTestResponse.protocol) &&
+        Objects.equals(this.randomizedStartTime, agentToAgentTestResponse.randomizedStartTime) &&
         Objects.equals(this.targetAgentId, agentToAgentTestResponse.targetAgentId) &&
         Objects.equals(this.throughputMeasurements, agentToAgentTestResponse.throughputMeasurements) &&
         Objects.equals(this.throughputDuration, agentToAgentTestResponse.throughputDuration) &&
@@ -1022,7 +1052,7 @@ public class AgentToAgentTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, randomizedStartTime, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, bgpMeasurements, usePublicBgp, monitors, agents);
   }
 
   @Override
@@ -1054,6 +1084,7 @@ public class AgentToAgentTestResponse {
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
     sb.append("    throughputMeasurements: ").append(toIndentedString(throughputMeasurements)).append("\n");
     sb.append("    throughputDuration: ").append(toIndentedString(throughputDuration)).append("\n");

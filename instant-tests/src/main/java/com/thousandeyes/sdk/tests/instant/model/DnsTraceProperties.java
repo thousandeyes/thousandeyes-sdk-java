@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceProperties.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   DnsTraceProperties.JSON_PROPERTY_DOMAIN,
   DnsTraceProperties.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsTraceProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
   DnsTraceProperties.JSON_PROPERTY_TYPE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -44,6 +45,9 @@ public class DnsTraceProperties {
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
@@ -134,6 +138,31 @@ public class DnsTraceProperties {
   }
 
 
+  public DnsTraceProperties randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
    /**
    * Get type
    * @return type
@@ -164,12 +193,13 @@ public class DnsTraceProperties {
     return Objects.equals(this.dnsTransportProtocol, dnsTraceProperties.dnsTransportProtocol) &&
         Objects.equals(this.domain, dnsTraceProperties.domain) &&
         Objects.equals(this.dnsQueryClass, dnsTraceProperties.dnsQueryClass) &&
+        Objects.equals(this.randomizedStartTime, dnsTraceProperties.randomizedStartTime) &&
         Objects.equals(this.type, dnsTraceProperties.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dnsTransportProtocol, domain, dnsQueryClass, type);
+    return Objects.hash(dnsTransportProtocol, domain, dnsQueryClass, randomizedStartTime, type);
   }
 
   @Override
@@ -179,6 +209,7 @@ public class DnsTraceProperties {
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();

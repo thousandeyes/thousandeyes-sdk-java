@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.tests.model.ApiClientAuthentication;
 import com.thousandeyes.sdk.tests.model.ApiRequestAssertion;
 import com.thousandeyes.sdk.tests.model.ApiRequestAuthType;
 import com.thousandeyes.sdk.tests.model.ApiRequestHeader;
@@ -39,11 +40,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiRequest.JSON_PROPERTY_AUTH_TYPE,
   ApiRequest.JSON_PROPERTY_BEARER_TOKEN,
   ApiRequest.JSON_PROPERTY_BODY,
+  ApiRequest.JSON_PROPERTY_CLIENT_AUTHENTICATION,
+  ApiRequest.JSON_PROPERTY_CLIENT_ID,
+  ApiRequest.JSON_PROPERTY_CLIENT_SECRET,
   ApiRequest.JSON_PROPERTY_COLLECT_API_RESPONSE,
   ApiRequest.JSON_PROPERTY_HEADERS,
   ApiRequest.JSON_PROPERTY_METHOD,
   ApiRequest.JSON_PROPERTY_NAME,
   ApiRequest.JSON_PROPERTY_PASSWORD,
+  ApiRequest.JSON_PROPERTY_SCOPE,
+  ApiRequest.JSON_PROPERTY_TOKEN_URL,
   ApiRequest.JSON_PROPERTY_URL,
   ApiRequest.JSON_PROPERTY_USERNAME,
   ApiRequest.JSON_PROPERTY_VARIABLES,
@@ -63,6 +69,15 @@ public class ApiRequest {
   public static final String JSON_PROPERTY_BODY = "body";
   private String body;
 
+  public static final String JSON_PROPERTY_CLIENT_AUTHENTICATION = "clientAuthentication";
+  private ApiClientAuthentication clientAuthentication;
+
+  public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
+  private String clientId;
+
+  public static final String JSON_PROPERTY_CLIENT_SECRET = "clientSecret";
+  private String clientSecret;
+
   public static final String JSON_PROPERTY_COLLECT_API_RESPONSE = "collectApiResponse";
   private Boolean collectApiResponse = true;
 
@@ -77,6 +92,12 @@ public class ApiRequest {
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
+
+  public static final String JSON_PROPERTY_SCOPE = "scope";
+  private String scope;
+
+  public static final String JSON_PROPERTY_TOKEN_URL = "tokenUrl";
+  private String tokenUrl;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
@@ -198,6 +219,81 @@ public class ApiRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBody(String body) {
     this.body = body;
+  }
+
+
+  public ApiRequest clientAuthentication(ApiClientAuthentication clientAuthentication) {
+    this.clientAuthentication = clientAuthentication;
+    return this;
+  }
+
+   /**
+   * Get clientAuthentication
+   * @return clientAuthentication
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_AUTHENTICATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ApiClientAuthentication getClientAuthentication() {
+    return clientAuthentication;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_AUTHENTICATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClientAuthentication(ApiClientAuthentication clientAuthentication) {
+    this.clientAuthentication = clientAuthentication;
+  }
+
+
+  public ApiRequest clientId(String clientId) {
+    this.clientId = clientId;
+    return this;
+  }
+
+   /**
+   * The application ID used when &#x60;authType&#x60; is set to \&quot;oauth2\&quot;.
+   * @return clientId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getClientId() {
+    return clientId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClientId(String clientId) {
+    this.clientId = clientId;
+  }
+
+
+  public ApiRequest clientSecret(String clientSecret) {
+    this.clientSecret = clientSecret;
+    return this;
+  }
+
+   /**
+   * The private client secret used when &#x60;authType&#x60; is set to \&quot;oauth2\&quot;.
+   * @return clientSecret
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_SECRET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getClientSecret() {
+    return clientSecret;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_SECRET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClientSecret(String clientSecret) {
+    this.clientSecret = clientSecret;
   }
 
 
@@ -334,6 +430,56 @@ public class ApiRequest {
   }
 
 
+  public ApiRequest scope(String scope) {
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * Application-specific scope values for the access token when &#x60;authType&#x60; is \&quot;oauth2\&quot;.
+   * @return scope
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getScope() {
+    return scope;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
+
+  public ApiRequest tokenUrl(String tokenUrl) {
+    this.tokenUrl = tokenUrl;
+    return this;
+  }
+
+   /**
+   * The endpoint used to request the access token when &#x60;authType&#x60; is \&quot;oauth2\&quot;.
+   * @return tokenUrl
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOKEN_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getTokenUrl() {
+    return tokenUrl;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOKEN_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTokenUrl(String tokenUrl) {
+    this.tokenUrl = tokenUrl;
+  }
+
+
   public ApiRequest url(String url) {
     this.url = url;
     return this;
@@ -458,11 +604,16 @@ public class ApiRequest {
         Objects.equals(this.authType, apiRequest.authType) &&
         Objects.equals(this.bearerToken, apiRequest.bearerToken) &&
         Objects.equals(this.body, apiRequest.body) &&
+        Objects.equals(this.clientAuthentication, apiRequest.clientAuthentication) &&
+        Objects.equals(this.clientId, apiRequest.clientId) &&
+        Objects.equals(this.clientSecret, apiRequest.clientSecret) &&
         Objects.equals(this.collectApiResponse, apiRequest.collectApiResponse) &&
         Objects.equals(this.headers, apiRequest.headers) &&
         Objects.equals(this.method, apiRequest.method) &&
         Objects.equals(this.name, apiRequest.name) &&
         Objects.equals(this.password, apiRequest.password) &&
+        Objects.equals(this.scope, apiRequest.scope) &&
+        Objects.equals(this.tokenUrl, apiRequest.tokenUrl) &&
         Objects.equals(this.url, apiRequest.url) &&
         Objects.equals(this.username, apiRequest.username) &&
         Objects.equals(this.variables, apiRequest.variables) &&
@@ -471,7 +622,7 @@ public class ApiRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assertions, authType, bearerToken, body, collectApiResponse, headers, method, name, password, url, username, variables, waitTimeMs);
+    return Objects.hash(assertions, authType, bearerToken, body, clientAuthentication, clientId, clientSecret, collectApiResponse, headers, method, name, password, scope, tokenUrl, url, username, variables, waitTimeMs);
   }
 
   @Override
@@ -482,11 +633,16 @@ public class ApiRequest {
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    bearerToken: ").append(toIndentedString(bearerToken)).append("\n");
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    clientAuthentication: ").append(toIndentedString(clientAuthentication)).append("\n");
+    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
+    sb.append("    clientSecret: ").append(toIndentedString(clientSecret)).append("\n");
     sb.append("    collectApiResponse: ").append(toIndentedString(collectApiResponse)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    tokenUrl: ").append(toIndentedString(tokenUrl)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    variables: ").append(toIndentedString(variables)).append("\n");

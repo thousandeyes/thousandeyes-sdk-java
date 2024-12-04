@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerProperties.JSON_PROPERTY_OPTIONS_REGEX,
   SipServerProperties.JSON_PROPERTY_PATH_TRACE_MODE,
   SipServerProperties.JSON_PROPERTY_PROBE_MODE,
+  SipServerProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
   SipServerProperties.JSON_PROPERTY_REGISTER_ENABLED,
   SipServerProperties.JSON_PROPERTY_SIP_TARGET_TIME,
   SipServerProperties.JSON_PROPERTY_SIP_TIME_LIMIT,
@@ -62,6 +63,9 @@ public class SipServerProperties {
 
   public static final String JSON_PROPERTY_PROBE_MODE = "probeMode";
   private TestProbeMode probeMode = TestProbeMode.AUTO;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_REGISTER_ENABLED = "registerEnabled";
   private Boolean registerEnabled = false;
@@ -244,6 +248,31 @@ public class SipServerProperties {
   }
 
 
+  public SipServerProperties randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public SipServerProperties registerEnabled(Boolean registerEnabled) {
     this.registerEnabled = registerEnabled;
     return this;
@@ -408,6 +437,7 @@ public class SipServerProperties {
         Objects.equals(this.optionsRegex, sipServerProperties.optionsRegex) &&
         Objects.equals(this.pathTraceMode, sipServerProperties.pathTraceMode) &&
         Objects.equals(this.probeMode, sipServerProperties.probeMode) &&
+        Objects.equals(this.randomizedStartTime, sipServerProperties.randomizedStartTime) &&
         Objects.equals(this.registerEnabled, sipServerProperties.registerEnabled) &&
         Objects.equals(this.sipTargetTime, sipServerProperties.sipTargetTime) &&
         Objects.equals(this.sipTimeLimit, sipServerProperties.sipTimeLimit) &&
@@ -418,7 +448,7 @@ public class SipServerProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, type);
+    return Objects.hash(mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, type);
   }
 
   @Override
@@ -431,6 +461,7 @@ public class SipServerProperties {
     sb.append("    optionsRegex: ").append(toIndentedString(optionsRegex)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    registerEnabled: ").append(toIndentedString(registerEnabled)).append("\n");
     sb.append("    sipTargetTime: ").append(toIndentedString(sipTargetTime)).append("\n");
     sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");

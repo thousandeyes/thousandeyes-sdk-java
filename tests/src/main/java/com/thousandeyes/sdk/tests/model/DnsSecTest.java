@@ -55,7 +55,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsSecTest.JSON_PROPERTY_LABELS,
   DnsSecTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsSecTest.JSON_PROPERTY_DOMAIN,
-  DnsSecTest.JSON_PROPERTY_DNS_QUERY_CLASS
+  DnsSecTest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsSecTest.JSON_PROPERTY_RANDOMIZED_START_TIME
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsSecTest {
@@ -115,6 +116,9 @@ public class DnsSecTest {
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public DnsSecTest() { 
   }
@@ -528,6 +532,31 @@ public class DnsSecTest {
   }
 
 
+  public DnsSecTest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   /**
    * Return true if this DnsSecTest object is equal to o.
    */
@@ -558,12 +587,13 @@ public class DnsSecTest {
         Objects.equals(this.labels, dnsSecTest.labels) &&
         Objects.equals(this.sharedWithAccounts, dnsSecTest.sharedWithAccounts) &&
         Objects.equals(this.domain, dnsSecTest.domain) &&
-        Objects.equals(this.dnsQueryClass, dnsSecTest.dnsQueryClass);
+        Objects.equals(this.dnsQueryClass, dnsSecTest.dnsQueryClass) &&
+        Objects.equals(this.randomizedStartTime, dnsSecTest.randomizedStartTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, domain, dnsQueryClass);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, domain, dnsQueryClass, randomizedStartTime);
   }
 
   @Override
@@ -589,6 +619,7 @@ public class DnsSecTest {
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -40,6 +40,7 @@ src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerInstantTest.
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerInstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerInstantTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerProperties.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiClientAuthentication.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiInstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiInstantTestResponse.java

@@ -56,6 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceTestRequest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   DnsTraceTestRequest.JSON_PROPERTY_DOMAIN,
   DnsTraceTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsTraceTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   DnsTraceTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -119,6 +120,9 @@ public class DnsTraceTestRequest {
 
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
@@ -592,6 +596,31 @@ public class DnsTraceTestRequest {
   }
 
 
+  public DnsTraceTestRequest randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public DnsTraceTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -657,12 +686,13 @@ public class DnsTraceTestRequest {
         Objects.equals(this.dnsTransportProtocol, dnsTraceTestRequest.dnsTransportProtocol) &&
         Objects.equals(this.domain, dnsTraceTestRequest.domain) &&
         Objects.equals(this.dnsQueryClass, dnsTraceTestRequest.dnsQueryClass) &&
+        Objects.equals(this.randomizedStartTime, dnsTraceTestRequest.randomizedStartTime) &&
         Objects.equals(this.agents, dnsTraceTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, randomizedStartTime, agents);
   }
 
   @Override
@@ -689,6 +719,7 @@ public class DnsTraceTestRequest {
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

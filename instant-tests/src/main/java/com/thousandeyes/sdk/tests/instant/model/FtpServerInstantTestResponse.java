@@ -64,6 +64,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FtpServerInstantTestResponse.JSON_PROPERTY_PATH_TRACE_MODE,
   FtpServerInstantTestResponse.JSON_PROPERTY_PROBE_MODE,
   FtpServerInstantTestResponse.JSON_PROPERTY_PROTOCOL,
+  FtpServerInstantTestResponse.JSON_PROPERTY_RANDOMIZED_START_TIME,
   FtpServerInstantTestResponse.JSON_PROPERTY_REQUEST_TYPE,
   FtpServerInstantTestResponse.JSON_PROPERTY_URL,
   FtpServerInstantTestResponse.JSON_PROPERTY_USE_ACTIVE_FTP,
@@ -146,6 +147,9 @@ public class FtpServerInstantTestResponse {
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
+
+  public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
+  private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_REQUEST_TYPE = "requestType";
   private FtpServerRequestType requestType;
@@ -706,6 +710,31 @@ public class FtpServerInstantTestResponse {
   }
 
 
+  public FtpServerInstantTestResponse randomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+    return this;
+  }
+
+   /**
+   * Indicates whether agents should randomize the start time in each test round.
+   * @return randomizedStartTime
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getRandomizedStartTime() {
+    return randomizedStartTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RANDOMIZED_START_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRandomizedStartTime(Boolean randomizedStartTime) {
+    this.randomizedStartTime = randomizedStartTime;
+  }
+
+
   public FtpServerInstantTestResponse requestType(FtpServerRequestType requestType) {
     this.requestType = requestType;
     return this;
@@ -952,6 +981,7 @@ public class FtpServerInstantTestResponse {
         Objects.equals(this.pathTraceMode, ftpServerInstantTestResponse.pathTraceMode) &&
         Objects.equals(this.probeMode, ftpServerInstantTestResponse.probeMode) &&
         Objects.equals(this.protocol, ftpServerInstantTestResponse.protocol) &&
+        Objects.equals(this.randomizedStartTime, ftpServerInstantTestResponse.randomizedStartTime) &&
         Objects.equals(this.requestType, ftpServerInstantTestResponse.requestType) &&
         Objects.equals(this.url, ftpServerInstantTestResponse.url) &&
         Objects.equals(this.useActiveFtp, ftpServerInstantTestResponse.useActiveFtp) &&
@@ -964,7 +994,7 @@ public class FtpServerInstantTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, randomizedStartTime, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, agents);
   }
 
   @Override
@@ -995,6 +1025,7 @@ public class FtpServerInstantTestResponse {
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    requestType: ").append(toIndentedString(requestType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    useActiveFtp: ").append(toIndentedString(useActiveFtp)).append("\n");
