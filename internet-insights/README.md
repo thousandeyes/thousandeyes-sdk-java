@@ -2,7 +2,7 @@
 
 Internet Insights API
 
-- API version: 7.0.29
+- API version: 7.0.30
 
 We are happy to announce the release of the Internet Insights API set. This limited release includes endpoints that:
 
