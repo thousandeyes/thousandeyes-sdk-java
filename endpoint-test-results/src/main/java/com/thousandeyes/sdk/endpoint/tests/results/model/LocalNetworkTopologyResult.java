@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkPing;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkTopologyType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserEndpointTestCoordinates;
+import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetricDetails;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TcpConnect;
 import com.thousandeyes.sdk.endpoint.tests.results.model.Traceroute;
@@ -50,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocalNetworkTopologyResult.JSON_PROPERTY_IS_ICMP_BLOCKED,
   LocalNetworkTopologyResult.JSON_PROPERTY_TCP_CONNECT,
   LocalNetworkTopologyResult.JSON_PROPERTY_SYSTEM_METRICS,
+  LocalNetworkTopologyResult.JSON_PROPERTY_SYSTEM_METRIC_DETAILS,
   LocalNetworkTopologyResult.JSON_PROPERTY_COORDINATES,
   LocalNetworkTopologyResult.JSON_PROPERTY_NETWORK_PROFILE,
   LocalNetworkTopologyResult.JSON_PROPERTY_ICMP_TRACEROUTE,
@@ -89,6 +91,9 @@ public class LocalNetworkTopologyResult {
 
   public static final String JSON_PROPERTY_SYSTEM_METRICS = "systemMetrics";
   private SystemMetrics systemMetrics;
+
+  public static final String JSON_PROPERTY_SYSTEM_METRIC_DETAILS = "systemMetricDetails";
+  private SystemMetricDetails systemMetricDetails;
 
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
   private RealUserEndpointTestCoordinates coordinates;
@@ -330,6 +335,31 @@ public class LocalNetworkTopologyResult {
   }
 
 
+  public LocalNetworkTopologyResult systemMetricDetails(SystemMetricDetails systemMetricDetails) {
+    this.systemMetricDetails = systemMetricDetails;
+    return this;
+  }
+
+   /**
+   * Get systemMetricDetails
+   * @return systemMetricDetails
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SYSTEM_METRIC_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SystemMetricDetails getSystemMetricDetails() {
+    return systemMetricDetails;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SYSTEM_METRIC_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSystemMetricDetails(SystemMetricDetails systemMetricDetails) {
+    this.systemMetricDetails = systemMetricDetails;
+  }
+
+
   public LocalNetworkTopologyResult coordinates(RealUserEndpointTestCoordinates coordinates) {
     this.coordinates = coordinates;
     return this;
@@ -461,6 +491,7 @@ public class LocalNetworkTopologyResult {
         Objects.equals(this.isIcmpBlocked, localNetworkTopologyResult.isIcmpBlocked) &&
         Objects.equals(this.tcpConnect, localNetworkTopologyResult.tcpConnect) &&
         Objects.equals(this.systemMetrics, localNetworkTopologyResult.systemMetrics) &&
+        Objects.equals(this.systemMetricDetails, localNetworkTopologyResult.systemMetricDetails) &&
         Objects.equals(this.coordinates, localNetworkTopologyResult.coordinates) &&
         Objects.equals(this.networkProfile, localNetworkTopologyResult.networkProfile) &&
         Objects.equals(this.icmpTraceroute, localNetworkTopologyResult.icmpTraceroute) &&
@@ -469,7 +500,7 @@ public class LocalNetworkTopologyResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, coordinates, networkProfile, icmpTraceroute, icmpTraceroutes);
+    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails, coordinates, networkProfile, icmpTraceroute, icmpTraceroutes);
   }
 
   @Override
@@ -487,6 +518,7 @@ public class LocalNetworkTopologyResult {
     sb.append("    isIcmpBlocked: ").append(toIndentedString(isIcmpBlocked)).append("\n");
     sb.append("    tcpConnect: ").append(toIndentedString(tcpConnect)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
+    sb.append("    systemMetricDetails: ").append(toIndentedString(systemMetricDetails)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    icmpTraceroute: ").append(toIndentedString(icmpTraceroute)).append("\n");

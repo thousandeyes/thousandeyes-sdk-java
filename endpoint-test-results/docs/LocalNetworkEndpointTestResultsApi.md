@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## filterLocalNetworksTestResultsTopologies
 
-> LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
+> LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest)
 
 List endpoint network topologies probes
 
@@ -47,9 +47,10 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        List<ExpandLocalNetworkTopologyOptions> expand = Arrays.asList(); // List<ExpandLocalNetworkTopologyOptions> | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as `systemMetricDetails`, append  `?expand=system-metric-detail` to the query.
         EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            LocalNetworkTopologyResults result = apiInstance.filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+            LocalNetworkTopologyResults result = apiInstance.filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkEndpointTestResultsApi#filterLocalNetworksTestResultsTopologies");
@@ -72,6 +73,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md)| This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
 | **endpointNetworkTopologyResultRequest** | [**EndpointNetworkTopologyResultRequest**](EndpointNetworkTopologyResultRequest.md)|  | [optional] |
 
 ### Return type
@@ -102,7 +104,7 @@ public class Example {
 
 ## filterLocalNetworksTestResultsTopologiesWithHttpInfo
 
-> ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologies filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest)
+> ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologies filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest)
 
 List endpoint network topologies probes
 
@@ -135,9 +137,10 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        List<ExpandLocalNetworkTopologyOptions> expand = Arrays.asList(); // List<ExpandLocalNetworkTopologyOptions> | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as `systemMetricDetails`, append  `?expand=system-metric-detail` to the query.
         EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            ApiResponse<LocalNetworkTopologyResults> response = apiInstance.filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+            ApiResponse<LocalNetworkTopologyResults> response = apiInstance.filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -162,6 +165,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md)| This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
 | **endpointNetworkTopologyResultRequest** | [**EndpointNetworkTopologyResultRequest**](EndpointNetworkTopologyResultRequest.md)|  | [optional] |
 
 ### Return type
@@ -349,7 +353,7 @@ ApiResponse<[**LocalNetworkResults**](LocalNetworkResults.md)>
 
 ## getLocalNetworksTestResultsTopology
 
-> LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(networkTopologyId, aid)
+> LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(networkTopologyId, aid, expand)
 
 Retrieve endpoint local network topology
 
@@ -378,8 +382,9 @@ public class Example {
         LocalNetworkEndpointTestResultsApi apiInstance = new LocalNetworkEndpointTestResultsApi(defaultClient);
         String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        List<ExpandLocalNetworkTopologyOptions> expand = Arrays.asList(); // List<ExpandLocalNetworkTopologyOptions> | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as `systemMetricDetails`, append  `?expand=system-metric-detail` to the query.
         try {
-            LocalNetworkTopologyDetailResults result = apiInstance.getLocalNetworksTestResultsTopology(networkTopologyId, aid);
+            LocalNetworkTopologyDetailResults result = apiInstance.getLocalNetworksTestResultsTopology(networkTopologyId, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkEndpointTestResultsApi#getLocalNetworksTestResultsTopology");
@@ -399,6 +404,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **networkTopologyId** | **String**| The network topology ID. | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md)| This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
 
 ### Return type
 
@@ -427,7 +433,7 @@ public class Example {
 
 ## getLocalNetworksTestResultsTopologyWithHttpInfo
 
-> ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopology getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid)
+> ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopology getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid, expand)
 
 Retrieve endpoint local network topology
 
@@ -457,8 +463,9 @@ public class Example {
         LocalNetworkEndpointTestResultsApi apiInstance = new LocalNetworkEndpointTestResultsApi(defaultClient);
         String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18"; // String | The network topology ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        List<ExpandLocalNetworkTopologyOptions> expand = Arrays.asList(); // List<ExpandLocalNetworkTopologyOptions> | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as `systemMetricDetails`, append  `?expand=system-metric-detail` to the query.
         try {
-            ApiResponse<LocalNetworkTopologyDetailResults> response = apiInstance.getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid);
+            ApiResponse<LocalNetworkTopologyDetailResults> response = apiInstance.getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -480,6 +487,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **networkTopologyId** | **String**| The network topology ID. | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md)| This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
 
 ### Return type
 
