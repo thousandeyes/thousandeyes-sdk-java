@@ -12,6 +12,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/LocalNetworkEndpointTe
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/NetworkDynamicEndpointTestResultsApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/NetworkEndpointScheduledTestResultsApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/RealUserEndpointTestResultsApi.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ApplicationMetrics.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ApplicationScoreQuality.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/AsnDetails.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ConditionalOperator.java
@@ -58,6 +59,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestsDat
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestsDataThresholdFilters.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Error.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ExpandEndpointHttpServerOptions.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ExpandLocalNetworkTopologyOptions.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/GatewayNetworkPing.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Hop.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/HttpEndpointTestResult.java
@@ -108,6 +110,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/PathVisEndpointT
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/PathVisEndpointTestResults.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/PhysicalMemoryUsedBytes.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Platform.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ProcessMetrics.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/RealUserEndpointTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/RealUserEndpointTestBase.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/RealUserEndpointTestCoordinates.java
@@ -126,6 +129,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/RealUserEndpoint
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/RealUserEndpointTestResultsRequest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/SortOrder.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/SystemMetricDetails.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/SystemMetrics.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/TargetNetworkPing.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/TargetProfile.java
