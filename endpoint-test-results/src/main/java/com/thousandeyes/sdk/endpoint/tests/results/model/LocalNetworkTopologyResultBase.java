@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkPing;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkTopologyType;
+import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetricDetails;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TcpConnect;
 import java.time.OffsetDateTime;
@@ -43,7 +44,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocalNetworkTopologyResultBase.JSON_PROPERTY_ICMP_PING,
   LocalNetworkTopologyResultBase.JSON_PROPERTY_IS_ICMP_BLOCKED,
   LocalNetworkTopologyResultBase.JSON_PROPERTY_TCP_CONNECT,
-  LocalNetworkTopologyResultBase.JSON_PROPERTY_SYSTEM_METRICS
+  LocalNetworkTopologyResultBase.JSON_PROPERTY_SYSTEM_METRICS,
+  LocalNetworkTopologyResultBase.JSON_PROPERTY_SYSTEM_METRIC_DETAILS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LocalNetworkTopologyResultBase {
@@ -79,6 +81,9 @@ public class LocalNetworkTopologyResultBase {
 
   public static final String JSON_PROPERTY_SYSTEM_METRICS = "systemMetrics";
   private SystemMetrics systemMetrics;
+
+  public static final String JSON_PROPERTY_SYSTEM_METRIC_DETAILS = "systemMetricDetails";
+  private SystemMetricDetails systemMetricDetails;
 
   public LocalNetworkTopologyResultBase() { 
   }
@@ -308,6 +313,31 @@ public class LocalNetworkTopologyResultBase {
   }
 
 
+  public LocalNetworkTopologyResultBase systemMetricDetails(SystemMetricDetails systemMetricDetails) {
+    this.systemMetricDetails = systemMetricDetails;
+    return this;
+  }
+
+   /**
+   * Get systemMetricDetails
+   * @return systemMetricDetails
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SYSTEM_METRIC_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SystemMetricDetails getSystemMetricDetails() {
+    return systemMetricDetails;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SYSTEM_METRIC_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSystemMetricDetails(SystemMetricDetails systemMetricDetails) {
+    this.systemMetricDetails = systemMetricDetails;
+  }
+
+
   /**
    * Return true if this LocalNetworkTopologyResultBase object is equal to o.
    */
@@ -330,12 +360,13 @@ public class LocalNetworkTopologyResultBase {
         Objects.equals(this.icmpPing, localNetworkTopologyResultBase.icmpPing) &&
         Objects.equals(this.isIcmpBlocked, localNetworkTopologyResultBase.isIcmpBlocked) &&
         Objects.equals(this.tcpConnect, localNetworkTopologyResultBase.tcpConnect) &&
-        Objects.equals(this.systemMetrics, localNetworkTopologyResultBase.systemMetrics);
+        Objects.equals(this.systemMetrics, localNetworkTopologyResultBase.systemMetrics) &&
+        Objects.equals(this.systemMetricDetails, localNetworkTopologyResultBase.systemMetricDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics);
+    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails);
   }
 
   @Override
@@ -353,6 +384,7 @@ public class LocalNetworkTopologyResultBase {
     sb.append("    isIcmpBlocked: ").append(toIndentedString(isIcmpBlocked)).append("\n");
     sb.append("    tcpConnect: ").append(toIndentedString(tcpConnect)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
+    sb.append("    systemMetricDetails: ").append(toIndentedString(systemMetricDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }

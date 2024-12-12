@@ -2,7 +2,7 @@
 
 Tests API
 
-- API version: 7.0.29
+- API version: 7.0.32
 
 This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
 

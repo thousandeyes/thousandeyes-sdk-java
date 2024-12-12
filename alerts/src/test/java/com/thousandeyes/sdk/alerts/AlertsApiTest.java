@@ -148,7 +148,7 @@ public class AlertsApiTest {
                       "metrics" : "metrics"
                     },
                     "id" : "3379",
-                    "state" : "active",
+                    "state" : "trigger",
                     "type" : "cea_agent"
                   }, {
                     "name" : "Bucharest, Romania",
@@ -159,12 +159,12 @@ public class AlertsApiTest {
                       "metrics" : "metrics"
                     },
                     "id" : "3379",
-                    "state" : "active",
+                    "state" : "trigger",
                     "type" : "cea_agent"
                   } ],
                   "id" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
                   "suppressed" : false,
-                  "state" : "active",
+                  "state" : "trigger",
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;
@@ -267,7 +267,7 @@ public class AlertsApiTest {
                     "state" : "ACTIVE",
                     "ruleId" : 127094,
                     "permalink" : "https://app.thousandeyes.com/alerts/list?__a=75&alertId=2783&agentId=12",
-                    "alertState" : "active",
+                    "alertState" : "trigger",
                     "startDate" : "2022-07-17T22:00:54Z",
                     "alertRuleId" : "127094"
                   }, {
@@ -335,7 +335,7 @@ public class AlertsApiTest {
                     "state" : "ACTIVE",
                     "ruleId" : 127094,
                     "permalink" : "https://app.thousandeyes.com/alerts/list?__a=75&alertId=2783&agentId=12",
-                    "alertState" : "active",
+                    "alertState" : "trigger",
                     "startDate" : "2022-07-17T22:00:54Z",
                     "alertRuleId" : "127094"
                   } ],

@@ -108,7 +108,7 @@ public class MultiTestIdNetworkEndpointTestResults {
   }
 
    /**
-   * Total number of measurements that match the search criteria
+   * Total number of measurements that match the search criteria.
    * @return totalHits
   **/
   @jakarta.annotation.Nullable
