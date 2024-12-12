@@ -14,6 +14,7 @@ package com.thousandeyes.sdk.endpoint.tests.results;
 
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointNetworkTopologyResultRequest;
 import com.thousandeyes.sdk.endpoint.tests.results.model.Error;
+import com.thousandeyes.sdk.endpoint.tests.results.model.ExpandLocalNetworkTopologyOptions;
 import com.thousandeyes.sdk.endpoint.tests.results.model.LocalNetworkResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.LocalNetworkTopologyDetailResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.LocalNetworkTopologyResults;
@@ -147,6 +148,82 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       },
                       "endTimeMs" : 1581508867333
                     },
+                    "systemMetricDetails" : {
+                      "topCpuApplications" : [ {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      }, {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      } ],
+                      "topMemoryApplications" : [ {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      }, {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      } ]
+                    },
                     "isIcmpBlocked" : true,
                     "tcpConnect" : {
                       "rtt" : 77.777,
@@ -193,6 +270,82 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       },
                       "endTimeMs" : 1581508867333
                     },
+                    "systemMetricDetails" : {
+                      "topCpuApplications" : [ {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      }, {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      } ],
+                      "topMemoryApplications" : [ {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      }, {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      } ]
+                    },
                     "isIcmpBlocked" : true,
                     "tcpConnect" : {
                       "rtt" : 77.777,
@@ -235,7 +388,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterLocalNetworksTestResultsTopologies(null, null, null, null, null, mappedRequest);
+        var apiResponse = api.filterLocalNetworksTestResultsTopologies(null, null, null, null, null, null, mappedRequest);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -409,6 +562,82 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       },
                       "endTimeMs" : 1581508867333
                     },
+                    "systemMetricDetails" : {
+                      "topCpuApplications" : [ {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      }, {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      } ],
+                      "topMemoryApplications" : [ {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      }, {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      } ]
+                    },
                     "icmpTraceroute" : {
                       "destination" : "13.32.22.232",
                       "hops" : [ {
@@ -574,6 +803,82 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       },
                       "endTimeMs" : 1581508867333
                     },
+                    "systemMetricDetails" : {
+                      "topCpuApplications" : [ {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      }, {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      } ],
+                      "topMemoryApplications" : [ {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      }, {
+                        "totalMemoryBytes" : 1023334,
+                        "processes" : [ {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        }, {
+                          "memoryBytes" : 1023334,
+                          "memoryPercentage" : 0.22,
+                          "name" : "Webex background",
+                          "cpu" : 0.5,
+                          "pid" : 15632
+                        } ],
+                        "totalCpu" : 0.5,
+                        "name" : "Webex",
+                        "totalMemoryPercentage" : 0.22
+                      } ]
+                    },
                     "icmpTraceroute" : {
                       "destination" : "13.32.22.232",
                       "hops" : [ {
@@ -673,7 +978,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getLocalNetworksTestResultsTopology(networkTopologyId, null);
+        var apiResponse = api.getLocalNetworksTestResultsTopology(networkTopologyId, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     
