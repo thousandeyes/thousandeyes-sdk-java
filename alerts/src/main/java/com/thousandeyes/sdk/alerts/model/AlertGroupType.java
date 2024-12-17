@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum AlertGroupType {
   
+  BGP("bgp"),
+  
   BROWSER_SESSION("browser-session"),
   
   CLOUD_ENTERPRISE("cloud-enterprise"),
