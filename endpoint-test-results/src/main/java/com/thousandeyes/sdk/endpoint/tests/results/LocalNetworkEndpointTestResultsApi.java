@@ -23,6 +23,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointNetworkTopologyResultRequest;
 import com.thousandeyes.sdk.endpoint.tests.results.model.Error;
+import com.thousandeyes.sdk.endpoint.tests.results.model.ExpandLocalNetworkTopologyOptions;
 import com.thousandeyes.sdk.endpoint.tests.results.model.LocalNetworkResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.LocalNetworkTopologyDetailResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.LocalNetworkTopologyResults;
@@ -72,11 +73,12 @@ public class LocalNetworkEndpointTestResultsApi {
    * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
    * @param endpointNetworkTopologyResultRequest  (optional)
    * @return Paginator<LocalNetworkTopologyResultBase, LocalNetworkTopologyResults>
    */
-  public Paginator<LocalNetworkTopologyResultBase, LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologiesPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) {
-    return new Paginator<>(cursor -> filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest),
+  public Paginator<LocalNetworkTopologyResultBase, LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologiesPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) {
+    return new Paginator<>(cursor -> filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest),
                            LocalNetworkTopologyResults::getResults);
 
   }
@@ -88,12 +90,13 @@ public class LocalNetworkEndpointTestResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
    * @param endpointNetworkTopologyResultRequest  (optional)
    * @return LocalNetworkTopologyResults
    * @throws ApiException if fails to make API call
    */
-  public LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
-    ApiResponse<LocalNetworkTopologyResults> response = filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+  public LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
+    ApiResponse<LocalNetworkTopologyResults> response = filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest);
     return response.getData();
   }
 
@@ -105,14 +108,15 @@ public class LocalNetworkEndpointTestResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
    * @param endpointNetworkTopologyResultRequest  (optional)
    * @return ApiResponse&lt;LocalNetworkTopologyResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologiesWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
+  public ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologiesWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
     filterLocalNetworksTestResultsTopologiesValidateRequest();
 
-    var requestBuilder = filterLocalNetworksTestResultsTopologiesRequestBuilder(aid, window, startDate, endDate, cursor, endpointNetworkTopologyResultRequest);
+    var requestBuilder = filterLocalNetworksTestResultsTopologiesRequestBuilder(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest);
 
     return apiClient.send(requestBuilder.build(), LocalNetworkTopologyResults.class);
   }
@@ -120,7 +124,7 @@ public class LocalNetworkEndpointTestResultsApi {
   private void filterLocalNetworksTestResultsTopologiesValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder filterLocalNetworksTestResultsTopologiesRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
+  private ApiRequest.ApiRequestBuilder filterLocalNetworksTestResultsTopologiesRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -133,6 +137,7 @@ public class LocalNetworkEndpointTestResultsApi {
     localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
     localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
     localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
+    localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);
@@ -197,11 +202,12 @@ public class LocalNetworkEndpointTestResultsApi {
    * Returns detailed data of a local network topology. 
    * @param networkTopologyId The network topology ID. (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
    * @return LocalNetworkTopologyDetailResults
    * @throws ApiException if fails to make API call
    */
-  public LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(String networkTopologyId, String aid) throws ApiException {
-    ApiResponse<LocalNetworkTopologyDetailResults> response = getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid);
+  public LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(String networkTopologyId, String aid, List<ExpandLocalNetworkTopologyOptions> expand) throws ApiException {
+    ApiResponse<LocalNetworkTopologyDetailResults> response = getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid, expand);
     return response.getData();
   }
 
@@ -210,13 +216,14 @@ public class LocalNetworkEndpointTestResultsApi {
    * Returns detailed data of a local network topology. 
    * @param networkTopologyId The network topology ID. (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
    * @return ApiResponse&lt;LocalNetworkTopologyDetailResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopologyWithHttpInfo(String networkTopologyId, String aid) throws ApiException {
+  public ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopologyWithHttpInfo(String networkTopologyId, String aid, List<ExpandLocalNetworkTopologyOptions> expand) throws ApiException {
     getLocalNetworksTestResultsTopologyValidateRequest(networkTopologyId);
 
-    var requestBuilder = getLocalNetworksTestResultsTopologyRequestBuilder(networkTopologyId, aid);
+    var requestBuilder = getLocalNetworksTestResultsTopologyRequestBuilder(networkTopologyId, aid, expand);
 
     return apiClient.send(requestBuilder.build(), LocalNetworkTopologyDetailResults.class);
   }
@@ -228,7 +235,7 @@ public class LocalNetworkEndpointTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getLocalNetworksTestResultsTopologyRequestBuilder(String networkTopologyId, String aid) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getLocalNetworksTestResultsTopologyRequestBuilder(String networkTopologyId, String aid, List<ExpandLocalNetworkTopologyOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
@@ -238,6 +245,7 @@ public class LocalNetworkEndpointTestResultsApi {
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);
