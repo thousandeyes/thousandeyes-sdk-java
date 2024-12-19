@@ -22,23 +22,47 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Category of alert type based on the application or network layer and source of the test.
+ * Valid Alert Types for which to return test links.
  */
-public enum AlertGroupType {
+public enum AlertTestType {
+  
+  API("api"),
+  
+  AGENT_TO_AGENT("agent-to-agent"),
+  
+  AGENT_TO_SERVER("agent-to-server"),
   
   BGP("bgp"),
   
-  BROWSER_SESSION("browser-session"),
+  HTTP_SERVER("http-server"),
   
-  CLOUD_ENTERPRISE("cloud-enterprise"),
+  PAGE_LOAD("page-load"),
   
-  ENDPOINT("endpoint"),
+  WEB_TRANSACTIONS("web-transactions"),
+  
+  FTP_SERVER("ftp-server"),
+  
+  DNS_TRACE("dns-trace"),
+  
+  DNS_SERVER("dns-server"),
+  
+  DNSSEC("dnssec"),
+  
+  SIP_SERVER("sip-server"),
+  
+  VOICE("voice"),
+  
+  ENDPOINT_HTTP_SERVER("endpoint-http-server"),
+  
+  ENDPOINT_NETWORK_SERVER("endpoint-network-server"),
+  
+  ENDPOINT_PATH_TRACE("endpoint-path-trace"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  AlertGroupType(String value) {
+  AlertTestType(String value) {
     this.value = value;
   }
 
@@ -53,8 +77,8 @@ public enum AlertGroupType {
   }
 
   @JsonCreator
-  public static AlertGroupType fromValue(String value) {
-    for (AlertGroupType b : AlertGroupType.values()) {
+  public static AlertTestType fromValue(String value) {
+    for (AlertTestType b : AlertTestType.values()) {
       if (b.value.equals(value)) {
         return b;
       }

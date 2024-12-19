@@ -471,6 +471,7 @@ public class StreamingApiTest {
                     "id" : "5678",
                     "domain" : "endpoint"
                   } ],
+                  "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
                     "splunkHec" : {
                       "sourceType" : "ThousandEyesOTel",
