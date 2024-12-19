@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   PutStream.JSON_PROPERTY_CUSTOM_HEADERS,
+  PutStream.JSON_PROPERTY_STREAM_ENDPOINT_URL,
   PutStream.JSON_PROPERTY_TAG_MATCH,
   PutStream.JSON_PROPERTY_TEST_MATCH,
   PutStream.JSON_PROPERTY_ENABLED,
@@ -47,6 +48,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class PutStream {
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
+
+  public static final String JSON_PROPERTY_STREAM_ENDPOINT_URL = "streamEndpointUrl";
+  private String streamEndpointUrl;
 
   public static final String JSON_PROPERTY_TAG_MATCH = "tagMatch";
   private List<TagMatch> tagMatch = new ArrayList<>();
@@ -96,6 +100,31 @@ public class PutStream {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCustomHeaders(Map<String, String> customHeaders) {
     this.customHeaders = customHeaders;
+  }
+
+
+  public PutStream streamEndpointUrl(String streamEndpointUrl) {
+    this.streamEndpointUrl = streamEndpointUrl;
+    return this;
+  }
+
+   /**
+   * The URL ThousandEyes sends data stream to. For a URL to be valid, it needs to: - Be syntactically correct. - Be reachable. - Use the HTTPS protocol. - When using the &#x60;grpc&#x60; endpointType, streamEndpointUrl cannot contain paths:     - Valid . &#x60;grpc&#x60; - &#x60;https://example.com&#x60;     - Invalid . &#x60;grpc&#x60; - &#x60;https://example.com/collector&#x60;.     - Valid . &#x60;http&#x60; - &#x60;https://example.com/collector&#x60;.  - When using the &#x60;http&#x60; endpointType, the operation must match the exact final full URL (including the path if there is one) to which the data will be sent. Examples below:     - &#x60;https://api.honeycomb.io:443/v1/metrics&#x60;     - &#x60;https://ingest.eu0.signalfx.com/v2/datapoint/otlp&#x60;
+   * @return streamEndpointUrl
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STREAM_ENDPOINT_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getStreamEndpointUrl() {
+    return streamEndpointUrl;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STREAM_ENDPOINT_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStreamEndpointUrl(String streamEndpointUrl) {
+    this.streamEndpointUrl = streamEndpointUrl;
   }
 
 
@@ -253,6 +282,7 @@ public class PutStream {
     }
     PutStream putStream = (PutStream) o;
     return Objects.equals(this.customHeaders, putStream.customHeaders) &&
+        Objects.equals(this.streamEndpointUrl, putStream.streamEndpointUrl) &&
         Objects.equals(this.tagMatch, putStream.tagMatch) &&
         Objects.equals(this.testMatch, putStream.testMatch) &&
         Objects.equals(this.enabled, putStream.enabled) &&
@@ -262,7 +292,7 @@ public class PutStream {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, tagMatch, testMatch, enabled, filters, exporterConfig);
+    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, exporterConfig);
   }
 
   @Override
@@ -270,6 +300,7 @@ public class PutStream {
     StringBuilder sb = new StringBuilder();
     sb.append("class PutStream {\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
+    sb.append("    streamEndpointUrl: ").append(toIndentedString(streamEndpointUrl)).append("\n");
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");

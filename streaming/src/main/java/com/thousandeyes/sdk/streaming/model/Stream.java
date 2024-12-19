@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   Stream.JSON_PROPERTY_CUSTOM_HEADERS,
+  Stream.JSON_PROPERTY_STREAM_ENDPOINT_URL,
   Stream.JSON_PROPERTY_TAG_MATCH,
   Stream.JSON_PROPERTY_TEST_MATCH,
   Stream.JSON_PROPERTY_ENABLED,
@@ -49,13 +50,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Stream.JSON_PROPERTY_TYPE,
   Stream.JSON_PROPERTY_SIGNAL,
   Stream.JSON_PROPERTY_ENDPOINT_TYPE,
-  Stream.JSON_PROPERTY_STREAM_ENDPOINT_URL,
   Stream.JSON_PROPERTY_DATA_MODEL_VERSION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Stream {
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
+
+  public static final String JSON_PROPERTY_STREAM_ENDPOINT_URL = "streamEndpointUrl";
+  private String streamEndpointUrl;
 
   public static final String JSON_PROPERTY_TAG_MATCH = "tagMatch";
   private List<TagMatch> tagMatch = new ArrayList<>();
@@ -80,9 +83,6 @@ public class Stream {
 
   public static final String JSON_PROPERTY_ENDPOINT_TYPE = "endpointType";
   private EndpointType endpointType = EndpointType.GRPC;
-
-  public static final String JSON_PROPERTY_STREAM_ENDPOINT_URL = "streamEndpointUrl";
-  private String streamEndpointUrl;
 
   public static final String JSON_PROPERTY_DATA_MODEL_VERSION = "dataModelVersion";
   private DataModelVersion dataModelVersion = DataModelVersion.V2;
@@ -120,6 +120,31 @@ public class Stream {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCustomHeaders(Map<String, String> customHeaders) {
     this.customHeaders = customHeaders;
+  }
+
+
+  public Stream streamEndpointUrl(String streamEndpointUrl) {
+    this.streamEndpointUrl = streamEndpointUrl;
+    return this;
+  }
+
+   /**
+   * The URL ThousandEyes sends data stream to. For a URL to be valid, it needs to: - Be syntactically correct. - Be reachable. - Use the HTTPS protocol. - When using the &#x60;grpc&#x60; endpointType, streamEndpointUrl cannot contain paths:     - Valid . &#x60;grpc&#x60; - &#x60;https://example.com&#x60;     - Invalid . &#x60;grpc&#x60; - &#x60;https://example.com/collector&#x60;.     - Valid . &#x60;http&#x60; - &#x60;https://example.com/collector&#x60;.  - When using the &#x60;http&#x60; endpointType, the operation must match the exact final full URL (including the path if there is one) to which the data will be sent. Examples below:     - &#x60;https://api.honeycomb.io:443/v1/metrics&#x60;     - &#x60;https://ingest.eu0.signalfx.com/v2/datapoint/otlp&#x60;
+   * @return streamEndpointUrl
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STREAM_ENDPOINT_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getStreamEndpointUrl() {
+    return streamEndpointUrl;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STREAM_ENDPOINT_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStreamEndpointUrl(String streamEndpointUrl) {
+    this.streamEndpointUrl = streamEndpointUrl;
   }
 
 
@@ -339,31 +364,6 @@ public class Stream {
   }
 
 
-  public Stream streamEndpointUrl(String streamEndpointUrl) {
-    this.streamEndpointUrl = streamEndpointUrl;
-    return this;
-  }
-
-   /**
-   * The URL ThousandEyes sends data stream to. For a URL to be valid, it needs to: - Be syntactically correct. - Be reachable. - Use the HTTPS protocol. - When using the &#x60;grpc&#x60; endpointType, streamEndpointUrl cannot contain paths:     - Valid . &#x60;grpc&#x60; - &#x60;https://example.com&#x60;     - Invalid . &#x60;grpc&#x60; - &#x60;https://example.com/collector&#x60;.     - Valid . &#x60;http&#x60; - &#x60;https://example.com/collector&#x60;.      - When using the &#x60;http&#x60; endpointType, the operation must match the exact final full URL (including the path if there is one) to which the metrics will be sent. Examples below:     - &#x60;https://api.honeycomb.io:443/v1/metrics&#x60;     - &#x60;https://ingest.eu0.signalfx.com/v2/datapoint/otlp&#x60;
-   * @return streamEndpointUrl
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STREAM_ENDPOINT_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getStreamEndpointUrl() {
-    return streamEndpointUrl;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STREAM_ENDPOINT_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStreamEndpointUrl(String streamEndpointUrl) {
-    this.streamEndpointUrl = streamEndpointUrl;
-  }
-
-
   public Stream dataModelVersion(DataModelVersion dataModelVersion) {
     this.dataModelVersion = dataModelVersion;
     return this;
@@ -402,6 +402,7 @@ public class Stream {
     }
     Stream stream = (Stream) o;
     return Objects.equals(this.customHeaders, stream.customHeaders) &&
+        Objects.equals(this.streamEndpointUrl, stream.streamEndpointUrl) &&
         Objects.equals(this.tagMatch, stream.tagMatch) &&
         Objects.equals(this.testMatch, stream.testMatch) &&
         Objects.equals(this.enabled, stream.enabled) &&
@@ -410,13 +411,12 @@ public class Stream {
         Objects.equals(this.type, stream.type) &&
         Objects.equals(this.signal, stream.signal) &&
         Objects.equals(this.endpointType, stream.endpointType) &&
-        Objects.equals(this.streamEndpointUrl, stream.streamEndpointUrl) &&
         Objects.equals(this.dataModelVersion, stream.dataModelVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, tagMatch, testMatch, enabled, filters, exporterConfig, type, signal, endpointType, streamEndpointUrl, dataModelVersion);
+    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, exporterConfig, type, signal, endpointType, dataModelVersion);
   }
 
   @Override
@@ -424,6 +424,7 @@ public class Stream {
     StringBuilder sb = new StringBuilder();
     sb.append("class Stream {\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
+    sb.append("    streamEndpointUrl: ").append(toIndentedString(streamEndpointUrl)).append("\n");
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
@@ -432,7 +433,6 @@ public class Stream {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    signal: ").append(toIndentedString(signal)).append("\n");
     sb.append("    endpointType: ").append(toIndentedString(endpointType)).append("\n");
-    sb.append("    streamEndpointUrl: ").append(toIndentedString(streamEndpointUrl)).append("\n");
     sb.append("    dataModelVersion: ").append(toIndentedString(dataModelVersion)).append("\n");
     sb.append("}");
     return sb.toString();
