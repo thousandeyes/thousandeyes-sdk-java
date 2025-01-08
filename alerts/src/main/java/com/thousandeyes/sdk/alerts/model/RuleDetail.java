@@ -24,11 +24,11 @@ import com.thousandeyes.sdk.alerts.model.AlertDirection;
 import com.thousandeyes.sdk.alerts.model.AlertGroupType;
 import com.thousandeyes.sdk.alerts.model.AlertNotification;
 import com.thousandeyes.sdk.alerts.model.AlertRoundsViolationMode;
+import com.thousandeyes.sdk.alerts.model.AlertSimpleTest;
 import com.thousandeyes.sdk.alerts.model.AlertType;
 import com.thousandeyes.sdk.alerts.model.SelfLinks;
 import com.thousandeyes.sdk.alerts.model.SensitivityLevel;
 import com.thousandeyes.sdk.alerts.model.Severity;
-import com.thousandeyes.sdk.alerts.model.SimpleTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -113,7 +113,7 @@ public class RuleDetail {
   private AlertNotification notifications;
 
   public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<SimpleTest> tests = new ArrayList<>();
+  private List<AlertSimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
@@ -124,7 +124,7 @@ public class RuleDetail {
   @JsonCreator
   public RuleDetail(
     @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId, 
-    @JsonProperty(JSON_PROPERTY_TESTS) List<SimpleTest> tests
+    @JsonProperty(JSON_PROPERTY_TESTS) List<AlertSimpleTest> tests
   ) {
   this();
     this.ruleId = ruleId;
@@ -554,7 +554,7 @@ public class RuleDetail {
   @JsonProperty(JSON_PROPERTY_TESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<SimpleTest> getTests() {
+  public List<AlertSimpleTest> getTests() {
     return tests;
   }
 
