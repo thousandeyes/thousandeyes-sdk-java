@@ -1,6 +1,6 @@
 /*
  * Agents API
- *  ## Overview Manage all agents available to your account in ThousandEyes, including both Cloud and Enterprise Agents.
+ *  ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -59,8 +59,8 @@ public class AgentProxiesApi {
   }
 
   /**
-   * List agent proxies
-   * List all agent proxies available under the account group. 
+   * List Enterprise Agent Proxies
+   * List all enterprise agent proxies available under the account group. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return AgentProxies
    * @throws ApiException if fails to make API call
@@ -71,8 +71,8 @@ public class AgentProxiesApi {
   }
 
   /**
-   * List agent proxies
-   * List all agent proxies available under the account group. 
+   * List Enterprise Agent Proxies
+   * List all enterprise agent proxies available under the account group. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;AgentProxies&gt;
    * @throws ApiException if fails to make API call

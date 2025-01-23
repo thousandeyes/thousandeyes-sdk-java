@@ -347,7 +347,7 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 
 List Cloud and Enterprise Agents
 
-Returns a list of all agents available to your ThousandEyes account, including both Enterprise and Cloud Agents.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
+List the Cloud and Enterprise Agents available to your account in ThousandEyes.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
 
 ### Example
 
@@ -428,7 +428,7 @@ public class Example {
 
 List Cloud and Enterprise Agents
 
-Returns a list of all agents available to your ThousandEyes account, including both Enterprise and Cloud Agents.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
+List the Cloud and Enterprise Agents available to your account in ThousandEyes.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
 
 ### Example
 

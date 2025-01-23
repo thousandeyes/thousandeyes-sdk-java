@@ -4,8 +4,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAgentsProxies**](AgentProxiesApi.md#getAgentsProxies) | **GET** /agents/proxies | List agent proxies |
-| [**getAgentsProxiesWithHttpInfo**](AgentProxiesApi.md#getAgentsProxiesWithHttpInfo) | **GET** /agents/proxies | List agent proxies |
+| [**getAgentsProxies**](AgentProxiesApi.md#getAgentsProxies) | **GET** /agents/proxies | List Enterprise Agent Proxies |
+| [**getAgentsProxiesWithHttpInfo**](AgentProxiesApi.md#getAgentsProxiesWithHttpInfo) | **GET** /agents/proxies | List Enterprise Agent Proxies |
 
 
 
@@ -13,9 +13,9 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 > AgentProxies getAgentsProxies(aid)
 
-List agent proxies
+List Enterprise Agent Proxies
 
-List all agent proxies available under the account group. 
+List all enterprise agent proxies available under the account group. 
 
 ### Example
 
@@ -90,9 +90,9 @@ public class Example {
 
 > ApiResponse<AgentProxies> getAgentsProxies getAgentsProxiesWithHttpInfo(aid)
 
-List agent proxies
+List Enterprise Agent Proxies
 
-List all agent proxies available under the account group. 
+List all enterprise agent proxies available under the account group. 
 
 ### Example
 
