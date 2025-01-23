@@ -112,10 +112,14 @@ public class AlertRulesApiTest {
                     } ],
                     "webhook" : [ {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     }, {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     } ],
                     "email" : {
                       "recipients" : [ "noreply@thousandeyes.com" ],
@@ -181,10 +185,14 @@ public class AlertRulesApiTest {
                     } ],
                     "webhook" : [ {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     }, {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     } ],
                     "email" : {
                       "recipients" : [ "noreply@thousandeyes.com" ],
@@ -368,10 +376,14 @@ public class AlertRulesApiTest {
                     } ],
                     "webhook" : [ {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     }, {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     } ],
                     "email" : {
                       "recipients" : [ "noreply@thousandeyes.com" ],
@@ -534,10 +546,14 @@ public class AlertRulesApiTest {
                     } ],
                     "webhook" : [ {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     }, {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     } ],
                     "email" : {
                       "recipients" : [ "noreply@thousandeyes.com" ],
@@ -603,10 +619,14 @@ public class AlertRulesApiTest {
                     } ],
                     "webhook" : [ {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     }, {
                       "integrationType" : "webhook",
-                      "integrationId" : "wb-201"
+                      "integrationName" : "My webhook",
+                      "integrationId" : "wb-201",
+                      "target" : "https://example.com/test/webhooks/notifications"
                     } ],
                     "email" : {
                       "recipients" : [ "noreply@thousandeyes.com" ],

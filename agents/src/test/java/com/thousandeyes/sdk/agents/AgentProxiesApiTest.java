@@ -1,6 +1,6 @@
 /*
  * Agents API
- *  ## Overview Manage all agents available to your account in ThousandEyes, including both Cloud and Enterprise Agents.
+ *  ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -68,9 +68,9 @@ public class AgentProxiesApiTest {
     }
     
     /**
-     * List agent proxies
+     * List Enterprise Agent Proxies
      * <p>
-     * List all agent proxies available under the account group. 
+     * List all enterprise agent proxies available under the account group. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */

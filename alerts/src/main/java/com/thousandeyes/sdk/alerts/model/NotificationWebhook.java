@@ -29,7 +29,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   NotificationWebhook.JSON_PROPERTY_INTEGRATION_ID,
-  NotificationWebhook.JSON_PROPERTY_INTEGRATION_TYPE
+  NotificationWebhook.JSON_PROPERTY_INTEGRATION_TYPE,
+  NotificationWebhook.JSON_PROPERTY_INTEGRATION_NAME,
+  NotificationWebhook.JSON_PROPERTY_TARGET
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NotificationWebhook {
@@ -38,6 +40,12 @@ public class NotificationWebhook {
 
   public static final String JSON_PROPERTY_INTEGRATION_TYPE = "integrationType";
   private WebhookIntegrationType integrationType;
+
+  public static final String JSON_PROPERTY_INTEGRATION_NAME = "integrationName";
+  private String integrationName;
+
+  public static final String JSON_PROPERTY_TARGET = "target";
+  private String target;
 
   public NotificationWebhook() { 
   }
@@ -92,6 +100,56 @@ public class NotificationWebhook {
   }
 
 
+  public NotificationWebhook integrationName(String integrationName) {
+    this.integrationName = integrationName;
+    return this;
+  }
+
+   /**
+   * Name of the integration, configured by the user.
+   * @return integrationName
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_INTEGRATION_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getIntegrationName() {
+    return integrationName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INTEGRATION_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIntegrationName(String integrationName) {
+    this.integrationName = integrationName;
+  }
+
+
+  public NotificationWebhook target(String target) {
+    this.target = target;
+    return this;
+  }
+
+   /**
+   * Webhook target URL.
+   * @return target
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TARGET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getTarget() {
+    return target;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TARGET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTarget(String target) {
+    this.target = target;
+  }
+
+
   /**
    * Return true if this NotificationWebhook object is equal to o.
    */
@@ -105,12 +163,14 @@ public class NotificationWebhook {
     }
     NotificationWebhook notificationWebhook = (NotificationWebhook) o;
     return Objects.equals(this.integrationId, notificationWebhook.integrationId) &&
-        Objects.equals(this.integrationType, notificationWebhook.integrationType);
+        Objects.equals(this.integrationType, notificationWebhook.integrationType) &&
+        Objects.equals(this.integrationName, notificationWebhook.integrationName) &&
+        Objects.equals(this.target, notificationWebhook.target);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrationId, integrationType);
+    return Objects.hash(integrationId, integrationType, integrationName, target);
   }
 
   @Override
@@ -119,6 +179,8 @@ public class NotificationWebhook {
     sb.append("class NotificationWebhook {\n");
     sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    integrationType: ").append(toIndentedString(integrationType)).append("\n");
+    sb.append("    integrationName: ").append(toIndentedString(integrationName)).append("\n");
+    sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("}");
     return sb.toString();
   }

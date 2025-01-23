@@ -1,6 +1,6 @@
 /*
  * Agents API
- *  ## Overview Manage all agents available to your account in ThousandEyes, including both Cloud and Enterprise Agents.
+ *  ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -177,7 +177,7 @@ public class CloudAndEnterpriseAgentsApi {
   }
   /**
    * List Cloud and Enterprise Agents
-   * Returns a list of all agents available to your ThousandEyes account, including both Enterprise and Cloud Agents.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
+   * List the Cloud and Enterprise Agents available to your account in ThousandEyes.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
    * @param agentTypes Specifies the type of agent to request. (optional
@@ -191,7 +191,7 @@ public class CloudAndEnterpriseAgentsApi {
 
   /**
    * List Cloud and Enterprise Agents
-   * Returns a list of all agents available to your ThousandEyes account, including both Enterprise and Cloud Agents.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
+   * List the Cloud and Enterprise Agents available to your account in ThousandEyes.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
    * @param agentTypes Specifies the type of agent to request. (optional

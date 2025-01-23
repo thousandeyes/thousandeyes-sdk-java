@@ -1,6 +1,6 @@
 /*
  * Agents API
- *  ## Overview Manage all agents available to your account in ThousandEyes, including both Cloud and Enterprise Agents.
+ *  ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -233,7 +233,7 @@ public class CloudAndEnterpriseAgentsApiTest {
     /**
      * List Cloud and Enterprise Agents
      * <p>
-     * Returns a list of all agents available to your ThousandEyes account, including both Enterprise and Cloud Agents.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
+     * List the Cloud and Enterprise Agents available to your account in ThousandEyes.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */
