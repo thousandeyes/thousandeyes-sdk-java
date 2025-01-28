@@ -91,7 +91,7 @@ public class Example {
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **409** | An existing item already exists |  -  |
-| **412** | Reached limit on number of streams (maximum 5 data streams per account group) |  -  |
+| **412** | Reached limit on number of streams (maximum 10 data streams per account group) |  -  |
 | **500** | Internal Server Error |  -  |
 
 ## createStreamWithHttpInfo
@@ -171,7 +171,7 @@ ApiResponse<[**CreateStreamResponse**](CreateStreamResponse.md)>
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **409** | An existing item already exists |  -  |
-| **412** | Reached limit on number of streams (maximum 5 data streams per account group) |  -  |
+| **412** | Reached limit on number of streams (maximum 10 data streams per account group) |  -  |
 | **500** | Internal Server Error |  -  |
 
 

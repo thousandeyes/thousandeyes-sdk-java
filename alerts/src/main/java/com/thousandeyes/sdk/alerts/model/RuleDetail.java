@@ -55,6 +55,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RuleDetail.JSON_PROPERTY_INCLUDE_COVERED_PREFIXES,
   RuleDetail.JSON_PROPERTY_SENSITIVITY_LEVEL,
   RuleDetail.JSON_PROPERTY_SEVERITY,
+  RuleDetail.JSON_PROPERTY_ENDPOINT_AGENT_IDS,
+  RuleDetail.JSON_PROPERTY_ENDPOINT_LABEL_IDS,
+  RuleDetail.JSON_PROPERTY_VISITED_SITES_FILTER,
   RuleDetail.JSON_PROPERTY_NOTIFICATIONS,
   RuleDetail.JSON_PROPERTY_TESTS,
   RuleDetail.JSON_PROPERTY_LINKS
@@ -108,6 +111,15 @@ public class RuleDetail {
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
   private Severity severity;
+
+  public static final String JSON_PROPERTY_ENDPOINT_AGENT_IDS = "endpointAgentIds";
+  private List<String> endpointAgentIds = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ENDPOINT_LABEL_IDS = "endpointLabelIds";
+  private List<String> endpointLabelIds = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_VISITED_SITES_FILTER = "visitedSitesFilter";
+  private List<String> visitedSitesFilter = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NOTIFICATIONS = "notifications";
   private AlertNotification notifications;
@@ -521,6 +533,105 @@ public class RuleDetail {
   }
 
 
+  public RuleDetail endpointAgentIds(List<String> endpointAgentIds) {
+    this.endpointAgentIds = endpointAgentIds;
+    return this;
+  }
+
+  public RuleDetail addEndpointAgentIdsItem(String endpointAgentIdsItem) {
+    if (this.endpointAgentIds == null) {
+      this.endpointAgentIds = new ArrayList<>();
+    }
+    this.endpointAgentIds.add(endpointAgentIdsItem);
+    return this;
+  }
+
+   /**
+   * An array of endpoint agent IDs associated with the rule (get &#x60;id&#x60; from &#x60;/endpoint/agents&#x60; API). This is applicable when &#x60;alertGroupType&#x60; is &#x60;browser-session&#x60;.
+   * @return endpointAgentIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getEndpointAgentIds() {
+    return endpointAgentIds;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndpointAgentIds(List<String> endpointAgentIds) {
+    this.endpointAgentIds = endpointAgentIds;
+  }
+
+
+  public RuleDetail endpointLabelIds(List<String> endpointLabelIds) {
+    this.endpointLabelIds = endpointLabelIds;
+    return this;
+  }
+
+  public RuleDetail addEndpointLabelIdsItem(String endpointLabelIdsItem) {
+    if (this.endpointLabelIds == null) {
+      this.endpointLabelIds = new ArrayList<>();
+    }
+    this.endpointLabelIds.add(endpointLabelIdsItem);
+    return this;
+  }
+
+   /**
+   * An array of label IDs used to assign specific Endpoint Agents to the test (get &#x60;id&#x60; from &#x60;/endpoint/labels&#x60;). This is applicable when &#x60;alertGroupType&#x60; is &#x60;browser-session&#x60;.
+   * @return endpointLabelIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_LABEL_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getEndpointLabelIds() {
+    return endpointLabelIds;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_LABEL_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndpointLabelIds(List<String> endpointLabelIds) {
+    this.endpointLabelIds = endpointLabelIds;
+  }
+
+
+  public RuleDetail visitedSitesFilter(List<String> visitedSitesFilter) {
+    this.visitedSitesFilter = visitedSitesFilter;
+    return this;
+  }
+
+  public RuleDetail addVisitedSitesFilterItem(String visitedSitesFilterItem) {
+    if (this.visitedSitesFilter == null) {
+      this.visitedSitesFilter = new ArrayList<>();
+    }
+    this.visitedSitesFilter.add(visitedSitesFilterItem);
+    return this;
+  }
+
+   /**
+   * A list of website domains visited during the session. This is applicable when &#x60;alertGroupType&#x60; is &#x60;browser-session&#x60;.
+   * @return visitedSitesFilter
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VISITED_SITES_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getVisitedSitesFilter() {
+    return visitedSitesFilter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VISITED_SITES_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVisitedSitesFilter(List<String> visitedSitesFilter) {
+    this.visitedSitesFilter = visitedSitesFilter;
+  }
+
+
   public RuleDetail notifications(AlertNotification notifications) {
     this.notifications = notifications;
     return this;
@@ -614,6 +725,9 @@ public class RuleDetail {
         Objects.equals(this.includeCoveredPrefixes, ruleDetail.includeCoveredPrefixes) &&
         Objects.equals(this.sensitivityLevel, ruleDetail.sensitivityLevel) &&
         Objects.equals(this.severity, ruleDetail.severity) &&
+        Objects.equals(this.endpointAgentIds, ruleDetail.endpointAgentIds) &&
+        Objects.equals(this.endpointLabelIds, ruleDetail.endpointLabelIds) &&
+        Objects.equals(this.visitedSitesFilter, ruleDetail.visitedSitesFilter) &&
         Objects.equals(this.notifications, ruleDetail.notifications) &&
         Objects.equals(this.tests, ruleDetail.tests) &&
         Objects.equals(this.links, ruleDetail.links);
@@ -621,7 +735,7 @@ public class RuleDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, notifications, tests, links);
+    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, tests, links);
   }
 
   @Override
@@ -644,6 +758,9 @@ public class RuleDetail {
     sb.append("    includeCoveredPrefixes: ").append(toIndentedString(includeCoveredPrefixes)).append("\n");
     sb.append("    sensitivityLevel: ").append(toIndentedString(sensitivityLevel)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
+    sb.append("    endpointAgentIds: ").append(toIndentedString(endpointAgentIds)).append("\n");
+    sb.append("    endpointLabelIds: ").append(toIndentedString(endpointLabelIds)).append("\n");
+    sb.append("    visitedSitesFilter: ").append(toIndentedString(visitedSitesFilter)).append("\n");
     sb.append("    notifications: ").append(toIndentedString(notifications)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
