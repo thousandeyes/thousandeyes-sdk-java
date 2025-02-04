@@ -90,6 +90,7 @@ public class AlertRulesApiTest {
                   "expression" : "((hops((hopDelay >= 100 ms))))",
                   "alertType" : "http-server",
                   "includeCoveredPrefixes" : true,
+                  "visitedSitesFilter" : [ "app.thousandeyes.com" ],
                   "roundsViolatingMode" : "exact",
                   "sensitivityLevel" : "medium",
                   "alertGroupType" : "endpoint",
@@ -98,8 +99,10 @@ public class AlertRulesApiTest {
                   "roundsViolatingOutOf" : 5,
                   "roundsViolatingRequired" : 2,
                   "isDefault" : true,
+                  "endpointAgentIds" : [ "281474976710706", "281474976710706" ],
                   "minimumSourcesPct" : 99,
                   "ruleName" : "The End of the Internet",
+                  "endpointLabelIds" : [ "123456", "123456" ],
                   "minimumSources" : 10,
                   "ruleId" : "127094",
                   "notifications" : {
@@ -163,6 +166,7 @@ public class AlertRulesApiTest {
                     }
                   },
                   "includeCoveredPrefixes" : true,
+                  "visitedSitesFilter" : [ "app.thousandeyes.com" ],
                   "roundsViolatingMode" : "exact",
                   "sensitivityLevel" : "medium",
                   "alertGroupType" : "endpoint",
@@ -171,8 +175,10 @@ public class AlertRulesApiTest {
                   "roundsViolatingOutOf" : 5,
                   "roundsViolatingRequired" : 2,
                   "isDefault" : true,
+                  "endpointAgentIds" : [ "281474976710706", "281474976710706" ],
                   "minimumSourcesPct" : 99,
                   "ruleName" : "The End of the Internet",
+                  "endpointLabelIds" : [ "123456", "123456" ],
                   "minimumSources" : 10,
                   "ruleId" : "127094",
                   "notifications" : {
@@ -292,6 +298,7 @@ public class AlertRulesApiTest {
                     }
                   },
                   "includeCoveredPrefixes" : true,
+                  "visitedSitesFilter" : [ "app.thousandeyes.com" ],
                   "roundsViolatingMode" : "exact",
                   "sensitivityLevel" : "medium",
                   "alertGroupType" : "endpoint",
@@ -299,6 +306,7 @@ public class AlertRulesApiTest {
                   "roundsViolatingOutOf" : 5,
                   "roundsViolatingRequired" : 2,
                   "isDefault" : true,
+                  "endpointAgentIds" : [ "281474976710706", "281474976710706" ],
                   "tests" : [ {
                     "_links" : {
                       "testResults" : [ {
@@ -364,6 +372,7 @@ public class AlertRulesApiTest {
                   } ],
                   "minimumSourcesPct" : 99,
                   "ruleName" : "The End of the Internet",
+                  "endpointLabelIds" : [ "123456", "123456" ],
                   "minimumSources" : 10,
                   "ruleId" : "127094",
                   "notifications" : {
@@ -455,6 +464,7 @@ public class AlertRulesApiTest {
                     "expression" : "((hops((hopDelay >= 100 ms))))",
                     "alertType" : "http-server",
                     "includeCoveredPrefixes" : true,
+                    "visitedSitesFilter" : [ "app.thousandeyes.com" ],
                     "roundsViolatingMode" : "exact",
                     "sensitivityLevel" : "medium",
                     "alertGroupType" : "endpoint",
@@ -462,8 +472,10 @@ public class AlertRulesApiTest {
                     "roundsViolatingOutOf" : 5,
                     "roundsViolatingRequired" : 2,
                     "isDefault" : true,
+                    "endpointAgentIds" : [ "281474976710706", "281474976710706" ],
                     "minimumSourcesPct" : 99,
                     "ruleName" : "The End of the Internet",
+                    "endpointLabelIds" : [ "123456", "123456" ],
                     "minimumSources" : 10,
                     "ruleId" : "127094",
                     "direction" : "to-target"
@@ -472,6 +484,7 @@ public class AlertRulesApiTest {
                     "expression" : "((hops((hopDelay >= 100 ms))))",
                     "alertType" : "http-server",
                     "includeCoveredPrefixes" : true,
+                    "visitedSitesFilter" : [ "app.thousandeyes.com" ],
                     "roundsViolatingMode" : "exact",
                     "sensitivityLevel" : "medium",
                     "alertGroupType" : "endpoint",
@@ -479,8 +492,10 @@ public class AlertRulesApiTest {
                     "roundsViolatingOutOf" : 5,
                     "roundsViolatingRequired" : 2,
                     "isDefault" : true,
+                    "endpointAgentIds" : [ "281474976710706", "281474976710706" ],
                     "minimumSourcesPct" : 99,
                     "ruleName" : "The End of the Internet",
+                    "endpointLabelIds" : [ "123456", "123456" ],
                     "minimumSources" : 10,
                     "ruleId" : "127094",
                     "direction" : "to-target"
@@ -524,6 +539,7 @@ public class AlertRulesApiTest {
                   "expression" : "((hops((hopDelay >= 100 ms))))",
                   "alertType" : "http-server",
                   "includeCoveredPrefixes" : true,
+                  "visitedSitesFilter" : [ "app.thousandeyes.com" ],
                   "roundsViolatingMode" : "exact",
                   "sensitivityLevel" : "medium",
                   "alertGroupType" : "endpoint",
@@ -532,8 +548,10 @@ public class AlertRulesApiTest {
                   "roundsViolatingOutOf" : 5,
                   "roundsViolatingRequired" : 2,
                   "isDefault" : true,
+                  "endpointAgentIds" : [ "281474976710706", "281474976710706" ],
                   "minimumSourcesPct" : 99,
                   "ruleName" : "The End of the Internet",
+                  "endpointLabelIds" : [ "123456", "123456" ],
                   "minimumSources" : 10,
                   "ruleId" : "127094",
                   "notifications" : {
@@ -597,6 +615,7 @@ public class AlertRulesApiTest {
                     }
                   },
                   "includeCoveredPrefixes" : true,
+                  "visitedSitesFilter" : [ "app.thousandeyes.com" ],
                   "roundsViolatingMode" : "exact",
                   "sensitivityLevel" : "medium",
                   "alertGroupType" : "endpoint",
@@ -605,8 +624,10 @@ public class AlertRulesApiTest {
                   "roundsViolatingOutOf" : 5,
                   "roundsViolatingRequired" : 2,
                   "isDefault" : true,
+                  "endpointAgentIds" : [ "281474976710706", "281474976710706" ],
                   "minimumSourcesPct" : 99,
                   "ruleName" : "The End of the Internet",
+                  "endpointLabelIds" : [ "123456", "123456" ],
                   "minimumSources" : 10,
                   "ruleId" : "127094",
                   "notifications" : {
