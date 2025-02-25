@@ -142,6 +142,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "networkMeasurements" : true,
                     "tcpProbeMode" : "auto",
                     "labels" : [ {
@@ -448,6 +449,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "networkMeasurements" : true,
                     "tcpProbeMode" : "auto",
                     "labels" : [ {
@@ -929,6 +931,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "networkMeasurements" : true,
                     "tcpProbeMode" : "auto",
                     "labels" : [ {

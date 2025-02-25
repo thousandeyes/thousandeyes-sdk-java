@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTestRequest.JSON_PROPERTY_AGENT_SELECTOR_TYPE,
   DynamicTestRequest.JSON_PROPERTY_AGENTS,
   DynamicTestRequest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
+  DynamicTestRequest.JSON_PROPERTY_IS_PRIORITIZED,
   DynamicTestRequest.JSON_PROPERTY_INTERVAL,
   DynamicTestRequest.JSON_PROPERTY_MAX_MACHINES,
   DynamicTestRequest.JSON_PROPERTY_APPLICATION,
@@ -56,6 +57,9 @@ public class DynamicTestRequest {
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
   private List<String> endpointAgentLabels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_IS_PRIORITIZED = "isPrioritized";
+  private Boolean isPrioritized = false;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval = TestInterval.NUMBER_60;
@@ -169,6 +173,31 @@ public class DynamicTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEndpointAgentLabels(List<String> endpointAgentLabels) {
     this.endpointAgentLabels = endpointAgentLabels;
+  }
+
+
+  public DynamicTestRequest isPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+    return this;
+  }
+
+   /**
+   * Indicates whether the test should be prioritized when the number of tests assigned to an agent exceeds the license limit.
+   * @return isPrioritized
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIsPrioritized() {
+    return isPrioritized;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
   }
 
 
@@ -362,6 +391,7 @@ public class DynamicTestRequest {
     return Objects.equals(this.agentSelectorType, dynamicTestRequest.agentSelectorType) &&
         Objects.equals(this.agents, dynamicTestRequest.agents) &&
         Objects.equals(this.endpointAgentLabels, dynamicTestRequest.endpointAgentLabels) &&
+        Objects.equals(this.isPrioritized, dynamicTestRequest.isPrioritized) &&
         Objects.equals(this.interval, dynamicTestRequest.interval) &&
         Objects.equals(this.maxMachines, dynamicTestRequest.maxMachines) &&
         Objects.equals(this.application, dynamicTestRequest.application) &&
@@ -373,7 +403,7 @@ public class DynamicTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, interval, maxMachines, application, protocol, tcpProbeMode, testName, hasPathTraceInSession);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, isPrioritized, interval, maxMachines, application, protocol, tcpProbeMode, testName, hasPathTraceInSession);
   }
 
   @Override
@@ -383,6 +413,7 @@ public class DynamicTestRequest {
     sb.append("    agentSelectorType: ").append(toIndentedString(agentSelectorType)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
+    sb.append("    isPrioritized: ").append(toIndentedString(isPrioritized)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
     sb.append("    application: ").append(toIndentedString(application)).append("\n");

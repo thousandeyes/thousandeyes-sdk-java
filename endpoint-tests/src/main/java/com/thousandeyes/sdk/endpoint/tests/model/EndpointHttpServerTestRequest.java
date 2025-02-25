@@ -56,6 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTestRequest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   EndpointHttpServerTestRequest.JSON_PROPERTY_TARGET_RESPONSE_TIME,
   EndpointHttpServerTestRequest.JSON_PROPERTY_PASSWORD,
+  EndpointHttpServerTestRequest.JSON_PROPERTY_IS_PRIORITIZED,
   EndpointHttpServerTestRequest.JSON_PROPERTY_INTERVAL
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -116,6 +117,9 @@ public class EndpointHttpServerTestRequest {
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
+
+  public static final String JSON_PROPERTY_IS_PRIORITIZED = "isPrioritized";
+  private Boolean isPrioritized = false;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval = TestInterval.NUMBER_60;
@@ -618,6 +622,31 @@ public class EndpointHttpServerTestRequest {
   }
 
 
+  public EndpointHttpServerTestRequest isPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+    return this;
+  }
+
+   /**
+   * Indicates whether the test should be prioritized when the number of tests assigned to an agent exceeds the license limit.
+   * @return isPrioritized
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIsPrioritized() {
+    return isPrioritized;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+  }
+
+
   public EndpointHttpServerTestRequest interval(TestInterval interval) {
     this.interval = interval;
     return this;
@@ -674,12 +703,13 @@ public class EndpointHttpServerTestRequest {
         Objects.equals(this.networkMeasurements, endpointHttpServerTestRequest.networkMeasurements) &&
         Objects.equals(this.targetResponseTime, endpointHttpServerTestRequest.targetResponseTime) &&
         Objects.equals(this.password, endpointHttpServerTestRequest.password) &&
+        Objects.equals(this.isPrioritized, endpointHttpServerTestRequest.isPrioritized) &&
         Objects.equals(this.interval, endpointHttpServerTestRequest.interval);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, authType, hasPathTraceInSession, httpTimeLimit, protocol, username, sslVersionId, tcpProbeMode, verifyCertificate, url, hasPing, hasTraceroute, networkMeasurements, targetResponseTime, password, interval);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, authType, hasPathTraceInSession, httpTimeLimit, protocol, username, sslVersionId, tcpProbeMode, verifyCertificate, url, hasPing, hasTraceroute, networkMeasurements, targetResponseTime, password, isPrioritized, interval);
   }
 
   @Override
@@ -705,6 +735,7 @@ public class EndpointHttpServerTestRequest {
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    targetResponseTime: ").append(toIndentedString(targetResponseTime)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    isPrioritized: ").append(toIndentedString(isPrioritized)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("}");
     return sb.toString();

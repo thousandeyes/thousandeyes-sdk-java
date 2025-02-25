@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTest.JSON_PROPERTY_AGENT_SELECTOR_CONFIG,
   DynamicTest.JSON_PROPERTY_APPLICATION,
   DynamicTest.JSON_PROPERTY_CREATED_DATE,
+  DynamicTest.JSON_PROPERTY_IS_PRIORITIZED,
   DynamicTest.JSON_PROPERTY_INTERVAL,
   DynamicTest.JSON_PROPERTY_IS_ENABLED,
   DynamicTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
@@ -73,6 +74,9 @@ public class DynamicTest {
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
   private OffsetDateTime createdDate;
+
+  public static final String JSON_PROPERTY_IS_PRIORITIZED = "isPrioritized";
+  private Boolean isPrioritized = false;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval = TestInterval.NUMBER_60;
@@ -243,6 +247,31 @@ public class DynamicTest {
   }
 
 
+
+
+  public DynamicTest isPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+    return this;
+  }
+
+   /**
+   * Indicates whether the test should be prioritized when the number of tests assigned to an agent exceeds the license limit.
+   * @return isPrioritized
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIsPrioritized() {
+    return isPrioritized;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+  }
 
 
   public DynamicTest interval(TestInterval interval) {
@@ -557,6 +586,7 @@ public class DynamicTest {
         Objects.equals(this.agentSelectorConfig, dynamicTest.agentSelectorConfig) &&
         Objects.equals(this.application, dynamicTest.application) &&
         Objects.equals(this.createdDate, dynamicTest.createdDate) &&
+        Objects.equals(this.isPrioritized, dynamicTest.isPrioritized) &&
         Objects.equals(this.interval, dynamicTest.interval) &&
         Objects.equals(this.isEnabled, dynamicTest.isEnabled) &&
         Objects.equals(this.hasPathTraceInSession, dynamicTest.hasPathTraceInSession) &&
@@ -574,7 +604,7 @@ public class DynamicTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, application, createdDate, interval, isEnabled, hasPathTraceInSession, hasPing, hasTraceroute, modifiedDate, networkMeasurements, protocol, ipVersion, tcpProbeMode, testId, testName, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, application, createdDate, isPrioritized, interval, isEnabled, hasPathTraceInSession, hasPing, hasTraceroute, modifiedDate, networkMeasurements, protocol, ipVersion, tcpProbeMode, testId, testName, labels);
   }
 
   @Override
@@ -586,6 +616,7 @@ public class DynamicTest {
     sb.append("    agentSelectorConfig: ").append(toIndentedString(agentSelectorConfig)).append("\n");
     sb.append("    application: ").append(toIndentedString(application)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
+    sb.append("    isPrioritized: ").append(toIndentedString(isPrioritized)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");

@@ -102,6 +102,7 @@ public class EndpointScheduledTestsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "networkMeasurements" : true,
                     "type" : "agent-to-server",
                     "tcpProbeMode" : "auto",
@@ -140,6 +141,7 @@ public class EndpointScheduledTestsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "networkMeasurements" : true,
                     "type" : "agent-to-server",
                     "tcpProbeMode" : "auto",
