@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTestRequest.JSON_PROPERTY_TEST_NAME,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_SERVER_NAME,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_PORT,
+  EndpointAgentToServerTestRequest.JSON_PROPERTY_IS_PRIORITIZED,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_INTERVAL,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_PROTOCOL
 })
@@ -66,6 +67,9 @@ public class EndpointAgentToServerTestRequest {
 
   public static final String JSON_PROPERTY_PORT = "port";
   private Integer port = 443;
+
+  public static final String JSON_PROPERTY_IS_PRIORITIZED = "isPrioritized";
+  private Boolean isPrioritized = false;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval = TestInterval.NUMBER_60;
@@ -267,6 +271,31 @@ public class EndpointAgentToServerTestRequest {
   }
 
 
+  public EndpointAgentToServerTestRequest isPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+    return this;
+  }
+
+   /**
+   * Indicates whether the test should be prioritized when the number of tests assigned to an agent exceeds the license limit.
+   * @return isPrioritized
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIsPrioritized() {
+    return isPrioritized;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+  }
+
+
   public EndpointAgentToServerTestRequest interval(TestInterval interval) {
     this.interval = interval;
     return this;
@@ -336,13 +365,14 @@ public class EndpointAgentToServerTestRequest {
         Objects.equals(this.testName, endpointAgentToServerTestRequest.testName) &&
         Objects.equals(this.serverName, endpointAgentToServerTestRequest.serverName) &&
         Objects.equals(this.port, endpointAgentToServerTestRequest.port) &&
+        Objects.equals(this.isPrioritized, endpointAgentToServerTestRequest.isPrioritized) &&
         Objects.equals(this.interval, endpointAgentToServerTestRequest.interval) &&
         Objects.equals(this.protocol, endpointAgentToServerTestRequest.protocol);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, serverName, port, interval, protocol);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, serverName, port, isPrioritized, interval, protocol);
   }
 
   @Override
@@ -356,6 +386,7 @@ public class EndpointAgentToServerTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    serverName: ").append(toIndentedString(serverName)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("    isPrioritized: ").append(toIndentedString(isPrioritized)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("}");

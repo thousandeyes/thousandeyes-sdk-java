@@ -90,6 +90,7 @@ public class HttpServerEndpointScheduledTestsApiTest {
                   "hasPing" : true,
                   "agentSelectorType" : "all-agents",
                   "maxMachines" : 25,
+                  "isPrioritized" : false,
                   "httpTimeLimit" : 5000,
                   "networkMeasurements" : true,
                   "endpointAgentLabels" : [ "567", "214" ],
@@ -136,6 +137,7 @@ public class HttpServerEndpointScheduledTestsApiTest {
                       "title" : "title"
                     }
                   },
+                  "isPrioritized" : false,
                   "httpTimeLimit" : 5000,
                   "type" : "http-server",
                   "protocol" : "icmp",
@@ -258,6 +260,7 @@ public class HttpServerEndpointScheduledTestsApiTest {
                       "title" : "title"
                     }
                   },
+                  "isPrioritized" : false,
                   "httpTimeLimit" : 5000,
                   "type" : "http-server",
                   "protocol" : "icmp",
@@ -352,6 +355,7 @@ public class HttpServerEndpointScheduledTestsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "httpTimeLimit" : 5000,
                     "type" : "http-server",
                     "protocol" : "icmp",
@@ -410,6 +414,7 @@ public class HttpServerEndpointScheduledTestsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "httpTimeLimit" : 5000,
                     "type" : "http-server",
                     "protocol" : "icmp",
@@ -530,6 +535,7 @@ public class HttpServerEndpointScheduledTestsApiTest {
                       "title" : "title"
                     }
                   },
+                  "isPrioritized" : false,
                   "httpTimeLimit" : 5000,
                   "type" : "http-server",
                   "protocol" : "icmp",

@@ -119,6 +119,7 @@ public class AgentToServerEndpointInstantScheduledTestsApiTest {
                       "title" : "title"
                     }
                   },
+                  "isPrioritized" : false,
                   "networkMeasurements" : true,
                   "type" : "agent-to-server",
                   "tcpProbeMode" : "auto",

@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTest.JSON_PROPERTY_LINKS,
   EndpointAgentToServerTest.JSON_PROPERTY_AGENT_SELECTOR_CONFIG,
   EndpointAgentToServerTest.JSON_PROPERTY_CREATED_DATE,
+  EndpointAgentToServerTest.JSON_PROPERTY_IS_PRIORITIZED,
   EndpointAgentToServerTest.JSON_PROPERTY_INTERVAL,
   EndpointAgentToServerTest.JSON_PROPERTY_IS_ENABLED,
   EndpointAgentToServerTest.JSON_PROPERTY_IS_SAVED_EVENT,
@@ -71,6 +72,9 @@ public class EndpointAgentToServerTest {
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
   private OffsetDateTime createdDate;
+
+  public static final String JSON_PROPERTY_IS_PRIORITIZED = "isPrioritized";
+  private Boolean isPrioritized = false;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval = TestInterval.NUMBER_60;
@@ -226,6 +230,31 @@ public class EndpointAgentToServerTest {
   }
 
 
+
+
+  public EndpointAgentToServerTest isPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+    return this;
+  }
+
+   /**
+   * Indicates whether the test should be prioritized when the number of tests assigned to an agent exceeds the license limit.
+   * @return isPrioritized
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIsPrioritized() {
+    return isPrioritized;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPrioritized(Boolean isPrioritized) {
+    this.isPrioritized = isPrioritized;
+  }
 
 
   public EndpointAgentToServerTest interval(TestInterval interval) {
@@ -569,6 +598,7 @@ public class EndpointAgentToServerTest {
         Objects.equals(this.links, endpointAgentToServerTest.links) &&
         Objects.equals(this.agentSelectorConfig, endpointAgentToServerTest.agentSelectorConfig) &&
         Objects.equals(this.createdDate, endpointAgentToServerTest.createdDate) &&
+        Objects.equals(this.isPrioritized, endpointAgentToServerTest.isPrioritized) &&
         Objects.equals(this.interval, endpointAgentToServerTest.interval) &&
         Objects.equals(this.isEnabled, endpointAgentToServerTest.isEnabled) &&
         Objects.equals(this.isSavedEvent, endpointAgentToServerTest.isSavedEvent) &&
@@ -588,7 +618,7 @@ public class EndpointAgentToServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port, labels);
   }
 
   @Override
@@ -599,6 +629,7 @@ public class EndpointAgentToServerTest {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    agentSelectorConfig: ").append(toIndentedString(agentSelectorConfig)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
+    sb.append("    isPrioritized: ").append(toIndentedString(isPrioritized)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("    isSavedEvent: ").append(toIndentedString(isSavedEvent)).append("\n");

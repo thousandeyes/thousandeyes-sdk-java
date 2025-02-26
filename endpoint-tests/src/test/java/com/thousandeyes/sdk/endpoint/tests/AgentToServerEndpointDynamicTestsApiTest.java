@@ -89,6 +89,7 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                   "protocol" : "icmp",
                   "application" : "webex",
                   "agentSelectorType" : "all-agents",
+                  "isPrioritized" : false,
                   "maxMachines" : 25,
                   "interval" : 60,
                   "hasPathTraceInSession" : true,
@@ -123,6 +124,7 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                       "title" : "title"
                     }
                   },
+                  "isPrioritized" : false,
                   "networkMeasurements" : true,
                   "tcpProbeMode" : "auto",
                   "labels" : [ {
@@ -233,6 +235,7 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                       "title" : "title"
                     }
                   },
+                  "isPrioritized" : false,
                   "networkMeasurements" : true,
                   "tcpProbeMode" : "auto",
                   "labels" : [ {
@@ -315,6 +318,7 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "networkMeasurements" : true,
                     "tcpProbeMode" : "auto",
                     "labels" : [ {
@@ -361,6 +365,7 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                         "title" : "title"
                       }
                     },
+                    "isPrioritized" : false,
                     "networkMeasurements" : true,
                     "tcpProbeMode" : "auto",
                     "labels" : [ {
@@ -469,6 +474,7 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                       "title" : "title"
                     }
                   },
+                  "isPrioritized" : false,
                   "networkMeasurements" : true,
                   "tcpProbeMode" : "auto",
                   "labels" : [ {
