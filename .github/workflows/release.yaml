@@ -1,8 +1,11 @@
 name: Release
 on:
-  push:
-    tags:
-      - '*'
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: 'The target version you want to update and release'
+        required: true
+
 jobs:
   publish-release:
     runs-on: ubuntu-latest
@@ -15,6 +18,24 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Upgrade the version number in the gradle.properties
+        run: |
+          echo "Releasing the target version: ${{ github.event.inputs.releaseVersion }}"
+          sed -i "s|^\(version=\).*|\1${{ github.event.inputs.releaseVersion }}|" gradle.properties
+
+      - name: Add tag and push to the repository
+        run: |
+          git config user.name "API Team"
+          git config user.email "api-team@thousandeyes.com"
+
+          git add .
+          git commit -m "[GitHub Bot] Released ${{ github.event.inputs.releaseVersion }} SDK"
+          git push origin
+
+          git tag ${{ github.event.inputs.releaseVersion }}
+          git push origin ${{ github.event.inputs.releaseVersion }}
+
       - name: Publish artifact
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.OSSRH_USERNAME }}
@@ -23,6 +44,6 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
         run: |
-          echo "New version: ${GITHUB_REF_NAME}"
+          echo "New version: ${{ github.event.inputs.releaseVersion }}"
           echo "Github username: ${GITHUB_ACTOR}"
-          gradle -Pversion=${GITHUB_REF_NAME} publishMavenPublicationToMavenCentralRepository --parallel
+          gradle -Pversion=${{ github.event.inputs.releaseVersion }} publishMavenPublicationToMavenCentralRepository --parallel
