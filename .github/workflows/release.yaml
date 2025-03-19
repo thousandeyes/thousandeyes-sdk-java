@@ -22,7 +22,6 @@ jobs:
 
       - name: Upgrade the version number in the gradle.properties
         run: |
-          echo "Releasing the target version: ${{ inputs.releaseVersion }}"
           sed -i "s|^\(version=\).*|\1${{ inputs.releaseVersion }}|" gradle.properties
 
       - name: Add tag and push to the repository
