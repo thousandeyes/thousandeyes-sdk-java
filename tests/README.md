@@ -2,9 +2,9 @@
 
 Tests API
 
-- API version: 7.0.37
+- API version: 7.0.40
 
-This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests.
+This API allows you to list, create, edit, and delete Network and Application Synthetics tests.
 
 
 

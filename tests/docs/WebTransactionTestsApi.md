@@ -517,7 +517,7 @@ ApiResponse<[**WebTransactionTestResponse**](WebTransactionTestResponse.md)>
 
 List Web Transactions tests
 
-Returns a list of all Web Transactions tests and saved events.
+Returns a list of all Web Transactions tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -594,7 +594,7 @@ public class Example {
 
 List Web Transactions tests
 
-Returns a list of all Web Transactions tests and saved events.
+Returns a list of all Web Transactions tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -675,7 +675,7 @@ ApiResponse<[**WebTransactionTests**](WebTransactionTests.md)>
 
 Update Web Transactions test
 
-Updates a Web Transactions test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+Updates a Web Transactions test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 
@@ -759,7 +759,7 @@ public class Example {
 
 Update Web Transactions test
 
-Updates a Web Transactions test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+Updates a Web Transactions test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 

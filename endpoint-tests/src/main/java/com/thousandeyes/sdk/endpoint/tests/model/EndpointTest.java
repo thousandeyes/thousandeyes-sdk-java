@@ -297,7 +297,7 @@ public class EndpointTest {
 
 
    /**
-   * Indicates if the test is a saved event.
+   * Indicates if the test is a saved event.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @return isSavedEvent
   **/
   @jakarta.annotation.Nullable

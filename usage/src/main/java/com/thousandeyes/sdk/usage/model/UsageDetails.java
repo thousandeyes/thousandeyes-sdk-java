@@ -26,6 +26,7 @@ import com.thousandeyes.sdk.usage.model.EndpointAgentsUsage;
 import com.thousandeyes.sdk.usage.model.EnterpriseAgentUnits;
 import com.thousandeyes.sdk.usage.model.EnterpriseAgents;
 import com.thousandeyes.sdk.usage.model.TestUsage;
+import com.thousandeyes.sdk.usage.model.UnitAllocationSummary;
 import com.thousandeyes.sdk.usage.model.UsageQuota;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +57,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UsageDetails.JSON_PROPERTY_ENDPOINT_AGENTS,
   UsageDetails.JSON_PROPERTY_ENDPOINT_AGENTS_ESSENTIALS,
   UsageDetails.JSON_PROPERTY_ENDPOINT_AGENTS_EMBEDDED,
-  UsageDetails.JSON_PROPERTY_ENTERPRISE_AGENTS
+  UsageDetails.JSON_PROPERTY_ENTERPRISE_AGENTS,
+  UsageDetails.JSON_PROPERTY_ALLOCATIONS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class UsageDetails {
@@ -119,6 +121,9 @@ public class UsageDetails {
 
   public static final String JSON_PROPERTY_ENTERPRISE_AGENTS = "enterpriseAgents";
   private List<EnterpriseAgents> enterpriseAgents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALLOCATIONS = "allocations";
+  private UnitAllocationSummary allocations;
 
   public UsageDetails() { 
   }
@@ -671,6 +676,31 @@ public class UsageDetails {
   }
 
 
+  public UsageDetails allocations(UnitAllocationSummary allocations) {
+    this.allocations = allocations;
+    return this;
+  }
+
+   /**
+   * Get allocations
+   * @return allocations
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALLOCATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UnitAllocationSummary getAllocations() {
+    return allocations;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALLOCATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAllocations(UnitAllocationSummary allocations) {
+    this.allocations = allocations;
+  }
+
+
   /**
    * Return true if this UsageDetails object is equal to o.
    */
@@ -702,12 +732,13 @@ public class UsageDetails {
         Objects.equals(this.endpointAgents, usageDetails.endpointAgents) &&
         Objects.equals(this.endpointAgentsEssentials, usageDetails.endpointAgentsEssentials) &&
         Objects.equals(this.endpointAgentsEmbedded, usageDetails.endpointAgentsEmbedded) &&
-        Objects.equals(this.enterpriseAgents, usageDetails.enterpriseAgents);
+        Objects.equals(this.enterpriseAgents, usageDetails.enterpriseAgents) &&
+        Objects.equals(this.allocations, usageDetails.allocations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quota, cloudUnitsUsed, cloudUnitsProjected, cloudUnitsNextBillingPeriod, enterpriseUnitsUsed, enterpriseUnitsProjected, enterpriseUnitsNextBillingPeriod, connectedDevicesUnitsUsed, connectedDevicesUnitsProjected, connectedDevicesUnitsNextBillingPeriod, endpointAgentsUsed, endpointAgentsEssentialsUsed, endpointAgentsEmbeddedUsed, enterpriseAgentsUsed, enterpriseAgentUnits, tests, endpointAgents, endpointAgentsEssentials, endpointAgentsEmbedded, enterpriseAgents);
+    return Objects.hash(quota, cloudUnitsUsed, cloudUnitsProjected, cloudUnitsNextBillingPeriod, enterpriseUnitsUsed, enterpriseUnitsProjected, enterpriseUnitsNextBillingPeriod, connectedDevicesUnitsUsed, connectedDevicesUnitsProjected, connectedDevicesUnitsNextBillingPeriod, endpointAgentsUsed, endpointAgentsEssentialsUsed, endpointAgentsEmbeddedUsed, enterpriseAgentsUsed, enterpriseAgentUnits, tests, endpointAgents, endpointAgentsEssentials, endpointAgentsEmbedded, enterpriseAgents, allocations);
   }
 
   @Override
@@ -734,6 +765,7 @@ public class UsageDetails {
     sb.append("    endpointAgentsEssentials: ").append(toIndentedString(endpointAgentsEssentials)).append("\n");
     sb.append("    endpointAgentsEmbedded: ").append(toIndentedString(endpointAgentsEmbedded)).append("\n");
     sb.append("    enterpriseAgents: ").append(toIndentedString(enterpriseAgents)).append("\n");
+    sb.append("    allocations: ").append(toIndentedString(allocations)).append("\n");
     sb.append("}");
     return sb.toString();
   }

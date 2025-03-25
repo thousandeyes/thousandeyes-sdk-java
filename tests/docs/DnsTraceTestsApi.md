@@ -517,7 +517,7 @@ ApiResponse<[**DnsTraceTestResponse**](DnsTraceTestResponse.md)>
 
 List DNS Trace tests
 
-Returns a list of all DNS Trace tests and saved events.
+Returns a list of all DNS Trace tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -594,7 +594,7 @@ public class Example {
 
 List DNS Trace tests
 
-Returns a list of all DNS Trace tests and saved events.
+Returns a list of all DNS Trace tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -675,7 +675,7 @@ ApiResponse<[**DnsTraceTests**](DnsTraceTests.md)>
 
 Update DNS Trace test
 
-Updates a DNS Trace test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. 
+Updates a DNS Trace test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 
@@ -759,7 +759,7 @@ public class Example {
 
 Update DNS Trace test
 
-Updates a DNS Trace test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. 
+Updates a DNS Trace test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 
