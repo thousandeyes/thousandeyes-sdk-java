@@ -555,7 +555,7 @@ public class DynamicTest {
 
 
    /**
-   * Get labels
+   * Labels to which the test is assigned. This field is not returned for Instant Tests.
    * @return labels
   **/
   @jakarta.annotation.Nullable

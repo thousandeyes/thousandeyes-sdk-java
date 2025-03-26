@@ -49,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTest.JSON_PROPERTY_IS_ENABLED,
   EndpointHttpServerTest.JSON_PROPERTY_IS_SAVED_EVENT,
   EndpointHttpServerTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
+  EndpointHttpServerTest.JSON_PROPERTY_LABELS,
   EndpointHttpServerTest.JSON_PROPERTY_MODIFIED_DATE,
   EndpointHttpServerTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   EndpointHttpServerTest.JSON_PROPERTY_PROTOCOL,
@@ -69,8 +70,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTest.JSON_PROPERTY_HTTP_TARGET_TIME,
   EndpointHttpServerTest.JSON_PROPERTY_HTTP_VERSION,
   EndpointHttpServerTest.JSON_PROPERTY_SSL_VERSION,
-  EndpointHttpServerTest.JSON_PROPERTY_USE_NTLM,
-  EndpointHttpServerTest.JSON_PROPERTY_LABELS
+  EndpointHttpServerTest.JSON_PROPERTY_USE_NTLM
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointHttpServerTest {
@@ -100,6 +100,9 @@ public class EndpointHttpServerTest {
 
   public static final String JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION = "hasPathTraceInSession";
   private Boolean hasPathTraceInSession;
+
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
   private OffsetDateTime modifiedDate;
@@ -164,9 +167,6 @@ public class EndpointHttpServerTest {
   public static final String JSON_PROPERTY_USE_NTLM = "useNtlm";
   private Boolean useNtlm;
 
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabel> labels = new ArrayList<>();
-
   public EndpointHttpServerTest() { 
   }
 
@@ -174,20 +174,20 @@ public class EndpointHttpServerTest {
   public EndpointHttpServerTest(
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_IS_SAVED_EVENT) Boolean isSavedEvent, 
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels
+    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion
   ) {
   this();
     this.createdDate = createdDate;
     this.isSavedEvent = isSavedEvent;
+    this.labels = labels;
     this.modifiedDate = modifiedDate;
     this.testId = testId;
     this.type = type;
     this.sslVersion = sslVersion;
-    this.labels = labels;
   }
 
   public EndpointHttpServerTest aid(String aid) {
@@ -356,7 +356,7 @@ public class EndpointHttpServerTest {
 
 
    /**
-   * Indicates if the test is a saved event.
+   * Indicates if the test is a saved event.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @return isSavedEvent
   **/
   @jakarta.annotation.Nullable
@@ -393,6 +393,21 @@ public class EndpointHttpServerTest {
   public void setHasPathTraceInSession(Boolean hasPathTraceInSession) {
     this.hasPathTraceInSession = hasPathTraceInSession;
   }
+
+
+   /**
+   * Labels to which the test is assigned. This field is not returned for Instant Tests.
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestLabel> getLabels() {
+    return labels;
+  }
+
+
 
 
    /**
@@ -884,21 +899,6 @@ public class EndpointHttpServerTest {
   }
 
 
-   /**
-   * Get labels
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestLabel> getLabels() {
-    return labels;
-  }
-
-
-
-
   /**
    * Return true if this EndpointHttpServerTest object is equal to o.
    */
@@ -920,6 +920,7 @@ public class EndpointHttpServerTest {
         Objects.equals(this.isEnabled, endpointHttpServerTest.isEnabled) &&
         Objects.equals(this.isSavedEvent, endpointHttpServerTest.isSavedEvent) &&
         Objects.equals(this.hasPathTraceInSession, endpointHttpServerTest.hasPathTraceInSession) &&
+        Objects.equals(this.labels, endpointHttpServerTest.labels) &&
         Objects.equals(this.modifiedDate, endpointHttpServerTest.modifiedDate) &&
         Objects.equals(this.networkMeasurements, endpointHttpServerTest.networkMeasurements) &&
         Objects.equals(this.protocol, endpointHttpServerTest.protocol) &&
@@ -940,13 +941,12 @@ public class EndpointHttpServerTest {
         Objects.equals(this.httpTargetTime, endpointHttpServerTest.httpTargetTime) &&
         Objects.equals(this.httpVersion, endpointHttpServerTest.httpVersion) &&
         Objects.equals(this.sslVersion, endpointHttpServerTest.sslVersion) &&
-        Objects.equals(this.useNtlm, endpointHttpServerTest.useNtlm) &&
-        Objects.equals(this.labels, endpointHttpServerTest.labels);
+        Objects.equals(this.useNtlm, endpointHttpServerTest.useNtlm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port, authType, httpTimeLimit, username, sslVersionId, verifyCertificate, url, followRedirects, httpTargetTime, httpVersion, sslVersion, useNtlm, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, labels, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port, authType, httpTimeLimit, username, sslVersionId, verifyCertificate, url, followRedirects, httpTargetTime, httpVersion, sslVersion, useNtlm);
   }
 
   @Override
@@ -962,6 +962,7 @@ public class EndpointHttpServerTest {
     sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("    isSavedEvent: ").append(toIndentedString(isSavedEvent)).append("\n");
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
@@ -983,7 +984,6 @@ public class EndpointHttpServerTest {
     sb.append("    httpVersion: ").append(toIndentedString(httpVersion)).append("\n");
     sb.append("    sslVersion: ").append(toIndentedString(sslVersion)).append("\n");
     sb.append("    useNtlm: ").append(toIndentedString(useNtlm)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("}");
     return sb.toString();
   }

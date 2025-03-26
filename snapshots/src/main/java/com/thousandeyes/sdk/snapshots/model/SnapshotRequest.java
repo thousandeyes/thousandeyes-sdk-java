@@ -131,7 +131,7 @@ public class SnapshotRequest {
   }
 
    /**
-   * Set to &#x60;true&#x60; for saved events and &#x60;false&#x60; for share links. Its default value is &#x60;false&#x60;.
+   * Set to &#x60;true&#x60; for saved events and &#x60;false&#x60; for share links. Its default value is &#x60;false&#x60;. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
    * @return isPublic
   **/
   @jakarta.annotation.Nullable

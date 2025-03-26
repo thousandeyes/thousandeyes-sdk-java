@@ -7,6 +7,7 @@ docs/UsageApi.md
 src/main/java/com/thousandeyes/sdk/usage/QuotasApi.java
 src/main/java/com/thousandeyes/sdk/usage/UsageApi.java
 src/main/java/com/thousandeyes/sdk/usage/model/AccountGroupQuota.java
+src/main/java/com/thousandeyes/sdk/usage/model/AllocationUnitUsageBreakdown.java
 src/main/java/com/thousandeyes/sdk/usage/model/EndpointAgentsEmbedded.java
 src/main/java/com/thousandeyes/sdk/usage/model/EndpointAgentsEssentials.java
 src/main/java/com/thousandeyes/sdk/usage/model/EndpointAgentsUsage.java
@@ -32,6 +33,7 @@ src/main/java/com/thousandeyes/sdk/usage/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/usage/model/TestUsage.java
 src/main/java/com/thousandeyes/sdk/usage/model/TestsUsage.java
 src/main/java/com/thousandeyes/sdk/usage/model/UnauthorizedError.java
+src/main/java/com/thousandeyes/sdk/usage/model/UnitAllocationSummary.java
 src/main/java/com/thousandeyes/sdk/usage/model/UnitsByTests.java
 src/main/java/com/thousandeyes/sdk/usage/model/Usage.java
 src/main/java/com/thousandeyes/sdk/usage/model/UsageDetails.java

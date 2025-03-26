@@ -1,6 +1,6 @@
 /*
  * Test Results API
- * Get test result metrics for Cloud and Enterprise Agent tests.
+ * Get test result metrics for Network and Application Synthetics tests.
  *
  * 
  *

@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The type of data stream to configure. When using &#x60;splunk-hec&#x60;:   - &#x60;endpointType&#x60; must be &#x60;http&#x60;.   - &#x60;customHeaders&#x60; must contain just one element with the key &#x60;token&#x60; and the value of the *Splunk HEC Token*.
+ * The type of data stream to configure. When using &#x60;splunk-hec&#x60;:   - &#x60;endpointType&#x60; must be &#x60;http&#x60;.   - &#x60;exporterConfig.splunkHec.token&#x60; must contain the *Splunk HEC Token*.
  */
 public enum StreamType {
   

@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
+ * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -235,7 +235,7 @@ public class VoiceTestsApi {
   }
   /**
    * List Voice tests
-   * Returns a list of Voice tests and saved events.
+   * Returns a list of Voice tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return VoiceTests
    * @throws ApiException if fails to make API call
@@ -247,7 +247,7 @@ public class VoiceTestsApi {
 
   /**
    * List Voice tests
-   * Returns a list of Voice tests and saved events.
+   * Returns a list of Voice tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;VoiceTests&gt;
    * @throws ApiException if fails to make API call
@@ -283,7 +283,7 @@ public class VoiceTestsApi {
   }
   /**
    * Update Voice test
-   * Updates a Voice test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+   * Updates a Voice test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
    * @param testId Test ID (required)
    * @param voiceTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
@@ -298,7 +298,7 @@ public class VoiceTestsApi {
 
   /**
    * Update Voice test
-   * Updates a Voice test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+   * Updates a Voice test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
    * @param testId Test ID (required)
    * @param voiceTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)

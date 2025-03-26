@@ -47,6 +47,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTest.JSON_PROPERTY_IS_ENABLED,
   EndpointAgentToServerTest.JSON_PROPERTY_IS_SAVED_EVENT,
   EndpointAgentToServerTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
+  EndpointAgentToServerTest.JSON_PROPERTY_LABELS,
   EndpointAgentToServerTest.JSON_PROPERTY_MODIFIED_DATE,
   EndpointAgentToServerTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   EndpointAgentToServerTest.JSON_PROPERTY_PROTOCOL,
@@ -56,8 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTest.JSON_PROPERTY_TEST_NAME,
   EndpointAgentToServerTest.JSON_PROPERTY_TYPE,
   EndpointAgentToServerTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointAgentToServerTest.JSON_PROPERTY_PORT,
-  EndpointAgentToServerTest.JSON_PROPERTY_LABELS
+  EndpointAgentToServerTest.JSON_PROPERTY_PORT
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointAgentToServerTest {
@@ -87,6 +87,9 @@ public class EndpointAgentToServerTest {
 
   public static final String JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION = "hasPathTraceInSession";
   private Boolean hasPathTraceInSession;
+
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
   private OffsetDateTime modifiedDate;
@@ -118,9 +121,6 @@ public class EndpointAgentToServerTest {
   public static final String JSON_PROPERTY_PORT = "port";
   private Integer port = 443;
 
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabel> labels = new ArrayList<>();
-
   public EndpointAgentToServerTest() { 
   }
 
@@ -128,18 +128,18 @@ public class EndpointAgentToServerTest {
   public EndpointAgentToServerTest(
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_IS_SAVED_EVENT) Boolean isSavedEvent, 
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels
+    @JsonProperty(JSON_PROPERTY_TYPE) String type
   ) {
   this();
     this.createdDate = createdDate;
     this.isSavedEvent = isSavedEvent;
+    this.labels = labels;
     this.modifiedDate = modifiedDate;
     this.testId = testId;
     this.type = type;
-    this.labels = labels;
   }
 
   public EndpointAgentToServerTest aid(String aid) {
@@ -308,7 +308,7 @@ public class EndpointAgentToServerTest {
 
 
    /**
-   * Indicates if the test is a saved event.
+   * Indicates if the test is a saved event.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @return isSavedEvent
   **/
   @jakarta.annotation.Nullable
@@ -345,6 +345,21 @@ public class EndpointAgentToServerTest {
   public void setHasPathTraceInSession(Boolean hasPathTraceInSession) {
     this.hasPathTraceInSession = hasPathTraceInSession;
   }
+
+
+   /**
+   * Labels to which the test is assigned. This field is not returned for Instant Tests.
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestLabel> getLabels() {
+    return labels;
+  }
+
+
 
 
    /**
@@ -567,21 +582,6 @@ public class EndpointAgentToServerTest {
   }
 
 
-   /**
-   * Get labels
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestLabel> getLabels() {
-    return labels;
-  }
-
-
-
-
   /**
    * Return true if this EndpointAgentToServerTest object is equal to o.
    */
@@ -603,6 +603,7 @@ public class EndpointAgentToServerTest {
         Objects.equals(this.isEnabled, endpointAgentToServerTest.isEnabled) &&
         Objects.equals(this.isSavedEvent, endpointAgentToServerTest.isSavedEvent) &&
         Objects.equals(this.hasPathTraceInSession, endpointAgentToServerTest.hasPathTraceInSession) &&
+        Objects.equals(this.labels, endpointAgentToServerTest.labels) &&
         Objects.equals(this.modifiedDate, endpointAgentToServerTest.modifiedDate) &&
         Objects.equals(this.networkMeasurements, endpointAgentToServerTest.networkMeasurements) &&
         Objects.equals(this.protocol, endpointAgentToServerTest.protocol) &&
@@ -612,13 +613,12 @@ public class EndpointAgentToServerTest {
         Objects.equals(this.testName, endpointAgentToServerTest.testName) &&
         Objects.equals(this.type, endpointAgentToServerTest.type) &&
         Objects.equals(this.tcpProbeMode, endpointAgentToServerTest.tcpProbeMode) &&
-        Objects.equals(this.port, endpointAgentToServerTest.port) &&
-        Objects.equals(this.labels, endpointAgentToServerTest.labels);
+        Objects.equals(this.port, endpointAgentToServerTest.port);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port, labels);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, labels, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port);
   }
 
   @Override
@@ -634,6 +634,7 @@ public class EndpointAgentToServerTest {
     sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("    isSavedEvent: ").append(toIndentedString(isSavedEvent)).append("\n");
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
@@ -644,7 +645,6 @@ public class EndpointAgentToServerTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("}");
     return sb.toString();
   }

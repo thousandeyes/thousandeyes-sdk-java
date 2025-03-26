@@ -229,7 +229,7 @@ public class AgentToServerEndpointScheduledTestsApi {
   }
   /**
    * List agent to server endpoint scheduled tests
-   * Returns a list of all agent to server endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events. 
+   * Returns a list of all agent to server endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return EndpointAgentToServerTests
    * @throws ApiException if fails to make API call
@@ -241,7 +241,7 @@ public class AgentToServerEndpointScheduledTestsApi {
 
   /**
    * List agent to server endpoint scheduled tests
-   * Returns a list of all agent to server endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events. 
+   * Returns a list of all agent to server endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;EndpointAgentToServerTests&gt;
    * @throws ApiException if fails to make API call

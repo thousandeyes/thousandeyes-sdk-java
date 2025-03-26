@@ -287,7 +287,7 @@ public class AgentToServerEndpointDynamicTestsApiTest {
     /**
      * List endpoint dynamic tests
      * <p>
-     * Returns a list of all endpoint dynamic tests configured in ThousandEyes. This list does not contain saved events.
+     * Returns a list of all endpoint dynamic tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */

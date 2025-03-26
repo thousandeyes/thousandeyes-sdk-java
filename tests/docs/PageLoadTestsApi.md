@@ -517,7 +517,7 @@ ApiResponse<[**PageLoadTestResponse**](PageLoadTestResponse.md)>
 
 List Page Load tests
 
-Returns a list of all Page Load tests and saved events.
+Returns a list of all Page Load tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -594,7 +594,7 @@ public class Example {
 
 List Page Load tests
 
-Returns a list of all Page Load tests and saved events.
+Returns a list of all Page Load tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -675,7 +675,7 @@ ApiResponse<[**PageLoadTests**](PageLoadTests.md)>
 
 Update Page Load test
 
-Updates a Page Load test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+Updates a Page Load test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 
@@ -759,7 +759,7 @@ public class Example {
 
 Update Page Load test
 
-Updates a Page Load test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+Updates a Page Load test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 

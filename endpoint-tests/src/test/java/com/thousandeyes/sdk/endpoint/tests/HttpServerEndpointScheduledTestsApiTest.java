@@ -321,7 +321,7 @@ public class HttpServerEndpointScheduledTestsApiTest {
     /**
      * List HTTP server endpoint scheduled tests
      * <p>
-     * Returns a list of agent to server endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events. 
+     * Returns a list of agent to server endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */

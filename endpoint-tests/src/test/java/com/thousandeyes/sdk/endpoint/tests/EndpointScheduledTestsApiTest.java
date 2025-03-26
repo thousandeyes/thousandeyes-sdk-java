@@ -70,7 +70,7 @@ public class EndpointScheduledTestsApiTest {
     /**
      * List endpoint scheduled tests
      * <p>
-     * Returns a list of all endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events.
+     * Returns a list of all endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -106,6 +106,15 @@ public class EndpointScheduledTestsApiTest {
                     "networkMeasurements" : true,
                     "type" : "agent-to-server",
                     "tcpProbeMode" : "auto",
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
                     "protocol" : "icmp",
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "ipVersion" : "V4_ONLY",
@@ -145,6 +154,15 @@ public class EndpointScheduledTestsApiTest {
                     "networkMeasurements" : true,
                     "type" : "agent-to-server",
                     "tcpProbeMode" : "auto",
+                    "labels" : [ {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    }, {
+                      "labelId" : "961",
+                      "name" : "Artem label",
+                      "isBuiltin" : false
+                    } ],
                     "protocol" : "icmp",
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "ipVersion" : "V4_ONLY",
