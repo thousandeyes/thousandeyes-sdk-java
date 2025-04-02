@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
+ * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -503,7 +503,7 @@ public class AgentToAgentTestsApiTest {
     /**
      * List Agent to Agent tests
      * <p>
-     * Returns a list of Agent to Agent tests and saved events.
+     * Returns a list of Agent to Agent tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */

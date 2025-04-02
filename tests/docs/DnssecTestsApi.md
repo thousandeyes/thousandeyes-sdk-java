@@ -517,7 +517,7 @@ ApiResponse<[**DnsSecTestResponse**](DnsSecTestResponse.md)>
 
 List DNSSEC tests
 
-Returns a list of all DNSSEC tests and saved events.
+Returns a list of all DNSSEC tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -594,7 +594,7 @@ public class Example {
 
 List DNSSEC tests
 
-Returns a list of all DNSSEC tests and saved events.
+Returns a list of all DNSSEC tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -675,7 +675,7 @@ ApiResponse<[**DnsSecTests**](DnsSecTests.md)>
 
 Update DNSSEC test
 
-Updates a DNSSEC test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+Updates a DNSSEC test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 
@@ -759,7 +759,7 @@ public class Example {
 
 Update DNSSEC test
 
-Updates a DNSSEC test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+Updates a DNSSEC test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 

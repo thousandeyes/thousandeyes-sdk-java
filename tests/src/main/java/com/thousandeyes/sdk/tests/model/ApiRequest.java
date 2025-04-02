@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
+ * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *

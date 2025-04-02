@@ -517,7 +517,7 @@ ApiResponse<[**ApiTestResponse**](ApiTestResponse.md)>
 
 List API tests
 
-Returns a list of all API tests and saved events.
+Returns a list of all API tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -594,7 +594,7 @@ public class Example {
 
 List API tests
 
-Returns a list of all API tests and saved events.
+Returns a list of all API tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -675,7 +675,7 @@ ApiResponse<[**ApiTests**](ApiTests.md)>
 
 Update API test
 
-Updates an API test. The target test cannot be a live share or saved event. This method requires write permissions.
+Updates an API test. The target test cannot be a live share or saved event. This method requires write permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 
@@ -759,7 +759,7 @@ public class Example {
 
 Update API test
 
-Updates an API test. The target test cannot be a live share or saved event. This method requires write permissions.
+Updates an API test. The target test cannot be a live share or saved event. This method requires write permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 

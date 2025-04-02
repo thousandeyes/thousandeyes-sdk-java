@@ -26,8 +26,12 @@ import com.thousandeyes.sdk.endpoint.tests.model.EndpointScheduledTestType;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestProtocol;
 import com.thousandeyes.sdk.endpoint.tests.model.TestInterval;
+import com.thousandeyes.sdk.endpoint.tests.model.TestLabel;
 import com.thousandeyes.sdk.endpoint.tests.model.TestProbeModeResponse;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -44,6 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointTest.JSON_PROPERTY_IS_ENABLED,
   EndpointTest.JSON_PROPERTY_IS_SAVED_EVENT,
   EndpointTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
+  EndpointTest.JSON_PROPERTY_LABELS,
   EndpointTest.JSON_PROPERTY_MODIFIED_DATE,
   EndpointTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   EndpointTest.JSON_PROPERTY_PROTOCOL,
@@ -84,6 +89,9 @@ public class EndpointTest {
   public static final String JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION = "hasPathTraceInSession";
   private Boolean hasPathTraceInSession;
 
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<TestLabel> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
   private OffsetDateTime modifiedDate;
 
@@ -121,12 +129,14 @@ public class EndpointTest {
   public EndpointTest(
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_IS_SAVED_EVENT) Boolean isSavedEvent, 
+    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId
   ) {
   this();
     this.createdDate = createdDate;
     this.isSavedEvent = isSavedEvent;
+    this.labels = labels;
     this.modifiedDate = modifiedDate;
     this.testId = testId;
   }
@@ -297,7 +307,7 @@ public class EndpointTest {
 
 
    /**
-   * Indicates if the test is a saved event.
+   * Indicates if the test is a saved event.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @return isSavedEvent
   **/
   @jakarta.annotation.Nullable
@@ -334,6 +344,21 @@ public class EndpointTest {
   public void setHasPathTraceInSession(Boolean hasPathTraceInSession) {
     this.hasPathTraceInSession = hasPathTraceInSession;
   }
+
+
+   /**
+   * Labels to which the test is assigned. This field is not returned for Instant Tests.
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestLabel> getLabels() {
+    return labels;
+  }
+
+
 
 
    /**
@@ -587,6 +612,7 @@ public class EndpointTest {
         Objects.equals(this.isEnabled, endpointTest.isEnabled) &&
         Objects.equals(this.isSavedEvent, endpointTest.isSavedEvent) &&
         Objects.equals(this.hasPathTraceInSession, endpointTest.hasPathTraceInSession) &&
+        Objects.equals(this.labels, endpointTest.labels) &&
         Objects.equals(this.modifiedDate, endpointTest.modifiedDate) &&
         Objects.equals(this.networkMeasurements, endpointTest.networkMeasurements) &&
         Objects.equals(this.protocol, endpointTest.protocol) &&
@@ -601,7 +627,7 @@ public class EndpointTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, labels, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port);
   }
 
   @Override
@@ -617,6 +643,7 @@ public class EndpointTest {
     sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("    isSavedEvent: ").append(toIndentedString(isSavedEvent)).append("\n");
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");

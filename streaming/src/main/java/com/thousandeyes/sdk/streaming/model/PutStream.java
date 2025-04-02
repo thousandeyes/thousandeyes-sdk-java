@@ -84,7 +84,7 @@ public class PutStream {
   }
 
    /**
-   * Custom headers. **Note**: When using the &#x60;splunk-hec&#x60; &#x60;type&#x60;, the &#x60;customHeaders&#x60; must contain just one element with the key &#x60;token&#x60; and the value of the *Splunk HEC Token*.
+   * Custom headers.
    * @return customHeaders
   **/
   @jakarta.annotation.Nullable

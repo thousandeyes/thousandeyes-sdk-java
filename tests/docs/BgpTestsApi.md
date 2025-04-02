@@ -517,7 +517,7 @@ ApiResponse<[**BgpTestResponse**](BgpTestResponse.md)>
 
 List BGP tests
 
-Returns a list of BGP tests and saved events.
+Returns a list of BGP tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -594,7 +594,7 @@ public class Example {
 
 List BGP tests
 
-Returns a list of BGP tests and saved events.
+Returns a list of BGP tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -675,7 +675,7 @@ ApiResponse<[**BgpTests**](BgpTests.md)>
 
 Update BGP test
 
-Updates a BGP test. This method requires Account Admin permissions. The target test cannot be a live share or saved event.
+Updates a BGP test. This method requires Account Admin permissions. The target test cannot be a live share or saved event. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 
@@ -759,7 +759,7 @@ public class Example {
 
 Update BGP test
 
-Updates a BGP test. This method requires Account Admin permissions. The target test cannot be a live share or saved event.
+Updates a BGP test. This method requires Account Admin permissions. The target test cannot be a live share or saved event. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
 
 ### Example
 

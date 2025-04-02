@@ -295,7 +295,7 @@ public class AlertSimpleTest extends HashMap<String, Object> {
 
 
    /**
-   * Indicates if the test is a saved event.
+   * Indicates if the test is a saved event. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
    * @return savedEvent
   **/
   @jakarta.annotation.Nullable

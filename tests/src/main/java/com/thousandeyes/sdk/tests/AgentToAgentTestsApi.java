@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
+ * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -235,7 +235,7 @@ public class AgentToAgentTestsApi {
   }
   /**
    * List Agent to Agent tests
-   * Returns a list of Agent to Agent tests and saved events.
+   * Returns a list of Agent to Agent tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return AgentToAgentTests
    * @throws ApiException if fails to make API call
@@ -247,7 +247,7 @@ public class AgentToAgentTestsApi {
 
   /**
    * List Agent to Agent tests
-   * Returns a list of Agent to Agent tests and saved events.
+   * Returns a list of Agent to Agent tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;AgentToAgentTests&gt;
    * @throws ApiException if fails to make API call

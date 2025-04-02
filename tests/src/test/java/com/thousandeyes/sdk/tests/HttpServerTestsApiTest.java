@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API supports listing, creating, editing, and deleting Cloud and Enterprise Agent (CEA) based tests. 
+ * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -647,7 +647,7 @@ public class HttpServerTestsApiTest {
     /**
      * List HTTP Server tests
      * <p>
-     * Returns a list of all HTTP Server tests and saved events.
+     * Returns a list of all HTTP Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -885,7 +885,7 @@ public class HttpServerTestsApiTest {
     /**
      * Update HTTP Server test
      * <p>
-     * Updates a HTTP Server test. The target test cannot be a live share or saved event. This method requires Account Admin permissions.
+     * Updates a HTTP Server test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
      *
      * @throws JsonProcessingException if the deserialization fails
      */

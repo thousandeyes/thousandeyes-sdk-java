@@ -517,7 +517,7 @@ ApiResponse<[**AgentToServerTestResponse**](AgentToServerTestResponse.md)>
 
 List Agent to Server tests
 
-Returns a list of Agent to Server tests and saved events.
+Returns a list of Agent to Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
@@ -594,7 +594,7 @@ public class Example {
 
 List Agent to Server tests
 
-Returns a list of Agent to Server tests and saved events.
+Returns a list of Agent to Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
 
 ### Example
 
