@@ -85,7 +85,7 @@ public class AgentToServerInstantTestsApiTest {
 
         var requestBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com",
+                  "server" : "www.thousandeyes.com:80",
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
                   "_links" : {
@@ -130,7 +130,6 @@ public class AgentToServerInstantTestsApiTest {
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "createdBy" : "user@user.com",
-                  "port" : 49153,
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "testId" : "281474976710706",
@@ -146,7 +145,7 @@ public class AgentToServerInstantTestsApiTest {
 
         var responseBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com",
+                  "server" : "www.thousandeyes.com:80",
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
                   "_links" : {
@@ -217,7 +216,6 @@ public class AgentToServerInstantTestsApiTest {
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "createdBy" : "user@user.com",
-                  "port" : 49153,
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "testId" : "281474976710706",
