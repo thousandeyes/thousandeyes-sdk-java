@@ -86,7 +86,7 @@ public class AgentToServerTestsApiTest {
 
         var requestBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com",
+                  "server" : "www.thousandeyes.com:80",
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
                   "_links" : {
@@ -136,7 +136,6 @@ public class AgentToServerTestsApiTest {
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "createdBy" : "user@user.com",
-                  "port" : 49153,
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
@@ -154,7 +153,7 @@ public class AgentToServerTestsApiTest {
 
         var responseBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com",
+                  "server" : "www.thousandeyes.com:80",
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
                   "_links" : {
@@ -258,7 +257,6 @@ public class AgentToServerTestsApiTest {
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "createdBy" : "user@user.com",
-                  "port" : 49153,
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
@@ -352,7 +350,7 @@ public class AgentToServerTestsApiTest {
 
         var responseBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com",
+                  "server" : "www.thousandeyes.com:80",
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
                   "_links" : {
@@ -456,7 +454,6 @@ public class AgentToServerTestsApiTest {
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "createdBy" : "user@user.com",
-                  "port" : 49153,
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
@@ -522,7 +519,7 @@ public class AgentToServerTestsApiTest {
         var responseBodyJson = """
                 {
                   "tests" : [ {
-                    "server" : "www.thousandeyes.com",
+                    "server" : "www.thousandeyes.com:80",
                     "mtuMeasurements" : false,
                     "ipv6Policy" : "use-agent-policy",
                     "_links" : {
@@ -563,7 +560,6 @@ public class AgentToServerTestsApiTest {
                     "networkMeasurements" : false,
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "createdBy" : "user@user.com",
-                    "port" : 49153,
                     "randomizedStartTime" : false,
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
@@ -571,7 +567,7 @@ public class AgentToServerTestsApiTest {
                     "pingPayloadSize" : 112,
                     "continuousMode" : false
                   }, {
-                    "server" : "www.thousandeyes.com",
+                    "server" : "www.thousandeyes.com:80",
                     "mtuMeasurements" : false,
                     "ipv6Policy" : "use-agent-policy",
                     "_links" : {
@@ -612,7 +608,6 @@ public class AgentToServerTestsApiTest {
                     "networkMeasurements" : false,
                     "createdDate" : "2022-07-17T22:00:54Z",
                     "createdBy" : "user@user.com",
-                    "port" : 49153,
                     "randomizedStartTime" : false,
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
@@ -667,7 +662,7 @@ public class AgentToServerTestsApiTest {
 
         var requestBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com",
+                  "server" : "www.thousandeyes.com:80",
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
                   "_links" : {
@@ -717,7 +712,6 @@ public class AgentToServerTestsApiTest {
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "createdBy" : "user@user.com",
-                  "port" : 49153,
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
@@ -735,7 +729,7 @@ public class AgentToServerTestsApiTest {
 
         var responseBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com",
+                  "server" : "www.thousandeyes.com:80",
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
                   "_links" : {
@@ -839,7 +833,6 @@ public class AgentToServerTestsApiTest {
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
                   "createdBy" : "user@user.com",
-                  "port" : 49153,
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,

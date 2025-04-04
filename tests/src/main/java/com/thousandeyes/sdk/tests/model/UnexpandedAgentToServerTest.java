@@ -55,7 +55,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedAgentToServerTest.JSON_PROPERTY_MTU_MEASUREMENTS,
   UnexpandedAgentToServerTest.JSON_PROPERTY_NUM_PATH_TRACES,
   UnexpandedAgentToServerTest.JSON_PROPERTY_PATH_TRACE_MODE,
-  UnexpandedAgentToServerTest.JSON_PROPERTY_PORT,
   UnexpandedAgentToServerTest.JSON_PROPERTY_PROBE_MODE,
   UnexpandedAgentToServerTest.JSON_PROPERTY_PROTOCOL,
   UnexpandedAgentToServerTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
@@ -129,9 +128,6 @@ public class UnexpandedAgentToServerTest {
 
   public static final String JSON_PROPERTY_PATH_TRACE_MODE = "pathTraceMode";
   private TestPathTraceMode pathTraceMode = TestPathTraceMode.CLASSIC;
-
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port = 49153;
 
   public static final String JSON_PROPERTY_PROBE_MODE = "probeMode";
   private TestProbeMode probeMode = TestProbeMode.AUTO;
@@ -617,33 +613,6 @@ public class UnexpandedAgentToServerTest {
   }
 
 
-  public UnexpandedAgentToServerTest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Target port.
-   * minimum: 1
-   * maximum: 65535
-   * @return port
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
-
   public UnexpandedAgentToServerTest probeMode(TestProbeMode probeMode) {
     this.probeMode = probeMode;
     return this;
@@ -725,7 +694,7 @@ public class UnexpandedAgentToServerTest {
   }
 
    /**
-   * Target name or IP address.
+   * The target name or IP address. If a port is set for the test, it is appended to the target name or IP address using a colon.
    * @return server
   **/
   @jakarta.annotation.Nonnull
@@ -943,7 +912,6 @@ public class UnexpandedAgentToServerTest {
         Objects.equals(this.mtuMeasurements, unexpandedAgentToServerTest.mtuMeasurements) &&
         Objects.equals(this.numPathTraces, unexpandedAgentToServerTest.numPathTraces) &&
         Objects.equals(this.pathTraceMode, unexpandedAgentToServerTest.pathTraceMode) &&
-        Objects.equals(this.port, unexpandedAgentToServerTest.port) &&
         Objects.equals(this.probeMode, unexpandedAgentToServerTest.probeMode) &&
         Objects.equals(this.protocol, unexpandedAgentToServerTest.protocol) &&
         Objects.equals(this.randomizedStartTime, unexpandedAgentToServerTest.randomizedStartTime) &&
@@ -959,7 +927,7 @@ public class UnexpandedAgentToServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, port, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -986,7 +954,6 @@ public class UnexpandedAgentToServerTest {
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
