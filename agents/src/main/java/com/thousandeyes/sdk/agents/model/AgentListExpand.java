@@ -28,6 +28,10 @@ public enum AgentListExpand {
   
   CLUSTER_MEMBER("cluster-member"),
   
+  TEST("test"),
+  
+  TEST_IDS("test-ids"),
+  
   UNKNOWN("unknown");
 
   private String value;

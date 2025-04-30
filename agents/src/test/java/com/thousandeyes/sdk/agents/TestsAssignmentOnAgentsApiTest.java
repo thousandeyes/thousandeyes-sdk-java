@@ -13,11 +13,7 @@
 package com.thousandeyes.sdk.agents;
 
 import com.thousandeyes.sdk.agents.model.AgentDetails;
-import com.thousandeyes.sdk.agents.model.AgentDetailsExpand;
-import com.thousandeyes.sdk.agents.model.AgentListExpand;
-import com.thousandeyes.sdk.agents.model.AgentRequest;
-import com.thousandeyes.sdk.agents.model.CloudEnterpriseAgentType;
-import com.thousandeyes.sdk.agents.model.CloudEnterpriseAgents;
+import com.thousandeyes.sdk.agents.model.AgentTestsAssignRequest;
 import com.thousandeyes.sdk.agents.model.Error;
 import com.thousandeyes.sdk.agents.model.UnauthorizedError;
 import com.thousandeyes.sdk.agents.model.ValidationError;
@@ -53,13 +49,13 @@ import com.thousandeyes.sdk.client.NativeApiClient;
 
 
 /**
- * Request and Response model deserialization tests for CloudAndEnterpriseAgentsApi
+ * Request and Response model deserialization tests for TestsAssignmentOnAgentsApi
  */
 @WireMockTest
-public class CloudAndEnterpriseAgentsApiTest {
+public class TestsAssignmentOnAgentsApiTest {
     private static final String TOKEN = "valid-token";
     private static final String BEARER_TOKEN = "Bearer %s".formatted(TOKEN);
-    private static CloudAndEnterpriseAgentsApi api;
+    private static TestsAssignmentOnAgentsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
@@ -70,266 +66,30 @@ public class CloudAndEnterpriseAgentsApiTest {
                                 .baseUri(wireMockRuntimeInfo.getHttpBaseUrl())
                                 .bearerToken(TOKEN)
                                 .build();
-        api = new CloudAndEnterpriseAgentsApi(client);
+        api = new TestsAssignmentOnAgentsApi(client);
     }
     
     /**
-     * Delete Enterprise Agent
+     * Assign tests to an agent
      * <p>
-     * Deletes an Enterprise Agent.  Important notes related to agent removal: * If an agent is deleted, the modification date for tests using that agent at the time it was deleted will be changed. * If a deleted agent is the final remaining agent on a test, then the test will be disabled when the agent is removed. * If an agent is removed, it must be re-initialized to use the same machine again in different context. Virtual Appliances can be updated using the Reset State button in the Advanced tab of the agent management interface. Users running packaged versions of Linux will need to remove /var/lib/te-agent/\\*.sqlite in order to reinitialize an agent.
+     * Assign tests to a specific Agent. Existing assigned tests are not removed.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any provided test ID is invalid, the entire operation is canceled.    * Already assigned tests are ignored; other valid tests will be assigned.    * This operation does not overwrite existing assignments.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
     @Test
-    public void deleteAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
-    {
-        String agentId = "281474976710706";
-
-
-        var statusCode = 204;
-
-        var path = "/agents/{agentId}";
-        stubFor(delete(urlPathTemplate(path))
-                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
-                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
-                        .willReturn(aResponse()
-                                            .withStatus(statusCode)));
-
-        var apiResponse = api.deleteAgentWithHttpInfo(agentId, null);
-        assertEquals(statusCode, apiResponse.getStatusCode());
-    }
-    
-    /**
-     * Retrieve Cloud and Enterprise Agent
-     * <p>
-     * Returns details for an agent, including assigned tests.  For Enterprise Agents, this operation returns additional details, including utilization data, assigned accounts, a list of account groups the agent is assigned to, and utilization details. 
-     *
-     * @throws JsonProcessingException if the deserialization fails
-     */
-    @Test
-    public void getAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
-    {
-        String agentId = "281474976710706";
-
-
-        var responseBodyJson = """
-                {
-                  "agentId" : "281474976710706",
-                  "agentType" : "cloud",
-                  "_links" : {
-                    "self" : {
-                      "hreflang" : "hreflang",
-                      "templated" : true,
-                      "profile" : "profile",
-                      "name" : "name",
-                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
-                      "type" : "type",
-                      "deprecation" : "deprecation",
-                      "title" : "title"
-                    }
-                  },
-                  "prefix" : "99.128.0.0/11",
-                  "agentName" : "thousandeyes-stg-va-254",
-                  "countryId" : "US",
-                  "enabled" : true,
-                  "network" : "AT&T Services, Inc. (AS 7018)",
-                  "labels" : [ {
-                    "labelId" : "11",
-                    "name" : "Label name"
-                  }, {
-                    "labelId" : "11",
-                    "name" : "Label name"
-                  } ],
-                  "tests" : [ {
-                    "_links" : {
-                      "testResults" : [ {
-                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
-                      }, {
-                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
-                      } ],
-                      "self" : {
-                        "hreflang" : "hreflang",
-                        "templated" : true,
-                        "profile" : "profile",
-                        "name" : "name",
-                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
-                        "type" : "type",
-                        "deprecation" : "deprecation",
-                        "title" : "title"
-                      }
-                    },
-                    "liveShare" : false,
-                    "savedEvent" : true,
-                    "description" : "ThousandEyes Test",
-                    "type" : "agent-to-server",
-                    "enabled" : true,
-                    "createdDate" : "2022-07-17T22:00:54Z",
-                    "createdBy" : "user@user.com",
-                    "modifiedDate" : "2022-07-17T22:00:54Z",
-                    "interval" : 60,
-                    "modifiedBy" : "user@user.com",
-                    "testId" : "281474976710706",
-                    "alertsEnabled" : true,
-                    "testName" : "ThousandEyes Test"
-                  }, {
-                    "_links" : {
-                      "testResults" : [ {
-                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
-                      }, {
-                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
-                      } ],
-                      "self" : {
-                        "hreflang" : "hreflang",
-                        "templated" : true,
-                        "profile" : "profile",
-                        "name" : "name",
-                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
-                        "type" : "type",
-                        "deprecation" : "deprecation",
-                        "title" : "title"
-                      }
-                    },
-                    "liveShare" : false,
-                    "savedEvent" : true,
-                    "description" : "ThousandEyes Test",
-                    "type" : "agent-to-server",
-                    "enabled" : true,
-                    "createdDate" : "2022-07-17T22:00:54Z",
-                    "createdBy" : "user@user.com",
-                    "modifiedDate" : "2022-07-17T22:00:54Z",
-                    "interval" : 60,
-                    "modifiedBy" : "user@user.com",
-                    "testId" : "281474976710706",
-                    "alertsEnabled" : true,
-                    "testName" : "ThousandEyes Test"
-                  } ],
-                  "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
-                  "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                  "location" : "San Francisco Bay Area",
-                  "verifySslCertificates" : true
-                }
-                                  """;
-        var statusCode = 200;
-        var responseContentType = "application/json";
-        AgentDetails mappedResponse = 
-                mapper.readValue(responseBodyJson, AgentDetails.class);
-        assertNotNull(mappedResponse);
-
-        var path = "/agents/{agentId}";
-        stubFor(get(urlPathTemplate(path))
-                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
-                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
-                        .willReturn(aResponse()
-                                            .withHeader(CONTENT_TYPE, responseContentType)
-                                            .withBody(responseBodyJson)
-                                            .withStatus(statusCode)));
-
-        var apiResponse = api.getAgent(agentId, null, null);
-        assertEquals(mappedResponse, apiResponse);
-    }
-    
-    /**
-     * List Cloud and Enterprise Agents
-     * <p>
-     * List the Cloud and Enterprise Agents available to your account in ThousandEyes.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
-     *
-     * @throws JsonProcessingException if the deserialization fails
-     */
-    @Test
-    public void getAgentsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
-    {
-
-
-        var responseBodyJson = """
-                {
-                  "_links" : {
-                    "self" : {
-                      "hreflang" : "hreflang",
-                      "templated" : true,
-                      "profile" : "profile",
-                      "name" : "name",
-                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
-                      "type" : "type",
-                      "deprecation" : "deprecation",
-                      "title" : "title"
-                    }
-                  },
-                  "agents" : [ {
-                    "agentId" : "281474976710706",
-                    "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
-                    "prefix" : "99.128.0.0/11",
-                    "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
-                    "countryId" : "US",
-                    "enabled" : true,
-                    "network" : "AT&T Services, Inc. (AS 7018)",
-                    "verifySslCertificates" : true
-                  }, {
-                    "agentId" : "281474976710706",
-                    "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
-                    "prefix" : "99.128.0.0/11",
-                    "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
-                    "countryId" : "US",
-                    "enabled" : true,
-                    "network" : "AT&T Services, Inc. (AS 7018)",
-                    "verifySslCertificates" : true
-                  } ]
-                }
-                                  """;
-        var statusCode = 200;
-        var responseContentType = "application/json";
-        CloudEnterpriseAgents mappedResponse = 
-                mapper.readValue(responseBodyJson, CloudEnterpriseAgents.class);
-        assertNotNull(mappedResponse);
-
-        var path = "/agents";
-        stubFor(get(urlPathTemplate(path))
-                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
-                        .willReturn(aResponse()
-                                            .withHeader(CONTENT_TYPE, responseContentType)
-                                            .withBody(responseBodyJson)
-                                            .withStatus(statusCode)));
-
-        var apiResponse = api.getAgents(null, null, null, null);
-        assertEquals(mappedResponse, apiResponse);
-    }
-    
-    /**
-     * Update Enterprise Agent
-     * <p>
-     * Updates details for an Enterprise Agent. This operation can only be used for Enterprise Agents, and only for users in a role that permits modification of Enterprise Agents.  Important notes related to agent modification on tests: * if an agent is removed from a test, the modification date for tests using that agent at the time it was removed will be changed. * If an agent is removed from an entire account group, then all tests using this agent in the removed account group will be updated to reflect the removed agent. * If a removed agent is the final remaining agent on a test, then the test will be disabled when the agent is removed.  Users can update the following fields: * &#x60;agentName&#x60;: String representation of an agent. No two agents can have the same display name. * &#x60;enabled&#x60;: Boolean representation of agent state. * &#x60;accountGroups&#x60;: An array of account group ids. See &#x60;v7/account-groups&#x60; to pull a list of account IDs. * &#x60;tests&#x60;: An array of test Is. See &#x60;v7/tests&#x60; to retrieve a list tests available in the current account context. * &#x60;ipv6Policy&#x60;: Enum representation of the IP version policy. * &#x60;keepBrowserCache&#x60;: Boolean representation of the Keep browser cache state. * &#x60;targetForTests&#x60;: String representation of the target IP address or domain name. This represents the test destination when agent is acting as a test target in an agent-to-agent test. * &#x60;localResolutionPrefixes&#x60;: This array of strings represents the public IP ranges where the Enterprise Agent performs rDNS (Reverse DNS) lookups. The range should be in CIDR notation, such as &#x60;10.1.1.0/24&#x60;. Please note that a maximum of 5 prefixes is allowed. This only applies to Enterprise Agents and Enterprise Agent clusters.
-     *
-     * @throws JsonProcessingException if the deserialization fails
-     */
-    @Test
-    public void updateAgentRequestAndResponseDeserializationTest()
+    public void assignTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
         String agentId = "281474976710706";
 
         var requestBodyJson = """
                 {
-                  "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/25" ],
-                  "tests" : [ "12313145", "12345" ],
-                  "ipv6Policy" : "force-ipv4",
-                  "keepBrowserCache" : true,
-                  "targetForTests" : "1.1.1.1",
-                  "agentName" : "thousandeyes-stg-va-254",
-                  "enabled" : true,
-                  "accountGroups" : [ "1234", "1" ]
+                  "testIds" : [ "281474976710706" ]
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentRequest mappedRequest = 
-                mapper.readValue(requestBodyJson, AgentRequest.class);
+        AgentTestsAssignRequest mappedRequest = 
+                mapper.readValue(requestBodyJson, AgentTestsAssignRequest.class);
         assertNotNull(mappedRequest);
 
         var responseBodyJson = """
@@ -435,8 +195,8 @@ public class CloudAndEnterpriseAgentsApiTest {
                 mapper.readValue(responseBodyJson, AgentDetails.class);
         assertNotNull(mappedResponse);
 
-        var path = "/agents/{agentId}";
-        stubFor(put(urlPathTemplate(path))
+        var path = "/agents/{agentId}/tests/assign";
+        stubFor(post(urlPathTemplate(path))
                         .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
                         .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
                         .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
@@ -446,7 +206,289 @@ public class CloudAndEnterpriseAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateAgent(agentId, mappedRequest, null, null);
+        var apiResponse = api.assignTests(agentId, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
+    }
+    
+    /**
+     * Overwrite tests assigned to an agent
+     * <p>
+     * Replaces all tests assigned to a specific agent with the new set of test IDs provided.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any test ID is invalid, the operation is canceled and no changes are made.    * Already assigned tests that are also in the request are ignored.    * Previously assigned tests not included in the request will be removed.
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void overwriteTestsRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String agentId = "281474976710706";
+
+        var requestBodyJson = """
+                {
+                  "testIds" : [ "281474976710706" ]
+                }
+                                 """;
+        var requestBodyContentType = "application/json";
+        AgentTestsAssignRequest mappedRequest = 
+                mapper.readValue(requestBodyJson, AgentTestsAssignRequest.class);
+        assertNotNull(mappedRequest);
+
+        var responseBodyJson = """
+                {
+                  "agentId" : "281474976710706",
+                  "agentType" : "cloud",
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "prefix" : "99.128.0.0/11",
+                  "agentName" : "thousandeyes-stg-va-254",
+                  "countryId" : "US",
+                  "enabled" : true,
+                  "network" : "AT&T Services, Inc. (AS 7018)",
+                  "labels" : [ {
+                    "labelId" : "11",
+                    "name" : "Label name"
+                  }, {
+                    "labelId" : "11",
+                    "name" : "Label name"
+                  } ],
+                  "tests" : [ {
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
+                    "alertsEnabled" : true,
+                    "testName" : "ThousandEyes Test"
+                  }, {
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
+                    "alertsEnabled" : true,
+                    "testName" : "ThousandEyes Test"
+                  } ],
+                  "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                  "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                  "location" : "San Francisco Bay Area",
+                  "verifySslCertificates" : true
+                }
+                                  """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
+        AgentDetails mappedResponse = 
+                mapper.readValue(responseBodyJson, AgentDetails.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/agents/{agentId}/tests/override";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.overwriteTests(agentId, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
+    }
+    
+    /**
+     * Unassign tests from an agent
+     * <p>
+     * Unassigns the specified tests from a specific agent.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any test ID is invalid, the operation is canceled and no changes are made.
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void unassignTestsRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String agentId = "281474976710706";
+
+        var requestBodyJson = """
+                {
+                  "testIds" : [ "281474976710706" ]
+                }
+                                 """;
+        var requestBodyContentType = "application/json";
+        AgentTestsAssignRequest mappedRequest = 
+                mapper.readValue(requestBodyJson, AgentTestsAssignRequest.class);
+        assertNotNull(mappedRequest);
+
+        var responseBodyJson = """
+                {
+                  "agentId" : "281474976710706",
+                  "agentType" : "cloud",
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "prefix" : "99.128.0.0/11",
+                  "agentName" : "thousandeyes-stg-va-254",
+                  "countryId" : "US",
+                  "enabled" : true,
+                  "network" : "AT&T Services, Inc. (AS 7018)",
+                  "labels" : [ {
+                    "labelId" : "11",
+                    "name" : "Label name"
+                  }, {
+                    "labelId" : "11",
+                    "name" : "Label name"
+                  } ],
+                  "tests" : [ {
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
+                    "alertsEnabled" : true,
+                    "testName" : "ThousandEyes Test"
+                  }, {
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
+                    "alertsEnabled" : true,
+                    "testName" : "ThousandEyes Test"
+                  } ],
+                  "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                  "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                  "location" : "San Francisco Bay Area",
+                  "verifySslCertificates" : true
+                }
+                                  """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
+        AgentDetails mappedResponse = 
+                mapper.readValue(responseBodyJson, AgentDetails.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/agents/{agentId}/tests/unassign";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.unassignTests(agentId, mappedRequest, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

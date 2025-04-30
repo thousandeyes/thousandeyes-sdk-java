@@ -33,12 +33,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * EnterpriseAgentResponseExpands
  */
 @JsonPropertyOrder({
+  EnterpriseAgentResponseExpands.JSON_PROPERTY_TEST_IDS,
   EnterpriseAgentResponseExpands.JSON_PROPERTY_TESTS,
   EnterpriseAgentResponseExpands.JSON_PROPERTY_NOTIFICATION_RULES,
   EnterpriseAgentResponseExpands.JSON_PROPERTY_LABELS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EnterpriseAgentResponseExpands {
+  public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  private List<Long> testIds = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<SimpleTest> tests = new ArrayList<>();
 
@@ -53,11 +57,28 @@ public class EnterpriseAgentResponseExpands {
 
   @JsonCreator
   public EnterpriseAgentResponseExpands(
+    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels
   ) {
   this();
+    this.testIds = testIds;
     this.labels = labels;
   }
+
+   /**
+   * List of test IDs assigned to the agent.
+   * @return testIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Long> getTestIds() {
+    return testIds;
+  }
+
+
+
 
   public EnterpriseAgentResponseExpands tests(List<SimpleTest> tests) {
     this.tests = tests;
@@ -152,20 +173,22 @@ public class EnterpriseAgentResponseExpands {
       return false;
     }
     EnterpriseAgentResponseExpands enterpriseAgentResponseExpands = (EnterpriseAgentResponseExpands) o;
-    return Objects.equals(this.tests, enterpriseAgentResponseExpands.tests) &&
+    return Objects.equals(this.testIds, enterpriseAgentResponseExpands.testIds) &&
+        Objects.equals(this.tests, enterpriseAgentResponseExpands.tests) &&
         Objects.equals(this.notificationRules, enterpriseAgentResponseExpands.notificationRules) &&
         Objects.equals(this.labels, enterpriseAgentResponseExpands.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tests, notificationRules, labels);
+    return Objects.hash(testIds, tests, notificationRules, labels);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EnterpriseAgentResponseExpands {\n");
+    sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    notificationRules: ").append(toIndentedString(notificationRules)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");

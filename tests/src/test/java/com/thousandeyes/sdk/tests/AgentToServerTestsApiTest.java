@@ -86,64 +86,7 @@ public class AgentToServerTestsApiTest {
 
         var requestBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com:80",
-                  "mtuMeasurements" : false,
-                  "ipv6Policy" : "use-agent-policy",
-                  "_links" : {
-                    "testResults" : [ {
-                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
-                    }, {
-                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
-                    } ],
-                    "self" : {
-                      "hreflang" : "hreflang",
-                      "templated" : true,
-                      "profile" : "profile",
-                      "name" : "name",
-                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
-                      "type" : "type",
-                      "deprecation" : "deprecation",
-                      "title" : "title"
-                    }
-                  },
-                  "alertRules" : [ "344753", "212697" ],
-                  "bandwidthMeasurements" : true,
-                  "description" : "ThousandEyes Test",
-                  "probeMode" : "auto",
-                  "type" : "agent-to-server",
-                  "usePublicBgp" : true,
-                  "enabled" : true,
-                  "dscpId" : "0",
-                  "fixedPacketRate" : 25,
-                  "protocol" : "tcp",
-                  "dscp" : "Best Effort (DSCP 0)",
-                  "pathTraceMode" : "classic",
-                  "modifiedBy" : "user@user.com",
-                  "alertsEnabled" : true,
-                  "testName" : "ThousandEyes Test",
-                  "numPathTraces" : 3,
-                  "bgpMeasurements" : true,
-                  "liveShare" : false,
-                  "savedEvent" : true,
-                  "networkMeasurements" : false,
-                  "labels" : [ "9842", "1283" ],
-                  "agents" : [ {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
-                  }, {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
-                  } ],
-                  "createdDate" : "2022-07-17T22:00:54Z",
-                  "createdBy" : "user@user.com",
-                  "randomizedStartTime" : false,
-                  "modifiedDate" : "2022-07-17T22:00:54Z",
-                  "interval" : 60,
-                  "testId" : "281474976710706",
-                  "sharedWithAccounts" : [ "1234", "12345" ],
-                  "pingPayloadSize" : 112,
-                  "continuousMode" : false,
-                  "monitors" : [ "17410", "5" ]
+                  "port" : 443
                 }
                                  """;
         var requestBodyContentType = "application/json";
@@ -662,64 +605,7 @@ public class AgentToServerTestsApiTest {
 
         var requestBodyJson = """
                 {
-                  "server" : "www.thousandeyes.com:80",
-                  "mtuMeasurements" : false,
-                  "ipv6Policy" : "use-agent-policy",
-                  "_links" : {
-                    "testResults" : [ {
-                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
-                    }, {
-                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
-                    } ],
-                    "self" : {
-                      "hreflang" : "hreflang",
-                      "templated" : true,
-                      "profile" : "profile",
-                      "name" : "name",
-                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
-                      "type" : "type",
-                      "deprecation" : "deprecation",
-                      "title" : "title"
-                    }
-                  },
-                  "alertRules" : [ "344753", "212697" ],
-                  "bandwidthMeasurements" : true,
-                  "description" : "ThousandEyes Test",
-                  "probeMode" : "auto",
-                  "type" : "agent-to-server",
-                  "usePublicBgp" : true,
-                  "enabled" : true,
-                  "dscpId" : "0",
-                  "fixedPacketRate" : 25,
-                  "protocol" : "tcp",
-                  "dscp" : "Best Effort (DSCP 0)",
-                  "pathTraceMode" : "classic",
-                  "modifiedBy" : "user@user.com",
-                  "alertsEnabled" : true,
-                  "testName" : "ThousandEyes Test",
-                  "numPathTraces" : 3,
-                  "bgpMeasurements" : true,
-                  "liveShare" : false,
-                  "savedEvent" : true,
-                  "networkMeasurements" : false,
-                  "labels" : [ "9842", "1283" ],
-                  "agents" : [ {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
-                  }, {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
-                  } ],
-                  "createdDate" : "2022-07-17T22:00:54Z",
-                  "createdBy" : "user@user.com",
-                  "randomizedStartTime" : false,
-                  "modifiedDate" : "2022-07-17T22:00:54Z",
-                  "interval" : 60,
-                  "testId" : "281474976710706",
-                  "sharedWithAccounts" : [ "1234", "12345" ],
-                  "pingPayloadSize" : 112,
-                  "continuousMode" : false,
-                  "monitors" : [ "17410", "5" ]
+                  "port" : 443
                 }
                                  """;
         var requestBodyContentType = "application/json";

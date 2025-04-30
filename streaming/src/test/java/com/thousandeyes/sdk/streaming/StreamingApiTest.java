@@ -171,6 +171,11 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "streamStatus" : {
+                    "lastSuccess" : 1679677853573,
+                    "lastFailure" : 1679677853573,
+                    "status" : "connected"
+                  },
                   "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
@@ -283,6 +288,11 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "streamStatus" : {
+                    "lastSuccess" : 1679677853573,
+                    "lastFailure" : 1679677853573,
+                    "status" : "connected"
+                  },
                   "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
@@ -368,6 +378,11 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "streamStatus" : {
+                    "lastSuccess" : 1679677853573,
+                    "lastFailure" : 1679677853573,
+                    "status" : "connected"
+                  },
                   "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
@@ -418,6 +433,11 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "streamStatus" : {
+                    "lastSuccess" : 1679677853573,
+                    "lastFailure" : 1679677853573,
+                    "status" : "connected"
+                  },
                   "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,
@@ -544,6 +564,11 @@ public class StreamingApiTest {
                     "value" : "valueB"
                   } ],
                   "id" : "342ieu09",
+                  "streamStatus" : {
+                    "lastSuccess" : 1679677853573,
+                    "lastFailure" : 1679677853573,
+                    "status" : "connected"
+                  },
                   "signal" : "metric",
                   "auditOperation" : {
                     "createdDate" : 1679677853573,

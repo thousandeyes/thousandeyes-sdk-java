@@ -47,6 +47,11 @@ src/main/java/com/thousandeyes/sdk/account/management/administrative/model/RoleR
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Roles.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/SimpleAgent.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/SimpleTest.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/TestInterval.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/TestLinks.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/TestSelfLink.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/TestType.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/User.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/UserAccountGroup.java

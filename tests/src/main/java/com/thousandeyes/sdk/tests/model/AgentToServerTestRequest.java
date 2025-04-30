@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * AgentToServerTestRequest
  */
 @JsonPropertyOrder({
+  AgentToServerTestRequest.JSON_PROPERTY_PORT,
   AgentToServerTestRequest.JSON_PROPERTY_INTERVAL,
   AgentToServerTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   AgentToServerTestRequest.JSON_PROPERTY_ENABLED,
@@ -78,6 +79,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentToServerTestRequest {
+  public static final String JSON_PROPERTY_PORT = "port";
+  private Integer port;
+
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval = TestInterval.NUMBER_60;
 
@@ -212,6 +216,31 @@ public class AgentToServerTestRequest {
     this.type = type;
     this.dscp = dscp;
   }
+
+  public AgentToServerTestRequest port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * Port number to use for the test. The default port is 80.
+   * @return port
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getPort() {
+    return port;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPort(Integer port) {
+    this.port = port;
+  }
+
 
   public AgentToServerTestRequest interval(TestInterval interval) {
     this.interval = interval;
@@ -1081,7 +1110,8 @@ public class AgentToServerTestRequest {
       return false;
     }
     AgentToServerTestRequest agentToServerTestRequest = (AgentToServerTestRequest) o;
-    return Objects.equals(this.interval, agentToServerTestRequest.interval) &&
+    return Objects.equals(this.port, agentToServerTestRequest.port) &&
+        Objects.equals(this.interval, agentToServerTestRequest.interval) &&
         Objects.equals(this.alertsEnabled, agentToServerTestRequest.alertsEnabled) &&
         Objects.equals(this.enabled, agentToServerTestRequest.enabled) &&
         Objects.equals(this.alertRules, agentToServerTestRequest.alertRules) &&
@@ -1121,13 +1151,14 @@ public class AgentToServerTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(port, interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors, agents);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AgentToServerTestRequest {\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
