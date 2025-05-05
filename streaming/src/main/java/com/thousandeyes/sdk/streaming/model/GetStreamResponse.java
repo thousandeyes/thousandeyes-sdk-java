@@ -27,6 +27,7 @@ import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.Filters;
 import com.thousandeyes.sdk.streaming.model.Signal;
 import com.thousandeyes.sdk.streaming.model.StreamLinks;
+import com.thousandeyes.sdk.streaming.model.StreamStatus;
 import com.thousandeyes.sdk.streaming.model.StreamType;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
 import com.thousandeyes.sdk.streaming.model.TestMatch;
@@ -55,7 +56,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetStreamResponse.JSON_PROPERTY_TEST_MATCH,
   GetStreamResponse.JSON_PROPERTY_FILTERS,
   GetStreamResponse.JSON_PROPERTY_EXPORTER_CONFIG,
-  GetStreamResponse.JSON_PROPERTY_AUDIT_OPERATION
+  GetStreamResponse.JSON_PROPERTY_AUDIT_OPERATION,
+  GetStreamResponse.JSON_PROPERTY_STREAM_STATUS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class GetStreamResponse {
@@ -100,6 +102,9 @@ public class GetStreamResponse {
 
   public static final String JSON_PROPERTY_AUDIT_OPERATION = "auditOperation";
   private AuditOperationWithUpdate auditOperation;
+
+  public static final String JSON_PROPERTY_STREAM_STATUS = "streamStatus";
+  private StreamStatus streamStatus;
 
   public GetStreamResponse() { 
   }
@@ -476,6 +481,31 @@ public class GetStreamResponse {
   }
 
 
+  public GetStreamResponse streamStatus(StreamStatus streamStatus) {
+    this.streamStatus = streamStatus;
+    return this;
+  }
+
+   /**
+   * Get streamStatus
+   * @return streamStatus
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STREAM_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public StreamStatus getStreamStatus() {
+    return streamStatus;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STREAM_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStreamStatus(StreamStatus streamStatus) {
+    this.streamStatus = streamStatus;
+  }
+
+
   /**
    * Return true if this GetStreamResponse object is equal to o.
    */
@@ -501,12 +531,13 @@ public class GetStreamResponse {
         Objects.equals(this.testMatch, getStreamResponse.testMatch) &&
         Objects.equals(this.filters, getStreamResponse.filters) &&
         Objects.equals(this.exporterConfig, getStreamResponse.exporterConfig) &&
-        Objects.equals(this.auditOperation, getStreamResponse.auditOperation);
+        Objects.equals(this.auditOperation, getStreamResponse.auditOperation) &&
+        Objects.equals(this.streamStatus, getStreamResponse.streamStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, auditOperation);
+    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, auditOperation, streamStatus);
   }
 
   @Override
@@ -527,6 +558,7 @@ public class GetStreamResponse {
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    auditOperation: ").append(toIndentedString(auditOperation)).append("\n");
+    sb.append("    streamStatus: ").append(toIndentedString(streamStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

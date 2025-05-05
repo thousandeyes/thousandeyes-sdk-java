@@ -2,7 +2,7 @@
 
 Agents API
 
-- API version: 7.0.42
+- API version: 7.0.44
 
 
 ## Overview
@@ -148,6 +148,12 @@ Class | Method | HTTP request | Description
 *EnterpriseAgentClusterApi* | [**assignAgentToClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#assignAgentToClusterWithHttpInfo) | **POST** /agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster
 *EnterpriseAgentClusterApi* | [**unassignAgentFromCluster**](docs/EnterpriseAgentClusterApi.md#unassignAgentFromCluster) | **POST** /agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
 *EnterpriseAgentClusterApi* | [**unassignAgentFromClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#unassignAgentFromClusterWithHttpInfo) | **POST** /agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
+*TestsAssignmentOnAgentsApi* | [**assignTests**](docs/TestsAssignmentOnAgentsApi.md#assignTests) | **POST** /agents/{agentId}/tests/assign | Assign tests to an agent
+*TestsAssignmentOnAgentsApi* | [**assignTestsWithHttpInfo**](docs/TestsAssignmentOnAgentsApi.md#assignTestsWithHttpInfo) | **POST** /agents/{agentId}/tests/assign | Assign tests to an agent
+*TestsAssignmentOnAgentsApi* | [**overwriteTests**](docs/TestsAssignmentOnAgentsApi.md#overwriteTests) | **POST** /agents/{agentId}/tests/override | Overwrite tests assigned to an agent
+*TestsAssignmentOnAgentsApi* | [**overwriteTestsWithHttpInfo**](docs/TestsAssignmentOnAgentsApi.md#overwriteTestsWithHttpInfo) | **POST** /agents/{agentId}/tests/override | Overwrite tests assigned to an agent
+*TestsAssignmentOnAgentsApi* | [**unassignTests**](docs/TestsAssignmentOnAgentsApi.md#unassignTests) | **POST** /agents/{agentId}/tests/unassign | Unassign tests from an agent
+*TestsAssignmentOnAgentsApi* | [**unassignTestsWithHttpInfo**](docs/TestsAssignmentOnAgentsApi.md#unassignTestsWithHttpInfo) | **POST** /agents/{agentId}/tests/unassign | Unassign tests from an agent
 
 
 <a id="documentation-for-authorization"></a>

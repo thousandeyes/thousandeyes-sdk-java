@@ -181,11 +181,12 @@ public class CloudAndEnterpriseAgentsApi {
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
    * @param agentTypes Specifies the type of agent to request. (optional
+   * @param labels Specifies the labels of the agents to request. (optional
    * @return CloudEnterpriseAgents
    * @throws ApiException if fails to make API call
    */
-  public CloudEnterpriseAgents getAgents(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes) throws ApiException {
-    ApiResponse<CloudEnterpriseAgents> response = getAgentsWithHttpInfo(aid, expand, agentTypes);
+  public CloudEnterpriseAgents getAgents(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels) throws ApiException {
+    ApiResponse<CloudEnterpriseAgents> response = getAgentsWithHttpInfo(aid, expand, agentTypes, labels);
     return response.getData();
   }
 
@@ -195,13 +196,14 @@ public class CloudAndEnterpriseAgentsApi {
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
    * @param agentTypes Specifies the type of agent to request. (optional
+   * @param labels Specifies the labels of the agents to request. (optional
    * @return ApiResponse&lt;CloudEnterpriseAgents&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CloudEnterpriseAgents> getAgentsWithHttpInfo(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes) throws ApiException {
+  public ApiResponse<CloudEnterpriseAgents> getAgentsWithHttpInfo(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels) throws ApiException {
     getAgentsValidateRequest();
 
-    var requestBuilder = getAgentsRequestBuilder(aid, expand, agentTypes);
+    var requestBuilder = getAgentsRequestBuilder(aid, expand, agentTypes, labels);
 
     return apiClient.send(requestBuilder.build(), CloudEnterpriseAgents.class);
   }
@@ -209,7 +211,7 @@ public class CloudAndEnterpriseAgentsApi {
   private void getAgentsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentsRequestBuilder(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getAgentsRequestBuilder(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
@@ -220,6 +222,7 @@ public class CloudAndEnterpriseAgentsApi {
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
     localVarQueryParams.addAll(parameterToPairs("csv", "agentTypes", agentTypes));
+    localVarQueryParams.addAll(parameterToPairs("csv", "labels", labels));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);

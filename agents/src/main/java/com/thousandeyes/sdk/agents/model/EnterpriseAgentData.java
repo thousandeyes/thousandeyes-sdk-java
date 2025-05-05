@@ -26,6 +26,7 @@ import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;
 import com.thousandeyes.sdk.agents.model.ErrorDetail;
 import com.thousandeyes.sdk.agents.model.InterfaceIpMapping;
+import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +38,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * EnterpriseAgentData
  */
 @JsonPropertyOrder({
+  EnterpriseAgentData.JSON_PROPERTY_TEST_IDS,
+  EnterpriseAgentData.JSON_PROPERTY_TESTS,
   EnterpriseAgentData.JSON_PROPERTY_CLUSTER_MEMBERS,
   EnterpriseAgentData.JSON_PROPERTY_UTILIZATION,
   EnterpriseAgentData.JSON_PROPERTY_ACCOUNT_GROUPS,
@@ -49,10 +52,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentData.JSON_PROPERTY_CREATED_DATE,
   EnterpriseAgentData.JSON_PROPERTY_TARGET_FOR_TESTS,
   EnterpriseAgentData.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
-  EnterpriseAgentData.JSON_PROPERTY_INTERFACE_IP_MAPPINGS
+  EnterpriseAgentData.JSON_PROPERTY_INTERFACE_IP_MAPPING
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EnterpriseAgentData {
+  public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  private List<Long> testIds = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TESTS = "tests";
+  private List<SimpleTest> tests = new ArrayList<>();
+
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
   private List<ClusterMember> clusterMembers = new ArrayList<>();
 
@@ -89,31 +98,81 @@ public class EnterpriseAgentData {
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
   private List<String> localResolutionPrefixes = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_INTERFACE_IP_MAPPINGS = "interfaceIpMappings";
-  private List<InterfaceIpMapping> interfaceIpMappings = new ArrayList<>();
+  public static final String JSON_PROPERTY_INTERFACE_IP_MAPPING = "interfaceIpMapping";
+  private List<InterfaceIpMapping> interfaceIpMapping = new ArrayList<>();
 
   public EnterpriseAgentData() { 
   }
 
   @JsonCreator
   public EnterpriseAgentData(
+    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
     @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS) List<ClusterMember> clusterMembers, 
     @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization, 
     @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) List<ErrorDetail> errorDetails, 
     @JsonProperty(JSON_PROPERTY_HOSTNAME) String hostname, 
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPINGS) List<InterfaceIpMapping> interfaceIpMappings
+    @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING) List<InterfaceIpMapping> interfaceIpMapping
   ) {
   this();
+    this.testIds = testIds;
     this.clusterMembers = clusterMembers;
     this.utilization = utilization;
     this.errorDetails = errorDetails;
     this.hostname = hostname;
     this.lastSeen = lastSeen;
     this.createdDate = createdDate;
-    this.interfaceIpMappings = interfaceIpMappings;
+    this.interfaceIpMapping = interfaceIpMapping;
   }
+
+   /**
+   * List of test IDs assigned to the agent.
+   * @return testIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Long> getTestIds() {
+    return testIds;
+  }
+
+
+
+
+  public EnterpriseAgentData tests(List<SimpleTest> tests) {
+    this.tests = tests;
+    return this;
+  }
+
+  public EnterpriseAgentData addTestsItem(SimpleTest testsItem) {
+    if (this.tests == null) {
+      this.tests = new ArrayList<>();
+    }
+    this.tests.add(testsItem);
+    return this;
+  }
+
+   /**
+   * List of tests. See &#x60;/tests&#x60; for more information.
+   * @return tests
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TESTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<SimpleTest> getTests() {
+    return tests;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TESTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTests(List<SimpleTest> tests) {
+    this.tests = tests;
+  }
+
 
    /**
    * If an enterprise agent is clustered, detailed information about each cluster member will be shown as array entries in the clusterMembers field. This field is not shown for Enterprise Agents in standalone mode, or for Cloud Agents.
@@ -372,15 +431,15 @@ public class EnterpriseAgentData {
 
 
    /**
-   * Get interfaceIpMappings
-   * @return interfaceIpMappings
+   * Get interfaceIpMapping
+   * @return interfaceIpMapping
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPINGS)
+  @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<InterfaceIpMapping> getInterfaceIpMappings() {
-    return interfaceIpMappings;
+  public List<InterfaceIpMapping> getInterfaceIpMapping() {
+    return interfaceIpMapping;
   }
 
 
@@ -398,7 +457,9 @@ public class EnterpriseAgentData {
       return false;
     }
     EnterpriseAgentData enterpriseAgentData = (EnterpriseAgentData) o;
-    return Objects.equals(this.clusterMembers, enterpriseAgentData.clusterMembers) &&
+    return Objects.equals(this.testIds, enterpriseAgentData.testIds) &&
+        Objects.equals(this.tests, enterpriseAgentData.tests) &&
+        Objects.equals(this.clusterMembers, enterpriseAgentData.clusterMembers) &&
         Objects.equals(this.utilization, enterpriseAgentData.utilization) &&
         Objects.equals(this.accountGroups, enterpriseAgentData.accountGroups) &&
         Objects.equals(this.ipv6Policy, enterpriseAgentData.ipv6Policy) &&
@@ -410,18 +471,20 @@ public class EnterpriseAgentData {
         Objects.equals(this.createdDate, enterpriseAgentData.createdDate) &&
         Objects.equals(this.targetForTests, enterpriseAgentData.targetForTests) &&
         Objects.equals(this.localResolutionPrefixes, enterpriseAgentData.localResolutionPrefixes) &&
-        Objects.equals(this.interfaceIpMappings, enterpriseAgentData.interfaceIpMappings);
+        Objects.equals(this.interfaceIpMapping, enterpriseAgentData.interfaceIpMapping);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMappings);
+    return Objects.hash(testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EnterpriseAgentData {\n");
+    sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
+    sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    clusterMembers: ").append(toIndentedString(clusterMembers)).append("\n");
     sb.append("    utilization: ").append(toIndentedString(utilization)).append("\n");
     sb.append("    accountGroups: ").append(toIndentedString(accountGroups)).append("\n");
@@ -434,7 +497,7 @@ public class EnterpriseAgentData {
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    targetForTests: ").append(toIndentedString(targetForTests)).append("\n");
     sb.append("    localResolutionPrefixes: ").append(toIndentedString(localResolutionPrefixes)).append("\n");
-    sb.append("    interfaceIpMappings: ").append(toIndentedString(interfaceIpMappings)).append("\n");
+    sb.append("    interfaceIpMapping: ").append(toIndentedString(interfaceIpMapping)).append("\n");
     sb.append("}");
     return sb.toString();
   }
