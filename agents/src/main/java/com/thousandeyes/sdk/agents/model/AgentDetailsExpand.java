@@ -30,6 +30,8 @@ public enum AgentDetailsExpand {
   
   TEST("test"),
   
+  TEST_IDS("test-ids"),
+  
   NOTIFICATION_RULE("notification-rule"),
   
   UNKNOWN("unknown");

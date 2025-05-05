@@ -23,6 +23,8 @@ src/main/java/com/thousandeyes/sdk/streaming/model/Stream.java
 src/main/java/com/thousandeyes/sdk/streaming/model/StreamLinks.java
 src/main/java/com/thousandeyes/sdk/streaming/model/StreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/StreamSelfLink.java
+src/main/java/com/thousandeyes/sdk/streaming/model/StreamStatus.java
+src/main/java/com/thousandeyes/sdk/streaming/model/StreamStatusType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/StreamType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TagMatch.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TagMatchObjectType.java

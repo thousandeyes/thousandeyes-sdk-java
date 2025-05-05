@@ -74,7 +74,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   AgentToServerTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
   AgentToServerTestRequest.JSON_PROPERTY_MONITORS,
-  AgentToServerTestRequest.JSON_PROPERTY_AGENTS
+  AgentToServerTestRequest.JSON_PROPERTY_AGENTS,
+  AgentToServerTestRequest.JSON_PROPERTY_PORT
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentToServerTestRequest {
@@ -185,6 +186,9 @@ public class AgentToServerTestRequest {
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_PORT = "port";
+  private Integer port;
 
   public AgentToServerTestRequest() { 
   }
@@ -1069,6 +1073,31 @@ public class AgentToServerTestRequest {
   }
 
 
+  public AgentToServerTestRequest port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * Port number to use for the test. The default port is 80.
+   * @return port
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getPort() {
+    return port;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPort(Integer port) {
+    this.port = port;
+  }
+
+
   /**
    * Return true if this AgentToServerTestRequest object is equal to o.
    */
@@ -1116,12 +1145,13 @@ public class AgentToServerTestRequest {
         Objects.equals(this.bgpMeasurements, agentToServerTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, agentToServerTestRequest.usePublicBgp) &&
         Objects.equals(this.monitors, agentToServerTestRequest.monitors) &&
-        Objects.equals(this.agents, agentToServerTestRequest.agents);
+        Objects.equals(this.agents, agentToServerTestRequest.agents) &&
+        Objects.equals(this.port, agentToServerTestRequest.port);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors, agents, port);
   }
 
   @Override
@@ -1164,6 +1194,7 @@ public class AgentToServerTestRequest {
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -27,6 +27,7 @@ import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;
 import com.thousandeyes.sdk.agents.model.ErrorDetail;
 import com.thousandeyes.sdk.agents.model.InterfaceIpMapping;
+import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,6 +50,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgent.JSON_PROPERTY_ENABLED,
   EnterpriseAgent.JSON_PROPERTY_PREFIX,
   EnterpriseAgent.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
+  EnterpriseAgent.JSON_PROPERTY_TEST_IDS,
+  EnterpriseAgent.JSON_PROPERTY_TESTS,
   EnterpriseAgent.JSON_PROPERTY_CLUSTER_MEMBERS,
   EnterpriseAgent.JSON_PROPERTY_UTILIZATION,
   EnterpriseAgent.JSON_PROPERTY_ACCOUNT_GROUPS,
@@ -61,7 +64,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgent.JSON_PROPERTY_CREATED_DATE,
   EnterpriseAgent.JSON_PROPERTY_TARGET_FOR_TESTS,
   EnterpriseAgent.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
-  EnterpriseAgent.JSON_PROPERTY_INTERFACE_IP_MAPPINGS
+  EnterpriseAgent.JSON_PROPERTY_INTERFACE_IP_MAPPING
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EnterpriseAgent {
@@ -97,6 +100,12 @@ public class EnterpriseAgent {
 
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
   private Boolean verifySslCertificates;
+
+  public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  private List<Long> testIds = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TESTS = "tests";
+  private List<SimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
   private List<ClusterMember> clusterMembers = new ArrayList<>();
@@ -134,8 +143,8 @@ public class EnterpriseAgent {
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
   private List<String> localResolutionPrefixes = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_INTERFACE_IP_MAPPINGS = "interfaceIpMappings";
-  private List<InterfaceIpMapping> interfaceIpMappings = new ArrayList<>();
+  public static final String JSON_PROPERTY_INTERFACE_IP_MAPPING = "interfaceIpMapping";
+  private List<InterfaceIpMapping> interfaceIpMapping = new ArrayList<>();
 
   public EnterpriseAgent() { 
   }
@@ -150,13 +159,14 @@ public class EnterpriseAgent {
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
     @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
+    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
     @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS) List<ClusterMember> clusterMembers, 
     @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization, 
     @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) List<ErrorDetail> errorDetails, 
     @JsonProperty(JSON_PROPERTY_HOSTNAME) String hostname, 
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPINGS) List<InterfaceIpMapping> interfaceIpMappings
+    @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING) List<InterfaceIpMapping> interfaceIpMapping
   ) {
   this();
     this.ipAddresses = ipAddresses;
@@ -167,13 +177,14 @@ public class EnterpriseAgent {
     this.countryId = countryId;
     this.prefix = prefix;
     this.verifySslCertificates = verifySslCertificates;
+    this.testIds = testIds;
     this.clusterMembers = clusterMembers;
     this.utilization = utilization;
     this.errorDetails = errorDetails;
     this.hostname = hostname;
     this.lastSeen = lastSeen;
     this.createdDate = createdDate;
-    this.interfaceIpMappings = interfaceIpMappings;
+    this.interfaceIpMapping = interfaceIpMapping;
   }
 
   public EnterpriseAgent agentType(CloudEnterpriseAgentType agentType) {
@@ -369,6 +380,54 @@ public class EnterpriseAgent {
   }
 
 
+
+
+   /**
+   * List of test IDs assigned to the agent.
+   * @return testIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Long> getTestIds() {
+    return testIds;
+  }
+
+
+
+
+  public EnterpriseAgent tests(List<SimpleTest> tests) {
+    this.tests = tests;
+    return this;
+  }
+
+  public EnterpriseAgent addTestsItem(SimpleTest testsItem) {
+    if (this.tests == null) {
+      this.tests = new ArrayList<>();
+    }
+    this.tests.add(testsItem);
+    return this;
+  }
+
+   /**
+   * List of tests. See &#x60;/tests&#x60; for more information.
+   * @return tests
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TESTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<SimpleTest> getTests() {
+    return tests;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TESTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTests(List<SimpleTest> tests) {
+    this.tests = tests;
+  }
 
 
    /**
@@ -628,15 +687,15 @@ public class EnterpriseAgent {
 
 
    /**
-   * Get interfaceIpMappings
-   * @return interfaceIpMappings
+   * Get interfaceIpMapping
+   * @return interfaceIpMapping
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPINGS)
+  @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<InterfaceIpMapping> getInterfaceIpMappings() {
-    return interfaceIpMappings;
+  public List<InterfaceIpMapping> getInterfaceIpMapping() {
+    return interfaceIpMapping;
   }
 
 
@@ -665,6 +724,8 @@ public class EnterpriseAgent {
         Objects.equals(this.enabled, enterpriseAgent.enabled) &&
         Objects.equals(this.prefix, enterpriseAgent.prefix) &&
         Objects.equals(this.verifySslCertificates, enterpriseAgent.verifySslCertificates) &&
+        Objects.equals(this.testIds, enterpriseAgent.testIds) &&
+        Objects.equals(this.tests, enterpriseAgent.tests) &&
         Objects.equals(this.clusterMembers, enterpriseAgent.clusterMembers) &&
         Objects.equals(this.utilization, enterpriseAgent.utilization) &&
         Objects.equals(this.accountGroups, enterpriseAgent.accountGroups) &&
@@ -677,12 +738,12 @@ public class EnterpriseAgent {
         Objects.equals(this.createdDate, enterpriseAgent.createdDate) &&
         Objects.equals(this.targetForTests, enterpriseAgent.targetForTests) &&
         Objects.equals(this.localResolutionPrefixes, enterpriseAgent.localResolutionPrefixes) &&
-        Objects.equals(this.interfaceIpMappings, enterpriseAgent.interfaceIpMappings);
+        Objects.equals(this.interfaceIpMapping, enterpriseAgent.interfaceIpMapping);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentType, ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMappings);
+    return Objects.hash(agentType, ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
   }
 
   @Override
@@ -700,6 +761,8 @@ public class EnterpriseAgent {
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");
+    sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
+    sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    clusterMembers: ").append(toIndentedString(clusterMembers)).append("\n");
     sb.append("    utilization: ").append(toIndentedString(utilization)).append("\n");
     sb.append("    accountGroups: ").append(toIndentedString(accountGroups)).append("\n");
@@ -712,7 +775,7 @@ public class EnterpriseAgent {
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    targetForTests: ").append(toIndentedString(targetForTests)).append("\n");
     sb.append("    localResolutionPrefixes: ").append(toIndentedString(localResolutionPrefixes)).append("\n");
-    sb.append("    interfaceIpMappings: ").append(toIndentedString(interfaceIpMappings)).append("\n");
+    sb.append("    interfaceIpMapping: ").append(toIndentedString(interfaceIpMapping)).append("\n");
     sb.append("}");
     return sb.toString();
   }

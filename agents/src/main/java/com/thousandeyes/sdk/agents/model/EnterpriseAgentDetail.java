@@ -51,6 +51,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentDetail.JSON_PROPERTY_ENABLED,
   EnterpriseAgentDetail.JSON_PROPERTY_PREFIX,
   EnterpriseAgentDetail.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
+  EnterpriseAgentDetail.JSON_PROPERTY_TEST_IDS,
+  EnterpriseAgentDetail.JSON_PROPERTY_TESTS,
   EnterpriseAgentDetail.JSON_PROPERTY_CLUSTER_MEMBERS,
   EnterpriseAgentDetail.JSON_PROPERTY_UTILIZATION,
   EnterpriseAgentDetail.JSON_PROPERTY_ACCOUNT_GROUPS,
@@ -63,8 +65,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentDetail.JSON_PROPERTY_CREATED_DATE,
   EnterpriseAgentDetail.JSON_PROPERTY_TARGET_FOR_TESTS,
   EnterpriseAgentDetail.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
-  EnterpriseAgentDetail.JSON_PROPERTY_INTERFACE_IP_MAPPINGS,
-  EnterpriseAgentDetail.JSON_PROPERTY_TESTS,
+  EnterpriseAgentDetail.JSON_PROPERTY_INTERFACE_IP_MAPPING,
   EnterpriseAgentDetail.JSON_PROPERTY_NOTIFICATION_RULES,
   EnterpriseAgentDetail.JSON_PROPERTY_LABELS,
   EnterpriseAgentDetail.JSON_PROPERTY_AGENT_TYPE,
@@ -102,6 +103,12 @@ public class EnterpriseAgentDetail {
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
   private Boolean verifySslCertificates;
 
+  public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  private List<Long> testIds = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TESTS = "tests";
+  private List<SimpleTest> tests = new ArrayList<>();
+
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
   private List<ClusterMember> clusterMembers = new ArrayList<>();
 
@@ -138,11 +145,8 @@ public class EnterpriseAgentDetail {
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
   private List<String> localResolutionPrefixes = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_INTERFACE_IP_MAPPINGS = "interfaceIpMappings";
-  private List<InterfaceIpMapping> interfaceIpMappings = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<SimpleTest> tests = new ArrayList<>();
+  public static final String JSON_PROPERTY_INTERFACE_IP_MAPPING = "interfaceIpMapping";
+  private List<InterfaceIpMapping> interfaceIpMapping = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NOTIFICATION_RULES = "notificationRules";
   private List<NotificationRules> notificationRules = new ArrayList<>();
@@ -169,13 +173,14 @@ public class EnterpriseAgentDetail {
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
     @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
+    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
     @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS) List<ClusterMember> clusterMembers, 
     @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization, 
     @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) List<ErrorDetail> errorDetails, 
     @JsonProperty(JSON_PROPERTY_HOSTNAME) String hostname, 
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPINGS) List<InterfaceIpMapping> interfaceIpMappings, 
+    @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING) List<InterfaceIpMapping> interfaceIpMapping, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels
   ) {
   this();
@@ -187,13 +192,14 @@ public class EnterpriseAgentDetail {
     this.countryId = countryId;
     this.prefix = prefix;
     this.verifySslCertificates = verifySslCertificates;
+    this.testIds = testIds;
     this.clusterMembers = clusterMembers;
     this.utilization = utilization;
     this.errorDetails = errorDetails;
     this.hostname = hostname;
     this.lastSeen = lastSeen;
     this.createdDate = createdDate;
-    this.interfaceIpMappings = interfaceIpMappings;
+    this.interfaceIpMapping = interfaceIpMapping;
     this.labels = labels;
   }
 
@@ -365,6 +371,54 @@ public class EnterpriseAgentDetail {
   }
 
 
+
+
+   /**
+   * List of test IDs assigned to the agent.
+   * @return testIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Long> getTestIds() {
+    return testIds;
+  }
+
+
+
+
+  public EnterpriseAgentDetail tests(List<SimpleTest> tests) {
+    this.tests = tests;
+    return this;
+  }
+
+  public EnterpriseAgentDetail addTestsItem(SimpleTest testsItem) {
+    if (this.tests == null) {
+      this.tests = new ArrayList<>();
+    }
+    this.tests.add(testsItem);
+    return this;
+  }
+
+   /**
+   * List of tests. See &#x60;/tests&#x60; for more information.
+   * @return tests
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TESTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<SimpleTest> getTests() {
+    return tests;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TESTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTests(List<SimpleTest> tests) {
+    this.tests = tests;
+  }
 
 
    /**
@@ -624,51 +678,18 @@ public class EnterpriseAgentDetail {
 
 
    /**
-   * Get interfaceIpMappings
-   * @return interfaceIpMappings
+   * Get interfaceIpMapping
+   * @return interfaceIpMapping
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPINGS)
+  @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<InterfaceIpMapping> getInterfaceIpMappings() {
-    return interfaceIpMappings;
+  public List<InterfaceIpMapping> getInterfaceIpMapping() {
+    return interfaceIpMapping;
   }
 
 
-
-
-  public EnterpriseAgentDetail tests(List<SimpleTest> tests) {
-    this.tests = tests;
-    return this;
-  }
-
-  public EnterpriseAgentDetail addTestsItem(SimpleTest testsItem) {
-    if (this.tests == null) {
-      this.tests = new ArrayList<>();
-    }
-    this.tests.add(testsItem);
-    return this;
-  }
-
-   /**
-   * List of tests. See &#x60;/tests&#x60; for more information.
-   * @return tests
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TESTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<SimpleTest> getTests() {
-    return tests;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TESTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<SimpleTest> tests) {
-    this.tests = tests;
-  }
 
 
   public EnterpriseAgentDetail notificationRules(List<NotificationRules> notificationRules) {
@@ -791,6 +812,8 @@ public class EnterpriseAgentDetail {
         Objects.equals(this.enabled, enterpriseAgentDetail.enabled) &&
         Objects.equals(this.prefix, enterpriseAgentDetail.prefix) &&
         Objects.equals(this.verifySslCertificates, enterpriseAgentDetail.verifySslCertificates) &&
+        Objects.equals(this.testIds, enterpriseAgentDetail.testIds) &&
+        Objects.equals(this.tests, enterpriseAgentDetail.tests) &&
         Objects.equals(this.clusterMembers, enterpriseAgentDetail.clusterMembers) &&
         Objects.equals(this.utilization, enterpriseAgentDetail.utilization) &&
         Objects.equals(this.accountGroups, enterpriseAgentDetail.accountGroups) &&
@@ -803,8 +826,7 @@ public class EnterpriseAgentDetail {
         Objects.equals(this.createdDate, enterpriseAgentDetail.createdDate) &&
         Objects.equals(this.targetForTests, enterpriseAgentDetail.targetForTests) &&
         Objects.equals(this.localResolutionPrefixes, enterpriseAgentDetail.localResolutionPrefixes) &&
-        Objects.equals(this.interfaceIpMappings, enterpriseAgentDetail.interfaceIpMappings) &&
-        Objects.equals(this.tests, enterpriseAgentDetail.tests) &&
+        Objects.equals(this.interfaceIpMapping, enterpriseAgentDetail.interfaceIpMapping) &&
         Objects.equals(this.notificationRules, enterpriseAgentDetail.notificationRules) &&
         Objects.equals(this.labels, enterpriseAgentDetail.labels) &&
         Objects.equals(this.agentType, enterpriseAgentDetail.agentType) &&
@@ -813,7 +835,7 @@ public class EnterpriseAgentDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMappings, tests, notificationRules, labels, agentType, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, agentType, links);
   }
 
   @Override
@@ -830,6 +852,8 @@ public class EnterpriseAgentDetail {
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");
+    sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
+    sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    clusterMembers: ").append(toIndentedString(clusterMembers)).append("\n");
     sb.append("    utilization: ").append(toIndentedString(utilization)).append("\n");
     sb.append("    accountGroups: ").append(toIndentedString(accountGroups)).append("\n");
@@ -842,8 +866,7 @@ public class EnterpriseAgentDetail {
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    targetForTests: ").append(toIndentedString(targetForTests)).append("\n");
     sb.append("    localResolutionPrefixes: ").append(toIndentedString(localResolutionPrefixes)).append("\n");
-    sb.append("    interfaceIpMappings: ").append(toIndentedString(interfaceIpMappings)).append("\n");
-    sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
+    sb.append("    interfaceIpMapping: ").append(toIndentedString(interfaceIpMapping)).append("\n");
     sb.append("    notificationRules: ").append(toIndentedString(notificationRules)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");

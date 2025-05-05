@@ -50,6 +50,8 @@ public enum TableDatasource {
   
   CLOUD_NATIVE_MONITORING("CLOUD_NATIVE_MONITORING"),
   
+  TRAFFIC_INSIGHTS_MONITORING("TRAFFIC_INSIGHTS_MONITORING"),
+  
   UNKNOWN("unknown");
 
   private String value;
