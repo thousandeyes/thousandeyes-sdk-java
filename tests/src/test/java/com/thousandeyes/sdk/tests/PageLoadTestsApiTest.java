@@ -178,6 +178,7 @@ public class PageLoadTestsApiTest {
                   "pageLoadTargetTime" : 10,
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
@@ -356,6 +357,7 @@ public class PageLoadTestsApiTest {
                   "pageLoadTargetTime" : 10,
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
@@ -608,6 +610,7 @@ public class PageLoadTestsApiTest {
                   "pageLoadTargetTime" : 10,
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
@@ -664,7 +667,7 @@ public class PageLoadTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getPageLoadTest(testId, null, null);
+        var apiResponse = api.getPageLoadTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -772,6 +775,7 @@ public class PageLoadTestsApiTest {
                     "pageLoadTargetTime" : 10,
                     "numPathTraces" : 3,
                     "bgpMeasurements" : true,
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "userAgent" : "curl",
                     "pageLoadTimeLimit" : 10,
@@ -875,6 +879,7 @@ public class PageLoadTestsApiTest {
                     "pageLoadTargetTime" : 10,
                     "numPathTraces" : 3,
                     "bgpMeasurements" : true,
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "userAgent" : "curl",
                     "pageLoadTimeLimit" : 10,
@@ -1029,6 +1034,7 @@ public class PageLoadTestsApiTest {
                   "pageLoadTargetTime" : 10,
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
@@ -1207,6 +1213,7 @@ public class PageLoadTestsApiTest {
                   "pageLoadTargetTime" : 10,
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,

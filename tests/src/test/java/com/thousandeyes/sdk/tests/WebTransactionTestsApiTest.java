@@ -178,6 +178,7 @@ public class WebTransactionTestsApiTest {
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
                   "transactionScript" : "if (true) { return true; }",
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
@@ -357,6 +358,7 @@ public class WebTransactionTestsApiTest {
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
                   "transactionScript" : "if (true) { return true; }",
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
@@ -610,6 +612,7 @@ public class WebTransactionTestsApiTest {
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
                   "transactionScript" : "if (true) { return true; }",
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
@@ -667,7 +670,7 @@ public class WebTransactionTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getWebTransactionsTest(testId, null, null);
+        var apiResponse = api.getWebTransactionsTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -774,6 +777,7 @@ public class WebTransactionTestsApiTest {
                     "numPathTraces" : 3,
                     "bgpMeasurements" : true,
                     "transactionScript" : "if (true) { return true; }",
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "userAgent" : "curl",
                     "networkMeasurements" : true,
@@ -877,6 +881,7 @@ public class WebTransactionTestsApiTest {
                     "numPathTraces" : 3,
                     "bgpMeasurements" : true,
                     "transactionScript" : "if (true) { return true; }",
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "userAgent" : "curl",
                     "networkMeasurements" : true,
@@ -1032,6 +1037,7 @@ public class WebTransactionTestsApiTest {
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
                   "transactionScript" : "if (true) { return true; }",
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
@@ -1211,6 +1217,7 @@ public class WebTransactionTestsApiTest {
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
                   "transactionScript" : "if (true) { return true; }",
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,

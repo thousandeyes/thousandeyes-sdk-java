@@ -511,7 +511,7 @@ public class FtpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getFtpServerTest(testId, null, null);
+        var apiResponse = api.getFtpServerTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

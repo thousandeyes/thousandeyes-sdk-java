@@ -53,6 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTestRequest.JSON_PROPERTY_LABELS,
   ApiInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   ApiInstantTestRequest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  ApiInstantTestRequest.JSON_PROPERTY_DISTRIBUTED_TRACING,
   ApiInstantTestRequest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   ApiInstantTestRequest.JSON_PROPERTY_MTU_MEASUREMENTS,
   ApiInstantTestRequest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
@@ -115,6 +116,9 @@ public class ApiInstantTestRequest {
 
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
+
+  public static final String JSON_PROPERTY_DISTRIBUTED_TRACING = "distributedTracing";
+  private Boolean distributedTracing;
 
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
@@ -478,6 +482,31 @@ public class ApiInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCollectProxyNetworkData(Boolean collectProxyNetworkData) {
     this.collectProxyNetworkData = collectProxyNetworkData;
+  }
+
+
+  public ApiInstantTestRequest distributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
+    return this;
+  }
+
+   /**
+   * Adds distributed tracing headers to API requests using B3 and W3C standards.
+   * @return distributedTracing
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getDistributedTracing() {
+    return distributedTracing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDistributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
   }
 
 
@@ -995,6 +1024,7 @@ public class ApiInstantTestRequest {
         Objects.equals(this.labels, apiInstantTestRequest.labels) &&
         Objects.equals(this.sharedWithAccounts, apiInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.collectProxyNetworkData, apiInstantTestRequest.collectProxyNetworkData) &&
+        Objects.equals(this.distributedTracing, apiInstantTestRequest.distributedTracing) &&
         Objects.equals(this.followRedirects, apiInstantTestRequest.followRedirects) &&
         Objects.equals(this.mtuMeasurements, apiInstantTestRequest.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, apiInstantTestRequest.networkMeasurements) &&
@@ -1017,7 +1047,7 @@ public class ApiInstantTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, agents);
   }
 
   @Override
@@ -1038,6 +1068,7 @@ public class ApiInstantTestRequest {
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    distributedTracing: ").append(toIndentedString(distributedTracing)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");

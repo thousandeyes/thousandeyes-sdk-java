@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   ApiProperties.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  ApiProperties.JSON_PROPERTY_DISTRIBUTED_TRACING,
   ApiProperties.JSON_PROPERTY_FOLLOW_REDIRECTS,
   ApiProperties.JSON_PROPERTY_MTU_MEASUREMENTS,
   ApiProperties.JSON_PROPERTY_NETWORK_MEASUREMENTS,
@@ -59,6 +60,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class ApiProperties {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
+
+  public static final String JSON_PROPERTY_DISTRIBUTED_TRACING = "distributedTracing";
+  private Boolean distributedTracing;
 
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
@@ -144,6 +148,31 @@ public class ApiProperties {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCollectProxyNetworkData(Boolean collectProxyNetworkData) {
     this.collectProxyNetworkData = collectProxyNetworkData;
+  }
+
+
+  public ApiProperties distributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
+    return this;
+  }
+
+   /**
+   * Adds distributed tracing headers to API requests using B3 and W3C standards.
+   * @return distributedTracing
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getDistributedTracing() {
+    return distributedTracing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDistributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
   }
 
 
@@ -597,6 +626,7 @@ public class ApiProperties {
     }
     ApiProperties apiProperties = (ApiProperties) o;
     return Objects.equals(this.collectProxyNetworkData, apiProperties.collectProxyNetworkData) &&
+        Objects.equals(this.distributedTracing, apiProperties.distributedTracing) &&
         Objects.equals(this.followRedirects, apiProperties.followRedirects) &&
         Objects.equals(this.mtuMeasurements, apiProperties.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, apiProperties.networkMeasurements) &&
@@ -618,7 +648,7 @@ public class ApiProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, type);
+    return Objects.hash(collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, type);
   }
 
   @Override
@@ -626,6 +656,7 @@ public class ApiProperties {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApiProperties {\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    distributedTracing: ").append(toIndentedString(distributedTracing)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");

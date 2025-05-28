@@ -86,6 +86,7 @@ public class AgentToServerEndpointScheduledTestsApiTest {
 
         var requestBodyJson = """
                 {
+                  "server" : "www.example.com",
                   "protocol" : "icmp",
                   "port" : 443,
                   "agentSelectorType" : "all-agents",
