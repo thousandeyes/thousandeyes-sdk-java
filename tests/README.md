@@ -2,7 +2,7 @@
 
 Tests API
 
-- API version: 7.0.44
+- API version: 7.0.47
 
 This API allows you to list, create, edit, and delete Network and Application Synthetics tests.
 
@@ -249,6 +249,8 @@ Class | Method | HTTP request | Description
 *SipServerTestsApi* | [**getSipServerTestsWithHttpInfo**](docs/SipServerTestsApi.md#getSipServerTestsWithHttpInfo) | **GET** /tests/sip-server | List SIP Server tests
 *SipServerTestsApi* | [**updateSipServerTest**](docs/SipServerTestsApi.md#updateSipServerTest) | **PUT** /tests/sip-server/{testId} | Update SIP Server test
 *SipServerTestsApi* | [**updateSipServerTestWithHttpInfo**](docs/SipServerTestsApi.md#updateSipServerTestWithHttpInfo) | **PUT** /tests/sip-server/{testId} | Update SIP Server test
+*TestsApi* | [**getTestVersionHistory**](docs/TestsApi.md#getTestVersionHistory) | **GET** /tests/{testId}/history | Get test version history
+*TestsApi* | [**getTestVersionHistoryWithHttpInfo**](docs/TestsApi.md#getTestVersionHistoryWithHttpInfo) | **GET** /tests/{testId}/history | Get test version history
 *TestsApi* | [**getTests**](docs/TestsApi.md#getTests) | **GET** /tests | List configured tests
 *TestsApi* | [**getTestsWithHttpInfo**](docs/TestsApi.md#getTestsWithHttpInfo) | **GET** /tests | List configured tests
 *VoiceTestsApi* | [**createVoiceTest**](docs/VoiceTestsApi.md#createVoiceTest) | **POST** /tests/voice | Create Voice test

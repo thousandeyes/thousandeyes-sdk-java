@@ -426,7 +426,7 @@ public class DnssecTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsSecTest(testId, null, null);
+        var apiResponse = api.getDnsSecTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

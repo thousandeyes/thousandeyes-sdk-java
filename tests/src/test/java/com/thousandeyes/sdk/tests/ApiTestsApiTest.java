@@ -208,6 +208,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -404,6 +405,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -688,6 +690,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -774,7 +777,7 @@ public class ApiTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getApiTest(testId, null, null);
+        var apiResponse = api.getApiTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -914,6 +917,7 @@ public class ApiTestsApiTest {
                       "value" : "ThousandEyesAccountUserName"
                     } ],
                     "liveShare" : false,
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "networkMeasurements" : true,
                     "url" : "www.thousandeyes.com",
@@ -1048,6 +1052,7 @@ public class ApiTestsApiTest {
                       "value" : "ThousandEyesAccountUserName"
                     } ],
                     "liveShare" : false,
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "networkMeasurements" : true,
                     "url" : "www.thousandeyes.com",
@@ -1231,6 +1236,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -1427,6 +1433,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",

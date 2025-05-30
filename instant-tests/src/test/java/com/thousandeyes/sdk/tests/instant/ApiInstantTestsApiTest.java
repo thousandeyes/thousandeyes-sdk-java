@@ -202,6 +202,7 @@ public class ApiInstantTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -349,6 +350,7 @@ public class ApiInstantTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",

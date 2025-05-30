@@ -429,7 +429,7 @@ public class DnsTraceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsTraceTest(testId, null, null);
+        var apiResponse = api.getDnsTraceTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Retrieve RTP server test metrics
 
-Returns Voice RTP server test results. If you do not specify a window or a start and end date, data is displayed for the most recent testing round. 
+Returns Voice RTP server test results. If no window, start time, or end time is specified, data for the most recent round is returned. If a window or start time is specified, the results might include a round that started just before the specified start time. 
 
 ### Example
 
@@ -103,7 +103,7 @@ public class Example {
 
 Retrieve RTP server test metrics
 
-Returns Voice RTP server test results. If you do not specify a window or a start and end date, data is displayed for the most recent testing round. 
+Returns Voice RTP server test results. If no window, start time, or end time is specified, data for the most recent round is returned. If a window or start time is specified, the results might include a round that started just before the specified start time. 
 
 ### Example
 

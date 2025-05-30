@@ -500,7 +500,7 @@ public class AgentToServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentToServerTest(testId, null, null);
+        var apiResponse = api.getAgentToServerTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

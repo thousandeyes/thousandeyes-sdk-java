@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AlertSuppressionWindowRequest.JSON_PROPERTY_DURATION,
   AlertSuppressionWindowRequest.JSON_PROPERTY_REPEAT,
   AlertSuppressionWindowRequest.JSON_PROPERTY_END_REPEAT,
-  AlertSuppressionWindowRequest.JSON_PROPERTY_TESTS
+  AlertSuppressionWindowRequest.JSON_PROPERTY_TEST_IDS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AlertSuppressionWindowRequest {
@@ -70,8 +70,8 @@ public class AlertSuppressionWindowRequest {
   public static final String JSON_PROPERTY_END_REPEAT = "endRepeat";
   private EndRepeat endRepeat;
 
-  public static final String JSON_PROPERTY_TESTS = "tests";
-  private List<String> tests = new ArrayList<>();
+  public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  private List<String> testIds = new ArrayList<>();
 
   public AlertSuppressionWindowRequest() { 
   }
@@ -274,36 +274,36 @@ public class AlertSuppressionWindowRequest {
   }
 
 
-  public AlertSuppressionWindowRequest tests(List<String> tests) {
-    this.tests = tests;
+  public AlertSuppressionWindowRequest testIds(List<String> testIds) {
+    this.testIds = testIds;
     return this;
   }
 
-  public AlertSuppressionWindowRequest addTestsItem(String testsItem) {
-    if (this.tests == null) {
-      this.tests = new ArrayList<>();
+  public AlertSuppressionWindowRequest addTestIdsItem(String testIdsItem) {
+    if (this.testIds == null) {
+      this.testIds = new ArrayList<>();
     }
-    this.tests.add(testsItem);
+    this.testIds.add(testIdsItem);
     return this;
   }
 
    /**
-   * List of tests to assign to the alert suppression window.
-   * @return tests
+   * List of test IDs to assign to the alert suppression window.
+   * @return testIds
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TESTS)
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getTests() {
-    return tests;
+  public List<String> getTestIds() {
+    return testIds;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TESTS)
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTests(List<String> tests) {
-    this.tests = tests;
+  public void setTestIds(List<String> testIds) {
+    this.testIds = testIds;
   }
 
 
@@ -327,12 +327,12 @@ public class AlertSuppressionWindowRequest {
         Objects.equals(this.duration, alertSuppressionWindowRequest.duration) &&
         Objects.equals(this.repeat, alertSuppressionWindowRequest.repeat) &&
         Objects.equals(this.endRepeat, alertSuppressionWindowRequest.endRepeat) &&
-        Objects.equals(this.tests, alertSuppressionWindowRequest.tests);
+        Objects.equals(this.testIds, alertSuppressionWindowRequest.testIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alertSuppressionWindowId, name, isEnabled, status, startDate, duration, repeat, endRepeat, tests);
+    return Objects.hash(alertSuppressionWindowId, name, isEnabled, status, startDate, duration, repeat, endRepeat, testIds);
   }
 
   @Override
@@ -347,7 +347,7 @@ public class AlertSuppressionWindowRequest {
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    repeat: ").append(toIndentedString(repeat)).append("\n");
     sb.append("    endRepeat: ").append(toIndentedString(endRepeat)).append("\n");
-    sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
+    sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
