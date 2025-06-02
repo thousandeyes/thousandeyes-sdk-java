@@ -38,6 +38,8 @@ src/main/java/com/thousandeyes/sdk/alerts/model/Error.java
 src/main/java/com/thousandeyes/sdk/alerts/model/ExpandAlertTestOptions.java
 src/main/java/com/thousandeyes/sdk/alerts/model/IntervalType.java
 src/main/java/com/thousandeyes/sdk/alerts/model/LegacyAlert.java
+src/main/java/com/thousandeyes/sdk/alerts/model/LegacySeverity.java
+src/main/java/com/thousandeyes/sdk/alerts/model/LegacyState.java
 src/main/java/com/thousandeyes/sdk/alerts/model/Link.java
 src/main/java/com/thousandeyes/sdk/alerts/model/NotificationCustomWebhook.java
 src/main/java/com/thousandeyes/sdk/alerts/model/NotificationEmail.java

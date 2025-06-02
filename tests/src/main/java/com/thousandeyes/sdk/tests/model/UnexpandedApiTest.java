@@ -53,7 +53,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedApiTest.JSON_PROPERTY_TEST_NAME,
   UnexpandedApiTest.JSON_PROPERTY_TYPE,
   UnexpandedApiTest.JSON_PROPERTY_LINKS,
+  UnexpandedApiTest.JSON_PROPERTY_CLIENT_CERTIFICATE,
+  UnexpandedApiTest.JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST,
   UnexpandedApiTest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  UnexpandedApiTest.JSON_PROPERTY_DISTRIBUTED_TRACING,
   UnexpandedApiTest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   UnexpandedApiTest.JSON_PROPERTY_MTU_MEASUREMENTS,
   UnexpandedApiTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
@@ -117,8 +120,17 @@ public class UnexpandedApiTest {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
+  public static final String JSON_PROPERTY_CLIENT_CERTIFICATE = "clientCertificate";
+  private String clientCertificate;
+
+  public static final String JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST = "clientCertDomainsAllowList";
+  private String clientCertDomainsAllowList;
+
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
+
+  public static final String JSON_PROPERTY_DISTRIBUTED_TRACING = "distributedTracing";
+  private Boolean distributedTracing;
 
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
@@ -469,6 +481,56 @@ public class UnexpandedApiTest {
   }
 
 
+  public UnexpandedApiTest clientCertificate(String clientCertificate) {
+    this.clientCertificate = clientCertificate;
+    return this;
+  }
+
+   /**
+   * String representation (containing newline characters) of client certificate, the private key must be placed first, then the certificate.
+   * @return clientCertificate
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_CERTIFICATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getClientCertificate() {
+    return clientCertificate;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_CERTIFICATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClientCertificate(String clientCertificate) {
+    this.clientCertificate = clientCertificate;
+  }
+
+
+  public UnexpandedApiTest clientCertDomainsAllowList(String clientCertDomainsAllowList) {
+    this.clientCertDomainsAllowList = clientCertDomainsAllowList;
+    return this;
+  }
+
+   /**
+   * Comma separated list of domains to send the client certificate.
+   * @return clientCertDomainsAllowList
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getClientCertDomainsAllowList() {
+    return clientCertDomainsAllowList;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClientCertDomainsAllowList(String clientCertDomainsAllowList) {
+    this.clientCertDomainsAllowList = clientCertDomainsAllowList;
+  }
+
+
   public UnexpandedApiTest collectProxyNetworkData(Boolean collectProxyNetworkData) {
     this.collectProxyNetworkData = collectProxyNetworkData;
     return this;
@@ -491,6 +553,31 @@ public class UnexpandedApiTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCollectProxyNetworkData(Boolean collectProxyNetworkData) {
     this.collectProxyNetworkData = collectProxyNetworkData;
+  }
+
+
+  public UnexpandedApiTest distributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
+    return this;
+  }
+
+   /**
+   * Adds distributed tracing headers to API requests using B3 and W3C standards.
+   * @return distributedTracing
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getDistributedTracing() {
+    return distributedTracing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDistributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
   }
 
 
@@ -992,7 +1079,10 @@ public class UnexpandedApiTest {
         Objects.equals(this.testName, unexpandedApiTest.testName) &&
         Objects.equals(this.type, unexpandedApiTest.type) &&
         Objects.equals(this.links, unexpandedApiTest.links) &&
+        Objects.equals(this.clientCertificate, unexpandedApiTest.clientCertificate) &&
+        Objects.equals(this.clientCertDomainsAllowList, unexpandedApiTest.clientCertDomainsAllowList) &&
         Objects.equals(this.collectProxyNetworkData, unexpandedApiTest.collectProxyNetworkData) &&
+        Objects.equals(this.distributedTracing, unexpandedApiTest.distributedTracing) &&
         Objects.equals(this.followRedirects, unexpandedApiTest.followRedirects) &&
         Objects.equals(this.mtuMeasurements, unexpandedApiTest.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, unexpandedApiTest.networkMeasurements) &&
@@ -1015,7 +1105,7 @@ public class UnexpandedApiTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -1036,7 +1126,10 @@ public class UnexpandedApiTest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
+    sb.append("    clientCertDomainsAllowList: ").append(toIndentedString(clientCertDomainsAllowList)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    distributedTracing: ").append(toIndentedString(distributedTracing)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");

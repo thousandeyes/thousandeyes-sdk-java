@@ -87,8 +87,8 @@ public class AlertSuppressionWindowsApiTest {
         var requestBodyJson = """
                 {
                   "duration" : 0,
+                  "testIds" : [ "71687", "71687" ],
                   "alertSuppressionWindowId" : "2411",
-                  "tests" : [ "71687", "71687" ],
                   "isEnabled" : false,
                   "repeat" : {
                     "intervalType" : "day",
@@ -507,8 +507,8 @@ public class AlertSuppressionWindowsApiTest {
         var requestBodyJson = """
                 {
                   "duration" : 0,
+                  "testIds" : [ "71687", "71687" ],
                   "alertSuppressionWindowId" : "2411",
-                  "tests" : [ "71687", "71687" ],
                   "isEnabled" : false,
                   "repeat" : {
                     "intervalType" : "day",

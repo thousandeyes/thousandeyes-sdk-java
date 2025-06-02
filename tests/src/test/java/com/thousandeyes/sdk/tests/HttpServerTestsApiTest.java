@@ -172,6 +172,7 @@ public class HttpServerTestsApiTest {
                   "headers" : [ "header1: value1", "header2: value2" ],
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
@@ -342,6 +343,7 @@ public class HttpServerTestsApiTest {
                   "headers" : [ "header1: value1", "header2: value2" ],
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
@@ -586,6 +588,7 @@ public class HttpServerTestsApiTest {
                   "headers" : [ "header1: value1", "header2: value2" ],
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
@@ -640,7 +643,7 @@ public class HttpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getHttpServerTest(testId, null, null);
+        var apiResponse = api.getHttpServerTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -742,6 +745,7 @@ public class HttpServerTestsApiTest {
                     "headers" : [ "header1: value1", "header2: value2" ],
                     "numPathTraces" : 3,
                     "bgpMeasurements" : true,
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "userAgent" : "curl",
                     "networkMeasurements" : true,
@@ -837,6 +841,7 @@ public class HttpServerTestsApiTest {
                     "headers" : [ "header1: value1", "header2: value2" ],
                     "numPathTraces" : 3,
                     "bgpMeasurements" : true,
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "userAgent" : "curl",
                     "networkMeasurements" : true,
@@ -983,6 +988,7 @@ public class HttpServerTestsApiTest {
                   "headers" : [ "header1: value1", "header2: value2" ],
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,
@@ -1153,6 +1159,7 @@ public class HttpServerTestsApiTest {
                   "headers" : [ "header1: value1", "header2: value2" ],
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "networkMeasurements" : true,

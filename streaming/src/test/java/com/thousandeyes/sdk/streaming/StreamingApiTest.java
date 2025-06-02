@@ -328,7 +328,7 @@ public class StreamingApiTest {
     /**
      * List data streams
      * <p>
-     * Retrieves a list of configured data streams.
+     * Retrieves a list of configured data streams. Empty list is returned if no streams are configured.
      *
      * @throws JsonProcessingException if the deserialization fails
      */

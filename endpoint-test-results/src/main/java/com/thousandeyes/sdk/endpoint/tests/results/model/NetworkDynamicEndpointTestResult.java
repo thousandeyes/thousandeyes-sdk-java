@@ -21,13 +21,18 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.DynamicEndpointTestWebex;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointPingDataPointScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestResultProtocol;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointZtaMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestProbeModeResponse;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UdpProbeModeResponse;
 import com.thousandeyes.sdk.endpoint.tests.results.model.VpnProfile;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -48,6 +53,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_AVG_LATENCY,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_ERROR_DETAILS,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_JITTER,
+  NetworkDynamicEndpointTestResult.JSON_PROPERTY_SCORE,
+  NetworkDynamicEndpointTestResult.JSON_PROPERTY_ZTA_METRICS,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_IS_ICMP_BLOCKED,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_LOSS,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_MAX_LATENCY,
@@ -95,6 +102,12 @@ public class NetworkDynamicEndpointTestResult {
 
   public static final String JSON_PROPERTY_JITTER = "jitter";
   private Double jitter;
+
+  public static final String JSON_PROPERTY_SCORE = "score";
+  private EndpointPingDataPointScore score;
+
+  public static final String JSON_PROPERTY_ZTA_METRICS = "ztaMetrics";
+  private List<EndpointZtaMetrics> ztaMetrics = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IS_ICMP_BLOCKED = "isIcmpBlocked";
   private Boolean isIcmpBlocked;
@@ -384,6 +397,64 @@ public class NetworkDynamicEndpointTestResult {
 
 
 
+  public NetworkDynamicEndpointTestResult score(EndpointPingDataPointScore score) {
+    this.score = score;
+    return this;
+  }
+
+   /**
+   * Get score
+   * @return score
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointPingDataPointScore getScore() {
+    return score;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setScore(EndpointPingDataPointScore score) {
+    this.score = score;
+  }
+
+
+  public NetworkDynamicEndpointTestResult ztaMetrics(List<EndpointZtaMetrics> ztaMetrics) {
+    this.ztaMetrics = ztaMetrics;
+    return this;
+  }
+
+  public NetworkDynamicEndpointTestResult addZtaMetricsItem(EndpointZtaMetrics ztaMetricsItem) {
+    if (this.ztaMetrics == null) {
+      this.ztaMetrics = new ArrayList<>();
+    }
+    this.ztaMetrics.add(ztaMetricsItem);
+    return this;
+  }
+
+   /**
+   * Get ztaMetrics
+   * @return ztaMetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ZTA_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<EndpointZtaMetrics> getZtaMetrics() {
+    return ztaMetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ZTA_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setZtaMetrics(List<EndpointZtaMetrics> ztaMetrics) {
+    this.ztaMetrics = ztaMetrics;
+  }
+
+
    /**
    * Set to &#x60;true&#x60; if network target is blocking ICMP echo (ping) queries.
    * @return isIcmpBlocked
@@ -593,6 +664,8 @@ public class NetworkDynamicEndpointTestResult {
         Objects.equals(this.avgLatency, networkDynamicEndpointTestResult.avgLatency) &&
         Objects.equals(this.errorDetails, networkDynamicEndpointTestResult.errorDetails) &&
         Objects.equals(this.jitter, networkDynamicEndpointTestResult.jitter) &&
+        Objects.equals(this.score, networkDynamicEndpointTestResult.score) &&
+        Objects.equals(this.ztaMetrics, networkDynamicEndpointTestResult.ztaMetrics) &&
         Objects.equals(this.isIcmpBlocked, networkDynamicEndpointTestResult.isIcmpBlocked) &&
         Objects.equals(this.loss, networkDynamicEndpointTestResult.loss) &&
         Objects.equals(this.maxLatency, networkDynamicEndpointTestResult.maxLatency) &&
@@ -606,7 +679,7 @@ public class NetworkDynamicEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, avgLatency, errorDetails, jitter, isIcmpBlocked, loss, maxLatency, minLatency, application, protocol, tcpProbeMode, udpProbeMode, webex);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency, application, protocol, tcpProbeMode, udpProbeMode, webex);
   }
 
   @Override
@@ -625,6 +698,8 @@ public class NetworkDynamicEndpointTestResult {
     sb.append("    avgLatency: ").append(toIndentedString(avgLatency)).append("\n");
     sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
     sb.append("    jitter: ").append(toIndentedString(jitter)).append("\n");
+    sb.append("    score: ").append(toIndentedString(score)).append("\n");
+    sb.append("    ztaMetrics: ").append(toIndentedString(ztaMetrics)).append("\n");
     sb.append("    isIcmpBlocked: ").append(toIndentedString(isIcmpBlocked)).append("\n");
     sb.append("    loss: ").append(toIndentedString(loss)).append("\n");
     sb.append("    maxLatency: ").append(toIndentedString(maxLatency)).append("\n");

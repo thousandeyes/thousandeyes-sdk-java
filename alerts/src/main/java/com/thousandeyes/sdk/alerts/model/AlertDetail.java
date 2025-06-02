@@ -24,6 +24,8 @@ import com.thousandeyes.sdk.alerts.model.AlertLinks;
 import com.thousandeyes.sdk.alerts.model.AlertMeta;
 import com.thousandeyes.sdk.alerts.model.AlertMetricDetail;
 import com.thousandeyes.sdk.alerts.model.AlertType;
+import com.thousandeyes.sdk.alerts.model.LegacySeverity;
+import com.thousandeyes.sdk.alerts.model.LegacyState;
 import com.thousandeyes.sdk.alerts.model.Severity;
 import com.thousandeyes.sdk.alerts.model.State;
 import java.time.OffsetDateTime;
@@ -49,6 +51,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AlertDetail.JSON_PROPERTY_LINKS,
   AlertDetail.JSON_PROPERTY_STATE,
   AlertDetail.JSON_PROPERTY_SEVERITY,
+  AlertDetail.JSON_PROPERTY_ALERT_STATE,
+  AlertDetail.JSON_PROPERTY_ALERT_SEVERITY,
   AlertDetail.JSON_PROPERTY_DETAILS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -81,10 +85,16 @@ public class AlertDetail {
   private AlertLinks links;
 
   public static final String JSON_PROPERTY_STATE = "state";
-  private State state;
+  private LegacyState state;
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
-  private Severity severity;
+  private LegacySeverity severity;
+
+  public static final String JSON_PROPERTY_ALERT_STATE = "alertState";
+  private State alertState;
+
+  public static final String JSON_PROPERTY_ALERT_SEVERITY = "alertSeverity";
+  private Severity alertSeverity;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   private List<AlertMetricDetail> details = new ArrayList<>();
@@ -299,7 +309,7 @@ public class AlertDetail {
   }
 
 
-  public AlertDetail state(State state) {
+  public AlertDetail state(LegacyState state) {
     this.state = state;
     return this;
   }
@@ -312,19 +322,19 @@ public class AlertDetail {
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public State getState() {
+  public LegacyState getState() {
     return state;
   }
 
 
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setState(State state) {
+  public void setState(LegacyState state) {
     this.state = state;
   }
 
 
-  public AlertDetail severity(Severity severity) {
+  public AlertDetail severity(LegacySeverity severity) {
     this.severity = severity;
     return this;
   }
@@ -337,15 +347,65 @@ public class AlertDetail {
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Severity getSeverity() {
+  public LegacySeverity getSeverity() {
     return severity;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSeverity(Severity severity) {
+  public void setSeverity(LegacySeverity severity) {
     this.severity = severity;
+  }
+
+
+  public AlertDetail alertState(State alertState) {
+    this.alertState = alertState;
+    return this;
+  }
+
+   /**
+   * Get alertState
+   * @return alertState
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public State getAlertState() {
+    return alertState;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertState(State alertState) {
+    this.alertState = alertState;
+  }
+
+
+  public AlertDetail alertSeverity(Severity alertSeverity) {
+    this.alertSeverity = alertSeverity;
+    return this;
+  }
+
+   /**
+   * Get alertSeverity
+   * @return alertSeverity
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_SEVERITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Severity getAlertSeverity() {
+    return alertSeverity;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_SEVERITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertSeverity(Severity alertSeverity) {
+    this.alertSeverity = alertSeverity;
   }
 
 
@@ -405,12 +465,14 @@ public class AlertDetail {
         Objects.equals(this.links, alertDetail.links) &&
         Objects.equals(this.state, alertDetail.state) &&
         Objects.equals(this.severity, alertDetail.severity) &&
+        Objects.equals(this.alertState, alertDetail.alertState) &&
+        Objects.equals(this.alertSeverity, alertDetail.alertSeverity) &&
         Objects.equals(this.details, alertDetail.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, alertType, startDate, endDate, violationCount, duration, suppressed, meta, links, state, severity, details);
+    return Objects.hash(id, alertType, startDate, endDate, violationCount, duration, suppressed, meta, links, state, severity, alertState, alertSeverity, details);
   }
 
   @Override
@@ -428,6 +490,8 @@ public class AlertDetail {
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
+    sb.append("    alertState: ").append(toIndentedString(alertState)).append("\n");
+    sb.append("    alertSeverity: ").append(toIndentedString(alertSeverity)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();

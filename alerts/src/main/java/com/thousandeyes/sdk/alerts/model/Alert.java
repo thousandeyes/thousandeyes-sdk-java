@@ -98,7 +98,7 @@ public class Alert {
   private String dateEnd;
 
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
-  private Integer ruleId;
+  private Long ruleId;
 
   /**
    * Current state of the alert. Possible values: clear or trigger.
@@ -210,7 +210,7 @@ public class Alert {
     @JsonProperty(JSON_PROPERTY_ALERT_ID) UUID alertId, 
     @JsonProperty(JSON_PROPERTY_DATE_START) String dateStart, 
     @JsonProperty(JSON_PROPERTY_DATE_END) String dateEnd, 
-    @JsonProperty(JSON_PROPERTY_RULE_ID) Integer ruleId, 
+    @JsonProperty(JSON_PROPERTY_RULE_ID) Long ruleId, 
     @JsonProperty(JSON_PROPERTY_STATE) StateEnum state, 
     @JsonProperty(JSON_PROPERTY_ALERT_RULE_ID) String alertRuleId
   ) {
@@ -474,7 +474,7 @@ public class Alert {
   @JsonProperty(JSON_PROPERTY_RULE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getRuleId() {
+  public Long getRuleId() {
     return ruleId;
   }
 

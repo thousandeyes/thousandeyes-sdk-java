@@ -84,6 +84,7 @@ public class AgentToServerEndpointInstantScheduledTestsApiTest {
 
         var requestBodyJson = """
                 {
+                  "server" : "www.example.com",
                   "port" : 443,
                   "agentSelectorType" : "all-agents",
                   "maxMachines" : 25,
