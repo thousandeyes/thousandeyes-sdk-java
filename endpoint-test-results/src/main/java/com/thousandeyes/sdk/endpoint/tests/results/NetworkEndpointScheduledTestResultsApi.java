@@ -165,11 +165,12 @@ public class NetworkEndpointScheduledTestResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
    * @param multiTestIdEndpointTestsDataRoundsSearch Test data search filters. (optional)
    * @return Paginator<NetworkEndpointTestResult, MultiTestIdNetworkEndpointTestResults>
    */
-  public Paginator<NetworkEndpointTestResult, MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) {
-    return new Paginator<>(cursor -> filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, multiTestIdEndpointTestsDataRoundsSearch),
+  public Paginator<NetworkEndpointTestResult, MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, Boolean useAllPermittedAids, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) {
+    return new Paginator<>(cursor -> filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch),
                            MultiTestIdNetworkEndpointTestResults::getResults);
 
   }
@@ -182,12 +183,13 @@ public class NetworkEndpointScheduledTestResultsApi {
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
    * @param multiTestIdEndpointTestsDataRoundsSearch Test data search filters. (optional)
    * @return MultiTestIdNetworkEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
-    ApiResponse<MultiTestIdNetworkEndpointTestResults> response = filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, multiTestIdEndpointTestsDataRoundsSearch);
+  public MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean useAllPermittedAids, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
+    ApiResponse<MultiTestIdNetworkEndpointTestResults> response = filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch);
     return response.getData();
   }
 
@@ -200,14 +202,15 @@ public class NetworkEndpointScheduledTestResultsApi {
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
    * @param multiTestIdEndpointTestsDataRoundsSearch Test data search filters. (optional)
    * @return ApiResponse&lt;MultiTestIdNetworkEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
+  public ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean useAllPermittedAids, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
     filterScheduledTestsNetworkResultsValidateRequest();
 
-    var requestBuilder = filterScheduledTestsNetworkResultsRequestBuilder(aid, window, startDate, endDate, max, cursor, multiTestIdEndpointTestsDataRoundsSearch);
+    var requestBuilder = filterScheduledTestsNetworkResultsRequestBuilder(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch);
 
     return apiClient.send(requestBuilder.build(), MultiTestIdNetworkEndpointTestResults.class);
   }
@@ -215,7 +218,7 @@ public class NetworkEndpointScheduledTestResultsApi {
   private void filterScheduledTestsNetworkResultsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder filterScheduledTestsNetworkResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
+  private ApiRequest.ApiRequestBuilder filterScheduledTestsNetworkResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean useAllPermittedAids, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -229,6 +232,7 @@ public class NetworkEndpointScheduledTestResultsApi {
     localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
     localVarQueryParams.addAll(parameterToPairs("max", max));
     localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
+    localVarQueryParams.addAll(parameterToPairs("useAllPermittedAids", useAllPermittedAids));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);

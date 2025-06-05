@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTestRequest.JSON_PROPERTY_MAX_MACHINES,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_TEST_NAME,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_SERVER_NAME,
+  EndpointAgentToServerTestRequest.JSON_PROPERTY_SERVER,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_PORT,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_IS_PRIORITIZED,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_INTERVAL,
@@ -64,6 +65,9 @@ public class EndpointAgentToServerTestRequest {
 
   public static final String JSON_PROPERTY_SERVER_NAME = "serverName";
   private String serverName;
+
+  public static final String JSON_PROPERTY_SERVER = "server";
+  private String server;
 
   public static final String JSON_PROPERTY_PORT = "port";
   private Integer port = 443;
@@ -227,12 +231,14 @@ public class EndpointAgentToServerTestRequest {
   }
 
    /**
-   * A server address without a protocol or IP address.
+   * A server address without a protocol or IP address. **Deprecated, use &#x60;server&#x60; instead**.
    * @return serverName
+   * @deprecated
   **/
-  @jakarta.annotation.Nonnull
+  @Deprecated
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SERVER_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getServerName() {
     return serverName;
@@ -240,9 +246,34 @@ public class EndpointAgentToServerTestRequest {
 
 
   @JsonProperty(JSON_PROPERTY_SERVER_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setServerName(String serverName) {
     this.serverName = serverName;
+  }
+
+
+  public EndpointAgentToServerTestRequest server(String server) {
+    this.server = server;
+    return this;
+  }
+
+   /**
+   * Target domain name or IP address.
+   * @return server
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SERVER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getServer() {
+    return server;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SERVER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setServer(String server) {
+    this.server = server;
   }
 
 
@@ -364,6 +395,7 @@ public class EndpointAgentToServerTestRequest {
         Objects.equals(this.maxMachines, endpointAgentToServerTestRequest.maxMachines) &&
         Objects.equals(this.testName, endpointAgentToServerTestRequest.testName) &&
         Objects.equals(this.serverName, endpointAgentToServerTestRequest.serverName) &&
+        Objects.equals(this.server, endpointAgentToServerTestRequest.server) &&
         Objects.equals(this.port, endpointAgentToServerTestRequest.port) &&
         Objects.equals(this.isPrioritized, endpointAgentToServerTestRequest.isPrioritized) &&
         Objects.equals(this.interval, endpointAgentToServerTestRequest.interval) &&
@@ -372,7 +404,7 @@ public class EndpointAgentToServerTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, serverName, port, isPrioritized, interval, protocol);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, serverName, server, port, isPrioritized, interval, protocol);
   }
 
   @Override
@@ -385,6 +417,7 @@ public class EndpointAgentToServerTestRequest {
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    serverName: ").append(toIndentedString(serverName)).append("\n");
+    sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    isPrioritized: ").append(toIndentedString(isPrioritized)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");

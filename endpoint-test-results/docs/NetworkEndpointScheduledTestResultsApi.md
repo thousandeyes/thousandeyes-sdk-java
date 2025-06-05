@@ -197,7 +197,7 @@ ApiResponse<[**NetworkEndpointTestResults**](NetworkEndpointTestResults.md)>
 
 ## filterScheduledTestsNetworkResults
 
-> MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, multiTestIdEndpointTestsDataRoundsSearch)
+> MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch)
 
 Retrieve network scheduled test results from multiple tests
 
@@ -230,9 +230,10 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         Integer max = 5; // Integer | (Optional) Maximum number of objects to return.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        Boolean useAllPermittedAids = false; // Boolean | Set to `true` to load data from all accounts the user has access to.
         MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch = new MultiTestIdEndpointTestsDataRoundsSearch(); // MultiTestIdEndpointTestsDataRoundsSearch | Test data search filters.
         try {
-            MultiTestIdNetworkEndpointTestResults result = apiInstance.filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, multiTestIdEndpointTestsDataRoundsSearch);
+            MultiTestIdNetworkEndpointTestResults result = apiInstance.filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkEndpointScheduledTestResultsApi#filterScheduledTestsNetworkResults");
@@ -256,6 +257,7 @@ public class Example {
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **useAllPermittedAids** | **Boolean**| Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
 | **multiTestIdEndpointTestsDataRoundsSearch** | [**MultiTestIdEndpointTestsDataRoundsSearch**](MultiTestIdEndpointTestsDataRoundsSearch.md)| Test data search filters. | [optional] |
 
 ### Return type
@@ -285,7 +287,7 @@ public class Example {
 
 ## filterScheduledTestsNetworkResultsWithHttpInfo
 
-> ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResults filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, multiTestIdEndpointTestsDataRoundsSearch)
+> ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResults filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch)
 
 Retrieve network scheduled test results from multiple tests
 
@@ -319,9 +321,10 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         Integer max = 5; // Integer | (Optional) Maximum number of objects to return.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        Boolean useAllPermittedAids = false; // Boolean | Set to `true` to load data from all accounts the user has access to.
         MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch = new MultiTestIdEndpointTestsDataRoundsSearch(); // MultiTestIdEndpointTestsDataRoundsSearch | Test data search filters.
         try {
-            ApiResponse<MultiTestIdNetworkEndpointTestResults> response = apiInstance.filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, multiTestIdEndpointTestsDataRoundsSearch);
+            ApiResponse<MultiTestIdNetworkEndpointTestResults> response = apiInstance.filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -347,6 +350,7 @@ public class Example {
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **useAllPermittedAids** | **Boolean**| Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
 | **multiTestIdEndpointTestsDataRoundsSearch** | [**MultiTestIdEndpointTestsDataRoundsSearch**](MultiTestIdEndpointTestsDataRoundsSearch.md)| Test data search filters. | [optional] |
 
 ### Return type

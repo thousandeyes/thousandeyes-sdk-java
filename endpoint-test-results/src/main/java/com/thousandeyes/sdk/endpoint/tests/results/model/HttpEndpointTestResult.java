@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointHttpDataPointScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.HttpEndpointTestResultHeaders;
 import com.thousandeyes.sdk.endpoint.tests.results.model.HttpErrorType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
@@ -43,6 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpEndpointTestResult.JSON_PROPERTY_SYSTEM_METRICS,
   HttpEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
   HttpEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
+  HttpEndpointTestResult.JSON_PROPERTY_SCORE,
   HttpEndpointTestResult.JSON_PROPERTY_CONNECT_TIME,
   HttpEndpointTestResult.JSON_PROPERTY_DNS_TIME,
   HttpEndpointTestResult.JSON_PROPERTY_ERROR_TYPE,
@@ -86,6 +88,9 @@ public class HttpEndpointTestResult {
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
+
+  public static final String JSON_PROPERTY_SCORE = "score";
+  private EndpointHttpDataPointScore score;
 
   public static final String JSON_PROPERTY_CONNECT_TIME = "connectTime";
   private Integer connectTime;
@@ -355,6 +360,31 @@ public class HttpEndpointTestResult {
   }
 
 
+  public HttpEndpointTestResult score(EndpointHttpDataPointScore score) {
+    this.score = score;
+    return this;
+  }
+
+   /**
+   * Get score
+   * @return score
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointHttpDataPointScore getScore() {
+    return score;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setScore(EndpointHttpDataPointScore score) {
+    this.score = score;
+  }
+
+
    /**
    * Time required to establish a TCP connection to the server in milliseconds.
    * @return connectTime
@@ -606,6 +636,7 @@ public class HttpEndpointTestResult {
         Objects.equals(this.systemMetrics, httpEndpointTestResult.systemMetrics) &&
         Objects.equals(this.originalTargetProfile, httpEndpointTestResult.originalTargetProfile) &&
         Objects.equals(this.vpnProfile, httpEndpointTestResult.vpnProfile) &&
+        Objects.equals(this.score, httpEndpointTestResult.score) &&
         Objects.equals(this.connectTime, httpEndpointTestResult.connectTime) &&
         Objects.equals(this.dnsTime, httpEndpointTestResult.dnsTime) &&
         Objects.equals(this.errorType, httpEndpointTestResult.errorType) &&
@@ -624,7 +655,7 @@ public class HttpEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, connectTime, dnsTime, errorType, errorDetails, headers, numRedirects, receiveTime, redirectTime, responseCode, responseTime, sslTime, totalTime, waitTime, wireSize);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, score, connectTime, dnsTime, errorType, errorDetails, headers, numRedirects, receiveTime, redirectTime, responseCode, responseTime, sslTime, totalTime, waitTime, wireSize);
   }
 
   @Override
@@ -640,6 +671,7 @@ public class HttpEndpointTestResult {
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
+    sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("    connectTime: ").append(toIndentedString(connectTime)).append("\n");
     sb.append("    dnsTime: ").append(toIndentedString(dnsTime)).append("\n");
     sb.append("    errorType: ").append(toIndentedString(errorType)).append("\n");

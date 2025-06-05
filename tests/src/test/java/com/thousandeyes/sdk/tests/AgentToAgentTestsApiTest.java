@@ -496,7 +496,7 @@ public class AgentToAgentTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentToAgentTest(testId, null, null);
+        var apiResponse = api.getAgentToAgentTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

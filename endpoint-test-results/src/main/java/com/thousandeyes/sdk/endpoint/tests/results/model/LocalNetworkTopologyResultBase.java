@@ -20,6 +20,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeAgentScore;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeConnectionScore;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeGatewayScore;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeProxyScore;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeVpnScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkPing;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkTopologyType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetricDetails;
@@ -45,7 +50,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocalNetworkTopologyResultBase.JSON_PROPERTY_IS_ICMP_BLOCKED,
   LocalNetworkTopologyResultBase.JSON_PROPERTY_TCP_CONNECT,
   LocalNetworkTopologyResultBase.JSON_PROPERTY_SYSTEM_METRICS,
-  LocalNetworkTopologyResultBase.JSON_PROPERTY_SYSTEM_METRIC_DETAILS
+  LocalNetworkTopologyResultBase.JSON_PROPERTY_SYSTEM_METRIC_DETAILS,
+  LocalNetworkTopologyResultBase.JSON_PROPERTY_VPN_SCORE,
+  LocalNetworkTopologyResultBase.JSON_PROPERTY_GATEWAY_SCORE,
+  LocalNetworkTopologyResultBase.JSON_PROPERTY_PROXY_SCORE,
+  LocalNetworkTopologyResultBase.JSON_PROPERTY_CONNECTION_SCORE,
+  LocalNetworkTopologyResultBase.JSON_PROPERTY_AGENT_SCORE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LocalNetworkTopologyResultBase {
@@ -84,6 +94,21 @@ public class LocalNetworkTopologyResultBase {
 
   public static final String JSON_PROPERTY_SYSTEM_METRIC_DETAILS = "systemMetricDetails";
   private SystemMetricDetails systemMetricDetails;
+
+  public static final String JSON_PROPERTY_VPN_SCORE = "vpnScore";
+  private EndpointProbeVpnScore vpnScore;
+
+  public static final String JSON_PROPERTY_GATEWAY_SCORE = "gatewayScore";
+  private EndpointProbeGatewayScore gatewayScore;
+
+  public static final String JSON_PROPERTY_PROXY_SCORE = "proxyScore";
+  private EndpointProbeProxyScore proxyScore;
+
+  public static final String JSON_PROPERTY_CONNECTION_SCORE = "connectionScore";
+  private EndpointProbeConnectionScore connectionScore;
+
+  public static final String JSON_PROPERTY_AGENT_SCORE = "agentScore";
+  private EndpointProbeAgentScore agentScore;
 
   public LocalNetworkTopologyResultBase() { 
   }
@@ -338,6 +363,131 @@ public class LocalNetworkTopologyResultBase {
   }
 
 
+  public LocalNetworkTopologyResultBase vpnScore(EndpointProbeVpnScore vpnScore) {
+    this.vpnScore = vpnScore;
+    return this;
+  }
+
+   /**
+   * Get vpnScore
+   * @return vpnScore
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VPN_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointProbeVpnScore getVpnScore() {
+    return vpnScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VPN_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVpnScore(EndpointProbeVpnScore vpnScore) {
+    this.vpnScore = vpnScore;
+  }
+
+
+  public LocalNetworkTopologyResultBase gatewayScore(EndpointProbeGatewayScore gatewayScore) {
+    this.gatewayScore = gatewayScore;
+    return this;
+  }
+
+   /**
+   * Get gatewayScore
+   * @return gatewayScore
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_GATEWAY_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointProbeGatewayScore getGatewayScore() {
+    return gatewayScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GATEWAY_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGatewayScore(EndpointProbeGatewayScore gatewayScore) {
+    this.gatewayScore = gatewayScore;
+  }
+
+
+  public LocalNetworkTopologyResultBase proxyScore(EndpointProbeProxyScore proxyScore) {
+    this.proxyScore = proxyScore;
+    return this;
+  }
+
+   /**
+   * Get proxyScore
+   * @return proxyScore
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROXY_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointProbeProxyScore getProxyScore() {
+    return proxyScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PROXY_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProxyScore(EndpointProbeProxyScore proxyScore) {
+    this.proxyScore = proxyScore;
+  }
+
+
+  public LocalNetworkTopologyResultBase connectionScore(EndpointProbeConnectionScore connectionScore) {
+    this.connectionScore = connectionScore;
+    return this;
+  }
+
+   /**
+   * Get connectionScore
+   * @return connectionScore
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CONNECTION_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointProbeConnectionScore getConnectionScore() {
+    return connectionScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONNECTION_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConnectionScore(EndpointProbeConnectionScore connectionScore) {
+    this.connectionScore = connectionScore;
+  }
+
+
+  public LocalNetworkTopologyResultBase agentScore(EndpointProbeAgentScore agentScore) {
+    this.agentScore = agentScore;
+    return this;
+  }
+
+   /**
+   * Get agentScore
+   * @return agentScore
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENT_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointProbeAgentScore getAgentScore() {
+    return agentScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENT_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgentScore(EndpointProbeAgentScore agentScore) {
+    this.agentScore = agentScore;
+  }
+
+
   /**
    * Return true if this LocalNetworkTopologyResultBase object is equal to o.
    */
@@ -361,12 +511,17 @@ public class LocalNetworkTopologyResultBase {
         Objects.equals(this.isIcmpBlocked, localNetworkTopologyResultBase.isIcmpBlocked) &&
         Objects.equals(this.tcpConnect, localNetworkTopologyResultBase.tcpConnect) &&
         Objects.equals(this.systemMetrics, localNetworkTopologyResultBase.systemMetrics) &&
-        Objects.equals(this.systemMetricDetails, localNetworkTopologyResultBase.systemMetricDetails);
+        Objects.equals(this.systemMetricDetails, localNetworkTopologyResultBase.systemMetricDetails) &&
+        Objects.equals(this.vpnScore, localNetworkTopologyResultBase.vpnScore) &&
+        Objects.equals(this.gatewayScore, localNetworkTopologyResultBase.gatewayScore) &&
+        Objects.equals(this.proxyScore, localNetworkTopologyResultBase.proxyScore) &&
+        Objects.equals(this.connectionScore, localNetworkTopologyResultBase.connectionScore) &&
+        Objects.equals(this.agentScore, localNetworkTopologyResultBase.agentScore);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails);
+    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails, vpnScore, gatewayScore, proxyScore, connectionScore, agentScore);
   }
 
   @Override
@@ -385,6 +540,11 @@ public class LocalNetworkTopologyResultBase {
     sb.append("    tcpConnect: ").append(toIndentedString(tcpConnect)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    systemMetricDetails: ").append(toIndentedString(systemMetricDetails)).append("\n");
+    sb.append("    vpnScore: ").append(toIndentedString(vpnScore)).append("\n");
+    sb.append("    gatewayScore: ").append(toIndentedString(gatewayScore)).append("\n");
+    sb.append("    proxyScore: ").append(toIndentedString(proxyScore)).append("\n");
+    sb.append("    connectionScore: ").append(toIndentedString(connectionScore)).append("\n");
+    sb.append("    agentScore: ").append(toIndentedString(agentScore)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -22,6 +22,7 @@ import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.tests.model.Error;
+import com.thousandeyes.sdk.tests.model.TestVersionHistoryResponse;
 import com.thousandeyes.sdk.tests.model.Tests;
 import com.thousandeyes.sdk.tests.model.UnauthorizedError;
 
@@ -58,6 +59,64 @@ public class TestsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Get test version history
+   * Retrieve the version history of a specific test.
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param limit The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer. (optional, default to 50)
+   * @return TestVersionHistoryResponse
+   * @throws ApiException if fails to make API call
+   */
+  public TestVersionHistoryResponse getTestVersionHistory(String testId, String aid, Integer limit) throws ApiException {
+    ApiResponse<TestVersionHistoryResponse> response = getTestVersionHistoryWithHttpInfo(testId, aid, limit);
+    return response.getData();
+  }
+
+  /**
+   * Get test version history
+   * Retrieve the version history of a specific test.
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param limit The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer. (optional, default to 50)
+   * @return ApiResponse&lt;TestVersionHistoryResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<TestVersionHistoryResponse> getTestVersionHistoryWithHttpInfo(String testId, String aid, Integer limit) throws ApiException {
+    getTestVersionHistoryValidateRequest(testId);
+
+    var requestBuilder = getTestVersionHistoryRequestBuilder(testId, aid, limit);
+
+    return apiClient.send(requestBuilder.build(), TestVersionHistoryResponse.class);
+  }
+
+  private void getTestVersionHistoryValidateRequest(String testId) throws ApiException {
+      // verify the required parameter 'testId' is set
+      if (testId == null) {
+        throw new ApiException(400, "Missing the required parameter 'testId' when calling getTestVersionHistory");
+      }
+  }
+
+  private ApiRequest.ApiRequestBuilder getTestVersionHistoryRequestBuilder(String testId, String aid, Integer limit) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("GET");
+
+    String path = "/tests/{testId}/history"
+        .replace("{testId}", urlEncode(testId.toString()));
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("limit", limit));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    return requestBuilder;
+  }
   /**
    * List configured tests
    * Returns configured tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 

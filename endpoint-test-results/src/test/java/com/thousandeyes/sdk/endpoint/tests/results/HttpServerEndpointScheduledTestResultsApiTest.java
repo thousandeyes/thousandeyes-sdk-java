@@ -199,6 +199,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     "totalTime" : 15,
                     "responseCode" : 200,
                     "receiveTime" : 1,
+                    "score" : {
+                      "applicationScore" : 100.0,
+                      "quality" : "great"
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -300,6 +304,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     "totalTime" : 15,
                     "responseCode" : 200,
                     "receiveTime" : 1,
+                    "score" : {
+                      "applicationScore" : 100.0,
+                      "quality" : "great"
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -494,6 +502,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     "totalTime" : 15,
                     "responseCode" : 200,
                     "receiveTime" : 1,
+                    "score" : {
+                      "applicationScore" : 100.0,
+                      "quality" : "great"
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -595,6 +607,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     "totalTime" : 15,
                     "responseCode" : 200,
                     "receiveTime" : 1,
+                    "score" : {
+                      "applicationScore" : 100.0,
+                      "quality" : "great"
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -692,7 +708,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getMultiTestFilteredHttpServerScheduledTestResults(null, null, null, null, null, null, mappedRequest);
+        var apiResponse = api.getMultiTestFilteredHttpServerScheduledTestResults(null, null, null, null, null, null, null, mappedRequest);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -89,10 +89,8 @@ public class AlertsApiTest {
 
         var responseBodyJson = """
                 {
-                  "duration" : 60,
-                  "severity" : "major",
+                  "severity" : { },
                   "alertType" : "http-server",
-                  "violationCount" : 2,
                   "endDate" : "2022-07-18T22:00:54Z",
                   "_links" : {
                     "appLink" : {
@@ -136,6 +134,9 @@ public class AlertsApiTest {
                       "title" : "title"
                     }
                   },
+                  "alertSeverity" : "major",
+                  "duration" : 60,
+                  "violationCount" : 2,
                   "meta" : {
                     "version" : 1
                   },
@@ -164,7 +165,8 @@ public class AlertsApiTest {
                   } ],
                   "id" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
                   "suppressed" : false,
-                  "state" : "trigger",
+                  "state" : { },
+                  "alertState" : "trigger",
                   "startDate" : "2022-07-17T22:00:54Z"
                 }
                                   """;

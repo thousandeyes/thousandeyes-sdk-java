@@ -180,12 +180,13 @@ public class AgentToAgentTestsApi {
    * Returns details for a Agent to Agent test, including name, intervals, targets, alert rules and agents.
    * @param testId Test ID (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
    * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
    * @return AgentToAgentTestResponse
    * @throws ApiException if fails to make API call
    */
-  public AgentToAgentTestResponse getAgentToAgentTest(String testId, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<AgentToAgentTestResponse> response = getAgentToAgentTestWithHttpInfo(testId, aid, expand);
+  public AgentToAgentTestResponse getAgentToAgentTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    ApiResponse<AgentToAgentTestResponse> response = getAgentToAgentTestWithHttpInfo(testId, aid, versionId, expand);
     return response.getData();
   }
 
@@ -194,14 +195,15 @@ public class AgentToAgentTestsApi {
    * Returns details for a Agent to Agent test, including name, intervals, targets, alert rules and agents.
    * @param testId Test ID (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
    * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
    * @return ApiResponse&lt;AgentToAgentTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentToAgentTestResponse> getAgentToAgentTestWithHttpInfo(String testId, String aid, List<ExpandTestOptions> expand) throws ApiException {
+  public ApiResponse<AgentToAgentTestResponse> getAgentToAgentTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
     getAgentToAgentTestValidateRequest(testId);
 
-    var requestBuilder = getAgentToAgentTestRequestBuilder(testId, aid, expand);
+    var requestBuilder = getAgentToAgentTestRequestBuilder(testId, aid, versionId, expand);
 
     return apiClient.send(requestBuilder.build(), AgentToAgentTestResponse.class);
   }
@@ -213,7 +215,7 @@ public class AgentToAgentTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentToAgentTestRequestBuilder(String testId, String aid, List<ExpandTestOptions> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getAgentToAgentTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
@@ -223,6 +225,7 @@ public class AgentToAgentTestsApi {
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("versionId", versionId));
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
 
     if (!localVarQueryParams.isEmpty()) {

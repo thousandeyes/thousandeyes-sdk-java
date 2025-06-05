@@ -164,6 +164,8 @@ src/main/java/com/thousandeyes/sdk/tests/model/TestSipCredentials.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestSslVersionId.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestSubInterval.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestType.java
+src/main/java/com/thousandeyes/sdk/tests/model/TestVersionHistory.java
+src/main/java/com/thousandeyes/sdk/tests/model/TestVersionHistoryResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/Tests.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedAgentToAgentTest.java

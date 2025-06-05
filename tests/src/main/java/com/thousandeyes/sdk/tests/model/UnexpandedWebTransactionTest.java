@@ -61,6 +61,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedWebTransactionTest.JSON_PROPERTY_CONTENT_REGEX,
   UnexpandedWebTransactionTest.JSON_PROPERTY_CUSTOM_HEADERS,
   UnexpandedWebTransactionTest.JSON_PROPERTY_DESIRED_STATUS_CODE,
+  UnexpandedWebTransactionTest.JSON_PROPERTY_DISTRIBUTED_TRACING,
   UnexpandedWebTransactionTest.JSON_PROPERTY_DOWNLOAD_LIMIT,
   UnexpandedWebTransactionTest.JSON_PROPERTY_DNS_OVERRIDE,
   UnexpandedWebTransactionTest.JSON_PROPERTY_HTTP_TARGET_TIME,
@@ -167,6 +168,9 @@ public class UnexpandedWebTransactionTest {
 
   public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
   private String desiredStatusCode = "default";
+
+  public static final String JSON_PROPERTY_DISTRIBUTED_TRACING = "distributedTracing";
+  private Boolean distributedTracing;
 
   public static final String JSON_PROPERTY_DOWNLOAD_LIMIT = "downloadLimit";
   private Integer downloadLimit;
@@ -760,6 +764,31 @@ public class UnexpandedWebTransactionTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDesiredStatusCode(String desiredStatusCode) {
     this.desiredStatusCode = desiredStatusCode;
+  }
+
+
+  public UnexpandedWebTransactionTest distributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
+    return this;
+  }
+
+   /**
+   * Adds distributed tracing headers to API requests using B3 and W3C standards.
+   * @return distributedTracing
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getDistributedTracing() {
+    return distributedTracing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDistributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
   }
 
 
@@ -1825,6 +1854,7 @@ public class UnexpandedWebTransactionTest {
         Objects.equals(this.contentRegex, unexpandedWebTransactionTest.contentRegex) &&
         Objects.equals(this.customHeaders, unexpandedWebTransactionTest.customHeaders) &&
         Objects.equals(this.desiredStatusCode, unexpandedWebTransactionTest.desiredStatusCode) &&
+        Objects.equals(this.distributedTracing, unexpandedWebTransactionTest.distributedTracing) &&
         Objects.equals(this.downloadLimit, unexpandedWebTransactionTest.downloadLimit) &&
         Objects.equals(this.dnsOverride, unexpandedWebTransactionTest.dnsOverride) &&
         Objects.equals(this.httpTargetTime, unexpandedWebTransactionTest.httpTargetTime) &&
@@ -1870,7 +1900,7 @@ public class UnexpandedWebTransactionTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, subinterval, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, subinterval, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -1898,6 +1928,7 @@ public class UnexpandedWebTransactionTest {
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    desiredStatusCode: ").append(toIndentedString(desiredStatusCode)).append("\n");
+    sb.append("    distributedTracing: ").append(toIndentedString(distributedTracing)).append("\n");
     sb.append("    downloadLimit: ").append(toIndentedString(downloadLimit)).append("\n");
     sb.append("    dnsOverride: ").append(toIndentedString(dnsOverride)).append("\n");
     sb.append("    httpTargetTime: ").append(toIndentedString(httpTargetTime)).append("\n");

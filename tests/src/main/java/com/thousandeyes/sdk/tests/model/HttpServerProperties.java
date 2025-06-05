@@ -46,6 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerProperties.JSON_PROPERTY_CONTENT_REGEX,
   HttpServerProperties.JSON_PROPERTY_CUSTOM_HEADERS,
   HttpServerProperties.JSON_PROPERTY_DESIRED_STATUS_CODE,
+  HttpServerProperties.JSON_PROPERTY_DISTRIBUTED_TRACING,
   HttpServerProperties.JSON_PROPERTY_DOWNLOAD_LIMIT,
   HttpServerProperties.JSON_PROPERTY_DNS_OVERRIDE,
   HttpServerProperties.JSON_PROPERTY_HTTP_TARGET_TIME,
@@ -101,6 +102,9 @@ public class HttpServerProperties {
 
   public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
   private String desiredStatusCode = "default";
+
+  public static final String JSON_PROPERTY_DISTRIBUTED_TRACING = "distributedTracing";
+  private Boolean distributedTracing;
 
   public static final String JSON_PROPERTY_DOWNLOAD_LIMIT = "downloadLimit";
   private Integer downloadLimit;
@@ -383,6 +387,31 @@ public class HttpServerProperties {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDesiredStatusCode(String desiredStatusCode) {
     this.desiredStatusCode = desiredStatusCode;
+  }
+
+
+  public HttpServerProperties distributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
+    return this;
+  }
+
+   /**
+   * Adds distributed tracing headers to API requests using B3 and W3C standards.
+   * @return distributedTracing
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getDistributedTracing() {
+    return distributedTracing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDistributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
   }
 
 
@@ -1203,6 +1232,7 @@ public class HttpServerProperties {
         Objects.equals(this.contentRegex, httpServerProperties.contentRegex) &&
         Objects.equals(this.customHeaders, httpServerProperties.customHeaders) &&
         Objects.equals(this.desiredStatusCode, httpServerProperties.desiredStatusCode) &&
+        Objects.equals(this.distributedTracing, httpServerProperties.distributedTracing) &&
         Objects.equals(this.downloadLimit, httpServerProperties.downloadLimit) &&
         Objects.equals(this.dnsOverride, httpServerProperties.dnsOverride) &&
         Objects.equals(this.httpTargetTime, httpServerProperties.httpTargetTime) &&
@@ -1239,7 +1269,7 @@ public class HttpServerProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, type);
+    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, type);
   }
 
   @Override
@@ -1253,6 +1283,7 @@ public class HttpServerProperties {
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    desiredStatusCode: ").append(toIndentedString(desiredStatusCode)).append("\n");
+    sb.append("    distributedTracing: ").append(toIndentedString(distributedTracing)).append("\n");
     sb.append("    downloadLimit: ").append(toIndentedString(downloadLimit)).append("\n");
     sb.append("    dnsOverride: ").append(toIndentedString(dnsOverride)).append("\n");
     sb.append("    httpTargetTime: ").append(toIndentedString(httpTargetTime)).append("\n");

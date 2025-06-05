@@ -39,6 +39,11 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointPathTrac
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointPathVisHop.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointPathVisRoute.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointPingDataPointScore.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointProbeAgentScore.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointProbeConnectionScore.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointProbeGatewayScore.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointProbeProxyScore.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointProbeVpnScore.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointResultRequestFilter.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointScheduledTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointScheduledTestType.java
@@ -57,6 +62,8 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestsDat
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestsDataSearchSortKey.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestsDataThresholdFilter.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestsDataThresholdFilters.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointZtaMetrics.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointZtaSegmentType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Error.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ExpandEndpointHttpServerOptions.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ExpandLocalNetworkTopologyOptions.java
