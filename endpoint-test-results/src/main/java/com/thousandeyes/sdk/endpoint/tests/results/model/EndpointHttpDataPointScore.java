@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointHttpDataPointScore {
   public static final String JSON_PROPERTY_APPLICATION_SCORE = "applicationScore";
-  private Float applicationScore;
+  private Double applicationScore;
 
   public static final String JSON_PROPERTY_QUALITY = "quality";
   private ApplicationScoreQuality quality;
@@ -42,27 +42,27 @@ public class EndpointHttpDataPointScore {
   public EndpointHttpDataPointScore() { 
   }
 
-  public EndpointHttpDataPointScore applicationScore(Float applicationScore) {
+  public EndpointHttpDataPointScore applicationScore(Double applicationScore) {
     this.applicationScore = applicationScore;
     return this;
   }
 
    /**
-   * Fine grained score between 0-100 based on &#x60;time to first byte&#x60; metric
+   * A fine-grained score between 0 and 100.
    * @return applicationScore
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_APPLICATION_SCORE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Float getApplicationScore() {
+  public Double getApplicationScore() {
     return applicationScore;
   }
 
 
   @JsonProperty(JSON_PROPERTY_APPLICATION_SCORE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApplicationScore(Float applicationScore) {
+  public void setApplicationScore(Double applicationScore) {
     this.applicationScore = applicationScore;
   }
 

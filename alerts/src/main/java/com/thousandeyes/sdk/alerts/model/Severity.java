@@ -18,49 +18,52 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 /**
- * The severity of the alert.
+ * Severity
  */
-public enum Severity {
-  
-  INFO("info"),
-  
-  MAJOR("major"),
-  
-  MINOR("minor"),
-  
-  CRITICAL("critical"),
-  
-  UNKNOWN("unknown");
-
-  private String value;
-
-  Severity(String value) {
-    this.value = value;
+@JsonPropertyOrder({
+})
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
+public class Severity {
+  public Severity() { 
   }
 
-  @JsonValue
-  public String getValue() {
-    return value;
+  /**
+   * Return true if this Severity object is equal to o.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash();
   }
 
   @Override
   public String toString() {
-    return String.valueOf(value);
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Severity {\n");
+    sb.append("}");
+    return sb.toString();
   }
 
-  @JsonCreator
-  public static Severity fromValue(String value) {
-    for (Severity b : Severity.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-    return UNKNOWN;
+    return o.toString().replace("\n", "\n    ");
   }
-
 }
 

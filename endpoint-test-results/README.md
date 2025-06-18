@@ -2,7 +2,7 @@
 
 Endpoint Test Results API
 
-- API version: 7.0.44
+- API version: 7.0.51
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 
@@ -138,6 +138,8 @@ Class | Method | HTTP request | Description
 *HttpServerEndpointScheduledTestResultsApi* | [**getHttpServerScheduledTestResultsWithHttpInfo**](docs/HttpServerEndpointScheduledTestResultsApi.md#getHttpServerScheduledTestResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/http-server | Retrieve HTTP server scheduled test results
 *HttpServerEndpointScheduledTestResultsApi* | [**getMultiTestFilteredHttpServerScheduledTestResults**](docs/HttpServerEndpointScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResults) | **POST** /endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results
 *HttpServerEndpointScheduledTestResultsApi* | [**getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo**](docs/HttpServerEndpointScheduledTestResultsApi.md#getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/http-server/filter | Filter HTTP server scheduled test results
+*HttpServerEndpointScheduledTestResultsApi* | [**getSingleTestFilteredHttpServerScheduledTestResults**](docs/HttpServerEndpointScheduledTestResultsApi.md#getSingleTestFilteredHttpServerScheduledTestResults) | **POST** /endpoint/test-results/scheduled-tests/{testId}/http-server/filter | Filter HTTP server result for a scheduled test
+*HttpServerEndpointScheduledTestResultsApi* | [**getSingleTestFilteredHttpServerScheduledTestResultsWithHttpInfo**](docs/HttpServerEndpointScheduledTestResultsApi.md#getSingleTestFilteredHttpServerScheduledTestResultsWithHttpInfo) | **POST** /endpoint/test-results/scheduled-tests/{testId}/http-server/filter | Filter HTTP server result for a scheduled test
 *LocalNetworkEndpointTestResultsApi* | [**filterLocalNetworksTestResultsTopologies**](docs/LocalNetworkEndpointTestResultsApi.md#filterLocalNetworksTestResultsTopologies) | **POST** /endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes
 *LocalNetworkEndpointTestResultsApi* | [**filterLocalNetworksTestResultsTopologiesWithHttpInfo**](docs/LocalNetworkEndpointTestResultsApi.md#filterLocalNetworksTestResultsTopologiesWithHttpInfo) | **POST** /endpoint/test-results/local-networks/topologies/filter | List endpoint network topologies probes
 *LocalNetworkEndpointTestResultsApi* | [**getLocalNetworksTestResults**](docs/LocalNetworkEndpointTestResultsApi.md#getLocalNetworksTestResults) | **GET** /endpoint/test-results/local-networks | List local networks

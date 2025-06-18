@@ -86,6 +86,7 @@ public class ApiTestsApiTest {
 
         var requestBodyJson = """
                 {
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
                   "_links" : {
                     "testResults" : [ {
@@ -126,6 +127,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -165,6 +167,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -196,6 +199,7 @@ public class ApiTestsApiTest {
                   "pathTraceMode" : "classic",
                   "modifiedBy" : "user@user.com",
                   "alertsEnabled" : true,
+                  "clientCertDomainsAllowList" : "www.thousandeyes.com",
                   "testName" : "ThousandEyes Test",
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
@@ -208,6 +212,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -254,6 +259,7 @@ public class ApiTestsApiTest {
 
         var responseBodyJson = """
                 {
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
                   "_links" : {
                     "testResults" : [ {
@@ -322,6 +328,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -361,6 +368,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -392,6 +400,7 @@ public class ApiTestsApiTest {
                   "pathTraceMode" : "classic",
                   "modifiedBy" : "user@user.com",
                   "alertsEnabled" : true,
+                  "clientCertDomainsAllowList" : "www.thousandeyes.com",
                   "testName" : "ThousandEyes Test",
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
@@ -404,6 +413,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -538,6 +548,7 @@ public class ApiTestsApiTest {
 
         var responseBodyJson = """
                 {
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
                   "_links" : {
                     "testResults" : [ {
@@ -606,6 +617,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -645,6 +657,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -676,6 +689,7 @@ public class ApiTestsApiTest {
                   "pathTraceMode" : "classic",
                   "modifiedBy" : "user@user.com",
                   "alertsEnabled" : true,
+                  "clientCertDomainsAllowList" : "www.thousandeyes.com",
                   "testName" : "ThousandEyes Test",
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
@@ -688,6 +702,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -774,7 +789,7 @@ public class ApiTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getApiTest(testId, null, null);
+        var apiResponse = api.getApiTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -794,6 +809,7 @@ public class ApiTestsApiTest {
         var responseBodyJson = """
                 {
                   "tests" : [ {
+                    "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                     "mtuMeasurements" : false,
                     "_links" : {
                       "testResults" : [ {
@@ -832,6 +848,7 @@ public class ApiTestsApiTest {
                       "clientId" : "client-id",
                       "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                       "method" : "get",
+                      "verifyCertificate" : false,
                       "body" : "body",
                       "url" : "https://api.thousandeyes.com/v7/status",
                       "password" : "basic_pw123",
@@ -871,6 +888,7 @@ public class ApiTestsApiTest {
                       "clientId" : "client-id",
                       "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                       "method" : "get",
+                      "verifyCertificate" : false,
                       "body" : "body",
                       "url" : "https://api.thousandeyes.com/v7/status",
                       "password" : "basic_pw123",
@@ -902,6 +920,7 @@ public class ApiTestsApiTest {
                     "pathTraceMode" : "classic",
                     "modifiedBy" : "user@user.com",
                     "alertsEnabled" : true,
+                    "clientCertDomainsAllowList" : "www.thousandeyes.com",
                     "testName" : "ThousandEyes Test",
                     "numPathTraces" : 3,
                     "bgpMeasurements" : true,
@@ -914,6 +933,7 @@ public class ApiTestsApiTest {
                       "value" : "ThousandEyesAccountUserName"
                     } ],
                     "liveShare" : false,
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "networkMeasurements" : true,
                     "url" : "www.thousandeyes.com",
@@ -928,6 +948,7 @@ public class ApiTestsApiTest {
                     "sslVersionId" : "0",
                     "targetTime" : 1
                   }, {
+                    "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                     "mtuMeasurements" : false,
                     "_links" : {
                       "testResults" : [ {
@@ -966,6 +987,7 @@ public class ApiTestsApiTest {
                       "clientId" : "client-id",
                       "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                       "method" : "get",
+                      "verifyCertificate" : false,
                       "body" : "body",
                       "url" : "https://api.thousandeyes.com/v7/status",
                       "password" : "basic_pw123",
@@ -1005,6 +1027,7 @@ public class ApiTestsApiTest {
                       "clientId" : "client-id",
                       "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                       "method" : "get",
+                      "verifyCertificate" : false,
                       "body" : "body",
                       "url" : "https://api.thousandeyes.com/v7/status",
                       "password" : "basic_pw123",
@@ -1036,6 +1059,7 @@ public class ApiTestsApiTest {
                     "pathTraceMode" : "classic",
                     "modifiedBy" : "user@user.com",
                     "alertsEnabled" : true,
+                    "clientCertDomainsAllowList" : "www.thousandeyes.com",
                     "testName" : "ThousandEyes Test",
                     "numPathTraces" : 3,
                     "bgpMeasurements" : true,
@@ -1048,6 +1072,7 @@ public class ApiTestsApiTest {
                       "value" : "ThousandEyesAccountUserName"
                     } ],
                     "liveShare" : false,
+                    "distributedTracing" : false,
                     "savedEvent" : true,
                     "networkMeasurements" : true,
                     "url" : "www.thousandeyes.com",
@@ -1109,6 +1134,7 @@ public class ApiTestsApiTest {
 
         var requestBodyJson = """
                 {
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
                   "_links" : {
                     "testResults" : [ {
@@ -1149,6 +1175,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -1188,6 +1215,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -1219,6 +1247,7 @@ public class ApiTestsApiTest {
                   "pathTraceMode" : "classic",
                   "modifiedBy" : "user@user.com",
                   "alertsEnabled" : true,
+                  "clientCertDomainsAllowList" : "www.thousandeyes.com",
                   "testName" : "ThousandEyes Test",
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
@@ -1231,6 +1260,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
@@ -1277,6 +1307,7 @@ public class ApiTestsApiTest {
 
         var responseBodyJson = """
                 {
+                  "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
                   "mtuMeasurements" : false,
                   "_links" : {
                     "testResults" : [ {
@@ -1345,6 +1376,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -1384,6 +1416,7 @@ public class ApiTestsApiTest {
                     "clientId" : "client-id",
                     "tokenUrl" : "https://id.cisco.com/oauth2/default/v1/token",
                     "method" : "get",
+                    "verifyCertificate" : false,
                     "body" : "body",
                     "url" : "https://api.thousandeyes.com/v7/status",
                     "password" : "basic_pw123",
@@ -1415,6 +1448,7 @@ public class ApiTestsApiTest {
                   "pathTraceMode" : "classic",
                   "modifiedBy" : "user@user.com",
                   "alertsEnabled" : true,
+                  "clientCertDomainsAllowList" : "www.thousandeyes.com",
                   "testName" : "ThousandEyes Test",
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
@@ -1427,6 +1461,7 @@ public class ApiTestsApiTest {
                     "value" : "ThousandEyesAccountUserName"
                   } ],
                   "liveShare" : false,
+                  "distributedTracing" : false,
                   "savedEvent" : true,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",

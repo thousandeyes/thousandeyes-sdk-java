@@ -51,6 +51,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertDirection.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRoundsViolationMode.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRule.java
+src/main/java/com/thousandeyes/sdk/tests/model/AlertSeverity.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertType.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiClientAuthentication.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiInstantTest.java
@@ -130,7 +131,6 @@ src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/RequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/tests/model/SensitivityLevel.java
-src/main/java/com/thousandeyes/sdk/tests/model/Severity.java
 src/main/java/com/thousandeyes/sdk/tests/model/SharedWithAccount.java
 src/main/java/com/thousandeyes/sdk/tests/model/SimpleAgent.java
 src/main/java/com/thousandeyes/sdk/tests/model/SimpleTest.java
@@ -164,6 +164,8 @@ src/main/java/com/thousandeyes/sdk/tests/model/TestSipCredentials.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestSslVersionId.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestSubInterval.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestType.java
+src/main/java/com/thousandeyes/sdk/tests/model/TestVersionHistory.java
+src/main/java/com/thousandeyes/sdk/tests/model/TestVersionHistoryResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/Tests.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedAgentToAgentTest.java

@@ -347,7 +347,7 @@ ApiResponse<Void>
 
 ## getWebTransactionsTest
 
-> WebTransactionTestResponse getWebTransactionsTest(testId, aid, expand)
+> WebTransactionTestResponse getWebTransactionsTest(testId, aid, versionId, expand)
 
 Get Web Transactions test
 
@@ -376,9 +376,10 @@ public class Example {
         WebTransactionTestsApi apiInstance = new WebTransactionTestsApi(defaultClient);
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            WebTransactionTestResponse result = apiInstance.getWebTransactionsTest(testId, aid, expand);
+            WebTransactionTestResponse result = apiInstance.getWebTransactionsTest(testId, aid, versionId, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionTestsApi#getWebTransactionsTest");
@@ -398,6 +399,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **testId** | **String**| Test ID | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
 | **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
 
 ### Return type
@@ -428,7 +430,7 @@ public class Example {
 
 ## getWebTransactionsTestWithHttpInfo
 
-> ApiResponse<WebTransactionTestResponse> getWebTransactionsTest getWebTransactionsTestWithHttpInfo(testId, aid, expand)
+> ApiResponse<WebTransactionTestResponse> getWebTransactionsTest getWebTransactionsTestWithHttpInfo(testId, aid, versionId, expand)
 
 Get Web Transactions test
 
@@ -458,9 +460,10 @@ public class Example {
         WebTransactionTestsApi apiInstance = new WebTransactionTestsApi(defaultClient);
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<WebTransactionTestResponse> response = apiInstance.getWebTransactionsTestWithHttpInfo(testId, aid, expand);
+            ApiResponse<WebTransactionTestResponse> response = apiInstance.getWebTransactionsTestWithHttpInfo(testId, aid, versionId, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -482,6 +485,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **testId** | **String**| Test ID | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
 | **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
 
 ### Return type

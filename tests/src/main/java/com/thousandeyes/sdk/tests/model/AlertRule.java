@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.model.AlertDirection;
 import com.thousandeyes.sdk.tests.model.AlertRoundsViolationMode;
+import com.thousandeyes.sdk.tests.model.AlertSeverity;
 import com.thousandeyes.sdk.tests.model.AlertType;
 import com.thousandeyes.sdk.tests.model.SensitivityLevel;
-import com.thousandeyes.sdk.tests.model.Severity;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -85,7 +85,7 @@ public class AlertRule {
   private SensitivityLevel sensitivityLevel;
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
-  private Severity severity;
+  private AlertSeverity severity;
 
   public AlertRule() { 
   }
@@ -332,7 +332,7 @@ public class AlertRule {
   }
 
 
-  public AlertRule severity(Severity severity) {
+  public AlertRule severity(AlertSeverity severity) {
     this.severity = severity;
     return this;
   }
@@ -345,14 +345,14 @@ public class AlertRule {
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Severity getSeverity() {
+  public AlertSeverity getSeverity() {
     return severity;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSeverity(Severity severity) {
+  public void setSeverity(AlertSeverity severity) {
     this.severity = severity;
   }
 

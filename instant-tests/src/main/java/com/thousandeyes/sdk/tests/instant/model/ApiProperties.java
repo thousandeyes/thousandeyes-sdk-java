@@ -36,7 +36,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * ApiProperties
  */
 @JsonPropertyOrder({
+  ApiProperties.JSON_PROPERTY_CLIENT_CERTIFICATE,
+  ApiProperties.JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST,
   ApiProperties.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  ApiProperties.JSON_PROPERTY_DISTRIBUTED_TRACING,
   ApiProperties.JSON_PROPERTY_FOLLOW_REDIRECTS,
   ApiProperties.JSON_PROPERTY_MTU_MEASUREMENTS,
   ApiProperties.JSON_PROPERTY_NETWORK_MEASUREMENTS,
@@ -52,13 +55,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiProperties.JSON_PROPERTY_SSL_VERSION_ID,
   ApiProperties.JSON_PROPERTY_TARGET_TIME,
   ApiProperties.JSON_PROPERTY_TIME_LIMIT,
-  ApiProperties.JSON_PROPERTY_URL,
-  ApiProperties.JSON_PROPERTY_TYPE
+  ApiProperties.JSON_PROPERTY_TYPE,
+  ApiProperties.JSON_PROPERTY_URL
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiProperties {
+  public static final String JSON_PROPERTY_CLIENT_CERTIFICATE = "clientCertificate";
+  private String clientCertificate;
+
+  public static final String JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST = "clientCertDomainsAllowList";
+  private String clientCertDomainsAllowList;
+
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
+
+  public static final String JSON_PROPERTY_DISTRIBUTED_TRACING = "distributedTracing";
+  private Boolean distributedTracing;
 
   public static final String JSON_PROPERTY_FOLLOW_REDIRECTS = "followRedirects";
   private Boolean followRedirects = true;
@@ -105,11 +117,11 @@ public class ApiProperties {
   public static final String JSON_PROPERTY_TIME_LIMIT = "timeLimit";
   private Integer timeLimit = 30;
 
-  public static final String JSON_PROPERTY_URL = "url";
-  private String url;
-
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
+
+  public static final String JSON_PROPERTY_URL = "url";
+  private String url;
 
   public ApiProperties() { 
   }
@@ -121,6 +133,56 @@ public class ApiProperties {
   this();
     this.type = type;
   }
+
+  public ApiProperties clientCertificate(String clientCertificate) {
+    this.clientCertificate = clientCertificate;
+    return this;
+  }
+
+   /**
+   * String representation (containing newline characters) of client certificate, the private key must be placed first, then the certificate.
+   * @return clientCertificate
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_CERTIFICATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getClientCertificate() {
+    return clientCertificate;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_CERTIFICATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClientCertificate(String clientCertificate) {
+    this.clientCertificate = clientCertificate;
+  }
+
+
+  public ApiProperties clientCertDomainsAllowList(String clientCertDomainsAllowList) {
+    this.clientCertDomainsAllowList = clientCertDomainsAllowList;
+    return this;
+  }
+
+   /**
+   * Comma separated list of domains to send the client certificate.
+   * @return clientCertDomainsAllowList
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getClientCertDomainsAllowList() {
+    return clientCertDomainsAllowList;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClientCertDomainsAllowList(String clientCertDomainsAllowList) {
+    this.clientCertDomainsAllowList = clientCertDomainsAllowList;
+  }
+
 
   public ApiProperties collectProxyNetworkData(Boolean collectProxyNetworkData) {
     this.collectProxyNetworkData = collectProxyNetworkData;
@@ -144,6 +206,31 @@ public class ApiProperties {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCollectProxyNetworkData(Boolean collectProxyNetworkData) {
     this.collectProxyNetworkData = collectProxyNetworkData;
+  }
+
+
+  public ApiProperties distributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
+    return this;
+  }
+
+   /**
+   * Adds distributed tracing headers to API requests using B3 and W3C standards.
+   * @return distributedTracing
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getDistributedTracing() {
+    return distributedTracing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDistributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
   }
 
 
@@ -544,6 +631,21 @@ public class ApiProperties {
   }
 
 
+   /**
+   * Get type
+   * @return type
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getType() {
+    return type;
+  }
+
+
+
+
   public ApiProperties url(String url) {
     this.url = url;
     return this;
@@ -569,21 +671,6 @@ public class ApiProperties {
   }
 
 
-   /**
-   * Get type
-   * @return type
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getType() {
-    return type;
-  }
-
-
-
-
   /**
    * Return true if this ApiProperties object is equal to o.
    */
@@ -596,7 +683,10 @@ public class ApiProperties {
       return false;
     }
     ApiProperties apiProperties = (ApiProperties) o;
-    return Objects.equals(this.collectProxyNetworkData, apiProperties.collectProxyNetworkData) &&
+    return Objects.equals(this.clientCertificate, apiProperties.clientCertificate) &&
+        Objects.equals(this.clientCertDomainsAllowList, apiProperties.clientCertDomainsAllowList) &&
+        Objects.equals(this.collectProxyNetworkData, apiProperties.collectProxyNetworkData) &&
+        Objects.equals(this.distributedTracing, apiProperties.distributedTracing) &&
         Objects.equals(this.followRedirects, apiProperties.followRedirects) &&
         Objects.equals(this.mtuMeasurements, apiProperties.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, apiProperties.networkMeasurements) &&
@@ -612,20 +702,23 @@ public class ApiProperties {
         Objects.equals(this.sslVersionId, apiProperties.sslVersionId) &&
         Objects.equals(this.targetTime, apiProperties.targetTime) &&
         Objects.equals(this.timeLimit, apiProperties.timeLimit) &&
-        Objects.equals(this.url, apiProperties.url) &&
-        Objects.equals(this.type, apiProperties.type);
+        Objects.equals(this.type, apiProperties.type) &&
+        Objects.equals(this.url, apiProperties.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(collectProxyNetworkData, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, type);
+    return Objects.hash(clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, type, url);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApiProperties {\n");
+    sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
+    sb.append("    clientCertDomainsAllowList: ").append(toIndentedString(clientCertDomainsAllowList)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    distributedTracing: ").append(toIndentedString(distributedTracing)).append("\n");
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
@@ -641,8 +734,8 @@ public class ApiProperties {
     sb.append("    sslVersionId: ").append(toIndentedString(sslVersionId)).append("\n");
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

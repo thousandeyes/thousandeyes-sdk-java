@@ -54,6 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_STATUS,
   EndpointAgent.JSON_PROPERTY_DELETED,
   EndpointAgent.JSON_PROPERTY_VERSION,
+  EndpointAgent.JSON_PROPERTY_TARGET_VERSION,
   EndpointAgent.JSON_PROPERTY_CREATED_AT,
   EndpointAgent.JSON_PROPERTY_NUMBER_OF_CLIENTS,
   EndpointAgent.JSON_PROPERTY_PUBLIC_I_P,
@@ -109,6 +110,9 @@ public class EndpointAgent {
 
   public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
+
+  public static final String JSON_PROPERTY_TARGET_VERSION = "targetVersion";
+  private String targetVersion;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   private OffsetDateTime createdAt;
@@ -166,6 +170,7 @@ public class EndpointAgent {
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_DELETED) Boolean deleted, 
     @JsonProperty(JSON_PROPERTY_VERSION) String version, 
+    @JsonProperty(JSON_PROPERTY_TARGET_VERSION) String targetVersion, 
     @JsonProperty(JSON_PROPERTY_CREATED_AT) OffsetDateTime createdAt, 
     @JsonProperty(JSON_PROPERTY_NUMBER_OF_CLIENTS) Long numberOfClients, 
     @JsonProperty(JSON_PROPERTY_PUBLIC_I_P) String publicIP, 
@@ -187,6 +192,7 @@ public class EndpointAgent {
     this.lastSeen = lastSeen;
     this.deleted = deleted;
     this.version = version;
+    this.targetVersion = targetVersion;
     this.createdAt = createdAt;
     this.numberOfClients = numberOfClients;
     this.publicIP = publicIP;
@@ -429,6 +435,21 @@ public class EndpointAgent {
 
   public String getVersion() {
     return version;
+  }
+
+
+
+
+   /**
+   * The latest available version of the agent. This field is populated only if expand includes &#x60;targetVersion&#x60;.
+   * @return targetVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TARGET_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getTargetVersion() {
+    return targetVersion;
   }
 
 
@@ -709,6 +730,7 @@ public class EndpointAgent {
         Objects.equals(this.status, endpointAgent.status) &&
         Objects.equals(this.deleted, endpointAgent.deleted) &&
         Objects.equals(this.version, endpointAgent.version) &&
+        Objects.equals(this.targetVersion, endpointAgent.targetVersion) &&
         Objects.equals(this.createdAt, endpointAgent.createdAt) &&
         Objects.equals(this.numberOfClients, endpointAgent.numberOfClients) &&
         Objects.equals(this.publicIP, endpointAgent.publicIP) &&
@@ -727,7 +749,7 @@ public class EndpointAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, lastSeen, status, deleted, version, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, links);
+    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, links);
   }
 
   @Override
@@ -747,6 +769,7 @@ public class EndpointAgent {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    targetVersion: ").append(toIndentedString(targetVersion)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    numberOfClients: ").append(toIndentedString(numberOfClients)).append("\n");
     sb.append("    publicIP: ").append(toIndentedString(publicIP)).append("\n");

@@ -53,6 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiRequest.JSON_PROPERTY_URL,
   ApiRequest.JSON_PROPERTY_USERNAME,
   ApiRequest.JSON_PROPERTY_VARIABLES,
+  ApiRequest.JSON_PROPERTY_VERIFY_CERTIFICATE,
   ApiRequest.JSON_PROPERTY_WAIT_TIME_MS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -107,6 +108,9 @@ public class ApiRequest {
 
   public static final String JSON_PROPERTY_VARIABLES = "variables";
   private List<ApiRequestVariable> variables = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
+  private Boolean verifyCertificate = false;
 
   public static final String JSON_PROPERTY_WAIT_TIME_MS = "waitTimeMs";
   private Integer waitTimeMs;
@@ -563,6 +567,31 @@ public class ApiRequest {
   }
 
 
+  public ApiRequest verifyCertificate(Boolean verifyCertificate) {
+    this.verifyCertificate = verifyCertificate;
+    return this;
+  }
+
+   /**
+   * Ignore or acknowledge certificate errors. Set to false to ignore certificate errors.
+   * @return verifyCertificate
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VERIFY_CERTIFICATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getVerifyCertificate() {
+    return verifyCertificate;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VERIFY_CERTIFICATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVerifyCertificate(Boolean verifyCertificate) {
+    this.verifyCertificate = verifyCertificate;
+  }
+
+
   public ApiRequest waitTimeMs(Integer waitTimeMs) {
     this.waitTimeMs = waitTimeMs;
     return this;
@@ -617,12 +646,13 @@ public class ApiRequest {
         Objects.equals(this.url, apiRequest.url) &&
         Objects.equals(this.username, apiRequest.username) &&
         Objects.equals(this.variables, apiRequest.variables) &&
+        Objects.equals(this.verifyCertificate, apiRequest.verifyCertificate) &&
         Objects.equals(this.waitTimeMs, apiRequest.waitTimeMs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assertions, authType, bearerToken, body, clientAuthentication, clientId, clientSecret, collectApiResponse, headers, method, name, password, scope, tokenUrl, url, username, variables, waitTimeMs);
+    return Objects.hash(assertions, authType, bearerToken, body, clientAuthentication, clientId, clientSecret, collectApiResponse, headers, method, name, password, scope, tokenUrl, url, username, variables, verifyCertificate, waitTimeMs);
   }
 
   @Override
@@ -646,6 +676,7 @@ public class ApiRequest {
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
+    sb.append("    verifyCertificate: ").append(toIndentedString(verifyCertificate)).append("\n");
     sb.append("    waitTimeMs: ").append(toIndentedString(waitTimeMs)).append("\n");
     sb.append("}");
     return sb.toString();

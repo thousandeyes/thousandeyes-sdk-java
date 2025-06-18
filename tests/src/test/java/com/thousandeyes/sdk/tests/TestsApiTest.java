@@ -13,6 +13,7 @@
 package com.thousandeyes.sdk.tests;
 
 import com.thousandeyes.sdk.tests.model.Error;
+import com.thousandeyes.sdk.tests.model.TestVersionHistoryResponse;
 import com.thousandeyes.sdk.tests.model.Tests;
 import com.thousandeyes.sdk.tests.model.UnauthorizedError;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -65,6 +66,66 @@ public class TestsApiTest {
                                 .bearerToken(TOKEN)
                                 .build();
         api = new TestsApi(client);
+    }
+    
+    /**
+     * Get test version history
+     * <p>
+     * Retrieve the version history of a specific test.
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void getTestVersionHistoryRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String testId = "202701";
+
+
+        var responseBodyJson = """
+                {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "testVersionHistory" : [ {
+                    "versionId" : "1234",
+                    "versionTimestamp" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user (user@user.com)",
+                    "testId" : "474276"
+                  }, {
+                    "versionId" : "1234",
+                    "versionTimestamp" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user (user@user.com)",
+                    "testId" : "474276"
+                  } ]
+                }
+                                  """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
+        TestVersionHistoryResponse mappedResponse = 
+                mapper.readValue(responseBodyJson, TestVersionHistoryResponse.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/tests/{testId}/history";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getTestVersionHistory(testId, null, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**

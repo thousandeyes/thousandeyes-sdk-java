@@ -499,7 +499,7 @@ ApiResponse<[**GetStreamResponse**](GetStreamResponse.md)>
 
 List data streams
 
-Retrieves a list of configured data streams.
+Retrieves a list of configured data streams. Empty list is returned if no streams are configured.
 
 ### Example
 
@@ -567,7 +567,6 @@ public class Example {
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
 
@@ -577,7 +576,7 @@ public class Example {
 
 List data streams
 
-Retrieves a list of configured data streams.
+Retrieves a list of configured data streams. Empty list is returned if no streams are configured.
 
 ### Example
 
@@ -648,7 +647,6 @@ ApiResponse<[**List&lt;GetStreamResponse&gt;**](GetStreamResponse.md)>
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
 

@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.alerts.model.AlertLinks;
 import com.thousandeyes.sdk.alerts.model.AlertMeta;
+import com.thousandeyes.sdk.alerts.model.AlertSeverity;
+import com.thousandeyes.sdk.alerts.model.AlertState;
 import com.thousandeyes.sdk.alerts.model.AlertType;
-import com.thousandeyes.sdk.alerts.model.Severity;
-import com.thousandeyes.sdk.alerts.model.State;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -98,7 +98,7 @@ public class Alert {
   private String dateEnd;
 
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
-  private Integer ruleId;
+  private Long ruleId;
 
   /**
    * Current state of the alert. Possible values: clear or trigger.
@@ -194,10 +194,10 @@ public class Alert {
   private String alertRuleId;
 
   public static final String JSON_PROPERTY_ALERT_STATE = "alertState";
-  private State alertState;
+  private AlertState alertState;
 
   public static final String JSON_PROPERTY_ALERT_SEVERITY = "alertSeverity";
-  private Severity alertSeverity;
+  private AlertSeverity alertSeverity;
 
   public Alert() { 
   }
@@ -210,7 +210,7 @@ public class Alert {
     @JsonProperty(JSON_PROPERTY_ALERT_ID) UUID alertId, 
     @JsonProperty(JSON_PROPERTY_DATE_START) String dateStart, 
     @JsonProperty(JSON_PROPERTY_DATE_END) String dateEnd, 
-    @JsonProperty(JSON_PROPERTY_RULE_ID) Integer ruleId, 
+    @JsonProperty(JSON_PROPERTY_RULE_ID) Long ruleId, 
     @JsonProperty(JSON_PROPERTY_STATE) StateEnum state, 
     @JsonProperty(JSON_PROPERTY_ALERT_RULE_ID) String alertRuleId
   ) {
@@ -474,7 +474,7 @@ public class Alert {
   @JsonProperty(JSON_PROPERTY_RULE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getRuleId() {
+  public Long getRuleId() {
     return ruleId;
   }
 
@@ -594,7 +594,7 @@ public class Alert {
 
 
 
-  public Alert alertState(State alertState) {
+  public Alert alertState(AlertState alertState) {
     this.alertState = alertState;
     return this;
   }
@@ -607,19 +607,19 @@ public class Alert {
   @JsonProperty(JSON_PROPERTY_ALERT_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public State getAlertState() {
+  public AlertState getAlertState() {
     return alertState;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ALERT_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertState(State alertState) {
+  public void setAlertState(AlertState alertState) {
     this.alertState = alertState;
   }
 
 
-  public Alert alertSeverity(Severity alertSeverity) {
+  public Alert alertSeverity(AlertSeverity alertSeverity) {
     this.alertSeverity = alertSeverity;
     return this;
   }
@@ -632,14 +632,14 @@ public class Alert {
   @JsonProperty(JSON_PROPERTY_ALERT_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Severity getAlertSeverity() {
+  public AlertSeverity getAlertSeverity() {
     return alertSeverity;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ALERT_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertSeverity(Severity alertSeverity) {
+  public void setAlertSeverity(AlertSeverity alertSeverity) {
     this.alertSeverity = alertSeverity;
   }
 

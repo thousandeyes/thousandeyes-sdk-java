@@ -1,6 +1,6 @@
 /*
- * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * Endpoint Test Results API
+ * Retrieve results for scheduled and dynamic tests on endpoint agents.
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.tests.model;
+package com.thousandeyes.sdk.endpoint.tests.results.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -22,23 +22,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The severity of the alert.
+ * Type of ZTA segment.
  */
-public enum Severity {
+public enum EndpointZtaSegmentType {
   
-  INFO("info"),
+  INGRESS("zta_ingress"),
   
-  MAJOR("major"),
-  
-  MINOR("minor"),
-  
-  CRITICAL("critical"),
+  SERVICE("zta_service"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  Severity(String value) {
+  EndpointZtaSegmentType(String value) {
     this.value = value;
   }
 
@@ -53,8 +49,8 @@ public enum Severity {
   }
 
   @JsonCreator
-  public static Severity fromValue(String value) {
-    for (Severity b : Severity.values()) {
+  public static EndpointZtaSegmentType fromValue(String value) {
+    for (EndpointZtaSegmentType b : EndpointZtaSegmentType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
