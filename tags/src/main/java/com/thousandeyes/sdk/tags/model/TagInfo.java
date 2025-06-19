@@ -57,7 +57,7 @@ public class TagInfo {
   private AccessType accessType;
 
   public static final String JSON_PROPERTY_AID = "aid";
-  private Integer aid;
+  private Long aid;
 
   public static final String JSON_PROPERTY_COLOR = "color";
   private String color;
@@ -92,7 +92,7 @@ public class TagInfo {
   @JsonCreator
   public TagInfo(
     @JsonProperty(JSON_PROPERTY_ASSIGNMENTS) List<Assignment> assignments, 
-    @JsonProperty(JSON_PROPERTY_AID) Integer aid, 
+    @JsonProperty(JSON_PROPERTY_AID) Long aid, 
     @JsonProperty(JSON_PROPERTY_CREATE_DATE) String createDate, 
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
     @JsonProperty(JSON_PROPERTY_LEGACY_ID) BigDecimal legacyId
@@ -153,7 +153,7 @@ public class TagInfo {
   @JsonProperty(JSON_PROPERTY_AID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getAid() {
+  public Long getAid() {
     return aid;
   }
 

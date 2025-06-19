@@ -511,7 +511,7 @@ public class DnsServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsServerTest(testId, null, null);
+        var apiResponse = api.getDnsServerTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

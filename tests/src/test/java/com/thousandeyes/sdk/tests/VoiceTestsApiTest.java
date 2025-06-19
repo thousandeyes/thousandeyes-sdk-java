@@ -498,7 +498,7 @@ public class VoiceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getVoiceTest(testId, null, null);
+        var apiResponse = api.getVoiceTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -24,10 +24,10 @@ import com.thousandeyes.sdk.alerts.model.AlertDirection;
 import com.thousandeyes.sdk.alerts.model.AlertGroupType;
 import com.thousandeyes.sdk.alerts.model.AlertNotification;
 import com.thousandeyes.sdk.alerts.model.AlertRoundsViolationMode;
+import com.thousandeyes.sdk.alerts.model.AlertSeverity;
 import com.thousandeyes.sdk.alerts.model.AlertType;
 import com.thousandeyes.sdk.alerts.model.SelfLinks;
 import com.thousandeyes.sdk.alerts.model.SensitivityLevel;
-import com.thousandeyes.sdk.alerts.model.Severity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -109,7 +109,7 @@ public class Rule {
   private SensitivityLevel sensitivityLevel;
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
-  private Severity severity;
+  private AlertSeverity severity;
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_IDS = "endpointAgentIds";
   private List<String> endpointAgentIds = new ArrayList<>();
@@ -505,7 +505,7 @@ public class Rule {
   }
 
 
-  public Rule severity(Severity severity) {
+  public Rule severity(AlertSeverity severity) {
     this.severity = severity;
     return this;
   }
@@ -518,14 +518,14 @@ public class Rule {
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Severity getSeverity() {
+  public AlertSeverity getSeverity() {
     return severity;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSeverity(Severity severity) {
+  public void setSeverity(AlertSeverity severity) {
     this.severity = severity;
   }
 

@@ -33,6 +33,8 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.HttpEndpointTestResult;
 import com.thousandeyes.sdk.pagination.Paginator;
 import com.thousandeyes.sdk.endpoint.tests.results.model.HttpEndpointTestResult;
 import com.thousandeyes.sdk.pagination.Paginator;
+import com.thousandeyes.sdk.endpoint.tests.results.model.HttpEndpointTestResult;
+import com.thousandeyes.sdk.pagination.Paginator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -160,12 +162,13 @@ public class HttpServerEndpointScheduledTestResultsApi {
    * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
    * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;header,\&quot; append &#x60;?expand&#x3D;header&#x60; to the query. (optional
    * @param httpEndpointTestsDataRoundsSearch Test data search filters. (optional)
    * @return Paginator<HttpEndpointTestResult, HttpMultiEndpointTestResults>
    */
-  public Paginator<HttpEndpointTestResult, HttpMultiEndpointTestResults> getMultiTestFilteredHttpServerScheduledTestResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) {
-    return new Paginator<>(cursor -> getMultiTestFilteredHttpServerScheduledTestResults(aid, window, startDate, endDate, cursor, expand, httpEndpointTestsDataRoundsSearch),
+  public Paginator<HttpEndpointTestResult, HttpMultiEndpointTestResults> getMultiTestFilteredHttpServerScheduledTestResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Boolean useAllPermittedAids, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) {
+    return new Paginator<>(cursor -> getMultiTestFilteredHttpServerScheduledTestResults(aid, window, startDate, endDate, cursor, useAllPermittedAids, expand, httpEndpointTestsDataRoundsSearch),
                            HttpMultiEndpointTestResults::getResults);
 
   }
@@ -177,13 +180,14 @@ public class HttpServerEndpointScheduledTestResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
    * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;header,\&quot; append &#x60;?expand&#x3D;header&#x60; to the query. (optional
    * @param httpEndpointTestsDataRoundsSearch Test data search filters. (optional)
    * @return HttpMultiEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public HttpMultiEndpointTestResults getMultiTestFilteredHttpServerScheduledTestResults(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
-    ApiResponse<HttpMultiEndpointTestResults> response = getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo(aid, window, startDate, endDate, cursor, expand, httpEndpointTestsDataRoundsSearch);
+  public HttpMultiEndpointTestResults getMultiTestFilteredHttpServerScheduledTestResults(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, Boolean useAllPermittedAids, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
+    ApiResponse<HttpMultiEndpointTestResults> response = getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo(aid, window, startDate, endDate, cursor, useAllPermittedAids, expand, httpEndpointTestsDataRoundsSearch);
     return response.getData();
   }
 
@@ -195,15 +199,16 @@ public class HttpServerEndpointScheduledTestResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
    * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;header,\&quot; append &#x60;?expand&#x3D;header&#x60; to the query. (optional
    * @param httpEndpointTestsDataRoundsSearch Test data search filters. (optional)
    * @return ApiResponse&lt;HttpMultiEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<HttpMultiEndpointTestResults> getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
+  public ApiResponse<HttpMultiEndpointTestResults> getMultiTestFilteredHttpServerScheduledTestResultsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, Boolean useAllPermittedAids, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
     getMultiTestFilteredHttpServerScheduledTestResultsValidateRequest();
 
-    var requestBuilder = getMultiTestFilteredHttpServerScheduledTestResultsRequestBuilder(aid, window, startDate, endDate, cursor, expand, httpEndpointTestsDataRoundsSearch);
+    var requestBuilder = getMultiTestFilteredHttpServerScheduledTestResultsRequestBuilder(aid, window, startDate, endDate, cursor, useAllPermittedAids, expand, httpEndpointTestsDataRoundsSearch);
 
     return apiClient.send(requestBuilder.build(), HttpMultiEndpointTestResults.class);
   }
@@ -211,11 +216,103 @@ public class HttpServerEndpointScheduledTestResultsApi {
   private void getMultiTestFilteredHttpServerScheduledTestResultsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getMultiTestFilteredHttpServerScheduledTestResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getMultiTestFilteredHttpServerScheduledTestResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, Boolean useAllPermittedAids, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/test-results/scheduled-tests/http-server/filter";
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("window", window));
+    localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
+    localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
+    localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
+    localVarQueryParams.addAll(parameterToPairs("useAllPermittedAids", useAllPermittedAids));
+    localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Content-Type", List.of("application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    requestBuilder.requestBody(httpEndpointTestsDataRoundsSearch);
+    return requestBuilder;
+  }
+  /**
+   * Filter HTTP server result for a scheduled test with pagination
+   * Returns component-level timings for an object load over HTTP. These include DNS, connect, wait, and receive times for a single scheduled test. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;header,\&quot; append &#x60;?expand&#x3D;header&#x60; to the query. (optional
+   * @param httpEndpointTestsDataRoundsSearch Test result search filters. (optional)
+   * @return Paginator<HttpEndpointTestResult, HttpMultiEndpointTestResults>
+   */
+  public Paginator<HttpEndpointTestResult, HttpMultiEndpointTestResults> getSingleTestFilteredHttpServerScheduledTestResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) {
+    return new Paginator<>(cursor -> getSingleTestFilteredHttpServerScheduledTestResults(testId, aid, window, startDate, endDate, cursor, expand, httpEndpointTestsDataRoundsSearch),
+                           HttpMultiEndpointTestResults::getResults);
+
+  }
+  /**
+   * Filter HTTP server result for a scheduled test
+   * Returns component-level timings for an object load over HTTP. These include DNS, connect, wait, and receive times for a single scheduled test. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;header,\&quot; append &#x60;?expand&#x3D;header&#x60; to the query. (optional
+   * @param httpEndpointTestsDataRoundsSearch Test result search filters. (optional)
+   * @return HttpMultiEndpointTestResults
+   * @throws ApiException if fails to make API call
+   */
+  public HttpMultiEndpointTestResults getSingleTestFilteredHttpServerScheduledTestResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
+    ApiResponse<HttpMultiEndpointTestResults> response = getSingleTestFilteredHttpServerScheduledTestResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, httpEndpointTestsDataRoundsSearch);
+    return response.getData();
+  }
+
+  /**
+   * Filter HTTP server result for a scheduled test
+   * Returns component-level timings for an object load over HTTP. These include DNS, connect, wait, and receive times for a single scheduled test. 
+   * @param testId Test ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;header,\&quot; append &#x60;?expand&#x3D;header&#x60; to the query. (optional
+   * @param httpEndpointTestsDataRoundsSearch Test result search filters. (optional)
+   * @return ApiResponse&lt;HttpMultiEndpointTestResults&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<HttpMultiEndpointTestResults> getSingleTestFilteredHttpServerScheduledTestResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
+    getSingleTestFilteredHttpServerScheduledTestResultsValidateRequest(testId);
+
+    var requestBuilder = getSingleTestFilteredHttpServerScheduledTestResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor, expand, httpEndpointTestsDataRoundsSearch);
+
+    return apiClient.send(requestBuilder.build(), HttpMultiEndpointTestResults.class);
+  }
+
+  private void getSingleTestFilteredHttpServerScheduledTestResultsValidateRequest(String testId) throws ApiException {
+      // verify the required parameter 'testId' is set
+      if (testId == null) {
+        throw new ApiException(400, "Missing the required parameter 'testId' when calling getSingleTestFilteredHttpServerScheduledTestResults");
+      }
+  }
+
+  private ApiRequest.ApiRequestBuilder getSingleTestFilteredHttpServerScheduledTestResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointHttpServerOptions> expand, HttpEndpointTestsDataRoundsSearch httpEndpointTestsDataRoundsSearch) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("POST");
+
+    String path = "/endpoint/test-results/scheduled-tests/{testId}/http-server/filter"
+        .replace("{testId}", urlEncode(testId.toString()));
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();

@@ -63,6 +63,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedHttpServerTest.JSON_PROPERTY_CONTENT_REGEX,
   UnexpandedHttpServerTest.JSON_PROPERTY_CUSTOM_HEADERS,
   UnexpandedHttpServerTest.JSON_PROPERTY_DESIRED_STATUS_CODE,
+  UnexpandedHttpServerTest.JSON_PROPERTY_DISTRIBUTED_TRACING,
   UnexpandedHttpServerTest.JSON_PROPERTY_DOWNLOAD_LIMIT,
   UnexpandedHttpServerTest.JSON_PROPERTY_DNS_OVERRIDE,
   UnexpandedHttpServerTest.JSON_PROPERTY_HTTP_TARGET_TIME,
@@ -161,6 +162,9 @@ public class UnexpandedHttpServerTest {
 
   public static final String JSON_PROPERTY_DESIRED_STATUS_CODE = "desiredStatusCode";
   private String desiredStatusCode = "default";
+
+  public static final String JSON_PROPERTY_DISTRIBUTED_TRACING = "distributedTracing";
+  private Boolean distributedTracing;
 
   public static final String JSON_PROPERTY_DOWNLOAD_LIMIT = "downloadLimit";
   private Integer downloadLimit;
@@ -730,6 +734,31 @@ public class UnexpandedHttpServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDesiredStatusCode(String desiredStatusCode) {
     this.desiredStatusCode = desiredStatusCode;
+  }
+
+
+  public UnexpandedHttpServerTest distributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
+    return this;
+  }
+
+   /**
+   * Adds distributed tracing headers to API requests using B3 and W3C standards.
+   * @return distributedTracing
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getDistributedTracing() {
+    return distributedTracing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISTRIBUTED_TRACING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDistributedTracing(Boolean distributedTracing) {
+    this.distributedTracing = distributedTracing;
   }
 
 
@@ -1599,6 +1628,7 @@ public class UnexpandedHttpServerTest {
         Objects.equals(this.contentRegex, unexpandedHttpServerTest.contentRegex) &&
         Objects.equals(this.customHeaders, unexpandedHttpServerTest.customHeaders) &&
         Objects.equals(this.desiredStatusCode, unexpandedHttpServerTest.desiredStatusCode) &&
+        Objects.equals(this.distributedTracing, unexpandedHttpServerTest.distributedTracing) &&
         Objects.equals(this.downloadLimit, unexpandedHttpServerTest.downloadLimit) &&
         Objects.equals(this.dnsOverride, unexpandedHttpServerTest.dnsOverride) &&
         Objects.equals(this.httpTargetTime, unexpandedHttpServerTest.httpTargetTime) &&
@@ -1636,7 +1666,7 @@ public class UnexpandedHttpServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -1664,6 +1694,7 @@ public class UnexpandedHttpServerTest {
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    desiredStatusCode: ").append(toIndentedString(desiredStatusCode)).append("\n");
+    sb.append("    distributedTracing: ").append(toIndentedString(distributedTracing)).append("\n");
     sb.append("    downloadLimit: ").append(toIndentedString(downloadLimit)).append("\n");
     sb.append("    dnsOverride: ").append(toIndentedString(dnsOverride)).append("\n");
     sb.append("    httpTargetTime: ").append(toIndentedString(httpTargetTime)).append("\n");

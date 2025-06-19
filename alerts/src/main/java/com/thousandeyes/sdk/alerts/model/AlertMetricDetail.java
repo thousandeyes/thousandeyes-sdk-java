@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.alerts.model.AlertState;
 import com.thousandeyes.sdk.alerts.model.EndAlertMetrics;
 import com.thousandeyes.sdk.alerts.model.StartAlertMetrics;
-import com.thousandeyes.sdk.alerts.model.State;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -52,7 +52,7 @@ public class AlertMetricDetail {
   private StartAlertMetrics start;
 
   public static final String JSON_PROPERTY_STATE = "state";
-  private State state;
+  private AlertState state;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
@@ -160,7 +160,7 @@ public class AlertMetricDetail {
   }
 
 
-  public AlertMetricDetail state(State state) {
+  public AlertMetricDetail state(AlertState state) {
     this.state = state;
     return this;
   }
@@ -173,14 +173,14 @@ public class AlertMetricDetail {
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public State getState() {
+  public AlertState getState() {
     return state;
   }
 
 
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setState(State state) {
+  public void setState(AlertState state) {
     this.state = state;
   }
 

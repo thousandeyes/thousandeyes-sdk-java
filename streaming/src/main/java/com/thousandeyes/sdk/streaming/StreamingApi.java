@@ -229,7 +229,7 @@ public class StreamingApi {
   }
   /**
    * List data streams
-   * Retrieves a list of configured data streams.
+   * Retrieves a list of configured data streams. Empty list is returned if no streams are configured.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param type Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum (optional)
    * @return List&lt;GetStreamResponse&gt;
@@ -242,7 +242,7 @@ public class StreamingApi {
 
   /**
    * List data streams
-   * Retrieves a list of configured data streams.
+   * Retrieves a list of configured data streams. Empty list is returned if no streams are configured.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param type Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum (optional)
    * @return ApiResponse&lt;List&lt;GetStreamResponse&gt;&gt;

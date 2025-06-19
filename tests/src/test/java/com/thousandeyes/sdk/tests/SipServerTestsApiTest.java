@@ -524,7 +524,7 @@ public class SipServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getSipServerTest(testId, null, null);
+        var apiResponse = api.getSipServerTest(testId, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

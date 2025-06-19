@@ -32,6 +32,8 @@ public enum NetworkTopologyType {
   
   GATEWAY("gateway"),
   
+  DNS("dns"),
+  
   UNKNOWN("unknown");
 
   private String value;
