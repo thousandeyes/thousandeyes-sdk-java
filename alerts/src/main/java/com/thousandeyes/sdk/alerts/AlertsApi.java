@@ -22,10 +22,10 @@ import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.alerts.model.AlertDetail;
-import com.thousandeyes.sdk.alerts.model.AlertState;
 import com.thousandeyes.sdk.alerts.model.Alerts;
 import com.thousandeyes.sdk.alerts.model.Error;
 import java.time.OffsetDateTime;
+import com.thousandeyes.sdk.alerts.model.State;
 import java.util.UUID;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
 import com.thousandeyes.sdk.alerts.model.Alert;
@@ -130,7 +130,7 @@ public class AlertsApi {
    * @param state Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. (optional)
    * @return Paginator<Alert, Alerts>
    */
-  public Paginator<Alert, Alerts> getAlertsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, AlertState state) {
+  public Paginator<Alert, Alerts> getAlertsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, State state) {
     return new Paginator<>(cursor -> getAlerts(aid, window, startDate, endDate, max, cursor, state),
                            Alerts::getAlerts);
 
@@ -148,7 +148,7 @@ public class AlertsApi {
    * @return Alerts
    * @throws ApiException if fails to make API call
    */
-  public Alerts getAlerts(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, AlertState state) throws ApiException {
+  public Alerts getAlerts(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
     ApiResponse<Alerts> response = getAlertsWithHttpInfo(aid, window, startDate, endDate, max, cursor, state);
     return response.getData();
   }
@@ -166,7 +166,7 @@ public class AlertsApi {
    * @return ApiResponse&lt;Alerts&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Alerts> getAlertsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, AlertState state) throws ApiException {
+  public ApiResponse<Alerts> getAlertsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
     getAlertsValidateRequest();
 
     var requestBuilder = getAlertsRequestBuilder(aid, window, startDate, endDate, max, cursor, state);
@@ -177,7 +177,7 @@ public class AlertsApi {
   private void getAlertsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, AlertState state) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getAlertsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 

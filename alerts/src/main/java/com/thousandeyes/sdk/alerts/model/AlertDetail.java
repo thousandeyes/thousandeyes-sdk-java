@@ -23,8 +23,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.alerts.model.AlertLinks;
 import com.thousandeyes.sdk.alerts.model.AlertMeta;
 import com.thousandeyes.sdk.alerts.model.AlertMetricDetail;
-import com.thousandeyes.sdk.alerts.model.AlertSeverity;
-import com.thousandeyes.sdk.alerts.model.AlertState;
 import com.thousandeyes.sdk.alerts.model.AlertType;
 import com.thousandeyes.sdk.alerts.model.Severity;
 import com.thousandeyes.sdk.alerts.model.State;
@@ -91,10 +89,10 @@ public class AlertDetail {
   private Severity severity;
 
   public static final String JSON_PROPERTY_ALERT_STATE = "alertState";
-  private AlertState alertState;
+  private State alertState;
 
   public static final String JSON_PROPERTY_ALERT_SEVERITY = "alertSeverity";
-  private AlertSeverity alertSeverity;
+  private Severity alertSeverity;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   private List<AlertMetricDetail> details = new ArrayList<>();
@@ -359,7 +357,7 @@ public class AlertDetail {
   }
 
 
-  public AlertDetail alertState(AlertState alertState) {
+  public AlertDetail alertState(State alertState) {
     this.alertState = alertState;
     return this;
   }
@@ -372,19 +370,19 @@ public class AlertDetail {
   @JsonProperty(JSON_PROPERTY_ALERT_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public AlertState getAlertState() {
+  public State getAlertState() {
     return alertState;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ALERT_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertState(AlertState alertState) {
+  public void setAlertState(State alertState) {
     this.alertState = alertState;
   }
 
 
-  public AlertDetail alertSeverity(AlertSeverity alertSeverity) {
+  public AlertDetail alertSeverity(Severity alertSeverity) {
     this.alertSeverity = alertSeverity;
     return this;
   }
@@ -397,14 +395,14 @@ public class AlertDetail {
   @JsonProperty(JSON_PROPERTY_ALERT_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public AlertSeverity getAlertSeverity() {
+  public Severity getAlertSeverity() {
     return alertSeverity;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ALERT_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertSeverity(AlertSeverity alertSeverity) {
+  public void setAlertSeverity(Severity alertSeverity) {
     this.alertSeverity = alertSeverity;
   }
 
