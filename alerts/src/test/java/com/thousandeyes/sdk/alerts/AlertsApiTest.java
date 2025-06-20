@@ -13,10 +13,10 @@
 package com.thousandeyes.sdk.alerts;
 
 import com.thousandeyes.sdk.alerts.model.AlertDetail;
-import com.thousandeyes.sdk.alerts.model.AlertState;
 import com.thousandeyes.sdk.alerts.model.Alerts;
 import com.thousandeyes.sdk.alerts.model.Error;
 import java.time.OffsetDateTime;
+import com.thousandeyes.sdk.alerts.model.State;
 import java.util.UUID;
 import com.thousandeyes.sdk.alerts.model.UnauthorizedError;
 import com.thousandeyes.sdk.alerts.model.Alert;
@@ -89,7 +89,7 @@ public class AlertsApiTest {
 
         var responseBodyJson = """
                 {
-                  "severity" : { },
+                  "severity" : "major",
                   "alertType" : "http-server",
                   "endDate" : "2022-07-18T22:00:54Z",
                   "_links" : {
@@ -165,7 +165,7 @@ public class AlertsApiTest {
                   } ],
                   "id" : "e9c3bf02-a48c-4aa8-9e5f-898800d6f569",
                   "suppressed" : false,
-                  "state" : { },
+                  "state" : "trigger",
                   "alertState" : "trigger",
                   "startDate" : "2022-07-17T22:00:54Z"
                 }

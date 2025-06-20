@@ -18,52 +18,45 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
- * State
+ * Current state of the alert. Possible values: clear or trigger.
  */
-@JsonPropertyOrder({
-})
-@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class State {
-  public State() { 
+public enum State {
+  
+  CLEAR("clear"),
+  
+  TRIGGER("trigger"),
+  
+  UNKNOWN("unknown");
+
+  private String value;
+
+  State(String value) {
+    this.value = value;
   }
 
-  /**
-   * Return true if this State object is equal to o.
-   */
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    return true;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash();
+  @JsonValue
+  public String getValue() {
+    return value;
   }
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class State {\n");
-    sb.append("}");
-    return sb.toString();
+    return String.valueOf(value);
   }
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+  @JsonCreator
+  public static State fromValue(String value) {
+    for (State b : State.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
     }
-    return o.toString().replace("\n", "\n    ");
+    return UNKNOWN;
   }
+
 }
 

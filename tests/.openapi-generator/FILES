@@ -51,7 +51,6 @@ src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertDirection.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRoundsViolationMode.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRule.java
-src/main/java/com/thousandeyes/sdk/tests/model/AlertSeverity.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertType.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiClientAuthentication.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiInstantTest.java
@@ -131,6 +130,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/RequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/tests/model/SensitivityLevel.java
+src/main/java/com/thousandeyes/sdk/tests/model/Severity.java
 src/main/java/com/thousandeyes/sdk/tests/model/SharedWithAccount.java
 src/main/java/com/thousandeyes/sdk/tests/model/SimpleAgent.java
 src/main/java/com/thousandeyes/sdk/tests/model/SimpleTest.java
