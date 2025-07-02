@@ -35,6 +35,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointHttpServ
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointIpVersionTemplate.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointNetworkTopologyResultRequest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointNetworkTopologyResultRequestFilter.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointNetworkTopologyThresholdFilter.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointPathTrace.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointPathVisHop.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointPathVisRoute.java
@@ -89,6 +90,8 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopo
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopologyResult.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopologyResultBase.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopologyResults.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworksThresholdFilter.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworksThresholdFilterName.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/MultiTestIdEndpointTestsDataRoundsSearch.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/MultiTestIdEndpointTestsDataSearchFilter.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/MultiTestIdNetworkEndpointTestResults.java

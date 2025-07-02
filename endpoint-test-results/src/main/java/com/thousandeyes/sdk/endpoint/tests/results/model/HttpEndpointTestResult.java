@@ -58,7 +58,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpEndpointTestResult.JSON_PROPERTY_SSL_TIME,
   HttpEndpointTestResult.JSON_PROPERTY_TOTAL_TIME,
   HttpEndpointTestResult.JSON_PROPERTY_WAIT_TIME,
-  HttpEndpointTestResult.JSON_PROPERTY_WIRE_SIZE
+  HttpEndpointTestResult.JSON_PROPERTY_WIRE_SIZE,
+  HttpEndpointTestResult.JSON_PROPERTY_THROUGHPUT
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class HttpEndpointTestResult {
@@ -134,6 +135,9 @@ public class HttpEndpointTestResult {
   public static final String JSON_PROPERTY_WIRE_SIZE = "wireSize";
   private Integer wireSize;
 
+  public static final String JSON_PROPERTY_THROUGHPUT = "throughput";
+  private Integer throughput;
+
   public HttpEndpointTestResult() { 
   }
 
@@ -154,7 +158,8 @@ public class HttpEndpointTestResult {
     @JsonProperty(JSON_PROPERTY_SSL_TIME) Integer sslTime, 
     @JsonProperty(JSON_PROPERTY_TOTAL_TIME) Integer totalTime, 
     @JsonProperty(JSON_PROPERTY_WAIT_TIME) Integer waitTime, 
-    @JsonProperty(JSON_PROPERTY_WIRE_SIZE) Integer wireSize
+    @JsonProperty(JSON_PROPERTY_WIRE_SIZE) Integer wireSize, 
+    @JsonProperty(JSON_PROPERTY_THROUGHPUT) Integer throughput
   ) {
   this();
     this.testId = testId;
@@ -173,6 +178,7 @@ public class HttpEndpointTestResult {
     this.totalTime = totalTime;
     this.waitTime = waitTime;
     this.wireSize = wireSize;
+    this.throughput = throughput;
   }
 
   public HttpEndpointTestResult aid(String aid) {
@@ -615,6 +621,21 @@ public class HttpEndpointTestResult {
 
 
 
+   /**
+   * Amount of data transmitted, in bytes.
+   * @return throughput
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_THROUGHPUT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getThroughput() {
+    return throughput;
+  }
+
+
+
+
   /**
    * Return true if this HttpEndpointTestResult object is equal to o.
    */
@@ -650,12 +671,13 @@ public class HttpEndpointTestResult {
         Objects.equals(this.sslTime, httpEndpointTestResult.sslTime) &&
         Objects.equals(this.totalTime, httpEndpointTestResult.totalTime) &&
         Objects.equals(this.waitTime, httpEndpointTestResult.waitTime) &&
-        Objects.equals(this.wireSize, httpEndpointTestResult.wireSize);
+        Objects.equals(this.wireSize, httpEndpointTestResult.wireSize) &&
+        Objects.equals(this.throughput, httpEndpointTestResult.throughput);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, score, connectTime, dnsTime, errorType, errorDetails, headers, numRedirects, receiveTime, redirectTime, responseCode, responseTime, sslTime, totalTime, waitTime, wireSize);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, score, connectTime, dnsTime, errorType, errorDetails, headers, numRedirects, receiveTime, redirectTime, responseCode, responseTime, sslTime, totalTime, waitTime, wireSize, throughput);
   }
 
   @Override
@@ -686,6 +708,7 @@ public class HttpEndpointTestResult {
     sb.append("    totalTime: ").append(toIndentedString(totalTime)).append("\n");
     sb.append("    waitTime: ").append(toIndentedString(waitTime)).append("\n");
     sb.append("    wireSize: ").append(toIndentedString(wireSize)).append("\n");
+    sb.append("    throughput: ").append(toIndentedString(throughput)).append("\n");
     sb.append("}");
     return sb.toString();
   }

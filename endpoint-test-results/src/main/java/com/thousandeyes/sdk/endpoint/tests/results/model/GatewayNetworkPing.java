@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   GatewayNetworkPing.JSON_PROPERTY_AVG_RTT,
   GatewayNetworkPing.JSON_PROPERTY_MAX_RTT,
+  GatewayNetworkPing.JSON_PROPERTY_LOSS,
   GatewayNetworkPing.JSON_PROPERTY_MEAN_DEV_RTT,
   GatewayNetworkPing.JSON_PROPERTY_MIN_RTT,
   GatewayNetworkPing.JSON_PROPERTY_PKTS_RECEIVED,
@@ -46,6 +47,9 @@ public class GatewayNetworkPing {
 
   public static final String JSON_PROPERTY_MAX_RTT = "maxRtt";
   private Integer maxRtt;
+
+  public static final String JSON_PROPERTY_LOSS = "loss";
+  private Double loss;
 
   public static final String JSON_PROPERTY_MEAN_DEV_RTT = "meanDevRtt";
   private Integer meanDevRtt;
@@ -72,6 +76,7 @@ public class GatewayNetworkPing {
   public GatewayNetworkPing(
     @JsonProperty(JSON_PROPERTY_AVG_RTT) Integer avgRtt, 
     @JsonProperty(JSON_PROPERTY_MAX_RTT) Integer maxRtt, 
+    @JsonProperty(JSON_PROPERTY_LOSS) Double loss, 
     @JsonProperty(JSON_PROPERTY_MEAN_DEV_RTT) Integer meanDevRtt, 
     @JsonProperty(JSON_PROPERTY_MIN_RTT) Integer minRtt, 
     @JsonProperty(JSON_PROPERTY_PKTS_RECEIVED) Integer pktsReceived, 
@@ -82,6 +87,7 @@ public class GatewayNetworkPing {
   this();
     this.avgRtt = avgRtt;
     this.maxRtt = maxRtt;
+    this.loss = loss;
     this.meanDevRtt = meanDevRtt;
     this.minRtt = minRtt;
     this.pktsReceived = pktsReceived;
@@ -115,6 +121,21 @@ public class GatewayNetworkPing {
 
   public Integer getMaxRtt() {
     return maxRtt;
+  }
+
+
+
+
+   /**
+   * Network loss.
+   * @return loss
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LOSS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Double getLoss() {
+    return loss;
   }
 
 
@@ -224,6 +245,7 @@ public class GatewayNetworkPing {
     GatewayNetworkPing gatewayNetworkPing = (GatewayNetworkPing) o;
     return Objects.equals(this.avgRtt, gatewayNetworkPing.avgRtt) &&
         Objects.equals(this.maxRtt, gatewayNetworkPing.maxRtt) &&
+        Objects.equals(this.loss, gatewayNetworkPing.loss) &&
         Objects.equals(this.meanDevRtt, gatewayNetworkPing.meanDevRtt) &&
         Objects.equals(this.minRtt, gatewayNetworkPing.minRtt) &&
         Objects.equals(this.pktsReceived, gatewayNetworkPing.pktsReceived) &&
@@ -234,7 +256,7 @@ public class GatewayNetworkPing {
 
   @Override
   public int hashCode() {
-    return Objects.hash(avgRtt, maxRtt, meanDevRtt, minRtt, pktsReceived, pktsSent, error, infoFlags);
+    return Objects.hash(avgRtt, maxRtt, loss, meanDevRtt, minRtt, pktsReceived, pktsSent, error, infoFlags);
   }
 
   @Override
@@ -243,6 +265,7 @@ public class GatewayNetworkPing {
     sb.append("class GatewayNetworkPing {\n");
     sb.append("    avgRtt: ").append(toIndentedString(avgRtt)).append("\n");
     sb.append("    maxRtt: ").append(toIndentedString(maxRtt)).append("\n");
+    sb.append("    loss: ").append(toIndentedString(loss)).append("\n");
     sb.append("    meanDevRtt: ").append(toIndentedString(meanDevRtt)).append("\n");
     sb.append("    minRtt: ").append(toIndentedString(minRtt)).append("\n");
     sb.append("    pktsReceived: ").append(toIndentedString(pktsReceived)).append("\n");
