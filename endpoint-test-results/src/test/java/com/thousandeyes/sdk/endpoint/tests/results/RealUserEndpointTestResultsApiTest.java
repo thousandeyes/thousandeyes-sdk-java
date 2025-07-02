@@ -833,6 +833,7 @@ public class RealUserEndpointTestResultsApiTest {
                       "isIcmpBlocked" : true,
                       "vpnPing" : {
                         "maxRtt" : 66,
+                        "loss" : 1.0,
                         "pktsReceived" : 10,
                         "avgRtt" : 7,
                         "meanDevRtt" : 11,
@@ -843,6 +844,7 @@ public class RealUserEndpointTestResultsApiTest {
                       },
                       "ping" : {
                         "maxRtt" : 66,
+                        "loss" : 1.0,
                         "pktsReceived" : 10,
                         "avgRtt" : 7,
                         "meanDevRtt" : 11,
@@ -946,6 +948,7 @@ public class RealUserEndpointTestResultsApiTest {
                       "connectRtt" : 77.777,
                       "gatewayPing" : {
                         "maxRtt" : 66,
+                        "loss" : 1.0,
                         "pktsReceived" : 10,
                         "avgRtt" : 7,
                         "meanDevRtt" : 11,
@@ -1024,6 +1027,7 @@ public class RealUserEndpointTestResultsApiTest {
                       "isIcmpBlocked" : true,
                       "vpnPing" : {
                         "maxRtt" : 66,
+                        "loss" : 1.0,
                         "pktsReceived" : 10,
                         "avgRtt" : 7,
                         "meanDevRtt" : 11,
@@ -1034,6 +1038,7 @@ public class RealUserEndpointTestResultsApiTest {
                       },
                       "ping" : {
                         "maxRtt" : 66,
+                        "loss" : 1.0,
                         "pktsReceived" : 10,
                         "avgRtt" : 7,
                         "meanDevRtt" : 11,
@@ -1137,6 +1142,7 @@ public class RealUserEndpointTestResultsApiTest {
                       "connectRtt" : 77.777,
                       "gatewayPing" : {
                         "maxRtt" : 66,
+                        "loss" : 1.0,
                         "pktsReceived" : 10,
                         "avgRtt" : 7,
                         "meanDevRtt" : 11,

@@ -38,6 +38,20 @@ public enum ThresholdFilterName {
   
   SIGNAL_QUALITY("signal-quality"),
   
+  APPLICATION_SCORE("application-score"),
+  
+  ZTA_INGRESS_LOSS("zta-ingress-loss"),
+  
+  ZTA_SERVICE_LOSS("zta-service-loss"),
+  
+  ZTA_INGRESS_AVG_LATENCY("zta-ingress-avg-latency"),
+  
+  ZTA_SERVICE_AVG_LATENCY("zta-service-avg-latency"),
+  
+  ZTA_INGRESS_JITTER("zta-ingress-jitter"),
+  
+  ZTA_SERVICE_JITTER("zta-service-jitter"),
+  
   UNKNOWN("unknown");
 
   private String value;

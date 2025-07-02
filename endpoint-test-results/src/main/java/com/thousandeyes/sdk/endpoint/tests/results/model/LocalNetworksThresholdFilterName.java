@@ -24,27 +24,21 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Metric on which the threshold filter is applied.
  */
-public enum HttpThresholdFilterName {
+public enum LocalNetworksThresholdFilterName {
   
-  RESPONSE_TIME("response-time"),
+  VPN_SCORE("vpn-score"),
   
-  DNS_TIME("dns-time"),
+  AVG_RTT("avg-rtt"),
   
-  CONNECT_TIME("connect-time"),
+  MEAN_DEV_RTT("mean-dev-rtt"),
   
-  THROUGHPUT("throughput"),
-  
-  SSL_TIME("ssl-time"),
-  
-  WAIT_TIME("wait-time"),
-  
-  APPLICATION_SCORE("application-score"),
+  LOSS("loss"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  HttpThresholdFilterName(String value) {
+  LocalNetworksThresholdFilterName(String value) {
     this.value = value;
   }
 
@@ -59,8 +53,8 @@ public enum HttpThresholdFilterName {
   }
 
   @JsonCreator
-  public static HttpThresholdFilterName fromValue(String value) {
-    for (HttpThresholdFilterName b : HttpThresholdFilterName.values()) {
+  public static LocalNetworksThresholdFilterName fromValue(String value) {
+    for (LocalNetworksThresholdFilterName b : LocalNetworksThresholdFilterName.values()) {
       if (b.value.equals(value)) {
         return b;
       }
