@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * If &#x60;name &#x3D; status-code&#x60;&#x60;, accepted values are [is, is-not]. If &#x60;name &#x3D; response-body&#x60;&#x60;, accepted values are [includes, not-includes]&#x60;.
+ * If &#x60;name &#x3D; status-code&#x60;&#x60;, accepted values are [is, is-not]. If &#x60;name &#x3D; response-body&#x60;&#x60;, accepted values are [includes, not-includes, matches, not-matches]&#x60;.
  */
 public enum ApiRequestAssertionOperator {
   
@@ -33,6 +33,10 @@ public enum ApiRequestAssertionOperator {
   INCLUDES("includes"),
   
   NOT_INCLUDES("not-includes"),
+  
+  MATCHES("matches"),
+  
+  NOT_MATCHES("not-matches"),
   
   UNKNOWN("unknown");
 

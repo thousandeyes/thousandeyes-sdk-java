@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointNetworkTopologyResultRequestFilter;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointNetworkTopologyThresholdFilter;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -28,15 +29,44 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * EndpointNetworkTopologyResultRequest
  */
 @JsonPropertyOrder({
+  EndpointNetworkTopologyResultRequest.JSON_PROPERTY_THRESHOLD_FILTER,
   EndpointNetworkTopologyResultRequest.JSON_PROPERTY_SEARCH_FILTERS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointNetworkTopologyResultRequest {
+  public static final String JSON_PROPERTY_THRESHOLD_FILTER = "thresholdFilter";
+  private EndpointNetworkTopologyThresholdFilter thresholdFilter;
+
   public static final String JSON_PROPERTY_SEARCH_FILTERS = "searchFilters";
   private EndpointNetworkTopologyResultRequestFilter searchFilters;
 
   public EndpointNetworkTopologyResultRequest() { 
   }
+
+  public EndpointNetworkTopologyResultRequest thresholdFilter(EndpointNetworkTopologyThresholdFilter thresholdFilter) {
+    this.thresholdFilter = thresholdFilter;
+    return this;
+  }
+
+   /**
+   * Get thresholdFilter
+   * @return thresholdFilter
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_THRESHOLD_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointNetworkTopologyThresholdFilter getThresholdFilter() {
+    return thresholdFilter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_THRESHOLD_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setThresholdFilter(EndpointNetworkTopologyThresholdFilter thresholdFilter) {
+    this.thresholdFilter = thresholdFilter;
+  }
+
 
   public EndpointNetworkTopologyResultRequest searchFilters(EndpointNetworkTopologyResultRequestFilter searchFilters) {
     this.searchFilters = searchFilters;
@@ -75,18 +105,20 @@ public class EndpointNetworkTopologyResultRequest {
       return false;
     }
     EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = (EndpointNetworkTopologyResultRequest) o;
-    return Objects.equals(this.searchFilters, endpointNetworkTopologyResultRequest.searchFilters);
+    return Objects.equals(this.thresholdFilter, endpointNetworkTopologyResultRequest.thresholdFilter) &&
+        Objects.equals(this.searchFilters, endpointNetworkTopologyResultRequest.searchFilters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(searchFilters);
+    return Objects.hash(thresholdFilter, searchFilters);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EndpointNetworkTopologyResultRequest {\n");
+    sb.append("    thresholdFilter: ").append(toIndentedString(thresholdFilter)).append("\n");
     sb.append("    searchFilters: ").append(toIndentedString(searchFilters)).append("\n");
     sb.append("}");
     return sb.toString();

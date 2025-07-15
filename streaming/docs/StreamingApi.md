@@ -4,16 +4,16 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createStream**](StreamingApi.md#createStream) | **POST** /stream | Create data stream |
-| [**createStreamWithHttpInfo**](StreamingApi.md#createStreamWithHttpInfo) | **POST** /stream | Create data stream |
-| [**deleteStream**](StreamingApi.md#deleteStream) | **DELETE** /stream/{id} | Delete a data stream |
-| [**deleteStreamWithHttpInfo**](StreamingApi.md#deleteStreamWithHttpInfo) | **DELETE** /stream/{id} | Delete a data stream |
-| [**getStream**](StreamingApi.md#getStream) | **GET** /stream/{id} | Retrieve data stream |
-| [**getStreamWithHttpInfo**](StreamingApi.md#getStreamWithHttpInfo) | **GET** /stream/{id} | Retrieve data stream |
-| [**getStreams**](StreamingApi.md#getStreams) | **GET** /stream | List data streams |
-| [**getStreamsWithHttpInfo**](StreamingApi.md#getStreamsWithHttpInfo) | **GET** /stream | List data streams |
-| [**updateStream**](StreamingApi.md#updateStream) | **PUT** /stream/{id} | Update data stream |
-| [**updateStreamWithHttpInfo**](StreamingApi.md#updateStreamWithHttpInfo) | **PUT** /stream/{id} | Update data stream |
+| [**createStream**](StreamingApi.md#createStream) | **POST** /streams | Create data stream |
+| [**createStreamWithHttpInfo**](StreamingApi.md#createStreamWithHttpInfo) | **POST** /streams | Create data stream |
+| [**deleteStream**](StreamingApi.md#deleteStream) | **DELETE** /streams/{id} | Delete a data stream |
+| [**deleteStreamWithHttpInfo**](StreamingApi.md#deleteStreamWithHttpInfo) | **DELETE** /streams/{id} | Delete a data stream |
+| [**getStream**](StreamingApi.md#getStream) | **GET** /streams/{id} | Retrieve data stream |
+| [**getStreamWithHttpInfo**](StreamingApi.md#getStreamWithHttpInfo) | **GET** /streams/{id} | Retrieve data stream |
+| [**getStreams**](StreamingApi.md#getStreams) | **GET** /streams | List data streams |
+| [**getStreamsWithHttpInfo**](StreamingApi.md#getStreamsWithHttpInfo) | **GET** /streams | List data streams |
+| [**updateStream**](StreamingApi.md#updateStream) | **PUT** /streams/{id} | Update data stream |
+| [**updateStreamWithHttpInfo**](StreamingApi.md#updateStreamWithHttpInfo) | **PUT** /streams/{id} | Update data stream |
 
 
 

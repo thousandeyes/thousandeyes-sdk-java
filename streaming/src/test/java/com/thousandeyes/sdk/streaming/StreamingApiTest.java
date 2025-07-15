@@ -193,7 +193,7 @@ public class StreamingApiTest {
                 mapper.readValue(responseBodyJson, CreateStreamResponse.class);
         assertNotNull(mappedResponse);
 
-        var path = "/stream";
+        var path = "/streams";
         stubFor(post(urlPathTemplate(path))
                         .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
                         .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
@@ -223,7 +223,7 @@ public class StreamingApiTest {
 
         var statusCode = 204;
 
-        var path = "/stream/{id}";
+        var path = "/streams/{id}";
         stubFor(delete(urlPathTemplate(path))
                         .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
                         .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
@@ -312,7 +312,7 @@ public class StreamingApiTest {
                 mapper.readValue(responseBodyJson, GetStreamResponse.class);
         assertNotNull(mappedResponse);
 
-        var path = "/stream/{id}";
+        var path = "/streams/{id}";
         stubFor(get(urlPathTemplate(path))
                         .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
                         .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
@@ -457,7 +457,7 @@ public class StreamingApiTest {
                 mapper.readValue(responseBodyJson, new TypeReference<List<GetStreamResponse>>(){});
         assertNotNull(mappedResponse);
 
-        var path = "/stream";
+        var path = "/streams";
         stubFor(get(urlPathTemplate(path))
                         .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
                         .willReturn(aResponse()
@@ -588,7 +588,7 @@ public class StreamingApiTest {
                 mapper.readValue(responseBodyJson, GetStreamResponse.class);
         assertNotNull(mappedResponse);
 
-        var path = "/stream/{id}";
+        var path = "/streams/{id}";
         stubFor(put(urlPathTemplate(path))
                         .withPathParam("id", equalTo(URLEncoder.encode(id, StandardCharsets.UTF_8)))
                         .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
