@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchFilters.JSON_PROPERTY_AGENT_NAME,
   AgentSearchFilters.JSON_PROPERTY_COMPUTER_NAME,
   AgentSearchFilters.JSON_PROPERTY_USERNAME,
+  AgentSearchFilters.JSON_PROPERTY_USER_PRINCIPAL_NAME,
   AgentSearchFilters.JSON_PROPERTY_PLATFORM,
   AgentSearchFilters.JSON_PROPERTY_OS_VERSION,
   AgentSearchFilters.JSON_PROPERTY_LOCATION_COUNTRY_I_S_O,
@@ -57,6 +58,9 @@ public class AgentSearchFilters {
 
   public static final String JSON_PROPERTY_USERNAME = "username";
   private List<String> username = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_USER_PRINCIPAL_NAME = "userPrincipalName";
+  private List<String> userPrincipalName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PLATFORM = "platform";
   private List<Platform> platform = new ArrayList<>();
@@ -208,6 +212,39 @@ public class AgentSearchFilters {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUsername(List<String> username) {
     this.username = username;
+  }
+
+
+  public AgentSearchFilters userPrincipalName(List<String> userPrincipalName) {
+    this.userPrincipalName = userPrincipalName;
+    return this;
+  }
+
+  public AgentSearchFilters addUserPrincipalNameItem(String userPrincipalNameItem) {
+    if (this.userPrincipalName == null) {
+      this.userPrincipalName = new ArrayList<>();
+    }
+    this.userPrincipalName.add(userPrincipalNameItem);
+    return this;
+  }
+
+   /**
+   * Returns only agents that have at least one user principal name, starting with one of the provided strings. This is a case-insensitive prefix match. User principle name is the user login name in an Internet-style format, typically used in Active Directory environments. 
+   * @return userPrincipalName
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getUserPrincipalName() {
+    return userPrincipalName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserPrincipalName(List<String> userPrincipalName) {
+    this.userPrincipalName = userPrincipalName;
   }
 
 
@@ -425,6 +462,7 @@ public class AgentSearchFilters {
         Objects.equals(this.agentName, agentSearchFilters.agentName) &&
         Objects.equals(this.computerName, agentSearchFilters.computerName) &&
         Objects.equals(this.username, agentSearchFilters.username) &&
+        Objects.equals(this.userPrincipalName, agentSearchFilters.userPrincipalName) &&
         Objects.equals(this.platform, agentSearchFilters.platform) &&
         Objects.equals(this.osVersion, agentSearchFilters.osVersion) &&
         Objects.equals(this.locationCountryISO, agentSearchFilters.locationCountryISO) &&
@@ -435,7 +473,7 @@ public class AgentSearchFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, agentName, computerName, username, platform, osVersion, locationCountryISO, locationSubdivision1Code, locationCity, licenseType);
+    return Objects.hash(id, agentName, computerName, username, userPrincipalName, platform, osVersion, locationCountryISO, locationSubdivision1Code, locationCity, licenseType);
   }
 
   @Override
@@ -446,6 +484,7 @@ public class AgentSearchFilters {
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    computerName: ").append(toIndentedString(computerName)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    osVersion: ").append(toIndentedString(osVersion)).append("\n");
     sb.append("    locationCountryISO: ").append(toIndentedString(locationCountryISO)).append("\n");

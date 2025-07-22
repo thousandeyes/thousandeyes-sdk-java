@@ -144,7 +144,8 @@ public class EndpointAgentsApiTest {
                       "enabled" : true
                     } ],
                     "userProfile" : {
-                      "userName" : "joeblogs32"
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
                     }
                   }, {
                     "browserExtensions" : [ {
@@ -163,7 +164,8 @@ public class EndpointAgentsApiTest {
                       "enabled" : true
                     } ],
                     "userProfile" : {
-                      "userName" : "joeblogs32"
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
                     }
                   } ],
                   "agentType" : "endpoint",
@@ -329,7 +331,8 @@ public class EndpointAgentsApiTest {
                       "enabled" : true
                     } ],
                     "userProfile" : {
-                      "userName" : "joeblogs32"
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
                     }
                   }, {
                     "browserExtensions" : [ {
@@ -348,7 +351,8 @@ public class EndpointAgentsApiTest {
                       "enabled" : true
                     } ],
                     "userProfile" : {
-                      "userName" : "joeblogs32"
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
                     }
                   } ],
                   "agentType" : "endpoint",
@@ -505,6 +509,7 @@ public class EndpointAgentsApiTest {
                     "agentName" : [ "myagent-1234", "myagent-1234" ],
                     "locationSubdivision1Code" : [ "ENG", "ENG" ],
                     "id" : [ "861b7557-cd57-4bbb-b648-00bddf88ef49", "861b7557-cd57-4bbb-b648-00bddf88ef49" ],
+                    "userPrincipalName" : [ "picard@c.com" ],
                     "platform" : [ "mac", "mac" ],
                     "locationCity" : [ "Paris", "Paris" ],
                     "username" : [ "picard" ]
@@ -566,7 +571,8 @@ public class EndpointAgentsApiTest {
                         "enabled" : true
                       } ],
                       "userProfile" : {
-                        "userName" : "joeblogs32"
+                        "userName" : "joeblogs32",
+                        "userPrincipalName" : "joeblogs32@c.com"
                       }
                     }, {
                       "browserExtensions" : [ {
@@ -585,7 +591,8 @@ public class EndpointAgentsApiTest {
                         "enabled" : true
                       } ],
                       "userProfile" : {
-                        "userName" : "joeblogs32"
+                        "userName" : "joeblogs32",
+                        "userPrincipalName" : "joeblogs32@c.com"
                       }
                     } ],
                     "agentType" : "endpoint",
@@ -715,7 +722,8 @@ public class EndpointAgentsApiTest {
                         "enabled" : true
                       } ],
                       "userProfile" : {
-                        "userName" : "joeblogs32"
+                        "userName" : "joeblogs32",
+                        "userPrincipalName" : "joeblogs32@c.com"
                       }
                     }, {
                       "browserExtensions" : [ {
@@ -734,7 +742,8 @@ public class EndpointAgentsApiTest {
                         "enabled" : true
                       } ],
                       "userProfile" : {
-                        "userName" : "joeblogs32"
+                        "userName" : "joeblogs32",
+                        "userPrincipalName" : "joeblogs32@c.com"
                       }
                     } ],
                     "agentType" : "endpoint",
@@ -902,7 +911,8 @@ public class EndpointAgentsApiTest {
                       "enabled" : true
                     } ],
                     "userProfile" : {
-                      "userName" : "joeblogs32"
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
                     }
                   }, {
                     "browserExtensions" : [ {
@@ -921,7 +931,8 @@ public class EndpointAgentsApiTest {
                       "enabled" : true
                     } ],
                     "userProfile" : {
-                      "userName" : "joeblogs32"
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
                     }
                   } ],
                   "agentType" : "endpoint",
@@ -1110,7 +1121,8 @@ public class EndpointAgentsApiTest {
                         "enabled" : true
                       } ],
                       "userProfile" : {
-                        "userName" : "joeblogs32"
+                        "userName" : "joeblogs32",
+                        "userPrincipalName" : "joeblogs32@c.com"
                       }
                     }, {
                       "browserExtensions" : [ {
@@ -1129,7 +1141,8 @@ public class EndpointAgentsApiTest {
                         "enabled" : true
                       } ],
                       "userProfile" : {
-                        "userName" : "joeblogs32"
+                        "userName" : "joeblogs32",
+                        "userPrincipalName" : "joeblogs32@c.com"
                       }
                     } ],
                     "agentType" : "endpoint",
@@ -1259,7 +1272,8 @@ public class EndpointAgentsApiTest {
                         "enabled" : true
                       } ],
                       "userProfile" : {
-                        "userName" : "joeblogs32"
+                        "userName" : "joeblogs32",
+                        "userPrincipalName" : "joeblogs32@c.com"
                       }
                     }, {
                       "browserExtensions" : [ {
@@ -1278,7 +1292,8 @@ public class EndpointAgentsApiTest {
                         "enabled" : true
                       } ],
                       "userProfile" : {
-                        "userName" : "joeblogs32"
+                        "userName" : "joeblogs32",
+                        "userPrincipalName" : "joeblogs32@c.com"
                       }
                     } ],
                     "agentType" : "endpoint",
@@ -1502,7 +1517,8 @@ public class EndpointAgentsApiTest {
                       "enabled" : true
                     } ],
                     "userProfile" : {
-                      "userName" : "joeblogs32"
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
                     }
                   }, {
                     "browserExtensions" : [ {
@@ -1521,7 +1537,8 @@ public class EndpointAgentsApiTest {
                       "enabled" : true
                     } ],
                     "userProfile" : {
-                      "userName" : "joeblogs32"
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
                     }
                   } ],
                   "agentType" : "endpoint",

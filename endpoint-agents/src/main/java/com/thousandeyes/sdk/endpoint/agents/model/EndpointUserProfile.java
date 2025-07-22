@@ -27,12 +27,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * EndpointUserProfile
  */
 @JsonPropertyOrder({
-  EndpointUserProfile.JSON_PROPERTY_USER_NAME
+  EndpointUserProfile.JSON_PROPERTY_USER_NAME,
+  EndpointUserProfile.JSON_PROPERTY_USER_PRINCIPAL_NAME
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointUserProfile {
   public static final String JSON_PROPERTY_USER_NAME = "userName";
   private String userName;
+
+  public static final String JSON_PROPERTY_USER_PRINCIPAL_NAME = "userPrincipalName";
+  private String userPrincipalName;
 
   public EndpointUserProfile() { 
   }
@@ -62,6 +66,31 @@ public class EndpointUserProfile {
   }
 
 
+  public EndpointUserProfile userPrincipalName(String userPrincipalName) {
+    this.userPrincipalName = userPrincipalName;
+    return this;
+  }
+
+   /**
+   * Get userPrincipalName
+   * @return userPrincipalName
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserPrincipalName() {
+    return userPrincipalName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserPrincipalName(String userPrincipalName) {
+    this.userPrincipalName = userPrincipalName;
+  }
+
+
   /**
    * Return true if this EndpointUserProfile object is equal to o.
    */
@@ -74,12 +103,13 @@ public class EndpointUserProfile {
       return false;
     }
     EndpointUserProfile endpointUserProfile = (EndpointUserProfile) o;
-    return Objects.equals(this.userName, endpointUserProfile.userName);
+    return Objects.equals(this.userName, endpointUserProfile.userName) &&
+        Objects.equals(this.userPrincipalName, endpointUserProfile.userPrincipalName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userName);
+    return Objects.hash(userName, userPrincipalName);
   }
 
   @Override
@@ -87,6 +117,7 @@ public class EndpointUserProfile {
     StringBuilder sb = new StringBuilder();
     sb.append("class EndpointUserProfile {\n");
     sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
+    sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
