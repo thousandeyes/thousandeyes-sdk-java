@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BaseRule.JSON_PROPERTY_RULE_ID,
   BaseRule.JSON_PROPERTY_RULE_NAME,
   BaseRule.JSON_PROPERTY_EXPRESSION,
+  BaseRule.JSON_PROPERTY_DESCRIPTION,
   BaseRule.JSON_PROPERTY_DIRECTION,
   BaseRule.JSON_PROPERTY_NOTIFY_ON_CLEAR,
   BaseRule.JSON_PROPERTY_IS_DEFAULT,
@@ -66,6 +67,9 @@ public class BaseRule {
 
   public static final String JSON_PROPERTY_EXPRESSION = "expression";
   private String expression;
+
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   private AlertDirection direction;
@@ -188,6 +192,31 @@ public class BaseRule {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpression(String expression) {
     this.expression = expression;
+  }
+
+
+  public BaseRule description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A description of the alert rule.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -630,6 +659,7 @@ public class BaseRule {
     return Objects.equals(this.ruleId, baseRule.ruleId) &&
         Objects.equals(this.ruleName, baseRule.ruleName) &&
         Objects.equals(this.expression, baseRule.expression) &&
+        Objects.equals(this.description, baseRule.description) &&
         Objects.equals(this.direction, baseRule.direction) &&
         Objects.equals(this.notifyOnClear, baseRule.notifyOnClear) &&
         Objects.equals(this.isDefault, baseRule.isDefault) &&
@@ -650,7 +680,7 @@ public class BaseRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter);
+    return Objects.hash(ruleId, ruleName, expression, description, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter);
   }
 
   @Override
@@ -660,6 +690,7 @@ public class BaseRule {
     sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    notifyOnClear: ").append(toIndentedString(notifyOnClear)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");

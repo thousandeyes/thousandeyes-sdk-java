@@ -182,6 +182,7 @@ public class PageLoadTestsApiTest {
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {
@@ -361,6 +362,7 @@ public class PageLoadTestsApiTest {
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {
@@ -614,6 +616,7 @@ public class PageLoadTestsApiTest {
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {
@@ -779,6 +782,7 @@ public class PageLoadTestsApiTest {
                     "savedEvent" : true,
                     "userAgent" : "curl",
                     "pageLoadTimeLimit" : 10,
+                    "identifyAgentTrafficWithUserAgent" : false,
                     "networkMeasurements" : true,
                     "url" : "www.thousandeyes.com",
                     "createdDate" : "2022-07-17T22:00:54Z",
@@ -883,6 +887,7 @@ public class PageLoadTestsApiTest {
                     "savedEvent" : true,
                     "userAgent" : "curl",
                     "pageLoadTimeLimit" : 10,
+                    "identifyAgentTrafficWithUserAgent" : false,
                     "networkMeasurements" : true,
                     "url" : "www.thousandeyes.com",
                     "createdDate" : "2022-07-17T22:00:54Z",
@@ -1038,6 +1043,7 @@ public class PageLoadTestsApiTest {
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {
@@ -1217,6 +1223,7 @@ public class PageLoadTestsApiTest {
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {

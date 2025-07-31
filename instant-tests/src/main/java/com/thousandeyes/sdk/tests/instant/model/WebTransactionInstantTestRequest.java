@@ -101,6 +101,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_BROWSER_LANGUAGE,
   WebTransactionInstantTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   WebTransactionInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  WebTransactionInstantTestRequest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
   WebTransactionInstantTestRequest.JSON_PROPERTY_CREDENTIALS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_AGENTS
 })
@@ -282,6 +283,9 @@ public class WebTransactionInstantTestRequest {
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT = "identifyAgentTrafficWithUserAgent";
+  private Boolean identifyAgentTrafficWithUserAgent = false;
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
@@ -1731,6 +1735,31 @@ public class WebTransactionInstantTestRequest {
   }
 
 
+  public WebTransactionInstantTestRequest identifyAgentTrafficWithUserAgent(Boolean identifyAgentTrafficWithUserAgent) {
+    this.identifyAgentTrafficWithUserAgent = identifyAgentTrafficWithUserAgent;
+    return this;
+  }
+
+   /**
+   * Determines how agent traffic is identified:  * &#x60;false&#x60;: Adds the &#x60;x-thousandeyes-agent: yes&#x60; header. * &#x60;true&#x60;: Appends &#x60;(ThousandEyes Agent)&#x60; to the &#x60;user-agent&#x60; header.  For more information, see [Notes on Agent ID Strategy](https://docs.thousandeyes.com/product-documentation/browser-synthetics/test-settings-page-load-transaction#notes-on-agent-id-strategy). 
+   * @return identifyAgentTrafficWithUserAgent
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIdentifyAgentTrafficWithUserAgent() {
+    return identifyAgentTrafficWithUserAgent;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIdentifyAgentTrafficWithUserAgent(Boolean identifyAgentTrafficWithUserAgent) {
+    this.identifyAgentTrafficWithUserAgent = identifyAgentTrafficWithUserAgent;
+  }
+
+
   public WebTransactionInstantTestRequest credentials(List<String> credentials) {
     this.credentials = credentials;
     return this;
@@ -1868,13 +1897,14 @@ public class WebTransactionInstantTestRequest {
         Objects.equals(this.browserLanguage, webTransactionInstantTestRequest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, webTransactionInstantTestRequest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, webTransactionInstantTestRequest.randomizedStartTime) &&
+        Objects.equals(this.identifyAgentTrafficWithUserAgent, webTransactionInstantTestRequest.identifyAgentTrafficWithUserAgent) &&
         Objects.equals(this.credentials, webTransactionInstantTestRequest.credentials) &&
         Objects.equals(this.agents, webTransactionInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, credentials, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, agents);
   }
 
   @Override
@@ -1940,6 +1970,7 @@ public class WebTransactionInstantTestRequest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");

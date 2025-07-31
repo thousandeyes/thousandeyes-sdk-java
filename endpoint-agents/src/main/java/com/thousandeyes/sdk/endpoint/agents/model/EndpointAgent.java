@@ -25,6 +25,7 @@ import com.thousandeyes.sdk.endpoint.agents.model.EndpointAgentLocation;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointAsnDetails;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointClient;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointVpnProfile;
+import com.thousandeyes.sdk.endpoint.agents.model.ExternalMetadataItem;
 import com.thousandeyes.sdk.endpoint.agents.model.InterfaceProfile;
 import com.thousandeyes.sdk.endpoint.agents.model.Platform;
 import com.thousandeyes.sdk.endpoint.agents.model.SelfLinks;
@@ -63,6 +64,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_TOTAL_MEMORY,
   EndpointAgent.JSON_PROPERTY_AGENT_TYPE,
   EndpointAgent.JSON_PROPERTY_VPN_PROFILES,
+  EndpointAgent.JSON_PROPERTY_EXTERNAL_METADATA,
   EndpointAgent.JSON_PROPERTY_NETWORK_INTERFACE_PROFILES,
   EndpointAgent.JSON_PROPERTY_ASN_DETAILS,
   EndpointAgent.JSON_PROPERTY_LICENSE_TYPE,
@@ -137,6 +139,9 @@ public class EndpointAgent {
 
   public static final String JSON_PROPERTY_VPN_PROFILES = "vpnProfiles";
   private List<EndpointVpnProfile> vpnProfiles = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_EXTERNAL_METADATA = "externalMetadata";
+  private List<ExternalMetadataItem> externalMetadata = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK_INTERFACE_PROFILES = "networkInterfaceProfiles";
   private List<InterfaceProfile> networkInterfaceProfiles = new ArrayList<>();
@@ -585,6 +590,39 @@ public class EndpointAgent {
 
 
 
+  public EndpointAgent externalMetadata(List<ExternalMetadataItem> externalMetadata) {
+    this.externalMetadata = externalMetadata;
+    return this;
+  }
+
+  public EndpointAgent addExternalMetadataItem(ExternalMetadataItem externalMetadataItem) {
+    if (this.externalMetadata == null) {
+      this.externalMetadata = new ArrayList<>();
+    }
+    this.externalMetadata.add(externalMetadataItem);
+    return this;
+  }
+
+   /**
+   * List of external metadata assigned to the endpoint agent.  Visible only if the &#x60;expandAgent&#x3D;externalMetadata&#x60; query parameter is included. 
+   * @return externalMetadata
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ExternalMetadataItem> getExternalMetadata() {
+    return externalMetadata;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalMetadata(List<ExternalMetadataItem> externalMetadata) {
+    this.externalMetadata = externalMetadata;
+  }
+
+
    /**
    * List of network interfaces on the agent. Not populated by default. 
    * @return networkInterfaceProfiles
@@ -739,6 +777,7 @@ public class EndpointAgent {
         Objects.equals(this.totalMemory, endpointAgent.totalMemory) &&
         Objects.equals(this.agentType, endpointAgent.agentType) &&
         Objects.equals(this.vpnProfiles, endpointAgent.vpnProfiles) &&
+        Objects.equals(this.externalMetadata, endpointAgent.externalMetadata) &&
         Objects.equals(this.networkInterfaceProfiles, endpointAgent.networkInterfaceProfiles) &&
         Objects.equals(this.asnDetails, endpointAgent.asnDetails) &&
         Objects.equals(this.licenseType, endpointAgent.licenseType) &&
@@ -749,7 +788,7 @@ public class EndpointAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, links);
+    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, links);
   }
 
   @Override
@@ -778,6 +817,7 @@ public class EndpointAgent {
     sb.append("    totalMemory: ").append(toIndentedString(totalMemory)).append("\n");
     sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");
     sb.append("    vpnProfiles: ").append(toIndentedString(vpnProfiles)).append("\n");
+    sb.append("    externalMetadata: ").append(toIndentedString(externalMetadata)).append("\n");
     sb.append("    networkInterfaceProfiles: ").append(toIndentedString(networkInterfaceProfiles)).append("\n");
     sb.append("    asnDetails: ").append(toIndentedString(asnDetails)).append("\n");
     sb.append("    licenseType: ").append(toIndentedString(licenseType)).append("\n");

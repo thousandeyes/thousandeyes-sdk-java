@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Rule.JSON_PROPERTY_RULE_ID,
   Rule.JSON_PROPERTY_RULE_NAME,
   Rule.JSON_PROPERTY_EXPRESSION,
+  Rule.JSON_PROPERTY_DESCRIPTION,
   Rule.JSON_PROPERTY_DIRECTION,
   Rule.JSON_PROPERTY_NOTIFY_ON_CLEAR,
   Rule.JSON_PROPERTY_IS_DEFAULT,
@@ -71,6 +72,9 @@ public class Rule {
 
   public static final String JSON_PROPERTY_EXPRESSION = "expression";
   private String expression;
+
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   private AlertDirection direction;
@@ -202,6 +206,31 @@ public class Rule {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpression(String expression) {
     this.expression = expression;
+  }
+
+
+  public Rule description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A description of the alert rule.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -727,6 +756,7 @@ public class Rule {
     return Objects.equals(this.ruleId, rule.ruleId) &&
         Objects.equals(this.ruleName, rule.ruleName) &&
         Objects.equals(this.expression, rule.expression) &&
+        Objects.equals(this.description, rule.description) &&
         Objects.equals(this.direction, rule.direction) &&
         Objects.equals(this.notifyOnClear, rule.notifyOnClear) &&
         Objects.equals(this.isDefault, rule.isDefault) &&
@@ -750,7 +780,7 @@ public class Rule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, testIds, links);
+    return Objects.hash(ruleId, ruleName, expression, description, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, testIds, links);
   }
 
   @Override
@@ -760,6 +790,7 @@ public class Rule {
     sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    notifyOnClear: ").append(toIndentedString(notifyOnClear)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
