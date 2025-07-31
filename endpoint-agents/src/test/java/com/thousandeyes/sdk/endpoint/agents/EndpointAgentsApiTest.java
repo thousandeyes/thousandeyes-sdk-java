@@ -193,6 +193,13 @@ public class EndpointAgentsApiTest {
                   "computerName" : "DESKJET-123",
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "externalMetadata" : [ {
+                    "key" : "anyConnectDeviceId",
+                    "value" : "DF434343D"
+                  }, {
+                    "key" : "anyConnectDeviceId",
+                    "value" : "DF434343D"
+                  } ],
                   "version" : "0.123.4",
                   "vpnProfiles" : [ {
                     "vpnClientNetworkRange" : [ "10.100.0.0/22" ],
@@ -380,6 +387,13 @@ public class EndpointAgentsApiTest {
                   "computerName" : "DESKJET-123",
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "externalMetadata" : [ {
+                    "key" : "anyConnectDeviceId",
+                    "value" : "DF434343D"
+                  }, {
+                    "key" : "anyConnectDeviceId",
+                    "value" : "DF434343D"
+                  } ],
                   "version" : "0.123.4",
                   "vpnProfiles" : [ {
                     "vpnClientNetworkRange" : [ "10.100.0.0/22" ],
@@ -620,6 +634,13 @@ public class EndpointAgentsApiTest {
                     "computerName" : "DESKJET-123",
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "externalMetadata" : [ {
+                      "key" : "anyConnectDeviceId",
+                      "value" : "DF434343D"
+                    }, {
+                      "key" : "anyConnectDeviceId",
+                      "value" : "DF434343D"
+                    } ],
                     "version" : "0.123.4",
                     "vpnProfiles" : [ {
                       "vpnClientNetworkRange" : [ "10.100.0.0/22" ],
@@ -771,6 +792,13 @@ public class EndpointAgentsApiTest {
                     "computerName" : "DESKJET-123",
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "externalMetadata" : [ {
+                      "key" : "anyConnectDeviceId",
+                      "value" : "DF434343D"
+                    }, {
+                      "key" : "anyConnectDeviceId",
+                      "value" : "DF434343D"
+                    } ],
                     "version" : "0.123.4",
                     "vpnProfiles" : [ {
                       "vpnClientNetworkRange" : [ "10.100.0.0/22" ],
@@ -960,6 +988,13 @@ public class EndpointAgentsApiTest {
                   "computerName" : "DESKJET-123",
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "externalMetadata" : [ {
+                    "key" : "anyConnectDeviceId",
+                    "value" : "DF434343D"
+                  }, {
+                    "key" : "anyConnectDeviceId",
+                    "value" : "DF434343D"
+                  } ],
                   "version" : "0.123.4",
                   "vpnProfiles" : [ {
                     "vpnClientNetworkRange" : [ "10.100.0.0/22" ],
@@ -1170,6 +1205,13 @@ public class EndpointAgentsApiTest {
                     "computerName" : "DESKJET-123",
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "externalMetadata" : [ {
+                      "key" : "anyConnectDeviceId",
+                      "value" : "DF434343D"
+                    }, {
+                      "key" : "anyConnectDeviceId",
+                      "value" : "DF434343D"
+                    } ],
                     "version" : "0.123.4",
                     "vpnProfiles" : [ {
                       "vpnClientNetworkRange" : [ "10.100.0.0/22" ],
@@ -1321,6 +1363,13 @@ public class EndpointAgentsApiTest {
                     "computerName" : "DESKJET-123",
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "externalMetadata" : [ {
+                      "key" : "anyConnectDeviceId",
+                      "value" : "DF434343D"
+                    }, {
+                      "key" : "anyConnectDeviceId",
+                      "value" : "DF434343D"
+                    } ],
                     "version" : "0.123.4",
                     "vpnProfiles" : [ {
                       "vpnClientNetworkRange" : [ "10.100.0.0/22" ],
@@ -1566,6 +1615,13 @@ public class EndpointAgentsApiTest {
                   "computerName" : "DESKJET-123",
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "externalMetadata" : [ {
+                    "key" : "anyConnectDeviceId",
+                    "value" : "DF434343D"
+                  }, {
+                    "key" : "anyConnectDeviceId",
+                    "value" : "DF434343D"
+                  } ],
                   "version" : "0.123.4",
                   "vpnProfiles" : [ {
                     "vpnClientNetworkRange" : [ "10.100.0.0/22" ],

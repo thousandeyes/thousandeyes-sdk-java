@@ -100,6 +100,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedWebTransactionTest.JSON_PROPERTY_BROWSER_LANGUAGE,
   UnexpandedWebTransactionTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   UnexpandedWebTransactionTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  UnexpandedWebTransactionTest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
   UnexpandedWebTransactionTest.JSON_PROPERTY_SUBINTERVAL,
   UnexpandedWebTransactionTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   UnexpandedWebTransactionTest.JSON_PROPERTY_USE_PUBLIC_BGP
@@ -285,6 +286,9 @@ public class UnexpandedWebTransactionTest {
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT = "identifyAgentTrafficWithUserAgent";
+  private Boolean identifyAgentTrafficWithUserAgent = false;
 
   public static final String JSON_PROPERTY_SUBINTERVAL = "subinterval";
   private TestSubInterval subinterval;
@@ -1746,6 +1750,31 @@ public class UnexpandedWebTransactionTest {
   }
 
 
+  public UnexpandedWebTransactionTest identifyAgentTrafficWithUserAgent(Boolean identifyAgentTrafficWithUserAgent) {
+    this.identifyAgentTrafficWithUserAgent = identifyAgentTrafficWithUserAgent;
+    return this;
+  }
+
+   /**
+   * Determines how agent traffic is identified:  * &#x60;false&#x60;: Adds the &#x60;x-thousandeyes-agent: yes&#x60; header. * &#x60;true&#x60;: Appends &#x60;(ThousandEyes Agent)&#x60; to the &#x60;user-agent&#x60; header.  For more information, see [Notes on Agent ID Strategy](https://docs.thousandeyes.com/product-documentation/browser-synthetics/test-settings-page-load-transaction#notes-on-agent-id-strategy). 
+   * @return identifyAgentTrafficWithUserAgent
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIdentifyAgentTrafficWithUserAgent() {
+    return identifyAgentTrafficWithUserAgent;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIdentifyAgentTrafficWithUserAgent(Boolean identifyAgentTrafficWithUserAgent) {
+    this.identifyAgentTrafficWithUserAgent = identifyAgentTrafficWithUserAgent;
+  }
+
+
   public UnexpandedWebTransactionTest subinterval(TestSubInterval subinterval) {
     this.subinterval = subinterval;
     return this;
@@ -1893,6 +1922,7 @@ public class UnexpandedWebTransactionTest {
         Objects.equals(this.browserLanguage, unexpandedWebTransactionTest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, unexpandedWebTransactionTest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, unexpandedWebTransactionTest.randomizedStartTime) &&
+        Objects.equals(this.identifyAgentTrafficWithUserAgent, unexpandedWebTransactionTest.identifyAgentTrafficWithUserAgent) &&
         Objects.equals(this.subinterval, unexpandedWebTransactionTest.subinterval) &&
         Objects.equals(this.bgpMeasurements, unexpandedWebTransactionTest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, unexpandedWebTransactionTest.usePublicBgp);
@@ -1900,7 +1930,7 @@ public class UnexpandedWebTransactionTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, subinterval, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, subinterval, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -1967,6 +1997,7 @@ public class UnexpandedWebTransactionTest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
     sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
