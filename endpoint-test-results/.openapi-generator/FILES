@@ -66,7 +66,9 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestsDat
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointZtaMetrics.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointZtaSegmentType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Error.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ExpandEndpointDynamicNetworkOptions.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ExpandEndpointHttpServerOptions.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ExpandEndpointNetworkOptions.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ExpandLocalNetworkTopologyOptions.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/GatewayNetworkPing.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Hop.java
@@ -159,6 +161,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Trigger.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/UdpPathTraceModeResponse.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/UdpProbeModeResponse.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/UnauthorizedError.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/UserProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ValidationErrorItem.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/VpnNetworkPing.java

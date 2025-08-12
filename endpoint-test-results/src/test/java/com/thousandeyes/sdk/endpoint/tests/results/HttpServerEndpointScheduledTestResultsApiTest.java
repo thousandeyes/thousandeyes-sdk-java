@@ -192,6 +192,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "errorType" : "connect",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "responseCode" : 200,
                     "score" : {
                       "applicationScore" : 100.0,
@@ -298,6 +302,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "errorType" : "connect",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "responseCode" : 200,
                     "score" : {
                       "applicationScore" : 100.0,
@@ -435,7 +443,8 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                   } ],
                   "searchFilters" : {
                     "agentId" : [ "52455b09-ff1b-4849-8194-99026cc890e0", "52455b09-ff1b-4849-8194-99026cc890e0" ],
-                    "testId" : [ "5", "5" ]
+                    "testId" : [ "5", "5" ],
+                    "userPrincipalName" : [ "joeblogs32@c.com", "joeblogs32@c.com" ]
                   },
                   "thresholdFilter" : {
                     "conditionalOperator" : "and",
@@ -497,6 +506,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "errorType" : "connect",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "responseCode" : 200,
                     "score" : {
                       "applicationScore" : 100.0,
@@ -603,6 +616,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "errorType" : "connect",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "responseCode" : 200,
                     "score" : {
                       "applicationScore" : 100.0,
@@ -742,7 +759,8 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                   } ],
                   "searchFilters" : {
                     "agentId" : [ "52455b09-ff1b-4849-8194-99026cc890e0", "52455b09-ff1b-4849-8194-99026cc890e0" ],
-                    "testId" : [ "5", "5" ]
+                    "testId" : [ "5", "5" ],
+                    "userPrincipalName" : [ "joeblogs32@c.com", "joeblogs32@c.com" ]
                   },
                   "thresholdFilter" : {
                     "conditionalOperator" : "and",
@@ -804,6 +822,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "errorType" : "connect",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "responseCode" : 200,
                     "score" : {
                       "applicationScore" : 100.0,
@@ -910,6 +932,10 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "errorType" : "connect",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "responseCode" : 200,
                     "score" : {
                       "applicationScore" : 100.0,

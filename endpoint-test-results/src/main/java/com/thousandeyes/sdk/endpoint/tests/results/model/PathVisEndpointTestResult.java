@@ -25,6 +25,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointPathTrace;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.VpnProfile;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisEndpointTestResult.JSON_PROPERTY_NETWORK_PROFILE,
   PathVisEndpointTestResult.JSON_PROPERTY_SYSTEM_METRICS,
   PathVisEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
+  PathVisEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   PathVisEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
   PathVisEndpointTestResult.JSON_PROPERTY_ASN_DETAILS,
   PathVisEndpointTestResult.JSON_PROPERTY_SERVER,
@@ -78,6 +80,9 @@ public class PathVisEndpointTestResult {
 
   public static final String JSON_PROPERTY_ORIGINAL_TARGET_PROFILE = "originalTargetProfile";
   private TargetProfile originalTargetProfile;
+
+  public static final String JSON_PROPERTY_USER_PROFILE = "userProfile";
+  private UserProfile userProfile;
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
@@ -285,6 +290,31 @@ public class PathVisEndpointTestResult {
   }
 
 
+  public PathVisEndpointTestResult userProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+    return this;
+  }
+
+   /**
+   * Get userProfile
+   * @return userProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserProfile getUserProfile() {
+    return userProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+  }
+
+
   public PathVisEndpointTestResult vpnProfile(VpnProfile vpnProfile) {
     this.vpnProfile = vpnProfile;
     return this;
@@ -448,6 +478,7 @@ public class PathVisEndpointTestResult {
         Objects.equals(this.networkProfile, pathVisEndpointTestResult.networkProfile) &&
         Objects.equals(this.systemMetrics, pathVisEndpointTestResult.systemMetrics) &&
         Objects.equals(this.originalTargetProfile, pathVisEndpointTestResult.originalTargetProfile) &&
+        Objects.equals(this.userProfile, pathVisEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, pathVisEndpointTestResult.vpnProfile) &&
         Objects.equals(this.asnDetails, pathVisEndpointTestResult.asnDetails) &&
         Objects.equals(this.server, pathVisEndpointTestResult.server) &&
@@ -459,7 +490,7 @@ public class PathVisEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, location, pathTraces);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, location, pathTraces);
   }
 
   @Override
@@ -474,6 +505,7 @@ public class PathVisEndpointTestResult {
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
+    sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
     sb.append("    asnDetails: ").append(toIndentedString(asnDetails)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");

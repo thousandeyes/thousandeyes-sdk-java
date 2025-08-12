@@ -23,6 +23,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.endpoint.tests.results.model.DynamicEndpointTestsDataRoundSearch;
 import com.thousandeyes.sdk.endpoint.tests.results.model.Error;
+import com.thousandeyes.sdk.endpoint.tests.results.model.ExpandEndpointDynamicNetworkOptions;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkDynamicEndpointTestResults;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDetailDynamicEndpointTestResults;
@@ -75,11 +76,12 @@ public class NetworkDynamicEndpointTestResultsApi {
    * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
    * @param dynamicEndpointTestsDataRoundSearch Tests data search filters. (optional)
    * @return Paginator<NetworkDynamicEndpointTestResult, NetworkDynamicEndpointTestResults>
    */
-  public Paginator<NetworkDynamicEndpointTestResult, NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) {
-    return new Paginator<>(cursor -> filterDynamicTestNetworkResults(testId, aid, window, startDate, endDate, cursor, dynamicEndpointTestsDataRoundSearch),
+  public Paginator<NetworkDynamicEndpointTestResult, NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) {
+    return new Paginator<>(cursor -> filterDynamicTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch),
                            NetworkDynamicEndpointTestResults::getResults);
 
   }
@@ -92,12 +94,13 @@ public class NetworkDynamicEndpointTestResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
    * @param dynamicEndpointTestsDataRoundSearch Tests data search filters. (optional)
    * @return NetworkDynamicEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public NetworkDynamicEndpointTestResults filterDynamicTestNetworkResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
-    ApiResponse<NetworkDynamicEndpointTestResults> response = filterDynamicTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, dynamicEndpointTestsDataRoundSearch);
+  public NetworkDynamicEndpointTestResults filterDynamicTestNetworkResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
+    ApiResponse<NetworkDynamicEndpointTestResults> response = filterDynamicTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch);
     return response.getData();
   }
 
@@ -110,14 +113,15 @@ public class NetworkDynamicEndpointTestResultsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
    * @param dynamicEndpointTestsDataRoundSearch Tests data search filters. (optional)
    * @return ApiResponse&lt;NetworkDynamicEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
+  public ApiResponse<NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
     filterDynamicTestNetworkResultsValidateRequest(testId);
 
-    var requestBuilder = filterDynamicTestNetworkResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor, dynamicEndpointTestsDataRoundSearch);
+    var requestBuilder = filterDynamicTestNetworkResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch);
 
     return apiClient.send(requestBuilder.build(), NetworkDynamicEndpointTestResults.class);
   }
@@ -129,7 +133,7 @@ public class NetworkDynamicEndpointTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder filterDynamicTestNetworkResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
+  private ApiRequest.ApiRequestBuilder filterDynamicTestNetworkResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("POST");
 
@@ -143,6 +147,7 @@ public class NetworkDynamicEndpointTestResultsApi {
     localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
     localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
     localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
+    localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);

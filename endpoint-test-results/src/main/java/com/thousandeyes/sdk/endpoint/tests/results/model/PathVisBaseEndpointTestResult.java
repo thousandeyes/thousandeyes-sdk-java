@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.AsnDetails;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.VpnProfile;
 import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -41,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisBaseEndpointTestResult.JSON_PROPERTY_NETWORK_PROFILE,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_SYSTEM_METRICS,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
+  PathVisBaseEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_ASN_DETAILS,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_SERVER,
@@ -72,6 +74,9 @@ public class PathVisBaseEndpointTestResult {
 
   public static final String JSON_PROPERTY_ORIGINAL_TARGET_PROFILE = "originalTargetProfile";
   private TargetProfile originalTargetProfile;
+
+  public static final String JSON_PROPERTY_USER_PROFILE = "userProfile";
+  private UserProfile userProfile;
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
@@ -271,6 +276,31 @@ public class PathVisBaseEndpointTestResult {
   }
 
 
+  public PathVisBaseEndpointTestResult userProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+    return this;
+  }
+
+   /**
+   * Get userProfile
+   * @return userProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserProfile getUserProfile() {
+    return userProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+  }
+
+
   public PathVisBaseEndpointTestResult vpnProfile(VpnProfile vpnProfile) {
     this.vpnProfile = vpnProfile;
     return this;
@@ -386,6 +416,7 @@ public class PathVisBaseEndpointTestResult {
         Objects.equals(this.networkProfile, pathVisBaseEndpointTestResult.networkProfile) &&
         Objects.equals(this.systemMetrics, pathVisBaseEndpointTestResult.systemMetrics) &&
         Objects.equals(this.originalTargetProfile, pathVisBaseEndpointTestResult.originalTargetProfile) &&
+        Objects.equals(this.userProfile, pathVisBaseEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, pathVisBaseEndpointTestResult.vpnProfile) &&
         Objects.equals(this.asnDetails, pathVisBaseEndpointTestResult.asnDetails) &&
         Objects.equals(this.server, pathVisBaseEndpointTestResult.server) &&
@@ -395,7 +426,7 @@ public class PathVisBaseEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, asnDetails, server, sourceIp, sourcePrefix);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, asnDetails, server, sourceIp, sourcePrefix);
   }
 
   @Override
@@ -410,6 +441,7 @@ public class PathVisBaseEndpointTestResult {
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
+    sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
     sb.append("    asnDetails: ").append(toIndentedString(asnDetails)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");

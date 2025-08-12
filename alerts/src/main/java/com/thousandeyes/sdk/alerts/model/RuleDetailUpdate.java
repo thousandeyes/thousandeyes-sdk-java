@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RuleDetailUpdate.JSON_PROPERTY_RULE_ID,
   RuleDetailUpdate.JSON_PROPERTY_RULE_NAME,
   RuleDetailUpdate.JSON_PROPERTY_EXPRESSION,
+  RuleDetailUpdate.JSON_PROPERTY_DESCRIPTION,
   RuleDetailUpdate.JSON_PROPERTY_DIRECTION,
   RuleDetailUpdate.JSON_PROPERTY_NOTIFY_ON_CLEAR,
   RuleDetailUpdate.JSON_PROPERTY_IS_DEFAULT,
@@ -69,6 +70,9 @@ public class RuleDetailUpdate {
 
   public static final String JSON_PROPERTY_EXPRESSION = "expression";
   private String expression;
+
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   private AlertDirection direction;
@@ -197,6 +201,31 @@ public class RuleDetailUpdate {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpression(String expression) {
     this.expression = expression;
+  }
+
+
+  public RuleDetailUpdate description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A description of the alert rule.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -697,6 +726,7 @@ public class RuleDetailUpdate {
     return Objects.equals(this.ruleId, ruleDetailUpdate.ruleId) &&
         Objects.equals(this.ruleName, ruleDetailUpdate.ruleName) &&
         Objects.equals(this.expression, ruleDetailUpdate.expression) &&
+        Objects.equals(this.description, ruleDetailUpdate.description) &&
         Objects.equals(this.direction, ruleDetailUpdate.direction) &&
         Objects.equals(this.notifyOnClear, ruleDetailUpdate.notifyOnClear) &&
         Objects.equals(this.isDefault, ruleDetailUpdate.isDefault) &&
@@ -719,7 +749,7 @@ public class RuleDetailUpdate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, testIds);
+    return Objects.hash(ruleId, ruleName, expression, description, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, testIds);
   }
 
   @Override
@@ -729,6 +759,7 @@ public class RuleDetailUpdate {
     sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    notifyOnClear: ").append(toIndentedString(notifyOnClear)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");

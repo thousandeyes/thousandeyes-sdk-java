@@ -26,6 +26,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.HttpErrorType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.VpnProfile;
 import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -43,6 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpEndpointTestResult.JSON_PROPERTY_NETWORK_PROFILE,
   HttpEndpointTestResult.JSON_PROPERTY_SYSTEM_METRICS,
   HttpEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
+  HttpEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   HttpEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
   HttpEndpointTestResult.JSON_PROPERTY_SCORE,
   HttpEndpointTestResult.JSON_PROPERTY_CONNECT_TIME,
@@ -86,6 +88,9 @@ public class HttpEndpointTestResult {
 
   public static final String JSON_PROPERTY_ORIGINAL_TARGET_PROFILE = "originalTargetProfile";
   private TargetProfile originalTargetProfile;
+
+  public static final String JSON_PROPERTY_USER_PROFILE = "userProfile";
+  private UserProfile userProfile;
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
@@ -338,6 +343,31 @@ public class HttpEndpointTestResult {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOriginalTargetProfile(TargetProfile originalTargetProfile) {
     this.originalTargetProfile = originalTargetProfile;
+  }
+
+
+  public HttpEndpointTestResult userProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+    return this;
+  }
+
+   /**
+   * Get userProfile
+   * @return userProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserProfile getUserProfile() {
+    return userProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
   }
 
 
@@ -656,6 +686,7 @@ public class HttpEndpointTestResult {
         Objects.equals(this.networkProfile, httpEndpointTestResult.networkProfile) &&
         Objects.equals(this.systemMetrics, httpEndpointTestResult.systemMetrics) &&
         Objects.equals(this.originalTargetProfile, httpEndpointTestResult.originalTargetProfile) &&
+        Objects.equals(this.userProfile, httpEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, httpEndpointTestResult.vpnProfile) &&
         Objects.equals(this.score, httpEndpointTestResult.score) &&
         Objects.equals(this.connectTime, httpEndpointTestResult.connectTime) &&
@@ -677,7 +708,7 @@ public class HttpEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, score, connectTime, dnsTime, errorType, errorDetails, headers, numRedirects, receiveTime, redirectTime, responseCode, responseTime, sslTime, totalTime, waitTime, wireSize, throughput);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, score, connectTime, dnsTime, errorType, errorDetails, headers, numRedirects, receiveTime, redirectTime, responseCode, responseTime, sslTime, totalTime, waitTime, wireSize, throughput);
   }
 
   @Override
@@ -692,6 +723,7 @@ public class HttpEndpointTestResult {
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
+    sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("    connectTime: ").append(toIndentedString(connectTime)).append("\n");

@@ -25,6 +25,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointZtaMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.VpnProfile;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkEndpointTestResult.JSON_PROPERTY_NETWORK_PROFILE,
   NetworkEndpointTestResult.JSON_PROPERTY_SYSTEM_METRICS,
   NetworkEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
+  NetworkEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   NetworkEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
   NetworkEndpointTestResult.JSON_PROPERTY_AVG_LATENCY,
   NetworkEndpointTestResult.JSON_PROPERTY_ERROR_DETAILS,
@@ -81,6 +83,9 @@ public class NetworkEndpointTestResult {
 
   public static final String JSON_PROPERTY_ORIGINAL_TARGET_PROFILE = "originalTargetProfile";
   private TargetProfile originalTargetProfile;
+
+  public static final String JSON_PROPERTY_USER_PROFILE = "userProfile";
+  private UserProfile userProfile;
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
@@ -303,6 +308,31 @@ public class NetworkEndpointTestResult {
   }
 
 
+  public NetworkEndpointTestResult userProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+    return this;
+  }
+
+   /**
+   * Get userProfile
+   * @return userProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserProfile getUserProfile() {
+    return userProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+  }
+
+
   public NetworkEndpointTestResult vpnProfile(VpnProfile vpnProfile) {
     this.vpnProfile = vpnProfile;
     return this;
@@ -511,6 +541,7 @@ public class NetworkEndpointTestResult {
         Objects.equals(this.networkProfile, networkEndpointTestResult.networkProfile) &&
         Objects.equals(this.systemMetrics, networkEndpointTestResult.systemMetrics) &&
         Objects.equals(this.originalTargetProfile, networkEndpointTestResult.originalTargetProfile) &&
+        Objects.equals(this.userProfile, networkEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, networkEndpointTestResult.vpnProfile) &&
         Objects.equals(this.avgLatency, networkEndpointTestResult.avgLatency) &&
         Objects.equals(this.errorDetails, networkEndpointTestResult.errorDetails) &&
@@ -525,7 +556,7 @@ public class NetworkEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency);
   }
 
   @Override
@@ -540,6 +571,7 @@ public class NetworkEndpointTestResult {
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
+    sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
     sb.append("    avgLatency: ").append(toIndentedString(avgLatency)).append("\n");
     sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");

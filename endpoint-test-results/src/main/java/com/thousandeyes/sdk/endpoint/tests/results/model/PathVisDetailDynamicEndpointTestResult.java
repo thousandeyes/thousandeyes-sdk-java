@@ -29,6 +29,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestProbeModeResponse;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UdpProbeModeResponse;
+import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.VpnProfile;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,6 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDetailDynamicEndpointTestResult.JSON_PROPERTY_NETWORK_PROFILE,
   PathVisDetailDynamicEndpointTestResult.JSON_PROPERTY_SYSTEM_METRICS,
   PathVisDetailDynamicEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
+  PathVisDetailDynamicEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   PathVisDetailDynamicEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
   PathVisDetailDynamicEndpointTestResult.JSON_PROPERTY_ASN_DETAILS,
   PathVisDetailDynamicEndpointTestResult.JSON_PROPERTY_SERVER,
@@ -87,6 +89,9 @@ public class PathVisDetailDynamicEndpointTestResult {
 
   public static final String JSON_PROPERTY_ORIGINAL_TARGET_PROFILE = "originalTargetProfile";
   private TargetProfile originalTargetProfile;
+
+  public static final String JSON_PROPERTY_USER_PROFILE = "userProfile";
+  private UserProfile userProfile;
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
@@ -304,6 +309,31 @@ public class PathVisDetailDynamicEndpointTestResult {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOriginalTargetProfile(TargetProfile originalTargetProfile) {
     this.originalTargetProfile = originalTargetProfile;
+  }
+
+
+  public PathVisDetailDynamicEndpointTestResult userProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+    return this;
+  }
+
+   /**
+   * Get userProfile
+   * @return userProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserProfile getUserProfile() {
+    return userProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
   }
 
 
@@ -613,6 +643,7 @@ public class PathVisDetailDynamicEndpointTestResult {
         Objects.equals(this.networkProfile, pathVisDetailDynamicEndpointTestResult.networkProfile) &&
         Objects.equals(this.systemMetrics, pathVisDetailDynamicEndpointTestResult.systemMetrics) &&
         Objects.equals(this.originalTargetProfile, pathVisDetailDynamicEndpointTestResult.originalTargetProfile) &&
+        Objects.equals(this.userProfile, pathVisDetailDynamicEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, pathVisDetailDynamicEndpointTestResult.vpnProfile) &&
         Objects.equals(this.asnDetails, pathVisDetailDynamicEndpointTestResult.asnDetails) &&
         Objects.equals(this.server, pathVisDetailDynamicEndpointTestResult.server) &&
@@ -629,7 +660,7 @@ public class PathVisDetailDynamicEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, pathTraces, vpnPathTraces, application, protocol, tcpProbeMode, udpProbeMode, webex);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, pathTraces, vpnPathTraces, application, protocol, tcpProbeMode, udpProbeMode, webex);
   }
 
   @Override
@@ -644,6 +675,7 @@ public class PathVisDetailDynamicEndpointTestResult {
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
+    sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
     sb.append("    asnDetails: ").append(toIndentedString(asnDetails)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");

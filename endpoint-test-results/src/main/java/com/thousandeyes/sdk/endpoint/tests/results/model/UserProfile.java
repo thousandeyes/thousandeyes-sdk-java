@@ -20,99 +20,79 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * EndpointTestsDataSearchFilter
+ * Details of the logged-in user, including username and user principal name.
  */
 @JsonPropertyOrder({
-  EndpointTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
-  EndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME
+  UserProfile.JSON_PROPERTY_USER_NAME,
+  UserProfile.JSON_PROPERTY_USER_PRINCIPAL_NAME
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class EndpointTestsDataSearchFilter {
-  public static final String JSON_PROPERTY_AGENT_ID = "agentId";
-  private List<UUID> agentId = new ArrayList<>();
+public class UserProfile {
+  public static final String JSON_PROPERTY_USER_NAME = "userName";
+  private String userName;
 
   public static final String JSON_PROPERTY_USER_PRINCIPAL_NAME = "userPrincipalName";
-  private List<String> userPrincipalName = new ArrayList<>();
+  private String userPrincipalName;
 
-  public EndpointTestsDataSearchFilter() { 
+  public UserProfile() { 
   }
 
-  public EndpointTestsDataSearchFilter agentId(List<UUID> agentId) {
-    this.agentId = agentId;
-    return this;
-  }
-
-  public EndpointTestsDataSearchFilter addAgentIdItem(UUID agentIdItem) {
-    if (this.agentId == null) {
-      this.agentId = new ArrayList<>();
-    }
-    this.agentId.add(agentIdItem);
+  public UserProfile userName(String userName) {
+    this.userName = userName;
     return this;
   }
 
    /**
-   * Filter using the &#x60;agent-id&#x60;.
-   * @return agentId
+   * Machine username of the logged-in user.
+   * @return userName
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_ID)
+  @JsonProperty(JSON_PROPERTY_USER_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<UUID> getAgentId() {
-    return agentId;
+  public String getUserName() {
+    return userName;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AGENT_ID)
+  @JsonProperty(JSON_PROPERTY_USER_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentId(List<UUID> agentId) {
-    this.agentId = agentId;
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 
 
-  public EndpointTestsDataSearchFilter userPrincipalName(List<String> userPrincipalName) {
+  public UserProfile userPrincipalName(String userPrincipalName) {
     this.userPrincipalName = userPrincipalName;
     return this;
   }
 
-  public EndpointTestsDataSearchFilter addUserPrincipalNameItem(String userPrincipalNameItem) {
-    if (this.userPrincipalName == null) {
-      this.userPrincipalName = new ArrayList<>();
-    }
-    this.userPrincipalName.add(userPrincipalNameItem);
-    return this;
-  }
-
    /**
-   * Filters results based on an array of &#x60;userPrincipalName&#x60; values.
+   * User login name in Internet-style format, typically used in Active Directory environments.
    * @return userPrincipalName
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getUserPrincipalName() {
+  public String getUserPrincipalName() {
     return userPrincipalName;
   }
 
 
   @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserPrincipalName(List<String> userPrincipalName) {
+  public void setUserPrincipalName(String userPrincipalName) {
     this.userPrincipalName = userPrincipalName;
   }
 
 
   /**
-   * Return true if this EndpointTestsDataSearchFilter object is equal to o.
+   * Return true if this UserProfile object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -122,21 +102,21 @@ public class EndpointTestsDataSearchFilter {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EndpointTestsDataSearchFilter endpointTestsDataSearchFilter = (EndpointTestsDataSearchFilter) o;
-    return Objects.equals(this.agentId, endpointTestsDataSearchFilter.agentId) &&
-        Objects.equals(this.userPrincipalName, endpointTestsDataSearchFilter.userPrincipalName);
+    UserProfile userProfile = (UserProfile) o;
+    return Objects.equals(this.userName, userProfile.userName) &&
+        Objects.equals(this.userPrincipalName, userProfile.userPrincipalName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, userPrincipalName);
+    return Objects.hash(userName, userPrincipalName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EndpointTestsDataSearchFilter {\n");
-    sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
+    sb.append("class UserProfile {\n");
+    sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
     sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
     sb.append("}");
     return sb.toString();

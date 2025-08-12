@@ -17,7 +17,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## filterScheduledTestNetworkResults
 
-> NetworkEndpointTestResults filterScheduledTestNetworkResults(testId, aid, window, startDate, endDate, cursor, endpointTestsDataRoundsSearch)
+> NetworkEndpointTestResults filterScheduledTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch)
 
 Retrieve network scheduled test results
 
@@ -50,9 +50,10 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        List<ExpandEndpointNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch = new EndpointTestsDataRoundsSearch(); // EndpointTestsDataRoundsSearch | Tests data search filters.
         try {
-            NetworkEndpointTestResults result = apiInstance.filterScheduledTestNetworkResults(testId, aid, window, startDate, endDate, cursor, endpointTestsDataRoundsSearch);
+            NetworkEndpointTestResults result = apiInstance.filterScheduledTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkEndpointScheduledTestResultsApi#filterScheduledTestNetworkResults");
@@ -76,6 +77,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
 | **endpointTestsDataRoundsSearch** | [**EndpointTestsDataRoundsSearch**](EndpointTestsDataRoundsSearch.md)| Tests data search filters. | [optional] |
 
 ### Return type
@@ -105,7 +107,7 @@ public class Example {
 
 ## filterScheduledTestNetworkResultsWithHttpInfo
 
-> ApiResponse<NetworkEndpointTestResults> filterScheduledTestNetworkResults filterScheduledTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, endpointTestsDataRoundsSearch)
+> ApiResponse<NetworkEndpointTestResults> filterScheduledTestNetworkResults filterScheduledTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch)
 
 Retrieve network scheduled test results
 
@@ -139,9 +141,10 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        List<ExpandEndpointNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch = new EndpointTestsDataRoundsSearch(); // EndpointTestsDataRoundsSearch | Tests data search filters.
         try {
-            ApiResponse<NetworkEndpointTestResults> response = apiInstance.filterScheduledTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, endpointTestsDataRoundsSearch);
+            ApiResponse<NetworkEndpointTestResults> response = apiInstance.filterScheduledTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -167,6 +170,7 @@ public class Example {
 | **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
 | **endpointTestsDataRoundsSearch** | [**EndpointTestsDataRoundsSearch**](EndpointTestsDataRoundsSearch.md)| Tests data search filters. | [optional] |
 
 ### Return type
@@ -197,7 +201,7 @@ ApiResponse<[**NetworkEndpointTestResults**](NetworkEndpointTestResults.md)>
 
 ## filterScheduledTestsNetworkResults
 
-> MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch)
+> MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch)
 
 Retrieve network scheduled test results from multiple tests
 
@@ -231,9 +235,10 @@ public class Example {
         Integer max = 5; // Integer | (Optional) Maximum number of objects to return.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         Boolean useAllPermittedAids = false; // Boolean | Set to `true` to load data from all accounts the user has access to.
+        List<ExpandEndpointNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch = new MultiTestIdEndpointTestsDataRoundsSearch(); // MultiTestIdEndpointTestsDataRoundsSearch | Test data search filters.
         try {
-            MultiTestIdNetworkEndpointTestResults result = apiInstance.filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch);
+            MultiTestIdNetworkEndpointTestResults result = apiInstance.filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkEndpointScheduledTestResultsApi#filterScheduledTestsNetworkResults");
@@ -258,6 +263,7 @@ public class Example {
 | **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
 | **useAllPermittedAids** | **Boolean**| Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
+| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
 | **multiTestIdEndpointTestsDataRoundsSearch** | [**MultiTestIdEndpointTestsDataRoundsSearch**](MultiTestIdEndpointTestsDataRoundsSearch.md)| Test data search filters. | [optional] |
 
 ### Return type
@@ -287,7 +293,7 @@ public class Example {
 
 ## filterScheduledTestsNetworkResultsWithHttpInfo
 
-> ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResults filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch)
+> ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResults filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch)
 
 Retrieve network scheduled test results from multiple tests
 
@@ -322,9 +328,10 @@ public class Example {
         Integer max = 5; // Integer | (Optional) Maximum number of objects to return.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         Boolean useAllPermittedAids = false; // Boolean | Set to `true` to load data from all accounts the user has access to.
+        List<ExpandEndpointNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch = new MultiTestIdEndpointTestsDataRoundsSearch(); // MultiTestIdEndpointTestsDataRoundsSearch | Test data search filters.
         try {
-            ApiResponse<MultiTestIdNetworkEndpointTestResults> response = apiInstance.filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, multiTestIdEndpointTestsDataRoundsSearch);
+            ApiResponse<MultiTestIdNetworkEndpointTestResults> response = apiInstance.filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -351,6 +358,7 @@ public class Example {
 | **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
 | **useAllPermittedAids** | **Boolean**| Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
+| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
 | **multiTestIdEndpointTestsDataRoundsSearch** | [**MultiTestIdEndpointTestsDataRoundsSearch**](MultiTestIdEndpointTestsDataRoundsSearch.md)| Test data search filters. | [optional] |
 
 ### Return type
