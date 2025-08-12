@@ -173,6 +173,7 @@ public class HttpPageLoadInstantTestsApiTest {
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {
@@ -301,6 +302,7 @@ public class HttpPageLoadInstantTestsApiTest {
                   "savedEvent" : true,
                   "userAgent" : "curl",
                   "pageLoadTimeLimit" : 10,
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {

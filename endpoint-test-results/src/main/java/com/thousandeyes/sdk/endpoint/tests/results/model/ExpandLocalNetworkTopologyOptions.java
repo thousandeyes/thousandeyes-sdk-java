@@ -28,6 +28,8 @@ public enum ExpandLocalNetworkTopologyOptions {
   
   SYSTEM_METRIC_DETAIL("system-metric-detail"),
   
+  USER_PROFILE("user-profile"),
+  
   UNKNOWN("unknown");
 
   private String value;

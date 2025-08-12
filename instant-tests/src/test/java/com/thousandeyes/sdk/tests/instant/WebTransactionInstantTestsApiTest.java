@@ -173,6 +173,7 @@ public class WebTransactionInstantTestsApiTest {
                   "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {
@@ -303,6 +304,7 @@ public class WebTransactionInstantTestsApiTest {
                   "distributedTracing" : false,
                   "savedEvent" : true,
                   "userAgent" : "curl",
+                  "identifyAgentTrafficWithUserAgent" : false,
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "agents" : [ {

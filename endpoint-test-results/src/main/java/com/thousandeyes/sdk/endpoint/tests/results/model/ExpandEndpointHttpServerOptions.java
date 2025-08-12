@@ -28,6 +28,8 @@ public enum ExpandEndpointHttpServerOptions {
   
   HEADER("header"),
   
+  USER_PROFILE("user-profile"),
+  
   UNKNOWN("unknown");
 
   private String value;

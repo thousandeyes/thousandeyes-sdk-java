@@ -32,12 +32,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
+  DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME,
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_WEBEX_CONFERENCE_ID
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DynamicEndpointTestsDataSearchFilter {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private List<UUID> agentId = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_USER_PRINCIPAL_NAME = "userPrincipalName";
+  private List<String> userPrincipalName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WEBEX_CONFERENCE_ID = "webexConferenceId";
   private List<UUID> webexConferenceId = new ArrayList<>();
@@ -75,6 +79,39 @@ public class DynamicEndpointTestsDataSearchFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAgentId(List<UUID> agentId) {
     this.agentId = agentId;
+  }
+
+
+  public DynamicEndpointTestsDataSearchFilter userPrincipalName(List<String> userPrincipalName) {
+    this.userPrincipalName = userPrincipalName;
+    return this;
+  }
+
+  public DynamicEndpointTestsDataSearchFilter addUserPrincipalNameItem(String userPrincipalNameItem) {
+    if (this.userPrincipalName == null) {
+      this.userPrincipalName = new ArrayList<>();
+    }
+    this.userPrincipalName.add(userPrincipalNameItem);
+    return this;
+  }
+
+   /**
+   * Filters results based on an array of &#x60;userPrincipalName&#x60; values.
+   * @return userPrincipalName
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getUserPrincipalName() {
+    return userPrincipalName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserPrincipalName(List<String> userPrincipalName) {
+    this.userPrincipalName = userPrincipalName;
   }
 
 
@@ -124,12 +161,13 @@ public class DynamicEndpointTestsDataSearchFilter {
     }
     DynamicEndpointTestsDataSearchFilter dynamicEndpointTestsDataSearchFilter = (DynamicEndpointTestsDataSearchFilter) o;
     return Objects.equals(this.agentId, dynamicEndpointTestsDataSearchFilter.agentId) &&
+        Objects.equals(this.userPrincipalName, dynamicEndpointTestsDataSearchFilter.userPrincipalName) &&
         Objects.equals(this.webexConferenceId, dynamicEndpointTestsDataSearchFilter.webexConferenceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, webexConferenceId);
+    return Objects.hash(agentId, userPrincipalName, webexConferenceId);
   }
 
   @Override
@@ -137,6 +175,7 @@ public class DynamicEndpointTestsDataSearchFilter {
     StringBuilder sb = new StringBuilder();
     sb.append("class DynamicEndpointTestsDataSearchFilter {\n");
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
+    sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
     sb.append("    webexConferenceId: ").append(toIndentedString(webexConferenceId)).append("\n");
     sb.append("}");
     return sb.toString();

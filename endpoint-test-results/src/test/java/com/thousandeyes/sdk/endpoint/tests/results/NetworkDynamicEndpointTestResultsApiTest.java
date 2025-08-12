@@ -14,6 +14,7 @@ package com.thousandeyes.sdk.endpoint.tests.results;
 
 import com.thousandeyes.sdk.endpoint.tests.results.model.DynamicEndpointTestsDataRoundSearch;
 import com.thousandeyes.sdk.endpoint.tests.results.model.Error;
+import com.thousandeyes.sdk.endpoint.tests.results.model.ExpandEndpointDynamicNetworkOptions;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkDynamicEndpointTestResults;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDetailDynamicEndpointTestResults;
@@ -100,7 +101,8 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                   } ],
                   "searchFilters" : {
                     "agentId" : [ "52455b09-ff1b-4849-8194-99026cc890e0", "52455b09-ff1b-4849-8194-99026cc890e0" ],
-                    "webexConferenceId" : [ "52455b09-ff1b-4849-8194-99026cc890e0", "52455b09-ff1b-4849-8194-99026cc890e0" ]
+                    "webexConferenceId" : [ "52455b09-ff1b-4849-8194-99026cc890e0", "52455b09-ff1b-4849-8194-99026cc890e0" ],
+                    "userPrincipalName" : [ "joeblogs32@c.com", "joeblogs32@c.com" ]
                   },
                   "thresholdFilter" : {
                     "conditionalOperator" : "and",
@@ -203,6 +205,10 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "maxLatency" : 168.0,
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "tcpProbeMode" : "auto",
                     "score" : {
                       "applicationScore" : 100.0,
@@ -321,6 +327,10 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "maxLatency" : 168.0,
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "tcpProbeMode" : "auto",
                     "score" : {
                       "applicationScore" : 100.0,
@@ -442,7 +452,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterDynamicTestNetworkResults(testId, null, null, null, null, null, mappedRequest);
+        var apiResponse = api.filterDynamicTestNetworkResults(testId, null, null, null, null, null, null, mappedRequest);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -544,6 +554,10 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "sourcePrefix" : "196.40.96.0/20",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "tcpProbeMode" : "auto",
                     "protocol" : "tcp",
                     "systemMetrics" : {
@@ -735,6 +749,10 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "sourcePrefix" : "196.40.96.0/20",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "tcpProbeMode" : "auto",
                     "protocol" : "tcp",
                     "systemMetrics" : {
@@ -1038,6 +1056,10 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "sourcePrefix" : "196.40.96.0/20",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "tcpProbeMode" : "auto",
                     "protocol" : "tcp",
                     "systemMetrics" : {
@@ -1157,6 +1179,10 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "sourcePrefix" : "196.40.96.0/20",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "tcpProbeMode" : "auto",
                     "protocol" : "tcp",
                     "systemMetrics" : {

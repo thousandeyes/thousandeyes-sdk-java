@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SSL version options:  * Use &#39;0&#39; for automatic selection. * Use &#39;3&#39; for SSLv3. * Use &#39;4&#39; for TLS v1.0. * Use &#39;5&#39; for TLS v1.1. * Use &#39;6&#39; for TLS v1.2. 
+ * SSL version options:  * Use &#39;0&#39; for automatic selection. * Use &#39;3&#39; for SSLv3. * Use &#39;4&#39; for TLS v1.0. * Use &#39;5&#39; for TLS v1.1. * Use &#39;6&#39; for TLS v1.2. * Use &#39;7&#39; for TLS v1.3. 
  */
 public enum TestSslVersionId {
   
@@ -35,6 +35,8 @@ public enum TestSslVersionId {
   _5("5"),
   
   _6("6"),
+  
+  _7("7"),
   
   UNKNOWN("unknown");
 
