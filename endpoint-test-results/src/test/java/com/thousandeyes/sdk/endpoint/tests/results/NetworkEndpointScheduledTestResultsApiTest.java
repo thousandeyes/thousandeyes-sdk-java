@@ -14,6 +14,7 @@ package com.thousandeyes.sdk.endpoint.tests.results;
 
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestsDataRoundsSearch;
 import com.thousandeyes.sdk.endpoint.tests.results.model.Error;
+import com.thousandeyes.sdk.endpoint.tests.results.model.ExpandEndpointNetworkOptions;
 import com.thousandeyes.sdk.endpoint.tests.results.model.MultiTestIdEndpointTestsDataRoundsSearch;
 import com.thousandeyes.sdk.endpoint.tests.results.model.MultiTestIdNetworkEndpointTestResults;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkEndpointTestResults;
@@ -102,7 +103,8 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "order" : "desc"
                   } ],
                   "searchFilters" : {
-                    "agentId" : [ "52455b09-ff1b-4849-8194-99026cc890e0", "52455b09-ff1b-4849-8194-99026cc890e0" ]
+                    "agentId" : [ "52455b09-ff1b-4849-8194-99026cc890e0", "52455b09-ff1b-4849-8194-99026cc890e0" ],
+                    "userPrincipalName" : [ "joeblogs32@c.com", "joeblogs32@c.com" ]
                   },
                   "thresholdFilter" : {
                     "conditionalOperator" : "and",
@@ -205,6 +207,10 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "maxLatency" : 168.0,
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "score" : {
                       "applicationScore" : 100.0,
                       "quality" : "great"
@@ -313,6 +319,10 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "maxLatency" : 168.0,
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "score" : {
                       "applicationScore" : 100.0,
                       "quality" : "great"
@@ -425,7 +435,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterScheduledTestNetworkResults(testId, null, null, null, null, null, mappedRequest);
+        var apiResponse = api.filterScheduledTestNetworkResults(testId, null, null, null, null, null, null, mappedRequest);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -506,6 +516,10 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "maxLatency" : 168.0,
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "score" : {
                       "applicationScore" : 100.0,
                       "quality" : "great"
@@ -614,6 +628,10 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "maxLatency" : 168.0,
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "score" : {
                       "applicationScore" : 100.0,
                       "quality" : "great"
@@ -725,7 +743,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterScheduledTestsNetworkResults(null, null, null, null, null, null, null, mappedRequest);
+        var apiResponse = api.filterScheduledTestsNetworkResults(null, null, null, null, null, null, null, null, mappedRequest);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -827,6 +845,10 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "sourcePrefix" : "196.40.96.0/20",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -1008,6 +1030,10 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "sourcePrefix" : "196.40.96.0/20",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -1301,6 +1327,10 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "sourcePrefix" : "196.40.96.0/20",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -1410,6 +1440,10 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "sourcePrefix" : "196.40.96.0/20",
+                    "userProfile" : {
+                      "userName" : "joeblogs32",
+                      "userPrincipalName" : "joeblogs32@c.com"
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,

@@ -29,6 +29,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestProbeModeResponse;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UdpProbeModeResponse;
+import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.VpnProfile;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,6 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_NETWORK_PROFILE,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_SYSTEM_METRICS,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
+  NetworkDynamicEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_AVG_LATENCY,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_ERROR_DETAILS,
@@ -90,6 +92,9 @@ public class NetworkDynamicEndpointTestResult {
 
   public static final String JSON_PROPERTY_ORIGINAL_TARGET_PROFILE = "originalTargetProfile";
   private TargetProfile originalTargetProfile;
+
+  public static final String JSON_PROPERTY_USER_PROFILE = "userProfile";
+  private UserProfile userProfile;
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
@@ -324,6 +329,31 @@ public class NetworkDynamicEndpointTestResult {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOriginalTargetProfile(TargetProfile originalTargetProfile) {
     this.originalTargetProfile = originalTargetProfile;
+  }
+
+
+  public NetworkDynamicEndpointTestResult userProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+    return this;
+  }
+
+   /**
+   * Get userProfile
+   * @return userProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserProfile getUserProfile() {
+    return userProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
   }
 
 
@@ -660,6 +690,7 @@ public class NetworkDynamicEndpointTestResult {
         Objects.equals(this.networkProfile, networkDynamicEndpointTestResult.networkProfile) &&
         Objects.equals(this.systemMetrics, networkDynamicEndpointTestResult.systemMetrics) &&
         Objects.equals(this.originalTargetProfile, networkDynamicEndpointTestResult.originalTargetProfile) &&
+        Objects.equals(this.userProfile, networkDynamicEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, networkDynamicEndpointTestResult.vpnProfile) &&
         Objects.equals(this.avgLatency, networkDynamicEndpointTestResult.avgLatency) &&
         Objects.equals(this.errorDetails, networkDynamicEndpointTestResult.errorDetails) &&
@@ -679,7 +710,7 @@ public class NetworkDynamicEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency, application, protocol, tcpProbeMode, udpProbeMode, webex);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency, application, protocol, tcpProbeMode, udpProbeMode, webex);
   }
 
   @Override
@@ -694,6 +725,7 @@ public class NetworkDynamicEndpointTestResult {
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
+    sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
     sb.append("    avgLatency: ").append(toIndentedString(avgLatency)).append("\n");
     sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");

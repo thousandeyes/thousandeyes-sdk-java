@@ -35,6 +35,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointUserProfile.jav
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointVpnProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/Error.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ExpandEndpointAgentOptions.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ExternalMetadataItem.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/FilterEndpointAgentsResponse.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/InterfaceHardwareType.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/InterfaceProfile.java

@@ -32,7 +32,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_TEST_ID,
-  HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID
+  HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
+  HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class HttpEndpointTestsDataSearchFilter {
@@ -41,6 +42,9 @@ public class HttpEndpointTestsDataSearchFilter {
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private List<UUID> agentId = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_USER_PRINCIPAL_NAME = "userPrincipalName";
+  private List<String> userPrincipalName = new ArrayList<>();
 
   public HttpEndpointTestsDataSearchFilter() { 
   }
@@ -111,6 +115,39 @@ public class HttpEndpointTestsDataSearchFilter {
   }
 
 
+  public HttpEndpointTestsDataSearchFilter userPrincipalName(List<String> userPrincipalName) {
+    this.userPrincipalName = userPrincipalName;
+    return this;
+  }
+
+  public HttpEndpointTestsDataSearchFilter addUserPrincipalNameItem(String userPrincipalNameItem) {
+    if (this.userPrincipalName == null) {
+      this.userPrincipalName = new ArrayList<>();
+    }
+    this.userPrincipalName.add(userPrincipalNameItem);
+    return this;
+  }
+
+   /**
+   * Filters results based on an array of &#x60;userPrincipalName&#x60; values.
+   * @return userPrincipalName
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getUserPrincipalName() {
+    return userPrincipalName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PRINCIPAL_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserPrincipalName(List<String> userPrincipalName) {
+    this.userPrincipalName = userPrincipalName;
+  }
+
+
   /**
    * Return true if this HttpEndpointTestsDataSearchFilter object is equal to o.
    */
@@ -124,12 +161,13 @@ public class HttpEndpointTestsDataSearchFilter {
     }
     HttpEndpointTestsDataSearchFilter httpEndpointTestsDataSearchFilter = (HttpEndpointTestsDataSearchFilter) o;
     return Objects.equals(this.testId, httpEndpointTestsDataSearchFilter.testId) &&
-        Objects.equals(this.agentId, httpEndpointTestsDataSearchFilter.agentId);
+        Objects.equals(this.agentId, httpEndpointTestsDataSearchFilter.agentId) &&
+        Objects.equals(this.userPrincipalName, httpEndpointTestsDataSearchFilter.userPrincipalName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(testId, agentId);
+    return Objects.hash(testId, agentId, userPrincipalName);
   }
 
   @Override
@@ -138,6 +176,7 @@ public class HttpEndpointTestsDataSearchFilter {
     sb.append("class HttpEndpointTestsDataSearchFilter {\n");
     sb.append("    testId: ").append(toIndentedString(testId)).append("\n");
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
+    sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

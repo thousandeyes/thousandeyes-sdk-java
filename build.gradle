@@ -30,9 +30,10 @@ allprojects {
 }
 
 subprojects {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
     // Some text from the schema is copy pasted into the source files as UTF-8
     // but the default still seems to be to use platform encoding
     tasks.withType(JavaCompile) {

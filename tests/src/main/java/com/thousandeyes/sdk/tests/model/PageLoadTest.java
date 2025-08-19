@@ -110,6 +110,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTest.JSON_PROPERTY_BROWSER_LANGUAGE,
   PageLoadTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   PageLoadTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  PageLoadTest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
   PageLoadTest.JSON_PROPERTY_BGP_MEASUREMENTS,
   PageLoadTest.JSON_PROPERTY_USE_PUBLIC_BGP,
   PageLoadTest.JSON_PROPERTY_MONITORS,
@@ -303,6 +304,9 @@ public class PageLoadTest {
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT = "identifyAgentTrafficWithUserAgent";
+  private Boolean identifyAgentTrafficWithUserAgent = false;
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -1814,6 +1818,31 @@ public class PageLoadTest {
   }
 
 
+  public PageLoadTest identifyAgentTrafficWithUserAgent(Boolean identifyAgentTrafficWithUserAgent) {
+    this.identifyAgentTrafficWithUserAgent = identifyAgentTrafficWithUserAgent;
+    return this;
+  }
+
+   /**
+   * Determines how agent traffic is identified:  * &#x60;false&#x60;: Adds the &#x60;x-thousandeyes-agent: yes&#x60; header. * &#x60;true&#x60;: Appends &#x60;(ThousandEyes Agent)&#x60; to the &#x60;user-agent&#x60; header.  For more information, see [Notes on Agent ID Strategy](https://docs.thousandeyes.com/product-documentation/browser-synthetics/test-settings-page-load-transaction#notes-on-agent-id-strategy). 
+   * @return identifyAgentTrafficWithUserAgent
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIdentifyAgentTrafficWithUserAgent() {
+    return identifyAgentTrafficWithUserAgent;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIdentifyAgentTrafficWithUserAgent(Boolean identifyAgentTrafficWithUserAgent) {
+    this.identifyAgentTrafficWithUserAgent = identifyAgentTrafficWithUserAgent;
+  }
+
+
   public PageLoadTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -2003,6 +2032,7 @@ public class PageLoadTest {
         Objects.equals(this.browserLanguage, pageLoadTest.browserLanguage) &&
         Objects.equals(this.pageLoadingStrategy, pageLoadTest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, pageLoadTest.randomizedStartTime) &&
+        Objects.equals(this.identifyAgentTrafficWithUserAgent, pageLoadTest.identifyAgentTrafficWithUserAgent) &&
         Objects.equals(this.bgpMeasurements, pageLoadTest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, pageLoadTest.usePublicBgp) &&
         Objects.equals(this.monitors, pageLoadTest.monitors) &&
@@ -2012,7 +2042,7 @@ public class PageLoadTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval);
   }
 
   @Override
@@ -2081,6 +2111,7 @@ public class PageLoadTest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");

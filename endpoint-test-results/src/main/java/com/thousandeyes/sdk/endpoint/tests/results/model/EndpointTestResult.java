@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.VpnProfile;
 import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -40,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointTestResult.JSON_PROPERTY_NETWORK_PROFILE,
   EndpointTestResult.JSON_PROPERTY_SYSTEM_METRICS,
   EndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
+  EndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   EndpointTestResult.JSON_PROPERTY_VPN_PROFILE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -67,6 +69,9 @@ public class EndpointTestResult {
 
   public static final String JSON_PROPERTY_ORIGINAL_TARGET_PROFILE = "originalTargetProfile";
   private TargetProfile originalTargetProfile;
+
+  public static final String JSON_PROPERTY_USER_PROFILE = "userProfile";
+  private UserProfile userProfile;
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
@@ -248,6 +253,31 @@ public class EndpointTestResult {
   }
 
 
+  public EndpointTestResult userProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+    return this;
+  }
+
+   /**
+   * Get userProfile
+   * @return userProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserProfile getUserProfile() {
+    return userProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
+  }
+
+
   public EndpointTestResult vpnProfile(VpnProfile vpnProfile) {
     this.vpnProfile = vpnProfile;
     return this;
@@ -293,12 +323,13 @@ public class EndpointTestResult {
         Objects.equals(this.networkProfile, endpointTestResult.networkProfile) &&
         Objects.equals(this.systemMetrics, endpointTestResult.systemMetrics) &&
         Objects.equals(this.originalTargetProfile, endpointTestResult.originalTargetProfile) &&
+        Objects.equals(this.userProfile, endpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, endpointTestResult.vpnProfile);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, vpnProfile);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile);
   }
 
   @Override
@@ -313,6 +344,7 @@ public class EndpointTestResult {
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    systemMetrics: ").append(toIndentedString(systemMetrics)).append("\n");
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
+    sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
     sb.append("}");
     return sb.toString();
