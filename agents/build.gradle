@@ -23,7 +23,7 @@ dependencies {
     testImplementation "org.wiremock:wiremock:$wiremockVersion"
     testImplementation project(":client-native")
 
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 }
 
 test {
