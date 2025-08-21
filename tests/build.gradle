@@ -22,8 +22,6 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
     testImplementation "org.wiremock:wiremock:$wiremockVersion"
     testImplementation project(":client-native")
-
-    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 }
 
 test {

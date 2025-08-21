@@ -38,6 +38,8 @@ public enum Platform {
   
   MAC("mac"),
   
+  ANDROID("android"),
+  
   UNKNOWN("unknown");
 
   private String value;
