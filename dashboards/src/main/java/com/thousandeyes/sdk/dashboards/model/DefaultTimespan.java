@@ -66,7 +66,9 @@ public class DefaultTimespan {
    /**
    * Relative timespan in seconds.
    * @return timespanDuration
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TIMESPAN_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -91,7 +93,9 @@ public class DefaultTimespan {
    /**
    * UTC start date of the timespan range.
    * @return timespanStart
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TIMESPAN_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -116,7 +120,9 @@ public class DefaultTimespan {
    /**
    * UTC end date of the timespan range.
    * @return timespanEnd
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TIMESPAN_END)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

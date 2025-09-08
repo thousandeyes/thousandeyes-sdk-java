@@ -2,7 +2,7 @@
 
 Endpoint Test Results API
 
-- API version: 7.0.58
+- API version: 7.0.61
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 
@@ -160,8 +160,8 @@ Class | Method | HTTP request | Description
 *NetworkEndpointScheduledTestResultsApi* | [**getScheduledTestPathVisAgentRoundResultsWithHttpInfo**](docs/NetworkEndpointScheduledTestResultsApi.md#getScheduledTestPathVisAgentRoundResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId} | Retrieve path visualization network scheduled test results details
 *NetworkEndpointScheduledTestResultsApi* | [**getScheduledTestPathVisResults**](docs/NetworkEndpointScheduledTestResultsApi.md#getScheduledTestPathVisResults) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results
 *NetworkEndpointScheduledTestResultsApi* | [**getScheduledTestPathVisResultsWithHttpInfo**](docs/NetworkEndpointScheduledTestResultsApi.md#getScheduledTestPathVisResultsWithHttpInfo) | **GET** /endpoint/test-results/scheduled-tests/{testId}/path-vis | Retrieve path visualization network scheduled test results
-*RealUserEndpointTestResultsApi* | [**filterRealUserTestsNetworkResults**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsNetworkResults) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests
-*RealUserEndpointTestResultsApi* | [**filterRealUserTestsNetworkResultsWithHttpInfo**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests
+*RealUserEndpointTestResultsApi* | [**filterRealUserTestsNetworkResults**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsNetworkResults) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests networks
+*RealUserEndpointTestResultsApi* | [**filterRealUserTestsNetworkResultsWithHttpInfo**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsNetworkResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/networks/filter | List endpoint real user tests networks
 *RealUserEndpointTestResultsApi* | [**filterRealUserTestsResults**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsResults) | **POST** /endpoint/test-results/real-user-tests/filter | List endpoint real user tests
 *RealUserEndpointTestResultsApi* | [**filterRealUserTestsResultsWithHttpInfo**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsResultsWithHttpInfo) | **POST** /endpoint/test-results/real-user-tests/filter | List endpoint real user tests
 *RealUserEndpointTestResultsApi* | [**filterRealUserTestsVisitedPagesResults**](docs/RealUserEndpointTestResultsApi.md#filterRealUserTestsVisitedPagesResults) | **POST** /endpoint/test-results/real-user-tests/pages/filter | List endpoint real user tests visited pages

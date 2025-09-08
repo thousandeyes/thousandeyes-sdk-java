@@ -169,7 +169,9 @@ public class LegacyAlert {
    /**
    * A unique ID for each individual alert occurrence.
    * @return alertId
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ALERT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -184,7 +186,9 @@ public class LegacyAlert {
    /**
    * The start date and time for querying alerts.
    * @return dateStart
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DATE_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -199,7 +203,9 @@ public class LegacyAlert {
    /**
    * The end date and time for querying alerts.
    * @return dateEnd
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DATE_END)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -214,7 +220,9 @@ public class LegacyAlert {
    /**
    * Unique ID of the rule.
    * @return ruleId
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_RULE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -229,7 +237,9 @@ public class LegacyAlert {
    /**
    * Current state of the alert. Possible values: clear or trigger.
    * @return state
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -249,7 +259,9 @@ public class LegacyAlert {
    /**
    * The severity of the alert.
    * @return severity
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -274,7 +286,9 @@ public class LegacyAlert {
    /**
    * Hyperlink to alerts list, with row expanded
    * @return permalink
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PERMALINK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -307,7 +321,9 @@ public class LegacyAlert {
    /**
    * List of hyperlinks to other areas of the API
    * @return apiLinks
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_API_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

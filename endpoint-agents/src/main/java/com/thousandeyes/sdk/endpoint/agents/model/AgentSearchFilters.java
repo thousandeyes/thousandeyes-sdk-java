@@ -43,7 +43,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchFilters.JSON_PROPERTY_LOCATION_COUNTRY_I_S_O,
   AgentSearchFilters.JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE,
   AgentSearchFilters.JSON_PROPERTY_LOCATION_CITY,
-  AgentSearchFilters.JSON_PROPERTY_LICENSE_TYPE
+  AgentSearchFilters.JSON_PROPERTY_LICENSE_TYPE,
+  AgentSearchFilters.JSON_PROPERTY_ANY_CONNECT_DEVICE_ID
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentSearchFilters {
@@ -79,6 +80,9 @@ public class AgentSearchFilters {
 
   public static final String JSON_PROPERTY_LICENSE_TYPE = "licenseType";
   private List<AgentLicenseType> licenseType = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ANY_CONNECT_DEVICE_ID = "anyConnectDeviceId";
+  private List<String> anyConnectDeviceId = new ArrayList<>();
 
   public AgentSearchFilters() { 
   }
@@ -446,6 +450,39 @@ public class AgentSearchFilters {
   }
 
 
+  public AgentSearchFilters anyConnectDeviceId(List<String> anyConnectDeviceId) {
+    this.anyConnectDeviceId = anyConnectDeviceId;
+    return this;
+  }
+
+  public AgentSearchFilters addAnyConnectDeviceIdItem(String anyConnectDeviceIdItem) {
+    if (this.anyConnectDeviceId == null) {
+      this.anyConnectDeviceId = new ArrayList<>();
+    }
+    this.anyConnectDeviceId.add(anyConnectDeviceIdItem);
+    return this;
+  }
+
+   /**
+   * IDs of devices that has the Cisco Secure Client deployed with the Internet Security module. Returns only agents that have at least one matching &#x60;anyConnectDeviceId&#x60;. 
+   * @return anyConnectDeviceId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ANY_CONNECT_DEVICE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAnyConnectDeviceId() {
+    return anyConnectDeviceId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ANY_CONNECT_DEVICE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAnyConnectDeviceId(List<String> anyConnectDeviceId) {
+    this.anyConnectDeviceId = anyConnectDeviceId;
+  }
+
+
   /**
    * Return true if this AgentSearchFilters object is equal to o.
    */
@@ -468,12 +505,13 @@ public class AgentSearchFilters {
         Objects.equals(this.locationCountryISO, agentSearchFilters.locationCountryISO) &&
         Objects.equals(this.locationSubdivision1Code, agentSearchFilters.locationSubdivision1Code) &&
         Objects.equals(this.locationCity, agentSearchFilters.locationCity) &&
-        Objects.equals(this.licenseType, agentSearchFilters.licenseType);
+        Objects.equals(this.licenseType, agentSearchFilters.licenseType) &&
+        Objects.equals(this.anyConnectDeviceId, agentSearchFilters.anyConnectDeviceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, agentName, computerName, username, userPrincipalName, platform, osVersion, locationCountryISO, locationSubdivision1Code, locationCity, licenseType);
+    return Objects.hash(id, agentName, computerName, username, userPrincipalName, platform, osVersion, locationCountryISO, locationSubdivision1Code, locationCity, licenseType, anyConnectDeviceId);
   }
 
   @Override
@@ -491,6 +529,7 @@ public class AgentSearchFilters {
     sb.append("    locationSubdivision1Code: ").append(toIndentedString(locationSubdivision1Code)).append("\n");
     sb.append("    locationCity: ").append(toIndentedString(locationCity)).append("\n");
     sb.append("    licenseType: ").append(toIndentedString(licenseType)).append("\n");
+    sb.append("    anyConnectDeviceId: ").append(toIndentedString(anyConnectDeviceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

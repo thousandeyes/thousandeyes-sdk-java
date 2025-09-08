@@ -277,7 +277,7 @@ public class WebTransactionTestRequest {
   private String emulatedDeviceId;
 
   public static final String JSON_PROPERTY_TARGET_TIME = "targetTime";
-  private Integer targetTime;
+  private Integer targetTime = 10;
 
   public static final String JSON_PROPERTY_TIME_LIMIT = "timeLimit";
   private Integer timeLimit = 30;
@@ -1629,9 +1629,9 @@ public class WebTransactionTestRequest {
   }
 
    /**
-   * Target completion time. The default is 50% of the specified time limit in seconds. (Set to 0 to use the default behavior).
+   * Target completion time, in seconds. Defaults to 10. Cannot exceed the &#x60;timeLimit&#x60; value.
    * minimum: 0
-   * maximum: 60
+   * maximum: 180
    * @return targetTime
   **/
   @jakarta.annotation.Nullable
