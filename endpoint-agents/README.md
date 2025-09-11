@@ -2,7 +2,7 @@
 
 Endpoint Agents API
 
-- API version: 7.0.58
+- API version: 7.0.62
 
 Manage ThousandEyes Endpoint Agents using this API. 
 

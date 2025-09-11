@@ -424,7 +424,9 @@ public class Alert {
    /**
    * A unique ID for each individual alert occurrence.
    * @return alertId
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ALERT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -439,7 +441,9 @@ public class Alert {
    /**
    * The start date and time for querying alerts.
    * @return dateStart
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DATE_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -454,7 +458,9 @@ public class Alert {
    /**
    * The end date and time for querying alerts.
    * @return dateEnd
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DATE_END)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -469,7 +475,9 @@ public class Alert {
    /**
    * Unique ID of the rule.
    * @return ruleId
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_RULE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -484,7 +492,9 @@ public class Alert {
    /**
    * Current state of the alert. Possible values: clear or trigger.
    * @return state
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -504,7 +514,9 @@ public class Alert {
    /**
    * The severity of the alert.
    * @return severity
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SEVERITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -529,7 +541,9 @@ public class Alert {
    /**
    * Hyperlink to alerts list, with row expanded
    * @return permalink
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PERMALINK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -562,7 +576,9 @@ public class Alert {
    /**
    * List of hyperlinks to other areas of the API
    * @return apiLinks
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_API_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -86,7 +86,9 @@ public class LegacyApiDashboard {
    /**
    * Identifier for the account group associated with a dashboard.
    * @return accountId
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -101,7 +103,9 @@ public class LegacyApiDashboard {
    /**
    * Identifier for the user that created a dashboard.
    * @return createdBy
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CREATED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -116,7 +120,9 @@ public class LegacyApiDashboard {
    /**
    * Identifier for the user that last modified a dashboard.
    * @return modifiedBy
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -131,7 +137,9 @@ public class LegacyApiDashboard {
    /**
    * UTC date/time when a dashboard was last modified.
    * @return modifiedDate
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -151,7 +159,9 @@ public class LegacyApiDashboard {
    /**
    * When set to &#x60;true&#x60;, the defaultTimespan is used and overrides the widget&#39;s timespan. If set to &#x60;false&#x60;, the the widget&#39;s timespan is used.
    * @return globalOverride
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_GLOBAL_OVERRIDE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -171,7 +181,9 @@ public class LegacyApiDashboard {
    /**
    * True if this dashboard was previously a report.
    * @return migratedReport
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MIGRATED_REPORT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -199,7 +211,9 @@ public class LegacyApiDashboard {
    /**
    * A links array containing the self and the snapshots links.
    * @return apiLink
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_API_LINK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

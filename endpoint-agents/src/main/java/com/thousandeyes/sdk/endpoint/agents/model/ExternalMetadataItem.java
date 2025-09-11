@@ -47,7 +47,7 @@ public class ExternalMetadataItem {
   }
 
    /**
-   * Name or identifier of the external metadata property.
+   * ID of the device that has the Cisco Secure Client deployed with the Internet Security module.
    * @return key
   **/
   @jakarta.annotation.Nullable

@@ -115,7 +115,9 @@ public class ApiDashboardSnapshot {
    /**
    * Identifier of the account group that the snapshot belongs to.
    * @return accountId
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -140,7 +142,9 @@ public class ApiDashboardSnapshot {
    /**
    * UTC date when dashboard snapshot was created.
    * @return createdDate
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -165,7 +169,9 @@ public class ApiDashboardSnapshot {
    /**
    * Expiration date of the snapshot. If unspecified, the snapshot expires 1 year from its creation date. The expiration date must be set within 5 years from the current date.
    * @return expirationDate
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -190,7 +196,9 @@ public class ApiDashboardSnapshot {
    /**
    * Hyperlink to dashboard snapshot in ThousandEyes Application
    * @return permalink
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PERMALINK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -223,7 +231,9 @@ public class ApiDashboardSnapshot {
    /**
    * A links array containing the self link.
    * @return apiLinks
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_API_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.alerts.model.AlertEmbedded;
 import com.thousandeyes.sdk.alerts.model.AlertLinks;
 import com.thousandeyes.sdk.alerts.model.AlertMeta;
 import com.thousandeyes.sdk.alerts.model.AlertMetricDetail;
@@ -51,7 +52,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AlertDetail.JSON_PROPERTY_SEVERITY,
   AlertDetail.JSON_PROPERTY_ALERT_STATE,
   AlertDetail.JSON_PROPERTY_ALERT_SEVERITY,
-  AlertDetail.JSON_PROPERTY_DETAILS
+  AlertDetail.JSON_PROPERTY_DETAILS,
+  AlertDetail.JSON_PROPERTY_EMBEDDED
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AlertDetail {
@@ -96,6 +98,9 @@ public class AlertDetail {
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   private List<AlertMetricDetail> details = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_EMBEDDED = "_embedded";
+  private AlertEmbedded embedded;
 
   public AlertDetail() { 
   }
@@ -440,6 +445,31 @@ public class AlertDetail {
   }
 
 
+  public AlertDetail embedded(AlertEmbedded embedded) {
+    this.embedded = embedded;
+    return this;
+  }
+
+   /**
+   * Get embedded
+   * @return embedded
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EMBEDDED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public AlertEmbedded getEmbedded() {
+    return embedded;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EMBEDDED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmbedded(AlertEmbedded embedded) {
+    this.embedded = embedded;
+  }
+
+
   /**
    * Return true if this AlertDetail object is equal to o.
    */
@@ -465,12 +495,13 @@ public class AlertDetail {
         Objects.equals(this.severity, alertDetail.severity) &&
         Objects.equals(this.alertState, alertDetail.alertState) &&
         Objects.equals(this.alertSeverity, alertDetail.alertSeverity) &&
-        Objects.equals(this.details, alertDetail.details);
+        Objects.equals(this.details, alertDetail.details) &&
+        Objects.equals(this.embedded, alertDetail.embedded);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, alertType, startDate, endDate, violationCount, duration, suppressed, meta, links, state, severity, alertState, alertSeverity, details);
+    return Objects.hash(id, alertType, startDate, endDate, violationCount, duration, suppressed, meta, links, state, severity, alertState, alertSeverity, details, embedded);
   }
 
   @Override
@@ -491,6 +522,7 @@ public class AlertDetail {
     sb.append("    alertState: ").append(toIndentedString(alertState)).append("\n");
     sb.append("    alertSeverity: ").append(toIndentedString(alertSeverity)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    embedded: ").append(toIndentedString(embedded)).append("\n");
     sb.append("}");
     return sb.toString();
   }
