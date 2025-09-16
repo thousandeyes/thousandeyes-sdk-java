@@ -2,7 +2,7 @@
 
 ThousandEyes for OpenTelemetry API
 
-- API version: 7.0.58
+- API version: 7.0.62
 
 ThousandEyes for OpenTelemetry provides machine-to-machine integration between ThousandEyes and its customers. It allows you to export ThousandEyes telemetry data in OTel format, which is widely used in the industry. With ThousandEyes for OTel, you can leverage frameworks widely used in the observability domain - such as Splunk, Grafana, and Honeycomb - to capture and analyze ThousandEyes data. Any client that supports OTel can use ThousandEyes for OpenTelemetry.
 
@@ -15,7 +15,7 @@ detail, filter, and push the data to the customer-configured endpoints, dependin
 * Third-party OTel collectors that receive, transform, filter, and export different metrics to client applications such as AppD, or any other OTel-capable client
 configuration.
 
-For more information about ThousandEyes for OpenTelemetry, see the [documentation](https://docs.thousandeyes.com/product-documentation/api/opentelemetry).
+For more information about ThousandEyes for OpenTelemetry, see the [product documentation](https://docs.thousandeyes.com/product-documentation/integration-guides/opentelemetry).
 
 
 
