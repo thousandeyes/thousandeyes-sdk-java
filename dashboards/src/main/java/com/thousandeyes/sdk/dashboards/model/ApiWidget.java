@@ -33,6 +33,7 @@ import com.thousandeyes.sdk.dashboards.model.ApiColorGridWidget;
 import com.thousandeyes.sdk.dashboards.model.ApiDuration;
 import com.thousandeyes.sdk.dashboards.model.ApiGeoMapWidget;
 import com.thousandeyes.sdk.dashboards.model.ApiGroupedBarchartWidget;
+import com.thousandeyes.sdk.dashboards.model.ApiListWidget;
 import com.thousandeyes.sdk.dashboards.model.ApiMultiMetricColumn;
 import com.thousandeyes.sdk.dashboards.model.ApiMultiMetricTableWidget;
 import com.thousandeyes.sdk.dashboards.model.ApiNumbersCard;
@@ -153,6 +154,10 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiColorGridWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
+                case "List":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiListWidget.class);
+                    newApiWidget.setActualInstance(deserialized);
+                    return newApiWidget;
                 case "Map":
                     deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiGeoMapWidget.class);
                     newApiWidget.setActualInstance(deserialized);
@@ -186,7 +191,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 default:
-                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ApiWidget. Possible values: Agent Status Alert List Bar Chart: Grouped Bar Chart: Stacked Box and Whiskers Color Grid Map Multi Metric Table Number Pie Chart Table Test Table Time Series: Line Time Series: Stacked Area", discriminatorValue));
+                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ApiWidget. Possible values: Agent Status Alert List Bar Chart: Grouped Bar Chart: Stacked Box and Whiskers Color Grid List Map Multi Metric Table Number Pie Chart Table Test Table Time Series: Line Time Series: Stacked Area", discriminatorValue));
             }
 
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
@@ -346,6 +351,32 @@ public class ApiWidget extends AbstractOpenApiSchema {
             } catch (Exception e) {
                 // deserialization failed, continue
                 log.log(Level.FINER, "Input data does not match schema 'ApiGroupedBarchartWidget'", e);
+            }
+
+            // deserialize ApiListWidget
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (ApiListWidget.class.equals(Integer.class) || ApiListWidget.class.equals(Long.class) || ApiListWidget.class.equals(Float.class) || ApiListWidget.class.equals(Double.class) || ApiListWidget.class.equals(Boolean.class) || ApiListWidget.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((ApiListWidget.class.equals(Integer.class) || ApiListWidget.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((ApiListWidget.class.equals(Float.class) || ApiListWidget.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (ApiListWidget.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (ApiListWidget.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiListWidget.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'ApiListWidget'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'ApiListWidget'", e);
             }
 
             // deserialize ApiMultiMetricTableWidget
@@ -610,6 +641,11 @@ public class ApiWidget extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public ApiWidget(ApiListWidget o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public ApiWidget(ApiMultiMetricTableWidget o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
@@ -657,6 +693,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
         schemas.put("ApiColorGridWidget", ApiColorGridWidget.class);
         schemas.put("ApiGeoMapWidget", ApiGeoMapWidget.class);
         schemas.put("ApiGroupedBarchartWidget", ApiGroupedBarchartWidget.class);
+        schemas.put("ApiListWidget", ApiListWidget.class);
         schemas.put("ApiMultiMetricTableWidget", ApiMultiMetricTableWidget.class);
         schemas.put("ApiNumbersCardWidget", ApiNumbersCardWidget.class);
         schemas.put("ApiPieChartWidget", ApiPieChartWidget.class);
@@ -674,6 +711,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
         mappings.put("Bar Chart: Stacked", ApiStackedBarchartWidget.class);
         mappings.put("Box and Whiskers", ApiBoxAndWhiskersWidget.class);
         mappings.put("Color Grid", ApiColorGridWidget.class);
+        mappings.put("List", ApiListWidget.class);
         mappings.put("Map", ApiGeoMapWidget.class);
         mappings.put("Multi Metric Table", ApiMultiMetricTableWidget.class);
         mappings.put("Number", ApiNumbersCardWidget.class);
@@ -694,7 +732,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * ApiAgentStatusWidget, ApiAlertListWidget, ApiBoxAndWhiskersWidget, ApiColorGridWidget, ApiGeoMapWidget, ApiGroupedBarchartWidget, ApiMultiMetricTableWidget, ApiNumbersCardWidget, ApiPieChartWidget, ApiStackedAreaChartWidget, ApiStackedBarchartWidget, ApiTableWidget, ApiTestTableWidget, ApiTimeseriesWidget
+     * ApiAgentStatusWidget, ApiAlertListWidget, ApiBoxAndWhiskersWidget, ApiColorGridWidget, ApiGeoMapWidget, ApiGroupedBarchartWidget, ApiListWidget, ApiMultiMetricTableWidget, ApiNumbersCardWidget, ApiPieChartWidget, ApiStackedAreaChartWidget, ApiStackedBarchartWidget, ApiTableWidget, ApiTestTableWidget, ApiTimeseriesWidget
      *
      * It could be an instance of the 'oneOf' schemas.
      * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
@@ -727,6 +765,11 @@ public class ApiWidget extends AbstractOpenApiSchema {
         }
 
         if (JSON.isInstanceOf(ApiGroupedBarchartWidget.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(ApiListWidget.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
         }
@@ -771,14 +814,14 @@ public class ApiWidget extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be ApiAgentStatusWidget, ApiAlertListWidget, ApiBoxAndWhiskersWidget, ApiColorGridWidget, ApiGeoMapWidget, ApiGroupedBarchartWidget, ApiMultiMetricTableWidget, ApiNumbersCardWidget, ApiPieChartWidget, ApiStackedAreaChartWidget, ApiStackedBarchartWidget, ApiTableWidget, ApiTestTableWidget, ApiTimeseriesWidget");
+        throw new RuntimeException("Invalid instance type. Must be ApiAgentStatusWidget, ApiAlertListWidget, ApiBoxAndWhiskersWidget, ApiColorGridWidget, ApiGeoMapWidget, ApiGroupedBarchartWidget, ApiListWidget, ApiMultiMetricTableWidget, ApiNumbersCardWidget, ApiPieChartWidget, ApiStackedAreaChartWidget, ApiStackedBarchartWidget, ApiTableWidget, ApiTestTableWidget, ApiTimeseriesWidget");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * ApiAgentStatusWidget, ApiAlertListWidget, ApiBoxAndWhiskersWidget, ApiColorGridWidget, ApiGeoMapWidget, ApiGroupedBarchartWidget, ApiMultiMetricTableWidget, ApiNumbersCardWidget, ApiPieChartWidget, ApiStackedAreaChartWidget, ApiStackedBarchartWidget, ApiTableWidget, ApiTestTableWidget, ApiTimeseriesWidget
+     * ApiAgentStatusWidget, ApiAlertListWidget, ApiBoxAndWhiskersWidget, ApiColorGridWidget, ApiGeoMapWidget, ApiGroupedBarchartWidget, ApiListWidget, ApiMultiMetricTableWidget, ApiNumbersCardWidget, ApiPieChartWidget, ApiStackedAreaChartWidget, ApiStackedBarchartWidget, ApiTableWidget, ApiTestTableWidget, ApiTimeseriesWidget
      *
-     * @return The actual instance (ApiAgentStatusWidget, ApiAlertListWidget, ApiBoxAndWhiskersWidget, ApiColorGridWidget, ApiGeoMapWidget, ApiGroupedBarchartWidget, ApiMultiMetricTableWidget, ApiNumbersCardWidget, ApiPieChartWidget, ApiStackedAreaChartWidget, ApiStackedBarchartWidget, ApiTableWidget, ApiTestTableWidget, ApiTimeseriesWidget)
+     * @return The actual instance (ApiAgentStatusWidget, ApiAlertListWidget, ApiBoxAndWhiskersWidget, ApiColorGridWidget, ApiGeoMapWidget, ApiGroupedBarchartWidget, ApiListWidget, ApiMultiMetricTableWidget, ApiNumbersCardWidget, ApiPieChartWidget, ApiStackedAreaChartWidget, ApiStackedBarchartWidget, ApiTableWidget, ApiTestTableWidget, ApiTimeseriesWidget)
      */
     @Override
     public Object getActualInstance() {
@@ -849,6 +892,17 @@ public class ApiWidget extends AbstractOpenApiSchema {
      */
     public ApiGroupedBarchartWidget getApiGroupedBarchartWidget() throws ClassCastException {
         return (ApiGroupedBarchartWidget)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `ApiListWidget`. If the actual instance is not `ApiListWidget`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ApiListWidget`
+     * @throws ClassCastException if the instance is not `ApiListWidget`
+     */
+    public ApiListWidget getApiListWidget() throws ClassCastException {
+        return (ApiListWidget)super.getActualInstance();
     }
 
     /**
