@@ -2,7 +2,7 @@
 
 Endpoint Test Results API
 
-- API version: 7.0.62
+- API version: 7.0.63
 
 Retrieve results for scheduled and dynamic tests on endpoint agents.
 

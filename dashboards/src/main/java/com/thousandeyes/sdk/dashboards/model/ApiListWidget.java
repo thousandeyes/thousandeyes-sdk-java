@@ -20,50 +20,47 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.dashboards.model.ActiveWithin;
-import com.thousandeyes.sdk.dashboards.model.AlertListDatasource;
 import com.thousandeyes.sdk.dashboards.model.ApiDuration;
 import com.thousandeyes.sdk.dashboards.model.ApiWidgetMeasure;
 import com.thousandeyes.sdk.dashboards.model.DashboardMetric;
 import com.thousandeyes.sdk.dashboards.model.DashboardMetricDirection;
-import com.thousandeyes.sdk.dashboards.model.LegacyAlertListAlertType;
+import com.thousandeyes.sdk.dashboards.model.LegacyWidgetSortDirection;
+import com.thousandeyes.sdk.dashboards.model.ListDatasource;
 import com.thousandeyes.sdk.dashboards.model.MetricGroup;
 import com.thousandeyes.sdk.dashboards.model.SelfLinks;
 import com.thousandeyes.sdk.dashboards.model.VisualMode;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A widget that displays a list of alerts based on specified criteria, such as alert type and time frame.
+ * A widget that displays a list of items, such as events. It can use a time range to limit the items shown.
  */
 @JsonPropertyOrder({
-  ApiAlertListWidget.JSON_PROPERTY_ID,
-  ApiAlertListWidget.JSON_PROPERTY_TITLE,
-  ApiAlertListWidget.JSON_PROPERTY_VISUAL_MODE,
-  ApiAlertListWidget.JSON_PROPERTY_EMBED_URL,
-  ApiAlertListWidget.JSON_PROPERTY_IS_EMBEDDED,
-  ApiAlertListWidget.JSON_PROPERTY_METRIC_GROUP,
-  ApiAlertListWidget.JSON_PROPERTY_DIRECTION,
-  ApiAlertListWidget.JSON_PROPERTY_METRIC,
-  ApiAlertListWidget.JSON_PROPERTY_FILTERS,
-  ApiAlertListWidget.JSON_PROPERTY_MEASURE,
-  ApiAlertListWidget.JSON_PROPERTY_FIXED_TIMESPAN,
-  ApiAlertListWidget.JSON_PROPERTY_API_LINK,
-  ApiAlertListWidget.JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS,
-  ApiAlertListWidget.JSON_PROPERTY_LINKS,
-  ApiAlertListWidget.JSON_PROPERTY_TYPE,
-  ApiAlertListWidget.JSON_PROPERTY_ALERT_TYPES,
-  ApiAlertListWidget.JSON_PROPERTY_LIMIT_TO,
-  ApiAlertListWidget.JSON_PROPERTY_ACTIVE_WITHIN,
-  ApiAlertListWidget.JSON_PROPERTY_DATA_SOURCE
+  ApiListWidget.JSON_PROPERTY_ID,
+  ApiListWidget.JSON_PROPERTY_TITLE,
+  ApiListWidget.JSON_PROPERTY_VISUAL_MODE,
+  ApiListWidget.JSON_PROPERTY_EMBED_URL,
+  ApiListWidget.JSON_PROPERTY_IS_EMBEDDED,
+  ApiListWidget.JSON_PROPERTY_METRIC_GROUP,
+  ApiListWidget.JSON_PROPERTY_DIRECTION,
+  ApiListWidget.JSON_PROPERTY_METRIC,
+  ApiListWidget.JSON_PROPERTY_FILTERS,
+  ApiListWidget.JSON_PROPERTY_MEASURE,
+  ApiListWidget.JSON_PROPERTY_FIXED_TIMESPAN,
+  ApiListWidget.JSON_PROPERTY_API_LINK,
+  ApiListWidget.JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS,
+  ApiListWidget.JSON_PROPERTY_LINKS,
+  ApiListWidget.JSON_PROPERTY_TYPE,
+  ApiListWidget.JSON_PROPERTY_SORT_DIRECTION,
+  ApiListWidget.JSON_PROPERTY_ACTIVE_WITHIN,
+  ApiListWidget.JSON_PROPERTY_DATA_SOURCE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class ApiAlertListWidget {
+public class ApiListWidget {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
@@ -109,23 +106,20 @@ public class ApiAlertListWidget {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
-  public static final String JSON_PROPERTY_ALERT_TYPES = "alertTypes";
-  private Set<LegacyAlertListAlertType> alertTypes = new LinkedHashSet<>();
-
-  public static final String JSON_PROPERTY_LIMIT_TO = "limitTo";
-  private Integer limitTo;
+  public static final String JSON_PROPERTY_SORT_DIRECTION = "sortDirection";
+  private LegacyWidgetSortDirection sortDirection;
 
   public static final String JSON_PROPERTY_ACTIVE_WITHIN = "activeWithin";
   private ActiveWithin activeWithin;
 
   public static final String JSON_PROPERTY_DATA_SOURCE = "dataSource";
-  private AlertListDatasource dataSource;
+  private ListDatasource dataSource;
 
-  public ApiAlertListWidget() { 
+  public ApiListWidget() { 
   }
 
   @JsonCreator
-  public ApiAlertListWidget(
+  public ApiListWidget(
     @JsonProperty(JSON_PROPERTY_ID) String id, 
     @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
     @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
@@ -151,7 +145,7 @@ public class ApiAlertListWidget {
 
 
 
-  public ApiAlertListWidget title(String title) {
+  public ApiListWidget title(String title) {
     this.title = title;
     return this;
   }
@@ -176,7 +170,7 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget visualMode(VisualMode visualMode) {
+  public ApiListWidget visualMode(VisualMode visualMode) {
     this.visualMode = visualMode;
     return this;
   }
@@ -216,7 +210,7 @@ public class ApiAlertListWidget {
 
 
 
-  public ApiAlertListWidget isEmbedded(Boolean isEmbedded) {
+  public ApiListWidget isEmbedded(Boolean isEmbedded) {
     this.isEmbedded = isEmbedded;
     return this;
   }
@@ -241,7 +235,7 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget metricGroup(MetricGroup metricGroup) {
+  public ApiListWidget metricGroup(MetricGroup metricGroup) {
     this.metricGroup = metricGroup;
     return this;
   }
@@ -266,7 +260,7 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget direction(DashboardMetricDirection direction) {
+  public ApiListWidget direction(DashboardMetricDirection direction) {
     this.direction = direction;
     return this;
   }
@@ -291,7 +285,7 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget metric(DashboardMetric metric) {
+  public ApiListWidget metric(DashboardMetric metric) {
     this.metric = metric;
     return this;
   }
@@ -316,12 +310,12 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget filters(Map<String, Set<Object>> filters) {
+  public ApiListWidget filters(Map<String, Set<Object>> filters) {
     this.filters = filters;
     return this;
   }
 
-  public ApiAlertListWidget putFiltersItem(String key, Set<Object> filtersItem) {
+  public ApiListWidget putFiltersItem(String key, Set<Object> filtersItem) {
     if (this.filters == null) {
       this.filters = new HashMap<>();
     }
@@ -349,7 +343,7 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget measure(ApiWidgetMeasure measure) {
+  public ApiListWidget measure(ApiWidgetMeasure measure) {
     this.measure = measure;
     return this;
   }
@@ -374,7 +368,7 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget fixedTimespan(ApiDuration fixedTimespan) {
+  public ApiListWidget fixedTimespan(ApiDuration fixedTimespan) {
     this.fixedTimespan = fixedTimespan;
     return this;
   }
@@ -416,7 +410,7 @@ public class ApiAlertListWidget {
 
 
 
-  public ApiAlertListWidget shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+  public ApiListWidget shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
     this.shouldExcludeAlertSuppressionWindows = shouldExcludeAlertSuppressionWindows;
     return this;
   }
@@ -441,7 +435,7 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget links(SelfLinks links) {
+  public ApiListWidget links(SelfLinks links) {
     this.links = links;
     return this;
   }
@@ -466,13 +460,13 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget type(String type) {
+  public ApiListWidget type(String type) {
     this.type = type;
     return this;
   }
 
    /**
-   * Alert List widget type.
+   * List widget type. Currently supports only &#x60;List&#x60;.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -491,66 +485,34 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget alertTypes(Set<LegacyAlertListAlertType> alertTypes) {
-    this.alertTypes = alertTypes;
-    return this;
-  }
-
-  public ApiAlertListWidget addAlertTypesItem(LegacyAlertListAlertType alertTypesItem) {
-    if (this.alertTypes == null) {
-      this.alertTypes = new LinkedHashSet<>();
-    }
-    this.alertTypes.add(alertTypesItem);
+  public ApiListWidget sortDirection(LegacyWidgetSortDirection sortDirection) {
+    this.sortDirection = sortDirection;
     return this;
   }
 
    /**
-   * List of alert types configured in the widget, an empty list means all alert types.
-   * @return alertTypes
+   * Get sortDirection
+   * @return sortDirection
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_TYPES)
+  @JsonProperty(JSON_PROPERTY_SORT_DIRECTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<LegacyAlertListAlertType> getAlertTypes() {
-    return alertTypes;
+  public LegacyWidgetSortDirection getSortDirection() {
+    return sortDirection;
   }
 
 
-  @JsonDeserialize(as = LinkedHashSet.class)
-  @JsonProperty(JSON_PROPERTY_ALERT_TYPES)
+  @JsonProperty(JSON_PROPERTY_SORT_DIRECTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertTypes(Set<LegacyAlertListAlertType> alertTypes) {
-    this.alertTypes = alertTypes;
+  public void setSortDirection(LegacyWidgetSortDirection sortDirection) {
+    this.sortDirection = sortDirection;
   }
 
 
-  public ApiAlertListWidget limitTo(Integer limitTo) {
-    this.limitTo = limitTo;
-    return this;
-  }
-
-   /**
-   * Limit the number of alerts displayed in the widget.
-   * @return limitTo
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LIMIT_TO)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getLimitTo() {
-    return limitTo;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LIMIT_TO)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLimitTo(Integer limitTo) {
-    this.limitTo = limitTo;
-  }
-
-
-  public ApiAlertListWidget activeWithin(ActiveWithin activeWithin) {
+  public ApiListWidget activeWithin(ActiveWithin activeWithin) {
     this.activeWithin = activeWithin;
     return this;
   }
@@ -575,7 +537,7 @@ public class ApiAlertListWidget {
   }
 
 
-  public ApiAlertListWidget dataSource(AlertListDatasource dataSource) {
+  public ApiListWidget dataSource(ListDatasource dataSource) {
     this.dataSource = dataSource;
     return this;
   }
@@ -588,20 +550,20 @@ public class ApiAlertListWidget {
   @JsonProperty(JSON_PROPERTY_DATA_SOURCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public AlertListDatasource getDataSource() {
+  public ListDatasource getDataSource() {
     return dataSource;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DATA_SOURCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDataSource(AlertListDatasource dataSource) {
+  public void setDataSource(ListDatasource dataSource) {
     this.dataSource = dataSource;
   }
 
 
   /**
-   * Return true if this ApiAlertListWidget object is equal to o.
+   * Return true if this ApiListWidget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -611,37 +573,36 @@ public class ApiAlertListWidget {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiAlertListWidget apiAlertListWidget = (ApiAlertListWidget) o;
-    return Objects.equals(this.id, apiAlertListWidget.id) &&
-        Objects.equals(this.title, apiAlertListWidget.title) &&
-        Objects.equals(this.visualMode, apiAlertListWidget.visualMode) &&
-        Objects.equals(this.embedUrl, apiAlertListWidget.embedUrl) &&
-        Objects.equals(this.isEmbedded, apiAlertListWidget.isEmbedded) &&
-        Objects.equals(this.metricGroup, apiAlertListWidget.metricGroup) &&
-        Objects.equals(this.direction, apiAlertListWidget.direction) &&
-        Objects.equals(this.metric, apiAlertListWidget.metric) &&
-        Objects.equals(this.filters, apiAlertListWidget.filters) &&
-        Objects.equals(this.measure, apiAlertListWidget.measure) &&
-        Objects.equals(this.fixedTimespan, apiAlertListWidget.fixedTimespan) &&
-        Objects.equals(this.apiLink, apiAlertListWidget.apiLink) &&
-        Objects.equals(this.shouldExcludeAlertSuppressionWindows, apiAlertListWidget.shouldExcludeAlertSuppressionWindows) &&
-        Objects.equals(this.links, apiAlertListWidget.links) &&
-        Objects.equals(this.type, apiAlertListWidget.type) &&
-        Objects.equals(this.alertTypes, apiAlertListWidget.alertTypes) &&
-        Objects.equals(this.limitTo, apiAlertListWidget.limitTo) &&
-        Objects.equals(this.activeWithin, apiAlertListWidget.activeWithin) &&
-        Objects.equals(this.dataSource, apiAlertListWidget.dataSource);
+    ApiListWidget apiListWidget = (ApiListWidget) o;
+    return Objects.equals(this.id, apiListWidget.id) &&
+        Objects.equals(this.title, apiListWidget.title) &&
+        Objects.equals(this.visualMode, apiListWidget.visualMode) &&
+        Objects.equals(this.embedUrl, apiListWidget.embedUrl) &&
+        Objects.equals(this.isEmbedded, apiListWidget.isEmbedded) &&
+        Objects.equals(this.metricGroup, apiListWidget.metricGroup) &&
+        Objects.equals(this.direction, apiListWidget.direction) &&
+        Objects.equals(this.metric, apiListWidget.metric) &&
+        Objects.equals(this.filters, apiListWidget.filters) &&
+        Objects.equals(this.measure, apiListWidget.measure) &&
+        Objects.equals(this.fixedTimespan, apiListWidget.fixedTimespan) &&
+        Objects.equals(this.apiLink, apiListWidget.apiLink) &&
+        Objects.equals(this.shouldExcludeAlertSuppressionWindows, apiListWidget.shouldExcludeAlertSuppressionWindows) &&
+        Objects.equals(this.links, apiListWidget.links) &&
+        Objects.equals(this.type, apiListWidget.type) &&
+        Objects.equals(this.sortDirection, apiListWidget.sortDirection) &&
+        Objects.equals(this.activeWithin, apiListWidget.activeWithin) &&
+        Objects.equals(this.dataSource, apiListWidget.dataSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, visualMode, embedUrl, isEmbedded, metricGroup, direction, metric, filters, measure, fixedTimespan, apiLink, shouldExcludeAlertSuppressionWindows, links, type, alertTypes, limitTo, activeWithin, dataSource);
+    return Objects.hash(id, title, visualMode, embedUrl, isEmbedded, metricGroup, direction, metric, filters, measure, fixedTimespan, apiLink, shouldExcludeAlertSuppressionWindows, links, type, sortDirection, activeWithin, dataSource);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiAlertListWidget {\n");
+    sb.append("class ApiListWidget {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    visualMode: ").append(toIndentedString(visualMode)).append("\n");
@@ -657,8 +618,7 @@ public class ApiAlertListWidget {
     sb.append("    shouldExcludeAlertSuppressionWindows: ").append(toIndentedString(shouldExcludeAlertSuppressionWindows)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    alertTypes: ").append(toIndentedString(alertTypes)).append("\n");
-    sb.append("    limitTo: ").append(toIndentedString(limitTo)).append("\n");
+    sb.append("    sortDirection: ").append(toIndentedString(sortDirection)).append("\n");
     sb.append("    activeWithin: ").append(toIndentedString(activeWithin)).append("\n");
     sb.append("    dataSource: ").append(toIndentedString(dataSource)).append("\n");
     sb.append("}");

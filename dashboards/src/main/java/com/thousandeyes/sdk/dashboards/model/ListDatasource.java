@@ -22,45 +22,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Type of the Widget
+ * Data source for the list widget.
  */
-public enum WidgetType {
+public enum ListDatasource {
   
-  BAR_CHART_STACKED("Bar Chart: Stacked"),
-  
-  BAR_CHART_GROUPED("Bar Chart: Grouped"),
-  
-  TIME_SERIES_LINE("Time Series: Line"),
-  
-  TIME_SERIES_STACKED_AREA("Time Series: Stacked Area"),
-  
-  PIE_CHART("Pie Chart"),
-  
-  TABLE("Table"),
-  
-  MULTI_METRIC_TABLE("Multi Metric Table"),
-  
-  NUMBER("Number"),
-  
-  AGENT_STATUS("Agent Status"),
-  
-  COLOR_GRID("Color Grid"),
-  
-  ALERT_LIST("Alert List"),
-  
-  LIST("List"),
-  
-  TEST_TABLE("Test Table"),
-  
-  MAP("Map"),
-  
-  BOX_AND_WHISKERS("Box and Whiskers"),
+  EVENT_DETECTION("EVENT_DETECTION"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  WidgetType(String value) {
+  ListDatasource(String value) {
     this.value = value;
   }
 
@@ -75,8 +47,8 @@ public enum WidgetType {
   }
 
   @JsonCreator
-  public static WidgetType fromValue(String value) {
-    for (WidgetType b : WidgetType.values()) {
+  public static ListDatasource fromValue(String value) {
+    for (ListDatasource b : ListDatasource.values()) {
       if (b.value.equals(value)) {
         return b;
       }

@@ -39,6 +39,7 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/ApiDuration.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiGeoMapWidget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiGraphletPoint.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiGroupedBarchartWidget.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/ApiListWidget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiMultiMetricColumn.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiMultiMetricColumnData.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiMultiMetricTableWidget.java
@@ -97,6 +98,7 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/LegacyDurationUnit.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/LegacyWidgetSortDirection.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/LegacyWidgetSortProperty.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/Link.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/ListDatasource.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/MetricGroup.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/MultiMetricsTableDatasource.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/NumbersCardDatasource.java
