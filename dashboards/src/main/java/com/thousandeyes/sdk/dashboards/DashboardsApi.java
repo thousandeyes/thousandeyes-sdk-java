@@ -22,6 +22,8 @@ import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.dashboards.model.ApiDashboard;
+import com.thousandeyes.sdk.dashboards.model.ApiMultiMetricColumnData;
+import com.thousandeyes.sdk.dashboards.model.ApiNumbersCardData;
 import com.thousandeyes.sdk.dashboards.model.ApiWidgetDataResponse;
 import java.math.BigDecimal;
 import com.thousandeyes.sdk.dashboards.model.Dashboard;
@@ -351,6 +353,162 @@ public class DashboardsApi {
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    return requestBuilder;
+  }
+  /**
+   * Retrieve individual card data from numbers widget
+   * Returns the raw data for an individual card within a numbers widget in the dashboard. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param widgetId A Identifier for a widget. (required)
+   * @param cardId An identifier for a card within the numbers widget. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return ApiNumbersCardData
+   * @throws ApiException if fails to make API call
+   */
+  public ApiNumbersCardData getIndividualCardData(String dashboardId, String widgetId, String cardId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    ApiResponse<ApiNumbersCardData> response = getIndividualCardDataWithHttpInfo(dashboardId, widgetId, cardId, aid, window, startDate, endDate);
+    return response.getData();
+  }
+
+  /**
+   * Retrieve individual card data from numbers widget
+   * Returns the raw data for an individual card within a numbers widget in the dashboard. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param widgetId A Identifier for a widget. (required)
+   * @param cardId An identifier for a card within the numbers widget. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return ApiResponse&lt;ApiNumbersCardData&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ApiNumbersCardData> getIndividualCardDataWithHttpInfo(String dashboardId, String widgetId, String cardId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    getIndividualCardDataValidateRequest(dashboardId, widgetId, cardId);
+
+    var requestBuilder = getIndividualCardDataRequestBuilder(dashboardId, widgetId, cardId, aid, window, startDate, endDate);
+
+    return apiClient.send(requestBuilder.build(), ApiNumbersCardData.class);
+  }
+
+  private void getIndividualCardDataValidateRequest(String dashboardId, String widgetId, String cardId) throws ApiException {
+      // verify the required parameter 'dashboardId' is set
+      if (dashboardId == null) {
+        throw new ApiException(400, "Missing the required parameter 'dashboardId' when calling getIndividualCardData");
+      }
+      // verify the required parameter 'widgetId' is set
+      if (widgetId == null) {
+        throw new ApiException(400, "Missing the required parameter 'widgetId' when calling getIndividualCardData");
+      }
+      // verify the required parameter 'cardId' is set
+      if (cardId == null) {
+        throw new ApiException(400, "Missing the required parameter 'cardId' when calling getIndividualCardData");
+      }
+  }
+
+  private ApiRequest.ApiRequestBuilder getIndividualCardDataRequestBuilder(String dashboardId, String widgetId, String cardId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("GET");
+
+    String path = "/dashboards/{dashboardId}/widgets/{widgetId}/cards/{cardId}"
+        .replace("{dashboardId}", urlEncode(dashboardId.toString()))
+        .replace("{widgetId}", urlEncode(widgetId.toString()))
+        .replace("{cardId}", urlEncode(cardId.toString()));
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("window", window));
+    localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
+    localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    return requestBuilder;
+  }
+  /**
+   * Retrieve individual column data from multi-metric table widget
+   * Returns the raw data for an individual column within a multi-metric table widget in the dashboard. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param widgetId A Identifier for a widget. (required)
+   * @param columnId An identifier for a column within the multi-metric table widget. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return ApiMultiMetricColumnData
+   * @throws ApiException if fails to make API call
+   */
+  public ApiMultiMetricColumnData getIndividualColumnData(String dashboardId, String widgetId, String columnId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    ApiResponse<ApiMultiMetricColumnData> response = getIndividualColumnDataWithHttpInfo(dashboardId, widgetId, columnId, aid, window, startDate, endDate);
+    return response.getData();
+  }
+
+  /**
+   * Retrieve individual column data from multi-metric table widget
+   * Returns the raw data for an individual column within a multi-metric table widget in the dashboard. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param widgetId A Identifier for a widget. (required)
+   * @param columnId An identifier for a column within the multi-metric table widget. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
+   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @return ApiResponse&lt;ApiMultiMetricColumnData&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ApiMultiMetricColumnData> getIndividualColumnDataWithHttpInfo(String dashboardId, String widgetId, String columnId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    getIndividualColumnDataValidateRequest(dashboardId, widgetId, columnId);
+
+    var requestBuilder = getIndividualColumnDataRequestBuilder(dashboardId, widgetId, columnId, aid, window, startDate, endDate);
+
+    return apiClient.send(requestBuilder.build(), ApiMultiMetricColumnData.class);
+  }
+
+  private void getIndividualColumnDataValidateRequest(String dashboardId, String widgetId, String columnId) throws ApiException {
+      // verify the required parameter 'dashboardId' is set
+      if (dashboardId == null) {
+        throw new ApiException(400, "Missing the required parameter 'dashboardId' when calling getIndividualColumnData");
+      }
+      // verify the required parameter 'widgetId' is set
+      if (widgetId == null) {
+        throw new ApiException(400, "Missing the required parameter 'widgetId' when calling getIndividualColumnData");
+      }
+      // verify the required parameter 'columnId' is set
+      if (columnId == null) {
+        throw new ApiException(400, "Missing the required parameter 'columnId' when calling getIndividualColumnData");
+      }
+  }
+
+  private ApiRequest.ApiRequestBuilder getIndividualColumnDataRequestBuilder(String dashboardId, String widgetId, String columnId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("GET");
+
+    String path = "/dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId}"
+        .replace("{dashboardId}", urlEncode(dashboardId.toString()))
+        .replace("{widgetId}", urlEncode(widgetId.toString()))
+        .replace("{columnId}", urlEncode(columnId.toString()));
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("window", window));
+    localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
+    localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);

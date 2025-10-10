@@ -2,7 +2,7 @@
 
 Dashboards API
 
-- API version: 7.0.63
+- API version: 7.0.64
 
 Manage ThousandEyes Dashboards.
 
@@ -151,6 +151,10 @@ Class | Method | HTTP request | Description
 *DashboardsApi* | [**getDashboardWidgetDataWithHttpInfo**](docs/DashboardsApi.md#getDashboardWidgetDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data
 *DashboardsApi* | [**getDashboards**](docs/DashboardsApi.md#getDashboards) | **GET** /dashboards | List dashboards
 *DashboardsApi* | [**getDashboardsWithHttpInfo**](docs/DashboardsApi.md#getDashboardsWithHttpInfo) | **GET** /dashboards | List dashboards
+*DashboardsApi* | [**getIndividualCardData**](docs/DashboardsApi.md#getIndividualCardData) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/cards/{cardId} | Retrieve individual card data from numbers widget
+*DashboardsApi* | [**getIndividualCardDataWithHttpInfo**](docs/DashboardsApi.md#getIndividualCardDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/cards/{cardId} | Retrieve individual card data from numbers widget
+*DashboardsApi* | [**getIndividualColumnData**](docs/DashboardsApi.md#getIndividualColumnData) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId} | Retrieve individual column data from multi-metric table widget
+*DashboardsApi* | [**getIndividualColumnDataWithHttpInfo**](docs/DashboardsApi.md#getIndividualColumnDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId} | Retrieve individual column data from multi-metric table widget
 *DashboardsApi* | [**updateDashboard**](docs/DashboardsApi.md#updateDashboard) | **PUT** /dashboards/{dashboardId} | Update dashboard
 *DashboardsApi* | [**updateDashboardWithHttpInfo**](docs/DashboardsApi.md#updateDashboardWithHttpInfo) | **PUT** /dashboards/{dashboardId} | Update dashboard
 *DashboardsFiltersApi* | [**createDashboardFilter**](docs/DashboardsFiltersApi.md#createDashboardFilter) | **POST** /dashboards/filters | Create dashboard filter

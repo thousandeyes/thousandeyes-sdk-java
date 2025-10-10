@@ -2,7 +2,7 @@
 
 Endpoint Tests API
 
-- API version: 7.0.63
+- API version: 7.0.64
 
 
 Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.

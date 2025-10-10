@@ -66,6 +66,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiColorGridWidget.JSON_PROPERTY_LIMIT,
   ApiColorGridWidget.JSON_PROPERTY_SORT_BY,
   ApiColorGridWidget.JSON_PROPERTY_SORT_DIRECTION,
+  ApiColorGridWidget.JSON_PROPERTY_SORT_GROUP_BY,
+  ApiColorGridWidget.JSON_PROPERTY_SORT_GROUP_DIRECTION,
   ApiColorGridWidget.JSON_PROPERTY_DATA_SOURCE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -141,6 +143,12 @@ public class ApiColorGridWidget {
 
   public static final String JSON_PROPERTY_SORT_DIRECTION = "sortDirection";
   private LegacyWidgetSortDirection sortDirection;
+
+  public static final String JSON_PROPERTY_SORT_GROUP_BY = "sortGroupBy";
+  private LegacyWidgetSortProperty sortGroupBy;
+
+  public static final String JSON_PROPERTY_SORT_GROUP_DIRECTION = "sortGroupDirection";
+  private LegacyWidgetSortDirection sortGroupDirection;
 
   public static final String JSON_PROPERTY_DATA_SOURCE = "dataSource";
   private ColorGridDatasource dataSource;
@@ -744,6 +752,60 @@ public class ApiColorGridWidget {
   }
 
 
+  public ApiColorGridWidget sortGroupBy(LegacyWidgetSortProperty sortGroupBy) {
+    this.sortGroupBy = sortGroupBy;
+    return this;
+  }
+
+   /**
+   * Get sortGroupBy
+   * @return sortGroupBy
+   * @deprecated
+  **/
+  @Deprecated
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SORT_GROUP_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public LegacyWidgetSortProperty getSortGroupBy() {
+    return sortGroupBy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SORT_GROUP_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSortGroupBy(LegacyWidgetSortProperty sortGroupBy) {
+    this.sortGroupBy = sortGroupBy;
+  }
+
+
+  public ApiColorGridWidget sortGroupDirection(LegacyWidgetSortDirection sortGroupDirection) {
+    this.sortGroupDirection = sortGroupDirection;
+    return this;
+  }
+
+   /**
+   * Get sortGroupDirection
+   * @return sortGroupDirection
+   * @deprecated
+  **/
+  @Deprecated
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SORT_GROUP_DIRECTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public LegacyWidgetSortDirection getSortGroupDirection() {
+    return sortGroupDirection;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SORT_GROUP_DIRECTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSortGroupDirection(LegacyWidgetSortDirection sortGroupDirection) {
+    this.sortGroupDirection = sortGroupDirection;
+  }
+
+
   public ApiColorGridWidget dataSource(ColorGridDatasource dataSource) {
     this.dataSource = dataSource;
     return this;
@@ -805,12 +867,14 @@ public class ApiColorGridWidget {
         Objects.equals(this.limit, apiColorGridWidget.limit) &&
         Objects.equals(this.sortBy, apiColorGridWidget.sortBy) &&
         Objects.equals(this.sortDirection, apiColorGridWidget.sortDirection) &&
+        Objects.equals(this.sortGroupBy, apiColorGridWidget.sortGroupBy) &&
+        Objects.equals(this.sortGroupDirection, apiColorGridWidget.sortGroupDirection) &&
         Objects.equals(this.dataSource, apiColorGridWidget.dataSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, visualMode, embedUrl, isEmbedded, metricGroup, direction, metric, filters, measure, fixedTimespan, apiLink, shouldExcludeAlertSuppressionWindows, links, minScale, maxScale, unit, type, cards, groupCardsBy, columns, limit, sortBy, sortDirection, dataSource);
+    return Objects.hash(id, title, visualMode, embedUrl, isEmbedded, metricGroup, direction, metric, filters, measure, fixedTimespan, apiLink, shouldExcludeAlertSuppressionWindows, links, minScale, maxScale, unit, type, cards, groupCardsBy, columns, limit, sortBy, sortDirection, sortGroupBy, sortGroupDirection, dataSource);
   }
 
   @Override
@@ -841,6 +905,8 @@ public class ApiColorGridWidget {
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    sortBy: ").append(toIndentedString(sortBy)).append("\n");
     sb.append("    sortDirection: ").append(toIndentedString(sortDirection)).append("\n");
+    sb.append("    sortGroupBy: ").append(toIndentedString(sortGroupBy)).append("\n");
+    sb.append("    sortGroupDirection: ").append(toIndentedString(sortGroupDirection)).append("\n");
     sb.append("    dataSource: ").append(toIndentedString(dataSource)).append("\n");
     sb.append("}");
     return sb.toString();
