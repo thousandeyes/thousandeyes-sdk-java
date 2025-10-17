@@ -454,9 +454,9 @@ public class BaseRule {
    * Specifies the numerator (x value) in the “X of Y times” condition.
    * @return roundsViolatingRequired
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ROUNDS_VIOLATING_REQUIRED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getRoundsViolatingRequired() {
     return roundsViolatingRequired;
@@ -464,7 +464,7 @@ public class BaseRule {
 
 
   @JsonProperty(JSON_PROPERTY_ROUNDS_VIOLATING_REQUIRED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRoundsViolatingRequired(Integer roundsViolatingRequired) {
     this.roundsViolatingRequired = roundsViolatingRequired;
   }

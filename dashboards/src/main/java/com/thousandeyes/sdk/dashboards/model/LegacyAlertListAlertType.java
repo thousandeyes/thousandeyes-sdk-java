@@ -50,6 +50,8 @@ public enum LegacyAlertListAlertType {
   
   WEB_TRANSACTION("Web - Transaction"),
   
+  API("API"),
+  
   WEB_FTP_SERVER("Web - FTP Server"),
   
   VOICE_SIP_SERVER("Voice - SIP Server"),

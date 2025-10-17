@@ -1,6 +1,6 @@
 /*
  * Usage API
- *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View organization usage` permission to access this endpoint.     * This operation offers visibility across all account groups within the organization.     * Users with `View organization usage` permission in multiple organizations should query the operation with the `aid` query string parameter (see optional parameters) for each organization.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API operations for detailed usage instructions and optional parameters. 
+ *  These usage endpoints define the following operations:  * **Usage**: Retrieve usage data for the specified time period (default is one month).          * Users must have the `View organization usage` permission to access this endpoint.     * This operation offers visibility across all account groups within the organization.     * Users with `View organization usage` permission in multiple organizations should query the operation with the `aid` query string parameter (see optional parameters) for each organization.     * The `agentId` field in enterprise agent unit responses may be omitted when not available.  * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.          * Users must have the necessary permissions to perform quota-related actions.  Refer to the Usage API operations for detailed usage instructions and optional parameters. 
  *
  * 
  *
@@ -32,8 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentUnits.JSON_PROPERTY_AGENT_ID,
   EnterpriseAgentUnits.JSON_PROPERTY_AGENT_NAME,
   EnterpriseAgentUnits.JSON_PROPERTY_ENTERPRISE_UNITS_USED,
-  EnterpriseAgentUnits.JSON_PROPERTY_ENTERPRISE_UNITS_PROJECTED,
-  EnterpriseAgentUnits.JSON_PROPERTY_VAGENT_ID
+  EnterpriseAgentUnits.JSON_PROPERTY_ENTERPRISE_UNITS_PROJECTED
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EnterpriseAgentUnits {
@@ -54,9 +53,6 @@ public class EnterpriseAgentUnits {
 
   public static final String JSON_PROPERTY_ENTERPRISE_UNITS_PROJECTED = "enterpriseUnitsProjected";
   private Long enterpriseUnitsProjected;
-
-  public static final String JSON_PROPERTY_VAGENT_ID = "vagentId";
-  private String vagentId;
 
   public EnterpriseAgentUnits() { 
   }
@@ -117,7 +113,7 @@ public class EnterpriseAgentUnits {
   }
 
    /**
-   * Unique identifier of the enterprise agent generating usage.
+   * Unique identifier of the enterprise agent generating usage. This field may be omitted when not available.
    * @return agentId
   **/
   @jakarta.annotation.Nullable
@@ -211,31 +207,6 @@ public class EnterpriseAgentUnits {
   }
 
 
-  public EnterpriseAgentUnits vagentId(String vagentId) {
-    this.vagentId = vagentId;
-    return this;
-  }
-
-   /**
-   * Unique identifier of the virtual agent generating usage
-   * @return vagentId
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VAGENT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getVagentId() {
-    return vagentId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VAGENT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVagentId(String vagentId) {
-    this.vagentId = vagentId;
-  }
-
-
   /**
    * Return true if this EnterpriseAgentUnits object is equal to o.
    */
@@ -253,13 +224,12 @@ public class EnterpriseAgentUnits {
         Objects.equals(this.agentId, enterpriseAgentUnits.agentId) &&
         Objects.equals(this.agentName, enterpriseAgentUnits.agentName) &&
         Objects.equals(this.enterpriseUnitsUsed, enterpriseAgentUnits.enterpriseUnitsUsed) &&
-        Objects.equals(this.enterpriseUnitsProjected, enterpriseAgentUnits.enterpriseUnitsProjected) &&
-        Objects.equals(this.vagentId, enterpriseAgentUnits.vagentId);
+        Objects.equals(this.enterpriseUnitsProjected, enterpriseAgentUnits.enterpriseUnitsProjected);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, accountGroupName, agentId, agentName, enterpriseUnitsUsed, enterpriseUnitsProjected, vagentId);
+    return Objects.hash(aid, accountGroupName, agentId, agentName, enterpriseUnitsUsed, enterpriseUnitsProjected);
   }
 
   @Override
@@ -272,7 +242,6 @@ public class EnterpriseAgentUnits {
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    enterpriseUnitsUsed: ").append(toIndentedString(enterpriseUnitsUsed)).append("\n");
     sb.append("    enterpriseUnitsProjected: ").append(toIndentedString(enterpriseUnitsProjected)).append("\n");
-    sb.append("    vagentId: ").append(toIndentedString(vagentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -50,6 +50,8 @@ public enum AlertListAlertType {
   
   WEB_TRANSACTION("web-transaction"),
   
+  API("api"),
+  
   WEB_FTP_SERVER("web-ftp-server"),
   
   VOICE_SIP_SERVER("voice-sip-server"),
