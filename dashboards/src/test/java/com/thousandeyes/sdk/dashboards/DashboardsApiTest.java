@@ -13,6 +13,8 @@
 package com.thousandeyes.sdk.dashboards;
 
 import com.thousandeyes.sdk.dashboards.model.ApiDashboard;
+import com.thousandeyes.sdk.dashboards.model.ApiMultiMetricColumnData;
+import com.thousandeyes.sdk.dashboards.model.ApiNumbersCardData;
 import com.thousandeyes.sdk.dashboards.model.ApiWidgetDataResponse;
 import java.math.BigDecimal;
 import com.thousandeyes.sdk.dashboards.model.Dashboard;
@@ -618,6 +620,18 @@ public class DashboardsApiTest {
                     "cards" : [ {
                       "numberOfDataPoints" : 24192,
                       "endDate" : "2023-05-16T10:14:28Z",
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
                       "cardId" : "lrxxr",
                       "alertSuppressionWindows" : [ {
                         "testIds" : [ "281474976710661" ],
@@ -647,6 +661,18 @@ public class DashboardsApiTest {
                     }, {
                       "numberOfDataPoints" : 24192,
                       "endDate" : "2023-05-16T10:14:28Z",
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
                       "cardId" : "lrxxr",
                       "alertSuppressionWindows" : [ {
                         "testIds" : [ "281474976710661" ],
@@ -732,6 +758,18 @@ public class DashboardsApiTest {
                       "target" : "www.google.com"
                     } ],
                     "columns" : [ {
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
                       "columnId" : "938to",
                       "alertSuppressionWindows" : [ {
                         "testIds" : [ "281474976710661" ],
@@ -778,6 +816,18 @@ public class DashboardsApiTest {
                       } ],
                       "status" : "No data"
                     }, {
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
                       "columnId" : "938to",
                       "alertSuppressionWindows" : [ {
                         "testIds" : [ "281474976710661" ],
@@ -1251,6 +1301,185 @@ public class DashboardsApiTest {
                                             .withStatus(statusCode)));
 
         var apiResponse = api.getDashboards(null);
+        assertEquals(mappedResponse, apiResponse);
+    }
+    
+    /**
+     * Retrieve individual card data from numbers widget
+     * <p>
+     * Returns the raw data for an individual card within a numbers widget in the dashboard. 
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void getIndividualCardDataRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
+        String widgetId = "unpmg";
+        String cardId = "rvwgs";
+
+
+        var responseBodyJson = """
+                {
+                  "numberOfDataPoints" : 24192,
+                  "endDate" : "2023-05-16T10:14:28Z",
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "cardId" : "lrxxr",
+                  "alertSuppressionWindows" : [ {
+                    "testIds" : [ "281474976710661" ],
+                    "repeatUnit" : "week",
+                    "durationInSeconds" : 7200,
+                    "repeat" : "custom",
+                    "name" : "Test dashboards",
+                    "repeatEvery" : 5,
+                    "id" : "281474976710662",
+                    "startTimes" : [ "2023-05-16T10:14:28Z" ]
+                  }, {
+                    "testIds" : [ "281474976710661" ],
+                    "repeatUnit" : "week",
+                    "durationInSeconds" : 7200,
+                    "repeat" : "custom",
+                    "name" : "Test dashboards",
+                    "repeatEvery" : 5,
+                    "id" : "281474976710662",
+                    "startTimes" : [ "2023-05-16T10:14:28Z" ]
+                  } ],
+                  "binSize" : 3600,
+                  "previousValue" : 500.0,
+                  "value" : 100.0,
+                  "startDate" : "2023-05-16T10:14:28Z",
+                  "timestamp" : 1567620000,
+                  "status" : "No data"
+                }
+                                  """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
+        ApiNumbersCardData mappedResponse = 
+                mapper.readValue(responseBodyJson, ApiNumbersCardData.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/dashboards/{dashboardId}/widgets/{widgetId}/cards/{cardId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withPathParam("widgetId", equalTo(URLEncoder.encode(widgetId, StandardCharsets.UTF_8)))
+                        .withPathParam("cardId", equalTo(URLEncoder.encode(cardId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getIndividualCardData(dashboardId, widgetId, cardId, null, null, null, null);
+        assertEquals(mappedResponse, apiResponse);
+    }
+    
+    /**
+     * Retrieve individual column data from multi-metric table widget
+     * <p>
+     * Returns the raw data for an individual column within a multi-metric table widget in the dashboard. 
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void getIndividualColumnDataRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
+        String widgetId = "unpmg";
+        String columnId = "col123";
+
+
+        var responseBodyJson = """
+                {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "columnId" : "938to",
+                  "alertSuppressionWindows" : [ {
+                    "testIds" : [ "281474976710661" ],
+                    "repeatUnit" : "week",
+                    "durationInSeconds" : 7200,
+                    "repeat" : "custom",
+                    "name" : "Test dashboards",
+                    "repeatEvery" : 5,
+                    "id" : "281474976710662",
+                    "startTimes" : [ "2023-05-16T10:14:28Z" ]
+                  }, {
+                    "testIds" : [ "281474976710661" ],
+                    "repeatUnit" : "week",
+                    "durationInSeconds" : 7200,
+                    "repeat" : "custom",
+                    "name" : "Test dashboards",
+                    "repeatEvery" : 5,
+                    "id" : "281474976710662",
+                    "startTimes" : [ "2023-05-16T10:14:28Z" ]
+                  } ],
+                  "binSize" : 3600,
+                  "points" : [ {
+                    "numberOfDataPoints" : 23304,
+                    "groups" : [ {
+                      "groupProperty" : "COUNTRY",
+                      "groupValue" : "US"
+                    }, {
+                      "groupProperty" : "COUNTRY",
+                      "groupValue" : "US"
+                    } ],
+                    "value" : 100.0,
+                    "timestamp" : 1567620000
+                  }, {
+                    "numberOfDataPoints" : 23304,
+                    "groups" : [ {
+                      "groupProperty" : "COUNTRY",
+                      "groupValue" : "US"
+                    }, {
+                      "groupProperty" : "COUNTRY",
+                      "groupValue" : "US"
+                    } ],
+                    "value" : 100.0,
+                    "timestamp" : 1567620000
+                  } ],
+                  "status" : "No data"
+                }
+                                  """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
+        ApiMultiMetricColumnData mappedResponse = 
+                mapper.readValue(responseBodyJson, ApiMultiMetricColumnData.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId}";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withPathParam("widgetId", equalTo(URLEncoder.encode(widgetId, StandardCharsets.UTF_8)))
+                        .withPathParam("columnId", equalTo(URLEncoder.encode(columnId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getIndividualColumnData(dashboardId, widgetId, columnId, null, null, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

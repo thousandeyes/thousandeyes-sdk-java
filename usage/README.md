@@ -2,7 +2,7 @@
 
 Usage API
 
-- API version: 7.0.63
+- API version: 7.0.65
 
 
 These usage endpoints define the following operations:
@@ -12,6 +12,7 @@ These usage endpoints define the following operations:
     * Users must have the `View organization usage` permission to access this endpoint.
     * This operation offers visibility across all account groups within the organization.
     * Users with `View organization usage` permission in multiple organizations should query the operation with the `aid` query string parameter (see optional parameters) for each organization.
+    * The `agentId` field in enterprise agent unit responses may be omitted when not available.
 
 * **Quotas**: Obtain organization and account usage quotas. Additionally, users with the appropriate permissions can create, update, or delete these quotas.
     

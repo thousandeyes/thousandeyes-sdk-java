@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.dashboards.model.ApiDashboardAsw;
+import com.thousandeyes.sdk.dashboards.model.SelfLinks;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +42,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNumbersCardData.JSON_PROPERTY_NUMBER_OF_DATA_POINTS,
   ApiNumbersCardData.JSON_PROPERTY_VALUE,
   ApiNumbersCardData.JSON_PROPERTY_STATUS,
-  ApiNumbersCardData.JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS
+  ApiNumbersCardData.JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS,
+  ApiNumbersCardData.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiNumbersCardData {
@@ -74,6 +76,9 @@ public class ApiNumbersCardData {
 
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOWS = "alertSuppressionWindows";
   private List<ApiDashboardAsw> alertSuppressionWindows = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_LINKS = "_links";
+  private SelfLinks links;
 
   public ApiNumbersCardData() { 
   }
@@ -336,6 +341,31 @@ public class ApiNumbersCardData {
   }
 
 
+  public ApiNumbersCardData links(SelfLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SelfLinks getLinks() {
+    return links;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLinks(SelfLinks links) {
+    this.links = links;
+  }
+
+
   /**
    * Return true if this ApiNumbersCardData object is equal to o.
    */
@@ -357,12 +387,13 @@ public class ApiNumbersCardData {
         Objects.equals(this.numberOfDataPoints, apiNumbersCardData.numberOfDataPoints) &&
         Objects.equals(this.value, apiNumbersCardData.value) &&
         Objects.equals(this.status, apiNumbersCardData.status) &&
-        Objects.equals(this.alertSuppressionWindows, apiNumbersCardData.alertSuppressionWindows);
+        Objects.equals(this.alertSuppressionWindows, apiNumbersCardData.alertSuppressionWindows) &&
+        Objects.equals(this.links, apiNumbersCardData.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cardId, startDate, endDate, previousValue, binSize, timestamp, numberOfDataPoints, value, status, alertSuppressionWindows);
+    return Objects.hash(cardId, startDate, endDate, previousValue, binSize, timestamp, numberOfDataPoints, value, status, alertSuppressionWindows, links);
   }
 
   @Override
@@ -379,6 +410,7 @@ public class ApiNumbersCardData {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    alertSuppressionWindows: ").append(toIndentedString(alertSuppressionWindows)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }

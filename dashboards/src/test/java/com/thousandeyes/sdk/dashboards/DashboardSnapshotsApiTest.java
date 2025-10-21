@@ -520,6 +520,18 @@ public class DashboardSnapshotsApiTest {
                     "cards" : [ {
                       "numberOfDataPoints" : 24192,
                       "endDate" : "2023-05-16T10:14:28Z",
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
                       "cardId" : "lrxxr",
                       "alertSuppressionWindows" : [ {
                         "testIds" : [ "281474976710661" ],
@@ -549,6 +561,18 @@ public class DashboardSnapshotsApiTest {
                     }, {
                       "numberOfDataPoints" : 24192,
                       "endDate" : "2023-05-16T10:14:28Z",
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
                       "cardId" : "lrxxr",
                       "alertSuppressionWindows" : [ {
                         "testIds" : [ "281474976710661" ],
@@ -634,6 +658,18 @@ public class DashboardSnapshotsApiTest {
                       "target" : "www.google.com"
                     } ],
                     "columns" : [ {
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
                       "columnId" : "938to",
                       "alertSuppressionWindows" : [ {
                         "testIds" : [ "281474976710661" ],
@@ -680,6 +716,18 @@ public class DashboardSnapshotsApiTest {
                       } ],
                       "status" : "No data"
                     }, {
+                      "_links" : {
+                        "self" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      },
                       "columnId" : "938to",
                       "alertSuppressionWindows" : [ {
                         "testIds" : [ "281474976710661" ],

@@ -14,6 +14,10 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 | [**getDashboardWidgetDataWithHttpInfo**](DashboardsApi.md#getDashboardWidgetDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
 | [**getDashboards**](DashboardsApi.md#getDashboards) | **GET** /dashboards | List dashboards |
 | [**getDashboardsWithHttpInfo**](DashboardsApi.md#getDashboardsWithHttpInfo) | **GET** /dashboards | List dashboards |
+| [**getIndividualCardData**](DashboardsApi.md#getIndividualCardData) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/cards/{cardId} | Retrieve individual card data from numbers widget |
+| [**getIndividualCardDataWithHttpInfo**](DashboardsApi.md#getIndividualCardDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/cards/{cardId} | Retrieve individual card data from numbers widget |
+| [**getIndividualColumnData**](DashboardsApi.md#getIndividualColumnData) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId} | Retrieve individual column data from multi-metric table widget |
+| [**getIndividualColumnDataWithHttpInfo**](DashboardsApi.md#getIndividualColumnDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId} | Retrieve individual column data from multi-metric table widget |
 | [**updateDashboard**](DashboardsApi.md#updateDashboard) | **PUT** /dashboards/{dashboardId} | Update dashboard |
 | [**updateDashboardWithHttpInfo**](DashboardsApi.md#updateDashboardWithHttpInfo) | **PUT** /dashboards/{dashboardId} | Update dashboard |
 
@@ -822,6 +826,366 @@ public class Example {
 ### Return type
 
 ApiResponse<[**List&lt;ApiDashboard&gt;**](ApiDashboard.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+
+## getIndividualCardData
+
+> ApiNumbersCardData getIndividualCardData(dashboardId, widgetId, cardId, aid, window, startDate, endDate)
+
+Retrieve individual card data from numbers widget
+
+Returns the raw data for an individual card within a numbers widget in the dashboard. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        String widgetId = "unpmg"; // String | A Identifier for a widget.
+        String cardId = "rvwgs"; // String | An identifier for a card within the numbers widget.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
+        OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        try {
+            ApiNumbersCardData result = apiInstance.getIndividualCardData(dashboardId, widgetId, cardId, aid, window, startDate, endDate);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#getIndividualCardData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **widgetId** | **String**| A Identifier for a widget. | |
+| **cardId** | **String**| An identifier for a card within the numbers widget. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+
+### Return type
+
+[**ApiNumbersCardData**](ApiNumbersCardData.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## getIndividualCardDataWithHttpInfo
+
+> ApiResponse<ApiNumbersCardData> getIndividualCardData getIndividualCardDataWithHttpInfo(dashboardId, widgetId, cardId, aid, window, startDate, endDate)
+
+Retrieve individual card data from numbers widget
+
+Returns the raw data for an individual card within a numbers widget in the dashboard. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        String widgetId = "unpmg"; // String | A Identifier for a widget.
+        String cardId = "rvwgs"; // String | An identifier for a card within the numbers widget.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
+        OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        try {
+            ApiResponse<ApiNumbersCardData> response = apiInstance.getIndividualCardDataWithHttpInfo(dashboardId, widgetId, cardId, aid, window, startDate, endDate);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#getIndividualCardData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **widgetId** | **String**| A Identifier for a widget. | |
+| **cardId** | **String**| An identifier for a card within the numbers widget. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+
+### Return type
+
+ApiResponse<[**ApiNumbersCardData**](ApiNumbersCardData.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+
+## getIndividualColumnData
+
+> ApiMultiMetricColumnData getIndividualColumnData(dashboardId, widgetId, columnId, aid, window, startDate, endDate)
+
+Retrieve individual column data from multi-metric table widget
+
+Returns the raw data for an individual column within a multi-metric table widget in the dashboard. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        String widgetId = "unpmg"; // String | A Identifier for a widget.
+        String columnId = "col123"; // String | An identifier for a column within the multi-metric table widget.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
+        OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        try {
+            ApiMultiMetricColumnData result = apiInstance.getIndividualColumnData(dashboardId, widgetId, columnId, aid, window, startDate, endDate);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#getIndividualColumnData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **widgetId** | **String**| A Identifier for a widget. | |
+| **columnId** | **String**| An identifier for a column within the multi-metric table widget. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+
+### Return type
+
+[**ApiMultiMetricColumnData**](ApiMultiMetricColumnData.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## getIndividualColumnDataWithHttpInfo
+
+> ApiResponse<ApiMultiMetricColumnData> getIndividualColumnData getIndividualColumnDataWithHttpInfo(dashboardId, widgetId, columnId, aid, window, startDate, endDate)
+
+Retrieve individual column data from multi-metric table widget
+
+Returns the raw data for an individual column within a multi-metric table widget in the dashboard. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        String widgetId = "unpmg"; // String | A Identifier for a widget.
+        String columnId = "col123"; // String | An identifier for a column within the multi-metric table widget.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
+        OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        try {
+            ApiResponse<ApiMultiMetricColumnData> response = apiInstance.getIndividualColumnDataWithHttpInfo(dashboardId, widgetId, columnId, aid, window, startDate, endDate);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#getIndividualColumnData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **widgetId** | **String**| A Identifier for a widget. | |
+| **columnId** | **String**| An identifier for a column within the multi-metric table widget. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+
+### Return type
+
+ApiResponse<[**ApiMultiMetricColumnData**](ApiMultiMetricColumnData.md)>
 
 
 ### Authorization
