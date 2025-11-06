@@ -1597,7 +1597,7 @@ public class PageLoadTest {
    /**
    * Target time for page load completion, specified in seconds and cannot exceed the &#x60;pageLoadTimeLimit&#x60;.
    * minimum: 1
-   * maximum: 30
+   * maximum: 60
    * @return pageLoadTargetTime
   **/
   @jakarta.annotation.Nullable
