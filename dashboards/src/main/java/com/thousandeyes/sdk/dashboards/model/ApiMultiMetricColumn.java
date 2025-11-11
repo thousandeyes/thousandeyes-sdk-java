@@ -25,6 +25,7 @@ import com.thousandeyes.sdk.dashboards.model.DashboardMetric;
 import com.thousandeyes.sdk.dashboards.model.DashboardMetricDirection;
 import com.thousandeyes.sdk.dashboards.model.MetricGroup;
 import com.thousandeyes.sdk.dashboards.model.MultiMetricsTableDatasource;
+import com.thousandeyes.sdk.dashboards.model.SelfLinks;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -41,7 +42,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiMultiMetricColumn.JSON_PROPERTY_DIRECTION,
   ApiMultiMetricColumn.JSON_PROPERTY_METRIC,
   ApiMultiMetricColumn.JSON_PROPERTY_FILTERS,
-  ApiMultiMetricColumn.JSON_PROPERTY_MEASURE
+  ApiMultiMetricColumn.JSON_PROPERTY_MEASURE,
+  ApiMultiMetricColumn.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiMultiMetricColumn {
@@ -65,6 +67,9 @@ public class ApiMultiMetricColumn {
 
   public static final String JSON_PROPERTY_MEASURE = "measure";
   private ApiWidgetMeasure measure;
+
+  public static final String JSON_PROPERTY_LINKS = "_links";
+  private SelfLinks links;
 
   public ApiMultiMetricColumn() { 
   }
@@ -252,6 +257,31 @@ public class ApiMultiMetricColumn {
   }
 
 
+  public ApiMultiMetricColumn links(SelfLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SelfLinks getLinks() {
+    return links;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLinks(SelfLinks links) {
+    this.links = links;
+  }
+
+
   /**
    * Return true if this ApiMultiMetricColumn object is equal to o.
    */
@@ -270,12 +300,13 @@ public class ApiMultiMetricColumn {
         Objects.equals(this.direction, apiMultiMetricColumn.direction) &&
         Objects.equals(this.metric, apiMultiMetricColumn.metric) &&
         Objects.equals(this.filters, apiMultiMetricColumn.filters) &&
-        Objects.equals(this.measure, apiMultiMetricColumn.measure);
+        Objects.equals(this.measure, apiMultiMetricColumn.measure) &&
+        Objects.equals(this.links, apiMultiMetricColumn.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, dataSource, metricGroup, direction, metric, filters, measure);
+    return Objects.hash(id, dataSource, metricGroup, direction, metric, filters, measure, links);
   }
 
   @Override
@@ -289,6 +320,7 @@ public class ApiMultiMetricColumn {
     sb.append("    metric: ").append(toIndentedString(metric)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    measure: ").append(toIndentedString(measure)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }

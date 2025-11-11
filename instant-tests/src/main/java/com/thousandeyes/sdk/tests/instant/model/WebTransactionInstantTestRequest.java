@@ -1488,7 +1488,7 @@ public class WebTransactionInstantTestRequest {
 
    /**
    * Target completion time, in seconds. Defaults to 10. Cannot exceed the &#x60;timeLimit&#x60; value.
-   * minimum: 0
+   * minimum: 1
    * maximum: 180
    * @return targetTime
   **/

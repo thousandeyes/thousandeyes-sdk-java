@@ -2,7 +2,7 @@
 
 Tests API
 
-- API version: 7.0.65
+- API version: 7.0.66
 
 This API allows you to list, create, edit, and delete Network and Application Synthetics tests.
 

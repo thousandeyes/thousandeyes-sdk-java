@@ -27,6 +27,7 @@ import com.thousandeyes.sdk.dashboards.model.DashboardMetric;
 import com.thousandeyes.sdk.dashboards.model.DashboardMetricDirection;
 import com.thousandeyes.sdk.dashboards.model.MetricGroup;
 import com.thousandeyes.sdk.dashboards.model.NumbersCardDatasource;
+import com.thousandeyes.sdk.dashboards.model.SelfLinks;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -50,7 +51,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiNumbersCard.JSON_PROPERTY_METRIC_GROUP,
   ApiNumbersCard.JSON_PROPERTY_DIRECTION,
   ApiNumbersCard.JSON_PROPERTY_METRIC,
-  ApiNumbersCard.JSON_PROPERTY_FILTERS
+  ApiNumbersCard.JSON_PROPERTY_FILTERS,
+  ApiNumbersCard.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiNumbersCard {
@@ -95,6 +97,9 @@ public class ApiNumbersCard {
 
   public static final String JSON_PROPERTY_FILTERS = "filters";
   private Map<String, Set<Object>> filters = new HashMap<>();
+
+  public static final String JSON_PROPERTY_LINKS = "_links";
+  private SelfLinks links;
 
   public ApiNumbersCard() { 
   }
@@ -457,6 +462,31 @@ public class ApiNumbersCard {
   }
 
 
+  public ApiNumbersCard links(SelfLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SelfLinks getLinks() {
+    return links;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLinks(SelfLinks links) {
+    this.links = links;
+  }
+
+
   /**
    * Return true if this ApiNumbersCard object is equal to o.
    */
@@ -482,12 +512,13 @@ public class ApiNumbersCard {
         Objects.equals(this.metricGroup, apiNumbersCard.metricGroup) &&
         Objects.equals(this.direction, apiNumbersCard.direction) &&
         Objects.equals(this.metric, apiNumbersCard.metric) &&
-        Objects.equals(this.filters, apiNumbersCard.filters);
+        Objects.equals(this.filters, apiNumbersCard.filters) &&
+        Objects.equals(this.links, apiNumbersCard.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(minScale, maxScale, unit, id, description, measure, compareToPreviousValue, fixedTimespan, shouldExcludeAlertSuppressionWindows, dataSource, metricGroup, direction, metric, filters);
+    return Objects.hash(minScale, maxScale, unit, id, description, measure, compareToPreviousValue, fixedTimespan, shouldExcludeAlertSuppressionWindows, dataSource, metricGroup, direction, metric, filters, links);
   }
 
   @Override
@@ -508,6 +539,7 @@ public class ApiNumbersCard {
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    metric: ").append(toIndentedString(metric)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
