@@ -32,7 +32,6 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointBrowser.
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointHttpDataPointScore.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointHttpServerBaseTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointHttpServerTest.java
-src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointIpVersionTemplate.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointNetworkTopologyResultRequest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointNetworkTopologyResultRequestFilter.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointNetworkTopologyThresholdFilter.java

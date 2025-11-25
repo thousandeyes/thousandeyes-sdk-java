@@ -20,81 +20,50 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.streaming.model.ExporterConfigAuthorization;
-import com.thousandeyes.sdk.streaming.model.ExporterConfigSplunkHec;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Capability to set exporter configuration.
+ * Endpoint Agent label configuration.
  */
 @JsonPropertyOrder({
-  ExporterConfig.JSON_PROPERTY_SPLUNK_HEC,
-  ExporterConfig.JSON_PROPERTY_AUTHORIZATION
+  EndpointAgentLabel.JSON_PROPERTY_ID
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class ExporterConfig {
-  public static final String JSON_PROPERTY_SPLUNK_HEC = "splunkHec";
-  private ExporterConfigSplunkHec splunkHec;
+public class EndpointAgentLabel {
+  public static final String JSON_PROPERTY_ID = "id";
+  private String id;
 
-  public static final String JSON_PROPERTY_AUTHORIZATION = "authorization";
-  private ExporterConfigAuthorization authorization;
-
-  public ExporterConfig() { 
+  public EndpointAgentLabel() { 
   }
 
-  public ExporterConfig splunkHec(ExporterConfigSplunkHec splunkHec) {
-    this.splunkHec = splunkHec;
+  public EndpointAgentLabel id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get splunkHec
-   * @return splunkHec
+   * The label ID of Endpoint Agent labels.
+   * @return id
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SPLUNK_HEC)
+  @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ExporterConfigSplunkHec getSplunkHec() {
-    return splunkHec;
+  public String getId() {
+    return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SPLUNK_HEC)
+  @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSplunkHec(ExporterConfigSplunkHec splunkHec) {
-    this.splunkHec = splunkHec;
-  }
-
-
-  public ExporterConfig authorization(ExporterConfigAuthorization authorization) {
-    this.authorization = authorization;
-    return this;
-  }
-
-   /**
-   * Get authorization
-   * @return authorization
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ExporterConfigAuthorization getAuthorization() {
-    return authorization;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthorization(ExporterConfigAuthorization authorization) {
-    this.authorization = authorization;
+  public void setId(String id) {
+    this.id = id;
   }
 
 
   /**
-   * Return true if this ExporterConfig object is equal to o.
+   * Return true if this EndpointAgentLabel object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -104,22 +73,20 @@ public class ExporterConfig {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExporterConfig exporterConfig = (ExporterConfig) o;
-    return Objects.equals(this.splunkHec, exporterConfig.splunkHec) &&
-        Objects.equals(this.authorization, exporterConfig.authorization);
+    EndpointAgentLabel endpointAgentLabel = (EndpointAgentLabel) o;
+    return Objects.equals(this.id, endpointAgentLabel.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(splunkHec, authorization);
+    return Objects.hash(id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExporterConfig {\n");
-    sb.append("    splunkHec: ").append(toIndentedString(splunkHec)).append("\n");
-    sb.append("    authorization: ").append(toIndentedString(authorization)).append("\n");
+    sb.append("class EndpointAgentLabel {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -282,6 +282,10 @@ public class AccountGroupsApiTest {
                     "keepBrowserCache" : true,
                     "agentState" : "online",
                     "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "coordinates" : {
+                      "latitude" : 37.77493,
+                      "longitude" : -122.41942
+                    },
                     "agentName" : "thousandeyes-stg-va-254",
                     "utilization" : 25,
                     "testIds" : [ 281474976710706 ],
@@ -423,6 +427,10 @@ public class AccountGroupsApiTest {
                     "keepBrowserCache" : true,
                     "agentState" : "online",
                     "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "coordinates" : {
+                      "latitude" : 37.77493,
+                      "longitude" : -122.41942
+                    },
                     "agentName" : "thousandeyes-stg-va-254",
                     "utilization" : 25,
                     "testIds" : [ 281474976710706 ],
@@ -728,6 +736,10 @@ public class AccountGroupsApiTest {
                     "keepBrowserCache" : true,
                     "agentState" : "online",
                     "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "coordinates" : {
+                      "latitude" : 37.77493,
+                      "longitude" : -122.41942
+                    },
                     "agentName" : "thousandeyes-stg-va-254",
                     "utilization" : 25,
                     "testIds" : [ 281474976710706 ],
@@ -869,6 +881,10 @@ public class AccountGroupsApiTest {
                     "keepBrowserCache" : true,
                     "agentState" : "online",
                     "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "coordinates" : {
+                      "latitude" : 37.77493,
+                      "longitude" : -122.41942
+                    },
                     "agentName" : "thousandeyes-stg-va-254",
                     "utilization" : 25,
                     "testIds" : [ 281474976710706 ],

@@ -88,6 +88,7 @@ public class AgentToServerEndpointScheduledTestsApiTest {
                 {
                   "server" : "www.example.com",
                   "protocol" : "icmp",
+                  "ipVersion" : "V4_ONLY",
                   "port" : 443,
                   "agentSelectorType" : "all-agents",
                   "maxMachines" : 25,

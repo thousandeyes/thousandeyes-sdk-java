@@ -17,7 +17,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointHttpServ
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointHttpServerInstantTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointHttpServerTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointInstantTest.java
-src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointIpVersionTemplate.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointIpVersionIn.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointRunScheduledInstantTestResult.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointScheduledTestType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointSpecificAgentsSelectorConfig.java

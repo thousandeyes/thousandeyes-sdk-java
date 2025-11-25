@@ -35,6 +35,7 @@ src/main/java/com/thousandeyes/sdk/agents/model/CloudEnterpriseAgent.java
 src/main/java/com/thousandeyes/sdk/agents/model/CloudEnterpriseAgentType.java
 src/main/java/com/thousandeyes/sdk/agents/model/CloudEnterpriseAgents.java
 src/main/java/com/thousandeyes/sdk/agents/model/ClusterMember.java
+src/main/java/com/thousandeyes/sdk/agents/model/Coordinates.java
 src/main/java/com/thousandeyes/sdk/agents/model/EnterpriseAgent.java
 src/main/java/com/thousandeyes/sdk/agents/model/EnterpriseAgentClusterDetail.java
 src/main/java/com/thousandeyes/sdk/agents/model/EnterpriseAgentData.java

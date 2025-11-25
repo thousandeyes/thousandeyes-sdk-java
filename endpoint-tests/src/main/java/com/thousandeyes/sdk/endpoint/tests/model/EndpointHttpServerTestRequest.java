@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointIpVersionIn;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAgentSelectorType;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAuthType;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestProtocol;
@@ -42,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTestRequest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
   EndpointHttpServerTestRequest.JSON_PROPERTY_MAX_MACHINES,
   EndpointHttpServerTestRequest.JSON_PROPERTY_TEST_NAME,
+  EndpointHttpServerTestRequest.JSON_PROPERTY_IP_VERSION,
   EndpointHttpServerTestRequest.JSON_PROPERTY_AUTH_TYPE,
   EndpointHttpServerTestRequest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
   EndpointHttpServerTestRequest.JSON_PROPERTY_HTTP_TIME_LIMIT,
@@ -75,6 +77,9 @@ public class EndpointHttpServerTestRequest {
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
+
+  public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
+  private EndpointIpVersionIn ipVersion;
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private EndpointTestAuthType authType = EndpointTestAuthType.NONE;
@@ -265,6 +270,31 @@ public class EndpointHttpServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTestName(String testName) {
     this.testName = testName;
+  }
+
+
+  public EndpointHttpServerTestRequest ipVersion(EndpointIpVersionIn ipVersion) {
+    this.ipVersion = ipVersion;
+    return this;
+  }
+
+   /**
+   * Get ipVersion
+   * @return ipVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointIpVersionIn getIpVersion() {
+    return ipVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpVersion(EndpointIpVersionIn ipVersion) {
+    this.ipVersion = ipVersion;
   }
 
 
@@ -689,6 +719,7 @@ public class EndpointHttpServerTestRequest {
         Objects.equals(this.endpointAgentLabels, endpointHttpServerTestRequest.endpointAgentLabels) &&
         Objects.equals(this.maxMachines, endpointHttpServerTestRequest.maxMachines) &&
         Objects.equals(this.testName, endpointHttpServerTestRequest.testName) &&
+        Objects.equals(this.ipVersion, endpointHttpServerTestRequest.ipVersion) &&
         Objects.equals(this.authType, endpointHttpServerTestRequest.authType) &&
         Objects.equals(this.hasPathTraceInSession, endpointHttpServerTestRequest.hasPathTraceInSession) &&
         Objects.equals(this.httpTimeLimit, endpointHttpServerTestRequest.httpTimeLimit) &&
@@ -709,7 +740,7 @@ public class EndpointHttpServerTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, authType, hasPathTraceInSession, httpTimeLimit, protocol, username, sslVersionId, tcpProbeMode, verifyCertificate, url, hasPing, hasTraceroute, networkMeasurements, targetResponseTime, password, isPrioritized, interval);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, ipVersion, authType, hasPathTraceInSession, httpTimeLimit, protocol, username, sslVersionId, tcpProbeMode, verifyCertificate, url, hasPing, hasTraceroute, networkMeasurements, targetResponseTime, password, isPrioritized, interval);
   }
 
   @Override
@@ -721,6 +752,7 @@ public class EndpointHttpServerTestRequest {
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
+    sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
     sb.append("    httpTimeLimit: ").append(toIndentedString(httpTimeLimit)).append("\n");

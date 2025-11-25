@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AccountGroup;
 import com.thousandeyes.sdk.agents.model.AgentLabel;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
+import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;
 import com.thousandeyes.sdk.agents.model.ErrorDetail;
@@ -48,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentDetail.JSON_PROPERTY_AGENT_NAME,
   EnterpriseAgentDetail.JSON_PROPERTY_LOCATION,
   EnterpriseAgentDetail.JSON_PROPERTY_COUNTRY_ID,
+  EnterpriseAgentDetail.JSON_PROPERTY_COORDINATES,
   EnterpriseAgentDetail.JSON_PROPERTY_ENABLED,
   EnterpriseAgentDetail.JSON_PROPERTY_PREFIX,
   EnterpriseAgentDetail.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
@@ -93,6 +95,9 @@ public class EnterpriseAgentDetail {
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
   private String countryId;
+
+  public static final String JSON_PROPERTY_COORDINATES = "coordinates";
+  private Coordinates coordinates;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
@@ -316,6 +321,31 @@ public class EnterpriseAgentDetail {
   }
 
 
+
+
+  public EnterpriseAgentDetail coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+   /**
+   * Get coordinates
+   * @return coordinates
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
 
 
   public EnterpriseAgentDetail enabled(Boolean enabled) {
@@ -809,6 +839,7 @@ public class EnterpriseAgentDetail {
         Objects.equals(this.agentName, enterpriseAgentDetail.agentName) &&
         Objects.equals(this.location, enterpriseAgentDetail.location) &&
         Objects.equals(this.countryId, enterpriseAgentDetail.countryId) &&
+        Objects.equals(this.coordinates, enterpriseAgentDetail.coordinates) &&
         Objects.equals(this.enabled, enterpriseAgentDetail.enabled) &&
         Objects.equals(this.prefix, enterpriseAgentDetail.prefix) &&
         Objects.equals(this.verifySslCertificates, enterpriseAgentDetail.verifySslCertificates) &&
@@ -835,7 +866,7 @@ public class EnterpriseAgentDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, agentType, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, agentType, links);
   }
 
   @Override
@@ -849,6 +880,7 @@ public class EnterpriseAgentDetail {
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");

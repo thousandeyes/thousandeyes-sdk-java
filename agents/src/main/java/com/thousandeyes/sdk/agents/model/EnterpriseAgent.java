@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AccountGroup;
 import com.thousandeyes.sdk.agents.model.CloudEnterpriseAgentType;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
+import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;
 import com.thousandeyes.sdk.agents.model.ErrorDetail;
@@ -47,6 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgent.JSON_PROPERTY_AGENT_NAME,
   EnterpriseAgent.JSON_PROPERTY_LOCATION,
   EnterpriseAgent.JSON_PROPERTY_COUNTRY_ID,
+  EnterpriseAgent.JSON_PROPERTY_COORDINATES,
   EnterpriseAgent.JSON_PROPERTY_ENABLED,
   EnterpriseAgent.JSON_PROPERTY_PREFIX,
   EnterpriseAgent.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
@@ -91,6 +93,9 @@ public class EnterpriseAgent {
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
   private String countryId;
+
+  public static final String JSON_PROPERTY_COORDINATES = "coordinates";
+  private Coordinates coordinates;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
@@ -325,6 +330,31 @@ public class EnterpriseAgent {
   }
 
 
+
+
+  public EnterpriseAgent coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+   /**
+   * Get coordinates
+   * @return coordinates
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
 
 
   public EnterpriseAgent enabled(Boolean enabled) {
@@ -721,6 +751,7 @@ public class EnterpriseAgent {
         Objects.equals(this.agentName, enterpriseAgent.agentName) &&
         Objects.equals(this.location, enterpriseAgent.location) &&
         Objects.equals(this.countryId, enterpriseAgent.countryId) &&
+        Objects.equals(this.coordinates, enterpriseAgent.coordinates) &&
         Objects.equals(this.enabled, enterpriseAgent.enabled) &&
         Objects.equals(this.prefix, enterpriseAgent.prefix) &&
         Objects.equals(this.verifySslCertificates, enterpriseAgent.verifySslCertificates) &&
@@ -743,7 +774,7 @@ public class EnterpriseAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentType, ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
+    return Objects.hash(agentType, ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
   }
 
   @Override
@@ -758,6 +789,7 @@ public class EnterpriseAgent {
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");

@@ -97,6 +97,14 @@ public class StreamingApiTest {
                   "endpointType" : "grpc",
                   "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
+                    "authorization" : {
+                      "oAuth2" : {
+                        "clientId" : "1234567890",
+                        "tokenUrl" : "https://example.com/token",
+                        "clientSecret" : "1234567890",
+                        "scopes" : [ "read", "write" ]
+                      }
+                    },
                     "splunkHec" : {
                       "sourceType" : "ThousandEyesOTel",
                       "index" : "thousandeyes_otel_events_index",
@@ -141,6 +149,14 @@ public class StreamingApiTest {
                   },
                   "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
+                    "authorization" : {
+                      "oAuth2" : {
+                        "clientId" : "1234567890",
+                        "tokenUrl" : "https://example.com/token",
+                        "clientSecret" : "1234567890",
+                        "scopes" : [ "read", "write" ]
+                      }
+                    },
                     "splunkHec" : {
                       "sourceType" : "ThousandEyesOTel",
                       "index" : "thousandeyes_otel_events_index",
@@ -258,6 +274,14 @@ public class StreamingApiTest {
                   },
                   "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
+                    "authorization" : {
+                      "oAuth2" : {
+                        "clientId" : "1234567890",
+                        "tokenUrl" : "https://example.com/token",
+                        "clientSecret" : "1234567890",
+                        "scopes" : [ "read", "write" ]
+                      }
+                    },
                     "splunkHec" : {
                       "sourceType" : "ThousandEyesOTel",
                       "index" : "thousandeyes_otel_events_index",
@@ -348,6 +372,14 @@ public class StreamingApiTest {
                   },
                   "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
+                    "authorization" : {
+                      "oAuth2" : {
+                        "clientId" : "1234567890",
+                        "tokenUrl" : "https://example.com/token",
+                        "clientSecret" : "1234567890",
+                        "scopes" : [ "read", "write" ]
+                      }
+                    },
                     "splunkHec" : {
                       "sourceType" : "ThousandEyesOTel",
                       "index" : "thousandeyes_otel_events_index",
@@ -403,6 +435,14 @@ public class StreamingApiTest {
                   },
                   "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
+                    "authorization" : {
+                      "oAuth2" : {
+                        "clientId" : "1234567890",
+                        "tokenUrl" : "https://example.com/token",
+                        "clientSecret" : "1234567890",
+                        "scopes" : [ "read", "write" ]
+                      }
+                    },
                     "splunkHec" : {
                       "sourceType" : "ThousandEyesOTel",
                       "index" : "thousandeyes_otel_events_index",
@@ -493,6 +533,14 @@ public class StreamingApiTest {
                   } ],
                   "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
+                    "authorization" : {
+                      "oAuth2" : {
+                        "clientId" : "1234567890",
+                        "tokenUrl" : "https://example.com/token",
+                        "clientSecret" : "1234567890",
+                        "scopes" : [ "read", "write" ]
+                      }
+                    },
                     "splunkHec" : {
                       "sourceType" : "ThousandEyesOTel",
                       "index" : "thousandeyes_otel_events_index",
@@ -534,6 +582,14 @@ public class StreamingApiTest {
                   },
                   "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
+                    "authorization" : {
+                      "oAuth2" : {
+                        "clientId" : "1234567890",
+                        "tokenUrl" : "https://example.com/token",
+                        "clientSecret" : "1234567890",
+                        "scopes" : [ "read", "write" ]
+                      }
+                    },
                     "splunkHec" : {
                       "sourceType" : "ThousandEyesOTel",
                       "index" : "thousandeyes_otel_events_index",

@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.agents.model.AccountGroup;
 import com.thousandeyes.sdk.agents.model.AgentResponse;
 import com.thousandeyes.sdk.agents.model.CloudEnterpriseAgentType;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
+import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgent;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;

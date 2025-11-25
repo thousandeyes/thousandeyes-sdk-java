@@ -2,7 +2,7 @@
 
 Usage API
 
-- API version: 7.0.66
+- API version: 7.0.67
 
 
 These usage endpoints define the following operations:
