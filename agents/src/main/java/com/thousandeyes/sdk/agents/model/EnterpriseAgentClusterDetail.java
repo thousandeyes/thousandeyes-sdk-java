@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AccountGroup;
 import com.thousandeyes.sdk.agents.model.AgentLabel;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
+import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;
 import com.thousandeyes.sdk.agents.model.ErrorDetail;
@@ -48,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentClusterDetail.JSON_PROPERTY_AGENT_NAME,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_LOCATION,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_COUNTRY_ID,
+  EnterpriseAgentClusterDetail.JSON_PROPERTY_COORDINATES,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_ENABLED,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_PREFIX,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
@@ -93,6 +95,9 @@ public class EnterpriseAgentClusterDetail {
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
   private String countryId;
+
+  public static final String JSON_PROPERTY_COORDINATES = "coordinates";
+  private Coordinates coordinates;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
@@ -316,6 +321,31 @@ public class EnterpriseAgentClusterDetail {
   }
 
 
+
+
+  public EnterpriseAgentClusterDetail coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+   /**
+   * Get coordinates
+   * @return coordinates
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
 
 
   public EnterpriseAgentClusterDetail enabled(Boolean enabled) {
@@ -809,6 +839,7 @@ public class EnterpriseAgentClusterDetail {
         Objects.equals(this.agentName, enterpriseAgentClusterDetail.agentName) &&
         Objects.equals(this.location, enterpriseAgentClusterDetail.location) &&
         Objects.equals(this.countryId, enterpriseAgentClusterDetail.countryId) &&
+        Objects.equals(this.coordinates, enterpriseAgentClusterDetail.coordinates) &&
         Objects.equals(this.enabled, enterpriseAgentClusterDetail.enabled) &&
         Objects.equals(this.prefix, enterpriseAgentClusterDetail.prefix) &&
         Objects.equals(this.verifySslCertificates, enterpriseAgentClusterDetail.verifySslCertificates) &&
@@ -835,7 +866,7 @@ public class EnterpriseAgentClusterDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, agentType, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, agentType, links);
   }
 
   @Override
@@ -849,6 +880,7 @@ public class EnterpriseAgentClusterDetail {
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");

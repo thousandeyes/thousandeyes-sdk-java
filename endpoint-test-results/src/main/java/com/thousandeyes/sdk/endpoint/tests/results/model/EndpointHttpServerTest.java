@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointAgentSelectorConfig;
-import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointIpVersionTemplate;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestAuthType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestProtocol;
@@ -114,7 +113,7 @@ public class EndpointHttpServerTest {
   private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
 
   public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
-  private EndpointIpVersionTemplate ipVersion;
+  private String ipVersion;
 
   public static final String JSON_PROPERTY_SERVER = "server";
   private String server;
@@ -475,27 +474,27 @@ public class EndpointHttpServerTest {
   }
 
 
-  public EndpointHttpServerTest ipVersion(EndpointIpVersionTemplate ipVersion) {
+  public EndpointHttpServerTest ipVersion(String ipVersion) {
     this.ipVersion = ipVersion;
     return this;
   }
 
    /**
-   * Get ipVersion
+   * For reading current network test configurations, the IP version of the test. Values include V4_ONLY, V6_ONLY, V6_PREFER, and OS_DEFAULT.
    * @return ipVersion
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_IP_VERSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public EndpointIpVersionTemplate getIpVersion() {
+  public String getIpVersion() {
     return ipVersion;
   }
 
 
   @JsonProperty(JSON_PROPERTY_IP_VERSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpVersion(EndpointIpVersionTemplate ipVersion) {
+  public void setIpVersion(String ipVersion) {
     this.ipVersion = ipVersion;
   }
 

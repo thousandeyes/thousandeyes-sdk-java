@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * IP version the test should use for network tests.
+ * For configuring network tests, the IP version of the test.
  */
-public enum EndpointIpVersionTemplate {
+public enum EndpointIpVersionIn {
   
   V4_ONLY("V4_ONLY"),
   
@@ -38,7 +38,7 @@ public enum EndpointIpVersionTemplate {
 
   private String value;
 
-  EndpointIpVersionTemplate(String value) {
+  EndpointIpVersionIn(String value) {
     this.value = value;
   }
 
@@ -53,8 +53,8 @@ public enum EndpointIpVersionTemplate {
   }
 
   @JsonCreator
-  public static EndpointIpVersionTemplate fromValue(String value) {
-    for (EndpointIpVersionTemplate b : EndpointIpVersionTemplate.values()) {
+  public static EndpointIpVersionIn fromValue(String value) {
+    for (EndpointIpVersionIn b : EndpointIpVersionIn.values()) {
       if (b.value.equals(value)) {
         return b;
       }

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AccountGroup;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
+import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;
 import com.thousandeyes.sdk.agents.model.ErrorDetail;
@@ -45,6 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SimpleEnterpriseAgent.JSON_PROPERTY_AGENT_NAME,
   SimpleEnterpriseAgent.JSON_PROPERTY_LOCATION,
   SimpleEnterpriseAgent.JSON_PROPERTY_COUNTRY_ID,
+  SimpleEnterpriseAgent.JSON_PROPERTY_COORDINATES,
   SimpleEnterpriseAgent.JSON_PROPERTY_ENABLED,
   SimpleEnterpriseAgent.JSON_PROPERTY_PREFIX,
   SimpleEnterpriseAgent.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
@@ -86,6 +88,9 @@ public class SimpleEnterpriseAgent {
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
   private String countryId;
+
+  public static final String JSON_PROPERTY_COORDINATES = "coordinates";
+  private Coordinates coordinates;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
@@ -295,6 +300,31 @@ public class SimpleEnterpriseAgent {
   }
 
 
+
+
+  public SimpleEnterpriseAgent coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+   /**
+   * Get coordinates
+   * @return coordinates
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
 
 
   public SimpleEnterpriseAgent enabled(Boolean enabled) {
@@ -690,6 +720,7 @@ public class SimpleEnterpriseAgent {
         Objects.equals(this.agentName, simpleEnterpriseAgent.agentName) &&
         Objects.equals(this.location, simpleEnterpriseAgent.location) &&
         Objects.equals(this.countryId, simpleEnterpriseAgent.countryId) &&
+        Objects.equals(this.coordinates, simpleEnterpriseAgent.coordinates) &&
         Objects.equals(this.enabled, simpleEnterpriseAgent.enabled) &&
         Objects.equals(this.prefix, simpleEnterpriseAgent.prefix) &&
         Objects.equals(this.verifySslCertificates, simpleEnterpriseAgent.verifySslCertificates) &&
@@ -712,7 +743,7 @@ public class SimpleEnterpriseAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
   }
 
   @Override
@@ -726,6 +757,7 @@ public class SimpleEnterpriseAgent {
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");

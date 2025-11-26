@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointIpVersionIn;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAgentSelectorType;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestProtocol;
 import com.thousandeyes.sdk.endpoint.tests.model.TestInterval;
@@ -45,7 +46,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicTestRequest.JSON_PROPERTY_PROTOCOL,
   DynamicTestRequest.JSON_PROPERTY_TCP_PROBE_MODE,
   DynamicTestRequest.JSON_PROPERTY_TEST_NAME,
-  DynamicTestRequest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION
+  DynamicTestRequest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
+  DynamicTestRequest.JSON_PROPERTY_IP_VERSION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DynamicTestRequest {
@@ -81,6 +83,9 @@ public class DynamicTestRequest {
 
   public static final String JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION = "hasPathTraceInSession";
   private Boolean hasPathTraceInSession;
+
+  public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
+  private EndpointIpVersionIn ipVersion;
 
   public DynamicTestRequest() { 
   }
@@ -376,6 +381,31 @@ public class DynamicTestRequest {
   }
 
 
+  public DynamicTestRequest ipVersion(EndpointIpVersionIn ipVersion) {
+    this.ipVersion = ipVersion;
+    return this;
+  }
+
+   /**
+   * Get ipVersion
+   * @return ipVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointIpVersionIn getIpVersion() {
+    return ipVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpVersion(EndpointIpVersionIn ipVersion) {
+    this.ipVersion = ipVersion;
+  }
+
+
   /**
    * Return true if this DynamicTestRequest object is equal to o.
    */
@@ -398,12 +428,13 @@ public class DynamicTestRequest {
         Objects.equals(this.protocol, dynamicTestRequest.protocol) &&
         Objects.equals(this.tcpProbeMode, dynamicTestRequest.tcpProbeMode) &&
         Objects.equals(this.testName, dynamicTestRequest.testName) &&
-        Objects.equals(this.hasPathTraceInSession, dynamicTestRequest.hasPathTraceInSession);
+        Objects.equals(this.hasPathTraceInSession, dynamicTestRequest.hasPathTraceInSession) &&
+        Objects.equals(this.ipVersion, dynamicTestRequest.ipVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, isPrioritized, interval, maxMachines, application, protocol, tcpProbeMode, testName, hasPathTraceInSession);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, isPrioritized, interval, maxMachines, application, protocol, tcpProbeMode, testName, hasPathTraceInSession, ipVersion);
   }
 
   @Override
@@ -421,6 +452,7 @@ public class DynamicTestRequest {
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
+    sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

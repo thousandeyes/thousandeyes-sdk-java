@@ -87,6 +87,7 @@ public class AgentToServerEndpointDynamicTestsApiTest {
         var requestBodyJson = """
                 {
                   "protocol" : "icmp",
+                  "ipVersion" : "V4_ONLY",
                   "application" : "webex",
                   "agentSelectorType" : "all-agents",
                   "isPrioritized" : false,

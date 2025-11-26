@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AgentLabel;
+import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CloudAgentDetail.JSON_PROPERTY_AGENT_NAME,
   CloudAgentDetail.JSON_PROPERTY_LOCATION,
   CloudAgentDetail.JSON_PROPERTY_COUNTRY_ID,
+  CloudAgentDetail.JSON_PROPERTY_COORDINATES,
   CloudAgentDetail.JSON_PROPERTY_ENABLED,
   CloudAgentDetail.JSON_PROPERTY_PREFIX,
   CloudAgentDetail.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
@@ -70,6 +72,9 @@ public class CloudAgentDetail {
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
   private String countryId;
+
+  public static final String JSON_PROPERTY_COORDINATES = "coordinates";
+  private Coordinates coordinates;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
@@ -232,6 +237,31 @@ public class CloudAgentDetail {
   }
 
 
+
+
+  public CloudAgentDetail coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+   /**
+   * Get coordinates
+   * @return coordinates
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
 
 
   public CloudAgentDetail enabled(Boolean enabled) {
@@ -406,6 +436,7 @@ public class CloudAgentDetail {
         Objects.equals(this.agentName, cloudAgentDetail.agentName) &&
         Objects.equals(this.location, cloudAgentDetail.location) &&
         Objects.equals(this.countryId, cloudAgentDetail.countryId) &&
+        Objects.equals(this.coordinates, cloudAgentDetail.coordinates) &&
         Objects.equals(this.enabled, cloudAgentDetail.enabled) &&
         Objects.equals(this.prefix, cloudAgentDetail.prefix) &&
         Objects.equals(this.verifySslCertificates, cloudAgentDetail.verifySslCertificates) &&
@@ -417,7 +448,7 @@ public class CloudAgentDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates, agentType, tests, labels, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, agentType, tests, labels, links);
   }
 
   @Override
@@ -431,6 +462,7 @@ public class CloudAgentDetail {
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");

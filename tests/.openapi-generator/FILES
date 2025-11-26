@@ -76,6 +76,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/BgpTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/BgpTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/BgpTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/CloudEnterpriseAgentType.java
+src/main/java/com/thousandeyes/sdk/tests/model/Coordinates.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsQueryClass.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsSecInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsSecProperties.java
