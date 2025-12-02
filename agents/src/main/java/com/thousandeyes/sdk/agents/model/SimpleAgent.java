@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.agents.model.Coordinates;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SimpleAgent.JSON_PROPERTY_AGENT_NAME,
   SimpleAgent.JSON_PROPERTY_LOCATION,
   SimpleAgent.JSON_PROPERTY_COUNTRY_ID,
+  SimpleAgent.JSON_PROPERTY_COORDINATES,
   SimpleAgent.JSON_PROPERTY_ENABLED,
   SimpleAgent.JSON_PROPERTY_PREFIX,
   SimpleAgent.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES
@@ -63,6 +65,9 @@ public class SimpleAgent {
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
   private String countryId;
+
+  public static final String JSON_PROPERTY_COORDINATES = "coordinates";
+  private Coordinates coordinates;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
@@ -213,6 +218,31 @@ public class SimpleAgent {
 
 
 
+  public SimpleAgent coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+   /**
+   * Get coordinates
+   * @return coordinates
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COORDINATES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
+
+
   public SimpleAgent enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
@@ -287,6 +317,7 @@ public class SimpleAgent {
         Objects.equals(this.agentName, simpleAgent.agentName) &&
         Objects.equals(this.location, simpleAgent.location) &&
         Objects.equals(this.countryId, simpleAgent.countryId) &&
+        Objects.equals(this.coordinates, simpleAgent.coordinates) &&
         Objects.equals(this.enabled, simpleAgent.enabled) &&
         Objects.equals(this.prefix, simpleAgent.prefix) &&
         Objects.equals(this.verifySslCertificates, simpleAgent.verifySslCertificates);
@@ -294,7 +325,7 @@ public class SimpleAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, enabled, prefix, verifySslCertificates);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates);
   }
 
   @Override
@@ -308,6 +339,7 @@ public class SimpleAgent {
     sb.append("    agentName: ").append(toIndentedString(agentName)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointIpVersionIn;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAgentSelectorType;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerInstantTest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_MAX_MACHINES,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_TEST_NAME,
+  EndpointAgentToServerInstantTest.JSON_PROPERTY_IP_VERSION,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_SERVER_NAME,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_SERVER,
   EndpointAgentToServerInstantTest.JSON_PROPERTY_PORT
@@ -57,6 +59,9 @@ public class EndpointAgentToServerInstantTest {
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
+
+  public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
+  private EndpointIpVersionIn ipVersion;
 
   public static final String JSON_PROPERTY_SERVER_NAME = "serverName";
   private String serverName;
@@ -211,6 +216,31 @@ public class EndpointAgentToServerInstantTest {
   }
 
 
+  public EndpointAgentToServerInstantTest ipVersion(EndpointIpVersionIn ipVersion) {
+    this.ipVersion = ipVersion;
+    return this;
+  }
+
+   /**
+   * Get ipVersion
+   * @return ipVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointIpVersionIn getIpVersion() {
+    return ipVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpVersion(EndpointIpVersionIn ipVersion) {
+    this.ipVersion = ipVersion;
+  }
+
+
   public EndpointAgentToServerInstantTest serverName(String serverName) {
     this.serverName = serverName;
     return this;
@@ -305,6 +335,7 @@ public class EndpointAgentToServerInstantTest {
         Objects.equals(this.endpointAgentLabels, endpointAgentToServerInstantTest.endpointAgentLabels) &&
         Objects.equals(this.maxMachines, endpointAgentToServerInstantTest.maxMachines) &&
         Objects.equals(this.testName, endpointAgentToServerInstantTest.testName) &&
+        Objects.equals(this.ipVersion, endpointAgentToServerInstantTest.ipVersion) &&
         Objects.equals(this.serverName, endpointAgentToServerInstantTest.serverName) &&
         Objects.equals(this.server, endpointAgentToServerInstantTest.server) &&
         Objects.equals(this.port, endpointAgentToServerInstantTest.port);
@@ -312,7 +343,7 @@ public class EndpointAgentToServerInstantTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, serverName, server, port);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, ipVersion, serverName, server, port);
   }
 
   @Override
@@ -324,6 +355,7 @@ public class EndpointAgentToServerInstantTest {
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
+    sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");
     sb.append("    serverName: ").append(toIndentedString(serverName)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");

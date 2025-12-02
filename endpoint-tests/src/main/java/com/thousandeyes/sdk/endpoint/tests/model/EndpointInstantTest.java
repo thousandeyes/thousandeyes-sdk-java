@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointIpVersionIn;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAgentSelectorType;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +37,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointInstantTest.JSON_PROPERTY_AGENTS,
   EndpointInstantTest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
   EndpointInstantTest.JSON_PROPERTY_MAX_MACHINES,
-  EndpointInstantTest.JSON_PROPERTY_TEST_NAME
+  EndpointInstantTest.JSON_PROPERTY_TEST_NAME,
+  EndpointInstantTest.JSON_PROPERTY_IP_VERSION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointInstantTest {
@@ -54,6 +56,9 @@ public class EndpointInstantTest {
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
+
+  public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
+  private EndpointIpVersionIn ipVersion;
 
   public EndpointInstantTest() { 
   }
@@ -199,6 +204,31 @@ public class EndpointInstantTest {
   }
 
 
+  public EndpointInstantTest ipVersion(EndpointIpVersionIn ipVersion) {
+    this.ipVersion = ipVersion;
+    return this;
+  }
+
+   /**
+   * Get ipVersion
+   * @return ipVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EndpointIpVersionIn getIpVersion() {
+    return ipVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpVersion(EndpointIpVersionIn ipVersion) {
+    this.ipVersion = ipVersion;
+  }
+
+
   /**
    * Return true if this EndpointInstantTest object is equal to o.
    */
@@ -215,12 +245,13 @@ public class EndpointInstantTest {
         Objects.equals(this.agents, endpointInstantTest.agents) &&
         Objects.equals(this.endpointAgentLabels, endpointInstantTest.endpointAgentLabels) &&
         Objects.equals(this.maxMachines, endpointInstantTest.maxMachines) &&
-        Objects.equals(this.testName, endpointInstantTest.testName);
+        Objects.equals(this.testName, endpointInstantTest.testName) &&
+        Objects.equals(this.ipVersion, endpointInstantTest.ipVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, ipVersion);
   }
 
   @Override
@@ -232,6 +263,7 @@ public class EndpointInstantTest {
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
+    sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

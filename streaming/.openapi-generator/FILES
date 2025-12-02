@@ -11,8 +11,11 @@ src/main/java/com/thousandeyes/sdk/streaming/model/AuditOperationWithUpdate.java
 src/main/java/com/thousandeyes/sdk/streaming/model/BadRequestError.java
 src/main/java/com/thousandeyes/sdk/streaming/model/CreateStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/DataModelVersion.java
+src/main/java/com/thousandeyes/sdk/streaming/model/EndpointAgentLabel.java
 src/main/java/com/thousandeyes/sdk/streaming/model/EndpointType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfig.java
+src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigAuthorization.java
+src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigOAuth2.java
 src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigSplunkHec.java
 src/main/java/com/thousandeyes/sdk/streaming/model/Filters.java
 src/main/java/com/thousandeyes/sdk/streaming/model/FiltersTestTypes.java

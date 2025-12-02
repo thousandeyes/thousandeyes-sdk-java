@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.streaming.model.AuditOperationWithUpdate;
 import com.thousandeyes.sdk.streaming.model.DataModelVersion;
+import com.thousandeyes.sdk.streaming.model.EndpointAgentLabel;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.Filters;
@@ -56,6 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetStreamResponse.JSON_PROPERTY_TEST_MATCH,
   GetStreamResponse.JSON_PROPERTY_FILTERS,
   GetStreamResponse.JSON_PROPERTY_EXPORTER_CONFIG,
+  GetStreamResponse.JSON_PROPERTY_ENDPOINT_AGENT_LABEL,
   GetStreamResponse.JSON_PROPERTY_AUDIT_OPERATION,
   GetStreamResponse.JSON_PROPERTY_STREAM_STATUS
 })
@@ -99,6 +101,9 @@ public class GetStreamResponse {
 
   public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
   private ExporterConfig exporterConfig;
+
+  public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABEL = "endpointAgentLabel";
+  private List<EndpointAgentLabel> endpointAgentLabel = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUDIT_OPERATION = "auditOperation";
   private AuditOperationWithUpdate auditOperation;
@@ -456,6 +461,39 @@ public class GetStreamResponse {
   }
 
 
+  public GetStreamResponse endpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
+    this.endpointAgentLabel = endpointAgentLabel;
+    return this;
+  }
+
+  public GetStreamResponse addEndpointAgentLabelItem(EndpointAgentLabel endpointAgentLabelItem) {
+    if (this.endpointAgentLabel == null) {
+      this.endpointAgentLabel = new ArrayList<>();
+    }
+    this.endpointAgentLabel.add(endpointAgentLabelItem);
+    return this;
+  }
+
+   /**
+   * A collection of Endpoint Agent label IDs that determines what local network data is included in the data stream.
+   * @return endpointAgentLabel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<EndpointAgentLabel> getEndpointAgentLabel() {
+    return endpointAgentLabel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
+    this.endpointAgentLabel = endpointAgentLabel;
+  }
+
+
   public GetStreamResponse auditOperation(AuditOperationWithUpdate auditOperation) {
     this.auditOperation = auditOperation;
     return this;
@@ -531,13 +569,14 @@ public class GetStreamResponse {
         Objects.equals(this.testMatch, getStreamResponse.testMatch) &&
         Objects.equals(this.filters, getStreamResponse.filters) &&
         Objects.equals(this.exporterConfig, getStreamResponse.exporterConfig) &&
+        Objects.equals(this.endpointAgentLabel, getStreamResponse.endpointAgentLabel) &&
         Objects.equals(this.auditOperation, getStreamResponse.auditOperation) &&
         Objects.equals(this.streamStatus, getStreamResponse.streamStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, auditOperation, streamStatus);
+    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, endpointAgentLabel, auditOperation, streamStatus);
   }
 
   @Override
@@ -557,6 +596,7 @@ public class GetStreamResponse {
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
+    sb.append("    endpointAgentLabel: ").append(toIndentedString(endpointAgentLabel)).append("\n");
     sb.append("    auditOperation: ").append(toIndentedString(auditOperation)).append("\n");
     sb.append("    streamStatus: ").append(toIndentedString(streamStatus)).append("\n");
     sb.append("}");

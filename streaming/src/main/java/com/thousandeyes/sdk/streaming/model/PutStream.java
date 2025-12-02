@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.streaming.model.EndpointAgentLabel;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.Filters;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
@@ -42,7 +43,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PutStream.JSON_PROPERTY_TEST_MATCH,
   PutStream.JSON_PROPERTY_ENABLED,
   PutStream.JSON_PROPERTY_FILTERS,
-  PutStream.JSON_PROPERTY_EXPORTER_CONFIG
+  PutStream.JSON_PROPERTY_EXPORTER_CONFIG,
+  PutStream.JSON_PROPERTY_ENDPOINT_AGENT_LABEL
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PutStream {
@@ -66,6 +68,9 @@ public class PutStream {
 
   public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
   private ExporterConfig exporterConfig;
+
+  public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABEL = "endpointAgentLabel";
+  private List<EndpointAgentLabel> endpointAgentLabel = new ArrayList<>();
 
   public PutStream() { 
   }
@@ -269,6 +274,39 @@ public class PutStream {
   }
 
 
+  public PutStream endpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
+    this.endpointAgentLabel = endpointAgentLabel;
+    return this;
+  }
+
+  public PutStream addEndpointAgentLabelItem(EndpointAgentLabel endpointAgentLabelItem) {
+    if (this.endpointAgentLabel == null) {
+      this.endpointAgentLabel = new ArrayList<>();
+    }
+    this.endpointAgentLabel.add(endpointAgentLabelItem);
+    return this;
+  }
+
+   /**
+   * A collection of Endpoint Agent label IDs that determines what local network data is included in the data stream.
+   * @return endpointAgentLabel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<EndpointAgentLabel> getEndpointAgentLabel() {
+    return endpointAgentLabel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
+    this.endpointAgentLabel = endpointAgentLabel;
+  }
+
+
   /**
    * Return true if this PutStream object is equal to o.
    */
@@ -287,12 +325,13 @@ public class PutStream {
         Objects.equals(this.testMatch, putStream.testMatch) &&
         Objects.equals(this.enabled, putStream.enabled) &&
         Objects.equals(this.filters, putStream.filters) &&
-        Objects.equals(this.exporterConfig, putStream.exporterConfig);
+        Objects.equals(this.exporterConfig, putStream.exporterConfig) &&
+        Objects.equals(this.endpointAgentLabel, putStream.endpointAgentLabel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, exporterConfig);
+    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, exporterConfig, endpointAgentLabel);
   }
 
   @Override
@@ -306,6 +345,7 @@ public class PutStream {
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
+    sb.append("    endpointAgentLabel: ").append(toIndentedString(endpointAgentLabel)).append("\n");
     sb.append("}");
     return sb.toString();
   }

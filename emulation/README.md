@@ -2,7 +2,7 @@
 
 Emulation API
 
-- API version: 7.0.66
+- API version: 7.0.68
 
 The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.
 

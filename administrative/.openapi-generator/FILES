@@ -24,6 +24,7 @@ src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Audit
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/BaseRole.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/CloudEnterpriseAgentType.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/ClusterMember.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Coordinates.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/CreatedAccountGroup.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/CreatedUser.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/EnterpriseAgent.java

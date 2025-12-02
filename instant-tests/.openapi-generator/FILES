@@ -55,6 +55,7 @@ src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiRequestHeader.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiRequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiRequestVariable.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/CloudEnterpriseAgentType.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/Coordinates.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/DnsQueryClass.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/DnsSecInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/DnsSecInstantTestRequest.java
