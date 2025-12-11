@@ -2,7 +2,7 @@
 
 Event Detection API
 
-- API version: 7.0.68
+- API version: 7.0.69
 
 
 Event detection occurs when ThousandEyes identifies that error signals related to a component (proxy, network node, AS, server etc) have deviated from the baselines established by events.
