@@ -34,6 +34,8 @@ public enum Platform {
   
   ELUX("elux"),
   
+  CISCO_WIRELESS("cisco-wireless"),
+  
   LINUX("linux"),
   
   MAC("mac"),
