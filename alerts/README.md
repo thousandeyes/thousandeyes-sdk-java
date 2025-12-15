@@ -2,7 +2,7 @@
 
 Alerts API
 
-- API version: 7.0.68
+- API version: 7.0.70
 
 You can manage the following alert functionalities on the ThousandEyes platform using the Alerts API:
 
