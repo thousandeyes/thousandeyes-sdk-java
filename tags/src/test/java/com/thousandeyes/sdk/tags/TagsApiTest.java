@@ -87,7 +87,6 @@ public class TagsApiTest {
 
         var requestBodyJson = """
                 {
-                  "accessType" : "all",
                   "assignments" : [ {
                     "id" : "123",
                     "type" : "test"
@@ -96,15 +95,19 @@ public class TagsApiTest {
                     "type" : "test"
                   } ],
                   "color" : "#FF0000",
+                  "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "type" : "static",
+                  "objectType" : "test",
+                  "accessType" : "all",
+                  "modifiedDate" : "2022-03-01T23:31:11Z",
                   "legacyId" : 0.8008281904610115,
                   "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                   "aid" : 1234,
                   "value" : "sfo",
                   "key" : "branch",
-                  "createDate" : "2022-03-01T23:31:11Z",
-                  "objectType" : "test"
+                  "createDate" : "2022-03-01T23:31:11Z"
                 }
                                  """;
         var requestBodyContentType = "application/json";
@@ -114,7 +117,6 @@ public class TagsApiTest {
 
         var responseBodyJson = """
                 {
-                  "accessType" : "all",
                   "assignments" : [ {
                     "id" : "123",
                     "type" : "test"
@@ -123,15 +125,19 @@ public class TagsApiTest {
                     "type" : "test"
                   } ],
                   "color" : "#FF0000",
+                  "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "type" : "static",
+                  "objectType" : "test",
+                  "accessType" : "all",
+                  "modifiedDate" : "2022-03-01T23:31:11Z",
                   "legacyId" : 0.8008281904610115,
                   "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                   "aid" : 1234,
                   "value" : "sfo",
                   "key" : "branch",
-                  "createDate" : "2022-03-01T23:31:11Z",
-                  "objectType" : "test"
+                  "createDate" : "2022-03-01T23:31:11Z"
                 }
                                   """;
         var statusCode = 201;
@@ -171,7 +177,6 @@ public class TagsApiTest {
                   "errors" : [ {
                     "tag" : {
                       "key" : {
-                        "accessType" : "all",
                         "assignments" : [ {
                           "id" : "123",
                           "type" : "test"
@@ -180,15 +185,19 @@ public class TagsApiTest {
                           "type" : "test"
                         } ],
                         "color" : "#FF0000",
+                        "builtIn" : true,
                         "icon" : "icon",
                         "description" : "To tag assets in San Francisco",
+                        "type" : "static",
+                        "objectType" : "test",
+                        "accessType" : "all",
+                        "modifiedDate" : "2022-03-01T23:31:11Z",
                         "legacyId" : 0.8008281904610115,
                         "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                         "aid" : 1234,
                         "value" : "sfo",
                         "key" : "branch",
-                        "createDate" : "2022-03-01T23:31:11Z",
-                        "objectType" : "test"
+                        "createDate" : "2022-03-01T23:31:11Z"
                       }
                     },
                     "message" : "Object successfully created",
@@ -196,7 +205,6 @@ public class TagsApiTest {
                   }, {
                     "tag" : {
                       "key" : {
-                        "accessType" : "all",
                         "assignments" : [ {
                           "id" : "123",
                           "type" : "test"
@@ -205,15 +213,19 @@ public class TagsApiTest {
                           "type" : "test"
                         } ],
                         "color" : "#FF0000",
+                        "builtIn" : true,
                         "icon" : "icon",
                         "description" : "To tag assets in San Francisco",
+                        "type" : "static",
+                        "objectType" : "test",
+                        "accessType" : "all",
+                        "modifiedDate" : "2022-03-01T23:31:11Z",
                         "legacyId" : 0.8008281904610115,
                         "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                         "aid" : 1234,
                         "value" : "sfo",
                         "key" : "branch",
-                        "createDate" : "2022-03-01T23:31:11Z",
-                        "objectType" : "test"
+                        "createDate" : "2022-03-01T23:31:11Z"
                       }
                     },
                     "message" : "Object successfully created",
@@ -240,10 +252,13 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
+                    "modifiedDate" : "2022-03-01T23:31:11Z",
                     "legacyId" : 0.8008281904610115,
                     "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                     "aid" : 1234,
@@ -271,10 +286,13 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
+                    "modifiedDate" : "2022-03-01T23:31:11Z",
                     "legacyId" : 0.8008281904610115,
                     "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                     "aid" : 1234,
@@ -294,7 +312,6 @@ public class TagsApiTest {
                   "errors" : [ {
                     "tag" : {
                       "key" : {
-                        "accessType" : "all",
                         "assignments" : [ {
                           "id" : "123",
                           "type" : "test"
@@ -303,15 +320,19 @@ public class TagsApiTest {
                           "type" : "test"
                         } ],
                         "color" : "#FF0000",
+                        "builtIn" : true,
                         "icon" : "icon",
                         "description" : "To tag assets in San Francisco",
+                        "type" : "static",
+                        "objectType" : "test",
+                        "accessType" : "all",
+                        "modifiedDate" : "2022-03-01T23:31:11Z",
                         "legacyId" : 0.8008281904610115,
                         "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                         "aid" : 1234,
                         "value" : "sfo",
                         "key" : "branch",
-                        "createDate" : "2022-03-01T23:31:11Z",
-                        "objectType" : "test"
+                        "createDate" : "2022-03-01T23:31:11Z"
                       }
                     },
                     "message" : "Object successfully created",
@@ -319,7 +340,6 @@ public class TagsApiTest {
                   }, {
                     "tag" : {
                       "key" : {
-                        "accessType" : "all",
                         "assignments" : [ {
                           "id" : "123",
                           "type" : "test"
@@ -328,15 +348,19 @@ public class TagsApiTest {
                           "type" : "test"
                         } ],
                         "color" : "#FF0000",
+                        "builtIn" : true,
                         "icon" : "icon",
                         "description" : "To tag assets in San Francisco",
+                        "type" : "static",
+                        "objectType" : "test",
+                        "accessType" : "all",
+                        "modifiedDate" : "2022-03-01T23:31:11Z",
                         "legacyId" : 0.8008281904610115,
                         "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                         "aid" : 1234,
                         "value" : "sfo",
                         "key" : "branch",
-                        "createDate" : "2022-03-01T23:31:11Z",
-                        "objectType" : "test"
+                        "createDate" : "2022-03-01T23:31:11Z"
                       }
                     },
                     "message" : "Object successfully created",
@@ -363,10 +387,13 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
+                    "modifiedDate" : "2022-03-01T23:31:11Z",
                     "legacyId" : 0.8008281904610115,
                     "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                     "aid" : 1234,
@@ -394,10 +421,13 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
+                    "modifiedDate" : "2022-03-01T23:31:11Z",
                     "legacyId" : 0.8008281904610115,
                     "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                     "aid" : 1234,
@@ -490,10 +520,13 @@ public class TagsApiTest {
                       "title" : "title"
                     }
                   },
+                  "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "type" : "static",
                   "objectType" : "test",
                   "accessType" : "all",
+                  "modifiedDate" : "2022-03-01T23:31:11Z",
                   "legacyId" : 0.8008281904610115,
                   "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                   "aid" : 1234,
@@ -569,10 +602,13 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
+                    "modifiedDate" : "2022-03-01T23:31:11Z",
                     "legacyId" : 0.8008281904610115,
                     "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                     "aid" : 1234,
@@ -600,10 +636,13 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
+                    "modifiedDate" : "2022-03-01T23:31:11Z",
                     "legacyId" : 0.8008281904610115,
                     "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                     "aid" : 1234,
@@ -646,7 +685,6 @@ public class TagsApiTest {
 
         var requestBodyJson = """
                 {
-                  "accessType" : "all",
                   "assignments" : [ {
                     "id" : "123",
                     "type" : "test"
@@ -655,15 +693,19 @@ public class TagsApiTest {
                     "type" : "test"
                   } ],
                   "color" : "#FF0000",
+                  "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "type" : "static",
+                  "objectType" : "test",
+                  "accessType" : "all",
+                  "modifiedDate" : "2022-03-01T23:31:11Z",
                   "legacyId" : 0.8008281904610115,
                   "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                   "aid" : 1234,
                   "value" : "sfo",
                   "key" : "branch",
-                  "createDate" : "2022-03-01T23:31:11Z",
-                  "objectType" : "test"
+                  "createDate" : "2022-03-01T23:31:11Z"
                 }
                                  """;
         var requestBodyContentType = "application/json";
@@ -673,7 +715,6 @@ public class TagsApiTest {
 
         var responseBodyJson = """
                 {
-                  "accessType" : "all",
                   "assignments" : [ {
                     "id" : "123",
                     "type" : "test"
@@ -682,15 +723,19 @@ public class TagsApiTest {
                     "type" : "test"
                   } ],
                   "color" : "#FF0000",
+                  "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "type" : "static",
+                  "objectType" : "test",
+                  "accessType" : "all",
+                  "modifiedDate" : "2022-03-01T23:31:11Z",
                   "legacyId" : 0.8008281904610115,
                   "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
                   "aid" : 1234,
                   "value" : "sfo",
                   "key" : "branch",
-                  "createDate" : "2022-03-01T23:31:11Z",
-                  "objectType" : "test"
+                  "createDate" : "2022-03-01T23:31:11Z"
                 }
                                   """;
         var statusCode = 200;

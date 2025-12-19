@@ -23,6 +23,7 @@ src/main/java/com/thousandeyes/sdk/tags/model/TagAssignment.java
 src/main/java/com/thousandeyes/sdk/tags/model/TagBulkCreateError.java
 src/main/java/com/thousandeyes/sdk/tags/model/TagInfo.java
 src/main/java/com/thousandeyes/sdk/tags/model/Tags.java
+src/main/java/com/thousandeyes/sdk/tags/model/Type.java
 src/main/java/com/thousandeyes/sdk/tags/model/UnauthorizedError.java
 src/main/java/com/thousandeyes/sdk/tags/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/tags/model/ValidationErrorItem.java
