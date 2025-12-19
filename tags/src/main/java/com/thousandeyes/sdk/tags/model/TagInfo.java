@@ -23,7 +23,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tags.model.AccessType;
 import com.thousandeyes.sdk.tags.model.Assignment;
 import com.thousandeyes.sdk.tags.model.ObjectType;
+import com.thousandeyes.sdk.tags.model.Type;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TagInfo.JSON_PROPERTY_ASSIGNMENTS,
   TagInfo.JSON_PROPERTY_ACCESS_TYPE,
   TagInfo.JSON_PROPERTY_AID,
+  TagInfo.JSON_PROPERTY_BUILT_IN,
   TagInfo.JSON_PROPERTY_COLOR,
   TagInfo.JSON_PROPERTY_CREATE_DATE,
   TagInfo.JSON_PROPERTY_ICON,
@@ -45,7 +48,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TagInfo.JSON_PROPERTY_ID,
   TagInfo.JSON_PROPERTY_KEY,
   TagInfo.JSON_PROPERTY_LEGACY_ID,
+  TagInfo.JSON_PROPERTY_MODIFIED_DATE,
   TagInfo.JSON_PROPERTY_OBJECT_TYPE,
+  TagInfo.JSON_PROPERTY_TYPE,
   TagInfo.JSON_PROPERTY_VALUE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -58,6 +63,9 @@ public class TagInfo {
 
   public static final String JSON_PROPERTY_AID = "aid";
   private Long aid;
+
+  public static final String JSON_PROPERTY_BUILT_IN = "builtIn";
+  private Boolean builtIn;
 
   public static final String JSON_PROPERTY_COLOR = "color";
   private String color;
@@ -80,8 +88,14 @@ public class TagInfo {
   public static final String JSON_PROPERTY_LEGACY_ID = "legacyId";
   private BigDecimal legacyId;
 
+  public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  private OffsetDateTime modifiedDate;
+
   public static final String JSON_PROPERTY_OBJECT_TYPE = "objectType";
   private ObjectType objectType;
+
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private Type type;
 
   public static final String JSON_PROPERTY_VALUE = "value";
   private String value;
@@ -93,16 +107,20 @@ public class TagInfo {
   public TagInfo(
     @JsonProperty(JSON_PROPERTY_ASSIGNMENTS) List<Assignment> assignments, 
     @JsonProperty(JSON_PROPERTY_AID) Long aid, 
+    @JsonProperty(JSON_PROPERTY_BUILT_IN) Boolean builtIn, 
     @JsonProperty(JSON_PROPERTY_CREATE_DATE) String createDate, 
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_LEGACY_ID) BigDecimal legacyId
+    @JsonProperty(JSON_PROPERTY_LEGACY_ID) BigDecimal legacyId, 
+    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate
   ) {
   this();
     this.assignments = assignments;
     this.aid = aid;
+    this.builtIn = builtIn;
     this.createDate = createDate;
     this.id = id;
     this.legacyId = legacyId;
+    this.modifiedDate = modifiedDate;
   }
 
    /**
@@ -155,6 +173,21 @@ public class TagInfo {
 
   public Long getAid() {
     return aid;
+  }
+
+
+
+
+   /**
+   * Indicates whether it is a built-in tag or a user-created (custom) tag.
+   * @return builtIn
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BUILT_IN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getBuiltIn() {
+    return builtIn;
   }
 
 
@@ -305,6 +338,21 @@ public class TagInfo {
 
 
 
+   /**
+   * The date and time the tag was last modified.
+   * @return modifiedDate
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public OffsetDateTime getModifiedDate() {
+    return modifiedDate;
+  }
+
+
+
+
   public TagInfo objectType(ObjectType objectType) {
     this.objectType = objectType;
     return this;
@@ -327,6 +375,31 @@ public class TagInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setObjectType(ObjectType objectType) {
     this.objectType = objectType;
+  }
+
+
+  public TagInfo type(Type type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Type getType() {
+    return type;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(Type type) {
+    this.type = type;
   }
 
 
@@ -370,6 +443,7 @@ public class TagInfo {
     return Objects.equals(this.assignments, tagInfo.assignments) &&
         Objects.equals(this.accessType, tagInfo.accessType) &&
         Objects.equals(this.aid, tagInfo.aid) &&
+        Objects.equals(this.builtIn, tagInfo.builtIn) &&
         Objects.equals(this.color, tagInfo.color) &&
         Objects.equals(this.createDate, tagInfo.createDate) &&
         Objects.equals(this.icon, tagInfo.icon) &&
@@ -377,13 +451,15 @@ public class TagInfo {
         Objects.equals(this.id, tagInfo.id) &&
         Objects.equals(this.key, tagInfo.key) &&
         Objects.equals(this.legacyId, tagInfo.legacyId) &&
+        Objects.equals(this.modifiedDate, tagInfo.modifiedDate) &&
         Objects.equals(this.objectType, tagInfo.objectType) &&
+        Objects.equals(this.type, tagInfo.type) &&
         Objects.equals(this.value, tagInfo.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assignments, accessType, aid, color, createDate, icon, description, id, key, legacyId, objectType, value);
+    return Objects.hash(assignments, accessType, aid, builtIn, color, createDate, icon, description, id, key, legacyId, modifiedDate, objectType, type, value);
   }
 
   @Override
@@ -393,6 +469,7 @@ public class TagInfo {
     sb.append("    assignments: ").append(toIndentedString(assignments)).append("\n");
     sb.append("    accessType: ").append(toIndentedString(accessType)).append("\n");
     sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
+    sb.append("    builtIn: ").append(toIndentedString(builtIn)).append("\n");
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
@@ -400,7 +477,9 @@ public class TagInfo {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    legacyId: ").append(toIndentedString(legacyId)).append("\n");
+    sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -24,7 +24,9 @@ import com.thousandeyes.sdk.tags.model.AccessType;
 import com.thousandeyes.sdk.tags.model.Assignment;
 import com.thousandeyes.sdk.tags.model.ObjectType;
 import com.thousandeyes.sdk.tags.model.SelfLinks;
+import com.thousandeyes.sdk.tags.model.Type;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Tag.JSON_PROPERTY_ASSIGNMENTS,
   Tag.JSON_PROPERTY_ACCESS_TYPE,
   Tag.JSON_PROPERTY_AID,
+  Tag.JSON_PROPERTY_BUILT_IN,
   Tag.JSON_PROPERTY_COLOR,
   Tag.JSON_PROPERTY_CREATE_DATE,
   Tag.JSON_PROPERTY_ICON,
@@ -46,7 +49,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Tag.JSON_PROPERTY_ID,
   Tag.JSON_PROPERTY_KEY,
   Tag.JSON_PROPERTY_LEGACY_ID,
+  Tag.JSON_PROPERTY_MODIFIED_DATE,
   Tag.JSON_PROPERTY_OBJECT_TYPE,
+  Tag.JSON_PROPERTY_TYPE,
   Tag.JSON_PROPERTY_VALUE,
   Tag.JSON_PROPERTY_LINKS
 })
@@ -60,6 +65,9 @@ public class Tag {
 
   public static final String JSON_PROPERTY_AID = "aid";
   private Long aid;
+
+  public static final String JSON_PROPERTY_BUILT_IN = "builtIn";
+  private Boolean builtIn;
 
   public static final String JSON_PROPERTY_COLOR = "color";
   private String color;
@@ -82,8 +90,14 @@ public class Tag {
   public static final String JSON_PROPERTY_LEGACY_ID = "legacyId";
   private BigDecimal legacyId;
 
+  public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  private OffsetDateTime modifiedDate;
+
   public static final String JSON_PROPERTY_OBJECT_TYPE = "objectType";
   private ObjectType objectType;
+
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private Type type;
 
   public static final String JSON_PROPERTY_VALUE = "value";
   private String value;
@@ -98,16 +112,20 @@ public class Tag {
   public Tag(
     @JsonProperty(JSON_PROPERTY_ASSIGNMENTS) List<Assignment> assignments, 
     @JsonProperty(JSON_PROPERTY_AID) Long aid, 
+    @JsonProperty(JSON_PROPERTY_BUILT_IN) Boolean builtIn, 
     @JsonProperty(JSON_PROPERTY_CREATE_DATE) String createDate, 
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_LEGACY_ID) BigDecimal legacyId
+    @JsonProperty(JSON_PROPERTY_LEGACY_ID) BigDecimal legacyId, 
+    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate
   ) {
   this();
     this.assignments = assignments;
     this.aid = aid;
+    this.builtIn = builtIn;
     this.createDate = createDate;
     this.id = id;
     this.legacyId = legacyId;
+    this.modifiedDate = modifiedDate;
   }
 
    /**
@@ -160,6 +178,21 @@ public class Tag {
 
   public Long getAid() {
     return aid;
+  }
+
+
+
+
+   /**
+   * Indicates whether it is a built-in tag or a user-created (custom) tag.
+   * @return builtIn
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BUILT_IN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getBuiltIn() {
+    return builtIn;
   }
 
 
@@ -310,6 +343,21 @@ public class Tag {
 
 
 
+   /**
+   * The date and time the tag was last modified.
+   * @return modifiedDate
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public OffsetDateTime getModifiedDate() {
+    return modifiedDate;
+  }
+
+
+
+
   public Tag objectType(ObjectType objectType) {
     this.objectType = objectType;
     return this;
@@ -332,6 +380,31 @@ public class Tag {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setObjectType(ObjectType objectType) {
     this.objectType = objectType;
+  }
+
+
+  public Tag type(Type type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Type getType() {
+    return type;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(Type type) {
+    this.type = type;
   }
 
 
@@ -400,6 +473,7 @@ public class Tag {
     return Objects.equals(this.assignments, tag.assignments) &&
         Objects.equals(this.accessType, tag.accessType) &&
         Objects.equals(this.aid, tag.aid) &&
+        Objects.equals(this.builtIn, tag.builtIn) &&
         Objects.equals(this.color, tag.color) &&
         Objects.equals(this.createDate, tag.createDate) &&
         Objects.equals(this.icon, tag.icon) &&
@@ -407,14 +481,16 @@ public class Tag {
         Objects.equals(this.id, tag.id) &&
         Objects.equals(this.key, tag.key) &&
         Objects.equals(this.legacyId, tag.legacyId) &&
+        Objects.equals(this.modifiedDate, tag.modifiedDate) &&
         Objects.equals(this.objectType, tag.objectType) &&
+        Objects.equals(this.type, tag.type) &&
         Objects.equals(this.value, tag.value) &&
         Objects.equals(this.links, tag.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assignments, accessType, aid, color, createDate, icon, description, id, key, legacyId, objectType, value, links);
+    return Objects.hash(assignments, accessType, aid, builtIn, color, createDate, icon, description, id, key, legacyId, modifiedDate, objectType, type, value, links);
   }
 
   @Override
@@ -424,6 +500,7 @@ public class Tag {
     sb.append("    assignments: ").append(toIndentedString(assignments)).append("\n");
     sb.append("    accessType: ").append(toIndentedString(accessType)).append("\n");
     sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
+    sb.append("    builtIn: ").append(toIndentedString(builtIn)).append("\n");
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
@@ -431,7 +508,9 @@ public class Tag {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    legacyId: ").append(toIndentedString(legacyId)).append("\n");
+    sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
