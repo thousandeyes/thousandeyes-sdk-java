@@ -75,7 +75,7 @@ public class AlertRulesApiTest {
     /**
      * Create alert rule
      * <p>
-     * Creates a new alert rule in your account, using the provided POST data. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
+     * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -244,7 +244,7 @@ public class AlertRulesApiTest {
     /**
      * Delete alert rule
      * <p>
-     * Deletes an alert rule from your account. Users must have both &#x60;Edit alert rules&#x60; and &#x60;Edit tests&#x60; permissions,  especially if the rule is linked to any tests. Without these permissions, an error occurs.
+     * Deletes an alert rule from your account. Users must have both &#x60;Edit alert rules&#x60; and &#x60;Edit tests&#x60; permissions, especially if the rule is linked to any tests. Without these permissions, an error occurs. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -271,7 +271,7 @@ public class AlertRulesApiTest {
     /**
      * Retrieve alert rule
      * <p>
-     * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, an empty response is returned.
+     * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, an empty response is returned.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -438,7 +438,7 @@ public class AlertRulesApiTest {
     /**
      * List alert rules
      * <p>
-     * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types.
+     * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -528,7 +528,7 @@ public class AlertRulesApiTest {
     /**
      * Update alert rule
      * <p>
-     * Modifies an existing alert rule in your account, using the provided POST data. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule.  Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
+     * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule.  Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
      *
      * @throws JsonProcessingException if the deserialization fails
      */

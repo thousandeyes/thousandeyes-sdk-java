@@ -2,7 +2,7 @@
 
 Endpoint Agent Labels API
 
-- API version: 7.0.71
+- API version: 7.0.72
 
 Manage labels applied to endpoint agents using this API.
 
