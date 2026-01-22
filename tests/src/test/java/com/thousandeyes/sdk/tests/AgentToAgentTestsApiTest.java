@@ -661,7 +661,7 @@ public class AgentToAgentTestsApiTest {
     /**
      * Update Agent to Agent test
      * <p>
-     * Updates a Agent to Agent test. This method requires Account Admin permissions.
+     * Updates a Agent to Agent test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions.
      *
      * @throws JsonProcessingException if the deserialization fails
      */

@@ -284,7 +284,7 @@ public class BgpTestsApi {
   }
   /**
    * Update BGP test
-   * Updates a BGP test. This method requires Account Admin permissions. The target test cannot be a live share or saved event. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
+   * Updates a BGP test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
    * @param testId Test ID (required)
    * @param updateBgpTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
@@ -299,7 +299,7 @@ public class BgpTestsApi {
 
   /**
    * Update BGP test
-   * Updates a BGP test. This method requires Account Admin permissions. The target test cannot be a live share or saved event. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
+   * Updates a BGP test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
    * @param testId Test ID (required)
    * @param updateBgpTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
