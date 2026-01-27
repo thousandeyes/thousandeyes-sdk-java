@@ -286,7 +286,7 @@ public class AgentToServerTestsApi {
   }
   /**
    * Update Agent to Server test
-   * Updates an Agent to Server test. This method requires Account Admin permissions.
+   * Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions.
    * @param testId Test ID (required)
    * @param agentToServerTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
@@ -301,7 +301,7 @@ public class AgentToServerTestsApi {
 
   /**
    * Update Agent to Server test
-   * Updates an Agent to Server test. This method requires Account Admin permissions.
+   * Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions.
    * @param testId Test ID (required)
    * @param agentToServerTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)

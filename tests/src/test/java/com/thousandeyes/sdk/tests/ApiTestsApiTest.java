@@ -1138,7 +1138,7 @@ public class ApiTestsApiTest {
     /**
      * Update API test
      * <p>
-     * Updates an API test. The target test cannot be a live share or saved event. This method requires write permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
+     * Updates an API test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires write permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
      *
      * @throws JsonProcessingException if the deserialization fails
      */

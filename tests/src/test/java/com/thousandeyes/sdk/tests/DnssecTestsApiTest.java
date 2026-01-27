@@ -565,7 +565,7 @@ public class DnssecTestsApiTest {
     /**
      * Update DNSSEC test
      * <p>
-     * Updates a DNSSEC test. The target test cannot be a live share or saved event. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
+     * Updates a DNSSEC test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
