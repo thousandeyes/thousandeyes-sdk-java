@@ -51,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_KERNEL_VERSION,
   EndpointAgent.JSON_PROPERTY_MANUFACTURER,
   EndpointAgent.JSON_PROPERTY_MODEL,
+  EndpointAgent.JSON_PROPERTY_SERIAL_NUMBER,
   EndpointAgent.JSON_PROPERTY_LAST_SEEN,
   EndpointAgent.JSON_PROPERTY_STATUS,
   EndpointAgent.JSON_PROPERTY_DELETED,
@@ -100,6 +101,9 @@ public class EndpointAgent {
 
   public static final String JSON_PROPERTY_MODEL = "model";
   private String model;
+
+  public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  private String serialNumber;
 
   public static final String JSON_PROPERTY_LAST_SEEN = "lastSeen";
   private OffsetDateTime lastSeen;
@@ -172,6 +176,7 @@ public class EndpointAgent {
     @JsonProperty(JSON_PROPERTY_KERNEL_VERSION) String kernelVersion, 
     @JsonProperty(JSON_PROPERTY_MANUFACTURER) String manufacturer, 
     @JsonProperty(JSON_PROPERTY_MODEL) String model, 
+    @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_DELETED) Boolean deleted, 
     @JsonProperty(JSON_PROPERTY_VERSION) String version, 
@@ -194,6 +199,7 @@ public class EndpointAgent {
     this.kernelVersion = kernelVersion;
     this.manufacturer = manufacturer;
     this.model = model;
+    this.serialNumber = serialNumber;
     this.lastSeen = lastSeen;
     this.deleted = deleted;
     this.version = version;
@@ -370,6 +376,21 @@ public class EndpointAgent {
 
   public String getModel() {
     return model;
+  }
+
+
+
+
+   /**
+   * Get serialNumber
+   * @return serialNumber
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSerialNumber() {
+    return serialNumber;
   }
 
 
@@ -764,6 +785,7 @@ public class EndpointAgent {
         Objects.equals(this.kernelVersion, endpointAgent.kernelVersion) &&
         Objects.equals(this.manufacturer, endpointAgent.manufacturer) &&
         Objects.equals(this.model, endpointAgent.model) &&
+        Objects.equals(this.serialNumber, endpointAgent.serialNumber) &&
         Objects.equals(this.lastSeen, endpointAgent.lastSeen) &&
         Objects.equals(this.status, endpointAgent.status) &&
         Objects.equals(this.deleted, endpointAgent.deleted) &&
@@ -788,7 +810,7 @@ public class EndpointAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, links);
+    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, serialNumber, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, links);
   }
 
   @Override
@@ -804,6 +826,7 @@ public class EndpointAgent {
     sb.append("    kernelVersion: ").append(toIndentedString(kernelVersion)).append("\n");
     sb.append("    manufacturer: ").append(toIndentedString(manufacturer)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
+    sb.append("    serialNumber: ").append(toIndentedString(serialNumber)).append("\n");
     sb.append("    lastSeen: ").append(toIndentedString(lastSeen)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
