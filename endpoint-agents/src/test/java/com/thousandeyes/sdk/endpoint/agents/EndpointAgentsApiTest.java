@@ -193,6 +193,7 @@ public class EndpointAgentsApiTest {
                   "computerName" : "DESKJET-123",
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                   "externalMetadata" : [ {
                     "key" : "anyConnectDeviceId",
                     "value" : "DF434343D"
@@ -387,6 +388,7 @@ public class EndpointAgentsApiTest {
                   "computerName" : "DESKJET-123",
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                   "externalMetadata" : [ {
                     "key" : "anyConnectDeviceId",
                     "value" : "DF434343D"
@@ -635,6 +637,7 @@ public class EndpointAgentsApiTest {
                     "computerName" : "DESKJET-123",
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                     "externalMetadata" : [ {
                       "key" : "anyConnectDeviceId",
                       "value" : "DF434343D"
@@ -793,6 +796,7 @@ public class EndpointAgentsApiTest {
                     "computerName" : "DESKJET-123",
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                     "externalMetadata" : [ {
                       "key" : "anyConnectDeviceId",
                       "value" : "DF434343D"
@@ -989,6 +993,7 @@ public class EndpointAgentsApiTest {
                   "computerName" : "DESKJET-123",
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                   "externalMetadata" : [ {
                     "key" : "anyConnectDeviceId",
                     "value" : "DF434343D"
@@ -1206,6 +1211,7 @@ public class EndpointAgentsApiTest {
                     "computerName" : "DESKJET-123",
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                     "externalMetadata" : [ {
                       "key" : "anyConnectDeviceId",
                       "value" : "DF434343D"
@@ -1364,6 +1370,7 @@ public class EndpointAgentsApiTest {
                     "computerName" : "DESKJET-123",
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                     "externalMetadata" : [ {
                       "key" : "anyConnectDeviceId",
                       "value" : "DF434343D"
@@ -1616,6 +1623,7 @@ public class EndpointAgentsApiTest {
                   "computerName" : "DESKJET-123",
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                   "externalMetadata" : [ {
                     "key" : "anyConnectDeviceId",
                     "value" : "DF434343D"
