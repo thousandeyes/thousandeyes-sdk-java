@@ -36,6 +36,8 @@ public enum AgentSearchSortKey {
   
   CITY("city"),
   
+  SERIALNUMBER("serialNumber"),
+  
   UNKNOWN("unknown");
 
   private String value;

@@ -197,9 +197,9 @@ public class AlertsApiTest {
     }
     
     /**
-     * List active alerts
+     * List alerts
      * <p>
-     * Returns a list of active alerts. If no alerts are active within the  specified time range, an empty response is returned.  Note that time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, or &#x60;endDate&#x60;) are only applied to cleared alerts.
+     * Returns a list of alerts. Only active (triggered) alerts are returned by default.  To retrieve cleared alerts, specify &#x60;clear&#x60; in the optional &#x60;state&#x60; parameter. Note that the &#x60;state&#x60; parameter only accepts a single value, so to get both active and cleared alerts within a time range, two separate requests are needed. Time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;) are applied differently depending on state: - For &#x60;state&#x3D;trigger&#x60;: filters by when the alert started. - For &#x60;state&#x3D;clear&#x60;: filters by when the alert cleared. - When state is not specified: returns cleared alerts within the time range plus any currently active alerts that started before the end of the range.
      *
      * @throws JsonProcessingException if the deserialization fails
      */

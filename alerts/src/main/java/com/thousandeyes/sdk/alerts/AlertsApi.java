@@ -120,8 +120,8 @@ public class AlertsApi {
     return requestBuilder;
   }
   /**
-   * List active alerts with pagination
-   * Returns a list of active alerts. If no alerts are active within the  specified time range, an empty response is returned.  Note that time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, or &#x60;endDate&#x60;) are only applied to cleared alerts.
+   * List alerts with pagination
+   * Returns a list of alerts. Only active (triggered) alerts are returned by default.  To retrieve cleared alerts, specify &#x60;clear&#x60; in the optional &#x60;state&#x60; parameter. Note that the &#x60;state&#x60; parameter only accepts a single value, so to get both active and cleared alerts within a time range, two separate requests are needed. Time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;) are applied differently depending on state: - For &#x60;state&#x3D;trigger&#x60;: filters by when the alert started. - For &#x60;state&#x3D;clear&#x60;: filters by when the alert cleared. - When state is not specified: returns cleared alerts within the time range plus any currently active alerts that started before the end of the range.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
@@ -136,8 +136,8 @@ public class AlertsApi {
 
   }
   /**
-   * List active alerts
-   * Returns a list of active alerts. If no alerts are active within the  specified time range, an empty response is returned.  Note that time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, or &#x60;endDate&#x60;) are only applied to cleared alerts.
+   * List alerts
+   * Returns a list of alerts. Only active (triggered) alerts are returned by default.  To retrieve cleared alerts, specify &#x60;clear&#x60; in the optional &#x60;state&#x60; parameter. Note that the &#x60;state&#x60; parameter only accepts a single value, so to get both active and cleared alerts within a time range, two separate requests are needed. Time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;) are applied differently depending on state: - For &#x60;state&#x3D;trigger&#x60;: filters by when the alert started. - For &#x60;state&#x3D;clear&#x60;: filters by when the alert cleared. - When state is not specified: returns cleared alerts within the time range plus any currently active alerts that started before the end of the range.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
@@ -154,8 +154,8 @@ public class AlertsApi {
   }
 
   /**
-   * List active alerts
-   * Returns a list of active alerts. If no alerts are active within the  specified time range, an empty response is returned.  Note that time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, or &#x60;endDate&#x60;) are only applied to cleared alerts.
+   * List alerts
+   * Returns a list of alerts. Only active (triggered) alerts are returned by default.  To retrieve cleared alerts, specify &#x60;clear&#x60; in the optional &#x60;state&#x60; parameter. Note that the &#x60;state&#x60; parameter only accepts a single value, so to get both active and cleared alerts within a time range, two separate requests are needed. Time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;) are applied differently depending on state: - For &#x60;state&#x3D;trigger&#x60;: filters by when the alert started. - For &#x60;state&#x3D;clear&#x60;: filters by when the alert cleared. - When state is not specified: returns cleared alerts within the time range plus any currently active alerts that started before the end of the range.
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)

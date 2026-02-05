@@ -2,7 +2,7 @@
 
 Alerts API
 
-- API version: 7.0.73
+- API version: 7.0.75
 
 You can manage the following alert functionalities on the ThousandEyes platform using the Alerts API:
 
@@ -160,8 +160,8 @@ Class | Method | HTTP request | Description
 *AlertSuppressionWindowsApi* | [**updateAlertSuppressionWindowWithHttpInfo**](docs/AlertSuppressionWindowsApi.md#updateAlertSuppressionWindowWithHttpInfo) | **PUT** /alert-suppression-windows/{windowId} | Update alert suppression window
 *AlertsApi* | [**getAlert**](docs/AlertsApi.md#getAlert) | **GET** /alerts/{alertId} | Retrieve alert details
 *AlertsApi* | [**getAlertWithHttpInfo**](docs/AlertsApi.md#getAlertWithHttpInfo) | **GET** /alerts/{alertId} | Retrieve alert details
-*AlertsApi* | [**getAlerts**](docs/AlertsApi.md#getAlerts) | **GET** /alerts | List active alerts
-*AlertsApi* | [**getAlertsWithHttpInfo**](docs/AlertsApi.md#getAlertsWithHttpInfo) | **GET** /alerts | List active alerts
+*AlertsApi* | [**getAlerts**](docs/AlertsApi.md#getAlerts) | **GET** /alerts | List alerts
+*AlertsApi* | [**getAlertsWithHttpInfo**](docs/AlertsApi.md#getAlertsWithHttpInfo) | **GET** /alerts | List alerts
 
 
 <a id="documentation-for-authorization"></a>

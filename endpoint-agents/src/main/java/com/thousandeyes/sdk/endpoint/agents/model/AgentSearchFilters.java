@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchFilters.JSON_PROPERTY_USER_PRINCIPAL_NAME,
   AgentSearchFilters.JSON_PROPERTY_PLATFORM,
   AgentSearchFilters.JSON_PROPERTY_OS_VERSION,
+  AgentSearchFilters.JSON_PROPERTY_SERIAL_NUMBER,
   AgentSearchFilters.JSON_PROPERTY_LOCATION_COUNTRY_I_S_O,
   AgentSearchFilters.JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE,
   AgentSearchFilters.JSON_PROPERTY_LOCATION_CITY,
@@ -68,6 +69,9 @@ public class AgentSearchFilters {
 
   public static final String JSON_PROPERTY_OS_VERSION = "osVersion";
   private List<String> osVersion = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  private List<String> serialNumber = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LOCATION_COUNTRY_I_S_O = "locationCountryISO";
   private List<String> locationCountryISO = new ArrayList<>();
@@ -318,6 +322,39 @@ public class AgentSearchFilters {
   }
 
 
+  public AgentSearchFilters serialNumber(List<String> serialNumber) {
+    this.serialNumber = serialNumber;
+    return this;
+  }
+
+  public AgentSearchFilters addSerialNumberItem(String serialNumberItem) {
+    if (this.serialNumber == null) {
+      this.serialNumber = new ArrayList<>();
+    }
+    this.serialNumber.add(serialNumberItem);
+    return this;
+  }
+
+   /**
+   * Case-insensitive prefix filter on the serial number.
+   * @return serialNumber
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSerialNumber() {
+    return serialNumber;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSerialNumber(List<String> serialNumber) {
+    this.serialNumber = serialNumber;
+  }
+
+
   public AgentSearchFilters locationCountryISO(List<String> locationCountryISO) {
     this.locationCountryISO = locationCountryISO;
     return this;
@@ -502,6 +539,7 @@ public class AgentSearchFilters {
         Objects.equals(this.userPrincipalName, agentSearchFilters.userPrincipalName) &&
         Objects.equals(this.platform, agentSearchFilters.platform) &&
         Objects.equals(this.osVersion, agentSearchFilters.osVersion) &&
+        Objects.equals(this.serialNumber, agentSearchFilters.serialNumber) &&
         Objects.equals(this.locationCountryISO, agentSearchFilters.locationCountryISO) &&
         Objects.equals(this.locationSubdivision1Code, agentSearchFilters.locationSubdivision1Code) &&
         Objects.equals(this.locationCity, agentSearchFilters.locationCity) &&
@@ -511,7 +549,7 @@ public class AgentSearchFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, agentName, computerName, username, userPrincipalName, platform, osVersion, locationCountryISO, locationSubdivision1Code, locationCity, licenseType, anyConnectDeviceId);
+    return Objects.hash(id, agentName, computerName, username, userPrincipalName, platform, osVersion, serialNumber, locationCountryISO, locationSubdivision1Code, locationCity, licenseType, anyConnectDeviceId);
   }
 
   @Override
@@ -525,6 +563,7 @@ public class AgentSearchFilters {
     sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    osVersion: ").append(toIndentedString(osVersion)).append("\n");
+    sb.append("    serialNumber: ").append(toIndentedString(serialNumber)).append("\n");
     sb.append("    locationCountryISO: ").append(toIndentedString(locationCountryISO)).append("\n");
     sb.append("    locationSubdivision1Code: ").append(toIndentedString(locationSubdivision1Code)).append("\n");
     sb.append("    locationCity: ").append(toIndentedString(locationCity)).append("\n");
