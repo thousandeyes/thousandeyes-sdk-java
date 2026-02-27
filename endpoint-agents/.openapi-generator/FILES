@@ -18,9 +18,12 @@ src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentThresholdFilters.j
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentTransfer.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentTransferRequest.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentTransferStatus.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/model/BatteryLevel.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/model/BatteryMetrics.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/BrowserType.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/BulkAgentTransferRequest.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/BulkAgentTransferResponse.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/model/CellularProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ConditionalOperator.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ConnectionString.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgent.java
