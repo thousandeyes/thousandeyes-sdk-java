@@ -21,6 +21,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.agents.model.AgentLicenseType;
+import com.thousandeyes.sdk.endpoint.agents.model.BatteryMetrics;
+import com.thousandeyes.sdk.endpoint.agents.model.CellularProfile;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointAgentLocation;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointAsnDetails;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointClient;
@@ -71,6 +73,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_LICENSE_TYPE,
   EndpointAgent.JSON_PROPERTY_TCP_DRIVER_AVAILABLE,
   EndpointAgent.JSON_PROPERTY_NPCAP_VERSION,
+  EndpointAgent.JSON_PROPERTY_BATTERY_METRICS,
+  EndpointAgent.JSON_PROPERTY_CELLULAR_PROFILE,
   EndpointAgent.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -161,6 +165,12 @@ public class EndpointAgent {
 
   public static final String JSON_PROPERTY_NPCAP_VERSION = "npcapVersion";
   private String npcapVersion;
+
+  public static final String JSON_PROPERTY_BATTERY_METRICS = "batteryMetrics";
+  private BatteryMetrics batteryMetrics;
+
+  public static final String JSON_PROPERTY_CELLULAR_PROFILE = "cellularProfile";
+  private CellularProfile cellularProfile;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
@@ -739,6 +749,56 @@ public class EndpointAgent {
 
 
 
+  public EndpointAgent batteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+    return this;
+  }
+
+   /**
+   * Get batteryMetrics
+   * @return batteryMetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BatteryMetrics getBatteryMetrics() {
+    return batteryMetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+  }
+
+
+  public EndpointAgent cellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+    return this;
+  }
+
+   /**
+   * Get cellularProfile
+   * @return cellularProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CellularProfile getCellularProfile() {
+    return cellularProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+  }
+
+
   public EndpointAgent links(SelfLinks links) {
     this.links = links;
     return this;
@@ -805,12 +865,14 @@ public class EndpointAgent {
         Objects.equals(this.licenseType, endpointAgent.licenseType) &&
         Objects.equals(this.tcpDriverAvailable, endpointAgent.tcpDriverAvailable) &&
         Objects.equals(this.npcapVersion, endpointAgent.npcapVersion) &&
+        Objects.equals(this.batteryMetrics, endpointAgent.batteryMetrics) &&
+        Objects.equals(this.cellularProfile, endpointAgent.cellularProfile) &&
         Objects.equals(this.links, endpointAgent.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, serialNumber, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, links);
+    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, serialNumber, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, batteryMetrics, cellularProfile, links);
   }
 
   @Override
@@ -846,6 +908,8 @@ public class EndpointAgent {
     sb.append("    licenseType: ").append(toIndentedString(licenseType)).append("\n");
     sb.append("    tcpDriverAvailable: ").append(toIndentedString(tcpDriverAvailable)).append("\n");
     sb.append("    npcapVersion: ").append(toIndentedString(npcapVersion)).append("\n");
+    sb.append("    batteryMetrics: ").append(toIndentedString(batteryMetrics)).append("\n");
+    sb.append("    cellularProfile: ").append(toIndentedString(cellularProfile)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

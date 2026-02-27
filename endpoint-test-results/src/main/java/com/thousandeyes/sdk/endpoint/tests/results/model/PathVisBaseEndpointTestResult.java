@@ -21,7 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.AsnDetails;
+import com.thousandeyes.sdk.endpoint.tests.results.model.BatteryMetrics;
+import com.thousandeyes.sdk.endpoint.tests.results.model.CellularProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.Platform;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
@@ -44,6 +47,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisBaseEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
+  PathVisBaseEndpointTestResult.JSON_PROPERTY_BATTERY_METRICS,
+  PathVisBaseEndpointTestResult.JSON_PROPERTY_CELLULAR_PROFILE,
+  PathVisBaseEndpointTestResult.JSON_PROPERTY_PLATFORM,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_ASN_DETAILS,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_SERVER,
   PathVisBaseEndpointTestResult.JSON_PROPERTY_SOURCE_IP,
@@ -80,6 +86,15 @@ public class PathVisBaseEndpointTestResult {
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
+
+  public static final String JSON_PROPERTY_BATTERY_METRICS = "batteryMetrics";
+  private BatteryMetrics batteryMetrics;
+
+  public static final String JSON_PROPERTY_CELLULAR_PROFILE = "cellularProfile";
+  private CellularProfile cellularProfile;
+
+  public static final String JSON_PROPERTY_PLATFORM = "platform";
+  private Platform platform;
 
   public static final String JSON_PROPERTY_ASN_DETAILS = "asnDetails";
   private AsnDetails asnDetails;
@@ -326,6 +341,81 @@ public class PathVisBaseEndpointTestResult {
   }
 
 
+  public PathVisBaseEndpointTestResult batteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+    return this;
+  }
+
+   /**
+   * Get batteryMetrics
+   * @return batteryMetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BatteryMetrics getBatteryMetrics() {
+    return batteryMetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+  }
+
+
+  public PathVisBaseEndpointTestResult cellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+    return this;
+  }
+
+   /**
+   * Get cellularProfile
+   * @return cellularProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CellularProfile getCellularProfile() {
+    return cellularProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+  }
+
+
+  public PathVisBaseEndpointTestResult platform(Platform platform) {
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Get platform
+   * @return platform
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Platform getPlatform() {
+    return platform;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPlatform(Platform platform) {
+    this.platform = platform;
+  }
+
+
   public PathVisBaseEndpointTestResult asnDetails(AsnDetails asnDetails) {
     this.asnDetails = asnDetails;
     return this;
@@ -418,6 +508,9 @@ public class PathVisBaseEndpointTestResult {
         Objects.equals(this.originalTargetProfile, pathVisBaseEndpointTestResult.originalTargetProfile) &&
         Objects.equals(this.userProfile, pathVisBaseEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, pathVisBaseEndpointTestResult.vpnProfile) &&
+        Objects.equals(this.batteryMetrics, pathVisBaseEndpointTestResult.batteryMetrics) &&
+        Objects.equals(this.cellularProfile, pathVisBaseEndpointTestResult.cellularProfile) &&
+        Objects.equals(this.platform, pathVisBaseEndpointTestResult.platform) &&
         Objects.equals(this.asnDetails, pathVisBaseEndpointTestResult.asnDetails) &&
         Objects.equals(this.server, pathVisBaseEndpointTestResult.server) &&
         Objects.equals(this.sourceIp, pathVisBaseEndpointTestResult.sourceIp) &&
@@ -426,7 +519,7 @@ public class PathVisBaseEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, asnDetails, server, sourceIp, sourcePrefix);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, batteryMetrics, cellularProfile, platform, asnDetails, server, sourceIp, sourcePrefix);
   }
 
   @Override
@@ -443,6 +536,9 @@ public class PathVisBaseEndpointTestResult {
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
     sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
+    sb.append("    batteryMetrics: ").append(toIndentedString(batteryMetrics)).append("\n");
+    sb.append("    cellularProfile: ").append(toIndentedString(cellularProfile)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    asnDetails: ").append(toIndentedString(asnDetails)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    sourceIp: ").append(toIndentedString(sourceIp)).append("\n");
