@@ -20,11 +20,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.results.model.BatteryMetrics;
+import com.thousandeyes.sdk.endpoint.tests.results.model.CellularProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.DynamicEndpointTestWebex;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointPingDataPointScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestResultProtocol;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointZtaMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.Platform;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestProbeModeResponse;
@@ -52,6 +55,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
+  NetworkDynamicEndpointTestResult.JSON_PROPERTY_BATTERY_METRICS,
+  NetworkDynamicEndpointTestResult.JSON_PROPERTY_CELLULAR_PROFILE,
+  NetworkDynamicEndpointTestResult.JSON_PROPERTY_PLATFORM,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_AVG_LATENCY,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_ERROR_DETAILS,
   NetworkDynamicEndpointTestResult.JSON_PROPERTY_JITTER,
@@ -98,6 +104,15 @@ public class NetworkDynamicEndpointTestResult {
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
+
+  public static final String JSON_PROPERTY_BATTERY_METRICS = "batteryMetrics";
+  private BatteryMetrics batteryMetrics;
+
+  public static final String JSON_PROPERTY_CELLULAR_PROFILE = "cellularProfile";
+  private CellularProfile cellularProfile;
+
+  public static final String JSON_PROPERTY_PLATFORM = "platform";
+  private Platform platform;
 
   public static final String JSON_PROPERTY_AVG_LATENCY = "avgLatency";
   private Double avgLatency;
@@ -379,6 +394,81 @@ public class NetworkDynamicEndpointTestResult {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpnProfile(VpnProfile vpnProfile) {
     this.vpnProfile = vpnProfile;
+  }
+
+
+  public NetworkDynamicEndpointTestResult batteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+    return this;
+  }
+
+   /**
+   * Get batteryMetrics
+   * @return batteryMetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BatteryMetrics getBatteryMetrics() {
+    return batteryMetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+  }
+
+
+  public NetworkDynamicEndpointTestResult cellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+    return this;
+  }
+
+   /**
+   * Get cellularProfile
+   * @return cellularProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CellularProfile getCellularProfile() {
+    return cellularProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+  }
+
+
+  public NetworkDynamicEndpointTestResult platform(Platform platform) {
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Get platform
+   * @return platform
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Platform getPlatform() {
+    return platform;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPlatform(Platform platform) {
+    this.platform = platform;
   }
 
 
@@ -692,6 +782,9 @@ public class NetworkDynamicEndpointTestResult {
         Objects.equals(this.originalTargetProfile, networkDynamicEndpointTestResult.originalTargetProfile) &&
         Objects.equals(this.userProfile, networkDynamicEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, networkDynamicEndpointTestResult.vpnProfile) &&
+        Objects.equals(this.batteryMetrics, networkDynamicEndpointTestResult.batteryMetrics) &&
+        Objects.equals(this.cellularProfile, networkDynamicEndpointTestResult.cellularProfile) &&
+        Objects.equals(this.platform, networkDynamicEndpointTestResult.platform) &&
         Objects.equals(this.avgLatency, networkDynamicEndpointTestResult.avgLatency) &&
         Objects.equals(this.errorDetails, networkDynamicEndpointTestResult.errorDetails) &&
         Objects.equals(this.jitter, networkDynamicEndpointTestResult.jitter) &&
@@ -710,7 +803,7 @@ public class NetworkDynamicEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency, application, protocol, tcpProbeMode, udpProbeMode, webex);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, batteryMetrics, cellularProfile, platform, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency, application, protocol, tcpProbeMode, udpProbeMode, webex);
   }
 
   @Override
@@ -727,6 +820,9 @@ public class NetworkDynamicEndpointTestResult {
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
     sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
+    sb.append("    batteryMetrics: ").append(toIndentedString(batteryMetrics)).append("\n");
+    sb.append("    cellularProfile: ").append(toIndentedString(cellularProfile)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    avgLatency: ").append(toIndentedString(avgLatency)).append("\n");
     sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
     sb.append("    jitter: ").append(toIndentedString(jitter)).append("\n");
