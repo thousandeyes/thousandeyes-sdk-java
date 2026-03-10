@@ -15,6 +15,9 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/RealUserEndpointTestRe
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ApplicationMetrics.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ApplicationScoreQuality.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/AsnDetails.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/BatteryLevel.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/BatteryMetrics.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/CellularProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/ConditionalOperator.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/CpuUtilization.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/DynamicBaseEndpointTestResult.java
