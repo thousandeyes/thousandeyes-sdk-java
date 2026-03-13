@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   ApiNumbersCardData.JSON_PROPERTY_CARD_ID,
+  ApiNumbersCardData.JSON_PROPERTY_CARD_NAME,
   ApiNumbersCardData.JSON_PROPERTY_START_DATE,
   ApiNumbersCardData.JSON_PROPERTY_END_DATE,
   ApiNumbersCardData.JSON_PROPERTY_PREVIOUS_VALUE,
@@ -49,6 +50,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class ApiNumbersCardData {
   public static final String JSON_PROPERTY_CARD_ID = "cardId";
   private String cardId;
+
+  public static final String JSON_PROPERTY_CARD_NAME = "cardName";
+  private String cardName;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   private OffsetDateTime startDate;
@@ -105,6 +109,31 @@ public class ApiNumbersCardData {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCardId(String cardId) {
     this.cardId = cardId;
+  }
+
+
+  public ApiNumbersCardData cardName(String cardName) {
+    this.cardName = cardName;
+    return this;
+  }
+
+   /**
+   * Name of the card.
+   * @return cardName
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CARD_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getCardName() {
+    return cardName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CARD_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCardName(String cardName) {
+    this.cardName = cardName;
   }
 
 
@@ -379,6 +408,7 @@ public class ApiNumbersCardData {
     }
     ApiNumbersCardData apiNumbersCardData = (ApiNumbersCardData) o;
     return Objects.equals(this.cardId, apiNumbersCardData.cardId) &&
+        Objects.equals(this.cardName, apiNumbersCardData.cardName) &&
         Objects.equals(this.startDate, apiNumbersCardData.startDate) &&
         Objects.equals(this.endDate, apiNumbersCardData.endDate) &&
         Objects.equals(this.previousValue, apiNumbersCardData.previousValue) &&
@@ -393,7 +423,7 @@ public class ApiNumbersCardData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cardId, startDate, endDate, previousValue, binSize, timestamp, numberOfDataPoints, value, status, alertSuppressionWindows, links);
+    return Objects.hash(cardId, cardName, startDate, endDate, previousValue, binSize, timestamp, numberOfDataPoints, value, status, alertSuppressionWindows, links);
   }
 
   @Override
@@ -401,6 +431,7 @@ public class ApiNumbersCardData {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApiNumbersCardData {\n");
     sb.append("    cardId: ").append(toIndentedString(cardId)).append("\n");
+    sb.append("    cardName: ").append(toIndentedString(cardName)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    previousValue: ").append(toIndentedString(previousValue)).append("\n");

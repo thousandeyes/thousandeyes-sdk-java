@@ -193,10 +193,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "remotePort" : 80,
                       "remoteIpAddress" : "120.98.134.7"
                     },
-                    "udpProbeMode" : "unknown",
                     "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
-                    "isIcmpBlocked" : true,
-                    "avgLatency" : 167.04,
                     "minLatency" : 167.0,
                     "vpnProfile" : {
                       "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
@@ -205,41 +202,33 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "maxLatency" : 168.0,
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "userProfile" : {
                       "userName" : "joeblogs32",
                       "userPrincipalName" : "joeblogs32@c.com"
                     },
-                    "tcpProbeMode" : "auto",
+                    "platform" : "mac",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "score" : {
                       "applicationScore" : 100.0,
                       "quality" : "great"
                     },
                     "loss" : 0.0,
                     "protocol" : "tcp",
-                    "systemMetrics" : {
-                      "cpuUtilization" : {
-                        "min" : 0.22,
-                        "median" : 0.61,
-                        "max" : 0.75,
-                        "mean" : 0.55,
-                        "count" : 150,
-                        "stdDev" : 0.01
-                      },
-                      "physicalMemoryTotalBytes" : 1024,
-                      "startTimeMs" : 1581508857327,
-                      "physicalMemoryUsedBytes" : {
-                        "min" : 1.2,
-                        "median" : 1.85,
-                        "max" : 2.5,
-                        "mean" : 1.77,
-                        "count" : 155,
-                        "stdDev" : 0.25
-                      },
-                      "endTimeMs" : 1581508867333
-                    },
-                    "jitter" : 0.076808,
-                    "application" : "webex",
-                    "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
                         "publicIpAddress" : "84.255.241.1",
@@ -299,6 +288,35 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "errorMessage" : "ERR_NAME_NOT_RESOLVED",
                       "type" : "zta_service"
                     } ],
+                    "roundId" : 1384309800,
+                    "udpProbeMode" : "unknown",
+                    "isIcmpBlocked" : true,
+                    "avgLatency" : 167.04,
+                    "tcpProbeMode" : "auto",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "jitter" : 0.076808,
+                    "application" : "webex",
+                    "serverIp" : "185.199.108.153",
                     "testId" : "584739201",
                     "webex" : {
                       "remoteSipSessionId" : "22581707460321454",
@@ -307,7 +325,6 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "correlationId" : "22581707460321454"
                     },
                     "aid" : "1234",
-                    "roundId" : 1384309800,
                     "errorDetails" : "Error"
                   }, {
                     "originalTargetProfile" : {
@@ -315,10 +332,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "remotePort" : 80,
                       "remoteIpAddress" : "120.98.134.7"
                     },
-                    "udpProbeMode" : "unknown",
                     "agentId" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
-                    "isIcmpBlocked" : true,
-                    "avgLatency" : 167.04,
                     "minLatency" : 167.0,
                     "vpnProfile" : {
                       "vpnClientNetworkRange" : [ "9.88.37.27", "9.88.37.27" ],
@@ -327,41 +341,33 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
                     "maxLatency" : 168.0,
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "userProfile" : {
                       "userName" : "joeblogs32",
                       "userPrincipalName" : "joeblogs32@c.com"
                     },
-                    "tcpProbeMode" : "auto",
+                    "platform" : "mac",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "score" : {
                       "applicationScore" : 100.0,
                       "quality" : "great"
                     },
                     "loss" : 0.0,
                     "protocol" : "tcp",
-                    "systemMetrics" : {
-                      "cpuUtilization" : {
-                        "min" : 0.22,
-                        "median" : 0.61,
-                        "max" : 0.75,
-                        "mean" : 0.55,
-                        "count" : 150,
-                        "stdDev" : 0.01
-                      },
-                      "physicalMemoryTotalBytes" : 1024,
-                      "startTimeMs" : 1581508857327,
-                      "physicalMemoryUsedBytes" : {
-                        "min" : 1.2,
-                        "median" : 1.85,
-                        "max" : 2.5,
-                        "mean" : 1.77,
-                        "count" : 155,
-                        "stdDev" : 0.25
-                      },
-                      "endTimeMs" : 1581508867333
-                    },
-                    "jitter" : 0.076808,
-                    "application" : "webex",
-                    "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
                         "publicIpAddress" : "84.255.241.1",
@@ -421,6 +427,35 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "errorMessage" : "ERR_NAME_NOT_RESOLVED",
                       "type" : "zta_service"
                     } ],
+                    "roundId" : 1384309800,
+                    "udpProbeMode" : "unknown",
+                    "isIcmpBlocked" : true,
+                    "avgLatency" : 167.04,
+                    "tcpProbeMode" : "auto",
+                    "systemMetrics" : {
+                      "cpuUtilization" : {
+                        "min" : 0.22,
+                        "median" : 0.61,
+                        "max" : 0.75,
+                        "mean" : 0.55,
+                        "count" : 150,
+                        "stdDev" : 0.01
+                      },
+                      "physicalMemoryTotalBytes" : 1024,
+                      "startTimeMs" : 1581508857327,
+                      "physicalMemoryUsedBytes" : {
+                        "min" : 1.2,
+                        "median" : 1.85,
+                        "max" : 2.5,
+                        "mean" : 1.77,
+                        "count" : 155,
+                        "stdDev" : 0.25
+                      },
+                      "endTimeMs" : 1581508867333
+                    },
+                    "jitter" : 0.076808,
+                    "application" : "webex",
+                    "serverIp" : "185.199.108.153",
                     "testId" : "584739201",
                     "webex" : {
                       "remoteSipSessionId" : "22581707460321454",
@@ -429,7 +464,6 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "correlationId" : "22581707460321454"
                     },
                     "aid" : "1234",
-                    "roundId" : 1384309800,
                     "errorDetails" : "Error"
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
@@ -553,12 +587,29 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnType" : "cisco-anyconnect",
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "sourcePrefix" : "196.40.96.0/20",
                     "userProfile" : {
                       "userName" : "joeblogs32",
                       "userPrincipalName" : "joeblogs32@c.com"
                     },
+                    "platform" : "mac",
                     "tcpProbeMode" : "auto",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "protocol" : "tcp",
                     "systemMetrics" : {
                       "cpuUtilization" : {
@@ -748,12 +799,29 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnType" : "cisco-anyconnect",
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "sourcePrefix" : "196.40.96.0/20",
                     "userProfile" : {
                       "userName" : "joeblogs32",
                       "userPrincipalName" : "joeblogs32@c.com"
                     },
+                    "platform" : "mac",
                     "tcpProbeMode" : "auto",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "protocol" : "tcp",
                     "systemMetrics" : {
                       "cpuUtilization" : {
@@ -1055,12 +1123,29 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnType" : "cisco-anyconnect",
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "sourcePrefix" : "196.40.96.0/20",
                     "userProfile" : {
                       "userName" : "joeblogs32",
                       "userPrincipalName" : "joeblogs32@c.com"
                     },
+                    "platform" : "mac",
                     "tcpProbeMode" : "auto",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "protocol" : "tcp",
                     "systemMetrics" : {
                       "cpuUtilization" : {
@@ -1178,12 +1263,29 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "vpnType" : "cisco-anyconnect",
                       "vpnClientAddresses" : [ "184.81.113.85", "13.129.91.62" ]
                     },
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "sourcePrefix" : "196.40.96.0/20",
                     "userProfile" : {
                       "userName" : "joeblogs32",
                       "userPrincipalName" : "joeblogs32@c.com"
                     },
+                    "platform" : "mac",
                     "tcpProbeMode" : "auto",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "protocol" : "tcp",
                     "systemMetrics" : {
                       "cpuUtilization" : {

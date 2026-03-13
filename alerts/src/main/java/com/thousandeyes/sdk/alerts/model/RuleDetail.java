@@ -61,6 +61,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RuleDetail.JSON_PROPERTY_VISITED_SITES_FILTER,
   RuleDetail.JSON_PROPERTY_NOTIFICATIONS,
   RuleDetail.JSON_PROPERTY_TESTS,
+  RuleDetail.JSON_PROPERTY_TEST_IDS,
   RuleDetail.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -131,6 +132,9 @@ public class RuleDetail {
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<AlertSimpleTest> tests = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  private List<String> testIds = new ArrayList<>();
+
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
 
@@ -140,11 +144,13 @@ public class RuleDetail {
   @JsonCreator
   public RuleDetail(
     @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId, 
-    @JsonProperty(JSON_PROPERTY_TESTS) List<AlertSimpleTest> tests
+    @JsonProperty(JSON_PROPERTY_TESTS) List<AlertSimpleTest> tests, 
+    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<String> testIds
   ) {
   this();
     this.ruleId = ruleId;
     this.tests = tests;
+    this.testIds = testIds;
   }
 
    /**
@@ -701,6 +707,21 @@ public class RuleDetail {
 
 
 
+   /**
+   * Array of test IDs to link to alert rule (get &#x60;testId&#x60; from &#x60;/tests&#x60; endpoint).
+   * @return testIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTestIds() {
+    return testIds;
+  }
+
+
+
+
   public RuleDetail links(SelfLinks links) {
     this.links = links;
     return this;
@@ -760,12 +781,13 @@ public class RuleDetail {
         Objects.equals(this.visitedSitesFilter, ruleDetail.visitedSitesFilter) &&
         Objects.equals(this.notifications, ruleDetail.notifications) &&
         Objects.equals(this.tests, ruleDetail.tests) &&
+        Objects.equals(this.testIds, ruleDetail.testIds) &&
         Objects.equals(this.links, ruleDetail.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, description, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, tests, links);
+    return Objects.hash(ruleId, ruleName, expression, description, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, tests, testIds, links);
   }
 
   @Override
@@ -794,6 +816,7 @@ public class RuleDetail {
     sb.append("    visitedSitesFilter: ").append(toIndentedString(visitedSitesFilter)).append("\n");
     sb.append("    notifications: ").append(toIndentedString(notifications)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
+    sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

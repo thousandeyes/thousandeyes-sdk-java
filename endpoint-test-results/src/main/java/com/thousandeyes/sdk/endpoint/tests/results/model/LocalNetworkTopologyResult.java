@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.results.model.BatteryMetrics;
+import com.thousandeyes.sdk.endpoint.tests.results.model.CellularProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeAgentScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeConnectionScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeGatewayScore;
@@ -28,6 +30,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeVpnScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkPing;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkTopologyType;
+import com.thousandeyes.sdk.endpoint.tests.results.model.Platform;
 import com.thousandeyes.sdk.endpoint.tests.results.model.RealUserEndpointTestCoordinates;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetricDetails;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
@@ -62,6 +65,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocalNetworkTopologyResult.JSON_PROPERTY_PROXY_SCORE,
   LocalNetworkTopologyResult.JSON_PROPERTY_CONNECTION_SCORE,
   LocalNetworkTopologyResult.JSON_PROPERTY_AGENT_SCORE,
+  LocalNetworkTopologyResult.JSON_PROPERTY_BATTERY_METRICS,
+  LocalNetworkTopologyResult.JSON_PROPERTY_CELLULAR_PROFILE,
+  LocalNetworkTopologyResult.JSON_PROPERTY_PLATFORM,
   LocalNetworkTopologyResult.JSON_PROPERTY_COORDINATES,
   LocalNetworkTopologyResult.JSON_PROPERTY_NETWORK_PROFILE,
   LocalNetworkTopologyResult.JSON_PROPERTY_ICMP_TRACEROUTE,
@@ -119,6 +125,15 @@ public class LocalNetworkTopologyResult {
 
   public static final String JSON_PROPERTY_AGENT_SCORE = "agentScore";
   private EndpointProbeAgentScore agentScore;
+
+  public static final String JSON_PROPERTY_BATTERY_METRICS = "batteryMetrics";
+  private BatteryMetrics batteryMetrics;
+
+  public static final String JSON_PROPERTY_CELLULAR_PROFILE = "cellularProfile";
+  private CellularProfile cellularProfile;
+
+  public static final String JSON_PROPERTY_PLATFORM = "platform";
+  private Platform platform;
 
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
   private RealUserEndpointTestCoordinates coordinates;
@@ -510,6 +525,81 @@ public class LocalNetworkTopologyResult {
   }
 
 
+  public LocalNetworkTopologyResult batteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+    return this;
+  }
+
+   /**
+   * Get batteryMetrics
+   * @return batteryMetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BatteryMetrics getBatteryMetrics() {
+    return batteryMetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+  }
+
+
+  public LocalNetworkTopologyResult cellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+    return this;
+  }
+
+   /**
+   * Get cellularProfile
+   * @return cellularProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CellularProfile getCellularProfile() {
+    return cellularProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+  }
+
+
+  public LocalNetworkTopologyResult platform(Platform platform) {
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Get platform
+   * @return platform
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Platform getPlatform() {
+    return platform;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPlatform(Platform platform) {
+    this.platform = platform;
+  }
+
+
   public LocalNetworkTopologyResult coordinates(RealUserEndpointTestCoordinates coordinates) {
     this.coordinates = coordinates;
     return this;
@@ -647,6 +737,9 @@ public class LocalNetworkTopologyResult {
         Objects.equals(this.proxyScore, localNetworkTopologyResult.proxyScore) &&
         Objects.equals(this.connectionScore, localNetworkTopologyResult.connectionScore) &&
         Objects.equals(this.agentScore, localNetworkTopologyResult.agentScore) &&
+        Objects.equals(this.batteryMetrics, localNetworkTopologyResult.batteryMetrics) &&
+        Objects.equals(this.cellularProfile, localNetworkTopologyResult.cellularProfile) &&
+        Objects.equals(this.platform, localNetworkTopologyResult.platform) &&
         Objects.equals(this.coordinates, localNetworkTopologyResult.coordinates) &&
         Objects.equals(this.networkProfile, localNetworkTopologyResult.networkProfile) &&
         Objects.equals(this.icmpTraceroute, localNetworkTopologyResult.icmpTraceroute) &&
@@ -655,7 +748,7 @@ public class LocalNetworkTopologyResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails, vpnScore, gatewayScore, proxyScore, connectionScore, agentScore, coordinates, networkProfile, icmpTraceroute, icmpTraceroutes);
+    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails, vpnScore, gatewayScore, proxyScore, connectionScore, agentScore, batteryMetrics, cellularProfile, platform, coordinates, networkProfile, icmpTraceroute, icmpTraceroutes);
   }
 
   @Override
@@ -679,6 +772,9 @@ public class LocalNetworkTopologyResult {
     sb.append("    proxyScore: ").append(toIndentedString(proxyScore)).append("\n");
     sb.append("    connectionScore: ").append(toIndentedString(connectionScore)).append("\n");
     sb.append("    agentScore: ").append(toIndentedString(agentScore)).append("\n");
+    sb.append("    batteryMetrics: ").append(toIndentedString(batteryMetrics)).append("\n");
+    sb.append("    cellularProfile: ").append(toIndentedString(cellularProfile)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    networkProfile: ").append(toIndentedString(networkProfile)).append("\n");
     sb.append("    icmpTraceroute: ").append(toIndentedString(icmpTraceroute)).append("\n");
