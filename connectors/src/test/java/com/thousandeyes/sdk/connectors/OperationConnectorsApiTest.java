@@ -30,6 +30,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -135,9 +136,14 @@ public class OperationConnectorsApiTest {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
         var requestBodyJson = """
+                [
+                  "ca39314d-eb4f-496f-9435-b5d20b1bfbff",
+                  "ca39314d-eb4f-496f-9435-b5d20b1bfbff"
+                ]
                                  """;
-        List&lt;String&gt; mappedRequest = 
-                mapper.readValue(requestBodyJson, List&lt;String&gt;.class);
+        var requestBodyContentType = "application/json";
+        List<String> mappedRequest =
+                mapper.readValue(requestBodyJson, new TypeReference<>() {});
         assertNotNull(mappedRequest);
 
         var responseBodyJson = """
