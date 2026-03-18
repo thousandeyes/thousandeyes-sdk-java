@@ -91,7 +91,9 @@ public class CredentialsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        CredentialRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        CredentialRequest mappedRequest =
                 mapper.readValue(requestBodyJson, CredentialRequest.class);
         assertNotNull(mappedRequest);
 
@@ -312,7 +314,9 @@ public class CredentialsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        CredentialRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        CredentialRequest mappedRequest =
                 mapper.readValue(requestBodyJson, CredentialRequest.class);
         assertNotNull(mappedRequest);
 

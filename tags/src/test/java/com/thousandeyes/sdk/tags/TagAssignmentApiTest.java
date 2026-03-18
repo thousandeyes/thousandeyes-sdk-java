@@ -95,7 +95,9 @@ public class TagAssignmentApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        TagAssignment mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        TagAssignment mappedRequest =
                 mapper.readValue(requestBodyJson, TagAssignment.class);
         assertNotNull(mappedRequest);
 
@@ -168,7 +170,9 @@ public class TagAssignmentApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        BulkTagAssignments mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        BulkTagAssignments mappedRequest =
                 mapper.readValue(requestBodyJson, BulkTagAssignments.class);
         assertNotNull(mappedRequest);
 
@@ -240,7 +244,9 @@ public class TagAssignmentApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        TagAssignment mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        TagAssignment mappedRequest =
                 mapper.readValue(requestBodyJson, TagAssignment.class);
         assertNotNull(mappedRequest);
 
@@ -295,7 +301,9 @@ public class TagAssignmentApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        BulkTagAssignments mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        BulkTagAssignments mappedRequest =
                 mapper.readValue(requestBodyJson, BulkTagAssignments.class);
         assertNotNull(mappedRequest);
 

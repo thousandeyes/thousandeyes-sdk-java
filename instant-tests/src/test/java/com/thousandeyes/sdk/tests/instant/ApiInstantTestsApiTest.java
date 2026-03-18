@@ -231,7 +231,9 @@ public class ApiInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        ApiInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        ApiInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, ApiInstantTestRequest.class);
         assertNotNull(mappedRequest);
 

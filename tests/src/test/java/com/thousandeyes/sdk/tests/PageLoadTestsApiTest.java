@@ -204,7 +204,9 @@ public class PageLoadTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        PageLoadTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        PageLoadTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, PageLoadTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -1081,7 +1083,9 @@ public class PageLoadTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        PageLoadTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        PageLoadTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, PageLoadTestRequest.class);
         assertNotNull(mappedRequest);
 

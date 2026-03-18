@@ -196,7 +196,9 @@ public class WebTransactionInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        WebTransactionInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        WebTransactionInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, WebTransactionInstantTestRequest.class);
         assertNotNull(mappedRequest);
 

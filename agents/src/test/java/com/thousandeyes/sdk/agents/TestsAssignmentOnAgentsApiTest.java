@@ -88,7 +88,9 @@ public class TestsAssignmentOnAgentsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentTestsAssignRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentTestsAssignRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentTestsAssignRequest.class);
         assertNotNull(mappedRequest);
 
@@ -233,7 +235,9 @@ public class TestsAssignmentOnAgentsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentTestsAssignRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentTestsAssignRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentTestsAssignRequest.class);
         assertNotNull(mappedRequest);
 
@@ -378,7 +382,9 @@ public class TestsAssignmentOnAgentsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentTestsAssignRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentTestsAssignRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentTestsAssignRequest.class);
         assertNotNull(mappedRequest);
 

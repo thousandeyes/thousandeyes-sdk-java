@@ -94,7 +94,9 @@ public class InternetInsightsOutagesApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        ApiOutageFilter mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        ApiOutageFilter mappedRequest =
                 mapper.readValue(requestBodyJson, ApiOutageFilter.class);
         assertNotNull(mappedRequest);
 

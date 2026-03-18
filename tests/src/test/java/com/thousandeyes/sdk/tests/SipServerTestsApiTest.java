@@ -166,7 +166,9 @@ public class SipServerTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        SipServerTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        SipServerTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, SipServerTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -789,7 +791,9 @@ public class SipServerTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        SipServerTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        SipServerTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, SipServerTestRequest.class);
         assertNotNull(mappedRequest);
 

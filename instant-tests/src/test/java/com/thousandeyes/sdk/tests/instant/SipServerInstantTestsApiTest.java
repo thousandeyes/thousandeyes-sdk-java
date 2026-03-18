@@ -144,7 +144,9 @@ public class SipServerInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        SipServerInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        SipServerInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, SipServerInstantTestRequest.class);
         assertNotNull(mappedRequest);
 

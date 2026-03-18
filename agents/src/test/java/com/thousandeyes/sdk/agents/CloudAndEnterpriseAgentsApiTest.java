@@ -340,7 +340,9 @@ public class CloudAndEnterpriseAgentsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentRequest.class);
         assertNotNull(mappedRequest);
 

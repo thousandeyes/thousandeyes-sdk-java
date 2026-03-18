@@ -138,7 +138,9 @@ public class AgentToAgentInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentToAgentInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentToAgentInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentToAgentInstantTestRequest.class);
         assertNotNull(mappedRequest);
 

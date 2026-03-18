@@ -151,7 +151,9 @@ public class FtpServerTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        FtpServerTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        FtpServerTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, FtpServerTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -763,7 +765,9 @@ public class FtpServerTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        FtpServerTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        FtpServerTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, FtpServerTestRequest.class);
         assertNotNull(mappedRequest);
 

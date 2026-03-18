@@ -90,7 +90,9 @@ public class EndpointAgentsTransferApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentTransferRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentTransferRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentTransferRequest.class);
         assertNotNull(mappedRequest);
 
@@ -112,7 +114,7 @@ public class EndpointAgentsTransferApiTest {
     /**
      * Bulk transfer agents
      * <p>
-     * Initiates the transfer of multiple agents between accounts. The following conditions apply:  * The requester must possess &#39;write&#39; permissions for both the &#39;from&#39; and &#39;to&#39; accounts involved in each transfer.  * Multiple transfers may involve a mix of different source and destination accounts. * For each transfer request, the &#39;from&#39; account must match the current account of the respective agent. * Transfers are executed asynchronously. * Progress tracking is not intended, but users can monitor the progress by periodically polling the &#39;get agent&#39; endpoint. * Each transfer request is individually validated and completed; this operation is not atomic, meaning transfers can succeed or fail individually. * The API response provides the status of each transfer request. 
+     * Initiates the transfer of multiple agents between accounts. The following conditions apply:  * The requester must possess &#39;write&#39; permissions for both the &#39;from&#39; and &#39;to&#39; accounts involved in each transfer.  * Multiple transfers may involve a mix of different source and destination accounts. * For each transfer request, the &#39;from&#39; account must match the current account of the respective agent. * Transfers are executed asynchronously. * Progress tracking is not intended, but users can monitor the progress by periodically polling the &#39;get agent&#39; endpoint. * Each transfer request is individually validated and completed; this operation is not atomic, meaning transfers can succeed or fail individually. * The API response provides the status of each transfer request. * There are no performance concerns for this API; any number of agents can be transferred in bulk. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -135,7 +137,9 @@ public class EndpointAgentsTransferApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        BulkAgentTransferRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        BulkAgentTransferRequest mappedRequest =
                 mapper.readValue(requestBodyJson, BulkAgentTransferRequest.class);
         assertNotNull(mappedRequest);
 

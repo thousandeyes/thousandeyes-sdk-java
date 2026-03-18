@@ -212,7 +212,9 @@ public class DashboardsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        Dashboard mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        Dashboard mappedRequest =
                 mapper.readValue(requestBodyJson, Dashboard.class);
         assertNotNull(mappedRequest);
 
@@ -619,6 +621,7 @@ public class DashboardsApiTest {
                     "totalAlerts" : 500,
                     "cards" : [ {
                       "numberOfDataPoints" : 24192,
+                      "cardName" : "Card Name",
                       "endDate" : "2023-05-16T10:14:28Z",
                       "_links" : {
                         "self" : {
@@ -660,6 +663,7 @@ public class DashboardsApiTest {
                       "status" : "No data"
                     }, {
                       "numberOfDataPoints" : 24192,
+                      "cardName" : "Card Name",
                       "endDate" : "2023-05-16T10:14:28Z",
                       "_links" : {
                         "self" : {
@@ -1323,6 +1327,7 @@ public class DashboardsApiTest {
         var responseBodyJson = """
                 {
                   "numberOfDataPoints" : 24192,
+                  "cardName" : "Card Name",
                   "endDate" : "2023-05-16T10:14:28Z",
                   "_links" : {
                     "self" : {
@@ -1620,7 +1625,9 @@ public class DashboardsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        Dashboard mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        Dashboard mappedRequest =
                 mapper.readValue(requestBodyJson, Dashboard.class);
         assertNotNull(mappedRequest);
 

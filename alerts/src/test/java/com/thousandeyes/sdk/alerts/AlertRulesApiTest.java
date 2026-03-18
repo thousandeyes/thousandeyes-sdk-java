@@ -145,7 +145,9 @@ public class AlertRulesApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        RuleDetailUpdate mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        RuleDetailUpdate mappedRequest =
                 mapper.readValue(requestBodyJson, RuleDetailUpdate.class);
         assertNotNull(mappedRequest);
 
@@ -306,6 +308,7 @@ public class AlertRulesApiTest {
                   "sensitivityLevel" : "medium",
                   "alertGroupType" : "endpoint",
                   "notifyOnClear" : true,
+                  "testIds" : [ "281474976710706", "271659" ],
                   "roundsViolatingOutOf" : 5,
                   "roundsViolatingRequired" : 2,
                   "isDefault" : true,
@@ -599,7 +602,9 @@ public class AlertRulesApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        RuleDetailUpdate mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        RuleDetailUpdate mappedRequest =
                 mapper.readValue(requestBodyJson, RuleDetailUpdate.class);
         assertNotNull(mappedRequest);
 

@@ -111,7 +111,9 @@ public class TagsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        TagInfo mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        TagInfo mappedRequest =
                 mapper.readValue(requestBodyJson, TagInfo.class);
         assertNotNull(mappedRequest);
 
@@ -303,7 +305,9 @@ public class TagsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        BulkTagResponse mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        BulkTagResponse mappedRequest =
                 mapper.readValue(requestBodyJson, BulkTagResponse.class);
         assertNotNull(mappedRequest);
 
@@ -709,7 +713,9 @@ public class TagsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        TagInfo mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        TagInfo mappedRequest =
                 mapper.readValue(requestBodyJson, TagInfo.class);
         assertNotNull(mappedRequest);
 

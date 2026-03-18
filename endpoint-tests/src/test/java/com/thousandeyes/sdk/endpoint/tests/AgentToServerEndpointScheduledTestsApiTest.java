@@ -101,7 +101,9 @@ public class AgentToServerEndpointScheduledTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EndpointAgentToServerTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EndpointAgentToServerTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, EndpointAgentToServerTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -456,7 +458,9 @@ public class AgentToServerEndpointScheduledTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EndpointNetworkTestUpdate mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EndpointNetworkTestUpdate mappedRequest =
                 mapper.readValue(requestBodyJson, EndpointNetworkTestUpdate.class);
         assertNotNull(mappedRequest);
 

@@ -91,7 +91,9 @@ public class EmulationApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EmulatedDevice mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EmulatedDevice mappedRequest =
                 mapper.readValue(requestBodyJson, EmulatedDevice.class);
         assertNotNull(mappedRequest);
 

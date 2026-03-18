@@ -92,7 +92,9 @@ public class AccountGroupsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AccountGroupRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AccountGroupRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AccountGroupRequest.class);
         assertNotNull(mappedRequest);
 
@@ -664,7 +666,9 @@ public class AccountGroupsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AccountGroupRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AccountGroupRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AccountGroupRequest.class);
         assertNotNull(mappedRequest);
 

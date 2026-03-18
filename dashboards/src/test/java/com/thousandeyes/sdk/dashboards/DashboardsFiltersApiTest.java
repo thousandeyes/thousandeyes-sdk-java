@@ -98,7 +98,9 @@ public class DashboardsFiltersApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        ApiContextFilterRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        ApiContextFilterRequest mappedRequest =
                 mapper.readValue(requestBodyJson, ApiContextFilterRequest.class);
         assertNotNull(mappedRequest);
 
@@ -392,7 +394,9 @@ public class DashboardsFiltersApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        ApiContextFilterRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        ApiContextFilterRequest mappedRequest =
                 mapper.readValue(requestBodyJson, ApiContextFilterRequest.class);
         assertNotNull(mappedRequest);
 

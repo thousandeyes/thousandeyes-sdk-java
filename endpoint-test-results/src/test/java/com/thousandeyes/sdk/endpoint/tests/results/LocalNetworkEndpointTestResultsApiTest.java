@@ -117,7 +117,9 @@ public class LocalNetworkEndpointTestResultsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EndpointNetworkTopologyResultRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EndpointNetworkTopologyResultRequest mappedRequest =
                 mapper.readValue(requestBodyJson, EndpointNetworkTopologyResultRequest.class);
         assertNotNull(mappedRequest);
 
@@ -158,9 +160,26 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "score" : 100.0,
                       "quality" : "great"
                     },
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "type" : "vpn",
                     "targetPort" : 80,
+                    "platform" : "mac",
                     "target" : "10.0.2.2",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -301,9 +320,26 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "score" : 100.0,
                       "quality" : "great"
                     },
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "type" : "vpn",
                     "targetPort" : 80,
+                    "platform" : "mac",
                     "target" : "10.0.2.2",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -559,6 +595,10 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "location" : "Slovenia",
                       "longitude" : 14.5144444
                     },
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "icmpTraceroutes" : [ {
                       "destination" : "13.32.22.232",
                       "hops" : [ {
@@ -606,7 +646,20 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     } ],
                     "type" : "vpn",
                     "targetPort" : 80,
+                    "platform" : "mac",
                     "target" : "10.0.2.2",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,
@@ -821,6 +874,10 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "location" : "Slovenia",
                       "longitude" : 14.5144444
                     },
+                    "batteryMetrics" : {
+                      "batteryLevel" : "medium",
+                      "batteryLevelNormalizedPercent" : 0.3
+                    },
                     "icmpTraceroutes" : [ {
                       "destination" : "13.32.22.232",
                       "hops" : [ {
@@ -868,7 +925,20 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     } ],
                     "type" : "vpn",
                     "targetPort" : 80,
+                    "platform" : "mac",
                     "target" : "10.0.2.2",
+                    "cellularProfile" : {
+                      "rssi" : -10,
+                      "advertisedNetworkSubtype" : "LTE/HSPA",
+                      "carrierName" : "T-Mobile",
+                      "rsrq" : -30,
+                      "rsrp" : -30,
+                      "advertisedNetworkGen" : "2g, 3g, 4g, 5g",
+                      "rscp" : -30,
+                      "networkGen" : "2g, 3g, 4g, 5g",
+                      "networkSubtype" : "LTE/HSPA",
+                      "sinr" : 20
+                    },
                     "systemMetrics" : {
                       "cpuUtilization" : {
                         "min" : 0.22,

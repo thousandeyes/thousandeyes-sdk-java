@@ -139,7 +139,9 @@ public class DnsServerInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        DnsServerInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        DnsServerInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, DnsServerInstantTestRequest.class);
         assertNotNull(mappedRequest);
 

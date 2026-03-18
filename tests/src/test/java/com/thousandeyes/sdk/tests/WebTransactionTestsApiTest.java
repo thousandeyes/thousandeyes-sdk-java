@@ -205,7 +205,9 @@ public class WebTransactionTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        WebTransactionTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        WebTransactionTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, WebTransactionTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -1085,7 +1087,9 @@ public class WebTransactionTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        WebTransactionTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        WebTransactionTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, WebTransactionTestRequest.class);
         assertNotNull(mappedRequest);
 

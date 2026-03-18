@@ -91,7 +91,9 @@ public class TestSnapshotsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        SnapshotRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        SnapshotRequest mappedRequest =
                 mapper.readValue(requestBodyJson, SnapshotRequest.class);
         assertNotNull(mappedRequest);
 

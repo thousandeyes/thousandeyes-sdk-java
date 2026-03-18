@@ -109,7 +109,9 @@ public class QuotasApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        OrganizationsQuotasAssign mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        OrganizationsQuotasAssign mappedRequest =
                 mapper.readValue(requestBodyJson, OrganizationsQuotasAssign.class);
         assertNotNull(mappedRequest);
 
@@ -179,7 +181,9 @@ public class QuotasApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        QuotasAssignRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        QuotasAssignRequest mappedRequest =
                 mapper.readValue(requestBodyJson, QuotasAssignRequest.class);
         assertNotNull(mappedRequest);
 
@@ -310,7 +314,9 @@ public class QuotasApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        OrganizationsQuotasUnassign mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        OrganizationsQuotasUnassign mappedRequest =
                 mapper.readValue(requestBodyJson, OrganizationsQuotasUnassign.class);
         assertNotNull(mappedRequest);
 
@@ -346,7 +352,9 @@ public class QuotasApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        QuotasUnassign mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        QuotasUnassign mappedRequest =
                 mapper.readValue(requestBodyJson, QuotasUnassign.class);
         assertNotNull(mappedRequest);
 

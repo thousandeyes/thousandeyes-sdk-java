@@ -98,7 +98,9 @@ public class DashboardSnapshotsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        GenerateDashboardSnapshotRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        GenerateDashboardSnapshotRequest mappedRequest =
                 mapper.readValue(requestBodyJson, GenerateDashboardSnapshotRequest.class);
         assertNotNull(mappedRequest);
 
@@ -519,6 +521,7 @@ public class DashboardSnapshotsApiTest {
                     "totalAlerts" : 500,
                     "cards" : [ {
                       "numberOfDataPoints" : 24192,
+                      "cardName" : "Card Name",
                       "endDate" : "2023-05-16T10:14:28Z",
                       "_links" : {
                         "self" : {
@@ -560,6 +563,7 @@ public class DashboardSnapshotsApiTest {
                       "status" : "No data"
                     }, {
                       "numberOfDataPoints" : 24192,
+                      "cardName" : "Card Name",
                       "endDate" : "2023-05-16T10:14:28Z",
                       "_links" : {
                         "self" : {
@@ -1481,7 +1485,9 @@ public class DashboardSnapshotsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        UpdateSnapshotExpirationDateApiRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        UpdateSnapshotExpirationDateApiRequest mappedRequest =
                 mapper.readValue(requestBodyJson, UpdateSnapshotExpirationDateApiRequest.class);
         assertNotNull(mappedRequest);
 

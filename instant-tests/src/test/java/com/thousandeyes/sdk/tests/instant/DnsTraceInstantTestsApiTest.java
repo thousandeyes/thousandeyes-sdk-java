@@ -128,7 +128,9 @@ public class DnsTraceInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        DnsTraceInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        DnsTraceInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, DnsTraceInstantTestRequest.class);
         assertNotNull(mappedRequest);
 

@@ -253,7 +253,9 @@ public class ApiTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        ApiTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        ApiTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, ApiTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -1317,7 +1319,9 @@ public class ApiTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        ApiTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        ApiTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, ApiTestRequest.class);
         assertNotNull(mappedRequest);
 

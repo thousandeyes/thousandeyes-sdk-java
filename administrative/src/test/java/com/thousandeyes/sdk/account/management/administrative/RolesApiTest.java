@@ -90,7 +90,9 @@ public class RolesApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        RoleRequestBody mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        RoleRequestBody mappedRequest =
                 mapper.readValue(requestBodyJson, RoleRequestBody.class);
         assertNotNull(mappedRequest);
 
@@ -312,7 +314,9 @@ public class RolesApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        RoleRequestBody mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        RoleRequestBody mappedRequest =
                 mapper.readValue(requestBodyJson, RoleRequestBody.class);
         assertNotNull(mappedRequest);
 

@@ -92,7 +92,9 @@ public class PathVisualizationInterfaceGroupsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        InterfaceGroup mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        InterfaceGroup mappedRequest =
                 mapper.readValue(requestBodyJson, InterfaceGroup.class);
         assertNotNull(mappedRequest);
 
@@ -235,7 +237,9 @@ public class PathVisualizationInterfaceGroupsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        InterfaceGroup mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        InterfaceGroup mappedRequest =
                 mapper.readValue(requestBodyJson, InterfaceGroup.class);
         assertNotNull(mappedRequest);
 

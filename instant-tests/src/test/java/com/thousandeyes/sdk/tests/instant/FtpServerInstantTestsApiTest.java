@@ -143,7 +143,9 @@ public class FtpServerInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        FtpServerInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        FtpServerInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, FtpServerInstantTestRequest.class);
         assertNotNull(mappedRequest);
 

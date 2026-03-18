@@ -107,7 +107,9 @@ public class AlertSuppressionWindowsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AlertSuppressionWindowRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AlertSuppressionWindowRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AlertSuppressionWindowRequest.class);
         assertNotNull(mappedRequest);
 
@@ -527,7 +529,9 @@ public class AlertSuppressionWindowsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AlertSuppressionWindowRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AlertSuppressionWindowRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AlertSuppressionWindowRequest.class);
         assertNotNull(mappedRequest);
 

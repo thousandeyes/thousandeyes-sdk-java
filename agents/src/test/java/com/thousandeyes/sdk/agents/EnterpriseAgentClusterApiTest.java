@@ -91,7 +91,9 @@ public class EnterpriseAgentClusterApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentClusterAssignRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentClusterAssignRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentClusterAssignRequest.class);
         assertNotNull(mappedRequest);
 
@@ -236,7 +238,9 @@ public class EnterpriseAgentClusterApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentClusterUnassignRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentClusterUnassignRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentClusterUnassignRequest.class);
         assertNotNull(mappedRequest);
 

@@ -134,7 +134,9 @@ public class VoiceInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        VoiceInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        VoiceInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, VoiceInstantTestRequest.class);
         assertNotNull(mappedRequest);
 

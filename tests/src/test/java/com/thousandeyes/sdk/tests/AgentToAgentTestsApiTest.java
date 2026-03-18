@@ -146,7 +146,9 @@ public class AgentToAgentTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentToAgentTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentToAgentTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentToAgentTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -733,7 +735,9 @@ public class AgentToAgentTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentToAgentTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        AgentToAgentTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, AgentToAgentTestRequest.class);
         assertNotNull(mappedRequest);
 

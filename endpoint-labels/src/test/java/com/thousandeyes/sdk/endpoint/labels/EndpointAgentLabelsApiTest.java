@@ -105,7 +105,9 @@ public class EndpointAgentLabelsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        LabelRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        LabelRequest mappedRequest =
                 mapper.readValue(requestBodyJson, LabelRequest.class);
         assertNotNull(mappedRequest);
 
@@ -388,7 +390,9 @@ public class EndpointAgentLabelsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        Label mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        Label mappedRequest =
                 mapper.readValue(requestBodyJson, Label.class);
         assertNotNull(mappedRequest);
 

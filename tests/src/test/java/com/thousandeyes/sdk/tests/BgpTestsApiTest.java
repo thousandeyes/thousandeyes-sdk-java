@@ -126,7 +126,9 @@ public class BgpTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        BgpTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        BgpTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, BgpTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -569,7 +571,9 @@ public class BgpTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        UpdateBgpTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        UpdateBgpTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, UpdateBgpTestRequest.class);
         assertNotNull(mappedRequest);
 

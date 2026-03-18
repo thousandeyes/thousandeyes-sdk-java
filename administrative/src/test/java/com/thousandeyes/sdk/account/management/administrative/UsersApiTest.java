@@ -100,7 +100,9 @@ public class UsersApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        UserRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        UserRequest mappedRequest =
                 mapper.readValue(requestBodyJson, UserRequest.class);
         assertNotNull(mappedRequest);
 
@@ -518,7 +520,9 @@ public class UsersApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        UserRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        UserRequest mappedRequest =
                 mapper.readValue(requestBodyJson, UserRequest.class);
         assertNotNull(mappedRequest);
 

@@ -96,7 +96,9 @@ public class AgentToServerEndpointInstantScheduledTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EndpointAgentToServerInstantTest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EndpointAgentToServerInstantTest mappedRequest =
                 mapper.readValue(requestBodyJson, EndpointAgentToServerInstantTest.class);
         assertNotNull(mappedRequest);
 

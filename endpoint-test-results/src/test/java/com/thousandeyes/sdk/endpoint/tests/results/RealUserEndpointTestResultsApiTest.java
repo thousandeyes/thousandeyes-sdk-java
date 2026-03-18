@@ -114,7 +114,9 @@ public class RealUserEndpointTestResultsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        RealUserEndpointTestResultsRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        RealUserEndpointTestResultsRequest mappedRequest =
                 mapper.readValue(requestBodyJson, RealUserEndpointTestResultsRequest.class);
         assertNotNull(mappedRequest);
 
@@ -278,7 +280,9 @@ public class RealUserEndpointTestResultsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        RealUserEndpointTestResultsRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        RealUserEndpointTestResultsRequest mappedRequest =
                 mapper.readValue(requestBodyJson, RealUserEndpointTestResultsRequest.class);
         assertNotNull(mappedRequest);
 
@@ -380,7 +384,9 @@ public class RealUserEndpointTestResultsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        RealUserEndpointTestResultRequestFilter mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        RealUserEndpointTestResultRequestFilter mappedRequest =
                 mapper.readValue(requestBodyJson, RealUserEndpointTestResultRequestFilter.class);
         assertNotNull(mappedRequest);
 

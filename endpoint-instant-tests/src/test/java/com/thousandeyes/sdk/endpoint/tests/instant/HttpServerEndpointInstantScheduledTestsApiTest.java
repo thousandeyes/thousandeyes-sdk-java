@@ -107,7 +107,9 @@ public class HttpServerEndpointInstantScheduledTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EndpointHttpServerInstantTest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EndpointHttpServerInstantTest mappedRequest =
                 mapper.readValue(requestBodyJson, EndpointHttpServerInstantTest.class);
         assertNotNull(mappedRequest);
 

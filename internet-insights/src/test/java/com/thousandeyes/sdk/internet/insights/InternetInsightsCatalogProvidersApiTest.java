@@ -94,7 +94,9 @@ public class InternetInsightsCatalogProvidersApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        ApiCatalogProviderFilter mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        ApiCatalogProviderFilter mappedRequest =
                 mapper.readValue(requestBodyJson, ApiCatalogProviderFilter.class);
         assertNotNull(mappedRequest);
 

@@ -101,7 +101,9 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        DynamicTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        DynamicTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, DynamicTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -451,7 +453,9 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EndpointDynamicTestUpdate mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EndpointDynamicTestUpdate mappedRequest =
                 mapper.readValue(requestBodyJson, EndpointDynamicTestUpdate.class);
         assertNotNull(mappedRequest);
 

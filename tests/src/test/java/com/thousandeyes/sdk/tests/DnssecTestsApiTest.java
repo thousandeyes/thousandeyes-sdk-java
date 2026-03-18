@@ -132,7 +132,9 @@ public class DnssecTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        DnsSecTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        DnsSecTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, DnsSecTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -623,7 +625,9 @@ public class DnssecTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        DnsSecTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        DnsSecTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, DnsSecTestRequest.class);
         assertNotNull(mappedRequest);
 

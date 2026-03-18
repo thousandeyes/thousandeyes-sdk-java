@@ -156,7 +156,9 @@ public class VoiceTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        VoiceTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        VoiceTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, VoiceTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -737,7 +739,9 @@ public class VoiceTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        VoiceTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        VoiceTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, VoiceTestRequest.class);
         assertNotNull(mappedRequest);
 

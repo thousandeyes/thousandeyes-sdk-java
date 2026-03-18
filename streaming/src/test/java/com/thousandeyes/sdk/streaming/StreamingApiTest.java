@@ -140,7 +140,9 @@ public class StreamingApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        Stream mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        Stream mappedRequest =
                 mapper.readValue(requestBodyJson, Stream.class);
         assertNotNull(mappedRequest);
 
@@ -598,7 +600,9 @@ public class StreamingApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        PutStream mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        PutStream mappedRequest =
                 mapper.readValue(requestBodyJson, PutStream.class);
         assertNotNull(mappedRequest);
 

@@ -111,7 +111,9 @@ public class HttpServerEndpointScheduledTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EndpointHttpServerTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EndpointHttpServerTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, EndpointHttpServerTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -509,7 +511,9 @@ public class HttpServerEndpointScheduledTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        EndpointHttpTestUpdate mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        EndpointHttpTestUpdate mappedRequest =
                 mapper.readValue(requestBodyJson, EndpointHttpTestUpdate.class);
         assertNotNull(mappedRequest);
 

@@ -133,7 +133,9 @@ public class DnsTraceTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        DnsTraceTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        DnsTraceTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, DnsTraceTestRequest.class);
         assertNotNull(mappedRequest);
 
@@ -629,7 +631,9 @@ public class DnsTraceTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        DnsTraceTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        DnsTraceTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, DnsTraceTestRequest.class);
         assertNotNull(mappedRequest);
 

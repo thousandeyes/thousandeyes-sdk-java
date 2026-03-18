@@ -194,7 +194,9 @@ public class HttpPageLoadInstantTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        PageLoadInstantTestRequest mappedRequest = 
+        requestBodyContentType = "application/json";
+        requestBodyContentType = "application/json";
+        PageLoadInstantTestRequest mappedRequest =
                 mapper.readValue(requestBodyJson, PageLoadInstantTestRequest.class);
         assertNotNull(mappedRequest);
 
