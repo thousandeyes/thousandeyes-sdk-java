@@ -20,10 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.results.model.BatteryMetrics;
+import com.thousandeyes.sdk.endpoint.tests.results.model.CellularProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointHttpDataPointScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.HttpEndpointTestResultHeaders;
 import com.thousandeyes.sdk.endpoint.tests.results.model.HttpErrorType;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.Platform;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
@@ -46,6 +49,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
   HttpEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   HttpEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
+  HttpEndpointTestResult.JSON_PROPERTY_BATTERY_METRICS,
+  HttpEndpointTestResult.JSON_PROPERTY_CELLULAR_PROFILE,
+  HttpEndpointTestResult.JSON_PROPERTY_PLATFORM,
   HttpEndpointTestResult.JSON_PROPERTY_SCORE,
   HttpEndpointTestResult.JSON_PROPERTY_CONNECT_TIME,
   HttpEndpointTestResult.JSON_PROPERTY_DNS_TIME,
@@ -94,6 +100,15 @@ public class HttpEndpointTestResult {
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
+
+  public static final String JSON_PROPERTY_BATTERY_METRICS = "batteryMetrics";
+  private BatteryMetrics batteryMetrics;
+
+  public static final String JSON_PROPERTY_CELLULAR_PROFILE = "cellularProfile";
+  private CellularProfile cellularProfile;
+
+  public static final String JSON_PROPERTY_PLATFORM = "platform";
+  private Platform platform;
 
   public static final String JSON_PROPERTY_SCORE = "score";
   private EndpointHttpDataPointScore score;
@@ -396,6 +411,81 @@ public class HttpEndpointTestResult {
   }
 
 
+  public HttpEndpointTestResult batteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+    return this;
+  }
+
+   /**
+   * Get batteryMetrics
+   * @return batteryMetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BatteryMetrics getBatteryMetrics() {
+    return batteryMetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+  }
+
+
+  public HttpEndpointTestResult cellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+    return this;
+  }
+
+   /**
+   * Get cellularProfile
+   * @return cellularProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CellularProfile getCellularProfile() {
+    return cellularProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+  }
+
+
+  public HttpEndpointTestResult platform(Platform platform) {
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Get platform
+   * @return platform
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Platform getPlatform() {
+    return platform;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPlatform(Platform platform) {
+    this.platform = platform;
+  }
+
+
   public HttpEndpointTestResult score(EndpointHttpDataPointScore score) {
     this.score = score;
     return this;
@@ -688,6 +778,9 @@ public class HttpEndpointTestResult {
         Objects.equals(this.originalTargetProfile, httpEndpointTestResult.originalTargetProfile) &&
         Objects.equals(this.userProfile, httpEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, httpEndpointTestResult.vpnProfile) &&
+        Objects.equals(this.batteryMetrics, httpEndpointTestResult.batteryMetrics) &&
+        Objects.equals(this.cellularProfile, httpEndpointTestResult.cellularProfile) &&
+        Objects.equals(this.platform, httpEndpointTestResult.platform) &&
         Objects.equals(this.score, httpEndpointTestResult.score) &&
         Objects.equals(this.connectTime, httpEndpointTestResult.connectTime) &&
         Objects.equals(this.dnsTime, httpEndpointTestResult.dnsTime) &&
@@ -708,7 +801,7 @@ public class HttpEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, score, connectTime, dnsTime, errorType, errorDetails, headers, numRedirects, receiveTime, redirectTime, responseCode, responseTime, sslTime, totalTime, waitTime, wireSize, throughput);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, batteryMetrics, cellularProfile, platform, score, connectTime, dnsTime, errorType, errorDetails, headers, numRedirects, receiveTime, redirectTime, responseCode, responseTime, sslTime, totalTime, waitTime, wireSize, throughput);
   }
 
   @Override
@@ -725,6 +818,9 @@ public class HttpEndpointTestResult {
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
     sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
+    sb.append("    batteryMetrics: ").append(toIndentedString(batteryMetrics)).append("\n");
+    sb.append("    cellularProfile: ").append(toIndentedString(cellularProfile)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("    connectTime: ").append(toIndentedString(connectTime)).append("\n");
     sb.append("    dnsTime: ").append(toIndentedString(dnsTime)).append("\n");

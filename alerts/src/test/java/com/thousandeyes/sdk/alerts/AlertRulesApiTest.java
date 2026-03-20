@@ -306,6 +306,7 @@ public class AlertRulesApiTest {
                   "sensitivityLevel" : "medium",
                   "alertGroupType" : "endpoint",
                   "notifyOnClear" : true,
+                  "testIds" : [ "281474976710706", "271659" ],
                   "roundsViolatingOutOf" : 5,
                   "roundsViolatingRequired" : 2,
                   "isDefault" : true,
