@@ -21,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.results.model.AsnDetails;
+import com.thousandeyes.sdk.endpoint.tests.results.model.BatteryMetrics;
+import com.thousandeyes.sdk.endpoint.tests.results.model.CellularProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.DynamicEndpointTestWebex;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointPathTrace;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTestResultProtocol;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.Platform;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TestProbeModeResponse;
@@ -52,6 +55,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PathVisDynamicEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
   PathVisDynamicEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   PathVisDynamicEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
+  PathVisDynamicEndpointTestResult.JSON_PROPERTY_BATTERY_METRICS,
+  PathVisDynamicEndpointTestResult.JSON_PROPERTY_CELLULAR_PROFILE,
+  PathVisDynamicEndpointTestResult.JSON_PROPERTY_PLATFORM,
   PathVisDynamicEndpointTestResult.JSON_PROPERTY_ASN_DETAILS,
   PathVisDynamicEndpointTestResult.JSON_PROPERTY_SERVER,
   PathVisDynamicEndpointTestResult.JSON_PROPERTY_SOURCE_IP,
@@ -95,6 +101,15 @@ public class PathVisDynamicEndpointTestResult {
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
+
+  public static final String JSON_PROPERTY_BATTERY_METRICS = "batteryMetrics";
+  private BatteryMetrics batteryMetrics;
+
+  public static final String JSON_PROPERTY_CELLULAR_PROFILE = "cellularProfile";
+  private CellularProfile cellularProfile;
+
+  public static final String JSON_PROPERTY_PLATFORM = "platform";
+  private Platform platform;
 
   public static final String JSON_PROPERTY_ASN_DETAILS = "asnDetails";
   private AsnDetails asnDetails;
@@ -364,6 +379,81 @@ public class PathVisDynamicEndpointTestResult {
   }
 
 
+  public PathVisDynamicEndpointTestResult batteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+    return this;
+  }
+
+   /**
+   * Get batteryMetrics
+   * @return batteryMetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BatteryMetrics getBatteryMetrics() {
+    return batteryMetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+  }
+
+
+  public PathVisDynamicEndpointTestResult cellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+    return this;
+  }
+
+   /**
+   * Get cellularProfile
+   * @return cellularProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CellularProfile getCellularProfile() {
+    return cellularProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+  }
+
+
+  public PathVisDynamicEndpointTestResult platform(Platform platform) {
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Get platform
+   * @return platform
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Platform getPlatform() {
+    return platform;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPlatform(Platform platform) {
+    this.platform = platform;
+  }
+
+
   public PathVisDynamicEndpointTestResult asnDetails(AsnDetails asnDetails) {
     this.asnDetails = asnDetails;
     return this;
@@ -629,6 +719,9 @@ public class PathVisDynamicEndpointTestResult {
         Objects.equals(this.originalTargetProfile, pathVisDynamicEndpointTestResult.originalTargetProfile) &&
         Objects.equals(this.userProfile, pathVisDynamicEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, pathVisDynamicEndpointTestResult.vpnProfile) &&
+        Objects.equals(this.batteryMetrics, pathVisDynamicEndpointTestResult.batteryMetrics) &&
+        Objects.equals(this.cellularProfile, pathVisDynamicEndpointTestResult.cellularProfile) &&
+        Objects.equals(this.platform, pathVisDynamicEndpointTestResult.platform) &&
         Objects.equals(this.asnDetails, pathVisDynamicEndpointTestResult.asnDetails) &&
         Objects.equals(this.server, pathVisDynamicEndpointTestResult.server) &&
         Objects.equals(this.sourceIp, pathVisDynamicEndpointTestResult.sourceIp) &&
@@ -644,7 +737,7 @@ public class PathVisDynamicEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, asnDetails, server, sourceIp, sourcePrefix, application, protocol, tcpProbeMode, udpProbeMode, webex, location, pathTraces);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, batteryMetrics, cellularProfile, platform, asnDetails, server, sourceIp, sourcePrefix, application, protocol, tcpProbeMode, udpProbeMode, webex, location, pathTraces);
   }
 
   @Override
@@ -661,6 +754,9 @@ public class PathVisDynamicEndpointTestResult {
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
     sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
+    sb.append("    batteryMetrics: ").append(toIndentedString(batteryMetrics)).append("\n");
+    sb.append("    cellularProfile: ").append(toIndentedString(cellularProfile)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    asnDetails: ").append(toIndentedString(asnDetails)).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    sourceIp: ").append(toIndentedString(sourceIp)).append("\n");

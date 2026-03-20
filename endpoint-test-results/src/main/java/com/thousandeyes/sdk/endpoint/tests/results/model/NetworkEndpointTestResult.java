@@ -20,9 +20,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.tests.results.model.BatteryMetrics;
+import com.thousandeyes.sdk.endpoint.tests.results.model.CellularProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointPingDataPointScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointZtaMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
+import com.thousandeyes.sdk.endpoint.tests.results.model.Platform;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TargetProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.UserProfile;
@@ -48,6 +51,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkEndpointTestResult.JSON_PROPERTY_ORIGINAL_TARGET_PROFILE,
   NetworkEndpointTestResult.JSON_PROPERTY_USER_PROFILE,
   NetworkEndpointTestResult.JSON_PROPERTY_VPN_PROFILE,
+  NetworkEndpointTestResult.JSON_PROPERTY_BATTERY_METRICS,
+  NetworkEndpointTestResult.JSON_PROPERTY_CELLULAR_PROFILE,
+  NetworkEndpointTestResult.JSON_PROPERTY_PLATFORM,
   NetworkEndpointTestResult.JSON_PROPERTY_AVG_LATENCY,
   NetworkEndpointTestResult.JSON_PROPERTY_ERROR_DETAILS,
   NetworkEndpointTestResult.JSON_PROPERTY_JITTER,
@@ -89,6 +95,15 @@ public class NetworkEndpointTestResult {
 
   public static final String JSON_PROPERTY_VPN_PROFILE = "vpnProfile";
   private VpnProfile vpnProfile;
+
+  public static final String JSON_PROPERTY_BATTERY_METRICS = "batteryMetrics";
+  private BatteryMetrics batteryMetrics;
+
+  public static final String JSON_PROPERTY_CELLULAR_PROFILE = "cellularProfile";
+  private CellularProfile cellularProfile;
+
+  public static final String JSON_PROPERTY_PLATFORM = "platform";
+  private Platform platform;
 
   public static final String JSON_PROPERTY_AVG_LATENCY = "avgLatency";
   private Double avgLatency;
@@ -358,6 +373,81 @@ public class NetworkEndpointTestResult {
   }
 
 
+  public NetworkEndpointTestResult batteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+    return this;
+  }
+
+   /**
+   * Get batteryMetrics
+   * @return batteryMetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BatteryMetrics getBatteryMetrics() {
+    return batteryMetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATTERY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatteryMetrics(BatteryMetrics batteryMetrics) {
+    this.batteryMetrics = batteryMetrics;
+  }
+
+
+  public NetworkEndpointTestResult cellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+    return this;
+  }
+
+   /**
+   * Get cellularProfile
+   * @return cellularProfile
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CellularProfile getCellularProfile() {
+    return cellularProfile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CELLULAR_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCellularProfile(CellularProfile cellularProfile) {
+    this.cellularProfile = cellularProfile;
+  }
+
+
+  public NetworkEndpointTestResult platform(Platform platform) {
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Get platform
+   * @return platform
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Platform getPlatform() {
+    return platform;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PLATFORM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPlatform(Platform platform) {
+    this.platform = platform;
+  }
+
+
    /**
    * Average RTT for packets sent to destination.
    * @return avgLatency
@@ -543,6 +633,9 @@ public class NetworkEndpointTestResult {
         Objects.equals(this.originalTargetProfile, networkEndpointTestResult.originalTargetProfile) &&
         Objects.equals(this.userProfile, networkEndpointTestResult.userProfile) &&
         Objects.equals(this.vpnProfile, networkEndpointTestResult.vpnProfile) &&
+        Objects.equals(this.batteryMetrics, networkEndpointTestResult.batteryMetrics) &&
+        Objects.equals(this.cellularProfile, networkEndpointTestResult.cellularProfile) &&
+        Objects.equals(this.platform, networkEndpointTestResult.platform) &&
         Objects.equals(this.avgLatency, networkEndpointTestResult.avgLatency) &&
         Objects.equals(this.errorDetails, networkEndpointTestResult.errorDetails) &&
         Objects.equals(this.jitter, networkEndpointTestResult.jitter) &&
@@ -556,7 +649,7 @@ public class NetworkEndpointTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency);
+    return Objects.hash(aid, testId, agentId, roundId, serverIp, networkProfile, systemMetrics, originalTargetProfile, userProfile, vpnProfile, batteryMetrics, cellularProfile, platform, avgLatency, errorDetails, jitter, score, ztaMetrics, isIcmpBlocked, loss, maxLatency, minLatency);
   }
 
   @Override
@@ -573,6 +666,9 @@ public class NetworkEndpointTestResult {
     sb.append("    originalTargetProfile: ").append(toIndentedString(originalTargetProfile)).append("\n");
     sb.append("    userProfile: ").append(toIndentedString(userProfile)).append("\n");
     sb.append("    vpnProfile: ").append(toIndentedString(vpnProfile)).append("\n");
+    sb.append("    batteryMetrics: ").append(toIndentedString(batteryMetrics)).append("\n");
+    sb.append("    cellularProfile: ").append(toIndentedString(cellularProfile)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    avgLatency: ").append(toIndentedString(avgLatency)).append("\n");
     sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
     sb.append("    jitter: ").append(toIndentedString(jitter)).append("\n");
