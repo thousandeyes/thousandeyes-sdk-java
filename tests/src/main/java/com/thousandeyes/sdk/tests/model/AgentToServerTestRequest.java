@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -74,6 +74,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   AgentToServerTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
   AgentToServerTestRequest.JSON_PROPERTY_MONITORS,
+  AgentToServerTestRequest.JSON_PROPERTY_TAGS,
   AgentToServerTestRequest.JSON_PROPERTY_AGENTS,
   AgentToServerTestRequest.JSON_PROPERTY_PORT
 })
@@ -183,6 +184,9 @@ public class AgentToServerTestRequest {
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<String> monitors = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
@@ -1040,6 +1044,39 @@ public class AgentToServerTestRequest {
   }
 
 
+  public AgentToServerTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public AgentToServerTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public AgentToServerTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -1145,13 +1182,14 @@ public class AgentToServerTestRequest {
         Objects.equals(this.bgpMeasurements, agentToServerTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, agentToServerTestRequest.usePublicBgp) &&
         Objects.equals(this.monitors, agentToServerTestRequest.monitors) &&
+        Objects.equals(this.tags, agentToServerTestRequest.tags) &&
         Objects.equals(this.agents, agentToServerTestRequest.agents) &&
         Objects.equals(this.port, agentToServerTestRequest.port);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors, agents, port);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors, tags, agents, port);
   }
 
   @Override
@@ -1193,6 +1231,7 @@ public class AgentToServerTestRequest {
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("}");

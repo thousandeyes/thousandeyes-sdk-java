@@ -30,6 +30,8 @@ public enum ExpandInstantTestOptions {
   
   LABEL("label"),
   
+  TAG("tag"),
+  
   SHARED_WITH_ACCOUNT("shared-with-account"),
   
   UNKNOWN("unknown");

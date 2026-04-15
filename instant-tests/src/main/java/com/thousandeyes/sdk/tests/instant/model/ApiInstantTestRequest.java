@@ -73,6 +73,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTestRequest.JSON_PROPERTY_TIME_LIMIT,
   ApiInstantTestRequest.JSON_PROPERTY_URL,
   ApiInstantTestRequest.JSON_PROPERTY_CREDENTIALS,
+  ApiInstantTestRequest.JSON_PROPERTY_TAGS,
   ApiInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -178,6 +179,9 @@ public class ApiInstantTestRequest {
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -1023,6 +1027,39 @@ public class ApiInstantTestRequest {
   }
 
 
+  public ApiInstantTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public ApiInstantTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of test tag identifiers (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public ApiInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -1102,12 +1139,13 @@ public class ApiInstantTestRequest {
         Objects.equals(this.timeLimit, apiInstantTestRequest.timeLimit) &&
         Objects.equals(this.url, apiInstantTestRequest.url) &&
         Objects.equals(this.credentials, apiInstantTestRequest.credentials) &&
+        Objects.equals(this.tags, apiInstantTestRequest.tags) &&
         Objects.equals(this.agents, apiInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, tags, agents);
   }
 
   @Override
@@ -1148,6 +1186,7 @@ public class ApiInstantTestRequest {
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

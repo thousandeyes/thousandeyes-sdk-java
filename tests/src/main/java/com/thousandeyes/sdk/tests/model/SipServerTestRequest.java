@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -72,6 +72,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
   SipServerTestRequest.JSON_PROPERTY_MONITORS,
   SipServerTestRequest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS,
+  SipServerTestRequest.JSON_PROPERTY_TAGS,
   SipServerTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -174,6 +175,9 @@ public class SipServerTestRequest {
 
   public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
   private TestSipCredentials targetSipCredentials;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
@@ -972,6 +976,39 @@ public class SipServerTestRequest {
   }
 
 
+  public SipServerTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public SipServerTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public SipServerTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -1050,12 +1087,13 @@ public class SipServerTestRequest {
         Objects.equals(this.usePublicBgp, sipServerTestRequest.usePublicBgp) &&
         Objects.equals(this.monitors, sipServerTestRequest.monitors) &&
         Objects.equals(this.targetSipCredentials, sipServerTestRequest.targetSipCredentials) &&
+        Objects.equals(this.tags, sipServerTestRequest.tags) &&
         Objects.equals(this.agents, sipServerTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, targetSipCredentials, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, targetSipCredentials, tags, agents);
   }
 
   @Override
@@ -1095,6 +1133,7 @@ public class SipServerTestRequest {
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    targetSipCredentials: ").append(toIndentedString(targetSipCredentials)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

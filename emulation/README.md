@@ -2,7 +2,9 @@
 
 Emulation API
 
-- API version: 7.0.79
+- API version: 7.0.82
+
+**Note:** All Emulation APIs are not available for ThousandEyes for Government instance.
 
 The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.
 

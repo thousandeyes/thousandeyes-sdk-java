@@ -57,6 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceInstantTestRequest.JSON_PROPERTY_PORT,
   VoiceInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   VoiceInstantTestRequest.JSON_PROPERTY_TARGET_AGENT_ID,
+  VoiceInstantTestRequest.JSON_PROPERTY_TAGS,
   VoiceInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -129,6 +130,9 @@ public class VoiceInstantTestRequest {
 
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -661,6 +665,39 @@ public class VoiceInstantTestRequest {
   }
 
 
+  public VoiceInstantTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public VoiceInstantTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of test tag identifiers (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public VoiceInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -729,12 +766,13 @@ public class VoiceInstantTestRequest {
         Objects.equals(this.port, voiceInstantTestRequest.port) &&
         Objects.equals(this.randomizedStartTime, voiceInstantTestRequest.randomizedStartTime) &&
         Objects.equals(this.targetAgentId, voiceInstantTestRequest.targetAgentId) &&
+        Objects.equals(this.tags, voiceInstantTestRequest.tags) &&
         Objects.equals(this.agents, voiceInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, randomizedStartTime, targetAgentId, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, randomizedStartTime, targetAgentId, tags, agents);
   }
 
   @Override
@@ -764,6 +802,7 @@ public class VoiceInstantTestRequest {
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

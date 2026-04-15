@@ -48,6 +48,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTests.java
+src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerWritablePropertyFields.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertDirection.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRoundsViolationMode.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRule.java
@@ -184,6 +185,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedSipServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedVoiceTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedWebTransactionTest.java
+src/main/java/com/thousandeyes/sdk/tests/model/UpdateAgentToServerTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UpdateBgpTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UpdateSipServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/ValidationError.java

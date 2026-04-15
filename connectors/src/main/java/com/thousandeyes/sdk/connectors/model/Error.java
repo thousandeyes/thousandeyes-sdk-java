@@ -1,6 +1,6 @@
 /*
  * Integrations API
- * Manage connectors and operations.
+ * **Note:** The Webhook Operations APIs are not available for ThousandEyes for Government instance.  Manage connectors and operations. 
  *
  * 
  *

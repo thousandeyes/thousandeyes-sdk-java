@@ -70,6 +70,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FtpServerInstantTestRequest.JSON_PROPERTY_USERNAME,
   FtpServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
   FtpServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
+  FtpServerInstantTestRequest.JSON_PROPERTY_TAGS,
   FtpServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -169,6 +170,9 @@ public class FtpServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -942,6 +946,39 @@ public class FtpServerInstantTestRequest {
   }
 
 
+  public FtpServerInstantTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public FtpServerInstantTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of test tag identifiers (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public FtpServerInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -1019,12 +1056,13 @@ public class FtpServerInstantTestRequest {
         Objects.equals(this.username, ftpServerInstantTestRequest.username) &&
         Objects.equals(this.fixedPacketRate, ftpServerInstantTestRequest.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, ftpServerInstantTestRequest.ipv6Policy) &&
+        Objects.equals(this.tags, ftpServerInstantTestRequest.tags) &&
         Objects.equals(this.agents, ftpServerInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, randomizedStartTime, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, randomizedStartTime, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, tags, agents);
   }
 
   @Override
@@ -1063,6 +1101,7 @@ public class FtpServerInstantTestRequest {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   InstantTestRequest.JSON_PROPERTY_LABELS,
+  InstantTestRequest.JSON_PROPERTY_TAGS,
   InstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   InstantTestRequest.JSON_PROPERTY_AGENTS
 })
@@ -39,6 +40,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class InstantTestRequest {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<String> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts = new ArrayList<>();
@@ -79,6 +83,39 @@ public class InstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLabels(List<String> labels) {
     this.labels = labels;
+  }
+
+
+  public InstantTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public InstantTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of test tag identifiers (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
   }
 
 
@@ -161,13 +198,14 @@ public class InstantTestRequest {
     }
     InstantTestRequest instantTestRequest = (InstantTestRequest) o;
     return Objects.equals(this.labels, instantTestRequest.labels) &&
+        Objects.equals(this.tags, instantTestRequest.tags) &&
         Objects.equals(this.sharedWithAccounts, instantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.agents, instantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(labels, sharedWithAccounts, agents);
+    return Objects.hash(labels, tags, sharedWithAccounts, agents);
   }
 
   @Override
@@ -175,6 +213,7 @@ public class InstantTestRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstantTestRequest {\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
