@@ -117,7 +117,7 @@ public class OperationConnectorsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/problem+json, application/hal+json, application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
@@ -186,7 +186,7 @@ public class OperationConnectorsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/problem+json, application/hal+json, application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     requestBuilder.requestBody(requestBody);
     return requestBuilder;

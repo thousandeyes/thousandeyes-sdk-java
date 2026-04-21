@@ -87,6 +87,9 @@ public class WebhookOperationsApiTest {
                   "headers" : [ {
                     "name" : "Content-Type",
                     "value" : "application/json"
+                  }, {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
                   } ],
                   "payload" : "{\\"property1\\": {{numericVar}}, \\"property2\\": \\"{{stringVar}}\\"}",
                   "queryParams" : "{\\"queryParam1\\":\\"{{stringVar}}\\"}",
@@ -119,6 +122,9 @@ public class WebhookOperationsApiTest {
                 {
                   "path" : "/custom/path",
                   "headers" : [ {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
+                  }, {
                     "name" : "Content-Type",
                     "value" : "application/json"
                   } ],
@@ -211,6 +217,9 @@ public class WebhookOperationsApiTest {
                   "headers" : [ {
                     "name" : "Content-Type",
                     "value" : "application/json"
+                  }, {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
                   } ],
                   "payload" : "{\\"property1\\": {{numericVar}}, \\"property2\\": \\"{{stringVar}}\\"}",
                   "queryParams" : "{\\"queryParam1\\":\\"{{stringVar}}\\"}",
@@ -285,6 +294,9 @@ public class WebhookOperationsApiTest {
                     "headers" : [ {
                       "name" : "Content-Type",
                       "value" : "application/json"
+                    }, {
+                      "name" : "Content-Type",
+                      "value" : "application/json"
                     } ],
                     "payload" : "{\\"property1\\": {{numericVar}}, \\"property2\\": \\"{{stringVar}}\\"}",
                     "queryParams" : "{\\"queryParam1\\":\\"{{stringVar}}\\"}",
@@ -309,6 +321,9 @@ public class WebhookOperationsApiTest {
                   }, {
                     "path" : "/custom/path",
                     "headers" : [ {
+                      "name" : "Content-Type",
+                      "value" : "application/json"
+                    }, {
                       "name" : "Content-Type",
                       "value" : "application/json"
                     } ],
@@ -372,6 +387,9 @@ public class WebhookOperationsApiTest {
                   "headers" : [ {
                     "name" : "Content-Type",
                     "value" : "application/json"
+                  }, {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
                   } ],
                   "payload" : "{\\"property1\\": {{numericVar}}, \\"property2\\": \\"{{stringVar}}\\"}",
                   "queryParams" : "{\\"queryParam1\\":\\"{{stringVar}}\\"}",
@@ -404,6 +422,9 @@ public class WebhookOperationsApiTest {
                 {
                   "path" : "/custom/path",
                   "headers" : [ {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
+                  }, {
                     "name" : "Content-Type",
                     "value" : "application/json"
                   } ],

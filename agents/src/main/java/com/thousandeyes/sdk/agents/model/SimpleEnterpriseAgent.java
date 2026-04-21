@@ -48,8 +48,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SimpleEnterpriseAgent.JSON_PROPERTY_COUNTRY_ID,
   SimpleEnterpriseAgent.JSON_PROPERTY_COORDINATES,
   SimpleEnterpriseAgent.JSON_PROPERTY_ENABLED,
-  SimpleEnterpriseAgent.JSON_PROPERTY_PREFIX,
   SimpleEnterpriseAgent.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
+  SimpleEnterpriseAgent.JSON_PROPERTY_PREFIX,
   SimpleEnterpriseAgent.JSON_PROPERTY_TEST_IDS,
   SimpleEnterpriseAgent.JSON_PROPERTY_TESTS,
   SimpleEnterpriseAgent.JSON_PROPERTY_CLUSTER_MEMBERS,
@@ -95,11 +95,11 @@ public class SimpleEnterpriseAgent {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
 
-  public static final String JSON_PROPERTY_PREFIX = "prefix";
-  private String prefix;
-
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
   private Boolean verifySslCertificates;
+
+  public static final String JSON_PROPERTY_PREFIX = "prefix";
+  private String prefix;
 
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
   private List<Long> testIds = new ArrayList<>();
@@ -157,8 +157,8 @@ public class SimpleEnterpriseAgent {
     @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
     @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
+    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
     @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS) List<ClusterMember> clusterMembers, 
     @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization, 
@@ -175,8 +175,8 @@ public class SimpleEnterpriseAgent {
     this.agentId = agentId;
     this.location = location;
     this.countryId = countryId;
-    this.prefix = prefix;
     this.verifySslCertificates = verifySslCertificates;
+    this.prefix = prefix;
     this.testIds = testIds;
     this.clusterMembers = clusterMembers;
     this.utilization = utilization;
@@ -353,21 +353,6 @@ public class SimpleEnterpriseAgent {
 
 
    /**
-   * Prefix containing agents public IP address.
-   * @return prefix
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPrefix() {
-    return prefix;
-  }
-
-
-
-
-   /**
    * Flag indicating if has normal SSL operations or  if instead it&#39;s set to ignore SSL errors on browserbot-based tests.
    * @return verifySslCertificates
   **/
@@ -377,6 +362,21 @@ public class SimpleEnterpriseAgent {
 
   public Boolean getVerifySslCertificates() {
     return verifySslCertificates;
+  }
+
+
+
+
+   /**
+   * Prefix containing agents public IP address.
+   * @return prefix
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getPrefix() {
+    return prefix;
   }
 
 
@@ -722,8 +722,8 @@ public class SimpleEnterpriseAgent {
         Objects.equals(this.countryId, simpleEnterpriseAgent.countryId) &&
         Objects.equals(this.coordinates, simpleEnterpriseAgent.coordinates) &&
         Objects.equals(this.enabled, simpleEnterpriseAgent.enabled) &&
-        Objects.equals(this.prefix, simpleEnterpriseAgent.prefix) &&
         Objects.equals(this.verifySslCertificates, simpleEnterpriseAgent.verifySslCertificates) &&
+        Objects.equals(this.prefix, simpleEnterpriseAgent.prefix) &&
         Objects.equals(this.testIds, simpleEnterpriseAgent.testIds) &&
         Objects.equals(this.tests, simpleEnterpriseAgent.tests) &&
         Objects.equals(this.clusterMembers, simpleEnterpriseAgent.clusterMembers) &&
@@ -743,7 +743,7 @@ public class SimpleEnterpriseAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, verifySslCertificates, prefix, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
   }
 
   @Override
@@ -759,8 +759,8 @@ public class SimpleEnterpriseAgent {
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    clusterMembers: ").append(toIndentedString(clusterMembers)).append("\n");

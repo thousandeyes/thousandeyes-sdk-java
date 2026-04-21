@@ -72,7 +72,7 @@ public class Header {
   }
 
    /**
-   * The value of the header. Note that this value is obfuscated in the response, even when overwritten.
+   * Get value
    * @return value
   **/
   @jakarta.annotation.Nonnull

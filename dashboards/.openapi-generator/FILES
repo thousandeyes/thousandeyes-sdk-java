@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 api/openapi.yaml
 build.gradle
@@ -17,8 +16,6 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAgentStatusAgent.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAgentStatusIpInfo.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAgentStatusSummary.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAgentStatusWidget.java
-src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAgentWidgetShow.java
-src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAgentWidgetType.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAggregateProperty.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAlertListAlert.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiAlertListWidget.java
@@ -66,8 +63,6 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetDataSnapshotRespons
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetFilterApiTestTableFilterKey.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetFixedYScalePrefix.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetMeasure.java
-src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetSortDirection.java
-src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetSortProperty.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetsDataV2.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/AppAndSelfLinks.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/AswRepeat.java
@@ -124,7 +119,6 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/VisualMode.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/Widget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/WidgetMeasureType.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/WidgetPosition.java
-src/main/java/com/thousandeyes/sdk/dashboards/model/WidgetType.java
 src/test/java/com/thousandeyes/sdk/dashboards/DashboardSnapshotsApiTest.java
 src/test/java/com/thousandeyes/sdk/dashboards/DashboardsApiTest.java
 src/test/java/com/thousandeyes/sdk/dashboards/DashboardsFiltersApiTest.java

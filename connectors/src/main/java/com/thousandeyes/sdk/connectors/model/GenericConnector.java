@@ -37,8 +37,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GenericConnector.JSON_PROPERTY_TYPE,
   GenericConnector.JSON_PROPERTY_NAME,
   GenericConnector.JSON_PROPERTY_TARGET,
-  GenericConnector.JSON_PROPERTY_AUTHENTICATION,
   GenericConnector.JSON_PROPERTY_LAST_MODIFIED_DATE,
+  GenericConnector.JSON_PROPERTY_AUTHENTICATION,
   GenericConnector.JSON_PROPERTY_HEADERS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -55,11 +55,11 @@ public class GenericConnector {
   public static final String JSON_PROPERTY_TARGET = "target";
   private String target;
 
-  public static final String JSON_PROPERTY_AUTHENTICATION = "authentication";
-  private GenericConnectorAuth authentication;
-
   public static final String JSON_PROPERTY_LAST_MODIFIED_DATE = "lastModifiedDate";
   private Long lastModifiedDate;
+
+  public static final String JSON_PROPERTY_AUTHENTICATION = "authentication";
+  private GenericConnectorAuth authentication;
 
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private List<Header> headers = new ArrayList<>();
@@ -167,6 +167,21 @@ public class GenericConnector {
   }
 
 
+   /**
+   * The date when the connector was last modified (Unix timestamp in milliseconds).
+   * @return lastModifiedDate
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LAST_MODIFIED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Long getLastModifiedDate() {
+    return lastModifiedDate;
+  }
+
+
+
+
   public GenericConnector authentication(GenericConnectorAuth authentication) {
     this.authentication = authentication;
     return this;
@@ -190,21 +205,6 @@ public class GenericConnector {
   public void setAuthentication(GenericConnectorAuth authentication) {
     this.authentication = authentication;
   }
-
-
-   /**
-   * The date when the connector was last modified (Unix timestamp in milliseconds).
-   * @return lastModifiedDate
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_MODIFIED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Long getLastModifiedDate() {
-    return lastModifiedDate;
-  }
-
-
 
 
   public GenericConnector headers(List<Header> headers) {
@@ -256,14 +256,14 @@ public class GenericConnector {
         Objects.equals(this.type, genericConnector.type) &&
         Objects.equals(this.name, genericConnector.name) &&
         Objects.equals(this.target, genericConnector.target) &&
-        Objects.equals(this.authentication, genericConnector.authentication) &&
         Objects.equals(this.lastModifiedDate, genericConnector.lastModifiedDate) &&
+        Objects.equals(this.authentication, genericConnector.authentication) &&
         Objects.equals(this.headers, genericConnector.headers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, name, target, authentication, lastModifiedDate, headers);
+    return Objects.hash(id, type, name, target, lastModifiedDate, authentication, headers);
   }
 
   @Override
@@ -274,8 +274,8 @@ public class GenericConnector {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
-    sb.append("    authentication: ").append(toIndentedString(authentication)).append("\n");
     sb.append("    lastModifiedDate: ").append(toIndentedString(lastModifiedDate)).append("\n");
+    sb.append("    authentication: ").append(toIndentedString(authentication)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("}");
     return sb.toString();

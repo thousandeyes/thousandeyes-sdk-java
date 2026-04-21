@@ -4,7 +4,6 @@ Usage API
 
 - API version: 7.0.83
 
-
 These usage endpoints define the following operations:
 
 * **Usage**: Retrieve usage data for the specified time period (default is one month).

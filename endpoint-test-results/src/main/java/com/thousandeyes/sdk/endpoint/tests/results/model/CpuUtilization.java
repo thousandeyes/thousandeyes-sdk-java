@@ -77,8 +77,8 @@ public class CpuUtilization {
 
    /**
    * The minimum sampled usage value recorded during the monitored period.
-   * minimum: 0.0
-   * maximum: 1.0
+   * minimum: 0
+   * maximum: 1
    * @return min
   **/
   @jakarta.annotation.Nullable
@@ -94,8 +94,8 @@ public class CpuUtilization {
 
    /**
    * The maximum sampled usage value recorded during the monitored period.
-   * minimum: 0.0
-   * maximum: 1.0
+   * minimum: 0
+   * maximum: 1
    * @return max
   **/
   @jakarta.annotation.Nullable
@@ -111,8 +111,8 @@ public class CpuUtilization {
 
    /**
    * The mean (average) sampled usage value recorded during the monitored period.
-   * minimum: 0.0
-   * maximum: 1.0
+   * minimum: 0
+   * maximum: 1
    * @return mean
   **/
   @jakarta.annotation.Nullable
@@ -128,8 +128,8 @@ public class CpuUtilization {
 
    /**
    * The median sampled usage value recorded during the monitored period.
-   * minimum: 0.0
-   * maximum: 1.0
+   * minimum: 0
+   * maximum: 1
    * @return median
   **/
   @jakarta.annotation.Nullable
@@ -145,8 +145,8 @@ public class CpuUtilization {
 
    /**
    * The standard deviation of sampled usage values recorded during the monitored period.
-   * minimum: 0.0
-   * maximum: 1.0
+   * minimum: 0
+   * maximum: 1
    * @return stdDev
   **/
   @jakarta.annotation.Nullable
