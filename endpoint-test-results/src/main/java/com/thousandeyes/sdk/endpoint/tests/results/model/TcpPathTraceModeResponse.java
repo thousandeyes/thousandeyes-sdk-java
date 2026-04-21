@@ -30,6 +30,8 @@ public enum TcpPathTraceModeResponse {
   
   SYN("syn"),
   
+  SYN_PCAP("syn-pcap"),
+  
   UNKNOWN("unknown"),
   
   DATA_IN_SESSION_WITH_DECREMENTING_TTL("data-in-session-with-decrementing-ttl"),

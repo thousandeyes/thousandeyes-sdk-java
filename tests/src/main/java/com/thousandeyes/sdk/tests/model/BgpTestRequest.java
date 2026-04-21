@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -51,7 +51,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BgpTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
   BgpTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   BgpTestRequest.JSON_PROPERTY_ALERT_RULES,
-  BgpTestRequest.JSON_PROPERTY_PREFIX
+  BgpTestRequest.JSON_PROPERTY_PREFIX,
+  BgpTestRequest.JSON_PROPERTY_TAGS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BgpTestRequest {
@@ -114,6 +115,9 @@ public class BgpTestRequest {
 
   public static final String JSON_PROPERTY_PREFIX = "prefix";
   private String prefix;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public BgpTestRequest() { 
   }
@@ -592,6 +596,39 @@ public class BgpTestRequest {
   }
 
 
+  public BgpTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public BgpTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   /**
    * Return true if this BgpTestRequest object is equal to o.
    */
@@ -623,12 +660,13 @@ public class BgpTestRequest {
         Objects.equals(this.usePublicBgp, bgpTestRequest.usePublicBgp) &&
         Objects.equals(this.alertsEnabled, bgpTestRequest.alertsEnabled) &&
         Objects.equals(this.alertRules, bgpTestRequest.alertRules) &&
-        Objects.equals(this.prefix, bgpTestRequest.prefix);
+        Objects.equals(this.prefix, bgpTestRequest.prefix) &&
+        Objects.equals(this.tags, bgpTestRequest.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, enabled, monitors, includeCoveredPrefixes, usePublicBgp, alertsEnabled, alertRules, prefix);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, enabled, monitors, includeCoveredPrefixes, usePublicBgp, alertsEnabled, alertRules, prefix, tags);
   }
 
   @Override
@@ -655,6 +693,7 @@ public class BgpTestRequest {
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

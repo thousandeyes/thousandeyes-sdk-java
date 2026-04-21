@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * AgentToServerProperties
  */
 @JsonPropertyOrder({
+  AgentToServerProperties.JSON_PROPERTY_TYPE,
   AgentToServerProperties.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   AgentToServerProperties.JSON_PROPERTY_CONTINUOUS_MODE,
   AgentToServerProperties.JSON_PROPERTY_FIXED_PACKET_RATE,
@@ -46,11 +47,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerProperties.JSON_PROPERTY_DSCP_ID,
   AgentToServerProperties.JSON_PROPERTY_IPV6_POLICY,
   AgentToServerProperties.JSON_PROPERTY_PING_PAYLOAD_SIZE,
-  AgentToServerProperties.JSON_PROPERTY_NETWORK_MEASUREMENTS,
-  AgentToServerProperties.JSON_PROPERTY_TYPE
+  AgentToServerProperties.JSON_PROPERTY_NETWORK_MEASUREMENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentToServerProperties {
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private String type;
+
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
 
@@ -96,21 +99,33 @@ public class AgentToServerProperties {
   public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
   private Boolean networkMeasurements = false;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
-
   public AgentToServerProperties() { 
   }
 
   @JsonCreator
   public AgentToServerProperties(
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
+    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
+    @JsonProperty(JSON_PROPERTY_DSCP) String dscp
   ) {
   this();
-    this.dscp = dscp;
     this.type = type;
+    this.dscp = dscp;
   }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getType() {
+    return type;
+  }
+
+
+
 
   public AgentToServerProperties bandwidthMeasurements(Boolean bandwidthMeasurements) {
     this.bandwidthMeasurements = bandwidthMeasurements;
@@ -483,21 +498,6 @@ public class AgentToServerProperties {
   }
 
 
-   /**
-   * Get type
-   * @return type
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getType() {
-    return type;
-  }
-
-
-
-
   /**
    * Return true if this AgentToServerProperties object is equal to o.
    */
@@ -510,7 +510,8 @@ public class AgentToServerProperties {
       return false;
     }
     AgentToServerProperties agentToServerProperties = (AgentToServerProperties) o;
-    return Objects.equals(this.bandwidthMeasurements, agentToServerProperties.bandwidthMeasurements) &&
+    return Objects.equals(this.type, agentToServerProperties.type) &&
+        Objects.equals(this.bandwidthMeasurements, agentToServerProperties.bandwidthMeasurements) &&
         Objects.equals(this.continuousMode, agentToServerProperties.continuousMode) &&
         Objects.equals(this.fixedPacketRate, agentToServerProperties.fixedPacketRate) &&
         Objects.equals(this.mtuMeasurements, agentToServerProperties.mtuMeasurements) &&
@@ -524,19 +525,19 @@ public class AgentToServerProperties {
         Objects.equals(this.dscpId, agentToServerProperties.dscpId) &&
         Objects.equals(this.ipv6Policy, agentToServerProperties.ipv6Policy) &&
         Objects.equals(this.pingPayloadSize, agentToServerProperties.pingPayloadSize) &&
-        Objects.equals(this.networkMeasurements, agentToServerProperties.networkMeasurements) &&
-        Objects.equals(this.type, agentToServerProperties.type);
+        Objects.equals(this.networkMeasurements, agentToServerProperties.networkMeasurements);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, type);
+    return Objects.hash(type, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AgentToServerProperties {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    continuousMode: ").append(toIndentedString(continuousMode)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
@@ -552,7 +553,6 @@ public class AgentToServerProperties {
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    pingPayloadSize: ").append(toIndentedString(pingPayloadSize)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

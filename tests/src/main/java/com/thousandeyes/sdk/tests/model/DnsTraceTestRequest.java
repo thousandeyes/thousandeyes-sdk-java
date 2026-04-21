@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -57,6 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceTestRequest.JSON_PROPERTY_DOMAIN,
   DnsTraceTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsTraceTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  DnsTraceTestRequest.JSON_PROPERTY_TAGS,
   DnsTraceTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -123,6 +124,9 @@ public class DnsTraceTestRequest {
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
@@ -621,6 +625,39 @@ public class DnsTraceTestRequest {
   }
 
 
+  public DnsTraceTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public DnsTraceTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public DnsTraceTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -687,12 +724,13 @@ public class DnsTraceTestRequest {
         Objects.equals(this.domain, dnsTraceTestRequest.domain) &&
         Objects.equals(this.dnsQueryClass, dnsTraceTestRequest.dnsQueryClass) &&
         Objects.equals(this.randomizedStartTime, dnsTraceTestRequest.randomizedStartTime) &&
+        Objects.equals(this.tags, dnsTraceTestRequest.tags) &&
         Objects.equals(this.agents, dnsTraceTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, randomizedStartTime, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, randomizedStartTime, tags, agents);
   }
 
   @Override
@@ -720,6 +758,7 @@ public class DnsTraceTestRequest {
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

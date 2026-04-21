@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -22,29 +22,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * HTTP request method.
+ * HTTP authentication type used for the OAuth request.
  */
-public enum RequestMethod {
+public enum OAuthAuthType {
   
-  GET("get"),
+  NONE("none"),
   
-  POST("post"),
+  BASIC("basic"),
   
-  PUT("put"),
-  
-  DELETE("delete"),
-  
-  PATCH("patch"),
-  
-  OPTIONS("options"),
-  
-  TRACE("trace"),
+  NTLM("ntlm"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  RequestMethod(String value) {
+  OAuthAuthType(String value) {
     this.value = value;
   }
 
@@ -59,8 +51,8 @@ public enum RequestMethod {
   }
 
   @JsonCreator
-  public static RequestMethod fromValue(String value) {
-    for (RequestMethod b : RequestMethod.values()) {
+  public static OAuthAuthType fromValue(String value) {
+    for (OAuthAuthType b : OAuthAuthType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
