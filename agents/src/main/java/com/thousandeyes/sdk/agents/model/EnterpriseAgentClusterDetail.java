@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AccountGroup;
 import com.thousandeyes.sdk.agents.model.AgentLabel;
+import com.thousandeyes.sdk.agents.model.AgentTag;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
 import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
@@ -70,6 +71,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentClusterDetail.JSON_PROPERTY_INTERFACE_IP_MAPPING,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_NOTIFICATION_RULES,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_LABELS,
+  EnterpriseAgentClusterDetail.JSON_PROPERTY_TAGS,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_AGENT_TYPE,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_LINKS
 })
@@ -159,6 +161,9 @@ public class EnterpriseAgentClusterDetail {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<AgentLabel> labels = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<AgentTag> tags = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
   private String agentType;
 
@@ -186,7 +191,8 @@ public class EnterpriseAgentClusterDetail {
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING) List<InterfaceIpMapping> interfaceIpMapping, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels
+    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<AgentTag> tags
   ) {
   this();
     this.ipAddresses = ipAddresses;
@@ -206,6 +212,7 @@ public class EnterpriseAgentClusterDetail {
     this.createdDate = createdDate;
     this.interfaceIpMapping = interfaceIpMapping;
     this.labels = labels;
+    this.tags = tags;
   }
 
    /**
@@ -770,6 +777,21 @@ public class EnterpriseAgentClusterDetail {
 
 
 
+   /**
+   * List of tags. See &#x60;/tags&#x60; for more information.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<AgentTag> getTags() {
+    return tags;
+  }
+
+
+
+
   public EnterpriseAgentClusterDetail agentType(String agentType) {
     this.agentType = agentType;
     return this;
@@ -860,13 +882,14 @@ public class EnterpriseAgentClusterDetail {
         Objects.equals(this.interfaceIpMapping, enterpriseAgentClusterDetail.interfaceIpMapping) &&
         Objects.equals(this.notificationRules, enterpriseAgentClusterDetail.notificationRules) &&
         Objects.equals(this.labels, enterpriseAgentClusterDetail.labels) &&
+        Objects.equals(this.tags, enterpriseAgentClusterDetail.tags) &&
         Objects.equals(this.agentType, enterpriseAgentClusterDetail.agentType) &&
         Objects.equals(this.links, enterpriseAgentClusterDetail.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, agentType, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, tags, agentType, links);
   }
 
   @Override
@@ -901,6 +924,7 @@ public class EnterpriseAgentClusterDetail {
     sb.append("    interfaceIpMapping: ").append(toIndentedString(interfaceIpMapping)).append("\n");
     sb.append("    notificationRules: ").append(toIndentedString(notificationRules)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");

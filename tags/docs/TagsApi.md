@@ -21,7 +21,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createTag
 
-> TagInfo createTag(aid, tagInfo)
+> Tag createTag(aid, tagInfo)
 
 Create tag
 
@@ -51,7 +51,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         TagInfo tagInfo = new TagInfo(); // TagInfo | Tag resource
         try {
-            TagInfo result = apiInstance.createTag(aid, tagInfo);
+            Tag result = apiInstance.createTag(aid, tagInfo);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#createTag");
@@ -74,7 +74,7 @@ public class Example {
 
 ### Return type
 
-[**TagInfo**](TagInfo.md)
+[**Tag**](Tag.md)
 
 
 ### Authorization
@@ -97,7 +97,7 @@ public class Example {
 
 ## createTagWithHttpInfo
 
-> ApiResponse<TagInfo> createTag createTagWithHttpInfo(aid, tagInfo)
+> ApiResponse<Tag> createTag createTagWithHttpInfo(aid, tagInfo)
 
 Create tag
 
@@ -128,7 +128,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         TagInfo tagInfo = new TagInfo(); // TagInfo | Tag resource
         try {
-            ApiResponse<TagInfo> response = apiInstance.createTagWithHttpInfo(aid, tagInfo);
+            ApiResponse<Tag> response = apiInstance.createTagWithHttpInfo(aid, tagInfo);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -153,7 +153,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**TagInfo**](TagInfo.md)>
+ApiResponse<[**Tag**](Tag.md)>
 
 
 ### Authorization
@@ -516,7 +516,7 @@ public class Example {
         TagsApi apiInstance = new TagsApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | Tag ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments
+        List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments. Only static tags will return object assignments.
         try {
             Tag result = apiInstance.getTag(id, aid, expand);
             System.out.println(result);
@@ -538,7 +538,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Tag ID | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTagsOptions&gt;**](ExpandTagsOptions.md)| Optional, to retrieve associated assignments | [optional] |
+| **expand** | [**List&lt;ExpandTagsOptions&gt;**](ExpandTagsOptions.md)| Optional, to retrieve associated assignments. Only static tags will return object assignments. | [optional] |
 
 ### Return type
 
@@ -596,7 +596,7 @@ public class Example {
         TagsApi apiInstance = new TagsApi(defaultClient);
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"; // String | Tag ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments
+        List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments. Only static tags will return object assignments.
         try {
             ApiResponse<Tag> response = apiInstance.getTagWithHttpInfo(id, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
@@ -620,7 +620,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Tag ID | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTagsOptions&gt;**](ExpandTagsOptions.md)| Optional, to retrieve associated assignments | [optional] |
+| **expand** | [**List&lt;ExpandTagsOptions&gt;**](ExpandTagsOptions.md)| Optional, to retrieve associated assignments. Only static tags will return object assignments. | [optional] |
 
 ### Return type
 
@@ -677,7 +677,7 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments
+        List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments. Only static tags will return object assignments.
         try {
             Tags result = apiInstance.getTags(aid, expand);
             System.out.println(result);
@@ -698,7 +698,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTagsOptions&gt;**](ExpandTagsOptions.md)| Optional, to retrieve associated assignments | [optional] |
+| **expand** | [**List&lt;ExpandTagsOptions&gt;**](ExpandTagsOptions.md)| Optional, to retrieve associated assignments. Only static tags will return object assignments. | [optional] |
 
 ### Return type
 
@@ -755,7 +755,7 @@ public class Example {
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments
+        List<ExpandTagsOptions> expand = Arrays.asList(); // List<ExpandTagsOptions> | Optional, to retrieve associated assignments. Only static tags will return object assignments.
         try {
             ApiResponse<Tags> response = apiInstance.getTagsWithHttpInfo(aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
@@ -778,7 +778,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTagsOptions&gt;**](ExpandTagsOptions.md)| Optional, to retrieve associated assignments | [optional] |
+| **expand** | [**List&lt;ExpandTagsOptions&gt;**](ExpandTagsOptions.md)| Optional, to retrieve associated assignments. Only static tags will return object assignments. | [optional] |
 
 ### Return type
 
@@ -807,7 +807,7 @@ ApiResponse<[**Tags**](Tags.md)>
 
 ## updateTag
 
-> TagInfo updateTag(id, aid, tagInfo)
+> Tag updateTag(id, aid, tagInfo)
 
 Update tag
 
@@ -838,7 +838,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         TagInfo tagInfo = new TagInfo(); // TagInfo | 
         try {
-            TagInfo result = apiInstance.updateTag(id, aid, tagInfo);
+            Tag result = apiInstance.updateTag(id, aid, tagInfo);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#updateTag");
@@ -862,7 +862,7 @@ public class Example {
 
 ### Return type
 
-[**TagInfo**](TagInfo.md)
+[**Tag**](Tag.md)
 
 
 ### Authorization
@@ -886,7 +886,7 @@ public class Example {
 
 ## updateTagWithHttpInfo
 
-> ApiResponse<TagInfo> updateTag updateTagWithHttpInfo(id, aid, tagInfo)
+> ApiResponse<Tag> updateTag updateTagWithHttpInfo(id, aid, tagInfo)
 
 Update tag
 
@@ -918,7 +918,7 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         TagInfo tagInfo = new TagInfo(); // TagInfo | 
         try {
-            ApiResponse<TagInfo> response = apiInstance.updateTagWithHttpInfo(id, aid, tagInfo);
+            ApiResponse<Tag> response = apiInstance.updateTagWithHttpInfo(id, aid, tagInfo);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -944,7 +944,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**TagInfo**](TagInfo.md)>
+ApiResponse<[**Tag**](Tag.md)>
 
 
 ### Authorization

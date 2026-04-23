@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -75,6 +75,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   DnsServerTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
   DnsServerTestRequest.JSON_PROPERTY_MONITORS,
+  DnsServerTestRequest.JSON_PROPERTY_TAGS,
   DnsServerTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -183,6 +184,9 @@ public class DnsServerTestRequest {
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<String> monitors = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
@@ -1051,6 +1055,39 @@ public class DnsServerTestRequest {
   }
 
 
+  public DnsServerTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public DnsServerTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public DnsServerTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -1131,12 +1168,13 @@ public class DnsServerTestRequest {
         Objects.equals(this.bgpMeasurements, dnsServerTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, dnsServerTestRequest.usePublicBgp) &&
         Objects.equals(this.monitors, dnsServerTestRequest.monitors) &&
+        Objects.equals(this.tags, dnsServerTestRequest.tags) &&
         Objects.equals(this.agents, dnsServerTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors, tags, agents);
   }
 
   @Override
@@ -1178,6 +1216,7 @@ public class DnsServerTestRequest {
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -23,6 +23,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tags.model.AccessType;
 import com.thousandeyes.sdk.tags.model.Assignment;
 import com.thousandeyes.sdk.tags.model.ObjectType;
+import com.thousandeyes.sdk.tags.model.TagFilter;
+import com.thousandeyes.sdk.tags.model.TagMatchType;
 import com.thousandeyes.sdk.tags.model.Type;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -51,7 +53,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TagInfo.JSON_PROPERTY_MODIFIED_DATE,
   TagInfo.JSON_PROPERTY_OBJECT_TYPE,
   TagInfo.JSON_PROPERTY_TYPE,
-  TagInfo.JSON_PROPERTY_VALUE
+  TagInfo.JSON_PROPERTY_VALUE,
+  TagInfo.JSON_PROPERTY_MATCH_TYPE,
+  TagInfo.JSON_PROPERTY_FILTERS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TagInfo {
@@ -99,6 +103,12 @@ public class TagInfo {
 
   public static final String JSON_PROPERTY_VALUE = "value";
   private String value;
+
+  public static final String JSON_PROPERTY_MATCH_TYPE = "matchType";
+  private TagMatchType matchType;
+
+  public static final String JSON_PROPERTY_FILTERS = "filters";
+  private List<TagFilter> filters = new ArrayList<>();
 
   public TagInfo() { 
   }
@@ -428,6 +438,64 @@ public class TagInfo {
   }
 
 
+  public TagInfo matchType(TagMatchType matchType) {
+    this.matchType = matchType;
+    return this;
+  }
+
+   /**
+   * Get matchType
+   * @return matchType
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MATCH_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TagMatchType getMatchType() {
+    return matchType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MATCH_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMatchType(TagMatchType matchType) {
+    this.matchType = matchType;
+  }
+
+
+  public TagInfo filters(List<TagFilter> filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  public TagInfo addFiltersItem(TagFilter filtersItem) {
+    if (this.filters == null) {
+      this.filters = new ArrayList<>();
+    }
+    this.filters.add(filtersItem);
+    return this;
+  }
+
+   /**
+   * The combination of filters (filter keys) dynamically assigned to an &#x60;endpoint-agent&#x60; as determined by the matching logic (&#x60;and&#x60; or &#x60;or&#x60;). For example, if you filter on &#x60;bssid&#x60; and &#x60;ssid&#x60; with a matching logic of &#x60;and&#x60;, both filters are assigned as tags to the &#x60;endpoint-agent&#x60;; &#x60;or&#x60; means either filter can be assigned. **Note:** filters currently only apply to &#x60;endpoint-agent&#x60; object types.
+   * @return filters
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FILTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TagFilter> getFilters() {
+    return filters;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FILTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFilters(List<TagFilter> filters) {
+    this.filters = filters;
+  }
+
+
   /**
    * Return true if this TagInfo object is equal to o.
    */
@@ -454,12 +522,14 @@ public class TagInfo {
         Objects.equals(this.modifiedDate, tagInfo.modifiedDate) &&
         Objects.equals(this.objectType, tagInfo.objectType) &&
         Objects.equals(this.type, tagInfo.type) &&
-        Objects.equals(this.value, tagInfo.value);
+        Objects.equals(this.value, tagInfo.value) &&
+        Objects.equals(this.matchType, tagInfo.matchType) &&
+        Objects.equals(this.filters, tagInfo.filters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assignments, accessType, aid, builtIn, color, createDate, icon, description, id, key, legacyId, modifiedDate, objectType, type, value);
+    return Objects.hash(assignments, accessType, aid, builtIn, color, createDate, icon, description, id, key, legacyId, modifiedDate, objectType, type, value, matchType, filters);
   }
 
   @Override
@@ -481,6 +551,8 @@ public class TagInfo {
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("}");
     return sb.toString();
   }

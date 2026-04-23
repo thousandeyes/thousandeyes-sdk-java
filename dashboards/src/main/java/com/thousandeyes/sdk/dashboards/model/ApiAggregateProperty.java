@@ -54,6 +54,8 @@ public enum ApiAggregateProperty {
   
   TEST_LABEL("TEST_LABEL"),
   
+  TEST_TAG("TEST_TAG"),
+  
   AGENT_LABEL("AGENT_LABEL"),
   
   TRANSACTION_STEP("TRANSACTION_STEP"),

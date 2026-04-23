@@ -22,11 +22,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The nature of the tag - whether the tag is dynamically assigned to products based on a filter rule or statically assigned to specified products.
+ * The nature of the tag - whether the tag is dynamically assigned to objects based on a filter rule or statically assigned to specified objects. Currently only &#x60;endpoint-agent&#x60; object types support dynamic assignment; all other object types (for example, &#x60;test&#x60;, &#x60;agent&#x60;) support only static assignment.
  */
 public enum Type {
   
   STATIC("static"),
+  
+  DYNAMIC("dynamic"),
   
   UNKNOWN("unknown");
 

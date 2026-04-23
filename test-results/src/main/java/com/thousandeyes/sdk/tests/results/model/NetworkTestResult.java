@@ -48,6 +48,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkTestResult.JSON_PROPERTY_LOSS,
   NetworkTestResult.JSON_PROPERTY_MAX_LATENCY,
   NetworkTestResult.JSON_PROPERTY_MIN_LATENCY,
+  NetworkTestResult.JSON_PROPERTY_PROXY_LOSS,
+  NetworkTestResult.JSON_PROPERTY_PROXY_AVERAGE_LATENCY,
+  NetworkTestResult.JSON_PROPERTY_PROXY_MIN_LATENCY,
+  NetworkTestResult.JSON_PROPERTY_PROXY_MAX_LATENCY,
+  NetworkTestResult.JSON_PROPERTY_PROXY_JITTER,
   NetworkTestResult.JSON_PROPERTY_PACKETS_BY_SECOND,
   NetworkTestResult.JSON_PROPERTY_AGENT,
   NetworkTestResult.JSON_PROPERTY_SERVER_IP,
@@ -96,6 +101,21 @@ public class NetworkTestResult {
   public static final String JSON_PROPERTY_MIN_LATENCY = "minLatency";
   private Double minLatency;
 
+  public static final String JSON_PROPERTY_PROXY_LOSS = "proxyLoss";
+  private Float proxyLoss;
+
+  public static final String JSON_PROPERTY_PROXY_AVERAGE_LATENCY = "proxyAverageLatency";
+  private Float proxyAverageLatency;
+
+  public static final String JSON_PROPERTY_PROXY_MIN_LATENCY = "proxyMinLatency";
+  private Float proxyMinLatency;
+
+  public static final String JSON_PROPERTY_PROXY_MAX_LATENCY = "proxyMaxLatency";
+  private Float proxyMaxLatency;
+
+  public static final String JSON_PROPERTY_PROXY_JITTER = "proxyJitter";
+  private Float proxyJitter;
+
   public static final String JSON_PROPERTY_PACKETS_BY_SECOND = "packetsBySecond";
   private List<List<Integer>> packetsBySecond = new ArrayList<>();
 
@@ -131,6 +151,11 @@ public class NetworkTestResult {
     @JsonProperty(JSON_PROPERTY_LOSS) Double loss, 
     @JsonProperty(JSON_PROPERTY_MAX_LATENCY) Double maxLatency, 
     @JsonProperty(JSON_PROPERTY_MIN_LATENCY) Double minLatency, 
+    @JsonProperty(JSON_PROPERTY_PROXY_LOSS) Float proxyLoss, 
+    @JsonProperty(JSON_PROPERTY_PROXY_AVERAGE_LATENCY) Float proxyAverageLatency, 
+    @JsonProperty(JSON_PROPERTY_PROXY_MIN_LATENCY) Float proxyMinLatency, 
+    @JsonProperty(JSON_PROPERTY_PROXY_MAX_LATENCY) Float proxyMaxLatency, 
+    @JsonProperty(JSON_PROPERTY_PROXY_JITTER) Float proxyJitter, 
     @JsonProperty(JSON_PROPERTY_PACKETS_BY_SECOND) List<List<Integer>> packetsBySecond, 
     @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
     @JsonProperty(JSON_PROPERTY_SERVER) String server
@@ -148,6 +173,11 @@ public class NetworkTestResult {
     this.loss = loss;
     this.maxLatency = maxLatency;
     this.minLatency = minLatency;
+    this.proxyLoss = proxyLoss;
+    this.proxyAverageLatency = proxyAverageLatency;
+    this.proxyMinLatency = proxyMinLatency;
+    this.proxyMaxLatency = proxyMaxLatency;
+    this.proxyJitter = proxyJitter;
     this.packetsBySecond = packetsBySecond;
     this.serverIp = serverIp;
     this.server = server;
@@ -359,6 +389,81 @@ public class NetworkTestResult {
 
 
    /**
+   * Percentage of packets not reaching proxy.
+   * @return proxyLoss
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROXY_LOSS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Float getProxyLoss() {
+    return proxyLoss;
+  }
+
+
+
+
+   /**
+   * Average RTT for packets sent to proxy, in milliseconds.
+   * @return proxyAverageLatency
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROXY_AVERAGE_LATENCY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Float getProxyAverageLatency() {
+    return proxyAverageLatency;
+  }
+
+
+
+
+   /**
+   * Minimum RTT for packets sent to proxy, in milliseconds.
+   * @return proxyMinLatency
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROXY_MIN_LATENCY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Float getProxyMinLatency() {
+    return proxyMinLatency;
+  }
+
+
+
+
+   /**
+   * Maximum RTT for packets sent to proxy, in milliseconds.
+   * @return proxyMaxLatency
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROXY_MAX_LATENCY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Float getProxyMaxLatency() {
+    return proxyMaxLatency;
+  }
+
+
+
+
+   /**
+   * Standard deviation of proxy latency, in milliseconds.
+   * @return proxyJitter
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROXY_JITTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Float getProxyJitter() {
+    return proxyJitter;
+  }
+
+
+
+
+   /**
    * Number of packets sent and received in a second.
    * @return packetsBySecond
   **/
@@ -503,6 +608,11 @@ public class NetworkTestResult {
         Objects.equals(this.loss, networkTestResult.loss) &&
         Objects.equals(this.maxLatency, networkTestResult.maxLatency) &&
         Objects.equals(this.minLatency, networkTestResult.minLatency) &&
+        Objects.equals(this.proxyLoss, networkTestResult.proxyLoss) &&
+        Objects.equals(this.proxyAverageLatency, networkTestResult.proxyAverageLatency) &&
+        Objects.equals(this.proxyMinLatency, networkTestResult.proxyMinLatency) &&
+        Objects.equals(this.proxyMaxLatency, networkTestResult.proxyMaxLatency) &&
+        Objects.equals(this.proxyJitter, networkTestResult.proxyJitter) &&
         Objects.equals(this.packetsBySecond, networkTestResult.packetsBySecond) &&
         Objects.equals(this.agent, networkTestResult.agent) &&
         Objects.equals(this.serverIp, networkTestResult.serverIp) &&
@@ -513,7 +623,7 @@ public class NetworkTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, roundId, links, startTime, endTime, availableBandwidth, avgLatency, bandwidth, capacity, jitter, loss, maxLatency, minLatency, packetsBySecond, agent, serverIp, server, healthScore, direction);
+    return Objects.hash(date, roundId, links, startTime, endTime, availableBandwidth, avgLatency, bandwidth, capacity, jitter, loss, maxLatency, minLatency, proxyLoss, proxyAverageLatency, proxyMinLatency, proxyMaxLatency, proxyJitter, packetsBySecond, agent, serverIp, server, healthScore, direction);
   }
 
   @Override
@@ -533,6 +643,11 @@ public class NetworkTestResult {
     sb.append("    loss: ").append(toIndentedString(loss)).append("\n");
     sb.append("    maxLatency: ").append(toIndentedString(maxLatency)).append("\n");
     sb.append("    minLatency: ").append(toIndentedString(minLatency)).append("\n");
+    sb.append("    proxyLoss: ").append(toIndentedString(proxyLoss)).append("\n");
+    sb.append("    proxyAverageLatency: ").append(toIndentedString(proxyAverageLatency)).append("\n");
+    sb.append("    proxyMinLatency: ").append(toIndentedString(proxyMinLatency)).append("\n");
+    sb.append("    proxyMaxLatency: ").append(toIndentedString(proxyMaxLatency)).append("\n");
+    sb.append("    proxyJitter: ").append(toIndentedString(proxyJitter)).append("\n");
     sb.append("    packetsBySecond: ").append(toIndentedString(packetsBySecond)).append("\n");
     sb.append("    agent: ").append(toIndentedString(agent)).append("\n");
     sb.append("    serverIp: ").append(toIndentedString(serverIp)).append("\n");
