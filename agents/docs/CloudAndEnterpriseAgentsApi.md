@@ -343,7 +343,7 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 
 ## getAgents
 
-> CloudEnterpriseAgents getAgents(aid, expand, agentTypes, labels)
+> CloudEnterpriseAgents getAgents(aid, expand, agentTypes, labels, tagKeys)
 
 List Cloud and Enterprise Agents
 
@@ -374,8 +374,9 @@ public class Example {
         List<AgentListExpand> expand = Arrays.asList(); // List<AgentListExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         List<CloudEnterpriseAgentType> agentTypes = Arrays.asList(); // List<CloudEnterpriseAgentType> | Specifies the type of agent to request.
         List<String> labels = Arrays.asList(); // List<String> | Specifies the labels of the agents to request.
+        List<String> tagKeys = Arrays.asList(); // List<String> | Specifies which tag keys to request from the agents.
         try {
-            CloudEnterpriseAgents result = apiInstance.getAgents(aid, expand, agentTypes, labels);
+            CloudEnterpriseAgents result = apiInstance.getAgents(aid, expand, agentTypes, labels, tagKeys);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentsApi#getAgents");
@@ -397,6 +398,7 @@ public class Example {
 | **expand** | [**List&lt;AgentListExpand&gt;**](AgentListExpand.md)| Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
 | **agentTypes** | [**List&lt;CloudEnterpriseAgentType&gt;**](CloudEnterpriseAgentType.md)| Specifies the type of agent to request. | [optional] |
 | **labels** | [**List&lt;String&gt;**](String.md)| Specifies the labels of the agents to request. | [optional] |
+| **tagKeys** | [**List&lt;String&gt;**](String.md)| Specifies which tag keys to request from the agents. | [optional] |
 
 ### Return type
 
@@ -426,7 +428,7 @@ public class Example {
 
 ## getAgentsWithHttpInfo
 
-> ApiResponse<CloudEnterpriseAgents> getAgents getAgentsWithHttpInfo(aid, expand, agentTypes, labels)
+> ApiResponse<CloudEnterpriseAgents> getAgents getAgentsWithHttpInfo(aid, expand, agentTypes, labels, tagKeys)
 
 List Cloud and Enterprise Agents
 
@@ -458,8 +460,9 @@ public class Example {
         List<AgentListExpand> expand = Arrays.asList(); // List<AgentListExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         List<CloudEnterpriseAgentType> agentTypes = Arrays.asList(); // List<CloudEnterpriseAgentType> | Specifies the type of agent to request.
         List<String> labels = Arrays.asList(); // List<String> | Specifies the labels of the agents to request.
+        List<String> tagKeys = Arrays.asList(); // List<String> | Specifies which tag keys to request from the agents.
         try {
-            ApiResponse<CloudEnterpriseAgents> response = apiInstance.getAgentsWithHttpInfo(aid, expand, agentTypes, labels);
+            ApiResponse<CloudEnterpriseAgents> response = apiInstance.getAgentsWithHttpInfo(aid, expand, agentTypes, labels, tagKeys);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -483,6 +486,7 @@ public class Example {
 | **expand** | [**List&lt;AgentListExpand&gt;**](AgentListExpand.md)| Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
 | **agentTypes** | [**List&lt;CloudEnterpriseAgentType&gt;**](CloudEnterpriseAgentType.md)| Specifies the type of agent to request. | [optional] |
 | **labels** | [**List&lt;String&gt;**](String.md)| Specifies the labels of the agents to request. | [optional] |
+| **tagKeys** | [**List&lt;String&gt;**](String.md)| Specifies which tag keys to request from the agents. | [optional] |
 
 ### Return type
 

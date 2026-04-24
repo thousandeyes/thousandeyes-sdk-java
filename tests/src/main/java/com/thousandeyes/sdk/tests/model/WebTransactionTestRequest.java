@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -105,6 +105,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionTestRequest.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
   WebTransactionTestRequest.JSON_PROPERTY_ALLOW_GEOLOCATION,
   WebTransactionTestRequest.JSON_PROPERTY_BROWSER_LANGUAGE,
+  WebTransactionTestRequest.JSON_PROPERTY_CHROME_OPTIONS,
+  WebTransactionTestRequest.JSON_PROPERTY_CHROME_POLICIES,
   WebTransactionTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   WebTransactionTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   WebTransactionTestRequest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
@@ -113,6 +115,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
   WebTransactionTestRequest.JSON_PROPERTY_MONITORS,
   WebTransactionTestRequest.JSON_PROPERTY_SUBINTERVAL,
+  WebTransactionTestRequest.JSON_PROPERTY_TAGS,
   WebTransactionTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -300,6 +303,12 @@ public class WebTransactionTestRequest {
   public static final String JSON_PROPERTY_BROWSER_LANGUAGE = "browserLanguage";
   private String browserLanguage;
 
+  public static final String JSON_PROPERTY_CHROME_OPTIONS = "chromeOptions";
+  private String chromeOptions = "";
+
+  public static final String JSON_PROPERTY_CHROME_POLICIES = "chromePolicies";
+  private String chromePolicies = "{}";
+
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
 
@@ -323,6 +332,9 @@ public class WebTransactionTestRequest {
 
   public static final String JSON_PROPERTY_SUBINTERVAL = "subinterval";
   private TestSubInterval subinterval;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
@@ -1827,6 +1839,56 @@ public class WebTransactionTestRequest {
   }
 
 
+  public WebTransactionTestRequest chromeOptions(String chromeOptions) {
+    this.chromeOptions = chromeOptions;
+    return this;
+  }
+
+   /**
+   * Command-line options passed to Chrome when running the test.
+   * @return chromeOptions
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROME_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChromeOptions() {
+    return chromeOptions;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROME_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromeOptions(String chromeOptions) {
+    this.chromeOptions = chromeOptions;
+  }
+
+
+  public WebTransactionTestRequest chromePolicies(String chromePolicies) {
+    this.chromePolicies = chromePolicies;
+    return this;
+  }
+
+   /**
+   * JSON string of Chrome policy settings to apply.
+   * @return chromePolicies
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROME_POLICIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChromePolicies() {
+    return chromePolicies;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROME_POLICIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromePolicies(String chromePolicies) {
+    this.chromePolicies = chromePolicies;
+  }
+
+
   public WebTransactionTestRequest pageLoadingStrategy(TestPageLoadingStrategy pageLoadingStrategy) {
     this.pageLoadingStrategy = pageLoadingStrategy;
     return this;
@@ -2043,6 +2105,39 @@ public class WebTransactionTestRequest {
   }
 
 
+  public WebTransactionTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public WebTransactionTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public WebTransactionTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -2149,6 +2244,8 @@ public class WebTransactionTestRequest {
         Objects.equals(this.allowMicAndCamera, webTransactionTestRequest.allowMicAndCamera) &&
         Objects.equals(this.allowGeolocation, webTransactionTestRequest.allowGeolocation) &&
         Objects.equals(this.browserLanguage, webTransactionTestRequest.browserLanguage) &&
+        Objects.equals(this.chromeOptions, webTransactionTestRequest.chromeOptions) &&
+        Objects.equals(this.chromePolicies, webTransactionTestRequest.chromePolicies) &&
         Objects.equals(this.pageLoadingStrategy, webTransactionTestRequest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, webTransactionTestRequest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, webTransactionTestRequest.identifyAgentTrafficWithUserAgent) &&
@@ -2157,12 +2254,13 @@ public class WebTransactionTestRequest {
         Objects.equals(this.usePublicBgp, webTransactionTestRequest.usePublicBgp) &&
         Objects.equals(this.monitors, webTransactionTestRequest.monitors) &&
         Objects.equals(this.subinterval, webTransactionTestRequest.subinterval) &&
+        Objects.equals(this.tags, webTransactionTestRequest.tags) &&
         Objects.equals(this.agents, webTransactionTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, bgpMeasurements, usePublicBgp, monitors, subinterval, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, bgpMeasurements, usePublicBgp, monitors, subinterval, tags, agents);
   }
 
   @Override
@@ -2230,6 +2328,8 @@ public class WebTransactionTestRequest {
     sb.append("    allowMicAndCamera: ").append(toIndentedString(allowMicAndCamera)).append("\n");
     sb.append("    allowGeolocation: ").append(toIndentedString(allowGeolocation)).append("\n");
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
+    sb.append("    chromeOptions: ").append(toIndentedString(chromeOptions)).append("\n");
+    sb.append("    chromePolicies: ").append(toIndentedString(chromePolicies)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
@@ -2238,6 +2338,7 @@ public class WebTransactionTestRequest {
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

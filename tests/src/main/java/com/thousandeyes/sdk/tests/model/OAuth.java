@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.RequestMethod;
-import com.thousandeyes.sdk.tests.model.TestAuthType;
+import com.thousandeyes.sdk.tests.model.OAuthAuthType;
+import com.thousandeyes.sdk.tests.model.OAuthRequestMethod;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -29,7 +29,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Use this only if you want to use OAuth as the authentication mechanism.
  */
 @JsonPropertyOrder({
-  OAuth.JSON_PROPERTY_CONFIG_ID,
   OAuth.JSON_PROPERTY_TEST_URL,
   OAuth.JSON_PROPERTY_REQUEST_METHOD,
   OAuth.JSON_PROPERTY_POST_BODY,
@@ -40,14 +39,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class OAuth {
-  public static final String JSON_PROPERTY_CONFIG_ID = "configId";
-  private String configId;
-
   public static final String JSON_PROPERTY_TEST_URL = "testUrl";
   private String testUrl;
 
   public static final String JSON_PROPERTY_REQUEST_METHOD = "requestMethod";
-  private RequestMethod requestMethod;
+  private OAuthRequestMethod requestMethod;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -56,7 +52,7 @@ public class OAuth {
   private String headers;
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
-  private TestAuthType authType = TestAuthType.NONE;
+  private OAuthAuthType authType = OAuthAuthType.NONE;
 
   public static final String JSON_PROPERTY_USERNAME = "username";
   private String username;
@@ -66,31 +62,6 @@ public class OAuth {
 
   public OAuth() { 
   }
-
-  public OAuth configId(String configId) {
-    this.configId = configId;
-    return this;
-  }
-
-   /**
-   * The ID of the OAuth configuration.
-   * @return configId
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONFIG_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getConfigId() {
-    return configId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONFIG_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigId(String configId) {
-    this.configId = configId;
-  }
-
 
   public OAuth testUrl(String testUrl) {
     this.testUrl = testUrl;
@@ -117,7 +88,7 @@ public class OAuth {
   }
 
 
-  public OAuth requestMethod(RequestMethod requestMethod) {
+  public OAuth requestMethod(OAuthRequestMethod requestMethod) {
     this.requestMethod = requestMethod;
     return this;
   }
@@ -130,14 +101,14 @@ public class OAuth {
   @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public RequestMethod getRequestMethod() {
+  public OAuthRequestMethod getRequestMethod() {
     return requestMethod;
   }
 
 
   @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestMethod(RequestMethod requestMethod) {
+  public void setRequestMethod(OAuthRequestMethod requestMethod) {
     this.requestMethod = requestMethod;
   }
 
@@ -148,7 +119,7 @@ public class OAuth {
   }
 
    /**
-   * Enter the OAuth body for the HTTP POST request in this field when using OAuth as the authentication mechanism. No special escaping is required. If content is provided in the post body, the &#x60;requestMethod&#x60; is automatically set to POST.
+   * Enter the OAuth body for the HTTP POST request in this field when using OAuth as the authentication mechanism. No special escaping is required. The value is saved only when &#x60;requestMethod&#x60; is set to &#x60;post&#x60;.
    * @return postBody
   **/
   @jakarta.annotation.Nullable
@@ -192,7 +163,7 @@ public class OAuth {
   }
 
 
-  public OAuth authType(TestAuthType authType) {
+  public OAuth authType(OAuthAuthType authType) {
     this.authType = authType;
     return this;
   }
@@ -205,14 +176,14 @@ public class OAuth {
   @JsonProperty(JSON_PROPERTY_AUTH_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public TestAuthType getAuthType() {
+  public OAuthAuthType getAuthType() {
     return authType;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AUTH_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthType(TestAuthType authType) {
+  public void setAuthType(OAuthAuthType authType) {
     this.authType = authType;
   }
 
@@ -279,8 +250,7 @@ public class OAuth {
       return false;
     }
     OAuth oauth = (OAuth) o;
-    return Objects.equals(this.configId, oauth.configId) &&
-        Objects.equals(this.testUrl, oauth.testUrl) &&
+    return Objects.equals(this.testUrl, oauth.testUrl) &&
         Objects.equals(this.requestMethod, oauth.requestMethod) &&
         Objects.equals(this.postBody, oauth.postBody) &&
         Objects.equals(this.headers, oauth.headers) &&
@@ -291,14 +261,13 @@ public class OAuth {
 
   @Override
   public int hashCode() {
-    return Objects.hash(configId, testUrl, requestMethod, postBody, headers, authType, username, password);
+    return Objects.hash(testUrl, requestMethod, postBody, headers, authType, username, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OAuth {\n");
-    sb.append("    configId: ").append(toIndentedString(configId)).append("\n");
     sb.append("    testUrl: ").append(toIndentedString(testUrl)).append("\n");
     sb.append("    requestMethod: ").append(toIndentedString(requestMethod)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");

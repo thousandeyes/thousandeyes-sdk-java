@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AccountGroup;
 import com.thousandeyes.sdk.agents.model.AgentLabel;
+import com.thousandeyes.sdk.agents.model.AgentTag;
 import com.thousandeyes.sdk.agents.model.CloudAgentDetail;
 import com.thousandeyes.sdk.agents.model.ClusterMember;
 import com.thousandeyes.sdk.agents.model.Coordinates;

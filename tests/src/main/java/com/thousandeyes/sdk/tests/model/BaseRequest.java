@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   BaseRequest.JSON_PROPERTY_LABELS,
+  BaseRequest.JSON_PROPERTY_TAGS,
   BaseRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   BaseRequest.JSON_PROPERTY_ALERT_RULES
 })
@@ -38,6 +39,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class BaseRequest {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<String> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<String> sharedWithAccounts = new ArrayList<>();
@@ -78,6 +82,39 @@ public class BaseRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLabels(List<String> labels) {
     this.labels = labels;
+  }
+
+
+  public BaseRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public BaseRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
   }
 
 
@@ -160,13 +197,14 @@ public class BaseRequest {
     }
     BaseRequest baseRequest = (BaseRequest) o;
     return Objects.equals(this.labels, baseRequest.labels) &&
+        Objects.equals(this.tags, baseRequest.tags) &&
         Objects.equals(this.sharedWithAccounts, baseRequest.sharedWithAccounts) &&
         Objects.equals(this.alertRules, baseRequest.alertRules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(labels, sharedWithAccounts, alertRules);
+    return Objects.hash(labels, tags, sharedWithAccounts, alertRules);
   }
 
   @Override
@@ -174,6 +212,7 @@ public class BaseRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseRequest {\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("}");

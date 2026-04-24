@@ -73,7 +73,7 @@ public class TagAssignmentApiTest {
     /**
      * Assign tag to multiple objects
      * <p>
-     * Assigns a tag to one or more objects. This operation has cumulative behavior: The tag is assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+     * Assigns a static tag to one or more objects. This operation has cumulative behavior: The tag is statically assigned to the specified objects, and the previous assignments persist. No unassignment takes place. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -108,7 +108,19 @@ public class TagAssignmentApiTest {
                     "id" : "123",
                     "type" : "test"
                   } ],
-                  "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                  "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  }
                 }
                                   """;
         var statusCode = 207;
@@ -135,7 +147,7 @@ public class TagAssignmentApiTest {
     /**
      * Assign multiple tags to multiple objects
      * <p>
-     * Assigns the specified tags to the specified objects. This operation has cumulative behavior: The tags are assigned to the specified objects, and the previous assignments persist. No unassignment takes place.
+     * Assigns the specified static tags to the specified objects. This operation has cumulative behavior: The tags are statically assigned to the specified objects, and the previous assignments persist. No unassignment takes place. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -146,6 +158,18 @@ public class TagAssignmentApiTest {
 
         var requestBodyJson = """
                 {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "tags" : [ {
                     "assignments" : [ {
                       "id" : "123",
@@ -154,7 +178,19 @@ public class TagAssignmentApiTest {
                       "id" : "123",
                       "type" : "test"
                     } ],
-                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    }
                   }, {
                     "assignments" : [ {
                       "id" : "123",
@@ -163,7 +199,19 @@ public class TagAssignmentApiTest {
                       "id" : "123",
                       "type" : "test"
                     } ],
-                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    }
                   } ]
                 }
                                  """;
@@ -174,6 +222,18 @@ public class TagAssignmentApiTest {
 
         var responseBodyJson = """
                 {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "tags" : [ {
                     "assignments" : [ {
                       "id" : "123",
@@ -182,7 +242,19 @@ public class TagAssignmentApiTest {
                       "id" : "123",
                       "type" : "test"
                     } ],
-                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    }
                   }, {
                     "assignments" : [ {
                       "id" : "123",
@@ -191,7 +263,19 @@ public class TagAssignmentApiTest {
                       "id" : "123",
                       "type" : "test"
                     } ],
-                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    }
                   } ]
                 }
                                   """;
@@ -218,7 +302,7 @@ public class TagAssignmentApiTest {
     /**
      * Remove tag from multiple objects
      * <p>
-     * Removes a tag from one or more objects.
+     * Removes a static tag from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -262,7 +346,7 @@ public class TagAssignmentApiTest {
     /**
      * Remove multiple tags from multiple objects
      * <p>
-     * Removes the specified tags from one or more objects.
+     * Removes the specified static tags from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -273,6 +357,18 @@ public class TagAssignmentApiTest {
 
         var requestBodyJson = """
                 {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "tags" : [ {
                     "assignments" : [ {
                       "id" : "123",
@@ -281,7 +377,19 @@ public class TagAssignmentApiTest {
                       "id" : "123",
                       "type" : "test"
                     } ],
-                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    }
                   }, {
                     "assignments" : [ {
                       "id" : "123",
@@ -290,7 +398,19 @@ public class TagAssignmentApiTest {
                       "id" : "123",
                       "type" : "test"
                     } ],
-                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    }
                   } ]
                 }
                                  """;
@@ -301,6 +421,18 @@ public class TagAssignmentApiTest {
 
         var responseBodyJson = """
                 {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "tags" : [ {
                     "assignments" : [ {
                       "id" : "123",
@@ -309,7 +441,19 @@ public class TagAssignmentApiTest {
                       "id" : "123",
                       "type" : "test"
                     } ],
-                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    }
                   }, {
                     "assignments" : [ {
                       "id" : "123",
@@ -318,7 +462,19 @@ public class TagAssignmentApiTest {
                       "id" : "123",
                       "type" : "test"
                     } ],
-                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55"
+                    "tagId" : "c6b78e57-81a2-4c5f-a11a-d96c3c664d55",
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    }
                   } ]
                 }
                                   """;

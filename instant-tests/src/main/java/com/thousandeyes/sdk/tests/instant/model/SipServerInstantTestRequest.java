@@ -62,6 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerInstantTestRequest.JSON_PROPERTY_SIP_TIME_LIMIT,
   SipServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
   SipServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
+  SipServerInstantTestRequest.JSON_PROPERTY_TAGS,
   SipServerInstantTestRequest.JSON_PROPERTY_AGENTS,
   SipServerInstantTestRequest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS
 })
@@ -141,6 +142,9 @@ public class SipServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -742,6 +746,39 @@ public class SipServerInstantTestRequest {
   }
 
 
+  public SipServerInstantTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public SipServerInstantTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of test tag identifiers (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public SipServerInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -837,13 +874,14 @@ public class SipServerInstantTestRequest {
         Objects.equals(this.sipTimeLimit, sipServerInstantTestRequest.sipTimeLimit) &&
         Objects.equals(this.fixedPacketRate, sipServerInstantTestRequest.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, sipServerInstantTestRequest.ipv6Policy) &&
+        Objects.equals(this.tags, sipServerInstantTestRequest.tags) &&
         Objects.equals(this.agents, sipServerInstantTestRequest.agents) &&
         Objects.equals(this.targetSipCredentials, sipServerInstantTestRequest.targetSipCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, agents, targetSipCredentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, tags, agents, targetSipCredentials);
   }
 
   @Override
@@ -875,6 +913,7 @@ public class SipServerInstantTestRequest {
     sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    targetSipCredentials: ").append(toIndentedString(targetSipCredentials)).append("\n");
     sb.append("}");

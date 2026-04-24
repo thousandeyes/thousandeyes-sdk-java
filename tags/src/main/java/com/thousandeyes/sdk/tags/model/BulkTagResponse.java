@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.tags.model.SelfLinks;
 import com.thousandeyes.sdk.tags.model.Tag;
 import com.thousandeyes.sdk.tags.model.TagBulkCreateError;
 import java.util.ArrayList;
@@ -33,7 +34,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   BulkTagResponse.JSON_PROPERTY_TAGS,
-  BulkTagResponse.JSON_PROPERTY_ERRORS
+  BulkTagResponse.JSON_PROPERTY_ERRORS,
+  BulkTagResponse.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BulkTagResponse {
@@ -42,6 +44,9 @@ public class BulkTagResponse {
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
   private List<TagBulkCreateError> errors = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_LINKS = "_links";
+  private SelfLinks links;
 
   public BulkTagResponse() { 
   }
@@ -102,6 +107,31 @@ public class BulkTagResponse {
 
 
 
+  public BulkTagResponse links(SelfLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SelfLinks getLinks() {
+    return links;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLinks(SelfLinks links) {
+    this.links = links;
+  }
+
+
   /**
    * Return true if this BulkTagResponse object is equal to o.
    */
@@ -115,12 +145,13 @@ public class BulkTagResponse {
     }
     BulkTagResponse bulkTagResponse = (BulkTagResponse) o;
     return Objects.equals(this.tags, bulkTagResponse.tags) &&
-        Objects.equals(this.errors, bulkTagResponse.errors);
+        Objects.equals(this.errors, bulkTagResponse.errors) &&
+        Objects.equals(this.links, bulkTagResponse.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, errors);
+    return Objects.hash(tags, errors, links);
   }
 
   @Override
@@ -129,6 +160,7 @@ public class BulkTagResponse {
     sb.append("class BulkTagResponse {\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }

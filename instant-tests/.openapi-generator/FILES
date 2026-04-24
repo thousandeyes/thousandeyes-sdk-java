@@ -40,6 +40,7 @@ src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerInstantTest.
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerInstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerInstantTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerProperties.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToServerWritablePropertyFields.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiClientAuthentication.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/ApiInstantTestRequest.java
@@ -86,11 +87,12 @@ src/main/java/com/thousandeyes/sdk/tests/instant/model/InstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/InstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/Link.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/OAuth.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/OAuthAuthType.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/OAuthRequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/PageLoadInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/PageLoadInstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/PageLoadInstantTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/PageLoadProperties.java
-src/main/java/com/thousandeyes/sdk/tests/instant/model/RequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SharedWithAccount.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SimpleAgent.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SipServerInstantTest.java
