@@ -2,7 +2,9 @@
 
 Tests API
 
-- API version: 7.0.79
+- API version: 7.0.84
+
+**Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.
 
 This API allows you to list, create, edit, and delete Network and Application Synthetics tests.
 

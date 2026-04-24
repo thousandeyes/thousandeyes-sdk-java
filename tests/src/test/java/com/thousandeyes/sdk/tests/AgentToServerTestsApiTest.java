@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -19,6 +19,7 @@ import com.thousandeyes.sdk.tests.model.Error;
 import com.thousandeyes.sdk.tests.model.ExpandTestOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.tests.model.UnauthorizedError;
+import com.thousandeyes.sdk.tests.model.UpdateAgentToServerTestRequest;
 import com.thousandeyes.sdk.tests.model.ValidationError;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.common.ContentTypes.AUTHORIZATION;
@@ -127,6 +128,7 @@ public class AgentToServerTestsApiTest {
                   "savedEvent" : true,
                   "networkMeasurements" : false,
                   "labels" : [ "9842", "1283" ],
+                  "tags" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "ec8e64fb-6f11-485c-a5d5-488098ad626a" ],
                   "agents" : [ {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"
@@ -667,7 +669,7 @@ public class AgentToServerTestsApiTest {
     /**
      * Update Agent to Server test
      * <p>
-     * Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions.
+     * Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -682,28 +684,10 @@ public class AgentToServerTestsApiTest {
                   "server" : "www.thousandeyes.com:80",
                   "mtuMeasurements" : false,
                   "ipv6Policy" : "use-agent-policy",
-                  "_links" : {
-                    "testResults" : [ {
-                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
-                    }, {
-                      "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
-                    } ],
-                    "self" : {
-                      "hreflang" : "hreflang",
-                      "templated" : true,
-                      "profile" : "profile",
-                      "name" : "name",
-                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
-                      "type" : "type",
-                      "deprecation" : "deprecation",
-                      "title" : "title"
-                    }
-                  },
                   "alertRules" : [ "344753", "212697" ],
                   "bandwidthMeasurements" : true,
                   "description" : "ThousandEyes Test",
                   "probeMode" : "auto",
-                  "type" : "agent-to-server",
                   "usePublicBgp" : true,
                   "enabled" : true,
                   "dscpId" : "0",
@@ -711,15 +695,13 @@ public class AgentToServerTestsApiTest {
                   "protocol" : "tcp",
                   "dscp" : "Best Effort (DSCP 0)",
                   "pathTraceMode" : "classic",
-                  "modifiedBy" : "user@user.com",
                   "alertsEnabled" : true,
-                  "testName" : "ThousandEyes Test",
+                  "testName" : "Test name",
                   "numPathTraces" : 3,
                   "bgpMeasurements" : true,
-                  "liveShare" : false,
-                  "savedEvent" : true,
                   "networkMeasurements" : false,
                   "labels" : [ "9842", "1283" ],
+                  "tags" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "ec8e64fb-6f11-485c-a5d5-488098ad626a" ],
                   "agents" : [ {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"
@@ -727,13 +709,9 @@ public class AgentToServerTestsApiTest {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"
                   } ],
-                  "createdDate" : "2022-07-17T22:00:54Z",
-                  "createdBy" : "user@user.com",
                   "randomizedStartTime" : false,
                   "port" : 443,
-                  "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
-                  "testId" : "281474976710706",
                   "sharedWithAccounts" : [ "1234", "12345" ],
                   "pingPayloadSize" : 112,
                   "continuousMode" : false,
@@ -741,8 +719,8 @@ public class AgentToServerTestsApiTest {
                 }
                                  """;
         var requestBodyContentType = "application/json";
-        AgentToServerTestRequest mappedRequest = 
-                mapper.readValue(requestBodyJson, AgentToServerTestRequest.class);
+        UpdateAgentToServerTestRequest mappedRequest = 
+                mapper.readValue(requestBodyJson, UpdateAgentToServerTestRequest.class);
         assertNotNull(mappedRequest);
 
         var responseBodyJson = """
