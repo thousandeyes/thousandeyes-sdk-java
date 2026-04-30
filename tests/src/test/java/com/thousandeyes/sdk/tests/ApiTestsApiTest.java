@@ -235,22 +235,7 @@ public class ApiTestsApiTest {
                   "sharedWithAccounts" : [ "1234", "12345" ],
                   "overrideProxyId" : "281474976710706",
                   "sslVersionId" : "0",
-                  "targetTime" : 1,
-                  "monitors" : [ {
-                    "monitorType" : "public",
-                    "monitorId" : "1234",
-                    "monitorName" : "Seattle, WA",
-                    "ipAddress" : "4.69.184.193",
-                    "countryId" : "GB",
-                    "network" : "Level 3 Communications, Inc. (AS 3356)"
-                  }, {
-                    "monitorType" : "public",
-                    "monitorId" : "1234",
-                    "monitorName" : "Seattle, WA",
-                    "ipAddress" : "4.69.184.193",
-                    "countryId" : "GB",
-                    "network" : "Level 3 Communications, Inc. (AS 3356)"
-                  } ]
+                  "targetTime" : 1
                 }
                                  """;
         var requestBodyContentType = "application/json";
@@ -1300,22 +1285,7 @@ public class ApiTestsApiTest {
                   "sharedWithAccounts" : [ "1234", "12345" ],
                   "overrideProxyId" : "281474976710706",
                   "sslVersionId" : "0",
-                  "targetTime" : 1,
-                  "monitors" : [ {
-                    "monitorType" : "public",
-                    "monitorId" : "1234",
-                    "monitorName" : "Seattle, WA",
-                    "ipAddress" : "4.69.184.193",
-                    "countryId" : "GB",
-                    "network" : "Level 3 Communications, Inc. (AS 3356)"
-                  }, {
-                    "monitorType" : "public",
-                    "monitorId" : "1234",
-                    "monitorName" : "Seattle, WA",
-                    "ipAddress" : "4.69.184.193",
-                    "countryId" : "GB",
-                    "network" : "Level 3 Communications, Inc. (AS 3356)"
-                  } ]
+                  "targetTime" : 1
                 }
                                  """;
         var requestBodyContentType = "application/json";

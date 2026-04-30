@@ -180,7 +180,7 @@ public class WebHttpServerTestResultsApiTest {
                     "responseCode" : 200,
                     "connectTime" : 2,
                     "startTime" : 1384309800,
-                    "throughput" : 123.0,
+                    "throughput" : 123,
                     "roundId" : 1384309800,
                     "headers" : {
                       "requestHeaders" : "GET / HTTP/1.1\\r\\nHost: www.thousandeyes.com\\r\\nUser-Agent: curl/7.58.0-DEV\\r\\nAccept: */*\\r\\nAccept-Encoding: deflate, gzip\\r\\nX-ThousandEyes-Agent: yes\\r\\n",
@@ -244,7 +244,7 @@ public class WebHttpServerTestResultsApiTest {
                     "responseCode" : 200,
                     "connectTime" : 2,
                     "startTime" : 1384309800,
-                    "throughput" : 123.0,
+                    "throughput" : 123,
                     "roundId" : 1384309800,
                     "headers" : {
                       "requestHeaders" : "GET / HTTP/1.1\\r\\nHost: www.thousandeyes.com\\r\\nUser-Agent: curl/7.58.0-DEV\\r\\nAccept: */*\\r\\nAccept-Encoding: deflate, gzip\\r\\nX-ThousandEyes-Agent: yes\\r\\n",

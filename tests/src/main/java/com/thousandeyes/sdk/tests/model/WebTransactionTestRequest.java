@@ -47,7 +47,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionTestRequest.JSON_PROPERTY_INTERVAL,
   WebTransactionTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   WebTransactionTestRequest.JSON_PROPERTY_ENABLED,
-  WebTransactionTestRequest.JSON_PROPERTY_ALERT_RULES,
   WebTransactionTestRequest.JSON_PROPERTY_CREATED_BY,
   WebTransactionTestRequest.JSON_PROPERTY_CREATED_DATE,
   WebTransactionTestRequest.JSON_PROPERTY_DESCRIPTION,
@@ -59,8 +58,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionTestRequest.JSON_PROPERTY_TEST_NAME,
   WebTransactionTestRequest.JSON_PROPERTY_TYPE,
   WebTransactionTestRequest.JSON_PROPERTY_LINKS,
-  WebTransactionTestRequest.JSON_PROPERTY_LABELS,
-  WebTransactionTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   WebTransactionTestRequest.JSON_PROPERTY_AUTH_TYPE,
   WebTransactionTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   WebTransactionTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
@@ -110,13 +107,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   WebTransactionTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   WebTransactionTestRequest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
-  WebTransactionTestRequest.JSON_PROPERTY_CREDENTIALS,
+  WebTransactionTestRequest.JSON_PROPERTY_SUBINTERVAL,
   WebTransactionTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   WebTransactionTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  WebTransactionTestRequest.JSON_PROPERTY_MONITORS,
-  WebTransactionTestRequest.JSON_PROPERTY_SUBINTERVAL,
+  WebTransactionTestRequest.JSON_PROPERTY_LABELS,
   WebTransactionTestRequest.JSON_PROPERTY_TAGS,
-  WebTransactionTestRequest.JSON_PROPERTY_AGENTS
+  WebTransactionTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  WebTransactionTestRequest.JSON_PROPERTY_ALERT_RULES,
+  WebTransactionTestRequest.JSON_PROPERTY_AGENTS,
+  WebTransactionTestRequest.JSON_PROPERTY_MONITORS,
+  WebTransactionTestRequest.JSON_PROPERTY_CREDENTIALS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class WebTransactionTestRequest {
@@ -128,9 +128,6 @@ public class WebTransactionTestRequest {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -164,12 +161,6 @@ public class WebTransactionTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -318,8 +309,8 @@ public class WebTransactionTestRequest {
   public static final String JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT = "identifyAgentTrafficWithUserAgent";
   private Boolean identifyAgentTrafficWithUserAgent = false;
 
-  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<String> credentials = new ArrayList<>();
+  public static final String JSON_PROPERTY_SUBINTERVAL = "subinterval";
+  private TestSubInterval subinterval;
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -327,17 +318,26 @@ public class WebTransactionTestRequest {
   public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
   private Boolean usePublicBgp = true;
 
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SUBINTERVAL = "subinterval";
-  private TestSubInterval subinterval;
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
+  private List<String> alertRules = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<String> monitors = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
+  private List<String> credentials = new ArrayList<>();
 
   public WebTransactionTestRequest() { 
   }
@@ -438,39 +438,6 @@ public class WebTransactionTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public WebTransactionTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public WebTransactionTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
   }
 
 
@@ -666,72 +633,6 @@ public class WebTransactionTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public WebTransactionTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public WebTransactionTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public WebTransactionTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public WebTransactionTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1964,36 +1865,28 @@ public class WebTransactionTestRequest {
   }
 
 
-  public WebTransactionTestRequest credentials(List<String> credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-  public WebTransactionTestRequest addCredentialsItem(String credentialsItem) {
-    if (this.credentials == null) {
-      this.credentials = new ArrayList<>();
-    }
-    this.credentials.add(credentialsItem);
+  public WebTransactionTestRequest subinterval(TestSubInterval subinterval) {
+    this.subinterval = subinterval;
     return this;
   }
 
    /**
-   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
-   * @return credentials
+   * Get subinterval
+   * @return subinterval
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(JSON_PROPERTY_SUBINTERVAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getCredentials() {
-    return credentials;
+  public TestSubInterval getSubinterval() {
+    return subinterval;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(JSON_PROPERTY_SUBINTERVAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentials(List<String> credentials) {
-    this.credentials = credentials;
+  public void setSubinterval(TestSubInterval subinterval) {
+    this.subinterval = subinterval;
   }
 
 
@@ -2047,61 +1940,36 @@ public class WebTransactionTestRequest {
   }
 
 
-  public WebTransactionTestRequest monitors(List<String> monitors) {
-    this.monitors = monitors;
+  public WebTransactionTestRequest labels(List<String> labels) {
+    this.labels = labels;
     return this;
   }
 
-  public WebTransactionTestRequest addMonitorsItem(String monitorsItem) {
-    if (this.monitors == null) {
-      this.monitors = new ArrayList<>();
+  public WebTransactionTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
     }
-    this.monitors.add(monitorsItem);
+    this.labels.add(labelsItem);
     return this;
   }
 
    /**
-   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
-   * @return monitors
+   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
+   * @return labels
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getMonitors() {
-    return monitors;
+  public List<String> getLabels() {
+    return labels;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonitors(List<String> monitors) {
-    this.monitors = monitors;
-  }
-
-
-  public WebTransactionTestRequest subinterval(TestSubInterval subinterval) {
-    this.subinterval = subinterval;
-    return this;
-  }
-
-   /**
-   * Get subinterval
-   * @return subinterval
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SUBINTERVAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public TestSubInterval getSubinterval() {
-    return subinterval;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SUBINTERVAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubinterval(TestSubInterval subinterval) {
-    this.subinterval = subinterval;
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
 
@@ -2138,6 +2006,72 @@ public class WebTransactionTestRequest {
   }
 
 
+  public WebTransactionTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public WebTransactionTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
+  public WebTransactionTestRequest alertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+    return this;
+  }
+
+  public WebTransactionTestRequest addAlertRulesItem(String alertRulesItem) {
+    if (this.alertRules == null) {
+      this.alertRules = new ArrayList<>();
+    }
+    this.alertRules.add(alertRulesItem);
+    return this;
+  }
+
+   /**
+   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
+   * @return alertRules
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAlertRules() {
+    return alertRules;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+  }
+
+
   public WebTransactionTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -2171,6 +2105,72 @@ public class WebTransactionTestRequest {
   }
 
 
+  public WebTransactionTestRequest monitors(List<String> monitors) {
+    this.monitors = monitors;
+    return this;
+  }
+
+  public WebTransactionTestRequest addMonitorsItem(String monitorsItem) {
+    if (this.monitors == null) {
+      this.monitors = new ArrayList<>();
+    }
+    this.monitors.add(monitorsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getMonitors() {
+    return monitors;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMonitors(List<String> monitors) {
+    this.monitors = monitors;
+  }
+
+
+  public WebTransactionTestRequest credentials(List<String> credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+  public WebTransactionTestRequest addCredentialsItem(String credentialsItem) {
+    if (this.credentials == null) {
+      this.credentials = new ArrayList<>();
+    }
+    this.credentials.add(credentialsItem);
+    return this;
+  }
+
+   /**
+   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
+   * @return credentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getCredentials() {
+    return credentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCredentials(List<String> credentials) {
+    this.credentials = credentials;
+  }
+
+
   /**
    * Return true if this WebTransactionTestRequest object is equal to o.
    */
@@ -2186,7 +2186,6 @@ public class WebTransactionTestRequest {
     return Objects.equals(this.interval, webTransactionTestRequest.interval) &&
         Objects.equals(this.alertsEnabled, webTransactionTestRequest.alertsEnabled) &&
         Objects.equals(this.enabled, webTransactionTestRequest.enabled) &&
-        Objects.equals(this.alertRules, webTransactionTestRequest.alertRules) &&
         Objects.equals(this.createdBy, webTransactionTestRequest.createdBy) &&
         Objects.equals(this.createdDate, webTransactionTestRequest.createdDate) &&
         Objects.equals(this.description, webTransactionTestRequest.description) &&
@@ -2198,8 +2197,6 @@ public class WebTransactionTestRequest {
         Objects.equals(this.testName, webTransactionTestRequest.testName) &&
         Objects.equals(this.type, webTransactionTestRequest.type) &&
         Objects.equals(this.links, webTransactionTestRequest.links) &&
-        Objects.equals(this.labels, webTransactionTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, webTransactionTestRequest.sharedWithAccounts) &&
         Objects.equals(this.authType, webTransactionTestRequest.authType) &&
         Objects.equals(this.agentInterfaces, webTransactionTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, webTransactionTestRequest.bandwidthMeasurements) &&
@@ -2249,18 +2246,21 @@ public class WebTransactionTestRequest {
         Objects.equals(this.pageLoadingStrategy, webTransactionTestRequest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, webTransactionTestRequest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, webTransactionTestRequest.identifyAgentTrafficWithUserAgent) &&
-        Objects.equals(this.credentials, webTransactionTestRequest.credentials) &&
+        Objects.equals(this.subinterval, webTransactionTestRequest.subinterval) &&
         Objects.equals(this.bgpMeasurements, webTransactionTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, webTransactionTestRequest.usePublicBgp) &&
-        Objects.equals(this.monitors, webTransactionTestRequest.monitors) &&
-        Objects.equals(this.subinterval, webTransactionTestRequest.subinterval) &&
+        Objects.equals(this.labels, webTransactionTestRequest.labels) &&
         Objects.equals(this.tags, webTransactionTestRequest.tags) &&
-        Objects.equals(this.agents, webTransactionTestRequest.agents);
+        Objects.equals(this.sharedWithAccounts, webTransactionTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.alertRules, webTransactionTestRequest.alertRules) &&
+        Objects.equals(this.agents, webTransactionTestRequest.agents) &&
+        Objects.equals(this.monitors, webTransactionTestRequest.monitors) &&
+        Objects.equals(this.credentials, webTransactionTestRequest.credentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, bgpMeasurements, usePublicBgp, monitors, subinterval, tags, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, subinterval, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors, credentials);
   }
 
   @Override
@@ -2270,7 +2270,6 @@ public class WebTransactionTestRequest {
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -2282,8 +2281,6 @@ public class WebTransactionTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
@@ -2333,13 +2330,16 @@ public class WebTransactionTestRequest {
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
-    sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }

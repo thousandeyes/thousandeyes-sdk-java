@@ -134,8 +134,8 @@ public class AgentToServerInstantTestsApiTest {
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "testId" : "281474976710706",
-                  "sharedWithAccounts" : [ "1234", "12345" ],
                   "pingPayloadSize" : 112,
+                  "sharedWithAccounts" : [ "1234", "12345" ],
                   "continuousMode" : false
                 }
                                  """;

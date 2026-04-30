@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.model.ApiPredefinedVariable;
 import com.thousandeyes.sdk.tests.model.ApiRequest;
-import com.thousandeyes.sdk.tests.model.Monitor;
 import com.thousandeyes.sdk.tests.model.TestAgentRequest;
 import com.thousandeyes.sdk.tests.model.TestInterval;
 import com.thousandeyes.sdk.tests.model.TestLinks;
@@ -44,7 +43,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestRequest.JSON_PROPERTY_INTERVAL,
   ApiTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   ApiTestRequest.JSON_PROPERTY_ENABLED,
-  ApiTestRequest.JSON_PROPERTY_ALERT_RULES,
   ApiTestRequest.JSON_PROPERTY_CREATED_BY,
   ApiTestRequest.JSON_PROPERTY_CREATED_DATE,
   ApiTestRequest.JSON_PROPERTY_DESCRIPTION,
@@ -56,8 +54,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestRequest.JSON_PROPERTY_TEST_NAME,
   ApiTestRequest.JSON_PROPERTY_TYPE,
   ApiTestRequest.JSON_PROPERTY_LINKS,
-  ApiTestRequest.JSON_PROPERTY_LABELS,
-  ApiTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   ApiTestRequest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   ApiTestRequest.JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST,
   ApiTestRequest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
@@ -78,12 +74,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestRequest.JSON_PROPERTY_TARGET_TIME,
   ApiTestRequest.JSON_PROPERTY_TIME_LIMIT,
   ApiTestRequest.JSON_PROPERTY_URL,
-  ApiTestRequest.JSON_PROPERTY_CREDENTIALS,
   ApiTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   ApiTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  ApiTestRequest.JSON_PROPERTY_MONITORS,
+  ApiTestRequest.JSON_PROPERTY_LABELS,
   ApiTestRequest.JSON_PROPERTY_TAGS,
-  ApiTestRequest.JSON_PROPERTY_AGENTS
+  ApiTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  ApiTestRequest.JSON_PROPERTY_ALERT_RULES,
+  ApiTestRequest.JSON_PROPERTY_AGENTS,
+  ApiTestRequest.JSON_PROPERTY_CREDENTIALS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiTestRequest {
@@ -95,9 +93,6 @@ public class ApiTestRequest {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -131,12 +126,6 @@ public class ApiTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLIENT_CERTIFICATE = "clientCertificate";
   private String clientCertificate;
@@ -198,23 +187,29 @@ public class ApiTestRequest {
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
-  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<String> credentials = new ArrayList<>();
-
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
 
   public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
   private Boolean usePublicBgp = true;
 
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors = new ArrayList<>();
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
+  private List<String> alertRules = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
+  private List<String> credentials = new ArrayList<>();
 
   public ApiTestRequest() { 
   }
@@ -228,8 +223,7 @@ public class ApiTestRequest {
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
     @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
+    @JsonProperty(JSON_PROPERTY_TYPE) String type
   ) {
   this();
     this.createdBy = createdBy;
@@ -240,7 +234,6 @@ public class ApiTestRequest {
     this.savedEvent = savedEvent;
     this.testId = testId;
     this.type = type;
-    this.monitors = monitors;
   }
 
   public ApiTestRequest interval(TestInterval interval) {
@@ -315,39 +308,6 @@ public class ApiTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public ApiTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public ApiTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
   }
 
 
@@ -543,72 +503,6 @@ public class ApiTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public ApiTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public ApiTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public ApiTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public ApiTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1134,39 +1028,6 @@ public class ApiTestRequest {
   }
 
 
-  public ApiTestRequest credentials(List<String> credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-  public ApiTestRequest addCredentialsItem(String credentialsItem) {
-    if (this.credentials == null) {
-      this.credentials = new ArrayList<>();
-    }
-    this.credentials.add(credentialsItem);
-    return this;
-  }
-
-   /**
-   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
-   * @return credentials
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getCredentials() {
-    return credentials;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentials(List<String> credentials) {
-    this.credentials = credentials;
-  }
-
-
   public ApiTestRequest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1217,19 +1078,37 @@ public class ApiTestRequest {
   }
 
 
+  public ApiTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public ApiTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
    /**
-   * Contains list of enabled BGP monitors.
-   * @return monitors
+   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
+   * @return labels
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Monitor> getMonitors() {
-    return monitors;
+  public List<String> getLabels() {
+    return labels;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
 
 
   public ApiTestRequest tags(List<String> tags) {
@@ -1262,6 +1141,72 @@ public class ApiTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public ApiTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public ApiTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
+  public ApiTestRequest alertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+    return this;
+  }
+
+  public ApiTestRequest addAlertRulesItem(String alertRulesItem) {
+    if (this.alertRules == null) {
+      this.alertRules = new ArrayList<>();
+    }
+    this.alertRules.add(alertRulesItem);
+    return this;
+  }
+
+   /**
+   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
+   * @return alertRules
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAlertRules() {
+    return alertRules;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
   }
 
 
@@ -1298,6 +1243,39 @@ public class ApiTestRequest {
   }
 
 
+  public ApiTestRequest credentials(List<String> credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+  public ApiTestRequest addCredentialsItem(String credentialsItem) {
+    if (this.credentials == null) {
+      this.credentials = new ArrayList<>();
+    }
+    this.credentials.add(credentialsItem);
+    return this;
+  }
+
+   /**
+   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
+   * @return credentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getCredentials() {
+    return credentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCredentials(List<String> credentials) {
+    this.credentials = credentials;
+  }
+
+
   /**
    * Return true if this ApiTestRequest object is equal to o.
    */
@@ -1313,7 +1291,6 @@ public class ApiTestRequest {
     return Objects.equals(this.interval, apiTestRequest.interval) &&
         Objects.equals(this.alertsEnabled, apiTestRequest.alertsEnabled) &&
         Objects.equals(this.enabled, apiTestRequest.enabled) &&
-        Objects.equals(this.alertRules, apiTestRequest.alertRules) &&
         Objects.equals(this.createdBy, apiTestRequest.createdBy) &&
         Objects.equals(this.createdDate, apiTestRequest.createdDate) &&
         Objects.equals(this.description, apiTestRequest.description) &&
@@ -1325,8 +1302,6 @@ public class ApiTestRequest {
         Objects.equals(this.testName, apiTestRequest.testName) &&
         Objects.equals(this.type, apiTestRequest.type) &&
         Objects.equals(this.links, apiTestRequest.links) &&
-        Objects.equals(this.labels, apiTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, apiTestRequest.sharedWithAccounts) &&
         Objects.equals(this.clientCertificate, apiTestRequest.clientCertificate) &&
         Objects.equals(this.clientCertDomainsAllowList, apiTestRequest.clientCertDomainsAllowList) &&
         Objects.equals(this.collectProxyNetworkData, apiTestRequest.collectProxyNetworkData) &&
@@ -1347,17 +1322,19 @@ public class ApiTestRequest {
         Objects.equals(this.targetTime, apiTestRequest.targetTime) &&
         Objects.equals(this.timeLimit, apiTestRequest.timeLimit) &&
         Objects.equals(this.url, apiTestRequest.url) &&
-        Objects.equals(this.credentials, apiTestRequest.credentials) &&
         Objects.equals(this.bgpMeasurements, apiTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, apiTestRequest.usePublicBgp) &&
-        Objects.equals(this.monitors, apiTestRequest.monitors) &&
+        Objects.equals(this.labels, apiTestRequest.labels) &&
         Objects.equals(this.tags, apiTestRequest.tags) &&
-        Objects.equals(this.agents, apiTestRequest.agents);
+        Objects.equals(this.sharedWithAccounts, apiTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.alertRules, apiTestRequest.alertRules) &&
+        Objects.equals(this.agents, apiTestRequest.agents) &&
+        Objects.equals(this.credentials, apiTestRequest.credentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, bgpMeasurements, usePublicBgp, monitors, tags, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, credentials);
   }
 
   @Override
@@ -1367,7 +1344,6 @@ public class ApiTestRequest {
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -1379,8 +1355,6 @@ public class ApiTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    clientCertDomainsAllowList: ").append(toIndentedString(clientCertDomainsAllowList)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
@@ -1401,12 +1375,14 @@ public class ApiTestRequest {
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }

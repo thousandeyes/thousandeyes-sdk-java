@@ -69,6 +69,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/ApiTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/ApiTests.java
+src/main/java/com/thousandeyes/sdk/tests/model/BaseBgpRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/BaseBgpTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/BaseRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/BaseTest.java
@@ -87,11 +88,11 @@ src/main/java/com/thousandeyes/sdk/tests/model/DnsSecTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsSecTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsServerInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsServerProperties.java
+src/main/java/com/thousandeyes/sdk/tests/model/DnsServerRequestProperties.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsServerTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsServerTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsServerTests.java
-src/main/java/com/thousandeyes/sdk/tests/model/DnsServersRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsTraceInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsTraceProperties.java
 src/main/java/com/thousandeyes/sdk/tests/model/DnsTraceTest.java
@@ -176,6 +177,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedAgentToServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedApiTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedBgpTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedDnsSecTest.java
+src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedDnsServerRequestTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedDnsServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedDnsTraceTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedFtpServerTest.java
@@ -188,7 +190,6 @@ src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedVoiceTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedWebTransactionTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UpdateAgentToServerTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UpdateBgpTestRequest.java
-src/main/java/com/thousandeyes/sdk/tests/model/UpdateSipServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/tests/model/ValidationErrorItem.java
 src/main/java/com/thousandeyes/sdk/tests/model/VoiceInstantTest.java

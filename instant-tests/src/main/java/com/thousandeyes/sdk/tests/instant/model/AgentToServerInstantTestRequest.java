@@ -49,8 +49,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerInstantTestRequest.JSON_PROPERTY_TEST_NAME,
   AgentToServerInstantTestRequest.JSON_PROPERTY_TYPE,
   AgentToServerInstantTestRequest.JSON_PROPERTY_LINKS,
-  AgentToServerInstantTestRequest.JSON_PROPERTY_LABELS,
-  AgentToServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   AgentToServerInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   AgentToServerInstantTestRequest.JSON_PROPERTY_CONTINUOUS_MODE,
   AgentToServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
@@ -66,7 +64,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
   AgentToServerInstantTestRequest.JSON_PROPERTY_PING_PAYLOAD_SIZE,
   AgentToServerInstantTestRequest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
+  AgentToServerInstantTestRequest.JSON_PROPERTY_LABELS,
   AgentToServerInstantTestRequest.JSON_PROPERTY_TAGS,
+  AgentToServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   AgentToServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -103,12 +103,6 @@ public class AgentToServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -155,8 +149,14 @@ public class AgentToServerInstantTestRequest {
   public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
   private Boolean networkMeasurements = false;
 
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -380,72 +380,6 @@ public class AgentToServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public AgentToServerInstantTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public AgentToServerInstantTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public AgentToServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public AgentToServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -820,6 +754,39 @@ public class AgentToServerInstantTestRequest {
   }
 
 
+  public AgentToServerInstantTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public AgentToServerInstantTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public AgentToServerInstantTestRequest tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -850,6 +817,39 @@ public class AgentToServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public AgentToServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public AgentToServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -909,8 +909,6 @@ public class AgentToServerInstantTestRequest {
         Objects.equals(this.testName, agentToServerInstantTestRequest.testName) &&
         Objects.equals(this.type, agentToServerInstantTestRequest.type) &&
         Objects.equals(this.links, agentToServerInstantTestRequest.links) &&
-        Objects.equals(this.labels, agentToServerInstantTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, agentToServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, agentToServerInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.continuousMode, agentToServerInstantTestRequest.continuousMode) &&
         Objects.equals(this.fixedPacketRate, agentToServerInstantTestRequest.fixedPacketRate) &&
@@ -926,13 +924,15 @@ public class AgentToServerInstantTestRequest {
         Objects.equals(this.ipv6Policy, agentToServerInstantTestRequest.ipv6Policy) &&
         Objects.equals(this.pingPayloadSize, agentToServerInstantTestRequest.pingPayloadSize) &&
         Objects.equals(this.networkMeasurements, agentToServerInstantTestRequest.networkMeasurements) &&
+        Objects.equals(this.labels, agentToServerInstantTestRequest.labels) &&
         Objects.equals(this.tags, agentToServerInstantTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, agentToServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.agents, agentToServerInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, tags, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, labels, tags, sharedWithAccounts, agents);
   }
 
   @Override
@@ -950,8 +950,6 @@ public class AgentToServerInstantTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    continuousMode: ").append(toIndentedString(continuousMode)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
@@ -967,7 +965,9 @@ public class AgentToServerInstantTestRequest {
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    pingPayloadSize: ").append(toIndentedString(pingPayloadSize)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -48,8 +48,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerInstantTestRequest.JSON_PROPERTY_TEST_NAME,
   SipServerInstantTestRequest.JSON_PROPERTY_TYPE,
   SipServerInstantTestRequest.JSON_PROPERTY_LINKS,
-  SipServerInstantTestRequest.JSON_PROPERTY_LABELS,
-  SipServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   SipServerInstantTestRequest.JSON_PROPERTY_MTU_MEASUREMENTS,
   SipServerInstantTestRequest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   SipServerInstantTestRequest.JSON_PROPERTY_NUM_PATH_TRACES,
@@ -62,7 +60,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerInstantTestRequest.JSON_PROPERTY_SIP_TIME_LIMIT,
   SipServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
   SipServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
+  SipServerInstantTestRequest.JSON_PROPERTY_LABELS,
   SipServerInstantTestRequest.JSON_PROPERTY_TAGS,
+  SipServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   SipServerInstantTestRequest.JSON_PROPERTY_AGENTS,
   SipServerInstantTestRequest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS
 })
@@ -101,12 +101,6 @@ public class SipServerInstantTestRequest {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
-
   public static final String JSON_PROPERTY_MTU_MEASUREMENTS = "mtuMeasurements";
   private Boolean mtuMeasurements;
 
@@ -143,8 +137,14 @@ public class SipServerInstantTestRequest {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -369,72 +369,6 @@ public class SipServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public SipServerInstantTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public SipServerInstantTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public SipServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public SipServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -746,6 +680,39 @@ public class SipServerInstantTestRequest {
   }
 
 
+  public SipServerInstantTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public SipServerInstantTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public SipServerInstantTestRequest tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -776,6 +743,39 @@ public class SipServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public SipServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public SipServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -860,8 +860,6 @@ public class SipServerInstantTestRequest {
         Objects.equals(this.testName, sipServerInstantTestRequest.testName) &&
         Objects.equals(this.type, sipServerInstantTestRequest.type) &&
         Objects.equals(this.links, sipServerInstantTestRequest.links) &&
-        Objects.equals(this.labels, sipServerInstantTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, sipServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.mtuMeasurements, sipServerInstantTestRequest.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, sipServerInstantTestRequest.networkMeasurements) &&
         Objects.equals(this.numPathTraces, sipServerInstantTestRequest.numPathTraces) &&
@@ -874,14 +872,16 @@ public class SipServerInstantTestRequest {
         Objects.equals(this.sipTimeLimit, sipServerInstantTestRequest.sipTimeLimit) &&
         Objects.equals(this.fixedPacketRate, sipServerInstantTestRequest.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, sipServerInstantTestRequest.ipv6Policy) &&
+        Objects.equals(this.labels, sipServerInstantTestRequest.labels) &&
         Objects.equals(this.tags, sipServerInstantTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, sipServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.agents, sipServerInstantTestRequest.agents) &&
         Objects.equals(this.targetSipCredentials, sipServerInstantTestRequest.targetSipCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, tags, agents, targetSipCredentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, labels, tags, sharedWithAccounts, agents, targetSipCredentials);
   }
 
   @Override
@@ -899,8 +899,6 @@ public class SipServerInstantTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
@@ -913,7 +911,9 @@ public class SipServerInstantTestRequest {
     sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    targetSipCredentials: ").append(toIndentedString(targetSipCredentials)).append("\n");
     sb.append("}");

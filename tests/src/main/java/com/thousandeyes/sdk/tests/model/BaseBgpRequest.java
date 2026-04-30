@@ -22,40 +22,31 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.model.TestLinks;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * BgpTestRequest
+ * BaseBgpRequest
  */
 @JsonPropertyOrder({
-  BgpTestRequest.JSON_PROPERTY_CREATED_BY,
-  BgpTestRequest.JSON_PROPERTY_CREATED_DATE,
-  BgpTestRequest.JSON_PROPERTY_DESCRIPTION,
-  BgpTestRequest.JSON_PROPERTY_LIVE_SHARE,
-  BgpTestRequest.JSON_PROPERTY_MODIFIED_BY,
-  BgpTestRequest.JSON_PROPERTY_MODIFIED_DATE,
-  BgpTestRequest.JSON_PROPERTY_SAVED_EVENT,
-  BgpTestRequest.JSON_PROPERTY_TEST_ID,
-  BgpTestRequest.JSON_PROPERTY_TEST_NAME,
-  BgpTestRequest.JSON_PROPERTY_TYPE,
-  BgpTestRequest.JSON_PROPERTY_LINKS,
-  BgpTestRequest.JSON_PROPERTY_ENABLED,
-  BgpTestRequest.JSON_PROPERTY_INCLUDE_COVERED_PREFIXES,
-  BgpTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  BgpTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
-  BgpTestRequest.JSON_PROPERTY_PREFIX,
-  BgpTestRequest.JSON_PROPERTY_LABELS,
-  BgpTestRequest.JSON_PROPERTY_TAGS,
-  BgpTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  BgpTestRequest.JSON_PROPERTY_ALERT_RULES,
-  BgpTestRequest.JSON_PROPERTY_MONITORS
+  BaseBgpRequest.JSON_PROPERTY_CREATED_BY,
+  BaseBgpRequest.JSON_PROPERTY_CREATED_DATE,
+  BaseBgpRequest.JSON_PROPERTY_DESCRIPTION,
+  BaseBgpRequest.JSON_PROPERTY_LIVE_SHARE,
+  BaseBgpRequest.JSON_PROPERTY_MODIFIED_BY,
+  BaseBgpRequest.JSON_PROPERTY_MODIFIED_DATE,
+  BaseBgpRequest.JSON_PROPERTY_SAVED_EVENT,
+  BaseBgpRequest.JSON_PROPERTY_TEST_ID,
+  BaseBgpRequest.JSON_PROPERTY_TEST_NAME,
+  BaseBgpRequest.JSON_PROPERTY_TYPE,
+  BaseBgpRequest.JSON_PROPERTY_LINKS,
+  BaseBgpRequest.JSON_PROPERTY_ENABLED,
+  BaseBgpRequest.JSON_PROPERTY_INCLUDE_COVERED_PREFIXES,
+  BaseBgpRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
+  BaseBgpRequest.JSON_PROPERTY_ALERTS_ENABLED
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class BgpTestRequest {
+public class BaseBgpRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
 
@@ -101,29 +92,11 @@ public class BgpTestRequest {
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
 
-  public static final String JSON_PROPERTY_PREFIX = "prefix";
-  private String prefix;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_TAGS = "tags";
-  private List<String> tags = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors = new ArrayList<>();
-
-  public BgpTestRequest() { 
+  public BaseBgpRequest() { 
   }
 
   @JsonCreator
-  public BgpTestRequest(
+  public BaseBgpRequest(
     @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
@@ -174,7 +147,7 @@ public class BgpTestRequest {
 
 
 
-  public BgpTestRequest description(String description) {
+  public BaseBgpRequest description(String description) {
     this.description = description;
     return this;
   }
@@ -274,7 +247,7 @@ public class BgpTestRequest {
 
 
 
-  public BgpTestRequest testName(String testName) {
+  public BaseBgpRequest testName(String testName) {
     this.testName = testName;
     return this;
   }
@@ -314,7 +287,7 @@ public class BgpTestRequest {
 
 
 
-  public BgpTestRequest links(TestLinks links) {
+  public BaseBgpRequest links(TestLinks links) {
     this.links = links;
     return this;
   }
@@ -339,7 +312,7 @@ public class BgpTestRequest {
   }
 
 
-  public BgpTestRequest enabled(Boolean enabled) {
+  public BaseBgpRequest enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -364,7 +337,7 @@ public class BgpTestRequest {
   }
 
 
-  public BgpTestRequest includeCoveredPrefixes(Boolean includeCoveredPrefixes) {
+  public BaseBgpRequest includeCoveredPrefixes(Boolean includeCoveredPrefixes) {
     this.includeCoveredPrefixes = includeCoveredPrefixes;
     return this;
   }
@@ -389,7 +362,7 @@ public class BgpTestRequest {
   }
 
 
-  public BgpTestRequest usePublicBgp(Boolean usePublicBgp) {
+  public BaseBgpRequest usePublicBgp(Boolean usePublicBgp) {
     this.usePublicBgp = usePublicBgp;
     return this;
   }
@@ -414,7 +387,7 @@ public class BgpTestRequest {
   }
 
 
-  public BgpTestRequest alertsEnabled(Boolean alertsEnabled) {
+  public BaseBgpRequest alertsEnabled(Boolean alertsEnabled) {
     this.alertsEnabled = alertsEnabled;
     return this;
   }
@@ -439,198 +412,8 @@ public class BgpTestRequest {
   }
 
 
-  public BgpTestRequest prefix(String prefix) {
-    this.prefix = prefix;
-    return this;
-  }
-
-   /**
-   * a.b.c.d is a network address, with the prefix length defined as e. Prefixes can be any length from 8 to 24.
-   * @return prefix
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getPrefix() {
-    return prefix;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrefix(String prefix) {
-    this.prefix = prefix;
-  }
-
-
-  public BgpTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public BgpTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public BgpTestRequest tags(List<String> tags) {
-    this.tags = tags;
-    return this;
-  }
-
-  public BgpTestRequest addTagsItem(String tagsItem) {
-    if (this.tags == null) {
-      this.tags = new ArrayList<>();
-    }
-    this.tags.add(tagsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
-   * @return tags
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TAGS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getTags() {
-    return tags;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TAGS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTags(List<String> tags) {
-    this.tags = tags;
-  }
-
-
-  public BgpTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public BgpTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-  }
-
-
-  public BgpTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public BgpTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-  }
-
-
-  public BgpTestRequest monitors(List<String> monitors) {
-    this.monitors = monitors;
-    return this;
-  }
-
-  public BgpTestRequest addMonitorsItem(String monitorsItem) {
-    if (this.monitors == null) {
-      this.monitors = new ArrayList<>();
-    }
-    this.monitors.add(monitorsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
-   * @return monitors
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getMonitors() {
-    return monitors;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MONITORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonitors(List<String> monitors) {
-    this.monitors = monitors;
-  }
-
-
   /**
-   * Return true if this BgpTestRequest object is equal to o.
+   * Return true if this BaseBgpRequest object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -640,39 +423,33 @@ public class BgpTestRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BgpTestRequest bgpTestRequest = (BgpTestRequest) o;
-    return Objects.equals(this.createdBy, bgpTestRequest.createdBy) &&
-        Objects.equals(this.createdDate, bgpTestRequest.createdDate) &&
-        Objects.equals(this.description, bgpTestRequest.description) &&
-        Objects.equals(this.liveShare, bgpTestRequest.liveShare) &&
-        Objects.equals(this.modifiedBy, bgpTestRequest.modifiedBy) &&
-        Objects.equals(this.modifiedDate, bgpTestRequest.modifiedDate) &&
-        Objects.equals(this.savedEvent, bgpTestRequest.savedEvent) &&
-        Objects.equals(this.testId, bgpTestRequest.testId) &&
-        Objects.equals(this.testName, bgpTestRequest.testName) &&
-        Objects.equals(this.type, bgpTestRequest.type) &&
-        Objects.equals(this.links, bgpTestRequest.links) &&
-        Objects.equals(this.enabled, bgpTestRequest.enabled) &&
-        Objects.equals(this.includeCoveredPrefixes, bgpTestRequest.includeCoveredPrefixes) &&
-        Objects.equals(this.usePublicBgp, bgpTestRequest.usePublicBgp) &&
-        Objects.equals(this.alertsEnabled, bgpTestRequest.alertsEnabled) &&
-        Objects.equals(this.prefix, bgpTestRequest.prefix) &&
-        Objects.equals(this.labels, bgpTestRequest.labels) &&
-        Objects.equals(this.tags, bgpTestRequest.tags) &&
-        Objects.equals(this.sharedWithAccounts, bgpTestRequest.sharedWithAccounts) &&
-        Objects.equals(this.alertRules, bgpTestRequest.alertRules) &&
-        Objects.equals(this.monitors, bgpTestRequest.monitors);
+    BaseBgpRequest baseBgpRequest = (BaseBgpRequest) o;
+    return Objects.equals(this.createdBy, baseBgpRequest.createdBy) &&
+        Objects.equals(this.createdDate, baseBgpRequest.createdDate) &&
+        Objects.equals(this.description, baseBgpRequest.description) &&
+        Objects.equals(this.liveShare, baseBgpRequest.liveShare) &&
+        Objects.equals(this.modifiedBy, baseBgpRequest.modifiedBy) &&
+        Objects.equals(this.modifiedDate, baseBgpRequest.modifiedDate) &&
+        Objects.equals(this.savedEvent, baseBgpRequest.savedEvent) &&
+        Objects.equals(this.testId, baseBgpRequest.testId) &&
+        Objects.equals(this.testName, baseBgpRequest.testName) &&
+        Objects.equals(this.type, baseBgpRequest.type) &&
+        Objects.equals(this.links, baseBgpRequest.links) &&
+        Objects.equals(this.enabled, baseBgpRequest.enabled) &&
+        Objects.equals(this.includeCoveredPrefixes, baseBgpRequest.includeCoveredPrefixes) &&
+        Objects.equals(this.usePublicBgp, baseBgpRequest.usePublicBgp) &&
+        Objects.equals(this.alertsEnabled, baseBgpRequest.alertsEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, enabled, includeCoveredPrefixes, usePublicBgp, alertsEnabled, prefix, labels, tags, sharedWithAccounts, alertRules, monitors);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, enabled, includeCoveredPrefixes, usePublicBgp, alertsEnabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BgpTestRequest {\n");
+    sb.append("class BaseBgpRequest {\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -688,12 +465,6 @@ public class BgpTestRequest {
     sb.append("    includeCoveredPrefixes: ").append(toIndentedString(includeCoveredPrefixes)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
-    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

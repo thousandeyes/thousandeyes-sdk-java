@@ -105,8 +105,8 @@ public class DnsTraceTestsApiTest {
                     }
                   },
                   "liveShare" : false,
-                  "alertRules" : [ "344753", "212697" ],
                   "savedEvent" : true,
+                  "alertRules" : [ "344753", "212697" ],
                   "description" : "ThousandEyes Test",
                   "dnsTransportProtocol" : "udp",
                   "type" : "dns-trace",
@@ -602,8 +602,8 @@ public class DnsTraceTestsApiTest {
                     }
                   },
                   "liveShare" : false,
-                  "alertRules" : [ "344753", "212697" ],
                   "savedEvent" : true,
+                  "alertRules" : [ "344753", "212697" ],
                   "description" : "ThousandEyes Test",
                   "dnsTransportProtocol" : "udp",
                   "type" : "dns-trace",

@@ -143,8 +143,8 @@ public class AgentToServerTestsApiTest {
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "testId" : "281474976710706",
-                  "sharedWithAccounts" : [ "1234", "12345" ],
                   "pingPayloadSize" : 112,
+                  "sharedWithAccounts" : [ "1234", "12345" ],
                   "continuousMode" : false,
                   "monitors" : [ "17410", "5" ]
                 }

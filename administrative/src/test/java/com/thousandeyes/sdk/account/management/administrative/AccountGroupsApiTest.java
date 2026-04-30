@@ -232,7 +232,7 @@ public class AccountGroupsApiTest {
                   },
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
-                  "accountToken" : "6j052y4vfgyuhefghue",
+                  "accountToken" : "accountToken",
                   "aid" : "1234",
                   "orgId" : "12345",
                   "users" : [ {
@@ -686,7 +686,7 @@ public class AccountGroupsApiTest {
                   },
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
-                  "accountToken" : "6j052y4vfgyuhefghue",
+                  "accountToken" : "accountToken",
                   "aid" : "1234",
                   "orgId" : "12345",
                   "users" : [ {
