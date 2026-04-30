@@ -32,6 +32,7 @@ Creates a new webhook operation.
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -39,6 +40,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         WebhookOperation webhookOperation = new WebhookOperation(); // WebhookOperation | 
@@ -72,7 +77,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -105,6 +110,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -112,6 +118,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         WebhookOperation webhookOperation = new WebhookOperation(); // WebhookOperation | 
@@ -147,7 +157,7 @@ ApiResponse<[**WebhookOperation**](WebhookOperation.md)>
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -180,6 +190,7 @@ Deletes the webhook operation specified by ID.
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -187,6 +198,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
@@ -219,7 +234,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -252,6 +267,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -259,6 +275,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
@@ -293,7 +313,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -326,6 +346,7 @@ Retrieves details of a webhook operation by its ID.
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -333,6 +354,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
@@ -366,7 +391,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -399,6 +424,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -406,6 +432,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
@@ -441,7 +471,7 @@ ApiResponse<[**WebhookOperation**](WebhookOperation.md)>
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -474,6 +504,7 @@ Returns a list of webhook operations in the specified account group. If no accou
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -481,6 +512,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
@@ -512,7 +547,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -545,6 +580,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -552,6 +588,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
@@ -585,7 +625,7 @@ ApiResponse<[**WebhookOperations**](WebhookOperations.md)>
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -618,6 +658,7 @@ Updates the webhook operation specified by ID.
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -625,6 +666,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
@@ -660,7 +705,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -693,6 +738,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
@@ -700,6 +746,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
@@ -737,7 +787,7 @@ ApiResponse<[**WebhookOperation**](WebhookOperation.md)>
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.dashboards.model.ApiWidget;
+import com.thousandeyes.sdk.dashboards.model.DashboardLayout;
 import com.thousandeyes.sdk.dashboards.model.DashboardLinks;
 import com.thousandeyes.sdk.dashboards.model.DefaultTimespan;
 import java.time.OffsetDateTime;
@@ -50,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Dashboard.JSON_PROPERTY_DEFAULT_TIMESPAN,
   Dashboard.JSON_PROPERTY_IS_GLOBAL_OVERRIDE,
   Dashboard.JSON_PROPERTY_IS_MIGRATED_REPORT,
+  Dashboard.JSON_PROPERTY_LAYOUT,
   Dashboard.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -101,6 +103,9 @@ public class Dashboard {
 
   public static final String JSON_PROPERTY_IS_MIGRATED_REPORT = "isMigratedReport";
   private Boolean isMigratedReport;
+
+  public static final String JSON_PROPERTY_LAYOUT = "layout";
+  private DashboardLayout layout;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private DashboardLinks links;
@@ -450,6 +455,31 @@ public class Dashboard {
 
 
 
+  public Dashboard layout(DashboardLayout layout) {
+    this.layout = layout;
+    return this;
+  }
+
+   /**
+   * Get layout
+   * @return layout
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LAYOUT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public DashboardLayout getLayout() {
+    return layout;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LAYOUT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLayout(DashboardLayout layout) {
+    this.layout = layout;
+  }
+
+
   public Dashboard links(DashboardLinks links) {
     this.links = links;
     return this;
@@ -503,12 +533,13 @@ public class Dashboard {
         Objects.equals(this.defaultTimespan, dashboard.defaultTimespan) &&
         Objects.equals(this.isGlobalOverride, dashboard.isGlobalOverride) &&
         Objects.equals(this.isMigratedReport, dashboard.isMigratedReport) &&
+        Objects.equals(this.layout, dashboard.layout) &&
         Objects.equals(this.links, dashboard.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(globalFilterId, dashboardId, title, isBuiltIn, aid, createdBy, modifiedBy, modifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport, links);
+    return Objects.hash(globalFilterId, dashboardId, title, isBuiltIn, aid, createdBy, modifiedBy, modifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport, layout, links);
   }
 
   @Override
@@ -531,6 +562,7 @@ public class Dashboard {
     sb.append("    defaultTimespan: ").append(toIndentedString(defaultTimespan)).append("\n");
     sb.append("    isGlobalOverride: ").append(toIndentedString(isGlobalOverride)).append("\n");
     sb.append("    isMigratedReport: ").append(toIndentedString(isMigratedReport)).append("\n");
+    sb.append("    layout: ").append(toIndentedString(layout)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

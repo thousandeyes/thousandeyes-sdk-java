@@ -27,6 +27,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeConnection
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeGatewayScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeProxyScore;
 import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointProbeVpnScore;
+import com.thousandeyes.sdk.endpoint.tests.results.model.LocalNetworkTopologyDnsServerTest;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkPing;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkProfile;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkTopologyType;
@@ -51,6 +52,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocalNetworkTopologyResult.JSON_PROPERTY_AGENT_ID,
   LocalNetworkTopologyResult.JSON_PROPERTY_DATE,
   LocalNetworkTopologyResult.JSON_PROPERTY_NETWORK_TOPOLOGY_ID,
+  LocalNetworkTopologyResult.JSON_PROPERTY_DNS_SERVER_TEST,
   LocalNetworkTopologyResult.JSON_PROPERTY_ROUND_ID,
   LocalNetworkTopologyResult.JSON_PROPERTY_TARGET,
   LocalNetworkTopologyResult.JSON_PROPERTY_TARGET_PORT,
@@ -83,6 +85,9 @@ public class LocalNetworkTopologyResult {
 
   public static final String JSON_PROPERTY_NETWORK_TOPOLOGY_ID = "networkTopologyId";
   private String networkTopologyId;
+
+  public static final String JSON_PROPERTY_DNS_SERVER_TEST = "dnsServerTest";
+  private LocalNetworkTopologyDnsServerTest dnsServerTest;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
   private Integer roundId;
@@ -213,6 +218,31 @@ public class LocalNetworkTopologyResult {
   }
 
 
+
+
+  public LocalNetworkTopologyResult dnsServerTest(LocalNetworkTopologyDnsServerTest dnsServerTest) {
+    this.dnsServerTest = dnsServerTest;
+    return this;
+  }
+
+   /**
+   * Get dnsServerTest
+   * @return dnsServerTest
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DNS_SERVER_TEST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public LocalNetworkTopologyDnsServerTest getDnsServerTest() {
+    return dnsServerTest;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DNS_SERVER_TEST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDnsServerTest(LocalNetworkTopologyDnsServerTest dnsServerTest) {
+    this.dnsServerTest = dnsServerTest;
+  }
 
 
    /**
@@ -723,6 +753,7 @@ public class LocalNetworkTopologyResult {
     return Objects.equals(this.agentId, localNetworkTopologyResult.agentId) &&
         Objects.equals(this.date, localNetworkTopologyResult.date) &&
         Objects.equals(this.networkTopologyId, localNetworkTopologyResult.networkTopologyId) &&
+        Objects.equals(this.dnsServerTest, localNetworkTopologyResult.dnsServerTest) &&
         Objects.equals(this.roundId, localNetworkTopologyResult.roundId) &&
         Objects.equals(this.target, localNetworkTopologyResult.target) &&
         Objects.equals(this.targetPort, localNetworkTopologyResult.targetPort) &&
@@ -748,7 +779,7 @@ public class LocalNetworkTopologyResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, date, networkTopologyId, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails, vpnScore, gatewayScore, proxyScore, connectionScore, agentScore, batteryMetrics, cellularProfile, platform, coordinates, networkProfile, icmpTraceroute, icmpTraceroutes);
+    return Objects.hash(agentId, date, networkTopologyId, dnsServerTest, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails, vpnScore, gatewayScore, proxyScore, connectionScore, agentScore, batteryMetrics, cellularProfile, platform, coordinates, networkProfile, icmpTraceroute, icmpTraceroutes);
   }
 
   @Override
@@ -758,6 +789,7 @@ public class LocalNetworkTopologyResult {
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    networkTopologyId: ").append(toIndentedString(networkTopologyId)).append("\n");
+    sb.append("    dnsServerTest: ").append(toIndentedString(dnsServerTest)).append("\n");
     sb.append("    roundId: ").append(toIndentedString(roundId)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    targetPort: ").append(toIndentedString(targetPort)).append("\n");

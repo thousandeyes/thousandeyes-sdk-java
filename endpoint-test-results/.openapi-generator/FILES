@@ -91,6 +91,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/Link.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkResult.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkResults.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopologyDetailResults.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopologyDnsServerTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopologyResult.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopologyResultBase.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/LocalNetworkTopologyResults.java

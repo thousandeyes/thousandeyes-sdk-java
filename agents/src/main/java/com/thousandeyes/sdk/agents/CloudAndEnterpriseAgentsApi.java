@@ -182,11 +182,12 @@ public class CloudAndEnterpriseAgentsApi {
    * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
    * @param agentTypes Specifies the type of agent to request. (optional
    * @param labels Specifies the labels of the agents to request. (optional
+   * @param tagKeys Specifies which tag keys to request from the agents. (optional
    * @return CloudEnterpriseAgents
    * @throws ApiException if fails to make API call
    */
-  public CloudEnterpriseAgents getAgents(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels) throws ApiException {
-    ApiResponse<CloudEnterpriseAgents> response = getAgentsWithHttpInfo(aid, expand, agentTypes, labels);
+  public CloudEnterpriseAgents getAgents(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels, List<String> tagKeys) throws ApiException {
+    ApiResponse<CloudEnterpriseAgents> response = getAgentsWithHttpInfo(aid, expand, agentTypes, labels, tagKeys);
     return response.getData();
   }
 
@@ -197,13 +198,14 @@ public class CloudAndEnterpriseAgentsApi {
    * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
    * @param agentTypes Specifies the type of agent to request. (optional
    * @param labels Specifies the labels of the agents to request. (optional
+   * @param tagKeys Specifies which tag keys to request from the agents. (optional
    * @return ApiResponse&lt;CloudEnterpriseAgents&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CloudEnterpriseAgents> getAgentsWithHttpInfo(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels) throws ApiException {
+  public ApiResponse<CloudEnterpriseAgents> getAgentsWithHttpInfo(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels, List<String> tagKeys) throws ApiException {
     getAgentsValidateRequest();
 
-    var requestBuilder = getAgentsRequestBuilder(aid, expand, agentTypes, labels);
+    var requestBuilder = getAgentsRequestBuilder(aid, expand, agentTypes, labels, tagKeys);
 
     return apiClient.send(requestBuilder.build(), CloudEnterpriseAgents.class);
   }
@@ -211,7 +213,7 @@ public class CloudAndEnterpriseAgentsApi {
   private void getAgentsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentsRequestBuilder(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getAgentsRequestBuilder(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels, List<String> tagKeys) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
@@ -223,6 +225,7 @@ public class CloudAndEnterpriseAgentsApi {
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
     localVarQueryParams.addAll(parameterToPairs("csv", "agentTypes", agentTypes));
     localVarQueryParams.addAll(parameterToPairs("csv", "labels", labels));
+    localVarQueryParams.addAll(parameterToPairs("csv", "tagKeys", tagKeys));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);

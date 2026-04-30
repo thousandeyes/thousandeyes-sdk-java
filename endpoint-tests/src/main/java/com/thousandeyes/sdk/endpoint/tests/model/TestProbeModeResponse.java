@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Probe mode used by network test, only valid when the protocol is set to TCP.
+ * Probe mode returned by network test APIs, only valid when the protocol is set to TCP. Configuration responses return user-selectable values, while result responses may also return resolved driver values.
  */
 public enum TestProbeModeResponse {
   
@@ -31,6 +31,10 @@ public enum TestProbeModeResponse {
   SACK("sack"),
   
   SYN("syn"),
+  
+  SYN_PCAP("syn-pcap"),
+  
+  SYN_SOCKET("syn-socket"),
   
   UNKNOWN("unknown");
 

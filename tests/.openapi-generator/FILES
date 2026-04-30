@@ -48,6 +48,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerTests.java
+src/main/java/com/thousandeyes/sdk/tests/model/AgentToServerWritablePropertyFields.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertDirection.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRoundsViolationMode.java
 src/main/java/com/thousandeyes/sdk/tests/model/AlertRule.java
@@ -122,13 +123,14 @@ src/main/java/com/thousandeyes/sdk/tests/model/Monitor.java
 src/main/java/com/thousandeyes/sdk/tests/model/MonitorType.java
 src/main/java/com/thousandeyes/sdk/tests/model/MonitorsRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/OAuth.java
+src/main/java/com/thousandeyes/sdk/tests/model/OAuthAuthType.java
+src/main/java/com/thousandeyes/sdk/tests/model/OAuthRequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadProperties.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/PageLoadTests.java
-src/main/java/com/thousandeyes/sdk/tests/model/RequestMethod.java
 src/main/java/com/thousandeyes/sdk/tests/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/tests/model/SensitivityLevel.java
 src/main/java/com/thousandeyes/sdk/tests/model/Severity.java
@@ -184,6 +186,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedSipServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedVoiceTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UnexpandedWebTransactionTest.java
+src/main/java/com/thousandeyes/sdk/tests/model/UpdateAgentToServerTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UpdateBgpTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/UpdateSipServerTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/ValidationError.java

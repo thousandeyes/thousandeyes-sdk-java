@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAgentSelectorType;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAuthType;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestProtocol;
 import com.thousandeyes.sdk.endpoint.tests.model.TestInterval;
-import com.thousandeyes.sdk.endpoint.tests.model.TestProbeModeResponse;
+import com.thousandeyes.sdk.endpoint.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.endpoint.tests.model.TestSslVersionId;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -100,7 +100,7 @@ public class EndpointHttpServerTestRequest {
   private TestSslVersionId sslVersionId = TestSslVersionId._0;
 
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
-  private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
+  private TestProbeMode tcpProbeMode = TestProbeMode.AUTO;
 
   public static final String JSON_PROPERTY_VERIFY_CERTIFICATE = "verifyCertificate";
   private Boolean verifyCertificate = true;
@@ -448,7 +448,7 @@ public class EndpointHttpServerTestRequest {
   }
 
 
-  public EndpointHttpServerTestRequest tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+  public EndpointHttpServerTestRequest tcpProbeMode(TestProbeMode tcpProbeMode) {
     this.tcpProbeMode = tcpProbeMode;
     return this;
   }
@@ -461,14 +461,14 @@ public class EndpointHttpServerTestRequest {
   @JsonProperty(JSON_PROPERTY_TCP_PROBE_MODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public TestProbeModeResponse getTcpProbeMode() {
+  public TestProbeMode getTcpProbeMode() {
     return tcpProbeMode;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TCP_PROBE_MODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+  public void setTcpProbeMode(TestProbeMode tcpProbeMode) {
     this.tcpProbeMode = tcpProbeMode;
   }
 

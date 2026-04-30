@@ -95,9 +95,19 @@ public class TagsApiTest {
                     "type" : "test"
                   } ],
                   "color" : "#FF0000",
+                  "matchType" : "and",
                   "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "filters" : [ {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  }, {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  } ],
                   "type" : "static",
                   "objectType" : "test",
                   "accessType" : "all",
@@ -125,9 +135,31 @@ public class TagsApiTest {
                     "type" : "test"
                   } ],
                   "color" : "#FF0000",
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "matchType" : "and",
                   "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "filters" : [ {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  }, {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  } ],
                   "type" : "static",
                   "objectType" : "test",
                   "accessType" : "all",
@@ -142,8 +174,8 @@ public class TagsApiTest {
                                   """;
         var statusCode = 201;
         var responseContentType = "application/json";
-        TagInfo mappedResponse = 
-                mapper.readValue(responseBodyJson, TagInfo.class);
+        Tag mappedResponse = 
+                mapper.readValue(responseBodyJson, Tag.class);
         assertNotNull(mappedResponse);
 
         var path = "/tags";
@@ -174,6 +206,18 @@ public class TagsApiTest {
 
         var requestBodyJson = """
                 {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "errors" : [ {
                     "tag" : {
                       "key" : {
@@ -185,9 +229,19 @@ public class TagsApiTest {
                           "type" : "test"
                         } ],
                         "color" : "#FF0000",
+                        "matchType" : "and",
                         "builtIn" : true,
                         "icon" : "icon",
                         "description" : "To tag assets in San Francisco",
+                        "filters" : [ {
+                          "mode" : "in",
+                          "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "key" : "vpn-client-network"
+                        }, {
+                          "mode" : "in",
+                          "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "key" : "vpn-client-network"
+                        } ],
                         "type" : "static",
                         "objectType" : "test",
                         "accessType" : "all",
@@ -213,9 +267,19 @@ public class TagsApiTest {
                           "type" : "test"
                         } ],
                         "color" : "#FF0000",
+                        "matchType" : "and",
                         "builtIn" : true,
                         "icon" : "icon",
                         "description" : "To tag assets in San Francisco",
+                        "filters" : [ {
+                          "mode" : "in",
+                          "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "key" : "vpn-client-network"
+                        }, {
+                          "mode" : "in",
+                          "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "key" : "vpn-client-network"
+                        } ],
                         "type" : "static",
                         "objectType" : "test",
                         "accessType" : "all",
@@ -252,9 +316,19 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "matchType" : "and",
                     "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "filters" : [ {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    }, {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    } ],
                     "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
@@ -286,9 +360,19 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "matchType" : "and",
                     "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "filters" : [ {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    }, {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    } ],
                     "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
@@ -309,6 +393,18 @@ public class TagsApiTest {
 
         var responseBodyJson = """
                 {
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "errors" : [ {
                     "tag" : {
                       "key" : {
@@ -320,9 +416,19 @@ public class TagsApiTest {
                           "type" : "test"
                         } ],
                         "color" : "#FF0000",
+                        "matchType" : "and",
                         "builtIn" : true,
                         "icon" : "icon",
                         "description" : "To tag assets in San Francisco",
+                        "filters" : [ {
+                          "mode" : "in",
+                          "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "key" : "vpn-client-network"
+                        }, {
+                          "mode" : "in",
+                          "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "key" : "vpn-client-network"
+                        } ],
                         "type" : "static",
                         "objectType" : "test",
                         "accessType" : "all",
@@ -348,9 +454,19 @@ public class TagsApiTest {
                           "type" : "test"
                         } ],
                         "color" : "#FF0000",
+                        "matchType" : "and",
                         "builtIn" : true,
                         "icon" : "icon",
                         "description" : "To tag assets in San Francisco",
+                        "filters" : [ {
+                          "mode" : "in",
+                          "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "key" : "vpn-client-network"
+                        }, {
+                          "mode" : "in",
+                          "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "key" : "vpn-client-network"
+                        } ],
                         "type" : "static",
                         "objectType" : "test",
                         "accessType" : "all",
@@ -387,9 +503,19 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "matchType" : "and",
                     "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "filters" : [ {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    }, {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    } ],
                     "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
@@ -421,9 +547,19 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "matchType" : "and",
                     "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "filters" : [ {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    }, {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    } ],
                     "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
@@ -520,9 +656,19 @@ public class TagsApiTest {
                       "title" : "title"
                     }
                   },
+                  "matchType" : "and",
                   "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "filters" : [ {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  }, {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  } ],
                   "type" : "static",
                   "objectType" : "test",
                   "accessType" : "all",
@@ -602,9 +748,19 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "matchType" : "and",
                     "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "filters" : [ {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    }, {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    } ],
                     "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
@@ -636,9 +792,19 @@ public class TagsApiTest {
                         "title" : "title"
                       }
                     },
+                    "matchType" : "and",
                     "builtIn" : true,
                     "icon" : "icon",
                     "description" : "To tag assets in San Francisco",
+                    "filters" : [ {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    }, {
+                      "mode" : "in",
+                      "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "key" : "vpn-client-network"
+                    } ],
                     "type" : "static",
                     "objectType" : "test",
                     "accessType" : "all",
@@ -693,9 +859,19 @@ public class TagsApiTest {
                     "type" : "test"
                   } ],
                   "color" : "#FF0000",
+                  "matchType" : "and",
                   "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "filters" : [ {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  }, {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  } ],
                   "type" : "static",
                   "objectType" : "test",
                   "accessType" : "all",
@@ -723,9 +899,31 @@ public class TagsApiTest {
                     "type" : "test"
                   } ],
                   "color" : "#FF0000",
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "matchType" : "and",
                   "builtIn" : true,
                   "icon" : "icon",
                   "description" : "To tag assets in San Francisco",
+                  "filters" : [ {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  }, {
+                    "mode" : "in",
+                    "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "key" : "vpn-client-network"
+                  } ],
                   "type" : "static",
                   "objectType" : "test",
                   "accessType" : "all",
@@ -740,8 +938,8 @@ public class TagsApiTest {
                                   """;
         var statusCode = 200;
         var responseContentType = "application/json";
-        TagInfo mappedResponse = 
-                mapper.readValue(responseBodyJson, TagInfo.class);
+        Tag mappedResponse = 
+                mapper.readValue(responseBodyJson, Tag.class);
         assertNotNull(mappedResponse);
 
         var path = "/tags/{id}";

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AgentLabel;
+import com.thousandeyes.sdk.agents.model.AgentTag;
 import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
@@ -48,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CloudAgentDetail.JSON_PROPERTY_AGENT_TYPE,
   CloudAgentDetail.JSON_PROPERTY_TESTS,
   CloudAgentDetail.JSON_PROPERTY_LABELS,
+  CloudAgentDetail.JSON_PROPERTY_TAGS,
   CloudAgentDetail.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -94,6 +96,9 @@ public class CloudAgentDetail {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<AgentLabel> labels = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<AgentTag> tags = new ArrayList<>();
+
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
 
@@ -110,7 +115,8 @@ public class CloudAgentDetail {
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
     @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels
+    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<AgentTag> tags
   ) {
   this();
     this.ipAddresses = ipAddresses;
@@ -122,6 +128,7 @@ public class CloudAgentDetail {
     this.prefix = prefix;
     this.verifySslCertificates = verifySslCertificates;
     this.labels = labels;
+    this.tags = tags;
   }
 
    /**
@@ -392,6 +399,21 @@ public class CloudAgentDetail {
 
 
 
+   /**
+   * List of tags. See &#x60;/tags&#x60; for more information.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<AgentTag> getTags() {
+    return tags;
+  }
+
+
+
+
   public CloudAgentDetail links(SelfLinks links) {
     this.links = links;
     return this;
@@ -443,12 +465,13 @@ public class CloudAgentDetail {
         Objects.equals(this.agentType, cloudAgentDetail.agentType) &&
         Objects.equals(this.tests, cloudAgentDetail.tests) &&
         Objects.equals(this.labels, cloudAgentDetail.labels) &&
+        Objects.equals(this.tags, cloudAgentDetail.tags) &&
         Objects.equals(this.links, cloudAgentDetail.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, agentType, tests, labels, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, agentType, tests, labels, tags, links);
   }
 
   @Override
@@ -469,6 +492,7 @@ public class CloudAgentDetail {
     sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

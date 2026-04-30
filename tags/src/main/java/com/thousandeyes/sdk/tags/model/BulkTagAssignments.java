@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tags.model.BulkTagAssignment;
+import com.thousandeyes.sdk.tags.model.SelfLinks;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,12 +32,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * BulkTagAssignments
  */
 @JsonPropertyOrder({
-  BulkTagAssignments.JSON_PROPERTY_TAGS
+  BulkTagAssignments.JSON_PROPERTY_TAGS,
+  BulkTagAssignments.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BulkTagAssignments {
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<BulkTagAssignment> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_LINKS = "_links";
+  private SelfLinks links;
 
   public BulkTagAssignments() { 
   }
@@ -74,6 +79,31 @@ public class BulkTagAssignments {
   }
 
 
+  public BulkTagAssignments links(SelfLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SelfLinks getLinks() {
+    return links;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLinks(SelfLinks links) {
+    this.links = links;
+  }
+
+
   /**
    * Return true if this BulkTagAssignments object is equal to o.
    */
@@ -86,12 +116,13 @@ public class BulkTagAssignments {
       return false;
     }
     BulkTagAssignments bulkTagAssignments = (BulkTagAssignments) o;
-    return Objects.equals(this.tags, bulkTagAssignments.tags);
+    return Objects.equals(this.tags, bulkTagAssignments.tags) &&
+        Objects.equals(this.links, bulkTagAssignments.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags);
+    return Objects.hash(tags, links);
   }
 
   @Override
@@ -99,6 +130,7 @@ public class BulkTagAssignments {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkTagAssignments {\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }

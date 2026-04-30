@@ -76,6 +76,9 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/BoxAndWhiskersDatasource.jav
 src/main/java/com/thousandeyes/sdk/dashboards/model/ColorGridDatasource.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/Dashboard.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/DashboardGlobalFilterId.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/DashboardLayout.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/DashboardLayoutDetails.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/DashboardLayoutType.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/DashboardLinks.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/DashboardMetric.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/DashboardMetricDirection.java
@@ -120,6 +123,7 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/ValidationErrorItem.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/VisualMode.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/Widget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/WidgetMeasureType.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/WidgetPosition.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/WidgetType.java
 src/test/java/com/thousandeyes/sdk/dashboards/DashboardSnapshotsApiTest.java
 src/test/java/com/thousandeyes/sdk/dashboards/DashboardsApiTest.java

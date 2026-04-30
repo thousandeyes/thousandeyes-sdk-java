@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -105,6 +105,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestRequest.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
   PageLoadTestRequest.JSON_PROPERTY_ALLOW_GEOLOCATION,
   PageLoadTestRequest.JSON_PROPERTY_BROWSER_LANGUAGE,
+  PageLoadTestRequest.JSON_PROPERTY_CHROME_OPTIONS,
+  PageLoadTestRequest.JSON_PROPERTY_CHROME_POLICIES,
   PageLoadTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   PageLoadTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   PageLoadTestRequest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
@@ -113,6 +115,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestRequest.JSON_PROPERTY_MONITORS,
   PageLoadTestRequest.JSON_PROPERTY_HTTP_INTERVAL,
   PageLoadTestRequest.JSON_PROPERTY_SUBINTERVAL,
+  PageLoadTestRequest.JSON_PROPERTY_TAGS,
   PageLoadTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -297,6 +300,12 @@ public class PageLoadTestRequest {
   public static final String JSON_PROPERTY_BROWSER_LANGUAGE = "browserLanguage";
   private String browserLanguage;
 
+  public static final String JSON_PROPERTY_CHROME_OPTIONS = "chromeOptions";
+  private String chromeOptions = "";
+
+  public static final String JSON_PROPERTY_CHROME_POLICIES = "chromePolicies";
+  private String chromePolicies = "{}";
+
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
 
@@ -320,6 +329,9 @@ public class PageLoadTestRequest {
 
   public static final String JSON_PROPERTY_SUBINTERVAL = "subinterval";
   private TestSubInterval subinterval;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
@@ -1799,6 +1811,56 @@ public class PageLoadTestRequest {
   }
 
 
+  public PageLoadTestRequest chromeOptions(String chromeOptions) {
+    this.chromeOptions = chromeOptions;
+    return this;
+  }
+
+   /**
+   * Command-line options passed to Chrome when running the test.
+   * @return chromeOptions
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROME_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChromeOptions() {
+    return chromeOptions;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROME_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromeOptions(String chromeOptions) {
+    this.chromeOptions = chromeOptions;
+  }
+
+
+  public PageLoadTestRequest chromePolicies(String chromePolicies) {
+    this.chromePolicies = chromePolicies;
+    return this;
+  }
+
+   /**
+   * JSON string of Chrome policy settings to apply.
+   * @return chromePolicies
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROME_POLICIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChromePolicies() {
+    return chromePolicies;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROME_POLICIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromePolicies(String chromePolicies) {
+    this.chromePolicies = chromePolicies;
+  }
+
+
   public PageLoadTestRequest pageLoadingStrategy(TestPageLoadingStrategy pageLoadingStrategy) {
     this.pageLoadingStrategy = pageLoadingStrategy;
     return this;
@@ -2007,6 +2069,39 @@ public class PageLoadTestRequest {
   }
 
 
+  public PageLoadTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public PageLoadTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test tag IDs (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public PageLoadTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -2112,6 +2207,8 @@ public class PageLoadTestRequest {
         Objects.equals(this.allowMicAndCamera, pageLoadTestRequest.allowMicAndCamera) &&
         Objects.equals(this.allowGeolocation, pageLoadTestRequest.allowGeolocation) &&
         Objects.equals(this.browserLanguage, pageLoadTestRequest.browserLanguage) &&
+        Objects.equals(this.chromeOptions, pageLoadTestRequest.chromeOptions) &&
+        Objects.equals(this.chromePolicies, pageLoadTestRequest.chromePolicies) &&
         Objects.equals(this.pageLoadingStrategy, pageLoadTestRequest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, pageLoadTestRequest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, pageLoadTestRequest.identifyAgentTrafficWithUserAgent) &&
@@ -2120,12 +2217,13 @@ public class PageLoadTestRequest {
         Objects.equals(this.monitors, pageLoadTestRequest.monitors) &&
         Objects.equals(this.httpInterval, pageLoadTestRequest.httpInterval) &&
         Objects.equals(this.subinterval, pageLoadTestRequest.subinterval) &&
+        Objects.equals(this.tags, pageLoadTestRequest.tags) &&
         Objects.equals(this.agents, pageLoadTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval, tags, agents);
   }
 
   @Override
@@ -2192,6 +2290,8 @@ public class PageLoadTestRequest {
     sb.append("    allowMicAndCamera: ").append(toIndentedString(allowMicAndCamera)).append("\n");
     sb.append("    allowGeolocation: ").append(toIndentedString(allowGeolocation)).append("\n");
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
+    sb.append("    chromeOptions: ").append(toIndentedString(chromeOptions)).append("\n");
+    sb.append("    chromePolicies: ").append(toIndentedString(chromePolicies)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
@@ -2200,6 +2300,7 @@ public class PageLoadTestRequest {
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    httpInterval: ").append(toIndentedString(httpInterval)).append("\n");
     sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

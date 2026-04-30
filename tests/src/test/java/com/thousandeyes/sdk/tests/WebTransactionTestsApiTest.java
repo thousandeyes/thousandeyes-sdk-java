@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -111,9 +111,8 @@ public class WebTransactionTestsApiTest {
                   "includeHeaders" : true,
                   "type" : "web-transactions",
                   "oAuth" : {
-                    "configId" : "123321123",
                     "testUrl" : "https://api.thousandeyes.com/v7/status",
-                    "requestMethod" : "get",
+                    "requestMethod" : "post",
                     "postBody" : "client_id: ************",
                     "headers" : "Authorization: Basic ************",
                     "authType" : "none",
@@ -123,6 +122,7 @@ public class WebTransactionTestsApiTest {
                   "password" : "password",
                   "protocol" : "tcp",
                   "followRedirects" : true,
+                  "chromePolicies" : "{\\"ProxyMode\\":\\"direct\\"}",
                   "contentRegex" : "(regex)+",
                   "pageLoadingStrategy" : "normal",
                   "testName" : "ThousandEyes Test",
@@ -136,6 +136,7 @@ public class WebTransactionTestsApiTest {
                     "ipAddress" : "192.1.1.0"
                   },
                   "labels" : [ "9842", "1283" ],
+                  "tags" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "ec8e64fb-6f11-485c-a5d5-488098ad626a" ],
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
@@ -197,6 +198,7 @@ public class WebTransactionTestsApiTest {
                   "createdBy" : "user@user.com",
                   "testId" : "281474976710706",
                   "subinterval" : 60,
+                  "chromeOptions" : "--disable-gpu",
                   "desiredStatusCode" : "200",
                   "httpTargetTime" : 100,
                   "sslVersionId" : "0",
@@ -236,9 +238,8 @@ public class WebTransactionTestsApiTest {
                   "includeHeaders" : true,
                   "type" : "web-transactions",
                   "oAuth" : {
-                    "configId" : "123321123",
                     "testUrl" : "https://api.thousandeyes.com/v7/status",
-                    "requestMethod" : "get",
+                    "requestMethod" : "post",
                     "postBody" : "client_id: ************",
                     "headers" : "Authorization: Basic ************",
                     "authType" : "none",
@@ -248,6 +249,7 @@ public class WebTransactionTestsApiTest {
                   "password" : "password",
                   "protocol" : "tcp",
                   "followRedirects" : true,
+                  "chromePolicies" : "{\\"ProxyMode\\":\\"direct\\"}",
                   "contentRegex" : "(regex)+",
                   "pageLoadingStrategy" : "normal",
                   "testName" : "ThousandEyes Test",
@@ -404,6 +406,7 @@ public class WebTransactionTestsApiTest {
                   "createdBy" : "user@user.com",
                   "testId" : "281474976710706",
                   "subinterval" : 60,
+                  "chromeOptions" : "--disable-gpu",
                   "desiredStatusCode" : "200",
                   "httpTargetTime" : 100,
                   "sslVersionId" : "0",
@@ -499,9 +502,8 @@ public class WebTransactionTestsApiTest {
                   "includeHeaders" : true,
                   "type" : "web-transactions",
                   "oAuth" : {
-                    "configId" : "123321123",
                     "testUrl" : "https://api.thousandeyes.com/v7/status",
-                    "requestMethod" : "get",
+                    "requestMethod" : "post",
                     "postBody" : "client_id: ************",
                     "headers" : "Authorization: Basic ************",
                     "authType" : "none",
@@ -511,6 +513,7 @@ public class WebTransactionTestsApiTest {
                   "password" : "password",
                   "protocol" : "tcp",
                   "followRedirects" : true,
+                  "chromePolicies" : "{\\"ProxyMode\\":\\"direct\\"}",
                   "contentRegex" : "(regex)+",
                   "pageLoadingStrategy" : "normal",
                   "testName" : "ThousandEyes Test",
@@ -667,6 +670,7 @@ public class WebTransactionTestsApiTest {
                   "createdBy" : "user@user.com",
                   "testId" : "281474976710706",
                   "subinterval" : 60,
+                  "chromeOptions" : "--disable-gpu",
                   "desiredStatusCode" : "200",
                   "httpTargetTime" : 100,
                   "sslVersionId" : "0",
@@ -734,9 +738,8 @@ public class WebTransactionTestsApiTest {
                     "includeHeaders" : true,
                     "type" : "web-transactions",
                     "oAuth" : {
-                      "configId" : "123321123",
                       "testUrl" : "https://api.thousandeyes.com/v7/status",
-                      "requestMethod" : "get",
+                      "requestMethod" : "post",
                       "postBody" : "client_id: ************",
                       "headers" : "Authorization: Basic ************",
                       "authType" : "none",
@@ -746,6 +749,7 @@ public class WebTransactionTestsApiTest {
                     "password" : "password",
                     "protocol" : "tcp",
                     "followRedirects" : true,
+                    "chromePolicies" : "{\\"ProxyMode\\":\\"direct\\"}",
                     "contentRegex" : "(regex)+",
                     "pageLoadingStrategy" : "normal",
                     "testName" : "ThousandEyes Test",
@@ -808,6 +812,7 @@ public class WebTransactionTestsApiTest {
                     "createdBy" : "user@user.com",
                     "testId" : "281474976710706",
                     "subinterval" : 60,
+                    "chromeOptions" : "--disable-gpu",
                     "desiredStatusCode" : "200",
                     "httpTargetTime" : 100,
                     "sslVersionId" : "0",
@@ -839,9 +844,8 @@ public class WebTransactionTestsApiTest {
                     "includeHeaders" : true,
                     "type" : "web-transactions",
                     "oAuth" : {
-                      "configId" : "123321123",
                       "testUrl" : "https://api.thousandeyes.com/v7/status",
-                      "requestMethod" : "get",
+                      "requestMethod" : "post",
                       "postBody" : "client_id: ************",
                       "headers" : "Authorization: Basic ************",
                       "authType" : "none",
@@ -851,6 +855,7 @@ public class WebTransactionTestsApiTest {
                     "password" : "password",
                     "protocol" : "tcp",
                     "followRedirects" : true,
+                    "chromePolicies" : "{\\"ProxyMode\\":\\"direct\\"}",
                     "contentRegex" : "(regex)+",
                     "pageLoadingStrategy" : "normal",
                     "testName" : "ThousandEyes Test",
@@ -913,6 +918,7 @@ public class WebTransactionTestsApiTest {
                     "createdBy" : "user@user.com",
                     "testId" : "281474976710706",
                     "subinterval" : 60,
+                    "chromeOptions" : "--disable-gpu",
                     "desiredStatusCode" : "200",
                     "httpTargetTime" : 100,
                     "sslVersionId" : "0",
@@ -954,7 +960,7 @@ public class WebTransactionTestsApiTest {
     /**
      * Update Web Transactions test
      * <p>
-     * Updates a Web Transactions test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
+     * Updates a Web Transactions test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -991,9 +997,8 @@ public class WebTransactionTestsApiTest {
                   "includeHeaders" : true,
                   "type" : "web-transactions",
                   "oAuth" : {
-                    "configId" : "123321123",
                     "testUrl" : "https://api.thousandeyes.com/v7/status",
-                    "requestMethod" : "get",
+                    "requestMethod" : "post",
                     "postBody" : "client_id: ************",
                     "headers" : "Authorization: Basic ************",
                     "authType" : "none",
@@ -1003,6 +1008,7 @@ public class WebTransactionTestsApiTest {
                   "password" : "password",
                   "protocol" : "tcp",
                   "followRedirects" : true,
+                  "chromePolicies" : "{\\"ProxyMode\\":\\"direct\\"}",
                   "contentRegex" : "(regex)+",
                   "pageLoadingStrategy" : "normal",
                   "testName" : "ThousandEyes Test",
@@ -1016,6 +1022,7 @@ public class WebTransactionTestsApiTest {
                     "ipAddress" : "192.1.1.0"
                   },
                   "labels" : [ "9842", "1283" ],
+                  "tags" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "ec8e64fb-6f11-485c-a5d5-488098ad626a" ],
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
@@ -1077,6 +1084,7 @@ public class WebTransactionTestsApiTest {
                   "createdBy" : "user@user.com",
                   "testId" : "281474976710706",
                   "subinterval" : 60,
+                  "chromeOptions" : "--disable-gpu",
                   "desiredStatusCode" : "200",
                   "httpTargetTime" : 100,
                   "sslVersionId" : "0",
@@ -1116,9 +1124,8 @@ public class WebTransactionTestsApiTest {
                   "includeHeaders" : true,
                   "type" : "web-transactions",
                   "oAuth" : {
-                    "configId" : "123321123",
                     "testUrl" : "https://api.thousandeyes.com/v7/status",
-                    "requestMethod" : "get",
+                    "requestMethod" : "post",
                     "postBody" : "client_id: ************",
                     "headers" : "Authorization: Basic ************",
                     "authType" : "none",
@@ -1128,6 +1135,7 @@ public class WebTransactionTestsApiTest {
                   "password" : "password",
                   "protocol" : "tcp",
                   "followRedirects" : true,
+                  "chromePolicies" : "{\\"ProxyMode\\":\\"direct\\"}",
                   "contentRegex" : "(regex)+",
                   "pageLoadingStrategy" : "normal",
                   "testName" : "ThousandEyes Test",
@@ -1284,6 +1292,7 @@ public class WebTransactionTestsApiTest {
                   "createdBy" : "user@user.com",
                   "testId" : "281474976710706",
                   "subinterval" : 60,
+                  "chromeOptions" : "--disable-gpu",
                   "desiredStatusCode" : "200",
                   "httpTargetTime" : 100,
                   "sslVersionId" : "0",

@@ -94,6 +94,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   HttpServerInstantTestRequest.JSON_PROPERTY_POST_BODY,
   HttpServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
+  HttpServerInstantTestRequest.JSON_PROPERTY_TAGS,
   HttpServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -253,6 +254,9 @@ public class HttpServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -1528,6 +1532,39 @@ public class HttpServerInstantTestRequest {
   }
 
 
+  public HttpServerInstantTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public HttpServerInstantTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of test tag identifiers (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public HttpServerInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -1625,12 +1662,13 @@ public class HttpServerInstantTestRequest {
         Objects.equals(this.randomizedStartTime, httpServerInstantTestRequest.randomizedStartTime) &&
         Objects.equals(this.postBody, httpServerInstantTestRequest.postBody) &&
         Objects.equals(this.ipv6Policy, httpServerInstantTestRequest.ipv6Policy) &&
+        Objects.equals(this.tags, httpServerInstantTestRequest.tags) &&
         Objects.equals(this.agents, httpServerInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, tags, agents);
   }
 
   @Override
@@ -1689,6 +1727,7 @@ public class HttpServerInstantTestRequest {
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

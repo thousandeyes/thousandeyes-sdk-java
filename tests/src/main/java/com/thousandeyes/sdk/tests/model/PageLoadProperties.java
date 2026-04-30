@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -79,6 +79,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadProperties.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
   PageLoadProperties.JSON_PROPERTY_ALLOW_GEOLOCATION,
   PageLoadProperties.JSON_PROPERTY_BROWSER_LANGUAGE,
+  PageLoadProperties.JSON_PROPERTY_CHROME_OPTIONS,
+  PageLoadProperties.JSON_PROPERTY_CHROME_POLICIES,
   PageLoadProperties.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   PageLoadProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
   PageLoadProperties.JSON_PROPERTY_TYPE,
@@ -214,6 +216,12 @@ public class PageLoadProperties {
 
   public static final String JSON_PROPERTY_BROWSER_LANGUAGE = "browserLanguage";
   private String browserLanguage;
+
+  public static final String JSON_PROPERTY_CHROME_OPTIONS = "chromeOptions";
+  private String chromeOptions = "";
+
+  public static final String JSON_PROPERTY_CHROME_POLICIES = "chromePolicies";
+  private String chromePolicies = "{}";
 
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
@@ -1319,6 +1327,56 @@ public class PageLoadProperties {
   }
 
 
+  public PageLoadProperties chromeOptions(String chromeOptions) {
+    this.chromeOptions = chromeOptions;
+    return this;
+  }
+
+   /**
+   * Command-line options passed to Chrome when running the test.
+   * @return chromeOptions
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROME_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChromeOptions() {
+    return chromeOptions;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROME_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromeOptions(String chromeOptions) {
+    this.chromeOptions = chromeOptions;
+  }
+
+
+  public PageLoadProperties chromePolicies(String chromePolicies) {
+    this.chromePolicies = chromePolicies;
+    return this;
+  }
+
+   /**
+   * JSON string of Chrome policy settings to apply.
+   * @return chromePolicies
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROME_POLICIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChromePolicies() {
+    return chromePolicies;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROME_POLICIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromePolicies(String chromePolicies) {
+    this.chromePolicies = chromePolicies;
+  }
+
+
   public PageLoadProperties pageLoadingStrategy(TestPageLoadingStrategy pageLoadingStrategy) {
     this.pageLoadingStrategy = pageLoadingStrategy;
     return this;
@@ -1464,6 +1522,8 @@ public class PageLoadProperties {
         Objects.equals(this.allowMicAndCamera, pageLoadProperties.allowMicAndCamera) &&
         Objects.equals(this.allowGeolocation, pageLoadProperties.allowGeolocation) &&
         Objects.equals(this.browserLanguage, pageLoadProperties.browserLanguage) &&
+        Objects.equals(this.chromeOptions, pageLoadProperties.chromeOptions) &&
+        Objects.equals(this.chromePolicies, pageLoadProperties.chromePolicies) &&
         Objects.equals(this.pageLoadingStrategy, pageLoadProperties.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, pageLoadProperties.randomizedStartTime) &&
         Objects.equals(this.type, pageLoadProperties.type) &&
@@ -1472,7 +1532,7 @@ public class PageLoadProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, type, identifyAgentTrafficWithUserAgent);
+    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, type, identifyAgentTrafficWithUserAgent);
   }
 
   @Override
@@ -1522,6 +1582,8 @@ public class PageLoadProperties {
     sb.append("    allowMicAndCamera: ").append(toIndentedString(allowMicAndCamera)).append("\n");
     sb.append("    allowGeolocation: ").append(toIndentedString(allowGeolocation)).append("\n");
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
+    sb.append("    chromeOptions: ").append(toIndentedString(chromeOptions)).append("\n");
+    sb.append("    chromePolicies: ").append(toIndentedString(chromePolicies)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

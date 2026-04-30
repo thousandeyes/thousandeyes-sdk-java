@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -286,7 +286,7 @@ public class VoiceTestsApi {
   }
   /**
    * Update Voice test
-   * Updates a Voice test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
+   * Updates a Voice test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
    * @param testId Test ID (required)
    * @param voiceTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
@@ -301,7 +301,7 @@ public class VoiceTestsApi {
 
   /**
    * Update Voice test
-   * Updates a Voice test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
+   * Updates a Voice test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
    * @param testId Test ID (required)
    * @param voiceTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)

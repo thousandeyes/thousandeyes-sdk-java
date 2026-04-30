@@ -38,6 +38,8 @@ public enum TestTableFilterKey {
   
   LABEL_ID("Label ID"),
   
+  TAG_ID("Tag ID"),
+  
   UNKNOWN("unknown");
 
   private String value;

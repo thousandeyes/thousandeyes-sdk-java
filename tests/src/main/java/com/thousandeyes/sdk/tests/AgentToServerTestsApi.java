@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -28,6 +28,7 @@ import com.thousandeyes.sdk.tests.model.Error;
 import com.thousandeyes.sdk.tests.model.ExpandTestOptions;
 import java.net.URI;
 import com.thousandeyes.sdk.tests.model.UnauthorizedError;
+import com.thousandeyes.sdk.tests.model.UpdateAgentToServerTestRequest;
 import com.thousandeyes.sdk.tests.model.ValidationError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -286,49 +287,49 @@ public class AgentToServerTestsApi {
   }
   /**
    * Update Agent to Server test
-   * Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions.
+   * Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions.
    * @param testId Test ID (required)
-   * @param agentToServerTestRequest  (required)
+   * @param updateAgentToServerTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
    * @return AgentToServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public AgentToServerTestResponse updateAgentToServerTest(String testId, AgentToServerTestRequest agentToServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<AgentToServerTestResponse> response = updateAgentToServerTestWithHttpInfo(testId, agentToServerTestRequest, aid, expand);
+  public AgentToServerTestResponse updateAgentToServerTest(String testId, UpdateAgentToServerTestRequest updateAgentToServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    ApiResponse<AgentToServerTestResponse> response = updateAgentToServerTestWithHttpInfo(testId, updateAgentToServerTestRequest, aid, expand);
     return response.getData();
   }
 
   /**
    * Update Agent to Server test
-   * Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions.
+   * Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions.
    * @param testId Test ID (required)
-   * @param agentToServerTestRequest  (required)
+   * @param updateAgentToServerTestRequest  (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
    * @return ApiResponse&lt;AgentToServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentToServerTestResponse> updateAgentToServerTestWithHttpInfo(String testId, AgentToServerTestRequest agentToServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updateAgentToServerTestValidateRequest(testId, agentToServerTestRequest);
+  public ApiResponse<AgentToServerTestResponse> updateAgentToServerTestWithHttpInfo(String testId, UpdateAgentToServerTestRequest updateAgentToServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    updateAgentToServerTestValidateRequest(testId, updateAgentToServerTestRequest);
 
-    var requestBuilder = updateAgentToServerTestRequestBuilder(testId, agentToServerTestRequest, aid, expand);
+    var requestBuilder = updateAgentToServerTestRequestBuilder(testId, updateAgentToServerTestRequest, aid, expand);
 
     return apiClient.send(requestBuilder.build(), AgentToServerTestResponse.class);
   }
 
-  private void updateAgentToServerTestValidateRequest(String testId, AgentToServerTestRequest agentToServerTestRequest) throws ApiException {
+  private void updateAgentToServerTestValidateRequest(String testId, UpdateAgentToServerTestRequest updateAgentToServerTestRequest) throws ApiException {
       // verify the required parameter 'testId' is set
       if (testId == null) {
         throw new ApiException(400, "Missing the required parameter 'testId' when calling updateAgentToServerTest");
       }
-      // verify the required parameter 'agentToServerTestRequest' is set
-      if (agentToServerTestRequest == null) {
-        throw new ApiException(400, "Missing the required parameter 'agentToServerTestRequest' when calling updateAgentToServerTest");
+      // verify the required parameter 'updateAgentToServerTestRequest' is set
+      if (updateAgentToServerTestRequest == null) {
+        throw new ApiException(400, "Missing the required parameter 'updateAgentToServerTestRequest' when calling updateAgentToServerTest");
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAgentToServerTestRequestBuilder(String testId, AgentToServerTestRequest agentToServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+  private ApiRequest.ApiRequestBuilder updateAgentToServerTestRequestBuilder(String testId, UpdateAgentToServerTestRequest updateAgentToServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
@@ -347,7 +348,7 @@ public class AgentToServerTestsApi {
     requestBuilder.header("Content-Type", List.of("application/json"));
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
-    requestBuilder.requestBody(agentToServerTestRequest);
+    requestBuilder.requestBody(updateAgentToServerTestRequest);
     return requestBuilder;
   }
 }

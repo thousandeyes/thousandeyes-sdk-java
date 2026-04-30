@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.agents.model.AgentLabel;
+import com.thousandeyes.sdk.agents.model.AgentTag;
 import com.thousandeyes.sdk.agents.model.NotificationRules;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.util.ArrayList;
@@ -36,7 +37,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentResponseExpands.JSON_PROPERTY_TEST_IDS,
   EnterpriseAgentResponseExpands.JSON_PROPERTY_TESTS,
   EnterpriseAgentResponseExpands.JSON_PROPERTY_NOTIFICATION_RULES,
-  EnterpriseAgentResponseExpands.JSON_PROPERTY_LABELS
+  EnterpriseAgentResponseExpands.JSON_PROPERTY_LABELS,
+  EnterpriseAgentResponseExpands.JSON_PROPERTY_TAGS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EnterpriseAgentResponseExpands {
@@ -52,17 +54,22 @@ public class EnterpriseAgentResponseExpands {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<AgentLabel> labels = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<AgentTag> tags = new ArrayList<>();
+
   public EnterpriseAgentResponseExpands() { 
   }
 
   @JsonCreator
   public EnterpriseAgentResponseExpands(
     @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels
+    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<AgentTag> tags
   ) {
   this();
     this.testIds = testIds;
     this.labels = labels;
+    this.tags = tags;
   }
 
    /**
@@ -161,6 +168,21 @@ public class EnterpriseAgentResponseExpands {
 
 
 
+   /**
+   * List of tags. See &#x60;/tags&#x60; for more information.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<AgentTag> getTags() {
+    return tags;
+  }
+
+
+
+
   /**
    * Return true if this EnterpriseAgentResponseExpands object is equal to o.
    */
@@ -176,12 +198,13 @@ public class EnterpriseAgentResponseExpands {
     return Objects.equals(this.testIds, enterpriseAgentResponseExpands.testIds) &&
         Objects.equals(this.tests, enterpriseAgentResponseExpands.tests) &&
         Objects.equals(this.notificationRules, enterpriseAgentResponseExpands.notificationRules) &&
-        Objects.equals(this.labels, enterpriseAgentResponseExpands.labels);
+        Objects.equals(this.labels, enterpriseAgentResponseExpands.labels) &&
+        Objects.equals(this.tags, enterpriseAgentResponseExpands.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(testIds, tests, notificationRules, labels);
+    return Objects.hash(testIds, tests, notificationRules, labels, tags);
   }
 
   @Override
@@ -192,6 +215,7 @@ public class EnterpriseAgentResponseExpands {
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    notificationRules: ").append(toIndentedString(notificationRules)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

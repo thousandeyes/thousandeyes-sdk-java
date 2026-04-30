@@ -64,6 +64,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentInstantTestRequest.JSON_PROPERTY_THROUGHPUT_DURATION,
   AgentToAgentInstantTestRequest.JSON_PROPERTY_THROUGHPUT_RATE,
   AgentToAgentInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
+  AgentToAgentInstantTestRequest.JSON_PROPERTY_TAGS,
   AgentToAgentInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -148,6 +149,9 @@ public class AgentToAgentInstantTestRequest {
 
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -792,6 +796,39 @@ public class AgentToAgentInstantTestRequest {
   }
 
 
+  public AgentToAgentInstantTestRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public AgentToAgentInstantTestRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of test tag identifiers (get &#x60;id&#x60; from &#x60;/tags&#x60; endpoint).
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
   public AgentToAgentInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -864,12 +901,13 @@ public class AgentToAgentInstantTestRequest {
         Objects.equals(this.throughputDuration, agentToAgentInstantTestRequest.throughputDuration) &&
         Objects.equals(this.throughputRate, agentToAgentInstantTestRequest.throughputRate) &&
         Objects.equals(this.fixedPacketRate, agentToAgentInstantTestRequest.fixedPacketRate) &&
+        Objects.equals(this.tags, agentToAgentInstantTestRequest.tags) &&
         Objects.equals(this.agents, agentToAgentInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, randomizedStartTime, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, randomizedStartTime, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, tags, agents);
   }
 
   @Override
@@ -903,6 +941,7 @@ public class AgentToAgentInstantTestRequest {
     sb.append("    throughputDuration: ").append(toIndentedString(throughputDuration)).append("\n");
     sb.append("    throughputRate: ").append(toIndentedString(throughputRate)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -675,11 +675,11 @@ ApiResponse<[**AgentToServerTests**](AgentToServerTests.md)>
 
 ## updateAgentToServerTest
 
-> AgentToServerTestResponse updateAgentToServerTest(testId, agentToServerTestRequest, aid, expand)
+> AgentToServerTestResponse updateAgentToServerTest(testId, updateAgentToServerTestRequest, aid, expand)
 
 Update Agent to Server test
 
-Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions.
+Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions.
 
 ### Example
 
@@ -703,11 +703,11 @@ public class Example {
 
         AgentToServerTestsApi apiInstance = new AgentToServerTestsApi(defaultClient);
         String testId = "202701"; // String | Test ID
-        AgentToServerTestRequest agentToServerTestRequest = new AgentToServerTestRequest(); // AgentToServerTestRequest | 
+        UpdateAgentToServerTestRequest updateAgentToServerTestRequest = new UpdateAgentToServerTestRequest(); // UpdateAgentToServerTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            AgentToServerTestResponse result = apiInstance.updateAgentToServerTest(testId, agentToServerTestRequest, aid, expand);
+            AgentToServerTestResponse result = apiInstance.updateAgentToServerTest(testId, updateAgentToServerTestRequest, aid, expand);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerTestsApi#updateAgentToServerTest");
@@ -726,7 +726,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **testId** | **String**| Test ID | |
-| **agentToServerTestRequest** | [**AgentToServerTestRequest**](AgentToServerTestRequest.md)|  | |
+| **updateAgentToServerTestRequest** | [**UpdateAgentToServerTestRequest**](UpdateAgentToServerTestRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 | **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
 
@@ -759,11 +759,11 @@ public class Example {
 
 ## updateAgentToServerTestWithHttpInfo
 
-> ApiResponse<AgentToServerTestResponse> updateAgentToServerTest updateAgentToServerTestWithHttpInfo(testId, agentToServerTestRequest, aid, expand)
+> ApiResponse<AgentToServerTestResponse> updateAgentToServerTest updateAgentToServerTestWithHttpInfo(testId, updateAgentToServerTestRequest, aid, expand)
 
 Update Agent to Server test
 
-Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions.
+Updates an Agent to Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions.
 
 ### Example
 
@@ -788,11 +788,11 @@ public class Example {
 
         AgentToServerTestsApi apiInstance = new AgentToServerTestsApi(defaultClient);
         String testId = "202701"; // String | Test ID
-        AgentToServerTestRequest agentToServerTestRequest = new AgentToServerTestRequest(); // AgentToServerTestRequest | 
+        UpdateAgentToServerTestRequest updateAgentToServerTestRequest = new UpdateAgentToServerTestRequest(); // UpdateAgentToServerTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<AgentToServerTestResponse> response = apiInstance.updateAgentToServerTestWithHttpInfo(testId, agentToServerTestRequest, aid, expand);
+            ApiResponse<AgentToServerTestResponse> response = apiInstance.updateAgentToServerTestWithHttpInfo(testId, updateAgentToServerTestRequest, aid, expand);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -813,7 +813,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **testId** | **String**| Test ID | |
-| **agentToServerTestRequest** | [**AgentToServerTestRequest**](AgentToServerTestRequest.md)|  | |
+| **updateAgentToServerTestRequest** | [**UpdateAgentToServerTestRequest**](UpdateAgentToServerTestRequest.md)|  | |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 | **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
 

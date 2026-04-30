@@ -655,7 +655,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     }, {
                       "protocol" : "tcp",
                       "udpPathTraceMode" : "unknown",
@@ -677,7 +677,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     } ],
                     "vpnPathTraces" : [ {
                       "protocol" : "tcp",
@@ -700,7 +700,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     }, {
                       "protocol" : "tcp",
                       "udpPathTraceMode" : "unknown",
@@ -722,7 +722,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     } ],
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
@@ -867,7 +867,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     }, {
                       "protocol" : "tcp",
                       "udpPathTraceMode" : "unknown",
@@ -889,7 +889,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     } ],
                     "vpnPathTraces" : [ {
                       "protocol" : "tcp",
@@ -912,7 +912,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     }, {
                       "protocol" : "tcp",
                       "udpPathTraceMode" : "unknown",
@@ -934,7 +934,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                         "network" : "HETZNER (Pty) Ltd (AS 37153)"
                       } ],
                       "pathId" : "4711301366345855606023718047703941305741293841502186803",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     } ],
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
@@ -1177,7 +1177,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "ipAddress" : "196.40.106.237",
                       "udpPathTraceMode" : "unknown",
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     }, {
                       "protocol" : "tcp",
                       "numberOfHops" : 15,
@@ -1185,7 +1185,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "ipAddress" : "196.40.106.237",
                       "udpPathTraceMode" : "unknown",
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     } ],
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
@@ -1317,7 +1317,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "ipAddress" : "196.40.106.237",
                       "udpPathTraceMode" : "unknown",
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     }, {
                       "protocol" : "tcp",
                       "numberOfHops" : 15,
@@ -1325,7 +1325,7 @@ public class NetworkDynamicEndpointTestResultsApiTest {
                       "ipAddress" : "196.40.106.237",
                       "udpPathTraceMode" : "unknown",
                       "pathId" : "1230899668701775614109128428722974545787322404682781961521",
-                      "tcpPathTraceMode" : "auto"
+                      "tcpPathTraceMode" : "syn-pcap"
                     } ],
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {

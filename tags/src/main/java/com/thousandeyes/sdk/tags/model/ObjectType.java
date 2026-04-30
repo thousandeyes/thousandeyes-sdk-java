@@ -34,6 +34,10 @@ public enum ObjectType {
   
   V_AGENT("v-agent"),
   
+  CONNECTED_DEVICES_TEST("connected-devices-test"),
+  
+  ENDPOINT_AGENT("endpoint-agent"),
+  
   UNKNOWN("unknown");
 
   private String value;

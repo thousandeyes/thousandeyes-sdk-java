@@ -26,6 +26,7 @@ src/main/java/com/thousandeyes/sdk/agents/model/AgentProxies.java
 src/main/java/com/thousandeyes/sdk/agents/model/AgentProxy.java
 src/main/java/com/thousandeyes/sdk/agents/model/AgentRequest.java
 src/main/java/com/thousandeyes/sdk/agents/model/AgentResponse.java
+src/main/java/com/thousandeyes/sdk/agents/model/AgentTag.java
 src/main/java/com/thousandeyes/sdk/agents/model/AgentTestsAssignRequest.java
 src/main/java/com/thousandeyes/sdk/agents/model/AlertEmail.java
 src/main/java/com/thousandeyes/sdk/agents/model/AlertIntegrationBase.java

@@ -22,29 +22,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * HTTP request method.
+ * HTTP request method used for the OAuth request.
  */
-public enum RequestMethod {
+public enum OAuthRequestMethod {
   
   GET("get"),
   
   POST("post"),
   
-  PUT("put"),
-  
-  DELETE("delete"),
-  
-  PATCH("patch"),
-  
-  OPTIONS("options"),
-  
-  TRACE("trace"),
-  
   UNKNOWN("unknown");
 
   private String value;
 
-  RequestMethod(String value) {
+  OAuthRequestMethod(String value) {
     this.value = value;
   }
 
@@ -59,8 +49,8 @@ public enum RequestMethod {
   }
 
   @JsonCreator
-  public static RequestMethod fromValue(String value) {
-    for (RequestMethod b : RequestMethod.values()) {
+  public static OAuthRequestMethod fromValue(String value) {
+    for (OAuthRequestMethod b : OAuthRequestMethod.values()) {
       if (b.value.equals(value)) {
         return b;
       }

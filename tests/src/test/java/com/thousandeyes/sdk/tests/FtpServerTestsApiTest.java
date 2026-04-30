@@ -1,6 +1,6 @@
 /*
  * Tests API
- * This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -130,6 +130,7 @@ public class FtpServerTestsApiTest {
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "labels" : [ "9842", "1283" ],
+                  "tags" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "ec8e64fb-6f11-485c-a5d5-488098ad626a" ],
                   "agents" : [ {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"
@@ -686,7 +687,7 @@ public class FtpServerTestsApiTest {
     /**
      * Update FTP Server test
      * <p>
-     * Updates a FTP Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: Alert rules, Alert suppression windows, Labels. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
+     * Updates a FTP Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -742,6 +743,7 @@ public class FtpServerTestsApiTest {
                   "networkMeasurements" : true,
                   "url" : "www.thousandeyes.com",
                   "labels" : [ "9842", "1283" ],
+                  "tags" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "ec8e64fb-6f11-485c-a5d5-488098ad626a" ],
                   "agents" : [ {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"

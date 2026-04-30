@@ -99,6 +99,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTest.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
   PageLoadInstantTest.JSON_PROPERTY_ALLOW_GEOLOCATION,
   PageLoadInstantTest.JSON_PROPERTY_BROWSER_LANGUAGE,
+  PageLoadInstantTest.JSON_PROPERTY_CHROME_OPTIONS,
+  PageLoadInstantTest.JSON_PROPERTY_CHROME_POLICIES,
   PageLoadInstantTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   PageLoadInstantTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   PageLoadInstantTest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT
@@ -272,6 +274,12 @@ public class PageLoadInstantTest {
 
   public static final String JSON_PROPERTY_BROWSER_LANGUAGE = "browserLanguage";
   private String browserLanguage;
+
+  public static final String JSON_PROPERTY_CHROME_OPTIONS = "chromeOptions";
+  private String chromeOptions = "";
+
+  public static final String JSON_PROPERTY_CHROME_POLICIES = "chromePolicies";
+  private String chromePolicies = "{}";
 
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
@@ -1617,6 +1625,56 @@ public class PageLoadInstantTest {
   }
 
 
+  public PageLoadInstantTest chromeOptions(String chromeOptions) {
+    this.chromeOptions = chromeOptions;
+    return this;
+  }
+
+   /**
+   * Command-line options passed to Chrome when running the test.
+   * @return chromeOptions
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROME_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChromeOptions() {
+    return chromeOptions;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROME_OPTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromeOptions(String chromeOptions) {
+    this.chromeOptions = chromeOptions;
+  }
+
+
+  public PageLoadInstantTest chromePolicies(String chromePolicies) {
+    this.chromePolicies = chromePolicies;
+    return this;
+  }
+
+   /**
+   * JSON string of Chrome policy settings to apply.
+   * @return chromePolicies
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROME_POLICIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChromePolicies() {
+    return chromePolicies;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROME_POLICIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromePolicies(String chromePolicies) {
+    this.chromePolicies = chromePolicies;
+  }
+
+
   public PageLoadInstantTest pageLoadingStrategy(TestPageLoadingStrategy pageLoadingStrategy) {
     this.pageLoadingStrategy = pageLoadingStrategy;
     return this;
@@ -1760,6 +1818,8 @@ public class PageLoadInstantTest {
         Objects.equals(this.allowMicAndCamera, pageLoadInstantTest.allowMicAndCamera) &&
         Objects.equals(this.allowGeolocation, pageLoadInstantTest.allowGeolocation) &&
         Objects.equals(this.browserLanguage, pageLoadInstantTest.browserLanguage) &&
+        Objects.equals(this.chromeOptions, pageLoadInstantTest.chromeOptions) &&
+        Objects.equals(this.chromePolicies, pageLoadInstantTest.chromePolicies) &&
         Objects.equals(this.pageLoadingStrategy, pageLoadInstantTest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, pageLoadInstantTest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, pageLoadInstantTest.identifyAgentTrafficWithUserAgent);
@@ -1767,7 +1827,7 @@ public class PageLoadInstantTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent);
   }
 
   @Override
@@ -1830,6 +1890,8 @@ public class PageLoadInstantTest {
     sb.append("    allowMicAndCamera: ").append(toIndentedString(allowMicAndCamera)).append("\n");
     sb.append("    allowGeolocation: ").append(toIndentedString(allowGeolocation)).append("\n");
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
+    sb.append("    chromeOptions: ").append(toIndentedString(chromeOptions)).append("\n");
+    sb.append("    chromePolicies: ").append(toIndentedString(chromePolicies)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");

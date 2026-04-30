@@ -26,6 +26,7 @@ Returns a list of connectors assigned to a specific operation.
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.OperationConnectorsApi;
 
@@ -33,6 +34,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         OperationConnectorsApi apiInstance = new OperationConnectorsApi(defaultClient);
         String type = "webhooks"; // String | The operation type.
@@ -68,7 +73,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -101,6 +106,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.OperationConnectorsApi;
 
@@ -108,6 +114,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         OperationConnectorsApi apiInstance = new OperationConnectorsApi(defaultClient);
         String type = "webhooks"; // String | The operation type.
@@ -145,7 +155,7 @@ ApiResponse<[**Assignments**](Assignments.md)>
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -178,6 +188,7 @@ Assigns one or more connectors to an operation. This replaces any existing assig
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.OperationConnectorsApi;
 
@@ -185,6 +196,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         OperationConnectorsApi apiInstance = new OperationConnectorsApi(defaultClient);
         String type = "webhooks"; // String | The operation type.
@@ -222,7 +237,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -255,6 +270,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
 import com.thousandeyes.sdk.models.*;
 import com.thousandeyes.sdk.connectors.OperationConnectorsApi;
 
@@ -262,6 +278,10 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
 
         OperationConnectorsApi apiInstance = new OperationConnectorsApi(defaultClient);
         String type = "webhooks"; // String | The operation type.
@@ -301,7 +321,7 @@ ApiResponse<[**Assignments**](Assignments.md)>
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
