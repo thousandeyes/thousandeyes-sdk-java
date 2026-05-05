@@ -43,15 +43,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateBgpTestRequest.JSON_PROPERTY_TEST_NAME,
   UpdateBgpTestRequest.JSON_PROPERTY_TYPE,
   UpdateBgpTestRequest.JSON_PROPERTY_LINKS,
-  UpdateBgpTestRequest.JSON_PROPERTY_LABELS,
-  UpdateBgpTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   UpdateBgpTestRequest.JSON_PROPERTY_ENABLED,
-  UpdateBgpTestRequest.JSON_PROPERTY_MONITORS,
   UpdateBgpTestRequest.JSON_PROPERTY_INCLUDE_COVERED_PREFIXES,
   UpdateBgpTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
   UpdateBgpTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
+  UpdateBgpTestRequest.JSON_PROPERTY_LABELS,
+  UpdateBgpTestRequest.JSON_PROPERTY_TAGS,
+  UpdateBgpTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   UpdateBgpTestRequest.JSON_PROPERTY_ALERT_RULES,
-  UpdateBgpTestRequest.JSON_PROPERTY_TAGS
+  UpdateBgpTestRequest.JSON_PROPERTY_MONITORS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class UpdateBgpTestRequest {
@@ -88,17 +88,8 @@ public class UpdateBgpTestRequest {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
-
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INCLUDE_COVERED_PREFIXES = "includeCoveredPrefixes";
   private Boolean includeCoveredPrefixes;
@@ -109,11 +100,20 @@ public class UpdateBgpTestRequest {
   public static final String JSON_PROPERTY_ALERTS_ENABLED = "alertsEnabled";
   private Boolean alertsEnabled;
 
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
+  private List<String> alertRules = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<String> monitors = new ArrayList<>();
 
   public UpdateBgpTestRequest() { 
   }
@@ -335,72 +335,6 @@ public class UpdateBgpTestRequest {
   }
 
 
-  public UpdateBgpTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public UpdateBgpTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public UpdateBgpTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public UpdateBgpTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-  }
-
-
   public UpdateBgpTestRequest enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
@@ -423,39 +357,6 @@ public class UpdateBgpTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public UpdateBgpTestRequest monitors(List<String> monitors) {
-    this.monitors = monitors;
-    return this;
-  }
-
-  public UpdateBgpTestRequest addMonitorsItem(String monitorsItem) {
-    if (this.monitors == null) {
-      this.monitors = new ArrayList<>();
-    }
-    this.monitors.add(monitorsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
-   * @return monitors
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getMonitors() {
-    return monitors;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MONITORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonitors(List<String> monitors) {
-    this.monitors = monitors;
   }
 
 
@@ -534,36 +435,36 @@ public class UpdateBgpTestRequest {
   }
 
 
-  public UpdateBgpTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
+  public UpdateBgpTestRequest labels(List<String> labels) {
+    this.labels = labels;
     return this;
   }
 
-  public UpdateBgpTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
+  public UpdateBgpTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
     }
-    this.alertRules.add(alertRulesItem);
+    this.labels.add(labelsItem);
     return this;
   }
 
    /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
+   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
+   * @return labels
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getAlertRules() {
-    return alertRules;
+  public List<String> getLabels() {
+    return labels;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
 
@@ -600,6 +501,105 @@ public class UpdateBgpTestRequest {
   }
 
 
+  public UpdateBgpTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public UpdateBgpTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
+  public UpdateBgpTestRequest alertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+    return this;
+  }
+
+  public UpdateBgpTestRequest addAlertRulesItem(String alertRulesItem) {
+    if (this.alertRules == null) {
+      this.alertRules = new ArrayList<>();
+    }
+    this.alertRules.add(alertRulesItem);
+    return this;
+  }
+
+   /**
+   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
+   * @return alertRules
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAlertRules() {
+    return alertRules;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+  }
+
+
+  public UpdateBgpTestRequest monitors(List<String> monitors) {
+    this.monitors = monitors;
+    return this;
+  }
+
+  public UpdateBgpTestRequest addMonitorsItem(String monitorsItem) {
+    if (this.monitors == null) {
+      this.monitors = new ArrayList<>();
+    }
+    this.monitors.add(monitorsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getMonitors() {
+    return monitors;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMonitors(List<String> monitors) {
+    this.monitors = monitors;
+  }
+
+
   /**
    * Return true if this UpdateBgpTestRequest object is equal to o.
    */
@@ -623,20 +623,20 @@ public class UpdateBgpTestRequest {
         Objects.equals(this.testName, updateBgpTestRequest.testName) &&
         Objects.equals(this.type, updateBgpTestRequest.type) &&
         Objects.equals(this.links, updateBgpTestRequest.links) &&
-        Objects.equals(this.labels, updateBgpTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, updateBgpTestRequest.sharedWithAccounts) &&
         Objects.equals(this.enabled, updateBgpTestRequest.enabled) &&
-        Objects.equals(this.monitors, updateBgpTestRequest.monitors) &&
         Objects.equals(this.includeCoveredPrefixes, updateBgpTestRequest.includeCoveredPrefixes) &&
         Objects.equals(this.usePublicBgp, updateBgpTestRequest.usePublicBgp) &&
         Objects.equals(this.alertsEnabled, updateBgpTestRequest.alertsEnabled) &&
+        Objects.equals(this.labels, updateBgpTestRequest.labels) &&
+        Objects.equals(this.tags, updateBgpTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, updateBgpTestRequest.sharedWithAccounts) &&
         Objects.equals(this.alertRules, updateBgpTestRequest.alertRules) &&
-        Objects.equals(this.tags, updateBgpTestRequest.tags);
+        Objects.equals(this.monitors, updateBgpTestRequest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, enabled, monitors, includeCoveredPrefixes, usePublicBgp, alertsEnabled, alertRules, tags);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, enabled, includeCoveredPrefixes, usePublicBgp, alertsEnabled, labels, tags, sharedWithAccounts, alertRules, monitors);
   }
 
   @Override
@@ -654,15 +654,15 @@ public class UpdateBgpTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    includeCoveredPrefixes: ").append(toIndentedString(includeCoveredPrefixes)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

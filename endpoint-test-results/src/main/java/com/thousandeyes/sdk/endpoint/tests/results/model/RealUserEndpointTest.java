@@ -167,7 +167,7 @@ public class RealUserEndpointTest {
    /**
    * Score rating a user’s experience when loading a particular page, from 0 (the worst) to 1 (the best). [More details](https://docs.thousandeyes.com/product-documentation/end-user-monitoring/viewing-data/endpoint-agent-views-reference#user-experience-score).
    * minimum: 0
-   * maximum: 1.0
+   * maximum: 1
    * @return experienceScore
   **/
   @jakarta.annotation.Nullable

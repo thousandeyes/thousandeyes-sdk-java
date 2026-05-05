@@ -105,8 +105,8 @@ public class DnssecTestsApiTest {
                     }
                   },
                   "liveShare" : false,
-                  "alertRules" : [ "344753", "212697" ],
                   "savedEvent" : true,
+                  "alertRules" : [ "344753", "212697" ],
                   "description" : "ThousandEyes Test",
                   "type" : "dnssec",
                   "enabled" : true,
@@ -597,8 +597,8 @@ public class DnssecTestsApiTest {
                     }
                   },
                   "liveShare" : false,
-                  "alertRules" : [ "344753", "212697" ],
                   "savedEvent" : true,
+                  "alertRules" : [ "344753", "212697" ],
                   "description" : "ThousandEyes Test",
                   "type" : "dnssec",
                   "enabled" : true,

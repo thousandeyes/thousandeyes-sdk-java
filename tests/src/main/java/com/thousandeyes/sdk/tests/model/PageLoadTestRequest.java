@@ -48,7 +48,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestRequest.JSON_PROPERTY_INTERVAL,
   PageLoadTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   PageLoadTestRequest.JSON_PROPERTY_ENABLED,
-  PageLoadTestRequest.JSON_PROPERTY_ALERT_RULES,
   PageLoadTestRequest.JSON_PROPERTY_CREATED_BY,
   PageLoadTestRequest.JSON_PROPERTY_CREATED_DATE,
   PageLoadTestRequest.JSON_PROPERTY_DESCRIPTION,
@@ -60,8 +59,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestRequest.JSON_PROPERTY_TEST_NAME,
   PageLoadTestRequest.JSON_PROPERTY_TYPE,
   PageLoadTestRequest.JSON_PROPERTY_LINKS,
-  PageLoadTestRequest.JSON_PROPERTY_LABELS,
-  PageLoadTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   PageLoadTestRequest.JSON_PROPERTY_AUTH_TYPE,
   PageLoadTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   PageLoadTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
@@ -110,13 +107,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   PageLoadTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   PageLoadTestRequest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
-  PageLoadTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
-  PageLoadTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  PageLoadTestRequest.JSON_PROPERTY_MONITORS,
   PageLoadTestRequest.JSON_PROPERTY_HTTP_INTERVAL,
   PageLoadTestRequest.JSON_PROPERTY_SUBINTERVAL,
+  PageLoadTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  PageLoadTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
+  PageLoadTestRequest.JSON_PROPERTY_LABELS,
   PageLoadTestRequest.JSON_PROPERTY_TAGS,
-  PageLoadTestRequest.JSON_PROPERTY_AGENTS
+  PageLoadTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  PageLoadTestRequest.JSON_PROPERTY_ALERT_RULES,
+  PageLoadTestRequest.JSON_PROPERTY_AGENTS,
+  PageLoadTestRequest.JSON_PROPERTY_MONITORS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PageLoadTestRequest {
@@ -128,9 +128,6 @@ public class PageLoadTestRequest {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -164,12 +161,6 @@ public class PageLoadTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -315,26 +306,35 @@ public class PageLoadTestRequest {
   public static final String JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT = "identifyAgentTrafficWithUserAgent";
   private Boolean identifyAgentTrafficWithUserAgent = false;
 
-  public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
-  private Boolean bgpMeasurements = true;
-
-  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
-  private Boolean usePublicBgp = true;
-
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors = new ArrayList<>();
-
   public static final String JSON_PROPERTY_HTTP_INTERVAL = "httpInterval";
   private TestHttpInterval httpInterval;
 
   public static final String JSON_PROPERTY_SUBINTERVAL = "subinterval";
   private TestSubInterval subinterval;
 
+  public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
+  private Boolean bgpMeasurements = true;
+
+  public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
+  private Boolean usePublicBgp = true;
+
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
+  private List<String> alertRules = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<String> monitors = new ArrayList<>();
 
   public PageLoadTestRequest() { 
   }
@@ -435,39 +435,6 @@ public class PageLoadTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public PageLoadTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public PageLoadTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
   }
 
 
@@ -663,72 +630,6 @@ public class PageLoadTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public PageLoadTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public PageLoadTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public PageLoadTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public PageLoadTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1936,89 +1837,6 @@ public class PageLoadTestRequest {
   }
 
 
-  public PageLoadTestRequest bgpMeasurements(Boolean bgpMeasurements) {
-    this.bgpMeasurements = bgpMeasurements;
-    return this;
-  }
-
-   /**
-   * Set to &#x60;true&#x60; to enable bgp measurements.
-   * @return bgpMeasurements
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BGP_MEASUREMENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getBgpMeasurements() {
-    return bgpMeasurements;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_BGP_MEASUREMENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBgpMeasurements(Boolean bgpMeasurements) {
-    this.bgpMeasurements = bgpMeasurements;
-  }
-
-
-  public PageLoadTestRequest usePublicBgp(Boolean usePublicBgp) {
-    this.usePublicBgp = usePublicBgp;
-    return this;
-  }
-
-   /**
-   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
-   * @return usePublicBgp
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getUsePublicBgp() {
-    return usePublicBgp;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsePublicBgp(Boolean usePublicBgp) {
-    this.usePublicBgp = usePublicBgp;
-  }
-
-
-  public PageLoadTestRequest monitors(List<String> monitors) {
-    this.monitors = monitors;
-    return this;
-  }
-
-  public PageLoadTestRequest addMonitorsItem(String monitorsItem) {
-    if (this.monitors == null) {
-      this.monitors = new ArrayList<>();
-    }
-    this.monitors.add(monitorsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
-   * @return monitors
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getMonitors() {
-    return monitors;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MONITORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonitors(List<String> monitors) {
-    this.monitors = monitors;
-  }
-
-
   public PageLoadTestRequest httpInterval(TestHttpInterval httpInterval) {
     this.httpInterval = httpInterval;
     return this;
@@ -2069,6 +1887,89 @@ public class PageLoadTestRequest {
   }
 
 
+  public PageLoadTestRequest bgpMeasurements(Boolean bgpMeasurements) {
+    this.bgpMeasurements = bgpMeasurements;
+    return this;
+  }
+
+   /**
+   * Set to &#x60;true&#x60; to enable bgp measurements.
+   * @return bgpMeasurements
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BGP_MEASUREMENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getBgpMeasurements() {
+    return bgpMeasurements;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BGP_MEASUREMENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBgpMeasurements(Boolean bgpMeasurements) {
+    this.bgpMeasurements = bgpMeasurements;
+  }
+
+
+  public PageLoadTestRequest usePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+    return this;
+  }
+
+   /**
+   * Indicate if all available public BGP monitors should be used, when ommited defaults to &#x60;bgpMeasurements&#x60; value.
+   * @return usePublicBgp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getUsePublicBgp() {
+    return usePublicBgp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USE_PUBLIC_BGP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUsePublicBgp(Boolean usePublicBgp) {
+    this.usePublicBgp = usePublicBgp;
+  }
+
+
+  public PageLoadTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public PageLoadTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public PageLoadTestRequest tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -2099,6 +2000,72 @@ public class PageLoadTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public PageLoadTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public PageLoadTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
+  public PageLoadTestRequest alertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+    return this;
+  }
+
+  public PageLoadTestRequest addAlertRulesItem(String alertRulesItem) {
+    if (this.alertRules == null) {
+      this.alertRules = new ArrayList<>();
+    }
+    this.alertRules.add(alertRulesItem);
+    return this;
+  }
+
+   /**
+   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
+   * @return alertRules
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAlertRules() {
+    return alertRules;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
   }
 
 
@@ -2135,6 +2102,39 @@ public class PageLoadTestRequest {
   }
 
 
+  public PageLoadTestRequest monitors(List<String> monitors) {
+    this.monitors = monitors;
+    return this;
+  }
+
+  public PageLoadTestRequest addMonitorsItem(String monitorsItem) {
+    if (this.monitors == null) {
+      this.monitors = new ArrayList<>();
+    }
+    this.monitors.add(monitorsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getMonitors() {
+    return monitors;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMonitors(List<String> monitors) {
+    this.monitors = monitors;
+  }
+
+
   /**
    * Return true if this PageLoadTestRequest object is equal to o.
    */
@@ -2150,7 +2150,6 @@ public class PageLoadTestRequest {
     return Objects.equals(this.interval, pageLoadTestRequest.interval) &&
         Objects.equals(this.alertsEnabled, pageLoadTestRequest.alertsEnabled) &&
         Objects.equals(this.enabled, pageLoadTestRequest.enabled) &&
-        Objects.equals(this.alertRules, pageLoadTestRequest.alertRules) &&
         Objects.equals(this.createdBy, pageLoadTestRequest.createdBy) &&
         Objects.equals(this.createdDate, pageLoadTestRequest.createdDate) &&
         Objects.equals(this.description, pageLoadTestRequest.description) &&
@@ -2162,8 +2161,6 @@ public class PageLoadTestRequest {
         Objects.equals(this.testName, pageLoadTestRequest.testName) &&
         Objects.equals(this.type, pageLoadTestRequest.type) &&
         Objects.equals(this.links, pageLoadTestRequest.links) &&
-        Objects.equals(this.labels, pageLoadTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, pageLoadTestRequest.sharedWithAccounts) &&
         Objects.equals(this.authType, pageLoadTestRequest.authType) &&
         Objects.equals(this.agentInterfaces, pageLoadTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, pageLoadTestRequest.bandwidthMeasurements) &&
@@ -2212,18 +2209,21 @@ public class PageLoadTestRequest {
         Objects.equals(this.pageLoadingStrategy, pageLoadTestRequest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, pageLoadTestRequest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, pageLoadTestRequest.identifyAgentTrafficWithUserAgent) &&
-        Objects.equals(this.bgpMeasurements, pageLoadTestRequest.bgpMeasurements) &&
-        Objects.equals(this.usePublicBgp, pageLoadTestRequest.usePublicBgp) &&
-        Objects.equals(this.monitors, pageLoadTestRequest.monitors) &&
         Objects.equals(this.httpInterval, pageLoadTestRequest.httpInterval) &&
         Objects.equals(this.subinterval, pageLoadTestRequest.subinterval) &&
+        Objects.equals(this.bgpMeasurements, pageLoadTestRequest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, pageLoadTestRequest.usePublicBgp) &&
+        Objects.equals(this.labels, pageLoadTestRequest.labels) &&
         Objects.equals(this.tags, pageLoadTestRequest.tags) &&
-        Objects.equals(this.agents, pageLoadTestRequest.agents);
+        Objects.equals(this.sharedWithAccounts, pageLoadTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.alertRules, pageLoadTestRequest.alertRules) &&
+        Objects.equals(this.agents, pageLoadTestRequest.agents) &&
+        Objects.equals(this.monitors, pageLoadTestRequest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval, tags, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, httpInterval, subinterval, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors);
   }
 
   @Override
@@ -2233,7 +2233,6 @@ public class PageLoadTestRequest {
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -2245,8 +2244,6 @@ public class PageLoadTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
@@ -2295,13 +2292,16 @@ public class PageLoadTestRequest {
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
-    sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
-    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    httpInterval: ").append(toIndentedString(httpInterval)).append("\n");
     sb.append("    subinterval: ").append(toIndentedString(subinterval)).append("\n");
+    sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
+    sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

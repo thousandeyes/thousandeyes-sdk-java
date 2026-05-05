@@ -41,8 +41,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentResponse.JSON_PROPERTY_COUNTRY_ID,
   AgentResponse.JSON_PROPERTY_COORDINATES,
   AgentResponse.JSON_PROPERTY_ENABLED,
-  AgentResponse.JSON_PROPERTY_PREFIX,
   AgentResponse.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
+  AgentResponse.JSON_PROPERTY_PREFIX,
   AgentResponse.JSON_PROPERTY_AGENT_TYPE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -74,11 +74,11 @@ public class AgentResponse {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
 
-  public static final String JSON_PROPERTY_PREFIX = "prefix";
-  private String prefix;
-
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
   private Boolean verifySslCertificates;
+
+  public static final String JSON_PROPERTY_PREFIX = "prefix";
+  private String prefix;
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
   private CloudEnterpriseAgentType agentType;
@@ -94,8 +94,8 @@ public class AgentResponse {
     @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
     @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
-    @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates
+    @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
+    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix
   ) {
   this();
     this.ipAddresses = ipAddresses;
@@ -104,8 +104,8 @@ public class AgentResponse {
     this.agentId = agentId;
     this.location = location;
     this.countryId = countryId;
-    this.prefix = prefix;
     this.verifySslCertificates = verifySslCertificates;
+    this.prefix = prefix;
   }
 
    /**
@@ -274,21 +274,6 @@ public class AgentResponse {
 
 
    /**
-   * Prefix containing agents public IP address.
-   * @return prefix
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPrefix() {
-    return prefix;
-  }
-
-
-
-
-   /**
    * Flag indicating if has normal SSL operations or  if instead it&#39;s set to ignore SSL errors on browserbot-based tests.
    * @return verifySslCertificates
   **/
@@ -298,6 +283,21 @@ public class AgentResponse {
 
   public Boolean getVerifySslCertificates() {
     return verifySslCertificates;
+  }
+
+
+
+
+   /**
+   * Prefix containing agents public IP address.
+   * @return prefix
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getPrefix() {
+    return prefix;
   }
 
 
@@ -349,14 +349,14 @@ public class AgentResponse {
         Objects.equals(this.countryId, agentResponse.countryId) &&
         Objects.equals(this.coordinates, agentResponse.coordinates) &&
         Objects.equals(this.enabled, agentResponse.enabled) &&
-        Objects.equals(this.prefix, agentResponse.prefix) &&
         Objects.equals(this.verifySslCertificates, agentResponse.verifySslCertificates) &&
+        Objects.equals(this.prefix, agentResponse.prefix) &&
         Objects.equals(this.agentType, agentResponse.agentType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, agentType);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, verifySslCertificates, prefix, agentType);
   }
 
   @Override
@@ -372,8 +372,8 @@ public class AgentResponse {
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");
     sb.append("}");
     return sb.toString();

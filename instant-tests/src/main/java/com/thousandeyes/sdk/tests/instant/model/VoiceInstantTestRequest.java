@@ -45,8 +45,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceInstantTestRequest.JSON_PROPERTY_TEST_NAME,
   VoiceInstantTestRequest.JSON_PROPERTY_TYPE,
   VoiceInstantTestRequest.JSON_PROPERTY_LINKS,
-  VoiceInstantTestRequest.JSON_PROPERTY_LABELS,
-  VoiceInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   VoiceInstantTestRequest.JSON_PROPERTY_CODEC,
   VoiceInstantTestRequest.JSON_PROPERTY_CODEC_ID,
   VoiceInstantTestRequest.JSON_PROPERTY_DSCP,
@@ -57,7 +55,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VoiceInstantTestRequest.JSON_PROPERTY_PORT,
   VoiceInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   VoiceInstantTestRequest.JSON_PROPERTY_TARGET_AGENT_ID,
+  VoiceInstantTestRequest.JSON_PROPERTY_LABELS,
   VoiceInstantTestRequest.JSON_PROPERTY_TAGS,
+  VoiceInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   VoiceInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -95,12 +95,6 @@ public class VoiceInstantTestRequest {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
-
   public static final String JSON_PROPERTY_CODEC = "codec";
   private String codec;
 
@@ -131,8 +125,14 @@ public class VoiceInstantTestRequest {
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
 
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -358,72 +358,6 @@ public class VoiceInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public VoiceInstantTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public VoiceInstantTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public VoiceInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public VoiceInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -665,6 +599,39 @@ public class VoiceInstantTestRequest {
   }
 
 
+  public VoiceInstantTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public VoiceInstantTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public VoiceInstantTestRequest tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -695,6 +662,39 @@ public class VoiceInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public VoiceInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public VoiceInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -754,8 +754,6 @@ public class VoiceInstantTestRequest {
         Objects.equals(this.testName, voiceInstantTestRequest.testName) &&
         Objects.equals(this.type, voiceInstantTestRequest.type) &&
         Objects.equals(this.links, voiceInstantTestRequest.links) &&
-        Objects.equals(this.labels, voiceInstantTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, voiceInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.codec, voiceInstantTestRequest.codec) &&
         Objects.equals(this.codecId, voiceInstantTestRequest.codecId) &&
         Objects.equals(this.dscp, voiceInstantTestRequest.dscp) &&
@@ -766,13 +764,15 @@ public class VoiceInstantTestRequest {
         Objects.equals(this.port, voiceInstantTestRequest.port) &&
         Objects.equals(this.randomizedStartTime, voiceInstantTestRequest.randomizedStartTime) &&
         Objects.equals(this.targetAgentId, voiceInstantTestRequest.targetAgentId) &&
+        Objects.equals(this.labels, voiceInstantTestRequest.labels) &&
         Objects.equals(this.tags, voiceInstantTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, voiceInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.agents, voiceInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, randomizedStartTime, targetAgentId, tags, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, codec, codecId, dscp, dscpId, duration, jitterBuffer, numPathTraces, port, randomizedStartTime, targetAgentId, labels, tags, sharedWithAccounts, agents);
   }
 
   @Override
@@ -790,8 +790,6 @@ public class VoiceInstantTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    codec: ").append(toIndentedString(codec)).append("\n");
     sb.append("    codecId: ").append(toIndentedString(codecId)).append("\n");
     sb.append("    dscp: ").append(toIndentedString(dscp)).append("\n");
@@ -802,7 +800,9 @@ public class VoiceInstantTestRequest {
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();
