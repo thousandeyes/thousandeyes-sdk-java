@@ -1,6 +1,6 @@
 /*
- * Dashboards API
- * Manage ThousandEyes Dashboards.
+ * Tests API
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.dashboards.model;
+package com.thousandeyes.sdk.tests.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -22,19 +22,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Specifies the order in which cards are sorted.
+ * The target setting that the credential should be used for.
  */
-public enum ApiWidgetSortDirection {
+public enum TestVaultCredentialTarget {
   
-  ASCENDING("ascending"),
+  USERNAME("username"),
   
-  DESCENDING("descending"),
+  PASSWORD("password"),
+  
+  SCRIPT("script"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  ApiWidgetSortDirection(String value) {
+  TestVaultCredentialTarget(String value) {
     this.value = value;
   }
 
@@ -49,8 +51,8 @@ public enum ApiWidgetSortDirection {
   }
 
   @JsonCreator
-  public static ApiWidgetSortDirection fromValue(String value) {
-    for (ApiWidgetSortDirection b : ApiWidgetSortDirection.values()) {
+  public static TestVaultCredentialTarget fromValue(String value) {
+    for (TestVaultCredentialTarget b : TestVaultCredentialTarget.values()) {
       if (b.value.equals(value)) {
         return b;
       }

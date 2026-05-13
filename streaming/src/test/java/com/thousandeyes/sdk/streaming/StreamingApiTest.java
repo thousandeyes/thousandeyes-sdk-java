@@ -92,13 +92,6 @@ public class StreamingApiTest {
                   }, {
                     "id" : "1234"
                   } ],
-                  "testMatch" : [ {
-                    "id" : "1234",
-                    "domain" : "cea"
-                  }, {
-                    "id" : "5678",
-                    "domain" : "endpoint"
-                  } ],
                   "endpointType" : "grpc",
                   "streamEndpointUrl" : "https://api.thousandeyes.otel-collector",
                   "exporterConfig" : {
@@ -117,6 +110,26 @@ public class StreamingApiTest {
                       "token" : "d0a91307-be2f-4218-a9f8-71c02d98846b"
                     }
                   },
+                  "filters" : {
+                    "testTypes" : {
+                      "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    }
+                  },
+                  "type" : "opentelemetry",
+                  "dataModelVersion" : "v2",
+                  "enabled" : true,
+                  "endpointAgentTag" : [ {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  }, {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  } ],
+                  "testMatch" : [ {
+                    "id" : "1234",
+                    "domain" : "cea"
+                  }, {
+                    "id" : "5678",
+                    "domain" : "endpoint"
+                  } ],
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -124,19 +137,11 @@ public class StreamingApiTest {
                     "key" : "keyB",
                     "value" : "valueB"
                   } ],
-                  "filters" : {
-                    "testTypes" : {
-                      "values" : [ "agent-to-server", "bgp", "http-server" ]
-                    }
-                  },
-                  "type" : "opentelemetry",
                   "signal" : "metric",
-                  "dataModelVersion" : "v2",
                   "customHeaders" : {
                     "Authorization" : "*****",
                     "Content-Type" : "*****"
-                  },
-                  "enabled" : true
+                  }
                 }
                                  """;
         var requestBodyContentType = "application/json";
@@ -182,6 +187,11 @@ public class StreamingApiTest {
                   "type" : "opentelemetry",
                   "enabled" : true,
                   "dataModelVersion" : "v2",
+                  "endpointAgentTag" : [ {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  }, {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  } ],
                   "testMatch" : [ {
                     "id" : "1234",
                     "domain" : "cea"
@@ -312,6 +322,11 @@ public class StreamingApiTest {
                   "type" : "opentelemetry",
                   "enabled" : true,
                   "dataModelVersion" : "v2",
+                  "endpointAgentTag" : [ {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  }, {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  } ],
                   "testMatch" : [ {
                     "id" : "1234",
                     "domain" : "cea"
@@ -415,6 +430,11 @@ public class StreamingApiTest {
                   "type" : "opentelemetry",
                   "enabled" : true,
                   "dataModelVersion" : "v2",
+                  "endpointAgentTag" : [ {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  }, {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  } ],
                   "testMatch" : [ {
                     "id" : "1234",
                     "domain" : "cea"
@@ -483,6 +503,11 @@ public class StreamingApiTest {
                   "type" : "opentelemetry",
                   "enabled" : true,
                   "dataModelVersion" : "v2",
+                  "endpointAgentTag" : [ {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  }, {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  } ],
                   "testMatch" : [ {
                     "id" : "1234",
                     "domain" : "cea"
@@ -553,6 +578,11 @@ public class StreamingApiTest {
                     "id" : "1234"
                   }, {
                     "id" : "1234"
+                  } ],
+                  "endpointAgentTag" : [ {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  }, {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
                   } ],
                   "testMatch" : [ {
                     "id" : "1234",
@@ -640,6 +670,11 @@ public class StreamingApiTest {
                   "type" : "opentelemetry",
                   "enabled" : true,
                   "dataModelVersion" : "v2",
+                  "endpointAgentTag" : [ {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  }, {
+                    "id" : "91863f70-e5a6-4a1c-a266-caf02db3607d"
+                  } ],
                   "testMatch" : [ {
                     "id" : "1234",
                     "domain" : "cea"

@@ -123,7 +123,7 @@ public class OperationConnectorsApiTest {
     /**
      * Assign connectors to an operation
      * <p>
-     * Assigns one or more connectors to an operation. This replaces any existing assignments.
+     * Assigns one or more connectors to an operation. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if connectors are changed.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -177,7 +177,7 @@ public class OperationConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.setOperationConnectors(type, id, mappedRequest, null);
+        var apiResponse = api.setOperationConnectors(type, id, mappedRequest, null, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

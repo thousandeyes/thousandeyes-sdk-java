@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.streaming.model.EndpointAgentLabel;
+import com.thousandeyes.sdk.streaming.model.EndpointAgentTag;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.Filters;
 import com.thousandeyes.sdk.streaming.model.TagMatch;
@@ -44,7 +45,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PutStream.JSON_PROPERTY_ENABLED,
   PutStream.JSON_PROPERTY_FILTERS,
   PutStream.JSON_PROPERTY_EXPORTER_CONFIG,
-  PutStream.JSON_PROPERTY_ENDPOINT_AGENT_LABEL
+  PutStream.JSON_PROPERTY_ENDPOINT_AGENT_LABEL,
+  PutStream.JSON_PROPERTY_ENDPOINT_AGENT_TAG
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PutStream {
@@ -71,6 +73,9 @@ public class PutStream {
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABEL = "endpointAgentLabel";
   private List<EndpointAgentLabel> endpointAgentLabel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ENDPOINT_AGENT_TAG = "endpointAgentTag";
+  private List<EndpointAgentTag> endpointAgentTag = new ArrayList<>();
 
   public PutStream() { 
   }
@@ -288,7 +293,7 @@ public class PutStream {
   }
 
    /**
-   * A collection of Endpoint Agent label IDs that determines what local network data is included in the data stream.
+   * A collection of Endpoint Agent label IDs that determines what local network data is included in the data stream. &#x60;endpointAgentLabel&#x60; and &#x60;endpointAgentTag&#x60; represent the same data. Configure only one; both are synchronized.
    * @return endpointAgentLabel
   **/
   @jakarta.annotation.Nullable
@@ -304,6 +309,39 @@ public class PutStream {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEndpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
     this.endpointAgentLabel = endpointAgentLabel;
+  }
+
+
+  public PutStream endpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+    this.endpointAgentTag = endpointAgentTag;
+    return this;
+  }
+
+  public PutStream addEndpointAgentTagItem(EndpointAgentTag endpointAgentTagItem) {
+    if (this.endpointAgentTag == null) {
+      this.endpointAgentTag = new ArrayList<>();
+    }
+    this.endpointAgentTag.add(endpointAgentTagItem);
+    return this;
+  }
+
+   /**
+   * A collection of Endpoint Agent Tag IDs that determines what local network data is included in the data stream. &#x60;endpointAgentLabel&#x60; and &#x60;endpointAgentTag&#x60; represent the same data. Configure only one; both are synchronized.
+   * @return endpointAgentTag
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_TAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<EndpointAgentTag> getEndpointAgentTag() {
+    return endpointAgentTag;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_TAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+    this.endpointAgentTag = endpointAgentTag;
   }
 
 
@@ -326,12 +364,13 @@ public class PutStream {
         Objects.equals(this.enabled, putStream.enabled) &&
         Objects.equals(this.filters, putStream.filters) &&
         Objects.equals(this.exporterConfig, putStream.exporterConfig) &&
-        Objects.equals(this.endpointAgentLabel, putStream.endpointAgentLabel);
+        Objects.equals(this.endpointAgentLabel, putStream.endpointAgentLabel) &&
+        Objects.equals(this.endpointAgentTag, putStream.endpointAgentTag);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, exporterConfig, endpointAgentLabel);
+    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, exporterConfig, endpointAgentLabel, endpointAgentTag);
   }
 
   @Override
@@ -346,6 +385,7 @@ public class PutStream {
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    endpointAgentLabel: ").append(toIndentedString(endpointAgentLabel)).append("\n");
+    sb.append("    endpointAgentTag: ").append(toIndentedString(endpointAgentTag)).append("\n");
     sb.append("}");
     return sb.toString();
   }

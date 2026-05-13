@@ -38,6 +38,8 @@ src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Expan
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/ExtendedUser.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/InterfaceIpMapping.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Link.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/NetworkProviderInfo.java
+src/main/java/com/thousandeyes/sdk/account/management/administrative/model/NetworkProviderType.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/PaginationLinks.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Permission.java
 src/main/java/com/thousandeyes/sdk/account/management/administrative/model/Permissions.java

@@ -156,7 +156,7 @@ public class ApiTestResultsApiTest {
                   },
                   "results" : [ {
                     "date" : "2022-07-17T22:00:54Z",
-                    "completion" : 100.0,
+                    "completion" : 100,
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -180,7 +180,7 @@ public class ApiTestResultsApiTest {
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "requests" : [ {
-                      "completion" : 100.0,
+                      "completion" : 100,
                       "stepType" : "default",
                       "responseTime" : 440.8,
                       "apiCallTime" : 900.9,
@@ -204,7 +204,7 @@ public class ApiTestResultsApiTest {
                       "stepTime" : 990.1,
                       "waitTime" : 18.1
                     }, {
-                      "completion" : 100.0,
+                      "completion" : 100,
                       "stepType" : "default",
                       "responseTime" : 440.8,
                       "apiCallTime" : 900.9,
@@ -232,7 +232,7 @@ public class ApiTestResultsApiTest {
                     "errorDetails" : "Connection error"
                   }, {
                     "date" : "2022-07-17T22:00:54Z",
-                    "completion" : 100.0,
+                    "completion" : 100,
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -256,7 +256,7 @@ public class ApiTestResultsApiTest {
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "requests" : [ {
-                      "completion" : 100.0,
+                      "completion" : 100,
                       "stepType" : "default",
                       "responseTime" : 440.8,
                       "apiCallTime" : 900.9,
@@ -280,7 +280,7 @@ public class ApiTestResultsApiTest {
                       "stepTime" : 990.1,
                       "waitTime" : 18.1
                     }, {
-                      "completion" : 100.0,
+                      "completion" : 100,
                       "stepType" : "default",
                       "responseTime" : 440.8,
                       "apiCallTime" : 900.9,
@@ -413,7 +413,7 @@ public class ApiTestResultsApiTest {
                   },
                   "results" : [ {
                     "date" : "2022-07-17T22:00:54Z",
-                    "completion" : 100.0,
+                    "completion" : 100,
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -440,7 +440,7 @@ public class ApiTestResultsApiTest {
                     "errorDetails" : "Connection error"
                   }, {
                     "date" : "2022-07-17T22:00:54Z",
-                    "completion" : 100.0,
+                    "completion" : 100,
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",

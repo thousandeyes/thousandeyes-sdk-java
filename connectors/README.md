@@ -2,7 +2,7 @@
 
 Integrations API
 
-- API version: 7.0.84
+- API version: 7.0.87
 
 **Note:** The Webhook Operations APIs are not available for ThousandEyes for Government instance.
 
@@ -94,9 +94,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.*;
 import com.thousandeyes.sdk.client.*;
 import com.thousandeyes.sdk.connectors.model.*;
-import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
+import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
-public class GenericConnectorsApiExample {
+public class CredentialVaultOperationsApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -108,14 +108,14 @@ public class GenericConnectorsApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        GenericConnectorsApi apiInstance = new GenericConnectorsApi(defaultClient);
-        GenericConnector genericConnector = new GenericConnector(); // GenericConnector | 
+        CredentialVaultOperationsApi apiInstance = new CredentialVaultOperationsApi(defaultClient);
+        CredentialVaultOperation credentialVaultOperation = new CredentialVaultOperation(); // CredentialVaultOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GenericConnector result = apiInstance.createGenericConnector(genericConnector, aid);
+            CredentialVaultOperation result = apiInstance.createCredentialVaultOperation(credentialVaultOperation, aid);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling GenericConnectorsApi#createGenericConnector");
+            System.err.println("Exception when calling CredentialVaultOperationsApi#createCredentialVaultOperation");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -132,6 +132,30 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CredentialVaultOperationsApi* | [**createCredentialVaultOperation**](docs/CredentialVaultOperationsApi.md#createCredentialVaultOperation) | **POST** /operations/credential-vault | Create Credential Vault operation
+*CredentialVaultOperationsApi* | [**createCredentialVaultOperationWithHttpInfo**](docs/CredentialVaultOperationsApi.md#createCredentialVaultOperationWithHttpInfo) | **POST** /operations/credential-vault | Create Credential Vault operation
+*CredentialVaultOperationsApi* | [**deleteCredentialVaultOperation**](docs/CredentialVaultOperationsApi.md#deleteCredentialVaultOperation) | **DELETE** /operations/credential-vault/{id} | Delete Credential Vault operation
+*CredentialVaultOperationsApi* | [**deleteCredentialVaultOperationWithHttpInfo**](docs/CredentialVaultOperationsApi.md#deleteCredentialVaultOperationWithHttpInfo) | **DELETE** /operations/credential-vault/{id} | Delete Credential Vault operation
+*CredentialVaultOperationsApi* | [**getCredentialVaultOperation**](docs/CredentialVaultOperationsApi.md#getCredentialVaultOperation) | **GET** /operations/credential-vault/{id} | Get Credential Vault operation
+*CredentialVaultOperationsApi* | [**getCredentialVaultOperationWithHttpInfo**](docs/CredentialVaultOperationsApi.md#getCredentialVaultOperationWithHttpInfo) | **GET** /operations/credential-vault/{id} | Get Credential Vault operation
+*CredentialVaultOperationsApi* | [**getCredentialVaultOperations**](docs/CredentialVaultOperationsApi.md#getCredentialVaultOperations) | **GET** /operations/credential-vault | List Credential Vault operations
+*CredentialVaultOperationsApi* | [**getCredentialVaultOperationsWithHttpInfo**](docs/CredentialVaultOperationsApi.md#getCredentialVaultOperationsWithHttpInfo) | **GET** /operations/credential-vault | List Credential Vault operations
+*CredentialVaultOperationsApi* | [**updateCredentialVaultOperation**](docs/CredentialVaultOperationsApi.md#updateCredentialVaultOperation) | **PUT** /operations/credential-vault/{id} | Update Credential Vault operation
+*CredentialVaultOperationsApi* | [**updateCredentialVaultOperationWithHttpInfo**](docs/CredentialVaultOperationsApi.md#updateCredentialVaultOperationWithHttpInfo) | **PUT** /operations/credential-vault/{id} | Update Credential Vault operation
+*CyberArkConjurConnectorsApi* | [**createConjurConnector**](docs/CyberArkConjurConnectorsApi.md#createConjurConnector) | **POST** /connectors/conjur | Create Conjur connector
+*CyberArkConjurConnectorsApi* | [**createConjurConnectorWithHttpInfo**](docs/CyberArkConjurConnectorsApi.md#createConjurConnectorWithHttpInfo) | **POST** /connectors/conjur | Create Conjur connector
+*CyberArkConjurConnectorsApi* | [**deleteConjurConnector**](docs/CyberArkConjurConnectorsApi.md#deleteConjurConnector) | **DELETE** /connectors/conjur/{id} | Delete a Conjur connector
+*CyberArkConjurConnectorsApi* | [**deleteConjurConnectorWithHttpInfo**](docs/CyberArkConjurConnectorsApi.md#deleteConjurConnectorWithHttpInfo) | **DELETE** /connectors/conjur/{id} | Delete a Conjur connector
+*CyberArkConjurConnectorsApi* | [**getConjurConnector**](docs/CyberArkConjurConnectorsApi.md#getConjurConnector) | **GET** /connectors/conjur/{id} | Retrieve a Conjur connector
+*CyberArkConjurConnectorsApi* | [**getConjurConnectorWithHttpInfo**](docs/CyberArkConjurConnectorsApi.md#getConjurConnectorWithHttpInfo) | **GET** /connectors/conjur/{id} | Retrieve a Conjur connector
+*CyberArkConjurConnectorsApi* | [**getConjurConnectorOperations**](docs/CyberArkConjurConnectorsApi.md#getConjurConnectorOperations) | **GET** /connectors/conjur/{id}/operations | List operation IDs for a Conjur connector
+*CyberArkConjurConnectorsApi* | [**getConjurConnectorOperationsWithHttpInfo**](docs/CyberArkConjurConnectorsApi.md#getConjurConnectorOperationsWithHttpInfo) | **GET** /connectors/conjur/{id}/operations | List operation IDs for a Conjur connector
+*CyberArkConjurConnectorsApi* | [**getConjurConnectors**](docs/CyberArkConjurConnectorsApi.md#getConjurConnectors) | **GET** /connectors/conjur | List Conjur connectors
+*CyberArkConjurConnectorsApi* | [**getConjurConnectorsWithHttpInfo**](docs/CyberArkConjurConnectorsApi.md#getConjurConnectorsWithHttpInfo) | **GET** /connectors/conjur | List Conjur connectors
+*CyberArkConjurConnectorsApi* | [**setConjurConnectorOperations**](docs/CyberArkConjurConnectorsApi.md#setConjurConnectorOperations) | **PUT** /connectors/conjur/{id}/operations | Assign operations to a Conjur connector
+*CyberArkConjurConnectorsApi* | [**setConjurConnectorOperationsWithHttpInfo**](docs/CyberArkConjurConnectorsApi.md#setConjurConnectorOperationsWithHttpInfo) | **PUT** /connectors/conjur/{id}/operations | Assign operations to a Conjur connector
+*CyberArkConjurConnectorsApi* | [**updateConjurConnector**](docs/CyberArkConjurConnectorsApi.md#updateConjurConnector) | **PUT** /connectors/conjur/{id} | Update a Conjur connector
+*CyberArkConjurConnectorsApi* | [**updateConjurConnectorWithHttpInfo**](docs/CyberArkConjurConnectorsApi.md#updateConjurConnectorWithHttpInfo) | **PUT** /connectors/conjur/{id} | Update a Conjur connector
 *GenericConnectorsApi* | [**createGenericConnector**](docs/GenericConnectorsApi.md#createGenericConnector) | **POST** /connectors/generic | Create connector
 *GenericConnectorsApi* | [**createGenericConnectorWithHttpInfo**](docs/GenericConnectorsApi.md#createGenericConnectorWithHttpInfo) | **POST** /connectors/generic | Create connector
 *GenericConnectorsApi* | [**deleteGenericConnector**](docs/GenericConnectorsApi.md#deleteGenericConnector) | **DELETE** /connectors/generic/{id} | Delete connector
@@ -140,8 +164,8 @@ Class | Method | HTTP request | Description
 *GenericConnectorsApi* | [**getGenericConnectorWithHttpInfo**](docs/GenericConnectorsApi.md#getGenericConnectorWithHttpInfo) | **GET** /connectors/generic/{id} | Retrieve connector
 *GenericConnectorsApi* | [**getGenericConnectors**](docs/GenericConnectorsApi.md#getGenericConnectors) | **GET** /connectors/generic | List connectors
 *GenericConnectorsApi* | [**getGenericConnectorsWithHttpInfo**](docs/GenericConnectorsApi.md#getGenericConnectorsWithHttpInfo) | **GET** /connectors/generic | List connectors
-*GenericConnectorsApi* | [**listGenericConnectorOperations**](docs/GenericConnectorsApi.md#listGenericConnectorOperations) | **GET** /connectors/generic/{id}/operations | List operation IDs assigned to a connector
-*GenericConnectorsApi* | [**listGenericConnectorOperationsWithHttpInfo**](docs/GenericConnectorsApi.md#listGenericConnectorOperationsWithHttpInfo) | **GET** /connectors/generic/{id}/operations | List operation IDs assigned to a connector
+*GenericConnectorsApi* | [**listGenericConnectorOperations**](docs/GenericConnectorsApi.md#listGenericConnectorOperations) | **GET** /connectors/generic/{id}/operations | List operation IDs for a connector
+*GenericConnectorsApi* | [**listGenericConnectorOperationsWithHttpInfo**](docs/GenericConnectorsApi.md#listGenericConnectorOperationsWithHttpInfo) | **GET** /connectors/generic/{id}/operations | List operation IDs for a connector
 *GenericConnectorsApi* | [**setGenericConnectorOperations**](docs/GenericConnectorsApi.md#setGenericConnectorOperations) | **PUT** /connectors/generic/{id}/operations | Assign operations to a connector
 *GenericConnectorsApi* | [**setGenericConnectorOperationsWithHttpInfo**](docs/GenericConnectorsApi.md#setGenericConnectorOperationsWithHttpInfo) | **PUT** /connectors/generic/{id}/operations | Assign operations to a connector
 *GenericConnectorsApi* | [**updateGenericConnector**](docs/GenericConnectorsApi.md#updateGenericConnector) | **PUT** /connectors/generic/{id} | Update connector
