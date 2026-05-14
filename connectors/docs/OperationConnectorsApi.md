@@ -78,16 +78,16 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json, application/hal+json, application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | Not found |  -  |
 | **200** | A list of assigned connectors. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
 
 ## getOperationConnectorsWithHttpInfo
@@ -160,26 +160,26 @@ ApiResponse<[**Assignments**](Assignments.md)>
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json, application/hal+json, application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | Not found |  -  |
 | **200** | A list of assigned connectors. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
 
 
 ## setOperationConnectors
 
-> Assignments setOperationConnectors(type, id, requestBody, aid)
+> Assignments setOperationConnectors(type, id, requestBody, confirmDisabledObjects, aid)
 
 Assign connectors to an operation
 
-Assigns one or more connectors to an operation. This replaces any existing assignments.
+Assigns one or more connectors to an operation. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if connectors are changed.
 
 ### Example
 
@@ -205,9 +205,10 @@ public class Example {
         String type = "webhooks"; // String | The operation type.
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         List<String> requestBody = ["ca39314d-eb4f-496f-9435-b5d20b1bfbff"]; // List<String> | List of connector IDs to assign to the operation.
+        Boolean confirmDisabledObjects = false; // Boolean | Confirmation to disable affected objects (for example, tests) for credential-vault operations.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.setOperationConnectors(type, id, requestBody, aid);
+            Assignments result = apiInstance.setOperationConnectors(type, id, requestBody, confirmDisabledObjects, aid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OperationConnectorsApi#setOperationConnectors");
@@ -228,6 +229,7 @@ public class Example {
 | **type** | **String**| The operation type. | |
 | **id** | **String**| The operation ID. | |
 | **requestBody** | [**List&lt;String&gt;**](String.md)| List of connector IDs to assign to the operation. | |
+| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for credential-vault operations. | [optional] [default to false] |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
 ### Return type
@@ -242,25 +244,25 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/problem+json, application/hal+json, application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | Not found |  -  |
 | **200** | Operation Connectors updated successfully. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
 
 ## setOperationConnectorsWithHttpInfo
 
-> ApiResponse<Assignments> setOperationConnectors setOperationConnectorsWithHttpInfo(type, id, requestBody, aid)
+> ApiResponse<Assignments> setOperationConnectors setOperationConnectorsWithHttpInfo(type, id, requestBody, confirmDisabledObjects, aid)
 
 Assign connectors to an operation
 
-Assigns one or more connectors to an operation. This replaces any existing assignments.
+Assigns one or more connectors to an operation. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if connectors are changed.
 
 ### Example
 
@@ -287,9 +289,10 @@ public class Example {
         String type = "webhooks"; // String | The operation type.
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         List<String> requestBody = ["ca39314d-eb4f-496f-9435-b5d20b1bfbff"]; // List<String> | List of connector IDs to assign to the operation.
+        Boolean confirmDisabledObjects = false; // Boolean | Confirmation to disable affected objects (for example, tests) for credential-vault operations.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.setOperationConnectorsWithHttpInfo(type, id, requestBody, aid);
+            ApiResponse<Assignments> response = apiInstance.setOperationConnectorsWithHttpInfo(type, id, requestBody, confirmDisabledObjects, aid);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -312,6 +315,7 @@ public class Example {
 | **type** | **String**| The operation type. | |
 | **id** | **String**| The operation ID. | |
 | **requestBody** | [**List&lt;String&gt;**](String.md)| List of connector IDs to assign to the operation. | |
+| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for credential-vault operations. | [optional] [default to false] |
 | **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
 ### Return type
@@ -326,15 +330,15 @@ ApiResponse<[**Assignments**](Assignments.md)>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/problem+json, application/hal+json, application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | Not found |  -  |
 | **200** | Operation Connectors updated successfully. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
 

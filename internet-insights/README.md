@@ -2,7 +2,7 @@
 
 Internet Insights API
 
-- API version: 7.0.84
+- API version: 7.0.88
 
 **Note:** All Internet Insights APIs are not available for ThousandEyes for Government instance.
 

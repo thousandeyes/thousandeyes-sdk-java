@@ -12,8 +12,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 | [**getGenericConnectorWithHttpInfo**](GenericConnectorsApi.md#getGenericConnectorWithHttpInfo) | **GET** /connectors/generic/{id} | Retrieve connector |
 | [**getGenericConnectors**](GenericConnectorsApi.md#getGenericConnectors) | **GET** /connectors/generic | List connectors |
 | [**getGenericConnectorsWithHttpInfo**](GenericConnectorsApi.md#getGenericConnectorsWithHttpInfo) | **GET** /connectors/generic | List connectors |
-| [**listGenericConnectorOperations**](GenericConnectorsApi.md#listGenericConnectorOperations) | **GET** /connectors/generic/{id}/operations | List operation IDs assigned to a connector |
-| [**listGenericConnectorOperationsWithHttpInfo**](GenericConnectorsApi.md#listGenericConnectorOperationsWithHttpInfo) | **GET** /connectors/generic/{id}/operations | List operation IDs assigned to a connector |
+| [**listGenericConnectorOperations**](GenericConnectorsApi.md#listGenericConnectorOperations) | **GET** /connectors/generic/{id}/operations | List operation IDs for a connector |
+| [**listGenericConnectorOperationsWithHttpInfo**](GenericConnectorsApi.md#listGenericConnectorOperationsWithHttpInfo) | **GET** /connectors/generic/{id}/operations | List operation IDs for a connector |
 | [**setGenericConnectorOperations**](GenericConnectorsApi.md#setGenericConnectorOperations) | **PUT** /connectors/generic/{id}/operations | Assign operations to a connector |
 | [**setGenericConnectorOperationsWithHttpInfo**](GenericConnectorsApi.md#setGenericConnectorOperationsWithHttpInfo) | **PUT** /connectors/generic/{id}/operations | Assign operations to a connector |
 | [**updateGenericConnector**](GenericConnectorsApi.md#updateGenericConnector) | **PUT** /connectors/generic/{id} | Update connector |
@@ -248,7 +248,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | No Content |  -  |
+| **204** | No Content. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
@@ -327,7 +327,7 @@ ApiResponse<Void>
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | No Content |  -  |
+| **204** | No Content. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
@@ -651,7 +651,7 @@ ApiResponse<[**GenericConnectors**](GenericConnectors.md)>
 
 > Assignments listGenericConnectorOperations(id, aid)
 
-List operation IDs assigned to a connector
+List operation IDs for a connector
 
 Returns a list of operation IDs assigned to a connector.
 
@@ -728,7 +728,7 @@ public class Example {
 
 > ApiResponse<Assignments> listGenericConnectorOperations listGenericConnectorOperationsWithHttpInfo(id, aid)
 
-List operation IDs assigned to a connector
+List operation IDs for a connector
 
 Returns a list of operation IDs assigned to a connector.
 

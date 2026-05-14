@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.streaming.model.AuditOperationWithUpdate;
 import com.thousandeyes.sdk.streaming.model.DataModelVersion;
 import com.thousandeyes.sdk.streaming.model.EndpointAgentLabel;
+import com.thousandeyes.sdk.streaming.model.EndpointAgentTag;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.Filters;
@@ -58,6 +59,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetStreamResponse.JSON_PROPERTY_FILTERS,
   GetStreamResponse.JSON_PROPERTY_EXPORTER_CONFIG,
   GetStreamResponse.JSON_PROPERTY_ENDPOINT_AGENT_LABEL,
+  GetStreamResponse.JSON_PROPERTY_ENDPOINT_AGENT_TAG,
   GetStreamResponse.JSON_PROPERTY_AUDIT_OPERATION,
   GetStreamResponse.JSON_PROPERTY_STREAM_STATUS
 })
@@ -104,6 +106,9 @@ public class GetStreamResponse {
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABEL = "endpointAgentLabel";
   private List<EndpointAgentLabel> endpointAgentLabel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ENDPOINT_AGENT_TAG = "endpointAgentTag";
+  private List<EndpointAgentTag> endpointAgentTag = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUDIT_OPERATION = "auditOperation";
   private AuditOperationWithUpdate auditOperation;
@@ -475,7 +480,7 @@ public class GetStreamResponse {
   }
 
    /**
-   * A collection of Endpoint Agent label IDs that determines what local network data is included in the data stream.
+   * A collection of Endpoint Agent label IDs that determines what local network data is included in the data stream. &#x60;endpointAgentLabel&#x60; and &#x60;endpointAgentTag&#x60; represent the same data. Configure only one; both are synchronized.
    * @return endpointAgentLabel
   **/
   @jakarta.annotation.Nullable
@@ -491,6 +496,39 @@ public class GetStreamResponse {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEndpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
     this.endpointAgentLabel = endpointAgentLabel;
+  }
+
+
+  public GetStreamResponse endpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+    this.endpointAgentTag = endpointAgentTag;
+    return this;
+  }
+
+  public GetStreamResponse addEndpointAgentTagItem(EndpointAgentTag endpointAgentTagItem) {
+    if (this.endpointAgentTag == null) {
+      this.endpointAgentTag = new ArrayList<>();
+    }
+    this.endpointAgentTag.add(endpointAgentTagItem);
+    return this;
+  }
+
+   /**
+   * A collection of Endpoint Agent Tag IDs that determines what local network data is included in the data stream. &#x60;endpointAgentLabel&#x60; and &#x60;endpointAgentTag&#x60; represent the same data. Configure only one; both are synchronized.
+   * @return endpointAgentTag
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_TAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<EndpointAgentTag> getEndpointAgentTag() {
+    return endpointAgentTag;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_TAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+    this.endpointAgentTag = endpointAgentTag;
   }
 
 
@@ -570,13 +608,14 @@ public class GetStreamResponse {
         Objects.equals(this.filters, getStreamResponse.filters) &&
         Objects.equals(this.exporterConfig, getStreamResponse.exporterConfig) &&
         Objects.equals(this.endpointAgentLabel, getStreamResponse.endpointAgentLabel) &&
+        Objects.equals(this.endpointAgentTag, getStreamResponse.endpointAgentTag) &&
         Objects.equals(this.auditOperation, getStreamResponse.auditOperation) &&
         Objects.equals(this.streamStatus, getStreamResponse.streamStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, endpointAgentLabel, auditOperation, streamStatus);
+    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, endpointAgentLabel, endpointAgentTag, auditOperation, streamStatus);
   }
 
   @Override
@@ -597,6 +636,7 @@ public class GetStreamResponse {
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    endpointAgentLabel: ").append(toIndentedString(endpointAgentLabel)).append("\n");
+    sb.append("    endpointAgentTag: ").append(toIndentedString(endpointAgentTag)).append("\n");
     sb.append("    auditOperation: ").append(toIndentedString(auditOperation)).append("\n");
     sb.append("    streamStatus: ").append(toIndentedString(streamStatus)).append("\n");
     sb.append("}");

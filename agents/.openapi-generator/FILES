@@ -50,6 +50,8 @@ src/main/java/com/thousandeyes/sdk/agents/model/ErrorDetailCode.java
 src/main/java/com/thousandeyes/sdk/agents/model/InterfaceIpMapping.java
 src/main/java/com/thousandeyes/sdk/agents/model/Link.java
 src/main/java/com/thousandeyes/sdk/agents/model/ListNotificationRulesResponse.java
+src/main/java/com/thousandeyes/sdk/agents/model/NetworkProviderInfo.java
+src/main/java/com/thousandeyes/sdk/agents/model/NetworkProviderType.java
 src/main/java/com/thousandeyes/sdk/agents/model/NotificationRule.java
 src/main/java/com/thousandeyes/sdk/agents/model/NotificationRuleDetail.java
 src/main/java/com/thousandeyes/sdk/agents/model/NotificationRules.java

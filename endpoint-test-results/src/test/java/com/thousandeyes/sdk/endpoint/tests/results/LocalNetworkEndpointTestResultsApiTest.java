@@ -106,11 +106,11 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     "conditionalOperator" : "and",
                     "filters" : [ {
                       "name" : "loss",
-                      "value" : 10.0,
+                      "value" : 10,
                       "operator" : "gte"
                     }, {
                       "name" : "loss",
-                      "value" : 10.0,
+                      "value" : 10,
                       "operator" : "gte"
                     } ]
                   }
@@ -144,7 +144,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     },
                     "isIcmpBlocked" : true,
                     "gatewayScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "tcpConnect" : {
@@ -154,11 +154,11 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "infoFlags" : [ "TE_INFO_ICMP_BLOCKED_BY_FIREWALL" ]
                     },
                     "vpnScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "proxyScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "batteryMetrics" : {
@@ -279,12 +279,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       } ]
                     },
                     "connectionScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "icmpPing" : {
                       "maxRtt" : 66,
-                      "loss" : 1.0,
+                      "loss" : 1,
                       "pktsReceived" : 10,
                       "avgRtt" : 7,
                       "meanDevRtt" : 11,
@@ -296,7 +296,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     "networkTopologyId" : "00160:54c3a4b180c6:1490536500:c7a58c49",
                     "roundId" : 1384309800,
                     "agentScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     }
                   }, {
@@ -307,7 +307,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     },
                     "isIcmpBlocked" : true,
                     "gatewayScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "tcpConnect" : {
@@ -317,11 +317,11 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "infoFlags" : [ "TE_INFO_ICMP_BLOCKED_BY_FIREWALL" ]
                     },
                     "vpnScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "proxyScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "batteryMetrics" : {
@@ -442,12 +442,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       } ]
                     },
                     "connectionScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "icmpPing" : {
                       "maxRtt" : 66,
-                      "loss" : 1.0,
+                      "loss" : 1,
                       "pktsReceived" : 10,
                       "avgRtt" : 7,
                       "meanDevRtt" : 11,
@@ -459,7 +459,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     "networkTopologyId" : "00160:54c3a4b180c6:1490536500:c7a58c49",
                     "roundId" : 1384309800,
                     "agentScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     }
                   } ],
@@ -579,7 +579,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "resolutionTime" : 3
                     },
                     "vpnScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "batteryMetrics" : {
@@ -672,12 +672,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     },
                     "roundId" : 1384309800,
                     "agentScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "isIcmpBlocked" : true,
                     "gatewayScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "tcpConnect" : {
@@ -687,7 +687,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "infoFlags" : [ "TE_INFO_ICMP_BLOCKED_BY_FIREWALL" ]
                     },
                     "proxyScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "coordinates" : {
@@ -839,12 +839,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       } ]
                     },
                     "connectionScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "icmpPing" : {
                       "maxRtt" : 66,
-                      "loss" : 1.0,
+                      "loss" : 1,
                       "pktsReceived" : 10,
                       "avgRtt" : 7,
                       "meanDevRtt" : 11,
@@ -861,7 +861,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "resolutionTime" : 3
                     },
                     "vpnScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "batteryMetrics" : {
@@ -954,12 +954,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     },
                     "roundId" : 1384309800,
                     "agentScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "isIcmpBlocked" : true,
                     "gatewayScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "tcpConnect" : {
@@ -969,7 +969,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       "infoFlags" : [ "TE_INFO_ICMP_BLOCKED_BY_FIREWALL" ]
                     },
                     "proxyScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "coordinates" : {
@@ -1121,12 +1121,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
                       } ]
                     },
                     "connectionScore" : {
-                      "score" : 100.0,
+                      "score" : 100,
                       "quality" : "great"
                     },
                     "icmpPing" : {
                       "maxRtt" : 66,
-                      "loss" : 1.0,
+                      "loss" : 1,
                       "pktsReceived" : 10,
                       "avgRtt" : 7,
                       "meanDevRtt" : 11,

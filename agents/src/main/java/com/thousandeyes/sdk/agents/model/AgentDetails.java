@@ -35,6 +35,7 @@ import com.thousandeyes.sdk.agents.model.EnterpriseAgentIpv6Policy;
 import com.thousandeyes.sdk.agents.model.EnterpriseAgentState;
 import com.thousandeyes.sdk.agents.model.ErrorDetail;
 import com.thousandeyes.sdk.agents.model.InterfaceIpMapping;
+import com.thousandeyes.sdk.agents.model.NetworkProviderInfo;
 import com.thousandeyes.sdk.agents.model.NotificationRules;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
 import com.thousandeyes.sdk.agents.model.SimpleTest;

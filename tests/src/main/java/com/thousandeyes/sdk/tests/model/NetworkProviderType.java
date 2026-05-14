@@ -1,6 +1,6 @@
 /*
- * Dashboards API
- * Manage ThousandEyes Dashboards.
+ * Tests API
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.dashboards.model;
+package com.thousandeyes.sdk.tests.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -22,19 +22,25 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Determines the card sorting criterion.
+ * Classification of the agent&#39;s network provider.
  */
-public enum ApiWidgetSortProperty {
+public enum NetworkProviderType {
   
-  ALPHABETICAL("alphabetical"),
+  UNKNOWN("unknown"),
   
-  VALUE("value"),
+  ISP("isp"),
   
-  UNKNOWN("unknown");
+  CDN("cdn"),
+  
+  STUB("stub"),
+  
+  CLOUD_PROVIDER("cloud-provider"),
+  
+  CARRIER("carrier");
 
   private String value;
 
-  ApiWidgetSortProperty(String value) {
+  NetworkProviderType(String value) {
     this.value = value;
   }
 
@@ -49,8 +55,8 @@ public enum ApiWidgetSortProperty {
   }
 
   @JsonCreator
-  public static ApiWidgetSortProperty fromValue(String value) {
-    for (ApiWidgetSortProperty b : ApiWidgetSortProperty.values()) {
+  public static NetworkProviderType fromValue(String value) {
+    for (NetworkProviderType b : NetworkProviderType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
