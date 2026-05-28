@@ -117,39 +117,41 @@ public class OperationConnectorsApi {
       requestBuilder.queryParams(localVarQueryParams);
     }
 
-    requestBuilder.header("Accept", List.of("application/problem+json, application/hal+json, application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
   /**
    * Assign connectors to an operation
-   * Assigns one or more connectors to an operation. This replaces any existing assignments.
+   * Assigns one or more connectors to an operation. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if connectors are changed.
    * @param type The operation type. (required)
    * @param id The operation ID. (required)
    * @param requestBody List of connector IDs to assign to the operation. (required)
+   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for credential-vault operations. (optional, default to false)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments setOperationConnectors(String type, String id, List<String> requestBody, String aid) throws ApiException {
-    ApiResponse<Assignments> response = setOperationConnectorsWithHttpInfo(type, id, requestBody, aid);
+  public Assignments setOperationConnectors(String type, String id, List<String> requestBody, Boolean confirmDisabledObjects, String aid) throws ApiException {
+    ApiResponse<Assignments> response = setOperationConnectorsWithHttpInfo(type, id, requestBody, confirmDisabledObjects, aid);
     return response.getData();
   }
 
   /**
    * Assign connectors to an operation
-   * Assigns one or more connectors to an operation. This replaces any existing assignments.
+   * Assigns one or more connectors to an operation. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if connectors are changed.
    * @param type The operation type. (required)
    * @param id The operation ID. (required)
    * @param requestBody List of connector IDs to assign to the operation. (required)
+   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for credential-vault operations. (optional, default to false)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> setOperationConnectorsWithHttpInfo(String type, String id, List<String> requestBody, String aid) throws ApiException {
+  public ApiResponse<Assignments> setOperationConnectorsWithHttpInfo(String type, String id, List<String> requestBody, Boolean confirmDisabledObjects, String aid) throws ApiException {
     setOperationConnectorsValidateRequest(type, id, requestBody);
 
-    var requestBuilder = setOperationConnectorsRequestBuilder(type, id, requestBody, aid);
+    var requestBuilder = setOperationConnectorsRequestBuilder(type, id, requestBody, confirmDisabledObjects, aid);
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -169,7 +171,7 @@ public class OperationConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder setOperationConnectorsRequestBuilder(String type, String id, List<String> requestBody, String aid) throws ApiException {
+  private ApiRequest.ApiRequestBuilder setOperationConnectorsRequestBuilder(String type, String id, List<String> requestBody, Boolean confirmDisabledObjects, String aid) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("PUT");
 
@@ -179,6 +181,7 @@ public class OperationConnectorsApi {
     requestBuilder.path(path);
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("confirmDisabledObjects", confirmDisabledObjects));
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
 
     if (!localVarQueryParams.isEmpty()) {
@@ -186,7 +189,7 @@ public class OperationConnectorsApi {
     }
 
     requestBuilder.header("Content-Type", List.of("application/json"));
-    requestBuilder.header("Accept", List.of("application/problem+json, application/hal+json, application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     requestBuilder.requestBody(requestBody);
     return requestBuilder;

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
+import com.thousandeyes.sdk.tests.instant.model.RequestMethod;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
 import com.thousandeyes.sdk.tests.instant.model.TestCustomHeaders;
@@ -32,6 +33,7 @@ import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.instant.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,8 +93,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTest.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   HttpServerInstantTest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   HttpServerInstantTest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  HttpServerInstantTest.JSON_PROPERTY_VAULT_CREDENTIALS,
   HttpServerInstantTest.JSON_PROPERTY_HEADERS,
   HttpServerInstantTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  HttpServerInstantTest.JSON_PROPERTY_REQUEST_METHOD,
   HttpServerInstantTest.JSON_PROPERTY_POST_BODY,
   HttpServerInstantTest.JSON_PROPERTY_IPV6_POLICY
 })
@@ -242,11 +246,17 @@ public class HttpServerInstantTest {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_REQUEST_METHOD = "requestMethod";
+  private RequestMethod requestMethod;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -1385,6 +1395,39 @@ public class HttpServerInstantTest {
   }
 
 
+  public HttpServerInstantTest vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public HttpServerInstantTest addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public HttpServerInstantTest headers(List<String> headers) {
     this.headers = headers;
     return this;
@@ -1443,13 +1486,38 @@ public class HttpServerInstantTest {
   }
 
 
+  public HttpServerInstantTest requestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+    return this;
+  }
+
+   /**
+   * Get requestMethod
+   * @return requestMethod
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public RequestMethod getRequestMethod() {
+    return requestMethod;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRequestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+  }
+
+
   public HttpServerInstantTest postBody(String postBody) {
     this.postBody = postBody;
     return this;
   }
 
    /**
-   * Enter the body for the HTTP POST request in this field. No special escaping is necessary. If the post body is provided with content, the &#x60;requestMethod&#x60; is automatically set to POST.
+   * Enter the body for the HTTP POST request in this field. No special escaping is required. If content is provided and &#x60;requestMethod&#x60; is not specified, &#x60;requestMethod&#x60; is automatically set to &#x60;post&#x60;.
    * @return postBody
   **/
   @jakarta.annotation.Nullable
@@ -1553,15 +1621,17 @@ public class HttpServerInstantTest {
         Objects.equals(this.overrideAgentProxy, httpServerInstantTest.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, httpServerInstantTest.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, httpServerInstantTest.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, httpServerInstantTest.vaultCredentials) &&
         Objects.equals(this.headers, httpServerInstantTest.headers) &&
         Objects.equals(this.randomizedStartTime, httpServerInstantTest.randomizedStartTime) &&
+        Objects.equals(this.requestMethod, httpServerInstantTest.requestMethod) &&
         Objects.equals(this.postBody, httpServerInstantTest.postBody) &&
         Objects.equals(this.ipv6Policy, httpServerInstantTest.ipv6Policy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy);
   }
 
   @Override
@@ -1616,8 +1686,10 @@ public class HttpServerInstantTest {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    requestMethod: ").append(toIndentedString(requestMethod)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("}");

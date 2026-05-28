@@ -33,6 +33,7 @@ import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
 import com.thousandeyes.sdk.tests.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,6 +83,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestResponse.JSON_PROPERTY_TIME_LIMIT,
   ApiTestResponse.JSON_PROPERTY_URL,
   ApiTestResponse.JSON_PROPERTY_CREDENTIALS,
+  ApiTestResponse.JSON_PROPERTY_VAULT_CREDENTIALS,
   ApiTestResponse.JSON_PROPERTY_BGP_MEASUREMENTS,
   ApiTestResponse.JSON_PROPERTY_USE_PUBLIC_BGP,
   ApiTestResponse.JSON_PROPERTY_MONITORS,
@@ -202,6 +204,9 @@ public class ApiTestResponse {
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -1134,6 +1139,39 @@ public class ApiTestResponse {
   }
 
 
+  public ApiTestResponse vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public ApiTestResponse addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public ApiTestResponse bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1282,6 +1320,7 @@ public class ApiTestResponse {
         Objects.equals(this.timeLimit, apiTestResponse.timeLimit) &&
         Objects.equals(this.url, apiTestResponse.url) &&
         Objects.equals(this.credentials, apiTestResponse.credentials) &&
+        Objects.equals(this.vaultCredentials, apiTestResponse.vaultCredentials) &&
         Objects.equals(this.bgpMeasurements, apiTestResponse.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, apiTestResponse.usePublicBgp) &&
         Objects.equals(this.monitors, apiTestResponse.monitors) &&
@@ -1290,7 +1329,7 @@ public class ApiTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, vaultCredentials, bgpMeasurements, usePublicBgp, monitors, agents);
   }
 
   @Override
@@ -1335,6 +1374,7 @@ public class ApiTestResponse {
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");

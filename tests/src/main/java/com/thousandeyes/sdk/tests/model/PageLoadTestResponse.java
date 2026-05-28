@@ -38,6 +38,7 @@ import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
 import com.thousandeyes.sdk.tests.model.TestSslVersionId;
 import com.thousandeyes.sdk.tests.model.TestSubInterval;
+import com.thousandeyes.sdk.tests.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,6 +102,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestResponse.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   PageLoadTestResponse.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   PageLoadTestResponse.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  PageLoadTestResponse.JSON_PROPERTY_VAULT_CREDENTIALS,
   PageLoadTestResponse.JSON_PROPERTY_EMULATED_DEVICE_ID,
   PageLoadTestResponse.JSON_PROPERTY_PAGE_LOAD_TARGET_TIME,
   PageLoadTestResponse.JSON_PROPERTY_PAGE_LOAD_TIME_LIMIT,
@@ -278,6 +280,9 @@ public class PageLoadTestResponse {
 
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
+
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_EMULATED_DEVICE_ID = "emulatedDeviceId";
   private String emulatedDeviceId;
@@ -1577,6 +1582,39 @@ public class PageLoadTestResponse {
   }
 
 
+  public PageLoadTestResponse vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public PageLoadTestResponse addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public PageLoadTestResponse emulatedDeviceId(String emulatedDeviceId) {
     this.emulatedDeviceId = emulatedDeviceId;
     return this;
@@ -2118,6 +2156,7 @@ public class PageLoadTestResponse {
         Objects.equals(this.overrideAgentProxy, pageLoadTestResponse.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, pageLoadTestResponse.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, pageLoadTestResponse.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, pageLoadTestResponse.vaultCredentials) &&
         Objects.equals(this.emulatedDeviceId, pageLoadTestResponse.emulatedDeviceId) &&
         Objects.equals(this.pageLoadTargetTime, pageLoadTestResponse.pageLoadTargetTime) &&
         Objects.equals(this.pageLoadTimeLimit, pageLoadTestResponse.pageLoadTimeLimit) &&
@@ -2141,7 +2180,7 @@ public class PageLoadTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, bgpMeasurements, usePublicBgp, monitors, httpInterval, subinterval, agents);
   }
 
   @Override
@@ -2200,6 +2239,7 @@ public class PageLoadTestResponse {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    emulatedDeviceId: ").append(toIndentedString(emulatedDeviceId)).append("\n");
     sb.append("    pageLoadTargetTime: ").append(toIndentedString(pageLoadTargetTime)).append("\n");
     sb.append("    pageLoadTimeLimit: ").append(toIndentedString(pageLoadTimeLimit)).append("\n");

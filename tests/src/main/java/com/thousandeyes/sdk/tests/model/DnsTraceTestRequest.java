@@ -39,7 +39,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceTestRequest.JSON_PROPERTY_INTERVAL,
   DnsTraceTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   DnsTraceTestRequest.JSON_PROPERTY_ENABLED,
-  DnsTraceTestRequest.JSON_PROPERTY_ALERT_RULES,
   DnsTraceTestRequest.JSON_PROPERTY_CREATED_BY,
   DnsTraceTestRequest.JSON_PROPERTY_CREATED_DATE,
   DnsTraceTestRequest.JSON_PROPERTY_DESCRIPTION,
@@ -51,13 +50,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceTestRequest.JSON_PROPERTY_TEST_NAME,
   DnsTraceTestRequest.JSON_PROPERTY_TYPE,
   DnsTraceTestRequest.JSON_PROPERTY_LINKS,
-  DnsTraceTestRequest.JSON_PROPERTY_LABELS,
-  DnsTraceTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsTraceTestRequest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   DnsTraceTestRequest.JSON_PROPERTY_DOMAIN,
   DnsTraceTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsTraceTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  DnsTraceTestRequest.JSON_PROPERTY_LABELS,
   DnsTraceTestRequest.JSON_PROPERTY_TAGS,
+  DnsTraceTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  DnsTraceTestRequest.JSON_PROPERTY_ALERT_RULES,
   DnsTraceTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -70,9 +70,6 @@ public class DnsTraceTestRequest {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -107,12 +104,6 @@ public class DnsTraceTestRequest {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
-
   public static final String JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL = "dnsTransportProtocol";
   private TestDnsTransportProtocol dnsTransportProtocol = TestDnsTransportProtocol.UDP;
 
@@ -125,8 +116,17 @@ public class DnsTraceTestRequest {
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
 
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
+  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
@@ -228,39 +228,6 @@ public class DnsTraceTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public DnsTraceTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public DnsTraceTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
   }
 
 
@@ -459,72 +426,6 @@ public class DnsTraceTestRequest {
   }
 
 
-  public DnsTraceTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public DnsTraceTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public DnsTraceTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public DnsTraceTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-  }
-
-
   public DnsTraceTestRequest dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
     this.dnsTransportProtocol = dnsTransportProtocol;
     return this;
@@ -625,6 +526,39 @@ public class DnsTraceTestRequest {
   }
 
 
+  public DnsTraceTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public DnsTraceTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public DnsTraceTestRequest tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -655,6 +589,72 @@ public class DnsTraceTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public DnsTraceTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public DnsTraceTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
+  public DnsTraceTestRequest alertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+    return this;
+  }
+
+  public DnsTraceTestRequest addAlertRulesItem(String alertRulesItem) {
+    if (this.alertRules == null) {
+      this.alertRules = new ArrayList<>();
+    }
+    this.alertRules.add(alertRulesItem);
+    return this;
+  }
+
+   /**
+   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
+   * @return alertRules
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAlertRules() {
+    return alertRules;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
   }
 
 
@@ -706,7 +706,6 @@ public class DnsTraceTestRequest {
     return Objects.equals(this.interval, dnsTraceTestRequest.interval) &&
         Objects.equals(this.alertsEnabled, dnsTraceTestRequest.alertsEnabled) &&
         Objects.equals(this.enabled, dnsTraceTestRequest.enabled) &&
-        Objects.equals(this.alertRules, dnsTraceTestRequest.alertRules) &&
         Objects.equals(this.createdBy, dnsTraceTestRequest.createdBy) &&
         Objects.equals(this.createdDate, dnsTraceTestRequest.createdDate) &&
         Objects.equals(this.description, dnsTraceTestRequest.description) &&
@@ -718,19 +717,20 @@ public class DnsTraceTestRequest {
         Objects.equals(this.testName, dnsTraceTestRequest.testName) &&
         Objects.equals(this.type, dnsTraceTestRequest.type) &&
         Objects.equals(this.links, dnsTraceTestRequest.links) &&
-        Objects.equals(this.labels, dnsTraceTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, dnsTraceTestRequest.sharedWithAccounts) &&
         Objects.equals(this.dnsTransportProtocol, dnsTraceTestRequest.dnsTransportProtocol) &&
         Objects.equals(this.domain, dnsTraceTestRequest.domain) &&
         Objects.equals(this.dnsQueryClass, dnsTraceTestRequest.dnsQueryClass) &&
         Objects.equals(this.randomizedStartTime, dnsTraceTestRequest.randomizedStartTime) &&
+        Objects.equals(this.labels, dnsTraceTestRequest.labels) &&
         Objects.equals(this.tags, dnsTraceTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, dnsTraceTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.alertRules, dnsTraceTestRequest.alertRules) &&
         Objects.equals(this.agents, dnsTraceTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, randomizedStartTime, tags, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, dnsTransportProtocol, domain, dnsQueryClass, randomizedStartTime, labels, tags, sharedWithAccounts, alertRules, agents);
   }
 
   @Override
@@ -740,7 +740,6 @@ public class DnsTraceTestRequest {
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -752,13 +751,14 @@ public class DnsTraceTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

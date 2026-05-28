@@ -28,6 +28,10 @@ public enum TagFilterType {
   
   AGENT_ID("agent-id"),
   
+  LOCATION("location"),
+  
+  SERIAL_NUMBER("serial-number"),
+  
   PUBLIC_NETWORK("public-network"),
   
   LOCAL_NETWORK("local-network"),
@@ -38,11 +42,19 @@ public enum TagFilterType {
   
   PLATFORM("platform"),
   
+  NIC_MODEL("nic-model"),
+  
+  NIC_DRIVER_VERSION("nic-driver-version"),
+  
   AGENT_TYPE("agent-type"),
+  
+  PROXY_TARGET("proxy-target"),
   
   VPN_VENDOR("vpn-vendor"),
   
   VPN_GATEWAY_ADDRESS("vpn-gateway-address"),
+  
+  VPN_TARGET("vpn-target"),
   
   VPN_CLIENT_NETWORK("vpn-client-network"),
   

@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DynamicEndpointTestWebex.JSON_PROPERTY_CONFERENCE_ID,
   DynamicEndpointTestWebex.JSON_PROPERTY_CORRELATION_ID,
   DynamicEndpointTestWebex.JSON_PROPERTY_LOCAL_SIP_SESSION_ID,
+  DynamicEndpointTestWebex.JSON_PROPERTY_MEETING_APP,
   DynamicEndpointTestWebex.JSON_PROPERTY_REMOTE_SIP_SESSION_ID
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -43,6 +44,9 @@ public class DynamicEndpointTestWebex {
   public static final String JSON_PROPERTY_LOCAL_SIP_SESSION_ID = "localSipSessionId";
   private String localSipSessionId;
 
+  public static final String JSON_PROPERTY_MEETING_APP = "meetingApp";
+  private String meetingApp;
+
   public static final String JSON_PROPERTY_REMOTE_SIP_SESSION_ID = "remoteSipSessionId";
   private String remoteSipSessionId;
 
@@ -54,12 +58,14 @@ public class DynamicEndpointTestWebex {
     @JsonProperty(JSON_PROPERTY_CONFERENCE_ID) String conferenceId, 
     @JsonProperty(JSON_PROPERTY_CORRELATION_ID) String correlationId, 
     @JsonProperty(JSON_PROPERTY_LOCAL_SIP_SESSION_ID) String localSipSessionId, 
+    @JsonProperty(JSON_PROPERTY_MEETING_APP) String meetingApp, 
     @JsonProperty(JSON_PROPERTY_REMOTE_SIP_SESSION_ID) String remoteSipSessionId
   ) {
   this();
     this.conferenceId = conferenceId;
     this.correlationId = correlationId;
     this.localSipSessionId = localSipSessionId;
+    this.meetingApp = meetingApp;
     this.remoteSipSessionId = remoteSipSessionId;
   }
 
@@ -109,6 +115,21 @@ public class DynamicEndpointTestWebex {
 
 
    /**
+   * RoomOS meeting app.
+   * @return meetingApp
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MEETING_APP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getMeetingApp() {
+    return meetingApp;
+  }
+
+
+
+
+   /**
    * Webex calling remote sip session ID.
    * @return remoteSipSessionId
   **/
@@ -138,12 +159,13 @@ public class DynamicEndpointTestWebex {
     return Objects.equals(this.conferenceId, dynamicEndpointTestWebex.conferenceId) &&
         Objects.equals(this.correlationId, dynamicEndpointTestWebex.correlationId) &&
         Objects.equals(this.localSipSessionId, dynamicEndpointTestWebex.localSipSessionId) &&
+        Objects.equals(this.meetingApp, dynamicEndpointTestWebex.meetingApp) &&
         Objects.equals(this.remoteSipSessionId, dynamicEndpointTestWebex.remoteSipSessionId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conferenceId, correlationId, localSipSessionId, remoteSipSessionId);
+    return Objects.hash(conferenceId, correlationId, localSipSessionId, meetingApp, remoteSipSessionId);
   }
 
   @Override
@@ -153,6 +175,7 @@ public class DynamicEndpointTestWebex {
     sb.append("    conferenceId: ").append(toIndentedString(conferenceId)).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    localSipSessionId: ").append(toIndentedString(localSipSessionId)).append("\n");
+    sb.append("    meetingApp: ").append(toIndentedString(meetingApp)).append("\n");
     sb.append("    remoteSipSessionId: ").append(toIndentedString(remoteSipSessionId)).append("\n");
     sb.append("}");
     return sb.toString();

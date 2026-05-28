@@ -1,6 +1,6 @@
 /*
- * Dashboards API
- * Manage ThousandEyes Dashboards.
+ * Instant Tests API
+ * The Instant Tests API operations lets you create and run new instant tests. You will need to be an Account Admin.  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.dashboards.model;
+package com.thousandeyes.sdk.tests.instant.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -22,19 +22,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Ownership of the agent.
+ * HTTP request method.
  */
-public enum ApiAgentWidgetShow {
+public enum RequestMethod {
   
-  OWNED("owned"),
+  GET("get"),
   
-  ALL("all"),
+  POST("post"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  ApiAgentWidgetShow(String value) {
+  RequestMethod(String value) {
     this.value = value;
   }
 
@@ -49,8 +49,8 @@ public enum ApiAgentWidgetShow {
   }
 
   @JsonCreator
-  public static ApiAgentWidgetShow fromValue(String value) {
-    for (ApiAgentWidgetShow b : ApiAgentWidgetShow.values()) {
+  public static RequestMethod fromValue(String value) {
+    for (RequestMethod b : RequestMethod.values()) {
       if (b.value.equals(value)) {
         return b;
       }

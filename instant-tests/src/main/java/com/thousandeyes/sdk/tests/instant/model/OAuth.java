@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.instant.model.OAuthAuthType;
-import com.thousandeyes.sdk.tests.instant.model.OAuthRequestMethod;
+import com.thousandeyes.sdk.tests.instant.model.RequestMethod;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -43,7 +43,7 @@ public class OAuth {
   private String testUrl;
 
   public static final String JSON_PROPERTY_REQUEST_METHOD = "requestMethod";
-  private OAuthRequestMethod requestMethod;
+  private RequestMethod requestMethod;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -88,7 +88,7 @@ public class OAuth {
   }
 
 
-  public OAuth requestMethod(OAuthRequestMethod requestMethod) {
+  public OAuth requestMethod(RequestMethod requestMethod) {
     this.requestMethod = requestMethod;
     return this;
   }
@@ -101,14 +101,14 @@ public class OAuth {
   @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OAuthRequestMethod getRequestMethod() {
+  public RequestMethod getRequestMethod() {
     return requestMethod;
   }
 
 
   @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestMethod(OAuthRequestMethod requestMethod) {
+  public void setRequestMethod(RequestMethod requestMethod) {
     this.requestMethod = requestMethod;
   }
 
