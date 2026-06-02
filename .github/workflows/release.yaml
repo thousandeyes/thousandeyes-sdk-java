@@ -61,6 +61,7 @@ jobs:
 
       - name: Add tag and push to the repository
         env:
+          # We need to use a PAT from an Admin user here, so that we can bypass the branch protection rules when pushing to main
           SDK_ACTION_TOKEN: ${{ secrets.SDK_ACTION_TOKEN }}
         run: |
           git config user.name "API Team"
