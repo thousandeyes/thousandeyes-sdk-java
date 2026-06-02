@@ -7,15 +7,21 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: read
+
 jobs:
   validate-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       release_version: ${{ steps.validate.outputs.release_version }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
       - id: validate
         env:
           RELEASE_VERSION: ${{ inputs.releaseVersion }}
@@ -33,14 +39,15 @@ jobs:
   publish-release:
     needs: validate-release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       RELEASE_VERSION: ${{ needs.validate-release.outputs.release_version }}
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v4
         with:
-          # We need to use a PAT from an Admin user here, so that we can bypass the branch protection rules when pushing to main
-          token: ${{ secrets.SDK_ACTION_TOKEN }}
+          persist-credentials: false
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -53,13 +60,19 @@ jobs:
           sed -i "s|^\(version=\).*|\1${RELEASE_VERSION}|" gradle.properties
 
       - name: Add tag and push to the repository
+        env:
+          SDK_ACTION_TOKEN: ${{ secrets.SDK_ACTION_TOKEN }}
         run: |
           git config user.name "API Team"
           git config user.email "api-team@thousandeyes.com"
 
+          # PAT is scoped to this step only so it is not available during publish/signing.
+          git remote set-url origin "https://x-access-token:${SDK_ACTION_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git add .
           git commit -m "[GitHub Bot] Released ${RELEASE_VERSION} SDK"
           git push origin
+          git remote set-url origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git config --global --unset-all credential.helper || true
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
