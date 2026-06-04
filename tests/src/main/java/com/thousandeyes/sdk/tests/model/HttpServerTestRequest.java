@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
+import com.thousandeyes.sdk.tests.model.RequestMethod;
 import com.thousandeyes.sdk.tests.model.TestAgentRequest;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
 import com.thousandeyes.sdk.tests.model.TestCustomHeaders;
@@ -32,6 +33,7 @@ import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
 import com.thousandeyes.sdk.tests.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,7 +48,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerTestRequest.JSON_PROPERTY_INTERVAL,
   HttpServerTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   HttpServerTestRequest.JSON_PROPERTY_ENABLED,
-  HttpServerTestRequest.JSON_PROPERTY_ALERT_RULES,
   HttpServerTestRequest.JSON_PROPERTY_CREATED_BY,
   HttpServerTestRequest.JSON_PROPERTY_CREATED_DATE,
   HttpServerTestRequest.JSON_PROPERTY_DESCRIPTION,
@@ -58,8 +59,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerTestRequest.JSON_PROPERTY_TEST_NAME,
   HttpServerTestRequest.JSON_PROPERTY_TYPE,
   HttpServerTestRequest.JSON_PROPERTY_LINKS,
-  HttpServerTestRequest.JSON_PROPERTY_LABELS,
-  HttpServerTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   HttpServerTestRequest.JSON_PROPERTY_AUTH_TYPE,
   HttpServerTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   HttpServerTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
@@ -95,15 +94,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerTestRequest.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   HttpServerTestRequest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   HttpServerTestRequest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  HttpServerTestRequest.JSON_PROPERTY_VAULT_CREDENTIALS,
   HttpServerTestRequest.JSON_PROPERTY_HEADERS,
   HttpServerTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  HttpServerTestRequest.JSON_PROPERTY_REQUEST_METHOD,
   HttpServerTestRequest.JSON_PROPERTY_POST_BODY,
   HttpServerTestRequest.JSON_PROPERTY_IPV6_POLICY,
   HttpServerTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   HttpServerTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  HttpServerTestRequest.JSON_PROPERTY_MONITORS,
+  HttpServerTestRequest.JSON_PROPERTY_LABELS,
   HttpServerTestRequest.JSON_PROPERTY_TAGS,
-  HttpServerTestRequest.JSON_PROPERTY_AGENTS
+  HttpServerTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  HttpServerTestRequest.JSON_PROPERTY_ALERT_RULES,
+  HttpServerTestRequest.JSON_PROPERTY_AGENTS,
+  HttpServerTestRequest.JSON_PROPERTY_MONITORS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class HttpServerTestRequest {
@@ -115,9 +119,6 @@ public class HttpServerTestRequest {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -151,12 +152,6 @@ public class HttpServerTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -263,11 +258,17 @@ public class HttpServerTestRequest {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_REQUEST_METHOD = "requestMethod";
+  private RequestMethod requestMethod;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -281,14 +282,23 @@ public class HttpServerTestRequest {
   public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
   private Boolean usePublicBgp = true;
 
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors = new ArrayList<>();
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
+  private List<String> alertRules = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<String> monitors = new ArrayList<>();
 
   public HttpServerTestRequest() { 
   }
@@ -389,39 +399,6 @@ public class HttpServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public HttpServerTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public HttpServerTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
   }
 
 
@@ -617,72 +594,6 @@ public class HttpServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public HttpServerTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public HttpServerTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public HttpServerTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public HttpServerTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1561,6 +1472,39 @@ public class HttpServerTestRequest {
   }
 
 
+  public HttpServerTestRequest vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public HttpServerTestRequest addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public HttpServerTestRequest headers(List<String> headers) {
     this.headers = headers;
     return this;
@@ -1619,13 +1563,38 @@ public class HttpServerTestRequest {
   }
 
 
+  public HttpServerTestRequest requestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+    return this;
+  }
+
+   /**
+   * Get requestMethod
+   * @return requestMethod
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public RequestMethod getRequestMethod() {
+    return requestMethod;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRequestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+  }
+
+
   public HttpServerTestRequest postBody(String postBody) {
     this.postBody = postBody;
     return this;
   }
 
    /**
-   * Enter the body for the HTTP POST request in this field. No special escaping is necessary. If the post body is provided with content, the &#x60;requestMethod&#x60; is automatically set to POST.
+   * Enter the body for the HTTP POST request in this field. No special escaping is required. If content is provided and &#x60;requestMethod&#x60; is not specified, &#x60;requestMethod&#x60; is automatically set to &#x60;post&#x60;.
    * @return postBody
   **/
   @jakarta.annotation.Nullable
@@ -1719,36 +1688,36 @@ public class HttpServerTestRequest {
   }
 
 
-  public HttpServerTestRequest monitors(List<String> monitors) {
-    this.monitors = monitors;
+  public HttpServerTestRequest labels(List<String> labels) {
+    this.labels = labels;
     return this;
   }
 
-  public HttpServerTestRequest addMonitorsItem(String monitorsItem) {
-    if (this.monitors == null) {
-      this.monitors = new ArrayList<>();
+  public HttpServerTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
     }
-    this.monitors.add(monitorsItem);
+    this.labels.add(labelsItem);
     return this;
   }
 
    /**
-   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
-   * @return monitors
+   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
+   * @return labels
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getMonitors() {
-    return monitors;
+  public List<String> getLabels() {
+    return labels;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonitors(List<String> monitors) {
-    this.monitors = monitors;
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
 
@@ -1785,6 +1754,72 @@ public class HttpServerTestRequest {
   }
 
 
+  public HttpServerTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public HttpServerTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
+  public HttpServerTestRequest alertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+    return this;
+  }
+
+  public HttpServerTestRequest addAlertRulesItem(String alertRulesItem) {
+    if (this.alertRules == null) {
+      this.alertRules = new ArrayList<>();
+    }
+    this.alertRules.add(alertRulesItem);
+    return this;
+  }
+
+   /**
+   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
+   * @return alertRules
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAlertRules() {
+    return alertRules;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+  }
+
+
   public HttpServerTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -1818,6 +1853,39 @@ public class HttpServerTestRequest {
   }
 
 
+  public HttpServerTestRequest monitors(List<String> monitors) {
+    this.monitors = monitors;
+    return this;
+  }
+
+  public HttpServerTestRequest addMonitorsItem(String monitorsItem) {
+    if (this.monitors == null) {
+      this.monitors = new ArrayList<>();
+    }
+    this.monitors.add(monitorsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getMonitors() {
+    return monitors;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMonitors(List<String> monitors) {
+    this.monitors = monitors;
+  }
+
+
   /**
    * Return true if this HttpServerTestRequest object is equal to o.
    */
@@ -1833,7 +1901,6 @@ public class HttpServerTestRequest {
     return Objects.equals(this.interval, httpServerTestRequest.interval) &&
         Objects.equals(this.alertsEnabled, httpServerTestRequest.alertsEnabled) &&
         Objects.equals(this.enabled, httpServerTestRequest.enabled) &&
-        Objects.equals(this.alertRules, httpServerTestRequest.alertRules) &&
         Objects.equals(this.createdBy, httpServerTestRequest.createdBy) &&
         Objects.equals(this.createdDate, httpServerTestRequest.createdDate) &&
         Objects.equals(this.description, httpServerTestRequest.description) &&
@@ -1845,8 +1912,6 @@ public class HttpServerTestRequest {
         Objects.equals(this.testName, httpServerTestRequest.testName) &&
         Objects.equals(this.type, httpServerTestRequest.type) &&
         Objects.equals(this.links, httpServerTestRequest.links) &&
-        Objects.equals(this.labels, httpServerTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, httpServerTestRequest.sharedWithAccounts) &&
         Objects.equals(this.authType, httpServerTestRequest.authType) &&
         Objects.equals(this.agentInterfaces, httpServerTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, httpServerTestRequest.bandwidthMeasurements) &&
@@ -1882,20 +1947,25 @@ public class HttpServerTestRequest {
         Objects.equals(this.overrideAgentProxy, httpServerTestRequest.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, httpServerTestRequest.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, httpServerTestRequest.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, httpServerTestRequest.vaultCredentials) &&
         Objects.equals(this.headers, httpServerTestRequest.headers) &&
         Objects.equals(this.randomizedStartTime, httpServerTestRequest.randomizedStartTime) &&
+        Objects.equals(this.requestMethod, httpServerTestRequest.requestMethod) &&
         Objects.equals(this.postBody, httpServerTestRequest.postBody) &&
         Objects.equals(this.ipv6Policy, httpServerTestRequest.ipv6Policy) &&
         Objects.equals(this.bgpMeasurements, httpServerTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, httpServerTestRequest.usePublicBgp) &&
-        Objects.equals(this.monitors, httpServerTestRequest.monitors) &&
+        Objects.equals(this.labels, httpServerTestRequest.labels) &&
         Objects.equals(this.tags, httpServerTestRequest.tags) &&
-        Objects.equals(this.agents, httpServerTestRequest.agents);
+        Objects.equals(this.sharedWithAccounts, httpServerTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.alertRules, httpServerTestRequest.alertRules) &&
+        Objects.equals(this.agents, httpServerTestRequest.agents) &&
+        Objects.equals(this.monitors, httpServerTestRequest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, tags, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors);
   }
 
   @Override
@@ -1905,7 +1975,6 @@ public class HttpServerTestRequest {
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -1917,8 +1986,6 @@ public class HttpServerTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
@@ -1954,15 +2021,20 @@ public class HttpServerTestRequest {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    requestMethod: ").append(toIndentedString(requestMethod)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -154,6 +154,13 @@ public class PageLoadTestsApiTest {
                   "blockDomains" : "domain.com/",
                   "usePublicBgp" : true,
                   "enabled" : true,
+                  "vaultCredentials" : [ {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  }, {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  } ],
                   "allowGeolocation" : false,
                   "allowUnsafeLegacyRenegotiation" : true,
                   "fixedPacketRate" : 50,
@@ -335,6 +342,13 @@ public class PageLoadTestsApiTest {
                   "blockDomains" : "domain.com/",
                   "usePublicBgp" : true,
                   "enabled" : true,
+                  "vaultCredentials" : [ {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  }, {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  } ],
                   "allowGeolocation" : false,
                   "allowUnsafeLegacyRenegotiation" : true,
                   "fixedPacketRate" : 50,
@@ -370,34 +384,44 @@ public class PageLoadTestsApiTest {
                   "agents" : [ {
                     "agentId" : "281474976710706",
                     "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                     "prefix" : "99.128.0.0/11",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
                     },
                     "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
                     "verifySslCertificates" : true
                   }, {
                     "agentId" : "281474976710706",
                     "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                     "prefix" : "99.128.0.0/11",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
                     },
                     "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
                     "verifySslCertificates" : true
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
@@ -598,6 +622,13 @@ public class PageLoadTestsApiTest {
                   "blockDomains" : "domain.com/",
                   "usePublicBgp" : true,
                   "enabled" : true,
+                  "vaultCredentials" : [ {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  }, {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  } ],
                   "allowGeolocation" : false,
                   "allowUnsafeLegacyRenegotiation" : true,
                   "fixedPacketRate" : 50,
@@ -633,34 +664,44 @@ public class PageLoadTestsApiTest {
                   "agents" : [ {
                     "agentId" : "281474976710706",
                     "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                     "prefix" : "99.128.0.0/11",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
                     },
                     "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
                     "verifySslCertificates" : true
                   }, {
                     "agentId" : "281474976710706",
                     "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                     "prefix" : "99.128.0.0/11",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
                     },
                     "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
                     "verifySslCertificates" : true
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",
@@ -773,6 +814,13 @@ public class PageLoadTestsApiTest {
                     "blockDomains" : "domain.com/",
                     "usePublicBgp" : true,
                     "enabled" : true,
+                    "vaultCredentials" : [ {
+                      "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                      "target" : "username"
+                    }, {
+                      "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                      "target" : "username"
+                    } ],
                     "allowGeolocation" : false,
                     "allowUnsafeLegacyRenegotiation" : true,
                     "fixedPacketRate" : 50,
@@ -879,6 +927,13 @@ public class PageLoadTestsApiTest {
                     "blockDomains" : "domain.com/",
                     "usePublicBgp" : true,
                     "enabled" : true,
+                    "vaultCredentials" : [ {
+                      "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                      "target" : "username"
+                    }, {
+                      "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                      "target" : "username"
+                    } ],
                     "allowGeolocation" : false,
                     "allowUnsafeLegacyRenegotiation" : true,
                     "fixedPacketRate" : 50,
@@ -1037,6 +1092,13 @@ public class PageLoadTestsApiTest {
                   "blockDomains" : "domain.com/",
                   "usePublicBgp" : true,
                   "enabled" : true,
+                  "vaultCredentials" : [ {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  }, {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  } ],
                   "allowGeolocation" : false,
                   "allowUnsafeLegacyRenegotiation" : true,
                   "fixedPacketRate" : 50,
@@ -1218,6 +1280,13 @@ public class PageLoadTestsApiTest {
                   "blockDomains" : "domain.com/",
                   "usePublicBgp" : true,
                   "enabled" : true,
+                  "vaultCredentials" : [ {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  }, {
+                    "secretId" : "f27e85b2-318b-4145-b5aa-c9dc8d8b0819",
+                    "target" : "username"
+                  } ],
                   "allowGeolocation" : false,
                   "allowUnsafeLegacyRenegotiation" : true,
                   "fixedPacketRate" : 50,
@@ -1253,34 +1322,44 @@ public class PageLoadTestsApiTest {
                   "agents" : [ {
                     "agentId" : "281474976710706",
                     "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                     "prefix" : "99.128.0.0/11",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
                     },
                     "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
                     "verifySslCertificates" : true
                   }, {
                     "agentId" : "281474976710706",
                     "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                     "prefix" : "99.128.0.0/11",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
                     },
                     "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
                     "verifySslCertificates" : true
                   } ],
                   "createdDate" : "2022-07-17T22:00:54Z",

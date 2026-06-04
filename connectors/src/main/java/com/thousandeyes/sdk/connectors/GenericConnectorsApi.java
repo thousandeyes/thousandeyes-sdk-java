@@ -274,7 +274,7 @@ public class GenericConnectorsApi {
     return requestBuilder;
   }
   /**
-   * List operation IDs assigned to a connector
+   * List operation IDs for a connector
    * Returns a list of operation IDs assigned to a connector.
    * @param id The connector ID. (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
@@ -287,7 +287,7 @@ public class GenericConnectorsApi {
   }
 
   /**
-   * List operation IDs assigned to a connector
+   * List operation IDs for a connector
    * Returns a list of operation IDs assigned to a connector.
    * @param id The connector ID. (required)
    * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)

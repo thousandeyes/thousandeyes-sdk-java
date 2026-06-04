@@ -36,6 +36,7 @@ import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
 import com.thousandeyes.sdk.tests.model.TestSslVersionId;
 import com.thousandeyes.sdk.tests.model.TestSubInterval;
+import com.thousandeyes.sdk.tests.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -99,6 +100,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionTest.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   WebTransactionTest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   WebTransactionTest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  WebTransactionTest.JSON_PROPERTY_VAULT_CREDENTIALS,
   WebTransactionTest.JSON_PROPERTY_EMULATED_DEVICE_ID,
   WebTransactionTest.JSON_PROPERTY_TARGET_TIME,
   WebTransactionTest.JSON_PROPERTY_TIME_LIMIT,
@@ -276,6 +278,9 @@ public class WebTransactionTest {
 
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
+
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_EMULATED_DEVICE_ID = "emulatedDeviceId";
   private String emulatedDeviceId;
@@ -1575,6 +1580,39 @@ public class WebTransactionTest {
   }
 
 
+  public WebTransactionTest vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public WebTransactionTest addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public WebTransactionTest emulatedDeviceId(String emulatedDeviceId) {
     this.emulatedDeviceId = emulatedDeviceId;
     return this;
@@ -2116,6 +2154,7 @@ public class WebTransactionTest {
         Objects.equals(this.overrideAgentProxy, webTransactionTest.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, webTransactionTest.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, webTransactionTest.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, webTransactionTest.vaultCredentials) &&
         Objects.equals(this.emulatedDeviceId, webTransactionTest.emulatedDeviceId) &&
         Objects.equals(this.targetTime, webTransactionTest.targetTime) &&
         Objects.equals(this.timeLimit, webTransactionTest.timeLimit) &&
@@ -2139,7 +2178,7 @@ public class WebTransactionTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, bgpMeasurements, usePublicBgp, monitors, subinterval);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, bgpMeasurements, usePublicBgp, monitors, subinterval);
   }
 
   @Override
@@ -2198,6 +2237,7 @@ public class WebTransactionTest {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    emulatedDeviceId: ").append(toIndentedString(emulatedDeviceId)).append("\n");
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");

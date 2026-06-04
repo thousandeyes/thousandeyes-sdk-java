@@ -50,8 +50,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerInstantTestRequest.JSON_PROPERTY_TEST_NAME,
   DnsServerInstantTestRequest.JSON_PROPERTY_TYPE,
   DnsServerInstantTestRequest.JSON_PROPERTY_LINKS,
-  DnsServerInstantTestRequest.JSON_PROPERTY_LABELS,
-  DnsServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsServerInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   DnsServerInstantTestRequest.JSON_PROPERTY_DNS_SERVERS,
   DnsServerInstantTestRequest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
@@ -67,7 +65,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
   DnsServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
   DnsServerInstantTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  DnsServerInstantTestRequest.JSON_PROPERTY_LABELS,
   DnsServerInstantTestRequest.JSON_PROPERTY_TAGS,
+  DnsServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -104,12 +104,6 @@ public class DnsServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -156,8 +150,14 @@ public class DnsServerInstantTestRequest {
   public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
   private DnsQueryClass dnsQueryClass;
 
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -379,72 +379,6 @@ public class DnsServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public DnsServerInstantTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public DnsServerInstantTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public DnsServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public DnsServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -835,6 +769,39 @@ public class DnsServerInstantTestRequest {
   }
 
 
+  public DnsServerInstantTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public DnsServerInstantTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public DnsServerInstantTestRequest tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -865,6 +832,39 @@ public class DnsServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public DnsServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public DnsServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -924,8 +924,6 @@ public class DnsServerInstantTestRequest {
         Objects.equals(this.testName, dnsServerInstantTestRequest.testName) &&
         Objects.equals(this.type, dnsServerInstantTestRequest.type) &&
         Objects.equals(this.links, dnsServerInstantTestRequest.links) &&
-        Objects.equals(this.labels, dnsServerInstantTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, dnsServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, dnsServerInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.dnsServers, dnsServerInstantTestRequest.dnsServers) &&
         Objects.equals(this.dnsTransportProtocol, dnsServerInstantTestRequest.dnsTransportProtocol) &&
@@ -941,13 +939,15 @@ public class DnsServerInstantTestRequest {
         Objects.equals(this.ipv6Policy, dnsServerInstantTestRequest.ipv6Policy) &&
         Objects.equals(this.fixedPacketRate, dnsServerInstantTestRequest.fixedPacketRate) &&
         Objects.equals(this.dnsQueryClass, dnsServerInstantTestRequest.dnsQueryClass) &&
+        Objects.equals(this.labels, dnsServerInstantTestRequest.labels) &&
         Objects.equals(this.tags, dnsServerInstantTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, dnsServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.agents, dnsServerInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, tags, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, labels, tags, sharedWithAccounts, agents);
   }
 
   @Override
@@ -965,8 +965,6 @@ public class DnsServerInstantTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    dnsServers: ").append(toIndentedString(dnsServers)).append("\n");
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
@@ -982,7 +980,9 @@ public class DnsServerInstantTestRequest {
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

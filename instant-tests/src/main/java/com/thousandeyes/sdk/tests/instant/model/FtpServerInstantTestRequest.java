@@ -49,8 +49,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FtpServerInstantTestRequest.JSON_PROPERTY_TEST_NAME,
   FtpServerInstantTestRequest.JSON_PROPERTY_TYPE,
   FtpServerInstantTestRequest.JSON_PROPERTY_LINKS,
-  FtpServerInstantTestRequest.JSON_PROPERTY_LABELS,
-  FtpServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   FtpServerInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   FtpServerInstantTestRequest.JSON_PROPERTY_DOWNLOAD_LIMIT,
   FtpServerInstantTestRequest.JSON_PROPERTY_FTP_TARGET_TIME,
@@ -70,7 +68,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FtpServerInstantTestRequest.JSON_PROPERTY_USERNAME,
   FtpServerInstantTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
   FtpServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
+  FtpServerInstantTestRequest.JSON_PROPERTY_LABELS,
   FtpServerInstantTestRequest.JSON_PROPERTY_TAGS,
+  FtpServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   FtpServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -107,12 +107,6 @@ public class FtpServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -171,8 +165,14 @@ public class FtpServerInstantTestRequest {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -394,72 +394,6 @@ public class FtpServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public FtpServerInstantTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public FtpServerInstantTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public FtpServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public FtpServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -946,6 +880,39 @@ public class FtpServerInstantTestRequest {
   }
 
 
+  public FtpServerInstantTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public FtpServerInstantTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public FtpServerInstantTestRequest tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -976,6 +943,39 @@ public class FtpServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public FtpServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public FtpServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1035,8 +1035,6 @@ public class FtpServerInstantTestRequest {
         Objects.equals(this.testName, ftpServerInstantTestRequest.testName) &&
         Objects.equals(this.type, ftpServerInstantTestRequest.type) &&
         Objects.equals(this.links, ftpServerInstantTestRequest.links) &&
-        Objects.equals(this.labels, ftpServerInstantTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, ftpServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, ftpServerInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.downloadLimit, ftpServerInstantTestRequest.downloadLimit) &&
         Objects.equals(this.ftpTargetTime, ftpServerInstantTestRequest.ftpTargetTime) &&
@@ -1056,13 +1054,15 @@ public class FtpServerInstantTestRequest {
         Objects.equals(this.username, ftpServerInstantTestRequest.username) &&
         Objects.equals(this.fixedPacketRate, ftpServerInstantTestRequest.fixedPacketRate) &&
         Objects.equals(this.ipv6Policy, ftpServerInstantTestRequest.ipv6Policy) &&
+        Objects.equals(this.labels, ftpServerInstantTestRequest.labels) &&
         Objects.equals(this.tags, ftpServerInstantTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, ftpServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.agents, ftpServerInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, randomizedStartTime, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, tags, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, bandwidthMeasurements, downloadLimit, ftpTargetTime, ftpTimeLimit, mtuMeasurements, networkMeasurements, numPathTraces, password, pathTraceMode, probeMode, protocol, randomizedStartTime, requestType, url, useActiveFtp, useExplicitFtps, username, fixedPacketRate, ipv6Policy, labels, tags, sharedWithAccounts, agents);
   }
 
   @Override
@@ -1080,8 +1080,6 @@ public class FtpServerInstantTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    downloadLimit: ").append(toIndentedString(downloadLimit)).append("\n");
     sb.append("    ftpTargetTime: ").append(toIndentedString(ftpTargetTime)).append("\n");
@@ -1101,7 +1099,9 @@ public class FtpServerInstantTestRequest {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

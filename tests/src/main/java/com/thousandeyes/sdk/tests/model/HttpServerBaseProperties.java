@@ -28,6 +28,10 @@ import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
 import com.thousandeyes.sdk.tests.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.model.TestVaultCredential;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -69,7 +73,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerBaseProperties.JSON_PROPERTY_FIXED_PACKET_RATE,
   HttpServerBaseProperties.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   HttpServerBaseProperties.JSON_PROPERTY_OVERRIDE_PROXY_ID,
-  HttpServerBaseProperties.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA
+  HttpServerBaseProperties.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  HttpServerBaseProperties.JSON_PROPERTY_VAULT_CREDENTIALS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class HttpServerBaseProperties {
@@ -177,6 +182,9 @@ public class HttpServerBaseProperties {
 
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
+
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
 
   public HttpServerBaseProperties() { 
   }
@@ -1064,6 +1072,39 @@ public class HttpServerBaseProperties {
   }
 
 
+  public HttpServerBaseProperties vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public HttpServerBaseProperties addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   /**
    * Return true if this HttpServerBaseProperties object is equal to o.
    */
@@ -1110,12 +1151,13 @@ public class HttpServerBaseProperties {
         Objects.equals(this.fixedPacketRate, httpServerBaseProperties.fixedPacketRate) &&
         Objects.equals(this.overrideAgentProxy, httpServerBaseProperties.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, httpServerBaseProperties.overrideProxyId) &&
-        Objects.equals(this.collectProxyNetworkData, httpServerBaseProperties.collectProxyNetworkData);
+        Objects.equals(this.collectProxyNetworkData, httpServerBaseProperties.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, httpServerBaseProperties.vaultCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData);
+    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials);
   }
 
   @Override
@@ -1157,6 +1199,7 @@ public class HttpServerBaseProperties {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }
