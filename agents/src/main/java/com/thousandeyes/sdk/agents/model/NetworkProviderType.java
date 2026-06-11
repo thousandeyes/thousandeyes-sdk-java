@@ -1,6 +1,6 @@
 /*
- * Tests API
- * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
+ * Agents API
+ * ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.tests.model;
+package com.thousandeyes.sdk.agents.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -22,19 +22,25 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * HTTP request method used for the OAuth request.
+ * Classification of the agent&#39;s network provider.
  */
-public enum OAuthRequestMethod {
+public enum NetworkProviderType {
   
-  GET("get"),
+  UNKNOWN("unknown"),
   
-  POST("post"),
+  ISP("isp"),
   
-  UNKNOWN("unknown");
+  CDN("cdn"),
+  
+  STUB("stub"),
+  
+  CLOUD_PROVIDER("cloud-provider"),
+  
+  CARRIER("carrier");
 
   private String value;
 
-  OAuthRequestMethod(String value) {
+  NetworkProviderType(String value) {
     this.value = value;
   }
 
@@ -49,8 +55,8 @@ public enum OAuthRequestMethod {
   }
 
   @JsonCreator
-  public static OAuthRequestMethod fromValue(String value) {
-    for (OAuthRequestMethod b : OAuthRequestMethod.values()) {
+  public static NetworkProviderType fromValue(String value) {
+    for (NetworkProviderType b : NetworkProviderType.values()) {
       if (b.value.equals(value)) {
         return b;
       }

@@ -2,8 +2,7 @@
 
 Agents API
 
-- API version: 7.0.84
-
+- API version: 7.0.91
 
 ## Overview
 Manage Cloud and Enterprise Agents available to your account in ThousandEyes.

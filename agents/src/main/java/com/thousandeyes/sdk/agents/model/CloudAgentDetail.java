@@ -1,6 +1,6 @@
 /*
  * Agents API
- *  ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
+ * ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.agents.model.AgentLabel;
 import com.thousandeyes.sdk.agents.model.AgentTag;
 import com.thousandeyes.sdk.agents.model.Coordinates;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
+import com.thousandeyes.sdk.agents.model.SimpleAgentAllOfNetworkProviderInfo;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,9 +44,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CloudAgentDetail.JSON_PROPERTY_LOCATION,
   CloudAgentDetail.JSON_PROPERTY_COUNTRY_ID,
   CloudAgentDetail.JSON_PROPERTY_COORDINATES,
+  CloudAgentDetail.JSON_PROPERTY_NETWORK_PROVIDER_INFO,
   CloudAgentDetail.JSON_PROPERTY_ENABLED,
-  CloudAgentDetail.JSON_PROPERTY_PREFIX,
   CloudAgentDetail.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
+  CloudAgentDetail.JSON_PROPERTY_PREFIX,
   CloudAgentDetail.JSON_PROPERTY_AGENT_TYPE,
   CloudAgentDetail.JSON_PROPERTY_TESTS,
   CloudAgentDetail.JSON_PROPERTY_LABELS,
@@ -78,14 +80,17 @@ public class CloudAgentDetail {
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
   private Coordinates coordinates;
 
+  public static final String JSON_PROPERTY_NETWORK_PROVIDER_INFO = "networkProviderInfo";
+  private SimpleAgentAllOfNetworkProviderInfo networkProviderInfo;
+
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
 
-  public static final String JSON_PROPERTY_PREFIX = "prefix";
-  private String prefix;
-
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
   private Boolean verifySslCertificates;
+
+  public static final String JSON_PROPERTY_PREFIX = "prefix";
+  private String prefix;
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
   private String agentType;
@@ -113,8 +118,8 @@ public class CloudAgentDetail {
     @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
     @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
+    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels, 
     @JsonProperty(JSON_PROPERTY_TAGS) List<AgentTag> tags
   ) {
@@ -125,8 +130,8 @@ public class CloudAgentDetail {
     this.agentId = agentId;
     this.location = location;
     this.countryId = countryId;
-    this.prefix = prefix;
     this.verifySslCertificates = verifySslCertificates;
+    this.prefix = prefix;
     this.labels = labels;
     this.tags = tags;
   }
@@ -271,6 +276,31 @@ public class CloudAgentDetail {
   }
 
 
+  public CloudAgentDetail networkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+    this.networkProviderInfo = networkProviderInfo;
+    return this;
+  }
+
+   /**
+   * Get networkProviderInfo
+   * @return networkProviderInfo
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NETWORK_PROVIDER_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SimpleAgentAllOfNetworkProviderInfo getNetworkProviderInfo() {
+    return networkProviderInfo;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NETWORK_PROVIDER_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNetworkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+    this.networkProviderInfo = networkProviderInfo;
+  }
+
+
   public CloudAgentDetail enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
@@ -297,21 +327,6 @@ public class CloudAgentDetail {
 
 
    /**
-   * Prefix containing agents public IP address.
-   * @return prefix
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPrefix() {
-    return prefix;
-  }
-
-
-
-
-   /**
    * Flag indicating if has normal SSL operations or  if instead it&#39;s set to ignore SSL errors on browserbot-based tests.
    * @return verifySslCertificates
   **/
@@ -321,6 +336,21 @@ public class CloudAgentDetail {
 
   public Boolean getVerifySslCertificates() {
     return verifySslCertificates;
+  }
+
+
+
+
+   /**
+   * Prefix containing agents public IP address.
+   * @return prefix
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getPrefix() {
+    return prefix;
   }
 
 
@@ -459,9 +489,10 @@ public class CloudAgentDetail {
         Objects.equals(this.location, cloudAgentDetail.location) &&
         Objects.equals(this.countryId, cloudAgentDetail.countryId) &&
         Objects.equals(this.coordinates, cloudAgentDetail.coordinates) &&
+        Objects.equals(this.networkProviderInfo, cloudAgentDetail.networkProviderInfo) &&
         Objects.equals(this.enabled, cloudAgentDetail.enabled) &&
-        Objects.equals(this.prefix, cloudAgentDetail.prefix) &&
         Objects.equals(this.verifySslCertificates, cloudAgentDetail.verifySslCertificates) &&
+        Objects.equals(this.prefix, cloudAgentDetail.prefix) &&
         Objects.equals(this.agentType, cloudAgentDetail.agentType) &&
         Objects.equals(this.tests, cloudAgentDetail.tests) &&
         Objects.equals(this.labels, cloudAgentDetail.labels) &&
@@ -471,7 +502,7 @@ public class CloudAgentDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, agentType, tests, labels, tags, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, networkProviderInfo, enabled, verifySslCertificates, prefix, agentType, tests, labels, tags, links);
   }
 
   @Override
@@ -486,9 +517,10 @@ public class CloudAgentDetail {
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
+    sb.append("    networkProviderInfo: ").append(toIndentedString(networkProviderInfo)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");

@@ -43,7 +43,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerTestRequest.JSON_PROPERTY_INTERVAL,
   DnsServerTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   DnsServerTestRequest.JSON_PROPERTY_ENABLED,
-  DnsServerTestRequest.JSON_PROPERTY_ALERT_RULES,
   DnsServerTestRequest.JSON_PROPERTY_CREATED_BY,
   DnsServerTestRequest.JSON_PROPERTY_CREATED_DATE,
   DnsServerTestRequest.JSON_PROPERTY_DESCRIPTION,
@@ -55,8 +54,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerTestRequest.JSON_PROPERTY_TEST_NAME,
   DnsServerTestRequest.JSON_PROPERTY_TYPE,
   DnsServerTestRequest.JSON_PROPERTY_LINKS,
-  DnsServerTestRequest.JSON_PROPERTY_LABELS,
-  DnsServerTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsServerTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   DnsServerTestRequest.JSON_PROPERTY_DNS_SERVERS,
   DnsServerTestRequest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
@@ -74,9 +71,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerTestRequest.JSON_PROPERTY_DNS_QUERY_CLASS,
   DnsServerTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   DnsServerTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  DnsServerTestRequest.JSON_PROPERTY_MONITORS,
+  DnsServerTestRequest.JSON_PROPERTY_LABELS,
   DnsServerTestRequest.JSON_PROPERTY_TAGS,
-  DnsServerTestRequest.JSON_PROPERTY_AGENTS
+  DnsServerTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  DnsServerTestRequest.JSON_PROPERTY_ALERT_RULES,
+  DnsServerTestRequest.JSON_PROPERTY_AGENTS,
+  DnsServerTestRequest.JSON_PROPERTY_MONITORS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsServerTestRequest {
@@ -88,9 +88,6 @@ public class DnsServerTestRequest {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -124,12 +121,6 @@ public class DnsServerTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -182,14 +173,23 @@ public class DnsServerTestRequest {
   public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
   private Boolean usePublicBgp = true;
 
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors = new ArrayList<>();
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
+  private List<String> alertRules = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<String> monitors = new ArrayList<>();
 
   public DnsServerTestRequest() { 
   }
@@ -288,39 +288,6 @@ public class DnsServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public DnsServerTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public DnsServerTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
   }
 
 
@@ -516,72 +483,6 @@ public class DnsServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public DnsServerTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public DnsServerTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public DnsServerTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public DnsServerTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1022,36 +923,36 @@ public class DnsServerTestRequest {
   }
 
 
-  public DnsServerTestRequest monitors(List<String> monitors) {
-    this.monitors = monitors;
+  public DnsServerTestRequest labels(List<String> labels) {
+    this.labels = labels;
     return this;
   }
 
-  public DnsServerTestRequest addMonitorsItem(String monitorsItem) {
-    if (this.monitors == null) {
-      this.monitors = new ArrayList<>();
+  public DnsServerTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
     }
-    this.monitors.add(monitorsItem);
+    this.labels.add(labelsItem);
     return this;
   }
 
    /**
-   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
-   * @return monitors
+   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
+   * @return labels
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getMonitors() {
-    return monitors;
+  public List<String> getLabels() {
+    return labels;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonitors(List<String> monitors) {
-    this.monitors = monitors;
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
 
@@ -1088,6 +989,72 @@ public class DnsServerTestRequest {
   }
 
 
+  public DnsServerTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public DnsServerTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
+  public DnsServerTestRequest alertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+    return this;
+  }
+
+  public DnsServerTestRequest addAlertRulesItem(String alertRulesItem) {
+    if (this.alertRules == null) {
+      this.alertRules = new ArrayList<>();
+    }
+    this.alertRules.add(alertRulesItem);
+    return this;
+  }
+
+   /**
+   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
+   * @return alertRules
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAlertRules() {
+    return alertRules;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+  }
+
+
   public DnsServerTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -1121,6 +1088,39 @@ public class DnsServerTestRequest {
   }
 
 
+  public DnsServerTestRequest monitors(List<String> monitors) {
+    this.monitors = monitors;
+    return this;
+  }
+
+  public DnsServerTestRequest addMonitorsItem(String monitorsItem) {
+    if (this.monitors == null) {
+      this.monitors = new ArrayList<>();
+    }
+    this.monitors.add(monitorsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getMonitors() {
+    return monitors;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMonitors(List<String> monitors) {
+    this.monitors = monitors;
+  }
+
+
   /**
    * Return true if this DnsServerTestRequest object is equal to o.
    */
@@ -1136,7 +1136,6 @@ public class DnsServerTestRequest {
     return Objects.equals(this.interval, dnsServerTestRequest.interval) &&
         Objects.equals(this.alertsEnabled, dnsServerTestRequest.alertsEnabled) &&
         Objects.equals(this.enabled, dnsServerTestRequest.enabled) &&
-        Objects.equals(this.alertRules, dnsServerTestRequest.alertRules) &&
         Objects.equals(this.createdBy, dnsServerTestRequest.createdBy) &&
         Objects.equals(this.createdDate, dnsServerTestRequest.createdDate) &&
         Objects.equals(this.description, dnsServerTestRequest.description) &&
@@ -1148,8 +1147,6 @@ public class DnsServerTestRequest {
         Objects.equals(this.testName, dnsServerTestRequest.testName) &&
         Objects.equals(this.type, dnsServerTestRequest.type) &&
         Objects.equals(this.links, dnsServerTestRequest.links) &&
-        Objects.equals(this.labels, dnsServerTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, dnsServerTestRequest.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, dnsServerTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.dnsServers, dnsServerTestRequest.dnsServers) &&
         Objects.equals(this.dnsTransportProtocol, dnsServerTestRequest.dnsTransportProtocol) &&
@@ -1167,14 +1164,17 @@ public class DnsServerTestRequest {
         Objects.equals(this.dnsQueryClass, dnsServerTestRequest.dnsQueryClass) &&
         Objects.equals(this.bgpMeasurements, dnsServerTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, dnsServerTestRequest.usePublicBgp) &&
-        Objects.equals(this.monitors, dnsServerTestRequest.monitors) &&
+        Objects.equals(this.labels, dnsServerTestRequest.labels) &&
         Objects.equals(this.tags, dnsServerTestRequest.tags) &&
-        Objects.equals(this.agents, dnsServerTestRequest.agents);
+        Objects.equals(this.sharedWithAccounts, dnsServerTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.alertRules, dnsServerTestRequest.alertRules) &&
+        Objects.equals(this.agents, dnsServerTestRequest.agents) &&
+        Objects.equals(this.monitors, dnsServerTestRequest.monitors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors, tags, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors);
   }
 
   @Override
@@ -1184,7 +1184,6 @@ public class DnsServerTestRequest {
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -1196,8 +1195,6 @@ public class DnsServerTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    dnsServers: ").append(toIndentedString(dnsServers)).append("\n");
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
@@ -1215,9 +1212,12 @@ public class DnsServerTestRequest {
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

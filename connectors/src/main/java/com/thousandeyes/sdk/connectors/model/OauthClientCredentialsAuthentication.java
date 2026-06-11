@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   OauthClientCredentialsAuthentication.JSON_PROPERTY_OAUTH_CLIENT_ID,
   OauthClientCredentialsAuthentication.JSON_PROPERTY_OAUTH_TOKEN_URL,
   OauthClientCredentialsAuthentication.JSON_PROPERTY_OAUTH_CLIENT_SECRET,
+  OauthClientCredentialsAuthentication.JSON_PROPERTY_SCOPE,
   OauthClientCredentialsAuthentication.JSON_PROPERTY_TYPE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -47,6 +48,9 @@ public class OauthClientCredentialsAuthentication {
 
   public static final String JSON_PROPERTY_OAUTH_CLIENT_SECRET = "oauthClientSecret";
   private String oauthClientSecret;
+
+  public static final String JSON_PROPERTY_SCOPE = "scope";
+  private String scope;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private AuthenticationType type;
@@ -154,6 +158,31 @@ public class OauthClientCredentialsAuthentication {
   }
 
 
+  public OauthClientCredentialsAuthentication scope(String scope) {
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * Get scope
+   * @return scope
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getScope() {
+    return scope;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
+
   public OauthClientCredentialsAuthentication type(AuthenticationType type) {
     this.type = type;
     return this;
@@ -195,12 +224,13 @@ public class OauthClientCredentialsAuthentication {
         Objects.equals(this.oauthClientId, oauthClientCredentialsAuthentication.oauthClientId) &&
         Objects.equals(this.oauthTokenUrl, oauthClientCredentialsAuthentication.oauthTokenUrl) &&
         Objects.equals(this.oauthClientSecret, oauthClientCredentialsAuthentication.oauthClientSecret) &&
+        Objects.equals(this.scope, oauthClientCredentialsAuthentication.scope) &&
         Objects.equals(this.type, oauthClientCredentialsAuthentication.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(token, oauthClientId, oauthTokenUrl, oauthClientSecret, type);
+    return Objects.hash(token, oauthClientId, oauthTokenUrl, oauthClientSecret, scope, type);
   }
 
   @Override
@@ -211,6 +241,7 @@ public class OauthClientCredentialsAuthentication {
     sb.append("    oauthClientId: ").append(toIndentedString(oauthClientId)).append("\n");
     sb.append("    oauthTokenUrl: ").append(toIndentedString(oauthTokenUrl)).append("\n");
     sb.append("    oauthClientSecret: ").append(toIndentedString(oauthClientSecret)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();

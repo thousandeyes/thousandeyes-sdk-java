@@ -23,7 +23,7 @@ src/main/java/com/thousandeyes/sdk/tags/model/TagAssignment.java
 src/main/java/com/thousandeyes/sdk/tags/model/TagBulkCreateError.java
 src/main/java/com/thousandeyes/sdk/tags/model/TagFilter.java
 src/main/java/com/thousandeyes/sdk/tags/model/TagFilterMode.java
-src/main/java/com/thousandeyes/sdk/tags/model/TagFilterType.java
+src/main/java/com/thousandeyes/sdk/tags/model/TagFilterScope.java
 src/main/java/com/thousandeyes/sdk/tags/model/TagInfo.java
 src/main/java/com/thousandeyes/sdk/tags/model/TagMatchType.java
 src/main/java/com/thousandeyes/sdk/tags/model/Tags.java

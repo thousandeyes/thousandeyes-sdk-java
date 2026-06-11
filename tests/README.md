@@ -2,7 +2,7 @@
 
 Tests API
 
-- API version: 7.0.84
+- API version: 7.0.91
 
 **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.
 

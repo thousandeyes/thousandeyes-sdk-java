@@ -34,6 +34,8 @@ public enum AssignmentType {
   
   DASHBOARD("dashboard"),
   
+  CONNECTED_DEVICES_TEST("connected-devices-test"),
+  
   UNKNOWN("unknown");
 
   private String value;

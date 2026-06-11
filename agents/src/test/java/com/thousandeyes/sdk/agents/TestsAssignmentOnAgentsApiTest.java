@@ -1,6 +1,6 @@
 /*
  * Agents API
- *  ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
+ * ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -114,6 +114,11 @@ public class TestsAssignmentOnAgentsApiTest {
                     "longitude" : -122.41942
                   },
                   "agentName" : "thousandeyes-stg-va-254",
+                  "networkProviderInfo" : {
+                    "asn" : 7018,
+                    "name" : "AT&T Services, Inc.",
+                    "type" : "isp"
+                  },
                   "countryId" : "US",
                   "enabled" : true,
                   "network" : "AT&T Services, Inc. (AS 7018)",
@@ -268,6 +273,11 @@ public class TestsAssignmentOnAgentsApiTest {
                     "longitude" : -122.41942
                   },
                   "agentName" : "thousandeyes-stg-va-254",
+                  "networkProviderInfo" : {
+                    "asn" : 7018,
+                    "name" : "AT&T Services, Inc.",
+                    "type" : "isp"
+                  },
                   "countryId" : "US",
                   "enabled" : true,
                   "network" : "AT&T Services, Inc. (AS 7018)",
@@ -422,6 +432,11 @@ public class TestsAssignmentOnAgentsApiTest {
                     "longitude" : -122.41942
                   },
                   "agentName" : "thousandeyes-stg-va-254",
+                  "networkProviderInfo" : {
+                    "asn" : 7018,
+                    "name" : "AT&T Services, Inc.",
+                    "type" : "isp"
+                  },
                   "countryId" : "US",
                   "enabled" : true,
                   "network" : "AT&T Services, Inc. (AS 7018)",

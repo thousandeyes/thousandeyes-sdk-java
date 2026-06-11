@@ -1,6 +1,6 @@
 /*
  * Agents API
- *  ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
+ * ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -31,6 +31,7 @@ import com.thousandeyes.sdk.agents.model.ErrorDetail;
 import com.thousandeyes.sdk.agents.model.InterfaceIpMapping;
 import com.thousandeyes.sdk.agents.model.NotificationRules;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
+import com.thousandeyes.sdk.agents.model.SimpleAgentAllOfNetworkProviderInfo;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -51,9 +52,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentClusterDetail.JSON_PROPERTY_LOCATION,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_COUNTRY_ID,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_COORDINATES,
+  EnterpriseAgentClusterDetail.JSON_PROPERTY_NETWORK_PROVIDER_INFO,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_ENABLED,
-  EnterpriseAgentClusterDetail.JSON_PROPERTY_PREFIX,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
+  EnterpriseAgentClusterDetail.JSON_PROPERTY_PREFIX,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_TEST_IDS,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_TESTS,
   EnterpriseAgentClusterDetail.JSON_PROPERTY_CLUSTER_MEMBERS,
@@ -101,14 +103,17 @@ public class EnterpriseAgentClusterDetail {
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
   private Coordinates coordinates;
 
+  public static final String JSON_PROPERTY_NETWORK_PROVIDER_INFO = "networkProviderInfo";
+  private SimpleAgentAllOfNetworkProviderInfo networkProviderInfo;
+
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
 
-  public static final String JSON_PROPERTY_PREFIX = "prefix";
-  private String prefix;
-
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
   private Boolean verifySslCertificates;
+
+  public static final String JSON_PROPERTY_PREFIX = "prefix";
+  private String prefix;
 
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
   private List<Long> testIds = new ArrayList<>();
@@ -181,8 +186,8 @@ public class EnterpriseAgentClusterDetail {
     @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
     @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
+    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
     @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS) List<ClusterMember> clusterMembers, 
     @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization, 
@@ -201,8 +206,8 @@ public class EnterpriseAgentClusterDetail {
     this.agentId = agentId;
     this.location = location;
     this.countryId = countryId;
-    this.prefix = prefix;
     this.verifySslCertificates = verifySslCertificates;
+    this.prefix = prefix;
     this.testIds = testIds;
     this.clusterMembers = clusterMembers;
     this.utilization = utilization;
@@ -355,6 +360,31 @@ public class EnterpriseAgentClusterDetail {
   }
 
 
+  public EnterpriseAgentClusterDetail networkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+    this.networkProviderInfo = networkProviderInfo;
+    return this;
+  }
+
+   /**
+   * Get networkProviderInfo
+   * @return networkProviderInfo
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NETWORK_PROVIDER_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SimpleAgentAllOfNetworkProviderInfo getNetworkProviderInfo() {
+    return networkProviderInfo;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NETWORK_PROVIDER_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNetworkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+    this.networkProviderInfo = networkProviderInfo;
+  }
+
+
   public EnterpriseAgentClusterDetail enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
@@ -381,21 +411,6 @@ public class EnterpriseAgentClusterDetail {
 
 
    /**
-   * Prefix containing agents public IP address.
-   * @return prefix
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPrefix() {
-    return prefix;
-  }
-
-
-
-
-   /**
    * Flag indicating if has normal SSL operations or  if instead it&#39;s set to ignore SSL errors on browserbot-based tests.
    * @return verifySslCertificates
   **/
@@ -405,6 +420,21 @@ public class EnterpriseAgentClusterDetail {
 
   public Boolean getVerifySslCertificates() {
     return verifySslCertificates;
+  }
+
+
+
+
+   /**
+   * Prefix containing agents public IP address.
+   * @return prefix
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getPrefix() {
+    return prefix;
   }
 
 
@@ -862,9 +892,10 @@ public class EnterpriseAgentClusterDetail {
         Objects.equals(this.location, enterpriseAgentClusterDetail.location) &&
         Objects.equals(this.countryId, enterpriseAgentClusterDetail.countryId) &&
         Objects.equals(this.coordinates, enterpriseAgentClusterDetail.coordinates) &&
+        Objects.equals(this.networkProviderInfo, enterpriseAgentClusterDetail.networkProviderInfo) &&
         Objects.equals(this.enabled, enterpriseAgentClusterDetail.enabled) &&
-        Objects.equals(this.prefix, enterpriseAgentClusterDetail.prefix) &&
         Objects.equals(this.verifySslCertificates, enterpriseAgentClusterDetail.verifySslCertificates) &&
+        Objects.equals(this.prefix, enterpriseAgentClusterDetail.prefix) &&
         Objects.equals(this.testIds, enterpriseAgentClusterDetail.testIds) &&
         Objects.equals(this.tests, enterpriseAgentClusterDetail.tests) &&
         Objects.equals(this.clusterMembers, enterpriseAgentClusterDetail.clusterMembers) &&
@@ -889,7 +920,7 @@ public class EnterpriseAgentClusterDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, tags, agentType, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, networkProviderInfo, enabled, verifySslCertificates, prefix, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, tags, agentType, links);
   }
 
   @Override
@@ -904,9 +935,10 @@ public class EnterpriseAgentClusterDetail {
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
+    sb.append("    networkProviderInfo: ").append(toIndentedString(networkProviderInfo)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    clusterMembers: ").append(toIndentedString(clusterMembers)).append("\n");

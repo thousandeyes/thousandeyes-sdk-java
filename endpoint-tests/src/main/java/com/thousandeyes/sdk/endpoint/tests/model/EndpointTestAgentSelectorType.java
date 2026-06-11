@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
+ * Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Retrieve either all available agents, a specific list of agents, or a list of agent labels.
+ * Specifies how agents are selected for the endpoint test.  Agents can be selected from:   - all available agents   - a specific list of agents   - agents matching tags   - agents matching labels (deprecated) 
  */
 public enum EndpointTestAgentSelectorType {
   
@@ -31,6 +31,8 @@ public enum EndpointTestAgentSelectorType {
   SPECIFIC_AGENTS("specific-agents"),
   
   AGENT_LABELS("agent-labels"),
+  
+  AGENT_TAGS("agent-tags"),
   
   UNKNOWN("unknown");
 

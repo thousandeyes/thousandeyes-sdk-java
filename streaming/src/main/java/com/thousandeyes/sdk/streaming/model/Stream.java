@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.streaming.model.DataModelVersion;
 import com.thousandeyes.sdk.streaming.model.EndpointAgentLabel;
+import com.thousandeyes.sdk.streaming.model.EndpointAgentTag;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.Filters;
@@ -49,6 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Stream.JSON_PROPERTY_FILTERS,
   Stream.JSON_PROPERTY_EXPORTER_CONFIG,
   Stream.JSON_PROPERTY_ENDPOINT_AGENT_LABEL,
+  Stream.JSON_PROPERTY_ENDPOINT_AGENT_TAG,
   Stream.JSON_PROPERTY_TYPE,
   Stream.JSON_PROPERTY_SIGNAL,
   Stream.JSON_PROPERTY_ENDPOINT_TYPE,
@@ -79,6 +81,9 @@ public class Stream {
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABEL = "endpointAgentLabel";
   private List<EndpointAgentLabel> endpointAgentLabel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ENDPOINT_AGENT_TAG = "endpointAgentTag";
+  private List<EndpointAgentTag> endpointAgentTag = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private StreamType type;
@@ -308,7 +313,7 @@ public class Stream {
   }
 
    /**
-   * A collection of Endpoint Agent label IDs that determines what local network data is included in the data stream.
+   * A collection of Endpoint Agent label IDs that determines what local network data is included in the data stream. &#x60;endpointAgentLabel&#x60; and &#x60;endpointAgentTag&#x60; represent the same data. Configure only one; both are synchronized.
    * @return endpointAgentLabel
   **/
   @jakarta.annotation.Nullable
@@ -324,6 +329,39 @@ public class Stream {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEndpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
     this.endpointAgentLabel = endpointAgentLabel;
+  }
+
+
+  public Stream endpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+    this.endpointAgentTag = endpointAgentTag;
+    return this;
+  }
+
+  public Stream addEndpointAgentTagItem(EndpointAgentTag endpointAgentTagItem) {
+    if (this.endpointAgentTag == null) {
+      this.endpointAgentTag = new ArrayList<>();
+    }
+    this.endpointAgentTag.add(endpointAgentTagItem);
+    return this;
+  }
+
+   /**
+   * A collection of Endpoint Agent Tag IDs that determines what local network data is included in the data stream. &#x60;endpointAgentLabel&#x60; and &#x60;endpointAgentTag&#x60; represent the same data. Configure only one; both are synchronized.
+   * @return endpointAgentTag
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_TAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<EndpointAgentTag> getEndpointAgentTag() {
+    return endpointAgentTag;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_TAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+    this.endpointAgentTag = endpointAgentTag;
   }
 
 
@@ -447,6 +485,7 @@ public class Stream {
         Objects.equals(this.filters, stream.filters) &&
         Objects.equals(this.exporterConfig, stream.exporterConfig) &&
         Objects.equals(this.endpointAgentLabel, stream.endpointAgentLabel) &&
+        Objects.equals(this.endpointAgentTag, stream.endpointAgentTag) &&
         Objects.equals(this.type, stream.type) &&
         Objects.equals(this.signal, stream.signal) &&
         Objects.equals(this.endpointType, stream.endpointType) &&
@@ -455,7 +494,7 @@ public class Stream {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, exporterConfig, endpointAgentLabel, type, signal, endpointType, dataModelVersion);
+    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, exporterConfig, endpointAgentLabel, endpointAgentTag, type, signal, endpointType, dataModelVersion);
   }
 
   @Override
@@ -470,6 +509,7 @@ public class Stream {
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    endpointAgentLabel: ").append(toIndentedString(endpointAgentLabel)).append("\n");
+    sb.append("    endpointAgentTag: ").append(toIndentedString(endpointAgentTag)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    signal: ").append(toIndentedString(signal)).append("\n");
     sb.append("    endpointType: ").append(toIndentedString(endpointType)).append("\n");

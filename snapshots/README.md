@@ -2,7 +2,7 @@
 
 Test Snapshots API
 
-- API version: 7.0.84
+- API version: 7.0.91
 
 Creates a new test snapshot in ThousandEyes.
 

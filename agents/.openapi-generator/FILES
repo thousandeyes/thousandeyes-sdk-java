@@ -50,6 +50,8 @@ src/main/java/com/thousandeyes/sdk/agents/model/ErrorDetailCode.java
 src/main/java/com/thousandeyes/sdk/agents/model/InterfaceIpMapping.java
 src/main/java/com/thousandeyes/sdk/agents/model/Link.java
 src/main/java/com/thousandeyes/sdk/agents/model/ListNotificationRulesResponse.java
+src/main/java/com/thousandeyes/sdk/agents/model/NetworkProviderInfo.java
+src/main/java/com/thousandeyes/sdk/agents/model/NetworkProviderType.java
 src/main/java/com/thousandeyes/sdk/agents/model/NotificationRule.java
 src/main/java/com/thousandeyes/sdk/agents/model/NotificationRuleDetail.java
 src/main/java/com/thousandeyes/sdk/agents/model/NotificationRules.java
@@ -57,6 +59,7 @@ src/main/java/com/thousandeyes/sdk/agents/model/ProxyAuthType.java
 src/main/java/com/thousandeyes/sdk/agents/model/ProxyType.java
 src/main/java/com/thousandeyes/sdk/agents/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/agents/model/SimpleAgent.java
+src/main/java/com/thousandeyes/sdk/agents/model/SimpleAgentAllOfNetworkProviderInfo.java
 src/main/java/com/thousandeyes/sdk/agents/model/SimpleEnterpriseAgent.java
 src/main/java/com/thousandeyes/sdk/agents/model/SimpleTest.java
 src/main/java/com/thousandeyes/sdk/agents/model/TestInterval.java

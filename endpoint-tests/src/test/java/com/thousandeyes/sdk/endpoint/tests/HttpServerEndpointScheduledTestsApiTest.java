@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
+ * Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *
@@ -89,6 +89,7 @@ public class HttpServerEndpointScheduledTestsApiTest {
                   "verifyCertificate" : true,
                   "hasPing" : true,
                   "agentSelectorType" : "all-agents",
+                  "tagIds" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "5aeab5d5-0d34-4d44-a7ac-fb440185295c" ],
                   "maxMachines" : 25,
                   "isPrioritized" : false,
                   "httpTimeLimit" : 5000,

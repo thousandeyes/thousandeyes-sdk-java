@@ -48,11 +48,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_AID,
   EndpointAgent.JSON_PROPERTY_NAME,
   EndpointAgent.JSON_PROPERTY_COMPUTER_NAME,
+  EndpointAgent.JSON_PROPERTY_FREE_DISK_SPACE_NORMALIZED,
   EndpointAgent.JSON_PROPERTY_OS_VERSION,
   EndpointAgent.JSON_PROPERTY_PLATFORM,
   EndpointAgent.JSON_PROPERTY_KERNEL_VERSION,
   EndpointAgent.JSON_PROPERTY_MANUFACTURER,
   EndpointAgent.JSON_PROPERTY_MODEL,
+  EndpointAgent.JSON_PROPERTY_NIC_DRIVER_VERSION,
+  EndpointAgent.JSON_PROPERTY_NIC_MODEL,
   EndpointAgent.JSON_PROPERTY_SERIAL_NUMBER,
   EndpointAgent.JSON_PROPERTY_LAST_SEEN,
   EndpointAgent.JSON_PROPERTY_STATUS,
@@ -91,6 +94,9 @@ public class EndpointAgent {
   public static final String JSON_PROPERTY_COMPUTER_NAME = "computerName";
   private String computerName;
 
+  public static final String JSON_PROPERTY_FREE_DISK_SPACE_NORMALIZED = "freeDiskSpaceNormalized";
+  private Double freeDiskSpaceNormalized;
+
   public static final String JSON_PROPERTY_OS_VERSION = "osVersion";
   private String osVersion;
 
@@ -105,6 +111,12 @@ public class EndpointAgent {
 
   public static final String JSON_PROPERTY_MODEL = "model";
   private String model;
+
+  public static final String JSON_PROPERTY_NIC_DRIVER_VERSION = "nicDriverVersion";
+  private String nicDriverVersion;
+
+  public static final String JSON_PROPERTY_NIC_MODEL = "nicModel";
+  private String nicModel;
 
   public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
   private String serialNumber;
@@ -182,10 +194,13 @@ public class EndpointAgent {
   public EndpointAgent(
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
     @JsonProperty(JSON_PROPERTY_COMPUTER_NAME) String computerName, 
+    @JsonProperty(JSON_PROPERTY_FREE_DISK_SPACE_NORMALIZED) Double freeDiskSpaceNormalized, 
     @JsonProperty(JSON_PROPERTY_OS_VERSION) String osVersion, 
     @JsonProperty(JSON_PROPERTY_KERNEL_VERSION) String kernelVersion, 
     @JsonProperty(JSON_PROPERTY_MANUFACTURER) String manufacturer, 
     @JsonProperty(JSON_PROPERTY_MODEL) String model, 
+    @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION) String nicDriverVersion, 
+    @JsonProperty(JSON_PROPERTY_NIC_MODEL) String nicModel, 
     @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_DELETED) Boolean deleted, 
@@ -205,10 +220,13 @@ public class EndpointAgent {
   this();
     this.id = id;
     this.computerName = computerName;
+    this.freeDiskSpaceNormalized = freeDiskSpaceNormalized;
     this.osVersion = osVersion;
     this.kernelVersion = kernelVersion;
     this.manufacturer = manufacturer;
     this.model = model;
+    this.nicDriverVersion = nicDriverVersion;
+    this.nicModel = nicModel;
     this.serialNumber = serialNumber;
     this.lastSeen = lastSeen;
     this.deleted = deleted;
@@ -307,6 +325,23 @@ public class EndpointAgent {
 
 
    /**
+   * Free storage space as a normalized percentage (0-1).
+   * minimum: 0
+   * maximum: 1
+   * @return freeDiskSpaceNormalized
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FREE_DISK_SPACE_NORMALIZED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Double getFreeDiskSpaceNormalized() {
+    return freeDiskSpaceNormalized;
+  }
+
+
+
+
+   /**
    * Get osVersion
    * @return osVersion
   **/
@@ -386,6 +421,36 @@ public class EndpointAgent {
 
   public String getModel() {
     return model;
+  }
+
+
+
+
+   /**
+   * Network interface card driver version.
+   * @return nicDriverVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getNicDriverVersion() {
+    return nicDriverVersion;
+  }
+
+
+
+
+   /**
+   * Network interface card model.
+   * @return nicModel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getNicModel() {
+    return nicModel;
   }
 
 
@@ -840,11 +905,14 @@ public class EndpointAgent {
         Objects.equals(this.aid, endpointAgent.aid) &&
         Objects.equals(this.name, endpointAgent.name) &&
         Objects.equals(this.computerName, endpointAgent.computerName) &&
+        Objects.equals(this.freeDiskSpaceNormalized, endpointAgent.freeDiskSpaceNormalized) &&
         Objects.equals(this.osVersion, endpointAgent.osVersion) &&
         Objects.equals(this.platform, endpointAgent.platform) &&
         Objects.equals(this.kernelVersion, endpointAgent.kernelVersion) &&
         Objects.equals(this.manufacturer, endpointAgent.manufacturer) &&
         Objects.equals(this.model, endpointAgent.model) &&
+        Objects.equals(this.nicDriverVersion, endpointAgent.nicDriverVersion) &&
+        Objects.equals(this.nicModel, endpointAgent.nicModel) &&
         Objects.equals(this.serialNumber, endpointAgent.serialNumber) &&
         Objects.equals(this.lastSeen, endpointAgent.lastSeen) &&
         Objects.equals(this.status, endpointAgent.status) &&
@@ -872,7 +940,7 @@ public class EndpointAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, aid, name, computerName, osVersion, platform, kernelVersion, manufacturer, model, serialNumber, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, batteryMetrics, cellularProfile, links);
+    return Objects.hash(id, aid, name, computerName, freeDiskSpaceNormalized, osVersion, platform, kernelVersion, manufacturer, model, nicDriverVersion, nicModel, serialNumber, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, batteryMetrics, cellularProfile, links);
   }
 
   @Override
@@ -883,11 +951,14 @@ public class EndpointAgent {
     sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    computerName: ").append(toIndentedString(computerName)).append("\n");
+    sb.append("    freeDiskSpaceNormalized: ").append(toIndentedString(freeDiskSpaceNormalized)).append("\n");
     sb.append("    osVersion: ").append(toIndentedString(osVersion)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    kernelVersion: ").append(toIndentedString(kernelVersion)).append("\n");
     sb.append("    manufacturer: ").append(toIndentedString(manufacturer)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
+    sb.append("    nicDriverVersion: ").append(toIndentedString(nicDriverVersion)).append("\n");
+    sb.append("    nicModel: ").append(toIndentedString(nicModel)).append("\n");
     sb.append("    serialNumber: ").append(toIndentedString(serialNumber)).append("\n");
     sb.append("    lastSeen: ").append(toIndentedString(lastSeen)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

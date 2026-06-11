@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
+ * Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *
@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointInstantTest.JSON_PROPERTY_AGENT_SELECTOR_TYPE,
   EndpointInstantTest.JSON_PROPERTY_AGENTS,
   EndpointInstantTest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
+  EndpointInstantTest.JSON_PROPERTY_TAG_IDS,
   EndpointInstantTest.JSON_PROPERTY_MAX_MACHINES,
   EndpointInstantTest.JSON_PROPERTY_TEST_NAME,
   EndpointInstantTest.JSON_PROPERTY_IP_VERSION
@@ -50,6 +51,9 @@ public class EndpointInstantTest {
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
   private List<String> endpointAgentLabels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAG_IDS = "tagIds";
+  private List<UUID> tagIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
   private Integer maxMachines = 25;
@@ -135,9 +139,11 @@ public class EndpointInstantTest {
   }
 
    /**
-   * List of endpoint agent label IDs (obtained from &#x60;/endpoint/labels&#x60; endpoint), required when &#x60;agentSelectorType&#x60; is set to &#x60;agent-labels&#x60;.
+   * Deprecated. Use &#x60;tagIds&#x60; instead.  List of endpoint agent label IDs (obtained from &#x60;/endpoint/labels&#x60; endpoint), required when &#x60;agentSelectorType&#x60; is set to &#x60;agent-labels&#x60;. 
    * @return endpointAgentLabels
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -151,6 +157,39 @@ public class EndpointInstantTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEndpointAgentLabels(List<String> endpointAgentLabels) {
     this.endpointAgentLabels = endpointAgentLabels;
+  }
+
+
+  public EndpointInstantTest tagIds(List<UUID> tagIds) {
+    this.tagIds = tagIds;
+    return this;
+  }
+
+  public EndpointInstantTest addTagIdsItem(UUID tagIdsItem) {
+    if (this.tagIds == null) {
+      this.tagIds = new ArrayList<>();
+    }
+    this.tagIds.add(tagIdsItem);
+    return this;
+  }
+
+   /**
+   * List of tag IDs (obtained from &#x60;/tags&#x60; endpoint).
+   * @return tagIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAG_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<UUID> getTagIds() {
+    return tagIds;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAG_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTagIds(List<UUID> tagIds) {
+    this.tagIds = tagIds;
   }
 
 
@@ -244,6 +283,7 @@ public class EndpointInstantTest {
     return Objects.equals(this.agentSelectorType, endpointInstantTest.agentSelectorType) &&
         Objects.equals(this.agents, endpointInstantTest.agents) &&
         Objects.equals(this.endpointAgentLabels, endpointInstantTest.endpointAgentLabels) &&
+        Objects.equals(this.tagIds, endpointInstantTest.tagIds) &&
         Objects.equals(this.maxMachines, endpointInstantTest.maxMachines) &&
         Objects.equals(this.testName, endpointInstantTest.testName) &&
         Objects.equals(this.ipVersion, endpointInstantTest.ipVersion);
@@ -251,7 +291,7 @@ public class EndpointInstantTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, ipVersion);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, tagIds, maxMachines, testName, ipVersion);
   }
 
   @Override
@@ -261,6 +301,7 @@ public class EndpointInstantTest {
     sb.append("    agentSelectorType: ").append(toIndentedString(agentSelectorType)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
+    sb.append("    tagIds: ").append(toIndentedString(tagIds)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");

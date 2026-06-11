@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
+ * Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *
@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointAgentLabelsSelectorConfig;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointAgentTagsSelectorConfig;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointAllAgentsSelectorConfig;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointSpecificAgentsSelectorConfig;
 import java.util.ArrayList;
@@ -99,6 +100,10 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
                     deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointAgentLabelsSelectorConfig.class);
                     newEndpointAgentSelectorConfig.setActualInstance(deserialized);
                     return newEndpointAgentSelectorConfig;
+                case "agent-tags":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointAgentTagsSelectorConfig.class);
+                    newEndpointAgentSelectorConfig.setActualInstance(deserialized);
+                    return newEndpointAgentSelectorConfig;
                 case "all-agents":
                     deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointAllAgentsSelectorConfig.class);
                     newEndpointAgentSelectorConfig.setActualInstance(deserialized);
@@ -108,7 +113,7 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
                     newEndpointAgentSelectorConfig.setActualInstance(deserialized);
                     return newEndpointAgentSelectorConfig;
                 default:
-                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for EndpointAgentSelectorConfig. Possible values: agent-labels all-agents specific-agents", discriminatorValue));
+                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for EndpointAgentSelectorConfig. Possible values: agent-labels agent-tags all-agents specific-agents", discriminatorValue));
             }
 
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
@@ -138,6 +143,32 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
             } catch (Exception e) {
                 // deserialization failed, continue
                 log.log(Level.FINER, "Input data does not match schema 'EndpointAgentLabelsSelectorConfig'", e);
+            }
+
+            // deserialize EndpointAgentTagsSelectorConfig
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (EndpointAgentTagsSelectorConfig.class.equals(Integer.class) || EndpointAgentTagsSelectorConfig.class.equals(Long.class) || EndpointAgentTagsSelectorConfig.class.equals(Float.class) || EndpointAgentTagsSelectorConfig.class.equals(Double.class) || EndpointAgentTagsSelectorConfig.class.equals(Boolean.class) || EndpointAgentTagsSelectorConfig.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((EndpointAgentTagsSelectorConfig.class.equals(Integer.class) || EndpointAgentTagsSelectorConfig.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((EndpointAgentTagsSelectorConfig.class.equals(Float.class) || EndpointAgentTagsSelectorConfig.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (EndpointAgentTagsSelectorConfig.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (EndpointAgentTagsSelectorConfig.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EndpointAgentTagsSelectorConfig.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'EndpointAgentTagsSelectorConfig'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'EndpointAgentTagsSelectorConfig'", e);
             }
 
             // deserialize EndpointAllAgentsSelectorConfig
@@ -221,6 +252,11 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public EndpointAgentSelectorConfig(EndpointAgentTagsSelectorConfig o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public EndpointAgentSelectorConfig(EndpointAllAgentsSelectorConfig o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
@@ -233,12 +269,14 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
 
     static {
         schemas.put("EndpointAgentLabelsSelectorConfig", EndpointAgentLabelsSelectorConfig.class);
+        schemas.put("EndpointAgentTagsSelectorConfig", EndpointAgentTagsSelectorConfig.class);
         schemas.put("EndpointAllAgentsSelectorConfig", EndpointAllAgentsSelectorConfig.class);
         schemas.put("EndpointSpecificAgentsSelectorConfig", EndpointSpecificAgentsSelectorConfig.class);
         JSON.registerDescendants(EndpointAgentSelectorConfig.class, Collections.unmodifiableMap(schemas));
         // Initialize and register the discriminator mappings.
         Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
         mappings.put("agent-labels", EndpointAgentLabelsSelectorConfig.class);
+        mappings.put("agent-tags", EndpointAgentTagsSelectorConfig.class);
         mappings.put("all-agents", EndpointAllAgentsSelectorConfig.class);
         mappings.put("specific-agents", EndpointSpecificAgentsSelectorConfig.class);
         mappings.put("EndpointAgentSelectorConfig", EndpointAgentSelectorConfig.class);
@@ -253,7 +291,7 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * EndpointAgentLabelsSelectorConfig, EndpointAllAgentsSelectorConfig, EndpointSpecificAgentsSelectorConfig
+     * EndpointAgentLabelsSelectorConfig, EndpointAgentTagsSelectorConfig, EndpointAllAgentsSelectorConfig, EndpointSpecificAgentsSelectorConfig
      *
      * It could be an instance of the 'oneOf' schemas.
      * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
@@ -261,6 +299,11 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
     @Override
     public void setActualInstance(Object instance) {
         if (JSON.isInstanceOf(EndpointAgentLabelsSelectorConfig.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(EndpointAgentTagsSelectorConfig.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
         }
@@ -275,14 +318,14 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be EndpointAgentLabelsSelectorConfig, EndpointAllAgentsSelectorConfig, EndpointSpecificAgentsSelectorConfig");
+        throw new RuntimeException("Invalid instance type. Must be EndpointAgentLabelsSelectorConfig, EndpointAgentTagsSelectorConfig, EndpointAllAgentsSelectorConfig, EndpointSpecificAgentsSelectorConfig");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * EndpointAgentLabelsSelectorConfig, EndpointAllAgentsSelectorConfig, EndpointSpecificAgentsSelectorConfig
+     * EndpointAgentLabelsSelectorConfig, EndpointAgentTagsSelectorConfig, EndpointAllAgentsSelectorConfig, EndpointSpecificAgentsSelectorConfig
      *
-     * @return The actual instance (EndpointAgentLabelsSelectorConfig, EndpointAllAgentsSelectorConfig, EndpointSpecificAgentsSelectorConfig)
+     * @return The actual instance (EndpointAgentLabelsSelectorConfig, EndpointAgentTagsSelectorConfig, EndpointAllAgentsSelectorConfig, EndpointSpecificAgentsSelectorConfig)
      */
     @Override
     public Object getActualInstance() {
@@ -298,6 +341,17 @@ public class EndpointAgentSelectorConfig extends AbstractOpenApiSchema {
      */
     public EndpointAgentLabelsSelectorConfig getEndpointAgentLabelsSelectorConfig() throws ClassCastException {
         return (EndpointAgentLabelsSelectorConfig)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `EndpointAgentTagsSelectorConfig`. If the actual instance is not `EndpointAgentTagsSelectorConfig`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `EndpointAgentTagsSelectorConfig`
+     * @throws ClassCastException if the instance is not `EndpointAgentTagsSelectorConfig`
+     */
+    public EndpointAgentTagsSelectorConfig getEndpointAgentTagsSelectorConfig() throws ClassCastException {
+        return (EndpointAgentTagsSelectorConfig)super.getActualInstance();
     }
 
     /**
