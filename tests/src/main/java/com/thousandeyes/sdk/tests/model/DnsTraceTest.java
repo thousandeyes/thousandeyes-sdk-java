@@ -27,6 +27,7 @@ import com.thousandeyes.sdk.tests.model.TestDnsTransportProtocol;
 import com.thousandeyes.sdk.tests.model.TestInterval;
 import com.thousandeyes.sdk.tests.model.TestLabel;
 import com.thousandeyes.sdk.tests.model.TestLinks;
+import com.thousandeyes.sdk.tests.model.TestTag;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,6 +55,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsTraceTest.JSON_PROPERTY_TYPE,
   DnsTraceTest.JSON_PROPERTY_LINKS,
   DnsTraceTest.JSON_PROPERTY_LABELS,
+  DnsTraceTest.JSON_PROPERTY_TAGS,
   DnsTraceTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsTraceTest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
   DnsTraceTest.JSON_PROPERTY_DOMAIN,
@@ -110,6 +112,9 @@ public class DnsTraceTest {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
+
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
@@ -139,6 +144,7 @@ public class DnsTraceTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
@@ -151,6 +157,7 @@ public class DnsTraceTest {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
   }
 
@@ -473,6 +480,21 @@ public class DnsTraceTest {
 
 
    /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
+  }
+
+
+
+
+   /**
    * Get sharedWithAccounts
    * @return sharedWithAccounts
   **/
@@ -615,6 +637,7 @@ public class DnsTraceTest {
         Objects.equals(this.type, dnsTraceTest.type) &&
         Objects.equals(this.links, dnsTraceTest.links) &&
         Objects.equals(this.labels, dnsTraceTest.labels) &&
+        Objects.equals(this.tags, dnsTraceTest.tags) &&
         Objects.equals(this.sharedWithAccounts, dnsTraceTest.sharedWithAccounts) &&
         Objects.equals(this.dnsTransportProtocol, dnsTraceTest.dnsTransportProtocol) &&
         Objects.equals(this.domain, dnsTraceTest.domain) &&
@@ -624,7 +647,7 @@ public class DnsTraceTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, randomizedStartTime);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, dnsTransportProtocol, domain, dnsQueryClass, randomizedStartTime);
   }
 
   @Override
@@ -647,6 +670,7 @@ public class DnsTraceTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");

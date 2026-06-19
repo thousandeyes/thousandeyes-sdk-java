@@ -38,6 +38,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,6 +88,9 @@ public class WebhookOperationsApiTest {
                   "headers" : [ {
                     "name" : "Content-Type",
                     "value" : "application/json"
+                  }, {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
                   } ],
                   "payload" : "{\\"property1\\": {{numericVar}}, \\"property2\\": \\"{{stringVar}}\\"}",
                   "queryParams" : "{\\"queryParam1\\":\\"{{stringVar}}\\"}",
@@ -119,6 +123,9 @@ public class WebhookOperationsApiTest {
                 {
                   "path" : "/custom/path",
                   "headers" : [ {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
+                  }, {
                     "name" : "Content-Type",
                     "value" : "application/json"
                   } ],
@@ -211,6 +218,9 @@ public class WebhookOperationsApiTest {
                   "headers" : [ {
                     "name" : "Content-Type",
                     "value" : "application/json"
+                  }, {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
                   } ],
                   "payload" : "{\\"property1\\": {{numericVar}}, \\"property2\\": \\"{{stringVar}}\\"}",
                   "queryParams" : "{\\"queryParam1\\":\\"{{stringVar}}\\"}",
@@ -285,6 +295,9 @@ public class WebhookOperationsApiTest {
                     "headers" : [ {
                       "name" : "Content-Type",
                       "value" : "application/json"
+                    }, {
+                      "name" : "Content-Type",
+                      "value" : "application/json"
                     } ],
                     "payload" : "{\\"property1\\": {{numericVar}}, \\"property2\\": \\"{{stringVar}}\\"}",
                     "queryParams" : "{\\"queryParam1\\":\\"{{stringVar}}\\"}",
@@ -309,6 +322,9 @@ public class WebhookOperationsApiTest {
                   }, {
                     "path" : "/custom/path",
                     "headers" : [ {
+                      "name" : "Content-Type",
+                      "value" : "application/json"
+                    }, {
                       "name" : "Content-Type",
                       "value" : "application/json"
                     } ],
@@ -372,6 +388,9 @@ public class WebhookOperationsApiTest {
                   "headers" : [ {
                     "name" : "Content-Type",
                     "value" : "application/json"
+                  }, {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
                   } ],
                   "payload" : "{\\"property1\\": {{numericVar}}, \\"property2\\": \\"{{stringVar}}\\"}",
                   "queryParams" : "{\\"queryParam1\\":\\"{{stringVar}}\\"}",
@@ -404,6 +423,9 @@ public class WebhookOperationsApiTest {
                 {
                   "path" : "/custom/path",
                   "headers" : [ {
+                    "name" : "Content-Type",
+                    "value" : "application/json"
+                  }, {
                     "name" : "Content-Type",
                     "value" : "application/json"
                   } ],

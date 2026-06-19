@@ -31,6 +31,7 @@ import com.thousandeyes.sdk.tests.model.TestLinks;
 import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
+import com.thousandeyes.sdk.tests.model.TestTag;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +59,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerTest.JSON_PROPERTY_TYPE,
   AgentToServerTest.JSON_PROPERTY_LINKS,
   AgentToServerTest.JSON_PROPERTY_LABELS,
+  AgentToServerTest.JSON_PROPERTY_TAGS,
   AgentToServerTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   AgentToServerTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   AgentToServerTest.JSON_PROPERTY_CONTINUOUS_MODE,
@@ -127,6 +129,9 @@ public class AgentToServerTest {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -199,6 +204,7 @@ public class AgentToServerTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
@@ -213,6 +219,7 @@ public class AgentToServerTest {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
     this.dscp = dscp;
     this.monitors = monitors;
@@ -531,6 +538,21 @@ public class AgentToServerTest {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -1015,6 +1037,7 @@ public class AgentToServerTest {
         Objects.equals(this.type, agentToServerTest.type) &&
         Objects.equals(this.links, agentToServerTest.links) &&
         Objects.equals(this.labels, agentToServerTest.labels) &&
+        Objects.equals(this.tags, agentToServerTest.tags) &&
         Objects.equals(this.sharedWithAccounts, agentToServerTest.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, agentToServerTest.bandwidthMeasurements) &&
         Objects.equals(this.continuousMode, agentToServerTest.continuousMode) &&
@@ -1038,7 +1061,7 @@ public class AgentToServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1061,6 +1084,7 @@ public class AgentToServerTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    continuousMode: ").append(toIndentedString(continuousMode)).append("\n");

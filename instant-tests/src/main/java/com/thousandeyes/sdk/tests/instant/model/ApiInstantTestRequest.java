@@ -28,6 +28,7 @@ import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.instant.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,8 +51,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTestRequest.JSON_PROPERTY_TEST_NAME,
   ApiInstantTestRequest.JSON_PROPERTY_TYPE,
   ApiInstantTestRequest.JSON_PROPERTY_LINKS,
-  ApiInstantTestRequest.JSON_PROPERTY_LABELS,
-  ApiInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   ApiInstantTestRequest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   ApiInstantTestRequest.JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST,
   ApiInstantTestRequest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
@@ -72,9 +71,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTestRequest.JSON_PROPERTY_TARGET_TIME,
   ApiInstantTestRequest.JSON_PROPERTY_TIME_LIMIT,
   ApiInstantTestRequest.JSON_PROPERTY_URL,
-  ApiInstantTestRequest.JSON_PROPERTY_CREDENTIALS,
+  ApiInstantTestRequest.JSON_PROPERTY_LABELS,
   ApiInstantTestRequest.JSON_PROPERTY_TAGS,
-  ApiInstantTestRequest.JSON_PROPERTY_AGENTS
+  ApiInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  ApiInstantTestRequest.JSON_PROPERTY_AGENTS,
+  ApiInstantTestRequest.JSON_PROPERTY_CREDENTIALS,
+  ApiInstantTestRequest.JSON_PROPERTY_VAULT_CREDENTIALS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiInstantTestRequest {
@@ -110,12 +112,6 @@ public class ApiInstantTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLIENT_CERTIFICATE = "clientCertificate";
   private String clientCertificate;
@@ -177,14 +173,23 @@ public class ApiInstantTestRequest {
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
-  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<String> credentials = new ArrayList<>();
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
+  private List<String> credentials = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
 
   public ApiInstantTestRequest() { 
   }
@@ -403,72 +408,6 @@ public class ApiInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public ApiInstantTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public ApiInstantTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public ApiInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public ApiInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -994,36 +933,36 @@ public class ApiInstantTestRequest {
   }
 
 
-  public ApiInstantTestRequest credentials(List<String> credentials) {
-    this.credentials = credentials;
+  public ApiInstantTestRequest labels(List<String> labels) {
+    this.labels = labels;
     return this;
   }
 
-  public ApiInstantTestRequest addCredentialsItem(String credentialsItem) {
-    if (this.credentials == null) {
-      this.credentials = new ArrayList<>();
+  public ApiInstantTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
     }
-    this.credentials.add(credentialsItem);
+    this.labels.add(labelsItem);
     return this;
   }
 
    /**
-   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
-   * @return credentials
+   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
+   * @return labels
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getCredentials() {
-    return credentials;
+  public List<String> getLabels() {
+    return labels;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentials(List<String> credentials) {
-    this.credentials = credentials;
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
 
@@ -1060,6 +999,39 @@ public class ApiInstantTestRequest {
   }
 
 
+  public ApiInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public ApiInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
   public ApiInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -1093,6 +1065,72 @@ public class ApiInstantTestRequest {
   }
 
 
+  public ApiInstantTestRequest credentials(List<String> credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+  public ApiInstantTestRequest addCredentialsItem(String credentialsItem) {
+    if (this.credentials == null) {
+      this.credentials = new ArrayList<>();
+    }
+    this.credentials.add(credentialsItem);
+    return this;
+  }
+
+   /**
+   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
+   * @return credentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getCredentials() {
+    return credentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCredentials(List<String> credentials) {
+    this.credentials = credentials;
+  }
+
+
+  public ApiInstantTestRequest vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public ApiInstantTestRequest addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   /**
    * Return true if this ApiInstantTestRequest object is equal to o.
    */
@@ -1116,8 +1154,6 @@ public class ApiInstantTestRequest {
         Objects.equals(this.testName, apiInstantTestRequest.testName) &&
         Objects.equals(this.type, apiInstantTestRequest.type) &&
         Objects.equals(this.links, apiInstantTestRequest.links) &&
-        Objects.equals(this.labels, apiInstantTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, apiInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.clientCertificate, apiInstantTestRequest.clientCertificate) &&
         Objects.equals(this.clientCertDomainsAllowList, apiInstantTestRequest.clientCertDomainsAllowList) &&
         Objects.equals(this.collectProxyNetworkData, apiInstantTestRequest.collectProxyNetworkData) &&
@@ -1138,14 +1174,17 @@ public class ApiInstantTestRequest {
         Objects.equals(this.targetTime, apiInstantTestRequest.targetTime) &&
         Objects.equals(this.timeLimit, apiInstantTestRequest.timeLimit) &&
         Objects.equals(this.url, apiInstantTestRequest.url) &&
-        Objects.equals(this.credentials, apiInstantTestRequest.credentials) &&
+        Objects.equals(this.labels, apiInstantTestRequest.labels) &&
         Objects.equals(this.tags, apiInstantTestRequest.tags) &&
-        Objects.equals(this.agents, apiInstantTestRequest.agents);
+        Objects.equals(this.sharedWithAccounts, apiInstantTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.agents, apiInstantTestRequest.agents) &&
+        Objects.equals(this.credentials, apiInstantTestRequest.credentials) &&
+        Objects.equals(this.vaultCredentials, apiInstantTestRequest.vaultCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, tags, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, labels, tags, sharedWithAccounts, agents, credentials, vaultCredentials);
   }
 
   @Override
@@ -1163,8 +1202,6 @@ public class ApiInstantTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    clientCertDomainsAllowList: ").append(toIndentedString(clientCertDomainsAllowList)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
@@ -1185,9 +1222,12 @@ public class ApiInstantTestRequest {
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }

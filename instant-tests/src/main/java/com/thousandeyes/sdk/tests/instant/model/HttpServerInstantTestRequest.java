@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
+import com.thousandeyes.sdk.tests.instant.model.RequestMethod;
 import com.thousandeyes.sdk.tests.instant.model.TestAgent;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
 import com.thousandeyes.sdk.tests.instant.model.TestCustomHeaders;
@@ -31,6 +32,7 @@ import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.instant.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,8 +55,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTestRequest.JSON_PROPERTY_TEST_NAME,
   HttpServerInstantTestRequest.JSON_PROPERTY_TYPE,
   HttpServerInstantTestRequest.JSON_PROPERTY_LINKS,
-  HttpServerInstantTestRequest.JSON_PROPERTY_LABELS,
-  HttpServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   HttpServerInstantTestRequest.JSON_PROPERTY_AUTH_TYPE,
   HttpServerInstantTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   HttpServerInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
@@ -90,11 +90,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTestRequest.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   HttpServerInstantTestRequest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   HttpServerInstantTestRequest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  HttpServerInstantTestRequest.JSON_PROPERTY_VAULT_CREDENTIALS,
   HttpServerInstantTestRequest.JSON_PROPERTY_HEADERS,
   HttpServerInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  HttpServerInstantTestRequest.JSON_PROPERTY_REQUEST_METHOD,
   HttpServerInstantTestRequest.JSON_PROPERTY_POST_BODY,
   HttpServerInstantTestRequest.JSON_PROPERTY_IPV6_POLICY,
+  HttpServerInstantTestRequest.JSON_PROPERTY_LABELS,
   HttpServerInstantTestRequest.JSON_PROPERTY_TAGS,
+  HttpServerInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   HttpServerInstantTestRequest.JSON_PROPERTY_AGENTS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -131,12 +135,6 @@ public class HttpServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -243,11 +241,17 @@ public class HttpServerInstantTestRequest {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_REQUEST_METHOD = "requestMethod";
+  private RequestMethod requestMethod;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -255,8 +259,14 @@ public class HttpServerInstantTestRequest {
   public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
+
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
@@ -480,72 +490,6 @@ public class HttpServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public HttpServerInstantTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public HttpServerInstantTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public HttpServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public HttpServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1424,6 +1368,39 @@ public class HttpServerInstantTestRequest {
   }
 
 
+  public HttpServerInstantTestRequest vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public HttpServerInstantTestRequest addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public HttpServerInstantTestRequest headers(List<String> headers) {
     this.headers = headers;
     return this;
@@ -1482,13 +1459,38 @@ public class HttpServerInstantTestRequest {
   }
 
 
+  public HttpServerInstantTestRequest requestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+    return this;
+  }
+
+   /**
+   * Get requestMethod
+   * @return requestMethod
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public RequestMethod getRequestMethod() {
+    return requestMethod;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRequestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+  }
+
+
   public HttpServerInstantTestRequest postBody(String postBody) {
     this.postBody = postBody;
     return this;
   }
 
    /**
-   * Enter the body for the HTTP POST request in this field. No special escaping is necessary. If the post body is provided with content, the &#x60;requestMethod&#x60; is automatically set to POST.
+   * Enter the body for the HTTP POST request in this field. No special escaping is required. If content is provided and &#x60;requestMethod&#x60; is not specified, &#x60;requestMethod&#x60; is automatically set to &#x60;post&#x60;.
    * @return postBody
   **/
   @jakarta.annotation.Nullable
@@ -1532,6 +1534,39 @@ public class HttpServerInstantTestRequest {
   }
 
 
+  public HttpServerInstantTestRequest labels(List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public HttpServerInstantTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+   /**
+   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
+  }
+
+
   public HttpServerInstantTestRequest tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -1562,6 +1597,39 @@ public class HttpServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public HttpServerInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public HttpServerInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1621,8 +1689,6 @@ public class HttpServerInstantTestRequest {
         Objects.equals(this.testName, httpServerInstantTestRequest.testName) &&
         Objects.equals(this.type, httpServerInstantTestRequest.type) &&
         Objects.equals(this.links, httpServerInstantTestRequest.links) &&
-        Objects.equals(this.labels, httpServerInstantTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, httpServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.authType, httpServerInstantTestRequest.authType) &&
         Objects.equals(this.agentInterfaces, httpServerInstantTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, httpServerInstantTestRequest.bandwidthMeasurements) &&
@@ -1658,17 +1724,21 @@ public class HttpServerInstantTestRequest {
         Objects.equals(this.overrideAgentProxy, httpServerInstantTestRequest.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, httpServerInstantTestRequest.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, httpServerInstantTestRequest.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, httpServerInstantTestRequest.vaultCredentials) &&
         Objects.equals(this.headers, httpServerInstantTestRequest.headers) &&
         Objects.equals(this.randomizedStartTime, httpServerInstantTestRequest.randomizedStartTime) &&
+        Objects.equals(this.requestMethod, httpServerInstantTestRequest.requestMethod) &&
         Objects.equals(this.postBody, httpServerInstantTestRequest.postBody) &&
         Objects.equals(this.ipv6Policy, httpServerInstantTestRequest.ipv6Policy) &&
+        Objects.equals(this.labels, httpServerInstantTestRequest.labels) &&
         Objects.equals(this.tags, httpServerInstantTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, httpServerInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.agents, httpServerInstantTestRequest.agents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, tags, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, labels, tags, sharedWithAccounts, agents);
   }
 
   @Override
@@ -1686,8 +1756,6 @@ public class HttpServerInstantTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
@@ -1723,11 +1791,15 @@ public class HttpServerInstantTestRequest {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    requestMethod: ").append(toIndentedString(requestMethod)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("}");
     return sb.toString();

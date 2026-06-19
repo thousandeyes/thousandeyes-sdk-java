@@ -22,49 +22,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Type of filter key - the data that will be used to filter.
+ * Scope of the filter.  * &#x60;default&#x60;: The filter is from the default set provided by ThousandEyes. * &#x60;custom&#x60;: The filter is user-defined. Set in check-in metadata. 
  */
-public enum TagFilterType {
+public enum TagFilterScope {
   
-  AGENT_ID("agent-id"),
+  DEFAULT("default"),
   
-  PUBLIC_NETWORK("public-network"),
-  
-  LOCAL_NETWORK("local-network"),
-  
-  CONNECTION("connection"),
-  
-  GATEWAY("gateway"),
-  
-  PLATFORM("platform"),
-  
-  AGENT_TYPE("agent-type"),
-  
-  VPN_VENDOR("vpn-vendor"),
-  
-  VPN_GATEWAY_ADDRESS("vpn-gateway-address"),
-  
-  VPN_CLIENT_NETWORK("vpn-client-network"),
-  
-  VPN_CLIENT_ADDRESS("vpn-client-address"),
-  
-  IP_ADDRESS_FAMILY("ip-address-family"),
-  
-  SSID("ssid"),
-  
-  BSSID("bssid"),
-  
-  HOSTNAME("hostname"),
-  
-  USERNAME("username"),
-  
-  ASN("asn"),
+  CUSTOM("custom"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  TagFilterType(String value) {
+  TagFilterScope(String value) {
     this.value = value;
   }
 
@@ -79,8 +49,8 @@ public enum TagFilterType {
   }
 
   @JsonCreator
-  public static TagFilterType fromValue(String value) {
-    for (TagFilterType b : TagFilterType.values()) {
+  public static TagFilterScope fromValue(String value) {
+    for (TagFilterScope b : TagFilterScope.values()) {
       if (b.value.equals(value)) {
         return b;
       }

@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.tests.model.DnsQueryClass;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.model.TestLabel;
 import com.thousandeyes.sdk.tests.model.TestLinks;
+import com.thousandeyes.sdk.tests.model.TestTag;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,6 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsSecInstantTest.JSON_PROPERTY_TYPE,
   DnsSecInstantTest.JSON_PROPERTY_LINKS,
   DnsSecInstantTest.JSON_PROPERTY_LABELS,
+  DnsSecInstantTest.JSON_PROPERTY_TAGS,
   DnsSecInstantTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsSecInstantTest.JSON_PROPERTY_DOMAIN,
   DnsSecInstantTest.JSON_PROPERTY_DNS_QUERY_CLASS,
@@ -90,6 +92,9 @@ public class DnsSecInstantTest {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
+
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
@@ -116,6 +121,7 @@ public class DnsSecInstantTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
@@ -128,6 +134,7 @@ public class DnsSecInstantTest {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
   }
 
@@ -342,6 +349,21 @@ public class DnsSecInstantTest {
 
 
    /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
+  }
+
+
+
+
+   /**
    * Get sharedWithAccounts
    * @return sharedWithAccounts
   **/
@@ -455,6 +477,7 @@ public class DnsSecInstantTest {
         Objects.equals(this.type, dnsSecInstantTest.type) &&
         Objects.equals(this.links, dnsSecInstantTest.links) &&
         Objects.equals(this.labels, dnsSecInstantTest.labels) &&
+        Objects.equals(this.tags, dnsSecInstantTest.tags) &&
         Objects.equals(this.sharedWithAccounts, dnsSecInstantTest.sharedWithAccounts) &&
         Objects.equals(this.domain, dnsSecInstantTest.domain) &&
         Objects.equals(this.dnsQueryClass, dnsSecInstantTest.dnsQueryClass) &&
@@ -463,7 +486,7 @@ public class DnsSecInstantTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, domain, dnsQueryClass, randomizedStartTime);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, domain, dnsQueryClass, randomizedStartTime);
   }
 
   @Override
@@ -482,6 +505,7 @@ public class DnsSecInstantTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");

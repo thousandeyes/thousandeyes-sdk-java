@@ -2,9 +2,13 @@
 README.md
 api/openapi.yaml
 build.gradle
+docs/CredentialVaultOperationsApi.md
+docs/CyberArkConjurConnectorsApi.md
 docs/GenericConnectorsApi.md
 docs/OperationConnectorsApi.md
 docs/WebhookOperationsApi.md
+src/main/java/com/thousandeyes/sdk/connectors/CredentialVaultOperationsApi.java
+src/main/java/com/thousandeyes/sdk/connectors/CyberArkConjurConnectorsApi.java
 src/main/java/com/thousandeyes/sdk/connectors/GenericConnectorsApi.java
 src/main/java/com/thousandeyes/sdk/connectors/OperationConnectorsApi.java
 src/main/java/com/thousandeyes/sdk/connectors/WebhookOperationsApi.java
@@ -12,7 +16,13 @@ src/main/java/com/thousandeyes/sdk/connectors/model/Assignments.java
 src/main/java/com/thousandeyes/sdk/connectors/model/AuthenticationType.java
 src/main/java/com/thousandeyes/sdk/connectors/model/BasicAuthentication.java
 src/main/java/com/thousandeyes/sdk/connectors/model/BearerTokenAuthentication.java
+src/main/java/com/thousandeyes/sdk/connectors/model/ConjurConnector.java
+src/main/java/com/thousandeyes/sdk/connectors/model/ConjurConnectors.java
+src/main/java/com/thousandeyes/sdk/connectors/model/ConjurHostAuthentication.java
 src/main/java/com/thousandeyes/sdk/connectors/model/ConnectorType.java
+src/main/java/com/thousandeyes/sdk/connectors/model/CredentialVaultOperation.java
+src/main/java/com/thousandeyes/sdk/connectors/model/CredentialVaultOperations.java
+src/main/java/com/thousandeyes/sdk/connectors/model/CredentialVaultSecret.java
 src/main/java/com/thousandeyes/sdk/connectors/model/Error.java
 src/main/java/com/thousandeyes/sdk/connectors/model/GenericConnector.java
 src/main/java/com/thousandeyes/sdk/connectors/model/GenericConnectorAuth.java
@@ -31,6 +41,8 @@ src/main/java/com/thousandeyes/sdk/connectors/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/connectors/model/ValidationErrorItem.java
 src/main/java/com/thousandeyes/sdk/connectors/model/WebhookOperation.java
 src/main/java/com/thousandeyes/sdk/connectors/model/WebhookOperations.java
+src/test/java/com/thousandeyes/sdk/connectors/CredentialVaultOperationsApiTest.java
+src/test/java/com/thousandeyes/sdk/connectors/CyberArkConjurConnectorsApiTest.java
 src/test/java/com/thousandeyes/sdk/connectors/GenericConnectorsApiTest.java
 src/test/java/com/thousandeyes/sdk/connectors/OperationConnectorsApiTest.java
 src/test/java/com/thousandeyes/sdk/connectors/WebhookOperationsApiTest.java

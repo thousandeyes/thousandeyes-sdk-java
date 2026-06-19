@@ -22,19 +22,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * HTTP request method used for the OAuth request.
+ * The target setting that the credential should be used for.
  */
-public enum OAuthRequestMethod {
+public enum TestVaultCredentialTarget {
   
-  GET("get"),
+  USERNAME("username"),
   
-  POST("post"),
+  PASSWORD("password"),
+  
+  SCRIPT("script"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  OAuthRequestMethod(String value) {
+  TestVaultCredentialTarget(String value) {
     this.value = value;
   }
 
@@ -49,8 +51,8 @@ public enum OAuthRequestMethod {
   }
 
   @JsonCreator
-  public static OAuthRequestMethod fromValue(String value) {
-    for (OAuthRequestMethod b : OAuthRequestMethod.values()) {
+  public static TestVaultCredentialTarget fromValue(String value) {
+    for (TestVaultCredentialTarget b : TestVaultCredentialTarget.values()) {
       if (b.value.equals(value)) {
         return b;
       }

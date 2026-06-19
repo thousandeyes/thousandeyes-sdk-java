@@ -33,6 +33,8 @@ import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
 import com.thousandeyes.sdk.tests.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.model.TestTag;
+import com.thousandeyes.sdk.tests.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,6 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestResponse.JSON_PROPERTY_TYPE,
   ApiTestResponse.JSON_PROPERTY_LINKS,
   ApiTestResponse.JSON_PROPERTY_LABELS,
+  ApiTestResponse.JSON_PROPERTY_TAGS,
   ApiTestResponse.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   ApiTestResponse.JSON_PROPERTY_CLIENT_CERTIFICATE,
   ApiTestResponse.JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST,
@@ -82,6 +85,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTestResponse.JSON_PROPERTY_TIME_LIMIT,
   ApiTestResponse.JSON_PROPERTY_URL,
   ApiTestResponse.JSON_PROPERTY_CREDENTIALS,
+  ApiTestResponse.JSON_PROPERTY_VAULT_CREDENTIALS,
   ApiTestResponse.JSON_PROPERTY_BGP_MEASUREMENTS,
   ApiTestResponse.JSON_PROPERTY_USE_PUBLIC_BGP,
   ApiTestResponse.JSON_PROPERTY_MONITORS,
@@ -136,6 +140,9 @@ public class ApiTestResponse {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -203,6 +210,9 @@ public class ApiTestResponse {
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
 
@@ -229,6 +239,7 @@ public class ApiTestResponse {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
@@ -242,6 +253,7 @@ public class ApiTestResponse {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
     this.monitors = monitors;
   }
@@ -559,6 +571,21 @@ public class ApiTestResponse {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -1134,6 +1161,39 @@ public class ApiTestResponse {
   }
 
 
+  public ApiTestResponse vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public ApiTestResponse addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public ApiTestResponse bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
@@ -1260,6 +1320,7 @@ public class ApiTestResponse {
         Objects.equals(this.type, apiTestResponse.type) &&
         Objects.equals(this.links, apiTestResponse.links) &&
         Objects.equals(this.labels, apiTestResponse.labels) &&
+        Objects.equals(this.tags, apiTestResponse.tags) &&
         Objects.equals(this.sharedWithAccounts, apiTestResponse.sharedWithAccounts) &&
         Objects.equals(this.clientCertificate, apiTestResponse.clientCertificate) &&
         Objects.equals(this.clientCertDomainsAllowList, apiTestResponse.clientCertDomainsAllowList) &&
@@ -1282,6 +1343,7 @@ public class ApiTestResponse {
         Objects.equals(this.timeLimit, apiTestResponse.timeLimit) &&
         Objects.equals(this.url, apiTestResponse.url) &&
         Objects.equals(this.credentials, apiTestResponse.credentials) &&
+        Objects.equals(this.vaultCredentials, apiTestResponse.vaultCredentials) &&
         Objects.equals(this.bgpMeasurements, apiTestResponse.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, apiTestResponse.usePublicBgp) &&
         Objects.equals(this.monitors, apiTestResponse.monitors) &&
@@ -1290,7 +1352,7 @@ public class ApiTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, vaultCredentials, bgpMeasurements, usePublicBgp, monitors, agents);
   }
 
   @Override
@@ -1313,6 +1375,7 @@ public class ApiTestResponse {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    clientCertDomainsAllowList: ").append(toIndentedString(clientCertDomainsAllowList)).append("\n");
@@ -1335,6 +1398,7 @@ public class ApiTestResponse {
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
     sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");

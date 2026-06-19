@@ -20,61 +20,80 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.thousandeyes.sdk.tests.instant.model.TestVaultCredentialTarget;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * DnsServersRequest
+ * TestVaultCredential
  */
 @JsonPropertyOrder({
-  DnsServersRequest.JSON_PROPERTY_DNS_SERVERS
+  TestVaultCredential.JSON_PROPERTY_SECRET_ID,
+  TestVaultCredential.JSON_PROPERTY_TARGET
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class DnsServersRequest {
-  public static final String JSON_PROPERTY_DNS_SERVERS = "dnsServers";
-  private List<String> dnsServers = new ArrayList<>();
+public class TestVaultCredential {
+  public static final String JSON_PROPERTY_SECRET_ID = "secretId";
+  private String secretId;
 
-  public DnsServersRequest() { 
+  public static final String JSON_PROPERTY_TARGET = "target";
+  private TestVaultCredentialTarget target;
+
+  public TestVaultCredential() { 
   }
 
-  public DnsServersRequest dnsServers(List<String> dnsServers) {
-    this.dnsServers = dnsServers;
-    return this;
-  }
-
-  public DnsServersRequest addDnsServersItem(String dnsServersItem) {
-    if (this.dnsServers == null) {
-      this.dnsServers = new ArrayList<>();
-    }
-    this.dnsServers.add(dnsServersItem);
+  public TestVaultCredential secretId(String secretId) {
+    this.secretId = secretId;
     return this;
   }
 
    /**
-   * A list of DNS server FQDN.
-   * @return dnsServers
+   * UUID of the configured secret.
+   * @return secretId
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DNS_SERVERS)
+  @JsonProperty(JSON_PROPERTY_SECRET_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getDnsServers() {
-    return dnsServers;
+  public String getSecretId() {
+    return secretId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DNS_SERVERS)
+  @JsonProperty(JSON_PROPERTY_SECRET_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDnsServers(List<String> dnsServers) {
-    this.dnsServers = dnsServers;
+  public void setSecretId(String secretId) {
+    this.secretId = secretId;
+  }
+
+
+  public TestVaultCredential target(TestVaultCredentialTarget target) {
+    this.target = target;
+    return this;
+  }
+
+   /**
+   * Get target
+   * @return target
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TARGET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TestVaultCredentialTarget getTarget() {
+    return target;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TARGET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTarget(TestVaultCredentialTarget target) {
+    this.target = target;
   }
 
 
   /**
-   * Return true if this DnsServersRequest object is equal to o.
+   * Return true if this TestVaultCredential object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -84,20 +103,22 @@ public class DnsServersRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DnsServersRequest dnsServersRequest = (DnsServersRequest) o;
-    return Objects.equals(this.dnsServers, dnsServersRequest.dnsServers);
+    TestVaultCredential testVaultCredential = (TestVaultCredential) o;
+    return Objects.equals(this.secretId, testVaultCredential.secretId) &&
+        Objects.equals(this.target, testVaultCredential.target);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dnsServers);
+    return Objects.hash(secretId, target);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DnsServersRequest {\n");
-    sb.append("    dnsServers: ").append(toIndentedString(dnsServers)).append("\n");
+    sb.append("class TestVaultCredential {\n");
+    sb.append("    secretId: ").append(toIndentedString(secretId)).append("\n");
+    sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("}");
     return sb.toString();
   }

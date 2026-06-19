@@ -42,6 +42,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -411,10 +412,10 @@ public class WebTransactionsTestResultsApiTest {
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "markers" : [ {
-                      "duration" : 0,
+                      "duration" : 1360,
                       "name" : "SearchForWebdriver"
                     }, {
-                      "duration" : 0,
+                      "duration" : 1360,
                       "name" : "SearchForWebdriver"
                     } ],
                     "roundId" : 1384309800,
@@ -674,10 +675,10 @@ public class WebTransactionsTestResultsApiTest {
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "markers" : [ {
-                      "duration" : 0,
+                      "duration" : 1360,
                       "name" : "SearchForWebdriver"
                     }, {
-                      "duration" : 0,
+                      "duration" : 1360,
                       "name" : "SearchForWebdriver"
                     } ],
                     "roundId" : 1384309800,
@@ -828,10 +829,10 @@ public class WebTransactionsTestResultsApiTest {
                     "endTime" : 1384309800,
                     "transactionTime" : 2379,
                     "markers" : [ {
-                      "duration" : 0,
+                      "duration" : 1360,
                       "name" : "SearchForWebdriver"
                     }, {
-                      "duration" : 0,
+                      "duration" : 1360,
                       "name" : "SearchForWebdriver"
                     } ],
                     "roundId" : 1384309800,
@@ -875,10 +876,10 @@ public class WebTransactionsTestResultsApiTest {
                     "endTime" : 1384309800,
                     "transactionTime" : 2379,
                     "markers" : [ {
-                      "duration" : 0,
+                      "duration" : 1360,
                       "name" : "SearchForWebdriver"
                     }, {
-                      "duration" : 0,
+                      "duration" : 1360,
                       "name" : "SearchForWebdriver"
                     } ],
                     "roundId" : 1384309800,

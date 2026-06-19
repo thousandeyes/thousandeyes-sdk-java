@@ -33,6 +33,8 @@ import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.instant.model.TestTag;
+import com.thousandeyes.sdk.tests.instant.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,6 +58,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTestResponse.JSON_PROPERTY_TYPE,
   PageLoadInstantTestResponse.JSON_PROPERTY_LINKS,
   PageLoadInstantTestResponse.JSON_PROPERTY_LABELS,
+  PageLoadInstantTestResponse.JSON_PROPERTY_TAGS,
   PageLoadInstantTestResponse.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   PageLoadInstantTestResponse.JSON_PROPERTY_AUTH_TYPE,
   PageLoadInstantTestResponse.JSON_PROPERTY_AGENT_INTERFACES,
@@ -92,6 +95,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTestResponse.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   PageLoadInstantTestResponse.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   PageLoadInstantTestResponse.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  PageLoadInstantTestResponse.JSON_PROPERTY_VAULT_CREDENTIALS,
   PageLoadInstantTestResponse.JSON_PROPERTY_EMULATED_DEVICE_ID,
   PageLoadInstantTestResponse.JSON_PROPERTY_PAGE_LOAD_TARGET_TIME,
   PageLoadInstantTestResponse.JSON_PROPERTY_PAGE_LOAD_TIME_LIMIT,
@@ -144,6 +148,9 @@ public class PageLoadInstantTestResponse {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -253,6 +260,9 @@ public class PageLoadInstantTestResponse {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_EMULATED_DEVICE_ID = "emulatedDeviceId";
   private String emulatedDeviceId;
 
@@ -309,6 +319,7 @@ public class PageLoadInstantTestResponse {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion
   ) {
@@ -322,6 +333,7 @@ public class PageLoadInstantTestResponse {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
     this.sslVersion = sslVersion;
   }
@@ -531,6 +543,21 @@ public class PageLoadInstantTestResponse {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -1426,6 +1453,39 @@ public class PageLoadInstantTestResponse {
   }
 
 
+  public PageLoadInstantTestResponse vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public PageLoadInstantTestResponse addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public PageLoadInstantTestResponse emulatedDeviceId(String emulatedDeviceId) {
     this.emulatedDeviceId = emulatedDeviceId;
     return this;
@@ -1812,6 +1872,7 @@ public class PageLoadInstantTestResponse {
         Objects.equals(this.type, pageLoadInstantTestResponse.type) &&
         Objects.equals(this.links, pageLoadInstantTestResponse.links) &&
         Objects.equals(this.labels, pageLoadInstantTestResponse.labels) &&
+        Objects.equals(this.tags, pageLoadInstantTestResponse.tags) &&
         Objects.equals(this.sharedWithAccounts, pageLoadInstantTestResponse.sharedWithAccounts) &&
         Objects.equals(this.authType, pageLoadInstantTestResponse.authType) &&
         Objects.equals(this.agentInterfaces, pageLoadInstantTestResponse.agentInterfaces) &&
@@ -1848,6 +1909,7 @@ public class PageLoadInstantTestResponse {
         Objects.equals(this.overrideAgentProxy, pageLoadInstantTestResponse.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, pageLoadInstantTestResponse.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, pageLoadInstantTestResponse.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, pageLoadInstantTestResponse.vaultCredentials) &&
         Objects.equals(this.emulatedDeviceId, pageLoadInstantTestResponse.emulatedDeviceId) &&
         Objects.equals(this.pageLoadTargetTime, pageLoadInstantTestResponse.pageLoadTargetTime) &&
         Objects.equals(this.pageLoadTimeLimit, pageLoadInstantTestResponse.pageLoadTimeLimit) &&
@@ -1866,7 +1928,7 @@ public class PageLoadInstantTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, agents);
   }
 
   @Override
@@ -1885,6 +1947,7 @@ public class PageLoadInstantTestResponse {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
@@ -1921,6 +1984,7 @@ public class PageLoadInstantTestResponse {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    emulatedDeviceId: ").append(toIndentedString(emulatedDeviceId)).append("\n");
     sb.append("    pageLoadTargetTime: ").append(toIndentedString(pageLoadTargetTime)).append("\n");
     sb.append("    pageLoadTimeLimit: ").append(toIndentedString(pageLoadTimeLimit)).append("\n");

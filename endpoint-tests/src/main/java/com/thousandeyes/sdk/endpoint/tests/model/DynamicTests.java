@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
+ * Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *

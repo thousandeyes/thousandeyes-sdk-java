@@ -42,6 +42,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -232,7 +233,7 @@ public class AccountGroupsApiTest {
                   },
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
-                  "accountToken" : "6j052y4vfgyuhefghue",
+                  "accountToken" : "accountToken",
                   "aid" : "1234",
                   "orgId" : "12345",
                   "users" : [ {
@@ -275,6 +276,11 @@ public class AccountGroupsApiTest {
                     "agentType" : "enterprise-cluster",
                     "ipv6Policy" : "force-ipv4",
                     "prefix" : "99.128.0.0/11",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
@@ -282,6 +288,7 @@ public class AccountGroupsApiTest {
                     "keepBrowserCache" : true,
                     "agentState" : "online",
                     "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "serialNumber" : "FOC2218ABCD",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
@@ -291,6 +298,7 @@ public class AccountGroupsApiTest {
                     "testIds" : [ 281474976710706 ],
                     "clusterMembers" : [ {
                       "lastSeen" : "2022-07-17T22:00:54Z",
+                      "serialNumber" : "FOC2218ABCD",
                       "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                       "agentState" : "online",
                       "targetForTests" : "1.1.1.1",
@@ -308,6 +316,7 @@ public class AccountGroupsApiTest {
                       } ]
                     }, {
                       "lastSeen" : "2022-07-17T22:00:54Z",
+                      "serialNumber" : "FOC2218ABCD",
                       "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                       "agentState" : "online",
                       "targetForTests" : "1.1.1.1",
@@ -420,6 +429,11 @@ public class AccountGroupsApiTest {
                     "agentType" : "enterprise-cluster",
                     "ipv6Policy" : "force-ipv4",
                     "prefix" : "99.128.0.0/11",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
@@ -427,6 +441,7 @@ public class AccountGroupsApiTest {
                     "keepBrowserCache" : true,
                     "agentState" : "online",
                     "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "serialNumber" : "FOC2218ABCD",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
@@ -436,6 +451,7 @@ public class AccountGroupsApiTest {
                     "testIds" : [ 281474976710706 ],
                     "clusterMembers" : [ {
                       "lastSeen" : "2022-07-17T22:00:54Z",
+                      "serialNumber" : "FOC2218ABCD",
                       "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                       "agentState" : "online",
                       "targetForTests" : "1.1.1.1",
@@ -453,6 +469,7 @@ public class AccountGroupsApiTest {
                       } ]
                     }, {
                       "lastSeen" : "2022-07-17T22:00:54Z",
+                      "serialNumber" : "FOC2218ABCD",
                       "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                       "agentState" : "online",
                       "targetForTests" : "1.1.1.1",
@@ -686,7 +703,7 @@ public class AccountGroupsApiTest {
                   },
                   "accountGroupName" : "Account A",
                   "isDefaultAccountGroup" : true,
-                  "accountToken" : "6j052y4vfgyuhefghue",
+                  "accountToken" : "accountToken",
                   "aid" : "1234",
                   "orgId" : "12345",
                   "users" : [ {
@@ -729,6 +746,11 @@ public class AccountGroupsApiTest {
                     "agentType" : "enterprise-cluster",
                     "ipv6Policy" : "force-ipv4",
                     "prefix" : "99.128.0.0/11",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
@@ -736,6 +758,7 @@ public class AccountGroupsApiTest {
                     "keepBrowserCache" : true,
                     "agentState" : "online",
                     "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "serialNumber" : "FOC2218ABCD",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
@@ -745,6 +768,7 @@ public class AccountGroupsApiTest {
                     "testIds" : [ 281474976710706 ],
                     "clusterMembers" : [ {
                       "lastSeen" : "2022-07-17T22:00:54Z",
+                      "serialNumber" : "FOC2218ABCD",
                       "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                       "agentState" : "online",
                       "targetForTests" : "1.1.1.1",
@@ -762,6 +786,7 @@ public class AccountGroupsApiTest {
                       } ]
                     }, {
                       "lastSeen" : "2022-07-17T22:00:54Z",
+                      "serialNumber" : "FOC2218ABCD",
                       "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                       "agentState" : "online",
                       "targetForTests" : "1.1.1.1",
@@ -874,6 +899,11 @@ public class AccountGroupsApiTest {
                     "agentType" : "enterprise-cluster",
                     "ipv6Policy" : "force-ipv4",
                     "prefix" : "99.128.0.0/11",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
@@ -881,6 +911,7 @@ public class AccountGroupsApiTest {
                     "keepBrowserCache" : true,
                     "agentState" : "online",
                     "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/24" ],
+                    "serialNumber" : "FOC2218ABCD",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
@@ -890,6 +921,7 @@ public class AccountGroupsApiTest {
                     "testIds" : [ 281474976710706 ],
                     "clusterMembers" : [ {
                       "lastSeen" : "2022-07-17T22:00:54Z",
+                      "serialNumber" : "FOC2218ABCD",
                       "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                       "agentState" : "online",
                       "targetForTests" : "1.1.1.1",
@@ -907,6 +939,7 @@ public class AccountGroupsApiTest {
                       } ]
                     }, {
                       "lastSeen" : "2022-07-17T22:00:54Z",
+                      "serialNumber" : "FOC2218ABCD",
                       "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                       "agentState" : "online",
                       "targetForTests" : "1.1.1.1",

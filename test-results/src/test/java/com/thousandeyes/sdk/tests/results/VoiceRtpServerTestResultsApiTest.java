@@ -40,6 +40,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -176,10 +177,10 @@ public class VoiceRtpServerTestResultsApiTest {
                     "dscpName" : "EF (DSCP 46)",
                     "latency" : 103,
                     "mos" : 4.351024,
-                    "loss" : 0.0,
+                    "loss" : 0,
                     "dscp" : "46",
                     "codecMaxMos" : 4.41,
-                    "discards" : 0.0,
+                    "discards" : 0,
                     "serverIp" : "172.97.102.37",
                     "errorDetail" : "Connection error",
                     "startTime" : 1384309800,
@@ -210,10 +211,10 @@ public class VoiceRtpServerTestResultsApiTest {
                     "dscpName" : "EF (DSCP 46)",
                     "latency" : 103,
                     "mos" : 4.351024,
-                    "loss" : 0.0,
+                    "loss" : 0,
                     "dscp" : "46",
                     "codecMaxMos" : 4.41,
-                    "discards" : 0.0,
+                    "discards" : 0,
                     "serverIp" : "172.97.102.37",
                     "errorDetail" : "Connection error",
                     "startTime" : 1384309800,

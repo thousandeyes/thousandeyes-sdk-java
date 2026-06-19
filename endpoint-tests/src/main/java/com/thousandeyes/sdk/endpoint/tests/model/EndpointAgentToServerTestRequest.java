@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
+ * Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *
@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgentToServerTestRequest.JSON_PROPERTY_AGENT_SELECTOR_TYPE,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_AGENTS,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_ENDPOINT_AGENT_LABELS,
+  EndpointAgentToServerTestRequest.JSON_PROPERTY_TAG_IDS,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_MAX_MACHINES,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_TEST_NAME,
   EndpointAgentToServerTestRequest.JSON_PROPERTY_IP_VERSION,
@@ -58,6 +59,9 @@ public class EndpointAgentToServerTestRequest {
 
   public static final String JSON_PROPERTY_ENDPOINT_AGENT_LABELS = "endpointAgentLabels";
   private List<String> endpointAgentLabels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAG_IDS = "tagIds";
+  private List<UUID> tagIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MAX_MACHINES = "maxMachines";
   private Integer maxMachines = 25;
@@ -161,9 +165,11 @@ public class EndpointAgentToServerTestRequest {
   }
 
    /**
-   * List of endpoint agent label IDs (obtained from &#x60;/endpoint/labels&#x60; endpoint), required when &#x60;agentSelectorType&#x60; is set to &#x60;agent-labels&#x60;.
+   * Deprecated. Use &#x60;tagIds&#x60; instead.  List of endpoint agent label IDs (obtained from &#x60;/endpoint/labels&#x60; endpoint), required when &#x60;agentSelectorType&#x60; is set to &#x60;agent-labels&#x60;. 
    * @return endpointAgentLabels
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ENDPOINT_AGENT_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -177,6 +183,39 @@ public class EndpointAgentToServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEndpointAgentLabels(List<String> endpointAgentLabels) {
     this.endpointAgentLabels = endpointAgentLabels;
+  }
+
+
+  public EndpointAgentToServerTestRequest tagIds(List<UUID> tagIds) {
+    this.tagIds = tagIds;
+    return this;
+  }
+
+  public EndpointAgentToServerTestRequest addTagIdsItem(UUID tagIdsItem) {
+    if (this.tagIds == null) {
+      this.tagIds = new ArrayList<>();
+    }
+    this.tagIds.add(tagIdsItem);
+    return this;
+  }
+
+   /**
+   * List of tag IDs (obtained from &#x60;/tags&#x60; endpoint).
+   * @return tagIds
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAG_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<UUID> getTagIds() {
+    return tagIds;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAG_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTagIds(List<UUID> tagIds) {
+    this.tagIds = tagIds;
   }
 
 
@@ -422,6 +461,7 @@ public class EndpointAgentToServerTestRequest {
     return Objects.equals(this.agentSelectorType, endpointAgentToServerTestRequest.agentSelectorType) &&
         Objects.equals(this.agents, endpointAgentToServerTestRequest.agents) &&
         Objects.equals(this.endpointAgentLabels, endpointAgentToServerTestRequest.endpointAgentLabels) &&
+        Objects.equals(this.tagIds, endpointAgentToServerTestRequest.tagIds) &&
         Objects.equals(this.maxMachines, endpointAgentToServerTestRequest.maxMachines) &&
         Objects.equals(this.testName, endpointAgentToServerTestRequest.testName) &&
         Objects.equals(this.ipVersion, endpointAgentToServerTestRequest.ipVersion) &&
@@ -435,7 +475,7 @@ public class EndpointAgentToServerTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, maxMachines, testName, ipVersion, serverName, server, port, isPrioritized, interval, protocol);
+    return Objects.hash(agentSelectorType, agents, endpointAgentLabels, tagIds, maxMachines, testName, ipVersion, serverName, server, port, isPrioritized, interval, protocol);
   }
 
   @Override
@@ -445,6 +485,7 @@ public class EndpointAgentToServerTestRequest {
     sb.append("    agentSelectorType: ").append(toIndentedString(agentSelectorType)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    endpointAgentLabels: ").append(toIndentedString(endpointAgentLabels)).append("\n");
+    sb.append("    tagIds: ").append(toIndentedString(tagIds)).append("\n");
     sb.append("    maxMachines: ").append(toIndentedString(maxMachines)).append("\n");
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");

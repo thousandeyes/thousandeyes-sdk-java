@@ -47,6 +47,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -193,6 +194,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     },
                     "errorType" : "connect",
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -215,7 +217,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "sinr" : 20
                     },
                     "score" : {
-                      "applicationScore" : 100.0,
+                      "applicationScore" : 100,
                       "quality" : "great"
                     },
                     "connectTime" : 2,
@@ -320,6 +322,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     },
                     "errorType" : "connect",
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -342,7 +345,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "sinr" : 20
                     },
                     "score" : {
-                      "applicationScore" : 100.0,
+                      "applicationScore" : 100,
                       "quality" : "great"
                     },
                     "connectTime" : 2,
@@ -484,11 +487,11 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     "conditionalOperator" : "and",
                     "filters" : [ {
                       "name" : "response-time",
-                      "value" : 10.0,
+                      "value" : 10,
                       "operator" : "gte"
                     }, {
                       "name" : "response-time",
-                      "value" : 10.0,
+                      "value" : 10,
                       "operator" : "gte"
                     } ]
                   }
@@ -541,6 +544,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     },
                     "errorType" : "connect",
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -563,7 +567,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "sinr" : 20
                     },
                     "score" : {
-                      "applicationScore" : 100.0,
+                      "applicationScore" : 100,
                       "quality" : "great"
                     },
                     "connectTime" : 2,
@@ -668,6 +672,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     },
                     "errorType" : "connect",
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -690,7 +695,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "sinr" : 20
                     },
                     "score" : {
-                      "applicationScore" : 100.0,
+                      "applicationScore" : 100,
                       "quality" : "great"
                     },
                     "connectTime" : 2,
@@ -834,11 +839,11 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     "conditionalOperator" : "and",
                     "filters" : [ {
                       "name" : "response-time",
-                      "value" : 10.0,
+                      "value" : 10,
                       "operator" : "gte"
                     }, {
                       "name" : "response-time",
-                      "value" : 10.0,
+                      "value" : 10,
                       "operator" : "gte"
                     } ]
                   }
@@ -891,6 +896,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     },
                     "errorType" : "connect",
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -913,7 +919,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "sinr" : 20
                     },
                     "score" : {
-                      "applicationScore" : 100.0,
+                      "applicationScore" : 100,
                       "quality" : "great"
                     },
                     "connectTime" : 2,
@@ -1018,6 +1024,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     },
                     "errorType" : "connect",
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -1040,7 +1047,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "sinr" : 20
                     },
                     "score" : {
-                      "applicationScore" : 100.0,
+                      "applicationScore" : 100,
                       "quality" : "great"
                     },
                     "connectTime" : 2,

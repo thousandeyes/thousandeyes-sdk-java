@@ -33,7 +33,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME,
-  DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_WEBEX_CONFERENCE_ID
+  DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_WEBEX_CONFERENCE_ID,
+  DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_WEBEX_CORRELATION_ID,
+  DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_WEBEX_LOCAL_SIP_SESSION_ID
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DynamicEndpointTestsDataSearchFilter {
@@ -44,7 +46,13 @@ public class DynamicEndpointTestsDataSearchFilter {
   private List<String> userPrincipalName = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WEBEX_CONFERENCE_ID = "webexConferenceId";
-  private List<UUID> webexConferenceId = new ArrayList<>();
+  private List<String> webexConferenceId = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_WEBEX_CORRELATION_ID = "webexCorrelationId";
+  private List<UUID> webexCorrelationId = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_WEBEX_LOCAL_SIP_SESSION_ID = "webexLocalSipSessionId";
+  private List<String> webexLocalSipSessionId = new ArrayList<>();
 
   public DynamicEndpointTestsDataSearchFilter() { 
   }
@@ -115,12 +123,12 @@ public class DynamicEndpointTestsDataSearchFilter {
   }
 
 
-  public DynamicEndpointTestsDataSearchFilter webexConferenceId(List<UUID> webexConferenceId) {
+  public DynamicEndpointTestsDataSearchFilter webexConferenceId(List<String> webexConferenceId) {
     this.webexConferenceId = webexConferenceId;
     return this;
   }
 
-  public DynamicEndpointTestsDataSearchFilter addWebexConferenceIdItem(UUID webexConferenceIdItem) {
+  public DynamicEndpointTestsDataSearchFilter addWebexConferenceIdItem(String webexConferenceIdItem) {
     if (this.webexConferenceId == null) {
       this.webexConferenceId = new ArrayList<>();
     }
@@ -129,22 +137,88 @@ public class DynamicEndpointTestsDataSearchFilter {
   }
 
    /**
-   * Filter using the &#x60;conference-id&#x60; of the webex call.
+   * Filter using the &#x60;conference-id&#x60; of the Webex call.
    * @return webexConferenceId
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_WEBEX_CONFERENCE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<UUID> getWebexConferenceId() {
+  public List<String> getWebexConferenceId() {
     return webexConferenceId;
   }
 
 
   @JsonProperty(JSON_PROPERTY_WEBEX_CONFERENCE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWebexConferenceId(List<UUID> webexConferenceId) {
+  public void setWebexConferenceId(List<String> webexConferenceId) {
     this.webexConferenceId = webexConferenceId;
+  }
+
+
+  public DynamicEndpointTestsDataSearchFilter webexCorrelationId(List<UUID> webexCorrelationId) {
+    this.webexCorrelationId = webexCorrelationId;
+    return this;
+  }
+
+  public DynamicEndpointTestsDataSearchFilter addWebexCorrelationIdItem(UUID webexCorrelationIdItem) {
+    if (this.webexCorrelationId == null) {
+      this.webexCorrelationId = new ArrayList<>();
+    }
+    this.webexCorrelationId.add(webexCorrelationIdItem);
+    return this;
+  }
+
+   /**
+   * Filter using the &#x60;correlation-id&#x60; of the Webex call.
+   * @return webexCorrelationId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_WEBEX_CORRELATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<UUID> getWebexCorrelationId() {
+    return webexCorrelationId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_WEBEX_CORRELATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWebexCorrelationId(List<UUID> webexCorrelationId) {
+    this.webexCorrelationId = webexCorrelationId;
+  }
+
+
+  public DynamicEndpointTestsDataSearchFilter webexLocalSipSessionId(List<String> webexLocalSipSessionId) {
+    this.webexLocalSipSessionId = webexLocalSipSessionId;
+    return this;
+  }
+
+  public DynamicEndpointTestsDataSearchFilter addWebexLocalSipSessionIdItem(String webexLocalSipSessionIdItem) {
+    if (this.webexLocalSipSessionId == null) {
+      this.webexLocalSipSessionId = new ArrayList<>();
+    }
+    this.webexLocalSipSessionId.add(webexLocalSipSessionIdItem);
+    return this;
+  }
+
+   /**
+   * Filter using the &#x60;local-sip-session-id&#x60; of the Webex call.
+   * @return webexLocalSipSessionId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_WEBEX_LOCAL_SIP_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getWebexLocalSipSessionId() {
+    return webexLocalSipSessionId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_WEBEX_LOCAL_SIP_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWebexLocalSipSessionId(List<String> webexLocalSipSessionId) {
+    this.webexLocalSipSessionId = webexLocalSipSessionId;
   }
 
 
@@ -162,12 +236,14 @@ public class DynamicEndpointTestsDataSearchFilter {
     DynamicEndpointTestsDataSearchFilter dynamicEndpointTestsDataSearchFilter = (DynamicEndpointTestsDataSearchFilter) o;
     return Objects.equals(this.agentId, dynamicEndpointTestsDataSearchFilter.agentId) &&
         Objects.equals(this.userPrincipalName, dynamicEndpointTestsDataSearchFilter.userPrincipalName) &&
-        Objects.equals(this.webexConferenceId, dynamicEndpointTestsDataSearchFilter.webexConferenceId);
+        Objects.equals(this.webexConferenceId, dynamicEndpointTestsDataSearchFilter.webexConferenceId) &&
+        Objects.equals(this.webexCorrelationId, dynamicEndpointTestsDataSearchFilter.webexCorrelationId) &&
+        Objects.equals(this.webexLocalSipSessionId, dynamicEndpointTestsDataSearchFilter.webexLocalSipSessionId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, userPrincipalName, webexConferenceId);
+    return Objects.hash(agentId, userPrincipalName, webexConferenceId, webexCorrelationId, webexLocalSipSessionId);
   }
 
   @Override
@@ -177,6 +253,8 @@ public class DynamicEndpointTestsDataSearchFilter {
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
     sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
     sb.append("    webexConferenceId: ").append(toIndentedString(webexConferenceId)).append("\n");
+    sb.append("    webexCorrelationId: ").append(toIndentedString(webexCorrelationId)).append("\n");
+    sb.append("    webexLocalSipSessionId: ").append(toIndentedString(webexLocalSipSessionId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

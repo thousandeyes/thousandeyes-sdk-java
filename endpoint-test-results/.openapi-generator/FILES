@@ -29,6 +29,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/DynamicTestLinks
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/DynamicTestSelfLink.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointAgentLabelsSelectorConfig.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointAgentSelectorConfig.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointAgentTagsSelectorConfig.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointAgentToServerTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointAllAgentsSelectorConfig.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointBrowser.java

@@ -10,6 +10,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/HttpServerEndpointInst
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/RunEndpointInstantScheduledTestsApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointAgentLabelsSelectorConfig.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointAgentSelectorConfig.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointAgentTagsSelectorConfig.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointAgentToServerInstantTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointAgentToServerTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointAllAgentsSelectorConfig.java

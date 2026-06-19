@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tags.model.TagFilterMode;
-import com.thousandeyes.sdk.tags.model.TagFilterType;
+import com.thousandeyes.sdk.tags.model.TagFilterScope;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,12 +34,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   TagFilter.JSON_PROPERTY_KEY,
   TagFilter.JSON_PROPERTY_VALUES,
-  TagFilter.JSON_PROPERTY_MODE
+  TagFilter.JSON_PROPERTY_MODE,
+  TagFilter.JSON_PROPERTY_SCOPE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TagFilter {
   public static final String JSON_PROPERTY_KEY = "key";
-  private TagFilterType key;
+  private String key;
 
   public static final String JSON_PROPERTY_VALUES = "values";
   private List<String> values = new ArrayList<>();
@@ -47,30 +48,33 @@ public class TagFilter {
   public static final String JSON_PROPERTY_MODE = "mode";
   private TagFilterMode mode;
 
+  public static final String JSON_PROPERTY_SCOPE = "scope";
+  private TagFilterScope scope = TagFilterScope.DEFAULT;
+
   public TagFilter() { 
   }
 
-  public TagFilter key(TagFilterType key) {
+  public TagFilter key(String key) {
     this.key = key;
     return this;
   }
 
    /**
-   * Get key
+   * Filter key used for filtering.  When &#x60;scope&#x60; is &#x60;default&#x60;, accepted values are &#x60;agent-id&#x60;, &#x60;location&#x60;, &#x60;serial-number&#x60;, &#x60;public-network&#x60;, &#x60;local-network&#x60;, &#x60;connection&#x60;, &#x60;gateway&#x60;, &#x60;platform&#x60;, &#x60;nic-model&#x60;, &#x60;nic-driver-version&#x60;, &#x60;agent-type&#x60;, &#x60;proxy-target&#x60;, &#x60;vpn-vendor&#x60;, &#x60;vpn-gateway-address&#x60;, &#x60;vpn-target&#x60;, &#x60;vpn-client-network&#x60;, &#x60;vpn-client-address&#x60;, &#x60;ip-address-family&#x60;, &#x60;ssid&#x60;, &#x60;bssid&#x60;, &#x60;hostname&#x60;, &#x60;username&#x60;, and &#x60;asn&#x60;.  When &#x60;scope&#x60; is &#x60;custom&#x60;, use a user-defined check-in metadata key. 
    * @return key
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public TagFilterType getKey() {
+  public String getKey() {
     return key;
   }
 
 
   @JsonProperty(JSON_PROPERTY_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(TagFilterType key) {
+  public void setKey(String key) {
     this.key = key;
   }
 
@@ -133,6 +137,31 @@ public class TagFilter {
   }
 
 
+  public TagFilter scope(TagFilterScope scope) {
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * Get scope
+   * @return scope
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TagFilterScope getScope() {
+    return scope;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setScope(TagFilterScope scope) {
+    this.scope = scope;
+  }
+
+
   /**
    * Return true if this TagFilter object is equal to o.
    */
@@ -147,12 +176,13 @@ public class TagFilter {
     TagFilter tagFilter = (TagFilter) o;
     return Objects.equals(this.key, tagFilter.key) &&
         Objects.equals(this.values, tagFilter.values) &&
-        Objects.equals(this.mode, tagFilter.mode);
+        Objects.equals(this.mode, tagFilter.mode) &&
+        Objects.equals(this.scope, tagFilter.scope);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, values, mode);
+    return Objects.hash(key, values, mode, scope);
   }
 
   @Override
@@ -162,6 +192,7 @@ public class TagFilter {
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("}");
     return sb.toString();
   }

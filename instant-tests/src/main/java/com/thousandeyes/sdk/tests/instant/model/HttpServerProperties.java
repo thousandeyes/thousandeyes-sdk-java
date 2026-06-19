@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
+import com.thousandeyes.sdk.tests.instant.model.RequestMethod;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
 import com.thousandeyes.sdk.tests.instant.model.TestCustomHeaders;
 import com.thousandeyes.sdk.tests.instant.model.TestIpv6Policy;
@@ -29,6 +30,7 @@ import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.instant.model.TestVaultCredential;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -74,8 +76,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerProperties.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   HttpServerProperties.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   HttpServerProperties.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  HttpServerProperties.JSON_PROPERTY_VAULT_CREDENTIALS,
   HttpServerProperties.JSON_PROPERTY_HEADERS,
   HttpServerProperties.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  HttpServerProperties.JSON_PROPERTY_REQUEST_METHOD,
   HttpServerProperties.JSON_PROPERTY_POST_BODY,
   HttpServerProperties.JSON_PROPERTY_IPV6_POLICY,
   HttpServerProperties.JSON_PROPERTY_TYPE
@@ -187,11 +191,17 @@ public class HttpServerProperties {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_REQUEST_METHOD = "requestMethod";
+  private RequestMethod requestMethod;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -1090,6 +1100,39 @@ public class HttpServerProperties {
   }
 
 
+  public HttpServerProperties vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public HttpServerProperties addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public HttpServerProperties headers(List<String> headers) {
     this.headers = headers;
     return this;
@@ -1148,13 +1191,38 @@ public class HttpServerProperties {
   }
 
 
+  public HttpServerProperties requestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+    return this;
+  }
+
+   /**
+   * Get requestMethod
+   * @return requestMethod
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public RequestMethod getRequestMethod() {
+    return requestMethod;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRequestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+  }
+
+
   public HttpServerProperties postBody(String postBody) {
     this.postBody = postBody;
     return this;
   }
 
    /**
-   * Enter the body for the HTTP POST request in this field. No special escaping is necessary. If the post body is provided with content, the &#x60;requestMethod&#x60; is automatically set to POST.
+   * Enter the body for the HTTP POST request in this field. No special escaping is required. If content is provided and &#x60;requestMethod&#x60; is not specified, &#x60;requestMethod&#x60; is automatically set to &#x60;post&#x60;.
    * @return postBody
   **/
   @jakarta.annotation.Nullable
@@ -1260,8 +1328,10 @@ public class HttpServerProperties {
         Objects.equals(this.overrideAgentProxy, httpServerProperties.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, httpServerProperties.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, httpServerProperties.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, httpServerProperties.vaultCredentials) &&
         Objects.equals(this.headers, httpServerProperties.headers) &&
         Objects.equals(this.randomizedStartTime, httpServerProperties.randomizedStartTime) &&
+        Objects.equals(this.requestMethod, httpServerProperties.requestMethod) &&
         Objects.equals(this.postBody, httpServerProperties.postBody) &&
         Objects.equals(this.ipv6Policy, httpServerProperties.ipv6Policy) &&
         Objects.equals(this.type, httpServerProperties.type);
@@ -1269,7 +1339,7 @@ public class HttpServerProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, type);
+    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, type);
   }
 
   @Override
@@ -1311,8 +1381,10 @@ public class HttpServerProperties {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    requestMethod: ").append(toIndentedString(requestMethod)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

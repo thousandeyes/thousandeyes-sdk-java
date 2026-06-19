@@ -15,46 +15,91 @@ package com.thousandeyes.sdk.streaming.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 /**
- * The object type of tag
+ * Endpoint Agent tag configuration.
  */
-public enum TagMatchObjectType {
-  
-  TEST("test"),
-  
-  UNKNOWN("unknown");
+@JsonPropertyOrder({
+  EndpointAgentTag.JSON_PROPERTY_ID
+})
+@jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
+public class EndpointAgentTag {
+  public static final String JSON_PROPERTY_ID = "id";
+  private String id;
 
-  private String value;
-
-  TagMatchObjectType(String value) {
-    this.value = value;
+  public EndpointAgentTag() { 
   }
 
-  @JsonValue
-  public String getValue() {
-    return value;
+  public EndpointAgentTag id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The tag ID of Endpoint Agent tags.
+   * @return id
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getId() {
+    return id;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Return true if this EndpointAgentTag object is equal to o.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    EndpointAgentTag endpointAgentTag = (EndpointAgentTag) o;
+    return Objects.equals(this.id, endpointAgentTag.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
   }
 
   @Override
   public String toString() {
-    return String.valueOf(value);
+    StringBuilder sb = new StringBuilder();
+    sb.append("class EndpointAgentTag {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("}");
+    return sb.toString();
   }
 
-  @JsonCreator
-  public static TagMatchObjectType fromValue(String value) {
-    for (TagMatchObjectType b : TagMatchObjectType.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-    return UNKNOWN;
+    return o.toString().replace("\n", "\n    ");
   }
-
 }
 

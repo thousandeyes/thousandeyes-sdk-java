@@ -38,6 +38,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,6 +115,11 @@ public class TestsAssignmentOnAgentsApiTest {
                     "longitude" : -122.41942
                   },
                   "agentName" : "thousandeyes-stg-va-254",
+                  "networkProviderInfo" : {
+                    "asn" : 7018,
+                    "name" : "AT&T Services, Inc.",
+                    "type" : "isp"
+                  },
                   "countryId" : "US",
                   "enabled" : true,
                   "network" : "AT&T Services, Inc. (AS 7018)",
@@ -268,6 +274,11 @@ public class TestsAssignmentOnAgentsApiTest {
                     "longitude" : -122.41942
                   },
                   "agentName" : "thousandeyes-stg-va-254",
+                  "networkProviderInfo" : {
+                    "asn" : 7018,
+                    "name" : "AT&T Services, Inc.",
+                    "type" : "isp"
+                  },
                   "countryId" : "US",
                   "enabled" : true,
                   "network" : "AT&T Services, Inc. (AS 7018)",
@@ -422,6 +433,11 @@ public class TestsAssignmentOnAgentsApiTest {
                     "longitude" : -122.41942
                   },
                   "agentName" : "thousandeyes-stg-va-254",
+                  "networkProviderInfo" : {
+                    "asn" : 7018,
+                    "name" : "AT&T Services, Inc.",
+                    "type" : "isp"
+                  },
                   "countryId" : "US",
                   "enabled" : true,
                   "network" : "AT&T Services, Inc. (AS 7018)",

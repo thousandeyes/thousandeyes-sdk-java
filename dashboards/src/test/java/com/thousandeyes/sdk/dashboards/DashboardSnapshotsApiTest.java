@@ -43,6 +43,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -236,7 +237,7 @@ public class DashboardSnapshotsApiTest {
                     "type" : "Agent Status",
                     "metricGroup" : "BGP",
                     "measure" : {
-                      "percentileValue" : 95.0,
+                      "percentileValue" : 95,
                       "type" : "MEAN"
                     },
                     "apiLink" : "apiLink",
@@ -273,7 +274,7 @@ public class DashboardSnapshotsApiTest {
                     "type" : "Agent Status",
                     "metricGroup" : "BGP",
                     "measure" : {
-                      "percentileValue" : 95.0,
+                      "percentileValue" : 95,
                       "type" : "MEAN"
                     },
                     "apiLink" : "apiLink",
@@ -353,7 +354,7 @@ public class DashboardSnapshotsApiTest {
                       "type" : "Agent Status",
                       "metricGroup" : "BGP",
                       "measure" : {
-                        "percentileValue" : 95.0,
+                        "percentileValue" : 95,
                         "type" : "MEAN"
                       },
                       "apiLink" : "apiLink",
@@ -390,7 +391,7 @@ public class DashboardSnapshotsApiTest {
                       "type" : "Agent Status",
                       "metricGroup" : "BGP",
                       "measure" : {
-                        "percentileValue" : 95.0,
+                        "percentileValue" : 95,
                         "type" : "MEAN"
                       },
                       "apiLink" : "apiLink",
@@ -567,8 +568,8 @@ public class DashboardSnapshotsApiTest {
                         "startTimes" : [ "2023-05-16T10:14:28Z" ]
                       } ],
                       "binSize" : 3600,
-                      "previousValue" : 500.0,
-                      "value" : 100.0,
+                      "previousValue" : 500,
+                      "value" : 100,
                       "startDate" : "2023-05-16T10:14:28Z",
                       "timestamp" : 1567620000,
                       "status" : "No data"
@@ -609,8 +610,8 @@ public class DashboardSnapshotsApiTest {
                         "startTimes" : [ "2023-05-16T10:14:28Z" ]
                       } ],
                       "binSize" : 3600,
-                      "previousValue" : 500.0,
-                      "value" : 100.0,
+                      "previousValue" : 500,
+                      "value" : 100,
                       "startDate" : "2023-05-16T10:14:28Z",
                       "timestamp" : 1567620000,
                       "status" : "No data"
@@ -715,7 +716,7 @@ public class DashboardSnapshotsApiTest {
                           "groupProperty" : "COUNTRY",
                           "groupValue" : "US"
                         } ],
-                        "value" : 100.0,
+                        "value" : 100,
                         "timestamp" : 1567620000
                       }, {
                         "numberOfDataPoints" : 23304,
@@ -726,7 +727,7 @@ public class DashboardSnapshotsApiTest {
                           "groupProperty" : "COUNTRY",
                           "groupValue" : "US"
                         } ],
-                        "value" : 100.0,
+                        "value" : 100,
                         "timestamp" : 1567620000
                       } ],
                       "status" : "No data"
@@ -773,7 +774,7 @@ public class DashboardSnapshotsApiTest {
                           "groupProperty" : "COUNTRY",
                           "groupValue" : "US"
                         } ],
-                        "value" : 100.0,
+                        "value" : 100,
                         "timestamp" : 1567620000
                       }, {
                         "numberOfDataPoints" : 23304,
@@ -784,7 +785,7 @@ public class DashboardSnapshotsApiTest {
                           "groupProperty" : "COUNTRY",
                           "groupValue" : "US"
                         } ],
-                        "value" : 100.0,
+                        "value" : 100,
                         "timestamp" : 1567620000
                       } ],
                       "status" : "No data"
@@ -819,7 +820,7 @@ public class DashboardSnapshotsApiTest {
                         "groupProperty" : "COUNTRY",
                         "groupValue" : "US"
                       } ],
-                      "value" : 100.0,
+                      "value" : 100,
                       "timestamp" : 1567620000
                     }, {
                       "numberOfDataPoints" : 23304,
@@ -830,7 +831,7 @@ public class DashboardSnapshotsApiTest {
                         "groupProperty" : "COUNTRY",
                         "groupValue" : "US"
                       } ],
-                      "value" : 100.0,
+                      "value" : 100,
                       "timestamp" : 1567620000
                     } ],
                     "agents" : [ {
@@ -1008,7 +1009,7 @@ public class DashboardSnapshotsApiTest {
                       "type" : "Agent Status",
                       "metricGroup" : "BGP",
                       "measure" : {
-                        "percentileValue" : 95.0,
+                        "percentileValue" : 95,
                         "type" : "MEAN"
                       },
                       "apiLink" : "apiLink",
@@ -1045,7 +1046,7 @@ public class DashboardSnapshotsApiTest {
                       "type" : "Agent Status",
                       "metricGroup" : "BGP",
                       "measure" : {
-                        "percentileValue" : 95.0,
+                        "percentileValue" : 95,
                         "type" : "MEAN"
                       },
                       "apiLink" : "apiLink",
@@ -1125,7 +1126,7 @@ public class DashboardSnapshotsApiTest {
                         "type" : "Agent Status",
                         "metricGroup" : "BGP",
                         "measure" : {
-                          "percentileValue" : 95.0,
+                          "percentileValue" : 95,
                           "type" : "MEAN"
                         },
                         "apiLink" : "apiLink",
@@ -1162,7 +1163,7 @@ public class DashboardSnapshotsApiTest {
                         "type" : "Agent Status",
                         "metricGroup" : "BGP",
                         "measure" : {
-                          "percentileValue" : 95.0,
+                          "percentileValue" : 95,
                           "type" : "MEAN"
                         },
                         "apiLink" : "apiLink",
@@ -1272,7 +1273,7 @@ public class DashboardSnapshotsApiTest {
                       "type" : "Agent Status",
                       "metricGroup" : "BGP",
                       "measure" : {
-                        "percentileValue" : 95.0,
+                        "percentileValue" : 95,
                         "type" : "MEAN"
                       },
                       "apiLink" : "apiLink",
@@ -1309,7 +1310,7 @@ public class DashboardSnapshotsApiTest {
                       "type" : "Agent Status",
                       "metricGroup" : "BGP",
                       "measure" : {
-                        "percentileValue" : 95.0,
+                        "percentileValue" : 95,
                         "type" : "MEAN"
                       },
                       "apiLink" : "apiLink",
@@ -1389,7 +1390,7 @@ public class DashboardSnapshotsApiTest {
                         "type" : "Agent Status",
                         "metricGroup" : "BGP",
                         "measure" : {
-                          "percentileValue" : 95.0,
+                          "percentileValue" : 95,
                           "type" : "MEAN"
                         },
                         "apiLink" : "apiLink",
@@ -1426,7 +1427,7 @@ public class DashboardSnapshotsApiTest {
                         "type" : "Agent Status",
                         "metricGroup" : "BGP",
                         "measure" : {
-                          "percentileValue" : 95.0,
+                          "percentileValue" : 95,
                           "type" : "MEAN"
                         },
                         "apiLink" : "apiLink",

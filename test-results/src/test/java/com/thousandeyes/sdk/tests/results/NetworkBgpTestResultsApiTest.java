@@ -41,6 +41,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -175,9 +176,9 @@ public class NetworkBgpTestResultsApiTest {
                     },
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
-                    "reachability" : 0.0,
-                    "updates" : 0.0,
-                    "pathChanges" : 0.0,
+                    "reachability" : 0,
+                    "updates" : 0,
+                    "pathChanges" : 0,
                     "roundId" : 1384309800,
                     "prefixId" : "215"
                   }, {
@@ -202,9 +203,9 @@ public class NetworkBgpTestResultsApiTest {
                     },
                     "startTime" : 1384309800,
                     "endTime" : 1384309800,
-                    "reachability" : 0.0,
-                    "updates" : 0.0,
-                    "pathChanges" : 0.0,
+                    "reachability" : 0,
+                    "updates" : 0,
+                    "pathChanges" : 0,
                     "roundId" : 1384309800,
                     "prefixId" : "215"
                   } ],

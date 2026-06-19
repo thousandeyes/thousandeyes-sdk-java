@@ -37,6 +37,7 @@ import com.thousandeyes.sdk.agents.model.ErrorDetail;
 import com.thousandeyes.sdk.agents.model.InterfaceIpMapping;
 import com.thousandeyes.sdk.agents.model.NotificationRules;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
+import com.thousandeyes.sdk.agents.model.SimpleAgentAllOfNetworkProviderInfo;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
