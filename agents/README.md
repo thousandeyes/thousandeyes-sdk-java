@@ -2,7 +2,7 @@
 
 Agents API
 
-- API version: 7.0.84
+- API version: 7.0.92
 
 
 ## Overview
@@ -148,6 +148,8 @@ Class | Method | HTTP request | Description
 *EnterpriseAgentClusterApi* | [**assignAgentToClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#assignAgentToClusterWithHttpInfo) | **POST** /agents/{agentId}/cluster/assign | Add member to Enterprise Agent cluster
 *EnterpriseAgentClusterApi* | [**unassignAgentFromCluster**](docs/EnterpriseAgentClusterApi.md#unassignAgentFromCluster) | **POST** /agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
 *EnterpriseAgentClusterApi* | [**unassignAgentFromClusterWithHttpInfo**](docs/EnterpriseAgentClusterApi.md#unassignAgentFromClusterWithHttpInfo) | **POST** /agents/{agentId}/cluster/unassign | Remove member from Enterprise Agent cluster
+*LocalProblemsApi* | [**getAgentsLocalProblems**](docs/LocalProblemsApi.md#getAgentsLocalProblems) | **GET** /agents/local-problems | List Cloud agents with local problems
+*LocalProblemsApi* | [**getAgentsLocalProblemsWithHttpInfo**](docs/LocalProblemsApi.md#getAgentsLocalProblemsWithHttpInfo) | **GET** /agents/local-problems | List Cloud agents with local problems
 *TestsAssignmentOnAgentsApi* | [**assignTests**](docs/TestsAssignmentOnAgentsApi.md#assignTests) | **POST** /agents/{agentId}/tests/assign | Assign tests to an agent
 *TestsAssignmentOnAgentsApi* | [**assignTestsWithHttpInfo**](docs/TestsAssignmentOnAgentsApi.md#assignTestsWithHttpInfo) | **POST** /agents/{agentId}/tests/assign | Assign tests to an agent
 *TestsAssignmentOnAgentsApi* | [**overwriteTests**](docs/TestsAssignmentOnAgentsApi.md#overwriteTests) | **POST** /agents/{agentId}/tests/override | Overwrite tests assigned to an agent

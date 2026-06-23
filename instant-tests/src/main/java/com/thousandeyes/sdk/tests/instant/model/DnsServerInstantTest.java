@@ -30,6 +30,7 @@ import com.thousandeyes.sdk.tests.instant.model.TestLinks;
 import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
+import com.thousandeyes.sdk.tests.instant.model.TestTag;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,6 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerInstantTest.JSON_PROPERTY_TYPE,
   DnsServerInstantTest.JSON_PROPERTY_LINKS,
   DnsServerInstantTest.JSON_PROPERTY_LABELS,
+  DnsServerInstantTest.JSON_PROPERTY_TAGS,
   DnsServerInstantTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsServerInstantTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   DnsServerInstantTest.JSON_PROPERTY_DNS_SERVERS,
@@ -107,6 +109,9 @@ public class DnsServerInstantTest {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -170,6 +175,7 @@ public class DnsServerInstantTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
@@ -182,6 +188,7 @@ public class DnsServerInstantTest {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
   }
 
@@ -390,6 +397,21 @@ public class DnsServerInstantTest {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -821,6 +843,7 @@ public class DnsServerInstantTest {
         Objects.equals(this.type, dnsServerInstantTest.type) &&
         Objects.equals(this.links, dnsServerInstantTest.links) &&
         Objects.equals(this.labels, dnsServerInstantTest.labels) &&
+        Objects.equals(this.tags, dnsServerInstantTest.tags) &&
         Objects.equals(this.sharedWithAccounts, dnsServerInstantTest.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, dnsServerInstantTest.bandwidthMeasurements) &&
         Objects.equals(this.dnsServers, dnsServerInstantTest.dnsServers) &&
@@ -841,7 +864,7 @@ public class DnsServerInstantTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass);
   }
 
   @Override
@@ -860,6 +883,7 @@ public class DnsServerInstantTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    dnsServers: ").append(toIndentedString(dnsServers)).append("\n");

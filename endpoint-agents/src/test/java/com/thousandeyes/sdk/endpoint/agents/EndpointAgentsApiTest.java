@@ -48,6 +48,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -182,6 +183,7 @@ public class EndpointAgentsApiTest {
                     }
                   },
                   "batteryMetrics" : {
+                    "batteryHealthNormalizedPercent" : 0.92,
                     "batteryLevel" : "medium",
                     "batteryLevelNormalizedPercent" : 0.3
                   },
@@ -202,13 +204,16 @@ public class EndpointAgentsApiTest {
                     "networkSubtype" : "LTE/HSPA",
                     "sinr" : 20
                   },
+                  "nicModel" : "Intel(R) Wi-Fi 6 AX200 160MHz",
                   "createdAt" : "2022-05-26T23:37:16Z",
                   "numberOfClients" : 3,
                   "licenseType" : "essentials",
                   "osVersion" : "Version 10.15.2 (Build 19C57)",
                   "computerName" : "DESKJET-123",
+                  "freeDiskSpaceNormalized" : 0.41,
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "nicDriverVersion" : "22.250.0.9",
                   "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                   "externalMetadata" : [ {
                     "key" : "anyConnectDeviceId",
@@ -393,6 +398,7 @@ public class EndpointAgentsApiTest {
                     }
                   },
                   "batteryMetrics" : {
+                    "batteryHealthNormalizedPercent" : 0.92,
                     "batteryLevel" : "medium",
                     "batteryLevelNormalizedPercent" : 0.3
                   },
@@ -413,13 +419,16 @@ public class EndpointAgentsApiTest {
                     "networkSubtype" : "LTE/HSPA",
                     "sinr" : 20
                   },
+                  "nicModel" : "Intel(R) Wi-Fi 6 AX200 160MHz",
                   "createdAt" : "2022-05-26T23:37:16Z",
                   "numberOfClients" : 3,
                   "licenseType" : "essentials",
                   "osVersion" : "Version 10.15.2 (Build 19C57)",
                   "computerName" : "DESKJET-123",
+                  "freeDiskSpaceNormalized" : 0.41,
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "nicDriverVersion" : "22.250.0.9",
                   "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                   "externalMetadata" : [ {
                     "key" : "anyConnectDeviceId",
@@ -659,6 +668,7 @@ public class EndpointAgentsApiTest {
                       }
                     },
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -679,13 +689,16 @@ public class EndpointAgentsApiTest {
                       "networkSubtype" : "LTE/HSPA",
                       "sinr" : 20
                     },
+                    "nicModel" : "Intel(R) Wi-Fi 6 AX200 160MHz",
                     "createdAt" : "2022-05-26T23:37:16Z",
                     "numberOfClients" : 3,
                     "licenseType" : "essentials",
                     "osVersion" : "Version 10.15.2 (Build 19C57)",
                     "computerName" : "DESKJET-123",
+                    "freeDiskSpaceNormalized" : 0.41,
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "nicDriverVersion" : "22.250.0.9",
                     "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                     "externalMetadata" : [ {
                       "key" : "anyConnectDeviceId",
@@ -834,6 +847,7 @@ public class EndpointAgentsApiTest {
                       }
                     },
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -854,13 +868,16 @@ public class EndpointAgentsApiTest {
                       "networkSubtype" : "LTE/HSPA",
                       "sinr" : 20
                     },
+                    "nicModel" : "Intel(R) Wi-Fi 6 AX200 160MHz",
                     "createdAt" : "2022-05-26T23:37:16Z",
                     "numberOfClients" : 3,
                     "licenseType" : "essentials",
                     "osVersion" : "Version 10.15.2 (Build 19C57)",
                     "computerName" : "DESKJET-123",
+                    "freeDiskSpaceNormalized" : 0.41,
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "nicDriverVersion" : "22.250.0.9",
                     "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                     "externalMetadata" : [ {
                       "key" : "anyConnectDeviceId",
@@ -1047,6 +1064,7 @@ public class EndpointAgentsApiTest {
                     }
                   },
                   "batteryMetrics" : {
+                    "batteryHealthNormalizedPercent" : 0.92,
                     "batteryLevel" : "medium",
                     "batteryLevelNormalizedPercent" : 0.3
                   },
@@ -1067,13 +1085,16 @@ public class EndpointAgentsApiTest {
                     "networkSubtype" : "LTE/HSPA",
                     "sinr" : 20
                   },
+                  "nicModel" : "Intel(R) Wi-Fi 6 AX200 160MHz",
                   "createdAt" : "2022-05-26T23:37:16Z",
                   "numberOfClients" : 3,
                   "licenseType" : "essentials",
                   "osVersion" : "Version 10.15.2 (Build 19C57)",
                   "computerName" : "DESKJET-123",
+                  "freeDiskSpaceNormalized" : 0.41,
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "nicDriverVersion" : "22.250.0.9",
                   "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                   "externalMetadata" : [ {
                     "key" : "anyConnectDeviceId",
@@ -1281,6 +1302,7 @@ public class EndpointAgentsApiTest {
                       }
                     },
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -1301,13 +1323,16 @@ public class EndpointAgentsApiTest {
                       "networkSubtype" : "LTE/HSPA",
                       "sinr" : 20
                     },
+                    "nicModel" : "Intel(R) Wi-Fi 6 AX200 160MHz",
                     "createdAt" : "2022-05-26T23:37:16Z",
                     "numberOfClients" : 3,
                     "licenseType" : "essentials",
                     "osVersion" : "Version 10.15.2 (Build 19C57)",
                     "computerName" : "DESKJET-123",
+                    "freeDiskSpaceNormalized" : 0.41,
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "nicDriverVersion" : "22.250.0.9",
                     "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                     "externalMetadata" : [ {
                       "key" : "anyConnectDeviceId",
@@ -1456,6 +1481,7 @@ public class EndpointAgentsApiTest {
                       }
                     },
                     "batteryMetrics" : {
+                      "batteryHealthNormalizedPercent" : 0.92,
                       "batteryLevel" : "medium",
                       "batteryLevelNormalizedPercent" : 0.3
                     },
@@ -1476,13 +1502,16 @@ public class EndpointAgentsApiTest {
                       "networkSubtype" : "LTE/HSPA",
                       "sinr" : 20
                     },
+                    "nicModel" : "Intel(R) Wi-Fi 6 AX200 160MHz",
                     "createdAt" : "2022-05-26T23:37:16Z",
                     "numberOfClients" : 3,
                     "licenseType" : "essentials",
                     "osVersion" : "Version 10.15.2 (Build 19C57)",
                     "computerName" : "DESKJET-123",
+                    "freeDiskSpaceNormalized" : 0.41,
                     "model" : "MacBookAir7,2",
                     "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                    "nicDriverVersion" : "22.250.0.9",
                     "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                     "externalMetadata" : [ {
                       "key" : "anyConnectDeviceId",
@@ -1725,6 +1754,7 @@ public class EndpointAgentsApiTest {
                     }
                   },
                   "batteryMetrics" : {
+                    "batteryHealthNormalizedPercent" : 0.92,
                     "batteryLevel" : "medium",
                     "batteryLevelNormalizedPercent" : 0.3
                   },
@@ -1745,13 +1775,16 @@ public class EndpointAgentsApiTest {
                     "networkSubtype" : "LTE/HSPA",
                     "sinr" : 20
                   },
+                  "nicModel" : "Intel(R) Wi-Fi 6 AX200 160MHz",
                   "createdAt" : "2022-05-26T23:37:16Z",
                   "numberOfClients" : 3,
                   "licenseType" : "essentials",
                   "osVersion" : "Version 10.15.2 (Build 19C57)",
                   "computerName" : "DESKJET-123",
+                  "freeDiskSpaceNormalized" : 0.41,
                   "model" : "MacBookAir7,2",
                   "id" : "861b7557-cd57-4bbb-b648-00bddf88ef49",
+                  "nicDriverVersion" : "22.250.0.9",
                   "serialNumber" : "xaab2ba4-d40f-4e80-9363-7e4826556055",
                   "externalMetadata" : [ {
                     "key" : "anyConnectDeviceId",

@@ -55,7 +55,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiPieChartWidget.JSON_PROPERTY_LINKS,
   ApiPieChartWidget.JSON_PROPERTY_TYPE,
   ApiPieChartWidget.JSON_PROPERTY_GROUP_BY,
-  ApiPieChartWidget.JSON_PROPERTY_DATA_SOURCE
+  ApiPieChartWidget.JSON_PROPERTY_DATA_SOURCE,
+  ApiPieChartWidget.JSON_PROPERTY_SHOW_SUBMETRICS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiPieChartWidget {
@@ -109,6 +110,9 @@ public class ApiPieChartWidget {
 
   public static final String JSON_PROPERTY_DATA_SOURCE = "dataSource";
   private PieChartDatasource dataSource;
+
+  public static final String JSON_PROPERTY_SHOW_SUBMETRICS = "showSubmetrics";
+  private Boolean showSubmetrics = true;
 
   public ApiPieChartWidget() { 
   }
@@ -530,6 +534,31 @@ public class ApiPieChartWidget {
   }
 
 
+  public ApiPieChartWidget showSubmetrics(Boolean showSubmetrics) {
+    this.showSubmetrics = showSubmetrics;
+    return this;
+  }
+
+   /**
+   * Controls how metrics with submetric components are displayed. If &#x60;true&#x60; (default), the widget displays one chart per group. If &#x60;false&#x60;, the widget displays all submetrics in a single chart. For metrics without submetric components, this field is ignored and returned as &#x60;null&#x60;.
+   * @return showSubmetrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHOW_SUBMETRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getShowSubmetrics() {
+    return showSubmetrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHOW_SUBMETRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setShowSubmetrics(Boolean showSubmetrics) {
+    this.showSubmetrics = showSubmetrics;
+  }
+
+
   /**
    * Return true if this ApiPieChartWidget object is equal to o.
    */
@@ -558,12 +587,13 @@ public class ApiPieChartWidget {
         Objects.equals(this.links, apiPieChartWidget.links) &&
         Objects.equals(this.type, apiPieChartWidget.type) &&
         Objects.equals(this.groupBy, apiPieChartWidget.groupBy) &&
-        Objects.equals(this.dataSource, apiPieChartWidget.dataSource);
+        Objects.equals(this.dataSource, apiPieChartWidget.dataSource) &&
+        Objects.equals(this.showSubmetrics, apiPieChartWidget.showSubmetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, visualMode, embedUrl, isEmbedded, metricGroup, direction, metric, filters, measure, fixedTimespan, apiLink, shouldExcludeAlertSuppressionWindows, links, type, groupBy, dataSource);
+    return Objects.hash(id, title, visualMode, embedUrl, isEmbedded, metricGroup, direction, metric, filters, measure, fixedTimespan, apiLink, shouldExcludeAlertSuppressionWindows, links, type, groupBy, dataSource, showSubmetrics);
   }
 
   @Override
@@ -587,6 +617,7 @@ public class ApiPieChartWidget {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    groupBy: ").append(toIndentedString(groupBy)).append("\n");
     sb.append("    dataSource: ").append(toIndentedString(dataSource)).append("\n");
+    sb.append("    showSubmetrics: ").append(toIndentedString(showSubmetrics)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -20,16 +20,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.AlertRule;
-import com.thousandeyes.sdk.tests.model.Monitor;
-import com.thousandeyes.sdk.tests.model.SharedWithAccount;
+import com.thousandeyes.sdk.tests.model.DnsQueryClass;
+import com.thousandeyes.sdk.tests.model.TestDnsTransportProtocol;
 import com.thousandeyes.sdk.tests.model.TestInterval;
 import com.thousandeyes.sdk.tests.model.TestIpv6Policy;
-import com.thousandeyes.sdk.tests.model.TestLabel;
 import com.thousandeyes.sdk.tests.model.TestLinks;
 import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
-import com.thousandeyes.sdk.tests.model.TestSipCredentials;
+import com.thousandeyes.sdk.tests.model.TestProtocol;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,45 +36,43 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * UpdateSipServerTest
+ * UnexpandedDnsServerRequestTest
  */
 @JsonPropertyOrder({
-  UpdateSipServerTest.JSON_PROPERTY_INTERVAL,
-  UpdateSipServerTest.JSON_PROPERTY_ALERTS_ENABLED,
-  UpdateSipServerTest.JSON_PROPERTY_ENABLED,
-  UpdateSipServerTest.JSON_PROPERTY_ALERT_RULES,
-  UpdateSipServerTest.JSON_PROPERTY_CREATED_BY,
-  UpdateSipServerTest.JSON_PROPERTY_CREATED_DATE,
-  UpdateSipServerTest.JSON_PROPERTY_DESCRIPTION,
-  UpdateSipServerTest.JSON_PROPERTY_LIVE_SHARE,
-  UpdateSipServerTest.JSON_PROPERTY_MODIFIED_BY,
-  UpdateSipServerTest.JSON_PROPERTY_MODIFIED_DATE,
-  UpdateSipServerTest.JSON_PROPERTY_SAVED_EVENT,
-  UpdateSipServerTest.JSON_PROPERTY_TEST_ID,
-  UpdateSipServerTest.JSON_PROPERTY_TEST_NAME,
-  UpdateSipServerTest.JSON_PROPERTY_TYPE,
-  UpdateSipServerTest.JSON_PROPERTY_LINKS,
-  UpdateSipServerTest.JSON_PROPERTY_LABELS,
-  UpdateSipServerTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
-  UpdateSipServerTest.JSON_PROPERTY_MTU_MEASUREMENTS,
-  UpdateSipServerTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
-  UpdateSipServerTest.JSON_PROPERTY_NUM_PATH_TRACES,
-  UpdateSipServerTest.JSON_PROPERTY_OPTIONS_REGEX,
-  UpdateSipServerTest.JSON_PROPERTY_PATH_TRACE_MODE,
-  UpdateSipServerTest.JSON_PROPERTY_PROBE_MODE,
-  UpdateSipServerTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
-  UpdateSipServerTest.JSON_PROPERTY_REGISTER_ENABLED,
-  UpdateSipServerTest.JSON_PROPERTY_SIP_TARGET_TIME,
-  UpdateSipServerTest.JSON_PROPERTY_SIP_TIME_LIMIT,
-  UpdateSipServerTest.JSON_PROPERTY_FIXED_PACKET_RATE,
-  UpdateSipServerTest.JSON_PROPERTY_IPV6_POLICY,
-  UpdateSipServerTest.JSON_PROPERTY_BGP_MEASUREMENTS,
-  UpdateSipServerTest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  UpdateSipServerTest.JSON_PROPERTY_MONITORS,
-  UpdateSipServerTest.JSON_PROPERTY_TARGET_SIP_CREDENTIALS
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_INTERVAL,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_ALERTS_ENABLED,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_ENABLED,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_CREATED_BY,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_CREATED_DATE,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_DESCRIPTION,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_LIVE_SHARE,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_MODIFIED_BY,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_MODIFIED_DATE,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_SAVED_EVENT,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_TEST_ID,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_TEST_NAME,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_TYPE,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_LINKS,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_DNS_SERVERS,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_DOMAIN,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_MTU_MEASUREMENTS,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_NUM_PATH_TRACES,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_PATH_TRACE_MODE,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_PROBE_MODE,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_PROTOCOL,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_RECURSIVE_QUERIES,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_IPV6_POLICY,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_FIXED_PACKET_RATE,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_DNS_QUERY_CLASS,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_BGP_MEASUREMENTS,
+  UnexpandedDnsServerRequestTest.JSON_PROPERTY_USE_PUBLIC_BGP
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class UpdateSipServerTest {
+public class UnexpandedDnsServerRequestTest {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval = TestInterval.NUMBER_60;
 
@@ -85,9 +81,6 @@ public class UpdateSipServerTest {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -122,11 +115,17 @@ public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<TestLabel> labels = new ArrayList<>();
+  public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
+  private Boolean bandwidthMeasurements;
 
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
+  public static final String JSON_PROPERTY_DNS_SERVERS = "dnsServers";
+  private List<String> dnsServers = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL = "dnsTransportProtocol";
+  private TestDnsTransportProtocol dnsTransportProtocol = TestDnsTransportProtocol.UDP;
+
+  public static final String JSON_PROPERTY_DOMAIN = "domain";
+  private String domain;
 
   public static final String JSON_PROPERTY_MTU_MEASUREMENTS = "mtuMeasurements";
   private Boolean mtuMeasurements;
@@ -137,32 +136,29 @@ public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_NUM_PATH_TRACES = "numPathTraces";
   private Integer numPathTraces = 3;
 
-  public static final String JSON_PROPERTY_OPTIONS_REGEX = "optionsRegex";
-  private String optionsRegex;
-
   public static final String JSON_PROPERTY_PATH_TRACE_MODE = "pathTraceMode";
   private TestPathTraceMode pathTraceMode = TestPathTraceMode.CLASSIC;
 
   public static final String JSON_PROPERTY_PROBE_MODE = "probeMode";
   private TestProbeMode probeMode = TestProbeMode.AUTO;
 
+  public static final String JSON_PROPERTY_PROTOCOL = "protocol";
+  private TestProtocol protocol = TestProtocol.TCP;
+
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
 
-  public static final String JSON_PROPERTY_REGISTER_ENABLED = "registerEnabled";
-  private Boolean registerEnabled = false;
+  public static final String JSON_PROPERTY_RECURSIVE_QUERIES = "recursiveQueries";
+  private Boolean recursiveQueries;
 
-  public static final String JSON_PROPERTY_SIP_TARGET_TIME = "sipTargetTime";
-  private Integer sipTargetTime;
-
-  public static final String JSON_PROPERTY_SIP_TIME_LIMIT = "sipTimeLimit";
-  private Integer sipTimeLimit = 5;
+  public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
+  private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_FIXED_PACKET_RATE = "fixedPacketRate";
   private Integer fixedPacketRate;
 
-  public static final String JSON_PROPERTY_IPV6_POLICY = "ipv6Policy";
-  private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
+  public static final String JSON_PROPERTY_DNS_QUERY_CLASS = "dnsQueryClass";
+  private DnsQueryClass dnsQueryClass;
 
   public static final String JSON_PROPERTY_BGP_MEASUREMENTS = "bgpMeasurements";
   private Boolean bgpMeasurements = true;
@@ -170,17 +166,11 @@ public class UpdateSipServerTest {
   public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
   private Boolean usePublicBgp = true;
 
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<Monitor> monitors = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_TARGET_SIP_CREDENTIALS = "targetSipCredentials";
-  private TestSipCredentials targetSipCredentials;
-
-  public UpdateSipServerTest() { 
+  public UnexpandedDnsServerRequestTest() { 
   }
 
   @JsonCreator
-  public UpdateSipServerTest(
+  public UnexpandedDnsServerRequestTest(
     @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
     @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
@@ -188,10 +178,7 @@ public class UpdateSipServerTest {
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
     @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
+    @JsonProperty(JSON_PROPERTY_TYPE) String type
   ) {
   this();
     this.createdBy = createdBy;
@@ -202,12 +189,9 @@ public class UpdateSipServerTest {
     this.savedEvent = savedEvent;
     this.testId = testId;
     this.type = type;
-    this.labels = labels;
-    this.sharedWithAccounts = sharedWithAccounts;
-    this.monitors = monitors;
   }
 
-  public UpdateSipServerTest interval(TestInterval interval) {
+  public UnexpandedDnsServerRequestTest interval(TestInterval interval) {
     this.interval = interval;
     return this;
   }
@@ -232,7 +216,7 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest alertsEnabled(Boolean alertsEnabled) {
+  public UnexpandedDnsServerRequestTest alertsEnabled(Boolean alertsEnabled) {
     this.alertsEnabled = alertsEnabled;
     return this;
   }
@@ -257,7 +241,7 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest enabled(Boolean enabled) {
+  public UnexpandedDnsServerRequestTest enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -279,39 +263,6 @@ public class UpdateSipServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public UpdateSipServerTest alertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public UpdateSipServerTest addAlertRulesItem(AlertRule alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * Contains list of enabled alert rule objects.
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<AlertRule> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<AlertRule> alertRules) {
-    this.alertRules = alertRules;
   }
 
 
@@ -345,7 +296,7 @@ public class UpdateSipServerTest {
 
 
 
-  public UpdateSipServerTest description(String description) {
+  public UnexpandedDnsServerRequestTest description(String description) {
     this.description = description;
     return this;
   }
@@ -445,7 +396,7 @@ public class UpdateSipServerTest {
 
 
 
-  public UpdateSipServerTest testName(String testName) {
+  public UnexpandedDnsServerRequestTest testName(String testName) {
     this.testName = testName;
     return this;
   }
@@ -485,7 +436,7 @@ public class UpdateSipServerTest {
 
 
 
-  public UpdateSipServerTest links(TestLinks links) {
+  public UnexpandedDnsServerRequestTest links(TestLinks links) {
     this.links = links;
     return this;
   }
@@ -510,37 +461,115 @@ public class UpdateSipServerTest {
   }
 
 
+  public UnexpandedDnsServerRequestTest bandwidthMeasurements(Boolean bandwidthMeasurements) {
+    this.bandwidthMeasurements = bandwidthMeasurements;
+    return this;
+  }
+
    /**
-   * Labels to which the test is assigned. This field is not returned for Instant Tests.
-   * @return labels
+   * Set to &#x60;true&#x60; to enable bandwidth measurements, only applies to Enterprise agents assigned to the test.
+   * @return bandwidthMeasurements
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonProperty(JSON_PROPERTY_BANDWIDTH_MEASUREMENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestLabel> getLabels() {
-    return labels;
+  public Boolean getBandwidthMeasurements() {
+    return bandwidthMeasurements;
   }
 
 
-
-
-   /**
-   * Get sharedWithAccounts
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonProperty(JSON_PROPERTY_BANDWIDTH_MEASUREMENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<SharedWithAccount> getSharedWithAccounts() {
-    return sharedWithAccounts;
+  public void setBandwidthMeasurements(Boolean bandwidthMeasurements) {
+    this.bandwidthMeasurements = bandwidthMeasurements;
   }
 
 
+  public UnexpandedDnsServerRequestTest dnsServers(List<String> dnsServers) {
+    this.dnsServers = dnsServers;
+    return this;
+  }
+
+  public UnexpandedDnsServerRequestTest addDnsServersItem(String dnsServersItem) {
+    if (this.dnsServers == null) {
+      this.dnsServers = new ArrayList<>();
+    }
+    this.dnsServers.add(dnsServersItem);
+    return this;
+  }
+
+   /**
+   * A list of DNS server FQDN.
+   * @return dnsServers
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DNS_SERVERS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<String> getDnsServers() {
+    return dnsServers;
+  }
 
 
-  public UpdateSipServerTest mtuMeasurements(Boolean mtuMeasurements) {
+  @JsonProperty(JSON_PROPERTY_DNS_SERVERS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDnsServers(List<String> dnsServers) {
+    this.dnsServers = dnsServers;
+  }
+
+
+  public UnexpandedDnsServerRequestTest dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
+    this.dnsTransportProtocol = dnsTransportProtocol;
+    return this;
+  }
+
+   /**
+   * Get dnsTransportProtocol
+   * @return dnsTransportProtocol
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TestDnsTransportProtocol getDnsTransportProtocol() {
+    return dnsTransportProtocol;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
+    this.dnsTransportProtocol = dnsTransportProtocol;
+  }
+
+
+  public UnexpandedDnsServerRequestTest domain(String domain) {
+    this.domain = domain;
+    return this;
+  }
+
+   /**
+   * The target record for the test, with the record type suffixed. If no record type is specified, the test defaults to an ANY record.
+   * @return domain
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DOMAIN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getDomain() {
+    return domain;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DOMAIN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDomain(String domain) {
+    this.domain = domain;
+  }
+
+
+  public UnexpandedDnsServerRequestTest mtuMeasurements(Boolean mtuMeasurements) {
     this.mtuMeasurements = mtuMeasurements;
     return this;
   }
@@ -565,7 +594,7 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest networkMeasurements(Boolean networkMeasurements) {
+  public UnexpandedDnsServerRequestTest networkMeasurements(Boolean networkMeasurements) {
     this.networkMeasurements = networkMeasurements;
     return this;
   }
@@ -590,7 +619,7 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest numPathTraces(Integer numPathTraces) {
+  public UnexpandedDnsServerRequestTest numPathTraces(Integer numPathTraces) {
     this.numPathTraces = numPathTraces;
     return this;
   }
@@ -617,32 +646,7 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest optionsRegex(String optionsRegex) {
-    this.optionsRegex = optionsRegex;
-    return this;
-  }
-
-   /**
-   * Options regex, this field does not require escaping.
-   * @return optionsRegex
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OPTIONS_REGEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getOptionsRegex() {
-    return optionsRegex;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OPTIONS_REGEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOptionsRegex(String optionsRegex) {
-    this.optionsRegex = optionsRegex;
-  }
-
-
-  public UpdateSipServerTest pathTraceMode(TestPathTraceMode pathTraceMode) {
+  public UnexpandedDnsServerRequestTest pathTraceMode(TestPathTraceMode pathTraceMode) {
     this.pathTraceMode = pathTraceMode;
     return this;
   }
@@ -667,7 +671,7 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest probeMode(TestProbeMode probeMode) {
+  public UnexpandedDnsServerRequestTest probeMode(TestProbeMode probeMode) {
     this.probeMode = probeMode;
     return this;
   }
@@ -692,7 +696,32 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest randomizedStartTime(Boolean randomizedStartTime) {
+  public UnexpandedDnsServerRequestTest protocol(TestProtocol protocol) {
+    this.protocol = protocol;
+    return this;
+  }
+
+   /**
+   * Get protocol
+   * @return protocol
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROTOCOL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TestProtocol getProtocol() {
+    return protocol;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PROTOCOL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProtocol(TestProtocol protocol) {
+    this.protocol = protocol;
+  }
+
+
+  public UnexpandedDnsServerRequestTest randomizedStartTime(Boolean randomizedStartTime) {
     this.randomizedStartTime = randomizedStartTime;
     return this;
   }
@@ -717,86 +746,57 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest registerEnabled(Boolean registerEnabled) {
-    this.registerEnabled = registerEnabled;
+  public UnexpandedDnsServerRequestTest recursiveQueries(Boolean recursiveQueries) {
+    this.recursiveQueries = recursiveQueries;
     return this;
   }
 
    /**
-   * Set to true to perform SIP registration on the test target with the SIP REGISTER command.
-   * @return registerEnabled
+   * Set true to run query with RD (recursion desired) flag enabled.
+   * @return recursiveQueries
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REGISTER_ENABLED)
+  @JsonProperty(JSON_PROPERTY_RECURSIVE_QUERIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Boolean getRegisterEnabled() {
-    return registerEnabled;
+  public Boolean getRecursiveQueries() {
+    return recursiveQueries;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REGISTER_ENABLED)
+  @JsonProperty(JSON_PROPERTY_RECURSIVE_QUERIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRegisterEnabled(Boolean registerEnabled) {
-    this.registerEnabled = registerEnabled;
+  public void setRecursiveQueries(Boolean recursiveQueries) {
+    this.recursiveQueries = recursiveQueries;
   }
 
 
-  public UpdateSipServerTest sipTargetTime(Integer sipTargetTime) {
-    this.sipTargetTime = sipTargetTime;
+  public UnexpandedDnsServerRequestTest ipv6Policy(TestIpv6Policy ipv6Policy) {
+    this.ipv6Policy = ipv6Policy;
     return this;
   }
 
    /**
-   * Target time for test completion in milliseconds.
-   * minimum: 100
-   * maximum: 5000
-   * @return sipTargetTime
+   * Get ipv6Policy
+   * @return ipv6Policy
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIP_TARGET_TIME)
+  @JsonProperty(JSON_PROPERTY_IPV6_POLICY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getSipTargetTime() {
-    return sipTargetTime;
+  public TestIpv6Policy getIpv6Policy() {
+    return ipv6Policy;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SIP_TARGET_TIME)
+  @JsonProperty(JSON_PROPERTY_IPV6_POLICY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSipTargetTime(Integer sipTargetTime) {
-    this.sipTargetTime = sipTargetTime;
+  public void setIpv6Policy(TestIpv6Policy ipv6Policy) {
+    this.ipv6Policy = ipv6Policy;
   }
 
 
-  public UpdateSipServerTest sipTimeLimit(Integer sipTimeLimit) {
-    this.sipTimeLimit = sipTimeLimit;
-    return this;
-  }
-
-   /**
-   * Time limit in milliseconds.
-   * minimum: 5
-   * maximum: 10
-   * @return sipTimeLimit
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIP_TIME_LIMIT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getSipTimeLimit() {
-    return sipTimeLimit;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SIP_TIME_LIMIT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSipTimeLimit(Integer sipTimeLimit) {
-    this.sipTimeLimit = sipTimeLimit;
-  }
-
-
-  public UpdateSipServerTest fixedPacketRate(Integer fixedPacketRate) {
+  public UnexpandedDnsServerRequestTest fixedPacketRate(Integer fixedPacketRate) {
     this.fixedPacketRate = fixedPacketRate;
     return this;
   }
@@ -823,32 +823,32 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest ipv6Policy(TestIpv6Policy ipv6Policy) {
-    this.ipv6Policy = ipv6Policy;
+  public UnexpandedDnsServerRequestTest dnsQueryClass(DnsQueryClass dnsQueryClass) {
+    this.dnsQueryClass = dnsQueryClass;
     return this;
   }
 
    /**
-   * Get ipv6Policy
-   * @return ipv6Policy
+   * Get dnsQueryClass
+   * @return dnsQueryClass
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IPV6_POLICY)
+  @JsonProperty(JSON_PROPERTY_DNS_QUERY_CLASS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public TestIpv6Policy getIpv6Policy() {
-    return ipv6Policy;
+  public DnsQueryClass getDnsQueryClass() {
+    return dnsQueryClass;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IPV6_POLICY)
+  @JsonProperty(JSON_PROPERTY_DNS_QUERY_CLASS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpv6Policy(TestIpv6Policy ipv6Policy) {
-    this.ipv6Policy = ipv6Policy;
+  public void setDnsQueryClass(DnsQueryClass dnsQueryClass) {
+    this.dnsQueryClass = dnsQueryClass;
   }
 
 
-  public UpdateSipServerTest bgpMeasurements(Boolean bgpMeasurements) {
+  public UnexpandedDnsServerRequestTest bgpMeasurements(Boolean bgpMeasurements) {
     this.bgpMeasurements = bgpMeasurements;
     return this;
   }
@@ -873,7 +873,7 @@ public class UpdateSipServerTest {
   }
 
 
-  public UpdateSipServerTest usePublicBgp(Boolean usePublicBgp) {
+  public UnexpandedDnsServerRequestTest usePublicBgp(Boolean usePublicBgp) {
     this.usePublicBgp = usePublicBgp;
     return this;
   }
@@ -898,48 +898,8 @@ public class UpdateSipServerTest {
   }
 
 
-   /**
-   * Contains list of enabled BGP monitors.
-   * @return monitors
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Monitor> getMonitors() {
-    return monitors;
-  }
-
-
-
-
-  public UpdateSipServerTest targetSipCredentials(TestSipCredentials targetSipCredentials) {
-    this.targetSipCredentials = targetSipCredentials;
-    return this;
-  }
-
-   /**
-   * Get targetSipCredentials
-   * @return targetSipCredentials
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public TestSipCredentials getTargetSipCredentials() {
-    return targetSipCredentials;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TARGET_SIP_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTargetSipCredentials(TestSipCredentials targetSipCredentials) {
-    this.targetSipCredentials = targetSipCredentials;
-  }
-
-
   /**
-   * Return true if this UpdateSipServerTest object is equal to o.
+   * Return true if this UnexpandedDnsServerRequestTest object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -949,55 +909,52 @@ public class UpdateSipServerTest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpdateSipServerTest updateSipServerTest = (UpdateSipServerTest) o;
-    return Objects.equals(this.interval, updateSipServerTest.interval) &&
-        Objects.equals(this.alertsEnabled, updateSipServerTest.alertsEnabled) &&
-        Objects.equals(this.enabled, updateSipServerTest.enabled) &&
-        Objects.equals(this.alertRules, updateSipServerTest.alertRules) &&
-        Objects.equals(this.createdBy, updateSipServerTest.createdBy) &&
-        Objects.equals(this.createdDate, updateSipServerTest.createdDate) &&
-        Objects.equals(this.description, updateSipServerTest.description) &&
-        Objects.equals(this.liveShare, updateSipServerTest.liveShare) &&
-        Objects.equals(this.modifiedBy, updateSipServerTest.modifiedBy) &&
-        Objects.equals(this.modifiedDate, updateSipServerTest.modifiedDate) &&
-        Objects.equals(this.savedEvent, updateSipServerTest.savedEvent) &&
-        Objects.equals(this.testId, updateSipServerTest.testId) &&
-        Objects.equals(this.testName, updateSipServerTest.testName) &&
-        Objects.equals(this.type, updateSipServerTest.type) &&
-        Objects.equals(this.links, updateSipServerTest.links) &&
-        Objects.equals(this.labels, updateSipServerTest.labels) &&
-        Objects.equals(this.sharedWithAccounts, updateSipServerTest.sharedWithAccounts) &&
-        Objects.equals(this.mtuMeasurements, updateSipServerTest.mtuMeasurements) &&
-        Objects.equals(this.networkMeasurements, updateSipServerTest.networkMeasurements) &&
-        Objects.equals(this.numPathTraces, updateSipServerTest.numPathTraces) &&
-        Objects.equals(this.optionsRegex, updateSipServerTest.optionsRegex) &&
-        Objects.equals(this.pathTraceMode, updateSipServerTest.pathTraceMode) &&
-        Objects.equals(this.probeMode, updateSipServerTest.probeMode) &&
-        Objects.equals(this.randomizedStartTime, updateSipServerTest.randomizedStartTime) &&
-        Objects.equals(this.registerEnabled, updateSipServerTest.registerEnabled) &&
-        Objects.equals(this.sipTargetTime, updateSipServerTest.sipTargetTime) &&
-        Objects.equals(this.sipTimeLimit, updateSipServerTest.sipTimeLimit) &&
-        Objects.equals(this.fixedPacketRate, updateSipServerTest.fixedPacketRate) &&
-        Objects.equals(this.ipv6Policy, updateSipServerTest.ipv6Policy) &&
-        Objects.equals(this.bgpMeasurements, updateSipServerTest.bgpMeasurements) &&
-        Objects.equals(this.usePublicBgp, updateSipServerTest.usePublicBgp) &&
-        Objects.equals(this.monitors, updateSipServerTest.monitors) &&
-        Objects.equals(this.targetSipCredentials, updateSipServerTest.targetSipCredentials);
+    UnexpandedDnsServerRequestTest unexpandedDnsServerRequestTest = (UnexpandedDnsServerRequestTest) o;
+    return Objects.equals(this.interval, unexpandedDnsServerRequestTest.interval) &&
+        Objects.equals(this.alertsEnabled, unexpandedDnsServerRequestTest.alertsEnabled) &&
+        Objects.equals(this.enabled, unexpandedDnsServerRequestTest.enabled) &&
+        Objects.equals(this.createdBy, unexpandedDnsServerRequestTest.createdBy) &&
+        Objects.equals(this.createdDate, unexpandedDnsServerRequestTest.createdDate) &&
+        Objects.equals(this.description, unexpandedDnsServerRequestTest.description) &&
+        Objects.equals(this.liveShare, unexpandedDnsServerRequestTest.liveShare) &&
+        Objects.equals(this.modifiedBy, unexpandedDnsServerRequestTest.modifiedBy) &&
+        Objects.equals(this.modifiedDate, unexpandedDnsServerRequestTest.modifiedDate) &&
+        Objects.equals(this.savedEvent, unexpandedDnsServerRequestTest.savedEvent) &&
+        Objects.equals(this.testId, unexpandedDnsServerRequestTest.testId) &&
+        Objects.equals(this.testName, unexpandedDnsServerRequestTest.testName) &&
+        Objects.equals(this.type, unexpandedDnsServerRequestTest.type) &&
+        Objects.equals(this.links, unexpandedDnsServerRequestTest.links) &&
+        Objects.equals(this.bandwidthMeasurements, unexpandedDnsServerRequestTest.bandwidthMeasurements) &&
+        Objects.equals(this.dnsServers, unexpandedDnsServerRequestTest.dnsServers) &&
+        Objects.equals(this.dnsTransportProtocol, unexpandedDnsServerRequestTest.dnsTransportProtocol) &&
+        Objects.equals(this.domain, unexpandedDnsServerRequestTest.domain) &&
+        Objects.equals(this.mtuMeasurements, unexpandedDnsServerRequestTest.mtuMeasurements) &&
+        Objects.equals(this.networkMeasurements, unexpandedDnsServerRequestTest.networkMeasurements) &&
+        Objects.equals(this.numPathTraces, unexpandedDnsServerRequestTest.numPathTraces) &&
+        Objects.equals(this.pathTraceMode, unexpandedDnsServerRequestTest.pathTraceMode) &&
+        Objects.equals(this.probeMode, unexpandedDnsServerRequestTest.probeMode) &&
+        Objects.equals(this.protocol, unexpandedDnsServerRequestTest.protocol) &&
+        Objects.equals(this.randomizedStartTime, unexpandedDnsServerRequestTest.randomizedStartTime) &&
+        Objects.equals(this.recursiveQueries, unexpandedDnsServerRequestTest.recursiveQueries) &&
+        Objects.equals(this.ipv6Policy, unexpandedDnsServerRequestTest.ipv6Policy) &&
+        Objects.equals(this.fixedPacketRate, unexpandedDnsServerRequestTest.fixedPacketRate) &&
+        Objects.equals(this.dnsQueryClass, unexpandedDnsServerRequestTest.dnsQueryClass) &&
+        Objects.equals(this.bgpMeasurements, unexpandedDnsServerRequestTest.bgpMeasurements) &&
+        Objects.equals(this.usePublicBgp, unexpandedDnsServerRequestTest.usePublicBgp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, targetSipCredentials);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateSipServerTest {\n");
+    sb.append("class UnexpandedDnsServerRequestTest {\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -1009,24 +966,23 @@ public class UpdateSipServerTest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
+    sb.append("    dnsServers: ").append(toIndentedString(dnsServers)).append("\n");
+    sb.append("    dnsTransportProtocol: ").append(toIndentedString(dnsTransportProtocol)).append("\n");
+    sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    numPathTraces: ").append(toIndentedString(numPathTraces)).append("\n");
-    sb.append("    optionsRegex: ").append(toIndentedString(optionsRegex)).append("\n");
     sb.append("    pathTraceMode: ").append(toIndentedString(pathTraceMode)).append("\n");
     sb.append("    probeMode: ").append(toIndentedString(probeMode)).append("\n");
+    sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
-    sb.append("    registerEnabled: ").append(toIndentedString(registerEnabled)).append("\n");
-    sb.append("    sipTargetTime: ").append(toIndentedString(sipTargetTime)).append("\n");
-    sb.append("    sipTimeLimit: ").append(toIndentedString(sipTimeLimit)).append("\n");
-    sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    recursiveQueries: ").append(toIndentedString(recursiveQueries)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
+    sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
+    sb.append("    dnsQueryClass: ").append(toIndentedString(dnsQueryClass)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
-    sb.append("    targetSipCredentials: ").append(toIndentedString(targetSipCredentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,11 +28,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Battery metrics for the endpoint agent.
  */
 @JsonPropertyOrder({
+  BatteryMetrics.JSON_PROPERTY_BATTERY_HEALTH_NORMALIZED_PERCENT,
   BatteryMetrics.JSON_PROPERTY_BATTERY_LEVEL,
   BatteryMetrics.JSON_PROPERTY_BATTERY_LEVEL_NORMALIZED_PERCENT
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BatteryMetrics {
+  public static final String JSON_PROPERTY_BATTERY_HEALTH_NORMALIZED_PERCENT = "batteryHealthNormalizedPercent";
+  private Double batteryHealthNormalizedPercent;
+
   public static final String JSON_PROPERTY_BATTERY_LEVEL = "batteryLevel";
   private BatteryLevel batteryLevel;
 
@@ -41,6 +45,33 @@ public class BatteryMetrics {
 
   public BatteryMetrics() { 
   }
+
+  public BatteryMetrics batteryHealthNormalizedPercent(Double batteryHealthNormalizedPercent) {
+    this.batteryHealthNormalizedPercent = batteryHealthNormalizedPercent;
+    return this;
+  }
+
+   /**
+   * Battery health as a normalized percentage (0-1).
+   * minimum: 0
+   * maximum: 1
+   * @return batteryHealthNormalizedPercent
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATTERY_HEALTH_NORMALIZED_PERCENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Double getBatteryHealthNormalizedPercent() {
+    return batteryHealthNormalizedPercent;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATTERY_HEALTH_NORMALIZED_PERCENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatteryHealthNormalizedPercent(Double batteryHealthNormalizedPercent) {
+    this.batteryHealthNormalizedPercent = batteryHealthNormalizedPercent;
+  }
+
 
   public BatteryMetrics batteryLevel(BatteryLevel batteryLevel) {
     this.batteryLevel = batteryLevel;
@@ -106,19 +137,21 @@ public class BatteryMetrics {
       return false;
     }
     BatteryMetrics batteryMetrics = (BatteryMetrics) o;
-    return Objects.equals(this.batteryLevel, batteryMetrics.batteryLevel) &&
+    return Objects.equals(this.batteryHealthNormalizedPercent, batteryMetrics.batteryHealthNormalizedPercent) &&
+        Objects.equals(this.batteryLevel, batteryMetrics.batteryLevel) &&
         Objects.equals(this.batteryLevelNormalizedPercent, batteryMetrics.batteryLevelNormalizedPercent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batteryLevel, batteryLevelNormalizedPercent);
+    return Objects.hash(batteryHealthNormalizedPercent, batteryLevel, batteryLevelNormalizedPercent);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BatteryMetrics {\n");
+    sb.append("    batteryHealthNormalizedPercent: ").append(toIndentedString(batteryHealthNormalizedPercent)).append("\n");
     sb.append("    batteryLevel: ").append(toIndentedString(batteryLevel)).append("\n");
     sb.append("    batteryLevelNormalizedPercent: ").append(toIndentedString(batteryLevelNormalizedPercent)).append("\n");
     sb.append("}");

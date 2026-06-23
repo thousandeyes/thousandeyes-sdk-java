@@ -28,6 +28,7 @@ import com.thousandeyes.sdk.tests.instant.model.TestLinks;
 import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
+import com.thousandeyes.sdk.tests.instant.model.TestTag;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,6 +52,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerInstantTest.JSON_PROPERTY_TYPE,
   AgentToServerInstantTest.JSON_PROPERTY_LINKS,
   AgentToServerInstantTest.JSON_PROPERTY_LABELS,
+  AgentToServerInstantTest.JSON_PROPERTY_TAGS,
   AgentToServerInstantTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   AgentToServerInstantTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   AgentToServerInstantTest.JSON_PROPERTY_CONTINUOUS_MODE,
@@ -105,6 +107,9 @@ public class AgentToServerInstantTest {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -168,6 +173,7 @@ public class AgentToServerInstantTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_DSCP) String dscp
   ) {
@@ -181,6 +187,7 @@ public class AgentToServerInstantTest {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
     this.dscp = dscp;
   }
@@ -390,6 +397,21 @@ public class AgentToServerInstantTest {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -805,6 +827,7 @@ public class AgentToServerInstantTest {
         Objects.equals(this.type, agentToServerInstantTest.type) &&
         Objects.equals(this.links, agentToServerInstantTest.links) &&
         Objects.equals(this.labels, agentToServerInstantTest.labels) &&
+        Objects.equals(this.tags, agentToServerInstantTest.tags) &&
         Objects.equals(this.sharedWithAccounts, agentToServerInstantTest.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, agentToServerInstantTest.bandwidthMeasurements) &&
         Objects.equals(this.continuousMode, agentToServerInstantTest.continuousMode) &&
@@ -825,7 +848,7 @@ public class AgentToServerInstantTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements);
   }
 
   @Override
@@ -844,6 +867,7 @@ public class AgentToServerInstantTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    continuousMode: ").append(toIndentedString(continuousMode)).append("\n");

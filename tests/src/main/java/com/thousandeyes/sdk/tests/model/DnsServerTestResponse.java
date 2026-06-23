@@ -34,6 +34,7 @@ import com.thousandeyes.sdk.tests.model.TestLinks;
 import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
+import com.thousandeyes.sdk.tests.model.TestTag;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,6 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DnsServerTestResponse.JSON_PROPERTY_TYPE,
   DnsServerTestResponse.JSON_PROPERTY_LINKS,
   DnsServerTestResponse.JSON_PROPERTY_LABELS,
+  DnsServerTestResponse.JSON_PROPERTY_TAGS,
   DnsServerTestResponse.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   DnsServerTestResponse.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   DnsServerTestResponse.JSON_PROPERTY_DNS_SERVERS,
@@ -131,6 +133,9 @@ public class DnsServerTestResponse {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -206,6 +211,7 @@ public class DnsServerTestResponse {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
   ) {
@@ -219,6 +225,7 @@ public class DnsServerTestResponse {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
     this.monitors = monitors;
   }
@@ -536,6 +543,21 @@ public class DnsServerTestResponse {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -1069,6 +1091,7 @@ public class DnsServerTestResponse {
         Objects.equals(this.type, dnsServerTestResponse.type) &&
         Objects.equals(this.links, dnsServerTestResponse.links) &&
         Objects.equals(this.labels, dnsServerTestResponse.labels) &&
+        Objects.equals(this.tags, dnsServerTestResponse.tags) &&
         Objects.equals(this.sharedWithAccounts, dnsServerTestResponse.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, dnsServerTestResponse.bandwidthMeasurements) &&
         Objects.equals(this.dnsServers, dnsServerTestResponse.dnsServers) &&
@@ -1093,7 +1116,7 @@ public class DnsServerTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, bandwidthMeasurements, dnsServers, dnsTransportProtocol, domain, mtuMeasurements, networkMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, recursiveQueries, ipv6Policy, fixedPacketRate, dnsQueryClass, bgpMeasurements, usePublicBgp, monitors, agents);
   }
 
   @Override
@@ -1116,6 +1139,7 @@ public class DnsServerTestResponse {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    dnsServers: ").append(toIndentedString(dnsServers)).append("\n");

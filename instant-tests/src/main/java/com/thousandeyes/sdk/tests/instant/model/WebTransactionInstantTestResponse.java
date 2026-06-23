@@ -33,6 +33,8 @@ import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.instant.model.TestTag;
+import com.thousandeyes.sdk.tests.instant.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,6 +58,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestResponse.JSON_PROPERTY_TYPE,
   WebTransactionInstantTestResponse.JSON_PROPERTY_LINKS,
   WebTransactionInstantTestResponse.JSON_PROPERTY_LABELS,
+  WebTransactionInstantTestResponse.JSON_PROPERTY_TAGS,
   WebTransactionInstantTestResponse.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   WebTransactionInstantTestResponse.JSON_PROPERTY_AUTH_TYPE,
   WebTransactionInstantTestResponse.JSON_PROPERTY_AGENT_INTERFACES,
@@ -92,6 +95,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestResponse.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   WebTransactionInstantTestResponse.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   WebTransactionInstantTestResponse.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  WebTransactionInstantTestResponse.JSON_PROPERTY_VAULT_CREDENTIALS,
   WebTransactionInstantTestResponse.JSON_PROPERTY_EMULATED_DEVICE_ID,
   WebTransactionInstantTestResponse.JSON_PROPERTY_TARGET_TIME,
   WebTransactionInstantTestResponse.JSON_PROPERTY_TIME_LIMIT,
@@ -146,6 +150,9 @@ public class WebTransactionInstantTestResponse {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -255,6 +262,9 @@ public class WebTransactionInstantTestResponse {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_EMULATED_DEVICE_ID = "emulatedDeviceId";
   private String emulatedDeviceId;
 
@@ -317,6 +327,7 @@ public class WebTransactionInstantTestResponse {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion
   ) {
@@ -330,6 +341,7 @@ public class WebTransactionInstantTestResponse {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
     this.sslVersion = sslVersion;
   }
@@ -539,6 +551,21 @@ public class WebTransactionInstantTestResponse {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -1434,6 +1461,39 @@ public class WebTransactionInstantTestResponse {
   }
 
 
+  public WebTransactionInstantTestResponse vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public WebTransactionInstantTestResponse addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public WebTransactionInstantTestResponse emulatedDeviceId(String emulatedDeviceId) {
     this.emulatedDeviceId = emulatedDeviceId;
     return this;
@@ -1878,6 +1938,7 @@ public class WebTransactionInstantTestResponse {
         Objects.equals(this.type, webTransactionInstantTestResponse.type) &&
         Objects.equals(this.links, webTransactionInstantTestResponse.links) &&
         Objects.equals(this.labels, webTransactionInstantTestResponse.labels) &&
+        Objects.equals(this.tags, webTransactionInstantTestResponse.tags) &&
         Objects.equals(this.sharedWithAccounts, webTransactionInstantTestResponse.sharedWithAccounts) &&
         Objects.equals(this.authType, webTransactionInstantTestResponse.authType) &&
         Objects.equals(this.agentInterfaces, webTransactionInstantTestResponse.agentInterfaces) &&
@@ -1914,6 +1975,7 @@ public class WebTransactionInstantTestResponse {
         Objects.equals(this.overrideAgentProxy, webTransactionInstantTestResponse.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, webTransactionInstantTestResponse.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, webTransactionInstantTestResponse.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, webTransactionInstantTestResponse.vaultCredentials) &&
         Objects.equals(this.emulatedDeviceId, webTransactionInstantTestResponse.emulatedDeviceId) &&
         Objects.equals(this.targetTime, webTransactionInstantTestResponse.targetTime) &&
         Objects.equals(this.timeLimit, webTransactionInstantTestResponse.timeLimit) &&
@@ -1934,7 +1996,7 @@ public class WebTransactionInstantTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, agents);
   }
 
   @Override
@@ -1953,6 +2015,7 @@ public class WebTransactionInstantTestResponse {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
@@ -1989,6 +2052,7 @@ public class WebTransactionInstantTestResponse {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    emulatedDeviceId: ").append(toIndentedString(emulatedDeviceId)).append("\n");
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");

@@ -1,6 +1,6 @@
 /*
- * Dashboards API
- * Manage ThousandEyes Dashboards.
+ * Agents API
+ *  ## Overview Manage Cloud and Enterprise Agents available to your account in ThousandEyes.
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.dashboards.model;
+package com.thousandeyes.sdk.agents.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -22,19 +22,25 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Specifies the order in which cards are sorted.
+ * Classification of the agent&#39;s network provider.
  */
-public enum ApiWidgetSortDirection {
+public enum NetworkProviderType {
   
-  ASCENDING("ascending"),
+  UNKNOWN("unknown"),
   
-  DESCENDING("descending"),
+  ISP("isp"),
   
-  UNKNOWN("unknown");
+  CDN("cdn"),
+  
+  STUB("stub"),
+  
+  CLOUD_PROVIDER("cloud-provider"),
+  
+  CARRIER("carrier");
 
   private String value;
 
-  ApiWidgetSortDirection(String value) {
+  NetworkProviderType(String value) {
     this.value = value;
   }
 
@@ -49,8 +55,8 @@ public enum ApiWidgetSortDirection {
   }
 
   @JsonCreator
-  public static ApiWidgetSortDirection fromValue(String value) {
-    for (ApiWidgetSortDirection b : ApiWidgetSortDirection.values()) {
+  public static NetworkProviderType fromValue(String value) {
+    for (NetworkProviderType b : NetworkProviderType.values()) {
       if (b.value.equals(value)) {
         return b;
       }

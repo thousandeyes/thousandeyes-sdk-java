@@ -1,6 +1,6 @@
 /*
  * Endpoint Tests API
- *  Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
+ * Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *
@@ -41,6 +41,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,16 +88,17 @@ public class AgentToServerEndpointScheduledTestsApiTest {
         var requestBodyJson = """
                 {
                   "server" : "www.example.com",
-                  "protocol" : "icmp",
-                  "ipVersion" : "V4_ONLY",
-                  "port" : 443,
                   "agentSelectorType" : "all-agents",
+                  "tagIds" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "5aeab5d5-0d34-4d44-a7ac-fb440185295c" ],
                   "maxMachines" : 25,
                   "serverName" : "www.example.com",
                   "isPrioritized" : false,
-                  "interval" : 60,
                   "endpointAgentLabels" : [ "567", "214" ],
                   "agents" : [ "0a3b9998-dc3a-4ff2-b50d-ac4a7cd986e1", "66eec0f1-72b4-4755-aa83-3aed61d17f3c" ],
+                  "protocol" : "icmp",
+                  "ipVersion" : "V4_ONLY",
+                  "port" : 443,
+                  "interval" : 60,
                   "testName" : "Test name"
                 }
                                  """;

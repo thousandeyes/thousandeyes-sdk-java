@@ -1,6 +1,6 @@
 /*
- * Instant Tests API
- * The Instant Tests API operations lets you create and run new instant tests. You will need to be an Account Admin.  The response does not include the immediate test results. Use the Test Results endpoints to get test results after creating and executing an instant test. You can find the URLs for these endpoints in the _links section of the test definition that is returned when you create the instant test. 
+ * Tests API
+ * **Note:** The Page Load Tests, API Tests, and Web Transaction Tests APIs are not available for ThousandEyes for Government instance.  This API allows you to list, create, edit, and delete Network and Application Synthetics tests. 
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.tests.instant.model;
+package com.thousandeyes.sdk.tests.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * HTTP request method used for the OAuth request.
+ * HTTP request method.
  */
-public enum OAuthRequestMethod {
+public enum RequestMethod {
   
   GET("get"),
   
@@ -34,7 +34,7 @@ public enum OAuthRequestMethod {
 
   private String value;
 
-  OAuthRequestMethod(String value) {
+  RequestMethod(String value) {
     this.value = value;
   }
 
@@ -49,8 +49,8 @@ public enum OAuthRequestMethod {
   }
 
   @JsonCreator
-  public static OAuthRequestMethod fromValue(String value) {
-    for (OAuthRequestMethod b : OAuthRequestMethod.values()) {
+  public static RequestMethod fromValue(String value) {
+    for (RequestMethod b : RequestMethod.values()) {
       if (b.value.equals(value)) {
         return b;
       }

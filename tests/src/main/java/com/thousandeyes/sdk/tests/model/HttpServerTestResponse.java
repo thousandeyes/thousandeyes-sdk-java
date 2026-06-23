@@ -25,6 +25,7 @@ import com.thousandeyes.sdk.tests.model.AgentResponse;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.Monitor;
 import com.thousandeyes.sdk.tests.model.OAuth;
+import com.thousandeyes.sdk.tests.model.RequestMethod;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
 import com.thousandeyes.sdk.tests.model.TestCustomHeaders;
@@ -36,6 +37,8 @@ import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
 import com.thousandeyes.sdk.tests.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.model.TestTag;
+import com.thousandeyes.sdk.tests.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,6 +66,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerTestResponse.JSON_PROPERTY_TYPE,
   HttpServerTestResponse.JSON_PROPERTY_LINKS,
   HttpServerTestResponse.JSON_PROPERTY_LABELS,
+  HttpServerTestResponse.JSON_PROPERTY_TAGS,
   HttpServerTestResponse.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   HttpServerTestResponse.JSON_PROPERTY_AUTH_TYPE,
   HttpServerTestResponse.JSON_PROPERTY_AGENT_INTERFACES,
@@ -99,8 +103,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerTestResponse.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   HttpServerTestResponse.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   HttpServerTestResponse.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  HttpServerTestResponse.JSON_PROPERTY_VAULT_CREDENTIALS,
   HttpServerTestResponse.JSON_PROPERTY_HEADERS,
   HttpServerTestResponse.JSON_PROPERTY_RANDOMIZED_START_TIME,
+  HttpServerTestResponse.JSON_PROPERTY_REQUEST_METHOD,
   HttpServerTestResponse.JSON_PROPERTY_POST_BODY,
   HttpServerTestResponse.JSON_PROPERTY_IPV6_POLICY,
   HttpServerTestResponse.JSON_PROPERTY_BGP_MEASUREMENTS,
@@ -157,6 +163,9 @@ public class HttpServerTestResponse {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -266,11 +275,17 @@ public class HttpServerTestResponse {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private List<String> headers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RANDOMIZED_START_TIME = "randomizedStartTime";
   private Boolean randomizedStartTime = false;
+
+  public static final String JSON_PROPERTY_REQUEST_METHOD = "requestMethod";
+  private RequestMethod requestMethod;
 
   public static final String JSON_PROPERTY_POST_BODY = "postBody";
   private String postBody;
@@ -304,6 +319,7 @@ public class HttpServerTestResponse {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
@@ -318,6 +334,7 @@ public class HttpServerTestResponse {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
     this.sslVersion = sslVersion;
     this.monitors = monitors;
@@ -636,6 +653,21 @@ public class HttpServerTestResponse {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -1531,6 +1563,39 @@ public class HttpServerTestResponse {
   }
 
 
+  public HttpServerTestResponse vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public HttpServerTestResponse addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public HttpServerTestResponse headers(List<String> headers) {
     this.headers = headers;
     return this;
@@ -1589,13 +1654,38 @@ public class HttpServerTestResponse {
   }
 
 
+  public HttpServerTestResponse requestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+    return this;
+  }
+
+   /**
+   * Get requestMethod
+   * @return requestMethod
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public RequestMethod getRequestMethod() {
+    return requestMethod;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REQUEST_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRequestMethod(RequestMethod requestMethod) {
+    this.requestMethod = requestMethod;
+  }
+
+
   public HttpServerTestResponse postBody(String postBody) {
     this.postBody = postBody;
     return this;
   }
 
    /**
-   * Enter the body for the HTTP POST request in this field. No special escaping is necessary. If the post body is provided with content, the &#x60;requestMethod&#x60; is automatically set to POST.
+   * Enter the body for the HTTP POST request in this field. No special escaping is required. If content is provided and &#x60;requestMethod&#x60; is not specified, &#x60;requestMethod&#x60; is automatically set to &#x60;post&#x60;.
    * @return postBody
   **/
   @jakarta.annotation.Nullable
@@ -1765,6 +1855,7 @@ public class HttpServerTestResponse {
         Objects.equals(this.type, httpServerTestResponse.type) &&
         Objects.equals(this.links, httpServerTestResponse.links) &&
         Objects.equals(this.labels, httpServerTestResponse.labels) &&
+        Objects.equals(this.tags, httpServerTestResponse.tags) &&
         Objects.equals(this.sharedWithAccounts, httpServerTestResponse.sharedWithAccounts) &&
         Objects.equals(this.authType, httpServerTestResponse.authType) &&
         Objects.equals(this.agentInterfaces, httpServerTestResponse.agentInterfaces) &&
@@ -1801,8 +1892,10 @@ public class HttpServerTestResponse {
         Objects.equals(this.overrideAgentProxy, httpServerTestResponse.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, httpServerTestResponse.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, httpServerTestResponse.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, httpServerTestResponse.vaultCredentials) &&
         Objects.equals(this.headers, httpServerTestResponse.headers) &&
         Objects.equals(this.randomizedStartTime, httpServerTestResponse.randomizedStartTime) &&
+        Objects.equals(this.requestMethod, httpServerTestResponse.requestMethod) &&
         Objects.equals(this.postBody, httpServerTestResponse.postBody) &&
         Objects.equals(this.ipv6Policy, httpServerTestResponse.ipv6Policy) &&
         Objects.equals(this.bgpMeasurements, httpServerTestResponse.bgpMeasurements) &&
@@ -1813,7 +1906,7 @@ public class HttpServerTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, headers, randomizedStartTime, postBody, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, bgpMeasurements, usePublicBgp, monitors, agents);
   }
 
   @Override
@@ -1836,6 +1929,7 @@ public class HttpServerTestResponse {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
@@ -1872,8 +1966,10 @@ public class HttpServerTestResponse {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
+    sb.append("    requestMethod: ").append(toIndentedString(requestMethod)).append("\n");
     sb.append("    postBody: ").append(toIndentedString(postBody)).append("\n");
     sb.append("    ipv6Policy: ").append(toIndentedString(ipv6Policy)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");

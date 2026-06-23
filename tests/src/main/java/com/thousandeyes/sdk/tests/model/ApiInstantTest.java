@@ -29,6 +29,8 @@ import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.model.TestProtocol;
 import com.thousandeyes.sdk.tests.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.model.TestTag;
+import com.thousandeyes.sdk.tests.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,6 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTest.JSON_PROPERTY_TYPE,
   ApiInstantTest.JSON_PROPERTY_LINKS,
   ApiInstantTest.JSON_PROPERTY_LABELS,
+  ApiInstantTest.JSON_PROPERTY_TAGS,
   ApiInstantTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   ApiInstantTest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   ApiInstantTest.JSON_PROPERTY_CLIENT_CERT_DOMAINS_ALLOW_LIST,
@@ -73,7 +76,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiInstantTest.JSON_PROPERTY_TARGET_TIME,
   ApiInstantTest.JSON_PROPERTY_TIME_LIMIT,
   ApiInstantTest.JSON_PROPERTY_URL,
-  ApiInstantTest.JSON_PROPERTY_CREDENTIALS
+  ApiInstantTest.JSON_PROPERTY_CREDENTIALS,
+  ApiInstantTest.JSON_PROPERTY_VAULT_CREDENTIALS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiInstantTest {
@@ -112,6 +116,9 @@ public class ApiInstantTest {
 
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
@@ -179,6 +186,9 @@ public class ApiInstantTest {
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<String> credentials = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public ApiInstantTest() { 
   }
 
@@ -193,6 +203,7 @@ public class ApiInstantTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
@@ -205,6 +216,7 @@ public class ApiInstantTest {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
   }
 
@@ -413,6 +425,21 @@ public class ApiInstantTest {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -988,6 +1015,39 @@ public class ApiInstantTest {
   }
 
 
+  public ApiInstantTest vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public ApiInstantTest addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   /**
    * Return true if this ApiInstantTest object is equal to o.
    */
@@ -1012,6 +1072,7 @@ public class ApiInstantTest {
         Objects.equals(this.type, apiInstantTest.type) &&
         Objects.equals(this.links, apiInstantTest.links) &&
         Objects.equals(this.labels, apiInstantTest.labels) &&
+        Objects.equals(this.tags, apiInstantTest.tags) &&
         Objects.equals(this.sharedWithAccounts, apiInstantTest.sharedWithAccounts) &&
         Objects.equals(this.clientCertificate, apiInstantTest.clientCertificate) &&
         Objects.equals(this.clientCertDomainsAllowList, apiInstantTest.clientCertDomainsAllowList) &&
@@ -1033,12 +1094,13 @@ public class ApiInstantTest {
         Objects.equals(this.targetTime, apiInstantTest.targetTime) &&
         Objects.equals(this.timeLimit, apiInstantTest.timeLimit) &&
         Objects.equals(this.url, apiInstantTest.url) &&
-        Objects.equals(this.credentials, apiInstantTest.credentials);
+        Objects.equals(this.credentials, apiInstantTest.credentials) &&
+        Objects.equals(this.vaultCredentials, apiInstantTest.vaultCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, clientCertificate, clientCertDomainsAllowList, collectProxyNetworkData, distributedTracing, followRedirects, mtuMeasurements, networkMeasurements, numPathTraces, overrideAgentProxy, overrideProxyId, pathTraceMode, predefinedVariables, probeMode, protocol, randomizedStartTime, requests, sslVersionId, targetTime, timeLimit, url, credentials, vaultCredentials);
   }
 
   @Override
@@ -1057,6 +1119,7 @@ public class ApiInstantTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    clientCertDomainsAllowList: ").append(toIndentedString(clientCertDomainsAllowList)).append("\n");
@@ -1079,6 +1142,7 @@ public class ApiInstantTest {
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }

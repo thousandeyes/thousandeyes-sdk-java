@@ -40,6 +40,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,7 +142,6 @@ public class VoiceInstantTestsApiTest {
 
         var responseBodyJson = """
                 {
-                  "numPathTraces" : 3,
                   "_links" : {
                     "testResults" : [ {
                       "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
@@ -159,11 +159,17 @@ public class VoiceInstantTestsApiTest {
                       "title" : "title"
                     }
                   },
-                  "liveShare" : false,
-                  "savedEvent" : true,
                   "description" : "ThousandEyes Test",
                   "type" : "voice",
                   "jitterBuffer" : 40,
+                  "dscpId" : "0",
+                  "duration" : 5,
+                  "dscp" : "Best Effort (DSCP 0)",
+                  "modifiedBy" : "user@user.com",
+                  "testName" : "ThousandEyes Test",
+                  "numPathTraces" : 3,
+                  "liveShare" : false,
+                  "savedEvent" : true,
                   "labels" : [ {
                     "labelId" : "961",
                     "name" : "Artem label",
@@ -173,51 +179,66 @@ public class VoiceInstantTestsApiTest {
                     "name" : "Artem label",
                     "isBuiltin" : false
                   } ],
+                  "tags" : [ {
+                    "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                    "value" : "San Francisco",
+                    "key" : "Location"
+                  }, {
+                    "id" : "5aeab5d5-0d34-4d44-a7ac-fb440185295c",
+                    "value" : "San Francisco",
+                    "key" : "Location"
+                  } ],
                   "agents" : [ {
                     "agentId" : "281474976710706",
                     "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                     "prefix" : "99.128.0.0/11",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
                     },
                     "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
                     "verifySslCertificates" : true
                   }, {
                     "agentId" : "281474976710706",
                     "agentType" : "enterprise-cluster",
-                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
                     "prefix" : "99.128.0.0/11",
                     "coordinates" : {
                       "latitude" : 37.77493,
                       "longitude" : -122.41942
                     },
                     "agentName" : "thousandeyes-stg-va-254",
-                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
-                    "location" : "San Francisco Bay Area",
+                    "networkProviderInfo" : {
+                      "asn" : 7018,
+                      "name" : "AT&T Services, Inc.",
+                      "type" : "isp"
+                    },
                     "countryId" : "US",
                     "enabled" : true,
                     "network" : "AT&T Services, Inc. (AS 7018)",
+                    "publicIpAddresses" : [ "192.168.1.78", "f9b2:3a21:f25c:d300:03f4:586d:f8d6:4e1c" ],
+                    "ipAddresses" : [ "99.139.65.220", "9bbd:8a0a:a257:5876:288b:6cb2:3f36:64ce" ],
+                    "location" : "San Francisco Bay Area",
                     "verifySslCertificates" : true
                   } ],
-                  "dscpId" : "0",
-                  "duration" : 5,
                   "codec" : "G.711 @ 64 Kbps",
                   "codecId" : "0",
                   "createdDate" : "2022-07-17T22:00:54Z",
-                  "dscp" : "Best Effort (DSCP 0)",
                   "createdBy" : "user@user.com",
                   "port" : 1024,
                   "randomizedStartTime" : false,
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "targetAgentId" : "281474976710706",
-                  "modifiedBy" : "user@user.com",
                   "testId" : "281474976710706",
                   "sharedWithAccounts" : [ {
                     "name" : "Account name",
@@ -225,8 +246,7 @@ public class VoiceInstantTestsApiTest {
                   }, {
                     "name" : "Account name",
                     "aid" : "1234"
-                  } ],
-                  "testName" : "ThousandEyes Test"
+                  } ]
                 }
                                   """;
         var statusCode = 201;

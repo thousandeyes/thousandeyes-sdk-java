@@ -31,6 +31,7 @@ import com.thousandeyes.sdk.agents.model.ErrorDetail;
 import com.thousandeyes.sdk.agents.model.InterfaceIpMapping;
 import com.thousandeyes.sdk.agents.model.NotificationRules;
 import com.thousandeyes.sdk.agents.model.SelfLinks;
+import com.thousandeyes.sdk.agents.model.SimpleAgentAllOfNetworkProviderInfo;
 import com.thousandeyes.sdk.agents.model.SimpleTest;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -51,9 +52,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentDetail.JSON_PROPERTY_LOCATION,
   EnterpriseAgentDetail.JSON_PROPERTY_COUNTRY_ID,
   EnterpriseAgentDetail.JSON_PROPERTY_COORDINATES,
+  EnterpriseAgentDetail.JSON_PROPERTY_NETWORK_PROVIDER_INFO,
   EnterpriseAgentDetail.JSON_PROPERTY_ENABLED,
-  EnterpriseAgentDetail.JSON_PROPERTY_PREFIX,
   EnterpriseAgentDetail.JSON_PROPERTY_VERIFY_SSL_CERTIFICATES,
+  EnterpriseAgentDetail.JSON_PROPERTY_PREFIX,
   EnterpriseAgentDetail.JSON_PROPERTY_TEST_IDS,
   EnterpriseAgentDetail.JSON_PROPERTY_TESTS,
   EnterpriseAgentDetail.JSON_PROPERTY_CLUSTER_MEMBERS,
@@ -67,6 +69,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentDetail.JSON_PROPERTY_KEEP_BROWSER_CACHE,
   EnterpriseAgentDetail.JSON_PROPERTY_CREATED_DATE,
   EnterpriseAgentDetail.JSON_PROPERTY_TARGET_FOR_TESTS,
+  EnterpriseAgentDetail.JSON_PROPERTY_SERIAL_NUMBER,
   EnterpriseAgentDetail.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   EnterpriseAgentDetail.JSON_PROPERTY_INTERFACE_IP_MAPPING,
   EnterpriseAgentDetail.JSON_PROPERTY_NOTIFICATION_RULES,
@@ -101,14 +104,17 @@ public class EnterpriseAgentDetail {
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
   private Coordinates coordinates;
 
+  public static final String JSON_PROPERTY_NETWORK_PROVIDER_INFO = "networkProviderInfo";
+  private SimpleAgentAllOfNetworkProviderInfo networkProviderInfo;
+
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled;
 
-  public static final String JSON_PROPERTY_PREFIX = "prefix";
-  private String prefix;
-
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
   private Boolean verifySslCertificates;
+
+  public static final String JSON_PROPERTY_PREFIX = "prefix";
+  private String prefix;
 
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
   private List<Long> testIds = new ArrayList<>();
@@ -149,6 +155,9 @@ public class EnterpriseAgentDetail {
   public static final String JSON_PROPERTY_TARGET_FOR_TESTS = "targetForTests";
   private String targetForTests;
 
+  public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  private String serialNumber;
+
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
   private List<String> localResolutionPrefixes = new ArrayList<>();
 
@@ -181,8 +190,8 @@ public class EnterpriseAgentDetail {
     @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
     @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
     @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
+    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
     @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
     @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS) List<ClusterMember> clusterMembers, 
     @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization, 
@@ -190,6 +199,7 @@ public class EnterpriseAgentDetail {
     @JsonProperty(JSON_PROPERTY_HOSTNAME) String hostname, 
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
+    @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
     @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING) List<InterfaceIpMapping> interfaceIpMapping, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels, 
     @JsonProperty(JSON_PROPERTY_TAGS) List<AgentTag> tags
@@ -201,8 +211,8 @@ public class EnterpriseAgentDetail {
     this.agentId = agentId;
     this.location = location;
     this.countryId = countryId;
-    this.prefix = prefix;
     this.verifySslCertificates = verifySslCertificates;
+    this.prefix = prefix;
     this.testIds = testIds;
     this.clusterMembers = clusterMembers;
     this.utilization = utilization;
@@ -210,6 +220,7 @@ public class EnterpriseAgentDetail {
     this.hostname = hostname;
     this.lastSeen = lastSeen;
     this.createdDate = createdDate;
+    this.serialNumber = serialNumber;
     this.interfaceIpMapping = interfaceIpMapping;
     this.labels = labels;
     this.tags = tags;
@@ -355,6 +366,31 @@ public class EnterpriseAgentDetail {
   }
 
 
+  public EnterpriseAgentDetail networkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+    this.networkProviderInfo = networkProviderInfo;
+    return this;
+  }
+
+   /**
+   * Get networkProviderInfo
+   * @return networkProviderInfo
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NETWORK_PROVIDER_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SimpleAgentAllOfNetworkProviderInfo getNetworkProviderInfo() {
+    return networkProviderInfo;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NETWORK_PROVIDER_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNetworkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+    this.networkProviderInfo = networkProviderInfo;
+  }
+
+
   public EnterpriseAgentDetail enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
@@ -381,21 +417,6 @@ public class EnterpriseAgentDetail {
 
 
    /**
-   * Prefix containing agents public IP address.
-   * @return prefix
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREFIX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPrefix() {
-    return prefix;
-  }
-
-
-
-
-   /**
    * Flag indicating if has normal SSL operations or  if instead it&#39;s set to ignore SSL errors on browserbot-based tests.
    * @return verifySslCertificates
   **/
@@ -405,6 +426,21 @@ public class EnterpriseAgentDetail {
 
   public Boolean getVerifySslCertificates() {
     return verifySslCertificates;
+  }
+
+
+
+
+   /**
+   * Prefix containing agents public IP address.
+   * @return prefix
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getPrefix() {
+    return prefix;
   }
 
 
@@ -681,6 +717,21 @@ public class EnterpriseAgentDetail {
   }
 
 
+   /**
+   * Serial number of an enterprise agent or cluster member device. This field is not available for Cloud Agents.
+   * @return serialNumber
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSerialNumber() {
+    return serialNumber;
+  }
+
+
+
+
   public EnterpriseAgentDetail localResolutionPrefixes(List<String> localResolutionPrefixes) {
     this.localResolutionPrefixes = localResolutionPrefixes;
     return this;
@@ -862,9 +913,10 @@ public class EnterpriseAgentDetail {
         Objects.equals(this.location, enterpriseAgentDetail.location) &&
         Objects.equals(this.countryId, enterpriseAgentDetail.countryId) &&
         Objects.equals(this.coordinates, enterpriseAgentDetail.coordinates) &&
+        Objects.equals(this.networkProviderInfo, enterpriseAgentDetail.networkProviderInfo) &&
         Objects.equals(this.enabled, enterpriseAgentDetail.enabled) &&
-        Objects.equals(this.prefix, enterpriseAgentDetail.prefix) &&
         Objects.equals(this.verifySslCertificates, enterpriseAgentDetail.verifySslCertificates) &&
+        Objects.equals(this.prefix, enterpriseAgentDetail.prefix) &&
         Objects.equals(this.testIds, enterpriseAgentDetail.testIds) &&
         Objects.equals(this.tests, enterpriseAgentDetail.tests) &&
         Objects.equals(this.clusterMembers, enterpriseAgentDetail.clusterMembers) &&
@@ -878,6 +930,7 @@ public class EnterpriseAgentDetail {
         Objects.equals(this.keepBrowserCache, enterpriseAgentDetail.keepBrowserCache) &&
         Objects.equals(this.createdDate, enterpriseAgentDetail.createdDate) &&
         Objects.equals(this.targetForTests, enterpriseAgentDetail.targetForTests) &&
+        Objects.equals(this.serialNumber, enterpriseAgentDetail.serialNumber) &&
         Objects.equals(this.localResolutionPrefixes, enterpriseAgentDetail.localResolutionPrefixes) &&
         Objects.equals(this.interfaceIpMapping, enterpriseAgentDetail.interfaceIpMapping) &&
         Objects.equals(this.notificationRules, enterpriseAgentDetail.notificationRules) &&
@@ -889,7 +942,7 @@ public class EnterpriseAgentDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, enabled, prefix, verifySslCertificates, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, tags, agentType, links);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, agentId, agentName, location, countryId, coordinates, networkProviderInfo, enabled, verifySslCertificates, prefix, testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, serialNumber, localResolutionPrefixes, interfaceIpMapping, notificationRules, labels, tags, agentType, links);
   }
 
   @Override
@@ -904,9 +957,10 @@ public class EnterpriseAgentDetail {
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    countryId: ").append(toIndentedString(countryId)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
+    sb.append("    networkProviderInfo: ").append(toIndentedString(networkProviderInfo)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    verifySslCertificates: ").append(toIndentedString(verifySslCertificates)).append("\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    clusterMembers: ").append(toIndentedString(clusterMembers)).append("\n");
@@ -920,6 +974,7 @@ public class EnterpriseAgentDetail {
     sb.append("    keepBrowserCache: ").append(toIndentedString(keepBrowserCache)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    targetForTests: ").append(toIndentedString(targetForTests)).append("\n");
+    sb.append("    serialNumber: ").append(toIndentedString(serialNumber)).append("\n");
     sb.append("    localResolutionPrefixes: ").append(toIndentedString(localResolutionPrefixes)).append("\n");
     sb.append("    interfaceIpMapping: ").append(toIndentedString(interfaceIpMapping)).append("\n");
     sb.append("    notificationRules: ").append(toIndentedString(notificationRules)).append("\n");

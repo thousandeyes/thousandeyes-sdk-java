@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ClusterMember.JSON_PROPERTY_LAST_SEEN,
   ClusterMember.JSON_PROPERTY_AGENT_STATE,
   ClusterMember.JSON_PROPERTY_TARGET_FOR_TESTS,
+  ClusterMember.JSON_PROPERTY_SERIAL_NUMBER,
   ClusterMember.JSON_PROPERTY_UTILIZATION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -73,6 +74,9 @@ public class ClusterMember {
   public static final String JSON_PROPERTY_TARGET_FOR_TESTS = "targetForTests";
   private String targetForTests;
 
+  public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  private String serialNumber;
+
   public static final String JSON_PROPERTY_UTILIZATION = "utilization";
   private Integer utilization;
 
@@ -88,6 +92,7 @@ public class ClusterMember {
     @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) List<ErrorDetail> errorDetails, 
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
+    @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
     @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization
   ) {
   this();
@@ -98,6 +103,7 @@ public class ClusterMember {
     this.name = name;
     this.errorDetails = errorDetails;
     this.lastSeen = lastSeen;
+    this.serialNumber = serialNumber;
     this.utilization = utilization;
   }
 
@@ -257,6 +263,21 @@ public class ClusterMember {
 
 
    /**
+   * Serial number of an enterprise agent or cluster member device. This field is not available for Cloud Agents.
+   * @return serialNumber
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSerialNumber() {
+    return serialNumber;
+  }
+
+
+
+
+   /**
    * Shows overall utilization percentage (online Enterprise Agents and Enterprise Clusters only).
    * @return utilization
   **/
@@ -292,12 +313,13 @@ public class ClusterMember {
         Objects.equals(this.lastSeen, clusterMember.lastSeen) &&
         Objects.equals(this.agentState, clusterMember.agentState) &&
         Objects.equals(this.targetForTests, clusterMember.targetForTests) &&
+        Objects.equals(this.serialNumber, clusterMember.serialNumber) &&
         Objects.equals(this.utilization, clusterMember.utilization);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, publicIpAddresses, network, memberId, name, errorDetails, lastSeen, agentState, targetForTests, utilization);
+    return Objects.hash(ipAddresses, publicIpAddresses, network, memberId, name, errorDetails, lastSeen, agentState, targetForTests, serialNumber, utilization);
   }
 
   @Override
@@ -313,6 +335,7 @@ public class ClusterMember {
     sb.append("    lastSeen: ").append(toIndentedString(lastSeen)).append("\n");
     sb.append("    agentState: ").append(toIndentedString(agentState)).append("\n");
     sb.append("    targetForTests: ").append(toIndentedString(targetForTests)).append("\n");
+    sb.append("    serialNumber: ").append(toIndentedString(serialNumber)).append("\n");
     sb.append("    utilization: ").append(toIndentedString(utilization)).append("\n");
     sb.append("}");
     return sb.toString();

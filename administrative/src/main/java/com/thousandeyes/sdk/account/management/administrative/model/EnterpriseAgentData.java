@@ -51,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EnterpriseAgentData.JSON_PROPERTY_KEEP_BROWSER_CACHE,
   EnterpriseAgentData.JSON_PROPERTY_CREATED_DATE,
   EnterpriseAgentData.JSON_PROPERTY_TARGET_FOR_TESTS,
+  EnterpriseAgentData.JSON_PROPERTY_SERIAL_NUMBER,
   EnterpriseAgentData.JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES,
   EnterpriseAgentData.JSON_PROPERTY_INTERFACE_IP_MAPPING
 })
@@ -95,6 +96,9 @@ public class EnterpriseAgentData {
   public static final String JSON_PROPERTY_TARGET_FOR_TESTS = "targetForTests";
   private String targetForTests;
 
+  public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  private String serialNumber;
+
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
   private List<String> localResolutionPrefixes = new ArrayList<>();
 
@@ -113,6 +117,7 @@ public class EnterpriseAgentData {
     @JsonProperty(JSON_PROPERTY_HOSTNAME) String hostname, 
     @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
     @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
+    @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
     @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING) List<InterfaceIpMapping> interfaceIpMapping
   ) {
   this();
@@ -123,6 +128,7 @@ public class EnterpriseAgentData {
     this.hostname = hostname;
     this.lastSeen = lastSeen;
     this.createdDate = createdDate;
+    this.serialNumber = serialNumber;
     this.interfaceIpMapping = interfaceIpMapping;
   }
 
@@ -397,6 +403,21 @@ public class EnterpriseAgentData {
   }
 
 
+   /**
+   * Serial number of an enterprise agent or cluster member device. This field is not available for Cloud Agents.
+   * @return serialNumber
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSerialNumber() {
+    return serialNumber;
+  }
+
+
+
+
   public EnterpriseAgentData localResolutionPrefixes(List<String> localResolutionPrefixes) {
     this.localResolutionPrefixes = localResolutionPrefixes;
     return this;
@@ -470,13 +491,14 @@ public class EnterpriseAgentData {
         Objects.equals(this.keepBrowserCache, enterpriseAgentData.keepBrowserCache) &&
         Objects.equals(this.createdDate, enterpriseAgentData.createdDate) &&
         Objects.equals(this.targetForTests, enterpriseAgentData.targetForTests) &&
+        Objects.equals(this.serialNumber, enterpriseAgentData.serialNumber) &&
         Objects.equals(this.localResolutionPrefixes, enterpriseAgentData.localResolutionPrefixes) &&
         Objects.equals(this.interfaceIpMapping, enterpriseAgentData.interfaceIpMapping);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, localResolutionPrefixes, interfaceIpMapping);
+    return Objects.hash(testIds, tests, clusterMembers, utilization, accountGroups, ipv6Policy, errorDetails, hostname, lastSeen, agentState, keepBrowserCache, createdDate, targetForTests, serialNumber, localResolutionPrefixes, interfaceIpMapping);
   }
 
   @Override
@@ -496,6 +518,7 @@ public class EnterpriseAgentData {
     sb.append("    keepBrowserCache: ").append(toIndentedString(keepBrowserCache)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    targetForTests: ").append(toIndentedString(targetForTests)).append("\n");
+    sb.append("    serialNumber: ").append(toIndentedString(serialNumber)).append("\n");
     sb.append("    localResolutionPrefixes: ").append(toIndentedString(localResolutionPrefixes)).append("\n");
     sb.append("    interfaceIpMapping: ").append(toIndentedString(interfaceIpMapping)).append("\n");
     sb.append("}");

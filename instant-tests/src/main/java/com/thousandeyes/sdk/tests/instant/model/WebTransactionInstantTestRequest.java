@@ -31,6 +31,7 @@ import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProbeMode;
 import com.thousandeyes.sdk.tests.instant.model.TestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.TestSslVersionId;
+import com.thousandeyes.sdk.tests.instant.model.TestVaultCredential;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,8 +54,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_TEST_NAME,
   WebTransactionInstantTestRequest.JSON_PROPERTY_TYPE,
   WebTransactionInstantTestRequest.JSON_PROPERTY_LINKS,
-  WebTransactionInstantTestRequest.JSON_PROPERTY_LABELS,
-  WebTransactionInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_AUTH_TYPE,
   WebTransactionInstantTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   WebTransactionInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
@@ -90,6 +89,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_OVERRIDE_AGENT_PROXY,
   WebTransactionInstantTestRequest.JSON_PROPERTY_OVERRIDE_PROXY_ID,
   WebTransactionInstantTestRequest.JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA,
+  WebTransactionInstantTestRequest.JSON_PROPERTY_VAULT_CREDENTIALS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_EMULATED_DEVICE_ID,
   WebTransactionInstantTestRequest.JSON_PROPERTY_TARGET_TIME,
   WebTransactionInstantTestRequest.JSON_PROPERTY_TIME_LIMIT,
@@ -104,9 +104,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   WebTransactionInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   WebTransactionInstantTestRequest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
-  WebTransactionInstantTestRequest.JSON_PROPERTY_CREDENTIALS,
+  WebTransactionInstantTestRequest.JSON_PROPERTY_LABELS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_TAGS,
-  WebTransactionInstantTestRequest.JSON_PROPERTY_AGENTS
+  WebTransactionInstantTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  WebTransactionInstantTestRequest.JSON_PROPERTY_AGENTS,
+  WebTransactionInstantTestRequest.JSON_PROPERTY_CREDENTIALS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class WebTransactionInstantTestRequest {
@@ -142,12 +144,6 @@ public class WebTransactionInstantTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
@@ -254,6 +250,9 @@ public class WebTransactionInstantTestRequest {
   public static final String JSON_PROPERTY_COLLECT_PROXY_NETWORK_DATA = "collectProxyNetworkData";
   private Boolean collectProxyNetworkData = false;
 
+  public static final String JSON_PROPERTY_VAULT_CREDENTIALS = "vaultCredentials";
+  private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
+
   public static final String JSON_PROPERTY_EMULATED_DEVICE_ID = "emulatedDeviceId";
   private String emulatedDeviceId;
 
@@ -296,14 +295,20 @@ public class WebTransactionInstantTestRequest {
   public static final String JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT = "identifyAgentTrafficWithUserAgent";
   private Boolean identifyAgentTrafficWithUserAgent = false;
 
-  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<String> credentials = new ArrayList<>();
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgent> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
+  private List<String> credentials = new ArrayList<>();
 
   public WebTransactionInstantTestRequest() { 
   }
@@ -524,72 +529,6 @@ public class WebTransactionInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public WebTransactionInstantTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public WebTransactionInstantTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public WebTransactionInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public WebTransactionInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1468,6 +1407,39 @@ public class WebTransactionInstantTestRequest {
   }
 
 
+  public WebTransactionInstantTestRequest vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+    return this;
+  }
+
+  public WebTransactionInstantTestRequest addVaultCredentialsItem(TestVaultCredential vaultCredentialsItem) {
+    if (this.vaultCredentials == null) {
+      this.vaultCredentials = new ArrayList<>();
+    }
+    this.vaultCredentials.add(vaultCredentialsItem);
+    return this;
+  }
+
+   /**
+   * List of credential IDs that are stored in an external vault.
+   * @return vaultCredentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestVaultCredential> getVaultCredentials() {
+    return vaultCredentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VAULT_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVaultCredentials(List<TestVaultCredential> vaultCredentials) {
+    this.vaultCredentials = vaultCredentials;
+  }
+
+
   public WebTransactionInstantTestRequest emulatedDeviceId(String emulatedDeviceId) {
     this.emulatedDeviceId = emulatedDeviceId;
     return this;
@@ -1822,36 +1794,36 @@ public class WebTransactionInstantTestRequest {
   }
 
 
-  public WebTransactionInstantTestRequest credentials(List<String> credentials) {
-    this.credentials = credentials;
+  public WebTransactionInstantTestRequest labels(List<String> labels) {
+    this.labels = labels;
     return this;
   }
 
-  public WebTransactionInstantTestRequest addCredentialsItem(String credentialsItem) {
-    if (this.credentials == null) {
-      this.credentials = new ArrayList<>();
+  public WebTransactionInstantTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
     }
-    this.credentials.add(credentialsItem);
+    this.labels.add(labelsItem);
     return this;
   }
 
    /**
-   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
-   * @return credentials
+   * A list of test label identifiers (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint).
+   * @return labels
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getCredentials() {
-    return credentials;
+  public List<String> getLabels() {
+    return labels;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentials(List<String> credentials) {
-    this.credentials = credentials;
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
 
@@ -1888,6 +1860,39 @@ public class WebTransactionInstantTestRequest {
   }
 
 
+  public WebTransactionInstantTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public WebTransactionInstantTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * A list of account group identifiers that the test is shared with (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint).
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
   public WebTransactionInstantTestRequest agents(List<TestAgent> agents) {
     this.agents = agents;
     return this;
@@ -1921,6 +1926,39 @@ public class WebTransactionInstantTestRequest {
   }
 
 
+  public WebTransactionInstantTestRequest credentials(List<String> credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+  public WebTransactionInstantTestRequest addCredentialsItem(String credentialsItem) {
+    if (this.credentials == null) {
+      this.credentials = new ArrayList<>();
+    }
+    this.credentials.add(credentialsItem);
+    return this;
+  }
+
+   /**
+   * Contains a list of credential IDs (get &#x60;credentialId&#x60; from &#x60;/credentials&#x60; endpoint).
+   * @return credentials
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getCredentials() {
+    return credentials;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCredentials(List<String> credentials) {
+    this.credentials = credentials;
+  }
+
+
   /**
    * Return true if this WebTransactionInstantTestRequest object is equal to o.
    */
@@ -1944,8 +1982,6 @@ public class WebTransactionInstantTestRequest {
         Objects.equals(this.testName, webTransactionInstantTestRequest.testName) &&
         Objects.equals(this.type, webTransactionInstantTestRequest.type) &&
         Objects.equals(this.links, webTransactionInstantTestRequest.links) &&
-        Objects.equals(this.labels, webTransactionInstantTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, webTransactionInstantTestRequest.sharedWithAccounts) &&
         Objects.equals(this.authType, webTransactionInstantTestRequest.authType) &&
         Objects.equals(this.agentInterfaces, webTransactionInstantTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, webTransactionInstantTestRequest.bandwidthMeasurements) &&
@@ -1981,6 +2017,7 @@ public class WebTransactionInstantTestRequest {
         Objects.equals(this.overrideAgentProxy, webTransactionInstantTestRequest.overrideAgentProxy) &&
         Objects.equals(this.overrideProxyId, webTransactionInstantTestRequest.overrideProxyId) &&
         Objects.equals(this.collectProxyNetworkData, webTransactionInstantTestRequest.collectProxyNetworkData) &&
+        Objects.equals(this.vaultCredentials, webTransactionInstantTestRequest.vaultCredentials) &&
         Objects.equals(this.emulatedDeviceId, webTransactionInstantTestRequest.emulatedDeviceId) &&
         Objects.equals(this.targetTime, webTransactionInstantTestRequest.targetTime) &&
         Objects.equals(this.timeLimit, webTransactionInstantTestRequest.timeLimit) &&
@@ -1995,14 +2032,16 @@ public class WebTransactionInstantTestRequest {
         Objects.equals(this.pageLoadingStrategy, webTransactionInstantTestRequest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, webTransactionInstantTestRequest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, webTransactionInstantTestRequest.identifyAgentTrafficWithUserAgent) &&
-        Objects.equals(this.credentials, webTransactionInstantTestRequest.credentials) &&
+        Objects.equals(this.labels, webTransactionInstantTestRequest.labels) &&
         Objects.equals(this.tags, webTransactionInstantTestRequest.tags) &&
-        Objects.equals(this.agents, webTransactionInstantTestRequest.agents);
+        Objects.equals(this.sharedWithAccounts, webTransactionInstantTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.agents, webTransactionInstantTestRequest.agents) &&
+        Objects.equals(this.credentials, webTransactionInstantTestRequest.credentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, credentials, tags, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, labels, tags, sharedWithAccounts, agents, credentials);
   }
 
   @Override
@@ -2020,8 +2059,6 @@ public class WebTransactionInstantTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
@@ -2057,6 +2094,7 @@ public class WebTransactionInstantTestRequest {
     sb.append("    overrideAgentProxy: ").append(toIndentedString(overrideAgentProxy)).append("\n");
     sb.append("    overrideProxyId: ").append(toIndentedString(overrideProxyId)).append("\n");
     sb.append("    collectProxyNetworkData: ").append(toIndentedString(collectProxyNetworkData)).append("\n");
+    sb.append("    vaultCredentials: ").append(toIndentedString(vaultCredentials)).append("\n");
     sb.append("    emulatedDeviceId: ").append(toIndentedString(emulatedDeviceId)).append("\n");
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
@@ -2071,9 +2109,11 @@ public class WebTransactionInstantTestRequest {
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }

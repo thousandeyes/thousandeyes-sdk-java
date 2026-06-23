@@ -31,6 +31,7 @@ import com.thousandeyes.sdk.tests.model.TestLabel;
 import com.thousandeyes.sdk.tests.model.TestLinks;
 import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
 import com.thousandeyes.sdk.tests.model.TestProbeMode;
+import com.thousandeyes.sdk.tests.model.TestTag;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,6 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SipServerTestResponse.JSON_PROPERTY_TYPE,
   SipServerTestResponse.JSON_PROPERTY_LINKS,
   SipServerTestResponse.JSON_PROPERTY_LABELS,
+  SipServerTestResponse.JSON_PROPERTY_TAGS,
   SipServerTestResponse.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   SipServerTestResponse.JSON_PROPERTY_MTU_MEASUREMENTS,
   SipServerTestResponse.JSON_PROPERTY_NETWORK_MEASUREMENTS,
@@ -141,6 +143,9 @@ public class SipServerTestResponse {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
+
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
@@ -216,6 +221,7 @@ public class SipServerTestResponse {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
   ) {
   this();
@@ -229,6 +235,7 @@ public class SipServerTestResponse {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
   }
 
@@ -610,6 +617,21 @@ public class SipServerTestResponse {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -1154,6 +1176,7 @@ public class SipServerTestResponse {
         Objects.equals(this.type, sipServerTestResponse.type) &&
         Objects.equals(this.links, sipServerTestResponse.links) &&
         Objects.equals(this.labels, sipServerTestResponse.labels) &&
+        Objects.equals(this.tags, sipServerTestResponse.tags) &&
         Objects.equals(this.sharedWithAccounts, sipServerTestResponse.sharedWithAccounts) &&
         Objects.equals(this.mtuMeasurements, sipServerTestResponse.mtuMeasurements) &&
         Objects.equals(this.networkMeasurements, sipServerTestResponse.networkMeasurements) &&
@@ -1178,7 +1201,7 @@ public class SipServerTestResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, bgpMeasurements, usePublicBgp, monitors, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, authUser, password, port, protocol, sipRegistrar, user, agents);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, bgpMeasurements, usePublicBgp, monitors, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, mtuMeasurements, networkMeasurements, numPathTraces, optionsRegex, pathTraceMode, probeMode, randomizedStartTime, registerEnabled, sipTargetTime, sipTimeLimit, fixedPacketRate, ipv6Policy, authUser, password, port, protocol, sipRegistrar, user, agents);
   }
 
   @Override
@@ -1204,6 +1227,7 @@ public class SipServerTestResponse {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    mtuMeasurements: ").append(toIndentedString(mtuMeasurements)).append("\n");
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");

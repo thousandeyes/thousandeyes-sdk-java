@@ -42,7 +42,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerTestRequest.JSON_PROPERTY_INTERVAL,
   AgentToServerTestRequest.JSON_PROPERTY_ALERTS_ENABLED,
   AgentToServerTestRequest.JSON_PROPERTY_ENABLED,
-  AgentToServerTestRequest.JSON_PROPERTY_ALERT_RULES,
   AgentToServerTestRequest.JSON_PROPERTY_CREATED_BY,
   AgentToServerTestRequest.JSON_PROPERTY_CREATED_DATE,
   AgentToServerTestRequest.JSON_PROPERTY_DESCRIPTION,
@@ -54,8 +53,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerTestRequest.JSON_PROPERTY_TEST_NAME,
   AgentToServerTestRequest.JSON_PROPERTY_TYPE,
   AgentToServerTestRequest.JSON_PROPERTY_LINKS,
-  AgentToServerTestRequest.JSON_PROPERTY_LABELS,
-  AgentToServerTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   AgentToServerTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   AgentToServerTestRequest.JSON_PROPERTY_CONTINUOUS_MODE,
   AgentToServerTestRequest.JSON_PROPERTY_FIXED_PACKET_RATE,
@@ -73,9 +70,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToServerTestRequest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
   AgentToServerTestRequest.JSON_PROPERTY_BGP_MEASUREMENTS,
   AgentToServerTestRequest.JSON_PROPERTY_USE_PUBLIC_BGP,
-  AgentToServerTestRequest.JSON_PROPERTY_MONITORS,
+  AgentToServerTestRequest.JSON_PROPERTY_LABELS,
   AgentToServerTestRequest.JSON_PROPERTY_TAGS,
+  AgentToServerTestRequest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
+  AgentToServerTestRequest.JSON_PROPERTY_ALERT_RULES,
   AgentToServerTestRequest.JSON_PROPERTY_AGENTS,
+  AgentToServerTestRequest.JSON_PROPERTY_MONITORS,
   AgentToServerTestRequest.JSON_PROPERTY_PORT
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -88,9 +88,6 @@ public class AgentToServerTestRequest {
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
-
-  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
@@ -124,12 +121,6 @@ public class AgentToServerTestRequest {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  private List<String> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
-  private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -182,14 +173,23 @@ public class AgentToServerTestRequest {
   public static final String JSON_PROPERTY_USE_PUBLIC_BGP = "usePublicBgp";
   private Boolean usePublicBgp = true;
 
-  public static final String JSON_PROPERTY_MONITORS = "monitors";
-  private List<String> monitors = new ArrayList<>();
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private List<String> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   private List<String> tags = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  private List<String> sharedWithAccounts = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
+  private List<String> alertRules = new ArrayList<>();
+
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<TestAgentRequest> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_MONITORS = "monitors";
+  private List<String> monitors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PORT = "port";
   private Integer port;
@@ -293,39 +293,6 @@ public class AgentToServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
-  }
-
-
-  public AgentToServerTestRequest alertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
-    return this;
-  }
-
-  public AgentToServerTestRequest addAlertRulesItem(String alertRulesItem) {
-    if (this.alertRules == null) {
-      this.alertRules = new ArrayList<>();
-    }
-    this.alertRules.add(alertRulesItem);
-    return this;
-  }
-
-   /**
-   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
-   * @return alertRules
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getAlertRules() {
-    return alertRules;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<String> alertRules) {
-    this.alertRules = alertRules;
   }
 
 
@@ -521,72 +488,6 @@ public class AgentToServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinks(TestLinks links) {
     this.links = links;
-  }
-
-
-  public AgentToServerTestRequest labels(List<String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public AgentToServerTestRequest addLabelsItem(String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new ArrayList<>();
-    }
-    this.labels.add(labelsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getLabels() {
-    return labels;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabels(List<String> labels) {
-    this.labels = labels;
-  }
-
-
-  public AgentToServerTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
-    return this;
-  }
-
-  public AgentToServerTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
-    if (this.sharedWithAccounts == null) {
-      this.sharedWithAccounts = new ArrayList<>();
-    }
-    this.sharedWithAccounts.add(sharedWithAccountsItem);
-    return this;
-  }
-
-   /**
-   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
-   * @return sharedWithAccounts
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getSharedWithAccounts() {
-    return sharedWithAccounts;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
 
@@ -1011,36 +912,36 @@ public class AgentToServerTestRequest {
   }
 
 
-  public AgentToServerTestRequest monitors(List<String> monitors) {
-    this.monitors = monitors;
+  public AgentToServerTestRequest labels(List<String> labels) {
+    this.labels = labels;
     return this;
   }
 
-  public AgentToServerTestRequest addMonitorsItem(String monitorsItem) {
-    if (this.monitors == null) {
-      this.monitors = new ArrayList<>();
+  public AgentToServerTestRequest addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
     }
-    this.monitors.add(monitorsItem);
+    this.labels.add(labelsItem);
     return this;
   }
 
    /**
-   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
-   * @return monitors
+   * Contains list of test label IDs (get &#x60;labelId&#x60; from &#x60;/labels&#x60; endpoint)
+   * @return labels
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getMonitors() {
-    return monitors;
+  public List<String> getLabels() {
+    return labels;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonProperty(JSON_PROPERTY_LABELS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonitors(List<String> monitors) {
-    this.monitors = monitors;
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
 
@@ -1077,6 +978,72 @@ public class AgentToServerTestRequest {
   }
 
 
+  public AgentToServerTestRequest sharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+    return this;
+  }
+
+  public AgentToServerTestRequest addSharedWithAccountsItem(String sharedWithAccountsItem) {
+    if (this.sharedWithAccounts == null) {
+      this.sharedWithAccounts = new ArrayList<>();
+    }
+    this.sharedWithAccounts.add(sharedWithAccountsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of account group IDs. Test is shared with the listed account groups (get &#x60;aid&#x60; from &#x60;/account-groups&#x60; endpoint)
+   * @return sharedWithAccounts
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getSharedWithAccounts() {
+    return sharedWithAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSharedWithAccounts(List<String> sharedWithAccounts) {
+    this.sharedWithAccounts = sharedWithAccounts;
+  }
+
+
+  public AgentToServerTestRequest alertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+    return this;
+  }
+
+  public AgentToServerTestRequest addAlertRulesItem(String alertRulesItem) {
+    if (this.alertRules == null) {
+      this.alertRules = new ArrayList<>();
+    }
+    this.alertRules.add(alertRulesItem);
+    return this;
+  }
+
+   /**
+   * List of alert rules IDs to apply to the test (get &#x60;ruleId&#x60; from &#x60;/alerts/rules&#x60; endpoint. If &#x60;alertsEnabled&#x60; is set to &#x60;true&#x60; and &#x60;alertRules&#x60; is not included on test creation or update, applicable user default alert rules will be used)
+   * @return alertRules
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAlertRules() {
+    return alertRules;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALERT_RULES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlertRules(List<String> alertRules) {
+    this.alertRules = alertRules;
+  }
+
+
   public AgentToServerTestRequest agents(List<TestAgentRequest> agents) {
     this.agents = agents;
     return this;
@@ -1107,6 +1074,39 @@ public class AgentToServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAgents(List<TestAgentRequest> agents) {
     this.agents = agents;
+  }
+
+
+  public AgentToServerTestRequest monitors(List<String> monitors) {
+    this.monitors = monitors;
+    return this;
+  }
+
+  public AgentToServerTestRequest addMonitorsItem(String monitorsItem) {
+    if (this.monitors == null) {
+      this.monitors = new ArrayList<>();
+    }
+    this.monitors.add(monitorsItem);
+    return this;
+  }
+
+   /**
+   * Contains list of BGP monitor IDs (get &#x60;monitorId&#x60; from &#x60;/monitors&#x60; endpoint)
+   * @return monitors
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getMonitors() {
+    return monitors;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MONITORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMonitors(List<String> monitors) {
+    this.monitors = monitors;
   }
 
 
@@ -1150,7 +1150,6 @@ public class AgentToServerTestRequest {
     return Objects.equals(this.interval, agentToServerTestRequest.interval) &&
         Objects.equals(this.alertsEnabled, agentToServerTestRequest.alertsEnabled) &&
         Objects.equals(this.enabled, agentToServerTestRequest.enabled) &&
-        Objects.equals(this.alertRules, agentToServerTestRequest.alertRules) &&
         Objects.equals(this.createdBy, agentToServerTestRequest.createdBy) &&
         Objects.equals(this.createdDate, agentToServerTestRequest.createdDate) &&
         Objects.equals(this.description, agentToServerTestRequest.description) &&
@@ -1162,8 +1161,6 @@ public class AgentToServerTestRequest {
         Objects.equals(this.testName, agentToServerTestRequest.testName) &&
         Objects.equals(this.type, agentToServerTestRequest.type) &&
         Objects.equals(this.links, agentToServerTestRequest.links) &&
-        Objects.equals(this.labels, agentToServerTestRequest.labels) &&
-        Objects.equals(this.sharedWithAccounts, agentToServerTestRequest.sharedWithAccounts) &&
         Objects.equals(this.bandwidthMeasurements, agentToServerTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.continuousMode, agentToServerTestRequest.continuousMode) &&
         Objects.equals(this.fixedPacketRate, agentToServerTestRequest.fixedPacketRate) &&
@@ -1181,15 +1178,18 @@ public class AgentToServerTestRequest {
         Objects.equals(this.networkMeasurements, agentToServerTestRequest.networkMeasurements) &&
         Objects.equals(this.bgpMeasurements, agentToServerTestRequest.bgpMeasurements) &&
         Objects.equals(this.usePublicBgp, agentToServerTestRequest.usePublicBgp) &&
-        Objects.equals(this.monitors, agentToServerTestRequest.monitors) &&
+        Objects.equals(this.labels, agentToServerTestRequest.labels) &&
         Objects.equals(this.tags, agentToServerTestRequest.tags) &&
+        Objects.equals(this.sharedWithAccounts, agentToServerTestRequest.sharedWithAccounts) &&
+        Objects.equals(this.alertRules, agentToServerTestRequest.alertRules) &&
         Objects.equals(this.agents, agentToServerTestRequest.agents) &&
+        Objects.equals(this.monitors, agentToServerTestRequest.monitors) &&
         Objects.equals(this.port, agentToServerTestRequest.port);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, monitors, tags, agents, port);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, bandwidthMeasurements, continuousMode, fixedPacketRate, mtuMeasurements, numPathTraces, pathTraceMode, probeMode, protocol, randomizedStartTime, server, dscp, dscpId, ipv6Policy, pingPayloadSize, networkMeasurements, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors, port);
   }
 
   @Override
@@ -1199,7 +1199,6 @@ public class AgentToServerTestRequest {
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    alertsEnabled: ").append(toIndentedString(alertsEnabled)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -1211,8 +1210,6 @@ public class AgentToServerTestRequest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    continuousMode: ").append(toIndentedString(continuousMode)).append("\n");
     sb.append("    fixedPacketRate: ").append(toIndentedString(fixedPacketRate)).append("\n");
@@ -1230,9 +1227,12 @@ public class AgentToServerTestRequest {
     sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
     sb.append("    bgpMeasurements: ").append(toIndentedString(bgpMeasurements)).append("\n");
     sb.append("    usePublicBgp: ").append(toIndentedString(usePublicBgp)).append("\n");
-    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
+    sb.append("    alertRules: ").append(toIndentedString(alertRules)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    monitors: ").append(toIndentedString(monitors)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("}");
     return sb.toString();

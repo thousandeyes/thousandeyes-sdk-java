@@ -42,6 +42,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,10 +103,12 @@ public class TagsApiTest {
                   "filters" : [ {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   }, {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   } ],
                   "type" : "static",
@@ -154,10 +157,12 @@ public class TagsApiTest {
                   "filters" : [ {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   }, {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   } ],
                   "type" : "static",
@@ -236,10 +241,12 @@ public class TagsApiTest {
                         "filters" : [ {
                           "mode" : "in",
                           "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "scope" : "custom",
                           "key" : "vpn-client-network"
                         }, {
                           "mode" : "in",
                           "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "scope" : "custom",
                           "key" : "vpn-client-network"
                         } ],
                         "type" : "static",
@@ -274,10 +281,12 @@ public class TagsApiTest {
                         "filters" : [ {
                           "mode" : "in",
                           "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "scope" : "custom",
                           "key" : "vpn-client-network"
                         }, {
                           "mode" : "in",
                           "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "scope" : "custom",
                           "key" : "vpn-client-network"
                         } ],
                         "type" : "static",
@@ -323,10 +332,12 @@ public class TagsApiTest {
                     "filters" : [ {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     }, {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     } ],
                     "type" : "static",
@@ -367,10 +378,12 @@ public class TagsApiTest {
                     "filters" : [ {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     }, {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     } ],
                     "type" : "static",
@@ -423,10 +436,12 @@ public class TagsApiTest {
                         "filters" : [ {
                           "mode" : "in",
                           "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "scope" : "custom",
                           "key" : "vpn-client-network"
                         }, {
                           "mode" : "in",
                           "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "scope" : "custom",
                           "key" : "vpn-client-network"
                         } ],
                         "type" : "static",
@@ -461,10 +476,12 @@ public class TagsApiTest {
                         "filters" : [ {
                           "mode" : "in",
                           "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "scope" : "custom",
                           "key" : "vpn-client-network"
                         }, {
                           "mode" : "in",
                           "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                          "scope" : "custom",
                           "key" : "vpn-client-network"
                         } ],
                         "type" : "static",
@@ -510,10 +527,12 @@ public class TagsApiTest {
                     "filters" : [ {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     }, {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     } ],
                     "type" : "static",
@@ -554,10 +573,12 @@ public class TagsApiTest {
                     "filters" : [ {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     }, {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     } ],
                     "type" : "static",
@@ -663,10 +684,12 @@ public class TagsApiTest {
                   "filters" : [ {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   }, {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   } ],
                   "type" : "static",
@@ -755,10 +778,12 @@ public class TagsApiTest {
                     "filters" : [ {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     }, {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     } ],
                     "type" : "static",
@@ -799,10 +824,12 @@ public class TagsApiTest {
                     "filters" : [ {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     }, {
                       "mode" : "in",
                       "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                      "scope" : "custom",
                       "key" : "vpn-client-network"
                     } ],
                     "type" : "static",
@@ -866,10 +893,12 @@ public class TagsApiTest {
                   "filters" : [ {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   }, {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   } ],
                   "type" : "static",
@@ -918,10 +947,12 @@ public class TagsApiTest {
                   "filters" : [ {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   }, {
                     "mode" : "in",
                     "values" : [ "10.1.1.0/24", "192.168.1.0/24" ],
+                    "scope" : "custom",
                     "key" : "vpn-client-network"
                   } ],
                   "type" : "static",

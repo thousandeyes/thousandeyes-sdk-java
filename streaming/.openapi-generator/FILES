@@ -12,6 +12,7 @@ src/main/java/com/thousandeyes/sdk/streaming/model/BadRequestError.java
 src/main/java/com/thousandeyes/sdk/streaming/model/CreateStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/DataModelVersion.java
 src/main/java/com/thousandeyes/sdk/streaming/model/EndpointAgentLabel.java
+src/main/java/com/thousandeyes/sdk/streaming/model/EndpointAgentTag.java
 src/main/java/com/thousandeyes/sdk/streaming/model/EndpointType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfig.java
 src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigAuthorization.java
@@ -30,7 +31,6 @@ src/main/java/com/thousandeyes/sdk/streaming/model/StreamStatus.java
 src/main/java/com/thousandeyes/sdk/streaming/model/StreamStatusType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/StreamType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TagMatch.java
-src/main/java/com/thousandeyes/sdk/streaming/model/TagMatchObjectType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TestMatch.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TestMatchDomain.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TestType.java

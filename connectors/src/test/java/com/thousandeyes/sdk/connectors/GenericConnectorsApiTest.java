@@ -39,6 +39,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,6 +93,18 @@ public class GenericConnectorsApiTest {
                     "value" : "application/json"
                   } ],
                   "lastModifiedDate" : 1770293655756,
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "name" : "Cisco Slack",
                   "id" : "cb1b8033-ea2d-4e9b-a920-fe87850693cf",
                   "type" : "generic",
@@ -118,6 +131,18 @@ public class GenericConnectorsApiTest {
                     "value" : "application/json"
                   } ],
                   "lastModifiedDate" : 1770293655756,
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "name" : "Cisco Slack",
                   "id" : "cb1b8033-ea2d-4e9b-a920-fe87850693cf",
                   "type" : "generic",
@@ -200,6 +225,18 @@ public class GenericConnectorsApiTest {
                     "value" : "application/json"
                   } ],
                   "lastModifiedDate" : 1770293655756,
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "name" : "Cisco Slack",
                   "id" : "cb1b8033-ea2d-4e9b-a920-fe87850693cf",
                   "type" : "generic",
@@ -266,6 +303,18 @@ public class GenericConnectorsApiTest {
                       "value" : "application/json"
                     } ],
                     "lastModifiedDate" : 1770293655756,
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
                     "name" : "Cisco Slack",
                     "id" : "cb1b8033-ea2d-4e9b-a920-fe87850693cf",
                     "type" : "generic",
@@ -284,6 +333,18 @@ public class GenericConnectorsApiTest {
                       "value" : "application/json"
                     } ],
                     "lastModifiedDate" : 1770293655756,
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
                     "name" : "Cisco Slack",
                     "id" : "cb1b8033-ea2d-4e9b-a920-fe87850693cf",
                     "type" : "generic",
@@ -315,7 +376,7 @@ public class GenericConnectorsApiTest {
     }
     
     /**
-     * List operation IDs assigned to a connector
+     * List operation IDs for a connector
      * <p>
      * Returns a list of operation IDs assigned to a connector.
      *
@@ -446,6 +507,18 @@ public class GenericConnectorsApiTest {
                     "value" : "application/json"
                   } ],
                   "lastModifiedDate" : 1770293655756,
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "name" : "Cisco Slack",
                   "id" : "cb1b8033-ea2d-4e9b-a920-fe87850693cf",
                   "type" : "generic",
@@ -472,6 +545,18 @@ public class GenericConnectorsApiTest {
                     "value" : "application/json"
                   } ],
                   "lastModifiedDate" : 1770293655756,
+                  "_links" : {
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
                   "name" : "Cisco Slack",
                   "id" : "cb1b8033-ea2d-4e9b-a920-fe87850693cf",
                   "type" : "generic",

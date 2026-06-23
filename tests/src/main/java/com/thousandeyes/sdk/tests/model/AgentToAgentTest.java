@@ -30,6 +30,7 @@ import com.thousandeyes.sdk.tests.model.TestInterval;
 import com.thousandeyes.sdk.tests.model.TestLabel;
 import com.thousandeyes.sdk.tests.model.TestLinks;
 import com.thousandeyes.sdk.tests.model.TestPathTraceMode;
+import com.thousandeyes.sdk.tests.model.TestTag;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,6 +58,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentTest.JSON_PROPERTY_TYPE,
   AgentToAgentTest.JSON_PROPERTY_LINKS,
   AgentToAgentTest.JSON_PROPERTY_LABELS,
+  AgentToAgentTest.JSON_PROPERTY_TAGS,
   AgentToAgentTest.JSON_PROPERTY_SHARED_WITH_ACCOUNTS,
   AgentToAgentTest.JSON_PROPERTY_DIRECTION,
   AgentToAgentTest.JSON_PROPERTY_DSCP,
@@ -126,6 +128,9 @@ public class AgentToAgentTest {
   public static final String JSON_PROPERTY_LABELS = "labels";
   private List<TestLabel> labels = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<TestTag> tags = new ArrayList<>();
+
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
@@ -194,6 +199,7 @@ public class AgentToAgentTest {
     @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
+    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
     @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
     @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
     @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
@@ -208,6 +214,7 @@ public class AgentToAgentTest {
     this.testId = testId;
     this.type = type;
     this.labels = labels;
+    this.tags = tags;
     this.sharedWithAccounts = sharedWithAccounts;
     this.dscp = dscp;
     this.monitors = monitors;
@@ -526,6 +533,21 @@ public class AgentToAgentTest {
 
   public List<TestLabel> getLabels() {
     return labels;
+  }
+
+
+
+
+   /**
+   * Tags assigned to the test. Returned only when &#x60;expand&#x3D;tag&#x60; is specified. This field is not returned for Instant Tests. For more information, see &#x60;/tags&#x60;.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<TestTag> getTags() {
+    return tags;
   }
 
 
@@ -991,6 +1013,7 @@ public class AgentToAgentTest {
         Objects.equals(this.type, agentToAgentTest.type) &&
         Objects.equals(this.links, agentToAgentTest.links) &&
         Objects.equals(this.labels, agentToAgentTest.labels) &&
+        Objects.equals(this.tags, agentToAgentTest.tags) &&
         Objects.equals(this.sharedWithAccounts, agentToAgentTest.sharedWithAccounts) &&
         Objects.equals(this.direction, agentToAgentTest.direction) &&
         Objects.equals(this.dscp, agentToAgentTest.dscp) &&
@@ -1013,7 +1036,7 @@ public class AgentToAgentTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, randomizedStartTime, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, bgpMeasurements, usePublicBgp, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, alertRules, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, randomizedStartTime, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate, bgpMeasurements, usePublicBgp, monitors);
   }
 
   @Override
@@ -1036,6 +1059,7 @@ public class AgentToAgentTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    sharedWithAccounts: ").append(toIndentedString(sharedWithAccounts)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    dscp: ").append(toIndentedString(dscp)).append("\n");
