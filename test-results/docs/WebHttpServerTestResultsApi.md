@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Get HTTP server test results
 
-Returns results for requests made over HTTP. Components include DNS, Connect, Wait, Receive, and Fetch. 
+Returns results for requests made over HTTP. Components include DNS, Connect, Wait, Receive, and Fetch.  When DNS server measurement data is available for a round, each result includes a &#x60;dnsServerMeasurement&#x60; object describing the DNS response used to resolve the target and any additional DNS responses observed during resolution. 
 
 ### Example
 
@@ -105,7 +105,7 @@ public class Example {
 
 Get HTTP server test results
 
-Returns results for requests made over HTTP. Components include DNS, Connect, Wait, Receive, and Fetch. 
+Returns results for requests made over HTTP. Components include DNS, Connect, Wait, Receive, and Fetch.  When DNS server measurement data is available for a round, each result includes a &#x60;dnsServerMeasurement&#x60; object describing the DNS response used to resolve the target and any additional DNS responses observed during resolution. 
 
 ### Example
 

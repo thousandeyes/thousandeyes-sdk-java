@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.tests.results.model.DnsServerMeasurement;
 import com.thousandeyes.sdk.tests.results.model.HttpTestResultHeaders;
 import com.thousandeyes.sdk.tests.results.model.SslCert;
 import com.thousandeyes.sdk.tests.results.model.TestResultAgent;
@@ -47,6 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpTestResult.JSON_PROPERTY_NUM_REDIRECTS,
   HttpTestResult.JSON_PROPERTY_REDIRECT_TIME,
   HttpTestResult.JSON_PROPERTY_DNS_TIME,
+  HttpTestResult.JSON_PROPERTY_DNS_SERVER_MEASUREMENT,
   HttpTestResult.JSON_PROPERTY_SSL_TIME,
   HttpTestResult.JSON_PROPERTY_CONNECT_TIME,
   HttpTestResult.JSON_PROPERTY_WAIT_TIME,
@@ -97,6 +99,9 @@ public class HttpTestResult {
 
   public static final String JSON_PROPERTY_DNS_TIME = "dnsTime";
   private Integer dnsTime;
+
+  public static final String JSON_PROPERTY_DNS_SERVER_MEASUREMENT = "dnsServerMeasurement";
+  private DnsServerMeasurement dnsServerMeasurement;
 
   public static final String JSON_PROPERTY_SSL_TIME = "sslTime";
   private Integer sslTime;
@@ -388,6 +393,31 @@ public class HttpTestResult {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDnsTime(Integer dnsTime) {
     this.dnsTime = dnsTime;
+  }
+
+
+  public HttpTestResult dnsServerMeasurement(DnsServerMeasurement dnsServerMeasurement) {
+    this.dnsServerMeasurement = dnsServerMeasurement;
+    return this;
+  }
+
+   /**
+   * Get dnsServerMeasurement
+   * @return dnsServerMeasurement
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DNS_SERVER_MEASUREMENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public DnsServerMeasurement getDnsServerMeasurement() {
+    return dnsServerMeasurement;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DNS_SERVER_MEASUREMENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDnsServerMeasurement(DnsServerMeasurement dnsServerMeasurement) {
+    this.dnsServerMeasurement = dnsServerMeasurement;
   }
 
 
@@ -777,6 +807,7 @@ public class HttpTestResult {
         Objects.equals(this.numRedirects, httpTestResult.numRedirects) &&
         Objects.equals(this.redirectTime, httpTestResult.redirectTime) &&
         Objects.equals(this.dnsTime, httpTestResult.dnsTime) &&
+        Objects.equals(this.dnsServerMeasurement, httpTestResult.dnsServerMeasurement) &&
         Objects.equals(this.sslTime, httpTestResult.sslTime) &&
         Objects.equals(this.connectTime, httpTestResult.connectTime) &&
         Objects.equals(this.waitTime, httpTestResult.waitTime) &&
@@ -796,7 +827,7 @@ public class HttpTestResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, roundId, links, startTime, endTime, agent, serverIp, responseCode, numRedirects, redirectTime, dnsTime, sslTime, connectTime, waitTime, receiveTime, wireSize, responseTime, throughput, totalTime, headers, errorType, errorDetails, sslCipher, sslVersion, sslCertificates, healthScore);
+    return Objects.hash(date, roundId, links, startTime, endTime, agent, serverIp, responseCode, numRedirects, redirectTime, dnsTime, dnsServerMeasurement, sslTime, connectTime, waitTime, receiveTime, wireSize, responseTime, throughput, totalTime, headers, errorType, errorDetails, sslCipher, sslVersion, sslCertificates, healthScore);
   }
 
   @Override
@@ -814,6 +845,7 @@ public class HttpTestResult {
     sb.append("    numRedirects: ").append(toIndentedString(numRedirects)).append("\n");
     sb.append("    redirectTime: ").append(toIndentedString(redirectTime)).append("\n");
     sb.append("    dnsTime: ").append(toIndentedString(dnsTime)).append("\n");
+    sb.append("    dnsServerMeasurement: ").append(toIndentedString(dnsServerMeasurement)).append("\n");
     sb.append("    sslTime: ").append(toIndentedString(sslTime)).append("\n");
     sb.append("    connectTime: ").append(toIndentedString(connectTime)).append("\n");
     sb.append("    waitTime: ").append(toIndentedString(waitTime)).append("\n");

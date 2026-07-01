@@ -2,9 +2,16 @@
 
 ThousandEyes for OpenTelemetry API
 
-- API version: 7.0.93
+- API version: 7.0.94
 
-**Note:** All ThousandEyes for OpenTelemetry APIs are not available for ThousandEyes for Government instance.
+**Note:** The following ThousandEyes for OpenTelemetry API capabilities are not available for ThousandEyes for Government instance:
+
+* Traces
+* OTel-based integrations that rely on connectors and operations, including:
+  * Splunk Cloud Platform HEC
+  * Splunk Enterprise HEC
+  * Splunk Observability APM
+  * Dynatrace Observability APM
 
 ThousandEyes for OpenTelemetry provides machine-to-machine integration between ThousandEyes and its customers. It allows you to export ThousandEyes telemetry data in OTel format, which is widely used in the industry. With ThousandEyes for OTel, you can leverage frameworks widely used in the observability domain - such as Splunk, Grafana, and Honeycomb - to capture and analyze ThousandEyes data. Any client that supports OTel can use ThousandEyes for OpenTelemetry.
 

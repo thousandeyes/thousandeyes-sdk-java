@@ -2,7 +2,7 @@
 
 Endpoint Agents API
 
-- API version: 7.0.93
+- API version: 7.0.94
 
 **Note:** The Endpoint Agents Transfer APIs are not available for ThousandEyes for Government instance.
 
@@ -95,9 +95,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.thousandeyes.sdk.endpoint.*;
 import com.thousandeyes.sdk.endpoint.client.*;
 import com.thousandeyes.sdk.endpoint.agents.model.*;
-import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
+import com.thousandeyes.sdk.endpoint.agents.EndpointAgentLogItemsApi;
 
-public class EndpointAgentsApiExample {
+public class EndpointAgentLogItemsApiExample {
 
     public static void main(String[] args) {
         // Configure clients using the `defaultClient` object, such as
@@ -109,14 +109,19 @@ public class EndpointAgentsApiExample {
                 .bearerToken("<bearer-token>")
                 .build();
 
-        EndpointAgentsApi apiInstance = new EndpointAgentsApi(defaultClient);
+        EndpointAgentLogItemsApi apiInstance = new EndpointAgentLogItemsApi(defaultClient);
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
+        Integer max = 1000; // Integer | Maximum number of log items returned per page.
+        String cursor = "WyIxNzA5MjQwMDAwMDAwIl0="; // String | Opaque cursor from the `_links.next.href` URL in the previous response.
+        String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
+        OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
+        OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
-            apiInstance.deleteEndpointAgent(agentId, aid, expand);
+            EndpointAgentLogItemsResponse result = apiInstance.getEndpointAgentLogItems(agentId, aid, max, cursor, window, startDate, endDate);
+            System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling EndpointAgentsApi#deleteEndpointAgent");
+            System.err.println("Exception when calling EndpointAgentLogItemsApi#getEndpointAgentLogItems");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -133,6 +138,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*EndpointAgentLogItemsApi* | [**getEndpointAgentLogItems**](docs/EndpointAgentLogItemsApi.md#getEndpointAgentLogItems) | **GET** /endpoint/agents/{agentId}/logs | List endpoint agent log items
+*EndpointAgentLogItemsApi* | [**getEndpointAgentLogItemsWithHttpInfo**](docs/EndpointAgentLogItemsApi.md#getEndpointAgentLogItemsWithHttpInfo) | **GET** /endpoint/agents/{agentId}/logs | List endpoint agent log items
 *EndpointAgentsApi* | [**deleteEndpointAgent**](docs/EndpointAgentsApi.md#deleteEndpointAgent) | **DELETE** /endpoint/agents/{agentId} | Delete endpoint agent
 *EndpointAgentsApi* | [**deleteEndpointAgentWithHttpInfo**](docs/EndpointAgentsApi.md#deleteEndpointAgentWithHttpInfo) | **DELETE** /endpoint/agents/{agentId} | Delete endpoint agent
 *EndpointAgentsApi* | [**disableEndpointAgent**](docs/EndpointAgentsApi.md#disableEndpointAgent) | **POST** /endpoint/agents/{agentId}/disable | Disable endpoint agent
@@ -153,6 +160,8 @@ Class | Method | HTTP request | Description
 *EndpointAgentsTransferApi* | [**transferEndpointAgentWithHttpInfo**](docs/EndpointAgentsTransferApi.md#transferEndpointAgentWithHttpInfo) | **POST** /endpoint/agents/{agentId}/transfer | Transfer endpoint agent
 *EndpointAgentsTransferApi* | [**transferEndpointAgents**](docs/EndpointAgentsTransferApi.md#transferEndpointAgents) | **POST** /endpoint/agents/transfer/bulk | Bulk transfer agents
 *EndpointAgentsTransferApi* | [**transferEndpointAgentsWithHttpInfo**](docs/EndpointAgentsTransferApi.md#transferEndpointAgentsWithHttpInfo) | **POST** /endpoint/agents/transfer/bulk | Bulk transfer agents
+*EndpointProxiesApi* | [**getEndpointProxies**](docs/EndpointProxiesApi.md#getEndpointProxies) | **GET** /endpoint/proxies | List endpoint proxy settings
+*EndpointProxiesApi* | [**getEndpointProxiesWithHttpInfo**](docs/EndpointProxiesApi.md#getEndpointProxiesWithHttpInfo) | **GET** /endpoint/proxies | List endpoint proxy settings
 
 
 <a id="documentation-for-authorization"></a>
