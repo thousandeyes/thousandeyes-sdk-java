@@ -2,7 +2,7 @@
 
 Emulation API
 
-- API version: 7.0.92
+- API version: 7.0.93
 
 **Note:** All Emulation APIs are not available for ThousandEyes for Government instance.
 
