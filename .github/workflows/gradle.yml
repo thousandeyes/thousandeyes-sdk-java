@@ -9,10 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      ORG_GRADLE_PROJECT_teRepoUrl: ${{ secrets.ODYSSEY_CI_ARTIFACTORY_URL }}/public
-      ORG_GRADLE_PROJECT_teRepoUser: ${{ secrets.ODYSSEY_CI_ARTIFACTORY_USERNAME }}
-      ORG_GRADLE_PROJECT_teRepoPassword: ${{ secrets.ODYSSEY_CI_ARTIFACTORY_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
