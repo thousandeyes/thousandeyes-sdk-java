@@ -4,7 +4,13 @@ ext {
 }
 
 repositories {
-    mavenCentral()
+    maven {
+        url teRepoUrl
+        credentials {
+            username teRepoUser
+            password teRepoPassword
+        }
+    }
 }
 
 dependencies {

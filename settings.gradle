@@ -1,3 +1,15 @@
+pluginManagement {
+    repositories {
+        maven {
+            url teRepoUrl
+            credentials {
+                username teRepoUser
+                password teRepoPassword
+            }
+        }
+    }
+}
+
 rootProject.name = 'thousandeyes-sdk-java'
 include 'configuration'
 project(':configuration').projectDir = file("core/configuration")
