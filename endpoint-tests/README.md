@@ -2,7 +2,7 @@
 
 Endpoint Tests API
 
-- API version: 7.0.93
+- API version: 7.0.94
 
 Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API.
 
@@ -150,6 +150,8 @@ Class | Method | HTTP request | Description
 *AgentToServerEndpointScheduledTestsApi* | [**getAgentToServerEndpointScheduledTestsWithHttpInfo**](docs/AgentToServerEndpointScheduledTestsApi.md#getAgentToServerEndpointScheduledTestsWithHttpInfo) | **GET** /endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests
 *AgentToServerEndpointScheduledTestsApi* | [**updateAgentToServerEndpointScheduledTest**](docs/AgentToServerEndpointScheduledTestsApi.md#updateAgentToServerEndpointScheduledTest) | **PATCH** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test
 *AgentToServerEndpointScheduledTestsApi* | [**updateAgentToServerEndpointScheduledTestWithHttpInfo**](docs/AgentToServerEndpointScheduledTestsApi.md#updateAgentToServerEndpointScheduledTestWithHttpInfo) | **PATCH** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test
+*EndpointRealUserTestsApi* | [**getEndpointRealUserTests**](docs/EndpointRealUserTestsApi.md#getEndpointRealUserTests) | **GET** /endpoint/tests/real-user-tests | List endpoint real user tests
+*EndpointRealUserTestsApi* | [**getEndpointRealUserTestsWithHttpInfo**](docs/EndpointRealUserTestsApi.md#getEndpointRealUserTestsWithHttpInfo) | **GET** /endpoint/tests/real-user-tests | List endpoint real user tests
 *EndpointScheduledTestsApi* | [**getEndpointScheduledTests**](docs/EndpointScheduledTestsApi.md#getEndpointScheduledTests) | **GET** /endpoint/tests/scheduled-tests | List endpoint scheduled tests
 *EndpointScheduledTestsApi* | [**getEndpointScheduledTestsWithHttpInfo**](docs/EndpointScheduledTestsApi.md#getEndpointScheduledTestsWithHttpInfo) | **GET** /endpoint/tests/scheduled-tests | List endpoint scheduled tests
 *HttpServerEndpointScheduledTestsApi* | [**createHttpServerEndpointScheduledTest**](docs/HttpServerEndpointScheduledTestsApi.md#createHttpServerEndpointScheduledTest) | **POST** /endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test

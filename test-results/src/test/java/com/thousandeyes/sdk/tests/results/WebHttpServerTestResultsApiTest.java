@@ -76,7 +76,7 @@ public class WebHttpServerTestResultsApiTest {
     /**
      * Get HTTP server test results
      * <p>
-     * Returns results for requests made over HTTP. Components include DNS, Connect, Wait, Receive, and Fetch. 
+     * Returns results for requests made over HTTP. Components include DNS, Connect, Wait, Receive, and Fetch.  When DNS server measurement data is available for a round, each result includes a &#x60;dnsServerMeasurement&#x60; object describing the DNS response used to resolve the target and any additional DNS responses observed during resolution. 
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -216,6 +216,69 @@ public class WebHttpServerTestResultsApiTest {
                     "sslTime" : 9,
                     "endTime" : 1384309800,
                     "waitTime" : 3,
+                    "dnsServerMeasurement" : {
+                      "usedDnsResponse" : {
+                        "id" : 41837,
+                        "qr" : "response",
+                        "opcode" : "query",
+                        "authoritativeAnswer" : false,
+                        "truncation" : false,
+                        "recursionDesired" : true,
+                        "recursionAvailable" : true,
+                        "zero" : false,
+                        "authenticData" : false,
+                        "checkingDisabled" : false,
+                        "responseCode" : "noerror",
+                        "question" : [ {
+                          "name" : "www.example.com",
+                          "type" : "a",
+                          "class" : "in",
+                          "ttl" : 0,
+                          "data" : ""
+                        } ],
+                        "answer" : [ {
+                          "name" : "www.example.com",
+                          "type" : "a",
+                          "class" : "in",
+                          "ttl" : 300,
+                          "data" : "203.0.113.10"
+                        } ],
+                        "dnsResolver" : "8.8.8.8",
+                        "timing" : {
+                          "startTimeUs" : "1769706600000000",
+                          "totalTimeUs" : 19304
+                        },
+                        "protocol" : "udp"
+                      },
+                      "unusedDnsResponses" : [ {
+                        "id" : 41838,
+                        "qr" : "response",
+                        "opcode" : "query",
+                        "authoritativeAnswer" : false,
+                        "truncation" : false,
+                        "recursionDesired" : true,
+                        "recursionAvailable" : true,
+                        "zero" : false,
+                        "authenticData" : false,
+                        "checkingDisabled" : false,
+                        "responseCode" : "nxdomain",
+                        "question" : [ {
+                          "name" : "www.example.com",
+                          "type" : "aaaa",
+                          "class" : "in",
+                          "ttl" : 0,
+                          "data" : ""
+                        } ],
+                        "dnsResolver" : "8.8.4.4",
+                        "timing" : {
+                          "startTimeUs" : "1769706600020000",
+                          "totalTimeUs" : 15420
+                        },
+                        "protocol" : "udp"
+                      } ],
+                      "usedHostsFile" : false,
+                      "resolvedIp" : "203.0.113.10"
+                    },
                     "wireSize" : 9993,
                     "errorDetails" : "Connection error"
                   }, {
@@ -280,6 +343,69 @@ public class WebHttpServerTestResultsApiTest {
                     "sslTime" : 9,
                     "endTime" : 1384309800,
                     "waitTime" : 3,
+                    "dnsServerMeasurement" : {
+                      "usedDnsResponse" : {
+                        "id" : 41837,
+                        "qr" : "response",
+                        "opcode" : "query",
+                        "authoritativeAnswer" : false,
+                        "truncation" : false,
+                        "recursionDesired" : true,
+                        "recursionAvailable" : true,
+                        "zero" : false,
+                        "authenticData" : false,
+                        "checkingDisabled" : false,
+                        "responseCode" : "noerror",
+                        "question" : [ {
+                          "name" : "www.example.com",
+                          "type" : "a",
+                          "class" : "in",
+                          "ttl" : 0,
+                          "data" : ""
+                        } ],
+                        "answer" : [ {
+                          "name" : "www.example.com",
+                          "type" : "a",
+                          "class" : "in",
+                          "ttl" : 300,
+                          "data" : "203.0.113.10"
+                        } ],
+                        "dnsResolver" : "8.8.8.8",
+                        "timing" : {
+                          "startTimeUs" : "1769706600000000",
+                          "totalTimeUs" : 19304
+                        },
+                        "protocol" : "udp"
+                      },
+                      "unusedDnsResponses" : [ {
+                        "id" : 41838,
+                        "qr" : "response",
+                        "opcode" : "query",
+                        "authoritativeAnswer" : false,
+                        "truncation" : false,
+                        "recursionDesired" : true,
+                        "recursionAvailable" : true,
+                        "zero" : false,
+                        "authenticData" : false,
+                        "checkingDisabled" : false,
+                        "responseCode" : "nxdomain",
+                        "question" : [ {
+                          "name" : "www.example.com",
+                          "type" : "aaaa",
+                          "class" : "in",
+                          "ttl" : 0,
+                          "data" : ""
+                        } ],
+                        "dnsResolver" : "8.8.4.4",
+                        "timing" : {
+                          "startTimeUs" : "1769706600020000",
+                          "totalTimeUs" : 15420
+                        },
+                        "protocol" : "udp"
+                      } ],
+                      "usedHostsFile" : false,
+                      "resolvedIp" : "203.0.113.10"
+                    },
                     "wireSize" : 9993,
                     "errorDetails" : "Connection error"
                   } ],
