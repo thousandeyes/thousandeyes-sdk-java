@@ -4,10 +4,12 @@ api/openapi.yaml
 build.gradle
 docs/AgentToServerEndpointDynamicTestsApi.md
 docs/AgentToServerEndpointScheduledTestsApi.md
+docs/EndpointRealUserTestsApi.md
 docs/EndpointScheduledTestsApi.md
 docs/HttpServerEndpointScheduledTestsApi.md
 src/main/java/com/thousandeyes/sdk/endpoint/tests/AgentToServerEndpointDynamicTestsApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/AgentToServerEndpointScheduledTestsApi.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/EndpointRealUserTestsApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/EndpointScheduledTestsApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/HttpServerEndpointScheduledTestsApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/DynamicTest.java
@@ -32,7 +34,11 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointHttpServerTests.
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointHttpTestUpdate.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointInstantTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointIpVersionIn.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointMonitoringSettings.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointMonitoringSettingsType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointNetworkTestUpdate.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointRealUserTest.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointRealUserTestsResponse.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointScheduledTestType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointSpecificAgentsSelectorConfig.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTest.java
@@ -56,5 +62,6 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/model/ValidationError.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/ValidationErrorItem.java
 src/test/java/com/thousandeyes/sdk/endpoint/tests/AgentToServerEndpointDynamicTestsApiTest.java
 src/test/java/com/thousandeyes/sdk/endpoint/tests/AgentToServerEndpointScheduledTestsApiTest.java
+src/test/java/com/thousandeyes/sdk/endpoint/tests/EndpointRealUserTestsApiTest.java
 src/test/java/com/thousandeyes/sdk/endpoint/tests/EndpointScheduledTestsApiTest.java
 src/test/java/com/thousandeyes/sdk/endpoint/tests/HttpServerEndpointScheduledTestsApiTest.java

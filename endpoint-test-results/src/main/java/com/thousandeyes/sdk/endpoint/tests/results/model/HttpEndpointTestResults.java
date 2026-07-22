@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   HttpEndpointTestResults.JSON_PROPERTY_RESULTS,
+  HttpEndpointTestResults.JSON_PROPERTY_TOTAL_HITS,
   HttpEndpointTestResults.JSON_PROPERTY_TEST,
   HttpEndpointTestResults.JSON_PROPERTY_START_DATE,
   HttpEndpointTestResults.JSON_PROPERTY_END_DATE,
@@ -44,6 +45,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class HttpEndpointTestResults {
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<HttpEndpointTestResult> results = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TOTAL_HITS = "totalHits";
+  private Integer totalHits;
 
   public static final String JSON_PROPERTY_TEST = "test";
   private EndpointHttpServerTest test;
@@ -100,6 +104,31 @@ public class HttpEndpointTestResults {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResults(List<HttpEndpointTestResult> results) {
     this.results = results;
+  }
+
+
+  public HttpEndpointTestResults totalHits(Integer totalHits) {
+    this.totalHits = totalHits;
+    return this;
+  }
+
+   /**
+   * Total number of measurements that match the search criteria.
+   * @return totalHits
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOTAL_HITS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getTotalHits() {
+    return totalHits;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOTAL_HITS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTotalHits(Integer totalHits) {
+    this.totalHits = totalHits;
   }
 
 
@@ -196,6 +225,7 @@ public class HttpEndpointTestResults {
     }
     HttpEndpointTestResults httpEndpointTestResults = (HttpEndpointTestResults) o;
     return Objects.equals(this.results, httpEndpointTestResults.results) &&
+        Objects.equals(this.totalHits, httpEndpointTestResults.totalHits) &&
         Objects.equals(this.test, httpEndpointTestResults.test) &&
         Objects.equals(this.startDate, httpEndpointTestResults.startDate) &&
         Objects.equals(this.endDate, httpEndpointTestResults.endDate) &&
@@ -204,7 +234,7 @@ public class HttpEndpointTestResults {
 
   @Override
   public int hashCode() {
-    return Objects.hash(results, test, startDate, endDate, links);
+    return Objects.hash(results, totalHits, test, startDate, endDate, links);
   }
 
   @Override
@@ -212,6 +242,7 @@ public class HttpEndpointTestResults {
     StringBuilder sb = new StringBuilder();
     sb.append("class HttpEndpointTestResults {\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
+    sb.append("    totalHits: ").append(toIndentedString(totalHits)).append("\n");
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");

@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkWirelessProfile.JSON_PROPERTY_PHY_MODE,
   NetworkWirelessProfile.JSON_PROPERTY_RSSI,
   NetworkWirelessProfile.JSON_PROPERTY_NOISE,
+  NetworkWirelessProfile.JSON_PROPERTY_SNR,
   NetworkWirelessProfile.JSON_PROPERTY_QUALITY,
   NetworkWirelessProfile.JSON_PROPERTY_TX_RATE,
   NetworkWirelessProfile.JSON_PROPERTY_VENDOR
@@ -57,6 +58,9 @@ public class NetworkWirelessProfile {
   public static final String JSON_PROPERTY_NOISE = "noise";
   private Integer noise;
 
+  public static final String JSON_PROPERTY_SNR = "snr";
+  private Integer snr;
+
   public static final String JSON_PROPERTY_QUALITY = "quality";
   private Integer quality;
 
@@ -77,6 +81,7 @@ public class NetworkWirelessProfile {
     @JsonProperty(JSON_PROPERTY_PHY_MODE) String phyMode, 
     @JsonProperty(JSON_PROPERTY_RSSI) Integer rssi, 
     @JsonProperty(JSON_PROPERTY_NOISE) Integer noise, 
+    @JsonProperty(JSON_PROPERTY_SNR) Integer snr, 
     @JsonProperty(JSON_PROPERTY_QUALITY) Integer quality, 
     @JsonProperty(JSON_PROPERTY_TX_RATE) Integer txRate, 
     @JsonProperty(JSON_PROPERTY_VENDOR) String vendor
@@ -88,6 +93,7 @@ public class NetworkWirelessProfile {
     this.phyMode = phyMode;
     this.rssi = rssi;
     this.noise = noise;
+    this.snr = snr;
     this.quality = quality;
     this.txRate = txRate;
     this.vendor = vendor;
@@ -184,6 +190,21 @@ public class NetworkWirelessProfile {
 
 
    /**
+   * Wireless network signal-to-noise ratio (SNR), in dB.
+   * @return snr
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SNR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getSnr() {
+    return snr;
+  }
+
+
+
+
+   /**
    * Wireless network quality.
    * @return quality
   **/
@@ -246,6 +267,7 @@ public class NetworkWirelessProfile {
         Objects.equals(this.phyMode, networkWirelessProfile.phyMode) &&
         Objects.equals(this.rssi, networkWirelessProfile.rssi) &&
         Objects.equals(this.noise, networkWirelessProfile.noise) &&
+        Objects.equals(this.snr, networkWirelessProfile.snr) &&
         Objects.equals(this.quality, networkWirelessProfile.quality) &&
         Objects.equals(this.txRate, networkWirelessProfile.txRate) &&
         Objects.equals(this.vendor, networkWirelessProfile.vendor);
@@ -253,7 +275,7 @@ public class NetworkWirelessProfile {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ssid, bssid, channel, phyMode, rssi, noise, quality, txRate, vendor);
+    return Objects.hash(ssid, bssid, channel, phyMode, rssi, noise, snr, quality, txRate, vendor);
   }
 
   @Override
@@ -266,6 +288,7 @@ public class NetworkWirelessProfile {
     sb.append("    phyMode: ").append(toIndentedString(phyMode)).append("\n");
     sb.append("    rssi: ").append(toIndentedString(rssi)).append("\n");
     sb.append("    noise: ").append(toIndentedString(noise)).append("\n");
+    sb.append("    snr: ").append(toIndentedString(snr)).append("\n");
     sb.append("    quality: ").append(toIndentedString(quality)).append("\n");
     sb.append("    txRate: ").append(toIndentedString(txRate)).append("\n");
     sb.append("    vendor: ").append(toIndentedString(vendor)).append("\n");
