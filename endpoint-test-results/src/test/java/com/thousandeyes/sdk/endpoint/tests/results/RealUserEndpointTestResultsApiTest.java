@@ -888,6 +888,7 @@ public class RealUserEndpointTestResultsApiTest {
                         "wirelessProfile" : {
                           "rssi" : -38,
                           "bssid" : "4c:ba:ba:f4:fa:fa",
+                          "snr" : 57,
                           "vendor" : "Cisco",
                           "txRate" : 130,
                           "channel" : 1,
@@ -1082,6 +1083,7 @@ public class RealUserEndpointTestResultsApiTest {
                         "wirelessProfile" : {
                           "rssi" : -38,
                           "bssid" : "4c:ba:ba:f4:fa:fa",
+                          "snr" : 57,
                           "vendor" : "Cisco",
                           "txRate" : 130,
                           "channel" : 1,

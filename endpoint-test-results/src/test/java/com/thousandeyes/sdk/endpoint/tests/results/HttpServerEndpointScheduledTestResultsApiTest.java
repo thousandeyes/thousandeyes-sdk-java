@@ -155,6 +155,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                     "username" : "username",
                     "sslVersionId" : "0"
                   },
+                  "totalHits" : 12,
                   "endDate" : "2022-07-18T22:00:54Z",
                   "_links" : {
                     "next" : {
@@ -255,6 +256,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "wirelessProfile" : {
                         "rssi" : -38,
                         "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "snr" : 57,
                         "vendor" : "Cisco",
                         "txRate" : 130,
                         "channel" : 1,
@@ -383,6 +385,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "wirelessProfile" : {
                         "rssi" : -38,
                         "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "snr" : 57,
                         "vendor" : "Cisco",
                         "txRate" : 130,
                         "channel" : 1,
@@ -605,6 +608,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "wirelessProfile" : {
                         "rssi" : -38,
                         "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "snr" : 57,
                         "vendor" : "Cisco",
                         "txRate" : 130,
                         "channel" : 1,
@@ -733,6 +737,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "wirelessProfile" : {
                         "rssi" : -38,
                         "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "snr" : 57,
                         "vendor" : "Cisco",
                         "txRate" : 130,
                         "channel" : 1,
@@ -957,6 +962,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "wirelessProfile" : {
                         "rssi" : -38,
                         "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "snr" : 57,
                         "vendor" : "Cisco",
                         "txRate" : 130,
                         "channel" : 1,
@@ -1085,6 +1091,7 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                       "wirelessProfile" : {
                         "rssi" : -38,
                         "bssid" : "4c:ba:ba:f4:fa:fa",
+                        "snr" : 57,
                         "vendor" : "Cisco",
                         "txRate" : 130,
                         "channel" : 1,

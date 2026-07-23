@@ -36,6 +36,8 @@ public enum Platform {
   
   CISCO_WIRELESS("cisco-wireless"),
   
+  CISCO_WIRELESS_CLOUD("cisco-wireless-cloud"),
+  
   LINUX("linux"),
   
   MAC("mac"),
