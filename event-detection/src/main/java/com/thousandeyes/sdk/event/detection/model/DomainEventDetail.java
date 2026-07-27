@@ -24,11 +24,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.event.detection.model.AffectedAgents;
 import com.thousandeyes.sdk.event.detection.model.AffectedTargets;
 import com.thousandeyes.sdk.event.detection.model.AffectedTests;
+import com.thousandeyes.sdk.event.detection.model.DomainEventGrouping;
 import com.thousandeyes.sdk.event.detection.model.EventAgentType;
 import com.thousandeyes.sdk.event.detection.model.EventAlertSeverity;
 import com.thousandeyes.sdk.event.detection.model.EventState;
 import com.thousandeyes.sdk.event.detection.model.SelfLinks;
-import com.thousandeyes.sdk.event.detection.model.TargetEventGrouping;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -37,28 +37,28 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * TargetEventDetail
+ * DomainEventDetail
  */
 @JsonPropertyOrder({
-  TargetEventDetail.JSON_PROPERTY_ID,
-  TargetEventDetail.JSON_PROPERTY_TYPE_NAME,
-  TargetEventDetail.JSON_PROPERTY_STATE,
-  TargetEventDetail.JSON_PROPERTY_START_DATE,
-  TargetEventDetail.JSON_PROPERTY_END_DATE,
-  TargetEventDetail.JSON_PROPERTY_SEVERITY,
-  TargetEventDetail.JSON_PROPERTY_AID,
-  TargetEventDetail.JSON_PROPERTY_SUMMARY,
-  TargetEventDetail.JSON_PROPERTY_AGENT_TYPE,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_TESTS,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_TARGETS,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_AGENTS,
-  TargetEventDetail.JSON_PROPERTY_CAUSE,
-  TargetEventDetail.JSON_PROPERTY_LINKS,
-  TargetEventDetail.JSON_PROPERTY_TYPE,
-  TargetEventDetail.JSON_PROPERTY_GROUPING
+  DomainEventDetail.JSON_PROPERTY_ID,
+  DomainEventDetail.JSON_PROPERTY_TYPE_NAME,
+  DomainEventDetail.JSON_PROPERTY_STATE,
+  DomainEventDetail.JSON_PROPERTY_START_DATE,
+  DomainEventDetail.JSON_PROPERTY_END_DATE,
+  DomainEventDetail.JSON_PROPERTY_SEVERITY,
+  DomainEventDetail.JSON_PROPERTY_AID,
+  DomainEventDetail.JSON_PROPERTY_SUMMARY,
+  DomainEventDetail.JSON_PROPERTY_AGENT_TYPE,
+  DomainEventDetail.JSON_PROPERTY_AFFECTED_TESTS,
+  DomainEventDetail.JSON_PROPERTY_AFFECTED_TARGETS,
+  DomainEventDetail.JSON_PROPERTY_AFFECTED_AGENTS,
+  DomainEventDetail.JSON_PROPERTY_CAUSE,
+  DomainEventDetail.JSON_PROPERTY_LINKS,
+  DomainEventDetail.JSON_PROPERTY_TYPE,
+  DomainEventDetail.JSON_PROPERTY_GROUPING
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class TargetEventDetail {
+public class DomainEventDetail {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
 
@@ -105,13 +105,13 @@ public class TargetEventDetail {
   private String type;
 
   public static final String JSON_PROPERTY_GROUPING = "grouping";
-  private TargetEventGrouping grouping;
+  private DomainEventGrouping grouping;
 
-  public TargetEventDetail() { 
+  public DomainEventDetail() { 
   }
 
   @JsonCreator
-  public TargetEventDetail(
+  public DomainEventDetail(
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
     @JsonProperty(JSON_PROPERTY_TYPE_NAME) String typeName, 
     @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
@@ -156,7 +156,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail state(EventState state) {
+  public DomainEventDetail state(EventState state) {
     this.state = state;
     return this;
   }
@@ -211,7 +211,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail severity(EventAlertSeverity severity) {
+  public DomainEventDetail severity(EventAlertSeverity severity) {
     this.severity = severity;
     return this;
   }
@@ -236,7 +236,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail aid(String aid) {
+  public DomainEventDetail aid(String aid) {
     this.aid = aid;
     return this;
   }
@@ -276,7 +276,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail agentType(EventAgentType agentType) {
+  public DomainEventDetail agentType(EventAgentType agentType) {
     this.agentType = agentType;
     return this;
   }
@@ -301,7 +301,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedTests(AffectedTests affectedTests) {
+  public DomainEventDetail affectedTests(AffectedTests affectedTests) {
     this.affectedTests = affectedTests;
     return this;
   }
@@ -326,7 +326,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedTargets(AffectedTargets affectedTargets) {
+  public DomainEventDetail affectedTargets(AffectedTargets affectedTargets) {
     this.affectedTargets = affectedTargets;
     return this;
   }
@@ -351,7 +351,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedAgents(AffectedAgents affectedAgents) {
+  public DomainEventDetail affectedAgents(AffectedAgents affectedAgents) {
     this.affectedAgents = affectedAgents;
     return this;
   }
@@ -376,12 +376,12 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail cause(Set<String> cause) {
+  public DomainEventDetail cause(Set<String> cause) {
     this.cause = cause;
     return this;
   }
 
-  public TargetEventDetail addCauseItem(String causeItem) {
+  public DomainEventDetail addCauseItem(String causeItem) {
     if (this.cause == null) {
       this.cause = new LinkedHashSet<>();
     }
@@ -410,7 +410,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail links(SelfLinks links) {
+  public DomainEventDetail links(SelfLinks links) {
     this.links = links;
     return this;
   }
@@ -435,13 +435,13 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail type(String type) {
+  public DomainEventDetail type(String type) {
     this.type = type;
     return this;
   }
 
    /**
-   * Target event type.
+   * Domain event type.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -460,7 +460,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail grouping(TargetEventGrouping grouping) {
+  public DomainEventDetail grouping(DomainEventGrouping grouping) {
     this.grouping = grouping;
     return this;
   }
@@ -473,20 +473,20 @@ public class TargetEventDetail {
   @JsonProperty(JSON_PROPERTY_GROUPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public TargetEventGrouping getGrouping() {
+  public DomainEventGrouping getGrouping() {
     return grouping;
   }
 
 
   @JsonProperty(JSON_PROPERTY_GROUPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGrouping(TargetEventGrouping grouping) {
+  public void setGrouping(DomainEventGrouping grouping) {
     this.grouping = grouping;
   }
 
 
   /**
-   * Return true if this TargetEventDetail object is equal to o.
+   * Return true if this DomainEventDetail object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -496,23 +496,23 @@ public class TargetEventDetail {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TargetEventDetail targetEventDetail = (TargetEventDetail) o;
-    return Objects.equals(this.id, targetEventDetail.id) &&
-        Objects.equals(this.typeName, targetEventDetail.typeName) &&
-        Objects.equals(this.state, targetEventDetail.state) &&
-        Objects.equals(this.startDate, targetEventDetail.startDate) &&
-        Objects.equals(this.endDate, targetEventDetail.endDate) &&
-        Objects.equals(this.severity, targetEventDetail.severity) &&
-        Objects.equals(this.aid, targetEventDetail.aid) &&
-        Objects.equals(this.summary, targetEventDetail.summary) &&
-        Objects.equals(this.agentType, targetEventDetail.agentType) &&
-        Objects.equals(this.affectedTests, targetEventDetail.affectedTests) &&
-        Objects.equals(this.affectedTargets, targetEventDetail.affectedTargets) &&
-        Objects.equals(this.affectedAgents, targetEventDetail.affectedAgents) &&
-        Objects.equals(this.cause, targetEventDetail.cause) &&
-        Objects.equals(this.links, targetEventDetail.links) &&
-        Objects.equals(this.type, targetEventDetail.type) &&
-        Objects.equals(this.grouping, targetEventDetail.grouping);
+    DomainEventDetail domainEventDetail = (DomainEventDetail) o;
+    return Objects.equals(this.id, domainEventDetail.id) &&
+        Objects.equals(this.typeName, domainEventDetail.typeName) &&
+        Objects.equals(this.state, domainEventDetail.state) &&
+        Objects.equals(this.startDate, domainEventDetail.startDate) &&
+        Objects.equals(this.endDate, domainEventDetail.endDate) &&
+        Objects.equals(this.severity, domainEventDetail.severity) &&
+        Objects.equals(this.aid, domainEventDetail.aid) &&
+        Objects.equals(this.summary, domainEventDetail.summary) &&
+        Objects.equals(this.agentType, domainEventDetail.agentType) &&
+        Objects.equals(this.affectedTests, domainEventDetail.affectedTests) &&
+        Objects.equals(this.affectedTargets, domainEventDetail.affectedTargets) &&
+        Objects.equals(this.affectedAgents, domainEventDetail.affectedAgents) &&
+        Objects.equals(this.cause, domainEventDetail.cause) &&
+        Objects.equals(this.links, domainEventDetail.links) &&
+        Objects.equals(this.type, domainEventDetail.type) &&
+        Objects.equals(this.grouping, domainEventDetail.grouping);
   }
 
   @Override
@@ -523,7 +523,7 @@ public class TargetEventDetail {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TargetEventDetail {\n");
+    sb.append("class DomainEventDetail {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    typeName: ").append(toIndentedString(typeName)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
