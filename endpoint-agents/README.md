@@ -2,7 +2,7 @@
 
 Endpoint Agents API
 
-- API version: 7.0.96
+- API version: 7.0.97
 
 **Note:** The Endpoint Agents Transfer APIs are not available for ThousandEyes for Government instance.
 
