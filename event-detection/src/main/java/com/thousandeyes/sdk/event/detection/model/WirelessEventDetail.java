@@ -28,7 +28,7 @@ import com.thousandeyes.sdk.event.detection.model.EventAgentType;
 import com.thousandeyes.sdk.event.detection.model.EventAlertSeverity;
 import com.thousandeyes.sdk.event.detection.model.EventState;
 import com.thousandeyes.sdk.event.detection.model.SelfLinks;
-import com.thousandeyes.sdk.event.detection.model.TargetEventGrouping;
+import com.thousandeyes.sdk.event.detection.model.WirelessEventGrouping;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -37,28 +37,28 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * TargetEventDetail
+ * WirelessEventDetail
  */
 @JsonPropertyOrder({
-  TargetEventDetail.JSON_PROPERTY_ID,
-  TargetEventDetail.JSON_PROPERTY_TYPE_NAME,
-  TargetEventDetail.JSON_PROPERTY_STATE,
-  TargetEventDetail.JSON_PROPERTY_START_DATE,
-  TargetEventDetail.JSON_PROPERTY_END_DATE,
-  TargetEventDetail.JSON_PROPERTY_SEVERITY,
-  TargetEventDetail.JSON_PROPERTY_AID,
-  TargetEventDetail.JSON_PROPERTY_SUMMARY,
-  TargetEventDetail.JSON_PROPERTY_AGENT_TYPE,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_TESTS,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_TARGETS,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_AGENTS,
-  TargetEventDetail.JSON_PROPERTY_CAUSE,
-  TargetEventDetail.JSON_PROPERTY_LINKS,
-  TargetEventDetail.JSON_PROPERTY_TYPE,
-  TargetEventDetail.JSON_PROPERTY_GROUPING
+  WirelessEventDetail.JSON_PROPERTY_ID,
+  WirelessEventDetail.JSON_PROPERTY_TYPE_NAME,
+  WirelessEventDetail.JSON_PROPERTY_STATE,
+  WirelessEventDetail.JSON_PROPERTY_START_DATE,
+  WirelessEventDetail.JSON_PROPERTY_END_DATE,
+  WirelessEventDetail.JSON_PROPERTY_SEVERITY,
+  WirelessEventDetail.JSON_PROPERTY_AID,
+  WirelessEventDetail.JSON_PROPERTY_SUMMARY,
+  WirelessEventDetail.JSON_PROPERTY_AGENT_TYPE,
+  WirelessEventDetail.JSON_PROPERTY_AFFECTED_TESTS,
+  WirelessEventDetail.JSON_PROPERTY_AFFECTED_TARGETS,
+  WirelessEventDetail.JSON_PROPERTY_AFFECTED_AGENTS,
+  WirelessEventDetail.JSON_PROPERTY_CAUSE,
+  WirelessEventDetail.JSON_PROPERTY_LINKS,
+  WirelessEventDetail.JSON_PROPERTY_TYPE,
+  WirelessEventDetail.JSON_PROPERTY_GROUPING
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class TargetEventDetail {
+public class WirelessEventDetail {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
 
@@ -105,13 +105,13 @@ public class TargetEventDetail {
   private String type;
 
   public static final String JSON_PROPERTY_GROUPING = "grouping";
-  private TargetEventGrouping grouping;
+  private WirelessEventGrouping grouping;
 
-  public TargetEventDetail() { 
+  public WirelessEventDetail() { 
   }
 
   @JsonCreator
-  public TargetEventDetail(
+  public WirelessEventDetail(
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
     @JsonProperty(JSON_PROPERTY_TYPE_NAME) String typeName, 
     @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
@@ -156,7 +156,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail state(EventState state) {
+  public WirelessEventDetail state(EventState state) {
     this.state = state;
     return this;
   }
@@ -211,7 +211,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail severity(EventAlertSeverity severity) {
+  public WirelessEventDetail severity(EventAlertSeverity severity) {
     this.severity = severity;
     return this;
   }
@@ -236,7 +236,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail aid(String aid) {
+  public WirelessEventDetail aid(String aid) {
     this.aid = aid;
     return this;
   }
@@ -276,7 +276,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail agentType(EventAgentType agentType) {
+  public WirelessEventDetail agentType(EventAgentType agentType) {
     this.agentType = agentType;
     return this;
   }
@@ -301,7 +301,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedTests(AffectedTests affectedTests) {
+  public WirelessEventDetail affectedTests(AffectedTests affectedTests) {
     this.affectedTests = affectedTests;
     return this;
   }
@@ -326,7 +326,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedTargets(AffectedTargets affectedTargets) {
+  public WirelessEventDetail affectedTargets(AffectedTargets affectedTargets) {
     this.affectedTargets = affectedTargets;
     return this;
   }
@@ -351,7 +351,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedAgents(AffectedAgents affectedAgents) {
+  public WirelessEventDetail affectedAgents(AffectedAgents affectedAgents) {
     this.affectedAgents = affectedAgents;
     return this;
   }
@@ -376,12 +376,12 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail cause(Set<String> cause) {
+  public WirelessEventDetail cause(Set<String> cause) {
     this.cause = cause;
     return this;
   }
 
-  public TargetEventDetail addCauseItem(String causeItem) {
+  public WirelessEventDetail addCauseItem(String causeItem) {
     if (this.cause == null) {
       this.cause = new LinkedHashSet<>();
     }
@@ -410,7 +410,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail links(SelfLinks links) {
+  public WirelessEventDetail links(SelfLinks links) {
     this.links = links;
     return this;
   }
@@ -435,13 +435,13 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail type(String type) {
+  public WirelessEventDetail type(String type) {
     this.type = type;
     return this;
   }
 
    /**
-   * Target event type.
+   * Wireless event type.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -460,7 +460,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail grouping(TargetEventGrouping grouping) {
+  public WirelessEventDetail grouping(WirelessEventGrouping grouping) {
     this.grouping = grouping;
     return this;
   }
@@ -473,20 +473,20 @@ public class TargetEventDetail {
   @JsonProperty(JSON_PROPERTY_GROUPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public TargetEventGrouping getGrouping() {
+  public WirelessEventGrouping getGrouping() {
     return grouping;
   }
 
 
   @JsonProperty(JSON_PROPERTY_GROUPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGrouping(TargetEventGrouping grouping) {
+  public void setGrouping(WirelessEventGrouping grouping) {
     this.grouping = grouping;
   }
 
 
   /**
-   * Return true if this TargetEventDetail object is equal to o.
+   * Return true if this WirelessEventDetail object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -496,23 +496,23 @@ public class TargetEventDetail {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TargetEventDetail targetEventDetail = (TargetEventDetail) o;
-    return Objects.equals(this.id, targetEventDetail.id) &&
-        Objects.equals(this.typeName, targetEventDetail.typeName) &&
-        Objects.equals(this.state, targetEventDetail.state) &&
-        Objects.equals(this.startDate, targetEventDetail.startDate) &&
-        Objects.equals(this.endDate, targetEventDetail.endDate) &&
-        Objects.equals(this.severity, targetEventDetail.severity) &&
-        Objects.equals(this.aid, targetEventDetail.aid) &&
-        Objects.equals(this.summary, targetEventDetail.summary) &&
-        Objects.equals(this.agentType, targetEventDetail.agentType) &&
-        Objects.equals(this.affectedTests, targetEventDetail.affectedTests) &&
-        Objects.equals(this.affectedTargets, targetEventDetail.affectedTargets) &&
-        Objects.equals(this.affectedAgents, targetEventDetail.affectedAgents) &&
-        Objects.equals(this.cause, targetEventDetail.cause) &&
-        Objects.equals(this.links, targetEventDetail.links) &&
-        Objects.equals(this.type, targetEventDetail.type) &&
-        Objects.equals(this.grouping, targetEventDetail.grouping);
+    WirelessEventDetail wirelessEventDetail = (WirelessEventDetail) o;
+    return Objects.equals(this.id, wirelessEventDetail.id) &&
+        Objects.equals(this.typeName, wirelessEventDetail.typeName) &&
+        Objects.equals(this.state, wirelessEventDetail.state) &&
+        Objects.equals(this.startDate, wirelessEventDetail.startDate) &&
+        Objects.equals(this.endDate, wirelessEventDetail.endDate) &&
+        Objects.equals(this.severity, wirelessEventDetail.severity) &&
+        Objects.equals(this.aid, wirelessEventDetail.aid) &&
+        Objects.equals(this.summary, wirelessEventDetail.summary) &&
+        Objects.equals(this.agentType, wirelessEventDetail.agentType) &&
+        Objects.equals(this.affectedTests, wirelessEventDetail.affectedTests) &&
+        Objects.equals(this.affectedTargets, wirelessEventDetail.affectedTargets) &&
+        Objects.equals(this.affectedAgents, wirelessEventDetail.affectedAgents) &&
+        Objects.equals(this.cause, wirelessEventDetail.cause) &&
+        Objects.equals(this.links, wirelessEventDetail.links) &&
+        Objects.equals(this.type, wirelessEventDetail.type) &&
+        Objects.equals(this.grouping, wirelessEventDetail.grouping);
   }
 
   @Override
@@ -523,7 +523,7 @@ public class TargetEventDetail {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TargetEventDetail {\n");
+    sb.append("class WirelessEventDetail {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    typeName: ").append(toIndentedString(typeName)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
