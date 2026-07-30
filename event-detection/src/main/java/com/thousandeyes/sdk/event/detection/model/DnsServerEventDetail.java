@@ -24,11 +24,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.event.detection.model.AffectedAgents;
 import com.thousandeyes.sdk.event.detection.model.AffectedTargets;
 import com.thousandeyes.sdk.event.detection.model.AffectedTests;
+import com.thousandeyes.sdk.event.detection.model.DnsServerEventGrouping;
 import com.thousandeyes.sdk.event.detection.model.EventAgentType;
 import com.thousandeyes.sdk.event.detection.model.EventAlertSeverity;
 import com.thousandeyes.sdk.event.detection.model.EventState;
 import com.thousandeyes.sdk.event.detection.model.SelfLinks;
-import com.thousandeyes.sdk.event.detection.model.TargetEventGrouping;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -37,28 +37,28 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * TargetEventDetail
+ * DnsServerEventDetail
  */
 @JsonPropertyOrder({
-  TargetEventDetail.JSON_PROPERTY_ID,
-  TargetEventDetail.JSON_PROPERTY_TYPE_NAME,
-  TargetEventDetail.JSON_PROPERTY_STATE,
-  TargetEventDetail.JSON_PROPERTY_START_DATE,
-  TargetEventDetail.JSON_PROPERTY_END_DATE,
-  TargetEventDetail.JSON_PROPERTY_SEVERITY,
-  TargetEventDetail.JSON_PROPERTY_AID,
-  TargetEventDetail.JSON_PROPERTY_SUMMARY,
-  TargetEventDetail.JSON_PROPERTY_AGENT_TYPE,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_TESTS,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_TARGETS,
-  TargetEventDetail.JSON_PROPERTY_AFFECTED_AGENTS,
-  TargetEventDetail.JSON_PROPERTY_CAUSE,
-  TargetEventDetail.JSON_PROPERTY_LINKS,
-  TargetEventDetail.JSON_PROPERTY_TYPE,
-  TargetEventDetail.JSON_PROPERTY_GROUPING
+  DnsServerEventDetail.JSON_PROPERTY_ID,
+  DnsServerEventDetail.JSON_PROPERTY_TYPE_NAME,
+  DnsServerEventDetail.JSON_PROPERTY_STATE,
+  DnsServerEventDetail.JSON_PROPERTY_START_DATE,
+  DnsServerEventDetail.JSON_PROPERTY_END_DATE,
+  DnsServerEventDetail.JSON_PROPERTY_SEVERITY,
+  DnsServerEventDetail.JSON_PROPERTY_AID,
+  DnsServerEventDetail.JSON_PROPERTY_SUMMARY,
+  DnsServerEventDetail.JSON_PROPERTY_AGENT_TYPE,
+  DnsServerEventDetail.JSON_PROPERTY_AFFECTED_TESTS,
+  DnsServerEventDetail.JSON_PROPERTY_AFFECTED_TARGETS,
+  DnsServerEventDetail.JSON_PROPERTY_AFFECTED_AGENTS,
+  DnsServerEventDetail.JSON_PROPERTY_CAUSE,
+  DnsServerEventDetail.JSON_PROPERTY_LINKS,
+  DnsServerEventDetail.JSON_PROPERTY_TYPE,
+  DnsServerEventDetail.JSON_PROPERTY_GROUPING
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class TargetEventDetail {
+public class DnsServerEventDetail {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
 
@@ -105,13 +105,13 @@ public class TargetEventDetail {
   private String type;
 
   public static final String JSON_PROPERTY_GROUPING = "grouping";
-  private TargetEventGrouping grouping;
+  private DnsServerEventGrouping grouping;
 
-  public TargetEventDetail() { 
+  public DnsServerEventDetail() { 
   }
 
   @JsonCreator
-  public TargetEventDetail(
+  public DnsServerEventDetail(
     @JsonProperty(JSON_PROPERTY_ID) UUID id, 
     @JsonProperty(JSON_PROPERTY_TYPE_NAME) String typeName, 
     @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
@@ -156,7 +156,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail state(EventState state) {
+  public DnsServerEventDetail state(EventState state) {
     this.state = state;
     return this;
   }
@@ -211,7 +211,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail severity(EventAlertSeverity severity) {
+  public DnsServerEventDetail severity(EventAlertSeverity severity) {
     this.severity = severity;
     return this;
   }
@@ -236,7 +236,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail aid(String aid) {
+  public DnsServerEventDetail aid(String aid) {
     this.aid = aid;
     return this;
   }
@@ -276,7 +276,7 @@ public class TargetEventDetail {
 
 
 
-  public TargetEventDetail agentType(EventAgentType agentType) {
+  public DnsServerEventDetail agentType(EventAgentType agentType) {
     this.agentType = agentType;
     return this;
   }
@@ -301,7 +301,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedTests(AffectedTests affectedTests) {
+  public DnsServerEventDetail affectedTests(AffectedTests affectedTests) {
     this.affectedTests = affectedTests;
     return this;
   }
@@ -326,7 +326,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedTargets(AffectedTargets affectedTargets) {
+  public DnsServerEventDetail affectedTargets(AffectedTargets affectedTargets) {
     this.affectedTargets = affectedTargets;
     return this;
   }
@@ -351,7 +351,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail affectedAgents(AffectedAgents affectedAgents) {
+  public DnsServerEventDetail affectedAgents(AffectedAgents affectedAgents) {
     this.affectedAgents = affectedAgents;
     return this;
   }
@@ -376,12 +376,12 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail cause(Set<String> cause) {
+  public DnsServerEventDetail cause(Set<String> cause) {
     this.cause = cause;
     return this;
   }
 
-  public TargetEventDetail addCauseItem(String causeItem) {
+  public DnsServerEventDetail addCauseItem(String causeItem) {
     if (this.cause == null) {
       this.cause = new LinkedHashSet<>();
     }
@@ -410,7 +410,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail links(SelfLinks links) {
+  public DnsServerEventDetail links(SelfLinks links) {
     this.links = links;
     return this;
   }
@@ -435,13 +435,13 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail type(String type) {
+  public DnsServerEventDetail type(String type) {
     this.type = type;
     return this;
   }
 
    /**
-   * Target event type.
+   * DNS server event type.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -460,7 +460,7 @@ public class TargetEventDetail {
   }
 
 
-  public TargetEventDetail grouping(TargetEventGrouping grouping) {
+  public DnsServerEventDetail grouping(DnsServerEventGrouping grouping) {
     this.grouping = grouping;
     return this;
   }
@@ -473,20 +473,20 @@ public class TargetEventDetail {
   @JsonProperty(JSON_PROPERTY_GROUPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public TargetEventGrouping getGrouping() {
+  public DnsServerEventGrouping getGrouping() {
     return grouping;
   }
 
 
   @JsonProperty(JSON_PROPERTY_GROUPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGrouping(TargetEventGrouping grouping) {
+  public void setGrouping(DnsServerEventGrouping grouping) {
     this.grouping = grouping;
   }
 
 
   /**
-   * Return true if this TargetEventDetail object is equal to o.
+   * Return true if this DnsServerEventDetail object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -496,23 +496,23 @@ public class TargetEventDetail {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TargetEventDetail targetEventDetail = (TargetEventDetail) o;
-    return Objects.equals(this.id, targetEventDetail.id) &&
-        Objects.equals(this.typeName, targetEventDetail.typeName) &&
-        Objects.equals(this.state, targetEventDetail.state) &&
-        Objects.equals(this.startDate, targetEventDetail.startDate) &&
-        Objects.equals(this.endDate, targetEventDetail.endDate) &&
-        Objects.equals(this.severity, targetEventDetail.severity) &&
-        Objects.equals(this.aid, targetEventDetail.aid) &&
-        Objects.equals(this.summary, targetEventDetail.summary) &&
-        Objects.equals(this.agentType, targetEventDetail.agentType) &&
-        Objects.equals(this.affectedTests, targetEventDetail.affectedTests) &&
-        Objects.equals(this.affectedTargets, targetEventDetail.affectedTargets) &&
-        Objects.equals(this.affectedAgents, targetEventDetail.affectedAgents) &&
-        Objects.equals(this.cause, targetEventDetail.cause) &&
-        Objects.equals(this.links, targetEventDetail.links) &&
-        Objects.equals(this.type, targetEventDetail.type) &&
-        Objects.equals(this.grouping, targetEventDetail.grouping);
+    DnsServerEventDetail dnsServerEventDetail = (DnsServerEventDetail) o;
+    return Objects.equals(this.id, dnsServerEventDetail.id) &&
+        Objects.equals(this.typeName, dnsServerEventDetail.typeName) &&
+        Objects.equals(this.state, dnsServerEventDetail.state) &&
+        Objects.equals(this.startDate, dnsServerEventDetail.startDate) &&
+        Objects.equals(this.endDate, dnsServerEventDetail.endDate) &&
+        Objects.equals(this.severity, dnsServerEventDetail.severity) &&
+        Objects.equals(this.aid, dnsServerEventDetail.aid) &&
+        Objects.equals(this.summary, dnsServerEventDetail.summary) &&
+        Objects.equals(this.agentType, dnsServerEventDetail.agentType) &&
+        Objects.equals(this.affectedTests, dnsServerEventDetail.affectedTests) &&
+        Objects.equals(this.affectedTargets, dnsServerEventDetail.affectedTargets) &&
+        Objects.equals(this.affectedAgents, dnsServerEventDetail.affectedAgents) &&
+        Objects.equals(this.cause, dnsServerEventDetail.cause) &&
+        Objects.equals(this.links, dnsServerEventDetail.links) &&
+        Objects.equals(this.type, dnsServerEventDetail.type) &&
+        Objects.equals(this.grouping, dnsServerEventDetail.grouping);
   }
 
   @Override
@@ -523,7 +523,7 @@ public class TargetEventDetail {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TargetEventDetail {\n");
+    sb.append("class DnsServerEventDetail {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    typeName: ").append(toIndentedString(typeName)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");

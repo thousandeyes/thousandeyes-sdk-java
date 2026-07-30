@@ -146,7 +146,7 @@ public class SimpleEventDetail {
 
 
    /**
-   * The end date and time (in UTC, ISO 8601 format) when the event was resolved (due to timeout). This value is populated for \&quot;ongoing\&quot; events.
+   * The end date and time (in UTC, ISO 8601 format) when the event was resolved (due to timeout). This value is null for \&quot;ongoing\&quot; (active) events and is populated once the event is resolved.
    * @return endDate
   **/
   @jakarta.annotation.Nullable
