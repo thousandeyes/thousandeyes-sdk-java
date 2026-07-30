@@ -59,16 +59,23 @@ jobs:
         run: |
           sed -i "s|^\(version=\).*|\1${RELEASE_VERSION}|" gradle.properties
 
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.API_TEAM_AUTOMATION_CLIENT_ID }}
+          private-key: ${{ secrets.API_TEAM_AUTOMATION_PRIVATE_KEY }}
+          permission-contents: write
+
       - name: Add tag and push to the repository
         env:
-          # We need to use a PAT from an Admin user here, so that we can bypass the branch protection rules when pushing to main
-          SDK_ACTION_TOKEN: ${{ secrets.SDK_ACTION_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           git config user.name "API Team"
           git config user.email "api-team@thousandeyes.com"
 
-          # PAT is scoped to this step only so it is not available during publish/signing.
-          git remote set-url origin "https://x-access-token:${SDK_ACTION_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          # App token is scoped to this step only so it is not available during publish/signing.
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git add .
           git commit -m "[GitHub Bot] Released ${RELEASE_VERSION} SDK"
           git push origin
