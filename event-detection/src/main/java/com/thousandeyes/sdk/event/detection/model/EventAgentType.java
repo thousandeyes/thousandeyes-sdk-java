@@ -22,21 +22,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Type of the agent.
+ * Specifies the agent type associated with the event. Allowed values are &#x60;cloud-enterprise-agent&#x60; and &#x60;endpoint-agent&#x60;.
  */
-public enum CloudEnterpriseAgentType {
+public enum EventAgentType {
   
-  CLOUD("cloud"),
+  CLOUD_ENTERPRISE_AGENT("cloud-enterprise-agent"),
   
-  ENTERPRISE_CLUSTER("enterprise-cluster"),
-  
-  ENTERPRISE("enterprise"),
+  ENDPOINT_AGENT("endpoint-agent"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  CloudEnterpriseAgentType(String value) {
+  EventAgentType(String value) {
     this.value = value;
   }
 
@@ -51,8 +49,8 @@ public enum CloudEnterpriseAgentType {
   }
 
   @JsonCreator
-  public static CloudEnterpriseAgentType fromValue(String value) {
-    for (CloudEnterpriseAgentType b : CloudEnterpriseAgentType.values()) {
+  public static EventAgentType fromValue(String value) {
+    for (EventAgentType b : EventAgentType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
