@@ -127,10 +127,11 @@ public class EventsApi {
    * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
+   * @param ongoing When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. (optional)
    * @return Paginator<Event, Events>
    */
-  public Paginator<Event, Events> getEventsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max) {
-    return new Paginator<>(cursor -> getEvents(aid, window, startDate, endDate, max, cursor),
+  public Paginator<Event, Events> getEventsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, Boolean ongoing) {
+    return new Paginator<>(cursor -> getEvents(aid, window, startDate, endDate, max, cursor, ongoing),
                            Events::getEvents);
 
   }
@@ -143,11 +144,12 @@ public class EventsApi {
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param ongoing When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. (optional)
    * @return Events
    * @throws ApiException if fails to make API call
    */
-  public Events getEvents(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor) throws ApiException {
-    ApiResponse<Events> response = getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor);
+  public Events getEvents(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean ongoing) throws ApiException {
+    ApiResponse<Events> response = getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor, ongoing);
     return response.getData();
   }
 
@@ -160,13 +162,14 @@ public class EventsApi {
    * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
    * @param max (Optional) Maximum number of objects to return. (optional)
    * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param ongoing When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. (optional)
    * @return ApiResponse&lt;Events&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Events> getEventsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor) throws ApiException {
+  public ApiResponse<Events> getEventsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean ongoing) throws ApiException {
     getEventsValidateRequest();
 
-    var requestBuilder = getEventsRequestBuilder(aid, window, startDate, endDate, max, cursor);
+    var requestBuilder = getEventsRequestBuilder(aid, window, startDate, endDate, max, cursor, ongoing);
 
     return apiClient.send(requestBuilder.build(), Events.class);
   }
@@ -174,7 +177,7 @@ public class EventsApi {
   private void getEventsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEventsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor) throws ApiException {
+  private ApiRequest.ApiRequestBuilder getEventsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean ongoing) throws ApiException {
     ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
             .method("GET");
 
@@ -188,6 +191,7 @@ public class EventsApi {
     localVarQueryParams.addAll(parameterToPairs("endDate", endDate));
     localVarQueryParams.addAll(parameterToPairs("max", max));
     localVarQueryParams.addAll(parameterToPairs("cursor", cursor));
+    localVarQueryParams.addAll(parameterToPairs("ongoing", ongoing));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);
