@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.event.detection.model.AffectedAgents;
 import com.thousandeyes.sdk.event.detection.model.AffectedTargets;
 import com.thousandeyes.sdk.event.detection.model.AffectedTests;
+import com.thousandeyes.sdk.event.detection.model.EventAgentType;
 import com.thousandeyes.sdk.event.detection.model.EventAlertSeverity;
 import com.thousandeyes.sdk.event.detection.model.EventState;
 import com.thousandeyes.sdk.event.detection.model.NetworkEventGrouping;
@@ -47,6 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkPopEventDetail.JSON_PROPERTY_SEVERITY,
   NetworkPopEventDetail.JSON_PROPERTY_AID,
   NetworkPopEventDetail.JSON_PROPERTY_SUMMARY,
+  NetworkPopEventDetail.JSON_PROPERTY_AGENT_TYPE,
   NetworkPopEventDetail.JSON_PROPERTY_AFFECTED_TESTS,
   NetworkPopEventDetail.JSON_PROPERTY_AFFECTED_TARGETS,
   NetworkPopEventDetail.JSON_PROPERTY_AFFECTED_AGENTS,
@@ -80,6 +82,9 @@ public class NetworkPopEventDetail {
 
   public static final String JSON_PROPERTY_SUMMARY = "summary";
   private String summary;
+
+  public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
+  private EventAgentType agentType;
 
   public static final String JSON_PROPERTY_AFFECTED_TESTS = "affectedTests";
   private AffectedTests affectedTests;
@@ -192,7 +197,7 @@ public class NetworkPopEventDetail {
 
 
    /**
-   * The end date and time (in UTC, ISO 8601 format) when the event was resolved (due to timeout). This value is populated for \&quot;ongoing\&quot; events.
+   * The end date and time (in UTC, ISO 8601 format) when the event was resolved (due to timeout). This value is null for \&quot;ongoing\&quot; (active) events and is populated once the event is resolved.
    * @return endDate
   **/
   @jakarta.annotation.Nullable
@@ -269,6 +274,31 @@ public class NetworkPopEventDetail {
   }
 
 
+
+
+  public NetworkPopEventDetail agentType(EventAgentType agentType) {
+    this.agentType = agentType;
+    return this;
+  }
+
+   /**
+   * Get agentType
+   * @return agentType
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EventAgentType getAgentType() {
+    return agentType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgentType(EventAgentType agentType) {
+    this.agentType = agentType;
+  }
 
 
   public NetworkPopEventDetail affectedTests(AffectedTests affectedTests) {
@@ -475,6 +505,7 @@ public class NetworkPopEventDetail {
         Objects.equals(this.severity, networkPopEventDetail.severity) &&
         Objects.equals(this.aid, networkPopEventDetail.aid) &&
         Objects.equals(this.summary, networkPopEventDetail.summary) &&
+        Objects.equals(this.agentType, networkPopEventDetail.agentType) &&
         Objects.equals(this.affectedTests, networkPopEventDetail.affectedTests) &&
         Objects.equals(this.affectedTargets, networkPopEventDetail.affectedTargets) &&
         Objects.equals(this.affectedAgents, networkPopEventDetail.affectedAgents) &&
@@ -486,7 +517,7 @@ public class NetworkPopEventDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, typeName, state, startDate, endDate, severity, aid, summary, affectedTests, affectedTargets, affectedAgents, cause, links, type, grouping);
+    return Objects.hash(id, typeName, state, startDate, endDate, severity, aid, summary, agentType, affectedTests, affectedTargets, affectedAgents, cause, links, type, grouping);
   }
 
   @Override
@@ -501,6 +532,7 @@ public class NetworkPopEventDetail {
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
+    sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");
     sb.append("    affectedTests: ").append(toIndentedString(affectedTests)).append("\n");
     sb.append("    affectedTargets: ").append(toIndentedString(affectedTargets)).append("\n");
     sb.append("    affectedAgents: ").append(toIndentedString(affectedAgents)).append("\n");

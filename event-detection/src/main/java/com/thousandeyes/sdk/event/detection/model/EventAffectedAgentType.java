@@ -22,49 +22,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Specifies the event type in a machine-readable and backwards-compatible format, such as &#x60;agent&#x60; or &#x60;target&#x60;.
+ * Type of the affected agent.
  */
-public enum EventType {
+public enum EventAffectedAgentType {
   
-  AGENT_LOCAL("agent-local"),
+  CLOUD("cloud"),
   
-  NETWORK_POP("network-pop"),
+  ENTERPRISE_CLUSTER("enterprise-cluster"),
   
-  NETWORK("network"),
+  ENTERPRISE("enterprise"),
   
-  DNS("dns"),
+  ENTERPRISE_LITE("enterprise-lite"),
   
-  TARGET("target"),
+  ENTERPRISE_PULSE("enterprise-pulse"),
   
-  TARGET_NETWORK("target-network"),
-  
-  PROXY("proxy"),
-  
-  AGENT("agent"),
-  
-  APPLICATION("application"),
-  
-  WIRELESS("wireless"),
-  
-  GATEWAY("gateway"),
-  
-  DNS_SERVER("dns-server"),
-  
-  DNS_NAME("dns-name"),
-  
-  VPN("vpn"),
-  
-  AGENT_BRANCH("agent-branch"),
-  
-  DOMAIN("domain"),
-  
-  NAME_SERVER("name-server"),
+  ENTERPRISE_CSC("enterprise-csc"),
   
   UNKNOWN("unknown");
 
   private String value;
 
-  EventType(String value) {
+  EventAffectedAgentType(String value) {
     this.value = value;
   }
 
@@ -79,8 +57,8 @@ public enum EventType {
   }
 
   @JsonCreator
-  public static EventType fromValue(String value) {
-    for (EventType b : EventType.values()) {
+  public static EventAffectedAgentType fromValue(String value) {
+    for (EventAffectedAgentType b : EventAffectedAgentType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
