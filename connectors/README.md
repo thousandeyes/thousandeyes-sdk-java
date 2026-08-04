@@ -2,7 +2,7 @@
 
 Integrations API
 
-- API version: 7.0.96
+- API version: 7.0.99
 
 **Note:** The Webhook Operations APIs are not available for ThousandEyes for Government instance.
 
@@ -174,6 +174,20 @@ Class | Method | HTTP request | Description
 *OperationConnectorsApi* | [**getOperationConnectorsWithHttpInfo**](docs/OperationConnectorsApi.md#getOperationConnectorsWithHttpInfo) | **GET** /operations/{type}/{id}/connectors | Retrieve connectors assigned to an operation
 *OperationConnectorsApi* | [**setOperationConnectors**](docs/OperationConnectorsApi.md#setOperationConnectors) | **PUT** /operations/{type}/{id}/connectors | Assign connectors to an operation
 *OperationConnectorsApi* | [**setOperationConnectorsWithHttpInfo**](docs/OperationConnectorsApi.md#setOperationConnectorsWithHttpInfo) | **PUT** /operations/{type}/{id}/connectors | Assign connectors to an operation
+*PanoramaConnectorsApi* | [**createPanoramaConnector**](docs/PanoramaConnectorsApi.md#createPanoramaConnector) | **POST** /connectors/panorama | Create Panorama connector
+*PanoramaConnectorsApi* | [**createPanoramaConnectorWithHttpInfo**](docs/PanoramaConnectorsApi.md#createPanoramaConnectorWithHttpInfo) | **POST** /connectors/panorama | Create Panorama connector
+*PanoramaConnectorsApi* | [**deletePanoramaConnector**](docs/PanoramaConnectorsApi.md#deletePanoramaConnector) | **DELETE** /connectors/panorama/{id} | Delete Panorama connector
+*PanoramaConnectorsApi* | [**deletePanoramaConnectorWithHttpInfo**](docs/PanoramaConnectorsApi.md#deletePanoramaConnectorWithHttpInfo) | **DELETE** /connectors/panorama/{id} | Delete Panorama connector
+*PanoramaConnectorsApi* | [**getPanoramaConnector**](docs/PanoramaConnectorsApi.md#getPanoramaConnector) | **GET** /connectors/panorama/{id} | Retrieve Panorama connector
+*PanoramaConnectorsApi* | [**getPanoramaConnectorWithHttpInfo**](docs/PanoramaConnectorsApi.md#getPanoramaConnectorWithHttpInfo) | **GET** /connectors/panorama/{id} | Retrieve Panorama connector
+*PanoramaConnectorsApi* | [**getPanoramaConnectorOperations**](docs/PanoramaConnectorsApi.md#getPanoramaConnectorOperations) | **GET** /connectors/panorama/{id}/operations | List operation IDs for Panorama connector
+*PanoramaConnectorsApi* | [**getPanoramaConnectorOperationsWithHttpInfo**](docs/PanoramaConnectorsApi.md#getPanoramaConnectorOperationsWithHttpInfo) | **GET** /connectors/panorama/{id}/operations | List operation IDs for Panorama connector
+*PanoramaConnectorsApi* | [**getPanoramaConnectors**](docs/PanoramaConnectorsApi.md#getPanoramaConnectors) | **GET** /connectors/panorama | List Panorama connectors
+*PanoramaConnectorsApi* | [**getPanoramaConnectorsWithHttpInfo**](docs/PanoramaConnectorsApi.md#getPanoramaConnectorsWithHttpInfo) | **GET** /connectors/panorama | List Panorama connectors
+*PanoramaConnectorsApi* | [**setPanoramaConnectorOperations**](docs/PanoramaConnectorsApi.md#setPanoramaConnectorOperations) | **PUT** /connectors/panorama/{id}/operations | Assign operations to Panorama connector
+*PanoramaConnectorsApi* | [**setPanoramaConnectorOperationsWithHttpInfo**](docs/PanoramaConnectorsApi.md#setPanoramaConnectorOperationsWithHttpInfo) | **PUT** /connectors/panorama/{id}/operations | Assign operations to Panorama connector
+*PanoramaConnectorsApi* | [**updatePanoramaConnector**](docs/PanoramaConnectorsApi.md#updatePanoramaConnector) | **PUT** /connectors/panorama/{id} | Update Panorama connector
+*PanoramaConnectorsApi* | [**updatePanoramaConnectorWithHttpInfo**](docs/PanoramaConnectorsApi.md#updatePanoramaConnectorWithHttpInfo) | **PUT** /connectors/panorama/{id} | Update Panorama connector
 *WebhookOperationsApi* | [**createWebhookOperation**](docs/WebhookOperationsApi.md#createWebhookOperation) | **POST** /operations/webhooks | Create webhook operation
 *WebhookOperationsApi* | [**createWebhookOperationWithHttpInfo**](docs/WebhookOperationsApi.md#createWebhookOperationWithHttpInfo) | **POST** /operations/webhooks | Create webhook operation
 *WebhookOperationsApi* | [**deleteWebhookOperation**](docs/WebhookOperationsApi.md#deleteWebhookOperation) | **DELETE** /operations/webhooks/{id} | Delete webhook operation

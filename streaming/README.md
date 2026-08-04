@@ -2,11 +2,12 @@
 
 ThousandEyes for OpenTelemetry API
 
-- API version: 7.0.96
+- API version: 7.0.99
 
 **Note:** The following ThousandEyes for OpenTelemetry API capabilities are not available for ThousandEyes for Government instance:
 
 * Traces
+* Connected Devices
 * OTel-based integrations that rely on connectors and operations, including:
   * Splunk Cloud Platform HEC
   * Splunk Enterprise HEC

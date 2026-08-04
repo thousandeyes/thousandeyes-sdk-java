@@ -27,17 +27,28 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.event.detection.model.AffectedAgents;
 import com.thousandeyes.sdk.event.detection.model.AffectedTargets;
 import com.thousandeyes.sdk.event.detection.model.AffectedTests;
+import com.thousandeyes.sdk.event.detection.model.AgentBranchEventDetail;
+import com.thousandeyes.sdk.event.detection.model.AgentEventDetail;
 import com.thousandeyes.sdk.event.detection.model.AgentLocalEventDetail;
+import com.thousandeyes.sdk.event.detection.model.ApplicationEventDetail;
 import com.thousandeyes.sdk.event.detection.model.DnsEventDetail;
+import com.thousandeyes.sdk.event.detection.model.DnsNameEventDetail;
+import com.thousandeyes.sdk.event.detection.model.DnsServerEventDetail;
+import com.thousandeyes.sdk.event.detection.model.DomainEventDetail;
+import com.thousandeyes.sdk.event.detection.model.EventAgentType;
 import com.thousandeyes.sdk.event.detection.model.EventAlertSeverity;
 import com.thousandeyes.sdk.event.detection.model.EventState;
+import com.thousandeyes.sdk.event.detection.model.GatewayEventDetail;
+import com.thousandeyes.sdk.event.detection.model.NameServerEventDetail;
+import com.thousandeyes.sdk.event.detection.model.NameServerEventGrouping;
 import com.thousandeyes.sdk.event.detection.model.NetworkEventDetail;
-import com.thousandeyes.sdk.event.detection.model.NetworkEventGrouping;
 import com.thousandeyes.sdk.event.detection.model.NetworkPopEventDetail;
 import com.thousandeyes.sdk.event.detection.model.ProxyEventDetail;
 import com.thousandeyes.sdk.event.detection.model.SelfLinks;
 import com.thousandeyes.sdk.event.detection.model.TargetEventDetail;
 import com.thousandeyes.sdk.event.detection.model.TargetNetworkEventDetail;
+import com.thousandeyes.sdk.event.detection.model.VpnEventDetail;
+import com.thousandeyes.sdk.event.detection.model.WirelessEventDetail;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -107,12 +118,44 @@ public class EventDetail extends AbstractOpenApiSchema {
             Map<String,Object> result2 = tree.traverse(jp.getCodec()).readValueAs(new TypeReference<Map<String, Object>>() {});
             String discriminatorValue = (String)result2.get("type");
             switch (discriminatorValue) {
+                case "agent":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
+                case "agent-branch":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentBranchEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
                 case "agent-local":
                     deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentLocalEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
+                case "application":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApplicationEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
                 case "dns":
                     deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
+                case "dns-name":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsNameEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
+                case "dns-server":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsServerEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
+                case "domain":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DomainEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
+                case "gateway":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(GatewayEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
+                case "name-server":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(NameServerEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "network":
@@ -135,13 +178,73 @@ public class EventDetail extends AbstractOpenApiSchema {
                     deserialized = tree.traverse(jp.getCodec()).readValueAs(TargetNetworkEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
+                case "vpn":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(VpnEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
+                case "wireless":
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(WirelessEventDetail.class);
+                    newEventDetail.setActualInstance(deserialized);
+                    return newEventDetail;
                 default:
-                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for EventDetail. Possible values: agent-local dns network network-pop proxy target target-network", discriminatorValue));
+                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for EventDetail. Possible values: agent agent-branch agent-local application dns dns-name dns-server domain gateway name-server network network-pop proxy target target-network vpn wireless", discriminatorValue));
             }
 
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
             JsonToken token = tree.traverse(jp.getCodec()).nextToken();
+            // deserialize AgentBranchEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (AgentBranchEventDetail.class.equals(Integer.class) || AgentBranchEventDetail.class.equals(Long.class) || AgentBranchEventDetail.class.equals(Float.class) || AgentBranchEventDetail.class.equals(Double.class) || AgentBranchEventDetail.class.equals(Boolean.class) || AgentBranchEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((AgentBranchEventDetail.class.equals(Integer.class) || AgentBranchEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((AgentBranchEventDetail.class.equals(Float.class) || AgentBranchEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (AgentBranchEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (AgentBranchEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentBranchEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'AgentBranchEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'AgentBranchEventDetail'", e);
+            }
+
+            // deserialize AgentEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (AgentEventDetail.class.equals(Integer.class) || AgentEventDetail.class.equals(Long.class) || AgentEventDetail.class.equals(Float.class) || AgentEventDetail.class.equals(Double.class) || AgentEventDetail.class.equals(Boolean.class) || AgentEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((AgentEventDetail.class.equals(Integer.class) || AgentEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((AgentEventDetail.class.equals(Float.class) || AgentEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (AgentEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (AgentEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'AgentEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'AgentEventDetail'", e);
+            }
+
             // deserialize AgentLocalEventDetail
             try {
                 boolean attemptParsing = true;
@@ -168,6 +271,32 @@ public class EventDetail extends AbstractOpenApiSchema {
                 log.log(Level.FINER, "Input data does not match schema 'AgentLocalEventDetail'", e);
             }
 
+            // deserialize ApplicationEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (ApplicationEventDetail.class.equals(Integer.class) || ApplicationEventDetail.class.equals(Long.class) || ApplicationEventDetail.class.equals(Float.class) || ApplicationEventDetail.class.equals(Double.class) || ApplicationEventDetail.class.equals(Boolean.class) || ApplicationEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((ApplicationEventDetail.class.equals(Integer.class) || ApplicationEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((ApplicationEventDetail.class.equals(Float.class) || ApplicationEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (ApplicationEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (ApplicationEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApplicationEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'ApplicationEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'ApplicationEventDetail'", e);
+            }
+
             // deserialize DnsEventDetail
             try {
                 boolean attemptParsing = true;
@@ -192,6 +321,136 @@ public class EventDetail extends AbstractOpenApiSchema {
             } catch (Exception e) {
                 // deserialization failed, continue
                 log.log(Level.FINER, "Input data does not match schema 'DnsEventDetail'", e);
+            }
+
+            // deserialize DnsNameEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (DnsNameEventDetail.class.equals(Integer.class) || DnsNameEventDetail.class.equals(Long.class) || DnsNameEventDetail.class.equals(Float.class) || DnsNameEventDetail.class.equals(Double.class) || DnsNameEventDetail.class.equals(Boolean.class) || DnsNameEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((DnsNameEventDetail.class.equals(Integer.class) || DnsNameEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((DnsNameEventDetail.class.equals(Float.class) || DnsNameEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (DnsNameEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (DnsNameEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsNameEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'DnsNameEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'DnsNameEventDetail'", e);
+            }
+
+            // deserialize DnsServerEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (DnsServerEventDetail.class.equals(Integer.class) || DnsServerEventDetail.class.equals(Long.class) || DnsServerEventDetail.class.equals(Float.class) || DnsServerEventDetail.class.equals(Double.class) || DnsServerEventDetail.class.equals(Boolean.class) || DnsServerEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((DnsServerEventDetail.class.equals(Integer.class) || DnsServerEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((DnsServerEventDetail.class.equals(Float.class) || DnsServerEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (DnsServerEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (DnsServerEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsServerEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'DnsServerEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'DnsServerEventDetail'", e);
+            }
+
+            // deserialize DomainEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (DomainEventDetail.class.equals(Integer.class) || DomainEventDetail.class.equals(Long.class) || DomainEventDetail.class.equals(Float.class) || DomainEventDetail.class.equals(Double.class) || DomainEventDetail.class.equals(Boolean.class) || DomainEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((DomainEventDetail.class.equals(Integer.class) || DomainEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((DomainEventDetail.class.equals(Float.class) || DomainEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (DomainEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (DomainEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DomainEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'DomainEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'DomainEventDetail'", e);
+            }
+
+            // deserialize GatewayEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (GatewayEventDetail.class.equals(Integer.class) || GatewayEventDetail.class.equals(Long.class) || GatewayEventDetail.class.equals(Float.class) || GatewayEventDetail.class.equals(Double.class) || GatewayEventDetail.class.equals(Boolean.class) || GatewayEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((GatewayEventDetail.class.equals(Integer.class) || GatewayEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((GatewayEventDetail.class.equals(Float.class) || GatewayEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (GatewayEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (GatewayEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(GatewayEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'GatewayEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'GatewayEventDetail'", e);
+            }
+
+            // deserialize NameServerEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (NameServerEventDetail.class.equals(Integer.class) || NameServerEventDetail.class.equals(Long.class) || NameServerEventDetail.class.equals(Float.class) || NameServerEventDetail.class.equals(Double.class) || NameServerEventDetail.class.equals(Boolean.class) || NameServerEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((NameServerEventDetail.class.equals(Integer.class) || NameServerEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((NameServerEventDetail.class.equals(Float.class) || NameServerEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (NameServerEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (NameServerEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(NameServerEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'NameServerEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'NameServerEventDetail'", e);
             }
 
             // deserialize NetworkEventDetail
@@ -324,6 +583,58 @@ public class EventDetail extends AbstractOpenApiSchema {
                 log.log(Level.FINER, "Input data does not match schema 'TargetNetworkEventDetail'", e);
             }
 
+            // deserialize VpnEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (VpnEventDetail.class.equals(Integer.class) || VpnEventDetail.class.equals(Long.class) || VpnEventDetail.class.equals(Float.class) || VpnEventDetail.class.equals(Double.class) || VpnEventDetail.class.equals(Boolean.class) || VpnEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((VpnEventDetail.class.equals(Integer.class) || VpnEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((VpnEventDetail.class.equals(Float.class) || VpnEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (VpnEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (VpnEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(VpnEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'VpnEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'VpnEventDetail'", e);
+            }
+
+            // deserialize WirelessEventDetail
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (WirelessEventDetail.class.equals(Integer.class) || WirelessEventDetail.class.equals(Long.class) || WirelessEventDetail.class.equals(Float.class) || WirelessEventDetail.class.equals(Double.class) || WirelessEventDetail.class.equals(Boolean.class) || WirelessEventDetail.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((WirelessEventDetail.class.equals(Integer.class) || WirelessEventDetail.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((WirelessEventDetail.class.equals(Float.class) || WirelessEventDetail.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (WirelessEventDetail.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (WirelessEventDetail.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(WirelessEventDetail.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'WirelessEventDetail'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'WirelessEventDetail'", e);
+            }
+
             if (match == 1) {
                 EventDetail ret = new EventDetail();
                 ret.setActualInstance(deserialized);
@@ -348,12 +659,52 @@ public class EventDetail extends AbstractOpenApiSchema {
         super("oneOf", Boolean.FALSE);
     }
 
+    public EventDetail(AgentBranchEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EventDetail(AgentEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public EventDetail(AgentLocalEventDetail o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
+    public EventDetail(ApplicationEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public EventDetail(DnsEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EventDetail(DnsNameEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EventDetail(DnsServerEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EventDetail(DomainEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EventDetail(GatewayEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EventDetail(NameServerEventDetail o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -383,24 +734,54 @@ public class EventDetail extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public EventDetail(VpnEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EventDetail(WirelessEventDetail o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     static {
+        schemas.put("AgentBranchEventDetail", AgentBranchEventDetail.class);
+        schemas.put("AgentEventDetail", AgentEventDetail.class);
         schemas.put("AgentLocalEventDetail", AgentLocalEventDetail.class);
+        schemas.put("ApplicationEventDetail", ApplicationEventDetail.class);
         schemas.put("DnsEventDetail", DnsEventDetail.class);
+        schemas.put("DnsNameEventDetail", DnsNameEventDetail.class);
+        schemas.put("DnsServerEventDetail", DnsServerEventDetail.class);
+        schemas.put("DomainEventDetail", DomainEventDetail.class);
+        schemas.put("GatewayEventDetail", GatewayEventDetail.class);
+        schemas.put("NameServerEventDetail", NameServerEventDetail.class);
         schemas.put("NetworkEventDetail", NetworkEventDetail.class);
         schemas.put("NetworkPopEventDetail", NetworkPopEventDetail.class);
         schemas.put("ProxyEventDetail", ProxyEventDetail.class);
         schemas.put("TargetEventDetail", TargetEventDetail.class);
         schemas.put("TargetNetworkEventDetail", TargetNetworkEventDetail.class);
+        schemas.put("VpnEventDetail", VpnEventDetail.class);
+        schemas.put("WirelessEventDetail", WirelessEventDetail.class);
         JSON.registerDescendants(EventDetail.class, Collections.unmodifiableMap(schemas));
         // Initialize and register the discriminator mappings.
         Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
+        mappings.put("agent", AgentEventDetail.class);
+        mappings.put("agent-branch", AgentBranchEventDetail.class);
         mappings.put("agent-local", AgentLocalEventDetail.class);
+        mappings.put("application", ApplicationEventDetail.class);
         mappings.put("dns", DnsEventDetail.class);
+        mappings.put("dns-name", DnsNameEventDetail.class);
+        mappings.put("dns-server", DnsServerEventDetail.class);
+        mappings.put("domain", DomainEventDetail.class);
+        mappings.put("gateway", GatewayEventDetail.class);
+        mappings.put("name-server", NameServerEventDetail.class);
         mappings.put("network", NetworkEventDetail.class);
         mappings.put("network-pop", NetworkPopEventDetail.class);
         mappings.put("proxy", ProxyEventDetail.class);
         mappings.put("target", TargetEventDetail.class);
         mappings.put("target-network", TargetNetworkEventDetail.class);
+        mappings.put("vpn", VpnEventDetail.class);
+        mappings.put("wireless", WirelessEventDetail.class);
         mappings.put("EventDetail", EventDetail.class);
         JSON.registerDiscriminator(EventDetail.class, "type", mappings);
     }
@@ -413,19 +794,59 @@ public class EventDetail extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * AgentLocalEventDetail, DnsEventDetail, NetworkEventDetail, NetworkPopEventDetail, ProxyEventDetail, TargetEventDetail, TargetNetworkEventDetail
+     * AgentBranchEventDetail, AgentEventDetail, AgentLocalEventDetail, ApplicationEventDetail, DnsEventDetail, DnsNameEventDetail, DnsServerEventDetail, DomainEventDetail, GatewayEventDetail, NameServerEventDetail, NetworkEventDetail, NetworkPopEventDetail, ProxyEventDetail, TargetEventDetail, TargetNetworkEventDetail, VpnEventDetail, WirelessEventDetail
      *
      * It could be an instance of the 'oneOf' schemas.
      * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
      */
     @Override
     public void setActualInstance(Object instance) {
+        if (JSON.isInstanceOf(AgentBranchEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(AgentEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (JSON.isInstanceOf(AgentLocalEventDetail.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
         }
 
+        if (JSON.isInstanceOf(ApplicationEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (JSON.isInstanceOf(DnsEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(DnsNameEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(DnsServerEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(DomainEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(GatewayEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(NameServerEventDetail.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
         }
@@ -455,18 +876,50 @@ public class EventDetail extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be AgentLocalEventDetail, DnsEventDetail, NetworkEventDetail, NetworkPopEventDetail, ProxyEventDetail, TargetEventDetail, TargetNetworkEventDetail");
+        if (JSON.isInstanceOf(VpnEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(WirelessEventDetail.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be AgentBranchEventDetail, AgentEventDetail, AgentLocalEventDetail, ApplicationEventDetail, DnsEventDetail, DnsNameEventDetail, DnsServerEventDetail, DomainEventDetail, GatewayEventDetail, NameServerEventDetail, NetworkEventDetail, NetworkPopEventDetail, ProxyEventDetail, TargetEventDetail, TargetNetworkEventDetail, VpnEventDetail, WirelessEventDetail");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * AgentLocalEventDetail, DnsEventDetail, NetworkEventDetail, NetworkPopEventDetail, ProxyEventDetail, TargetEventDetail, TargetNetworkEventDetail
+     * AgentBranchEventDetail, AgentEventDetail, AgentLocalEventDetail, ApplicationEventDetail, DnsEventDetail, DnsNameEventDetail, DnsServerEventDetail, DomainEventDetail, GatewayEventDetail, NameServerEventDetail, NetworkEventDetail, NetworkPopEventDetail, ProxyEventDetail, TargetEventDetail, TargetNetworkEventDetail, VpnEventDetail, WirelessEventDetail
      *
-     * @return The actual instance (AgentLocalEventDetail, DnsEventDetail, NetworkEventDetail, NetworkPopEventDetail, ProxyEventDetail, TargetEventDetail, TargetNetworkEventDetail)
+     * @return The actual instance (AgentBranchEventDetail, AgentEventDetail, AgentLocalEventDetail, ApplicationEventDetail, DnsEventDetail, DnsNameEventDetail, DnsServerEventDetail, DomainEventDetail, GatewayEventDetail, NameServerEventDetail, NetworkEventDetail, NetworkPopEventDetail, ProxyEventDetail, TargetEventDetail, TargetNetworkEventDetail, VpnEventDetail, WirelessEventDetail)
      */
     @Override
     public Object getActualInstance() {
         return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `AgentBranchEventDetail`. If the actual instance is not `AgentBranchEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `AgentBranchEventDetail`
+     * @throws ClassCastException if the instance is not `AgentBranchEventDetail`
+     */
+    public AgentBranchEventDetail getAgentBranchEventDetail() throws ClassCastException {
+        return (AgentBranchEventDetail)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `AgentEventDetail`. If the actual instance is not `AgentEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `AgentEventDetail`
+     * @throws ClassCastException if the instance is not `AgentEventDetail`
+     */
+    public AgentEventDetail getAgentEventDetail() throws ClassCastException {
+        return (AgentEventDetail)super.getActualInstance();
     }
 
     /**
@@ -481,6 +934,17 @@ public class EventDetail extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `ApplicationEventDetail`. If the actual instance is not `ApplicationEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ApplicationEventDetail`
+     * @throws ClassCastException if the instance is not `ApplicationEventDetail`
+     */
+    public ApplicationEventDetail getApplicationEventDetail() throws ClassCastException {
+        return (ApplicationEventDetail)super.getActualInstance();
+    }
+
+    /**
      * Get the actual instance of `DnsEventDetail`. If the actual instance is not `DnsEventDetail`,
      * the ClassCastException will be thrown.
      *
@@ -489,6 +953,61 @@ public class EventDetail extends AbstractOpenApiSchema {
      */
     public DnsEventDetail getDnsEventDetail() throws ClassCastException {
         return (DnsEventDetail)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `DnsNameEventDetail`. If the actual instance is not `DnsNameEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `DnsNameEventDetail`
+     * @throws ClassCastException if the instance is not `DnsNameEventDetail`
+     */
+    public DnsNameEventDetail getDnsNameEventDetail() throws ClassCastException {
+        return (DnsNameEventDetail)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `DnsServerEventDetail`. If the actual instance is not `DnsServerEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `DnsServerEventDetail`
+     * @throws ClassCastException if the instance is not `DnsServerEventDetail`
+     */
+    public DnsServerEventDetail getDnsServerEventDetail() throws ClassCastException {
+        return (DnsServerEventDetail)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `DomainEventDetail`. If the actual instance is not `DomainEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `DomainEventDetail`
+     * @throws ClassCastException if the instance is not `DomainEventDetail`
+     */
+    public DomainEventDetail getDomainEventDetail() throws ClassCastException {
+        return (DomainEventDetail)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `GatewayEventDetail`. If the actual instance is not `GatewayEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `GatewayEventDetail`
+     * @throws ClassCastException if the instance is not `GatewayEventDetail`
+     */
+    public GatewayEventDetail getGatewayEventDetail() throws ClassCastException {
+        return (GatewayEventDetail)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `NameServerEventDetail`. If the actual instance is not `NameServerEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `NameServerEventDetail`
+     * @throws ClassCastException if the instance is not `NameServerEventDetail`
+     */
+    public NameServerEventDetail getNameServerEventDetail() throws ClassCastException {
+        return (NameServerEventDetail)super.getActualInstance();
     }
 
     /**
@@ -544,6 +1063,28 @@ public class EventDetail extends AbstractOpenApiSchema {
      */
     public TargetNetworkEventDetail getTargetNetworkEventDetail() throws ClassCastException {
         return (TargetNetworkEventDetail)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `VpnEventDetail`. If the actual instance is not `VpnEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `VpnEventDetail`
+     * @throws ClassCastException if the instance is not `VpnEventDetail`
+     */
+    public VpnEventDetail getVpnEventDetail() throws ClassCastException {
+        return (VpnEventDetail)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `WirelessEventDetail`. If the actual instance is not `WirelessEventDetail`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `WirelessEventDetail`
+     * @throws ClassCastException if the instance is not `WirelessEventDetail`
+     */
+    public WirelessEventDetail getWirelessEventDetail() throws ClassCastException {
+        return (WirelessEventDetail)super.getActualInstance();
     }
 
 
