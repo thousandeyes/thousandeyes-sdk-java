@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Specifies the event type in a machine-readable and backwards-compatible format. Allowed values are: &#x60;agent-local&#x60;, &#x60;network-pop&#x60;, &#x60;network&#x60;, &#x60;dns&#x60;, &#x60;target&#x60;, and &#x60;proxy&#x60;.
+ * Specifies the event type in a machine-readable and backwards-compatible format, such as &#x60;agent&#x60; or &#x60;target&#x60;.
  */
 public enum EventType {
   
@@ -39,6 +39,26 @@ public enum EventType {
   TARGET_NETWORK("target-network"),
   
   PROXY("proxy"),
+  
+  AGENT("agent"),
+  
+  APPLICATION("application"),
+  
+  WIRELESS("wireless"),
+  
+  GATEWAY("gateway"),
+  
+  DNS_SERVER("dns-server"),
+  
+  DNS_NAME("dns-name"),
+  
+  VPN("vpn"),
+  
+  AGENT_BRANCH("agent-branch"),
+  
+  DOMAIN("domain"),
+  
+  NAME_SERVER("name-server"),
   
   UNKNOWN("unknown");
 
