@@ -105,11 +105,13 @@ public class RealUserEndpointTestResultsApiTest {
                     "platform" : [ "mac", "mac" ],
                     "proxyTarget" : [ "78.153.54.204", "78.153.54.206" ],
                     "destinationIp" : [ "84.255.241.1", "193.2.1.88" ],
+                    "nicModel" : [ "Intel(R) Wi-Fi 6 AX200 160MHz", "Intel(R) Wi-Fi 6 AX200 160MHz" ],
                     "domain" : [ "thousandeyes.com" ],
                     "location" : [ "San Francisco Bay Area", "Germany" ],
                     "connection" : [ "wireless", "wireless" ],
                     "vpnTarget" : [ "78.153.54.204", "78.153.54.206" ],
                     "networkId" : [ "660b34109d12", "660b34109d15" ],
+                    "nicDriverVersion" : [ "22.250.0.9", "22.250.0.9" ],
                     "gateway" : [ "78.153.54.204", "78.153.54.206" ]
                   }
                 }
@@ -269,11 +271,13 @@ public class RealUserEndpointTestResultsApiTest {
                     "platform" : [ "mac", "mac" ],
                     "proxyTarget" : [ "78.153.54.204", "78.153.54.206" ],
                     "destinationIp" : [ "84.255.241.1", "193.2.1.88" ],
+                    "nicModel" : [ "Intel(R) Wi-Fi 6 AX200 160MHz", "Intel(R) Wi-Fi 6 AX200 160MHz" ],
                     "domain" : [ "thousandeyes.com" ],
                     "location" : [ "San Francisco Bay Area", "Germany" ],
                     "connection" : [ "wireless", "wireless" ],
                     "vpnTarget" : [ "78.153.54.204", "78.153.54.206" ],
                     "networkId" : [ "660b34109d12", "660b34109d15" ],
+                    "nicDriverVersion" : [ "22.250.0.9", "22.250.0.9" ],
                     "gateway" : [ "78.153.54.204", "78.153.54.206" ]
                   }
                 }
@@ -372,11 +376,13 @@ public class RealUserEndpointTestResultsApiTest {
                   "platform" : [ "mac", "mac" ],
                   "proxyTarget" : [ "78.153.54.204", "78.153.54.206" ],
                   "destinationIp" : [ "84.255.241.1", "193.2.1.88" ],
+                  "nicModel" : [ "Intel(R) Wi-Fi 6 AX200 160MHz", "Intel(R) Wi-Fi 6 AX200 160MHz" ],
                   "domain" : [ "thousandeyes.com" ],
                   "location" : [ "San Francisco Bay Area", "Germany" ],
                   "connection" : [ "wireless", "wireless" ],
                   "vpnTarget" : [ "78.153.54.204", "78.153.54.206" ],
                   "networkId" : [ "660b34109d12", "660b34109d15" ],
+                  "nicDriverVersion" : [ "22.250.0.9", "22.250.0.9" ],
                   "gateway" : [ "78.153.54.204", "78.153.54.206" ]
                 }
                                  """;

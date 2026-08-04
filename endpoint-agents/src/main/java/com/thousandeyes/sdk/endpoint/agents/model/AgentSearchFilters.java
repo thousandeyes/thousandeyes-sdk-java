@@ -40,6 +40,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentSearchFilters.JSON_PROPERTY_USER_PRINCIPAL_NAME,
   AgentSearchFilters.JSON_PROPERTY_PLATFORM,
   AgentSearchFilters.JSON_PROPERTY_OS_VERSION,
+  AgentSearchFilters.JSON_PROPERTY_NIC_MODEL,
+  AgentSearchFilters.JSON_PROPERTY_NIC_DRIVER_VERSION,
   AgentSearchFilters.JSON_PROPERTY_SERIAL_NUMBER,
   AgentSearchFilters.JSON_PROPERTY_LOCATION_COUNTRY_I_S_O,
   AgentSearchFilters.JSON_PROPERTY_LOCATION_SUBDIVISION1_CODE,
@@ -69,6 +71,12 @@ public class AgentSearchFilters {
 
   public static final String JSON_PROPERTY_OS_VERSION = "osVersion";
   private List<String> osVersion = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_MODEL = "nicModel";
+  private List<String> nicModel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_DRIVER_VERSION = "nicDriverVersion";
+  private List<String> nicDriverVersion = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
   private List<String> serialNumber = new ArrayList<>();
@@ -322,6 +330,72 @@ public class AgentSearchFilters {
   }
 
 
+  public AgentSearchFilters nicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+    return this;
+  }
+
+  public AgentSearchFilters addNicModelItem(String nicModelItem) {
+    if (this.nicModel == null) {
+      this.nicModel = new ArrayList<>();
+    }
+    this.nicModel.add(nicModelItem);
+    return this;
+  }
+
+   /**
+   * Returns only agents whose NIC model is an exact, case-sensitive match for one of the provided values.
+   * @return nicModel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicModel() {
+    return nicModel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+  }
+
+
+  public AgentSearchFilters nicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+    return this;
+  }
+
+  public AgentSearchFilters addNicDriverVersionItem(String nicDriverVersionItem) {
+    if (this.nicDriverVersion == null) {
+      this.nicDriverVersion = new ArrayList<>();
+    }
+    this.nicDriverVersion.add(nicDriverVersionItem);
+    return this;
+  }
+
+   /**
+   * Returns only agents whose NIC driver version is an exact, case-sensitive match for one of the provided values.
+   * @return nicDriverVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicDriverVersion() {
+    return nicDriverVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+  }
+
+
   public AgentSearchFilters serialNumber(List<String> serialNumber) {
     this.serialNumber = serialNumber;
     return this;
@@ -539,6 +613,8 @@ public class AgentSearchFilters {
         Objects.equals(this.userPrincipalName, agentSearchFilters.userPrincipalName) &&
         Objects.equals(this.platform, agentSearchFilters.platform) &&
         Objects.equals(this.osVersion, agentSearchFilters.osVersion) &&
+        Objects.equals(this.nicModel, agentSearchFilters.nicModel) &&
+        Objects.equals(this.nicDriverVersion, agentSearchFilters.nicDriverVersion) &&
         Objects.equals(this.serialNumber, agentSearchFilters.serialNumber) &&
         Objects.equals(this.locationCountryISO, agentSearchFilters.locationCountryISO) &&
         Objects.equals(this.locationSubdivision1Code, agentSearchFilters.locationSubdivision1Code) &&
@@ -549,7 +625,7 @@ public class AgentSearchFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, agentName, computerName, username, userPrincipalName, platform, osVersion, serialNumber, locationCountryISO, locationSubdivision1Code, locationCity, licenseType, anyConnectDeviceId);
+    return Objects.hash(id, agentName, computerName, username, userPrincipalName, platform, osVersion, nicModel, nicDriverVersion, serialNumber, locationCountryISO, locationSubdivision1Code, locationCity, licenseType, anyConnectDeviceId);
   }
 
   @Override
@@ -563,6 +639,8 @@ public class AgentSearchFilters {
     sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    osVersion: ").append(toIndentedString(osVersion)).append("\n");
+    sb.append("    nicModel: ").append(toIndentedString(nicModel)).append("\n");
+    sb.append("    nicDriverVersion: ").append(toIndentedString(nicDriverVersion)).append("\n");
     sb.append("    serialNumber: ").append(toIndentedString(serialNumber)).append("\n");
     sb.append("    locationCountryISO: ").append(toIndentedString(locationCountryISO)).append("\n");
     sb.append("    locationSubdivision1Code: ").append(toIndentedString(locationSubdivision1Code)).append("\n");

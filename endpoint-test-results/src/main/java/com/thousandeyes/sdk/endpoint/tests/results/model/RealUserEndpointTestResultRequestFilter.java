@@ -44,6 +44,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RealUserEndpointTestResultRequestFilter.JSON_PROPERTY_NETWORK_ID,
   RealUserEndpointTestResultRequestFilter.JSON_PROPERTY_SSID,
   RealUserEndpointTestResultRequestFilter.JSON_PROPERTY_BSSID,
+  RealUserEndpointTestResultRequestFilter.JSON_PROPERTY_NIC_MODEL,
+  RealUserEndpointTestResultRequestFilter.JSON_PROPERTY_NIC_DRIVER_VERSION,
   RealUserEndpointTestResultRequestFilter.JSON_PROPERTY_DESTINATION_IP,
   RealUserEndpointTestResultRequestFilter.JSON_PROPERTY_DOMAIN,
   RealUserEndpointTestResultRequestFilter.JSON_PROPERTY_TRIGGER,
@@ -80,6 +82,12 @@ public class RealUserEndpointTestResultRequestFilter {
 
   public static final String JSON_PROPERTY_BSSID = "bssid";
   private List<String> bssid = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_MODEL = "nicModel";
+  private List<String> nicModel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_DRIVER_VERSION = "nicDriverVersion";
+  private List<String> nicDriverVersion = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DESTINATION_IP = "destinationIp";
   private List<String> destinationIp = new ArrayList<>();
@@ -426,6 +434,72 @@ public class RealUserEndpointTestResultRequestFilter {
   }
 
 
+  public RealUserEndpointTestResultRequestFilter nicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+    return this;
+  }
+
+  public RealUserEndpointTestResultRequestFilter addNicModelItem(String nicModelItem) {
+    if (this.nicModel == null) {
+      this.nicModel = new ArrayList<>();
+    }
+    this.nicModel.add(nicModelItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC models that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicModel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicModel() {
+    return nicModel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+  }
+
+
+  public RealUserEndpointTestResultRequestFilter nicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+    return this;
+  }
+
+  public RealUserEndpointTestResultRequestFilter addNicDriverVersionItem(String nicDriverVersionItem) {
+    if (this.nicDriverVersion == null) {
+      this.nicDriverVersion = new ArrayList<>();
+    }
+    this.nicDriverVersion.add(nicDriverVersionItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC driver versions that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicDriverVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicDriverVersion() {
+    return nicDriverVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+  }
+
+
   public RealUserEndpointTestResultRequestFilter destinationIp(List<String> destinationIp) {
     this.destinationIp = destinationIp;
     return this;
@@ -580,6 +654,8 @@ public class RealUserEndpointTestResultRequestFilter {
         Objects.equals(this.networkId, realUserEndpointTestResultRequestFilter.networkId) &&
         Objects.equals(this.ssid, realUserEndpointTestResultRequestFilter.ssid) &&
         Objects.equals(this.bssid, realUserEndpointTestResultRequestFilter.bssid) &&
+        Objects.equals(this.nicModel, realUserEndpointTestResultRequestFilter.nicModel) &&
+        Objects.equals(this.nicDriverVersion, realUserEndpointTestResultRequestFilter.nicDriverVersion) &&
         Objects.equals(this.destinationIp, realUserEndpointTestResultRequestFilter.destinationIp) &&
         Objects.equals(this.domain, realUserEndpointTestResultRequestFilter.domain) &&
         Objects.equals(this.trigger, realUserEndpointTestResultRequestFilter.trigger) &&
@@ -588,7 +664,7 @@ public class RealUserEndpointTestResultRequestFilter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(location, connection, platform, gateway, proxyTarget, vpnTarget, agentId, networkId, ssid, bssid, destinationIp, domain, trigger, visitedSite);
+    return Objects.hash(location, connection, platform, gateway, proxyTarget, vpnTarget, agentId, networkId, ssid, bssid, nicModel, nicDriverVersion, destinationIp, domain, trigger, visitedSite);
   }
 
   @Override
@@ -605,6 +681,8 @@ public class RealUserEndpointTestResultRequestFilter {
     sb.append("    networkId: ").append(toIndentedString(networkId)).append("\n");
     sb.append("    ssid: ").append(toIndentedString(ssid)).append("\n");
     sb.append("    bssid: ").append(toIndentedString(bssid)).append("\n");
+    sb.append("    nicModel: ").append(toIndentedString(nicModel)).append("\n");
+    sb.append("    nicDriverVersion: ").append(toIndentedString(nicDriverVersion)).append("\n");
     sb.append("    destinationIp: ").append(toIndentedString(destinationIp)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    trigger: ").append(toIndentedString(trigger)).append("\n");
