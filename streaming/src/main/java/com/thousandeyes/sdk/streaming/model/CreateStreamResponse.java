@@ -1,6 +1,6 @@
 /*
  * ThousandEyes for OpenTelemetry API
- * **Note:** The following ThousandEyes for OpenTelemetry API capabilities are not available for ThousandEyes for Government instance:  * Traces * OTel-based integrations that rely on connectors and operations, including:   * Splunk Cloud Platform HEC   * Splunk Enterprise HEC   * Splunk Observability APM   * Dynatrace Observability APM  ThousandEyes for OpenTelemetry provides machine-to-machine integration between ThousandEyes and its customers. It allows you to export ThousandEyes telemetry data in OTel format, which is widely used in the industry. With ThousandEyes for OTel, you can leverage frameworks widely used in the observability domain - such as Splunk, Grafana, and Honeycomb - to capture and analyze ThousandEyes data. Any client that supports OTel can use ThousandEyes for OpenTelemetry.  ThousandEyes for OTel is made up of the following components:  * Data streaming APIs that you can use to configure and enable your ThousandEyes tests with OTel-compatible streams, in particular to configure how ThousandEyes telemetry data is exported to client integrations. * A set of streaming pipelines called _collectors_ that actively fetch ThousandEyes network test data, enrich the data with some additional detail, filter, and push the data to the customer-configured endpoints, depending on what you configure via the public APIs. * Third-party OTel collectors that receive, transform, filter, and export different metrics to client applications such as AppD, or any other OTel-capable client configuration.  For more information about ThousandEyes for OpenTelemetry, see the [product documentation](https://docs.thousandeyes.com/product-documentation/integration-guides/opentelemetry). 
+ * **Note:** The following ThousandEyes for OpenTelemetry API capabilities are not available for ThousandEyes for Government instance:  * Traces * Connected Devices * OTel-based integrations that rely on connectors and operations, including:   * Splunk Cloud Platform HEC   * Splunk Enterprise HEC   * Splunk Observability APM   * Dynatrace Observability APM  ThousandEyes for OpenTelemetry provides machine-to-machine integration between ThousandEyes and its customers. It allows you to export ThousandEyes telemetry data in OTel format, which is widely used in the industry. With ThousandEyes for OTel, you can leverage frameworks widely used in the observability domain - such as Splunk, Grafana, and Honeycomb - to capture and analyze ThousandEyes data. Any client that supports OTel can use ThousandEyes for OpenTelemetry.  ThousandEyes for OTel is made up of the following components:  * Data streaming APIs that you can use to configure and enable your ThousandEyes tests with OTel-compatible streams, in particular to configure how ThousandEyes telemetry data is exported to client integrations. * A set of streaming pipelines called _collectors_ that actively fetch ThousandEyes network test data, enrich the data with some additional detail, filter, and push the data to the customer-configured endpoints, depending on what you configure via the public APIs. * Third-party OTel collectors that receive, transform, filter, and export different metrics to client applications such as AppD, or any other OTel-capable client configuration.  For more information about ThousandEyes for OpenTelemetry, see the [product documentation](https://docs.thousandeyes.com/product-documentation/integration-guides/opentelemetry). 
  *
  * 
  *
@@ -27,6 +27,7 @@ import com.thousandeyes.sdk.streaming.model.EndpointAgentTag;
 import com.thousandeyes.sdk.streaming.model.EndpointType;
 import com.thousandeyes.sdk.streaming.model.ExporterConfig;
 import com.thousandeyes.sdk.streaming.model.Filters;
+import com.thousandeyes.sdk.streaming.model.InputConfig;
 import com.thousandeyes.sdk.streaming.model.Signal;
 import com.thousandeyes.sdk.streaming.model.StreamLinks;
 import com.thousandeyes.sdk.streaming.model.StreamStatus;
@@ -57,6 +58,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateStreamResponse.JSON_PROPERTY_TAG_MATCH,
   CreateStreamResponse.JSON_PROPERTY_TEST_MATCH,
   CreateStreamResponse.JSON_PROPERTY_FILTERS,
+  CreateStreamResponse.JSON_PROPERTY_INPUT_CONFIG,
   CreateStreamResponse.JSON_PROPERTY_EXPORTER_CONFIG,
   CreateStreamResponse.JSON_PROPERTY_ENDPOINT_AGENT_LABEL,
   CreateStreamResponse.JSON_PROPERTY_ENDPOINT_AGENT_TAG,
@@ -100,6 +102,9 @@ public class CreateStreamResponse {
 
   public static final String JSON_PROPERTY_FILTERS = "filters";
   private Filters filters;
+
+  public static final String JSON_PROPERTY_INPUT_CONFIG = "inputConfig";
+  private InputConfig inputConfig;
 
   public static final String JSON_PROPERTY_EXPORTER_CONFIG = "exporterConfig";
   private ExporterConfig exporterConfig;
@@ -441,6 +446,31 @@ public class CreateStreamResponse {
   }
 
 
+  public CreateStreamResponse inputConfig(InputConfig inputConfig) {
+    this.inputConfig = inputConfig;
+    return this;
+  }
+
+   /**
+   * Get inputConfig
+   * @return inputConfig
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_INPUT_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public InputConfig getInputConfig() {
+    return inputConfig;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INPUT_CONFIG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInputConfig(InputConfig inputConfig) {
+    this.inputConfig = inputConfig;
+  }
+
+
   public CreateStreamResponse exporterConfig(ExporterConfig exporterConfig) {
     this.exporterConfig = exporterConfig;
     return this;
@@ -606,6 +636,7 @@ public class CreateStreamResponse {
         Objects.equals(this.tagMatch, createStreamResponse.tagMatch) &&
         Objects.equals(this.testMatch, createStreamResponse.testMatch) &&
         Objects.equals(this.filters, createStreamResponse.filters) &&
+        Objects.equals(this.inputConfig, createStreamResponse.inputConfig) &&
         Objects.equals(this.exporterConfig, createStreamResponse.exporterConfig) &&
         Objects.equals(this.endpointAgentLabel, createStreamResponse.endpointAgentLabel) &&
         Objects.equals(this.endpointAgentTag, createStreamResponse.endpointAgentTag) &&
@@ -615,7 +646,7 @@ public class CreateStreamResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, exporterConfig, endpointAgentLabel, endpointAgentTag, auditOperation, streamStatus);
+    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, inputConfig, exporterConfig, endpointAgentLabel, endpointAgentTag, auditOperation, streamStatus);
   }
 
   @Override
@@ -634,6 +665,7 @@ public class CreateStreamResponse {
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    inputConfig: ").append(toIndentedString(inputConfig)).append("\n");
     sb.append("    exporterConfig: ").append(toIndentedString(exporterConfig)).append("\n");
     sb.append("    endpointAgentLabel: ").append(toIndentedString(endpointAgentLabel)).append("\n");
     sb.append("    endpointAgentTag: ").append(toIndentedString(endpointAgentTag)).append("\n");
