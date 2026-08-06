@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.event.detection.model.AffectedAgents;
 import com.thousandeyes.sdk.event.detection.model.AffectedTargets;
 import com.thousandeyes.sdk.event.detection.model.AffectedTests;
+import com.thousandeyes.sdk.event.detection.model.EventAgentType;
 import com.thousandeyes.sdk.event.detection.model.EventAlertSeverity;
 import com.thousandeyes.sdk.event.detection.model.EventState;
 import com.thousandeyes.sdk.event.detection.model.SelfLinks;
@@ -47,6 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TargetEventDetail.JSON_PROPERTY_SEVERITY,
   TargetEventDetail.JSON_PROPERTY_AID,
   TargetEventDetail.JSON_PROPERTY_SUMMARY,
+  TargetEventDetail.JSON_PROPERTY_AGENT_TYPE,
   TargetEventDetail.JSON_PROPERTY_AFFECTED_TESTS,
   TargetEventDetail.JSON_PROPERTY_AFFECTED_TARGETS,
   TargetEventDetail.JSON_PROPERTY_AFFECTED_AGENTS,
@@ -80,6 +82,9 @@ public class TargetEventDetail {
 
   public static final String JSON_PROPERTY_SUMMARY = "summary";
   private String summary;
+
+  public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
+  private EventAgentType agentType;
 
   public static final String JSON_PROPERTY_AFFECTED_TESTS = "affectedTests";
   private AffectedTests affectedTests;
@@ -192,7 +197,7 @@ public class TargetEventDetail {
 
 
    /**
-   * The end date and time (in UTC, ISO 8601 format) when the event was resolved (due to timeout). This value is populated for \&quot;ongoing\&quot; events.
+   * The end date and time (in UTC, ISO 8601 format) when the event was resolved (due to timeout). This value is null for \&quot;ongoing\&quot; (active) events and is populated once the event is resolved.
    * @return endDate
   **/
   @jakarta.annotation.Nullable
@@ -269,6 +274,31 @@ public class TargetEventDetail {
   }
 
 
+
+
+  public TargetEventDetail agentType(EventAgentType agentType) {
+    this.agentType = agentType;
+    return this;
+  }
+
+   /**
+   * Get agentType
+   * @return agentType
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public EventAgentType getAgentType() {
+    return agentType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AGENT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgentType(EventAgentType agentType) {
+    this.agentType = agentType;
+  }
 
 
   public TargetEventDetail affectedTests(AffectedTests affectedTests) {
@@ -475,6 +505,7 @@ public class TargetEventDetail {
         Objects.equals(this.severity, targetEventDetail.severity) &&
         Objects.equals(this.aid, targetEventDetail.aid) &&
         Objects.equals(this.summary, targetEventDetail.summary) &&
+        Objects.equals(this.agentType, targetEventDetail.agentType) &&
         Objects.equals(this.affectedTests, targetEventDetail.affectedTests) &&
         Objects.equals(this.affectedTargets, targetEventDetail.affectedTargets) &&
         Objects.equals(this.affectedAgents, targetEventDetail.affectedAgents) &&
@@ -486,7 +517,7 @@ public class TargetEventDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, typeName, state, startDate, endDate, severity, aid, summary, affectedTests, affectedTargets, affectedAgents, cause, links, type, grouping);
+    return Objects.hash(id, typeName, state, startDate, endDate, severity, aid, summary, agentType, affectedTests, affectedTargets, affectedAgents, cause, links, type, grouping);
   }
 
   @Override
@@ -501,6 +532,7 @@ public class TargetEventDetail {
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
+    sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");
     sb.append("    affectedTests: ").append(toIndentedString(affectedTests)).append("\n");
     sb.append("    affectedTargets: ").append(toIndentedString(affectedTargets)).append("\n");
     sb.append("    affectedAgents: ").append(toIndentedString(affectedAgents)).append("\n");

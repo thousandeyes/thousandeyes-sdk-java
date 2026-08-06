@@ -21,6 +21,7 @@ import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
+import com.thousandeyes.sdk.tests.results.model.ConsoleLogsTestResults;
 import com.thousandeyes.sdk.tests.results.model.Error;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.tests.results.model.UnauthorizedError;
@@ -64,6 +65,75 @@ public class WebTransactionsTestResultsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Get console logs test results by agent and round
+   * Returns console logs for the specified test, agent, and round ID. 
+   * @param testId Test ID (required)
+   * @param agentId Agent ID (required)
+   * @param roundId Round ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return ConsoleLogsTestResults
+   * @throws ApiException if fails to make API call
+   */
+  public ConsoleLogsTestResults getTestConsoleLogsAgentRoundResults(String testId, String agentId, String roundId, String aid) throws ApiException {
+    ApiResponse<ConsoleLogsTestResults> response = getTestConsoleLogsAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+    return response.getData();
+  }
+
+  /**
+   * Get console logs test results by agent and round
+   * Returns console logs for the specified test, agent, and round ID. 
+   * @param testId Test ID (required)
+   * @param agentId Agent ID (required)
+   * @param roundId Round ID (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return ApiResponse&lt;ConsoleLogsTestResults&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ConsoleLogsTestResults> getTestConsoleLogsAgentRoundResultsWithHttpInfo(String testId, String agentId, String roundId, String aid) throws ApiException {
+    getTestConsoleLogsAgentRoundResultsValidateRequest(testId, agentId, roundId);
+
+    var requestBuilder = getTestConsoleLogsAgentRoundResultsRequestBuilder(testId, agentId, roundId, aid);
+
+    return apiClient.send(requestBuilder.build(), ConsoleLogsTestResults.class);
+  }
+
+  private void getTestConsoleLogsAgentRoundResultsValidateRequest(String testId, String agentId, String roundId) throws ApiException {
+      // verify the required parameter 'testId' is set
+      if (testId == null) {
+        throw new ApiException(400, "Missing the required parameter 'testId' when calling getTestConsoleLogsAgentRoundResults");
+      }
+      // verify the required parameter 'agentId' is set
+      if (agentId == null) {
+        throw new ApiException(400, "Missing the required parameter 'agentId' when calling getTestConsoleLogsAgentRoundResults");
+      }
+      // verify the required parameter 'roundId' is set
+      if (roundId == null) {
+        throw new ApiException(400, "Missing the required parameter 'roundId' when calling getTestConsoleLogsAgentRoundResults");
+      }
+  }
+
+  private ApiRequest.ApiRequestBuilder getTestConsoleLogsAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("GET");
+
+    String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs"
+        .replace("{testId}", urlEncode(testId.toString()))
+        .replace("{agentId}", urlEncode(agentId.toString()))
+        .replace("{roundId}", urlEncode(roundId.toString()));
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    return requestBuilder;
+  }
   /**
    * Get detailed web transactions test result by agent, round, and page
    * Returns a page of web transaction test results for an agent and round. 

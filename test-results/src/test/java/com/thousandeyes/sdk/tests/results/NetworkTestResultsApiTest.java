@@ -162,7 +162,6 @@ public class NetworkTestResultsApiTest {
                   "results" : [ {
                     "date" : "2022-07-17T22:00:54Z",
                     "server" : "www.thousandeyes.com:80",
-                    "availableBandwidth" : 9.100464,
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -170,8 +169,6 @@ public class NetworkTestResultsApiTest {
                       "countryId" : "US"
                     },
                     "packetsBySecond" : [ [ ], [ 0 ], [ 2 ], [ 2, 1 ], [ 1, 1 ] ],
-                    "avgLatency" : 167.04,
-                    "bandwidth" : 4.3313155,
                     "minLatency" : 167,
                     "_links" : {
                       "appLink" : {
@@ -186,24 +183,27 @@ public class NetworkTestResultsApiTest {
                       }
                     },
                     "maxLatency" : 168,
-                    "proxyJitter" : 1.2,
-                    "proxyAverageLatency" : 45,
-                    "proxyLoss" : 2.5,
                     "healthScore" : 0.98,
                     "capacity" : 210.10854,
                     "loss" : 0,
                     "proxyMinLatency" : 40,
+                    "startTime" : 1384309800,
+                    "roundId" : 1384309800,
+                    "direction" : "to-target",
+                    "availableBandwidth" : 9.100464,
+                    "avgLatency" : 167.04,
+                    "bandwidth" : 4.3313155,
+                    "proxyJitter" : 1.2,
+                    "proxyAverageLatency" : 45,
+                    "proxyLoss" : 2.5,
                     "jitter" : 0.076808,
                     "serverIp" : "50.18.127.223",
-                    "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "proxyMaxLatency" : 50,
-                    "roundId" : 1384309800,
-                    "direction" : "to-target"
+                    "errorDetails" : ""
                   }, {
                     "date" : "2022-07-17T22:00:54Z",
                     "server" : "www.thousandeyes.com:80",
-                    "availableBandwidth" : 9.100464,
                     "agent" : {
                       "agentId" : "281474976710706",
                       "agentName" : "thousandeyes-stg-va-254",
@@ -211,8 +211,6 @@ public class NetworkTestResultsApiTest {
                       "countryId" : "US"
                     },
                     "packetsBySecond" : [ [ ], [ 0 ], [ 2 ], [ 2, 1 ], [ 1, 1 ] ],
-                    "avgLatency" : 167.04,
-                    "bandwidth" : 4.3313155,
                     "minLatency" : 167,
                     "_links" : {
                       "appLink" : {
@@ -227,20 +225,24 @@ public class NetworkTestResultsApiTest {
                       }
                     },
                     "maxLatency" : 168,
-                    "proxyJitter" : 1.2,
-                    "proxyAverageLatency" : 45,
-                    "proxyLoss" : 2.5,
                     "healthScore" : 0.98,
                     "capacity" : 210.10854,
                     "loss" : 0,
                     "proxyMinLatency" : 40,
+                    "startTime" : 1384309800,
+                    "roundId" : 1384309800,
+                    "direction" : "to-target",
+                    "availableBandwidth" : 9.100464,
+                    "avgLatency" : 167.04,
+                    "bandwidth" : 4.3313155,
+                    "proxyJitter" : 1.2,
+                    "proxyAverageLatency" : 45,
+                    "proxyLoss" : 2.5,
                     "jitter" : 0.076808,
                     "serverIp" : "50.18.127.223",
-                    "startTime" : 1384309800,
                     "endTime" : 1384309800,
                     "proxyMaxLatency" : 50,
-                    "roundId" : 1384309800,
-                    "direction" : "to-target"
+                    "errorDetails" : ""
                   } ],
                   "startDate" : "2022-07-17T22:00:54Z"
                 }

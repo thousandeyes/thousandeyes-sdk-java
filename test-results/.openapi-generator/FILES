@@ -40,6 +40,9 @@ src/main/java/com/thousandeyes/sdk/tests/results/model/BgpTestResult.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/BgpTestResults.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/BgpTestRouteInformationResult.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/BgpTestRouteInformationResults.java
+src/main/java/com/thousandeyes/sdk/tests/results/model/ConsoleLogs.java
+src/main/java/com/thousandeyes/sdk/tests/results/model/ConsoleLogsResult.java
+src/main/java/com/thousandeyes/sdk/tests/results/model/ConsoleLogsTestResults.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/DnsMeasurementProtocol.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/DnsOpcode.java
 src/main/java/com/thousandeyes/sdk/tests/results/model/DnsQr.java
