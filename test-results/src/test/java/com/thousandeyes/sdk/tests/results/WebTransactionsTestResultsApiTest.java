@@ -12,6 +12,7 @@
 
 package com.thousandeyes.sdk.tests.results;
 
+import com.thousandeyes.sdk.tests.results.model.ConsoleLogsTestResults;
 import com.thousandeyes.sdk.tests.results.model.Error;
 import java.time.OffsetDateTime;
 import com.thousandeyes.sdk.tests.results.model.UnauthorizedError;
@@ -72,6 +73,172 @@ public class WebTransactionsTestResultsApiTest {
                                 .bearerToken(TOKEN)
                                 .build();
         api = new WebTransactionsTestResultsApi(client);
+    }
+    
+    /**
+     * Get console logs test results by agent and round
+     * <p>
+     * Returns console logs for the specified test, agent, and round ID. 
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void getTestConsoleLogsAgentRoundResultsRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String testId = "202701";
+        String agentId = "11";
+        String roundId = "1384309800";
+
+
+        var responseBodyJson = """
+                {
+                  "test" : {
+                    "_links" : {
+                      "testResults" : [ {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/network"
+                      }, {
+                        "href" : "https://api.thousandeyes.com/v7/test-results/281474976710706/path-vis"
+                      } ],
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "liveShare" : false,
+                    "savedEvent" : true,
+                    "description" : "ThousandEyes Test",
+                    "type" : "agent-to-server",
+                    "enabled" : true,
+                    "createdDate" : "2022-07-17T22:00:54Z",
+                    "createdBy" : "user@user.com",
+                    "modifiedDate" : "2022-07-17T22:00:54Z",
+                    "interval" : 60,
+                    "modifiedBy" : "user@user.com",
+                    "testId" : "281474976710706",
+                    "alertsEnabled" : true,
+                    "testName" : "ThousandEyes Test"
+                  },
+                  "_links" : {
+                    "next" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    },
+                    "previous" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    },
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "results" : [ {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "_links" : {
+                      "appLink" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "consoleLogs" : [ {
+                      "level" : "INFO",
+                      "value" : "Uncaught TypeError: Cannot read property attr of undefined",
+                      "timestamp" : "1715880042123"
+                    }, {
+                      "level" : "INFO",
+                      "value" : "Uncaught TypeError: Cannot read property attr of undefined",
+                      "timestamp" : "1715880042123"
+                    } ],
+                    "roundId" : 1384309800
+                  }, {
+                    "date" : "2022-07-17T22:00:54Z",
+                    "agent" : {
+                      "agentId" : "281474976710706",
+                      "agentName" : "thousandeyes-stg-va-254",
+                      "location" : "San Francisco Bay Area",
+                      "countryId" : "US"
+                    },
+                    "_links" : {
+                      "appLink" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "consoleLogs" : [ {
+                      "level" : "INFO",
+                      "value" : "Uncaught TypeError: Cannot read property attr of undefined",
+                      "timestamp" : "1715880042123"
+                    }, {
+                      "level" : "INFO",
+                      "value" : "Uncaught TypeError: Cannot read property attr of undefined",
+                      "timestamp" : "1715880042123"
+                    } ],
+                    "roundId" : 1384309800
+                  } ]
+                }
+                                  """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
+        ConsoleLogsTestResults mappedResponse = 
+                mapper.readValue(responseBodyJson, ConsoleLogsTestResults.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs";
+        stubFor(get(urlPathTemplate(path))
+                        .withPathParam("testId", equalTo(URLEncoder.encode(testId, StandardCharsets.UTF_8)))
+                        .withPathParam("agentId", equalTo(URLEncoder.encode(agentId, StandardCharsets.UTF_8)))
+                        .withPathParam("roundId", equalTo(URLEncoder.encode(roundId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.getTestConsoleLogsAgentRoundResults(testId, agentId, roundId, null);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**

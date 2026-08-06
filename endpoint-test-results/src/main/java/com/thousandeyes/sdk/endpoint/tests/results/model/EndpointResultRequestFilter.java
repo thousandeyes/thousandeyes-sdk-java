@@ -42,7 +42,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointResultRequestFilter.JSON_PROPERTY_AGENT_ID,
   EndpointResultRequestFilter.JSON_PROPERTY_NETWORK_ID,
   EndpointResultRequestFilter.JSON_PROPERTY_SSID,
-  EndpointResultRequestFilter.JSON_PROPERTY_BSSID
+  EndpointResultRequestFilter.JSON_PROPERTY_BSSID,
+  EndpointResultRequestFilter.JSON_PROPERTY_NIC_MODEL,
+  EndpointResultRequestFilter.JSON_PROPERTY_NIC_DRIVER_VERSION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointResultRequestFilter {
@@ -75,6 +77,12 @@ public class EndpointResultRequestFilter {
 
   public static final String JSON_PROPERTY_BSSID = "bssid";
   private List<String> bssid = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_MODEL = "nicModel";
+  private List<String> nicModel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_DRIVER_VERSION = "nicDriverVersion";
+  private List<String> nicDriverVersion = new ArrayList<>();
 
   public EndpointResultRequestFilter() { 
   }
@@ -409,6 +417,72 @@ public class EndpointResultRequestFilter {
   }
 
 
+  public EndpointResultRequestFilter nicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+    return this;
+  }
+
+  public EndpointResultRequestFilter addNicModelItem(String nicModelItem) {
+    if (this.nicModel == null) {
+      this.nicModel = new ArrayList<>();
+    }
+    this.nicModel.add(nicModelItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC models that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicModel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicModel() {
+    return nicModel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+  }
+
+
+  public EndpointResultRequestFilter nicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+    return this;
+  }
+
+  public EndpointResultRequestFilter addNicDriverVersionItem(String nicDriverVersionItem) {
+    if (this.nicDriverVersion == null) {
+      this.nicDriverVersion = new ArrayList<>();
+    }
+    this.nicDriverVersion.add(nicDriverVersionItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC driver versions that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicDriverVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicDriverVersion() {
+    return nicDriverVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+  }
+
+
   /**
    * Return true if this EndpointResultRequestFilter object is equal to o.
    */
@@ -430,12 +504,14 @@ public class EndpointResultRequestFilter {
         Objects.equals(this.agentId, endpointResultRequestFilter.agentId) &&
         Objects.equals(this.networkId, endpointResultRequestFilter.networkId) &&
         Objects.equals(this.ssid, endpointResultRequestFilter.ssid) &&
-        Objects.equals(this.bssid, endpointResultRequestFilter.bssid);
+        Objects.equals(this.bssid, endpointResultRequestFilter.bssid) &&
+        Objects.equals(this.nicModel, endpointResultRequestFilter.nicModel) &&
+        Objects.equals(this.nicDriverVersion, endpointResultRequestFilter.nicDriverVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(location, connection, platform, gateway, proxyTarget, vpnTarget, agentId, networkId, ssid, bssid);
+    return Objects.hash(location, connection, platform, gateway, proxyTarget, vpnTarget, agentId, networkId, ssid, bssid, nicModel, nicDriverVersion);
   }
 
   @Override
@@ -452,6 +528,8 @@ public class EndpointResultRequestFilter {
     sb.append("    networkId: ").append(toIndentedString(networkId)).append("\n");
     sb.append("    ssid: ").append(toIndentedString(ssid)).append("\n");
     sb.append("    bssid: ").append(toIndentedString(bssid)).append("\n");
+    sb.append("    nicModel: ").append(toIndentedString(nicModel)).append("\n");
+    sb.append("    nicDriverVersion: ").append(toIndentedString(nicDriverVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,6 +9,7 @@ src/main/java/com/thousandeyes/sdk/streaming/model/ApiErrorIntegrationLimits.jav
 src/main/java/com/thousandeyes/sdk/streaming/model/AuditOperation.java
 src/main/java/com/thousandeyes/sdk/streaming/model/AuditOperationWithUpdate.java
 src/main/java/com/thousandeyes/sdk/streaming/model/BadRequestError.java
+src/main/java/com/thousandeyes/sdk/streaming/model/ConnectedDevices.java
 src/main/java/com/thousandeyes/sdk/streaming/model/CreateStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/DataModelVersion.java
 src/main/java/com/thousandeyes/sdk/streaming/model/EndpointAgentLabel.java
@@ -21,6 +22,8 @@ src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigSplunkHec.java
 src/main/java/com/thousandeyes/sdk/streaming/model/Filters.java
 src/main/java/com/thousandeyes/sdk/streaming/model/FiltersTestTypes.java
 src/main/java/com/thousandeyes/sdk/streaming/model/GetStreamResponse.java
+src/main/java/com/thousandeyes/sdk/streaming/model/InputConfig.java
+src/main/java/com/thousandeyes/sdk/streaming/model/InputConfigMetric.java
 src/main/java/com/thousandeyes/sdk/streaming/model/PutStream.java
 src/main/java/com/thousandeyes/sdk/streaming/model/Signal.java
 src/main/java/com/thousandeyes/sdk/streaming/model/Stream.java

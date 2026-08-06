@@ -39,6 +39,9 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/ApiGraphletPoint.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiGroupedBarchartWidget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiHeatmapWidget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiListWidget.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/ApiListWidgetRow.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/ApiListWidgetRowLinks.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/ApiListWidgetRowValue.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiMultiMetricColumn.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiMultiMetricColumnData.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiMultiMetricTableWidget.java
@@ -59,6 +62,7 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/ApiTestTableData.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiTestTableGraphletsData.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiTestTableWidget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiTimeseriesWidget.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/ApiTimeseriesWidgetProperties.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetData.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ApiWidgetDataPoint.java
@@ -107,6 +111,7 @@ src/main/java/com/thousandeyes/sdk/dashboards/model/MultiMetricsTableDatasource.
 src/main/java/com/thousandeyes/sdk/dashboards/model/NumbersCardDatasource.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/PaginationLinks.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/PieChartDatasource.java
+src/main/java/com/thousandeyes/sdk/dashboards/model/RefreshRate.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/ScalableWidget.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/SelfLinks.java
 src/main/java/com/thousandeyes/sdk/dashboards/model/StackedAreaChartDatasource.java
