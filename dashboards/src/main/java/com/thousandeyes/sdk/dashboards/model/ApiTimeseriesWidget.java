@@ -61,6 +61,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiTimeseriesWidget.JSON_PROPERTY_SHOW_TIMESERIES_OVERALL_BASELINE,
   ApiTimeseriesWidget.JSON_PROPERTY_GROUP_BY,
   ApiTimeseriesWidget.JSON_PROPERTY_IS_TIMESERIES_ONE_CHART_PER_LINE,
+  ApiTimeseriesWidget.JSON_PROPERTY_SHOW_ZOOM_SLIDER,
   ApiTimeseriesWidget.JSON_PROPERTY_DATA_SOURCE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -120,13 +121,16 @@ public class ApiTimeseriesWidget {
   private String type;
 
   public static final String JSON_PROPERTY_SHOW_TIMESERIES_OVERALL_BASELINE = "showTimeseriesOverallBaseline";
-  private Boolean showTimeseriesOverallBaseline;
+  private Boolean showTimeseriesOverallBaseline = false;
 
   public static final String JSON_PROPERTY_GROUP_BY = "groupBy";
   private ApiAggregateProperty groupBy;
 
   public static final String JSON_PROPERTY_IS_TIMESERIES_ONE_CHART_PER_LINE = "isTimeseriesOneChartPerLine";
-  private Boolean isTimeseriesOneChartPerLine;
+  private Boolean isTimeseriesOneChartPerLine = false;
+
+  public static final String JSON_PROPERTY_SHOW_ZOOM_SLIDER = "showZoomSlider";
+  private Boolean showZoomSlider = false;
 
   public static final String JSON_PROPERTY_DATA_SOURCE = "dataSource";
   private TimeseriesDatasource dataSource;
@@ -582,7 +586,7 @@ public class ApiTimeseriesWidget {
   }
 
    /**
-   * Displays the overall baseline if set to &#x60;true&#x60;.
+   * Displays the overall baseline when set to &#x60;true&#x60;.
    * @return showTimeseriesOverallBaseline
   **/
   @jakarta.annotation.Nullable
@@ -632,7 +636,7 @@ public class ApiTimeseriesWidget {
   }
 
    /**
-   * Displays a separate chart for each line if set to &#x60;true&#x60;.
+   * Displays a separate chart for each line when set to &#x60;true&#x60;.
    * @return isTimeseriesOneChartPerLine
   **/
   @jakarta.annotation.Nullable
@@ -648,6 +652,31 @@ public class ApiTimeseriesWidget {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIsTimeseriesOneChartPerLine(Boolean isTimeseriesOneChartPerLine) {
     this.isTimeseriesOneChartPerLine = isTimeseriesOneChartPerLine;
+  }
+
+
+  public ApiTimeseriesWidget showZoomSlider(Boolean showZoomSlider) {
+    this.showZoomSlider = showZoomSlider;
+    return this;
+  }
+
+   /**
+   * Displays the zoom slider on the time axis when set to &#x60;true&#x60;.
+   * @return showZoomSlider
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SHOW_ZOOM_SLIDER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getShowZoomSlider() {
+    return showZoomSlider;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHOW_ZOOM_SLIDER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setShowZoomSlider(Boolean showZoomSlider) {
+    this.showZoomSlider = showZoomSlider;
   }
 
 
@@ -709,12 +738,13 @@ public class ApiTimeseriesWidget {
         Objects.equals(this.showTimeseriesOverallBaseline, apiTimeseriesWidget.showTimeseriesOverallBaseline) &&
         Objects.equals(this.groupBy, apiTimeseriesWidget.groupBy) &&
         Objects.equals(this.isTimeseriesOneChartPerLine, apiTimeseriesWidget.isTimeseriesOneChartPerLine) &&
+        Objects.equals(this.showZoomSlider, apiTimeseriesWidget.showZoomSlider) &&
         Objects.equals(this.dataSource, apiTimeseriesWidget.dataSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, visualMode, embedUrl, isEmbedded, metricGroup, direction, metric, filters, measure, fixedTimespan, apiLink, shouldExcludeAlertSuppressionWindows, links, minScale, maxScale, unit, type, showTimeseriesOverallBaseline, groupBy, isTimeseriesOneChartPerLine, dataSource);
+    return Objects.hash(id, title, visualMode, embedUrl, isEmbedded, metricGroup, direction, metric, filters, measure, fixedTimespan, apiLink, shouldExcludeAlertSuppressionWindows, links, minScale, maxScale, unit, type, showTimeseriesOverallBaseline, groupBy, isTimeseriesOneChartPerLine, showZoomSlider, dataSource);
   }
 
   @Override
@@ -742,6 +772,7 @@ public class ApiTimeseriesWidget {
     sb.append("    showTimeseriesOverallBaseline: ").append(toIndentedString(showTimeseriesOverallBaseline)).append("\n");
     sb.append("    groupBy: ").append(toIndentedString(groupBy)).append("\n");
     sb.append("    isTimeseriesOneChartPerLine: ").append(toIndentedString(isTimeseriesOneChartPerLine)).append("\n");
+    sb.append("    showZoomSlider: ").append(toIndentedString(showZoomSlider)).append("\n");
     sb.append("    dataSource: ").append(toIndentedString(dataSource)).append("\n");
     sb.append("}");
     return sb.toString();

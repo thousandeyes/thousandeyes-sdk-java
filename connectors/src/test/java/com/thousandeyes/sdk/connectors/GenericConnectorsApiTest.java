@@ -439,7 +439,7 @@ public class GenericConnectorsApiTest {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
         var requestBodyJson = """
-                ["ca39314d-eb4f-496f-9435-b5d20b1bfbff","a32cfbab-32f6-41d8-9027-7127cba965dd"]
+                [ "ca39314d-eb4f-496f-9435-b5d20b1bfbff", "a32cfbab-32f6-41d8-9027-7127cba965dd" ]
                                  """;
         var requestBodyContentType = "application/json";
         List<String> mappedRequest = 

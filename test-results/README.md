@@ -2,7 +2,7 @@
 
 Test Results API
 
-- API version: 7.0.96
+- API version: 7.0.99
 
 Get test result metrics for Network and Application Synthetics tests.
 
@@ -165,6 +165,8 @@ Class | Method | HTTP request | Description
 *WebPageLoadTestResultsApi* | [**getTestPageLoadAgentRoundResultsWithHttpInfo**](docs/WebPageLoadTestResultsApi.md#getTestPageLoadAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/page-load/agent/{agentId}/round/{roundId} | Get page load server test results by agent and round
 *WebPageLoadTestResultsApi* | [**getTestPageLoadResults**](docs/WebPageLoadTestResultsApi.md#getTestPageLoadResults) | **GET** /test-results/{testId}/page-load | Get page load server test results
 *WebPageLoadTestResultsApi* | [**getTestPageLoadResultsWithHttpInfo**](docs/WebPageLoadTestResultsApi.md#getTestPageLoadResultsWithHttpInfo) | **GET** /test-results/{testId}/page-load | Get page load server test results
+*WebTransactionsTestResultsApi* | [**getTestConsoleLogsAgentRoundResults**](docs/WebTransactionsTestResultsApi.md#getTestConsoleLogsAgentRoundResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs | Get console logs test results by agent and round
+*WebTransactionsTestResultsApi* | [**getTestConsoleLogsAgentRoundResultsWithHttpInfo**](docs/WebTransactionsTestResultsApi.md#getTestConsoleLogsAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs | Get console logs test results by agent and round
 *WebTransactionsTestResultsApi* | [**getTestWebTransactionAgentRoundPageResults**](docs/WebTransactionsTestResultsApi.md#getTestWebTransactionAgentRoundPageResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page
 *WebTransactionsTestResultsApi* | [**getTestWebTransactionAgentRoundPageResultsWithHttpInfo**](docs/WebTransactionsTestResultsApi.md#getTestWebTransactionAgentRoundPageResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page
 *WebTransactionsTestResultsApi* | [**getTestWebTransactionAgentRoundResults**](docs/WebTransactionsTestResultsApi.md#getTestWebTransactionAgentRoundResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round

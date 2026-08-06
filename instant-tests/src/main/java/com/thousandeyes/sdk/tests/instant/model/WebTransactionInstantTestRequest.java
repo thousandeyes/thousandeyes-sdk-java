@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
 import com.thousandeyes.sdk.tests.instant.model.TestAgent;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
+import com.thousandeyes.sdk.tests.instant.model.TestChromiumTrack;
 import com.thousandeyes.sdk.tests.instant.model.TestCustomHeaders;
 import com.thousandeyes.sdk.tests.instant.model.TestLinks;
 import com.thousandeyes.sdk.tests.instant.model.TestPageLoadingStrategy;
@@ -94,6 +95,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_TARGET_TIME,
   WebTransactionInstantTestRequest.JSON_PROPERTY_TIME_LIMIT,
   WebTransactionInstantTestRequest.JSON_PROPERTY_TRANSACTION_SCRIPT,
+  WebTransactionInstantTestRequest.JSON_PROPERTY_FLAG_COLLECT_CONSOLE_LOGS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_BLOCK_DOMAINS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_DISABLE_SCREENSHOT,
   WebTransactionInstantTestRequest.JSON_PROPERTY_ALLOW_MIC_AND_CAMERA,
@@ -101,6 +103,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_BROWSER_LANGUAGE,
   WebTransactionInstantTestRequest.JSON_PROPERTY_CHROME_OPTIONS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_CHROME_POLICIES,
+  WebTransactionInstantTestRequest.JSON_PROPERTY_CHROMIUM_TRACK,
   WebTransactionInstantTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   WebTransactionInstantTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   WebTransactionInstantTestRequest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
@@ -265,6 +268,9 @@ public class WebTransactionInstantTestRequest {
   public static final String JSON_PROPERTY_TRANSACTION_SCRIPT = "transactionScript";
   private String transactionScript;
 
+  public static final String JSON_PROPERTY_FLAG_COLLECT_CONSOLE_LOGS = "flagCollectConsoleLogs";
+  private Boolean flagCollectConsoleLogs = false;
+
   public static final String JSON_PROPERTY_BLOCK_DOMAINS = "blockDomains";
   private String blockDomains;
 
@@ -285,6 +291,9 @@ public class WebTransactionInstantTestRequest {
 
   public static final String JSON_PROPERTY_CHROME_POLICIES = "chromePolicies";
   private String chromePolicies = "{}";
+
+  public static final String JSON_PROPERTY_CHROMIUM_TRACK = "chromiumTrack";
+  private TestChromiumTrack chromiumTrack = TestChromiumTrack.STABLE;
 
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
@@ -1544,6 +1553,31 @@ public class WebTransactionInstantTestRequest {
   }
 
 
+  public WebTransactionInstantTestRequest flagCollectConsoleLogs(Boolean flagCollectConsoleLogs) {
+    this.flagCollectConsoleLogs = flagCollectConsoleLogs;
+    return this;
+  }
+
+   /**
+   * Whether to collect console logs during script execution.
+   * @return flagCollectConsoleLogs
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FLAG_COLLECT_CONSOLE_LOGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getFlagCollectConsoleLogs() {
+    return flagCollectConsoleLogs;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FLAG_COLLECT_CONSOLE_LOGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFlagCollectConsoleLogs(Boolean flagCollectConsoleLogs) {
+    this.flagCollectConsoleLogs = flagCollectConsoleLogs;
+  }
+
+
   public WebTransactionInstantTestRequest blockDomains(String blockDomains) {
     this.blockDomains = blockDomains;
     return this;
@@ -1716,6 +1750,31 @@ public class WebTransactionInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setChromePolicies(String chromePolicies) {
     this.chromePolicies = chromePolicies;
+  }
+
+
+  public WebTransactionInstantTestRequest chromiumTrack(TestChromiumTrack chromiumTrack) {
+    this.chromiumTrack = chromiumTrack;
+    return this;
+  }
+
+   /**
+   * Get chromiumTrack
+   * @return chromiumTrack
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROMIUM_TRACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TestChromiumTrack getChromiumTrack() {
+    return chromiumTrack;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROMIUM_TRACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromiumTrack(TestChromiumTrack chromiumTrack) {
+    this.chromiumTrack = chromiumTrack;
   }
 
 
@@ -2022,6 +2081,7 @@ public class WebTransactionInstantTestRequest {
         Objects.equals(this.targetTime, webTransactionInstantTestRequest.targetTime) &&
         Objects.equals(this.timeLimit, webTransactionInstantTestRequest.timeLimit) &&
         Objects.equals(this.transactionScript, webTransactionInstantTestRequest.transactionScript) &&
+        Objects.equals(this.flagCollectConsoleLogs, webTransactionInstantTestRequest.flagCollectConsoleLogs) &&
         Objects.equals(this.blockDomains, webTransactionInstantTestRequest.blockDomains) &&
         Objects.equals(this.disableScreenshot, webTransactionInstantTestRequest.disableScreenshot) &&
         Objects.equals(this.allowMicAndCamera, webTransactionInstantTestRequest.allowMicAndCamera) &&
@@ -2029,6 +2089,7 @@ public class WebTransactionInstantTestRequest {
         Objects.equals(this.browserLanguage, webTransactionInstantTestRequest.browserLanguage) &&
         Objects.equals(this.chromeOptions, webTransactionInstantTestRequest.chromeOptions) &&
         Objects.equals(this.chromePolicies, webTransactionInstantTestRequest.chromePolicies) &&
+        Objects.equals(this.chromiumTrack, webTransactionInstantTestRequest.chromiumTrack) &&
         Objects.equals(this.pageLoadingStrategy, webTransactionInstantTestRequest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, webTransactionInstantTestRequest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, webTransactionInstantTestRequest.identifyAgentTrafficWithUserAgent) &&
@@ -2041,7 +2102,7 @@ public class WebTransactionInstantTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, labels, tags, sharedWithAccounts, agents, credentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, flagCollectConsoleLogs, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, labels, tags, sharedWithAccounts, agents, credentials);
   }
 
   @Override
@@ -2099,6 +2160,7 @@ public class WebTransactionInstantTestRequest {
     sb.append("    targetTime: ").append(toIndentedString(targetTime)).append("\n");
     sb.append("    timeLimit: ").append(toIndentedString(timeLimit)).append("\n");
     sb.append("    transactionScript: ").append(toIndentedString(transactionScript)).append("\n");
+    sb.append("    flagCollectConsoleLogs: ").append(toIndentedString(flagCollectConsoleLogs)).append("\n");
     sb.append("    blockDomains: ").append(toIndentedString(blockDomains)).append("\n");
     sb.append("    disableScreenshot: ").append(toIndentedString(disableScreenshot)).append("\n");
     sb.append("    allowMicAndCamera: ").append(toIndentedString(allowMicAndCamera)).append("\n");
@@ -2106,6 +2168,7 @@ public class WebTransactionInstantTestRequest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    chromeOptions: ").append(toIndentedString(chromeOptions)).append("\n");
     sb.append("    chromePolicies: ").append(toIndentedString(chromePolicies)).append("\n");
+    sb.append("    chromiumTrack: ").append(toIndentedString(chromiumTrack)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");

@@ -219,6 +219,7 @@ public class DashboardsApiTest {
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
                   "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
                   "createdBy" : "1",
+                  "refreshRate" : "off",
                   "modifiedDate" : "2023-05-16T10:14:28Z",
                   "modifiedBy" : "1",
                   "isGlobalOverride" : true,
@@ -360,6 +361,7 @@ public class DashboardsApiTest {
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
                   "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
                   "createdBy" : "1",
+                  "refreshRate" : "off",
                   "modifiedDate" : "2023-05-16T10:14:28Z",
                   "modifiedBy" : "1",
                   "isGlobalOverride" : true,
@@ -534,6 +536,7 @@ public class DashboardsApiTest {
                     "direction" : "FROM_TARGET"
                   } ],
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "refreshRate" : "off",
                   "modifiedBy" : 1,
                   "dashboardModifiedBy" : "1",
                   "migratedReport" : false,
@@ -630,27 +633,6 @@ public class DashboardsApiTest {
                     } ]
                   } ],
                   "data" : {
-                    "alerts" : [ {
-                      "alertType" : "network-end-to-end-server",
-                      "durationInSeconds" : 25,
-                      "alertSource" : "Http Test",
-                      "active" : true,
-                      "testId" : "56512",
-                      "startTime" : "2023-06-02T08:54:00Z",
-                      "alertId" : "2004945",
-                      "ruleId" : "281724",
-                      "alertRule" : "Http Test Rule"
-                    }, {
-                      "alertType" : "network-end-to-end-server",
-                      "durationInSeconds" : 25,
-                      "alertSource" : "Http Test",
-                      "active" : true,
-                      "testId" : "56512",
-                      "startTime" : "2023-06-02T08:54:00Z",
-                      "alertId" : "2004945",
-                      "ruleId" : "281724",
-                      "alertRule" : "Http Test Rule"
-                    } ],
                     "summary" : {
                       "offline" : 2,
                       "online" : 10,
@@ -741,63 +723,6 @@ public class DashboardsApiTest {
                       "startDate" : "2023-05-16T10:14:28Z",
                       "timestamp" : 1567620000,
                       "status" : "No data"
-                    } ],
-                    "tests" : [ {
-                      "graphlets" : [ {
-                        "metric" : "Availability",
-                        "testId" : "68257",
-                        "points" : [ {
-                          "x" : 1580403900,
-                          "y" : 128.249
-                        }, {
-                          "x" : 1580403900,
-                          "y" : 128.249
-                        } ]
-                      }, {
-                        "metric" : "Availability",
-                        "testId" : "68257",
-                        "points" : [ {
-                          "x" : 1580403900,
-                          "y" : 128.249
-                        }, {
-                          "x" : 1580403900,
-                          "y" : 128.249
-                        } ]
-                      } ],
-                      "alertCount" : 398,
-                      "testType" : "Web - HTTP Server",
-                      "testId" : "68256",
-                      "isShared" : true,
-                      "testName" : "Http Test Name",
-                      "target" : "www.google.com"
-                    }, {
-                      "graphlets" : [ {
-                        "metric" : "Availability",
-                        "testId" : "68257",
-                        "points" : [ {
-                          "x" : 1580403900,
-                          "y" : 128.249
-                        }, {
-                          "x" : 1580403900,
-                          "y" : 128.249
-                        } ]
-                      }, {
-                        "metric" : "Availability",
-                        "testId" : "68257",
-                        "points" : [ {
-                          "x" : 1580403900,
-                          "y" : 128.249
-                        }, {
-                          "x" : 1580403900,
-                          "y" : 128.249
-                        } ]
-                      } ],
-                      "alertCount" : 398,
-                      "testType" : "Web - HTTP Server",
-                      "testId" : "68256",
-                      "isShared" : true,
-                      "testName" : "Http Test Name",
-                      "target" : "www.google.com"
                     } ],
                     "columns" : [ {
                       "_links" : {
@@ -916,6 +841,10 @@ public class DashboardsApiTest {
                       } ],
                       "status" : "No data"
                     } ],
+                    "legend" : {
+                      "ONGOING" : 5,
+                      "CLEAR" : 3
+                    },
                     "alertSuppressionWindows" : [ {
                       "testIds" : [ "281474976710661" ],
                       "repeatUnit" : "week",
@@ -935,7 +864,33 @@ public class DashboardsApiTest {
                       "id" : "281474976710662",
                       "startTimes" : [ "2023-05-16T10:14:28Z" ]
                     } ],
-                    "activeAlerts" : 483,
+                    "rows" : [ {
+                      "_links" : {
+                        "data" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      }
+                    }, {
+                      "_links" : {
+                        "data" : {
+                          "hreflang" : "hreflang",
+                          "templated" : true,
+                          "profile" : "profile",
+                          "name" : "name",
+                          "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                          "type" : "type",
+                          "deprecation" : "deprecation",
+                          "title" : "title"
+                        }
+                      }
+                    } ],
                     "startRound" : 1384309800,
                     "points" : [ {
                       "numberOfDataPoints" : 23304,
@@ -991,6 +946,85 @@ public class DashboardsApiTest {
                       },
                       "status" : "online"
                     } ],
+                    "alerts" : [ {
+                      "alertType" : "network-end-to-end-server",
+                      "durationInSeconds" : 25,
+                      "alertSource" : "Http Test",
+                      "active" : true,
+                      "testId" : "56512",
+                      "startTime" : "2023-06-02T08:54:00Z",
+                      "alertId" : "2004945",
+                      "ruleId" : "281724",
+                      "alertRule" : "Http Test Rule"
+                    }, {
+                      "alertType" : "network-end-to-end-server",
+                      "durationInSeconds" : 25,
+                      "alertSource" : "Http Test",
+                      "active" : true,
+                      "testId" : "56512",
+                      "startTime" : "2023-06-02T08:54:00Z",
+                      "alertId" : "2004945",
+                      "ruleId" : "281724",
+                      "alertRule" : "Http Test Rule"
+                    } ],
+                    "tests" : [ {
+                      "graphlets" : [ {
+                        "metric" : "Availability",
+                        "testId" : "68257",
+                        "points" : [ {
+                          "x" : 1580403900,
+                          "y" : 128.249
+                        }, {
+                          "x" : 1580403900,
+                          "y" : 128.249
+                        } ]
+                      }, {
+                        "metric" : "Availability",
+                        "testId" : "68257",
+                        "points" : [ {
+                          "x" : 1580403900,
+                          "y" : 128.249
+                        }, {
+                          "x" : 1580403900,
+                          "y" : 128.249
+                        } ]
+                      } ],
+                      "alertCount" : 398,
+                      "testType" : "Web - HTTP Server",
+                      "testId" : "68256",
+                      "isShared" : true,
+                      "testName" : "Http Test Name",
+                      "target" : "www.google.com"
+                    }, {
+                      "graphlets" : [ {
+                        "metric" : "Availability",
+                        "testId" : "68257",
+                        "points" : [ {
+                          "x" : 1580403900,
+                          "y" : 128.249
+                        }, {
+                          "x" : 1580403900,
+                          "y" : 128.249
+                        } ]
+                      }, {
+                        "metric" : "Availability",
+                        "testId" : "68257",
+                        "points" : [ {
+                          "x" : 1580403900,
+                          "y" : 128.249
+                        }, {
+                          "x" : 1580403900,
+                          "y" : 128.249
+                        } ]
+                      } ],
+                      "alertCount" : 398,
+                      "testType" : "Web - HTTP Server",
+                      "testId" : "68256",
+                      "isShared" : true,
+                      "testName" : "Http Test Name",
+                      "target" : "www.google.com"
+                    } ],
+                    "activeAlerts" : 483,
                     "status" : "No data"
                   },
                   "endDate" : "2022-07-18T22:00:54Z",
@@ -1170,6 +1204,7 @@ public class DashboardsApiTest {
                     "direction" : "FROM_TARGET"
                   } ],
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "refreshRate" : "off",
                   "modifiedBy" : 1,
                   "dashboardModifiedBy" : "1",
                   "migratedReport" : false,
@@ -1314,6 +1349,7 @@ public class DashboardsApiTest {
                     "direction" : "FROM_TARGET"
                   } ],
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "refreshRate" : "off",
                   "modifiedBy" : 1,
                   "dashboardModifiedBy" : "1",
                   "migratedReport" : false,
@@ -1695,6 +1731,7 @@ public class DashboardsApiTest {
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
                   "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
                   "createdBy" : "1",
+                  "refreshRate" : "off",
                   "modifiedDate" : "2023-05-16T10:14:28Z",
                   "modifiedBy" : "1",
                   "isGlobalOverride" : true,
@@ -1836,6 +1873,7 @@ public class DashboardsApiTest {
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
                   "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
                   "createdBy" : "1",
+                  "refreshRate" : "off",
                   "modifiedDate" : "2023-05-16T10:14:28Z",
                   "modifiedBy" : "1",
                   "isGlobalOverride" : true,
