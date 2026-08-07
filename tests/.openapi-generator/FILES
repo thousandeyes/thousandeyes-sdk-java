@@ -150,6 +150,7 @@ src/main/java/com/thousandeyes/sdk/tests/model/SipServerTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/SipTestProtocol.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestAgentRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestAuthType.java
+src/main/java/com/thousandeyes/sdk/tests/model/TestChromiumTrack.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestCustomHeaders.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestDirection.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestDnsServer.java

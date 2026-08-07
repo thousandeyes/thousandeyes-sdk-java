@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.event.detection.model.AgentLinks;
-import com.thousandeyes.sdk.event.detection.model.CloudEnterpriseAgentType;
+import com.thousandeyes.sdk.event.detection.model.EventAffectedAgentType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +47,7 @@ public class EventApiAffectedAgent {
   private String agentId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  private CloudEnterpriseAgentType type;
+  private EventAffectedAgentType type;
 
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -99,7 +99,7 @@ public class EventApiAffectedAgent {
 
 
 
-  public EventApiAffectedAgent type(CloudEnterpriseAgentType type) {
+  public EventApiAffectedAgent type(EventAffectedAgentType type) {
     this.type = type;
     return this;
   }
@@ -112,14 +112,14 @@ public class EventApiAffectedAgent {
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public CloudEnterpriseAgentType getType() {
+  public EventAffectedAgentType getType() {
     return type;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(CloudEnterpriseAgentType type) {
+  public void setType(EventAffectedAgentType type) {
     this.type = type;
   }
 

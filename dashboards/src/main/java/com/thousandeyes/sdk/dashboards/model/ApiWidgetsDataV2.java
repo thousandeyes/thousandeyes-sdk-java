@@ -24,13 +24,16 @@ import com.thousandeyes.sdk.dashboards.model.ApiAgentStatusAgent;
 import com.thousandeyes.sdk.dashboards.model.ApiAgentStatusSummary;
 import com.thousandeyes.sdk.dashboards.model.ApiAlertListAlert;
 import com.thousandeyes.sdk.dashboards.model.ApiDashboardAsw;
+import com.thousandeyes.sdk.dashboards.model.ApiListWidgetRow;
 import com.thousandeyes.sdk.dashboards.model.ApiMultiMetricColumnData;
 import com.thousandeyes.sdk.dashboards.model.ApiNumbersCardData;
 import com.thousandeyes.sdk.dashboards.model.ApiTestTableData;
 import com.thousandeyes.sdk.dashboards.model.ApiWidgetDataPoint;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -49,6 +52,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiWidgetsDataV2.JSON_PROPERTY_ALERTS,
   ApiWidgetsDataV2.JSON_PROPERTY_SUMMARY,
   ApiWidgetsDataV2.JSON_PROPERTY_AGENTS,
+  ApiWidgetsDataV2.JSON_PROPERTY_ROWS,
+  ApiWidgetsDataV2.JSON_PROPERTY_LEGEND,
   ApiWidgetsDataV2.JSON_PROPERTY_STATUS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -85,6 +90,12 @@ public class ApiWidgetsDataV2 {
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private List<ApiAgentStatusAgent> agents = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ROWS = "rows";
+  private List<ApiListWidgetRow> rows = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_LEGEND = "legend";
+  private Map<String, Integer> legend = new HashMap<>();
 
   public static final String JSON_PROPERTY_STATUS = "status";
   private String status;
@@ -423,6 +434,72 @@ public class ApiWidgetsDataV2 {
   }
 
 
+  public ApiWidgetsDataV2 rows(List<ApiListWidgetRow> rows) {
+    this.rows = rows;
+    return this;
+  }
+
+  public ApiWidgetsDataV2 addRowsItem(ApiListWidgetRow rowsItem) {
+    if (this.rows == null) {
+      this.rows = new ArrayList<>();
+    }
+    this.rows.add(rowsItem);
+    return this;
+  }
+
+   /**
+   * Detailed information about each row in the **List** widget.
+   * @return rows
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ROWS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ApiListWidgetRow> getRows() {
+    return rows;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ROWS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRows(List<ApiListWidgetRow> rows) {
+    this.rows = rows;
+  }
+
+
+  public ApiWidgetsDataV2 legend(Map<String, Integer> legend) {
+    this.legend = legend;
+    return this;
+  }
+
+  public ApiWidgetsDataV2 putLegendItem(String key, Integer legendItem) {
+    if (this.legend == null) {
+      this.legend = new HashMap<>();
+    }
+    this.legend.put(key, legendItem);
+    return this;
+  }
+
+   /**
+   * Map of legend labels to their counts for the **List** widget.
+   * @return legend
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LEGEND)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Map<String, Integer> getLegend() {
+    return legend;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LEGEND)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLegend(Map<String, Integer> legend) {
+    this.legend = legend;
+  }
+
+
   public ApiWidgetsDataV2 status(String status) {
     this.status = status;
     return this;
@@ -471,12 +548,14 @@ public class ApiWidgetsDataV2 {
         Objects.equals(this.alerts, apiWidgetsDataV2.alerts) &&
         Objects.equals(this.summary, apiWidgetsDataV2.summary) &&
         Objects.equals(this.agents, apiWidgetsDataV2.agents) &&
+        Objects.equals(this.rows, apiWidgetsDataV2.rows) &&
+        Objects.equals(this.legend, apiWidgetsDataV2.legend) &&
         Objects.equals(this.status, apiWidgetsDataV2.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cards, columns, points, tests, startRound, alertSuppressionWindows, totalAlerts, activeAlerts, alerts, summary, agents, status);
+    return Objects.hash(cards, columns, points, tests, startRound, alertSuppressionWindows, totalAlerts, activeAlerts, alerts, summary, agents, rows, legend, status);
   }
 
   @Override
@@ -494,6 +573,8 @@ public class ApiWidgetsDataV2 {
     sb.append("    alerts: ").append(toIndentedString(alerts)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+    sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
+    sb.append("    legend: ").append(toIndentedString(legend)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

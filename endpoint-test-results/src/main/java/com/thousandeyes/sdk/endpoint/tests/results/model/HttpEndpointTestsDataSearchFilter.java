@@ -33,7 +33,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_TEST_ID,
   HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
-  HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME
+  HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME,
+  HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_NIC_MODEL,
+  HttpEndpointTestsDataSearchFilter.JSON_PROPERTY_NIC_DRIVER_VERSION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class HttpEndpointTestsDataSearchFilter {
@@ -45,6 +47,12 @@ public class HttpEndpointTestsDataSearchFilter {
 
   public static final String JSON_PROPERTY_USER_PRINCIPAL_NAME = "userPrincipalName";
   private List<String> userPrincipalName = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_MODEL = "nicModel";
+  private List<String> nicModel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_DRIVER_VERSION = "nicDriverVersion";
+  private List<String> nicDriverVersion = new ArrayList<>();
 
   public HttpEndpointTestsDataSearchFilter() { 
   }
@@ -148,6 +156,72 @@ public class HttpEndpointTestsDataSearchFilter {
   }
 
 
+  public HttpEndpointTestsDataSearchFilter nicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+    return this;
+  }
+
+  public HttpEndpointTestsDataSearchFilter addNicModelItem(String nicModelItem) {
+    if (this.nicModel == null) {
+      this.nicModel = new ArrayList<>();
+    }
+    this.nicModel.add(nicModelItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC models that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicModel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicModel() {
+    return nicModel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+  }
+
+
+  public HttpEndpointTestsDataSearchFilter nicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+    return this;
+  }
+
+  public HttpEndpointTestsDataSearchFilter addNicDriverVersionItem(String nicDriverVersionItem) {
+    if (this.nicDriverVersion == null) {
+      this.nicDriverVersion = new ArrayList<>();
+    }
+    this.nicDriverVersion.add(nicDriverVersionItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC driver versions that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicDriverVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicDriverVersion() {
+    return nicDriverVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+  }
+
+
   /**
    * Return true if this HttpEndpointTestsDataSearchFilter object is equal to o.
    */
@@ -162,12 +236,14 @@ public class HttpEndpointTestsDataSearchFilter {
     HttpEndpointTestsDataSearchFilter httpEndpointTestsDataSearchFilter = (HttpEndpointTestsDataSearchFilter) o;
     return Objects.equals(this.testId, httpEndpointTestsDataSearchFilter.testId) &&
         Objects.equals(this.agentId, httpEndpointTestsDataSearchFilter.agentId) &&
-        Objects.equals(this.userPrincipalName, httpEndpointTestsDataSearchFilter.userPrincipalName);
+        Objects.equals(this.userPrincipalName, httpEndpointTestsDataSearchFilter.userPrincipalName) &&
+        Objects.equals(this.nicModel, httpEndpointTestsDataSearchFilter.nicModel) &&
+        Objects.equals(this.nicDriverVersion, httpEndpointTestsDataSearchFilter.nicDriverVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(testId, agentId, userPrincipalName);
+    return Objects.hash(testId, agentId, userPrincipalName, nicModel, nicDriverVersion);
   }
 
   @Override
@@ -177,6 +253,8 @@ public class HttpEndpointTestsDataSearchFilter {
     sb.append("    testId: ").append(toIndentedString(testId)).append("\n");
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
     sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
+    sb.append("    nicModel: ").append(toIndentedString(nicModel)).append("\n");
+    sb.append("    nicDriverVersion: ").append(toIndentedString(nicDriverVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

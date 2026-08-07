@@ -4,6 +4,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**getTestConsoleLogsAgentRoundResults**](WebTransactionsTestResultsApi.md#getTestConsoleLogsAgentRoundResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs | Get console logs test results by agent and round |
+| [**getTestConsoleLogsAgentRoundResultsWithHttpInfo**](WebTransactionsTestResultsApi.md#getTestConsoleLogsAgentRoundResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs | Get console logs test results by agent and round |
 | [**getTestWebTransactionAgentRoundPageResults**](WebTransactionsTestResultsApi.md#getTestWebTransactionAgentRoundPageResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page |
 | [**getTestWebTransactionAgentRoundPageResultsWithHttpInfo**](WebTransactionsTestResultsApi.md#getTestWebTransactionAgentRoundPageResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId} | Get detailed web transactions test result by agent, round, and page |
 | [**getTestWebTransactionAgentRoundResults**](WebTransactionsTestResultsApi.md#getTestWebTransactionAgentRoundResults) | **GET** /test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId} | Get web transactions test results by agent and round |
@@ -11,6 +13,178 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 | [**getTestWebTransactionResults**](WebTransactionsTestResultsApi.md#getTestWebTransactionResults) | **GET** /test-results/{testId}/web-transactions | Get web transactions test results |
 | [**getTestWebTransactionResultsWithHttpInfo**](WebTransactionsTestResultsApi.md#getTestWebTransactionResultsWithHttpInfo) | **GET** /test-results/{testId}/web-transactions | Get web transactions test results |
 
+
+
+## getTestConsoleLogsAgentRoundResults
+
+> ConsoleLogsTestResults getTestConsoleLogsAgentRoundResults(testId, agentId, roundId, aid)
+
+Get console logs test results by agent and round
+
+Returns console logs for the specified test, agent, and round ID. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.tests.Configuration;
+import com.thousandeyes.sdk.tests.authentication.*;
+import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        WebTransactionsTestResultsApi apiInstance = new WebTransactionsTestResultsApi(defaultClient);
+        String testId = "202701"; // String | Test ID
+        String agentId = "11"; // String | Agent ID
+        String roundId = "1384309800"; // String | Round ID
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ConsoleLogsTestResults result = apiInstance.getTestConsoleLogsAgentRoundResults(testId, agentId, roundId, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WebTransactionsTestResultsApi#getTestConsoleLogsAgentRoundResults");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **testId** | **String**| Test ID | |
+| **agentId** | **String**| Agent ID | |
+| **roundId** | **String**| Round ID | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**ConsoleLogsTestResults**](ConsoleLogsTestResults.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+## getTestConsoleLogsAgentRoundResultsWithHttpInfo
+
+> ApiResponse<ConsoleLogsTestResults> getTestConsoleLogsAgentRoundResults getTestConsoleLogsAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid)
+
+Get console logs test results by agent and round
+
+Returns console logs for the specified test, agent, and round ID. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.tests.Configuration;
+import com.thousandeyes.sdk.tests.authentication.*;
+import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        WebTransactionsTestResultsApi apiInstance = new WebTransactionsTestResultsApi(defaultClient);
+        String testId = "202701"; // String | Test ID
+        String agentId = "11"; // String | Agent ID
+        String roundId = "1384309800"; // String | Round ID
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<ConsoleLogsTestResults> response = apiInstance.getTestConsoleLogsAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WebTransactionsTestResultsApi#getTestConsoleLogsAgentRoundResults");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **testId** | **String**| Test ID | |
+| **agentId** | **String**| Agent ID | |
+| **roundId** | **String**| Round ID | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**ConsoleLogsTestResults**](ConsoleLogsTestResults.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
 
 
 ## getTestWebTransactionAgentRoundPageResults

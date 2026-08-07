@@ -136,7 +136,7 @@ public class OperationConnectorsApiTest {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
         var requestBodyJson = """
-                ["ca39314d-eb4f-496f-9435-b5d20b1bfbff"]
+                [ "ca39314d-eb4f-496f-9435-b5d20b1bfbff" ]
                                  """;
         var requestBodyContentType = "application/json";
         List<String> mappedRequest = 

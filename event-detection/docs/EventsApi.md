@@ -175,7 +175,7 @@ ApiResponse<[**EventDetail**](EventDetail.md)>
 
 ## getEvents
 
-> Events getEvents(aid, window, startDate, endDate, max, cursor)
+> Events getEvents(aid, window, startDate, endDate, max, cursor, ongoing)
 
 List events
 
@@ -208,8 +208,9 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         Integer max = 5; // Integer | (Optional) Maximum number of objects to return.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        Boolean ongoing = true; // Boolean | When set to `true`, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to `false`, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response.
         try {
-            Events result = apiInstance.getEvents(aid, window, startDate, endDate, max, cursor);
+            Events result = apiInstance.getEvents(aid, window, startDate, endDate, max, cursor, ongoing);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EventsApi#getEvents");
@@ -233,6 +234,7 @@ public class Example {
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **ongoing** | **Boolean**| When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. | [optional] |
 
 ### Return type
 
@@ -263,7 +265,7 @@ public class Example {
 
 ## getEventsWithHttpInfo
 
-> ApiResponse<Events> getEvents getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor)
+> ApiResponse<Events> getEvents getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor, ongoing)
 
 List events
 
@@ -297,8 +299,9 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         Integer max = 5; // Integer | (Optional) Maximum number of objects to return.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
+        Boolean ongoing = true; // Boolean | When set to `true`, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to `false`, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response.
         try {
-            ApiResponse<Events> response = apiInstance.getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor);
+            ApiResponse<Events> response = apiInstance.getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor, ongoing);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -324,6 +327,7 @@ public class Example {
 | **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
 | **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
 | **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **ongoing** | **Boolean**| When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. | [optional] |
 
 ### Return type
 

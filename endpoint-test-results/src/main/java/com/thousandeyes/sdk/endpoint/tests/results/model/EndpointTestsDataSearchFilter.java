@@ -32,7 +32,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   EndpointTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
-  EndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME
+  EndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME,
+  EndpointTestsDataSearchFilter.JSON_PROPERTY_NIC_MODEL,
+  EndpointTestsDataSearchFilter.JSON_PROPERTY_NIC_DRIVER_VERSION
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointTestsDataSearchFilter {
@@ -41,6 +43,12 @@ public class EndpointTestsDataSearchFilter {
 
   public static final String JSON_PROPERTY_USER_PRINCIPAL_NAME = "userPrincipalName";
   private List<String> userPrincipalName = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_MODEL = "nicModel";
+  private List<String> nicModel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_DRIVER_VERSION = "nicDriverVersion";
+  private List<String> nicDriverVersion = new ArrayList<>();
 
   public EndpointTestsDataSearchFilter() { 
   }
@@ -111,6 +119,72 @@ public class EndpointTestsDataSearchFilter {
   }
 
 
+  public EndpointTestsDataSearchFilter nicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+    return this;
+  }
+
+  public EndpointTestsDataSearchFilter addNicModelItem(String nicModelItem) {
+    if (this.nicModel == null) {
+      this.nicModel = new ArrayList<>();
+    }
+    this.nicModel.add(nicModelItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC models that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicModel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicModel() {
+    return nicModel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+  }
+
+
+  public EndpointTestsDataSearchFilter nicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+    return this;
+  }
+
+  public EndpointTestsDataSearchFilter addNicDriverVersionItem(String nicDriverVersionItem) {
+    if (this.nicDriverVersion == null) {
+      this.nicDriverVersion = new ArrayList<>();
+    }
+    this.nicDriverVersion.add(nicDriverVersionItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC driver versions that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicDriverVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicDriverVersion() {
+    return nicDriverVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+  }
+
+
   /**
    * Return true if this EndpointTestsDataSearchFilter object is equal to o.
    */
@@ -124,12 +198,14 @@ public class EndpointTestsDataSearchFilter {
     }
     EndpointTestsDataSearchFilter endpointTestsDataSearchFilter = (EndpointTestsDataSearchFilter) o;
     return Objects.equals(this.agentId, endpointTestsDataSearchFilter.agentId) &&
-        Objects.equals(this.userPrincipalName, endpointTestsDataSearchFilter.userPrincipalName);
+        Objects.equals(this.userPrincipalName, endpointTestsDataSearchFilter.userPrincipalName) &&
+        Objects.equals(this.nicModel, endpointTestsDataSearchFilter.nicModel) &&
+        Objects.equals(this.nicDriverVersion, endpointTestsDataSearchFilter.nicDriverVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, userPrincipalName);
+    return Objects.hash(agentId, userPrincipalName, nicModel, nicDriverVersion);
   }
 
   @Override
@@ -138,6 +214,8 @@ public class EndpointTestsDataSearchFilter {
     sb.append("class EndpointTestsDataSearchFilter {\n");
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
     sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
+    sb.append("    nicModel: ").append(toIndentedString(nicModel)).append("\n");
+    sb.append("    nicDriverVersion: ").append(toIndentedString(nicDriverVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

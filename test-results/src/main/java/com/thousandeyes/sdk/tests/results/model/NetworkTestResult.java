@@ -58,7 +58,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   NetworkTestResult.JSON_PROPERTY_SERVER_IP,
   NetworkTestResult.JSON_PROPERTY_SERVER,
   NetworkTestResult.JSON_PROPERTY_HEALTH_SCORE,
-  NetworkTestResult.JSON_PROPERTY_DIRECTION
+  NetworkTestResult.JSON_PROPERTY_DIRECTION,
+  NetworkTestResult.JSON_PROPERTY_ERROR_DETAILS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkTestResult {
@@ -134,6 +135,9 @@ public class NetworkTestResult {
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   private TestDirection direction = TestDirection.TO_TARGET;
 
+  public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  private String errorDetails;
+
   public NetworkTestResult() { 
   }
 
@@ -158,7 +162,8 @@ public class NetworkTestResult {
     @JsonProperty(JSON_PROPERTY_PROXY_JITTER) Float proxyJitter, 
     @JsonProperty(JSON_PROPERTY_PACKETS_BY_SECOND) List<List<Integer>> packetsBySecond, 
     @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_SERVER) String server
+    @JsonProperty(JSON_PROPERTY_SERVER) String server, 
+    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails
   ) {
   this();
     this.date = date;
@@ -181,6 +186,7 @@ public class NetworkTestResult {
     this.packetsBySecond = packetsBySecond;
     this.serverIp = serverIp;
     this.server = server;
+    this.errorDetails = errorDetails;
   }
 
    /**
@@ -344,7 +350,7 @@ public class NetworkTestResult {
 
 
    /**
-   * Percentage of packets not reaching destination
+   * Percentage of packets not reaching the destination. This field is omitted when no loss measurement is available.
    * @return loss
   **/
   @jakarta.annotation.Nullable
@@ -583,6 +589,21 @@ public class NetworkTestResult {
   }
 
 
+   /**
+   * Error details. This field is omitted when no error occurs.
+   * @return errorDetails
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getErrorDetails() {
+    return errorDetails;
+  }
+
+
+
+
   /**
    * Return true if this NetworkTestResult object is equal to o.
    */
@@ -618,12 +639,13 @@ public class NetworkTestResult {
         Objects.equals(this.serverIp, networkTestResult.serverIp) &&
         Objects.equals(this.server, networkTestResult.server) &&
         Objects.equals(this.healthScore, networkTestResult.healthScore) &&
-        Objects.equals(this.direction, networkTestResult.direction);
+        Objects.equals(this.direction, networkTestResult.direction) &&
+        Objects.equals(this.errorDetails, networkTestResult.errorDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, roundId, links, startTime, endTime, availableBandwidth, avgLatency, bandwidth, capacity, jitter, loss, maxLatency, minLatency, proxyLoss, proxyAverageLatency, proxyMinLatency, proxyMaxLatency, proxyJitter, packetsBySecond, agent, serverIp, server, healthScore, direction);
+    return Objects.hash(date, roundId, links, startTime, endTime, availableBandwidth, avgLatency, bandwidth, capacity, jitter, loss, maxLatency, minLatency, proxyLoss, proxyAverageLatency, proxyMinLatency, proxyMaxLatency, proxyJitter, packetsBySecond, agent, serverIp, server, healthScore, direction, errorDetails);
   }
 
   @Override
@@ -654,6 +676,7 @@ public class NetworkTestResult {
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    healthScore: ").append(toIndentedString(healthScore)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
+    sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
