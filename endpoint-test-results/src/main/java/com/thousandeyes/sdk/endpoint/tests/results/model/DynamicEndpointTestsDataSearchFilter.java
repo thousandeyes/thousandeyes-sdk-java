@@ -33,6 +33,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_AGENT_ID,
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_USER_PRINCIPAL_NAME,
+  DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_NIC_MODEL,
+  DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_NIC_DRIVER_VERSION,
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_WEBEX_CONFERENCE_ID,
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_WEBEX_CORRELATION_ID,
   DynamicEndpointTestsDataSearchFilter.JSON_PROPERTY_WEBEX_LOCAL_SIP_SESSION_ID
@@ -44,6 +46,12 @@ public class DynamicEndpointTestsDataSearchFilter {
 
   public static final String JSON_PROPERTY_USER_PRINCIPAL_NAME = "userPrincipalName";
   private List<String> userPrincipalName = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_MODEL = "nicModel";
+  private List<String> nicModel = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_NIC_DRIVER_VERSION = "nicDriverVersion";
+  private List<String> nicDriverVersion = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WEBEX_CONFERENCE_ID = "webexConferenceId";
   private List<String> webexConferenceId = new ArrayList<>();
@@ -120,6 +128,72 @@ public class DynamicEndpointTestsDataSearchFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUserPrincipalName(List<String> userPrincipalName) {
     this.userPrincipalName = userPrincipalName;
+  }
+
+
+  public DynamicEndpointTestsDataSearchFilter nicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+    return this;
+  }
+
+  public DynamicEndpointTestsDataSearchFilter addNicModelItem(String nicModelItem) {
+    if (this.nicModel == null) {
+      this.nicModel = new ArrayList<>();
+    }
+    this.nicModel.add(nicModelItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC models that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicModel
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicModel() {
+    return nicModel;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicModel(List<String> nicModel) {
+    this.nicModel = nicModel;
+  }
+
+
+  public DynamicEndpointTestsDataSearchFilter nicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
+    return this;
+  }
+
+  public DynamicEndpointTestsDataSearchFilter addNicDriverVersionItem(String nicDriverVersionItem) {
+    if (this.nicDriverVersion == null) {
+      this.nicDriverVersion = new ArrayList<>();
+    }
+    this.nicDriverVersion.add(nicDriverVersionItem);
+    return this;
+  }
+
+   /**
+   * Filters results to NIC driver versions that exactly match one of the provided values. Matching is case-sensitive.
+   * @return nicDriverVersion
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getNicDriverVersion() {
+    return nicDriverVersion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNicDriverVersion(List<String> nicDriverVersion) {
+    this.nicDriverVersion = nicDriverVersion;
   }
 
 
@@ -236,6 +310,8 @@ public class DynamicEndpointTestsDataSearchFilter {
     DynamicEndpointTestsDataSearchFilter dynamicEndpointTestsDataSearchFilter = (DynamicEndpointTestsDataSearchFilter) o;
     return Objects.equals(this.agentId, dynamicEndpointTestsDataSearchFilter.agentId) &&
         Objects.equals(this.userPrincipalName, dynamicEndpointTestsDataSearchFilter.userPrincipalName) &&
+        Objects.equals(this.nicModel, dynamicEndpointTestsDataSearchFilter.nicModel) &&
+        Objects.equals(this.nicDriverVersion, dynamicEndpointTestsDataSearchFilter.nicDriverVersion) &&
         Objects.equals(this.webexConferenceId, dynamicEndpointTestsDataSearchFilter.webexConferenceId) &&
         Objects.equals(this.webexCorrelationId, dynamicEndpointTestsDataSearchFilter.webexCorrelationId) &&
         Objects.equals(this.webexLocalSipSessionId, dynamicEndpointTestsDataSearchFilter.webexLocalSipSessionId);
@@ -243,7 +319,7 @@ public class DynamicEndpointTestsDataSearchFilter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, userPrincipalName, webexConferenceId, webexCorrelationId, webexLocalSipSessionId);
+    return Objects.hash(agentId, userPrincipalName, nicModel, nicDriverVersion, webexConferenceId, webexCorrelationId, webexLocalSipSessionId);
   }
 
   @Override
@@ -252,6 +328,8 @@ public class DynamicEndpointTestsDataSearchFilter {
     sb.append("class DynamicEndpointTestsDataSearchFilter {\n");
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
     sb.append("    userPrincipalName: ").append(toIndentedString(userPrincipalName)).append("\n");
+    sb.append("    nicModel: ").append(toIndentedString(nicModel)).append("\n");
+    sb.append("    nicDriverVersion: ").append(toIndentedString(nicDriverVersion)).append("\n");
     sb.append("    webexConferenceId: ").append(toIndentedString(webexConferenceId)).append("\n");
     sb.append("    webexCorrelationId: ").append(toIndentedString(webexCorrelationId)).append("\n");
     sb.append("    webexLocalSipSessionId: ").append(toIndentedString(webexLocalSipSessionId)).append("\n");

@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
+import com.thousandeyes.sdk.tests.model.TestChromiumTrack;
 import com.thousandeyes.sdk.tests.model.TestCustomHeaders;
 import com.thousandeyes.sdk.tests.model.TestHttpInterval;
 import com.thousandeyes.sdk.tests.model.TestInterval;
@@ -105,6 +106,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedPageLoadTest.JSON_PROPERTY_BROWSER_LANGUAGE,
   UnexpandedPageLoadTest.JSON_PROPERTY_CHROME_OPTIONS,
   UnexpandedPageLoadTest.JSON_PROPERTY_CHROME_POLICIES,
+  UnexpandedPageLoadTest.JSON_PROPERTY_CHROMIUM_TRACK,
   UnexpandedPageLoadTest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   UnexpandedPageLoadTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   UnexpandedPageLoadTest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
@@ -294,6 +296,9 @@ public class UnexpandedPageLoadTest {
 
   public static final String JSON_PROPERTY_CHROME_POLICIES = "chromePolicies";
   private String chromePolicies = "{}";
+
+  public static final String JSON_PROPERTY_CHROMIUM_TRACK = "chromiumTrack";
+  private TestChromiumTrack chromiumTrack = TestChromiumTrack.STABLE;
 
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
@@ -1775,6 +1780,31 @@ public class UnexpandedPageLoadTest {
   }
 
 
+  public UnexpandedPageLoadTest chromiumTrack(TestChromiumTrack chromiumTrack) {
+    this.chromiumTrack = chromiumTrack;
+    return this;
+  }
+
+   /**
+   * Get chromiumTrack
+   * @return chromiumTrack
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROMIUM_TRACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TestChromiumTrack getChromiumTrack() {
+    return chromiumTrack;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROMIUM_TRACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromiumTrack(TestChromiumTrack chromiumTrack) {
+    this.chromiumTrack = chromiumTrack;
+  }
+
+
   public UnexpandedPageLoadTest pageLoadingStrategy(TestPageLoadingStrategy pageLoadingStrategy) {
     this.pageLoadingStrategy = pageLoadingStrategy;
     return this;
@@ -2022,6 +2052,7 @@ public class UnexpandedPageLoadTest {
         Objects.equals(this.browserLanguage, unexpandedPageLoadTest.browserLanguage) &&
         Objects.equals(this.chromeOptions, unexpandedPageLoadTest.chromeOptions) &&
         Objects.equals(this.chromePolicies, unexpandedPageLoadTest.chromePolicies) &&
+        Objects.equals(this.chromiumTrack, unexpandedPageLoadTest.chromiumTrack) &&
         Objects.equals(this.pageLoadingStrategy, unexpandedPageLoadTest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, unexpandedPageLoadTest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, unexpandedPageLoadTest.identifyAgentTrafficWithUserAgent) &&
@@ -2033,7 +2064,7 @@ public class UnexpandedPageLoadTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, httpInterval, subinterval, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, httpInterval, subinterval, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -2100,6 +2131,7 @@ public class UnexpandedPageLoadTest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    chromeOptions: ").append(toIndentedString(chromeOptions)).append("\n");
     sb.append("    chromePolicies: ").append(toIndentedString(chromePolicies)).append("\n");
+    sb.append("    chromiumTrack: ").append(toIndentedString(chromiumTrack)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");

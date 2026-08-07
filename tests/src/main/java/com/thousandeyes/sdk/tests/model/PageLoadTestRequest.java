@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.TestAgentRequest;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
+import com.thousandeyes.sdk.tests.model.TestChromiumTrack;
 import com.thousandeyes.sdk.tests.model.TestCustomHeaders;
 import com.thousandeyes.sdk.tests.model.TestHttpInterval;
 import com.thousandeyes.sdk.tests.model.TestInterval;
@@ -106,6 +107,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadTestRequest.JSON_PROPERTY_BROWSER_LANGUAGE,
   PageLoadTestRequest.JSON_PROPERTY_CHROME_OPTIONS,
   PageLoadTestRequest.JSON_PROPERTY_CHROME_POLICIES,
+  PageLoadTestRequest.JSON_PROPERTY_CHROMIUM_TRACK,
   PageLoadTestRequest.JSON_PROPERTY_PAGE_LOADING_STRATEGY,
   PageLoadTestRequest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   PageLoadTestRequest.JSON_PROPERTY_IDENTIFY_AGENT_TRAFFIC_WITH_USER_AGENT,
@@ -301,6 +303,9 @@ public class PageLoadTestRequest {
 
   public static final String JSON_PROPERTY_CHROME_POLICIES = "chromePolicies";
   private String chromePolicies = "{}";
+
+  public static final String JSON_PROPERTY_CHROMIUM_TRACK = "chromiumTrack";
+  private TestChromiumTrack chromiumTrack = TestChromiumTrack.STABLE;
 
   public static final String JSON_PROPERTY_PAGE_LOADING_STRATEGY = "pageLoadingStrategy";
   private TestPageLoadingStrategy pageLoadingStrategy = TestPageLoadingStrategy.NORMAL;
@@ -1800,6 +1805,31 @@ public class PageLoadTestRequest {
   }
 
 
+  public PageLoadTestRequest chromiumTrack(TestChromiumTrack chromiumTrack) {
+    this.chromiumTrack = chromiumTrack;
+    return this;
+  }
+
+   /**
+   * Get chromiumTrack
+   * @return chromiumTrack
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHROMIUM_TRACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TestChromiumTrack getChromiumTrack() {
+    return chromiumTrack;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHROMIUM_TRACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChromiumTrack(TestChromiumTrack chromiumTrack) {
+    this.chromiumTrack = chromiumTrack;
+  }
+
+
   public PageLoadTestRequest pageLoadingStrategy(TestPageLoadingStrategy pageLoadingStrategy) {
     this.pageLoadingStrategy = pageLoadingStrategy;
     return this;
@@ -2245,6 +2275,7 @@ public class PageLoadTestRequest {
         Objects.equals(this.browserLanguage, pageLoadTestRequest.browserLanguage) &&
         Objects.equals(this.chromeOptions, pageLoadTestRequest.chromeOptions) &&
         Objects.equals(this.chromePolicies, pageLoadTestRequest.chromePolicies) &&
+        Objects.equals(this.chromiumTrack, pageLoadTestRequest.chromiumTrack) &&
         Objects.equals(this.pageLoadingStrategy, pageLoadTestRequest.pageLoadingStrategy) &&
         Objects.equals(this.randomizedStartTime, pageLoadTestRequest.randomizedStartTime) &&
         Objects.equals(this.identifyAgentTrafficWithUserAgent, pageLoadTestRequest.identifyAgentTrafficWithUserAgent) &&
@@ -2262,7 +2293,7 @@ public class PageLoadTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, httpInterval, subinterval, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, httpInterval, subinterval, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors);
   }
 
   @Override
@@ -2329,6 +2360,7 @@ public class PageLoadTestRequest {
     sb.append("    browserLanguage: ").append(toIndentedString(browserLanguage)).append("\n");
     sb.append("    chromeOptions: ").append(toIndentedString(chromeOptions)).append("\n");
     sb.append("    chromePolicies: ").append(toIndentedString(chromePolicies)).append("\n");
+    sb.append("    chromiumTrack: ").append(toIndentedString(chromiumTrack)).append("\n");
     sb.append("    pageLoadingStrategy: ").append(toIndentedString(pageLoadingStrategy)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    identifyAgentTrafficWithUserAgent: ").append(toIndentedString(identifyAgentTrafficWithUserAgent)).append("\n");
