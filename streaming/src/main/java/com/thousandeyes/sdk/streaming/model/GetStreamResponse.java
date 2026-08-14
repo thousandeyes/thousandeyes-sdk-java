@@ -54,6 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GetStreamResponse.JSON_PROPERTY_ENDPOINT_TYPE,
   GetStreamResponse.JSON_PROPERTY_STREAM_ENDPOINT_URL,
   GetStreamResponse.JSON_PROPERTY_DATA_MODEL_VERSION,
+  GetStreamResponse.JSON_PROPERTY_NAME,
   GetStreamResponse.JSON_PROPERTY_CUSTOM_HEADERS,
   GetStreamResponse.JSON_PROPERTY_TAG_MATCH,
   GetStreamResponse.JSON_PROPERTY_TEST_MATCH,
@@ -90,6 +91,9 @@ public class GetStreamResponse {
 
   public static final String JSON_PROPERTY_DATA_MODEL_VERSION = "dataModelVersion";
   private DataModelVersion dataModelVersion = DataModelVersion.V2;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
 
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
@@ -319,6 +323,31 @@ public class GetStreamResponse {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDataModelVersion(DataModelVersion dataModelVersion) {
     this.dataModelVersion = dataModelVersion;
+  }
+
+
+  public GetStreamResponse name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the data stream. When omitted, a name is generated on creation and the existing name is preserved on update.
+   * @return name
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getName() {
+    return name;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -632,6 +661,7 @@ public class GetStreamResponse {
         Objects.equals(this.endpointType, getStreamResponse.endpointType) &&
         Objects.equals(this.streamEndpointUrl, getStreamResponse.streamEndpointUrl) &&
         Objects.equals(this.dataModelVersion, getStreamResponse.dataModelVersion) &&
+        Objects.equals(this.name, getStreamResponse.name) &&
         Objects.equals(this.customHeaders, getStreamResponse.customHeaders) &&
         Objects.equals(this.tagMatch, getStreamResponse.tagMatch) &&
         Objects.equals(this.testMatch, getStreamResponse.testMatch) &&
@@ -646,7 +676,7 @@ public class GetStreamResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, customHeaders, tagMatch, testMatch, filters, inputConfig, exporterConfig, endpointAgentLabel, endpointAgentTag, auditOperation, streamStatus);
+    return Objects.hash(id, enabled, links, type, signal, endpointType, streamEndpointUrl, dataModelVersion, name, customHeaders, tagMatch, testMatch, filters, inputConfig, exporterConfig, endpointAgentLabel, endpointAgentTag, auditOperation, streamStatus);
   }
 
   @Override
@@ -661,6 +691,7 @@ public class GetStreamResponse {
     sb.append("    endpointType: ").append(toIndentedString(endpointType)).append("\n");
     sb.append("    streamEndpointUrl: ").append(toIndentedString(streamEndpointUrl)).append("\n");
     sb.append("    dataModelVersion: ").append(toIndentedString(dataModelVersion)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");
     sb.append("    testMatch: ").append(toIndentedString(testMatch)).append("\n");

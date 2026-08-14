@@ -17,8 +17,10 @@ import com.thousandeyes.sdk.dashboards.model.ApiMultiMetricColumnData;
 import com.thousandeyes.sdk.dashboards.model.ApiNumbersCardData;
 import com.thousandeyes.sdk.dashboards.model.ApiWidgetDataResponse;
 import java.math.BigDecimal;
+import com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest;
 import com.thousandeyes.sdk.dashboards.model.Dashboard;
 import com.thousandeyes.sdk.dashboards.model.DashboardOrder;
+import com.thousandeyes.sdk.dashboards.model.DashboardScheduleRequest;
 import com.thousandeyes.sdk.dashboards.model.Error;
 import java.time.OffsetDateTime;
 import java.net.URI;
@@ -75,6 +77,219 @@ public class DashboardsApiTest {
                                 .bearerToken(TOKEN)
                                 .build();
         api = new DashboardsApi(client);
+    }
+    
+    /**
+     * Clone dashboard
+     * <p>
+     * Creates a dashboard by cloning an existing dashboard. By default, the clone inherits the source dashboard&#39;s widgets, layout, default timespan, tags, and other supported settings. Values provided in the request override the corresponding source dashboard settings. Sharing settings are not inherited. If &#x60;title&#x60; is omitted, the API generates a unique title for the clone.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can clone any dashboard they can view. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can clone dashboards they can view. The current user owns the cloned dashboard. 
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void cloneDashboardRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
+
+        var requestBodyJson = """
+                {
+                  "isSharedWithAllAccountGroups" : false,
+                  "tagIds" : "",
+                  "isDefaultForAccount" : false,
+                  "description" : "Copy of the HTTP Server Widgets dashboard",
+                  "isDefaultForUser" : false,
+                  "isPrivate" : true,
+                  "title" : "HTTP Server Widgets Copy",
+                  "defaultTimespan" : {
+                    "duration" : 7200,
+                    "timespanDuration" : 7200,
+                    "start" : "2023-05-16T10:14:28Z",
+                    "end" : "2023-05-16T11:14:28Z",
+                    "timespanStart" : "2023-05-16 10:14:28",
+                    "timespanEnd" : "2023-05-16 11:14:28"
+                  },
+                  "layout" : {
+                    "layoutId" : "grid-layout-1",
+                    "type" : "grid",
+                    "details" : {
+                      "widgetPositioning" : [ {
+                        "x" : 0,
+                        "y" : 0,
+                        "w" : 9,
+                        "h" : 5,
+                        "id" : "widgetId-71lbb"
+                      } ]
+                    }
+                  },
+                  "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "refreshRate" : "5m",
+                  "sharedAccountIds" : [ "1234", "5678" ],
+                  "isGlobalOverride" : false
+                }
+                                 """;
+        var requestBodyContentType = "application/json";
+        CloneDashboardRequest mappedRequest = 
+                mapper.readValue(requestBodyJson, CloneDashboardRequest.class);
+        assertNotNull(mappedRequest);
+
+        var responseBodyJson = """
+                {
+                  "isMigratedReport" : false,
+                  "_links" : {
+                    "snapshots" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    },
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "isDefaultForAccount" : false,
+                  "isDefaultForUser" : true,
+                  "description" : "HTTP Server Widgets",
+                  "isPrivate" : true,
+                  "title" : "HTTP Server Widgets",
+                  "isBuiltIn" : true,
+                  "widgets" : [ {
+                    "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                    "shouldExcludeAlertSuppressionWindows" : true,
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "visualMode" : "Full",
+                    "filters" : {
+                      "TEST" : [ 5187, 5227 ],
+                      "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                    },
+                    "title" : "Widget Title",
+                    "type" : "Agent Status",
+                    "metricGroup" : "BGP",
+                    "measure" : {
+                      "percentileValue" : 95,
+                      "type" : "MEAN"
+                    },
+                    "apiLink" : "apiLink",
+                    "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                    "isEmbedded" : true,
+                    "id" : "1234",
+                    "fixedTimespan" : {
+                      "unit" : "Days",
+                      "value" : 10
+                    },
+                    "dataSource" : "ENDPOINT_AGENTS",
+                    "direction" : "FROM_TARGET"
+                  }, {
+                    "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                    "shouldExcludeAlertSuppressionWindows" : true,
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "visualMode" : "Full",
+                    "filters" : {
+                      "TEST" : [ 5187, 5227 ],
+                      "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                    },
+                    "title" : "Widget Title",
+                    "type" : "Agent Status",
+                    "metricGroup" : "BGP",
+                    "measure" : {
+                      "percentileValue" : 95,
+                      "type" : "MEAN"
+                    },
+                    "apiLink" : "apiLink",
+                    "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                    "isEmbedded" : true,
+                    "id" : "1234",
+                    "fixedTimespan" : {
+                      "unit" : "Days",
+                      "value" : 10
+                    },
+                    "dataSource" : "ENDPOINT_AGENTS",
+                    "direction" : "FROM_TARGET"
+                  } ],
+                  "defaultTimespan" : {
+                    "duration" : 7200,
+                    "timespanDuration" : 7200,
+                    "start" : "2023-05-16T10:14:28Z",
+                    "end" : "2023-05-16T11:14:28Z",
+                    "timespanStart" : "2023-05-16 10:14:28",
+                    "timespanEnd" : "2023-05-16 11:14:28"
+                  },
+                  "layout" : {
+                    "layoutId" : "grid-layout-1",
+                    "type" : "grid",
+                    "details" : {
+                      "widgetPositioning" : [ {
+                        "x" : 0,
+                        "y" : 0,
+                        "w" : 9,
+                        "h" : 5,
+                        "id" : "widgetId-71lbb"
+                      } ]
+                    }
+                  },
+                  "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "schedule" : "",
+                  "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
+                  "createdBy" : "1",
+                  "refreshRate" : "off",
+                  "modifiedDate" : "2023-05-16T10:14:28Z",
+                  "modifiedBy" : "1",
+                  "isGlobalOverride" : true,
+                  "aid" : "1234"
+                }
+                                  """;
+        var statusCode = 201;
+        var responseContentType = "application/json";
+        Dashboard mappedResponse = 
+                mapper.readValue(responseBodyJson, Dashboard.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/dashboards/{dashboardId}/clone";
+        stubFor(post(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.cloneDashboard(dashboardId, null, mappedRequest);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**
@@ -217,6 +432,7 @@ public class DashboardsApiTest {
                     }
                   },
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "schedule" : "",
                   "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
                   "createdBy" : "1",
                   "refreshRate" : "off",
@@ -359,6 +575,7 @@ public class DashboardsApiTest {
                     }
                   },
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "schedule" : "",
                   "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
                   "createdBy" : "1",
                   "refreshRate" : "off",
@@ -412,6 +629,33 @@ public class DashboardsApiTest {
                                             .withStatus(statusCode)));
 
         var apiResponse = api.deleteDashboardWithHttpInfo(dashboardId, null);
+        assertEquals(statusCode, apiResponse.getStatusCode());
+    }
+    
+    /**
+     * Delete dashboard snapshot schedule
+     * <p>
+     * Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void deleteDashboardScheduleRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
+
+
+        var statusCode = 204;
+
+        var path = "/dashboards/{dashboardId}/actions/schedule";
+        stubFor(delete(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.deleteDashboardScheduleWithHttpInfo(dashboardId, null);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -562,6 +806,7 @@ public class DashboardsApiTest {
                       } ]
                     }
                   },
+                  "schedule" : "",
                   "accountId" : 1234,
                   "apiLink" : [ {
                     "key" : ""
@@ -1230,6 +1475,7 @@ public class DashboardsApiTest {
                       } ]
                     }
                   },
+                  "schedule" : "",
                   "accountId" : 1234,
                   "apiLink" : [ {
                     "key" : ""
@@ -1375,6 +1621,7 @@ public class DashboardsApiTest {
                       } ]
                     }
                   },
+                  "schedule" : "",
                   "accountId" : 1234,
                   "apiLink" : [ {
                     "key" : ""
@@ -1729,6 +1976,7 @@ public class DashboardsApiTest {
                     }
                   },
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "schedule" : "",
                   "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
                   "createdBy" : "1",
                   "refreshRate" : "off",
@@ -1871,6 +2119,7 @@ public class DashboardsApiTest {
                     }
                   },
                   "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "schedule" : "",
                   "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
                   "createdBy" : "1",
                   "refreshRate" : "off",
@@ -1898,6 +2147,220 @@ public class DashboardsApiTest {
                                             .withStatus(statusCode)));
 
         var apiResponse = api.updateDashboard(dashboardId, mappedRequest, null);
+        assertEquals(mappedResponse, apiResponse);
+    }
+    
+    /**
+     * Create or update dashboard snapshot schedule
+     * <p>
+     * Creates or replaces the snapshot schedule for a dashboard. Set &#x60;repeat&#x60; to &#x60;NONE&#x60; to generate one snapshot at &#x60;startTime&#x60;. Other &#x60;repeat&#x60; values create recurring snapshots. Schedule settings control when snapshots are generated, the data time range included in each snapshot, and email delivery options. 
+     *
+     * @throws JsonProcessingException if the deserialization fails
+     */
+    @Test
+    public void updateDashboardScheduleRequestAndResponseDeserializationTest()
+            throws JsonProcessingException, ApiException
+    {
+        String dashboardId = "646f4d2ce3c99b0536c3821e";
+
+        var requestBodyJson = """
+                {
+                  "expiresAfter" : 157680000,
+                  "cronSpec" : {
+                    "repeat" : "EVERY_WEEK",
+                    "endRepeat" : {
+                      "endConditionType" : "NEVER"
+                    },
+                    "startTime" : 1753200000,
+                    "zoneCode" : "America/Los_Angeles"
+                  },
+                  "flagLocked" : false,
+                  "recipients" : [ "alice@example.com", "bob@example.com" ],
+                  "flagAutoShare" : false,
+                  "dataTimespan" : {
+                    "period" : "WEEK",
+                    "n" : 1
+                  },
+                  "flagAttachPdfToEmail" : true,
+                  "dataSource" : {
+                    "name" : "Weekly network report"
+                  },
+                  "flagIsIncludePiiUserData" : false,
+                  "flagEnabled" : true
+                }
+                                 """;
+        var requestBodyContentType = "application/json";
+        DashboardScheduleRequest mappedRequest = 
+                mapper.readValue(requestBodyJson, DashboardScheduleRequest.class);
+        assertNotNull(mappedRequest);
+
+        var responseBodyJson = """
+                {
+                  "isMigratedReport" : false,
+                  "dashboardCreatedBy" : "1",
+                  "_links" : {
+                    "snapshots" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    },
+                    "self" : {
+                      "hreflang" : "hreflang",
+                      "templated" : true,
+                      "profile" : "profile",
+                      "name" : "name",
+                      "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                      "type" : "type",
+                      "deprecation" : "deprecation",
+                      "title" : "title"
+                    }
+                  },
+                  "isDefaultForUser" : true,
+                  "description" : "HTTP Server Widgets",
+                  "isPrivate" : true,
+                  "title" : "HTTP Server Widgets",
+                  "isBuiltIn" : true,
+                  "widgets" : [ {
+                    "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                    "shouldExcludeAlertSuppressionWindows" : true,
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "visualMode" : "Full",
+                    "filters" : {
+                      "TEST" : [ 5187, 5227 ],
+                      "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                    },
+                    "title" : "Widget Title",
+                    "type" : "Agent Status",
+                    "metricGroup" : "BGP",
+                    "measure" : {
+                      "percentileValue" : 95,
+                      "type" : "MEAN"
+                    },
+                    "apiLink" : "apiLink",
+                    "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                    "isEmbedded" : true,
+                    "id" : "1234",
+                    "fixedTimespan" : {
+                      "unit" : "Days",
+                      "value" : 10
+                    },
+                    "dataSource" : "ENDPOINT_AGENTS",
+                    "direction" : "FROM_TARGET"
+                  }, {
+                    "embedUrl" : "https://embed.thousandeyes.com/e/00aa:3039802d-5c76-42d2-9a93-c6e5f9d3122f",
+                    "shouldExcludeAlertSuppressionWindows" : true,
+                    "_links" : {
+                      "self" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "visualMode" : "Full",
+                    "filters" : {
+                      "TEST" : [ 5187, 5227 ],
+                      "ENDPOINT_MACHINE_ID" : [ "fbd0050c-07f7-43f7-9631-14b32f096962" ]
+                    },
+                    "title" : "Widget Title",
+                    "type" : "Agent Status",
+                    "metricGroup" : "BGP",
+                    "measure" : {
+                      "percentileValue" : 95,
+                      "type" : "MEAN"
+                    },
+                    "apiLink" : "apiLink",
+                    "metric" : "ENDPOINT_GATEWAY_CPU_LOAD_PERCENT",
+                    "isEmbedded" : true,
+                    "id" : "1234",
+                    "fixedTimespan" : {
+                      "unit" : "Days",
+                      "value" : 10
+                    },
+                    "dataSource" : "ENDPOINT_AGENTS",
+                    "direction" : "FROM_TARGET"
+                  } ],
+                  "globalFilterId" : "65babd9bb90bf55b17c96c8d",
+                  "refreshRate" : "off",
+                  "modifiedBy" : 1,
+                  "dashboardModifiedBy" : "1",
+                  "migratedReport" : false,
+                  "isDefaultForAccount" : false,
+                  "defaultTimespan" : {
+                    "duration" : 7200,
+                    "timespanDuration" : 7200,
+                    "start" : "2023-05-16T10:14:28Z",
+                    "end" : "2023-05-16T11:14:28Z",
+                    "timespanStart" : "2023-05-16 10:14:28",
+                    "timespanEnd" : "2023-05-16 11:14:28"
+                  },
+                  "layout" : {
+                    "layoutId" : "grid-layout-1",
+                    "type" : "grid",
+                    "details" : {
+                      "widgetPositioning" : [ {
+                        "x" : 0,
+                        "y" : 0,
+                        "w" : 9,
+                        "h" : 5,
+                        "id" : "widgetId-71lbb"
+                      } ]
+                    }
+                  },
+                  "schedule" : "",
+                  "accountId" : 1234,
+                  "apiLink" : [ {
+                    "key" : ""
+                  }, {
+                    "key" : ""
+                  } ],
+                  "dashboardId" : "5e1f7a99143ae6004fdc3bb4",
+                  "createdBy" : 1,
+                  "globalOverride" : true,
+                  "modifiedDate" : "2023-05-16 10:14:28",
+                  "isGlobalOverride" : true,
+                  "aid" : "1234",
+                  "dashboardModifiedDate" : "2023-05-16T10:14:28Z"
+                }
+                                  """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
+        ApiDashboard mappedResponse = 
+                mapper.readValue(responseBodyJson, ApiDashboard.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/dashboards/{dashboardId}/actions/schedule";
+        stubFor(put(urlPathTemplate(path))
+                        .withPathParam("dashboardId", equalTo(URLEncoder.encode(dashboardId, StandardCharsets.UTF_8)))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .withHeader(CONTENT_TYPE, equalTo(requestBodyContentType))
+                        .withRequestBody(equalToJson(requestBodyJson))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var apiResponse = api.updateDashboardSchedule(dashboardId, mappedRequest, null);
         assertEquals(mappedResponse, apiResponse);
     }
     

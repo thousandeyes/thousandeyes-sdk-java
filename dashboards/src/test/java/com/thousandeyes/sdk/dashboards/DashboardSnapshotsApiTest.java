@@ -432,6 +432,7 @@ public class DashboardSnapshotsApiTest {
                         } ]
                       }
                     },
+                    "schedule" : "",
                     "accountId" : 1234,
                     "apiLink" : [ {
                       "key" : ""
@@ -1236,6 +1237,7 @@ public class DashboardSnapshotsApiTest {
                           } ]
                         }
                       },
+                      "schedule" : "",
                       "accountId" : 1234,
                       "apiLink" : [ {
                         "key" : ""
@@ -1501,6 +1503,7 @@ public class DashboardSnapshotsApiTest {
                           } ]
                         }
                       },
+                      "schedule" : "",
                       "accountId" : 1234,
                       "apiLink" : [ {
                         "key" : ""
