@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.AgentResponse;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.DnsQueryClass;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
+import com.thousandeyes.sdk.tests.model.TestAgentResponse;
 import com.thousandeyes.sdk.tests.model.TestInterval;
 import com.thousandeyes.sdk.tests.model.TestLabel;
 import com.thousandeyes.sdk.tests.model.TestLinks;
@@ -128,7 +128,7 @@ public class DnsSecTestResponse {
   private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<AgentResponse> agents = new ArrayList<>();
+  private List<TestAgentResponse> agents = new ArrayList<>();
 
   public DnsSecTestResponse() { 
   }
@@ -584,12 +584,12 @@ public class DnsSecTestResponse {
   }
 
 
-  public DnsSecTestResponse agents(List<AgentResponse> agents) {
+  public DnsSecTestResponse agents(List<TestAgentResponse> agents) {
     this.agents = agents;
     return this;
   }
 
-  public DnsSecTestResponse addAgentsItem(AgentResponse agentsItem) {
+  public DnsSecTestResponse addAgentsItem(TestAgentResponse agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -605,14 +605,14 @@ public class DnsSecTestResponse {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AgentResponse> getAgents() {
+  public List<TestAgentResponse> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<AgentResponse> agents) {
+  public void setAgents(List<TestAgentResponse> agents) {
     this.agents = agents;
   }
 

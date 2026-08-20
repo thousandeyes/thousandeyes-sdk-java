@@ -25,7 +25,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Create tag
 
-Creates a new tag.
+Creates a new tag. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;.    For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
 
 ### Example
 
@@ -92,6 +92,7 @@ public class Example {
 | **201** | item created |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
 | **409** | An existing item already exists |  -  |
 | **500** | Internal Server Error |  -  |
 
@@ -101,7 +102,7 @@ public class Example {
 
 Create tag
 
-Creates a new tag.
+Creates a new tag. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;.    For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
 
 ### Example
 
@@ -171,6 +172,7 @@ ApiResponse<[**Tag**](Tag.md)>
 | **201** | item created |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
 | **409** | An existing item already exists |  -  |
 | **500** | Internal Server Error |  -  |
 
@@ -181,7 +183,7 @@ ApiResponse<[**Tag**](Tag.md)>
 
 Create multiple tags
 
-Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array.  
+Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. A tag that fails this permission check is reported as a per-item &#x60;403&#x60; in the &#x60;errors&#x60; array, while the top-level status remains &#x60;207&#x60;. If the caller does not have permission to create tags, the request returns a top-level &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
 
 ### Example
 
@@ -248,6 +250,7 @@ public class Example {
 | **207** | Item created |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
 | **500** | Internal Server Error |  -  |
 
 ## createTagsWithHttpInfo
@@ -256,7 +259,7 @@ public class Example {
 
 Create multiple tags
 
-Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array.  
+Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. A tag that fails this permission check is reported as a per-item &#x60;403&#x60; in the &#x60;errors&#x60; array, while the top-level status remains &#x60;207&#x60;. If the caller does not have permission to create tags, the request returns a top-level &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
 
 ### Example
 
@@ -326,6 +329,7 @@ ApiResponse<[**BulkTagResponse**](BulkTagResponse.md)>
 | **207** | Item created |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
 | **500** | Internal Server Error |  -  |
 
 
@@ -811,7 +815,7 @@ ApiResponse<[**Tags**](Tags.md)>
 
 Update tag
 
-Updates a tag.
+Updates a tag. Updating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
 
 ### Example
 
@@ -890,7 +894,7 @@ public class Example {
 
 Update tag
 
-Updates a tag.
+Updates a tag. Updating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
 
 ### Example
 

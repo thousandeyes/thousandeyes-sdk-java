@@ -77,7 +77,7 @@ public class TagsApiTest {
     /**
      * Create tag
      * <p>
-     * Creates a new tag.
+     * Creates a new tag. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;.    For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -200,7 +200,7 @@ public class TagsApiTest {
     /**
      * Create multiple tags
      * <p>
-     * Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array.  
+     * Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. A tag that fails this permission check is reported as a per-item &#x60;403&#x60; in the &#x60;errors&#x60; array, while the top-level status remains &#x60;207&#x60;. If the caller does not have permission to create tags, the request returns a top-level &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -261,8 +261,8 @@ public class TagsApiTest {
                         "createDate" : "2022-03-01T23:31:11Z"
                       }
                     },
-                    "message" : "Object successfully created",
-                    "responseCode" : 200
+                    "message" : "Duplicate tags are not allowed. You must change at least one of the following: key, value, or object type.",
+                    "responseCode" : 409
                   }, {
                     "tag" : {
                       "key" : {
@@ -301,8 +301,8 @@ public class TagsApiTest {
                         "createDate" : "2022-03-01T23:31:11Z"
                       }
                     },
-                    "message" : "Object successfully created",
-                    "responseCode" : 200
+                    "message" : "Duplicate tags are not allowed. You must change at least one of the following: key, value, or object type.",
+                    "responseCode" : 409
                   } ],
                   "tags" : [ {
                     "assignments" : [ {
@@ -456,8 +456,8 @@ public class TagsApiTest {
                         "createDate" : "2022-03-01T23:31:11Z"
                       }
                     },
-                    "message" : "Object successfully created",
-                    "responseCode" : 200
+                    "message" : "Duplicate tags are not allowed. You must change at least one of the following: key, value, or object type.",
+                    "responseCode" : 409
                   }, {
                     "tag" : {
                       "key" : {
@@ -496,8 +496,8 @@ public class TagsApiTest {
                         "createDate" : "2022-03-01T23:31:11Z"
                       }
                     },
-                    "message" : "Object successfully created",
-                    "responseCode" : 200
+                    "message" : "Duplicate tags are not allowed. You must change at least one of the following: key, value, or object type.",
+                    "responseCode" : 409
                   } ],
                   "tags" : [ {
                     "assignments" : [ {
@@ -866,7 +866,7 @@ public class TagsApiTest {
     /**
      * Update tag
      * <p>
-     * Updates a tag.
+     * Updates a tag. Updating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
      *
      * @throws JsonProcessingException if the deserialization fails
      */

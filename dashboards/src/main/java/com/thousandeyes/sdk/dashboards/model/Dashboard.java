@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.dashboards.model.ApiWidget;
 import com.thousandeyes.sdk.dashboards.model.DashboardLayout;
 import com.thousandeyes.sdk.dashboards.model.DashboardLinks;
+import com.thousandeyes.sdk.dashboards.model.DashboardSchedule;
 import com.thousandeyes.sdk.dashboards.model.DefaultTimespan;
 import com.thousandeyes.sdk.dashboards.model.RefreshRate;
 import java.time.OffsetDateTime;
@@ -53,6 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Dashboard.JSON_PROPERTY_IS_GLOBAL_OVERRIDE,
   Dashboard.JSON_PROPERTY_IS_MIGRATED_REPORT,
   Dashboard.JSON_PROPERTY_LAYOUT,
+  Dashboard.JSON_PROPERTY_SCHEDULE,
   Dashboard.JSON_PROPERTY_REFRESH_RATE,
   Dashboard.JSON_PROPERTY_LINKS
 })
@@ -109,6 +111,9 @@ public class Dashboard {
   public static final String JSON_PROPERTY_LAYOUT = "layout";
   private DashboardLayout layout;
 
+  public static final String JSON_PROPERTY_SCHEDULE = "schedule";
+  private DashboardSchedule schedule;
+
   public static final String JSON_PROPERTY_REFRESH_RATE = "refreshRate";
   private RefreshRate refreshRate = RefreshRate.OFF;
 
@@ -128,7 +133,8 @@ public class Dashboard {
     @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
     @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_USER) Boolean isDefaultForUser, 
     @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_ACCOUNT) Boolean isDefaultForAccount, 
-    @JsonProperty(JSON_PROPERTY_IS_MIGRATED_REPORT) Boolean isMigratedReport
+    @JsonProperty(JSON_PROPERTY_IS_MIGRATED_REPORT) Boolean isMigratedReport, 
+    @JsonProperty(JSON_PROPERTY_SCHEDULE) DashboardSchedule schedule
   ) {
   this();
     this.dashboardId = dashboardId;
@@ -140,6 +146,7 @@ public class Dashboard {
     this.isDefaultForUser = isDefaultForUser;
     this.isDefaultForAccount = isDefaultForAccount;
     this.isMigratedReport = isMigratedReport;
+    this.schedule = schedule;
   }
 
   public Dashboard globalFilterId(String globalFilterId) {
@@ -485,6 +492,21 @@ public class Dashboard {
   }
 
 
+   /**
+   * Get schedule
+   * @return schedule
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCHEDULE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public DashboardSchedule getSchedule() {
+    return schedule;
+  }
+
+
+
+
   public Dashboard refreshRate(RefreshRate refreshRate) {
     this.refreshRate = refreshRate;
     return this;
@@ -564,13 +586,14 @@ public class Dashboard {
         Objects.equals(this.isGlobalOverride, dashboard.isGlobalOverride) &&
         Objects.equals(this.isMigratedReport, dashboard.isMigratedReport) &&
         Objects.equals(this.layout, dashboard.layout) &&
+        Objects.equals(this.schedule, dashboard.schedule) &&
         Objects.equals(this.refreshRate, dashboard.refreshRate) &&
         Objects.equals(this.links, dashboard.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(globalFilterId, dashboardId, title, isBuiltIn, aid, createdBy, modifiedBy, modifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport, layout, refreshRate, links);
+    return Objects.hash(globalFilterId, dashboardId, title, isBuiltIn, aid, createdBy, modifiedBy, modifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport, layout, schedule, refreshRate, links);
   }
 
   @Override
@@ -594,6 +617,7 @@ public class Dashboard {
     sb.append("    isGlobalOverride: ").append(toIndentedString(isGlobalOverride)).append("\n");
     sb.append("    isMigratedReport: ").append(toIndentedString(isMigratedReport)).append("\n");
     sb.append("    layout: ").append(toIndentedString(layout)).append("\n");
+    sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("    refreshRate: ").append(toIndentedString(refreshRate)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");

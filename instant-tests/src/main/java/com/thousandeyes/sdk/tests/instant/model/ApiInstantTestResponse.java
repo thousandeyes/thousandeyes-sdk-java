@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.AgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.ApiPredefinedVariable;
 import com.thousandeyes.sdk.tests.instant.model.ApiRequest;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
+import com.thousandeyes.sdk.tests.instant.model.TestAgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.TestLabel;
 import com.thousandeyes.sdk.tests.instant.model.TestLinks;
 import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
@@ -192,7 +192,7 @@ public class ApiInstantTestResponse {
   private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<AgentResponse> agents = new ArrayList<>();
+  private List<TestAgentResponse> agents = new ArrayList<>();
 
   public ApiInstantTestResponse() { 
   }
@@ -1053,12 +1053,12 @@ public class ApiInstantTestResponse {
   }
 
 
-  public ApiInstantTestResponse agents(List<AgentResponse> agents) {
+  public ApiInstantTestResponse agents(List<TestAgentResponse> agents) {
     this.agents = agents;
     return this;
   }
 
-  public ApiInstantTestResponse addAgentsItem(AgentResponse agentsItem) {
+  public ApiInstantTestResponse addAgentsItem(TestAgentResponse agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1074,14 +1074,14 @@ public class ApiInstantTestResponse {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AgentResponse> getAgents() {
+  public List<TestAgentResponse> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<AgentResponse> agents) {
+  public void setAgents(List<TestAgentResponse> agents) {
     this.agents = agents;
   }
 

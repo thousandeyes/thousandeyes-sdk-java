@@ -138,6 +138,7 @@ public class StreamingApiTest {
                     "id" : "5678",
                     "domain" : "endpoint"
                   } ],
+                  "name" : "Production metrics stream",
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -214,6 +215,7 @@ public class StreamingApiTest {
                     "id" : "5678",
                     "domain" : "endpoint"
                   } ],
+                  "name" : "Production metrics stream",
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -356,6 +358,7 @@ public class StreamingApiTest {
                     "id" : "5678",
                     "domain" : "endpoint"
                   } ],
+                  "name" : "Production metrics stream",
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -471,6 +474,7 @@ public class StreamingApiTest {
                     "id" : "5678",
                     "domain" : "endpoint"
                   } ],
+                  "name" : "Production metrics stream",
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -551,6 +555,7 @@ public class StreamingApiTest {
                     "id" : "5678",
                     "domain" : "endpoint"
                   } ],
+                  "name" : "Production metrics stream",
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -651,6 +656,7 @@ public class StreamingApiTest {
                       "token" : "d0a91307-be2f-4218-a9f8-71c02d98846b"
                     }
                   },
+                  "name" : "Production metrics stream",
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"
@@ -732,6 +738,7 @@ public class StreamingApiTest {
                     "id" : "5678",
                     "domain" : "endpoint"
                   } ],
+                  "name" : "Production metrics stream",
                   "tagMatch" : [ {
                     "key" : "keyA",
                     "value" : "valueA"

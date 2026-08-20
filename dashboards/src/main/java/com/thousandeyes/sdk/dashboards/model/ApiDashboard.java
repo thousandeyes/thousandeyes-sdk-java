@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.dashboards.model.ApiWidget;
 import com.thousandeyes.sdk.dashboards.model.DashboardLayout;
 import com.thousandeyes.sdk.dashboards.model.DashboardLinks;
+import com.thousandeyes.sdk.dashboards.model.DashboardSchedule;
 import com.thousandeyes.sdk.dashboards.model.DefaultTimespan;
 import com.thousandeyes.sdk.dashboards.model.RefreshRate;
 import java.time.OffsetDateTime;
@@ -61,6 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApiDashboard.JSON_PROPERTY_IS_GLOBAL_OVERRIDE,
   ApiDashboard.JSON_PROPERTY_IS_MIGRATED_REPORT,
   ApiDashboard.JSON_PROPERTY_LAYOUT,
+  ApiDashboard.JSON_PROPERTY_SCHEDULE,
   ApiDashboard.JSON_PROPERTY_REFRESH_RATE,
   ApiDashboard.JSON_PROPERTY_LINKS
 })
@@ -138,6 +140,9 @@ public class ApiDashboard {
   public static final String JSON_PROPERTY_LAYOUT = "layout";
   private DashboardLayout layout;
 
+  public static final String JSON_PROPERTY_SCHEDULE = "schedule";
+  private DashboardSchedule schedule;
+
   public static final String JSON_PROPERTY_REFRESH_RATE = "refreshRate";
   private RefreshRate refreshRate = RefreshRate.OFF;
 
@@ -162,7 +167,8 @@ public class ApiDashboard {
     @JsonProperty(JSON_PROPERTY_DASHBOARD_MODIFIED_DATE) OffsetDateTime dashboardModifiedDate, 
     @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_USER) Boolean isDefaultForUser, 
     @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_ACCOUNT) Boolean isDefaultForAccount, 
-    @JsonProperty(JSON_PROPERTY_IS_MIGRATED_REPORT) Boolean isMigratedReport
+    @JsonProperty(JSON_PROPERTY_IS_MIGRATED_REPORT) Boolean isMigratedReport, 
+    @JsonProperty(JSON_PROPERTY_SCHEDULE) DashboardSchedule schedule
   ) {
   this();
     this.accountId = accountId;
@@ -179,6 +185,7 @@ public class ApiDashboard {
     this.isDefaultForUser = isDefaultForUser;
     this.isDefaultForAccount = isDefaultForAccount;
     this.isMigratedReport = isMigratedReport;
+    this.schedule = schedule;
   }
 
   public ApiDashboard globalFilterId(String globalFilterId) {
@@ -671,6 +678,21 @@ public class ApiDashboard {
   }
 
 
+   /**
+   * Get schedule
+   * @return schedule
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCHEDULE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public DashboardSchedule getSchedule() {
+    return schedule;
+  }
+
+
+
+
   public ApiDashboard refreshRate(RefreshRate refreshRate) {
     this.refreshRate = refreshRate;
     return this;
@@ -757,13 +779,14 @@ public class ApiDashboard {
         Objects.equals(this.isGlobalOverride, apiDashboard.isGlobalOverride) &&
         Objects.equals(this.isMigratedReport, apiDashboard.isMigratedReport) &&
         Objects.equals(this.layout, apiDashboard.layout) &&
+        Objects.equals(this.schedule, apiDashboard.schedule) &&
         Objects.equals(this.refreshRate, apiDashboard.refreshRate) &&
         Objects.equals(this.links, apiDashboard.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(globalFilterId, accountId, createdBy, modifiedBy, modifiedDate, globalOverride, migratedReport, apiLink, dashboardId, title, isBuiltIn, aid, dashboardCreatedBy, dashboardModifiedBy, dashboardModifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport, layout, refreshRate, links);
+    return Objects.hash(globalFilterId, accountId, createdBy, modifiedBy, modifiedDate, globalOverride, migratedReport, apiLink, dashboardId, title, isBuiltIn, aid, dashboardCreatedBy, dashboardModifiedBy, dashboardModifiedDate, isPrivate, isDefaultForUser, isDefaultForAccount, widgets, description, defaultTimespan, isGlobalOverride, isMigratedReport, layout, schedule, refreshRate, links);
   }
 
   @Override
@@ -794,6 +817,7 @@ public class ApiDashboard {
     sb.append("    isGlobalOverride: ").append(toIndentedString(isGlobalOverride)).append("\n");
     sb.append("    isMigratedReport: ").append(toIndentedString(isMigratedReport)).append("\n");
     sb.append("    layout: ").append(toIndentedString(layout)).append("\n");
+    sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("    refreshRate: ").append(toIndentedString(refreshRate)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");

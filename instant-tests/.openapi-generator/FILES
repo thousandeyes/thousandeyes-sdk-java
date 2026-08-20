@@ -104,6 +104,8 @@ src/main/java/com/thousandeyes/sdk/tests/instant/model/SipServerInstantTestRespo
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SipServerProperties.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SipTestProtocol.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAgent.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAgentResponse.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAgentResponseProperties.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAuthType.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestChromiumTrack.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestCustomHeaders.java
