@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.AgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.AgentToAgentTestProtocol;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
+import com.thousandeyes.sdk.tests.instant.model.TestAgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.TestDirection;
 import com.thousandeyes.sdk.tests.instant.model.TestDscpId;
 import com.thousandeyes.sdk.tests.instant.model.TestLabel;
@@ -157,7 +157,7 @@ public class AgentToAgentInstantTestResponse {
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<AgentResponse> agents = new ArrayList<>();
+  private List<TestAgentResponse> agents = new ArrayList<>();
 
   public AgentToAgentInstantTestResponse() { 
   }
@@ -784,12 +784,12 @@ public class AgentToAgentInstantTestResponse {
   }
 
 
-  public AgentToAgentInstantTestResponse agents(List<AgentResponse> agents) {
+  public AgentToAgentInstantTestResponse agents(List<TestAgentResponse> agents) {
     this.agents = agents;
     return this;
   }
 
-  public AgentToAgentInstantTestResponse addAgentsItem(AgentResponse agentsItem) {
+  public AgentToAgentInstantTestResponse addAgentsItem(TestAgentResponse agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -805,14 +805,14 @@ public class AgentToAgentInstantTestResponse {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AgentResponse> getAgents() {
+  public List<TestAgentResponse> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<AgentResponse> agents) {
+  public void setAgents(List<TestAgentResponse> agents) {
     this.agents = agents;
   }
 

@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Stream
  */
 @JsonPropertyOrder({
+  Stream.JSON_PROPERTY_NAME,
   Stream.JSON_PROPERTY_CUSTOM_HEADERS,
   Stream.JSON_PROPERTY_STREAM_ENDPOINT_URL,
   Stream.JSON_PROPERTY_TAG_MATCH,
@@ -60,6 +61,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Stream {
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
+
   public static final String JSON_PROPERTY_CUSTOM_HEADERS = "customHeaders";
   private Map<String, String> customHeaders = new HashMap<>();
 
@@ -104,6 +108,31 @@ public class Stream {
 
   public Stream() { 
   }
+
+  public Stream name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the data stream. When omitted, a name is generated on creation and the existing name is preserved on update.
+   * @return name
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getName() {
+    return name;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   public Stream customHeaders(Map<String, String> customHeaders) {
     this.customHeaders = customHeaders;
@@ -507,7 +536,8 @@ public class Stream {
       return false;
     }
     Stream stream = (Stream) o;
-    return Objects.equals(this.customHeaders, stream.customHeaders) &&
+    return Objects.equals(this.name, stream.name) &&
+        Objects.equals(this.customHeaders, stream.customHeaders) &&
         Objects.equals(this.streamEndpointUrl, stream.streamEndpointUrl) &&
         Objects.equals(this.tagMatch, stream.tagMatch) &&
         Objects.equals(this.testMatch, stream.testMatch) &&
@@ -525,13 +555,14 @@ public class Stream {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, inputConfig, exporterConfig, endpointAgentLabel, endpointAgentTag, type, signal, endpointType, dataModelVersion);
+    return Objects.hash(name, customHeaders, streamEndpointUrl, tagMatch, testMatch, enabled, filters, inputConfig, exporterConfig, endpointAgentLabel, endpointAgentTag, type, signal, endpointType, dataModelVersion);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Stream {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    streamEndpointUrl: ").append(toIndentedString(streamEndpointUrl)).append("\n");
     sb.append("    tagMatch: ").append(toIndentedString(tagMatch)).append("\n");

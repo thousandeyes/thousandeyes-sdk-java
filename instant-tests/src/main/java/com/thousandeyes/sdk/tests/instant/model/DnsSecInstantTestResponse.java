@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.AgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.DnsQueryClass;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
+import com.thousandeyes.sdk.tests.instant.model.TestAgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.TestLabel;
 import com.thousandeyes.sdk.tests.instant.model.TestLinks;
 import com.thousandeyes.sdk.tests.instant.model.TestTag;
@@ -110,7 +110,7 @@ public class DnsSecInstantTestResponse {
   private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<AgentResponse> agents = new ArrayList<>();
+  private List<TestAgentResponse> agents = new ArrayList<>();
 
   public DnsSecInstantTestResponse() { 
   }
@@ -458,12 +458,12 @@ public class DnsSecInstantTestResponse {
   }
 
 
-  public DnsSecInstantTestResponse agents(List<AgentResponse> agents) {
+  public DnsSecInstantTestResponse agents(List<TestAgentResponse> agents) {
     this.agents = agents;
     return this;
   }
 
-  public DnsSecInstantTestResponse addAgentsItem(AgentResponse agentsItem) {
+  public DnsSecInstantTestResponse addAgentsItem(TestAgentResponse agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -479,14 +479,14 @@ public class DnsSecInstantTestResponse {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AgentResponse> getAgents() {
+  public List<TestAgentResponse> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<AgentResponse> agents) {
+  public void setAgents(List<TestAgentResponse> agents) {
     this.agents = agents;
   }
 
