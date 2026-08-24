@@ -37,7 +37,7 @@ public class ConsoleLogs {
   private String level;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
-  private String timestamp;
+  private Long timestamp;
 
   public static final String JSON_PROPERTY_VALUE = "value";
   private String value;
@@ -70,7 +70,7 @@ public class ConsoleLogs {
   }
 
 
-  public ConsoleLogs timestamp(String timestamp) {
+  public ConsoleLogs timestamp(Long timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -83,14 +83,14 @@ public class ConsoleLogs {
   @JsonProperty(JSON_PROPERTY_TIMESTAMP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getTimestamp() {
+  public Long getTimestamp() {
     return timestamp;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TIMESTAMP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimestamp(String timestamp) {
+  public void setTimestamp(Long timestamp) {
     this.timestamp = timestamp;
   }
 

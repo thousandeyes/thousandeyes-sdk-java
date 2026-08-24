@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * The &#x60;EndpointAgentUpdate&#x60; object contains supported fields for updates.
+ * Properties that can be updated for an Endpoint Agent. The &#x60;embed-wireless-advantage&#x60; and &#x60;embed-wireless-essentials&#x60; license types cannot be assigned through this endpoint. Requests that specify either license type are rejected. 
  */
 @JsonPropertyOrder({
   EndpointAgentUpdate.JSON_PROPERTY_NAME,

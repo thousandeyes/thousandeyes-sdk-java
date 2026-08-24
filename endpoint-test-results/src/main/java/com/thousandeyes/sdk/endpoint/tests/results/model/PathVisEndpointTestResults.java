@@ -109,7 +109,7 @@ public class PathVisEndpointTestResults {
   }
 
    /**
-   * Get test
+   * The scheduled test configuration. Omitted when the user lacks the &#x60;View endpoint experience tests&#x60; permission.
    * @return test
   **/
   @jakarta.annotation.Nullable

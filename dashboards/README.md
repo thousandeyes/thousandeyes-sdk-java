@@ -2,7 +2,7 @@
 
 Dashboards API
 
-- API version: 7.0.99
+- API version: 7.0.102
 
 Manage ThousandEyes Dashboards.
 
@@ -141,10 +141,14 @@ Class | Method | HTTP request | Description
 *DashboardSnapshotsApi* | [**getDashboardSnapshotsWithHttpInfo**](docs/DashboardSnapshotsApi.md#getDashboardSnapshotsWithHttpInfo) | **GET** /dashboard-snapshots | List dashboard snapshots
 *DashboardSnapshotsApi* | [**updateDashboardSnapshotExpirationDate**](docs/DashboardSnapshotsApi.md#updateDashboardSnapshotExpirationDate) | **PATCH** /dashboard-snapshots/{snapshotId} | Update snapshot expiration
 *DashboardSnapshotsApi* | [**updateDashboardSnapshotExpirationDateWithHttpInfo**](docs/DashboardSnapshotsApi.md#updateDashboardSnapshotExpirationDateWithHttpInfo) | **PATCH** /dashboard-snapshots/{snapshotId} | Update snapshot expiration
+*DashboardsApi* | [**cloneDashboard**](docs/DashboardsApi.md#cloneDashboard) | **POST** /dashboards/{dashboardId}/clone | Clone dashboard
+*DashboardsApi* | [**cloneDashboardWithHttpInfo**](docs/DashboardsApi.md#cloneDashboardWithHttpInfo) | **POST** /dashboards/{dashboardId}/clone | Clone dashboard
 *DashboardsApi* | [**createDashboard**](docs/DashboardsApi.md#createDashboard) | **POST** /dashboards | Create dashboard
 *DashboardsApi* | [**createDashboardWithHttpInfo**](docs/DashboardsApi.md#createDashboardWithHttpInfo) | **POST** /dashboards | Create dashboard
 *DashboardsApi* | [**deleteDashboard**](docs/DashboardsApi.md#deleteDashboard) | **DELETE** /dashboards/{dashboardId} | Delete dashboard
 *DashboardsApi* | [**deleteDashboardWithHttpInfo**](docs/DashboardsApi.md#deleteDashboardWithHttpInfo) | **DELETE** /dashboards/{dashboardId} | Delete dashboard
+*DashboardsApi* | [**deleteDashboardSchedule**](docs/DashboardsApi.md#deleteDashboardSchedule) | **DELETE** /dashboards/{dashboardId}/actions/schedule | Delete dashboard snapshot schedule
+*DashboardsApi* | [**deleteDashboardScheduleWithHttpInfo**](docs/DashboardsApi.md#deleteDashboardScheduleWithHttpInfo) | **DELETE** /dashboards/{dashboardId}/actions/schedule | Delete dashboard snapshot schedule
 *DashboardsApi* | [**getDashboard**](docs/DashboardsApi.md#getDashboard) | **GET** /dashboards/{dashboardId} | Retrieve dashboard
 *DashboardsApi* | [**getDashboardWithHttpInfo**](docs/DashboardsApi.md#getDashboardWithHttpInfo) | **GET** /dashboards/{dashboardId} | Retrieve dashboard
 *DashboardsApi* | [**getDashboardWidgetData**](docs/DashboardsApi.md#getDashboardWidgetData) | **GET** /dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data
@@ -157,6 +161,8 @@ Class | Method | HTTP request | Description
 *DashboardsApi* | [**getIndividualColumnDataWithHttpInfo**](docs/DashboardsApi.md#getIndividualColumnDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId} | Retrieve individual column data from multi-metric table widget
 *DashboardsApi* | [**updateDashboard**](docs/DashboardsApi.md#updateDashboard) | **PUT** /dashboards/{dashboardId} | Update dashboard
 *DashboardsApi* | [**updateDashboardWithHttpInfo**](docs/DashboardsApi.md#updateDashboardWithHttpInfo) | **PUT** /dashboards/{dashboardId} | Update dashboard
+*DashboardsApi* | [**updateDashboardSchedule**](docs/DashboardsApi.md#updateDashboardSchedule) | **PUT** /dashboards/{dashboardId}/actions/schedule | Create or update dashboard snapshot schedule
+*DashboardsApi* | [**updateDashboardScheduleWithHttpInfo**](docs/DashboardsApi.md#updateDashboardScheduleWithHttpInfo) | **PUT** /dashboards/{dashboardId}/actions/schedule | Create or update dashboard snapshot schedule
 *DashboardsFiltersApi* | [**createDashboardFilter**](docs/DashboardsFiltersApi.md#createDashboardFilter) | **POST** /dashboards/filters | Create dashboard filter
 *DashboardsFiltersApi* | [**createDashboardFilterWithHttpInfo**](docs/DashboardsFiltersApi.md#createDashboardFilterWithHttpInfo) | **POST** /dashboards/filters | Create dashboard filter
 *DashboardsFiltersApi* | [**deleteDashboardFilter**](docs/DashboardsFiltersApi.md#deleteDashboardFilter) | **DELETE** /dashboards/filters/{id} | Delete dashboard filter
