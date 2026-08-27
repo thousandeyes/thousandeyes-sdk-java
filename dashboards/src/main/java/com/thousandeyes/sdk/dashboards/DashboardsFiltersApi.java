@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,28 +62,29 @@ public class DashboardsFiltersApi {
   /**
    * Create dashboard filter
    * Creates a new dashboard filter in your account group. To create a filter,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin). * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
-   * @param apiContextFilterRequest Dashboard filter object to be created and saved (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiContextFilterResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiContextFilterResponse createDashboardFilter(ApiContextFilterRequest apiContextFilterRequest, String aid) throws ApiException {
-    ApiResponse<ApiContextFilterResponse> response = createDashboardFilterWithHttpInfo(apiContextFilterRequest, aid);
+  public ApiContextFilterResponse createDashboardFilter(CreateDashboardFilterRequest request) throws ApiException {
+    ApiResponse<ApiContextFilterResponse> response = createDashboardFilterWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create dashboard filter
    * Creates a new dashboard filter in your account group. To create a filter,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin). * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
-   * @param apiContextFilterRequest Dashboard filter object to be created and saved (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiContextFilterResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiContextFilterResponse> createDashboardFilterWithHttpInfo(ApiContextFilterRequest apiContextFilterRequest, String aid) throws ApiException {
-    createDashboardFilterValidateRequest(apiContextFilterRequest);
+  public ApiResponse<ApiContextFilterResponse> createDashboardFilterWithHttpInfo(CreateDashboardFilterRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createDashboardFilter");
+    }
+    createDashboardFilterValidateRequest(request.getApiContextFilterRequest());
 
-    var requestBuilder = createDashboardFilterRequestBuilder(apiContextFilterRequest, aid);
+    var requestBuilder = createDashboardFilterRequestBuilder(request.getApiContextFilterRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
   }
@@ -98,8 +96,8 @@ public class DashboardsFiltersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createDashboardFilterRequestBuilder(ApiContextFilterRequest apiContextFilterRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createDashboardFilterRequestBuilder(ApiContextFilterRequest apiContextFilterRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/dashboards/filters";
@@ -118,29 +116,73 @@ public class DashboardsFiltersApi {
     requestBuilder.requestBody(apiContextFilterRequest);
     return requestBuilder;
   }
-  /**
-   * Delete dashboard filter
-   * Deletes a dashboard filter using the &#x60;filterId&#x60; provided in the request.    **Note**:   * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can delete any dashboard filter.   * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only delete the dashboard filters they have created themselves. 
-   * @param id Unique dashboard filter ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteDashboardFilter(String id, String aid) throws ApiException {
-    deleteDashboardFilterWithHttpInfo(id, aid);
+
+  public static final class CreateDashboardFilterRequest {
+    private final ApiContextFilterRequest apiContextFilterRequest;
+    private final String aid;
+
+    private CreateDashboardFilterRequest(Builder builder) {
+      this.apiContextFilterRequest = builder.apiContextFilterRequest;
+      this.aid = builder.aid;
+    }
+    public ApiContextFilterRequest getApiContextFilterRequest() {
+      return apiContextFilterRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .apiContextFilterRequest(apiContextFilterRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private ApiContextFilterRequest apiContextFilterRequest;
+      private String aid;
+
+      public Builder apiContextFilterRequest(ApiContextFilterRequest apiContextFilterRequest) {
+        this.apiContextFilterRequest = apiContextFilterRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateDashboardFilterRequest build() {
+        return new CreateDashboardFilterRequest(this);
+      }
+    }
   }
 
   /**
    * Delete dashboard filter
    * Deletes a dashboard filter using the &#x60;filterId&#x60; provided in the request.    **Note**:   * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can delete any dashboard filter.   * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only delete the dashboard filters they have created themselves. 
-   * @param id Unique dashboard filter ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteDashboardFilter(DeleteDashboardFilterRequest request) throws ApiException {
+    deleteDashboardFilterWithHttpInfo(request);
+  }
+
+  /**
+   * Delete dashboard filter
+   * Deletes a dashboard filter using the &#x60;filterId&#x60; provided in the request.    **Note**:   * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can delete any dashboard filter.   * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only delete the dashboard filters they have created themselves. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteDashboardFilterWithHttpInfo(String id, String aid) throws ApiException {
-    deleteDashboardFilterValidateRequest(id);
+  public ApiResponse<Void> deleteDashboardFilterWithHttpInfo(DeleteDashboardFilterRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteDashboardFilter");
+    }
+    deleteDashboardFilterValidateRequest(request.getId());
 
-    var requestBuilder = deleteDashboardFilterRequestBuilder(id, aid);
+    var requestBuilder = deleteDashboardFilterRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -152,8 +194,8 @@ public class DashboardsFiltersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteDashboardFilterRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteDashboardFilterRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/dashboards/filters/{id}"
@@ -171,31 +213,75 @@ public class DashboardsFiltersApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteDashboardFilterRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteDashboardFilterRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteDashboardFilterRequest build() {
+        return new DeleteDashboardFilterRequest(this);
+      }
+    }
+  }
+
   /**
    * Get dashboard filter
    * Returns a list of data source filters and their metadata within the dashboard filter. 
-   * @param id Unique dashboard filter ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiContextFilterResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiContextFilterResponse getDashboardFilter(String id, String aid) throws ApiException {
-    ApiResponse<ApiContextFilterResponse> response = getDashboardFilterWithHttpInfo(id, aid);
+  public ApiContextFilterResponse getDashboardFilter(GetDashboardFilterRequest request) throws ApiException {
+    ApiResponse<ApiContextFilterResponse> response = getDashboardFilterWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get dashboard filter
    * Returns a list of data source filters and their metadata within the dashboard filter. 
-   * @param id Unique dashboard filter ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiContextFilterResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiContextFilterResponse> getDashboardFilterWithHttpInfo(String id, String aid) throws ApiException {
-    getDashboardFilterValidateRequest(id);
+  public ApiResponse<ApiContextFilterResponse> getDashboardFilterWithHttpInfo(GetDashboardFilterRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDashboardFilter");
+    }
+    getDashboardFilterValidateRequest(request.getId());
 
-    var requestBuilder = getDashboardFilterRequestBuilder(id, aid);
+    var requestBuilder = getDashboardFilterRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
   }
@@ -207,8 +293,8 @@ public class DashboardsFiltersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDashboardFilterRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDashboardFilterRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboards/filters/{id}"
@@ -226,31 +312,75 @@ public class DashboardsFiltersApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDashboardFilterRequest {
+    private final String id;
+    private final String aid;
+
+    private GetDashboardFilterRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDashboardFilterRequest build() {
+        return new GetDashboardFilterRequest(this);
+      }
+    }
+  }
+
   /**
    * List dashboard filters
    * Returns a list of dashboard filters and its context within your account group. 
-   * @param searchPattern Optional search pattern parameter to filter list of dashboard filters by either name or description values. (optional)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiContextFiltersResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiContextFiltersResponse getDashboardsFilters(String searchPattern, String aid) throws ApiException {
-    ApiResponse<ApiContextFiltersResponse> response = getDashboardsFiltersWithHttpInfo(searchPattern, aid);
+  public ApiContextFiltersResponse getDashboardsFilters(GetDashboardsFiltersRequest request) throws ApiException {
+    ApiResponse<ApiContextFiltersResponse> response = getDashboardsFiltersWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List dashboard filters
    * Returns a list of dashboard filters and its context within your account group. 
-   * @param searchPattern Optional search pattern parameter to filter list of dashboard filters by either name or description values. (optional)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiContextFiltersResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiContextFiltersResponse> getDashboardsFiltersWithHttpInfo(String searchPattern, String aid) throws ApiException {
+  public ApiResponse<ApiContextFiltersResponse> getDashboardsFiltersWithHttpInfo(GetDashboardsFiltersRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDashboardsFilters");
+    }
     getDashboardsFiltersValidateRequest();
 
-    var requestBuilder = getDashboardsFiltersRequestBuilder(searchPattern, aid);
+    var requestBuilder = getDashboardsFiltersRequestBuilder(request.getSearchPattern(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiContextFiltersResponse.class);
   }
@@ -258,8 +388,8 @@ public class DashboardsFiltersApi {
   private void getDashboardsFiltersValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getDashboardsFiltersRequestBuilder(String searchPattern, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDashboardsFiltersRequestBuilder(String searchPattern, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboards/filters";
@@ -277,33 +407,75 @@ public class DashboardsFiltersApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDashboardsFiltersRequest {
+    private final String searchPattern;
+    private final String aid;
+
+    private GetDashboardsFiltersRequest(Builder builder) {
+      this.searchPattern = builder.searchPattern;
+      this.aid = builder.aid;
+    }
+    public String getSearchPattern() {
+      return searchPattern;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .searchPattern(searchPattern)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String searchPattern;
+      private String aid;
+
+      public Builder searchPattern(String searchPattern) {
+        this.searchPattern = searchPattern;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDashboardsFiltersRequest build() {
+        return new GetDashboardsFiltersRequest(this);
+      }
+    }
+  }
+
   /**
    * Update dashboard filter
    * Updates an existing dashboard filter in your account group.                        **Note**:    * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can update any dashboard filter.    * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only update the dashboard filters they have created themselves. 
-   * @param id Unique dashboard filter ID. (required)
-   * @param apiContextFilterRequest Updated dashboard filter context object (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiContextFilterResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiContextFilterResponse updateDashboardFilter(String id, ApiContextFilterRequest apiContextFilterRequest, String aid) throws ApiException {
-    ApiResponse<ApiContextFilterResponse> response = updateDashboardFilterWithHttpInfo(id, apiContextFilterRequest, aid);
+  public ApiContextFilterResponse updateDashboardFilter(UpdateDashboardFilterRequest request) throws ApiException {
+    ApiResponse<ApiContextFilterResponse> response = updateDashboardFilterWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update dashboard filter
    * Updates an existing dashboard filter in your account group.                        **Note**:    * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can update any dashboard filter.    * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only update the dashboard filters they have created themselves. 
-   * @param id Unique dashboard filter ID. (required)
-   * @param apiContextFilterRequest Updated dashboard filter context object (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiContextFilterResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiContextFilterResponse> updateDashboardFilterWithHttpInfo(String id, ApiContextFilterRequest apiContextFilterRequest, String aid) throws ApiException {
-    updateDashboardFilterValidateRequest(id, apiContextFilterRequest);
+  public ApiResponse<ApiContextFilterResponse> updateDashboardFilterWithHttpInfo(UpdateDashboardFilterRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateDashboardFilter");
+    }
+    updateDashboardFilterValidateRequest(request.getId(), request.getApiContextFilterRequest());
 
-    var requestBuilder = updateDashboardFilterRequestBuilder(id, apiContextFilterRequest, aid);
+    var requestBuilder = updateDashboardFilterRequestBuilder(request.getId(), request.getApiContextFilterRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiContextFilterResponse.class);
   }
@@ -319,8 +491,8 @@ public class DashboardsFiltersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateDashboardFilterRequestBuilder(String id, ApiContextFilterRequest apiContextFilterRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateDashboardFilterRequestBuilder(String id, ApiContextFilterRequest apiContextFilterRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/dashboards/filters/{id}"
@@ -340,4 +512,58 @@ public class DashboardsFiltersApi {
     requestBuilder.requestBody(apiContextFilterRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateDashboardFilterRequest {
+    private final String id;
+    private final ApiContextFilterRequest apiContextFilterRequest;
+    private final String aid;
+
+    private UpdateDashboardFilterRequest(Builder builder) {
+      this.id = builder.id;
+      this.apiContextFilterRequest = builder.apiContextFilterRequest;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public ApiContextFilterRequest getApiContextFilterRequest() {
+      return apiContextFilterRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .apiContextFilterRequest(apiContextFilterRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private ApiContextFilterRequest apiContextFilterRequest;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder apiContextFilterRequest(ApiContextFilterRequest apiContextFilterRequest) {
+        this.apiContextFilterRequest = apiContextFilterRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateDashboardFilterRequest build() {
+        return new UpdateDashboardFilterRequest(this);
+      }
+    }
+  }
+
 }

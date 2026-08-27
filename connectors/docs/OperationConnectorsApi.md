@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getOperationConnectors
 
-> Assignments getOperationConnectors(type, id, aid)
+> Assignments getOperationConnectors(GetOperationConnectorsRequest)
 
 Retrieve connectors assigned to an operation
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.OperationConnectorsApi;
 
 public class Example {
@@ -44,7 +44,12 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.getOperationConnectors(type, id, aid);
+            OperationConnectorsApi.GetOperationConnectorsRequest request = OperationConnectorsApi.GetOperationConnectorsRequest.builder()
+                .type(type)
+                .id(id)
+                .aid(aid)
+                .build();
+            Assignments result = apiInstance.getOperationConnectors(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OperationConnectorsApi#getOperationConnectors");
@@ -59,12 +64,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **type** | **String**| The operation type. | |
-| **id** | **String**| The operation ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetOperationConnectorsRequest**](OperationConnectorsApi.md#GetOperationConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -92,7 +94,7 @@ public class Example {
 
 ## getOperationConnectorsWithHttpInfo
 
-> ApiResponse<Assignments> getOperationConnectors getOperationConnectorsWithHttpInfo(type, id, aid)
+> ApiResponse<Assignments> getOperationConnectors getOperationConnectorsWithHttpInfo(GetOperationConnectorsRequest)
 
 Retrieve connectors assigned to an operation
 
@@ -107,7 +109,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.OperationConnectorsApi;
 
 public class Example {
@@ -124,7 +126,12 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.getOperationConnectorsWithHttpInfo(type, id, aid);
+            OperationConnectorsApi.GetOperationConnectorsRequest request = OperationConnectorsApi.GetOperationConnectorsRequest.builder()
+                .type(type)
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Assignments> response = apiInstance.getOperationConnectorsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -141,12 +148,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **type** | **String**| The operation type. | |
-| **id** | **String**| The operation ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetOperationConnectorsRequest**](OperationConnectorsApi.md#GetOperationConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -173,9 +177,21 @@ ApiResponse<[**Assignments**](Assignments.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetOperationConnectorsRequest"></a>
+## GetOperationConnectorsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **type** | **String** | The operation type. | |
+| **id** | **String** | The operation ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## setOperationConnectors
 
-> Assignments setOperationConnectors(type, id, requestBody, confirmDisabledObjects, aid)
+> Assignments setOperationConnectors(SetOperationConnectorsRequest)
 
 Assign connectors to an operation
 
@@ -189,7 +205,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.OperationConnectorsApi;
 
 public class Example {
@@ -208,7 +224,14 @@ public class Example {
         Boolean confirmDisabledObjects = false; // Boolean | Confirmation to disable affected objects (for example, tests) for credential-vault operations.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.setOperationConnectors(type, id, requestBody, confirmDisabledObjects, aid);
+            OperationConnectorsApi.SetOperationConnectorsRequest request = OperationConnectorsApi.SetOperationConnectorsRequest.builder()
+                .type(type)
+                .id(id)
+                .requestBody(requestBody)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .aid(aid)
+                .build();
+            Assignments result = apiInstance.setOperationConnectors(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OperationConnectorsApi#setOperationConnectors");
@@ -223,14 +246,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **type** | **String**| The operation type. | |
-| **id** | **String**| The operation ID. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| List of connector IDs to assign to the operation. | |
-| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for credential-vault operations. | [optional] [default to false] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**SetOperationConnectorsRequest**](OperationConnectorsApi.md#SetOperationConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -258,7 +276,7 @@ public class Example {
 
 ## setOperationConnectorsWithHttpInfo
 
-> ApiResponse<Assignments> setOperationConnectors setOperationConnectorsWithHttpInfo(type, id, requestBody, confirmDisabledObjects, aid)
+> ApiResponse<Assignments> setOperationConnectors setOperationConnectorsWithHttpInfo(SetOperationConnectorsRequest)
 
 Assign connectors to an operation
 
@@ -273,7 +291,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.OperationConnectorsApi;
 
 public class Example {
@@ -292,7 +310,14 @@ public class Example {
         Boolean confirmDisabledObjects = false; // Boolean | Confirmation to disable affected objects (for example, tests) for credential-vault operations.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.setOperationConnectorsWithHttpInfo(type, id, requestBody, confirmDisabledObjects, aid);
+            OperationConnectorsApi.SetOperationConnectorsRequest request = OperationConnectorsApi.SetOperationConnectorsRequest.builder()
+                .type(type)
+                .id(id)
+                .requestBody(requestBody)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .aid(aid)
+                .build();
+            ApiResponse<Assignments> response = apiInstance.setOperationConnectorsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -309,14 +334,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **type** | **String**| The operation type. | |
-| **id** | **String**| The operation ID. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| List of connector IDs to assign to the operation. | |
-| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for credential-vault operations. | [optional] [default to false] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**SetOperationConnectorsRequest**](OperationConnectorsApi.md#SetOperationConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -341,4 +361,18 @@ ApiResponse<[**Assignments**](Assignments.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="SetOperationConnectorsRequest"></a>
+## SetOperationConnectorsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **type** | **String** | The operation type. | |
+| **id** | **String** | The operation ID. | |
+| **requestBody** | [**List&lt;String&gt;**](String.md) | List of connector IDs to assign to the operation. | |
+| **confirmDisabledObjects** | **Boolean** | Confirmation to disable affected objects (for example, tests) for credential-vault operations. | [optional] [default to false] |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

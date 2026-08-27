@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -41,12 +40,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -68,32 +65,29 @@ public class WebTransactionsTestResultsApi {
   /**
    * Get console logs test results by agent and round
    * Returns console logs for the specified test, agent, and round ID. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ConsoleLogsTestResults
    * @throws ApiException if fails to make API call
    */
-  public ConsoleLogsTestResults getTestConsoleLogsAgentRoundResults(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiResponse<ConsoleLogsTestResults> response = getTestConsoleLogsAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+  public ConsoleLogsTestResults getTestConsoleLogsAgentRoundResults(GetTestConsoleLogsAgentRoundResultsRequest request) throws ApiException {
+    ApiResponse<ConsoleLogsTestResults> response = getTestConsoleLogsAgentRoundResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get console logs test results by agent and round
    * Returns console logs for the specified test, agent, and round ID. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ConsoleLogsTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ConsoleLogsTestResults> getTestConsoleLogsAgentRoundResultsWithHttpInfo(String testId, String agentId, String roundId, String aid) throws ApiException {
-    getTestConsoleLogsAgentRoundResultsValidateRequest(testId, agentId, roundId);
+  public ApiResponse<ConsoleLogsTestResults> getTestConsoleLogsAgentRoundResultsWithHttpInfo(GetTestConsoleLogsAgentRoundResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestConsoleLogsAgentRoundResults");
+    }
+    getTestConsoleLogsAgentRoundResultsValidateRequest(request.getTestId(), request.getAgentId(), request.getRoundId());
 
-    var requestBuilder = getTestConsoleLogsAgentRoundResultsRequestBuilder(testId, agentId, roundId, aid);
+    var requestBuilder = getTestConsoleLogsAgentRoundResultsRequestBuilder(request.getTestId(), request.getAgentId(), request.getRoundId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ConsoleLogsTestResults.class);
   }
@@ -113,8 +107,8 @@ public class WebTransactionsTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestConsoleLogsAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestConsoleLogsAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs"
@@ -134,37 +128,97 @@ public class WebTransactionsTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestConsoleLogsAgentRoundResultsRequest {
+    private final String testId;
+    private final String agentId;
+    private final String roundId;
+    private final String aid;
+
+    private GetTestConsoleLogsAgentRoundResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.agentId = builder.agentId;
+      this.roundId = builder.roundId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public String getRoundId() {
+      return roundId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .agentId(agentId)
+          .roundId(roundId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String agentId;
+      private String roundId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder roundId(String roundId) {
+        this.roundId = roundId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetTestConsoleLogsAgentRoundResultsRequest build() {
+        return new GetTestConsoleLogsAgentRoundResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Get detailed web transactions test result by agent, round, and page
    * Returns a page of web transaction test results for an agent and round. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param pageId Web page ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return WebTransactionPageDetailTestResults
    * @throws ApiException if fails to make API call
    */
-  public WebTransactionPageDetailTestResults getTestWebTransactionAgentRoundPageResults(String testId, String agentId, String roundId, String pageId, String aid) throws ApiException {
-    ApiResponse<WebTransactionPageDetailTestResults> response = getTestWebTransactionAgentRoundPageResultsWithHttpInfo(testId, agentId, roundId, pageId, aid);
+  public WebTransactionPageDetailTestResults getTestWebTransactionAgentRoundPageResults(GetTestWebTransactionAgentRoundPageResultsRequest request) throws ApiException {
+    ApiResponse<WebTransactionPageDetailTestResults> response = getTestWebTransactionAgentRoundPageResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get detailed web transactions test result by agent, round, and page
    * Returns a page of web transaction test results for an agent and round. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param pageId Web page ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;WebTransactionPageDetailTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WebTransactionPageDetailTestResults> getTestWebTransactionAgentRoundPageResultsWithHttpInfo(String testId, String agentId, String roundId, String pageId, String aid) throws ApiException {
-    getTestWebTransactionAgentRoundPageResultsValidateRequest(testId, agentId, roundId, pageId);
+  public ApiResponse<WebTransactionPageDetailTestResults> getTestWebTransactionAgentRoundPageResultsWithHttpInfo(GetTestWebTransactionAgentRoundPageResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestWebTransactionAgentRoundPageResults");
+    }
+    getTestWebTransactionAgentRoundPageResultsValidateRequest(request.getTestId(), request.getAgentId(), request.getRoundId(), request.getPageId());
 
-    var requestBuilder = getTestWebTransactionAgentRoundPageResultsRequestBuilder(testId, agentId, roundId, pageId, aid);
+    var requestBuilder = getTestWebTransactionAgentRoundPageResultsRequestBuilder(request.getTestId(), request.getAgentId(), request.getRoundId(), request.getPageId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), WebTransactionPageDetailTestResults.class);
   }
@@ -188,8 +242,8 @@ public class WebTransactionsTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestWebTransactionAgentRoundPageResultsRequestBuilder(String testId, String agentId, String roundId, String pageId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestWebTransactionAgentRoundPageResultsRequestBuilder(String testId, String agentId, String roundId, String pageId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId}"
@@ -210,35 +264,108 @@ public class WebTransactionsTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestWebTransactionAgentRoundPageResultsRequest {
+    private final String testId;
+    private final String agentId;
+    private final String roundId;
+    private final String pageId;
+    private final String aid;
+
+    private GetTestWebTransactionAgentRoundPageResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.agentId = builder.agentId;
+      this.roundId = builder.roundId;
+      this.pageId = builder.pageId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public String getRoundId() {
+      return roundId;
+    }
+    public String getPageId() {
+      return pageId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .agentId(agentId)
+          .roundId(roundId)
+          .pageId(pageId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String agentId;
+      private String roundId;
+      private String pageId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder roundId(String roundId) {
+        this.roundId = roundId;
+        return this;
+      }
+      public Builder pageId(String pageId) {
+        this.pageId = pageId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetTestWebTransactionAgentRoundPageResultsRequest build() {
+        return new GetTestWebTransactionAgentRoundPageResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Get web transactions test results by agent and round
    * Returns test results for web transactions for a given agent and round. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return WebTransactionDetailTestResults
    * @throws ApiException if fails to make API call
    */
-  public WebTransactionDetailTestResults getTestWebTransactionAgentRoundResults(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiResponse<WebTransactionDetailTestResults> response = getTestWebTransactionAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+  public WebTransactionDetailTestResults getTestWebTransactionAgentRoundResults(GetTestWebTransactionAgentRoundResultsRequest request) throws ApiException {
+    ApiResponse<WebTransactionDetailTestResults> response = getTestWebTransactionAgentRoundResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get web transactions test results by agent and round
    * Returns test results for web transactions for a given agent and round. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;WebTransactionDetailTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WebTransactionDetailTestResults> getTestWebTransactionAgentRoundResultsWithHttpInfo(String testId, String agentId, String roundId, String aid) throws ApiException {
-    getTestWebTransactionAgentRoundResultsValidateRequest(testId, agentId, roundId);
+  public ApiResponse<WebTransactionDetailTestResults> getTestWebTransactionAgentRoundResultsWithHttpInfo(GetTestWebTransactionAgentRoundResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestWebTransactionAgentRoundResults");
+    }
+    getTestWebTransactionAgentRoundResultsValidateRequest(request.getTestId(), request.getAgentId(), request.getRoundId());
 
-    var requestBuilder = getTestWebTransactionAgentRoundResultsRequestBuilder(testId, agentId, roundId, aid);
+    var requestBuilder = getTestWebTransactionAgentRoundResultsRequestBuilder(request.getTestId(), request.getAgentId(), request.getRoundId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), WebTransactionDetailTestResults.class);
   }
@@ -258,8 +385,8 @@ public class WebTransactionsTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestWebTransactionAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestWebTransactionAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}"
@@ -279,54 +406,113 @@ public class WebTransactionsTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestWebTransactionAgentRoundResultsRequest {
+    private final String testId;
+    private final String agentId;
+    private final String roundId;
+    private final String aid;
+
+    private GetTestWebTransactionAgentRoundResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.agentId = builder.agentId;
+      this.roundId = builder.roundId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public String getRoundId() {
+      return roundId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .agentId(agentId)
+          .roundId(roundId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String agentId;
+      private String roundId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder roundId(String roundId) {
+        this.roundId = roundId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetTestWebTransactionAgentRoundResultsRequest build() {
+        return new GetTestWebTransactionAgentRoundResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Get web transactions test results with pagination
    * Returns test results for web transactions. If no window, start time, or end time is specified, data for the most recent round is returned. If a window or start time is specified, the results might include a round that started just before the specified start time. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<WebTransactionTestResult, WebTransactionTestResults>
    */
-  public Paginator<WebTransactionTestResult, WebTransactionTestResults> getTestWebTransactionResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getTestWebTransactionResults(testId, aid, window, startDate, endDate, cursor),
+  public Paginator<WebTransactionTestResult, WebTransactionTestResults> getTestWebTransactionResultsPaginated(GetTestWebTransactionResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getTestWebTransactionResultsPaginated");
+    }
+    return new Paginator<>(cursor -> getTestWebTransactionResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            WebTransactionTestResults::getResults);
 
   }
   /**
    * Get web transactions test results
    * Returns test results for web transactions. If no window, start time, or end time is specified, data for the most recent round is returned. If a window or start time is specified, the results might include a round that started just before the specified start time. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return WebTransactionTestResults
    * @throws ApiException if fails to make API call
    */
-  public WebTransactionTestResults getTestWebTransactionResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiResponse<WebTransactionTestResults> response = getTestWebTransactionResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+  public WebTransactionTestResults getTestWebTransactionResults(GetTestWebTransactionResultsRequest request) throws ApiException {
+    ApiResponse<WebTransactionTestResults> response = getTestWebTransactionResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get web transactions test results
    * Returns test results for web transactions. If no window, start time, or end time is specified, data for the most recent round is returned. If a window or start time is specified, the results might include a round that started just before the specified start time. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;WebTransactionTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WebTransactionTestResults> getTestWebTransactionResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    getTestWebTransactionResultsValidateRequest(testId);
+  public ApiResponse<WebTransactionTestResults> getTestWebTransactionResultsWithHttpInfo(GetTestWebTransactionResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestWebTransactionResults");
+    }
+    getTestWebTransactionResultsValidateRequest(request.getTestId());
 
-    var requestBuilder = getTestWebTransactionResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor);
+    var requestBuilder = getTestWebTransactionResultsRequestBuilder(request.getTestId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), WebTransactionTestResults.class);
   }
@@ -338,8 +524,8 @@ public class WebTransactionsTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestWebTransactionResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestWebTransactionResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/test-results/{testId}/web-transactions"
@@ -361,4 +547,91 @@ public class WebTransactionsTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestWebTransactionResultsRequest {
+    private final String testId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+
+    private GetTestWebTransactionResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetTestWebTransactionResultsRequest build() {
+        return new GetTestWebTransactionResultsRequest(this);
+      }
+    }
+  }
+
 }

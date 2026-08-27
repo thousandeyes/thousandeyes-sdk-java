@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -35,12 +34,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -62,30 +59,29 @@ public class OperationConnectorsApi {
   /**
    * Retrieve connectors assigned to an operation
    * Returns a list of connectors assigned to a specific operation.
-   * @param type The operation type. (required)
-   * @param id The operation ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments getOperationConnectors(String type, String id, String aid) throws ApiException {
-    ApiResponse<Assignments> response = getOperationConnectorsWithHttpInfo(type, id, aid);
+  public Assignments getOperationConnectors(GetOperationConnectorsRequest request) throws ApiException {
+    ApiResponse<Assignments> response = getOperationConnectorsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve connectors assigned to an operation
    * Returns a list of connectors assigned to a specific operation.
-   * @param type The operation type. (required)
-   * @param id The operation ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> getOperationConnectorsWithHttpInfo(String type, String id, String aid) throws ApiException {
-    getOperationConnectorsValidateRequest(type, id);
+  public ApiResponse<Assignments> getOperationConnectorsWithHttpInfo(GetOperationConnectorsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getOperationConnectors");
+    }
+    getOperationConnectorsValidateRequest(request.getType(), request.getId());
 
-    var requestBuilder = getOperationConnectorsRequestBuilder(type, id, aid);
+    var requestBuilder = getOperationConnectorsRequestBuilder(request.getType(), request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -101,8 +97,8 @@ public class OperationConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getOperationConnectorsRequestBuilder(String type, String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getOperationConnectorsRequestBuilder(String type, String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/operations/{type}/{id}/connectors"
@@ -121,37 +117,86 @@ public class OperationConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetOperationConnectorsRequest {
+    private final String type;
+    private final String id;
+    private final String aid;
+
+    private GetOperationConnectorsRequest(Builder builder) {
+      this.type = builder.type;
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getType() {
+      return type;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .type(type)
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String type;
+      private String id;
+      private String aid;
+
+      public Builder type(String type) {
+        this.type = type;
+        return this;
+      }
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetOperationConnectorsRequest build() {
+        return new GetOperationConnectorsRequest(this);
+      }
+    }
+  }
+
   /**
    * Assign connectors to an operation
    * Assigns one or more connectors to an operation. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if connectors are changed.
-   * @param type The operation type. (required)
-   * @param id The operation ID. (required)
-   * @param requestBody List of connector IDs to assign to the operation. (required)
-   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for credential-vault operations. (optional, default to false)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments setOperationConnectors(String type, String id, List<String> requestBody, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    ApiResponse<Assignments> response = setOperationConnectorsWithHttpInfo(type, id, requestBody, confirmDisabledObjects, aid);
+  public Assignments setOperationConnectors(SetOperationConnectorsRequest request) throws ApiException {
+    ApiResponse<Assignments> response = setOperationConnectorsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Assign connectors to an operation
    * Assigns one or more connectors to an operation. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if connectors are changed.
-   * @param type The operation type. (required)
-   * @param id The operation ID. (required)
-   * @param requestBody List of connector IDs to assign to the operation. (required)
-   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for credential-vault operations. (optional, default to false)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> setOperationConnectorsWithHttpInfo(String type, String id, List<String> requestBody, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    setOperationConnectorsValidateRequest(type, id, requestBody);
+  public ApiResponse<Assignments> setOperationConnectorsWithHttpInfo(SetOperationConnectorsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling setOperationConnectors");
+    }
+    setOperationConnectorsValidateRequest(request.getType(), request.getId(), request.getRequestBody());
 
-    var requestBuilder = setOperationConnectorsRequestBuilder(type, id, requestBody, confirmDisabledObjects, aid);
+    var requestBuilder = setOperationConnectorsRequestBuilder(request.getType(), request.getId(), request.getRequestBody(), request.getConfirmDisabledObjects(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -171,8 +216,8 @@ public class OperationConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder setOperationConnectorsRequestBuilder(String type, String id, List<String> requestBody, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder setOperationConnectorsRequestBuilder(String type, String id, List<String> requestBody, Boolean confirmDisabledObjects, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/operations/{type}/{id}/connectors"
@@ -194,4 +239,80 @@ public class OperationConnectorsApi {
     requestBuilder.requestBody(requestBody);
     return requestBuilder;
   }
+
+  public static final class SetOperationConnectorsRequest {
+    private final String type;
+    private final String id;
+    private final List<String> requestBody;
+    private final Boolean confirmDisabledObjects;
+    private final String aid;
+
+    private SetOperationConnectorsRequest(Builder builder) {
+      this.type = builder.type;
+      this.id = builder.id;
+      this.requestBody = builder.requestBody;
+      this.confirmDisabledObjects = builder.confirmDisabledObjects;
+      this.aid = builder.aid;
+    }
+    public String getType() {
+      return type;
+    }
+    public String getId() {
+      return id;
+    }
+    public List<String> getRequestBody() {
+      return requestBody;
+    }
+    public Boolean getConfirmDisabledObjects() {
+      return confirmDisabledObjects;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .type(type)
+          .id(id)
+          .requestBody(requestBody)
+          .confirmDisabledObjects(confirmDisabledObjects)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String type;
+      private String id;
+      private List<String> requestBody;
+      private Boolean confirmDisabledObjects;
+      private String aid;
+
+      public Builder type(String type) {
+        this.type = type;
+        return this;
+      }
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder requestBody(List<String> requestBody) {
+        this.requestBody = requestBody;
+        return this;
+      }
+      public Builder confirmDisabledObjects(Boolean confirmDisabledObjects) {
+        this.confirmDisabledObjects = confirmDisabledObjects;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public SetOperationConnectorsRequest build() {
+        return new SetOperationConnectorsRequest(this);
+      }
+    }
+  }
+
 }

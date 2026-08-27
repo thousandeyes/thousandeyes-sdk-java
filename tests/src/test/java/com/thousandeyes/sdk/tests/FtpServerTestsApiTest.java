@@ -84,7 +84,6 @@ public class FtpServerTestsApiTest {
     public void createFtpServerTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -342,7 +341,12 @@ public class FtpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createFtpServerTest(mappedRequest, null, null);
+        var request = FtpServerTestsApi.CreateFtpServerTestRequest.builder()
+                .ftpServerTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createFtpServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -359,7 +363,6 @@ public class FtpServerTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/ftp-server/{testId}";
@@ -369,7 +372,11 @@ public class FtpServerTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteFtpServerTestWithHttpInfo(testId, null);
+        var request = FtpServerTestsApi.DeleteFtpServerTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteFtpServerTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -385,7 +392,6 @@ public class FtpServerTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -571,7 +577,13 @@ public class FtpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getFtpServerTest(testId, null, null, null);
+        var request = FtpServerTestsApi.GetFtpServerTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getFtpServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -586,7 +598,6 @@ public class FtpServerTestsApiTest {
     public void getFtpServerTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -723,7 +734,10 @@ public class FtpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getFtpServerTests(null);
+        var request = FtpServerTestsApi.GetFtpServerTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getFtpServerTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -739,7 +753,6 @@ public class FtpServerTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -998,7 +1011,13 @@ public class FtpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateFtpServerTest(testId, mappedRequest, null, null);
+        var request = FtpServerTestsApi.UpdateFtpServerTestRequest.builder()
+                .testId(testId)
+                .ftpServerTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateFtpServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

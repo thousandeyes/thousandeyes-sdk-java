@@ -85,7 +85,6 @@ public class QuotasApiTest {
     public void assignOrganizationsAccountGroupsQuotasRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "organizations" : [ {
@@ -153,7 +152,10 @@ public class QuotasApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.assignOrganizationsAccountGroupsQuotas(mappedRequest);
+        var request = QuotasApi.AssignOrganizationsAccountGroupsQuotasRequest.builder()
+                .organizationsQuotasAssign(mappedRequest)
+                .build();
+        var apiResponse = api.assignOrganizationsAccountGroupsQuotas(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -168,7 +170,6 @@ public class QuotasApiTest {
     public void assignOrganizationsQuotasRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "organizations" : [ {
@@ -211,7 +212,10 @@ public class QuotasApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.assignOrganizationsQuotas(mappedRequest);
+        var request = QuotasApi.AssignOrganizationsQuotasRequest.builder()
+                .quotasAssignRequest(mappedRequest)
+                .build();
+        var apiResponse = api.assignOrganizationsQuotas(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -226,7 +230,6 @@ public class QuotasApiTest {
     public void getQuotasRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -298,7 +301,6 @@ public class QuotasApiTest {
     public void unassignOrganizationsAccountGroupsQuotasRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "organizations" : [ {
@@ -325,7 +327,10 @@ public class QuotasApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.unassignOrganizationsAccountGroupsQuotasWithHttpInfo(mappedRequest);
+        var request = QuotasApi.UnassignOrganizationsAccountGroupsQuotasRequest.builder()
+                .organizationsQuotasUnassign(mappedRequest)
+                .build();
+        var apiResponse = api.unassignOrganizationsAccountGroupsQuotasWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -340,7 +345,6 @@ public class QuotasApiTest {
     public void unassignOrganizationsQuotasRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "organizations" : [ "1234", "12345" ]
@@ -361,7 +365,10 @@ public class QuotasApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.unassignOrganizationsQuotasWithHttpInfo(mappedRequest);
+        var request = QuotasApi.UnassignOrganizationsQuotasRequest.builder()
+                .quotasUnassign(mappedRequest)
+                .build();
+        var apiResponse = api.unassignOrganizationsQuotasWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     

@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createTestSnapshot
 
-> SnapshotResponse createTestSnapshot(testId, snapshotRequest, aid)
+> SnapshotResponse createTestSnapshot(CreateTestSnapshotRequest)
 
 Create test snapshot
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.snapshots.model.*;
 import com.thousandeyes.sdk.snapshots.TestSnapshotsApi;
 
 public class Example {
@@ -42,7 +42,12 @@ public class Example {
         SnapshotRequest snapshotRequest = new SnapshotRequest(); // SnapshotRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            SnapshotResponse result = apiInstance.createTestSnapshot(testId, snapshotRequest, aid);
+            TestSnapshotsApi.CreateTestSnapshotRequest request = TestSnapshotsApi.CreateTestSnapshotRequest.builder()
+                .testId(testId)
+                .snapshotRequest(snapshotRequest)
+                .aid(aid)
+                .build();
+            SnapshotResponse result = apiInstance.createTestSnapshot(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TestSnapshotsApi#createTestSnapshot");
@@ -57,12 +62,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **snapshotRequest** | [**SnapshotRequest**](SnapshotRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateTestSnapshotRequest**](TestSnapshotsApi.md#CreateTestSnapshotRequest)|-|-|
 
 ### Return type
 
@@ -93,7 +95,7 @@ public class Example {
 
 ## createTestSnapshotWithHttpInfo
 
-> ApiResponse<SnapshotResponse> createTestSnapshot createTestSnapshotWithHttpInfo(testId, snapshotRequest, aid)
+> ApiResponse<SnapshotResponse> createTestSnapshot createTestSnapshotWithHttpInfo(CreateTestSnapshotRequest)
 
 Create test snapshot
 
@@ -108,7 +110,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.snapshots.model.*;
 import com.thousandeyes.sdk.snapshots.TestSnapshotsApi;
 
 public class Example {
@@ -125,7 +127,12 @@ public class Example {
         SnapshotRequest snapshotRequest = new SnapshotRequest(); // SnapshotRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<SnapshotResponse> response = apiInstance.createTestSnapshotWithHttpInfo(testId, snapshotRequest, aid);
+            TestSnapshotsApi.CreateTestSnapshotRequest request = TestSnapshotsApi.CreateTestSnapshotRequest.builder()
+                .testId(testId)
+                .snapshotRequest(snapshotRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<SnapshotResponse> response = apiInstance.createTestSnapshotWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -142,12 +149,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **snapshotRequest** | [**SnapshotRequest**](SnapshotRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateTestSnapshotRequest**](TestSnapshotsApi.md#CreateTestSnapshotRequest)|-|-|
 
 ### Return type
 
@@ -175,4 +179,16 @@ ApiResponse<[**SnapshotResponse**](SnapshotResponse.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="CreateTestSnapshotRequest"></a>
+## CreateTestSnapshotRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **snapshotRequest** | [**SnapshotRequest**](SnapshotRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

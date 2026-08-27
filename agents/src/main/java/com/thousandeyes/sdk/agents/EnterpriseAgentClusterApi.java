@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,32 +63,29 @@ public class EnterpriseAgentClusterApi {
   /**
    * Add member to Enterprise Agent cluster
    * Assigns agents to an Enterprise Agent cluster. If the agent specified by &#x60;agentId&#x60; in the URL path is not already part of a cluster, this operation creates a new cluster with that agent as the base member.  This operation requires the &#x60;Edit agents in account group&#x60; permission.  A JSON request body is required for this operation, even when creating a cluster with a single agent. To create a cluster from a single standalone agent, pass an empty &#x60;agents&#x60; array in the request body:  &#x60;&#x60;&#x60; { \&quot;agents\&quot;: [] } &#x60;&#x60;&#x60;  If no body is provided, the server returns a 400 Bad Request error.  The response is a single Enterprise Agent Cluster. The assigned agents become cluster members and can be returned using the &#x60;?expand&#x3D;cluster-member&#x60; parameter.  Upon successful cluster creation, the response includes:  * Information about the new or updated cluster.  * Each cluster member receives a unique &#x60;memberId&#x60; within the cluster.  * The &#x60;memberId&#x60; is not linked to the original &#x60;agentId&#x60; used in the request URL or POST body.  * The cluster name is based on the agent whose &#x60;agentId&#x60; is specified in the request URL.  **Example: Creating a cluster from a single agent**  &#x60;&#x60;&#x60; curl -X POST https://api.thousandeyes.com/v7/agents/64965/cluster/assign \\ &#39;{\&quot;agents\&quot;:[]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;&#x60;  **Example: Adding multiple agents to a cluster**  When adding multiple agents, the &#x60;{agentId}&#x60; specified in the URL path must not be included in the &#x60;agents&#x60; array. Only include additional agent IDs in the array.  &#x60;&#x60;&#x60; curl https://api.thousandeyes.com/v7/agents/64965/cluster/assign \\ &#39;{\&quot;agents\&quot;:[   \&quot;2277\&quot;,   \&quot;1234\&quot; ]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;&#x60;
-   * @param agentId Unique ID for the Enterprise Agent cluster to add new agents to. (required)
-   * @param agentClusterAssignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return AgentDetails
    * @throws ApiException if fails to make API call
    */
-  public AgentDetails assignAgentToCluster(String agentId, AgentClusterAssignRequest agentClusterAssignRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    ApiResponse<AgentDetails> response = assignAgentToClusterWithHttpInfo(agentId, agentClusterAssignRequest, aid, expand);
+  public AgentDetails assignAgentToCluster(AssignAgentToClusterRequest request) throws ApiException {
+    ApiResponse<AgentDetails> response = assignAgentToClusterWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Add member to Enterprise Agent cluster
    * Assigns agents to an Enterprise Agent cluster. If the agent specified by &#x60;agentId&#x60; in the URL path is not already part of a cluster, this operation creates a new cluster with that agent as the base member.  This operation requires the &#x60;Edit agents in account group&#x60; permission.  A JSON request body is required for this operation, even when creating a cluster with a single agent. To create a cluster from a single standalone agent, pass an empty &#x60;agents&#x60; array in the request body:  &#x60;&#x60;&#x60; { \&quot;agents\&quot;: [] } &#x60;&#x60;&#x60;  If no body is provided, the server returns a 400 Bad Request error.  The response is a single Enterprise Agent Cluster. The assigned agents become cluster members and can be returned using the &#x60;?expand&#x3D;cluster-member&#x60; parameter.  Upon successful cluster creation, the response includes:  * Information about the new or updated cluster.  * Each cluster member receives a unique &#x60;memberId&#x60; within the cluster.  * The &#x60;memberId&#x60; is not linked to the original &#x60;agentId&#x60; used in the request URL or POST body.  * The cluster name is based on the agent whose &#x60;agentId&#x60; is specified in the request URL.  **Example: Creating a cluster from a single agent**  &#x60;&#x60;&#x60; curl -X POST https://api.thousandeyes.com/v7/agents/64965/cluster/assign \\ &#39;{\&quot;agents\&quot;:[]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;&#x60;  **Example: Adding multiple agents to a cluster**  When adding multiple agents, the &#x60;{agentId}&#x60; specified in the URL path must not be included in the &#x60;agents&#x60; array. Only include additional agent IDs in the array.  &#x60;&#x60;&#x60; curl https://api.thousandeyes.com/v7/agents/64965/cluster/assign \\ &#39;{\&quot;agents\&quot;:[   \&quot;2277\&quot;,   \&quot;1234\&quot; ]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;&#x60;
-   * @param agentId Unique ID for the Enterprise Agent cluster to add new agents to. (required)
-   * @param agentClusterAssignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AgentDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentDetails> assignAgentToClusterWithHttpInfo(String agentId, AgentClusterAssignRequest agentClusterAssignRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    assignAgentToClusterValidateRequest(agentId, agentClusterAssignRequest);
+  public ApiResponse<AgentDetails> assignAgentToClusterWithHttpInfo(AssignAgentToClusterRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling assignAgentToCluster");
+    }
+    assignAgentToClusterValidateRequest(request.getAgentId(), request.getAgentClusterAssignRequest());
 
-    var requestBuilder = assignAgentToClusterRequestBuilder(agentId, agentClusterAssignRequest, aid, expand);
+    var requestBuilder = assignAgentToClusterRequestBuilder(request.getAgentId(), request.getAgentClusterAssignRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AgentDetails.class);
   }
@@ -107,8 +101,8 @@ public class EnterpriseAgentClusterApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder assignAgentToClusterRequestBuilder(String agentId, AgentClusterAssignRequest agentClusterAssignRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder assignAgentToClusterRequestBuilder(String agentId, AgentClusterAssignRequest agentClusterAssignRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/agents/{agentId}/cluster/assign"
@@ -129,35 +123,97 @@ public class EnterpriseAgentClusterApi {
     requestBuilder.requestBody(agentClusterAssignRequest);
     return requestBuilder;
   }
+
+  public static final class AssignAgentToClusterRequest {
+    private final String agentId;
+    private final AgentClusterAssignRequest agentClusterAssignRequest;
+    private final String aid;
+    private final List<AgentDetailsExpand> expand;
+
+    private AssignAgentToClusterRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.agentClusterAssignRequest = builder.agentClusterAssignRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public AgentClusterAssignRequest getAgentClusterAssignRequest() {
+      return agentClusterAssignRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<AgentDetailsExpand> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .agentClusterAssignRequest(agentClusterAssignRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String agentId;
+      private AgentClusterAssignRequest agentClusterAssignRequest;
+      private String aid;
+      private List<AgentDetailsExpand> expand;
+
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder agentClusterAssignRequest(AgentClusterAssignRequest agentClusterAssignRequest) {
+        this.agentClusterAssignRequest = agentClusterAssignRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<AgentDetailsExpand> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public AssignAgentToClusterRequest build() {
+        return new AssignAgentToClusterRequest(this);
+      }
+    }
+  }
+
   /**
    * Remove member from Enterprise Agent cluster
    * Converts a cluster with a single or multiple Enterprise Agent members back to a standalone Enterprise Agent(s). This operation can also be used to remove one or more members from an Enterprise Agent cluster. Removed members revert to being standalone Enterprise Agents. If all members are removed from the cluster, the Enterprise Agent Cluster is deleted.  The response is an list of agents, containing both the Enterprise Agent Cluster (if it still exists), and the removed members, now as standalone Enterprise Agents. This operation is exclusive to Enterprise Agent clusters and can be accessed only by users with the &#x60;Edit agents in account group&#x60; permission.  On successful completion, the response contains the following information:  * The updated cluster information is provided in the response body, unless all members are removed from the cluster.  * Information about each removed member, now a standalone agent.  * When a non-last member is removed from the cluster, it receives a new &#x60;agentId&#x60; value. This new &#x60;agentId&#x60; is different from the &#x60;agentId&#x60; the agent had before joining the cluster, and it is also unrelated to the &#x60;memberId&#x60; value the agent had while being a part of the cluster.  * If all members are removed from the cluster, the cluster itself is converted back to a standalone Enterprise Agent too. Such standalone agent inherits the old cluster’s &#x60;agentId&#x60; value. The last &#x60;memberId&#x60; listed in the POST body inherits the cluster’s &#x60;agentId&#x60; value.  **Example - removing a single member** &#x60;&#x60;&#x60; curl -X POST https://api.thousandeyes.com/v7/agents/64965/cluster/unassign   \\ &#39;{\&quot;members\&quot;:[\&quot;55974\&quot;]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;  **Example - removing multiple members** &#x60;&#x60;&#x60; curl https://api.thousandeyes.com/v7/agents/64965/cluster/unassign \\ &#39;{\&quot;members\&quot;:[     \&quot;55974\&quot;,     \&quot;12313\&quot;]  }&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;
-   * @param agentId Unique ID for the Enterprise Agent cluster to remove agents from. (required)
-   * @param agentClusterUnassignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return CloudEnterpriseAgents
    * @throws ApiException if fails to make API call
    */
-  public CloudEnterpriseAgents unassignAgentFromCluster(String agentId, AgentClusterUnassignRequest agentClusterUnassignRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    ApiResponse<CloudEnterpriseAgents> response = unassignAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand);
+  public CloudEnterpriseAgents unassignAgentFromCluster(UnassignAgentFromClusterRequest request) throws ApiException {
+    ApiResponse<CloudEnterpriseAgents> response = unassignAgentFromClusterWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Remove member from Enterprise Agent cluster
    * Converts a cluster with a single or multiple Enterprise Agent members back to a standalone Enterprise Agent(s). This operation can also be used to remove one or more members from an Enterprise Agent cluster. Removed members revert to being standalone Enterprise Agents. If all members are removed from the cluster, the Enterprise Agent Cluster is deleted.  The response is an list of agents, containing both the Enterprise Agent Cluster (if it still exists), and the removed members, now as standalone Enterprise Agents. This operation is exclusive to Enterprise Agent clusters and can be accessed only by users with the &#x60;Edit agents in account group&#x60; permission.  On successful completion, the response contains the following information:  * The updated cluster information is provided in the response body, unless all members are removed from the cluster.  * Information about each removed member, now a standalone agent.  * When a non-last member is removed from the cluster, it receives a new &#x60;agentId&#x60; value. This new &#x60;agentId&#x60; is different from the &#x60;agentId&#x60; the agent had before joining the cluster, and it is also unrelated to the &#x60;memberId&#x60; value the agent had while being a part of the cluster.  * If all members are removed from the cluster, the cluster itself is converted back to a standalone Enterprise Agent too. Such standalone agent inherits the old cluster’s &#x60;agentId&#x60; value. The last &#x60;memberId&#x60; listed in the POST body inherits the cluster’s &#x60;agentId&#x60; value.  **Example - removing a single member** &#x60;&#x60;&#x60; curl -X POST https://api.thousandeyes.com/v7/agents/64965/cluster/unassign   \\ &#39;{\&quot;members\&quot;:[\&quot;55974\&quot;]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;  **Example - removing multiple members** &#x60;&#x60;&#x60; curl https://api.thousandeyes.com/v7/agents/64965/cluster/unassign \\ &#39;{\&quot;members\&quot;:[     \&quot;55974\&quot;,     \&quot;12313\&quot;]  }&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;
-   * @param agentId Unique ID for the Enterprise Agent cluster to remove agents from. (required)
-   * @param agentClusterUnassignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CloudEnterpriseAgents&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CloudEnterpriseAgents> unassignAgentFromClusterWithHttpInfo(String agentId, AgentClusterUnassignRequest agentClusterUnassignRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    unassignAgentFromClusterValidateRequest(agentId, agentClusterUnassignRequest);
+  public ApiResponse<CloudEnterpriseAgents> unassignAgentFromClusterWithHttpInfo(UnassignAgentFromClusterRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling unassignAgentFromCluster");
+    }
+    unassignAgentFromClusterValidateRequest(request.getAgentId(), request.getAgentClusterUnassignRequest());
 
-    var requestBuilder = unassignAgentFromClusterRequestBuilder(agentId, agentClusterUnassignRequest, aid, expand);
+    var requestBuilder = unassignAgentFromClusterRequestBuilder(request.getAgentId(), request.getAgentClusterUnassignRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), CloudEnterpriseAgents.class);
   }
@@ -173,8 +229,8 @@ public class EnterpriseAgentClusterApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder unassignAgentFromClusterRequestBuilder(String agentId, AgentClusterUnassignRequest agentClusterUnassignRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder unassignAgentFromClusterRequestBuilder(String agentId, AgentClusterUnassignRequest agentClusterUnassignRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/agents/{agentId}/cluster/unassign"
@@ -195,4 +251,69 @@ public class EnterpriseAgentClusterApi {
     requestBuilder.requestBody(agentClusterUnassignRequest);
     return requestBuilder;
   }
+
+  public static final class UnassignAgentFromClusterRequest {
+    private final String agentId;
+    private final AgentClusterUnassignRequest agentClusterUnassignRequest;
+    private final String aid;
+    private final List<AgentDetailsExpand> expand;
+
+    private UnassignAgentFromClusterRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.agentClusterUnassignRequest = builder.agentClusterUnassignRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public AgentClusterUnassignRequest getAgentClusterUnassignRequest() {
+      return agentClusterUnassignRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<AgentDetailsExpand> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .agentClusterUnassignRequest(agentClusterUnassignRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String agentId;
+      private AgentClusterUnassignRequest agentClusterUnassignRequest;
+      private String aid;
+      private List<AgentDetailsExpand> expand;
+
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder agentClusterUnassignRequest(AgentClusterUnassignRequest agentClusterUnassignRequest) {
+        this.agentClusterUnassignRequest = agentClusterUnassignRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<AgentDetailsExpand> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UnassignAgentFromClusterRequest build() {
+        return new UnassignAgentFromClusterRequest(this);
+      }
+    }
+  }
+
 }

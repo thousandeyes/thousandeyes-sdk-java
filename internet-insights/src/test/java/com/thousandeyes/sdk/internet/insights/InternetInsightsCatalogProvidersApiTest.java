@@ -83,7 +83,6 @@ public class InternetInsightsCatalogProvidersApiTest {
     public void filterCatalogProvidersRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "providerName" : "Amazon Web Services",
@@ -178,7 +177,11 @@ public class InternetInsightsCatalogProvidersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterCatalogProviders(mappedRequest, null);
+        var request = InternetInsightsCatalogProvidersApi.FilterCatalogProvidersRequest.builder()
+                .apiCatalogProviderFilter(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.filterCatalogProviders(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -194,7 +197,6 @@ public class InternetInsightsCatalogProvidersApiTest {
             throws JsonProcessingException, ApiException
     {
         UUID providerId = UUID.fromString("85602a0a-54a7-4e97-946e-67492ef1fa26");
-
 
         var responseBodyJson = """
                 {
@@ -240,7 +242,11 @@ public class InternetInsightsCatalogProvidersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getCatalogProvider(providerId, null);
+        var request = InternetInsightsCatalogProvidersApi.GetCatalogProviderRequest.builder()
+                .providerId(providerId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getCatalogProvider(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

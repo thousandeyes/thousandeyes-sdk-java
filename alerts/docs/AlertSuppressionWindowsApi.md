@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createAlertSuppressionWindow
 
-> AlertSuppressionWindowDetail createAlertSuppressionWindow(alertSuppressionWindowRequest, aid, expand)
+> AlertSuppressionWindowDetail createAlertSuppressionWindow(CreateAlertSuppressionWindowRequest)
 
 Create alert suppression window
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -50,7 +50,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandAlertTestOptions> expand = Arrays.asList(); // List<ExpandAlertTestOptions> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            AlertSuppressionWindowDetail result = apiInstance.createAlertSuppressionWindow(alertSuppressionWindowRequest, aid, expand);
+            AlertSuppressionWindowsApi.CreateAlertSuppressionWindowRequest request = AlertSuppressionWindowsApi.CreateAlertSuppressionWindowRequest.builder()
+                .alertSuppressionWindowRequest(alertSuppressionWindowRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            AlertSuppressionWindowDetail result = apiInstance.createAlertSuppressionWindow(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertSuppressionWindowsApi#createAlertSuppressionWindow");
@@ -65,12 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **alertSuppressionWindowRequest** | [**AlertSuppressionWindowRequest**](AlertSuppressionWindowRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md)| Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+| request | [**CreateAlertSuppressionWindowRequest**](AlertSuppressionWindowsApi.md#CreateAlertSuppressionWindowRequest)|-|-|
 
 ### Return type
 
@@ -99,7 +101,7 @@ public class Example {
 
 ## createAlertSuppressionWindowWithHttpInfo
 
-> ApiResponse<AlertSuppressionWindowDetail> createAlertSuppressionWindow createAlertSuppressionWindowWithHttpInfo(alertSuppressionWindowRequest, aid, expand)
+> ApiResponse<AlertSuppressionWindowDetail> createAlertSuppressionWindow createAlertSuppressionWindowWithHttpInfo(CreateAlertSuppressionWindowRequest)
 
 Create alert suppression window
 
@@ -114,7 +116,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -131,7 +133,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandAlertTestOptions> expand = Arrays.asList(); // List<ExpandAlertTestOptions> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.createAlertSuppressionWindowWithHttpInfo(alertSuppressionWindowRequest, aid, expand);
+            AlertSuppressionWindowsApi.CreateAlertSuppressionWindowRequest request = AlertSuppressionWindowsApi.CreateAlertSuppressionWindowRequest.builder()
+                .alertSuppressionWindowRequest(alertSuppressionWindowRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.createAlertSuppressionWindowWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -148,12 +155,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **alertSuppressionWindowRequest** | [**AlertSuppressionWindowRequest**](AlertSuppressionWindowRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md)| Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+| request | [**CreateAlertSuppressionWindowRequest**](AlertSuppressionWindowsApi.md#CreateAlertSuppressionWindowRequest)|-|-|
 
 ### Return type
 
@@ -181,9 +185,21 @@ ApiResponse<[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateAlertSuppressionWindowRequest"></a>
+## CreateAlertSuppressionWindowRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **alertSuppressionWindowRequest** | [**AlertSuppressionWindowRequest**](AlertSuppressionWindowRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md) | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+
+
+
 ## deleteAlertSuppressionWindow
 
-> void deleteAlertSuppressionWindow(windowId, aid)
+> void deleteAlertSuppressionWindow(DeleteAlertSuppressionWindowRequest)
 
 Delete alert suppression window
 
@@ -197,7 +213,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -213,7 +229,11 @@ public class Example {
         String windowId = "2411"; // String | Unique window ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteAlertSuppressionWindow(windowId, aid);
+            AlertSuppressionWindowsApi.DeleteAlertSuppressionWindowRequest request = AlertSuppressionWindowsApi.DeleteAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteAlertSuppressionWindow(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertSuppressionWindowsApi#deleteAlertSuppressionWindow");
             System.err.println("Status code: " + e.getCode());
@@ -227,11 +247,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **windowId** | **String**| Unique window ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAlertSuppressionWindowRequest**](AlertSuppressionWindowsApi.md#DeleteAlertSuppressionWindowRequest)|-|-|
 
 ### Return type
 
@@ -260,7 +278,7 @@ null (empty response body)
 
 ## deleteAlertSuppressionWindowWithHttpInfo
 
-> ApiResponse<Void> deleteAlertSuppressionWindow deleteAlertSuppressionWindowWithHttpInfo(windowId, aid)
+> ApiResponse<Void> deleteAlertSuppressionWindow deleteAlertSuppressionWindowWithHttpInfo(DeleteAlertSuppressionWindowRequest)
 
 Delete alert suppression window
 
@@ -275,7 +293,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -291,7 +309,11 @@ public class Example {
         String windowId = "2411"; // String | Unique window ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteAlertSuppressionWindowWithHttpInfo(windowId, aid);
+            AlertSuppressionWindowsApi.DeleteAlertSuppressionWindowRequest request = AlertSuppressionWindowsApi.DeleteAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteAlertSuppressionWindowWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -307,11 +329,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **windowId** | **String**| Unique window ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAlertSuppressionWindowRequest**](AlertSuppressionWindowsApi.md#DeleteAlertSuppressionWindowRequest)|-|-|
 
 ### Return type
 
@@ -339,9 +359,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteAlertSuppressionWindowRequest"></a>
+## DeleteAlertSuppressionWindowRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **windowId** | **String** | Unique window ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAlertSuppressionWindow
 
-> AlertSuppressionWindowDetail getAlertSuppressionWindow(windowId, aid, expand)
+> AlertSuppressionWindowDetail getAlertSuppressionWindow(GetAlertSuppressionWindowRequest)
 
 Retrieve alert suppression window
 
@@ -355,7 +386,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -372,7 +403,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandAlertTestOptions> expand = Arrays.asList(); // List<ExpandAlertTestOptions> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            AlertSuppressionWindowDetail result = apiInstance.getAlertSuppressionWindow(windowId, aid, expand);
+            AlertSuppressionWindowsApi.GetAlertSuppressionWindowRequest request = AlertSuppressionWindowsApi.GetAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            AlertSuppressionWindowDetail result = apiInstance.getAlertSuppressionWindow(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertSuppressionWindowsApi#getAlertSuppressionWindow");
@@ -387,12 +423,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **windowId** | **String**| Unique window ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md)| Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+| request | [**GetAlertSuppressionWindowRequest**](AlertSuppressionWindowsApi.md#GetAlertSuppressionWindowRequest)|-|-|
 
 ### Return type
 
@@ -420,7 +453,7 @@ public class Example {
 
 ## getAlertSuppressionWindowWithHttpInfo
 
-> ApiResponse<AlertSuppressionWindowDetail> getAlertSuppressionWindow getAlertSuppressionWindowWithHttpInfo(windowId, aid, expand)
+> ApiResponse<AlertSuppressionWindowDetail> getAlertSuppressionWindow getAlertSuppressionWindowWithHttpInfo(GetAlertSuppressionWindowRequest)
 
 Retrieve alert suppression window
 
@@ -435,7 +468,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -452,7 +485,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandAlertTestOptions> expand = Arrays.asList(); // List<ExpandAlertTestOptions> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.getAlertSuppressionWindowWithHttpInfo(windowId, aid, expand);
+            AlertSuppressionWindowsApi.GetAlertSuppressionWindowRequest request = AlertSuppressionWindowsApi.GetAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.getAlertSuppressionWindowWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -469,12 +507,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **windowId** | **String**| Unique window ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md)| Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+| request | [**GetAlertSuppressionWindowRequest**](AlertSuppressionWindowsApi.md#GetAlertSuppressionWindowRequest)|-|-|
 
 ### Return type
 
@@ -501,9 +536,21 @@ ApiResponse<[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetAlertSuppressionWindowRequest"></a>
+## GetAlertSuppressionWindowRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **windowId** | **String** | Unique window ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md) | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+
+
+
 ## getAlertSuppressionWindows
 
-> AlertSuppressionWindows getAlertSuppressionWindows(aid)
+> AlertSuppressionWindows getAlertSuppressionWindows(GetAlertSuppressionWindowsRequest)
 
 List alert suppression windows
 
@@ -517,7 +564,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -532,7 +579,10 @@ public class Example {
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AlertSuppressionWindows result = apiInstance.getAlertSuppressionWindows(aid);
+            AlertSuppressionWindowsApi.GetAlertSuppressionWindowsRequest request = AlertSuppressionWindowsApi.GetAlertSuppressionWindowsRequest.builder()
+                .aid(aid)
+                .build();
+            AlertSuppressionWindows result = apiInstance.getAlertSuppressionWindows(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertSuppressionWindowsApi#getAlertSuppressionWindows");
@@ -547,10 +597,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAlertSuppressionWindowsRequest**](AlertSuppressionWindowsApi.md#GetAlertSuppressionWindowsRequest)|-|-|
 
 ### Return type
 
@@ -578,7 +627,7 @@ public class Example {
 
 ## getAlertSuppressionWindowsWithHttpInfo
 
-> ApiResponse<AlertSuppressionWindows> getAlertSuppressionWindows getAlertSuppressionWindowsWithHttpInfo(aid)
+> ApiResponse<AlertSuppressionWindows> getAlertSuppressionWindows getAlertSuppressionWindowsWithHttpInfo(GetAlertSuppressionWindowsRequest)
 
 List alert suppression windows
 
@@ -593,7 +642,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -608,7 +657,10 @@ public class Example {
         AlertSuppressionWindowsApi apiInstance = new AlertSuppressionWindowsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AlertSuppressionWindows> response = apiInstance.getAlertSuppressionWindowsWithHttpInfo(aid);
+            AlertSuppressionWindowsApi.GetAlertSuppressionWindowsRequest request = AlertSuppressionWindowsApi.GetAlertSuppressionWindowsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<AlertSuppressionWindows> response = apiInstance.getAlertSuppressionWindowsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -625,10 +677,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAlertSuppressionWindowsRequest**](AlertSuppressionWindowsApi.md#GetAlertSuppressionWindowsRequest)|-|-|
 
 ### Return type
 
@@ -655,9 +706,19 @@ ApiResponse<[**AlertSuppressionWindows**](AlertSuppressionWindows.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetAlertSuppressionWindowsRequest"></a>
+## GetAlertSuppressionWindowsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateAlertSuppressionWindow
 
-> AlertSuppressionWindowDetail updateAlertSuppressionWindow(windowId, alertSuppressionWindowRequest, aid, expand)
+> AlertSuppressionWindowDetail updateAlertSuppressionWindow(UpdateAlertSuppressionWindowRequest)
 
 Update alert suppression window
 
@@ -671,7 +732,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -689,7 +750,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandAlertTestOptions> expand = Arrays.asList(); // List<ExpandAlertTestOptions> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            AlertSuppressionWindowDetail result = apiInstance.updateAlertSuppressionWindow(windowId, alertSuppressionWindowRequest, aid, expand);
+            AlertSuppressionWindowsApi.UpdateAlertSuppressionWindowRequest request = AlertSuppressionWindowsApi.UpdateAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .alertSuppressionWindowRequest(alertSuppressionWindowRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            AlertSuppressionWindowDetail result = apiInstance.updateAlertSuppressionWindow(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertSuppressionWindowsApi#updateAlertSuppressionWindow");
@@ -704,13 +771,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **windowId** | **String**| Unique window ID. | |
-| **alertSuppressionWindowRequest** | [**AlertSuppressionWindowRequest**](AlertSuppressionWindowRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md)| Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+| request | [**UpdateAlertSuppressionWindowRequest**](AlertSuppressionWindowsApi.md#UpdateAlertSuppressionWindowRequest)|-|-|
 
 ### Return type
 
@@ -739,7 +802,7 @@ public class Example {
 
 ## updateAlertSuppressionWindowWithHttpInfo
 
-> ApiResponse<AlertSuppressionWindowDetail> updateAlertSuppressionWindow updateAlertSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand)
+> ApiResponse<AlertSuppressionWindowDetail> updateAlertSuppressionWindow updateAlertSuppressionWindowWithHttpInfo(UpdateAlertSuppressionWindowRequest)
 
 Update alert suppression window
 
@@ -754,7 +817,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertSuppressionWindowsApi;
 
 public class Example {
@@ -772,7 +835,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandAlertTestOptions> expand = Arrays.asList(); // List<ExpandAlertTestOptions> | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there's no default expansion. For example, to expand the \"tests\" resource, use the `?expand=test` query.
         try {
-            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.updateAlertSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand);
+            AlertSuppressionWindowsApi.UpdateAlertSuppressionWindowRequest request = AlertSuppressionWindowsApi.UpdateAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .alertSuppressionWindowRequest(alertSuppressionWindowRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<AlertSuppressionWindowDetail> response = apiInstance.updateAlertSuppressionWindowWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -789,13 +858,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **windowId** | **String**| Unique window ID. | |
-| **alertSuppressionWindowRequest** | [**AlertSuppressionWindowRequest**](AlertSuppressionWindowRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md)| Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+| request | [**UpdateAlertSuppressionWindowRequest**](AlertSuppressionWindowsApi.md#UpdateAlertSuppressionWindowRequest)|-|-|
 
 ### Return type
 
@@ -821,4 +886,17 @@ ApiResponse<[**AlertSuppressionWindowDetail**](AlertSuppressionWindowDetail.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateAlertSuppressionWindowRequest"></a>
+## UpdateAlertSuppressionWindowRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **windowId** | **String** | Unique window ID. | |
+| **alertSuppressionWindowRequest** | [**AlertSuppressionWindowRequest**](AlertSuppressionWindowRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandAlertTestOptions&gt;**](ExpandAlertTestOptions.md) | Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. | [optional] |
+
 

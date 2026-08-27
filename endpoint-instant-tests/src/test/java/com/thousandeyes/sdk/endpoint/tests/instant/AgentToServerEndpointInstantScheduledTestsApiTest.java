@@ -82,7 +82,6 @@ public class AgentToServerEndpointInstantScheduledTestsApiTest {
     public void createAgentToServerScheduledInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "server" : "www.example.com",
@@ -169,7 +168,11 @@ public class AgentToServerEndpointInstantScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAgentToServerScheduledInstantTest(mappedRequest, null);
+        var request = AgentToServerEndpointInstantScheduledTestsApi.CreateAgentToServerScheduledInstantTestRequest.builder()
+                .endpointAgentToServerInstantTest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createAgentToServerScheduledInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

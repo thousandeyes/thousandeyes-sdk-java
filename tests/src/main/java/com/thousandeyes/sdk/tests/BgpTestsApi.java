@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -40,12 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -67,30 +64,29 @@ public class BgpTestsApi {
   /**
    * Create BGP test
    * Creates a new BGP test. This method requires Account Admin permissions.
-   * @param bgpTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return BgpTestResponse
    * @throws ApiException if fails to make API call
    */
-  public BgpTestResponse createBgpTest(BgpTestRequest bgpTestRequest, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    ApiResponse<BgpTestResponse> response = createBgpTestWithHttpInfo(bgpTestRequest, aid, expand);
+  public BgpTestResponse createBgpTest(CreateBgpTestRequest request) throws ApiException {
+    ApiResponse<BgpTestResponse> response = createBgpTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create BGP test
    * Creates a new BGP test. This method requires Account Admin permissions.
-   * @param bgpTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BgpTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BgpTestResponse> createBgpTestWithHttpInfo(BgpTestRequest bgpTestRequest, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    createBgpTestValidateRequest(bgpTestRequest);
+  public ApiResponse<BgpTestResponse> createBgpTestWithHttpInfo(CreateBgpTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createBgpTest");
+    }
+    createBgpTestValidateRequest(request.getBgpTestRequest());
 
-    var requestBuilder = createBgpTestRequestBuilder(bgpTestRequest, aid, expand);
+    var requestBuilder = createBgpTestRequestBuilder(request.getBgpTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), BgpTestResponse.class);
   }
@@ -102,8 +98,8 @@ public class BgpTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createBgpTestRequestBuilder(BgpTestRequest bgpTestRequest, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createBgpTestRequestBuilder(BgpTestRequest bgpTestRequest, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/bgp";
@@ -123,29 +119,84 @@ public class BgpTestsApi {
     requestBuilder.requestBody(bgpTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete BGP test
-   * Deletes a BGP test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteBgpTest(String testId, String aid) throws ApiException {
-    deleteBgpTestWithHttpInfo(testId, aid);
+
+  public static final class CreateBgpTestRequest {
+    private final BgpTestRequest bgpTestRequest;
+    private final String aid;
+    private final List<ExpandBgpTestOptions> expand;
+
+    private CreateBgpTestRequest(Builder builder) {
+      this.bgpTestRequest = builder.bgpTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public BgpTestRequest getBgpTestRequest() {
+      return bgpTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandBgpTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .bgpTestRequest(bgpTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private BgpTestRequest bgpTestRequest;
+      private String aid;
+      private List<ExpandBgpTestOptions> expand;
+
+      public Builder bgpTestRequest(BgpTestRequest bgpTestRequest) {
+        this.bgpTestRequest = bgpTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandBgpTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateBgpTestRequest build() {
+        return new CreateBgpTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete BGP test
    * Deletes a BGP test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteBgpTest(DeleteBgpTestRequest request) throws ApiException {
+    deleteBgpTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete BGP test
+   * Deletes a BGP test. This method requires Account Admin permissions.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteBgpTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteBgpTestValidateRequest(testId);
+  public ApiResponse<Void> deleteBgpTestWithHttpInfo(DeleteBgpTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteBgpTest");
+    }
+    deleteBgpTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteBgpTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteBgpTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -157,8 +208,8 @@ public class BgpTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteBgpTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteBgpTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/bgp/{testId}"
@@ -176,33 +227,75 @@ public class BgpTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteBgpTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteBgpTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteBgpTestRequest build() {
+        return new DeleteBgpTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get BGP test
    * Returns details for a BGP test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return BgpTestResponse
    * @throws ApiException if fails to make API call
    */
-  public BgpTestResponse getBgpTest(String testId, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    ApiResponse<BgpTestResponse> response = getBgpTestWithHttpInfo(testId, aid, expand);
+  public BgpTestResponse getBgpTest(GetBgpTestRequest request) throws ApiException {
+    ApiResponse<BgpTestResponse> response = getBgpTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get BGP test
    * Returns details for a BGP test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BgpTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BgpTestResponse> getBgpTestWithHttpInfo(String testId, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    getBgpTestValidateRequest(testId);
+  public ApiResponse<BgpTestResponse> getBgpTestWithHttpInfo(GetBgpTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getBgpTest");
+    }
+    getBgpTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getBgpTestRequestBuilder(testId, aid, expand);
+    var requestBuilder = getBgpTestRequestBuilder(request.getTestId(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), BgpTestResponse.class);
   }
@@ -214,8 +307,8 @@ public class BgpTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getBgpTestRequestBuilder(String testId, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getBgpTestRequestBuilder(String testId, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/bgp/{testId}"
@@ -234,29 +327,86 @@ public class BgpTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetBgpTestRequest {
+    private final String testId;
+    private final String aid;
+    private final List<ExpandBgpTestOptions> expand;
+
+    private GetBgpTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandBgpTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private List<ExpandBgpTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandBgpTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetBgpTestRequest build() {
+        return new GetBgpTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List BGP tests
    * Returns a list of BGP tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return BgpTests
    * @throws ApiException if fails to make API call
    */
-  public BgpTests getBgpTests(String aid) throws ApiException {
-    ApiResponse<BgpTests> response = getBgpTestsWithHttpInfo(aid);
+  public BgpTests getBgpTests(GetBgpTestsRequest request) throws ApiException {
+    ApiResponse<BgpTests> response = getBgpTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List BGP tests
    * Returns a list of BGP tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BgpTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BgpTests> getBgpTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<BgpTests> getBgpTestsWithHttpInfo(GetBgpTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getBgpTests");
+    }
     getBgpTestsValidateRequest();
 
-    var requestBuilder = getBgpTestsRequestBuilder(aid);
+    var requestBuilder = getBgpTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), BgpTests.class);
   }
@@ -264,8 +414,8 @@ public class BgpTestsApi {
   private void getBgpTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getBgpTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getBgpTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/bgp";
@@ -282,40 +432,69 @@ public class BgpTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetBgpTestsRequest {
+    private final String aid;
+
+    private GetBgpTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetBgpTestsRequest build() {
+        return new GetBgpTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update BGP test
    * Updates a BGP test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param updateBgpTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return BgpTestResponse
    * @throws ApiException if fails to make API call
    */
-  public BgpTestResponse updateBgpTest(String testId, UpdateBgpTestRequest updateBgpTestRequest, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    ApiResponse<BgpTestResponse> response = updateBgpTestWithHttpInfo(testId, updateBgpTestRequest, aid, expand);
+  public BgpTestResponse updateBgpTest(UpdateBgpTestRequest request) throws ApiException {
+    ApiResponse<BgpTestResponse> response = updateBgpTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update BGP test
    * Updates a BGP test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param updateBgpTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BgpTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BgpTestResponse> updateBgpTestWithHttpInfo(String testId, UpdateBgpTestRequest updateBgpTestRequest, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    updateBgpTestValidateRequest(testId, updateBgpTestRequest);
+  public ApiResponse<BgpTestResponse> updateBgpTestWithHttpInfo(UpdateBgpTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateBgpTest");
+    }
+    updateBgpTestValidateRequest(request.getTestId(), request.getUpdateBgpTestRequest());
 
-    var requestBuilder = updateBgpTestRequestBuilder(testId, updateBgpTestRequest, aid, expand);
+    var requestBuilder = updateBgpTestRequestBuilder(request.getTestId(), request.getUpdateBgpTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), BgpTestResponse.class);
   }
 
-  private void updateBgpTestValidateRequest(String testId, UpdateBgpTestRequest updateBgpTestRequest) throws ApiException {
+  private void updateBgpTestValidateRequest(String testId, com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest updateBgpTestRequest) throws ApiException {
       // verify the required parameter 'testId' is set
       if (testId == null) {
         throw new ApiException(400, "Missing the required parameter 'testId' when calling updateBgpTest");
@@ -326,8 +505,8 @@ public class BgpTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateBgpTestRequestBuilder(String testId, UpdateBgpTestRequest updateBgpTestRequest, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateBgpTestRequestBuilder(String testId, com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest updateBgpTestRequest, String aid, List<ExpandBgpTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/bgp/{testId}"
@@ -348,4 +527,69 @@ public class BgpTestsApi {
     requestBuilder.requestBody(updateBgpTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateBgpTestRequest {
+    private final String testId;
+    private final com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest updateBgpTestRequest;
+    private final String aid;
+    private final List<ExpandBgpTestOptions> expand;
+
+    private UpdateBgpTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.updateBgpTestRequest = builder.updateBgpTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest getUpdateBgpTestRequest() {
+      return updateBgpTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandBgpTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .updateBgpTestRequest(updateBgpTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest updateBgpTestRequest;
+      private String aid;
+      private List<ExpandBgpTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder updateBgpTestRequest(com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest updateBgpTestRequest) {
+        this.updateBgpTestRequest = updateBgpTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandBgpTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateBgpTestRequest build() {
+        return new UpdateBgpTestRequest(this);
+      }
+    }
+  }
+
 }

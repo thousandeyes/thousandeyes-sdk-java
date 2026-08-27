@@ -87,7 +87,6 @@ public class AlertsApiTest {
     {
         UUID alertId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
-
         var responseBodyJson = """
                 {
                   "severity" : "major",
@@ -193,7 +192,11 @@ public class AlertsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAlert(alertId, null);
+        var request = AlertsApi.GetAlertRequest.builder()
+                .alertId(alertId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAlert(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -208,7 +211,6 @@ public class AlertsApiTest {
     public void getAlertsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -397,7 +399,14 @@ public class AlertsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAlerts(null, null, null, null, null, null, null);
+        var request = AlertsApi.GetAlertsRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .max(5)
+                .build();
+        var apiResponse = api.getAlerts(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

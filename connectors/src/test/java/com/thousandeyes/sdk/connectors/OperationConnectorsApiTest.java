@@ -83,7 +83,6 @@ public class OperationConnectorsApiTest {
         String type = "webhooks";
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
-
         var responseBodyJson = """
                 {
                   "_links" : {
@@ -117,7 +116,12 @@ public class OperationConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getOperationConnectors(type, id, null);
+        var request = OperationConnectorsApi.GetOperationConnectorsRequest.builder()
+                .type(type)
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getOperationConnectors(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -134,7 +138,6 @@ public class OperationConnectorsApiTest {
     {
         String type = "webhooks";
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
         var requestBodyJson = """
                 [ "ca39314d-eb4f-496f-9435-b5d20b1bfbff" ]
                                  """;
@@ -178,7 +181,13 @@ public class OperationConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.setOperationConnectors(type, id, mappedRequest, null, null);
+        var request = OperationConnectorsApi.SetOperationConnectorsRequest.builder()
+                .type(type)
+                .id(id)
+                .requestBody(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.setOperationConnectors(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

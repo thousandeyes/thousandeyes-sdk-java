@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createCredentialVaultOperation
 
-> CredentialVaultOperation createCredentialVaultOperation(credentialVaultOperation, aid)
+> CredentialVaultOperation createCredentialVaultOperation(CreateCredentialVaultOperationRequest)
 
 Create Credential Vault operation
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         CredentialVaultOperation credentialVaultOperation = new CredentialVaultOperation(); // CredentialVaultOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialVaultOperation result = apiInstance.createCredentialVaultOperation(credentialVaultOperation, aid);
+            CredentialVaultOperationsApi.CreateCredentialVaultOperationRequest request = CredentialVaultOperationsApi.CreateCredentialVaultOperationRequest.builder()
+                .credentialVaultOperation(credentialVaultOperation)
+                .aid(aid)
+                .build();
+            CredentialVaultOperation result = apiInstance.createCredentialVaultOperation(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialVaultOperationsApi#createCredentialVaultOperation");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **credentialVaultOperation** | [**CredentialVaultOperation**](CredentialVaultOperation.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateCredentialVaultOperationRequest**](CredentialVaultOperationsApi.md#CreateCredentialVaultOperationRequest)|-|-|
 
 ### Return type
 
@@ -96,7 +98,7 @@ public class Example {
 
 ## createCredentialVaultOperationWithHttpInfo
 
-> ApiResponse<CredentialVaultOperation> createCredentialVaultOperation createCredentialVaultOperationWithHttpInfo(credentialVaultOperation, aid)
+> ApiResponse<CredentialVaultOperation> createCredentialVaultOperation createCredentialVaultOperationWithHttpInfo(CreateCredentialVaultOperationRequest)
 
 Create Credential Vault operation
 
@@ -111,7 +113,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -127,7 +129,11 @@ public class Example {
         CredentialVaultOperation credentialVaultOperation = new CredentialVaultOperation(); // CredentialVaultOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CredentialVaultOperation> response = apiInstance.createCredentialVaultOperationWithHttpInfo(credentialVaultOperation, aid);
+            CredentialVaultOperationsApi.CreateCredentialVaultOperationRequest request = CredentialVaultOperationsApi.CreateCredentialVaultOperationRequest.builder()
+                .credentialVaultOperation(credentialVaultOperation)
+                .aid(aid)
+                .build();
+            ApiResponse<CredentialVaultOperation> response = apiInstance.createCredentialVaultOperationWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -144,11 +150,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **credentialVaultOperation** | [**CredentialVaultOperation**](CredentialVaultOperation.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateCredentialVaultOperationRequest**](CredentialVaultOperationsApi.md#CreateCredentialVaultOperationRequest)|-|-|
 
 ### Return type
 
@@ -175,9 +179,20 @@ ApiResponse<[**CredentialVaultOperation**](CredentialVaultOperation.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateCredentialVaultOperationRequest"></a>
+## CreateCredentialVaultOperationRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **credentialVaultOperation** | [**CredentialVaultOperation**](CredentialVaultOperation.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteCredentialVaultOperation
 
-> void deleteCredentialVaultOperation(id, confirmDisabledObjects, aid)
+> void deleteCredentialVaultOperation(DeleteCredentialVaultOperationRequest)
 
 Delete Credential Vault operation
 
@@ -191,7 +206,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -208,7 +223,12 @@ public class Example {
         Boolean confirmDisabledObjects = false; // Boolean | Confirmation to disable affected objects (for example, tests) for credential-vault operations.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteCredentialVaultOperation(id, confirmDisabledObjects, aid);
+            CredentialVaultOperationsApi.DeleteCredentialVaultOperationRequest request = CredentialVaultOperationsApi.DeleteCredentialVaultOperationRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .aid(aid)
+                .build();
+            apiInstance.deleteCredentialVaultOperation(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialVaultOperationsApi#deleteCredentialVaultOperation");
             System.err.println("Status code: " + e.getCode());
@@ -222,12 +242,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for credential-vault operations. | [default to false] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteCredentialVaultOperationRequest**](CredentialVaultOperationsApi.md#DeleteCredentialVaultOperationRequest)|-|-|
 
 ### Return type
 
@@ -255,7 +272,7 @@ null (empty response body)
 
 ## deleteCredentialVaultOperationWithHttpInfo
 
-> ApiResponse<Void> deleteCredentialVaultOperation deleteCredentialVaultOperationWithHttpInfo(id, confirmDisabledObjects, aid)
+> ApiResponse<Void> deleteCredentialVaultOperation deleteCredentialVaultOperationWithHttpInfo(DeleteCredentialVaultOperationRequest)
 
 Delete Credential Vault operation
 
@@ -270,7 +287,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -287,7 +304,12 @@ public class Example {
         Boolean confirmDisabledObjects = false; // Boolean | Confirmation to disable affected objects (for example, tests) for credential-vault operations.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteCredentialVaultOperationWithHttpInfo(id, confirmDisabledObjects, aid);
+            CredentialVaultOperationsApi.DeleteCredentialVaultOperationRequest request = CredentialVaultOperationsApi.DeleteCredentialVaultOperationRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteCredentialVaultOperationWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -303,12 +325,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for credential-vault operations. | [default to false] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteCredentialVaultOperationRequest**](CredentialVaultOperationsApi.md#DeleteCredentialVaultOperationRequest)|-|-|
 
 ### Return type
 
@@ -335,9 +354,21 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteCredentialVaultOperationRequest"></a>
+## DeleteCredentialVaultOperationRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The operation ID. | |
+| **confirmDisabledObjects** | **Boolean** | Confirmation to disable affected objects (for example, tests) for credential-vault operations. | [default to false] |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getCredentialVaultOperation
 
-> CredentialVaultOperation getCredentialVaultOperation(id, aid)
+> CredentialVaultOperation getCredentialVaultOperation(GetCredentialVaultOperationRequest)
 
 Get Credential Vault operation
 
@@ -351,7 +382,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -367,7 +398,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialVaultOperation result = apiInstance.getCredentialVaultOperation(id, aid);
+            CredentialVaultOperationsApi.GetCredentialVaultOperationRequest request = CredentialVaultOperationsApi.GetCredentialVaultOperationRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            CredentialVaultOperation result = apiInstance.getCredentialVaultOperation(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialVaultOperationsApi#getCredentialVaultOperation");
@@ -382,11 +417,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCredentialVaultOperationRequest**](CredentialVaultOperationsApi.md#GetCredentialVaultOperationRequest)|-|-|
 
 ### Return type
 
@@ -414,7 +447,7 @@ public class Example {
 
 ## getCredentialVaultOperationWithHttpInfo
 
-> ApiResponse<CredentialVaultOperation> getCredentialVaultOperation getCredentialVaultOperationWithHttpInfo(id, aid)
+> ApiResponse<CredentialVaultOperation> getCredentialVaultOperation getCredentialVaultOperationWithHttpInfo(GetCredentialVaultOperationRequest)
 
 Get Credential Vault operation
 
@@ -429,7 +462,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -445,7 +478,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CredentialVaultOperation> response = apiInstance.getCredentialVaultOperationWithHttpInfo(id, aid);
+            CredentialVaultOperationsApi.GetCredentialVaultOperationRequest request = CredentialVaultOperationsApi.GetCredentialVaultOperationRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<CredentialVaultOperation> response = apiInstance.getCredentialVaultOperationWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -462,11 +499,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCredentialVaultOperationRequest**](CredentialVaultOperationsApi.md#GetCredentialVaultOperationRequest)|-|-|
 
 ### Return type
 
@@ -493,9 +528,20 @@ ApiResponse<[**CredentialVaultOperation**](CredentialVaultOperation.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetCredentialVaultOperationRequest"></a>
+## GetCredentialVaultOperationRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The operation ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getCredentialVaultOperations
 
-> CredentialVaultOperations getCredentialVaultOperations(aid)
+> CredentialVaultOperations getCredentialVaultOperations(GetCredentialVaultOperationsRequest)
 
 List Credential Vault operations
 
@@ -509,7 +555,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -524,7 +570,10 @@ public class Example {
         CredentialVaultOperationsApi apiInstance = new CredentialVaultOperationsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialVaultOperations result = apiInstance.getCredentialVaultOperations(aid);
+            CredentialVaultOperationsApi.GetCredentialVaultOperationsRequest request = CredentialVaultOperationsApi.GetCredentialVaultOperationsRequest.builder()
+                .aid(aid)
+                .build();
+            CredentialVaultOperations result = apiInstance.getCredentialVaultOperations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialVaultOperationsApi#getCredentialVaultOperations");
@@ -539,10 +588,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCredentialVaultOperationsRequest**](CredentialVaultOperationsApi.md#GetCredentialVaultOperationsRequest)|-|-|
 
 ### Return type
 
@@ -570,7 +618,7 @@ public class Example {
 
 ## getCredentialVaultOperationsWithHttpInfo
 
-> ApiResponse<CredentialVaultOperations> getCredentialVaultOperations getCredentialVaultOperationsWithHttpInfo(aid)
+> ApiResponse<CredentialVaultOperations> getCredentialVaultOperations getCredentialVaultOperationsWithHttpInfo(GetCredentialVaultOperationsRequest)
 
 List Credential Vault operations
 
@@ -585,7 +633,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -600,7 +648,10 @@ public class Example {
         CredentialVaultOperationsApi apiInstance = new CredentialVaultOperationsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CredentialVaultOperations> response = apiInstance.getCredentialVaultOperationsWithHttpInfo(aid);
+            CredentialVaultOperationsApi.GetCredentialVaultOperationsRequest request = CredentialVaultOperationsApi.GetCredentialVaultOperationsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<CredentialVaultOperations> response = apiInstance.getCredentialVaultOperationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -617,10 +668,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCredentialVaultOperationsRequest**](CredentialVaultOperationsApi.md#GetCredentialVaultOperationsRequest)|-|-|
 
 ### Return type
 
@@ -647,9 +697,19 @@ ApiResponse<[**CredentialVaultOperations**](CredentialVaultOperations.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetCredentialVaultOperationsRequest"></a>
+## GetCredentialVaultOperationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateCredentialVaultOperation
 
-> CredentialVaultOperation updateCredentialVaultOperation(id, credentialVaultOperation, aid)
+> CredentialVaultOperation updateCredentialVaultOperation(UpdateCredentialVaultOperationRequest)
 
 Update Credential Vault operation
 
@@ -663,7 +723,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -680,7 +740,12 @@ public class Example {
         CredentialVaultOperation credentialVaultOperation = new CredentialVaultOperation(); // CredentialVaultOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialVaultOperation result = apiInstance.updateCredentialVaultOperation(id, credentialVaultOperation, aid);
+            CredentialVaultOperationsApi.UpdateCredentialVaultOperationRequest request = CredentialVaultOperationsApi.UpdateCredentialVaultOperationRequest.builder()
+                .id(id)
+                .credentialVaultOperation(credentialVaultOperation)
+                .aid(aid)
+                .build();
+            CredentialVaultOperation result = apiInstance.updateCredentialVaultOperation(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialVaultOperationsApi#updateCredentialVaultOperation");
@@ -695,12 +760,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **credentialVaultOperation** | [**CredentialVaultOperation**](CredentialVaultOperation.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateCredentialVaultOperationRequest**](CredentialVaultOperationsApi.md#UpdateCredentialVaultOperationRequest)|-|-|
 
 ### Return type
 
@@ -728,7 +790,7 @@ public class Example {
 
 ## updateCredentialVaultOperationWithHttpInfo
 
-> ApiResponse<CredentialVaultOperation> updateCredentialVaultOperation updateCredentialVaultOperationWithHttpInfo(id, credentialVaultOperation, aid)
+> ApiResponse<CredentialVaultOperation> updateCredentialVaultOperation updateCredentialVaultOperationWithHttpInfo(UpdateCredentialVaultOperationRequest)
 
 Update Credential Vault operation
 
@@ -743,7 +805,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CredentialVaultOperationsApi;
 
 public class Example {
@@ -760,7 +822,12 @@ public class Example {
         CredentialVaultOperation credentialVaultOperation = new CredentialVaultOperation(); // CredentialVaultOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CredentialVaultOperation> response = apiInstance.updateCredentialVaultOperationWithHttpInfo(id, credentialVaultOperation, aid);
+            CredentialVaultOperationsApi.UpdateCredentialVaultOperationRequest request = CredentialVaultOperationsApi.UpdateCredentialVaultOperationRequest.builder()
+                .id(id)
+                .credentialVaultOperation(credentialVaultOperation)
+                .aid(aid)
+                .build();
+            ApiResponse<CredentialVaultOperation> response = apiInstance.updateCredentialVaultOperationWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -777,12 +844,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **credentialVaultOperation** | [**CredentialVaultOperation**](CredentialVaultOperation.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateCredentialVaultOperationRequest**](CredentialVaultOperationsApi.md#UpdateCredentialVaultOperationRequest)|-|-|
 
 ### Return type
 
@@ -807,4 +871,16 @@ ApiResponse<[**CredentialVaultOperation**](CredentialVaultOperation.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateCredentialVaultOperationRequest"></a>
+## UpdateCredentialVaultOperationRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The operation ID. | |
+| **credentialVaultOperation** | [**CredentialVaultOperation**](CredentialVaultOperation.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

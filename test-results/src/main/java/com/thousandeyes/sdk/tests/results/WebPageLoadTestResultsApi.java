@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,32 +63,29 @@ public class WebPageLoadTestResultsApi {
   /**
    * Get page load server test results by agent and round
    * Returns test results for a given agent and round in [HAR (http archive)](http://www.softwareishard.com/blog/har-12-spec/) format. These results contain a list of components and their load times in a page load test, similar to the waterfall view for a page load test. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return PageLoadDetailTestResults
    * @throws ApiException if fails to make API call
    */
-  public PageLoadDetailTestResults getTestPageLoadAgentRoundResults(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiResponse<PageLoadDetailTestResults> response = getTestPageLoadAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+  public PageLoadDetailTestResults getTestPageLoadAgentRoundResults(GetTestPageLoadAgentRoundResultsRequest request) throws ApiException {
+    ApiResponse<PageLoadDetailTestResults> response = getTestPageLoadAgentRoundResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get page load server test results by agent and round
    * Returns test results for a given agent and round in [HAR (http archive)](http://www.softwareishard.com/blog/har-12-spec/) format. These results contain a list of components and their load times in a page load test, similar to the waterfall view for a page load test. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PageLoadDetailTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageLoadDetailTestResults> getTestPageLoadAgentRoundResultsWithHttpInfo(String testId, String agentId, String roundId, String aid) throws ApiException {
-    getTestPageLoadAgentRoundResultsValidateRequest(testId, agentId, roundId);
+  public ApiResponse<PageLoadDetailTestResults> getTestPageLoadAgentRoundResultsWithHttpInfo(GetTestPageLoadAgentRoundResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestPageLoadAgentRoundResults");
+    }
+    getTestPageLoadAgentRoundResultsValidateRequest(request.getTestId(), request.getAgentId(), request.getRoundId());
 
-    var requestBuilder = getTestPageLoadAgentRoundResultsRequestBuilder(testId, agentId, roundId, aid);
+    var requestBuilder = getTestPageLoadAgentRoundResultsRequestBuilder(request.getTestId(), request.getAgentId(), request.getRoundId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), PageLoadDetailTestResults.class);
   }
@@ -111,8 +105,8 @@ public class WebPageLoadTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestPageLoadAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestPageLoadAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/test-results/{testId}/page-load/agent/{agentId}/round/{roundId}"
@@ -132,54 +126,113 @@ public class WebPageLoadTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestPageLoadAgentRoundResultsRequest {
+    private final String testId;
+    private final String agentId;
+    private final String roundId;
+    private final String aid;
+
+    private GetTestPageLoadAgentRoundResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.agentId = builder.agentId;
+      this.roundId = builder.roundId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public String getRoundId() {
+      return roundId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .agentId(agentId)
+          .roundId(roundId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String agentId;
+      private String roundId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder roundId(String roundId) {
+        this.roundId = roundId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetTestPageLoadAgentRoundResultsRequest build() {
+        return new GetTestPageLoadAgentRoundResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Get page load server test results with pagination
    * Returns results for page load server tests with a focus on page load times and DOM for a web page. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<PageLoadTestResult, PageLoadTestResults>
    */
-  public Paginator<PageLoadTestResult, PageLoadTestResults> getTestPageLoadResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getTestPageLoadResults(testId, aid, window, startDate, endDate, cursor),
+  public Paginator<PageLoadTestResult, PageLoadTestResults> getTestPageLoadResultsPaginated(GetTestPageLoadResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getTestPageLoadResultsPaginated");
+    }
+    return new Paginator<>(cursor -> getTestPageLoadResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            PageLoadTestResults::getResults);
 
   }
   /**
    * Get page load server test results
    * Returns results for page load server tests with a focus on page load times and DOM for a web page. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return PageLoadTestResults
    * @throws ApiException if fails to make API call
    */
-  public PageLoadTestResults getTestPageLoadResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiResponse<PageLoadTestResults> response = getTestPageLoadResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+  public PageLoadTestResults getTestPageLoadResults(GetTestPageLoadResultsRequest request) throws ApiException {
+    ApiResponse<PageLoadTestResults> response = getTestPageLoadResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get page load server test results
    * Returns results for page load server tests with a focus on page load times and DOM for a web page. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PageLoadTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageLoadTestResults> getTestPageLoadResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    getTestPageLoadResultsValidateRequest(testId);
+  public ApiResponse<PageLoadTestResults> getTestPageLoadResultsWithHttpInfo(GetTestPageLoadResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestPageLoadResults");
+    }
+    getTestPageLoadResultsValidateRequest(request.getTestId());
 
-    var requestBuilder = getTestPageLoadResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor);
+    var requestBuilder = getTestPageLoadResultsRequestBuilder(request.getTestId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), PageLoadTestResults.class);
   }
@@ -191,8 +244,8 @@ public class WebPageLoadTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestPageLoadResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestPageLoadResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/test-results/{testId}/page-load"
@@ -214,4 +267,91 @@ public class WebPageLoadTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestPageLoadResultsRequest {
+    private final String testId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+
+    private GetTestPageLoadResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetTestPageLoadResultsRequest build() {
+        return new GetTestPageLoadResultsRequest(this);
+      }
+    }
+  }
+
 }

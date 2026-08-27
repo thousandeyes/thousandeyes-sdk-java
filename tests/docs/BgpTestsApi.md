@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createBgpTest
 
-> BgpTestResponse createBgpTest(bgpTestRequest, aid, expand)
+> BgpTestResponse createBgpTest(CreateBgpTestRequest)
 
 Create BGP test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -50,7 +50,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandBgpTestOptions> expand = Arrays.asList(); // List<ExpandBgpTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the `monitors` sub-resource, pass the `?expand=monitor` query.
         try {
-            BgpTestResponse result = apiInstance.createBgpTest(bgpTestRequest, aid, expand);
+            BgpTestsApi.CreateBgpTestRequest request = BgpTestsApi.CreateBgpTestRequest.builder()
+                .bgpTestRequest(bgpTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            BgpTestResponse result = apiInstance.createBgpTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpTestsApi#createBgpTest");
@@ -65,12 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **bgpTestRequest** | [**BgpTestRequest**](BgpTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+| request | [**CreateBgpTestRequest**](BgpTestsApi.md#CreateBgpTestRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## createBgpTestWithHttpInfo
 
-> ApiResponse<BgpTestResponse> createBgpTest createBgpTestWithHttpInfo(bgpTestRequest, aid, expand)
+> ApiResponse<BgpTestResponse> createBgpTest createBgpTestWithHttpInfo(CreateBgpTestRequest)
 
 Create BGP test
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -133,7 +135,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandBgpTestOptions> expand = Arrays.asList(); // List<ExpandBgpTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the `monitors` sub-resource, pass the `?expand=monitor` query.
         try {
-            ApiResponse<BgpTestResponse> response = apiInstance.createBgpTestWithHttpInfo(bgpTestRequest, aid, expand);
+            BgpTestsApi.CreateBgpTestRequest request = BgpTestsApi.CreateBgpTestRequest.builder()
+                .bgpTestRequest(bgpTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<BgpTestResponse> response = apiInstance.createBgpTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -150,12 +157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **bgpTestRequest** | [**BgpTestRequest**](BgpTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+| request | [**CreateBgpTestRequest**](BgpTestsApi.md#CreateBgpTestRequest)|-|-|
 
 ### Return type
 
@@ -185,9 +189,21 @@ ApiResponse<[**BgpTestResponse**](BgpTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreateBgpTestRequest"></a>
+## CreateBgpTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **bgpTestRequest** | [**BgpTestRequest**](BgpTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+
+
+
 ## deleteBgpTest
 
-> void deleteBgpTest(testId, aid)
+> void deleteBgpTest(DeleteBgpTestRequest)
 
 Delete BGP test
 
@@ -201,7 +217,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -217,7 +233,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteBgpTest(testId, aid);
+            BgpTestsApi.DeleteBgpTestRequest request = BgpTestsApi.DeleteBgpTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteBgpTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpTestsApi#deleteBgpTest");
             System.err.println("Status code: " + e.getCode());
@@ -231,11 +251,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteBgpTestRequest**](BgpTestsApi.md#DeleteBgpTestRequest)|-|-|
 
 ### Return type
 
@@ -265,7 +283,7 @@ null (empty response body)
 
 ## deleteBgpTestWithHttpInfo
 
-> ApiResponse<Void> deleteBgpTest deleteBgpTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteBgpTest deleteBgpTestWithHttpInfo(DeleteBgpTestRequest)
 
 Delete BGP test
 
@@ -280,7 +298,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -296,7 +314,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteBgpTestWithHttpInfo(testId, aid);
+            BgpTestsApi.DeleteBgpTestRequest request = BgpTestsApi.DeleteBgpTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteBgpTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -312,11 +334,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteBgpTestRequest**](BgpTestsApi.md#DeleteBgpTestRequest)|-|-|
 
 ### Return type
 
@@ -345,9 +365,20 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
+<a id="DeleteBgpTestRequest"></a>
+## DeleteBgpTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getBgpTest
 
-> BgpTestResponse getBgpTest(testId, aid, expand)
+> BgpTestResponse getBgpTest(GetBgpTestRequest)
 
 Get BGP test
 
@@ -361,7 +392,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -378,7 +409,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandBgpTestOptions> expand = Arrays.asList(); // List<ExpandBgpTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the `monitors` sub-resource, pass the `?expand=monitor` query.
         try {
-            BgpTestResponse result = apiInstance.getBgpTest(testId, aid, expand);
+            BgpTestsApi.GetBgpTestRequest request = BgpTestsApi.GetBgpTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            BgpTestResponse result = apiInstance.getBgpTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpTestsApi#getBgpTest");
@@ -393,12 +429,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+| request | [**GetBgpTestRequest**](BgpTestsApi.md#GetBgpTestRequest)|-|-|
 
 ### Return type
 
@@ -428,7 +461,7 @@ public class Example {
 
 ## getBgpTestWithHttpInfo
 
-> ApiResponse<BgpTestResponse> getBgpTest getBgpTestWithHttpInfo(testId, aid, expand)
+> ApiResponse<BgpTestResponse> getBgpTest getBgpTestWithHttpInfo(GetBgpTestRequest)
 
 Get BGP test
 
@@ -443,7 +476,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -460,7 +493,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandBgpTestOptions> expand = Arrays.asList(); // List<ExpandBgpTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the `monitors` sub-resource, pass the `?expand=monitor` query.
         try {
-            ApiResponse<BgpTestResponse> response = apiInstance.getBgpTestWithHttpInfo(testId, aid, expand);
+            BgpTestsApi.GetBgpTestRequest request = BgpTestsApi.GetBgpTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<BgpTestResponse> response = apiInstance.getBgpTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -477,12 +515,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+| request | [**GetBgpTestRequest**](BgpTestsApi.md#GetBgpTestRequest)|-|-|
 
 ### Return type
 
@@ -511,9 +546,21 @@ ApiResponse<[**BgpTestResponse**](BgpTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetBgpTestRequest"></a>
+## GetBgpTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+
+
+
 ## getBgpTests
 
-> BgpTests getBgpTests(aid)
+> BgpTests getBgpTests(GetBgpTestsRequest)
 
 List BGP tests
 
@@ -527,7 +574,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -542,7 +589,10 @@ public class Example {
         BgpTestsApi apiInstance = new BgpTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            BgpTests result = apiInstance.getBgpTests(aid);
+            BgpTestsApi.GetBgpTestsRequest request = BgpTestsApi.GetBgpTestsRequest.builder()
+                .aid(aid)
+                .build();
+            BgpTests result = apiInstance.getBgpTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpTestsApi#getBgpTests");
@@ -557,10 +607,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetBgpTestsRequest**](BgpTestsApi.md#GetBgpTestsRequest)|-|-|
 
 ### Return type
 
@@ -590,7 +639,7 @@ public class Example {
 
 ## getBgpTestsWithHttpInfo
 
-> ApiResponse<BgpTests> getBgpTests getBgpTestsWithHttpInfo(aid)
+> ApiResponse<BgpTests> getBgpTests getBgpTestsWithHttpInfo(GetBgpTestsRequest)
 
 List BGP tests
 
@@ -605,7 +654,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -620,7 +669,10 @@ public class Example {
         BgpTestsApi apiInstance = new BgpTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<BgpTests> response = apiInstance.getBgpTestsWithHttpInfo(aid);
+            BgpTestsApi.GetBgpTestsRequest request = BgpTestsApi.GetBgpTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<BgpTests> response = apiInstance.getBgpTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -637,10 +689,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetBgpTestsRequest**](BgpTestsApi.md#GetBgpTestsRequest)|-|-|
 
 ### Return type
 
@@ -669,9 +720,19 @@ ApiResponse<[**BgpTests**](BgpTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetBgpTestsRequest"></a>
+## GetBgpTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateBgpTest
 
-> BgpTestResponse updateBgpTest(testId, updateBgpTestRequest, aid, expand)
+> BgpTestResponse updateBgpTest(UpdateBgpTestRequest)
 
 Update BGP test
 
@@ -685,7 +746,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -699,11 +760,17 @@ public class Example {
 
         BgpTestsApi apiInstance = new BgpTestsApi(defaultClient);
         String testId = "202701"; // String | Test ID
-        UpdateBgpTestRequest updateBgpTestRequest = new UpdateBgpTestRequest(); // UpdateBgpTestRequest | 
+        com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest updateBgpTestRequest = new UpdateBgpTestRequest(); // UpdateBgpTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandBgpTestOptions> expand = Arrays.asList(); // List<ExpandBgpTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the `monitors` sub-resource, pass the `?expand=monitor` query.
         try {
-            BgpTestResponse result = apiInstance.updateBgpTest(testId, updateBgpTestRequest, aid, expand);
+            BgpTestsApi.UpdateBgpTestRequest request = BgpTestsApi.UpdateBgpTestRequest.builder()
+                .testId(testId)
+                .updateBgpTestRequest(updateBgpTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            BgpTestResponse result = apiInstance.updateBgpTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpTestsApi#updateBgpTest");
@@ -718,13 +785,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **updateBgpTestRequest** | [**UpdateBgpTestRequest**](UpdateBgpTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+| request | [**UpdateBgpTestRequest**](BgpTestsApi.md#UpdateBgpTestRequest)|-|-|
 
 ### Return type
 
@@ -755,7 +818,7 @@ public class Example {
 
 ## updateBgpTestWithHttpInfo
 
-> ApiResponse<BgpTestResponse> updateBgpTest updateBgpTestWithHttpInfo(testId, updateBgpTestRequest, aid, expand)
+> ApiResponse<BgpTestResponse> updateBgpTest updateBgpTestWithHttpInfo(UpdateBgpTestRequest)
 
 Update BGP test
 
@@ -770,7 +833,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.BgpTestsApi;
 
 public class Example {
@@ -784,11 +847,17 @@ public class Example {
 
         BgpTestsApi apiInstance = new BgpTestsApi(defaultClient);
         String testId = "202701"; // String | Test ID
-        UpdateBgpTestRequest updateBgpTestRequest = new UpdateBgpTestRequest(); // UpdateBgpTestRequest | 
+        com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest updateBgpTestRequest = new UpdateBgpTestRequest(); // UpdateBgpTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandBgpTestOptions> expand = Arrays.asList(); // List<ExpandBgpTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the `monitors` sub-resource, pass the `?expand=monitor` query.
         try {
-            ApiResponse<BgpTestResponse> response = apiInstance.updateBgpTestWithHttpInfo(testId, updateBgpTestRequest, aid, expand);
+            BgpTestsApi.UpdateBgpTestRequest request = BgpTestsApi.UpdateBgpTestRequest.builder()
+                .testId(testId)
+                .updateBgpTestRequest(updateBgpTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<BgpTestResponse> response = apiInstance.updateBgpTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -805,13 +874,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **updateBgpTestRequest** | [**UpdateBgpTestRequest**](UpdateBgpTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+| request | [**UpdateBgpTestRequest**](BgpTestsApi.md#UpdateBgpTestRequest)|-|-|
 
 ### Return type
 
@@ -839,4 +904,17 @@ ApiResponse<[**BgpTestResponse**](BgpTestResponse.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdateBgpTestRequest"></a>
+## UpdateBgpTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **updateBgpTestRequest** | [**UpdateBgpTestRequest**](UpdateBgpTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandBgpTestOptions&gt;**](ExpandBgpTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion takes place if the query parameter is not present. To expand the &#x60;monitors&#x60; sub-resource, pass the &#x60;?expand&#x3D;monitor&#x60; query. | [optional] |
+
 

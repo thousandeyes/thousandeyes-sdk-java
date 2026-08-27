@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,30 +62,29 @@ public class HttpServerInstantTestsApi {
   /**
    * Create HTTP server instant test
    * Creates and runs a new HTTP server instant test.
-   * @param httpServerInstantTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
+   * @param request operation parameters (required)
    * @return HttpServerInstantTestResponse
    * @throws ApiException if fails to make API call
    */
-  public HttpServerInstantTestResponse createHttpServerInstantTest(HttpServerInstantTestRequest httpServerInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    ApiResponse<HttpServerInstantTestResponse> response = createHttpServerInstantTestWithHttpInfo(httpServerInstantTestRequest, aid, expand);
+  public HttpServerInstantTestResponse createHttpServerInstantTest(CreateHttpServerInstantTestRequest request) throws ApiException {
+    ApiResponse<HttpServerInstantTestResponse> response = createHttpServerInstantTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create HTTP server instant test
    * Creates and runs a new HTTP server instant test.
-   * @param httpServerInstantTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;HttpServerInstantTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<HttpServerInstantTestResponse> createHttpServerInstantTestWithHttpInfo(HttpServerInstantTestRequest httpServerInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    createHttpServerInstantTestValidateRequest(httpServerInstantTestRequest);
+  public ApiResponse<HttpServerInstantTestResponse> createHttpServerInstantTestWithHttpInfo(CreateHttpServerInstantTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createHttpServerInstantTest");
+    }
+    createHttpServerInstantTestValidateRequest(request.getHttpServerInstantTestRequest());
 
-    var requestBuilder = createHttpServerInstantTestRequestBuilder(httpServerInstantTestRequest, aid, expand);
+    var requestBuilder = createHttpServerInstantTestRequestBuilder(request.getHttpServerInstantTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), HttpServerInstantTestResponse.class);
   }
@@ -100,8 +96,8 @@ public class HttpServerInstantTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createHttpServerInstantTestRequestBuilder(HttpServerInstantTestRequest httpServerInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createHttpServerInstantTestRequestBuilder(HttpServerInstantTestRequest httpServerInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/http-server/instant";
@@ -121,4 +117,58 @@ public class HttpServerInstantTestsApi {
     requestBuilder.requestBody(httpServerInstantTestRequest);
     return requestBuilder;
   }
+
+  public static final class CreateHttpServerInstantTestRequest {
+    private final HttpServerInstantTestRequest httpServerInstantTestRequest;
+    private final String aid;
+    private final List<ExpandInstantTestOptions> expand;
+
+    private CreateHttpServerInstantTestRequest(Builder builder) {
+      this.httpServerInstantTestRequest = builder.httpServerInstantTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public HttpServerInstantTestRequest getHttpServerInstantTestRequest() {
+      return httpServerInstantTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandInstantTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .httpServerInstantTestRequest(httpServerInstantTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private HttpServerInstantTestRequest httpServerInstantTestRequest;
+      private String aid;
+      private List<ExpandInstantTestOptions> expand;
+
+      public Builder httpServerInstantTestRequest(HttpServerInstantTestRequest httpServerInstantTestRequest) {
+        this.httpServerInstantTestRequest = httpServerInstantTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandInstantTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateHttpServerInstantTestRequest build() {
+        return new CreateHttpServerInstantTestRequest(this);
+      }
+    }
+  }
+
 }

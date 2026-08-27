@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createAlertRule
 
-> Rule createAlertRule(ruleDetailUpdate, aid)
+> Rule createAlertRule(CreateAlertRuleRequest)
 
 Create alert rule
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Rule result = apiInstance.createAlertRule(ruleDetailUpdate, aid);
+            AlertRulesApi.CreateAlertRuleRequest request = AlertRulesApi.CreateAlertRuleRequest.builder()
+                .ruleDetailUpdate(ruleDetailUpdate)
+                .aid(aid)
+                .build();
+            Rule result = apiInstance.createAlertRule(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#createAlertRule");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ruleDetailUpdate** | [**RuleDetailUpdate**](RuleDetailUpdate.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateAlertRuleRequest**](AlertRulesApi.md#CreateAlertRuleRequest)|-|-|
 
 ### Return type
 
@@ -97,7 +99,7 @@ public class Example {
 
 ## createAlertRuleWithHttpInfo
 
-> ApiResponse<Rule> createAlertRule createAlertRuleWithHttpInfo(ruleDetailUpdate, aid)
+> ApiResponse<Rule> createAlertRule createAlertRuleWithHttpInfo(CreateAlertRuleRequest)
 
 Create alert rule
 
@@ -112,7 +114,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -128,7 +130,11 @@ public class Example {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Rule> response = apiInstance.createAlertRuleWithHttpInfo(ruleDetailUpdate, aid);
+            AlertRulesApi.CreateAlertRuleRequest request = AlertRulesApi.CreateAlertRuleRequest.builder()
+                .ruleDetailUpdate(ruleDetailUpdate)
+                .aid(aid)
+                .build();
+            ApiResponse<Rule> response = apiInstance.createAlertRuleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -145,11 +151,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ruleDetailUpdate** | [**RuleDetailUpdate**](RuleDetailUpdate.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateAlertRuleRequest**](AlertRulesApi.md#CreateAlertRuleRequest)|-|-|
 
 ### Return type
 
@@ -177,9 +181,20 @@ ApiResponse<[**Rule**](Rule.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateAlertRuleRequest"></a>
+## CreateAlertRuleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **ruleDetailUpdate** | [**RuleDetailUpdate**](RuleDetailUpdate.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteAlertRule
 
-> void deleteAlertRule(ruleId, aid)
+> void deleteAlertRule(DeleteAlertRuleRequest)
 
 Delete alert rule
 
@@ -193,7 +208,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -209,7 +224,11 @@ public class Example {
         String ruleId = "127094"; // String | Unique alert rule ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteAlertRule(ruleId, aid);
+            AlertRulesApi.DeleteAlertRuleRequest request = AlertRulesApi.DeleteAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteAlertRule(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#deleteAlertRule");
             System.err.println("Status code: " + e.getCode());
@@ -223,11 +242,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ruleId** | **String**| Unique alert rule ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAlertRuleRequest**](AlertRulesApi.md#DeleteAlertRuleRequest)|-|-|
 
 ### Return type
 
@@ -256,7 +273,7 @@ null (empty response body)
 
 ## deleteAlertRuleWithHttpInfo
 
-> ApiResponse<Void> deleteAlertRule deleteAlertRuleWithHttpInfo(ruleId, aid)
+> ApiResponse<Void> deleteAlertRule deleteAlertRuleWithHttpInfo(DeleteAlertRuleRequest)
 
 Delete alert rule
 
@@ -271,7 +288,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -287,7 +304,11 @@ public class Example {
         String ruleId = "127094"; // String | Unique alert rule ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteAlertRuleWithHttpInfo(ruleId, aid);
+            AlertRulesApi.DeleteAlertRuleRequest request = AlertRulesApi.DeleteAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteAlertRuleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -303,11 +324,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ruleId** | **String**| Unique alert rule ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAlertRuleRequest**](AlertRulesApi.md#DeleteAlertRuleRequest)|-|-|
 
 ### Return type
 
@@ -335,9 +354,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteAlertRuleRequest"></a>
+## DeleteAlertRuleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **ruleId** | **String** | Unique alert rule ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAlertRule
 
-> RuleDetail getAlertRule(ruleId, aid)
+> RuleDetail getAlertRule(GetAlertRuleRequest)
 
 Retrieve alert rule
 
@@ -351,7 +381,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -367,7 +397,11 @@ public class Example {
         String ruleId = "127094"; // String | Unique alert rule ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            RuleDetail result = apiInstance.getAlertRule(ruleId, aid);
+            AlertRulesApi.GetAlertRuleRequest request = AlertRulesApi.GetAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .aid(aid)
+                .build();
+            RuleDetail result = apiInstance.getAlertRule(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#getAlertRule");
@@ -382,11 +416,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ruleId** | **String**| Unique alert rule ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAlertRuleRequest**](AlertRulesApi.md#GetAlertRuleRequest)|-|-|
 
 ### Return type
 
@@ -414,7 +446,7 @@ public class Example {
 
 ## getAlertRuleWithHttpInfo
 
-> ApiResponse<RuleDetail> getAlertRule getAlertRuleWithHttpInfo(ruleId, aid)
+> ApiResponse<RuleDetail> getAlertRule getAlertRuleWithHttpInfo(GetAlertRuleRequest)
 
 Retrieve alert rule
 
@@ -429,7 +461,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -445,7 +477,11 @@ public class Example {
         String ruleId = "127094"; // String | Unique alert rule ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<RuleDetail> response = apiInstance.getAlertRuleWithHttpInfo(ruleId, aid);
+            AlertRulesApi.GetAlertRuleRequest request = AlertRulesApi.GetAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .aid(aid)
+                .build();
+            ApiResponse<RuleDetail> response = apiInstance.getAlertRuleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -462,11 +498,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ruleId** | **String**| Unique alert rule ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAlertRuleRequest**](AlertRulesApi.md#GetAlertRuleRequest)|-|-|
 
 ### Return type
 
@@ -493,9 +527,20 @@ ApiResponse<[**RuleDetail**](RuleDetail.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetAlertRuleRequest"></a>
+## GetAlertRuleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **ruleId** | **String** | Unique alert rule ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAlertsRules
 
-> Rules getAlertsRules(aid)
+> Rules getAlertsRules(GetAlertsRulesRequest)
 
 List alert rules
 
@@ -509,7 +554,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -524,7 +569,10 @@ public class Example {
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Rules result = apiInstance.getAlertsRules(aid);
+            AlertRulesApi.GetAlertsRulesRequest request = AlertRulesApi.GetAlertsRulesRequest.builder()
+                .aid(aid)
+                .build();
+            Rules result = apiInstance.getAlertsRules(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#getAlertsRules");
@@ -539,10 +587,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAlertsRulesRequest**](AlertRulesApi.md#GetAlertsRulesRequest)|-|-|
 
 ### Return type
 
@@ -570,7 +617,7 @@ public class Example {
 
 ## getAlertsRulesWithHttpInfo
 
-> ApiResponse<Rules> getAlertsRules getAlertsRulesWithHttpInfo(aid)
+> ApiResponse<Rules> getAlertsRules getAlertsRulesWithHttpInfo(GetAlertsRulesRequest)
 
 List alert rules
 
@@ -585,7 +632,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -600,7 +647,10 @@ public class Example {
         AlertRulesApi apiInstance = new AlertRulesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Rules> response = apiInstance.getAlertsRulesWithHttpInfo(aid);
+            AlertRulesApi.GetAlertsRulesRequest request = AlertRulesApi.GetAlertsRulesRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<Rules> response = apiInstance.getAlertsRulesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -617,10 +667,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAlertsRulesRequest**](AlertRulesApi.md#GetAlertsRulesRequest)|-|-|
 
 ### Return type
 
@@ -647,9 +696,19 @@ ApiResponse<[**Rules**](Rules.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetAlertsRulesRequest"></a>
+## GetAlertsRulesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateAlertRule
 
-> Rule updateAlertRule(ruleId, ruleDetailUpdate, aid)
+> Rule updateAlertRule(UpdateAlertRuleRequest)
 
 Update alert rule
 
@@ -663,7 +722,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -680,7 +739,12 @@ public class Example {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Rule result = apiInstance.updateAlertRule(ruleId, ruleDetailUpdate, aid);
+            AlertRulesApi.UpdateAlertRuleRequest request = AlertRulesApi.UpdateAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .ruleDetailUpdate(ruleDetailUpdate)
+                .aid(aid)
+                .build();
+            Rule result = apiInstance.updateAlertRule(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertRulesApi#updateAlertRule");
@@ -695,12 +759,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ruleId** | **String**| Unique alert rule ID. | |
-| **ruleDetailUpdate** | [**RuleDetailUpdate**](RuleDetailUpdate.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateAlertRuleRequest**](AlertRulesApi.md#UpdateAlertRuleRequest)|-|-|
 
 ### Return type
 
@@ -729,7 +790,7 @@ public class Example {
 
 ## updateAlertRuleWithHttpInfo
 
-> ApiResponse<Rule> updateAlertRule updateAlertRuleWithHttpInfo(ruleId, ruleDetailUpdate, aid)
+> ApiResponse<Rule> updateAlertRule updateAlertRuleWithHttpInfo(UpdateAlertRuleRequest)
 
 Update alert rule
 
@@ -744,7 +805,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertRulesApi;
 
 public class Example {
@@ -761,7 +822,12 @@ public class Example {
         RuleDetailUpdate ruleDetailUpdate = new RuleDetailUpdate(); // RuleDetailUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Rule> response = apiInstance.updateAlertRuleWithHttpInfo(ruleId, ruleDetailUpdate, aid);
+            AlertRulesApi.UpdateAlertRuleRequest request = AlertRulesApi.UpdateAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .ruleDetailUpdate(ruleDetailUpdate)
+                .aid(aid)
+                .build();
+            ApiResponse<Rule> response = apiInstance.updateAlertRuleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -778,12 +844,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ruleId** | **String**| Unique alert rule ID. | |
-| **ruleDetailUpdate** | [**RuleDetailUpdate**](RuleDetailUpdate.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateAlertRuleRequest**](AlertRulesApi.md#UpdateAlertRuleRequest)|-|-|
 
 ### Return type
 
@@ -809,4 +872,16 @@ ApiResponse<[**Rule**](Rule.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateAlertRuleRequest"></a>
+## UpdateAlertRuleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **ruleId** | **String** | Unique alert rule ID. | |
+| **ruleDetailUpdate** | [**RuleDetailUpdate**](RuleDetailUpdate.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

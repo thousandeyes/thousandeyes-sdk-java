@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getPermissions
 
-> Permissions getPermissions(aid)
+> Permissions getPermissions(GetPermissionsRequest)
 
 List assignable permissions
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.PermissionsApi;
 
 public class Example {
@@ -40,7 +40,10 @@ public class Example {
         PermissionsApi apiInstance = new PermissionsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Permissions result = apiInstance.getPermissions(aid);
+            PermissionsApi.GetPermissionsRequest request = PermissionsApi.GetPermissionsRequest.builder()
+                .aid(aid)
+                .build();
+            Permissions result = apiInstance.getPermissions(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PermissionsApi#getPermissions");
@@ -55,10 +58,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPermissionsRequest**](PermissionsApi.md#GetPermissionsRequest)|-|-|
 
 ### Return type
 
@@ -87,7 +89,7 @@ public class Example {
 
 ## getPermissionsWithHttpInfo
 
-> ApiResponse<Permissions> getPermissions getPermissionsWithHttpInfo(aid)
+> ApiResponse<Permissions> getPermissions getPermissionsWithHttpInfo(GetPermissionsRequest)
 
 List assignable permissions
 
@@ -102,7 +104,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.PermissionsApi;
 
 public class Example {
@@ -117,7 +119,10 @@ public class Example {
         PermissionsApi apiInstance = new PermissionsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Permissions> response = apiInstance.getPermissionsWithHttpInfo(aid);
+            PermissionsApi.GetPermissionsRequest request = PermissionsApi.GetPermissionsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<Permissions> response = apiInstance.getPermissionsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -134,10 +139,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPermissionsRequest**](PermissionsApi.md#GetPermissionsRequest)|-|-|
 
 ### Return type
 
@@ -163,4 +167,14 @@ ApiResponse<[**Permissions**](Permissions.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="GetPermissionsRequest"></a>
+## GetPermissionsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -40,12 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -67,28 +64,29 @@ public class StreamingApi {
   /**
    * Create data stream
    * Creates a new data stream.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param stream Stream to configure (optional)
+   * @param request operation parameters (required)
    * @return CreateStreamResponse
    * @throws ApiException if fails to make API call
    */
-  public CreateStreamResponse createStream(String aid, Stream stream) throws ApiException {
-    ApiResponse<CreateStreamResponse> response = createStreamWithHttpInfo(aid, stream);
+  public CreateStreamResponse createStream(CreateStreamRequest request) throws ApiException {
+    ApiResponse<CreateStreamResponse> response = createStreamWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create data stream
    * Creates a new data stream.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param stream Stream to configure (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CreateStreamResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CreateStreamResponse> createStreamWithHttpInfo(String aid, Stream stream) throws ApiException {
+  public ApiResponse<CreateStreamResponse> createStreamWithHttpInfo(CreateStreamRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createStream");
+    }
     createStreamValidateRequest();
 
-    var requestBuilder = createStreamRequestBuilder(aid, stream);
+    var requestBuilder = createStreamRequestBuilder(request.getAid(), request.getStream());
 
     return apiClient.send(requestBuilder.build(), CreateStreamResponse.class);
   }
@@ -96,8 +94,8 @@ public class StreamingApi {
   private void createStreamValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder createStreamRequestBuilder(String aid, Stream stream) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createStreamRequestBuilder(String aid, Stream stream) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/streams";
@@ -116,29 +114,73 @@ public class StreamingApi {
     requestBuilder.requestBody(stream);
     return requestBuilder;
   }
-  /**
-   * Delete a data stream
-   * Deletes a configured data stream using its ID.
-   * @param id ID of stream to query (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteStream(String id, String aid) throws ApiException {
-    deleteStreamWithHttpInfo(id, aid);
+
+  public static final class CreateStreamRequest {
+    private final String aid;
+    private final Stream stream;
+
+    private CreateStreamRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.stream = builder.stream;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public Stream getStream() {
+      return stream;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .stream(stream);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private Stream stream;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder stream(Stream stream) {
+        this.stream = stream;
+        return this;
+      }
+      public CreateStreamRequest build() {
+        return new CreateStreamRequest(this);
+      }
+    }
   }
 
   /**
    * Delete a data stream
    * Deletes a configured data stream using its ID.
-   * @param id ID of stream to query (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteStream(DeleteStreamRequest request) throws ApiException {
+    deleteStreamWithHttpInfo(request);
+  }
+
+  /**
+   * Delete a data stream
+   * Deletes a configured data stream using its ID.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteStreamWithHttpInfo(String id, String aid) throws ApiException {
-    deleteStreamValidateRequest(id);
+  public ApiResponse<Void> deleteStreamWithHttpInfo(DeleteStreamRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteStream");
+    }
+    deleteStreamValidateRequest(request.getId());
 
-    var requestBuilder = deleteStreamRequestBuilder(id, aid);
+    var requestBuilder = deleteStreamRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -150,8 +192,8 @@ public class StreamingApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteStreamRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteStreamRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/streams/{id}"
@@ -169,33 +211,75 @@ public class StreamingApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteStreamRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteStreamRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteStreamRequest build() {
+        return new DeleteStreamRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve data stream
    * Retrieves a configured data stream using its ID.
-   * @param id ID of stream to query (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param type Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum (optional)
+   * @param request operation parameters (required)
    * @return GetStreamResponse
    * @throws ApiException if fails to make API call
    */
-  public GetStreamResponse getStream(String id, String aid, StreamType type) throws ApiException {
-    ApiResponse<GetStreamResponse> response = getStreamWithHttpInfo(id, aid, type);
+  public GetStreamResponse getStream(GetStreamRequest request) throws ApiException {
+    ApiResponse<GetStreamResponse> response = getStreamWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve data stream
    * Retrieves a configured data stream using its ID.
-   * @param id ID of stream to query (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param type Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;GetStreamResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetStreamResponse> getStreamWithHttpInfo(String id, String aid, StreamType type) throws ApiException {
-    getStreamValidateRequest(id);
+  public ApiResponse<GetStreamResponse> getStreamWithHttpInfo(GetStreamRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getStream");
+    }
+    getStreamValidateRequest(request.getId());
 
-    var requestBuilder = getStreamRequestBuilder(id, aid, type);
+    var requestBuilder = getStreamRequestBuilder(request.getId(), request.getAid(), request.getType());
 
     return apiClient.send(requestBuilder.build(), GetStreamResponse.class);
   }
@@ -207,8 +291,8 @@ public class StreamingApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getStreamRequestBuilder(String id, String aid, StreamType type) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getStreamRequestBuilder(String id, String aid, StreamType type) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/streams/{id}"
@@ -227,31 +311,86 @@ public class StreamingApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetStreamRequest {
+    private final String id;
+    private final String aid;
+    private final StreamType type;
+
+    private GetStreamRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+      this.type = builder.type;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public StreamType getType() {
+      return type;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid)
+          .type(type);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+      private StreamType type;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder type(StreamType type) {
+        this.type = type;
+        return this;
+      }
+      public GetStreamRequest build() {
+        return new GetStreamRequest(this);
+      }
+    }
+  }
+
   /**
    * List data streams
    * Retrieves a list of configured data streams. Empty list is returned if no streams are configured.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param type Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum (optional)
+   * @param request operation parameters (required)
    * @return List&lt;GetStreamResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<GetStreamResponse> getStreams(String aid, StreamType type) throws ApiException {
-    ApiResponse<List<GetStreamResponse>> response = getStreamsWithHttpInfo(aid, type);
+  public List<GetStreamResponse> getStreams(GetStreamsRequest request) throws ApiException {
+    ApiResponse<List<GetStreamResponse>> response = getStreamsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List data streams
    * Retrieves a list of configured data streams. Empty list is returned if no streams are configured.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param type Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;List&lt;GetStreamResponse&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<GetStreamResponse>> getStreamsWithHttpInfo(String aid, StreamType type) throws ApiException {
+  public ApiResponse<List<GetStreamResponse>> getStreamsWithHttpInfo(GetStreamsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getStreams");
+    }
     getStreamsValidateRequest();
 
-    var requestBuilder = getStreamsRequestBuilder(aid, type);
+    var requestBuilder = getStreamsRequestBuilder(request.getAid(), request.getType());
 
     return apiClient.send(requestBuilder.build(), TypeUtils.parameterize(List.class, GetStreamResponse.class));
   }
@@ -259,8 +398,8 @@ public class StreamingApi {
   private void getStreamsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getStreamsRequestBuilder(String aid, StreamType type) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getStreamsRequestBuilder(String aid, StreamType type) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/streams";
@@ -278,33 +417,75 @@ public class StreamingApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetStreamsRequest {
+    private final String aid;
+    private final StreamType type;
+
+    private GetStreamsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.type = builder.type;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public StreamType getType() {
+      return type;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .type(type);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private StreamType type;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder type(StreamType type) {
+        this.type = type;
+        return this;
+      }
+      public GetStreamsRequest build() {
+        return new GetStreamsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update data stream
    * Updates a configured data stream using its ID. The fields are overwritten, not appended.
-   * @param id ID of stream to query (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param putStream  (optional)
+   * @param request operation parameters (required)
    * @return GetStreamResponse
    * @throws ApiException if fails to make API call
    */
-  public GetStreamResponse updateStream(String id, String aid, PutStream putStream) throws ApiException {
-    ApiResponse<GetStreamResponse> response = updateStreamWithHttpInfo(id, aid, putStream);
+  public GetStreamResponse updateStream(UpdateStreamRequest request) throws ApiException {
+    ApiResponse<GetStreamResponse> response = updateStreamWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update data stream
    * Updates a configured data stream using its ID. The fields are overwritten, not appended.
-   * @param id ID of stream to query (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param putStream  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;GetStreamResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetStreamResponse> updateStreamWithHttpInfo(String id, String aid, PutStream putStream) throws ApiException {
-    updateStreamValidateRequest(id);
+  public ApiResponse<GetStreamResponse> updateStreamWithHttpInfo(UpdateStreamRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateStream");
+    }
+    updateStreamValidateRequest(request.getId());
 
-    var requestBuilder = updateStreamRequestBuilder(id, aid, putStream);
+    var requestBuilder = updateStreamRequestBuilder(request.getId(), request.getAid(), request.getPutStream());
 
     return apiClient.send(requestBuilder.build(), GetStreamResponse.class);
   }
@@ -316,8 +497,8 @@ public class StreamingApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateStreamRequestBuilder(String id, String aid, PutStream putStream) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateStreamRequestBuilder(String id, String aid, PutStream putStream) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/streams/{id}"
@@ -337,4 +518,58 @@ public class StreamingApi {
     requestBuilder.requestBody(putStream);
     return requestBuilder;
   }
+
+  public static final class UpdateStreamRequest {
+    private final String id;
+    private final String aid;
+    private final PutStream putStream;
+
+    private UpdateStreamRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+      this.putStream = builder.putStream;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public PutStream getPutStream() {
+      return putStream;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid)
+          .putStream(putStream);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+      private PutStream putStream;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder putStream(PutStream putStream) {
+        this.putStream = putStream;
+        return this;
+      }
+      public UpdateStreamRequest build() {
+        return new UpdateStreamRequest(this);
+      }
+    }
+  }
+
 }

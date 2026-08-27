@@ -114,7 +114,16 @@ public class HttpServerEndpointScheduledTestResultsApiExample {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         List<ExpandEndpointHttpServerOptions> expand = Arrays.asList(); // List<ExpandEndpointHttpServerOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"header,\" append `?expand=header` to the query.
         try {
-            HttpEndpointTestResults result = apiInstance.getHttpServerScheduledTestResults(testId, aid, window, startDate, endDate, cursor, expand);
+            HttpServerEndpointScheduledTestResultsApi.GetHttpServerScheduledTestResultsRequest request = HttpServerEndpointScheduledTestResultsApi.GetHttpServerScheduledTestResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .expand(expand)
+                .build();
+            HttpEndpointTestResults result = apiInstance.getHttpServerScheduledTestResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerEndpointScheduledTestResultsApi#getHttpServerScheduledTestResults");

@@ -82,7 +82,6 @@ public class LocalProblemsApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "endDate" : "2022-07-18T22:00:54Z",
@@ -138,7 +137,13 @@ public class LocalProblemsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentsLocalProblems(null, null, null, null);
+        var request = LocalProblemsApi.GetAgentsLocalProblemsRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getAgentsLocalProblems(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

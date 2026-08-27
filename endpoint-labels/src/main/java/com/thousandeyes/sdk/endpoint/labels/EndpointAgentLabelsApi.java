@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -42,12 +41,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -69,28 +66,29 @@ public class EndpointAgentLabelsApi {
   /**
    * Create label
    * Creates a new label.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param labelRequest Label settings (optional)
+   * @param request operation parameters (required)
    * @return LabelResponse
    * @throws ApiException if fails to make API call
    */
-  public LabelResponse createEndpointLabel(String aid, LabelRequest labelRequest) throws ApiException {
-    ApiResponse<LabelResponse> response = createEndpointLabelWithHttpInfo(aid, labelRequest);
+  public LabelResponse createEndpointLabel(CreateEndpointLabelRequest request) throws ApiException {
+    ApiResponse<LabelResponse> response = createEndpointLabelWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create label
    * Creates a new label.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param labelRequest Label settings (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;LabelResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LabelResponse> createEndpointLabelWithHttpInfo(String aid, LabelRequest labelRequest) throws ApiException {
+  public ApiResponse<LabelResponse> createEndpointLabelWithHttpInfo(CreateEndpointLabelRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createEndpointLabel");
+    }
     createEndpointLabelValidateRequest();
 
-    var requestBuilder = createEndpointLabelRequestBuilder(aid, labelRequest);
+    var requestBuilder = createEndpointLabelRequestBuilder(request.getAid(), request.getLabelRequest());
 
     return apiClient.send(requestBuilder.build(), LabelResponse.class);
   }
@@ -98,8 +96,8 @@ public class EndpointAgentLabelsApi {
   private void createEndpointLabelValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder createEndpointLabelRequestBuilder(String aid, LabelRequest labelRequest) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createEndpointLabelRequestBuilder(String aid, LabelRequest labelRequest) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/labels";
@@ -118,29 +116,73 @@ public class EndpointAgentLabelsApi {
     requestBuilder.requestBody(labelRequest);
     return requestBuilder;
   }
-  /**
-   * Delete label
-   * Deletes the label from your account. 
-   * @param id The unique identifier of the label to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteEndpointLabel(String id, String aid) throws ApiException {
-    deleteEndpointLabelWithHttpInfo(id, aid);
+
+  public static final class CreateEndpointLabelRequest {
+    private final String aid;
+    private final LabelRequest labelRequest;
+
+    private CreateEndpointLabelRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.labelRequest = builder.labelRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public LabelRequest getLabelRequest() {
+      return labelRequest;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .labelRequest(labelRequest);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private LabelRequest labelRequest;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder labelRequest(LabelRequest labelRequest) {
+        this.labelRequest = labelRequest;
+        return this;
+      }
+      public CreateEndpointLabelRequest build() {
+        return new CreateEndpointLabelRequest(this);
+      }
+    }
   }
 
   /**
    * Delete label
    * Deletes the label from your account. 
-   * @param id The unique identifier of the label to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteEndpointLabel(DeleteEndpointLabelRequest request) throws ApiException {
+    deleteEndpointLabelWithHttpInfo(request);
+  }
+
+  /**
+   * Delete label
+   * Deletes the label from your account. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteEndpointLabelWithHttpInfo(String id, String aid) throws ApiException {
-    deleteEndpointLabelValidateRequest(id);
+  public ApiResponse<Void> deleteEndpointLabelWithHttpInfo(DeleteEndpointLabelRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteEndpointLabel");
+    }
+    deleteEndpointLabelValidateRequest(request.getId());
 
-    var requestBuilder = deleteEndpointLabelRequestBuilder(id, aid);
+    var requestBuilder = deleteEndpointLabelRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -152,8 +194,8 @@ public class EndpointAgentLabelsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteEndpointLabelRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteEndpointLabelRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/endpoint/labels/{id}"
@@ -171,33 +213,75 @@ public class EndpointAgentLabelsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteEndpointLabelRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteEndpointLabelRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteEndpointLabelRequest build() {
+        return new DeleteEndpointLabelRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve label
    * Returns a single label using its ID.
-   * @param id The unique identifier of the label to operate on. (required)
-   * @param expand This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. (optional
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return LabelResponse
    * @throws ApiException if fails to make API call
    */
-  public LabelResponse getEndpointLabel(String id, List<ExpandLabelOptions> expand, String aid) throws ApiException {
-    ApiResponse<LabelResponse> response = getEndpointLabelWithHttpInfo(id, expand, aid);
+  public LabelResponse getEndpointLabel(GetEndpointLabelRequest request) throws ApiException {
+    ApiResponse<LabelResponse> response = getEndpointLabelWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve label
    * Returns a single label using its ID.
-   * @param id The unique identifier of the label to operate on. (required)
-   * @param expand This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. (optional
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;LabelResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LabelResponse> getEndpointLabelWithHttpInfo(String id, List<ExpandLabelOptions> expand, String aid) throws ApiException {
-    getEndpointLabelValidateRequest(id);
+  public ApiResponse<LabelResponse> getEndpointLabelWithHttpInfo(GetEndpointLabelRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEndpointLabel");
+    }
+    getEndpointLabelValidateRequest(request.getId());
 
-    var requestBuilder = getEndpointLabelRequestBuilder(id, expand, aid);
+    var requestBuilder = getEndpointLabelRequestBuilder(request.getId(), request.getExpand(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), LabelResponse.class);
   }
@@ -209,8 +293,8 @@ public class EndpointAgentLabelsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointLabelRequestBuilder(String id, List<ExpandLabelOptions> expand, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEndpointLabelRequestBuilder(String id, List<ExpandLabelOptions> expand, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/labels/{id}"
@@ -229,48 +313,102 @@ public class EndpointAgentLabelsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEndpointLabelRequest {
+    private final String id;
+    private final List<ExpandLabelOptions> expand;
+    private final String aid;
+
+    private GetEndpointLabelRequest(Builder builder) {
+      this.id = builder.id;
+      this.expand = builder.expand;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public List<ExpandLabelOptions> getExpand() {
+      return expand;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .expand(expand)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private List<ExpandLabelOptions> expand;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder expand(List<ExpandLabelOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetEndpointLabelRequest build() {
+        return new GetEndpointLabelRequest(this);
+      }
+    }
+  }
+
   /**
    * List labels with pagination
    * Returns a list of labels.
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param expand This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. (optional
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<LabelResponse, Labels>
    */
-  public Paginator<LabelResponse, Labels> getEndpointLabelsPaginated(Integer max, List<ExpandLabelOptions> expand, String aid) {
-    return new Paginator<>(cursor -> getEndpointLabels(max, cursor, expand, aid),
+  public Paginator<LabelResponse, Labels> getEndpointLabelsPaginated(GetEndpointLabelsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getEndpointLabelsPaginated");
+    }
+    return new Paginator<>(cursor -> getEndpointLabels(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            Labels::getLabels);
 
   }
   /**
    * List labels
    * Returns a list of labels.
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param expand This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. (optional
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Labels
    * @throws ApiException if fails to make API call
    */
-  public Labels getEndpointLabels(Integer max, String cursor, List<ExpandLabelOptions> expand, String aid) throws ApiException {
-    ApiResponse<Labels> response = getEndpointLabelsWithHttpInfo(max, cursor, expand, aid);
+  public Labels getEndpointLabels(GetEndpointLabelsRequest request) throws ApiException {
+    ApiResponse<Labels> response = getEndpointLabelsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List labels
    * Returns a list of labels.
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param expand This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. (optional
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Labels&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Labels> getEndpointLabelsWithHttpInfo(Integer max, String cursor, List<ExpandLabelOptions> expand, String aid) throws ApiException {
+  public ApiResponse<Labels> getEndpointLabelsWithHttpInfo(GetEndpointLabelsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEndpointLabels");
+    }
     getEndpointLabelsValidateRequest();
 
-    var requestBuilder = getEndpointLabelsRequestBuilder(max, cursor, expand, aid);
+    var requestBuilder = getEndpointLabelsRequestBuilder(request.getMax(), request.getCursor(), request.getExpand(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Labels.class);
   }
@@ -278,8 +416,8 @@ public class EndpointAgentLabelsApi {
   private void getEndpointLabelsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointLabelsRequestBuilder(Integer max, String cursor, List<ExpandLabelOptions> expand, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEndpointLabelsRequestBuilder(Integer max, String cursor, List<ExpandLabelOptions> expand, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/labels";
@@ -299,33 +437,97 @@ public class EndpointAgentLabelsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEndpointLabelsRequest {
+    private final Integer max;
+    private final String cursor;
+    private final List<ExpandLabelOptions> expand;
+    private final String aid;
+
+    private GetEndpointLabelsRequest(Builder builder) {
+      this.max = builder.max;
+      this.cursor = builder.cursor;
+      this.expand = builder.expand;
+      this.aid = builder.aid;
+    }
+    public Integer getMax() {
+      return max;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public List<ExpandLabelOptions> getExpand() {
+      return expand;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .max(max)
+          .cursor(cursor)
+          .expand(expand)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private Integer max;
+      private String cursor;
+      private List<ExpandLabelOptions> expand;
+      private String aid;
+
+      public Builder max(Integer max) {
+        this.max = max;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder expand(List<ExpandLabelOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetEndpointLabelsRequest build() {
+        return new GetEndpointLabelsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update label
    * Updates a label using its ID.
-   * @param id The unique identifier of the label to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param label Fields to change on the agent (optional)
+   * @param request operation parameters (required)
    * @return LabelResponse
    * @throws ApiException if fails to make API call
    */
-  public LabelResponse updateEndpointLabel(String id, String aid, Label label) throws ApiException {
-    ApiResponse<LabelResponse> response = updateEndpointLabelWithHttpInfo(id, aid, label);
+  public LabelResponse updateEndpointLabel(UpdateEndpointLabelRequest request) throws ApiException {
+    ApiResponse<LabelResponse> response = updateEndpointLabelWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update label
    * Updates a label using its ID.
-   * @param id The unique identifier of the label to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param label Fields to change on the agent (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;LabelResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LabelResponse> updateEndpointLabelWithHttpInfo(String id, String aid, Label label) throws ApiException {
-    updateEndpointLabelValidateRequest(id);
+  public ApiResponse<LabelResponse> updateEndpointLabelWithHttpInfo(UpdateEndpointLabelRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateEndpointLabel");
+    }
+    updateEndpointLabelValidateRequest(request.getId());
 
-    var requestBuilder = updateEndpointLabelRequestBuilder(id, aid, label);
+    var requestBuilder = updateEndpointLabelRequestBuilder(request.getId(), request.getAid(), request.getLabel());
 
     return apiClient.send(requestBuilder.build(), LabelResponse.class);
   }
@@ -337,8 +539,8 @@ public class EndpointAgentLabelsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateEndpointLabelRequestBuilder(String id, String aid, Label label) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateEndpointLabelRequestBuilder(String id, String aid, Label label) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PATCH");
 
     String path = "/endpoint/labels/{id}"
@@ -358,4 +560,58 @@ public class EndpointAgentLabelsApi {
     requestBuilder.requestBody(label);
     return requestBuilder;
   }
+
+  public static final class UpdateEndpointLabelRequest {
+    private final String id;
+    private final String aid;
+    private final Label label;
+
+    private UpdateEndpointLabelRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+      this.label = builder.label;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public Label getLabel() {
+      return label;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid)
+          .label(label);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+      private Label label;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder label(Label label) {
+        this.label = label;
+        return this;
+      }
+      public UpdateEndpointLabelRequest build() {
+        return new UpdateEndpointLabelRequest(this);
+      }
+    }
+  }
+
 }

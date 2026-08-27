@@ -25,7 +25,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## deleteEndpointAgent
 
-> void deleteEndpointAgent(agentId, aid, expand)
+> void deleteEndpointAgent(DeleteEndpointAgentRequest)
 
 Delete endpoint agent
 
@@ -39,7 +39,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -56,7 +56,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         try {
-            apiInstance.deleteEndpointAgent(agentId, aid, expand);
+            EndpointAgentsApi.DeleteEndpointAgentRequest request = EndpointAgentsApi.DeleteEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            apiInstance.deleteEndpointAgent(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsApi#deleteEndpointAgent");
             System.err.println("Status code: " + e.getCode());
@@ -70,12 +75,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
+| request | [**DeleteEndpointAgentRequest**](EndpointAgentsApi.md#DeleteEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -102,7 +104,7 @@ null (empty response body)
 
 ## deleteEndpointAgentWithHttpInfo
 
-> ApiResponse<Void> deleteEndpointAgent deleteEndpointAgentWithHttpInfo(agentId, aid, expand)
+> ApiResponse<Void> deleteEndpointAgent deleteEndpointAgentWithHttpInfo(DeleteEndpointAgentRequest)
 
 Delete endpoint agent
 
@@ -117,7 +119,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -134,7 +136,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         try {
-            ApiResponse<Void> response = apiInstance.deleteEndpointAgentWithHttpInfo(agentId, aid, expand);
+            EndpointAgentsApi.DeleteEndpointAgentRequest request = EndpointAgentsApi.DeleteEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteEndpointAgentWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -150,12 +157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
+| request | [**DeleteEndpointAgentRequest**](EndpointAgentsApi.md#DeleteEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -181,9 +185,21 @@ ApiResponse<Void>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="DeleteEndpointAgentRequest"></a>
+## DeleteEndpointAgentRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **UUID** | The identifier of the agent to operate on. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md) | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
+
+
+
 ## disableEndpointAgent
 
-> EndpointAgent disableEndpointAgent(agentId, aid)
+> EndpointAgent disableEndpointAgent(DisableEndpointAgentRequest)
 
 Disable endpoint agent
 
@@ -197,7 +213,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -213,7 +229,11 @@ public class Example {
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgent result = apiInstance.disableEndpointAgent(agentId, aid);
+            EndpointAgentsApi.DisableEndpointAgentRequest request = EndpointAgentsApi.DisableEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .build();
+            EndpointAgent result = apiInstance.disableEndpointAgent(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsApi#disableEndpointAgent");
@@ -228,11 +248,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DisableEndpointAgentRequest**](EndpointAgentsApi.md#DisableEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -259,7 +277,7 @@ public class Example {
 
 ## disableEndpointAgentWithHttpInfo
 
-> ApiResponse<EndpointAgent> disableEndpointAgent disableEndpointAgentWithHttpInfo(agentId, aid)
+> ApiResponse<EndpointAgent> disableEndpointAgent disableEndpointAgentWithHttpInfo(DisableEndpointAgentRequest)
 
 Disable endpoint agent
 
@@ -274,7 +292,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -290,7 +308,11 @@ public class Example {
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgent> response = apiInstance.disableEndpointAgentWithHttpInfo(agentId, aid);
+            EndpointAgentsApi.DisableEndpointAgentRequest request = EndpointAgentsApi.DisableEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointAgent> response = apiInstance.disableEndpointAgentWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -307,11 +329,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DisableEndpointAgentRequest**](EndpointAgentsApi.md#DisableEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -337,9 +357,20 @@ ApiResponse<[**EndpointAgent**](EndpointAgent.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="DisableEndpointAgentRequest"></a>
+## DisableEndpointAgentRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **UUID** | The identifier of the agent to operate on. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## enableEndpointAgent
 
-> EndpointAgent enableEndpointAgent(agentId, aid)
+> EndpointAgent enableEndpointAgent(EnableEndpointAgentRequest)
 
 Enable endpoint agent
 
@@ -353,7 +384,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -369,7 +400,11 @@ public class Example {
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgent result = apiInstance.enableEndpointAgent(agentId, aid);
+            EndpointAgentsApi.EnableEndpointAgentRequest request = EndpointAgentsApi.EnableEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .build();
+            EndpointAgent result = apiInstance.enableEndpointAgent(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsApi#enableEndpointAgent");
@@ -384,11 +419,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**EnableEndpointAgentRequest**](EndpointAgentsApi.md#EnableEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -415,7 +448,7 @@ public class Example {
 
 ## enableEndpointAgentWithHttpInfo
 
-> ApiResponse<EndpointAgent> enableEndpointAgent enableEndpointAgentWithHttpInfo(agentId, aid)
+> ApiResponse<EndpointAgent> enableEndpointAgent enableEndpointAgentWithHttpInfo(EnableEndpointAgentRequest)
 
 Enable endpoint agent
 
@@ -430,7 +463,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -446,7 +479,11 @@ public class Example {
         UUID agentId = UUID.randomUUID(); // UUID | The identifier of the agent to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgent> response = apiInstance.enableEndpointAgentWithHttpInfo(agentId, aid);
+            EndpointAgentsApi.EnableEndpointAgentRequest request = EndpointAgentsApi.EnableEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointAgent> response = apiInstance.enableEndpointAgentWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -463,11 +500,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**EnableEndpointAgentRequest**](EndpointAgentsApi.md#EnableEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -493,9 +528,20 @@ ApiResponse<[**EndpointAgent**](EndpointAgent.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="EnableEndpointAgentRequest"></a>
+## EnableEndpointAgentRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **UUID** | The identifier of the agent to operate on. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## filterEndpointAgents
 
-> FilterEndpointAgentsResponse filterEndpointAgents(agentSearchRequest, max, cursor, aid, expand, includeDeleted)
+> FilterEndpointAgentsResponse filterEndpointAgents(FilterEndpointAgentsRequest)
 
 Filter endpoint agents
 
@@ -509,7 +555,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -529,7 +575,15 @@ public class Example {
         List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         Boolean includeDeleted = false; // Boolean | When requesting entities, set to `true` if you want to see deleted entities.
         try {
-            FilterEndpointAgentsResponse result = apiInstance.filterEndpointAgents(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
+            EndpointAgentsApi.FilterEndpointAgentsRequest request = EndpointAgentsApi.FilterEndpointAgentsRequest.builder()
+                .agentSearchRequest(agentSearchRequest)
+                .max(max)
+                .cursor(cursor)
+                .aid(aid)
+                .expand(expand)
+                .includeDeleted(includeDeleted)
+                .build();
+            FilterEndpointAgentsResponse result = apiInstance.filterEndpointAgents(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsApi#filterEndpointAgents");
@@ -544,15 +598,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentSearchRequest** | [**AgentSearchRequest**](AgentSearchRequest.md)| The filter options for advanced search filtering for agents. | |
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
-| **includeDeleted** | **Boolean**| When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
+| request | [**FilterEndpointAgentsRequest**](EndpointAgentsApi.md#FilterEndpointAgentsRequest)|-|-|
 
 ### Return type
 
@@ -579,7 +627,7 @@ public class Example {
 
 ## filterEndpointAgentsWithHttpInfo
 
-> ApiResponse<FilterEndpointAgentsResponse> filterEndpointAgents filterEndpointAgentsWithHttpInfo(agentSearchRequest, max, cursor, aid, expand, includeDeleted)
+> ApiResponse<FilterEndpointAgentsResponse> filterEndpointAgents filterEndpointAgentsWithHttpInfo(FilterEndpointAgentsRequest)
 
 Filter endpoint agents
 
@@ -594,7 +642,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -614,7 +662,15 @@ public class Example {
         List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         Boolean includeDeleted = false; // Boolean | When requesting entities, set to `true` if you want to see deleted entities.
         try {
-            ApiResponse<FilterEndpointAgentsResponse> response = apiInstance.filterEndpointAgentsWithHttpInfo(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
+            EndpointAgentsApi.FilterEndpointAgentsRequest request = EndpointAgentsApi.FilterEndpointAgentsRequest.builder()
+                .agentSearchRequest(agentSearchRequest)
+                .max(max)
+                .cursor(cursor)
+                .aid(aid)
+                .expand(expand)
+                .includeDeleted(includeDeleted)
+                .build();
+            ApiResponse<FilterEndpointAgentsResponse> response = apiInstance.filterEndpointAgentsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -631,15 +687,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentSearchRequest** | [**AgentSearchRequest**](AgentSearchRequest.md)| The filter options for advanced search filtering for agents. | |
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
-| **includeDeleted** | **Boolean**| When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
+| request | [**FilterEndpointAgentsRequest**](EndpointAgentsApi.md#FilterEndpointAgentsRequest)|-|-|
 
 ### Return type
 
@@ -665,9 +715,24 @@ ApiResponse<[**FilterEndpointAgentsResponse**](FilterEndpointAgentsResponse.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="FilterEndpointAgentsRequest"></a>
+## FilterEndpointAgentsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentSearchRequest** | [**AgentSearchRequest**](AgentSearchRequest.md) | The filter options for advanced search filtering for agents. | |
+| **max** | **Integer** | (Optional) Maximum number of objects to return. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md) | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
+| **includeDeleted** | **Boolean** | When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
+
+
+
 ## getEndpointAgent
 
-> EndpointAgent getEndpointAgent(agentId, aid, expand, includeDeleted)
+> EndpointAgent getEndpointAgent(GetEndpointAgentRequest)
 
 Retrieve endpoint agent
 
@@ -681,7 +746,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -699,7 +764,13 @@ public class Example {
         List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         Boolean includeDeleted = false; // Boolean | When requesting entities, set to `true` if you want to see deleted entities.
         try {
-            EndpointAgent result = apiInstance.getEndpointAgent(agentId, aid, expand, includeDeleted);
+            EndpointAgentsApi.GetEndpointAgentRequest request = EndpointAgentsApi.GetEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .expand(expand)
+                .includeDeleted(includeDeleted)
+                .build();
+            EndpointAgent result = apiInstance.getEndpointAgent(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsApi#getEndpointAgent");
@@ -714,13 +785,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
-| **includeDeleted** | **Boolean**| When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
+| request | [**GetEndpointAgentRequest**](EndpointAgentsApi.md#GetEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -747,7 +814,7 @@ public class Example {
 
 ## getEndpointAgentWithHttpInfo
 
-> ApiResponse<EndpointAgent> getEndpointAgent getEndpointAgentWithHttpInfo(agentId, aid, expand, includeDeleted)
+> ApiResponse<EndpointAgent> getEndpointAgent getEndpointAgentWithHttpInfo(GetEndpointAgentRequest)
 
 Retrieve endpoint agent
 
@@ -762,7 +829,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -780,7 +847,13 @@ public class Example {
         List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         Boolean includeDeleted = false; // Boolean | When requesting entities, set to `true` if you want to see deleted entities.
         try {
-            ApiResponse<EndpointAgent> response = apiInstance.getEndpointAgentWithHttpInfo(agentId, aid, expand, includeDeleted);
+            EndpointAgentsApi.GetEndpointAgentRequest request = EndpointAgentsApi.GetEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .expand(expand)
+                .includeDeleted(includeDeleted)
+                .build();
+            ApiResponse<EndpointAgent> response = apiInstance.getEndpointAgentWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -797,13 +870,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
-| **includeDeleted** | **Boolean**| When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
+| request | [**GetEndpointAgentRequest**](EndpointAgentsApi.md#GetEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -829,9 +898,22 @@ ApiResponse<[**EndpointAgent**](EndpointAgent.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="GetEndpointAgentRequest"></a>
+## GetEndpointAgentRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **UUID** | The identifier of the agent to operate on. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md) | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
+| **includeDeleted** | **Boolean** | When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
+
+
+
 ## getEndpointAgents
 
-> ListEndpointAgentsResponse getEndpointAgents(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName)
+> ListEndpointAgentsResponse getEndpointAgents(GetEndpointAgentsRequest)
 
 List endpoint agents
 
@@ -845,7 +927,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -867,7 +949,17 @@ public class Example {
         String agentName = "agentName_example"; // String | Returns only agents with the specified name.  This is an exact match only. 
         String computerName = "computerName_example"; // String | Returns only agents with the specified computer name. This is an exact match only. 
         try {
-            ListEndpointAgentsResponse result = apiInstance.getEndpointAgents(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
+            EndpointAgentsApi.GetEndpointAgentsRequest request = EndpointAgentsApi.GetEndpointAgentsRequest.builder()
+                .max(max)
+                .cursor(cursor)
+                .aid(aid)
+                .expand(expand)
+                .includeDeleted(includeDeleted)
+                .useAllPermittedAids(useAllPermittedAids)
+                .agentName(agentName)
+                .computerName(computerName)
+                .build();
+            ListEndpointAgentsResponse result = apiInstance.getEndpointAgents(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsApi#getEndpointAgents");
@@ -882,17 +974,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
-| **includeDeleted** | **Boolean**| When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
-| **useAllPermittedAids** | **Boolean**| Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
-| **agentName** | **String**| Returns only agents with the specified name.  This is an exact match only.  | [optional] |
-| **computerName** | **String**| Returns only agents with the specified computer name. This is an exact match only.  | [optional] |
+| request | [**GetEndpointAgentsRequest**](EndpointAgentsApi.md#GetEndpointAgentsRequest)|-|-|
 
 ### Return type
 
@@ -918,7 +1002,7 @@ public class Example {
 
 ## getEndpointAgentsWithHttpInfo
 
-> ApiResponse<ListEndpointAgentsResponse> getEndpointAgents getEndpointAgentsWithHttpInfo(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName)
+> ApiResponse<ListEndpointAgentsResponse> getEndpointAgents getEndpointAgentsWithHttpInfo(GetEndpointAgentsRequest)
 
 List endpoint agents
 
@@ -933,7 +1017,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -955,7 +1039,17 @@ public class Example {
         String agentName = "agentName_example"; // String | Returns only agents with the specified name.  This is an exact match only. 
         String computerName = "computerName_example"; // String | Returns only agents with the specified computer name. This is an exact match only. 
         try {
-            ApiResponse<ListEndpointAgentsResponse> response = apiInstance.getEndpointAgentsWithHttpInfo(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
+            EndpointAgentsApi.GetEndpointAgentsRequest request = EndpointAgentsApi.GetEndpointAgentsRequest.builder()
+                .max(max)
+                .cursor(cursor)
+                .aid(aid)
+                .expand(expand)
+                .includeDeleted(includeDeleted)
+                .useAllPermittedAids(useAllPermittedAids)
+                .agentName(agentName)
+                .computerName(computerName)
+                .build();
+            ApiResponse<ListEndpointAgentsResponse> response = apiInstance.getEndpointAgentsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -972,17 +1066,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
-| **includeDeleted** | **Boolean**| When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
-| **useAllPermittedAids** | **Boolean**| Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
-| **agentName** | **String**| Returns only agents with the specified name.  This is an exact match only.  | [optional] |
-| **computerName** | **String**| Returns only agents with the specified computer name. This is an exact match only.  | [optional] |
+| request | [**GetEndpointAgentsRequest**](EndpointAgentsApi.md#GetEndpointAgentsRequest)|-|-|
 
 ### Return type
 
@@ -1007,9 +1093,26 @@ ApiResponse<[**ListEndpointAgentsResponse**](ListEndpointAgentsResponse.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="GetEndpointAgentsRequest"></a>
+## GetEndpointAgentsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **max** | **Integer** | (Optional) Maximum number of objects to return. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md) | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
+| **includeDeleted** | **Boolean** | When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. | [optional] |
+| **useAllPermittedAids** | **Boolean** | Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
+| **agentName** | **String** | Returns only agents with the specified name.  This is an exact match only.  | [optional] |
+| **computerName** | **String** | Returns only agents with the specified computer name. This is an exact match only.  | [optional] |
+
+
+
 ## getEndpointAgentsConnectionString
 
-> ConnectionString getEndpointAgentsConnectionString(aid)
+> ConnectionString getEndpointAgentsConnectionString(GetEndpointAgentsConnectionStringRequest)
 
 Get agent connection string
 
@@ -1021,7 +1124,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -1036,7 +1139,10 @@ public class Example {
         EndpointAgentsApi apiInstance = new EndpointAgentsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ConnectionString result = apiInstance.getEndpointAgentsConnectionString(aid);
+            EndpointAgentsApi.GetEndpointAgentsConnectionStringRequest request = EndpointAgentsApi.GetEndpointAgentsConnectionStringRequest.builder()
+                .aid(aid)
+                .build();
+            ConnectionString result = apiInstance.getEndpointAgentsConnectionString(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsApi#getEndpointAgentsConnectionString");
@@ -1051,10 +1157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointAgentsConnectionStringRequest**](EndpointAgentsApi.md#GetEndpointAgentsConnectionStringRequest)|-|-|
 
 ### Return type
 
@@ -1080,7 +1185,7 @@ public class Example {
 
 ## getEndpointAgentsConnectionStringWithHttpInfo
 
-> ApiResponse<ConnectionString> getEndpointAgentsConnectionString getEndpointAgentsConnectionStringWithHttpInfo(aid)
+> ApiResponse<ConnectionString> getEndpointAgentsConnectionString getEndpointAgentsConnectionStringWithHttpInfo(GetEndpointAgentsConnectionStringRequest)
 
 Get agent connection string
 
@@ -1093,7 +1198,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -1108,7 +1213,10 @@ public class Example {
         EndpointAgentsApi apiInstance = new EndpointAgentsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ConnectionString> response = apiInstance.getEndpointAgentsConnectionStringWithHttpInfo(aid);
+            EndpointAgentsApi.GetEndpointAgentsConnectionStringRequest request = EndpointAgentsApi.GetEndpointAgentsConnectionStringRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<ConnectionString> response = apiInstance.getEndpointAgentsConnectionStringWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1125,10 +1233,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointAgentsConnectionStringRequest**](EndpointAgentsApi.md#GetEndpointAgentsConnectionStringRequest)|-|-|
 
 ### Return type
 
@@ -1153,9 +1260,19 @@ ApiResponse<[**ConnectionString**](ConnectionString.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="GetEndpointAgentsConnectionStringRequest"></a>
+## GetEndpointAgentsConnectionStringRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateEndpointAgent
 
-> EndpointAgent updateEndpointAgent(agentId, aid, expand, endpointAgentUpdate)
+> EndpointAgent updateEndpointAgent(UpdateEndpointAgentRequest)
 
 Update endpoint agent
 
@@ -1169,7 +1286,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -1187,7 +1304,13 @@ public class Example {
         List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         EndpointAgentUpdate endpointAgentUpdate = new EndpointAgentUpdate(); // EndpointAgentUpdate | Fields to modify on the agent
         try {
-            EndpointAgent result = apiInstance.updateEndpointAgent(agentId, aid, expand, endpointAgentUpdate);
+            EndpointAgentsApi.UpdateEndpointAgentRequest request = EndpointAgentsApi.UpdateEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .expand(expand)
+                .endpointAgentUpdate(endpointAgentUpdate)
+                .build();
+            EndpointAgent result = apiInstance.updateEndpointAgent(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsApi#updateEndpointAgent");
@@ -1202,13 +1325,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
-| **endpointAgentUpdate** | [**EndpointAgentUpdate**](EndpointAgentUpdate.md)| Fields to modify on the agent | [optional] |
+| request | [**UpdateEndpointAgentRequest**](EndpointAgentsApi.md#UpdateEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -1235,7 +1354,7 @@ public class Example {
 
 ## updateEndpointAgentWithHttpInfo
 
-> ApiResponse<EndpointAgent> updateEndpointAgent updateEndpointAgentWithHttpInfo(agentId, aid, expand, endpointAgentUpdate)
+> ApiResponse<EndpointAgent> updateEndpointAgent updateEndpointAgentWithHttpInfo(UpdateEndpointAgentRequest)
 
 Update endpoint agent
 
@@ -1250,7 +1369,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsApi;
 
 public class Example {
@@ -1268,7 +1387,13 @@ public class Example {
         List<ExpandEndpointAgentOptions> expand = Arrays.asList(); // List<ExpandEndpointAgentOptions> | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \"clients\" resource, include the query parameter `?expand=clients`.  For multiple expansions, you have two options:    * Separate the values with commas. For example, `?expandAgent=clients,tasks`. * Specify the parameter multiple times. For example, `?expandAgent=clients&expandAgent=tasks`.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent. 
         EndpointAgentUpdate endpointAgentUpdate = new EndpointAgentUpdate(); // EndpointAgentUpdate | Fields to modify on the agent
         try {
-            ApiResponse<EndpointAgent> response = apiInstance.updateEndpointAgentWithHttpInfo(agentId, aid, expand, endpointAgentUpdate);
+            EndpointAgentsApi.UpdateEndpointAgentRequest request = EndpointAgentsApi.UpdateEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .expand(expand)
+                .endpointAgentUpdate(endpointAgentUpdate)
+                .build();
+            ApiResponse<EndpointAgent> response = apiInstance.updateEndpointAgentWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1285,13 +1410,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md)| This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
-| **endpointAgentUpdate** | [**EndpointAgentUpdate**](EndpointAgentUpdate.md)| Fields to modify on the agent | [optional] |
+| request | [**UpdateEndpointAgentRequest**](EndpointAgentsApi.md#UpdateEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -1315,4 +1436,17 @@ ApiResponse<[**EndpointAgent**](EndpointAgent.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
+
+
+<a id="UpdateEndpointAgentRequest"></a>
+## UpdateEndpointAgentRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **UUID** | The identifier of the agent to operate on. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointAgentOptions&gt;**](ExpandEndpointAgentOptions.md) | This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  | [optional] |
+| **endpointAgentUpdate** | [**EndpointAgentUpdate**](EndpointAgentUpdate.md) | Fields to modify on the agent | [optional] |
+
 

@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -36,12 +35,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -63,28 +60,29 @@ public class CredentialVaultOperationsApi {
   /**
    * Create Credential Vault operation
    * Create a new Credential Vault operation.
-   * @param credentialVaultOperation  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return CredentialVaultOperation
    * @throws ApiException if fails to make API call
    */
-  public CredentialVaultOperation createCredentialVaultOperation(CredentialVaultOperation credentialVaultOperation, String aid) throws ApiException {
-    ApiResponse<CredentialVaultOperation> response = createCredentialVaultOperationWithHttpInfo(credentialVaultOperation, aid);
+  public CredentialVaultOperation createCredentialVaultOperation(CreateCredentialVaultOperationRequest request) throws ApiException {
+    ApiResponse<CredentialVaultOperation> response = createCredentialVaultOperationWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create Credential Vault operation
    * Create a new Credential Vault operation.
-   * @param credentialVaultOperation  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CredentialVaultOperation&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CredentialVaultOperation> createCredentialVaultOperationWithHttpInfo(CredentialVaultOperation credentialVaultOperation, String aid) throws ApiException {
-    createCredentialVaultOperationValidateRequest(credentialVaultOperation);
+  public ApiResponse<CredentialVaultOperation> createCredentialVaultOperationWithHttpInfo(CreateCredentialVaultOperationRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createCredentialVaultOperation");
+    }
+    createCredentialVaultOperationValidateRequest(request.getCredentialVaultOperation());
 
-    var requestBuilder = createCredentialVaultOperationRequestBuilder(credentialVaultOperation, aid);
+    var requestBuilder = createCredentialVaultOperationRequestBuilder(request.getCredentialVaultOperation(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), CredentialVaultOperation.class);
   }
@@ -96,8 +94,8 @@ public class CredentialVaultOperationsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createCredentialVaultOperationRequestBuilder(CredentialVaultOperation credentialVaultOperation, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createCredentialVaultOperationRequestBuilder(CredentialVaultOperation credentialVaultOperation, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/operations/credential-vault";
@@ -116,31 +114,73 @@ public class CredentialVaultOperationsApi {
     requestBuilder.requestBody(credentialVaultOperation);
     return requestBuilder;
   }
-  /**
-   * Delete Credential Vault operation
-   * Delete a single Credential Vault operation by its ID. Note: This operation may disable affected objects (such as tests).
-   * @param id The operation ID. (required)
-   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for credential-vault operations. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteCredentialVaultOperation(String id, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    deleteCredentialVaultOperationWithHttpInfo(id, confirmDisabledObjects, aid);
+
+  public static final class CreateCredentialVaultOperationRequest {
+    private final CredentialVaultOperation credentialVaultOperation;
+    private final String aid;
+
+    private CreateCredentialVaultOperationRequest(Builder builder) {
+      this.credentialVaultOperation = builder.credentialVaultOperation;
+      this.aid = builder.aid;
+    }
+    public CredentialVaultOperation getCredentialVaultOperation() {
+      return credentialVaultOperation;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .credentialVaultOperation(credentialVaultOperation)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private CredentialVaultOperation credentialVaultOperation;
+      private String aid;
+
+      public Builder credentialVaultOperation(CredentialVaultOperation credentialVaultOperation) {
+        this.credentialVaultOperation = credentialVaultOperation;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateCredentialVaultOperationRequest build() {
+        return new CreateCredentialVaultOperationRequest(this);
+      }
+    }
   }
 
   /**
    * Delete Credential Vault operation
    * Delete a single Credential Vault operation by its ID. Note: This operation may disable affected objects (such as tests).
-   * @param id The operation ID. (required)
-   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for credential-vault operations. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteCredentialVaultOperation(DeleteCredentialVaultOperationRequest request) throws ApiException {
+    deleteCredentialVaultOperationWithHttpInfo(request);
+  }
+
+  /**
+   * Delete Credential Vault operation
+   * Delete a single Credential Vault operation by its ID. Note: This operation may disable affected objects (such as tests).
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteCredentialVaultOperationWithHttpInfo(String id, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    deleteCredentialVaultOperationValidateRequest(id, confirmDisabledObjects);
+  public ApiResponse<Void> deleteCredentialVaultOperationWithHttpInfo(DeleteCredentialVaultOperationRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteCredentialVaultOperation");
+    }
+    deleteCredentialVaultOperationValidateRequest(request.getId(), request.getConfirmDisabledObjects());
 
-    var requestBuilder = deleteCredentialVaultOperationRequestBuilder(id, confirmDisabledObjects, aid);
+    var requestBuilder = deleteCredentialVaultOperationRequestBuilder(request.getId(), request.getConfirmDisabledObjects(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +196,8 @@ public class CredentialVaultOperationsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteCredentialVaultOperationRequestBuilder(String id, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteCredentialVaultOperationRequestBuilder(String id, Boolean confirmDisabledObjects, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/operations/credential-vault/{id}"
@@ -176,31 +216,86 @@ public class CredentialVaultOperationsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteCredentialVaultOperationRequest {
+    private final String id;
+    private final Boolean confirmDisabledObjects;
+    private final String aid;
+
+    private DeleteCredentialVaultOperationRequest(Builder builder) {
+      this.id = builder.id;
+      this.confirmDisabledObjects = builder.confirmDisabledObjects;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public Boolean getConfirmDisabledObjects() {
+      return confirmDisabledObjects;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .confirmDisabledObjects(confirmDisabledObjects)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private Boolean confirmDisabledObjects;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder confirmDisabledObjects(Boolean confirmDisabledObjects) {
+        this.confirmDisabledObjects = confirmDisabledObjects;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteCredentialVaultOperationRequest build() {
+        return new DeleteCredentialVaultOperationRequest(this);
+      }
+    }
+  }
+
   /**
    * Get Credential Vault operation
    * Retrieve a single Credential Vault operation by its ID.
-   * @param id The operation ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return CredentialVaultOperation
    * @throws ApiException if fails to make API call
    */
-  public CredentialVaultOperation getCredentialVaultOperation(String id, String aid) throws ApiException {
-    ApiResponse<CredentialVaultOperation> response = getCredentialVaultOperationWithHttpInfo(id, aid);
+  public CredentialVaultOperation getCredentialVaultOperation(GetCredentialVaultOperationRequest request) throws ApiException {
+    ApiResponse<CredentialVaultOperation> response = getCredentialVaultOperationWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get Credential Vault operation
    * Retrieve a single Credential Vault operation by its ID.
-   * @param id The operation ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CredentialVaultOperation&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CredentialVaultOperation> getCredentialVaultOperationWithHttpInfo(String id, String aid) throws ApiException {
-    getCredentialVaultOperationValidateRequest(id);
+  public ApiResponse<CredentialVaultOperation> getCredentialVaultOperationWithHttpInfo(GetCredentialVaultOperationRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getCredentialVaultOperation");
+    }
+    getCredentialVaultOperationValidateRequest(request.getId());
 
-    var requestBuilder = getCredentialVaultOperationRequestBuilder(id, aid);
+    var requestBuilder = getCredentialVaultOperationRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), CredentialVaultOperation.class);
   }
@@ -212,8 +307,8 @@ public class CredentialVaultOperationsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getCredentialVaultOperationRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getCredentialVaultOperationRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/operations/credential-vault/{id}"
@@ -231,29 +326,75 @@ public class CredentialVaultOperationsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetCredentialVaultOperationRequest {
+    private final String id;
+    private final String aid;
+
+    private GetCredentialVaultOperationRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetCredentialVaultOperationRequest build() {
+        return new GetCredentialVaultOperationRequest(this);
+      }
+    }
+  }
+
   /**
    * List Credential Vault operations
    * Returns a list of Credential Vault operations in the specified account group. If no account group is specified, the user&#39;s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return CredentialVaultOperations
    * @throws ApiException if fails to make API call
    */
-  public CredentialVaultOperations getCredentialVaultOperations(String aid) throws ApiException {
-    ApiResponse<CredentialVaultOperations> response = getCredentialVaultOperationsWithHttpInfo(aid);
+  public CredentialVaultOperations getCredentialVaultOperations(GetCredentialVaultOperationsRequest request) throws ApiException {
+    ApiResponse<CredentialVaultOperations> response = getCredentialVaultOperationsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List Credential Vault operations
    * Returns a list of Credential Vault operations in the specified account group. If no account group is specified, the user&#39;s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CredentialVaultOperations&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CredentialVaultOperations> getCredentialVaultOperationsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<CredentialVaultOperations> getCredentialVaultOperationsWithHttpInfo(GetCredentialVaultOperationsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getCredentialVaultOperations");
+    }
     getCredentialVaultOperationsValidateRequest();
 
-    var requestBuilder = getCredentialVaultOperationsRequestBuilder(aid);
+    var requestBuilder = getCredentialVaultOperationsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), CredentialVaultOperations.class);
   }
@@ -261,8 +402,8 @@ public class CredentialVaultOperationsApi {
   private void getCredentialVaultOperationsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getCredentialVaultOperationsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getCredentialVaultOperationsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/operations/credential-vault";
@@ -279,33 +420,64 @@ public class CredentialVaultOperationsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetCredentialVaultOperationsRequest {
+    private final String aid;
+
+    private GetCredentialVaultOperationsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetCredentialVaultOperationsRequest build() {
+        return new GetCredentialVaultOperationsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update Credential Vault operation
    * Update a single existing Credential Vault operation.
-   * @param id The operation ID. (required)
-   * @param credentialVaultOperation  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return CredentialVaultOperation
    * @throws ApiException if fails to make API call
    */
-  public CredentialVaultOperation updateCredentialVaultOperation(String id, CredentialVaultOperation credentialVaultOperation, String aid) throws ApiException {
-    ApiResponse<CredentialVaultOperation> response = updateCredentialVaultOperationWithHttpInfo(id, credentialVaultOperation, aid);
+  public CredentialVaultOperation updateCredentialVaultOperation(UpdateCredentialVaultOperationRequest request) throws ApiException {
+    ApiResponse<CredentialVaultOperation> response = updateCredentialVaultOperationWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update Credential Vault operation
    * Update a single existing Credential Vault operation.
-   * @param id The operation ID. (required)
-   * @param credentialVaultOperation  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CredentialVaultOperation&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CredentialVaultOperation> updateCredentialVaultOperationWithHttpInfo(String id, CredentialVaultOperation credentialVaultOperation, String aid) throws ApiException {
-    updateCredentialVaultOperationValidateRequest(id, credentialVaultOperation);
+  public ApiResponse<CredentialVaultOperation> updateCredentialVaultOperationWithHttpInfo(UpdateCredentialVaultOperationRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateCredentialVaultOperation");
+    }
+    updateCredentialVaultOperationValidateRequest(request.getId(), request.getCredentialVaultOperation());
 
-    var requestBuilder = updateCredentialVaultOperationRequestBuilder(id, credentialVaultOperation, aid);
+    var requestBuilder = updateCredentialVaultOperationRequestBuilder(request.getId(), request.getCredentialVaultOperation(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), CredentialVaultOperation.class);
   }
@@ -321,8 +493,8 @@ public class CredentialVaultOperationsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateCredentialVaultOperationRequestBuilder(String id, CredentialVaultOperation credentialVaultOperation, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateCredentialVaultOperationRequestBuilder(String id, CredentialVaultOperation credentialVaultOperation, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/operations/credential-vault/{id}"
@@ -342,4 +514,58 @@ public class CredentialVaultOperationsApi {
     requestBuilder.requestBody(credentialVaultOperation);
     return requestBuilder;
   }
+
+  public static final class UpdateCredentialVaultOperationRequest {
+    private final String id;
+    private final CredentialVaultOperation credentialVaultOperation;
+    private final String aid;
+
+    private UpdateCredentialVaultOperationRequest(Builder builder) {
+      this.id = builder.id;
+      this.credentialVaultOperation = builder.credentialVaultOperation;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public CredentialVaultOperation getCredentialVaultOperation() {
+      return credentialVaultOperation;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .credentialVaultOperation(credentialVaultOperation)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private CredentialVaultOperation credentialVaultOperation;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder credentialVaultOperation(CredentialVaultOperation credentialVaultOperation) {
+        this.credentialVaultOperation = credentialVaultOperation;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateCredentialVaultOperationRequest build() {
+        return new UpdateCredentialVaultOperationRequest(this);
+      }
+    }
+  }
+
 }

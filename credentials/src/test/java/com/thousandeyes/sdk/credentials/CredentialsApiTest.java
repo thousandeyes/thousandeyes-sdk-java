@@ -84,7 +84,6 @@ public class CredentialsApiTest {
     public void createCredentialRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "name" : "Example Credential 1",
@@ -130,7 +129,11 @@ public class CredentialsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createCredential(mappedRequest, null);
+        var request = CredentialsApi.CreateCredentialRequest.builder()
+                .credentialRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createCredential(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -147,7 +150,6 @@ public class CredentialsApiTest {
     {
         String id = "3247";
 
-
         var statusCode = 204;
 
         var path = "/credentials/{id}";
@@ -157,7 +159,11 @@ public class CredentialsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteCredentialWithHttpInfo(id, null);
+        var request = CredentialsApi.DeleteCredentialRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteCredentialWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -173,7 +179,6 @@ public class CredentialsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "3247";
-
 
         var responseBodyJson = """
                 {
@@ -209,7 +214,11 @@ public class CredentialsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getCredential(id, null);
+        var request = CredentialsApi.GetCredentialRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getCredential(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -224,7 +233,6 @@ public class CredentialsApiTest {
     public void getCredentialsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -289,7 +297,10 @@ public class CredentialsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getCredentials(null);
+        var request = CredentialsApi.GetCredentialsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getCredentials(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -305,7 +316,6 @@ public class CredentialsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "3247";
-
         var requestBodyJson = """
                 {
                   "name" : "Example Credential 1",
@@ -352,7 +362,12 @@ public class CredentialsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateCredential(id, mappedRequest, null);
+        var request = CredentialsApi.UpdateCredentialRequest.builder()
+                .id(id)
+                .credentialRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateCredential(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

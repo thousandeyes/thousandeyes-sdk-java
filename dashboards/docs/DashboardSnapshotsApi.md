@@ -21,7 +21,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createDashboardSnapshot
 
-> DashboardSnapshotResponse createDashboardSnapshot(generateDashboardSnapshotRequest, aid)
+> DashboardSnapshotResponse createDashboardSnapshot(CreateDashboardSnapshotRequest)
 
 Create dashboard snapshot
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -51,7 +51,11 @@ public class Example {
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            DashboardSnapshotResponse result = apiInstance.createDashboardSnapshot(generateDashboardSnapshotRequest, aid);
+            DashboardSnapshotsApi.CreateDashboardSnapshotRequest request = DashboardSnapshotsApi.CreateDashboardSnapshotRequest.builder()
+                .generateDashboardSnapshotRequest(generateDashboardSnapshotRequest)
+                .aid(aid)
+                .build();
+            DashboardSnapshotResponse result = apiInstance.createDashboardSnapshot(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#createDashboardSnapshot");
@@ -66,11 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **generateDashboardSnapshotRequest** | [**GenerateDashboardSnapshotRequest**](GenerateDashboardSnapshotRequest.md)| Request body schema to create a dashboard snapshot. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateDashboardSnapshotRequest**](DashboardSnapshotsApi.md#CreateDashboardSnapshotRequest)|-|-|
 
 ### Return type
 
@@ -99,7 +101,7 @@ public class Example {
 
 ## createDashboardSnapshotWithHttpInfo
 
-> ApiResponse<DashboardSnapshotResponse> createDashboardSnapshot createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid)
+> ApiResponse<DashboardSnapshotResponse> createDashboardSnapshot createDashboardSnapshotWithHttpInfo(CreateDashboardSnapshotRequest)
 
 Create dashboard snapshot
 
@@ -114,7 +116,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -130,7 +132,11 @@ public class Example {
         GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest = new GenerateDashboardSnapshotRequest(); // GenerateDashboardSnapshotRequest | Request body schema to create a dashboard snapshot.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<DashboardSnapshotResponse> response = apiInstance.createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid);
+            DashboardSnapshotsApi.CreateDashboardSnapshotRequest request = DashboardSnapshotsApi.CreateDashboardSnapshotRequest.builder()
+                .generateDashboardSnapshotRequest(generateDashboardSnapshotRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<DashboardSnapshotResponse> response = apiInstance.createDashboardSnapshotWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -147,11 +153,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **generateDashboardSnapshotRequest** | [**GenerateDashboardSnapshotRequest**](GenerateDashboardSnapshotRequest.md)| Request body schema to create a dashboard snapshot. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateDashboardSnapshotRequest**](DashboardSnapshotsApi.md#CreateDashboardSnapshotRequest)|-|-|
 
 ### Return type
 
@@ -179,9 +183,20 @@ ApiResponse<[**DashboardSnapshotResponse**](DashboardSnapshotResponse.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateDashboardSnapshotRequest"></a>
+## CreateDashboardSnapshotRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **generateDashboardSnapshotRequest** | [**GenerateDashboardSnapshotRequest**](GenerateDashboardSnapshotRequest.md) | Request body schema to create a dashboard snapshot. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteDashboardSnapshot
 
-> void deleteDashboardSnapshot(snapshotId, aid)
+> void deleteDashboardSnapshot(DeleteDashboardSnapshotRequest)
 
 Delete dashboard snapshot
 
@@ -195,7 +210,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -211,7 +226,11 @@ public class Example {
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteDashboardSnapshot(snapshotId, aid);
+            DashboardSnapshotsApi.DeleteDashboardSnapshotRequest request = DashboardSnapshotsApi.DeleteDashboardSnapshotRequest.builder()
+                .snapshotId(snapshotId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteDashboardSnapshot(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#deleteDashboardSnapshot");
             System.err.println("Status code: " + e.getCode());
@@ -225,11 +244,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteDashboardSnapshotRequest**](DashboardSnapshotsApi.md#DeleteDashboardSnapshotRequest)|-|-|
 
 ### Return type
 
@@ -258,7 +275,7 @@ null (empty response body)
 
 ## deleteDashboardSnapshotWithHttpInfo
 
-> ApiResponse<Void> deleteDashboardSnapshot deleteDashboardSnapshotWithHttpInfo(snapshotId, aid)
+> ApiResponse<Void> deleteDashboardSnapshot deleteDashboardSnapshotWithHttpInfo(DeleteDashboardSnapshotRequest)
 
 Delete dashboard snapshot
 
@@ -273,7 +290,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -289,7 +306,11 @@ public class Example {
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteDashboardSnapshotWithHttpInfo(snapshotId, aid);
+            DashboardSnapshotsApi.DeleteDashboardSnapshotRequest request = DashboardSnapshotsApi.DeleteDashboardSnapshotRequest.builder()
+                .snapshotId(snapshotId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteDashboardSnapshotWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -305,11 +326,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteDashboardSnapshotRequest**](DashboardSnapshotsApi.md#DeleteDashboardSnapshotRequest)|-|-|
 
 ### Return type
 
@@ -337,9 +356,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteDashboardSnapshotRequest"></a>
+## DeleteDashboardSnapshotRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **snapshotId** | **String** | A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getDashboardSnapshot
 
-> ApiDashboardSnapshot getDashboardSnapshot(snapshotId, aid)
+> ApiDashboardSnapshot getDashboardSnapshot(GetDashboardSnapshotRequest)
 
 Retrieve dashboard snapshot
 
@@ -353,7 +383,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -369,7 +399,11 @@ public class Example {
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiDashboardSnapshot result = apiInstance.getDashboardSnapshot(snapshotId, aid);
+            DashboardSnapshotsApi.GetDashboardSnapshotRequest request = DashboardSnapshotsApi.GetDashboardSnapshotRequest.builder()
+                .snapshotId(snapshotId)
+                .aid(aid)
+                .build();
+            ApiDashboardSnapshot result = apiInstance.getDashboardSnapshot(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshot");
@@ -384,11 +418,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDashboardSnapshotRequest**](DashboardSnapshotsApi.md#GetDashboardSnapshotRequest)|-|-|
 
 ### Return type
 
@@ -417,7 +449,7 @@ public class Example {
 
 ## getDashboardSnapshotWithHttpInfo
 
-> ApiResponse<ApiDashboardSnapshot> getDashboardSnapshot getDashboardSnapshotWithHttpInfo(snapshotId, aid)
+> ApiResponse<ApiDashboardSnapshot> getDashboardSnapshot getDashboardSnapshotWithHttpInfo(GetDashboardSnapshotRequest)
 
 Retrieve dashboard snapshot
 
@@ -432,7 +464,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -448,7 +480,11 @@ public class Example {
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c"; // String | A Identifier for a dashboard snapshot which can be obtained from the `/dashboards-snapshots` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiDashboardSnapshot> response = apiInstance.getDashboardSnapshotWithHttpInfo(snapshotId, aid);
+            DashboardSnapshotsApi.GetDashboardSnapshotRequest request = DashboardSnapshotsApi.GetDashboardSnapshotRequest.builder()
+                .snapshotId(snapshotId)
+                .aid(aid)
+                .build();
+            ApiResponse<ApiDashboardSnapshot> response = apiInstance.getDashboardSnapshotWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -465,11 +501,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDashboardSnapshotRequest**](DashboardSnapshotsApi.md#GetDashboardSnapshotRequest)|-|-|
 
 ### Return type
 
@@ -497,9 +531,20 @@ ApiResponse<[**ApiDashboardSnapshot**](ApiDashboardSnapshot.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetDashboardSnapshotRequest"></a>
+## GetDashboardSnapshotRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **snapshotId** | **String** | A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getDashboardSnapshotWidgetData
 
-> ApiWidgetDataSnapshotResponse getDashboardSnapshotWidgetData(snapshotId, widgetId, aid)
+> ApiWidgetDataSnapshotResponse getDashboardSnapshotWidgetData(GetDashboardSnapshotWidgetDataRequest)
 
 Retrieve dashboard snapshot data
 
@@ -513,7 +558,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -530,7 +575,12 @@ public class Example {
         String widgetId = "unpmg"; // String | A Identifier for a widget.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiWidgetDataSnapshotResponse result = apiInstance.getDashboardSnapshotWidgetData(snapshotId, widgetId, aid);
+            DashboardSnapshotsApi.GetDashboardSnapshotWidgetDataRequest request = DashboardSnapshotsApi.GetDashboardSnapshotWidgetDataRequest.builder()
+                .snapshotId(snapshotId)
+                .widgetId(widgetId)
+                .aid(aid)
+                .build();
+            ApiWidgetDataSnapshotResponse result = apiInstance.getDashboardSnapshotWidgetData(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshotWidgetData");
@@ -545,12 +595,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **widgetId** | **String**| A Identifier for a widget. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDashboardSnapshotWidgetDataRequest**](DashboardSnapshotsApi.md#GetDashboardSnapshotWidgetDataRequest)|-|-|
 
 ### Return type
 
@@ -579,7 +626,7 @@ public class Example {
 
 ## getDashboardSnapshotWidgetDataWithHttpInfo
 
-> ApiResponse<ApiWidgetDataSnapshotResponse> getDashboardSnapshotWidgetData getDashboardSnapshotWidgetDataWithHttpInfo(snapshotId, widgetId, aid)
+> ApiResponse<ApiWidgetDataSnapshotResponse> getDashboardSnapshotWidgetData getDashboardSnapshotWidgetDataWithHttpInfo(GetDashboardSnapshotWidgetDataRequest)
 
 Retrieve dashboard snapshot data
 
@@ -594,7 +641,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -611,7 +658,12 @@ public class Example {
         String widgetId = "unpmg"; // String | A Identifier for a widget.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiWidgetDataSnapshotResponse> response = apiInstance.getDashboardSnapshotWidgetDataWithHttpInfo(snapshotId, widgetId, aid);
+            DashboardSnapshotsApi.GetDashboardSnapshotWidgetDataRequest request = DashboardSnapshotsApi.GetDashboardSnapshotWidgetDataRequest.builder()
+                .snapshotId(snapshotId)
+                .widgetId(widgetId)
+                .aid(aid)
+                .build();
+            ApiResponse<ApiWidgetDataSnapshotResponse> response = apiInstance.getDashboardSnapshotWidgetDataWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -628,12 +680,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **widgetId** | **String**| A Identifier for a widget. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDashboardSnapshotWidgetDataRequest**](DashboardSnapshotsApi.md#GetDashboardSnapshotWidgetDataRequest)|-|-|
 
 ### Return type
 
@@ -661,9 +710,21 @@ ApiResponse<[**ApiWidgetDataSnapshotResponse**](ApiWidgetDataSnapshotResponse.md
 | **500** | Internal server error |  -  |
 
 
+<a id="GetDashboardSnapshotWidgetDataRequest"></a>
+## GetDashboardSnapshotWidgetDataRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **snapshotId** | **String** | A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
+| **widgetId** | **String** | A Identifier for a widget. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getDashboardSnapshots
 
-> DashboardSnapshotsPage getDashboardSnapshots(aid, dashboardId, cursor)
+> DashboardSnapshotsPage getDashboardSnapshots(GetDashboardSnapshotsRequest)
 
 List dashboard snapshots
 
@@ -677,7 +738,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -694,7 +755,12 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            DashboardSnapshotsPage result = apiInstance.getDashboardSnapshots(aid, dashboardId, cursor);
+            DashboardSnapshotsApi.GetDashboardSnapshotsRequest request = DashboardSnapshotsApi.GetDashboardSnapshotsRequest.builder()
+                .aid(aid)
+                .dashboardId(dashboardId)
+                .cursor(cursor)
+                .build();
+            DashboardSnapshotsPage result = apiInstance.getDashboardSnapshots(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#getDashboardSnapshots");
@@ -709,12 +775,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **dashboardId** | **String**|  | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetDashboardSnapshotsRequest**](DashboardSnapshotsApi.md#GetDashboardSnapshotsRequest)|-|-|
 
 ### Return type
 
@@ -743,7 +806,7 @@ public class Example {
 
 ## getDashboardSnapshotsWithHttpInfo
 
-> ApiResponse<DashboardSnapshotsPage> getDashboardSnapshots getDashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor)
+> ApiResponse<DashboardSnapshotsPage> getDashboardSnapshots getDashboardSnapshotsWithHttpInfo(GetDashboardSnapshotsRequest)
 
 List dashboard snapshots
 
@@ -758,7 +821,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -775,7 +838,12 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | 
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<DashboardSnapshotsPage> response = apiInstance.getDashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor);
+            DashboardSnapshotsApi.GetDashboardSnapshotsRequest request = DashboardSnapshotsApi.GetDashboardSnapshotsRequest.builder()
+                .aid(aid)
+                .dashboardId(dashboardId)
+                .cursor(cursor)
+                .build();
+            ApiResponse<DashboardSnapshotsPage> response = apiInstance.getDashboardSnapshotsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -792,12 +860,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **dashboardId** | **String**|  | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetDashboardSnapshotsRequest**](DashboardSnapshotsApi.md#GetDashboardSnapshotsRequest)|-|-|
 
 ### Return type
 
@@ -825,9 +890,21 @@ ApiResponse<[**DashboardSnapshotsPage**](DashboardSnapshotsPage.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetDashboardSnapshotsRequest"></a>
+## GetDashboardSnapshotsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **dashboardId** | **String** |  | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
+
+
 ## updateDashboardSnapshotExpirationDate
 
-> void updateDashboardSnapshotExpirationDate(snapshotId, updateSnapshotExpirationDateApiRequest, aid)
+> void updateDashboardSnapshotExpirationDate(UpdateDashboardSnapshotExpirationDateRequest)
 
 Update snapshot expiration
 
@@ -841,7 +918,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -858,7 +935,12 @@ public class Example {
         UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest = new UpdateSnapshotExpirationDateApiRequest(); // UpdateSnapshotExpirationDateApiRequest | Request body schema to update a snapshot expiration.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.updateDashboardSnapshotExpirationDate(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
+            DashboardSnapshotsApi.UpdateDashboardSnapshotExpirationDateRequest request = DashboardSnapshotsApi.UpdateDashboardSnapshotExpirationDateRequest.builder()
+                .snapshotId(snapshotId)
+                .updateSnapshotExpirationDateApiRequest(updateSnapshotExpirationDateApiRequest)
+                .aid(aid)
+                .build();
+            apiInstance.updateDashboardSnapshotExpirationDate(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardSnapshotsApi#updateDashboardSnapshotExpirationDate");
             System.err.println("Status code: " + e.getCode());
@@ -872,12 +954,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **updateSnapshotExpirationDateApiRequest** | [**UpdateSnapshotExpirationDateApiRequest**](UpdateSnapshotExpirationDateApiRequest.md)| Request body schema to update a snapshot expiration. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateDashboardSnapshotExpirationDateRequest**](DashboardSnapshotsApi.md#UpdateDashboardSnapshotExpirationDateRequest)|-|-|
 
 ### Return type
 
@@ -906,7 +985,7 @@ null (empty response body)
 
 ## updateDashboardSnapshotExpirationDateWithHttpInfo
 
-> ApiResponse<Void> updateDashboardSnapshotExpirationDate updateDashboardSnapshotExpirationDateWithHttpInfo(snapshotId, updateSnapshotExpirationDateApiRequest, aid)
+> ApiResponse<Void> updateDashboardSnapshotExpirationDate updateDashboardSnapshotExpirationDateWithHttpInfo(UpdateDashboardSnapshotExpirationDateRequest)
 
 Update snapshot expiration
 
@@ -921,7 +1000,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardSnapshotsApi;
 
 public class Example {
@@ -938,7 +1017,12 @@ public class Example {
         UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest = new UpdateSnapshotExpirationDateApiRequest(); // UpdateSnapshotExpirationDateApiRequest | Request body schema to update a snapshot expiration.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.updateDashboardSnapshotExpirationDateWithHttpInfo(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
+            DashboardSnapshotsApi.UpdateDashboardSnapshotExpirationDateRequest request = DashboardSnapshotsApi.UpdateDashboardSnapshotExpirationDateRequest.builder()
+                .snapshotId(snapshotId)
+                .updateSnapshotExpirationDateApiRequest(updateSnapshotExpirationDateApiRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.updateDashboardSnapshotExpirationDateWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -954,12 +1038,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **snapshotId** | **String**| A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
-| **updateSnapshotExpirationDateApiRequest** | [**UpdateSnapshotExpirationDateApiRequest**](UpdateSnapshotExpirationDateApiRequest.md)| Request body schema to update a snapshot expiration. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateDashboardSnapshotExpirationDateRequest**](DashboardSnapshotsApi.md#UpdateDashboardSnapshotExpirationDateRequest)|-|-|
 
 ### Return type
 
@@ -985,4 +1066,16 @@ ApiResponse<Void>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateDashboardSnapshotExpirationDateRequest"></a>
+## UpdateDashboardSnapshotExpirationDateRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **snapshotId** | **String** | A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. | |
+| **updateSnapshotExpirationDateApiRequest** | [**UpdateSnapshotExpirationDateApiRequest**](UpdateSnapshotExpirationDateApiRequest.md) | Request body schema to update a snapshot expiration. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

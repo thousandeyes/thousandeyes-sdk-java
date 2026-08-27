@@ -85,7 +85,6 @@ public class BgpTestsApiTest {
     public void createBgpTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -253,7 +252,12 @@ public class BgpTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createBgpTest(mappedRequest, null, null);
+        var request = BgpTestsApi.CreateBgpTestRequest.builder()
+                .bgpTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createBgpTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -270,7 +274,6 @@ public class BgpTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/bgp/{testId}";
@@ -280,7 +283,11 @@ public class BgpTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteBgpTestWithHttpInfo(testId, null);
+        var request = BgpTestsApi.DeleteBgpTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteBgpTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -296,7 +303,6 @@ public class BgpTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -418,7 +424,12 @@ public class BgpTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getBgpTest(testId, null, null);
+        var request = BgpTestsApi.GetBgpTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getBgpTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -433,7 +444,6 @@ public class BgpTestsApiTest {
     public void getBgpTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -532,7 +542,10 @@ public class BgpTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getBgpTests(null);
+        var request = BgpTestsApi.GetBgpTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getBgpTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -548,7 +561,6 @@ public class BgpTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -716,7 +728,13 @@ public class BgpTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateBgpTest(testId, mappedRequest, null, null);
+        var request = BgpTestsApi.UpdateBgpTestRequest.builder()
+                .testId(testId)
+                .updateBgpTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateBgpTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

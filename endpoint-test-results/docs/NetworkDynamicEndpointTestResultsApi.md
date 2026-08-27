@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## filterDynamicTestNetworkResults
 
-> NetworkDynamicEndpointTestResults filterDynamicTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch)
+> NetworkDynamicEndpointTestResults filterDynamicTestNetworkResults(FilterDynamicTestNetworkResultsRequest)
 
 Retrieve network dynamic test results
 
@@ -29,7 +29,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicEndpointTestResultsApi;
 
 public class Example {
@@ -51,7 +51,17 @@ public class Example {
         List<ExpandEndpointDynamicNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointDynamicNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch = new DynamicEndpointTestsDataRoundSearch(); // DynamicEndpointTestsDataRoundSearch | Tests data search filters.
         try {
-            NetworkDynamicEndpointTestResults result = apiInstance.filterDynamicTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch);
+            NetworkDynamicEndpointTestResultsApi.FilterDynamicTestNetworkResultsRequest request = NetworkDynamicEndpointTestResultsApi.FilterDynamicTestNetworkResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .expand(expand)
+                .dynamicEndpointTestsDataRoundSearch(dynamicEndpointTestsDataRoundSearch)
+                .build();
+            NetworkDynamicEndpointTestResults result = apiInstance.filterDynamicTestNetworkResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkDynamicEndpointTestResultsApi#filterDynamicTestNetworkResults");
@@ -66,17 +76,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointDynamicNetworkOptions&gt;**](ExpandEndpointDynamicNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
-| **dynamicEndpointTestsDataRoundSearch** | [**DynamicEndpointTestsDataRoundSearch**](DynamicEndpointTestsDataRoundSearch.md)| Tests data search filters. | [optional] |
+| request | [**FilterDynamicTestNetworkResultsRequest**](NetworkDynamicEndpointTestResultsApi.md#FilterDynamicTestNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -105,7 +107,7 @@ public class Example {
 
 ## filterDynamicTestNetworkResultsWithHttpInfo
 
-> ApiResponse<NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResults filterDynamicTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch)
+> ApiResponse<NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResults filterDynamicTestNetworkResultsWithHttpInfo(FilterDynamicTestNetworkResultsRequest)
 
 Retrieve network dynamic test results
 
@@ -120,7 +122,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicEndpointTestResultsApi;
 
 public class Example {
@@ -142,7 +144,17 @@ public class Example {
         List<ExpandEndpointDynamicNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointDynamicNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch = new DynamicEndpointTestsDataRoundSearch(); // DynamicEndpointTestsDataRoundSearch | Tests data search filters.
         try {
-            ApiResponse<NetworkDynamicEndpointTestResults> response = apiInstance.filterDynamicTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch);
+            NetworkDynamicEndpointTestResultsApi.FilterDynamicTestNetworkResultsRequest request = NetworkDynamicEndpointTestResultsApi.FilterDynamicTestNetworkResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .expand(expand)
+                .dynamicEndpointTestsDataRoundSearch(dynamicEndpointTestsDataRoundSearch)
+                .build();
+            ApiResponse<NetworkDynamicEndpointTestResults> response = apiInstance.filterDynamicTestNetworkResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -159,17 +171,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointDynamicNetworkOptions&gt;**](ExpandEndpointDynamicNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
-| **dynamicEndpointTestsDataRoundSearch** | [**DynamicEndpointTestsDataRoundSearch**](DynamicEndpointTestsDataRoundSearch.md)| Tests data search filters. | [optional] |
+| request | [**FilterDynamicTestNetworkResultsRequest**](NetworkDynamicEndpointTestResultsApi.md#FilterDynamicTestNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -197,9 +201,26 @@ ApiResponse<[**NetworkDynamicEndpointTestResults**](NetworkDynamicEndpointTestRe
 | **502** | Bad Gateway |  -  |
 
 
+<a id="FilterDynamicTestNetworkResultsRequest"></a>
+## FilterDynamicTestNetworkResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointDynamicNetworkOptions&gt;**](ExpandEndpointDynamicNetworkOptions.md) | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
+| **dynamicEndpointTestsDataRoundSearch** | [**DynamicEndpointTestsDataRoundSearch**](DynamicEndpointTestsDataRoundSearch.md) | Tests data search filters. | [optional] |
+
+
+
 ## getDynamicTestPathVisAgentRoundResults
 
-> PathVisDetailDynamicEndpointTestResults getDynamicTestPathVisAgentRoundResults(testId, agentId, roundId, aid)
+> PathVisDetailDynamicEndpointTestResults getDynamicTestPathVisAgentRoundResults(GetDynamicTestPathVisAgentRoundResultsRequest)
 
 Retrieve path visualization network dynamic test results details
 
@@ -213,7 +234,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicEndpointTestResultsApi;
 
 public class Example {
@@ -231,7 +252,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            PathVisDetailDynamicEndpointTestResults result = apiInstance.getDynamicTestPathVisAgentRoundResults(testId, agentId, roundId, aid);
+            NetworkDynamicEndpointTestResultsApi.GetDynamicTestPathVisAgentRoundResultsRequest request = NetworkDynamicEndpointTestResultsApi.GetDynamicTestPathVisAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            PathVisDetailDynamicEndpointTestResults result = apiInstance.getDynamicTestPathVisAgentRoundResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkDynamicEndpointTestResultsApi#getDynamicTestPathVisAgentRoundResults");
@@ -246,13 +273,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDynamicTestPathVisAgentRoundResultsRequest**](NetworkDynamicEndpointTestResultsApi.md#GetDynamicTestPathVisAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -282,7 +305,7 @@ public class Example {
 
 ## getDynamicTestPathVisAgentRoundResultsWithHttpInfo
 
-> ApiResponse<PathVisDetailDynamicEndpointTestResults> getDynamicTestPathVisAgentRoundResults getDynamicTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid)
+> ApiResponse<PathVisDetailDynamicEndpointTestResults> getDynamicTestPathVisAgentRoundResults getDynamicTestPathVisAgentRoundResultsWithHttpInfo(GetDynamicTestPathVisAgentRoundResultsRequest)
 
 Retrieve path visualization network dynamic test results details
 
@@ -297,7 +320,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicEndpointTestResultsApi;
 
 public class Example {
@@ -315,7 +338,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<PathVisDetailDynamicEndpointTestResults> response = apiInstance.getDynamicTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+            NetworkDynamicEndpointTestResultsApi.GetDynamicTestPathVisAgentRoundResultsRequest request = NetworkDynamicEndpointTestResultsApi.GetDynamicTestPathVisAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            ApiResponse<PathVisDetailDynamicEndpointTestResults> response = apiInstance.getDynamicTestPathVisAgentRoundResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -332,13 +361,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDynamicTestPathVisAgentRoundResultsRequest**](NetworkDynamicEndpointTestResultsApi.md#GetDynamicTestPathVisAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -367,9 +392,22 @@ ApiResponse<[**PathVisDetailDynamicEndpointTestResults**](PathVisDetailDynamicEn
 | **502** | Bad Gateway |  -  |
 
 
+<a id="GetDynamicTestPathVisAgentRoundResultsRequest"></a>
+## GetDynamicTestPathVisAgentRoundResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **agentId** | **String** | Agent ID | |
+| **roundId** | **String** | Round ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getDynamicTestPathVisResults
 
-> PathVisDynamicEndpointTestResults getDynamicTestPathVisResults(testId, aid, window, startDate, endDate, cursor)
+> PathVisDynamicEndpointTestResults getDynamicTestPathVisResults(GetDynamicTestPathVisResultsRequest)
 
 Retrieve path visualization network dynamic test results
 
@@ -383,7 +421,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicEndpointTestResultsApi;
 
 public class Example {
@@ -403,7 +441,15 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            PathVisDynamicEndpointTestResults result = apiInstance.getDynamicTestPathVisResults(testId, aid, window, startDate, endDate, cursor);
+            NetworkDynamicEndpointTestResultsApi.GetDynamicTestPathVisResultsRequest request = NetworkDynamicEndpointTestResultsApi.GetDynamicTestPathVisResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            PathVisDynamicEndpointTestResults result = apiInstance.getDynamicTestPathVisResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkDynamicEndpointTestResultsApi#getDynamicTestPathVisResults");
@@ -418,15 +464,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetDynamicTestPathVisResultsRequest**](NetworkDynamicEndpointTestResultsApi.md#GetDynamicTestPathVisResultsRequest)|-|-|
 
 ### Return type
 
@@ -455,7 +495,7 @@ public class Example {
 
 ## getDynamicTestPathVisResultsWithHttpInfo
 
-> ApiResponse<PathVisDynamicEndpointTestResults> getDynamicTestPathVisResults getDynamicTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<PathVisDynamicEndpointTestResults> getDynamicTestPathVisResults getDynamicTestPathVisResultsWithHttpInfo(GetDynamicTestPathVisResultsRequest)
 
 Retrieve path visualization network dynamic test results
 
@@ -470,7 +510,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkDynamicEndpointTestResultsApi;
 
 public class Example {
@@ -490,7 +530,15 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<PathVisDynamicEndpointTestResults> response = apiInstance.getDynamicTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            NetworkDynamicEndpointTestResultsApi.GetDynamicTestPathVisResultsRequest request = NetworkDynamicEndpointTestResultsApi.GetDynamicTestPathVisResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            ApiResponse<PathVisDynamicEndpointTestResults> response = apiInstance.getDynamicTestPathVisResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -507,15 +555,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetDynamicTestPathVisResultsRequest**](NetworkDynamicEndpointTestResultsApi.md#GetDynamicTestPathVisResultsRequest)|-|-|
 
 ### Return type
 
@@ -541,4 +583,19 @@ ApiResponse<[**PathVisDynamicEndpointTestResults**](PathVisDynamicEndpointTestRe
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
+
+
+<a id="GetDynamicTestPathVisResultsRequest"></a>
+## GetDynamicTestPathVisResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
 

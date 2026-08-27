@@ -110,7 +110,12 @@ public class TestSnapshotsApiExample {
         SnapshotRequest snapshotRequest = new SnapshotRequest(); // SnapshotRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            SnapshotResponse result = apiInstance.createTestSnapshot(testId, snapshotRequest, aid);
+            TestSnapshotsApi.CreateTestSnapshotRequest request = TestSnapshotsApi.CreateTestSnapshotRequest.builder()
+                .testId(testId)
+                .snapshotRequest(snapshotRequest)
+                .aid(aid)
+                .build();
+            SnapshotResponse result = apiInstance.createTestSnapshot(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TestSnapshotsApi#createTestSnapshot");

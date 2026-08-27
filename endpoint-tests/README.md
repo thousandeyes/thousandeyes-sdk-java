@@ -110,7 +110,11 @@ public class AgentToServerEndpointDynamicTestsApiExample {
         DynamicTestRequest dynamicTestRequest = new DynamicTestRequest(); // DynamicTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            DynamicTest result = apiInstance.createAgentToServerEndpointDynamicTest(dynamicTestRequest, aid);
+            AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest.builder()
+                .dynamicTestRequest(dynamicTestRequest)
+                .aid(aid)
+                .build();
+            DynamicTest result = apiInstance.createAgentToServerEndpointDynamicTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#createAgentToServerEndpointDynamicTest");

@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -40,12 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -67,28 +64,29 @@ public class EventsApi {
   /**
    * Retrieve event
    * Returns detailed information about an event using its ID.
-   * @param id Unique event ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EventDetail
    * @throws ApiException if fails to make API call
    */
-  public EventDetail getEvent(UUID id, String aid) throws ApiException {
-    ApiResponse<EventDetail> response = getEventWithHttpInfo(id, aid);
+  public EventDetail getEvent(GetEventRequest request) throws ApiException {
+    ApiResponse<EventDetail> response = getEventWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve event
    * Returns detailed information about an event using its ID.
-   * @param id Unique event ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EventDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EventDetail> getEventWithHttpInfo(UUID id, String aid) throws ApiException {
-    getEventValidateRequest(id);
+  public ApiResponse<EventDetail> getEventWithHttpInfo(GetEventRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEvent");
+    }
+    getEventValidateRequest(request.getId());
 
-    var requestBuilder = getEventRequestBuilder(id, aid);
+    var requestBuilder = getEventRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EventDetail.class);
   }
@@ -100,8 +98,8 @@ public class EventsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getEventRequestBuilder(UUID id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEventRequestBuilder(UUID id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/events/{id}"
@@ -119,57 +117,91 @@ public class EventsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEventRequest {
+    private final UUID id;
+    private final String aid;
+
+    private GetEventRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public UUID getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private UUID id;
+      private String aid;
+
+      public Builder id(UUID id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetEventRequest build() {
+        return new GetEventRequest(this);
+      }
+    }
+  }
+
   /**
    * List events with pagination
    * Retrieves a list of events within the specified time window. If no events are active during the specified time range, an empty response is returned.  **Note**: You must provide either a time window using the &#x60;window&#x60; parameter or specify &#x60;startDate&#x60; and &#x60;endDate&#x60;.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param ongoing When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<Event, Events>
    */
-  public Paginator<Event, Events> getEventsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, Boolean ongoing) {
-    return new Paginator<>(cursor -> getEvents(aid, window, startDate, endDate, max, cursor, ongoing),
+  public Paginator<Event, Events> getEventsPaginated(GetEventsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getEventsPaginated");
+    }
+    return new Paginator<>(cursor -> getEvents(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            Events::getEvents);
 
   }
   /**
    * List events
    * Retrieves a list of events within the specified time window. If no events are active during the specified time range, an empty response is returned.  **Note**: You must provide either a time window using the &#x60;window&#x60; parameter or specify &#x60;startDate&#x60; and &#x60;endDate&#x60;.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param ongoing When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. (optional)
+   * @param request operation parameters (required)
    * @return Events
    * @throws ApiException if fails to make API call
    */
-  public Events getEvents(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean ongoing) throws ApiException {
-    ApiResponse<Events> response = getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor, ongoing);
+  public Events getEvents(GetEventsRequest request) throws ApiException {
+    ApiResponse<Events> response = getEventsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List events
    * Retrieves a list of events within the specified time window. If no events are active during the specified time range, an empty response is returned.  **Note**: You must provide either a time window using the &#x60;window&#x60; parameter or specify &#x60;startDate&#x60; and &#x60;endDate&#x60;.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param ongoing When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Events&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Events> getEventsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean ongoing) throws ApiException {
+  public ApiResponse<Events> getEventsWithHttpInfo(GetEventsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEvents");
+    }
     getEventsValidateRequest();
 
-    var requestBuilder = getEventsRequestBuilder(aid, window, startDate, endDate, max, cursor, ongoing);
+    var requestBuilder = getEventsRequestBuilder(request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getMax(), request.getCursor(), request.getOngoing());
 
     return apiClient.send(requestBuilder.build(), Events.class);
   }
@@ -177,8 +209,8 @@ public class EventsApi {
   private void getEventsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEventsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean ongoing) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEventsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean ongoing) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/events";
@@ -201,4 +233,102 @@ public class EventsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEventsRequest {
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final Integer max;
+    private final String cursor;
+    private final Boolean ongoing;
+
+    private GetEventsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.max = builder.max;
+      this.cursor = builder.cursor;
+      this.ongoing = builder.ongoing;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public Integer getMax() {
+      return max;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public Boolean getOngoing() {
+      return ongoing;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .max(max)
+          .cursor(cursor)
+          .ongoing(ongoing);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private Integer max;
+      private String cursor;
+      private Boolean ongoing;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder max(Integer max) {
+        this.max = max;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder ongoing(Boolean ongoing) {
+        this.ongoing = ongoing;
+        return this;
+      }
+      public GetEventsRequest build() {
+        return new GetEventsRequest(this);
+      }
+    }
+  }
+
 }

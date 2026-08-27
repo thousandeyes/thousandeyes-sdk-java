@@ -122,7 +122,11 @@ public class InternetInsightsCatalogProvidersApiExample {
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiCatalogProviderResponse result = apiInstance.filterCatalogProviders(apiCatalogProviderFilter, aid);
+            InternetInsightsCatalogProvidersApi.FilterCatalogProvidersRequest request = InternetInsightsCatalogProvidersApi.FilterCatalogProvidersRequest.builder()
+                .apiCatalogProviderFilter(apiCatalogProviderFilter)
+                .aid(aid)
+                .build();
+            ApiCatalogProviderResponse result = apiInstance.filterCatalogProviders(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InternetInsightsCatalogProvidersApi#filterCatalogProviders");

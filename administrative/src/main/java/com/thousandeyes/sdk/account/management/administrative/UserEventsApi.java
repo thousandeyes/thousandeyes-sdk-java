@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,51 +62,45 @@ public class UserEventsApi {
   /**
    * List activity log events with pagination
    * Returns a list of activity log events in the current account group.   If &#x60;useAllPermittedAids&#x3D;true&#x60; query parameter is passed and the user has permission &#x60;View activity log for all users in account group&#x60; the logs returned include events across all the account groups they belong to.  For more information about changing the account group context, see [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<UserEvent, AuditUserEvents>
    */
-  public Paginator<UserEvent, AuditUserEvents> getUserEventsPaginated(String aid, Boolean useAllPermittedAids, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getUserEvents(aid, useAllPermittedAids, window, startDate, endDate, cursor),
+  public Paginator<UserEvent, AuditUserEvents> getUserEventsPaginated(GetUserEventsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getUserEventsPaginated");
+    }
+    return new Paginator<>(cursor -> getUserEvents(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            AuditUserEvents::getAuditEvents);
 
   }
   /**
    * List activity log events
    * Returns a list of activity log events in the current account group.   If &#x60;useAllPermittedAids&#x3D;true&#x60; query parameter is passed and the user has permission &#x60;View activity log for all users in account group&#x60; the logs returned include events across all the account groups they belong to.  For more information about changing the account group context, see [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return AuditUserEvents
    * @throws ApiException if fails to make API call
    */
-  public AuditUserEvents getUserEvents(String aid, Boolean useAllPermittedAids, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiResponse<AuditUserEvents> response = getUserEventsWithHttpInfo(aid, useAllPermittedAids, window, startDate, endDate, cursor);
+  public AuditUserEvents getUserEvents(GetUserEventsRequest request) throws ApiException {
+    ApiResponse<AuditUserEvents> response = getUserEventsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List activity log events
    * Returns a list of activity log events in the current account group.   If &#x60;useAllPermittedAids&#x3D;true&#x60; query parameter is passed and the user has permission &#x60;View activity log for all users in account group&#x60; the logs returned include events across all the account groups they belong to.  For more information about changing the account group context, see [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AuditUserEvents&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AuditUserEvents> getUserEventsWithHttpInfo(String aid, Boolean useAllPermittedAids, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+  public ApiResponse<AuditUserEvents> getUserEventsWithHttpInfo(GetUserEventsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getUserEvents");
+    }
     getUserEventsValidateRequest();
 
-    var requestBuilder = getUserEventsRequestBuilder(aid, useAllPermittedAids, window, startDate, endDate, cursor);
+    var requestBuilder = getUserEventsRequestBuilder(request.getAid(), request.getUseAllPermittedAids(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), AuditUserEvents.class);
   }
@@ -117,8 +108,8 @@ public class UserEventsApi {
   private void getUserEventsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getUserEventsRequestBuilder(String aid, Boolean useAllPermittedAids, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getUserEventsRequestBuilder(String aid, Boolean useAllPermittedAids, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/audit-user-events";
@@ -140,4 +131,91 @@ public class UserEventsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetUserEventsRequest {
+    private final String aid;
+    private final Boolean useAllPermittedAids;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+
+    private GetUserEventsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.useAllPermittedAids = builder.useAllPermittedAids;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public Boolean getUseAllPermittedAids() {
+      return useAllPermittedAids;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .useAllPermittedAids(useAllPermittedAids)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private Boolean useAllPermittedAids;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder useAllPermittedAids(Boolean useAllPermittedAids) {
+        this.useAllPermittedAids = useAllPermittedAids;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetUserEventsRequest build() {
+        return new GetUserEventsRequest(this);
+      }
+    }
+  }
+
 }

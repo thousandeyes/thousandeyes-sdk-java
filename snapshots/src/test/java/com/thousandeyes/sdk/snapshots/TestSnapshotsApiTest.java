@@ -82,7 +82,6 @@ public class TestSnapshotsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "endDate" : "2023-06-06T01:00:00Z",
@@ -181,7 +180,12 @@ public class TestSnapshotsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createTestSnapshot(testId, mappedRequest, null);
+        var request = TestSnapshotsApi.CreateTestSnapshotRequest.builder()
+                .testId(testId)
+                .snapshotRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createTestSnapshot(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

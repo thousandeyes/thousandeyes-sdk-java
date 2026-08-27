@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -40,12 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -67,26 +64,27 @@ public class CloudAndEnterpriseAgentsApi {
   /**
    * Delete Enterprise Agent
    * Deletes an Enterprise Agent.  Important notes related to agent removal: * If an agent is deleted, the modification date for tests using that agent at the time it was deleted will be changed. * If a deleted agent is the final remaining agent on a test, then the test will be disabled when the agent is removed. * If an agent is removed, it must be re-initialized to use the same machine again in different context. Virtual Appliances can be updated using the Reset State button in the Advanced tab of the agent management interface. Users running packaged versions of Linux will need to remove /var/lib/te-agent/\\*.sqlite in order to reinitialize an agent.
-   * @param agentId Unique ID for the agent. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteAgent(String agentId, String aid) throws ApiException {
-    deleteAgentWithHttpInfo(agentId, aid);
+  public void deleteAgent(DeleteAgentRequest request) throws ApiException {
+    deleteAgentWithHttpInfo(request);
   }
 
   /**
    * Delete Enterprise Agent
    * Deletes an Enterprise Agent.  Important notes related to agent removal: * If an agent is deleted, the modification date for tests using that agent at the time it was deleted will be changed. * If a deleted agent is the final remaining agent on a test, then the test will be disabled when the agent is removed. * If an agent is removed, it must be re-initialized to use the same machine again in different context. Virtual Appliances can be updated using the Reset State button in the Advanced tab of the agent management interface. Users running packaged versions of Linux will need to remove /var/lib/te-agent/\\*.sqlite in order to reinitialize an agent.
-   * @param agentId Unique ID for the agent. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteAgentWithHttpInfo(String agentId, String aid) throws ApiException {
-    deleteAgentValidateRequest(agentId);
+  public ApiResponse<Void> deleteAgentWithHttpInfo(DeleteAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteAgent");
+    }
+    deleteAgentValidateRequest(request.getAgentId());
 
-    var requestBuilder = deleteAgentRequestBuilder(agentId, aid);
+    var requestBuilder = deleteAgentRequestBuilder(request.getAgentId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -98,8 +96,8 @@ public class CloudAndEnterpriseAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteAgentRequestBuilder(String agentId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteAgentRequestBuilder(String agentId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/agents/{agentId}"
@@ -117,33 +115,75 @@ public class CloudAndEnterpriseAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteAgentRequest {
+    private final String agentId;
+    private final String aid;
+
+    private DeleteAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.aid = builder.aid;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String agentId;
+      private String aid;
+
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteAgentRequest build() {
+        return new DeleteAgentRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve Cloud and Enterprise Agent
    * Returns details for an agent, including assigned tests.  For Enterprise Agents, this operation returns additional details, including utilization data, assigned accounts, a list of account groups the agent is assigned to, and utilization details. 
-   * @param agentId Unique ID for the agent. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return AgentDetails
    * @throws ApiException if fails to make API call
    */
-  public AgentDetails getAgent(String agentId, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    ApiResponse<AgentDetails> response = getAgentWithHttpInfo(agentId, aid, expand);
+  public AgentDetails getAgent(GetAgentRequest request) throws ApiException {
+    ApiResponse<AgentDetails> response = getAgentWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve Cloud and Enterprise Agent
    * Returns details for an agent, including assigned tests.  For Enterprise Agents, this operation returns additional details, including utilization data, assigned accounts, a list of account groups the agent is assigned to, and utilization details. 
-   * @param agentId Unique ID for the agent. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AgentDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentDetails> getAgentWithHttpInfo(String agentId, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    getAgentValidateRequest(agentId);
+  public ApiResponse<AgentDetails> getAgentWithHttpInfo(GetAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgent");
+    }
+    getAgentValidateRequest(request.getAgentId());
 
-    var requestBuilder = getAgentRequestBuilder(agentId, aid, expand);
+    var requestBuilder = getAgentRequestBuilder(request.getAgentId(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AgentDetails.class);
   }
@@ -155,8 +195,8 @@ public class CloudAndEnterpriseAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentRequestBuilder(String agentId, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentRequestBuilder(String agentId, String aid, List<AgentDetailsExpand> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/agents/{agentId}"
@@ -175,37 +215,86 @@ public class CloudAndEnterpriseAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentRequest {
+    private final String agentId;
+    private final String aid;
+    private final List<AgentDetailsExpand> expand;
+
+    private GetAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<AgentDetailsExpand> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String agentId;
+      private String aid;
+      private List<AgentDetailsExpand> expand;
+
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<AgentDetailsExpand> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetAgentRequest build() {
+        return new GetAgentRequest(this);
+      }
+    }
+  }
+
   /**
    * List Cloud and Enterprise Agents
    * List the Cloud and Enterprise Agents available to your account in ThousandEyes.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
-   * @param agentTypes Specifies the type of agent to request. (optional
-   * @param labels Specifies the labels of the agents to request. (optional
-   * @param tagKeys Specifies which tag keys to request from the agents. (optional
+   * @param request operation parameters (required)
    * @return CloudEnterpriseAgents
    * @throws ApiException if fails to make API call
    */
-  public CloudEnterpriseAgents getAgents(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels, List<String> tagKeys) throws ApiException {
-    ApiResponse<CloudEnterpriseAgents> response = getAgentsWithHttpInfo(aid, expand, agentTypes, labels, tagKeys);
+  public CloudEnterpriseAgents getAgents(GetAgentsRequest request) throws ApiException {
+    ApiResponse<CloudEnterpriseAgents> response = getAgentsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List Cloud and Enterprise Agents
    * List the Cloud and Enterprise Agents available to your account in ThousandEyes.  If an agent is an Enterprise Agent, this operation returns the agent’s public and private IP addresses, as well as the public network where the agent is located. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
-   * @param agentTypes Specifies the type of agent to request. (optional
-   * @param labels Specifies the labels of the agents to request. (optional
-   * @param tagKeys Specifies which tag keys to request from the agents. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CloudEnterpriseAgents&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CloudEnterpriseAgents> getAgentsWithHttpInfo(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels, List<String> tagKeys) throws ApiException {
+  public ApiResponse<CloudEnterpriseAgents> getAgentsWithHttpInfo(GetAgentsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgents");
+    }
     getAgentsValidateRequest();
 
-    var requestBuilder = getAgentsRequestBuilder(aid, expand, agentTypes, labels, tagKeys);
+    var requestBuilder = getAgentsRequestBuilder(request.getAid(), request.getExpand(), request.getAgentTypes(), request.getLabels(), request.getTagKeys());
 
     return apiClient.send(requestBuilder.build(), CloudEnterpriseAgents.class);
   }
@@ -213,8 +302,8 @@ public class CloudAndEnterpriseAgentsApi {
   private void getAgentsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentsRequestBuilder(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels, List<String> tagKeys) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentsRequestBuilder(String aid, List<AgentListExpand> expand, List<CloudEnterpriseAgentType> agentTypes, List<String> labels, List<String> tagKeys) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/agents";
@@ -235,35 +324,108 @@ public class CloudAndEnterpriseAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentsRequest {
+    private final String aid;
+    private final List<AgentListExpand> expand;
+    private final List<CloudEnterpriseAgentType> agentTypes;
+    private final List<String> labels;
+    private final List<String> tagKeys;
+
+    private GetAgentsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+      this.agentTypes = builder.agentTypes;
+      this.labels = builder.labels;
+      this.tagKeys = builder.tagKeys;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<AgentListExpand> getExpand() {
+      return expand;
+    }
+    public List<CloudEnterpriseAgentType> getAgentTypes() {
+      return agentTypes;
+    }
+    public List<String> getLabels() {
+      return labels;
+    }
+    public List<String> getTagKeys() {
+      return tagKeys;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .expand(expand)
+          .agentTypes(agentTypes)
+          .labels(labels)
+          .tagKeys(tagKeys);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private List<AgentListExpand> expand;
+      private List<CloudEnterpriseAgentType> agentTypes;
+      private List<String> labels;
+      private List<String> tagKeys;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<AgentListExpand> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder agentTypes(List<CloudEnterpriseAgentType> agentTypes) {
+        this.agentTypes = agentTypes;
+        return this;
+      }
+      public Builder labels(List<String> labels) {
+        this.labels = labels;
+        return this;
+      }
+      public Builder tagKeys(List<String> tagKeys) {
+        this.tagKeys = tagKeys;
+        return this;
+      }
+      public GetAgentsRequest build() {
+        return new GetAgentsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update Enterprise Agent
    * Updates details for an Enterprise Agent. This operation can only be used for Enterprise Agents, and only for users in a role that permits modification of Enterprise Agents.  Important notes related to agent modification on tests: * if an agent is removed from a test, the modification date for tests using that agent at the time it was removed will be changed. * If an agent is removed from an entire account group, then all tests using this agent in the removed account group will be updated to reflect the removed agent. * If a removed agent is the final remaining agent on a test, then the test will be disabled when the agent is removed.  Users can update the following fields: * &#x60;agentName&#x60;: String representation of an agent. No two agents can have the same display name. * &#x60;enabled&#x60;: Boolean representation of agent state. * &#x60;accountGroups&#x60;: An array of account group ids. See &#x60;v7/account-groups&#x60; to pull a list of account IDs. * &#x60;tests&#x60;: An array of test Is. See &#x60;v7/tests&#x60; to retrieve a list tests available in the current account context. * &#x60;ipv6Policy&#x60;: Enum representation of the IP version policy. * &#x60;keepBrowserCache&#x60;: Boolean representation of the Keep browser cache state. * &#x60;targetForTests&#x60;: String representation of the target IP address or domain name. This represents the test destination when agent is acting as a test target in an agent-to-agent test. * &#x60;localResolutionPrefixes&#x60;: This array of strings represents the public IP ranges where the Enterprise Agent performs rDNS (Reverse DNS) lookups. The range should be in CIDR notation, such as &#x60;10.1.1.0/24&#x60;. Please note that a maximum of 5 prefixes is allowed. This only applies to Enterprise Agents and Enterprise Agent clusters.
-   * @param agentId Unique ID for the agent. (required)
-   * @param agentRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return AgentDetails
    * @throws ApiException if fails to make API call
    */
-  public AgentDetails updateAgent(String agentId, AgentRequest agentRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    ApiResponse<AgentDetails> response = updateAgentWithHttpInfo(agentId, agentRequest, aid, expand);
+  public AgentDetails updateAgent(UpdateAgentRequest request) throws ApiException {
+    ApiResponse<AgentDetails> response = updateAgentWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update Enterprise Agent
    * Updates details for an Enterprise Agent. This operation can only be used for Enterprise Agents, and only for users in a role that permits modification of Enterprise Agents.  Important notes related to agent modification on tests: * if an agent is removed from a test, the modification date for tests using that agent at the time it was removed will be changed. * If an agent is removed from an entire account group, then all tests using this agent in the removed account group will be updated to reflect the removed agent. * If a removed agent is the final remaining agent on a test, then the test will be disabled when the agent is removed.  Users can update the following fields: * &#x60;agentName&#x60;: String representation of an agent. No two agents can have the same display name. * &#x60;enabled&#x60;: Boolean representation of agent state. * &#x60;accountGroups&#x60;: An array of account group ids. See &#x60;v7/account-groups&#x60; to pull a list of account IDs. * &#x60;tests&#x60;: An array of test Is. See &#x60;v7/tests&#x60; to retrieve a list tests available in the current account context. * &#x60;ipv6Policy&#x60;: Enum representation of the IP version policy. * &#x60;keepBrowserCache&#x60;: Boolean representation of the Keep browser cache state. * &#x60;targetForTests&#x60;: String representation of the target IP address or domain name. This represents the test destination when agent is acting as a test target in an agent-to-agent test. * &#x60;localResolutionPrefixes&#x60;: This array of strings represents the public IP ranges where the Enterprise Agent performs rDNS (Reverse DNS) lookups. The range should be in CIDR notation, such as &#x60;10.1.1.0/24&#x60;. Please note that a maximum of 5 prefixes is allowed. This only applies to Enterprise Agents and Enterprise Agent clusters.
-   * @param agentId Unique ID for the agent. (required)
-   * @param agentRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AgentDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentDetails> updateAgentWithHttpInfo(String agentId, AgentRequest agentRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    updateAgentValidateRequest(agentId, agentRequest);
+  public ApiResponse<AgentDetails> updateAgentWithHttpInfo(UpdateAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateAgent");
+    }
+    updateAgentValidateRequest(request.getAgentId(), request.getAgentRequest());
 
-    var requestBuilder = updateAgentRequestBuilder(agentId, agentRequest, aid, expand);
+    var requestBuilder = updateAgentRequestBuilder(request.getAgentId(), request.getAgentRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AgentDetails.class);
   }
@@ -279,8 +441,8 @@ public class CloudAndEnterpriseAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAgentRequestBuilder(String agentId, AgentRequest agentRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateAgentRequestBuilder(String agentId, AgentRequest agentRequest, String aid, List<AgentDetailsExpand> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/agents/{agentId}"
@@ -301,4 +463,69 @@ public class CloudAndEnterpriseAgentsApi {
     requestBuilder.requestBody(agentRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateAgentRequest {
+    private final String agentId;
+    private final AgentRequest agentRequest;
+    private final String aid;
+    private final List<AgentDetailsExpand> expand;
+
+    private UpdateAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.agentRequest = builder.agentRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public AgentRequest getAgentRequest() {
+      return agentRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<AgentDetailsExpand> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .agentRequest(agentRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String agentId;
+      private AgentRequest agentRequest;
+      private String aid;
+      private List<AgentDetailsExpand> expand;
+
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder agentRequest(AgentRequest agentRequest) {
+        this.agentRequest = agentRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<AgentDetailsExpand> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateAgentRequest build() {
+        return new UpdateAgentRequest(this);
+      }
+    }
+  }
+
 }

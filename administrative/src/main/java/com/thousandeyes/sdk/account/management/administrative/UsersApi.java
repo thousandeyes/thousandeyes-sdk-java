@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,28 +63,29 @@ public class UsersApi {
   /**
    * Create user
    * Creates a new user.  The following applies when creating a user:  * If the user is already a member of another ThousandEyes customer organization, the user must set their own login account group.  * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
-   * @param userRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return CreatedUser
    * @throws ApiException if fails to make API call
    */
-  public CreatedUser createUser(UserRequest userRequest, String aid) throws ApiException {
-    ApiResponse<CreatedUser> response = createUserWithHttpInfo(userRequest, aid);
+  public CreatedUser createUser(CreateUserRequest request) throws ApiException {
+    ApiResponse<CreatedUser> response = createUserWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create user
    * Creates a new user.  The following applies when creating a user:  * If the user is already a member of another ThousandEyes customer organization, the user must set their own login account group.  * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
-   * @param userRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CreatedUser&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CreatedUser> createUserWithHttpInfo(UserRequest userRequest, String aid) throws ApiException {
-    createUserValidateRequest(userRequest);
+  public ApiResponse<CreatedUser> createUserWithHttpInfo(CreateUserRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createUser");
+    }
+    createUserValidateRequest(request.getUserRequest());
 
-    var requestBuilder = createUserRequestBuilder(userRequest, aid);
+    var requestBuilder = createUserRequestBuilder(request.getUserRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), CreatedUser.class);
   }
@@ -99,8 +97,8 @@ public class UsersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createUserRequestBuilder(UserRequest userRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createUserRequestBuilder(UserRequest userRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/users";
@@ -119,29 +117,73 @@ public class UsersApi {
     requestBuilder.requestBody(userRequest);
     return requestBuilder;
   }
-  /**
-   * Delete user
-   * Deletes a user using the user ID. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
-   * @param id Identifier for the user. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteUser(String id, String aid) throws ApiException {
-    deleteUserWithHttpInfo(id, aid);
+
+  public static final class CreateUserRequest {
+    private final UserRequest userRequest;
+    private final String aid;
+
+    private CreateUserRequest(Builder builder) {
+      this.userRequest = builder.userRequest;
+      this.aid = builder.aid;
+    }
+    public UserRequest getUserRequest() {
+      return userRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .userRequest(userRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private UserRequest userRequest;
+      private String aid;
+
+      public Builder userRequest(UserRequest userRequest) {
+        this.userRequest = userRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateUserRequest build() {
+        return new CreateUserRequest(this);
+      }
+    }
   }
 
   /**
    * Delete user
    * Deletes a user using the user ID. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
-   * @param id Identifier for the user. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteUser(DeleteUserRequest request) throws ApiException {
+    deleteUserWithHttpInfo(request);
+  }
+
+  /**
+   * Delete user
+   * Deletes a user using the user ID. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteUserWithHttpInfo(String id, String aid) throws ApiException {
-    deleteUserValidateRequest(id);
+  public ApiResponse<Void> deleteUserWithHttpInfo(DeleteUserRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteUser");
+    }
+    deleteUserValidateRequest(request.getId());
 
-    var requestBuilder = deleteUserRequestBuilder(id, aid);
+    var requestBuilder = deleteUserRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -153,8 +195,8 @@ public class UsersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteUserRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteUserRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/users/{id}"
@@ -172,6 +214,49 @@ public class UsersApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteUserRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteUserRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteUserRequest build() {
+        return new DeleteUserRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve current user
    * Retrieves detailed information about the current user.
@@ -200,8 +285,8 @@ public class UsersApi {
   private void getCurrentUserValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getCurrentUserRequestBuilder() throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getCurrentUserRequestBuilder() throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/users/current";
@@ -215,28 +300,29 @@ public class UsersApi {
   /**
    * Retrieve user
    * Retrieves detailed information about a user. This operation requires the &#x60;API Access&#x60; and &#x60;View All Users&#x60; permissions.
-   * @param id Identifier for the user. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return UserDetail
    * @throws ApiException if fails to make API call
    */
-  public UserDetail getUser(String id, String aid) throws ApiException {
-    ApiResponse<UserDetail> response = getUserWithHttpInfo(id, aid);
+  public UserDetail getUser(GetUserRequest request) throws ApiException {
+    ApiResponse<UserDetail> response = getUserWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve user
    * Retrieves detailed information about a user. This operation requires the &#x60;API Access&#x60; and &#x60;View All Users&#x60; permissions.
-   * @param id Identifier for the user. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;UserDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UserDetail> getUserWithHttpInfo(String id, String aid) throws ApiException {
-    getUserValidateRequest(id);
+  public ApiResponse<UserDetail> getUserWithHttpInfo(GetUserRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getUser");
+    }
+    getUserValidateRequest(request.getId());
 
-    var requestBuilder = getUserRequestBuilder(id, aid);
+    var requestBuilder = getUserRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), UserDetail.class);
   }
@@ -248,8 +334,8 @@ public class UsersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getUserRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getUserRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/users/{id}"
@@ -267,29 +353,75 @@ public class UsersApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetUserRequest {
+    private final String id;
+    private final String aid;
+
+    private GetUserRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetUserRequest build() {
+        return new GetUserRequest(this);
+      }
+    }
+  }
+
   /**
    * List users
    * Retrieves a list of users in the organization the account group ID belongs to. This operation requires the &#x60;API Access&#x60; and &#x60;View all users&#x60; permissions. See [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext) for more information on changing the account group context.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Users
    * @throws ApiException if fails to make API call
    */
-  public Users getUsers(String aid) throws ApiException {
-    ApiResponse<Users> response = getUsersWithHttpInfo(aid);
+  public Users getUsers(GetUsersRequest request) throws ApiException {
+    ApiResponse<Users> response = getUsersWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List users
    * Retrieves a list of users in the organization the account group ID belongs to. This operation requires the &#x60;API Access&#x60; and &#x60;View all users&#x60; permissions. See [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext) for more information on changing the account group context.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Users&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Users> getUsersWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<Users> getUsersWithHttpInfo(GetUsersRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getUsers");
+    }
     getUsersValidateRequest();
 
-    var requestBuilder = getUsersRequestBuilder(aid);
+    var requestBuilder = getUsersRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), Users.class);
   }
@@ -297,8 +429,8 @@ public class UsersApi {
   private void getUsersValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getUsersRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getUsersRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/users";
@@ -315,33 +447,64 @@ public class UsersApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetUsersRequest {
+    private final String aid;
+
+    private GetUsersRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetUsersRequest build() {
+        return new GetUsersRequest(this);
+      }
+    }
+  }
+
   /**
    * Update user
    * Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.   When updating a user, the following applies: * When updating a user&#39;s email address, the user must confirm the username change before they can subsequently log in or perform API operations. * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
-   * @param id Identifier for the user. (required)
-   * @param userRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return UserDetail
    * @throws ApiException if fails to make API call
    */
-  public UserDetail updateUser(String id, UserRequest userRequest, String aid) throws ApiException {
-    ApiResponse<UserDetail> response = updateUserWithHttpInfo(id, userRequest, aid);
+  public UserDetail updateUser(UpdateUserRequest request) throws ApiException {
+    ApiResponse<UserDetail> response = updateUserWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update user
    * Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This operation requires the &#x60;Edit users in all account groups&#x60; or &#x60;Edit users&#x60; permission.   When updating a user, the following applies: * When updating a user&#39;s email address, the user must confirm the username change before they can subsequently log in or perform API operations. * Any update that includes &#x60;accountGroupRoles&#x60; is a replace-based update and not a delta-based update.
-   * @param id Identifier for the user. (required)
-   * @param userRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;UserDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UserDetail> updateUserWithHttpInfo(String id, UserRequest userRequest, String aid) throws ApiException {
-    updateUserValidateRequest(id, userRequest);
+  public ApiResponse<UserDetail> updateUserWithHttpInfo(UpdateUserRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateUser");
+    }
+    updateUserValidateRequest(request.getId(), request.getUserRequest());
 
-    var requestBuilder = updateUserRequestBuilder(id, userRequest, aid);
+    var requestBuilder = updateUserRequestBuilder(request.getId(), request.getUserRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), UserDetail.class);
   }
@@ -357,8 +520,8 @@ public class UsersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateUserRequestBuilder(String id, UserRequest userRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateUserRequestBuilder(String id, UserRequest userRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/users/{id}"
@@ -378,4 +541,58 @@ public class UsersApi {
     requestBuilder.requestBody(userRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateUserRequest {
+    private final String id;
+    private final UserRequest userRequest;
+    private final String aid;
+
+    private UpdateUserRequest(Builder builder) {
+      this.id = builder.id;
+      this.userRequest = builder.userRequest;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public UserRequest getUserRequest() {
+      return userRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .userRequest(userRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private UserRequest userRequest;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder userRequest(UserRequest userRequest) {
+        this.userRequest = userRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateUserRequest build() {
+        return new UpdateUserRequest(this);
+      }
+    }
+  }
+
 }

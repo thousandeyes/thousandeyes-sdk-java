@@ -17,7 +17,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getTestConsoleLogsAgentRoundResults
 
-> ConsoleLogsTestResults getTestConsoleLogsAgentRoundResults(testId, agentId, roundId, aid)
+> ConsoleLogsTestResults getTestConsoleLogsAgentRoundResults(GetTestConsoleLogsAgentRoundResultsRequest)
 
 Get console logs test results by agent and round
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
 
 public class Example {
@@ -49,7 +49,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ConsoleLogsTestResults result = apiInstance.getTestConsoleLogsAgentRoundResults(testId, agentId, roundId, aid);
+            WebTransactionsTestResultsApi.GetTestConsoleLogsAgentRoundResultsRequest request = WebTransactionsTestResultsApi.GetTestConsoleLogsAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            ConsoleLogsTestResults result = apiInstance.getTestConsoleLogsAgentRoundResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionsTestResultsApi#getTestConsoleLogsAgentRoundResults");
@@ -64,13 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestConsoleLogsAgentRoundResultsRequest**](WebTransactionsTestResultsApi.md#GetTestConsoleLogsAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## getTestConsoleLogsAgentRoundResultsWithHttpInfo
 
-> ApiResponse<ConsoleLogsTestResults> getTestConsoleLogsAgentRoundResults getTestConsoleLogsAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid)
+> ApiResponse<ConsoleLogsTestResults> getTestConsoleLogsAgentRoundResults getTestConsoleLogsAgentRoundResultsWithHttpInfo(GetTestConsoleLogsAgentRoundResultsRequest)
 
 Get console logs test results by agent and round
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
 
 public class Example {
@@ -134,7 +136,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ConsoleLogsTestResults> response = apiInstance.getTestConsoleLogsAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+            WebTransactionsTestResultsApi.GetTestConsoleLogsAgentRoundResultsRequest request = WebTransactionsTestResultsApi.GetTestConsoleLogsAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            ApiResponse<ConsoleLogsTestResults> response = apiInstance.getTestConsoleLogsAgentRoundResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -151,13 +159,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestConsoleLogsAgentRoundResultsRequest**](WebTransactionsTestResultsApi.md#GetTestConsoleLogsAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -187,9 +191,22 @@ ApiResponse<[**ConsoleLogsTestResults**](ConsoleLogsTestResults.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetTestConsoleLogsAgentRoundResultsRequest"></a>
+## GetTestConsoleLogsAgentRoundResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **agentId** | **String** | Agent ID | |
+| **roundId** | **String** | Round ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getTestWebTransactionAgentRoundPageResults
 
-> WebTransactionPageDetailTestResults getTestWebTransactionAgentRoundPageResults(testId, agentId, roundId, pageId, aid)
+> WebTransactionPageDetailTestResults getTestWebTransactionAgentRoundPageResults(GetTestWebTransactionAgentRoundPageResultsRequest)
 
 Get detailed web transactions test result by agent, round, and page
 
@@ -203,7 +220,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
 
 public class Example {
@@ -222,7 +239,14 @@ public class Example {
         String pageId = "281474976710706"; // String | Web page ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            WebTransactionPageDetailTestResults result = apiInstance.getTestWebTransactionAgentRoundPageResults(testId, agentId, roundId, pageId, aid);
+            WebTransactionsTestResultsApi.GetTestWebTransactionAgentRoundPageResultsRequest request = WebTransactionsTestResultsApi.GetTestWebTransactionAgentRoundPageResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .pageId(pageId)
+                .aid(aid)
+                .build();
+            WebTransactionPageDetailTestResults result = apiInstance.getTestWebTransactionAgentRoundPageResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionsTestResultsApi#getTestWebTransactionAgentRoundPageResults");
@@ -237,14 +261,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **pageId** | **String**| Web page ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestWebTransactionAgentRoundPageResultsRequest**](WebTransactionsTestResultsApi.md#GetTestWebTransactionAgentRoundPageResultsRequest)|-|-|
 
 ### Return type
 
@@ -275,7 +294,7 @@ public class Example {
 
 ## getTestWebTransactionAgentRoundPageResultsWithHttpInfo
 
-> ApiResponse<WebTransactionPageDetailTestResults> getTestWebTransactionAgentRoundPageResults getTestWebTransactionAgentRoundPageResultsWithHttpInfo(testId, agentId, roundId, pageId, aid)
+> ApiResponse<WebTransactionPageDetailTestResults> getTestWebTransactionAgentRoundPageResults getTestWebTransactionAgentRoundPageResultsWithHttpInfo(GetTestWebTransactionAgentRoundPageResultsRequest)
 
 Get detailed web transactions test result by agent, round, and page
 
@@ -290,7 +309,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
 
 public class Example {
@@ -309,7 +328,14 @@ public class Example {
         String pageId = "281474976710706"; // String | Web page ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<WebTransactionPageDetailTestResults> response = apiInstance.getTestWebTransactionAgentRoundPageResultsWithHttpInfo(testId, agentId, roundId, pageId, aid);
+            WebTransactionsTestResultsApi.GetTestWebTransactionAgentRoundPageResultsRequest request = WebTransactionsTestResultsApi.GetTestWebTransactionAgentRoundPageResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .pageId(pageId)
+                .aid(aid)
+                .build();
+            ApiResponse<WebTransactionPageDetailTestResults> response = apiInstance.getTestWebTransactionAgentRoundPageResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -326,14 +352,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **pageId** | **String**| Web page ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestWebTransactionAgentRoundPageResultsRequest**](WebTransactionsTestResultsApi.md#GetTestWebTransactionAgentRoundPageResultsRequest)|-|-|
 
 ### Return type
 
@@ -363,9 +384,23 @@ ApiResponse<[**WebTransactionPageDetailTestResults**](WebTransactionPageDetailTe
 | **0** | An error occurred |  -  |
 
 
+<a id="GetTestWebTransactionAgentRoundPageResultsRequest"></a>
+## GetTestWebTransactionAgentRoundPageResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **agentId** | **String** | Agent ID | |
+| **roundId** | **String** | Round ID | |
+| **pageId** | **String** | Web page ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getTestWebTransactionAgentRoundResults
 
-> WebTransactionDetailTestResults getTestWebTransactionAgentRoundResults(testId, agentId, roundId, aid)
+> WebTransactionDetailTestResults getTestWebTransactionAgentRoundResults(GetTestWebTransactionAgentRoundResultsRequest)
 
 Get web transactions test results by agent and round
 
@@ -379,7 +414,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
 
 public class Example {
@@ -397,7 +432,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            WebTransactionDetailTestResults result = apiInstance.getTestWebTransactionAgentRoundResults(testId, agentId, roundId, aid);
+            WebTransactionsTestResultsApi.GetTestWebTransactionAgentRoundResultsRequest request = WebTransactionsTestResultsApi.GetTestWebTransactionAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            WebTransactionDetailTestResults result = apiInstance.getTestWebTransactionAgentRoundResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionsTestResultsApi#getTestWebTransactionAgentRoundResults");
@@ -412,13 +453,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestWebTransactionAgentRoundResultsRequest**](WebTransactionsTestResultsApi.md#GetTestWebTransactionAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -449,7 +486,7 @@ public class Example {
 
 ## getTestWebTransactionAgentRoundResultsWithHttpInfo
 
-> ApiResponse<WebTransactionDetailTestResults> getTestWebTransactionAgentRoundResults getTestWebTransactionAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid)
+> ApiResponse<WebTransactionDetailTestResults> getTestWebTransactionAgentRoundResults getTestWebTransactionAgentRoundResultsWithHttpInfo(GetTestWebTransactionAgentRoundResultsRequest)
 
 Get web transactions test results by agent and round
 
@@ -464,7 +501,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
 
 public class Example {
@@ -482,7 +519,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<WebTransactionDetailTestResults> response = apiInstance.getTestWebTransactionAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+            WebTransactionsTestResultsApi.GetTestWebTransactionAgentRoundResultsRequest request = WebTransactionsTestResultsApi.GetTestWebTransactionAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            ApiResponse<WebTransactionDetailTestResults> response = apiInstance.getTestWebTransactionAgentRoundResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -499,13 +542,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestWebTransactionAgentRoundResultsRequest**](WebTransactionsTestResultsApi.md#GetTestWebTransactionAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -535,9 +574,22 @@ ApiResponse<[**WebTransactionDetailTestResults**](WebTransactionDetailTestResult
 | **0** | An error occurred |  -  |
 
 
+<a id="GetTestWebTransactionAgentRoundResultsRequest"></a>
+## GetTestWebTransactionAgentRoundResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **agentId** | **String** | Agent ID | |
+| **roundId** | **String** | Round ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getTestWebTransactionResults
 
-> WebTransactionTestResults getTestWebTransactionResults(testId, aid, window, startDate, endDate, cursor)
+> WebTransactionTestResults getTestWebTransactionResults(GetTestWebTransactionResultsRequest)
 
 Get web transactions test results
 
@@ -551,7 +603,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
 
 public class Example {
@@ -571,7 +623,15 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            WebTransactionTestResults result = apiInstance.getTestWebTransactionResults(testId, aid, window, startDate, endDate, cursor);
+            WebTransactionsTestResultsApi.GetTestWebTransactionResultsRequest request = WebTransactionsTestResultsApi.GetTestWebTransactionResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            WebTransactionTestResults result = apiInstance.getTestWebTransactionResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionsTestResultsApi#getTestWebTransactionResults");
@@ -586,15 +646,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetTestWebTransactionResultsRequest**](WebTransactionsTestResultsApi.md#GetTestWebTransactionResultsRequest)|-|-|
 
 ### Return type
 
@@ -625,7 +679,7 @@ public class Example {
 
 ## getTestWebTransactionResultsWithHttpInfo
 
-> ApiResponse<WebTransactionTestResults> getTestWebTransactionResults getTestWebTransactionResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<WebTransactionTestResults> getTestWebTransactionResults getTestWebTransactionResultsWithHttpInfo(GetTestWebTransactionResultsRequest)
 
 Get web transactions test results
 
@@ -640,7 +694,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.WebTransactionsTestResultsApi;
 
 public class Example {
@@ -660,7 +714,15 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<WebTransactionTestResults> response = apiInstance.getTestWebTransactionResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            WebTransactionsTestResultsApi.GetTestWebTransactionResultsRequest request = WebTransactionsTestResultsApi.GetTestWebTransactionResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            ApiResponse<WebTransactionTestResults> response = apiInstance.getTestWebTransactionResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -677,15 +739,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetTestWebTransactionResultsRequest**](WebTransactionsTestResultsApi.md#GetTestWebTransactionResultsRequest)|-|-|
 
 ### Return type
 
@@ -713,4 +769,19 @@ ApiResponse<[**WebTransactionTestResults**](WebTransactionTestResults.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetTestWebTransactionResultsRequest"></a>
+## GetTestWebTransactionResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
 

@@ -31,7 +31,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## cloneDashboard
 
-> Dashboard cloneDashboard(dashboardId, aid, cloneDashboardRequest)
+> Dashboard cloneDashboard(CloneDashboardRequest)
 
 Clone dashboard
 
@@ -45,7 +45,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -60,9 +60,14 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        CloneDashboardRequest cloneDashboardRequest = new CloneDashboardRequest(); // CloneDashboardRequest | Optional overrides for the cloned dashboard.
+        com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest cloneDashboardRequest = new CloneDashboardRequest(); // CloneDashboardRequest | Optional overrides for the cloned dashboard.
         try {
-            Dashboard result = apiInstance.cloneDashboard(dashboardId, aid, cloneDashboardRequest);
+            DashboardsApi.CloneDashboardRequest request = DashboardsApi.CloneDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid(aid)
+                .cloneDashboardRequest(cloneDashboardRequest)
+                .build();
+            Dashboard result = apiInstance.cloneDashboard(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#cloneDashboard");
@@ -77,12 +82,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **cloneDashboardRequest** | [**CloneDashboardRequest**](CloneDashboardRequest.md)| Optional overrides for the cloned dashboard. | [optional] |
+| request | [**CloneDashboardRequest**](DashboardsApi.md#CloneDashboardRequest)|-|-|
 
 ### Return type
 
@@ -111,7 +113,7 @@ public class Example {
 
 ## cloneDashboardWithHttpInfo
 
-> ApiResponse<Dashboard> cloneDashboard cloneDashboardWithHttpInfo(dashboardId, aid, cloneDashboardRequest)
+> ApiResponse<Dashboard> cloneDashboard cloneDashboardWithHttpInfo(CloneDashboardRequest)
 
 Clone dashboard
 
@@ -126,7 +128,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -141,9 +143,14 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
-        CloneDashboardRequest cloneDashboardRequest = new CloneDashboardRequest(); // CloneDashboardRequest | Optional overrides for the cloned dashboard.
+        com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest cloneDashboardRequest = new CloneDashboardRequest(); // CloneDashboardRequest | Optional overrides for the cloned dashboard.
         try {
-            ApiResponse<Dashboard> response = apiInstance.cloneDashboardWithHttpInfo(dashboardId, aid, cloneDashboardRequest);
+            DashboardsApi.CloneDashboardRequest request = DashboardsApi.CloneDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid(aid)
+                .cloneDashboardRequest(cloneDashboardRequest)
+                .build();
+            ApiResponse<Dashboard> response = apiInstance.cloneDashboardWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -160,12 +167,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **cloneDashboardRequest** | [**CloneDashboardRequest**](CloneDashboardRequest.md)| Optional overrides for the cloned dashboard. | [optional] |
+| request | [**CloneDashboardRequest**](DashboardsApi.md#CloneDashboardRequest)|-|-|
 
 ### Return type
 
@@ -193,9 +197,21 @@ ApiResponse<[**Dashboard**](Dashboard.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CloneDashboardRequest"></a>
+## CloneDashboardRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **cloneDashboardRequest** | [**CloneDashboardRequest**](CloneDashboardRequest.md) | Optional overrides for the cloned dashboard. | [optional] |
+
+
+
 ## createDashboard
 
-> Dashboard createDashboard(dashboard, aid)
+> Dashboard createDashboard(CreateDashboardRequest)
 
 Create dashboard
 
@@ -209,7 +225,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -225,7 +241,11 @@ public class Example {
         Dashboard dashboard = new Dashboard(); // Dashboard | Request body schema to create a dashboard.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Dashboard result = apiInstance.createDashboard(dashboard, aid);
+            DashboardsApi.CreateDashboardRequest request = DashboardsApi.CreateDashboardRequest.builder()
+                .dashboard(dashboard)
+                .aid(aid)
+                .build();
+            Dashboard result = apiInstance.createDashboard(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#createDashboard");
@@ -240,11 +260,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboard** | [**Dashboard**](Dashboard.md)| Request body schema to create a dashboard. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateDashboardRequest**](DashboardsApi.md#CreateDashboardRequest)|-|-|
 
 ### Return type
 
@@ -273,7 +291,7 @@ public class Example {
 
 ## createDashboardWithHttpInfo
 
-> ApiResponse<Dashboard> createDashboard createDashboardWithHttpInfo(dashboard, aid)
+> ApiResponse<Dashboard> createDashboard createDashboardWithHttpInfo(CreateDashboardRequest)
 
 Create dashboard
 
@@ -288,7 +306,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -304,7 +322,11 @@ public class Example {
         Dashboard dashboard = new Dashboard(); // Dashboard | Request body schema to create a dashboard.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Dashboard> response = apiInstance.createDashboardWithHttpInfo(dashboard, aid);
+            DashboardsApi.CreateDashboardRequest request = DashboardsApi.CreateDashboardRequest.builder()
+                .dashboard(dashboard)
+                .aid(aid)
+                .build();
+            ApiResponse<Dashboard> response = apiInstance.createDashboardWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -321,11 +343,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboard** | [**Dashboard**](Dashboard.md)| Request body schema to create a dashboard. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateDashboardRequest**](DashboardsApi.md#CreateDashboardRequest)|-|-|
 
 ### Return type
 
@@ -353,9 +373,20 @@ ApiResponse<[**Dashboard**](Dashboard.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateDashboardRequest"></a>
+## CreateDashboardRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboard** | [**Dashboard**](Dashboard.md) | Request body schema to create a dashboard. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteDashboard
 
-> void deleteDashboard(dashboardId, aid)
+> void deleteDashboard(DeleteDashboardRequest)
 
 Delete dashboard
 
@@ -369,7 +400,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -385,7 +416,11 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteDashboard(dashboardId, aid);
+            DashboardsApi.DeleteDashboardRequest request = DashboardsApi.DeleteDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteDashboard(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#deleteDashboard");
             System.err.println("Status code: " + e.getCode());
@@ -399,11 +434,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteDashboardRequest**](DashboardsApi.md#DeleteDashboardRequest)|-|-|
 
 ### Return type
 
@@ -432,7 +465,7 @@ null (empty response body)
 
 ## deleteDashboardWithHttpInfo
 
-> ApiResponse<Void> deleteDashboard deleteDashboardWithHttpInfo(dashboardId, aid)
+> ApiResponse<Void> deleteDashboard deleteDashboardWithHttpInfo(DeleteDashboardRequest)
 
 Delete dashboard
 
@@ -447,7 +480,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -463,7 +496,11 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteDashboardWithHttpInfo(dashboardId, aid);
+            DashboardsApi.DeleteDashboardRequest request = DashboardsApi.DeleteDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteDashboardWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -479,11 +516,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteDashboardRequest**](DashboardsApi.md#DeleteDashboardRequest)|-|-|
 
 ### Return type
 
@@ -511,9 +546,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteDashboardRequest"></a>
+## DeleteDashboardRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteDashboardSchedule
 
-> void deleteDashboardSchedule(dashboardId, aid)
+> void deleteDashboardSchedule(DeleteDashboardScheduleRequest)
 
 Delete dashboard snapshot schedule
 
@@ -527,7 +573,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -543,7 +589,11 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteDashboardSchedule(dashboardId, aid);
+            DashboardsApi.DeleteDashboardScheduleRequest request = DashboardsApi.DeleteDashboardScheduleRequest.builder()
+                .dashboardId(dashboardId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteDashboardSchedule(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#deleteDashboardSchedule");
             System.err.println("Status code: " + e.getCode());
@@ -557,11 +607,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteDashboardScheduleRequest**](DashboardsApi.md#DeleteDashboardScheduleRequest)|-|-|
 
 ### Return type
 
@@ -591,7 +639,7 @@ null (empty response body)
 
 ## deleteDashboardScheduleWithHttpInfo
 
-> ApiResponse<Void> deleteDashboardSchedule deleteDashboardScheduleWithHttpInfo(dashboardId, aid)
+> ApiResponse<Void> deleteDashboardSchedule deleteDashboardScheduleWithHttpInfo(DeleteDashboardScheduleRequest)
 
 Delete dashboard snapshot schedule
 
@@ -606,7 +654,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -622,7 +670,11 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteDashboardScheduleWithHttpInfo(dashboardId, aid);
+            DashboardsApi.DeleteDashboardScheduleRequest request = DashboardsApi.DeleteDashboardScheduleRequest.builder()
+                .dashboardId(dashboardId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteDashboardScheduleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -638,11 +690,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteDashboardScheduleRequest**](DashboardsApi.md#DeleteDashboardScheduleRequest)|-|-|
 
 ### Return type
 
@@ -671,9 +721,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteDashboardScheduleRequest"></a>
+## DeleteDashboardScheduleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getDashboard
 
-> ApiDashboard getDashboard(dashboardId, aid)
+> ApiDashboard getDashboard(GetDashboardRequest)
 
 Retrieve dashboard
 
@@ -687,7 +748,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -703,7 +764,11 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiDashboard result = apiInstance.getDashboard(dashboardId, aid);
+            DashboardsApi.GetDashboardRequest request = DashboardsApi.GetDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid(aid)
+                .build();
+            ApiDashboard result = apiInstance.getDashboard(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#getDashboard");
@@ -718,11 +783,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDashboardRequest**](DashboardsApi.md#GetDashboardRequest)|-|-|
 
 ### Return type
 
@@ -751,7 +814,7 @@ public class Example {
 
 ## getDashboardWithHttpInfo
 
-> ApiResponse<ApiDashboard> getDashboard getDashboardWithHttpInfo(dashboardId, aid)
+> ApiResponse<ApiDashboard> getDashboard getDashboardWithHttpInfo(GetDashboardRequest)
 
 Retrieve dashboard
 
@@ -766,7 +829,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -782,7 +845,11 @@ public class Example {
         String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiDashboard> response = apiInstance.getDashboardWithHttpInfo(dashboardId, aid);
+            DashboardsApi.GetDashboardRequest request = DashboardsApi.GetDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid(aid)
+                .build();
+            ApiResponse<ApiDashboard> response = apiInstance.getDashboardWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -799,11 +866,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDashboardRequest**](DashboardsApi.md#GetDashboardRequest)|-|-|
 
 ### Return type
 
@@ -831,9 +896,20 @@ ApiResponse<[**ApiDashboard**](ApiDashboard.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetDashboardRequest"></a>
+## GetDashboardRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getDashboardWidgetData
 
-> ApiWidgetDataResponse getDashboardWidgetData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
+> ApiWidgetDataResponse getDashboardWidgetData(GetDashboardWidgetDataRequest)
 
 Retrieve dashboard widget data
 
@@ -847,7 +923,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -871,7 +947,19 @@ public class Example {
         String sort = "alertStatus"; // String | Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by `alertStatus` or `startTime`. The default is `alertStatus`. * For the **Test Table** widget, you can sort by `alertStatus`, `testName`, or `testType`. The sequence might vary from the web application. The default sort attribute is `alertStatus`.
         DashboardOrder order = DashboardOrder.fromValue("asc"); // DashboardOrder | Optional sorting order parameter that accepts either `asc` (ascending) or `desc` (descending) values. This only applies to the **Alert List** and **Test Table** Widgets.
         try {
-            ApiWidgetDataResponse result = apiInstance.getDashboardWidgetData(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
+            DashboardsApi.GetDashboardWidgetDataRequest request = DashboardsApi.GetDashboardWidgetDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .max(max)
+                .cursor(cursor)
+                .sort(sort)
+                .order(order)
+                .build();
+            ApiWidgetDataResponse result = apiInstance.getDashboardWidgetData(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#getDashboardWidgetData");
@@ -886,19 +974,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **widgetId** | **String**| A Identifier for a widget. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **BigDecimal**| Optionally specify the maximum number of objects to retrieve. This only applies to the **Alert List** and **Test Table** Widgets. * The default for the **Alert List** widget is set by its limitBy configuration. * The default value for the **Test Table** widget is 10. | [optional] |
-| **cursor** | **String**| An optional pagination cursor. This parameter should not not be used directly. Instead, use the &#x60;_links&#x60; returned by the API. This feature is only available in the **Test Table** widget. | [optional] |
-| **sort** | **String**| Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by &#x60;alertStatus&#x60; or &#x60;startTime&#x60;. The default is &#x60;alertStatus&#x60;. * For the **Test Table** widget, you can sort by &#x60;alertStatus&#x60;, &#x60;testName&#x60;, or &#x60;testType&#x60;. The sequence might vary from the web application. The default sort attribute is &#x60;alertStatus&#x60;. | [optional] |
-| **order** | [**DashboardOrder**](.md)| Optional sorting order parameter that accepts either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending) values. This only applies to the **Alert List** and **Test Table** Widgets. | [optional] [enum: asc, desc] |
+| request | [**GetDashboardWidgetDataRequest**](DashboardsApi.md#GetDashboardWidgetDataRequest)|-|-|
 
 ### Return type
 
@@ -927,7 +1005,7 @@ public class Example {
 
 ## getDashboardWidgetDataWithHttpInfo
 
-> ApiResponse<ApiWidgetDataResponse> getDashboardWidgetData getDashboardWidgetDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order)
+> ApiResponse<ApiWidgetDataResponse> getDashboardWidgetData getDashboardWidgetDataWithHttpInfo(GetDashboardWidgetDataRequest)
 
 Retrieve dashboard widget data
 
@@ -942,7 +1020,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -966,7 +1044,19 @@ public class Example {
         String sort = "alertStatus"; // String | Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by `alertStatus` or `startTime`. The default is `alertStatus`. * For the **Test Table** widget, you can sort by `alertStatus`, `testName`, or `testType`. The sequence might vary from the web application. The default sort attribute is `alertStatus`.
         DashboardOrder order = DashboardOrder.fromValue("asc"); // DashboardOrder | Optional sorting order parameter that accepts either `asc` (ascending) or `desc` (descending) values. This only applies to the **Alert List** and **Test Table** Widgets.
         try {
-            ApiResponse<ApiWidgetDataResponse> response = apiInstance.getDashboardWidgetDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
+            DashboardsApi.GetDashboardWidgetDataRequest request = DashboardsApi.GetDashboardWidgetDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .max(max)
+                .cursor(cursor)
+                .sort(sort)
+                .order(order)
+                .build();
+            ApiResponse<ApiWidgetDataResponse> response = apiInstance.getDashboardWidgetDataWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -983,19 +1073,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **widgetId** | **String**| A Identifier for a widget. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **BigDecimal**| Optionally specify the maximum number of objects to retrieve. This only applies to the **Alert List** and **Test Table** Widgets. * The default for the **Alert List** widget is set by its limitBy configuration. * The default value for the **Test Table** widget is 10. | [optional] |
-| **cursor** | **String**| An optional pagination cursor. This parameter should not not be used directly. Instead, use the &#x60;_links&#x60; returned by the API. This feature is only available in the **Test Table** widget. | [optional] |
-| **sort** | **String**| Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by &#x60;alertStatus&#x60; or &#x60;startTime&#x60;. The default is &#x60;alertStatus&#x60;. * For the **Test Table** widget, you can sort by &#x60;alertStatus&#x60;, &#x60;testName&#x60;, or &#x60;testType&#x60;. The sequence might vary from the web application. The default sort attribute is &#x60;alertStatus&#x60;. | [optional] |
-| **order** | [**DashboardOrder**](.md)| Optional sorting order parameter that accepts either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending) values. This only applies to the **Alert List** and **Test Table** Widgets. | [optional] [enum: asc, desc] |
+| request | [**GetDashboardWidgetDataRequest**](DashboardsApi.md#GetDashboardWidgetDataRequest)|-|-|
 
 ### Return type
 
@@ -1023,9 +1103,28 @@ ApiResponse<[**ApiWidgetDataResponse**](ApiWidgetDataResponse.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetDashboardWidgetDataRequest"></a>
+## GetDashboardWidgetDataRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **widgetId** | **String** | A Identifier for a widget. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **max** | **BigDecimal** | Optionally specify the maximum number of objects to retrieve. This only applies to the **Alert List** and **Test Table** Widgets. * The default for the **Alert List** widget is set by its limitBy configuration. * The default value for the **Test Table** widget is 10. | [optional] |
+| **cursor** | **String** | An optional pagination cursor. This parameter should not not be used directly. Instead, use the &#x60;_links&#x60; returned by the API. This feature is only available in the **Test Table** widget. | [optional] |
+| **sort** | **String** | Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by &#x60;alertStatus&#x60; or &#x60;startTime&#x60;. The default is &#x60;alertStatus&#x60;. * For the **Test Table** widget, you can sort by &#x60;alertStatus&#x60;, &#x60;testName&#x60;, or &#x60;testType&#x60;. The sequence might vary from the web application. The default sort attribute is &#x60;alertStatus&#x60;. | [optional] |
+| **order** | [**DashboardOrder**](.md) | Optional sorting order parameter that accepts either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending) values. This only applies to the **Alert List** and **Test Table** Widgets. | [optional] [enum: asc, desc] |
+
+
+
 ## getDashboards
 
-> List<ApiDashboard> getDashboards(aid)
+> List<ApiDashboard> getDashboards(GetDashboardsRequest)
 
 List dashboards
 
@@ -1039,7 +1138,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1054,7 +1153,10 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            List<ApiDashboard> result = apiInstance.getDashboards(aid);
+            DashboardsApi.GetDashboardsRequest request = DashboardsApi.GetDashboardsRequest.builder()
+                .aid(aid)
+                .build();
+            List<ApiDashboard> result = apiInstance.getDashboards(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#getDashboards");
@@ -1069,10 +1171,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDashboardsRequest**](DashboardsApi.md#GetDashboardsRequest)|-|-|
 
 ### Return type
 
@@ -1101,7 +1202,7 @@ public class Example {
 
 ## getDashboardsWithHttpInfo
 
-> ApiResponse<List<ApiDashboard>> getDashboards getDashboardsWithHttpInfo(aid)
+> ApiResponse<List<ApiDashboard>> getDashboards getDashboardsWithHttpInfo(GetDashboardsRequest)
 
 List dashboards
 
@@ -1116,7 +1217,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1131,7 +1232,10 @@ public class Example {
         DashboardsApi apiInstance = new DashboardsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<List<ApiDashboard>> response = apiInstance.getDashboardsWithHttpInfo(aid);
+            DashboardsApi.GetDashboardsRequest request = DashboardsApi.GetDashboardsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<List<ApiDashboard>> response = apiInstance.getDashboardsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1148,10 +1252,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetDashboardsRequest**](DashboardsApi.md#GetDashboardsRequest)|-|-|
 
 ### Return type
 
@@ -1179,9 +1282,19 @@ ApiResponse<[**List&lt;ApiDashboard&gt;**](ApiDashboard.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetDashboardsRequest"></a>
+## GetDashboardsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getIndividualCardData
 
-> ApiNumbersCardData getIndividualCardData(dashboardId, widgetId, cardId, aid, window, startDate, endDate)
+> ApiNumbersCardData getIndividualCardData(GetIndividualCardDataRequest)
 
 Retrieve individual card data from numbers widget
 
@@ -1195,7 +1308,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1216,7 +1329,16 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
-            ApiNumbersCardData result = apiInstance.getIndividualCardData(dashboardId, widgetId, cardId, aid, window, startDate, endDate);
+            DashboardsApi.GetIndividualCardDataRequest request = DashboardsApi.GetIndividualCardDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .cardId(cardId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            ApiNumbersCardData result = apiInstance.getIndividualCardData(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#getIndividualCardData");
@@ -1231,16 +1353,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **widgetId** | **String**| A Identifier for a widget. | |
-| **cardId** | **String**| An identifier for a card within the numbers widget. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| request | [**GetIndividualCardDataRequest**](DashboardsApi.md#GetIndividualCardDataRequest)|-|-|
 
 ### Return type
 
@@ -1269,7 +1384,7 @@ public class Example {
 
 ## getIndividualCardDataWithHttpInfo
 
-> ApiResponse<ApiNumbersCardData> getIndividualCardData getIndividualCardDataWithHttpInfo(dashboardId, widgetId, cardId, aid, window, startDate, endDate)
+> ApiResponse<ApiNumbersCardData> getIndividualCardData getIndividualCardDataWithHttpInfo(GetIndividualCardDataRequest)
 
 Retrieve individual card data from numbers widget
 
@@ -1284,7 +1399,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1305,7 +1420,16 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
-            ApiResponse<ApiNumbersCardData> response = apiInstance.getIndividualCardDataWithHttpInfo(dashboardId, widgetId, cardId, aid, window, startDate, endDate);
+            DashboardsApi.GetIndividualCardDataRequest request = DashboardsApi.GetIndividualCardDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .cardId(cardId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            ApiResponse<ApiNumbersCardData> response = apiInstance.getIndividualCardDataWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1322,16 +1446,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **widgetId** | **String**| A Identifier for a widget. | |
-| **cardId** | **String**| An identifier for a card within the numbers widget. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| request | [**GetIndividualCardDataRequest**](DashboardsApi.md#GetIndividualCardDataRequest)|-|-|
 
 ### Return type
 
@@ -1359,9 +1476,25 @@ ApiResponse<[**ApiNumbersCardData**](ApiNumbersCardData.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetIndividualCardDataRequest"></a>
+## GetIndividualCardDataRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **widgetId** | **String** | A Identifier for a widget. | |
+| **cardId** | **String** | An identifier for a card within the numbers widget. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+
+
+
 ## getIndividualColumnData
 
-> ApiMultiMetricColumnData getIndividualColumnData(dashboardId, widgetId, columnId, aid, window, startDate, endDate)
+> ApiMultiMetricColumnData getIndividualColumnData(GetIndividualColumnDataRequest)
 
 Retrieve individual column data from multi-metric table widget
 
@@ -1375,7 +1508,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1396,7 +1529,16 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
-            ApiMultiMetricColumnData result = apiInstance.getIndividualColumnData(dashboardId, widgetId, columnId, aid, window, startDate, endDate);
+            DashboardsApi.GetIndividualColumnDataRequest request = DashboardsApi.GetIndividualColumnDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .columnId(columnId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            ApiMultiMetricColumnData result = apiInstance.getIndividualColumnData(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#getIndividualColumnData");
@@ -1411,16 +1553,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **widgetId** | **String**| A Identifier for a widget. | |
-| **columnId** | **String**| An identifier for a column within the multi-metric table widget. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| request | [**GetIndividualColumnDataRequest**](DashboardsApi.md#GetIndividualColumnDataRequest)|-|-|
 
 ### Return type
 
@@ -1449,7 +1584,7 @@ public class Example {
 
 ## getIndividualColumnDataWithHttpInfo
 
-> ApiResponse<ApiMultiMetricColumnData> getIndividualColumnData getIndividualColumnDataWithHttpInfo(dashboardId, widgetId, columnId, aid, window, startDate, endDate)
+> ApiResponse<ApiMultiMetricColumnData> getIndividualColumnData getIndividualColumnDataWithHttpInfo(GetIndividualColumnDataRequest)
 
 Retrieve individual column data from multi-metric table widget
 
@@ -1464,7 +1599,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1485,7 +1620,16 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
-            ApiResponse<ApiMultiMetricColumnData> response = apiInstance.getIndividualColumnDataWithHttpInfo(dashboardId, widgetId, columnId, aid, window, startDate, endDate);
+            DashboardsApi.GetIndividualColumnDataRequest request = DashboardsApi.GetIndividualColumnDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .columnId(columnId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            ApiResponse<ApiMultiMetricColumnData> response = apiInstance.getIndividualColumnDataWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1502,16 +1646,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **widgetId** | **String**| A Identifier for a widget. | |
-| **columnId** | **String**| An identifier for a column within the multi-metric table widget. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| request | [**GetIndividualColumnDataRequest**](DashboardsApi.md#GetIndividualColumnDataRequest)|-|-|
 
 ### Return type
 
@@ -1539,9 +1676,25 @@ ApiResponse<[**ApiMultiMetricColumnData**](ApiMultiMetricColumnData.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetIndividualColumnDataRequest"></a>
+## GetIndividualColumnDataRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **widgetId** | **String** | A Identifier for a widget. | |
+| **columnId** | **String** | An identifier for a column within the multi-metric table widget. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+
+
+
 ## updateDashboard
 
-> Dashboard updateDashboard(dashboardId, dashboard, aid)
+> Dashboard updateDashboard(UpdateDashboardRequest)
 
 Update dashboard
 
@@ -1555,7 +1708,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1572,7 +1725,12 @@ public class Example {
         Dashboard dashboard = new Dashboard(); // Dashboard | Request body schema to update a dashboard.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Dashboard result = apiInstance.updateDashboard(dashboardId, dashboard, aid);
+            DashboardsApi.UpdateDashboardRequest request = DashboardsApi.UpdateDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .dashboard(dashboard)
+                .aid(aid)
+                .build();
+            Dashboard result = apiInstance.updateDashboard(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#updateDashboard");
@@ -1587,12 +1745,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **dashboard** | [**Dashboard**](Dashboard.md)| Request body schema to update a dashboard. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateDashboardRequest**](DashboardsApi.md#UpdateDashboardRequest)|-|-|
 
 ### Return type
 
@@ -1621,7 +1776,7 @@ public class Example {
 
 ## updateDashboardWithHttpInfo
 
-> ApiResponse<Dashboard> updateDashboard updateDashboardWithHttpInfo(dashboardId, dashboard, aid)
+> ApiResponse<Dashboard> updateDashboard updateDashboardWithHttpInfo(UpdateDashboardRequest)
 
 Update dashboard
 
@@ -1636,7 +1791,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1653,7 +1808,12 @@ public class Example {
         Dashboard dashboard = new Dashboard(); // Dashboard | Request body schema to update a dashboard.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Dashboard> response = apiInstance.updateDashboardWithHttpInfo(dashboardId, dashboard, aid);
+            DashboardsApi.UpdateDashboardRequest request = DashboardsApi.UpdateDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .dashboard(dashboard)
+                .aid(aid)
+                .build();
+            ApiResponse<Dashboard> response = apiInstance.updateDashboardWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1670,12 +1830,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **dashboard** | [**Dashboard**](Dashboard.md)| Request body schema to update a dashboard. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateDashboardRequest**](DashboardsApi.md#UpdateDashboardRequest)|-|-|
 
 ### Return type
 
@@ -1703,9 +1860,21 @@ ApiResponse<[**Dashboard**](Dashboard.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="UpdateDashboardRequest"></a>
+## UpdateDashboardRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **dashboard** | [**Dashboard**](Dashboard.md) | Request body schema to update a dashboard. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateDashboardSchedule
 
-> ApiDashboard updateDashboardSchedule(dashboardId, dashboardScheduleRequest, aid)
+> ApiDashboard updateDashboardSchedule(UpdateDashboardScheduleRequest)
 
 Create or update dashboard snapshot schedule
 
@@ -1719,7 +1888,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1736,7 +1905,12 @@ public class Example {
         DashboardScheduleRequest dashboardScheduleRequest = new DashboardScheduleRequest(); // DashboardScheduleRequest | Snapshot schedule configuration.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiDashboard result = apiInstance.updateDashboardSchedule(dashboardId, dashboardScheduleRequest, aid);
+            DashboardsApi.UpdateDashboardScheduleRequest request = DashboardsApi.UpdateDashboardScheduleRequest.builder()
+                .dashboardId(dashboardId)
+                .dashboardScheduleRequest(dashboardScheduleRequest)
+                .aid(aid)
+                .build();
+            ApiDashboard result = apiInstance.updateDashboardSchedule(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DashboardsApi#updateDashboardSchedule");
@@ -1751,12 +1925,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **dashboardScheduleRequest** | [**DashboardScheduleRequest**](DashboardScheduleRequest.md)| Snapshot schedule configuration. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateDashboardScheduleRequest**](DashboardsApi.md#UpdateDashboardScheduleRequest)|-|-|
 
 ### Return type
 
@@ -1786,7 +1957,7 @@ public class Example {
 
 ## updateDashboardScheduleWithHttpInfo
 
-> ApiResponse<ApiDashboard> updateDashboardSchedule updateDashboardScheduleWithHttpInfo(dashboardId, dashboardScheduleRequest, aid)
+> ApiResponse<ApiDashboard> updateDashboardSchedule updateDashboardScheduleWithHttpInfo(UpdateDashboardScheduleRequest)
 
 Create or update dashboard snapshot schedule
 
@@ -1801,7 +1972,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.model.*;
 import com.thousandeyes.sdk.dashboards.DashboardsApi;
 
 public class Example {
@@ -1818,7 +1989,12 @@ public class Example {
         DashboardScheduleRequest dashboardScheduleRequest = new DashboardScheduleRequest(); // DashboardScheduleRequest | Snapshot schedule configuration.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiDashboard> response = apiInstance.updateDashboardScheduleWithHttpInfo(dashboardId, dashboardScheduleRequest, aid);
+            DashboardsApi.UpdateDashboardScheduleRequest request = DashboardsApi.UpdateDashboardScheduleRequest.builder()
+                .dashboardId(dashboardId)
+                .dashboardScheduleRequest(dashboardScheduleRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<ApiDashboard> response = apiInstance.updateDashboardScheduleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1835,12 +2011,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
-| **dashboardScheduleRequest** | [**DashboardScheduleRequest**](DashboardScheduleRequest.md)| Snapshot schedule configuration. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateDashboardScheduleRequest**](DashboardsApi.md#UpdateDashboardScheduleRequest)|-|-|
 
 ### Return type
 
@@ -1867,4 +2040,16 @@ ApiResponse<[**ApiDashboard**](ApiDashboard.md)>
 | **409** | The dashboard changed while the schedule operation was being applied. |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateDashboardScheduleRequest"></a>
+## UpdateDashboardScheduleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String** | A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **dashboardScheduleRequest** | [**DashboardScheduleRequest**](DashboardScheduleRequest.md) | Snapshot schedule configuration. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

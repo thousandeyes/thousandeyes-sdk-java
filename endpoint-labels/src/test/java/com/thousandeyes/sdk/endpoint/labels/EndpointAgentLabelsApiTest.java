@@ -87,7 +87,6 @@ public class EndpointAgentLabelsApiTest {
     public void createEndpointLabelRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "color" : "#ff3333",
@@ -155,7 +154,11 @@ public class EndpointAgentLabelsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createEndpointLabel(null, mappedRequest);
+        var request = EndpointAgentLabelsApi.CreateEndpointLabelRequest.builder()
+                .aid("1234")
+                .labelRequest(mappedRequest)
+                .build();
+        var apiResponse = api.createEndpointLabel(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -172,7 +175,6 @@ public class EndpointAgentLabelsApiTest {
     {
         String id = "abc-123-def";
 
-
         var statusCode = 204;
 
         var path = "/endpoint/labels/{id}";
@@ -182,7 +184,11 @@ public class EndpointAgentLabelsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteEndpointLabelWithHttpInfo(id, null);
+        var request = EndpointAgentLabelsApi.DeleteEndpointLabelRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteEndpointLabelWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -198,7 +204,6 @@ public class EndpointAgentLabelsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "abc-123-def";
-
 
         var responseBodyJson = """
                 {
@@ -244,7 +249,11 @@ public class EndpointAgentLabelsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointLabel(id, null, null);
+        var request = EndpointAgentLabelsApi.GetEndpointLabelRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getEndpointLabel(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -259,7 +268,6 @@ public class EndpointAgentLabelsApiTest {
     public void getEndpointLabelsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -354,7 +362,11 @@ public class EndpointAgentLabelsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointLabels(null, null, null, null);
+        var request = EndpointAgentLabelsApi.GetEndpointLabelsRequest.builder()
+                .max(5)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getEndpointLabels(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -370,7 +382,6 @@ public class EndpointAgentLabelsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "abc-123-def";
-
         var requestBodyJson = """
                 {
                   "color" : "#ff3333",
@@ -439,7 +450,12 @@ public class EndpointAgentLabelsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateEndpointLabel(id, null, mappedRequest);
+        var request = EndpointAgentLabelsApi.UpdateEndpointLabelRequest.builder()
+                .id(id)
+                .aid("1234")
+                .label(mappedRequest)
+                .build();
+        var apiResponse = api.updateEndpointLabel(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

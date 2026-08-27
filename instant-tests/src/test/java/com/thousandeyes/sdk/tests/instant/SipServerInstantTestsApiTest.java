@@ -83,7 +83,6 @@ public class SipServerInstantTestsApiTest {
     public void createSipServerInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -285,7 +284,12 @@ public class SipServerInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createSipServerInstantTest(mappedRequest, null, null);
+        var request = SipServerInstantTestsApi.CreateSipServerInstantTestRequest.builder()
+                .sipServerInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createSipServerInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

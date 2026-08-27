@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -42,12 +41,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -69,54 +66,45 @@ public class LocalNetworkEndpointTestResultsApi {
   /**
    * List endpoint network topologies probes with pagination
    * Returns a list of all endpoint local network topologies probes.  All results are provided, oldest to newest (according to a specified page index and size) unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter?window&#x3D;12h&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Warning Note that a maximum of 12h worth of data can be retrieved at once.  If you need more, you need to make multiple requests.  Returns a &#x60;results&#x60; array of network topology probes.  Network topology probes shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
-   * @param endpointNetworkTopologyResultRequest  (optional)
+   * @param request operation parameters (required)
    * @return Paginator<LocalNetworkTopologyResultBase, LocalNetworkTopologyResults>
    */
-  public Paginator<LocalNetworkTopologyResultBase, LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologiesPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) {
-    return new Paginator<>(cursor -> filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest),
+  public Paginator<LocalNetworkTopologyResultBase, LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologiesPaginated(FilterLocalNetworksTestResultsTopologiesRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling filterLocalNetworksTestResultsTopologiesPaginated");
+    }
+    return new Paginator<>(cursor -> filterLocalNetworksTestResultsTopologies(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            LocalNetworkTopologyResults::getResults);
 
   }
   /**
    * List endpoint network topologies probes
    * Returns a list of all endpoint local network topologies probes.  All results are provided, oldest to newest (according to a specified page index and size) unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter?window&#x3D;12h&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Warning Note that a maximum of 12h worth of data can be retrieved at once.  If you need more, you need to make multiple requests.  Returns a &#x60;results&#x60; array of network topology probes.  Network topology probes shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
-   * @param endpointNetworkTopologyResultRequest  (optional)
+   * @param request operation parameters (required)
    * @return LocalNetworkTopologyResults
    * @throws ApiException if fails to make API call
    */
-  public LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
-    ApiResponse<LocalNetworkTopologyResults> response = filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest);
+  public LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(FilterLocalNetworksTestResultsTopologiesRequest request) throws ApiException {
+    ApiResponse<LocalNetworkTopologyResults> response = filterLocalNetworksTestResultsTopologiesWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List endpoint network topologies probes
    * Returns a list of all endpoint local network topologies probes.  All results are provided, oldest to newest (according to a specified page index and size) unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter?window&#x3D;12h&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Warning Note that a maximum of 12h worth of data can be retrieved at once.  If you need more, you need to make multiple requests.  Returns a &#x60;results&#x60; array of network topology probes.  Network topology probes shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
-   * @param endpointNetworkTopologyResultRequest  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;LocalNetworkTopologyResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologiesWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
+  public ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologiesWithHttpInfo(FilterLocalNetworksTestResultsTopologiesRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterLocalNetworksTestResultsTopologies");
+    }
     filterLocalNetworksTestResultsTopologiesValidateRequest();
 
-    var requestBuilder = filterLocalNetworksTestResultsTopologiesRequestBuilder(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest);
+    var requestBuilder = filterLocalNetworksTestResultsTopologiesRequestBuilder(request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor(), request.getExpand(), request.getEndpointNetworkTopologyResultRequest());
 
     return apiClient.send(requestBuilder.build(), LocalNetworkTopologyResults.class);
   }
@@ -124,8 +112,8 @@ public class LocalNetworkEndpointTestResultsApi {
   private void filterLocalNetworksTestResultsTopologiesValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder filterLocalNetworksTestResultsTopologiesRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterLocalNetworksTestResultsTopologiesRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandLocalNetworkTopologyOptions> expand, EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/test-results/local-networks/topologies/filter";
@@ -149,29 +137,130 @@ public class LocalNetworkEndpointTestResultsApi {
     requestBuilder.requestBody(endpointNetworkTopologyResultRequest);
     return requestBuilder;
   }
+
+  public static final class FilterLocalNetworksTestResultsTopologiesRequest {
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+    private final List<ExpandLocalNetworkTopologyOptions> expand;
+    private final EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest;
+
+    private FilterLocalNetworksTestResultsTopologiesRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+      this.expand = builder.expand;
+      this.endpointNetworkTopologyResultRequest = builder.endpointNetworkTopologyResultRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public List<ExpandLocalNetworkTopologyOptions> getExpand() {
+      return expand;
+    }
+    public EndpointNetworkTopologyResultRequest getEndpointNetworkTopologyResultRequest() {
+      return endpointNetworkTopologyResultRequest;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor)
+          .expand(expand)
+          .endpointNetworkTopologyResultRequest(endpointNetworkTopologyResultRequest);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+      private List<ExpandLocalNetworkTopologyOptions> expand;
+      private EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder expand(List<ExpandLocalNetworkTopologyOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder endpointNetworkTopologyResultRequest(EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest) {
+        this.endpointNetworkTopologyResultRequest = endpointNetworkTopologyResultRequest;
+        return this;
+      }
+      public FilterLocalNetworksTestResultsTopologiesRequest build() {
+        return new FilterLocalNetworksTestResultsTopologiesRequest(this);
+      }
+    }
+  }
+
   /**
    * List local networks
    * Returns a list of all the networks used by endpoint agents.  Sends back a &#x60;localNetworks&#x60; array. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return LocalNetworkResults
    * @throws ApiException if fails to make API call
    */
-  public LocalNetworkResults getLocalNetworksTestResults(String aid) throws ApiException {
-    ApiResponse<LocalNetworkResults> response = getLocalNetworksTestResultsWithHttpInfo(aid);
+  public LocalNetworkResults getLocalNetworksTestResults(GetLocalNetworksTestResultsRequest request) throws ApiException {
+    ApiResponse<LocalNetworkResults> response = getLocalNetworksTestResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List local networks
    * Returns a list of all the networks used by endpoint agents.  Sends back a &#x60;localNetworks&#x60; array. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;LocalNetworkResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LocalNetworkResults> getLocalNetworksTestResultsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<LocalNetworkResults> getLocalNetworksTestResultsWithHttpInfo(GetLocalNetworksTestResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getLocalNetworksTestResults");
+    }
     getLocalNetworksTestResultsValidateRequest();
 
-    var requestBuilder = getLocalNetworksTestResultsRequestBuilder(aid);
+    var requestBuilder = getLocalNetworksTestResultsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), LocalNetworkResults.class);
   }
@@ -179,8 +268,8 @@ public class LocalNetworkEndpointTestResultsApi {
   private void getLocalNetworksTestResultsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getLocalNetworksTestResultsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getLocalNetworksTestResultsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/test-results/local-networks";
@@ -197,33 +286,64 @@ public class LocalNetworkEndpointTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetLocalNetworksTestResultsRequest {
+    private final String aid;
+
+    private GetLocalNetworksTestResultsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetLocalNetworksTestResultsRequest build() {
+        return new GetLocalNetworksTestResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve endpoint local network topology
    * Returns detailed data of a local network topology. 
-   * @param networkTopologyId The network topology ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
+   * @param request operation parameters (required)
    * @return LocalNetworkTopologyDetailResults
    * @throws ApiException if fails to make API call
    */
-  public LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(String networkTopologyId, String aid, List<ExpandLocalNetworkTopologyOptions> expand) throws ApiException {
-    ApiResponse<LocalNetworkTopologyDetailResults> response = getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid, expand);
+  public LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(GetLocalNetworksTestResultsTopologyRequest request) throws ApiException {
+    ApiResponse<LocalNetworkTopologyDetailResults> response = getLocalNetworksTestResultsTopologyWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve endpoint local network topology
    * Returns detailed data of a local network topology. 
-   * @param networkTopologyId The network topology ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;LocalNetworkTopologyDetailResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopologyWithHttpInfo(String networkTopologyId, String aid, List<ExpandLocalNetworkTopologyOptions> expand) throws ApiException {
-    getLocalNetworksTestResultsTopologyValidateRequest(networkTopologyId);
+  public ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopologyWithHttpInfo(GetLocalNetworksTestResultsTopologyRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getLocalNetworksTestResultsTopology");
+    }
+    getLocalNetworksTestResultsTopologyValidateRequest(request.getNetworkTopologyId());
 
-    var requestBuilder = getLocalNetworksTestResultsTopologyRequestBuilder(networkTopologyId, aid, expand);
+    var requestBuilder = getLocalNetworksTestResultsTopologyRequestBuilder(request.getNetworkTopologyId(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), LocalNetworkTopologyDetailResults.class);
   }
@@ -235,8 +355,8 @@ public class LocalNetworkEndpointTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getLocalNetworksTestResultsTopologyRequestBuilder(String networkTopologyId, String aid, List<ExpandLocalNetworkTopologyOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getLocalNetworksTestResultsTopologyRequestBuilder(String networkTopologyId, String aid, List<ExpandLocalNetworkTopologyOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/test-results/local-networks/topologies/{networkTopologyId}"
@@ -255,4 +375,58 @@ public class LocalNetworkEndpointTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetLocalNetworksTestResultsTopologyRequest {
+    private final String networkTopologyId;
+    private final String aid;
+    private final List<ExpandLocalNetworkTopologyOptions> expand;
+
+    private GetLocalNetworksTestResultsTopologyRequest(Builder builder) {
+      this.networkTopologyId = builder.networkTopologyId;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getNetworkTopologyId() {
+      return networkTopologyId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandLocalNetworkTopologyOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .networkTopologyId(networkTopologyId)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String networkTopologyId;
+      private String aid;
+      private List<ExpandLocalNetworkTopologyOptions> expand;
+
+      public Builder networkTopologyId(String networkTopologyId) {
+        this.networkTopologyId = networkTopologyId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandLocalNetworkTopologyOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetLocalNetworksTestResultsTopologyRequest build() {
+        return new GetLocalNetworksTestResultsTopologyRequest(this);
+      }
+    }
+  }
+
 }

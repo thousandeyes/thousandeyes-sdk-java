@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getBgpMonitors
 
-> Monitors getBgpMonitors(aid)
+> Monitors getBgpMonitors(GetBgpMonitorsRequest)
 
 List BGP monitors
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.bgp.Configuration;
 import com.thousandeyes.sdk.bgp.authentication.*;
-import com.thousandeyes.sdk.bgp.models.*;
+import com.thousandeyes.sdk.bgp.monitors.model.*;
 import com.thousandeyes.sdk.bgp.monitors.BgpMonitorsApi;
 
 public class Example {
@@ -40,7 +40,10 @@ public class Example {
         BgpMonitorsApi apiInstance = new BgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Monitors result = apiInstance.getBgpMonitors(aid);
+            BgpMonitorsApi.GetBgpMonitorsRequest request = BgpMonitorsApi.GetBgpMonitorsRequest.builder()
+                .aid(aid)
+                .build();
+            Monitors result = apiInstance.getBgpMonitors(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpMonitorsApi#getBgpMonitors");
@@ -55,10 +58,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetBgpMonitorsRequest**](BgpMonitorsApi.md#GetBgpMonitorsRequest)|-|-|
 
 ### Return type
 
@@ -86,7 +88,7 @@ public class Example {
 
 ## getBgpMonitorsWithHttpInfo
 
-> ApiResponse<Monitors> getBgpMonitors getBgpMonitorsWithHttpInfo(aid)
+> ApiResponse<Monitors> getBgpMonitors getBgpMonitorsWithHttpInfo(GetBgpMonitorsRequest)
 
 List BGP monitors
 
@@ -101,7 +103,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.bgp.Configuration;
 import com.thousandeyes.sdk.bgp.authentication.*;
-import com.thousandeyes.sdk.bgp.models.*;
+import com.thousandeyes.sdk.bgp.monitors.model.*;
 import com.thousandeyes.sdk.bgp.monitors.BgpMonitorsApi;
 
 public class Example {
@@ -116,7 +118,10 @@ public class Example {
         BgpMonitorsApi apiInstance = new BgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Monitors> response = apiInstance.getBgpMonitorsWithHttpInfo(aid);
+            BgpMonitorsApi.GetBgpMonitorsRequest request = BgpMonitorsApi.GetBgpMonitorsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<Monitors> response = apiInstance.getBgpMonitorsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -133,10 +138,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetBgpMonitorsRequest**](BgpMonitorsApi.md#GetBgpMonitorsRequest)|-|-|
 
 ### Return type
 
@@ -161,4 +165,14 @@ ApiResponse<[**Monitors**](Monitors.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="GetBgpMonitorsRequest"></a>
+## GetBgpMonitorsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

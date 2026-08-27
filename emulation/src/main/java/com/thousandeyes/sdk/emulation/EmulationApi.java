@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,28 +62,29 @@ public class EmulationApi {
   /**
    * Create emulated device
    * Creates a new device for emulation.
-   * @param emulatedDevice  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EmulatedDeviceResponse
    * @throws ApiException if fails to make API call
    */
-  public EmulatedDeviceResponse createEmulatedDevice(EmulatedDevice emulatedDevice, String aid) throws ApiException {
-    ApiResponse<EmulatedDeviceResponse> response = createEmulatedDeviceWithHttpInfo(emulatedDevice, aid);
+  public EmulatedDeviceResponse createEmulatedDevice(CreateEmulatedDeviceRequest request) throws ApiException {
+    ApiResponse<EmulatedDeviceResponse> response = createEmulatedDeviceWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create emulated device
    * Creates a new device for emulation.
-   * @param emulatedDevice  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EmulatedDeviceResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EmulatedDeviceResponse> createEmulatedDeviceWithHttpInfo(EmulatedDevice emulatedDevice, String aid) throws ApiException {
-    createEmulatedDeviceValidateRequest(emulatedDevice);
+  public ApiResponse<EmulatedDeviceResponse> createEmulatedDeviceWithHttpInfo(CreateEmulatedDeviceRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createEmulatedDevice");
+    }
+    createEmulatedDeviceValidateRequest(request.getEmulatedDevice());
 
-    var requestBuilder = createEmulatedDeviceRequestBuilder(emulatedDevice, aid);
+    var requestBuilder = createEmulatedDeviceRequestBuilder(request.getEmulatedDevice(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EmulatedDeviceResponse.class);
   }
@@ -98,8 +96,8 @@ public class EmulationApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createEmulatedDeviceRequestBuilder(EmulatedDevice emulatedDevice, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createEmulatedDeviceRequestBuilder(EmulatedDevice emulatedDevice, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/emulated-devices";
@@ -118,29 +116,75 @@ public class EmulationApi {
     requestBuilder.requestBody(emulatedDevice);
     return requestBuilder;
   }
+
+  public static final class CreateEmulatedDeviceRequest {
+    private final EmulatedDevice emulatedDevice;
+    private final String aid;
+
+    private CreateEmulatedDeviceRequest(Builder builder) {
+      this.emulatedDevice = builder.emulatedDevice;
+      this.aid = builder.aid;
+    }
+    public EmulatedDevice getEmulatedDevice() {
+      return emulatedDevice;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .emulatedDevice(emulatedDevice)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private EmulatedDevice emulatedDevice;
+      private String aid;
+
+      public Builder emulatedDevice(EmulatedDevice emulatedDevice) {
+        this.emulatedDevice = emulatedDevice;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateEmulatedDeviceRequest build() {
+        return new CreateEmulatedDeviceRequest(this);
+      }
+    }
+  }
+
   /**
    * List emulated devices
    * Retrieves a list of emulated devices available for browser tests.
-   * @param expand Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  (optional
+   * @param request operation parameters (required)
    * @return EmulatedDeviceResponses
    * @throws ApiException if fails to make API call
    */
-  public EmulatedDeviceResponses getEmulatedDevices(List<ExpandEmulatedDeviceOptions> expand) throws ApiException {
-    ApiResponse<EmulatedDeviceResponses> response = getEmulatedDevicesWithHttpInfo(expand);
+  public EmulatedDeviceResponses getEmulatedDevices(GetEmulatedDevicesRequest request) throws ApiException {
+    ApiResponse<EmulatedDeviceResponses> response = getEmulatedDevicesWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List emulated devices
    * Retrieves a list of emulated devices available for browser tests.
-   * @param expand Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EmulatedDeviceResponses&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EmulatedDeviceResponses> getEmulatedDevicesWithHttpInfo(List<ExpandEmulatedDeviceOptions> expand) throws ApiException {
+  public ApiResponse<EmulatedDeviceResponses> getEmulatedDevicesWithHttpInfo(GetEmulatedDevicesRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEmulatedDevices");
+    }
     getEmulatedDevicesValidateRequest();
 
-    var requestBuilder = getEmulatedDevicesRequestBuilder(expand);
+    var requestBuilder = getEmulatedDevicesRequestBuilder(request.getExpand());
 
     return apiClient.send(requestBuilder.build(), EmulatedDeviceResponses.class);
   }
@@ -148,8 +192,8 @@ public class EmulationApi {
   private void getEmulatedDevicesValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEmulatedDevicesRequestBuilder(List<ExpandEmulatedDeviceOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEmulatedDevicesRequestBuilder(List<ExpandEmulatedDeviceOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/emulated-devices";
@@ -166,29 +210,64 @@ public class EmulationApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEmulatedDevicesRequest {
+    private final List<ExpandEmulatedDeviceOptions> expand;
+
+    private GetEmulatedDevicesRequest(Builder builder) {
+      this.expand = builder.expand;
+    }
+    public List<ExpandEmulatedDeviceOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private List<ExpandEmulatedDeviceOptions> expand;
+
+      public Builder expand(List<ExpandEmulatedDeviceOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetEmulatedDevicesRequest build() {
+        return new GetEmulatedDevicesRequest(this);
+      }
+    }
+  }
+
   /**
    * List user-agents
    * Retrieves a list of user-agent strings.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return UserAgents
    * @throws ApiException if fails to make API call
    */
-  public UserAgents getUserAgents(String aid) throws ApiException {
-    ApiResponse<UserAgents> response = getUserAgentsWithHttpInfo(aid);
+  public UserAgents getUserAgents(GetUserAgentsRequest request) throws ApiException {
+    ApiResponse<UserAgents> response = getUserAgentsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List user-agents
    * Retrieves a list of user-agent strings.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;UserAgents&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UserAgents> getUserAgentsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<UserAgents> getUserAgentsWithHttpInfo(GetUserAgentsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getUserAgents");
+    }
     getUserAgentsValidateRequest();
 
-    var requestBuilder = getUserAgentsRequestBuilder(aid);
+    var requestBuilder = getUserAgentsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), UserAgents.class);
   }
@@ -196,8 +275,8 @@ public class EmulationApi {
   private void getUserAgentsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getUserAgentsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getUserAgentsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/user-agents";
@@ -214,4 +293,36 @@ public class EmulationApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetUserAgentsRequest {
+    private final String aid;
+
+    private GetUserAgentsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetUserAgentsRequest build() {
+        return new GetUserAgentsRequest(this);
+      }
+    }
+  }
+
 }

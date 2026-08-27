@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,28 +63,29 @@ public class AlertRulesApi {
   /**
    * Create alert rule
    * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
-   * @param ruleDetailUpdate  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Rule
    * @throws ApiException if fails to make API call
    */
-  public Rule createAlertRule(RuleDetailUpdate ruleDetailUpdate, String aid) throws ApiException {
-    ApiResponse<Rule> response = createAlertRuleWithHttpInfo(ruleDetailUpdate, aid);
+  public Rule createAlertRule(CreateAlertRuleRequest request) throws ApiException {
+    ApiResponse<Rule> response = createAlertRuleWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create alert rule
    * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
-   * @param ruleDetailUpdate  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Rule&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Rule> createAlertRuleWithHttpInfo(RuleDetailUpdate ruleDetailUpdate, String aid) throws ApiException {
-    createAlertRuleValidateRequest(ruleDetailUpdate);
+  public ApiResponse<Rule> createAlertRuleWithHttpInfo(CreateAlertRuleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createAlertRule");
+    }
+    createAlertRuleValidateRequest(request.getRuleDetailUpdate());
 
-    var requestBuilder = createAlertRuleRequestBuilder(ruleDetailUpdate, aid);
+    var requestBuilder = createAlertRuleRequestBuilder(request.getRuleDetailUpdate(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Rule.class);
   }
@@ -99,8 +97,8 @@ public class AlertRulesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAlertRuleRequestBuilder(RuleDetailUpdate ruleDetailUpdate, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createAlertRuleRequestBuilder(RuleDetailUpdate ruleDetailUpdate, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/alerts/rules";
@@ -119,29 +117,73 @@ public class AlertRulesApi {
     requestBuilder.requestBody(ruleDetailUpdate);
     return requestBuilder;
   }
-  /**
-   * Delete alert rule
-   * Deletes an alert rule from your account. Users must have both &#x60;Edit alert rules&#x60; and &#x60;Edit tests&#x60; permissions, especially if the rule is linked to any tests. Without these permissions, an error occurs. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
-   * @param ruleId Unique alert rule ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteAlertRule(String ruleId, String aid) throws ApiException {
-    deleteAlertRuleWithHttpInfo(ruleId, aid);
+
+  public static final class CreateAlertRuleRequest {
+    private final RuleDetailUpdate ruleDetailUpdate;
+    private final String aid;
+
+    private CreateAlertRuleRequest(Builder builder) {
+      this.ruleDetailUpdate = builder.ruleDetailUpdate;
+      this.aid = builder.aid;
+    }
+    public RuleDetailUpdate getRuleDetailUpdate() {
+      return ruleDetailUpdate;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .ruleDetailUpdate(ruleDetailUpdate)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private RuleDetailUpdate ruleDetailUpdate;
+      private String aid;
+
+      public Builder ruleDetailUpdate(RuleDetailUpdate ruleDetailUpdate) {
+        this.ruleDetailUpdate = ruleDetailUpdate;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateAlertRuleRequest build() {
+        return new CreateAlertRuleRequest(this);
+      }
+    }
   }
 
   /**
    * Delete alert rule
    * Deletes an alert rule from your account. Users must have both &#x60;Edit alert rules&#x60; and &#x60;Edit tests&#x60; permissions, especially if the rule is linked to any tests. Without these permissions, an error occurs. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
-   * @param ruleId Unique alert rule ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAlertRule(DeleteAlertRuleRequest request) throws ApiException {
+    deleteAlertRuleWithHttpInfo(request);
+  }
+
+  /**
+   * Delete alert rule
+   * Deletes an alert rule from your account. Users must have both &#x60;Edit alert rules&#x60; and &#x60;Edit tests&#x60; permissions, especially if the rule is linked to any tests. Without these permissions, an error occurs. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteAlertRuleWithHttpInfo(String ruleId, String aid) throws ApiException {
-    deleteAlertRuleValidateRequest(ruleId);
+  public ApiResponse<Void> deleteAlertRuleWithHttpInfo(DeleteAlertRuleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteAlertRule");
+    }
+    deleteAlertRuleValidateRequest(request.getRuleId());
 
-    var requestBuilder = deleteAlertRuleRequestBuilder(ruleId, aid);
+    var requestBuilder = deleteAlertRuleRequestBuilder(request.getRuleId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -153,8 +195,8 @@ public class AlertRulesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteAlertRuleRequestBuilder(String ruleId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteAlertRuleRequestBuilder(String ruleId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/alerts/rules/{ruleId}"
@@ -172,31 +214,75 @@ public class AlertRulesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteAlertRuleRequest {
+    private final String ruleId;
+    private final String aid;
+
+    private DeleteAlertRuleRequest(Builder builder) {
+      this.ruleId = builder.ruleId;
+      this.aid = builder.aid;
+    }
+    public String getRuleId() {
+      return ruleId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .ruleId(ruleId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String ruleId;
+      private String aid;
+
+      public Builder ruleId(String ruleId) {
+        this.ruleId = ruleId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteAlertRuleRequest build() {
+        return new DeleteAlertRuleRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve alert rule
    * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, an empty response is returned.
-   * @param ruleId Unique alert rule ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return RuleDetail
    * @throws ApiException if fails to make API call
    */
-  public RuleDetail getAlertRule(String ruleId, String aid) throws ApiException {
-    ApiResponse<RuleDetail> response = getAlertRuleWithHttpInfo(ruleId, aid);
+  public RuleDetail getAlertRule(GetAlertRuleRequest request) throws ApiException {
+    ApiResponse<RuleDetail> response = getAlertRuleWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve alert rule
    * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, an empty response is returned.
-   * @param ruleId Unique alert rule ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RuleDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RuleDetail> getAlertRuleWithHttpInfo(String ruleId, String aid) throws ApiException {
-    getAlertRuleValidateRequest(ruleId);
+  public ApiResponse<RuleDetail> getAlertRuleWithHttpInfo(GetAlertRuleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAlertRule");
+    }
+    getAlertRuleValidateRequest(request.getRuleId());
 
-    var requestBuilder = getAlertRuleRequestBuilder(ruleId, aid);
+    var requestBuilder = getAlertRuleRequestBuilder(request.getRuleId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), RuleDetail.class);
   }
@@ -208,8 +294,8 @@ public class AlertRulesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertRuleRequestBuilder(String ruleId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAlertRuleRequestBuilder(String ruleId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/alerts/rules/{ruleId}"
@@ -227,29 +313,75 @@ public class AlertRulesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAlertRuleRequest {
+    private final String ruleId;
+    private final String aid;
+
+    private GetAlertRuleRequest(Builder builder) {
+      this.ruleId = builder.ruleId;
+      this.aid = builder.aid;
+    }
+    public String getRuleId() {
+      return ruleId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .ruleId(ruleId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String ruleId;
+      private String aid;
+
+      public Builder ruleId(String ruleId) {
+        this.ruleId = ruleId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAlertRuleRequest build() {
+        return new GetAlertRuleRequest(this);
+      }
+    }
+  }
+
   /**
    * List alert rules
    * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Rules
    * @throws ApiException if fails to make API call
    */
-  public Rules getAlertsRules(String aid) throws ApiException {
-    ApiResponse<Rules> response = getAlertsRulesWithHttpInfo(aid);
+  public Rules getAlertsRules(GetAlertsRulesRequest request) throws ApiException {
+    ApiResponse<Rules> response = getAlertsRulesWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List alert rules
    * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Rules&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Rules> getAlertsRulesWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<Rules> getAlertsRulesWithHttpInfo(GetAlertsRulesRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAlertsRules");
+    }
     getAlertsRulesValidateRequest();
 
-    var requestBuilder = getAlertsRulesRequestBuilder(aid);
+    var requestBuilder = getAlertsRulesRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), Rules.class);
   }
@@ -257,8 +389,8 @@ public class AlertRulesApi {
   private void getAlertsRulesValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertsRulesRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAlertsRulesRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/alerts/rules";
@@ -275,33 +407,64 @@ public class AlertRulesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAlertsRulesRequest {
+    private final String aid;
+
+    private GetAlertsRulesRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAlertsRulesRequest build() {
+        return new GetAlertsRulesRequest(this);
+      }
+    }
+  }
+
   /**
    * Update alert rule
    * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule.  Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
-   * @param ruleId Unique alert rule ID. (required)
-   * @param ruleDetailUpdate  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Rule
    * @throws ApiException if fails to make API call
    */
-  public Rule updateAlertRule(String ruleId, RuleDetailUpdate ruleDetailUpdate, String aid) throws ApiException {
-    ApiResponse<Rule> response = updateAlertRuleWithHttpInfo(ruleId, ruleDetailUpdate, aid);
+  public Rule updateAlertRule(UpdateAlertRuleRequest request) throws ApiException {
+    ApiResponse<Rule> response = updateAlertRuleWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update alert rule
    * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule.  Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
-   * @param ruleId Unique alert rule ID. (required)
-   * @param ruleDetailUpdate  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Rule&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Rule> updateAlertRuleWithHttpInfo(String ruleId, RuleDetailUpdate ruleDetailUpdate, String aid) throws ApiException {
-    updateAlertRuleValidateRequest(ruleId, ruleDetailUpdate);
+  public ApiResponse<Rule> updateAlertRuleWithHttpInfo(UpdateAlertRuleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateAlertRule");
+    }
+    updateAlertRuleValidateRequest(request.getRuleId(), request.getRuleDetailUpdate());
 
-    var requestBuilder = updateAlertRuleRequestBuilder(ruleId, ruleDetailUpdate, aid);
+    var requestBuilder = updateAlertRuleRequestBuilder(request.getRuleId(), request.getRuleDetailUpdate(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Rule.class);
   }
@@ -317,8 +480,8 @@ public class AlertRulesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAlertRuleRequestBuilder(String ruleId, RuleDetailUpdate ruleDetailUpdate, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateAlertRuleRequestBuilder(String ruleId, RuleDetailUpdate ruleDetailUpdate, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/alerts/rules/{ruleId}"
@@ -338,4 +501,58 @@ public class AlertRulesApi {
     requestBuilder.requestBody(ruleDetailUpdate);
     return requestBuilder;
   }
+
+  public static final class UpdateAlertRuleRequest {
+    private final String ruleId;
+    private final RuleDetailUpdate ruleDetailUpdate;
+    private final String aid;
+
+    private UpdateAlertRuleRequest(Builder builder) {
+      this.ruleId = builder.ruleId;
+      this.ruleDetailUpdate = builder.ruleDetailUpdate;
+      this.aid = builder.aid;
+    }
+    public String getRuleId() {
+      return ruleId;
+    }
+    public RuleDetailUpdate getRuleDetailUpdate() {
+      return ruleDetailUpdate;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .ruleId(ruleId)
+          .ruleDetailUpdate(ruleDetailUpdate)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String ruleId;
+      private RuleDetailUpdate ruleDetailUpdate;
+      private String aid;
+
+      public Builder ruleId(String ruleId) {
+        this.ruleId = ruleId;
+        return this;
+      }
+      public Builder ruleDetailUpdate(RuleDetailUpdate ruleDetailUpdate) {
+        this.ruleDetailUpdate = ruleDetailUpdate;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateAlertRuleRequest build() {
+        return new UpdateAlertRuleRequest(this);
+      }
+    }
+  }
+
 }

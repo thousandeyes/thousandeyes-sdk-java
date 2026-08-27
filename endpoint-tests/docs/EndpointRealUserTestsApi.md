@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getEndpointRealUserTests
 
-> EndpointRealUserTestsResponse getEndpointRealUserTests(aid)
+> EndpointRealUserTestsResponse getEndpointRealUserTests(GetEndpointRealUserTestsRequest)
 
 List endpoint real user tests
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.EndpointRealUserTestsApi;
 
 public class Example {
@@ -40,7 +40,10 @@ public class Example {
         EndpointRealUserTestsApi apiInstance = new EndpointRealUserTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointRealUserTestsResponse result = apiInstance.getEndpointRealUserTests(aid);
+            EndpointRealUserTestsApi.GetEndpointRealUserTestsRequest request = EndpointRealUserTestsApi.GetEndpointRealUserTestsRequest.builder()
+                .aid(aid)
+                .build();
+            EndpointRealUserTestsResponse result = apiInstance.getEndpointRealUserTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointRealUserTestsApi#getEndpointRealUserTests");
@@ -55,10 +58,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointRealUserTestsRequest**](EndpointRealUserTestsApi.md#GetEndpointRealUserTestsRequest)|-|-|
 
 ### Return type
 
@@ -86,7 +88,7 @@ public class Example {
 
 ## getEndpointRealUserTestsWithHttpInfo
 
-> ApiResponse<EndpointRealUserTestsResponse> getEndpointRealUserTests getEndpointRealUserTestsWithHttpInfo(aid)
+> ApiResponse<EndpointRealUserTestsResponse> getEndpointRealUserTests getEndpointRealUserTestsWithHttpInfo(GetEndpointRealUserTestsRequest)
 
 List endpoint real user tests
 
@@ -101,7 +103,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.EndpointRealUserTestsApi;
 
 public class Example {
@@ -116,7 +118,10 @@ public class Example {
         EndpointRealUserTestsApi apiInstance = new EndpointRealUserTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointRealUserTestsResponse> response = apiInstance.getEndpointRealUserTestsWithHttpInfo(aid);
+            EndpointRealUserTestsApi.GetEndpointRealUserTestsRequest request = EndpointRealUserTestsApi.GetEndpointRealUserTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointRealUserTestsResponse> response = apiInstance.getEndpointRealUserTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -133,10 +138,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointRealUserTestsRequest**](EndpointRealUserTestsApi.md#GetEndpointRealUserTestsRequest)|-|-|
 
 ### Return type
 
@@ -161,4 +165,14 @@ ApiResponse<[**EndpointRealUserTestsResponse**](EndpointRealUserTestsResponse.md
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetEndpointRealUserTestsRequest"></a>
+## GetEndpointRealUserTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

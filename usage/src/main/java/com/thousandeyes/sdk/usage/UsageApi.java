@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -43,12 +42,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -70,42 +67,45 @@ public class UsageApi {
   /**
    * Get enterprise agent usage with pagination
    * This operation returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<EnterpriseAgentUnitsByTestOwnerAccountGroup, EnterpriseAgentsUsage>
    */
-  public Paginator<EnterpriseAgentUnitsByTestOwnerAccountGroup, EnterpriseAgentsUsage> getEnterpriseAgentsUnitsUsagePaginated(OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getEnterpriseAgentsUnitsUsage(startDate, endDate, cursor),
+  public Paginator<EnterpriseAgentUnitsByTestOwnerAccountGroup, EnterpriseAgentsUsage> getEnterpriseAgentsUnitsUsagePaginated(GetEnterpriseAgentsUnitsUsageRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getEnterpriseAgentsUnitsUsagePaginated");
+    }
+    return new Paginator<>(cursor -> getEnterpriseAgentsUnitsUsage(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            EnterpriseAgentsUsage::getBreakdowns);
 
   }
   /**
    * Get enterprise agent usage
    * This operation returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return EnterpriseAgentsUsage
    * @throws ApiException if fails to make API call
    */
-  public EnterpriseAgentsUsage getEnterpriseAgentsUnitsUsage(OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiResponse<EnterpriseAgentsUsage> response = getEnterpriseAgentsUnitsUsageWithHttpInfo(startDate, endDate, cursor);
+  public EnterpriseAgentsUsage getEnterpriseAgentsUnitsUsage(GetEnterpriseAgentsUnitsUsageRequest request) throws ApiException {
+    ApiResponse<EnterpriseAgentsUsage> response = getEnterpriseAgentsUnitsUsageWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get enterprise agent usage
    * This operation returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EnterpriseAgentsUsage&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EnterpriseAgentsUsage> getEnterpriseAgentsUnitsUsageWithHttpInfo(OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+  public ApiResponse<EnterpriseAgentsUsage> getEnterpriseAgentsUnitsUsageWithHttpInfo(GetEnterpriseAgentsUnitsUsageRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEnterpriseAgentsUnitsUsage");
+    }
     getEnterpriseAgentsUnitsUsageValidateRequest();
 
-    var requestBuilder = getEnterpriseAgentsUnitsUsageRequestBuilder(startDate, endDate, cursor);
+    var requestBuilder = getEnterpriseAgentsUnitsUsageRequestBuilder(request.getStartDate(), request.getEndDate(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), EnterpriseAgentsUsage.class);
   }
@@ -113,8 +113,8 @@ public class UsageApi {
   private void getEnterpriseAgentsUnitsUsageValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEnterpriseAgentsUnitsUsageRequestBuilder(OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEnterpriseAgentsUnitsUsageRequestBuilder(OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/usage/units/enterprise-agents";
@@ -133,48 +133,102 @@ public class UsageApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEnterpriseAgentsUnitsUsageRequest {
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+
+    private GetEnterpriseAgentsUnitsUsageRequest(Builder builder) {
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetEnterpriseAgentsUnitsUsageRequest build() {
+        return new GetEnterpriseAgentsUnitsUsageRequest(this);
+      }
+    }
+  }
+
   /**
    * Get cloud and enterprise agents units usage with pagination
    * This operation returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<UnitsByTests, TestsUsage>
    */
-  public Paginator<UnitsByTests, TestsUsage> getTestsUnitsUsagePaginated(String aid, OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getTestsUnitsUsage(aid, startDate, endDate, cursor),
+  public Paginator<UnitsByTests, TestsUsage> getTestsUnitsUsagePaginated(GetTestsUnitsUsageRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getTestsUnitsUsagePaginated");
+    }
+    return new Paginator<>(cursor -> getTestsUnitsUsage(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            TestsUsage::getBreakdowns);
 
   }
   /**
    * Get cloud and enterprise agents units usage
    * This operation returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return TestsUsage
    * @throws ApiException if fails to make API call
    */
-  public TestsUsage getTestsUnitsUsage(String aid, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiResponse<TestsUsage> response = getTestsUnitsUsageWithHttpInfo(aid, startDate, endDate, cursor);
+  public TestsUsage getTestsUnitsUsage(GetTestsUnitsUsageRequest request) throws ApiException {
+    ApiResponse<TestsUsage> response = getTestsUnitsUsageWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get cloud and enterprise agents units usage
    * This operation returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;TestsUsage&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<TestsUsage> getTestsUnitsUsageWithHttpInfo(String aid, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+  public ApiResponse<TestsUsage> getTestsUnitsUsageWithHttpInfo(GetTestsUnitsUsageRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestsUnitsUsage");
+    }
     getTestsUnitsUsageValidateRequest();
 
-    var requestBuilder = getTestsUnitsUsageRequestBuilder(aid, startDate, endDate, cursor);
+    var requestBuilder = getTestsUnitsUsageRequestBuilder(request.getAid(), request.getStartDate(), request.getEndDate(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), TestsUsage.class);
   }
@@ -182,8 +236,8 @@ public class UsageApi {
   private void getTestsUnitsUsageValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getTestsUnitsUsageRequestBuilder(String aid, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestsUnitsUsageRequestBuilder(String aid, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/usage/units/tests";
@@ -203,31 +257,97 @@ public class UsageApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestsUnitsUsageRequest {
+    private final String aid;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+
+    private GetTestsUnitsUsageRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetTestsUnitsUsageRequest build() {
+        return new GetTestsUnitsUsageRequest(this);
+      }
+    }
+  }
+
   /**
    * Get usage information for the last month
    * This operation returns usage for the current period. It provides visibility across all account groups within an organization. To access this endpoint, you need the &#x60;View Billing&#x60; permission (a management permission). If you have access to view billing in multiple organizations, query the endpoint using an &#x60;aid&#x60; querystring parameter (see optional parameters, below) from each organization. **Note:** Access to billing information older than one month is not supported by this endpoint.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. (optional
+   * @param request operation parameters (required)
    * @return Usage
    * @throws ApiException if fails to make API call
    */
-  public Usage getUsage(String aid, List<ExpandUsageOptions> expand) throws ApiException {
-    ApiResponse<Usage> response = getUsageWithHttpInfo(aid, expand);
+  public Usage getUsage(GetUsageRequest request) throws ApiException {
+    ApiResponse<Usage> response = getUsageWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get usage information for the last month
    * This operation returns usage for the current period. It provides visibility across all account groups within an organization. To access this endpoint, you need the &#x60;View Billing&#x60; permission (a management permission). If you have access to view billing in multiple organizations, query the endpoint using an &#x60;aid&#x60; querystring parameter (see optional parameters, below) from each organization. **Note:** Access to billing information older than one month is not supported by this endpoint.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Usage&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Usage> getUsageWithHttpInfo(String aid, List<ExpandUsageOptions> expand) throws ApiException {
+  public ApiResponse<Usage> getUsageWithHttpInfo(GetUsageRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getUsage");
+    }
     getUsageValidateRequest();
 
-    var requestBuilder = getUsageRequestBuilder(aid, expand);
+    var requestBuilder = getUsageRequestBuilder(request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), Usage.class);
   }
@@ -235,8 +355,8 @@ public class UsageApi {
   private void getUsageValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getUsageRequestBuilder(String aid, List<ExpandUsageOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getUsageRequestBuilder(String aid, List<ExpandUsageOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/usage";
@@ -254,4 +374,47 @@ public class UsageApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetUsageRequest {
+    private final String aid;
+    private final List<ExpandUsageOptions> expand;
+
+    private GetUsageRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandUsageOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private List<ExpandUsageOptions> expand;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandUsageOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetUsageRequest build() {
+        return new GetUsageRequest(this);
+      }
+    }
+  }
+
 }

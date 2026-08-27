@@ -85,7 +85,6 @@ public class EnterpriseAgentClusterApiTest {
             throws JsonProcessingException, ApiException
     {
         String agentId = "281474976710706";
-
         var requestBodyJson = """
                 {
                   "agents" : [ "281474976710706" ]
@@ -228,7 +227,13 @@ public class EnterpriseAgentClusterApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.assignAgentToCluster(agentId, mappedRequest, null, null);
+        var request = EnterpriseAgentClusterApi.AssignAgentToClusterRequest.builder()
+                .agentId(agentId)
+                .agentClusterAssignRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.assignAgentToCluster(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -244,7 +249,6 @@ public class EnterpriseAgentClusterApiTest {
             throws JsonProcessingException, ApiException
     {
         String agentId = "281474976710706";
-
         var requestBodyJson = """
                 {
                   "members" : [ "281474976710706" ]
@@ -331,7 +335,13 @@ public class EnterpriseAgentClusterApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.unassignAgentFromCluster(agentId, mappedRequest, null, null);
+        var request = EnterpriseAgentClusterApi.UnassignAgentFromClusterRequest.builder()
+                .agentId(agentId)
+                .agentClusterUnassignRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.unassignAgentFromCluster(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

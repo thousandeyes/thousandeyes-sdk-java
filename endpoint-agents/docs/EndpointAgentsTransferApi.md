@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## transferEndpointAgent
 
-> void transferEndpointAgent(agentId, agentTransferRequest, aid)
+> void transferEndpointAgent(TransferEndpointAgentRequest)
 
 Transfer endpoint agent
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsTransferApi;
 
 public class Example {
@@ -44,7 +44,12 @@ public class Example {
         AgentTransferRequest agentTransferRequest = new AgentTransferRequest(); // AgentTransferRequest | The request to move an agent between accounts.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.transferEndpointAgent(agentId, agentTransferRequest, aid);
+            EndpointAgentsTransferApi.TransferEndpointAgentRequest request = EndpointAgentsTransferApi.TransferEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .agentTransferRequest(agentTransferRequest)
+                .aid(aid)
+                .build();
+            apiInstance.transferEndpointAgent(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsTransferApi#transferEndpointAgent");
             System.err.println("Status code: " + e.getCode());
@@ -58,12 +63,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **agentTransferRequest** | [**AgentTransferRequest**](AgentTransferRequest.md)| The request to move an agent between accounts. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**TransferEndpointAgentRequest**](EndpointAgentsTransferApi.md#TransferEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -90,7 +92,7 @@ null (empty response body)
 
 ## transferEndpointAgentWithHttpInfo
 
-> ApiResponse<Void> transferEndpointAgent transferEndpointAgentWithHttpInfo(agentId, agentTransferRequest, aid)
+> ApiResponse<Void> transferEndpointAgent transferEndpointAgentWithHttpInfo(TransferEndpointAgentRequest)
 
 Transfer endpoint agent
 
@@ -105,7 +107,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsTransferApi;
 
 public class Example {
@@ -122,7 +124,12 @@ public class Example {
         AgentTransferRequest agentTransferRequest = new AgentTransferRequest(); // AgentTransferRequest | The request to move an agent between accounts.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.transferEndpointAgentWithHttpInfo(agentId, agentTransferRequest, aid);
+            EndpointAgentsTransferApi.TransferEndpointAgentRequest request = EndpointAgentsTransferApi.TransferEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .agentTransferRequest(agentTransferRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.transferEndpointAgentWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -138,12 +145,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **agentTransferRequest** | [**AgentTransferRequest**](AgentTransferRequest.md)| The request to move an agent between accounts. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**TransferEndpointAgentRequest**](EndpointAgentsTransferApi.md#TransferEndpointAgentRequest)|-|-|
 
 ### Return type
 
@@ -169,9 +173,21 @@ ApiResponse<Void>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="TransferEndpointAgentRequest"></a>
+## TransferEndpointAgentRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **UUID** | The identifier of the agent to operate on. | |
+| **agentTransferRequest** | [**AgentTransferRequest**](AgentTransferRequest.md) | The request to move an agent between accounts. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## transferEndpointAgents
 
-> BulkAgentTransferResponse transferEndpointAgents(aid, bulkAgentTransferRequest)
+> BulkAgentTransferResponse transferEndpointAgents(TransferEndpointAgentsRequest)
 
 Bulk transfer agents
 
@@ -185,7 +201,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsTransferApi;
 
 public class Example {
@@ -201,7 +217,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         BulkAgentTransferRequest bulkAgentTransferRequest = new BulkAgentTransferRequest(); // BulkAgentTransferRequest | A collection of `AgentTransfers`.
         try {
-            BulkAgentTransferResponse result = apiInstance.transferEndpointAgents(aid, bulkAgentTransferRequest);
+            EndpointAgentsTransferApi.TransferEndpointAgentsRequest request = EndpointAgentsTransferApi.TransferEndpointAgentsRequest.builder()
+                .aid(aid)
+                .bulkAgentTransferRequest(bulkAgentTransferRequest)
+                .build();
+            BulkAgentTransferResponse result = apiInstance.transferEndpointAgents(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentsTransferApi#transferEndpointAgents");
@@ -216,11 +236,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **bulkAgentTransferRequest** | [**BulkAgentTransferRequest**](BulkAgentTransferRequest.md)| A collection of &#x60;AgentTransfers&#x60;. | [optional] |
+| request | [**TransferEndpointAgentsRequest**](EndpointAgentsTransferApi.md#TransferEndpointAgentsRequest)|-|-|
 
 ### Return type
 
@@ -248,7 +266,7 @@ public class Example {
 
 ## transferEndpointAgentsWithHttpInfo
 
-> ApiResponse<BulkAgentTransferResponse> transferEndpointAgents transferEndpointAgentsWithHttpInfo(aid, bulkAgentTransferRequest)
+> ApiResponse<BulkAgentTransferResponse> transferEndpointAgents transferEndpointAgentsWithHttpInfo(TransferEndpointAgentsRequest)
 
 Bulk transfer agents
 
@@ -263,7 +281,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentsTransferApi;
 
 public class Example {
@@ -279,7 +297,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         BulkAgentTransferRequest bulkAgentTransferRequest = new BulkAgentTransferRequest(); // BulkAgentTransferRequest | A collection of `AgentTransfers`.
         try {
-            ApiResponse<BulkAgentTransferResponse> response = apiInstance.transferEndpointAgentsWithHttpInfo(aid, bulkAgentTransferRequest);
+            EndpointAgentsTransferApi.TransferEndpointAgentsRequest request = EndpointAgentsTransferApi.TransferEndpointAgentsRequest.builder()
+                .aid(aid)
+                .bulkAgentTransferRequest(bulkAgentTransferRequest)
+                .build();
+            ApiResponse<BulkAgentTransferResponse> response = apiInstance.transferEndpointAgentsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -296,11 +318,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **bulkAgentTransferRequest** | [**BulkAgentTransferRequest**](BulkAgentTransferRequest.md)| A collection of &#x60;AgentTransfers&#x60;. | [optional] |
+| request | [**TransferEndpointAgentsRequest**](EndpointAgentsTransferApi.md#TransferEndpointAgentsRequest)|-|-|
 
 ### Return type
 
@@ -325,4 +345,15 @@ ApiResponse<[**BulkAgentTransferResponse**](BulkAgentTransferResponse.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
+
+
+<a id="TransferEndpointAgentsRequest"></a>
+## TransferEndpointAgentsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **bulkAgentTransferRequest** | [**BulkAgentTransferRequest**](BulkAgentTransferRequest.md) | A collection of &#x60;AgentTransfers&#x60;. | [optional] |
+
 

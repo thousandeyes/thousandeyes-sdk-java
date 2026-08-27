@@ -17,7 +17,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## filterScheduledTestNetworkResults
 
-> NetworkEndpointTestResults filterScheduledTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch)
+> NetworkEndpointTestResults filterScheduledTestNetworkResults(FilterScheduledTestNetworkResultsRequest)
 
 Retrieve network scheduled test results
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkEndpointScheduledTestResultsApi;
 
 public class Example {
@@ -53,7 +53,17 @@ public class Example {
         List<ExpandEndpointNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch = new EndpointTestsDataRoundsSearch(); // EndpointTestsDataRoundsSearch | Tests data search filters.
         try {
-            NetworkEndpointTestResults result = apiInstance.filterScheduledTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch);
+            NetworkEndpointScheduledTestResultsApi.FilterScheduledTestNetworkResultsRequest request = NetworkEndpointScheduledTestResultsApi.FilterScheduledTestNetworkResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .expand(expand)
+                .endpointTestsDataRoundsSearch(endpointTestsDataRoundsSearch)
+                .build();
+            NetworkEndpointTestResults result = apiInstance.filterScheduledTestNetworkResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkEndpointScheduledTestResultsApi#filterScheduledTestNetworkResults");
@@ -68,17 +78,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
-| **endpointTestsDataRoundsSearch** | [**EndpointTestsDataRoundsSearch**](EndpointTestsDataRoundsSearch.md)| Tests data search filters. | [optional] |
+| request | [**FilterScheduledTestNetworkResultsRequest**](NetworkEndpointScheduledTestResultsApi.md#FilterScheduledTestNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -107,7 +109,7 @@ public class Example {
 
 ## filterScheduledTestNetworkResultsWithHttpInfo
 
-> ApiResponse<NetworkEndpointTestResults> filterScheduledTestNetworkResults filterScheduledTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch)
+> ApiResponse<NetworkEndpointTestResults> filterScheduledTestNetworkResults filterScheduledTestNetworkResultsWithHttpInfo(FilterScheduledTestNetworkResultsRequest)
 
 Retrieve network scheduled test results
 
@@ -122,7 +124,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkEndpointScheduledTestResultsApi;
 
 public class Example {
@@ -144,7 +146,17 @@ public class Example {
         List<ExpandEndpointNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch = new EndpointTestsDataRoundsSearch(); // EndpointTestsDataRoundsSearch | Tests data search filters.
         try {
-            ApiResponse<NetworkEndpointTestResults> response = apiInstance.filterScheduledTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch);
+            NetworkEndpointScheduledTestResultsApi.FilterScheduledTestNetworkResultsRequest request = NetworkEndpointScheduledTestResultsApi.FilterScheduledTestNetworkResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .expand(expand)
+                .endpointTestsDataRoundsSearch(endpointTestsDataRoundsSearch)
+                .build();
+            ApiResponse<NetworkEndpointTestResults> response = apiInstance.filterScheduledTestNetworkResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -161,17 +173,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
-| **endpointTestsDataRoundsSearch** | [**EndpointTestsDataRoundsSearch**](EndpointTestsDataRoundsSearch.md)| Tests data search filters. | [optional] |
+| request | [**FilterScheduledTestNetworkResultsRequest**](NetworkEndpointScheduledTestResultsApi.md#FilterScheduledTestNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -199,9 +203,26 @@ ApiResponse<[**NetworkEndpointTestResults**](NetworkEndpointTestResults.md)>
 | **502** | Bad Gateway |  -  |
 
 
+<a id="FilterScheduledTestNetworkResultsRequest"></a>
+## FilterScheduledTestNetworkResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md) | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
+| **endpointTestsDataRoundsSearch** | [**EndpointTestsDataRoundsSearch**](EndpointTestsDataRoundsSearch.md) | Tests data search filters. | [optional] |
+
+
+
 ## filterScheduledTestsNetworkResults
 
-> MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch)
+> MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(FilterScheduledTestsNetworkResultsRequest)
 
 Retrieve network scheduled test results from multiple tests
 
@@ -215,7 +236,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkEndpointScheduledTestResultsApi;
 
 public class Example {
@@ -238,7 +259,18 @@ public class Example {
         List<ExpandEndpointNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch = new MultiTestIdEndpointTestsDataRoundsSearch(); // MultiTestIdEndpointTestsDataRoundsSearch | Test data search filters.
         try {
-            MultiTestIdNetworkEndpointTestResults result = apiInstance.filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch);
+            NetworkEndpointScheduledTestResultsApi.FilterScheduledTestsNetworkResultsRequest request = NetworkEndpointScheduledTestResultsApi.FilterScheduledTestsNetworkResultsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .max(max)
+                .cursor(cursor)
+                .useAllPermittedAids(useAllPermittedAids)
+                .expand(expand)
+                .multiTestIdEndpointTestsDataRoundsSearch(multiTestIdEndpointTestsDataRoundsSearch)
+                .build();
+            MultiTestIdNetworkEndpointTestResults result = apiInstance.filterScheduledTestsNetworkResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkEndpointScheduledTestResultsApi#filterScheduledTestsNetworkResults");
@@ -253,18 +285,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **useAllPermittedAids** | **Boolean**| Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
-| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
-| **multiTestIdEndpointTestsDataRoundsSearch** | [**MultiTestIdEndpointTestsDataRoundsSearch**](MultiTestIdEndpointTestsDataRoundsSearch.md)| Test data search filters. | [optional] |
+| request | [**FilterScheduledTestsNetworkResultsRequest**](NetworkEndpointScheduledTestResultsApi.md#FilterScheduledTestsNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -293,7 +316,7 @@ public class Example {
 
 ## filterScheduledTestsNetworkResultsWithHttpInfo
 
-> ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResults filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch)
+> ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResults filterScheduledTestsNetworkResultsWithHttpInfo(FilterScheduledTestsNetworkResultsRequest)
 
 Retrieve network scheduled test results from multiple tests
 
@@ -308,7 +331,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkEndpointScheduledTestResultsApi;
 
 public class Example {
@@ -331,7 +354,18 @@ public class Example {
         List<ExpandEndpointNetworkOptions> expand = Arrays.asList(); // List<ExpandEndpointNetworkOptions> | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \"user-profile,\" append `?expand=user-profile` to the query.
         MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch = new MultiTestIdEndpointTestsDataRoundsSearch(); // MultiTestIdEndpointTestsDataRoundsSearch | Test data search filters.
         try {
-            ApiResponse<MultiTestIdNetworkEndpointTestResults> response = apiInstance.filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch);
+            NetworkEndpointScheduledTestResultsApi.FilterScheduledTestsNetworkResultsRequest request = NetworkEndpointScheduledTestResultsApi.FilterScheduledTestsNetworkResultsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .max(max)
+                .cursor(cursor)
+                .useAllPermittedAids(useAllPermittedAids)
+                .expand(expand)
+                .multiTestIdEndpointTestsDataRoundsSearch(multiTestIdEndpointTestsDataRoundsSearch)
+                .build();
+            ApiResponse<MultiTestIdNetworkEndpointTestResults> response = apiInstance.filterScheduledTestsNetworkResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -348,18 +382,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **useAllPermittedAids** | **Boolean**| Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
-| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md)| This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
-| **multiTestIdEndpointTestsDataRoundsSearch** | [**MultiTestIdEndpointTestsDataRoundsSearch**](MultiTestIdEndpointTestsDataRoundsSearch.md)| Test data search filters. | [optional] |
+| request | [**FilterScheduledTestsNetworkResultsRequest**](NetworkEndpointScheduledTestResultsApi.md#FilterScheduledTestsNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -387,9 +412,27 @@ ApiResponse<[**MultiTestIdNetworkEndpointTestResults**](MultiTestIdNetworkEndpoi
 | **502** | Bad Gateway |  -  |
 
 
+<a id="FilterScheduledTestsNetworkResultsRequest"></a>
+## FilterScheduledTestsNetworkResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **max** | **Integer** | (Optional) Maximum number of objects to return. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **useAllPermittedAids** | **Boolean** | Set to &#x60;true&#x60; to load data from all accounts the user has access to. | [optional] [default to false] |
+| **expand** | [**List&lt;ExpandEndpointNetworkOptions&gt;**](ExpandEndpointNetworkOptions.md) | This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. | [optional] |
+| **multiTestIdEndpointTestsDataRoundsSearch** | [**MultiTestIdEndpointTestsDataRoundsSearch**](MultiTestIdEndpointTestsDataRoundsSearch.md) | Test data search filters. | [optional] |
+
+
+
 ## getScheduledTestPathVisAgentRoundResults
 
-> PathVisDetailEndpointTestResults getScheduledTestPathVisAgentRoundResults(testId, agentId, roundId, aid)
+> PathVisDetailEndpointTestResults getScheduledTestPathVisAgentRoundResults(GetScheduledTestPathVisAgentRoundResultsRequest)
 
 Retrieve path visualization network scheduled test results details
 
@@ -403,7 +446,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkEndpointScheduledTestResultsApi;
 
 public class Example {
@@ -421,7 +464,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            PathVisDetailEndpointTestResults result = apiInstance.getScheduledTestPathVisAgentRoundResults(testId, agentId, roundId, aid);
+            NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisAgentRoundResultsRequest request = NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            PathVisDetailEndpointTestResults result = apiInstance.getScheduledTestPathVisAgentRoundResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkEndpointScheduledTestResultsApi#getScheduledTestPathVisAgentRoundResults");
@@ -436,13 +485,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetScheduledTestPathVisAgentRoundResultsRequest**](NetworkEndpointScheduledTestResultsApi.md#GetScheduledTestPathVisAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -471,7 +516,7 @@ public class Example {
 
 ## getScheduledTestPathVisAgentRoundResultsWithHttpInfo
 
-> ApiResponse<PathVisDetailEndpointTestResults> getScheduledTestPathVisAgentRoundResults getScheduledTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid)
+> ApiResponse<PathVisDetailEndpointTestResults> getScheduledTestPathVisAgentRoundResults getScheduledTestPathVisAgentRoundResultsWithHttpInfo(GetScheduledTestPathVisAgentRoundResultsRequest)
 
 Retrieve path visualization network scheduled test results details
 
@@ -486,7 +531,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkEndpointScheduledTestResultsApi;
 
 public class Example {
@@ -504,7 +549,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<PathVisDetailEndpointTestResults> response = apiInstance.getScheduledTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+            NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisAgentRoundResultsRequest request = NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            ApiResponse<PathVisDetailEndpointTestResults> response = apiInstance.getScheduledTestPathVisAgentRoundResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -521,13 +572,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetScheduledTestPathVisAgentRoundResultsRequest**](NetworkEndpointScheduledTestResultsApi.md#GetScheduledTestPathVisAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -555,9 +602,22 @@ ApiResponse<[**PathVisDetailEndpointTestResults**](PathVisDetailEndpointTestResu
 | **502** | Bad Gateway |  -  |
 
 
+<a id="GetScheduledTestPathVisAgentRoundResultsRequest"></a>
+## GetScheduledTestPathVisAgentRoundResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **agentId** | **String** | Agent ID | |
+| **roundId** | **String** | Round ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getScheduledTestPathVisResults
 
-> PathVisEndpointTestResults getScheduledTestPathVisResults(testId, aid, window, startDate, endDate, cursor)
+> PathVisEndpointTestResults getScheduledTestPathVisResults(GetScheduledTestPathVisResultsRequest)
 
 Retrieve path visualization network scheduled test results
 
@@ -571,7 +631,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkEndpointScheduledTestResultsApi;
 
 public class Example {
@@ -591,7 +651,15 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            PathVisEndpointTestResults result = apiInstance.getScheduledTestPathVisResults(testId, aid, window, startDate, endDate, cursor);
+            NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisResultsRequest request = NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            PathVisEndpointTestResults result = apiInstance.getScheduledTestPathVisResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkEndpointScheduledTestResultsApi#getScheduledTestPathVisResults");
@@ -606,15 +674,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetScheduledTestPathVisResultsRequest**](NetworkEndpointScheduledTestResultsApi.md#GetScheduledTestPathVisResultsRequest)|-|-|
 
 ### Return type
 
@@ -643,7 +705,7 @@ public class Example {
 
 ## getScheduledTestPathVisResultsWithHttpInfo
 
-> ApiResponse<PathVisEndpointTestResults> getScheduledTestPathVisResults getScheduledTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<PathVisEndpointTestResults> getScheduledTestPathVisResults getScheduledTestPathVisResultsWithHttpInfo(GetScheduledTestPathVisResultsRequest)
 
 Retrieve path visualization network scheduled test results
 
@@ -658,7 +720,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.NetworkEndpointScheduledTestResultsApi;
 
 public class Example {
@@ -678,7 +740,15 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<PathVisEndpointTestResults> response = apiInstance.getScheduledTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisResultsRequest request = NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            ApiResponse<PathVisEndpointTestResults> response = apiInstance.getScheduledTestPathVisResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -695,15 +765,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetScheduledTestPathVisResultsRequest**](NetworkEndpointScheduledTestResultsApi.md#GetScheduledTestPathVisResultsRequest)|-|-|
 
 ### Return type
 
@@ -729,4 +793,19 @@ ApiResponse<[**PathVisEndpointTestResults**](PathVisEndpointTestResults.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
+
+
+<a id="GetScheduledTestPathVisResultsRequest"></a>
+## GetScheduledTestPathVisResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
 

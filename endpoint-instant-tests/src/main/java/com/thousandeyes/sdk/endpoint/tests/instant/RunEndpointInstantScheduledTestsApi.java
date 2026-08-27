@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -35,12 +34,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -62,28 +59,29 @@ public class RunEndpointInstantScheduledTestsApi {
   /**
    * Run endpoint instant scheduled test
    * Runs an existing endpoint instant scheduled test in ThousandEyes.
-   * @param testId ID of the endpoint instant scheduled test to rerun (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EndpointRunScheduledInstantTestResult
    * @throws ApiException if fails to make API call
    */
-  public EndpointRunScheduledInstantTestResult runEndpointScheduledInstantTest(String testId, String aid) throws ApiException {
-    ApiResponse<EndpointRunScheduledInstantTestResult> response = runEndpointScheduledInstantTestWithHttpInfo(testId, aid);
+  public EndpointRunScheduledInstantTestResult runEndpointScheduledInstantTest(RunEndpointScheduledInstantTestRequest request) throws ApiException {
+    ApiResponse<EndpointRunScheduledInstantTestResult> response = runEndpointScheduledInstantTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Run endpoint instant scheduled test
    * Runs an existing endpoint instant scheduled test in ThousandEyes.
-   * @param testId ID of the endpoint instant scheduled test to rerun (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointRunScheduledInstantTestResult&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointRunScheduledInstantTestResult> runEndpointScheduledInstantTestWithHttpInfo(String testId, String aid) throws ApiException {
-    runEndpointScheduledInstantTestValidateRequest(testId);
+  public ApiResponse<EndpointRunScheduledInstantTestResult> runEndpointScheduledInstantTestWithHttpInfo(RunEndpointScheduledInstantTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling runEndpointScheduledInstantTest");
+    }
+    runEndpointScheduledInstantTestValidateRequest(request.getTestId());
 
-    var requestBuilder = runEndpointScheduledInstantTestRequestBuilder(testId, aid);
+    var requestBuilder = runEndpointScheduledInstantTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EndpointRunScheduledInstantTestResult.class);
   }
@@ -95,8 +93,8 @@ public class RunEndpointInstantScheduledTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder runEndpointScheduledInstantTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder runEndpointScheduledInstantTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/tests/scheduled-tests/{testId}/run"
@@ -114,4 +112,47 @@ public class RunEndpointInstantScheduledTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class RunEndpointScheduledInstantTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private RunEndpointScheduledInstantTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public RunEndpointScheduledInstantTestRequest build() {
+        return new RunEndpointScheduledInstantTestRequest(this);
+      }
+    }
+  }
+
 }

@@ -113,7 +113,12 @@ public class AgentToAgentInstantTestsApiExample {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandInstantTestOptions> expand = Arrays.asList(); // List<ExpandInstantTestOptions> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            AgentToAgentInstantTestResponse result = apiInstance.createAgentToAgentInstantTest(agentToAgentInstantTestRequest, aid, expand);
+            AgentToAgentInstantTestsApi.CreateAgentToAgentInstantTestRequest request = AgentToAgentInstantTestsApi.CreateAgentToAgentInstantTestRequest.builder()
+                .agentToAgentInstantTestRequest(agentToAgentInstantTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            AgentToAgentInstantTestResponse result = apiInstance.createAgentToAgentInstantTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToAgentInstantTestsApi#createAgentToAgentInstantTest");

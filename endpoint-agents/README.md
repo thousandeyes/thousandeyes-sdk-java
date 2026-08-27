@@ -118,7 +118,16 @@ public class EndpointAgentLogItemsApiExample {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
-            EndpointAgentLogItemsResponse result = apiInstance.getEndpointAgentLogItems(agentId, aid, max, cursor, window, startDate, endDate);
+            EndpointAgentLogItemsApi.GetEndpointAgentLogItemsRequest request = EndpointAgentLogItemsApi.GetEndpointAgentLogItemsRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .max(max)
+                .cursor(cursor)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            EndpointAgentLogItemsResponse result = apiInstance.getEndpointAgentLogItems(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentLogItemsApi#getEndpointAgentLogItems");

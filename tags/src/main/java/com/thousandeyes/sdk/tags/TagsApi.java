@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -40,12 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -67,28 +64,29 @@ public class TagsApi {
   /**
    * Create tag
    * Creates a new tag. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;.    For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param tagInfo Tag resource (optional)
+   * @param request operation parameters (required)
    * @return Tag
    * @throws ApiException if fails to make API call
    */
-  public Tag createTag(String aid, TagInfo tagInfo) throws ApiException {
-    ApiResponse<Tag> response = createTagWithHttpInfo(aid, tagInfo);
+  public Tag createTag(CreateTagRequest request) throws ApiException {
+    ApiResponse<Tag> response = createTagWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create tag
    * Creates a new tag. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;.    For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param tagInfo Tag resource (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Tag&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Tag> createTagWithHttpInfo(String aid, TagInfo tagInfo) throws ApiException {
+  public ApiResponse<Tag> createTagWithHttpInfo(CreateTagRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createTag");
+    }
     createTagValidateRequest();
 
-    var requestBuilder = createTagRequestBuilder(aid, tagInfo);
+    var requestBuilder = createTagRequestBuilder(request.getAid(), request.getTagInfo());
 
     return apiClient.send(requestBuilder.build(), Tag.class);
   }
@@ -96,8 +94,8 @@ public class TagsApi {
   private void createTagValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder createTagRequestBuilder(String aid, TagInfo tagInfo) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createTagRequestBuilder(String aid, TagInfo tagInfo) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tags";
@@ -116,31 +114,75 @@ public class TagsApi {
     requestBuilder.requestBody(tagInfo);
     return requestBuilder;
   }
+
+  public static final class CreateTagRequest {
+    private final String aid;
+    private final TagInfo tagInfo;
+
+    private CreateTagRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.tagInfo = builder.tagInfo;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public TagInfo getTagInfo() {
+      return tagInfo;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .tagInfo(tagInfo);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private TagInfo tagInfo;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder tagInfo(TagInfo tagInfo) {
+        this.tagInfo = tagInfo;
+        return this;
+      }
+      public CreateTagRequest build() {
+        return new CreateTagRequest(this);
+      }
+    }
+  }
+
   /**
    * Create multiple tags
    * Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. A tag that fails this permission check is reported as a per-item &#x60;403&#x60; in the &#x60;errors&#x60; array, while the top-level status remains &#x60;207&#x60;. If the caller does not have permission to create tags, the request returns a top-level &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param bulkTagResponse Tag resource (optional)
+   * @param request operation parameters (required)
    * @return BulkTagResponse
    * @throws ApiException if fails to make API call
    */
-  public BulkTagResponse createTags(String aid, BulkTagResponse bulkTagResponse) throws ApiException {
-    ApiResponse<BulkTagResponse> response = createTagsWithHttpInfo(aid, bulkTagResponse);
+  public BulkTagResponse createTags(CreateTagsRequest request) throws ApiException {
+    ApiResponse<BulkTagResponse> response = createTagsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create multiple tags
    * Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. A tag that fails this permission check is reported as a per-item &#x60;403&#x60; in the &#x60;errors&#x60; array, while the top-level status remains &#x60;207&#x60;. If the caller does not have permission to create tags, the request returns a top-level &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param bulkTagResponse Tag resource (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BulkTagResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BulkTagResponse> createTagsWithHttpInfo(String aid, BulkTagResponse bulkTagResponse) throws ApiException {
+  public ApiResponse<BulkTagResponse> createTagsWithHttpInfo(CreateTagsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createTags");
+    }
     createTagsValidateRequest();
 
-    var requestBuilder = createTagsRequestBuilder(aid, bulkTagResponse);
+    var requestBuilder = createTagsRequestBuilder(request.getAid(), request.getBulkTagResponse());
 
     return apiClient.send(requestBuilder.build(), BulkTagResponse.class);
   }
@@ -148,8 +190,8 @@ public class TagsApi {
   private void createTagsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder createTagsRequestBuilder(String aid, BulkTagResponse bulkTagResponse) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createTagsRequestBuilder(String aid, BulkTagResponse bulkTagResponse) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tags/bulk";
@@ -168,29 +210,73 @@ public class TagsApi {
     requestBuilder.requestBody(bulkTagResponse);
     return requestBuilder;
   }
-  /**
-   * Delete tag
-   * Deletes a tag.
-   * @param id Tag ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteTag(String id, String aid) throws ApiException {
-    deleteTagWithHttpInfo(id, aid);
+
+  public static final class CreateTagsRequest {
+    private final String aid;
+    private final BulkTagResponse bulkTagResponse;
+
+    private CreateTagsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.bulkTagResponse = builder.bulkTagResponse;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public BulkTagResponse getBulkTagResponse() {
+      return bulkTagResponse;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .bulkTagResponse(bulkTagResponse);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private BulkTagResponse bulkTagResponse;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder bulkTagResponse(BulkTagResponse bulkTagResponse) {
+        this.bulkTagResponse = bulkTagResponse;
+        return this;
+      }
+      public CreateTagsRequest build() {
+        return new CreateTagsRequest(this);
+      }
+    }
   }
 
   /**
    * Delete tag
    * Deletes a tag.
-   * @param id Tag ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteTag(DeleteTagRequest request) throws ApiException {
+    deleteTagWithHttpInfo(request);
+  }
+
+  /**
+   * Delete tag
+   * Deletes a tag.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteTagWithHttpInfo(String id, String aid) throws ApiException {
-    deleteTagValidateRequest(id);
+  public ApiResponse<Void> deleteTagWithHttpInfo(DeleteTagRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteTag");
+    }
+    deleteTagValidateRequest(request.getId());
 
-    var requestBuilder = deleteTagRequestBuilder(id, aid);
+    var requestBuilder = deleteTagRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -202,8 +288,8 @@ public class TagsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteTagRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteTagRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tags/{id}"
@@ -221,33 +307,75 @@ public class TagsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteTagRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteTagRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteTagRequest build() {
+        return new DeleteTagRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve tag
    * Retrieves a tag using its ID.
-   * @param id Tag ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional, to retrieve associated assignments. Only static tags will return object assignments. (optional
+   * @param request operation parameters (required)
    * @return Tag
    * @throws ApiException if fails to make API call
    */
-  public Tag getTag(String id, String aid, List<ExpandTagsOptions> expand) throws ApiException {
-    ApiResponse<Tag> response = getTagWithHttpInfo(id, aid, expand);
+  public Tag getTag(GetTagRequest request) throws ApiException {
+    ApiResponse<Tag> response = getTagWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve tag
    * Retrieves a tag using its ID.
-   * @param id Tag ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional, to retrieve associated assignments. Only static tags will return object assignments. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Tag&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Tag> getTagWithHttpInfo(String id, String aid, List<ExpandTagsOptions> expand) throws ApiException {
-    getTagValidateRequest(id);
+  public ApiResponse<Tag> getTagWithHttpInfo(GetTagRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTag");
+    }
+    getTagValidateRequest(request.getId());
 
-    var requestBuilder = getTagRequestBuilder(id, aid, expand);
+    var requestBuilder = getTagRequestBuilder(request.getId(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), Tag.class);
   }
@@ -259,8 +387,8 @@ public class TagsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTagRequestBuilder(String id, String aid, List<ExpandTagsOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTagRequestBuilder(String id, String aid, List<ExpandTagsOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tags/{id}"
@@ -279,31 +407,86 @@ public class TagsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTagRequest {
+    private final String id;
+    private final String aid;
+    private final List<ExpandTagsOptions> expand;
+
+    private GetTagRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTagsOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+      private List<ExpandTagsOptions> expand;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTagsOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetTagRequest build() {
+        return new GetTagRequest(this);
+      }
+    }
+  }
+
   /**
    * List tags
    * This operation returns a list of tags in the specified account group (&#x60;aid&#x60;).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional, to retrieve associated assignments. Only static tags will return object assignments. (optional
+   * @param request operation parameters (required)
    * @return Tags
    * @throws ApiException if fails to make API call
    */
-  public Tags getTags(String aid, List<ExpandTagsOptions> expand) throws ApiException {
-    ApiResponse<Tags> response = getTagsWithHttpInfo(aid, expand);
+  public Tags getTags(GetTagsRequest request) throws ApiException {
+    ApiResponse<Tags> response = getTagsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List tags
    * This operation returns a list of tags in the specified account group (&#x60;aid&#x60;).
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional, to retrieve associated assignments. Only static tags will return object assignments. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Tags&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Tags> getTagsWithHttpInfo(String aid, List<ExpandTagsOptions> expand) throws ApiException {
+  public ApiResponse<Tags> getTagsWithHttpInfo(GetTagsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTags");
+    }
     getTagsValidateRequest();
 
-    var requestBuilder = getTagsRequestBuilder(aid, expand);
+    var requestBuilder = getTagsRequestBuilder(request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), Tags.class);
   }
@@ -311,8 +494,8 @@ public class TagsApi {
   private void getTagsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getTagsRequestBuilder(String aid, List<ExpandTagsOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTagsRequestBuilder(String aid, List<ExpandTagsOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tags";
@@ -330,33 +513,75 @@ public class TagsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTagsRequest {
+    private final String aid;
+    private final List<ExpandTagsOptions> expand;
+
+    private GetTagsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTagsOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private List<ExpandTagsOptions> expand;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTagsOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetTagsRequest build() {
+        return new GetTagsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update tag
    * Updates a tag. Updating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
-   * @param id ID of tag to update (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param tagInfo  (optional)
+   * @param request operation parameters (required)
    * @return Tag
    * @throws ApiException if fails to make API call
    */
-  public Tag updateTag(String id, String aid, TagInfo tagInfo) throws ApiException {
-    ApiResponse<Tag> response = updateTagWithHttpInfo(id, aid, tagInfo);
+  public Tag updateTag(UpdateTagRequest request) throws ApiException {
+    ApiResponse<Tag> response = updateTagWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update tag
    * Updates a tag. Updating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
-   * @param id ID of tag to update (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param tagInfo  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Tag&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Tag> updateTagWithHttpInfo(String id, String aid, TagInfo tagInfo) throws ApiException {
-    updateTagValidateRequest(id);
+  public ApiResponse<Tag> updateTagWithHttpInfo(UpdateTagRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateTag");
+    }
+    updateTagValidateRequest(request.getId());
 
-    var requestBuilder = updateTagRequestBuilder(id, aid, tagInfo);
+    var requestBuilder = updateTagRequestBuilder(request.getId(), request.getAid(), request.getTagInfo());
 
     return apiClient.send(requestBuilder.build(), Tag.class);
   }
@@ -368,8 +593,8 @@ public class TagsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateTagRequestBuilder(String id, String aid, TagInfo tagInfo) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateTagRequestBuilder(String id, String aid, TagInfo tagInfo) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tags/{id}"
@@ -389,4 +614,58 @@ public class TagsApi {
     requestBuilder.requestBody(tagInfo);
     return requestBuilder;
   }
+
+  public static final class UpdateTagRequest {
+    private final String id;
+    private final String aid;
+    private final TagInfo tagInfo;
+
+    private UpdateTagRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+      this.tagInfo = builder.tagInfo;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public TagInfo getTagInfo() {
+      return tagInfo;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid)
+          .tagInfo(tagInfo);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+      private TagInfo tagInfo;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder tagInfo(TagInfo tagInfo) {
+        this.tagInfo = tagInfo;
+        return this;
+      }
+      public UpdateTagRequest build() {
+        return new UpdateTagRequest(this);
+      }
+    }
+  }
+
 }

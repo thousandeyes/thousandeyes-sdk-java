@@ -80,7 +80,6 @@ public class BgpMonitorsApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "_links" : {
@@ -126,7 +125,10 @@ public class BgpMonitorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getBgpMonitors(null);
+        var request = BgpMonitorsApi.GetBgpMonitorsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getBgpMonitors(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

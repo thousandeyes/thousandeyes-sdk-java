@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -36,12 +35,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -63,28 +60,29 @@ public class WebhookOperationsApi {
   /**
    * Create webhook operation
    * Creates a new webhook operation.
-   * @param webhookOperation  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return WebhookOperation
    * @throws ApiException if fails to make API call
    */
-  public WebhookOperation createWebhookOperation(WebhookOperation webhookOperation, String aid) throws ApiException {
-    ApiResponse<WebhookOperation> response = createWebhookOperationWithHttpInfo(webhookOperation, aid);
+  public WebhookOperation createWebhookOperation(CreateWebhookOperationRequest request) throws ApiException {
+    ApiResponse<WebhookOperation> response = createWebhookOperationWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create webhook operation
    * Creates a new webhook operation.
-   * @param webhookOperation  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;WebhookOperation&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WebhookOperation> createWebhookOperationWithHttpInfo(WebhookOperation webhookOperation, String aid) throws ApiException {
-    createWebhookOperationValidateRequest(webhookOperation);
+  public ApiResponse<WebhookOperation> createWebhookOperationWithHttpInfo(CreateWebhookOperationRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createWebhookOperation");
+    }
+    createWebhookOperationValidateRequest(request.getWebhookOperation());
 
-    var requestBuilder = createWebhookOperationRequestBuilder(webhookOperation, aid);
+    var requestBuilder = createWebhookOperationRequestBuilder(request.getWebhookOperation(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), WebhookOperation.class);
   }
@@ -96,8 +94,8 @@ public class WebhookOperationsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createWebhookOperationRequestBuilder(WebhookOperation webhookOperation, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createWebhookOperationRequestBuilder(WebhookOperation webhookOperation, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/operations/webhooks";
@@ -116,29 +114,73 @@ public class WebhookOperationsApi {
     requestBuilder.requestBody(webhookOperation);
     return requestBuilder;
   }
-  /**
-   * Delete webhook operation
-   * Deletes the webhook operation specified by ID.
-   * @param id The operation ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteWebhookOperation(String id, String aid) throws ApiException {
-    deleteWebhookOperationWithHttpInfo(id, aid);
+
+  public static final class CreateWebhookOperationRequest {
+    private final WebhookOperation webhookOperation;
+    private final String aid;
+
+    private CreateWebhookOperationRequest(Builder builder) {
+      this.webhookOperation = builder.webhookOperation;
+      this.aid = builder.aid;
+    }
+    public WebhookOperation getWebhookOperation() {
+      return webhookOperation;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .webhookOperation(webhookOperation)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private WebhookOperation webhookOperation;
+      private String aid;
+
+      public Builder webhookOperation(WebhookOperation webhookOperation) {
+        this.webhookOperation = webhookOperation;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateWebhookOperationRequest build() {
+        return new CreateWebhookOperationRequest(this);
+      }
+    }
   }
 
   /**
    * Delete webhook operation
    * Deletes the webhook operation specified by ID.
-   * @param id The operation ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteWebhookOperation(DeleteWebhookOperationRequest request) throws ApiException {
+    deleteWebhookOperationWithHttpInfo(request);
+  }
+
+  /**
+   * Delete webhook operation
+   * Deletes the webhook operation specified by ID.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteWebhookOperationWithHttpInfo(String id, String aid) throws ApiException {
-    deleteWebhookOperationValidateRequest(id);
+  public ApiResponse<Void> deleteWebhookOperationWithHttpInfo(DeleteWebhookOperationRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteWebhookOperation");
+    }
+    deleteWebhookOperationValidateRequest(request.getId());
 
-    var requestBuilder = deleteWebhookOperationRequestBuilder(id, aid);
+    var requestBuilder = deleteWebhookOperationRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -150,8 +192,8 @@ public class WebhookOperationsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteWebhookOperationRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteWebhookOperationRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/operations/webhooks/{id}"
@@ -169,31 +211,75 @@ public class WebhookOperationsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteWebhookOperationRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteWebhookOperationRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteWebhookOperationRequest build() {
+        return new DeleteWebhookOperationRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve webhook operation
    * Retrieves details of a webhook operation by its ID.
-   * @param id The operation ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return WebhookOperation
    * @throws ApiException if fails to make API call
    */
-  public WebhookOperation getWebhookOperation(String id, String aid) throws ApiException {
-    ApiResponse<WebhookOperation> response = getWebhookOperationWithHttpInfo(id, aid);
+  public WebhookOperation getWebhookOperation(GetWebhookOperationRequest request) throws ApiException {
+    ApiResponse<WebhookOperation> response = getWebhookOperationWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve webhook operation
    * Retrieves details of a webhook operation by its ID.
-   * @param id The operation ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;WebhookOperation&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WebhookOperation> getWebhookOperationWithHttpInfo(String id, String aid) throws ApiException {
-    getWebhookOperationValidateRequest(id);
+  public ApiResponse<WebhookOperation> getWebhookOperationWithHttpInfo(GetWebhookOperationRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getWebhookOperation");
+    }
+    getWebhookOperationValidateRequest(request.getId());
 
-    var requestBuilder = getWebhookOperationRequestBuilder(id, aid);
+    var requestBuilder = getWebhookOperationRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), WebhookOperation.class);
   }
@@ -205,8 +291,8 @@ public class WebhookOperationsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getWebhookOperationRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getWebhookOperationRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/operations/webhooks/{id}"
@@ -224,29 +310,75 @@ public class WebhookOperationsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetWebhookOperationRequest {
+    private final String id;
+    private final String aid;
+
+    private GetWebhookOperationRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetWebhookOperationRequest build() {
+        return new GetWebhookOperationRequest(this);
+      }
+    }
+  }
+
   /**
    * List webhook operations
    * Returns a list of webhook operations in the specified account group. If no account group is specified, the user’s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return WebhookOperations
    * @throws ApiException if fails to make API call
    */
-  public WebhookOperations getWebhookOperations(String aid) throws ApiException {
-    ApiResponse<WebhookOperations> response = getWebhookOperationsWithHttpInfo(aid);
+  public WebhookOperations getWebhookOperations(GetWebhookOperationsRequest request) throws ApiException {
+    ApiResponse<WebhookOperations> response = getWebhookOperationsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List webhook operations
    * Returns a list of webhook operations in the specified account group. If no account group is specified, the user’s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;WebhookOperations&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WebhookOperations> getWebhookOperationsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<WebhookOperations> getWebhookOperationsWithHttpInfo(GetWebhookOperationsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getWebhookOperations");
+    }
     getWebhookOperationsValidateRequest();
 
-    var requestBuilder = getWebhookOperationsRequestBuilder(aid);
+    var requestBuilder = getWebhookOperationsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), WebhookOperations.class);
   }
@@ -254,8 +386,8 @@ public class WebhookOperationsApi {
   private void getWebhookOperationsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getWebhookOperationsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getWebhookOperationsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/operations/webhooks";
@@ -272,33 +404,64 @@ public class WebhookOperationsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetWebhookOperationsRequest {
+    private final String aid;
+
+    private GetWebhookOperationsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetWebhookOperationsRequest build() {
+        return new GetWebhookOperationsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update webhook operation
    * Updates the webhook operation specified by ID.
-   * @param id The operation ID. (required)
-   * @param webhookOperation  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return WebhookOperation
    * @throws ApiException if fails to make API call
    */
-  public WebhookOperation updateWebhookOperation(String id, WebhookOperation webhookOperation, String aid) throws ApiException {
-    ApiResponse<WebhookOperation> response = updateWebhookOperationWithHttpInfo(id, webhookOperation, aid);
+  public WebhookOperation updateWebhookOperation(UpdateWebhookOperationRequest request) throws ApiException {
+    ApiResponse<WebhookOperation> response = updateWebhookOperationWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update webhook operation
    * Updates the webhook operation specified by ID.
-   * @param id The operation ID. (required)
-   * @param webhookOperation  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;WebhookOperation&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WebhookOperation> updateWebhookOperationWithHttpInfo(String id, WebhookOperation webhookOperation, String aid) throws ApiException {
-    updateWebhookOperationValidateRequest(id, webhookOperation);
+  public ApiResponse<WebhookOperation> updateWebhookOperationWithHttpInfo(UpdateWebhookOperationRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateWebhookOperation");
+    }
+    updateWebhookOperationValidateRequest(request.getId(), request.getWebhookOperation());
 
-    var requestBuilder = updateWebhookOperationRequestBuilder(id, webhookOperation, aid);
+    var requestBuilder = updateWebhookOperationRequestBuilder(request.getId(), request.getWebhookOperation(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), WebhookOperation.class);
   }
@@ -314,8 +477,8 @@ public class WebhookOperationsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateWebhookOperationRequestBuilder(String id, WebhookOperation webhookOperation, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateWebhookOperationRequestBuilder(String id, WebhookOperation webhookOperation, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/operations/webhooks/{id}"
@@ -335,4 +498,58 @@ public class WebhookOperationsApi {
     requestBuilder.requestBody(webhookOperation);
     return requestBuilder;
   }
+
+  public static final class UpdateWebhookOperationRequest {
+    private final String id;
+    private final WebhookOperation webhookOperation;
+    private final String aid;
+
+    private UpdateWebhookOperationRequest(Builder builder) {
+      this.id = builder.id;
+      this.webhookOperation = builder.webhookOperation;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public WebhookOperation getWebhookOperation() {
+      return webhookOperation;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .webhookOperation(webhookOperation)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private WebhookOperation webhookOperation;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder webhookOperation(WebhookOperation webhookOperation) {
+        this.webhookOperation = webhookOperation;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateWebhookOperationRequest build() {
+        return new UpdateWebhookOperationRequest(this);
+      }
+    }
+  }
+
 }

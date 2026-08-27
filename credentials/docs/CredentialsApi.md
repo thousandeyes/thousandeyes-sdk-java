@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createCredential
 
-> CredentialWithoutValue createCredential(credentialRequest, aid)
+> CredentialWithoutValue createCredential(CreateCredentialRequest)
 
 Create credential
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialWithoutValue result = apiInstance.createCredential(credentialRequest, aid);
+            CredentialsApi.CreateCredentialRequest request = CredentialsApi.CreateCredentialRequest.builder()
+                .credentialRequest(credentialRequest)
+                .aid(aid)
+                .build();
+            CredentialWithoutValue result = apiInstance.createCredential(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialsApi#createCredential");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **credentialRequest** | [**CredentialRequest**](CredentialRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateCredentialRequest**](CredentialsApi.md#CreateCredentialRequest)|-|-|
 
 ### Return type
 
@@ -97,7 +99,7 @@ public class Example {
 
 ## createCredentialWithHttpInfo
 
-> ApiResponse<CredentialWithoutValue> createCredential createCredentialWithHttpInfo(credentialRequest, aid)
+> ApiResponse<CredentialWithoutValue> createCredential createCredentialWithHttpInfo(CreateCredentialRequest)
 
 Create credential
 
@@ -112,7 +114,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -128,7 +130,11 @@ public class Example {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CredentialWithoutValue> response = apiInstance.createCredentialWithHttpInfo(credentialRequest, aid);
+            CredentialsApi.CreateCredentialRequest request = CredentialsApi.CreateCredentialRequest.builder()
+                .credentialRequest(credentialRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<CredentialWithoutValue> response = apiInstance.createCredentialWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -145,11 +151,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **credentialRequest** | [**CredentialRequest**](CredentialRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateCredentialRequest**](CredentialsApi.md#CreateCredentialRequest)|-|-|
 
 ### Return type
 
@@ -177,9 +181,20 @@ ApiResponse<[**CredentialWithoutValue**](CredentialWithoutValue.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateCredentialRequest"></a>
+## CreateCredentialRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **credentialRequest** | [**CredentialRequest**](CredentialRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteCredential
 
-> void deleteCredential(id, aid)
+> void deleteCredential(DeleteCredentialRequest)
 
 Delete credential
 
@@ -193,7 +208,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -209,7 +224,11 @@ public class Example {
         String id = "3247"; // String | The ID of the desired credential.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteCredential(id, aid);
+            CredentialsApi.DeleteCredentialRequest request = CredentialsApi.DeleteCredentialRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            apiInstance.deleteCredential(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialsApi#deleteCredential");
             System.err.println("Status code: " + e.getCode());
@@ -223,11 +242,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired credential. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteCredentialRequest**](CredentialsApi.md#DeleteCredentialRequest)|-|-|
 
 ### Return type
 
@@ -255,7 +272,7 @@ null (empty response body)
 
 ## deleteCredentialWithHttpInfo
 
-> ApiResponse<Void> deleteCredential deleteCredentialWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteCredential deleteCredentialWithHttpInfo(DeleteCredentialRequest)
 
 Delete credential
 
@@ -270,7 +287,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -286,7 +303,11 @@ public class Example {
         String id = "3247"; // String | The ID of the desired credential.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteCredentialWithHttpInfo(id, aid);
+            CredentialsApi.DeleteCredentialRequest request = CredentialsApi.DeleteCredentialRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteCredentialWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -302,11 +323,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired credential. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteCredentialRequest**](CredentialsApi.md#DeleteCredentialRequest)|-|-|
 
 ### Return type
 
@@ -333,9 +352,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteCredentialRequest"></a>
+## DeleteCredentialRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The ID of the desired credential. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getCredential
 
-> Credential getCredential(id, aid)
+> Credential getCredential(GetCredentialRequest)
 
 Retrieve credential
 
@@ -349,7 +379,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -365,7 +395,11 @@ public class Example {
         String id = "3247"; // String | The ID of the desired credential.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Credential result = apiInstance.getCredential(id, aid);
+            CredentialsApi.GetCredentialRequest request = CredentialsApi.GetCredentialRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            Credential result = apiInstance.getCredential(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialsApi#getCredential");
@@ -380,11 +414,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired credential. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCredentialRequest**](CredentialsApi.md#GetCredentialRequest)|-|-|
 
 ### Return type
 
@@ -413,7 +445,7 @@ public class Example {
 
 ## getCredentialWithHttpInfo
 
-> ApiResponse<Credential> getCredential getCredentialWithHttpInfo(id, aid)
+> ApiResponse<Credential> getCredential getCredentialWithHttpInfo(GetCredentialRequest)
 
 Retrieve credential
 
@@ -428,7 +460,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -444,7 +476,11 @@ public class Example {
         String id = "3247"; // String | The ID of the desired credential.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Credential> response = apiInstance.getCredentialWithHttpInfo(id, aid);
+            CredentialsApi.GetCredentialRequest request = CredentialsApi.GetCredentialRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Credential> response = apiInstance.getCredentialWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -461,11 +497,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired credential. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCredentialRequest**](CredentialsApi.md#GetCredentialRequest)|-|-|
 
 ### Return type
 
@@ -493,9 +527,20 @@ ApiResponse<[**Credential**](Credential.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetCredentialRequest"></a>
+## GetCredentialRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The ID of the desired credential. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getCredentials
 
-> Credentials getCredentials(aid)
+> Credentials getCredentials(GetCredentialsRequest)
 
 List credentials
 
@@ -509,7 +554,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -524,7 +569,10 @@ public class Example {
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Credentials result = apiInstance.getCredentials(aid);
+            CredentialsApi.GetCredentialsRequest request = CredentialsApi.GetCredentialsRequest.builder()
+                .aid(aid)
+                .build();
+            Credentials result = apiInstance.getCredentials(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialsApi#getCredentials");
@@ -539,10 +587,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCredentialsRequest**](CredentialsApi.md#GetCredentialsRequest)|-|-|
 
 ### Return type
 
@@ -570,7 +617,7 @@ public class Example {
 
 ## getCredentialsWithHttpInfo
 
-> ApiResponse<Credentials> getCredentials getCredentialsWithHttpInfo(aid)
+> ApiResponse<Credentials> getCredentials getCredentialsWithHttpInfo(GetCredentialsRequest)
 
 List credentials
 
@@ -585,7 +632,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -600,7 +647,10 @@ public class Example {
         CredentialsApi apiInstance = new CredentialsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Credentials> response = apiInstance.getCredentialsWithHttpInfo(aid);
+            CredentialsApi.GetCredentialsRequest request = CredentialsApi.GetCredentialsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<Credentials> response = apiInstance.getCredentialsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -617,10 +667,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCredentialsRequest**](CredentialsApi.md#GetCredentialsRequest)|-|-|
 
 ### Return type
 
@@ -647,9 +696,19 @@ ApiResponse<[**Credentials**](Credentials.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetCredentialsRequest"></a>
+## GetCredentialsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateCredential
 
-> CredentialWithoutValue updateCredential(id, credentialRequest, aid)
+> CredentialWithoutValue updateCredential(UpdateCredentialRequest)
 
 Update credential
 
@@ -663,7 +722,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -680,7 +739,12 @@ public class Example {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialWithoutValue result = apiInstance.updateCredential(id, credentialRequest, aid);
+            CredentialsApi.UpdateCredentialRequest request = CredentialsApi.UpdateCredentialRequest.builder()
+                .id(id)
+                .credentialRequest(credentialRequest)
+                .aid(aid)
+                .build();
+            CredentialWithoutValue result = apiInstance.updateCredential(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialsApi#updateCredential");
@@ -695,12 +759,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired credential. | |
-| **credentialRequest** | [**CredentialRequest**](CredentialRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateCredentialRequest**](CredentialsApi.md#UpdateCredentialRequest)|-|-|
 
 ### Return type
 
@@ -729,7 +790,7 @@ public class Example {
 
 ## updateCredentialWithHttpInfo
 
-> ApiResponse<CredentialWithoutValue> updateCredential updateCredentialWithHttpInfo(id, credentialRequest, aid)
+> ApiResponse<CredentialWithoutValue> updateCredential updateCredentialWithHttpInfo(UpdateCredentialRequest)
 
 Update credential
 
@@ -744,7 +805,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.credentials.model.*;
 import com.thousandeyes.sdk.credentials.CredentialsApi;
 
 public class Example {
@@ -761,7 +822,12 @@ public class Example {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CredentialWithoutValue> response = apiInstance.updateCredentialWithHttpInfo(id, credentialRequest, aid);
+            CredentialsApi.UpdateCredentialRequest request = CredentialsApi.UpdateCredentialRequest.builder()
+                .id(id)
+                .credentialRequest(credentialRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<CredentialWithoutValue> response = apiInstance.updateCredentialWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -778,12 +844,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired credential. | |
-| **credentialRequest** | [**CredentialRequest**](CredentialRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateCredentialRequest**](CredentialsApi.md#UpdateCredentialRequest)|-|-|
 
 ### Return type
 
@@ -809,4 +872,16 @@ ApiResponse<[**CredentialWithoutValue**](CredentialWithoutValue.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateCredentialRequest"></a>
+## UpdateCredentialRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The ID of the desired credential. | |
+| **credentialRequest** | [**CredentialRequest**](CredentialRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

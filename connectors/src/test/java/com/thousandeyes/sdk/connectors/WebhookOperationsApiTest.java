@@ -81,7 +81,6 @@ public class WebhookOperationsApiTest {
     public void createWebhookOperationRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "path" : "/custom/path",
@@ -167,7 +166,11 @@ public class WebhookOperationsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createWebhookOperation(mappedRequest, null);
+        var request = WebhookOperationsApi.CreateWebhookOperationRequest.builder()
+                .webhookOperation(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createWebhookOperation(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -184,7 +187,6 @@ public class WebhookOperationsApiTest {
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
-
         var statusCode = 204;
 
         var path = "/operations/webhooks/{id}";
@@ -194,7 +196,11 @@ public class WebhookOperationsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteWebhookOperationWithHttpInfo(id, null);
+        var request = WebhookOperationsApi.DeleteWebhookOperationRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteWebhookOperationWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -210,7 +216,6 @@ public class WebhookOperationsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
 
         var responseBodyJson = """
                 {
@@ -259,7 +264,11 @@ public class WebhookOperationsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getWebhookOperation(id, null);
+        var request = WebhookOperationsApi.GetWebhookOperationRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getWebhookOperation(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -274,7 +283,6 @@ public class WebhookOperationsApiTest {
     public void getWebhookOperationsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -365,7 +373,10 @@ public class WebhookOperationsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getWebhookOperations(null);
+        var request = WebhookOperationsApi.GetWebhookOperationsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getWebhookOperations(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -381,7 +392,6 @@ public class WebhookOperationsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
         var requestBodyJson = """
                 {
                   "path" : "/custom/path",
@@ -468,7 +478,12 @@ public class WebhookOperationsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateWebhookOperation(id, mappedRequest, null);
+        var request = WebhookOperationsApi.UpdateWebhookOperationRequest.builder()
+                .id(id)
+                .webhookOperation(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateWebhookOperation(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

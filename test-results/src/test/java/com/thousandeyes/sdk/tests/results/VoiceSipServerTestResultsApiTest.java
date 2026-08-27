@@ -85,7 +85,6 @@ public class VoiceSipServerTestResultsApiTest {
     {
         String testId = "202701";
 
-
         var responseBodyJson = """
                 {
                   "test" : {
@@ -250,7 +249,14 @@ public class VoiceSipServerTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestSipServerResults(testId, null, null, null, null, null);
+        var request = VoiceSipServerTestResultsApi.GetTestSipServerResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getTestSipServerResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

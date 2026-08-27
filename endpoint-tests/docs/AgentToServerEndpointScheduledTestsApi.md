@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createAgentToServerEndpointScheduledTest
 
-> EndpointAgentToServerTest createAgentToServerEndpointScheduledTest(endpointAgentToServerTestRequest, aid)
+> EndpointAgentToServerTest createAgentToServerEndpointScheduledTest(CreateAgentToServerEndpointScheduledTestRequest)
 
 Creates agent to server endpoint scheduled test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         EndpointAgentToServerTestRequest endpointAgentToServerTestRequest = new EndpointAgentToServerTestRequest(); // EndpointAgentToServerTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentToServerTest result = apiInstance.createAgentToServerEndpointScheduledTest(endpointAgentToServerTestRequest, aid);
+            AgentToServerEndpointScheduledTestsApi.CreateAgentToServerEndpointScheduledTestRequest request = AgentToServerEndpointScheduledTestsApi.CreateAgentToServerEndpointScheduledTestRequest.builder()
+                .endpointAgentToServerTestRequest(endpointAgentToServerTestRequest)
+                .aid(aid)
+                .build();
+            EndpointAgentToServerTest result = apiInstance.createAgentToServerEndpointScheduledTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointScheduledTestsApi#createAgentToServerEndpointScheduledTest");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **endpointAgentToServerTestRequest** | [**EndpointAgentToServerTestRequest**](EndpointAgentToServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateAgentToServerEndpointScheduledTestRequest**](AgentToServerEndpointScheduledTestsApi.md#CreateAgentToServerEndpointScheduledTestRequest)|-|-|
 
 ### Return type
 
@@ -99,7 +101,7 @@ public class Example {
 
 ## createAgentToServerEndpointScheduledTestWithHttpInfo
 
-> ApiResponse<EndpointAgentToServerTest> createAgentToServerEndpointScheduledTest createAgentToServerEndpointScheduledTestWithHttpInfo(endpointAgentToServerTestRequest, aid)
+> ApiResponse<EndpointAgentToServerTest> createAgentToServerEndpointScheduledTest createAgentToServerEndpointScheduledTestWithHttpInfo(CreateAgentToServerEndpointScheduledTestRequest)
 
 Creates agent to server endpoint scheduled test
 
@@ -114,7 +116,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -130,7 +132,11 @@ public class Example {
         EndpointAgentToServerTestRequest endpointAgentToServerTestRequest = new EndpointAgentToServerTestRequest(); // EndpointAgentToServerTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgentToServerTest> response = apiInstance.createAgentToServerEndpointScheduledTestWithHttpInfo(endpointAgentToServerTestRequest, aid);
+            AgentToServerEndpointScheduledTestsApi.CreateAgentToServerEndpointScheduledTestRequest request = AgentToServerEndpointScheduledTestsApi.CreateAgentToServerEndpointScheduledTestRequest.builder()
+                .endpointAgentToServerTestRequest(endpointAgentToServerTestRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointAgentToServerTest> response = apiInstance.createAgentToServerEndpointScheduledTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -147,11 +153,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **endpointAgentToServerTestRequest** | [**EndpointAgentToServerTestRequest**](EndpointAgentToServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateAgentToServerEndpointScheduledTestRequest**](AgentToServerEndpointScheduledTestsApi.md#CreateAgentToServerEndpointScheduledTestRequest)|-|-|
 
 ### Return type
 
@@ -181,9 +185,20 @@ ApiResponse<[**EndpointAgentToServerTest**](EndpointAgentToServerTest.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreateAgentToServerEndpointScheduledTestRequest"></a>
+## CreateAgentToServerEndpointScheduledTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **endpointAgentToServerTestRequest** | [**EndpointAgentToServerTestRequest**](EndpointAgentToServerTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteAgentToServerEndpointScheduledTest
 
-> void deleteAgentToServerEndpointScheduledTest(testId, aid)
+> void deleteAgentToServerEndpointScheduledTest(DeleteAgentToServerEndpointScheduledTestRequest)
 
 Delete agent to server scheduled test
 
@@ -197,7 +212,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -213,7 +228,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteAgentToServerEndpointScheduledTest(testId, aid);
+            AgentToServerEndpointScheduledTestsApi.DeleteAgentToServerEndpointScheduledTestRequest request = AgentToServerEndpointScheduledTestsApi.DeleteAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteAgentToServerEndpointScheduledTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointScheduledTestsApi#deleteAgentToServerEndpointScheduledTest");
             System.err.println("Status code: " + e.getCode());
@@ -227,11 +246,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAgentToServerEndpointScheduledTestRequest**](AgentToServerEndpointScheduledTestsApi.md#DeleteAgentToServerEndpointScheduledTestRequest)|-|-|
 
 ### Return type
 
@@ -262,7 +279,7 @@ null (empty response body)
 
 ## deleteAgentToServerEndpointScheduledTestWithHttpInfo
 
-> ApiResponse<Void> deleteAgentToServerEndpointScheduledTest deleteAgentToServerEndpointScheduledTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteAgentToServerEndpointScheduledTest deleteAgentToServerEndpointScheduledTestWithHttpInfo(DeleteAgentToServerEndpointScheduledTestRequest)
 
 Delete agent to server scheduled test
 
@@ -277,7 +294,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -293,7 +310,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteAgentToServerEndpointScheduledTestWithHttpInfo(testId, aid);
+            AgentToServerEndpointScheduledTestsApi.DeleteAgentToServerEndpointScheduledTestRequest request = AgentToServerEndpointScheduledTestsApi.DeleteAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteAgentToServerEndpointScheduledTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -309,11 +330,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAgentToServerEndpointScheduledTestRequest**](AgentToServerEndpointScheduledTestsApi.md#DeleteAgentToServerEndpointScheduledTestRequest)|-|-|
 
 ### Return type
 
@@ -343,9 +362,20 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
+<a id="DeleteAgentToServerEndpointScheduledTestRequest"></a>
+## DeleteAgentToServerEndpointScheduledTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Unique ID of endpoint test. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAgentToServerEndpointScheduledTest
 
-> EndpointAgentToServerTest getAgentToServerEndpointScheduledTest(testId, aid)
+> EndpointAgentToServerTest getAgentToServerEndpointScheduledTest(GetAgentToServerEndpointScheduledTestRequest)
 
 Retrieve agent to server endpoint scheduled test
 
@@ -359,7 +389,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -375,7 +405,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentToServerTest result = apiInstance.getAgentToServerEndpointScheduledTest(testId, aid);
+            AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestRequest request = AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            EndpointAgentToServerTest result = apiInstance.getAgentToServerEndpointScheduledTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointScheduledTestsApi#getAgentToServerEndpointScheduledTest");
@@ -390,11 +424,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToServerEndpointScheduledTestRequest**](AgentToServerEndpointScheduledTestsApi.md#GetAgentToServerEndpointScheduledTestRequest)|-|-|
 
 ### Return type
 
@@ -424,7 +456,7 @@ public class Example {
 
 ## getAgentToServerEndpointScheduledTestWithHttpInfo
 
-> ApiResponse<EndpointAgentToServerTest> getAgentToServerEndpointScheduledTest getAgentToServerEndpointScheduledTestWithHttpInfo(testId, aid)
+> ApiResponse<EndpointAgentToServerTest> getAgentToServerEndpointScheduledTest getAgentToServerEndpointScheduledTestWithHttpInfo(GetAgentToServerEndpointScheduledTestRequest)
 
 Retrieve agent to server endpoint scheduled test
 
@@ -439,7 +471,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -455,7 +487,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgentToServerTest> response = apiInstance.getAgentToServerEndpointScheduledTestWithHttpInfo(testId, aid);
+            AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestRequest request = AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointAgentToServerTest> response = apiInstance.getAgentToServerEndpointScheduledTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -472,11 +508,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToServerEndpointScheduledTestRequest**](AgentToServerEndpointScheduledTestsApi.md#GetAgentToServerEndpointScheduledTestRequest)|-|-|
 
 ### Return type
 
@@ -505,9 +539,20 @@ ApiResponse<[**EndpointAgentToServerTest**](EndpointAgentToServerTest.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetAgentToServerEndpointScheduledTestRequest"></a>
+## GetAgentToServerEndpointScheduledTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Unique ID of endpoint test. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAgentToServerEndpointScheduledTests
 
-> EndpointAgentToServerTests getAgentToServerEndpointScheduledTests(aid)
+> EndpointAgentToServerTests getAgentToServerEndpointScheduledTests(GetAgentToServerEndpointScheduledTestsRequest)
 
 List agent to server endpoint scheduled tests
 
@@ -521,7 +566,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -536,7 +581,10 @@ public class Example {
         AgentToServerEndpointScheduledTestsApi apiInstance = new AgentToServerEndpointScheduledTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentToServerTests result = apiInstance.getAgentToServerEndpointScheduledTests(aid);
+            AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestsRequest request = AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestsRequest.builder()
+                .aid(aid)
+                .build();
+            EndpointAgentToServerTests result = apiInstance.getAgentToServerEndpointScheduledTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointScheduledTestsApi#getAgentToServerEndpointScheduledTests");
@@ -551,10 +599,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToServerEndpointScheduledTestsRequest**](AgentToServerEndpointScheduledTestsApi.md#GetAgentToServerEndpointScheduledTestsRequest)|-|-|
 
 ### Return type
 
@@ -583,7 +630,7 @@ public class Example {
 
 ## getAgentToServerEndpointScheduledTestsWithHttpInfo
 
-> ApiResponse<EndpointAgentToServerTests> getAgentToServerEndpointScheduledTests getAgentToServerEndpointScheduledTestsWithHttpInfo(aid)
+> ApiResponse<EndpointAgentToServerTests> getAgentToServerEndpointScheduledTests getAgentToServerEndpointScheduledTestsWithHttpInfo(GetAgentToServerEndpointScheduledTestsRequest)
 
 List agent to server endpoint scheduled tests
 
@@ -598,7 +645,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -613,7 +660,10 @@ public class Example {
         AgentToServerEndpointScheduledTestsApi apiInstance = new AgentToServerEndpointScheduledTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgentToServerTests> response = apiInstance.getAgentToServerEndpointScheduledTestsWithHttpInfo(aid);
+            AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestsRequest request = AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointAgentToServerTests> response = apiInstance.getAgentToServerEndpointScheduledTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -630,10 +680,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToServerEndpointScheduledTestsRequest**](AgentToServerEndpointScheduledTestsApi.md#GetAgentToServerEndpointScheduledTestsRequest)|-|-|
 
 ### Return type
 
@@ -661,9 +710,19 @@ ApiResponse<[**EndpointAgentToServerTests**](EndpointAgentToServerTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetAgentToServerEndpointScheduledTestsRequest"></a>
+## GetAgentToServerEndpointScheduledTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateAgentToServerEndpointScheduledTest
 
-> EndpointAgentToServerTest updateAgentToServerEndpointScheduledTest(testId, endpointNetworkTestUpdate, aid)
+> EndpointAgentToServerTest updateAgentToServerEndpointScheduledTest(UpdateAgentToServerEndpointScheduledTestRequest)
 
 Update agent to server endpoint scheduled test
 
@@ -677,7 +736,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -694,7 +753,12 @@ public class Example {
         EndpointNetworkTestUpdate endpointNetworkTestUpdate = new EndpointNetworkTestUpdate(); // EndpointNetworkTestUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentToServerTest result = apiInstance.updateAgentToServerEndpointScheduledTest(testId, endpointNetworkTestUpdate, aid);
+            AgentToServerEndpointScheduledTestsApi.UpdateAgentToServerEndpointScheduledTestRequest request = AgentToServerEndpointScheduledTestsApi.UpdateAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .endpointNetworkTestUpdate(endpointNetworkTestUpdate)
+                .aid(aid)
+                .build();
+            EndpointAgentToServerTest result = apiInstance.updateAgentToServerEndpointScheduledTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointScheduledTestsApi#updateAgentToServerEndpointScheduledTest");
@@ -709,12 +773,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **endpointNetworkTestUpdate** | [**EndpointNetworkTestUpdate**](EndpointNetworkTestUpdate.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateAgentToServerEndpointScheduledTestRequest**](AgentToServerEndpointScheduledTestsApi.md#UpdateAgentToServerEndpointScheduledTestRequest)|-|-|
 
 ### Return type
 
@@ -745,7 +806,7 @@ public class Example {
 
 ## updateAgentToServerEndpointScheduledTestWithHttpInfo
 
-> ApiResponse<EndpointAgentToServerTest> updateAgentToServerEndpointScheduledTest updateAgentToServerEndpointScheduledTestWithHttpInfo(testId, endpointNetworkTestUpdate, aid)
+> ApiResponse<EndpointAgentToServerTest> updateAgentToServerEndpointScheduledTest updateAgentToServerEndpointScheduledTestWithHttpInfo(UpdateAgentToServerEndpointScheduledTestRequest)
 
 Update agent to server endpoint scheduled test
 
@@ -760,7 +821,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
 
 public class Example {
@@ -777,7 +838,12 @@ public class Example {
         EndpointNetworkTestUpdate endpointNetworkTestUpdate = new EndpointNetworkTestUpdate(); // EndpointNetworkTestUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointAgentToServerTest> response = apiInstance.updateAgentToServerEndpointScheduledTestWithHttpInfo(testId, endpointNetworkTestUpdate, aid);
+            AgentToServerEndpointScheduledTestsApi.UpdateAgentToServerEndpointScheduledTestRequest request = AgentToServerEndpointScheduledTestsApi.UpdateAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .endpointNetworkTestUpdate(endpointNetworkTestUpdate)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointAgentToServerTest> response = apiInstance.updateAgentToServerEndpointScheduledTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -794,12 +860,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **endpointNetworkTestUpdate** | [**EndpointNetworkTestUpdate**](EndpointNetworkTestUpdate.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateAgentToServerEndpointScheduledTestRequest**](AgentToServerEndpointScheduledTestsApi.md#UpdateAgentToServerEndpointScheduledTestRequest)|-|-|
 
 ### Return type
 
@@ -827,4 +890,16 @@ ApiResponse<[**EndpointAgentToServerTest**](EndpointAgentToServerTest.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdateAgentToServerEndpointScheduledTestRequest"></a>
+## UpdateAgentToServerEndpointScheduledTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Unique ID of endpoint test. | |
+| **endpointNetworkTestUpdate** | [**EndpointNetworkTestUpdate**](EndpointNetworkTestUpdate.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

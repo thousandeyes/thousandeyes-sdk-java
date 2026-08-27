@@ -82,7 +82,6 @@ public class CyberArkConjurConnectorsApiTest {
     public void createConjurConnectorRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "lastModifiedDate" : 1770293655756,
@@ -158,7 +157,11 @@ public class CyberArkConjurConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createConjurConnector(mappedRequest, null);
+        var request = CyberArkConjurConnectorsApi.CreateConjurConnectorRequest.builder()
+                .conjurConnector(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createConjurConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -176,7 +179,6 @@ public class CyberArkConjurConnectorsApiTest {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         Boolean confirmDisabledObjects = false;
 
-
         var statusCode = 204;
 
         var path = "/connectors/conjur/{id}";
@@ -186,7 +188,12 @@ public class CyberArkConjurConnectorsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteConjurConnectorWithHttpInfo(id, confirmDisabledObjects, null);
+        var request = CyberArkConjurConnectorsApi.DeleteConjurConnectorRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteConjurConnectorWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -202,7 +209,6 @@ public class CyberArkConjurConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
 
         var responseBodyJson = """
                 {
@@ -246,7 +252,11 @@ public class CyberArkConjurConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getConjurConnector(id, null);
+        var request = CyberArkConjurConnectorsApi.GetConjurConnectorRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getConjurConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -262,7 +272,6 @@ public class CyberArkConjurConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
 
         var responseBodyJson = """
                 {
@@ -296,7 +305,11 @@ public class CyberArkConjurConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getConjurConnectorOperations(id, null);
+        var request = CyberArkConjurConnectorsApi.GetConjurConnectorOperationsRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getConjurConnectorOperations(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -311,7 +324,6 @@ public class CyberArkConjurConnectorsApiTest {
     public void getConjurConnectorsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -392,7 +404,10 @@ public class CyberArkConjurConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getConjurConnectors(null);
+        var request = CyberArkConjurConnectorsApi.GetConjurConnectorsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getConjurConnectors(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -409,7 +424,6 @@ public class CyberArkConjurConnectorsApiTest {
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         Boolean confirmDisabledObjects = false;
-
         var requestBodyJson = """
                 [ "ca39314d-eb4f-496f-9435-b5d20b1bfbff", "a32cfbab-32f6-41d8-9027-7127cba965dd" ]
                                  """;
@@ -452,7 +466,13 @@ public class CyberArkConjurConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.setConjurConnectorOperations(id, confirmDisabledObjects, mappedRequest, null);
+        var request = CyberArkConjurConnectorsApi.SetConjurConnectorOperationsRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .requestBody(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.setConjurConnectorOperations(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -468,7 +488,6 @@ public class CyberArkConjurConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
         var requestBodyJson = """
                 {
                   "lastModifiedDate" : 1770293655756,
@@ -545,7 +564,12 @@ public class CyberArkConjurConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateConjurConnector(id, mappedRequest, null);
+        var request = CyberArkConjurConnectorsApi.UpdateConjurConnectorRequest.builder()
+                .id(id)
+                .conjurConnector(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateConjurConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

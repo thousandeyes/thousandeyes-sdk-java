@@ -83,7 +83,6 @@ public class TagAssignmentApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
-
         var requestBodyJson = """
                 {
                   "assignments" : [ {
@@ -141,7 +140,12 @@ public class TagAssignmentApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.assignTag(id, mappedRequest, null);
+        var request = TagAssignmentApi.AssignTagRequest.builder()
+                .id(id)
+                .tagAssignment(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.assignTag(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -156,7 +160,6 @@ public class TagAssignmentApiTest {
     public void assignTagsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -296,7 +299,11 @@ public class TagAssignmentApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.assignTags(mappedRequest, null);
+        var request = TagAssignmentApi.AssignTagsRequest.builder()
+                .bulkTagAssignments(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.assignTags(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -312,7 +319,6 @@ public class TagAssignmentApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
-
         var requestBodyJson = """
                 {
                   "assignments" : [ {
@@ -340,7 +346,12 @@ public class TagAssignmentApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.unassignTagWithHttpInfo(id, mappedRequest, null);
+        var request = TagAssignmentApi.UnassignTagRequest.builder()
+                .id(id)
+                .tagAssignment(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.unassignTagWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -355,7 +366,6 @@ public class TagAssignmentApiTest {
     public void unassignTagsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -495,7 +505,11 @@ public class TagAssignmentApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.unassignTags(mappedRequest, null);
+        var request = TagAssignmentApi.UnassignTagsRequest.builder()
+                .bulkTagAssignments(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.unassignTags(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

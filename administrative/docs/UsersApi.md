@@ -21,7 +21,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createUser
 
-> CreatedUser createUser(userRequest, aid)
+> CreatedUser createUser(CreateUserRequest)
 
 Create user
 
@@ -35,7 +35,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -51,7 +51,11 @@ public class Example {
         UserRequest userRequest = new UserRequest(); // UserRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CreatedUser result = apiInstance.createUser(userRequest, aid);
+            UsersApi.CreateUserRequest request = UsersApi.CreateUserRequest.builder()
+                .userRequest(userRequest)
+                .aid(aid)
+                .build();
+            CreatedUser result = apiInstance.createUser(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#createUser");
@@ -66,11 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **userRequest** | [**UserRequest**](UserRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateUserRequest**](UsersApi.md#CreateUserRequest)|-|-|
 
 ### Return type
 
@@ -99,7 +101,7 @@ public class Example {
 
 ## createUserWithHttpInfo
 
-> ApiResponse<CreatedUser> createUser createUserWithHttpInfo(userRequest, aid)
+> ApiResponse<CreatedUser> createUser createUserWithHttpInfo(CreateUserRequest)
 
 Create user
 
@@ -114,7 +116,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -130,7 +132,11 @@ public class Example {
         UserRequest userRequest = new UserRequest(); // UserRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<CreatedUser> response = apiInstance.createUserWithHttpInfo(userRequest, aid);
+            UsersApi.CreateUserRequest request = UsersApi.CreateUserRequest.builder()
+                .userRequest(userRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<CreatedUser> response = apiInstance.createUserWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -147,11 +153,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **userRequest** | [**UserRequest**](UserRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateUserRequest**](UsersApi.md#CreateUserRequest)|-|-|
 
 ### Return type
 
@@ -179,9 +183,20 @@ ApiResponse<[**CreatedUser**](CreatedUser.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateUserRequest"></a>
+## CreateUserRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **userRequest** | [**UserRequest**](UserRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteUser
 
-> void deleteUser(id, aid)
+> void deleteUser(DeleteUserRequest)
 
 Delete user
 
@@ -195,7 +210,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -211,7 +226,11 @@ public class Example {
         String id = "1234"; // String | Identifier for the user.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteUser(id, aid);
+            UsersApi.DeleteUserRequest request = UsersApi.DeleteUserRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            apiInstance.deleteUser(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#deleteUser");
             System.err.println("Status code: " + e.getCode());
@@ -225,11 +244,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the user. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteUserRequest**](UsersApi.md#DeleteUserRequest)|-|-|
 
 ### Return type
 
@@ -258,7 +275,7 @@ null (empty response body)
 
 ## deleteUserWithHttpInfo
 
-> ApiResponse<Void> deleteUser deleteUserWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteUser deleteUserWithHttpInfo(DeleteUserRequest)
 
 Delete user
 
@@ -273,7 +290,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -289,7 +306,11 @@ public class Example {
         String id = "1234"; // String | Identifier for the user.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteUserWithHttpInfo(id, aid);
+            UsersApi.DeleteUserRequest request = UsersApi.DeleteUserRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteUserWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -305,11 +326,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the user. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteUserRequest**](UsersApi.md#DeleteUserRequest)|-|-|
 
 ### Return type
 
@@ -337,6 +356,17 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteUserRequest"></a>
+## DeleteUserRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | Identifier for the user. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getCurrentUser
 
 > UserDetail getCurrentUser()
@@ -353,7 +383,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -426,7 +456,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -487,7 +517,7 @@ ApiResponse<[**UserDetail**](UserDetail.md)>
 
 ## getUser
 
-> UserDetail getUser(id, aid)
+> UserDetail getUser(GetUserRequest)
 
 Retrieve user
 
@@ -501,7 +531,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -517,7 +547,11 @@ public class Example {
         String id = "1234"; // String | Identifier for the user.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            UserDetail result = apiInstance.getUser(id, aid);
+            UsersApi.GetUserRequest request = UsersApi.GetUserRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            UserDetail result = apiInstance.getUser(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#getUser");
@@ -532,11 +566,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the user. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetUserRequest**](UsersApi.md#GetUserRequest)|-|-|
 
 ### Return type
 
@@ -565,7 +597,7 @@ public class Example {
 
 ## getUserWithHttpInfo
 
-> ApiResponse<UserDetail> getUser getUserWithHttpInfo(id, aid)
+> ApiResponse<UserDetail> getUser getUserWithHttpInfo(GetUserRequest)
 
 Retrieve user
 
@@ -580,7 +612,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -596,7 +628,11 @@ public class Example {
         String id = "1234"; // String | Identifier for the user.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<UserDetail> response = apiInstance.getUserWithHttpInfo(id, aid);
+            UsersApi.GetUserRequest request = UsersApi.GetUserRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<UserDetail> response = apiInstance.getUserWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -613,11 +649,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the user. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetUserRequest**](UsersApi.md#GetUserRequest)|-|-|
 
 ### Return type
 
@@ -645,9 +679,20 @@ ApiResponse<[**UserDetail**](UserDetail.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetUserRequest"></a>
+## GetUserRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | Identifier for the user. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getUsers
 
-> Users getUsers(aid)
+> Users getUsers(GetUsersRequest)
 
 List users
 
@@ -661,7 +706,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -676,7 +721,10 @@ public class Example {
         UsersApi apiInstance = new UsersApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Users result = apiInstance.getUsers(aid);
+            UsersApi.GetUsersRequest request = UsersApi.GetUsersRequest.builder()
+                .aid(aid)
+                .build();
+            Users result = apiInstance.getUsers(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#getUsers");
@@ -691,10 +739,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetUsersRequest**](UsersApi.md#GetUsersRequest)|-|-|
 
 ### Return type
 
@@ -723,7 +770,7 @@ public class Example {
 
 ## getUsersWithHttpInfo
 
-> ApiResponse<Users> getUsers getUsersWithHttpInfo(aid)
+> ApiResponse<Users> getUsers getUsersWithHttpInfo(GetUsersRequest)
 
 List users
 
@@ -738,7 +785,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -753,7 +800,10 @@ public class Example {
         UsersApi apiInstance = new UsersApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Users> response = apiInstance.getUsersWithHttpInfo(aid);
+            UsersApi.GetUsersRequest request = UsersApi.GetUsersRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<Users> response = apiInstance.getUsersWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -770,10 +820,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetUsersRequest**](UsersApi.md#GetUsersRequest)|-|-|
 
 ### Return type
 
@@ -801,9 +850,19 @@ ApiResponse<[**Users**](Users.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetUsersRequest"></a>
+## GetUsersRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateUser
 
-> UserDetail updateUser(id, userRequest, aid)
+> UserDetail updateUser(UpdateUserRequest)
 
 Update user
 
@@ -817,7 +876,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -834,7 +893,12 @@ public class Example {
         UserRequest userRequest = new UserRequest(); // UserRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            UserDetail result = apiInstance.updateUser(id, userRequest, aid);
+            UsersApi.UpdateUserRequest request = UsersApi.UpdateUserRequest.builder()
+                .id(id)
+                .userRequest(userRequest)
+                .aid(aid)
+                .build();
+            UserDetail result = apiInstance.updateUser(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#updateUser");
@@ -849,12 +913,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the user. | |
-| **userRequest** | [**UserRequest**](UserRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateUserRequest**](UsersApi.md#UpdateUserRequest)|-|-|
 
 ### Return type
 
@@ -883,7 +944,7 @@ public class Example {
 
 ## updateUserWithHttpInfo
 
-> ApiResponse<UserDetail> updateUser updateUserWithHttpInfo(id, userRequest, aid)
+> ApiResponse<UserDetail> updateUser updateUserWithHttpInfo(UpdateUserRequest)
 
 Update user
 
@@ -898,7 +959,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.UsersApi;
 
 public class Example {
@@ -915,7 +976,12 @@ public class Example {
         UserRequest userRequest = new UserRequest(); // UserRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<UserDetail> response = apiInstance.updateUserWithHttpInfo(id, userRequest, aid);
+            UsersApi.UpdateUserRequest request = UsersApi.UpdateUserRequest.builder()
+                .id(id)
+                .userRequest(userRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<UserDetail> response = apiInstance.updateUserWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -932,12 +998,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the user. | |
-| **userRequest** | [**UserRequest**](UserRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateUserRequest**](UsersApi.md#UpdateUserRequest)|-|-|
 
 ### Return type
 
@@ -963,4 +1026,16 @@ ApiResponse<[**UserDetail**](UserDetail.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateUserRequest"></a>
+## UpdateUserRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | Identifier for the user. | |
+| **userRequest** | [**UserRequest**](UserRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

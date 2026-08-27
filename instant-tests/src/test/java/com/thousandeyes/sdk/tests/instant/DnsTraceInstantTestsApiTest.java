@@ -83,7 +83,6 @@ public class DnsTraceInstantTestsApiTest {
     public void createDnsTraceInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "dnsQueryClass" : "in",
@@ -255,7 +254,12 @@ public class DnsTraceInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDnsTraceInstantTest(mappedRequest, null, null);
+        var request = DnsTraceInstantTestsApi.CreateDnsTraceInstantTestRequest.builder()
+                .dnsTraceInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createDnsTraceInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

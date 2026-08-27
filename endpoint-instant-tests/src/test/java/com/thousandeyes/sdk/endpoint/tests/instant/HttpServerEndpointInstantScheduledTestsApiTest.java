@@ -82,7 +82,6 @@ public class HttpServerEndpointInstantScheduledTestsApiTest {
     public void createHttpServerScheduledInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "verifyCertificate" : true,
@@ -191,7 +190,11 @@ public class HttpServerEndpointInstantScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createHttpServerScheduledInstantTest(mappedRequest, null);
+        var request = HttpServerEndpointInstantScheduledTestsApi.CreateHttpServerScheduledInstantTestRequest.builder()
+                .endpointHttpServerInstantTest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createHttpServerScheduledInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

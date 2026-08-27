@@ -89,7 +89,6 @@ public class UsageApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "_links" : {
@@ -155,7 +154,11 @@ public class UsageApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEnterpriseAgentsUnitsUsage(null, null, null);
+        var request = UsageApi.GetEnterpriseAgentsUnitsUsageRequest.builder()
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getEnterpriseAgentsUnitsUsage(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -170,7 +173,6 @@ public class UsageApiTest {
     public void getTestsUnitsUsageRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -243,7 +245,12 @@ public class UsageApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestsUnitsUsage(null, null, null, null);
+        var request = UsageApi.GetTestsUnitsUsageRequest.builder()
+                .aid("1234")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getTestsUnitsUsage(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -258,7 +265,6 @@ public class UsageApiTest {
     public void getUsageRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -391,7 +397,11 @@ public class UsageApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getUsage(null, null);
+        var request = UsageApi.GetUsageRequest.builder()
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getUsage(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

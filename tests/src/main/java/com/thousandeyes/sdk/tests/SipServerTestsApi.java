@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class SipServerTestsApi {
   /**
    * Create SIP Server test
    * Creates a new SIP Server test. This method requires Account Admin permissions.
-   * @param sipServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return SipServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public SipServerTestResponse createSipServerTest(SipServerTestRequest sipServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<SipServerTestResponse> response = createSipServerTestWithHttpInfo(sipServerTestRequest, aid, expand);
+  public SipServerTestResponse createSipServerTest(CreateSipServerTestRequest request) throws ApiException {
+    ApiResponse<SipServerTestResponse> response = createSipServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create SIP Server test
    * Creates a new SIP Server test. This method requires Account Admin permissions.
-   * @param sipServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;SipServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SipServerTestResponse> createSipServerTestWithHttpInfo(SipServerTestRequest sipServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    createSipServerTestValidateRequest(sipServerTestRequest);
+  public ApiResponse<SipServerTestResponse> createSipServerTestWithHttpInfo(CreateSipServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createSipServerTest");
+    }
+    createSipServerTestValidateRequest(request.getSipServerTestRequest());
 
-    var requestBuilder = createSipServerTestRequestBuilder(sipServerTestRequest, aid, expand);
+    var requestBuilder = createSipServerTestRequestBuilder(request.getSipServerTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), SipServerTestResponse.class);
   }
@@ -101,8 +97,8 @@ public class SipServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createSipServerTestRequestBuilder(SipServerTestRequest sipServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createSipServerTestRequestBuilder(SipServerTestRequest sipServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/sip-server";
@@ -122,29 +118,84 @@ public class SipServerTestsApi {
     requestBuilder.requestBody(sipServerTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete SIP Server test
-   * Deletes the specified SIP Server test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteSipServerTest(String testId, String aid) throws ApiException {
-    deleteSipServerTestWithHttpInfo(testId, aid);
+
+  public static final class CreateSipServerTestRequest {
+    private final SipServerTestRequest sipServerTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private CreateSipServerTestRequest(Builder builder) {
+      this.sipServerTestRequest = builder.sipServerTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public SipServerTestRequest getSipServerTestRequest() {
+      return sipServerTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .sipServerTestRequest(sipServerTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private SipServerTestRequest sipServerTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder sipServerTestRequest(SipServerTestRequest sipServerTestRequest) {
+        this.sipServerTestRequest = sipServerTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateSipServerTestRequest build() {
+        return new CreateSipServerTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete SIP Server test
    * Deletes the specified SIP Server test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteSipServerTest(DeleteSipServerTestRequest request) throws ApiException {
+    deleteSipServerTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete SIP Server test
+   * Deletes the specified SIP Server test. This method requires Account Admin permissions.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteSipServerTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteSipServerTestValidateRequest(testId);
+  public ApiResponse<Void> deleteSipServerTestWithHttpInfo(DeleteSipServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteSipServerTest");
+    }
+    deleteSipServerTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteSipServerTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteSipServerTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class SipServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteSipServerTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteSipServerTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/sip-server/{testId}"
@@ -175,35 +226,75 @@ public class SipServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteSipServerTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteSipServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteSipServerTestRequest build() {
+        return new DeleteSipServerTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get SIP Server test
    * Returns details for a SIP Server test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return SipServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public SipServerTestResponse getSipServerTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<SipServerTestResponse> response = getSipServerTestWithHttpInfo(testId, aid, versionId, expand);
+  public SipServerTestResponse getSipServerTest(GetSipServerTestRequest request) throws ApiException {
+    ApiResponse<SipServerTestResponse> response = getSipServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get SIP Server test
    * Returns details for a SIP Server test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;SipServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SipServerTestResponse> getSipServerTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    getSipServerTestValidateRequest(testId);
+  public ApiResponse<SipServerTestResponse> getSipServerTestWithHttpInfo(GetSipServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getSipServerTest");
+    }
+    getSipServerTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getSipServerTestRequestBuilder(testId, aid, versionId, expand);
+    var requestBuilder = getSipServerTestRequestBuilder(request.getTestId(), request.getAid(), request.getVersionId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), SipServerTestResponse.class);
   }
@@ -215,8 +306,8 @@ public class SipServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getSipServerTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getSipServerTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/sip-server/{testId}"
@@ -236,29 +327,97 @@ public class SipServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetSipServerTestRequest {
+    private final String testId;
+    private final String aid;
+    private final String versionId;
+    private final List<ExpandTestOptions> expand;
+
+    private GetSipServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.versionId = builder.versionId;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getVersionId() {
+      return versionId;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .versionId(versionId)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String versionId;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder versionId(String versionId) {
+        this.versionId = versionId;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetSipServerTestRequest build() {
+        return new GetSipServerTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List SIP Server tests
    * Returns a list of SIP Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return SipServerTests
    * @throws ApiException if fails to make API call
    */
-  public SipServerTests getSipServerTests(String aid) throws ApiException {
-    ApiResponse<SipServerTests> response = getSipServerTestsWithHttpInfo(aid);
+  public SipServerTests getSipServerTests(GetSipServerTestsRequest request) throws ApiException {
+    ApiResponse<SipServerTests> response = getSipServerTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List SIP Server tests
    * Returns a list of SIP Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;SipServerTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SipServerTests> getSipServerTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<SipServerTests> getSipServerTestsWithHttpInfo(GetSipServerTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getSipServerTests");
+    }
     getSipServerTestsValidateRequest();
 
-    var requestBuilder = getSipServerTestsRequestBuilder(aid);
+    var requestBuilder = getSipServerTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), SipServerTests.class);
   }
@@ -266,8 +425,8 @@ public class SipServerTestsApi {
   private void getSipServerTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getSipServerTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getSipServerTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/sip-server";
@@ -284,35 +443,64 @@ public class SipServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetSipServerTestsRequest {
+    private final String aid;
+
+    private GetSipServerTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetSipServerTestsRequest build() {
+        return new GetSipServerTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update SIP Server test
    * Updates a SIP Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param sipServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return SipServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public SipServerTestResponse updateSipServerTest(String testId, SipServerTestRequest sipServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<SipServerTestResponse> response = updateSipServerTestWithHttpInfo(testId, sipServerTestRequest, aid, expand);
+  public SipServerTestResponse updateSipServerTest(UpdateSipServerTestRequest request) throws ApiException {
+    ApiResponse<SipServerTestResponse> response = updateSipServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update SIP Server test
    * Updates a SIP Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param sipServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;SipServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SipServerTestResponse> updateSipServerTestWithHttpInfo(String testId, SipServerTestRequest sipServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updateSipServerTestValidateRequest(testId, sipServerTestRequest);
+  public ApiResponse<SipServerTestResponse> updateSipServerTestWithHttpInfo(UpdateSipServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateSipServerTest");
+    }
+    updateSipServerTestValidateRequest(request.getTestId(), request.getSipServerTestRequest());
 
-    var requestBuilder = updateSipServerTestRequestBuilder(testId, sipServerTestRequest, aid, expand);
+    var requestBuilder = updateSipServerTestRequestBuilder(request.getTestId(), request.getSipServerTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), SipServerTestResponse.class);
   }
@@ -328,8 +516,8 @@ public class SipServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateSipServerTestRequestBuilder(String testId, SipServerTestRequest sipServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateSipServerTestRequestBuilder(String testId, SipServerTestRequest sipServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/sip-server/{testId}"
@@ -350,4 +538,69 @@ public class SipServerTestsApi {
     requestBuilder.requestBody(sipServerTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateSipServerTestRequest {
+    private final String testId;
+    private final SipServerTestRequest sipServerTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private UpdateSipServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.sipServerTestRequest = builder.sipServerTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public SipServerTestRequest getSipServerTestRequest() {
+      return sipServerTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .sipServerTestRequest(sipServerTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private SipServerTestRequest sipServerTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder sipServerTestRequest(SipServerTestRequest sipServerTestRequest) {
+        this.sipServerTestRequest = sipServerTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateSipServerTestRequest build() {
+        return new UpdateSipServerTestRequest(this);
+      }
+    }
+  }
+
 }

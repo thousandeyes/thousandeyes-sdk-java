@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createFtpServerTest
 
-> FtpServerTestResponse createFtpServerTest(ftpServerTestRequest, aid, expand)
+> FtpServerTestResponse createFtpServerTest(CreateFtpServerTestRequest)
 
 Create FTP Server test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -50,7 +50,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            FtpServerTestResponse result = apiInstance.createFtpServerTest(ftpServerTestRequest, aid, expand);
+            FtpServerTestsApi.CreateFtpServerTestRequest request = FtpServerTestsApi.CreateFtpServerTestRequest.builder()
+                .ftpServerTestRequest(ftpServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            FtpServerTestResponse result = apiInstance.createFtpServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FtpServerTestsApi#createFtpServerTest");
@@ -65,12 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ftpServerTestRequest** | [**FtpServerTestRequest**](FtpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateFtpServerTestRequest**](FtpServerTestsApi.md#CreateFtpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## createFtpServerTestWithHttpInfo
 
-> ApiResponse<FtpServerTestResponse> createFtpServerTest createFtpServerTestWithHttpInfo(ftpServerTestRequest, aid, expand)
+> ApiResponse<FtpServerTestResponse> createFtpServerTest createFtpServerTestWithHttpInfo(CreateFtpServerTestRequest)
 
 Create FTP Server test
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -133,7 +135,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<FtpServerTestResponse> response = apiInstance.createFtpServerTestWithHttpInfo(ftpServerTestRequest, aid, expand);
+            FtpServerTestsApi.CreateFtpServerTestRequest request = FtpServerTestsApi.CreateFtpServerTestRequest.builder()
+                .ftpServerTestRequest(ftpServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<FtpServerTestResponse> response = apiInstance.createFtpServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -150,12 +157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **ftpServerTestRequest** | [**FtpServerTestRequest**](FtpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateFtpServerTestRequest**](FtpServerTestsApi.md#CreateFtpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -185,9 +189,21 @@ ApiResponse<[**FtpServerTestResponse**](FtpServerTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreateFtpServerTestRequest"></a>
+## CreateFtpServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **ftpServerTestRequest** | [**FtpServerTestRequest**](FtpServerTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## deleteFtpServerTest
 
-> void deleteFtpServerTest(testId, aid)
+> void deleteFtpServerTest(DeleteFtpServerTestRequest)
 
 Delete FTP Server test
 
@@ -201,7 +217,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -217,7 +233,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteFtpServerTest(testId, aid);
+            FtpServerTestsApi.DeleteFtpServerTestRequest request = FtpServerTestsApi.DeleteFtpServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteFtpServerTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling FtpServerTestsApi#deleteFtpServerTest");
             System.err.println("Status code: " + e.getCode());
@@ -231,11 +251,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteFtpServerTestRequest**](FtpServerTestsApi.md#DeleteFtpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -263,7 +281,7 @@ null (empty response body)
 
 ## deleteFtpServerTestWithHttpInfo
 
-> ApiResponse<Void> deleteFtpServerTest deleteFtpServerTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteFtpServerTest deleteFtpServerTestWithHttpInfo(DeleteFtpServerTestRequest)
 
 Delete FTP Server test
 
@@ -278,7 +296,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -294,7 +312,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteFtpServerTestWithHttpInfo(testId, aid);
+            FtpServerTestsApi.DeleteFtpServerTestRequest request = FtpServerTestsApi.DeleteFtpServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteFtpServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -310,11 +332,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteFtpServerTestRequest**](FtpServerTestsApi.md#DeleteFtpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -341,9 +361,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteFtpServerTestRequest"></a>
+## DeleteFtpServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getFtpServerTest
 
-> FtpServerTestResponse getFtpServerTest(testId, aid, versionId, expand)
+> FtpServerTestResponse getFtpServerTest(GetFtpServerTestRequest)
 
 Get FTP Server test
 
@@ -357,7 +388,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -375,7 +406,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            FtpServerTestResponse result = apiInstance.getFtpServerTest(testId, aid, versionId, expand);
+            FtpServerTestsApi.GetFtpServerTestRequest request = FtpServerTestsApi.GetFtpServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            FtpServerTestResponse result = apiInstance.getFtpServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FtpServerTestsApi#getFtpServerTest");
@@ -390,13 +427,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetFtpServerTestRequest**](FtpServerTestsApi.md#GetFtpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -426,7 +459,7 @@ public class Example {
 
 ## getFtpServerTestWithHttpInfo
 
-> ApiResponse<FtpServerTestResponse> getFtpServerTest getFtpServerTestWithHttpInfo(testId, aid, versionId, expand)
+> ApiResponse<FtpServerTestResponse> getFtpServerTest getFtpServerTestWithHttpInfo(GetFtpServerTestRequest)
 
 Get FTP Server test
 
@@ -441,7 +474,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -459,7 +492,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<FtpServerTestResponse> response = apiInstance.getFtpServerTestWithHttpInfo(testId, aid, versionId, expand);
+            FtpServerTestsApi.GetFtpServerTestRequest request = FtpServerTestsApi.GetFtpServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            ApiResponse<FtpServerTestResponse> response = apiInstance.getFtpServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -476,13 +515,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetFtpServerTestRequest**](FtpServerTestsApi.md#GetFtpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -511,9 +546,22 @@ ApiResponse<[**FtpServerTestResponse**](FtpServerTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetFtpServerTestRequest"></a>
+## GetFtpServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **versionId** | **String** | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## getFtpServerTests
 
-> FtpServerTests getFtpServerTests(aid)
+> FtpServerTests getFtpServerTests(GetFtpServerTestsRequest)
 
 List FTP Server tests
 
@@ -527,7 +575,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -542,7 +590,10 @@ public class Example {
         FtpServerTestsApi apiInstance = new FtpServerTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            FtpServerTests result = apiInstance.getFtpServerTests(aid);
+            FtpServerTestsApi.GetFtpServerTestsRequest request = FtpServerTestsApi.GetFtpServerTestsRequest.builder()
+                .aid(aid)
+                .build();
+            FtpServerTests result = apiInstance.getFtpServerTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FtpServerTestsApi#getFtpServerTests");
@@ -557,10 +608,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetFtpServerTestsRequest**](FtpServerTestsApi.md#GetFtpServerTestsRequest)|-|-|
 
 ### Return type
 
@@ -590,7 +640,7 @@ public class Example {
 
 ## getFtpServerTestsWithHttpInfo
 
-> ApiResponse<FtpServerTests> getFtpServerTests getFtpServerTestsWithHttpInfo(aid)
+> ApiResponse<FtpServerTests> getFtpServerTests getFtpServerTestsWithHttpInfo(GetFtpServerTestsRequest)
 
 List FTP Server tests
 
@@ -605,7 +655,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -620,7 +670,10 @@ public class Example {
         FtpServerTestsApi apiInstance = new FtpServerTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<FtpServerTests> response = apiInstance.getFtpServerTestsWithHttpInfo(aid);
+            FtpServerTestsApi.GetFtpServerTestsRequest request = FtpServerTestsApi.GetFtpServerTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<FtpServerTests> response = apiInstance.getFtpServerTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -637,10 +690,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetFtpServerTestsRequest**](FtpServerTestsApi.md#GetFtpServerTestsRequest)|-|-|
 
 ### Return type
 
@@ -669,9 +721,19 @@ ApiResponse<[**FtpServerTests**](FtpServerTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetFtpServerTestsRequest"></a>
+## GetFtpServerTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateFtpServerTest
 
-> FtpServerTestResponse updateFtpServerTest(testId, ftpServerTestRequest, aid, expand)
+> FtpServerTestResponse updateFtpServerTest(UpdateFtpServerTestRequest)
 
 Update FTP Server test
 
@@ -685,7 +747,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -703,7 +765,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            FtpServerTestResponse result = apiInstance.updateFtpServerTest(testId, ftpServerTestRequest, aid, expand);
+            FtpServerTestsApi.UpdateFtpServerTestRequest request = FtpServerTestsApi.UpdateFtpServerTestRequest.builder()
+                .testId(testId)
+                .ftpServerTestRequest(ftpServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            FtpServerTestResponse result = apiInstance.updateFtpServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FtpServerTestsApi#updateFtpServerTest");
@@ -718,13 +786,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **ftpServerTestRequest** | [**FtpServerTestRequest**](FtpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateFtpServerTestRequest**](FtpServerTestsApi.md#UpdateFtpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -755,7 +819,7 @@ public class Example {
 
 ## updateFtpServerTestWithHttpInfo
 
-> ApiResponse<FtpServerTestResponse> updateFtpServerTest updateFtpServerTestWithHttpInfo(testId, ftpServerTestRequest, aid, expand)
+> ApiResponse<FtpServerTestResponse> updateFtpServerTest updateFtpServerTestWithHttpInfo(UpdateFtpServerTestRequest)
 
 Update FTP Server test
 
@@ -770,7 +834,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.FtpServerTestsApi;
 
 public class Example {
@@ -788,7 +852,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<FtpServerTestResponse> response = apiInstance.updateFtpServerTestWithHttpInfo(testId, ftpServerTestRequest, aid, expand);
+            FtpServerTestsApi.UpdateFtpServerTestRequest request = FtpServerTestsApi.UpdateFtpServerTestRequest.builder()
+                .testId(testId)
+                .ftpServerTestRequest(ftpServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<FtpServerTestResponse> response = apiInstance.updateFtpServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -805,13 +875,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **ftpServerTestRequest** | [**FtpServerTestRequest**](FtpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateFtpServerTestRequest**](FtpServerTestsApi.md#UpdateFtpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -839,4 +905,17 @@ ApiResponse<[**FtpServerTestResponse**](FtpServerTestResponse.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdateFtpServerTestRequest"></a>
+## UpdateFtpServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **ftpServerTestRequest** | [**FtpServerTestRequest**](FtpServerTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
 

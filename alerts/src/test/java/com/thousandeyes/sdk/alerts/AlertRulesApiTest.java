@@ -84,7 +84,6 @@ public class AlertRulesApiTest {
     public void createAlertRuleRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "severity" : "major",
@@ -238,7 +237,11 @@ public class AlertRulesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAlertRule(mappedRequest, null);
+        var request = AlertRulesApi.CreateAlertRuleRequest.builder()
+                .ruleDetailUpdate(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createAlertRule(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -255,7 +258,6 @@ public class AlertRulesApiTest {
     {
         String ruleId = "127094";
 
-
         var statusCode = 204;
 
         var path = "/alerts/rules/{ruleId}";
@@ -265,7 +267,11 @@ public class AlertRulesApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteAlertRuleWithHttpInfo(ruleId, null);
+        var request = AlertRulesApi.DeleteAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteAlertRuleWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -281,7 +287,6 @@ public class AlertRulesApiTest {
             throws JsonProcessingException, ApiException
     {
         String ruleId = "127094";
-
 
         var responseBodyJson = """
                 {
@@ -433,7 +438,11 @@ public class AlertRulesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAlertRule(ruleId, null);
+        var request = AlertRulesApi.GetAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAlertRule(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -448,7 +457,6 @@ public class AlertRulesApiTest {
     public void getAlertsRulesRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -523,7 +531,10 @@ public class AlertRulesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAlertsRules(null);
+        var request = AlertRulesApi.GetAlertsRulesRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAlertsRules(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -539,7 +550,6 @@ public class AlertRulesApiTest {
             throws JsonProcessingException, ApiException
     {
         String ruleId = "127094";
-
         var requestBodyJson = """
                 {
                   "severity" : "major",
@@ -694,7 +704,12 @@ public class AlertRulesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateAlertRule(ruleId, mappedRequest, null);
+        var request = AlertRulesApi.UpdateAlertRuleRequest.builder()
+                .ruleId(ruleId)
+                .ruleDetailUpdate(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateAlertRule(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

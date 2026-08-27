@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -37,12 +36,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -64,28 +61,29 @@ public class CyberArkConjurConnectorsApi {
   /**
    * Create Conjur connector
    * Creates a new CyberArk Conjur connector.
-   * @param conjurConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ConjurConnector
    * @throws ApiException if fails to make API call
    */
-  public ConjurConnector createConjurConnector(ConjurConnector conjurConnector, String aid) throws ApiException {
-    ApiResponse<ConjurConnector> response = createConjurConnectorWithHttpInfo(conjurConnector, aid);
+  public ConjurConnector createConjurConnector(CreateConjurConnectorRequest request) throws ApiException {
+    ApiResponse<ConjurConnector> response = createConjurConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create Conjur connector
    * Creates a new CyberArk Conjur connector.
-   * @param conjurConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ConjurConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ConjurConnector> createConjurConnectorWithHttpInfo(ConjurConnector conjurConnector, String aid) throws ApiException {
-    createConjurConnectorValidateRequest(conjurConnector);
+  public ApiResponse<ConjurConnector> createConjurConnectorWithHttpInfo(CreateConjurConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createConjurConnector");
+    }
+    createConjurConnectorValidateRequest(request.getConjurConnector());
 
-    var requestBuilder = createConjurConnectorRequestBuilder(conjurConnector, aid);
+    var requestBuilder = createConjurConnectorRequestBuilder(request.getConjurConnector(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ConjurConnector.class);
   }
@@ -97,8 +95,8 @@ public class CyberArkConjurConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createConjurConnectorRequestBuilder(ConjurConnector conjurConnector, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createConjurConnectorRequestBuilder(ConjurConnector conjurConnector, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/connectors/conjur";
@@ -117,31 +115,73 @@ public class CyberArkConjurConnectorsApi {
     requestBuilder.requestBody(conjurConnector);
     return requestBuilder;
   }
-  /**
-   * Delete a Conjur connector
-   * Deleted the CyberArk Conjur connector specified by ID. Note: This operation may disable affected objects (such as tests).
-   * @param id The connector ID. (required)
-   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for Conjur connectors. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteConjurConnector(String id, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    deleteConjurConnectorWithHttpInfo(id, confirmDisabledObjects, aid);
+
+  public static final class CreateConjurConnectorRequest {
+    private final ConjurConnector conjurConnector;
+    private final String aid;
+
+    private CreateConjurConnectorRequest(Builder builder) {
+      this.conjurConnector = builder.conjurConnector;
+      this.aid = builder.aid;
+    }
+    public ConjurConnector getConjurConnector() {
+      return conjurConnector;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .conjurConnector(conjurConnector)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private ConjurConnector conjurConnector;
+      private String aid;
+
+      public Builder conjurConnector(ConjurConnector conjurConnector) {
+        this.conjurConnector = conjurConnector;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateConjurConnectorRequest build() {
+        return new CreateConjurConnectorRequest(this);
+      }
+    }
   }
 
   /**
    * Delete a Conjur connector
    * Deleted the CyberArk Conjur connector specified by ID. Note: This operation may disable affected objects (such as tests).
-   * @param id The connector ID. (required)
-   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for Conjur connectors. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteConjurConnector(DeleteConjurConnectorRequest request) throws ApiException {
+    deleteConjurConnectorWithHttpInfo(request);
+  }
+
+  /**
+   * Delete a Conjur connector
+   * Deleted the CyberArk Conjur connector specified by ID. Note: This operation may disable affected objects (such as tests).
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteConjurConnectorWithHttpInfo(String id, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    deleteConjurConnectorValidateRequest(id, confirmDisabledObjects);
+  public ApiResponse<Void> deleteConjurConnectorWithHttpInfo(DeleteConjurConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteConjurConnector");
+    }
+    deleteConjurConnectorValidateRequest(request.getId(), request.getConfirmDisabledObjects());
 
-    var requestBuilder = deleteConjurConnectorRequestBuilder(id, confirmDisabledObjects, aid);
+    var requestBuilder = deleteConjurConnectorRequestBuilder(request.getId(), request.getConfirmDisabledObjects(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -157,8 +197,8 @@ public class CyberArkConjurConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteConjurConnectorRequestBuilder(String id, Boolean confirmDisabledObjects, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteConjurConnectorRequestBuilder(String id, Boolean confirmDisabledObjects, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/connectors/conjur/{id}"
@@ -177,31 +217,86 @@ public class CyberArkConjurConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteConjurConnectorRequest {
+    private final String id;
+    private final Boolean confirmDisabledObjects;
+    private final String aid;
+
+    private DeleteConjurConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.confirmDisabledObjects = builder.confirmDisabledObjects;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public Boolean getConfirmDisabledObjects() {
+      return confirmDisabledObjects;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .confirmDisabledObjects(confirmDisabledObjects)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private Boolean confirmDisabledObjects;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder confirmDisabledObjects(Boolean confirmDisabledObjects) {
+        this.confirmDisabledObjects = confirmDisabledObjects;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteConjurConnectorRequest build() {
+        return new DeleteConjurConnectorRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve a Conjur connector
    * Retrieves details of a CyberArk Conjur connector by its ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ConjurConnector
    * @throws ApiException if fails to make API call
    */
-  public ConjurConnector getConjurConnector(String id, String aid) throws ApiException {
-    ApiResponse<ConjurConnector> response = getConjurConnectorWithHttpInfo(id, aid);
+  public ConjurConnector getConjurConnector(GetConjurConnectorRequest request) throws ApiException {
+    ApiResponse<ConjurConnector> response = getConjurConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve a Conjur connector
    * Retrieves details of a CyberArk Conjur connector by its ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ConjurConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ConjurConnector> getConjurConnectorWithHttpInfo(String id, String aid) throws ApiException {
-    getConjurConnectorValidateRequest(id);
+  public ApiResponse<ConjurConnector> getConjurConnectorWithHttpInfo(GetConjurConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getConjurConnector");
+    }
+    getConjurConnectorValidateRequest(request.getId());
 
-    var requestBuilder = getConjurConnectorRequestBuilder(id, aid);
+    var requestBuilder = getConjurConnectorRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ConjurConnector.class);
   }
@@ -213,8 +308,8 @@ public class CyberArkConjurConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getConjurConnectorRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getConjurConnectorRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/conjur/{id}"
@@ -232,31 +327,75 @@ public class CyberArkConjurConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetConjurConnectorRequest {
+    private final String id;
+    private final String aid;
+
+    private GetConjurConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetConjurConnectorRequest build() {
+        return new GetConjurConnectorRequest(this);
+      }
+    }
+  }
+
   /**
    * List operation IDs for a Conjur connector
    * Returns a list of operation IDs assigned to a CyberArk Conjur connector.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments getConjurConnectorOperations(String id, String aid) throws ApiException {
-    ApiResponse<Assignments> response = getConjurConnectorOperationsWithHttpInfo(id, aid);
+  public Assignments getConjurConnectorOperations(GetConjurConnectorOperationsRequest request) throws ApiException {
+    ApiResponse<Assignments> response = getConjurConnectorOperationsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List operation IDs for a Conjur connector
    * Returns a list of operation IDs assigned to a CyberArk Conjur connector.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> getConjurConnectorOperationsWithHttpInfo(String id, String aid) throws ApiException {
-    getConjurConnectorOperationsValidateRequest(id);
+  public ApiResponse<Assignments> getConjurConnectorOperationsWithHttpInfo(GetConjurConnectorOperationsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getConjurConnectorOperations");
+    }
+    getConjurConnectorOperationsValidateRequest(request.getId());
 
-    var requestBuilder = getConjurConnectorOperationsRequestBuilder(id, aid);
+    var requestBuilder = getConjurConnectorOperationsRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -268,8 +407,8 @@ public class CyberArkConjurConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getConjurConnectorOperationsRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getConjurConnectorOperationsRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/conjur/{id}/operations"
@@ -287,29 +426,75 @@ public class CyberArkConjurConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetConjurConnectorOperationsRequest {
+    private final String id;
+    private final String aid;
+
+    private GetConjurConnectorOperationsRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetConjurConnectorOperationsRequest build() {
+        return new GetConjurConnectorOperationsRequest(this);
+      }
+    }
+  }
+
   /**
    * List Conjur connectors
    * Returns a list of CyberArk Conjur connectors in the specified account group. If no account group is specified, the user’s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ConjurConnectors
    * @throws ApiException if fails to make API call
    */
-  public ConjurConnectors getConjurConnectors(String aid) throws ApiException {
-    ApiResponse<ConjurConnectors> response = getConjurConnectorsWithHttpInfo(aid);
+  public ConjurConnectors getConjurConnectors(GetConjurConnectorsRequest request) throws ApiException {
+    ApiResponse<ConjurConnectors> response = getConjurConnectorsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List Conjur connectors
    * Returns a list of CyberArk Conjur connectors in the specified account group. If no account group is specified, the user’s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ConjurConnectors&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ConjurConnectors> getConjurConnectorsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<ConjurConnectors> getConjurConnectorsWithHttpInfo(GetConjurConnectorsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getConjurConnectors");
+    }
     getConjurConnectorsValidateRequest();
 
-    var requestBuilder = getConjurConnectorsRequestBuilder(aid);
+    var requestBuilder = getConjurConnectorsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), ConjurConnectors.class);
   }
@@ -317,8 +502,8 @@ public class CyberArkConjurConnectorsApi {
   private void getConjurConnectorsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getConjurConnectorsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getConjurConnectorsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/conjur";
@@ -335,35 +520,64 @@ public class CyberArkConjurConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetConjurConnectorsRequest {
+    private final String aid;
+
+    private GetConjurConnectorsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetConjurConnectorsRequest build() {
+        return new GetConjurConnectorsRequest(this);
+      }
+    }
+  }
+
   /**
    * Assign operations to a Conjur connector
    * Assigns operations to a CyberArk Conjur connector. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if operations are changed.
-   * @param id The connector ID. (required)
-   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for Conjur connectors. (required)
-   * @param requestBody List of operation IDs to assign to the connector. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments setConjurConnectorOperations(String id, Boolean confirmDisabledObjects, List<String> requestBody, String aid) throws ApiException {
-    ApiResponse<Assignments> response = setConjurConnectorOperationsWithHttpInfo(id, confirmDisabledObjects, requestBody, aid);
+  public Assignments setConjurConnectorOperations(SetConjurConnectorOperationsRequest request) throws ApiException {
+    ApiResponse<Assignments> response = setConjurConnectorOperationsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Assign operations to a Conjur connector
    * Assigns operations to a CyberArk Conjur connector. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if operations are changed.
-   * @param id The connector ID. (required)
-   * @param confirmDisabledObjects Confirmation to disable affected objects (for example, tests) for Conjur connectors. (required)
-   * @param requestBody List of operation IDs to assign to the connector. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> setConjurConnectorOperationsWithHttpInfo(String id, Boolean confirmDisabledObjects, List<String> requestBody, String aid) throws ApiException {
-    setConjurConnectorOperationsValidateRequest(id, confirmDisabledObjects, requestBody);
+  public ApiResponse<Assignments> setConjurConnectorOperationsWithHttpInfo(SetConjurConnectorOperationsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling setConjurConnectorOperations");
+    }
+    setConjurConnectorOperationsValidateRequest(request.getId(), request.getConfirmDisabledObjects(), request.getRequestBody());
 
-    var requestBuilder = setConjurConnectorOperationsRequestBuilder(id, confirmDisabledObjects, requestBody, aid);
+    var requestBuilder = setConjurConnectorOperationsRequestBuilder(request.getId(), request.getConfirmDisabledObjects(), request.getRequestBody(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -383,8 +597,8 @@ public class CyberArkConjurConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder setConjurConnectorOperationsRequestBuilder(String id, Boolean confirmDisabledObjects, List<String> requestBody, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder setConjurConnectorOperationsRequestBuilder(String id, Boolean confirmDisabledObjects, List<String> requestBody, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/connectors/conjur/{id}/operations"
@@ -405,33 +619,97 @@ public class CyberArkConjurConnectorsApi {
     requestBuilder.requestBody(requestBody);
     return requestBuilder;
   }
+
+  public static final class SetConjurConnectorOperationsRequest {
+    private final String id;
+    private final Boolean confirmDisabledObjects;
+    private final List<String> requestBody;
+    private final String aid;
+
+    private SetConjurConnectorOperationsRequest(Builder builder) {
+      this.id = builder.id;
+      this.confirmDisabledObjects = builder.confirmDisabledObjects;
+      this.requestBody = builder.requestBody;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public Boolean getConfirmDisabledObjects() {
+      return confirmDisabledObjects;
+    }
+    public List<String> getRequestBody() {
+      return requestBody;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .confirmDisabledObjects(confirmDisabledObjects)
+          .requestBody(requestBody)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private Boolean confirmDisabledObjects;
+      private List<String> requestBody;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder confirmDisabledObjects(Boolean confirmDisabledObjects) {
+        this.confirmDisabledObjects = confirmDisabledObjects;
+        return this;
+      }
+      public Builder requestBody(List<String> requestBody) {
+        this.requestBody = requestBody;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public SetConjurConnectorOperationsRequest build() {
+        return new SetConjurConnectorOperationsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update a Conjur connector
    * Updates the CyberArk Conjur connector specified by ID.
-   * @param id The connector ID. (required)
-   * @param conjurConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ConjurConnector
    * @throws ApiException if fails to make API call
    */
-  public ConjurConnector updateConjurConnector(String id, ConjurConnector conjurConnector, String aid) throws ApiException {
-    ApiResponse<ConjurConnector> response = updateConjurConnectorWithHttpInfo(id, conjurConnector, aid);
+  public ConjurConnector updateConjurConnector(UpdateConjurConnectorRequest request) throws ApiException {
+    ApiResponse<ConjurConnector> response = updateConjurConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update a Conjur connector
    * Updates the CyberArk Conjur connector specified by ID.
-   * @param id The connector ID. (required)
-   * @param conjurConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ConjurConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ConjurConnector> updateConjurConnectorWithHttpInfo(String id, ConjurConnector conjurConnector, String aid) throws ApiException {
-    updateConjurConnectorValidateRequest(id, conjurConnector);
+  public ApiResponse<ConjurConnector> updateConjurConnectorWithHttpInfo(UpdateConjurConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateConjurConnector");
+    }
+    updateConjurConnectorValidateRequest(request.getId(), request.getConjurConnector());
 
-    var requestBuilder = updateConjurConnectorRequestBuilder(id, conjurConnector, aid);
+    var requestBuilder = updateConjurConnectorRequestBuilder(request.getId(), request.getConjurConnector(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ConjurConnector.class);
   }
@@ -447,8 +725,8 @@ public class CyberArkConjurConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateConjurConnectorRequestBuilder(String id, ConjurConnector conjurConnector, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateConjurConnectorRequestBuilder(String id, ConjurConnector conjurConnector, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/connectors/conjur/{id}"
@@ -468,4 +746,58 @@ public class CyberArkConjurConnectorsApi {
     requestBuilder.requestBody(conjurConnector);
     return requestBuilder;
   }
+
+  public static final class UpdateConjurConnectorRequest {
+    private final String id;
+    private final ConjurConnector conjurConnector;
+    private final String aid;
+
+    private UpdateConjurConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.conjurConnector = builder.conjurConnector;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public ConjurConnector getConjurConnector() {
+      return conjurConnector;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .conjurConnector(conjurConnector)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private ConjurConnector conjurConnector;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder conjurConnector(ConjurConnector conjurConnector) {
+        this.conjurConnector = conjurConnector;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateConjurConnectorRequest build() {
+        return new UpdateConjurConnectorRequest(this);
+      }
+    }
+  }
+
 }

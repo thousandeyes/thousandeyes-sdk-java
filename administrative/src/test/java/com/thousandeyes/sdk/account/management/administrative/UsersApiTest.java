@@ -84,7 +84,6 @@ public class UsersApiTest {
     public void createUserRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "loginAccountGroupId" : "691",
@@ -189,7 +188,11 @@ public class UsersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createUser(mappedRequest, null);
+        var request = UsersApi.CreateUserRequest.builder()
+                .userRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createUser(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -206,7 +209,6 @@ public class UsersApiTest {
     {
         String id = "1234";
 
-
         var statusCode = 204;
 
         var path = "/users/{id}";
@@ -216,7 +218,11 @@ public class UsersApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteUserWithHttpInfo(id, null);
+        var request = UsersApi.DeleteUserRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteUserWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -231,7 +237,6 @@ public class UsersApiTest {
     public void getCurrentUserRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -333,7 +338,6 @@ public class UsersApiTest {
     {
         String id = "1234";
 
-
         var responseBodyJson = """
                 {
                   "loginAccountGroup" : {
@@ -418,7 +422,11 @@ public class UsersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getUser(id, null);
+        var request = UsersApi.GetUserRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getUser(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -433,7 +441,6 @@ public class UsersApiTest {
     public void getUsersRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -486,7 +493,10 @@ public class UsersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getUsers(null);
+        var request = UsersApi.GetUsersRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getUsers(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -502,7 +512,6 @@ public class UsersApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "1234";
-
         var requestBodyJson = """
                 {
                   "loginAccountGroupId" : "691",
@@ -609,7 +618,12 @@ public class UsersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateUser(id, mappedRequest, null);
+        var request = UsersApi.UpdateUserRequest.builder()
+                .id(id)
+                .userRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateUser(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

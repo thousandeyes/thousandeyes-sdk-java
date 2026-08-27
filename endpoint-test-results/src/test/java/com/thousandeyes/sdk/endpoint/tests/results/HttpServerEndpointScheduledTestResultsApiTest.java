@@ -92,7 +92,6 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
     {
         String testId = "202701";
 
-
         var responseBodyJson = """
                 {
                   "test" : {
@@ -456,7 +455,15 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getHttpServerScheduledTestResults(testId, null, null, null, null, null, null);
+        var request = HttpServerEndpointScheduledTestResultsApi.GetHttpServerScheduledTestResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getHttpServerScheduledTestResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -471,7 +478,6 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
     public void getMultiTestFilteredHttpServerScheduledTestResultsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "searchSort" : [ {
@@ -811,7 +817,16 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getMultiTestFilteredHttpServerScheduledTestResults(null, null, null, null, null, null, null, mappedRequest);
+        var request = HttpServerEndpointScheduledTestResultsApi.GetMultiTestFilteredHttpServerScheduledTestResultsRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .useAllPermittedAids(false)
+                .expand(Arrays.asList())
+                .httpEndpointTestsDataRoundsSearch(mappedRequest)
+                .build();
+        var apiResponse = api.getMultiTestFilteredHttpServerScheduledTestResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -827,7 +842,6 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "searchSort" : [ {
@@ -1168,7 +1182,16 @@ public class HttpServerEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getSingleTestFilteredHttpServerScheduledTestResults(testId, null, null, null, null, null, null, mappedRequest);
+        var request = HttpServerEndpointScheduledTestResultsApi.GetSingleTestFilteredHttpServerScheduledTestResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .expand(Arrays.asList())
+                .httpEndpointTestsDataRoundsSearch(mappedRequest)
+                .build();
+        var apiResponse = api.getSingleTestFilteredHttpServerScheduledTestResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

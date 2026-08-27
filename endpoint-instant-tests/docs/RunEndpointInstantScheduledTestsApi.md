@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## runEndpointScheduledInstantTest
 
-> EndpointRunScheduledInstantTestResult runEndpointScheduledInstantTest(testId, aid)
+> EndpointRunScheduledInstantTestResult runEndpointScheduledInstantTest(RunEndpointScheduledInstantTestRequest)
 
 Run endpoint instant scheduled test
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.instant.model.*;
 import com.thousandeyes.sdk.endpoint.tests.instant.RunEndpointInstantScheduledTestsApi;
 
 public class Example {
@@ -41,7 +41,11 @@ public class Example {
         String testId = "765231567"; // String | ID of the endpoint instant scheduled test to rerun
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointRunScheduledInstantTestResult result = apiInstance.runEndpointScheduledInstantTest(testId, aid);
+            RunEndpointInstantScheduledTestsApi.RunEndpointScheduledInstantTestRequest request = RunEndpointInstantScheduledTestsApi.RunEndpointScheduledInstantTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            EndpointRunScheduledInstantTestResult result = apiInstance.runEndpointScheduledInstantTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RunEndpointInstantScheduledTestsApi#runEndpointScheduledInstantTest");
@@ -56,11 +60,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| ID of the endpoint instant scheduled test to rerun | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**RunEndpointScheduledInstantTestRequest**](RunEndpointInstantScheduledTestsApi.md#RunEndpointScheduledInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -91,7 +93,7 @@ public class Example {
 
 ## runEndpointScheduledInstantTestWithHttpInfo
 
-> ApiResponse<EndpointRunScheduledInstantTestResult> runEndpointScheduledInstantTest runEndpointScheduledInstantTestWithHttpInfo(testId, aid)
+> ApiResponse<EndpointRunScheduledInstantTestResult> runEndpointScheduledInstantTest runEndpointScheduledInstantTestWithHttpInfo(RunEndpointScheduledInstantTestRequest)
 
 Run endpoint instant scheduled test
 
@@ -106,7 +108,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.instant.model.*;
 import com.thousandeyes.sdk.endpoint.tests.instant.RunEndpointInstantScheduledTestsApi;
 
 public class Example {
@@ -122,7 +124,11 @@ public class Example {
         String testId = "765231567"; // String | ID of the endpoint instant scheduled test to rerun
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointRunScheduledInstantTestResult> response = apiInstance.runEndpointScheduledInstantTestWithHttpInfo(testId, aid);
+            RunEndpointInstantScheduledTestsApi.RunEndpointScheduledInstantTestRequest request = RunEndpointInstantScheduledTestsApi.RunEndpointScheduledInstantTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointRunScheduledInstantTestResult> response = apiInstance.runEndpointScheduledInstantTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -139,11 +145,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| ID of the endpoint instant scheduled test to rerun | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**RunEndpointScheduledInstantTestRequest**](RunEndpointInstantScheduledTestsApi.md#RunEndpointScheduledInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -171,4 +175,15 @@ ApiResponse<[**EndpointRunScheduledInstantTestResult**](EndpointRunScheduledInst
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="RunEndpointScheduledInstantTestRequest"></a>
+## RunEndpointScheduledInstantTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | ID of the endpoint instant scheduled test to rerun | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

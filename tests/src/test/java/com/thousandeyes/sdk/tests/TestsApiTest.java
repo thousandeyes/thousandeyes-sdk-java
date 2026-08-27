@@ -82,7 +82,6 @@ public class TestsApiTest {
     {
         String testId = "202701";
 
-
         var responseBodyJson = """
                 {
                   "_links" : {
@@ -125,7 +124,11 @@ public class TestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestVersionHistory(testId, null, null);
+        var request = TestsApi.GetTestVersionHistoryRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getTestVersionHistory(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -140,7 +143,6 @@ public class TestsApiTest {
     public void getTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -235,7 +237,10 @@ public class TestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTests(null);
+        var request = TestsApi.GetTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

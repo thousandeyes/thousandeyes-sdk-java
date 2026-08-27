@@ -82,7 +82,6 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
     {
         String notificationRuleId = "281474976710706";
 
-
         var responseBodyJson = """
                 {
                   "isDefault" : false,
@@ -206,7 +205,11 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentsNotificationRule(notificationRuleId, null);
+        var request = CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRuleRequest.builder()
+                .notificationRuleId(notificationRuleId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAgentsNotificationRule(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -221,7 +224,6 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
     public void getAgentsNotificationRulesRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -266,7 +268,10 @@ public class CloudAndEnterpriseAgentNotificationRulesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentsNotificationRules(null);
+        var request = CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRulesRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAgentsNotificationRules(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -83,7 +83,6 @@ public class AgentToAgentInstantTestsApiTest {
     public void createAgentToAgentInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -275,7 +274,12 @@ public class AgentToAgentInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAgentToAgentInstantTest(mappedRequest, null, null);
+        var request = AgentToAgentInstantTestsApi.CreateAgentToAgentInstantTestRequest.builder()
+                .agentToAgentInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createAgentToAgentInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

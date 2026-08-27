@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getEnterpriseAgentsUnitsUsage
 
-> EnterpriseAgentsUsage getEnterpriseAgentsUnitsUsage(startDate, endDate, cursor)
+> EnterpriseAgentsUsage getEnterpriseAgentsUnitsUsage(GetEnterpriseAgentsUnitsUsageRequest)
 
 Get enterprise agent usage
 
@@ -29,7 +29,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.UsageApi;
 
 public class Example {
@@ -46,7 +46,12 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            EnterpriseAgentsUsage result = apiInstance.getEnterpriseAgentsUnitsUsage(startDate, endDate, cursor);
+            UsageApi.GetEnterpriseAgentsUnitsUsageRequest request = UsageApi.GetEnterpriseAgentsUnitsUsageRequest.builder()
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            EnterpriseAgentsUsage result = apiInstance.getEnterpriseAgentsUnitsUsage(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsageApi#getEnterpriseAgentsUnitsUsage");
@@ -61,12 +66,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetEnterpriseAgentsUnitsUsageRequest**](UsageApi.md#GetEnterpriseAgentsUnitsUsageRequest)|-|-|
 
 ### Return type
 
@@ -95,7 +97,7 @@ public class Example {
 
 ## getEnterpriseAgentsUnitsUsageWithHttpInfo
 
-> ApiResponse<EnterpriseAgentsUsage> getEnterpriseAgentsUnitsUsage getEnterpriseAgentsUnitsUsageWithHttpInfo(startDate, endDate, cursor)
+> ApiResponse<EnterpriseAgentsUsage> getEnterpriseAgentsUnitsUsage getEnterpriseAgentsUnitsUsageWithHttpInfo(GetEnterpriseAgentsUnitsUsageRequest)
 
 Get enterprise agent usage
 
@@ -110,7 +112,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.UsageApi;
 
 public class Example {
@@ -127,7 +129,12 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<EnterpriseAgentsUsage> response = apiInstance.getEnterpriseAgentsUnitsUsageWithHttpInfo(startDate, endDate, cursor);
+            UsageApi.GetEnterpriseAgentsUnitsUsageRequest request = UsageApi.GetEnterpriseAgentsUnitsUsageRequest.builder()
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            ApiResponse<EnterpriseAgentsUsage> response = apiInstance.getEnterpriseAgentsUnitsUsageWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -144,12 +151,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetEnterpriseAgentsUnitsUsageRequest**](UsageApi.md#GetEnterpriseAgentsUnitsUsageRequest)|-|-|
 
 ### Return type
 
@@ -177,9 +181,21 @@ ApiResponse<[**EnterpriseAgentsUsage**](EnterpriseAgentsUsage.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetEnterpriseAgentsUnitsUsageRequest"></a>
+## GetEnterpriseAgentsUnitsUsageRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
+
+
 ## getTestsUnitsUsage
 
-> TestsUsage getTestsUnitsUsage(aid, startDate, endDate, cursor)
+> TestsUsage getTestsUnitsUsage(GetTestsUnitsUsageRequest)
 
 Get cloud and enterprise agents units usage
 
@@ -193,7 +209,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.UsageApi;
 
 public class Example {
@@ -211,7 +227,13 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            TestsUsage result = apiInstance.getTestsUnitsUsage(aid, startDate, endDate, cursor);
+            UsageApi.GetTestsUnitsUsageRequest request = UsageApi.GetTestsUnitsUsageRequest.builder()
+                .aid(aid)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            TestsUsage result = apiInstance.getTestsUnitsUsage(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsageApi#getTestsUnitsUsage");
@@ -226,13 +248,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetTestsUnitsUsageRequest**](UsageApi.md#GetTestsUnitsUsageRequest)|-|-|
 
 ### Return type
 
@@ -261,7 +279,7 @@ public class Example {
 
 ## getTestsUnitsUsageWithHttpInfo
 
-> ApiResponse<TestsUsage> getTestsUnitsUsage getTestsUnitsUsageWithHttpInfo(aid, startDate, endDate, cursor)
+> ApiResponse<TestsUsage> getTestsUnitsUsage getTestsUnitsUsageWithHttpInfo(GetTestsUnitsUsageRequest)
 
 Get cloud and enterprise agents units usage
 
@@ -276,7 +294,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.UsageApi;
 
 public class Example {
@@ -294,7 +312,13 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<TestsUsage> response = apiInstance.getTestsUnitsUsageWithHttpInfo(aid, startDate, endDate, cursor);
+            UsageApi.GetTestsUnitsUsageRequest request = UsageApi.GetTestsUnitsUsageRequest.builder()
+                .aid(aid)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            ApiResponse<TestsUsage> response = apiInstance.getTestsUnitsUsageWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -311,13 +335,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetTestsUnitsUsageRequest**](UsageApi.md#GetTestsUnitsUsageRequest)|-|-|
 
 ### Return type
 
@@ -345,9 +365,22 @@ ApiResponse<[**TestsUsage**](TestsUsage.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetTestsUnitsUsageRequest"></a>
+## GetTestsUnitsUsageRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
+
+
 ## getUsage
 
-> Usage getUsage(aid, expand)
+> Usage getUsage(GetUsageRequest)
 
 Get usage information for the last month
 
@@ -361,7 +394,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.UsageApi;
 
 public class Example {
@@ -377,7 +410,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandUsageOptions> expand = Arrays.asList(); // List<ExpandUsageOptions> | Expands the available resources. By default, no expansion takes place if the  `expand` query parameter is not passed. For example, to expand the \"tests\"  resource, pass the query '?expand=test'.
         try {
-            Usage result = apiInstance.getUsage(aid, expand);
+            UsageApi.GetUsageRequest request = UsageApi.GetUsageRequest.builder()
+                .aid(aid)
+                .expand(expand)
+                .build();
+            Usage result = apiInstance.getUsage(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsageApi#getUsage");
@@ -392,11 +429,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandUsageOptions&gt;**](ExpandUsageOptions.md)| Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. | [optional] |
+| request | [**GetUsageRequest**](UsageApi.md#GetUsageRequest)|-|-|
 
 ### Return type
 
@@ -425,7 +460,7 @@ public class Example {
 
 ## getUsageWithHttpInfo
 
-> ApiResponse<Usage> getUsage getUsageWithHttpInfo(aid, expand)
+> ApiResponse<Usage> getUsage getUsageWithHttpInfo(GetUsageRequest)
 
 Get usage information for the last month
 
@@ -440,7 +475,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.UsageApi;
 
 public class Example {
@@ -456,7 +491,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandUsageOptions> expand = Arrays.asList(); // List<ExpandUsageOptions> | Expands the available resources. By default, no expansion takes place if the  `expand` query parameter is not passed. For example, to expand the \"tests\"  resource, pass the query '?expand=test'.
         try {
-            ApiResponse<Usage> response = apiInstance.getUsageWithHttpInfo(aid, expand);
+            UsageApi.GetUsageRequest request = UsageApi.GetUsageRequest.builder()
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<Usage> response = apiInstance.getUsageWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -473,11 +512,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandUsageOptions&gt;**](ExpandUsageOptions.md)| Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. | [optional] |
+| request | [**GetUsageRequest**](UsageApi.md#GetUsageRequest)|-|-|
 
 ### Return type
 
@@ -503,4 +540,15 @@ ApiResponse<[**Usage**](Usage.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="GetUsageRequest"></a>
+## GetUsageRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandUsageOptions&gt;**](ExpandUsageOptions.md) | Expands the available resources. By default, no expansion takes place if the  &#x60;expand&#x60; query parameter is not passed. For example, to expand the \&quot;tests\&quot;  resource, pass the query &#39;?expand&#x3D;test&#39;. | [optional] |
+
 

@@ -83,7 +83,6 @@ public class RolesApiTest {
     public void createRoleRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "permissions" : [ "56", "315" ],
@@ -141,7 +140,11 @@ public class RolesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createRole(mappedRequest, null);
+        var request = RolesApi.CreateRoleRequest.builder()
+                .roleRequestBody(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createRole(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -158,7 +161,6 @@ public class RolesApiTest {
     {
         String id = "23";
 
-
         var statusCode = 204;
 
         var path = "/roles/{id}";
@@ -168,7 +170,11 @@ public class RolesApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteRoleWithHttpInfo(id, null);
+        var request = RolesApi.DeleteRoleRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteRoleWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -184,7 +190,6 @@ public class RolesApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "23";
-
 
         var responseBodyJson = """
                 {
@@ -231,7 +236,11 @@ public class RolesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getRole(id, null);
+        var request = RolesApi.GetRoleRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getRole(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -246,7 +255,6 @@ public class RolesApiTest {
     public void getRolesRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -289,7 +297,10 @@ public class RolesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getRoles(null);
+        var request = RolesApi.GetRolesRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getRoles(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -305,7 +316,6 @@ public class RolesApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "23";
-
         var requestBodyJson = """
                 {
                   "permissions" : [ "56", "315" ],
@@ -364,7 +374,12 @@ public class RolesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateRole(id, mappedRequest, null);
+        var request = RolesApi.UpdateRoleRequest.builder()
+                .id(id)
+                .roleRequestBody(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateRole(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

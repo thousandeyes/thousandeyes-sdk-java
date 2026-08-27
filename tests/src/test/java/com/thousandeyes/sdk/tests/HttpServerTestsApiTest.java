@@ -84,7 +84,6 @@ public class HttpServerTestsApiTest {
     public void createHttpServerTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -444,7 +443,12 @@ public class HttpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createHttpServerTest(mappedRequest, null, null);
+        var request = HttpServerTestsApi.CreateHttpServerTestRequest.builder()
+                .httpServerTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createHttpServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -461,7 +465,6 @@ public class HttpServerTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/http-server/{testId}";
@@ -471,7 +474,11 @@ public class HttpServerTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteHttpServerTestWithHttpInfo(testId, null);
+        var request = HttpServerTestsApi.DeleteHttpServerTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteHttpServerTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -487,7 +494,6 @@ public class HttpServerTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -724,7 +730,13 @@ public class HttpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getHttpServerTest(testId, null, null, null);
+        var request = HttpServerTestsApi.GetHttpServerTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getHttpServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -739,7 +751,6 @@ public class HttpServerTestsApiTest {
     public void getHttpServerTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -978,7 +989,10 @@ public class HttpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getHttpServerTests(null);
+        var request = HttpServerTestsApi.GetHttpServerTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getHttpServerTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -994,7 +1008,6 @@ public class HttpServerTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -1355,7 +1368,13 @@ public class HttpServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateHttpServerTest(testId, mappedRequest, null, null);
+        var request = HttpServerTestsApi.UpdateHttpServerTestRequest.builder()
+                .testId(testId)
+                .httpServerTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateHttpServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

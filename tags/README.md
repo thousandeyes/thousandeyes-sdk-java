@@ -123,7 +123,12 @@ public class TagAssignmentApiExample {
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            BulkTagAssignment result = apiInstance.assignTag(id, tagAssignment, aid);
+            TagAssignmentApi.AssignTagRequest request = TagAssignmentApi.AssignTagRequest.builder()
+                .id(id)
+                .tagAssignment(tagAssignment)
+                .aid(aid)
+                .build();
+            BulkTagAssignment result = apiInstance.assignTag(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#assignTag");

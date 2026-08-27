@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createHttpServerScheduledInstantTest
 
-> EndpointHttpServerTest createHttpServerScheduledInstantTest(endpointHttpServerInstantTest, aid)
+> EndpointHttpServerTest createHttpServerScheduledInstantTest(CreateHttpServerScheduledInstantTestRequest)
 
 Run http server instant scheduled test
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.instant.model.*;
 import com.thousandeyes.sdk.endpoint.tests.instant.HttpServerEndpointInstantScheduledTestsApi;
 
 public class Example {
@@ -41,7 +41,11 @@ public class Example {
         EndpointHttpServerInstantTest endpointHttpServerInstantTest = new EndpointHttpServerInstantTest(); // EndpointHttpServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointHttpServerTest result = apiInstance.createHttpServerScheduledInstantTest(endpointHttpServerInstantTest, aid);
+            HttpServerEndpointInstantScheduledTestsApi.CreateHttpServerScheduledInstantTestRequest request = HttpServerEndpointInstantScheduledTestsApi.CreateHttpServerScheduledInstantTestRequest.builder()
+                .endpointHttpServerInstantTest(endpointHttpServerInstantTest)
+                .aid(aid)
+                .build();
+            EndpointHttpServerTest result = apiInstance.createHttpServerScheduledInstantTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerEndpointInstantScheduledTestsApi#createHttpServerScheduledInstantTest");
@@ -56,11 +60,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **endpointHttpServerInstantTest** | [**EndpointHttpServerInstantTest**](EndpointHttpServerInstantTest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateHttpServerScheduledInstantTestRequest**](HttpServerEndpointInstantScheduledTestsApi.md#CreateHttpServerScheduledInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -90,7 +92,7 @@ public class Example {
 
 ## createHttpServerScheduledInstantTestWithHttpInfo
 
-> ApiResponse<EndpointHttpServerTest> createHttpServerScheduledInstantTest createHttpServerScheduledInstantTestWithHttpInfo(endpointHttpServerInstantTest, aid)
+> ApiResponse<EndpointHttpServerTest> createHttpServerScheduledInstantTest createHttpServerScheduledInstantTestWithHttpInfo(CreateHttpServerScheduledInstantTestRequest)
 
 Run http server instant scheduled test
 
@@ -105,7 +107,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.instant.model.*;
 import com.thousandeyes.sdk.endpoint.tests.instant.HttpServerEndpointInstantScheduledTestsApi;
 
 public class Example {
@@ -121,7 +123,11 @@ public class Example {
         EndpointHttpServerInstantTest endpointHttpServerInstantTest = new EndpointHttpServerInstantTest(); // EndpointHttpServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointHttpServerTest> response = apiInstance.createHttpServerScheduledInstantTestWithHttpInfo(endpointHttpServerInstantTest, aid);
+            HttpServerEndpointInstantScheduledTestsApi.CreateHttpServerScheduledInstantTestRequest request = HttpServerEndpointInstantScheduledTestsApi.CreateHttpServerScheduledInstantTestRequest.builder()
+                .endpointHttpServerInstantTest(endpointHttpServerInstantTest)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointHttpServerTest> response = apiInstance.createHttpServerScheduledInstantTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -138,11 +144,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **endpointHttpServerInstantTest** | [**EndpointHttpServerInstantTest**](EndpointHttpServerInstantTest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateHttpServerScheduledInstantTestRequest**](HttpServerEndpointInstantScheduledTestsApi.md#CreateHttpServerScheduledInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -169,4 +173,15 @@ ApiResponse<[**EndpointHttpServerTest**](EndpointHttpServerTest.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="CreateHttpServerScheduledInstantTestRequest"></a>
+## CreateHttpServerScheduledInstantTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **endpointHttpServerInstantTest** | [**EndpointHttpServerInstantTest**](EndpointHttpServerInstantTest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

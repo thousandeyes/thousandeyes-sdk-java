@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class ApiTestsApi {
   /**
    * Create API test
    * Creates a new API test. This method requires Account Admin permissions.
-   * @param apiTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiTestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiTestResponse createApiTest(ApiTestRequest apiTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<ApiTestResponse> response = createApiTestWithHttpInfo(apiTestRequest, aid, expand);
+  public ApiTestResponse createApiTest(CreateApiTestRequest request) throws ApiException {
+    ApiResponse<ApiTestResponse> response = createApiTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create API test
    * Creates a new API test. This method requires Account Admin permissions.
-   * @param apiTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiTestResponse> createApiTestWithHttpInfo(ApiTestRequest apiTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    createApiTestValidateRequest(apiTestRequest);
+  public ApiResponse<ApiTestResponse> createApiTestWithHttpInfo(CreateApiTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createApiTest");
+    }
+    createApiTestValidateRequest(request.getApiTestRequest());
 
-    var requestBuilder = createApiTestRequestBuilder(apiTestRequest, aid, expand);
+    var requestBuilder = createApiTestRequestBuilder(request.getApiTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), ApiTestResponse.class);
   }
@@ -101,8 +97,8 @@ public class ApiTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createApiTestRequestBuilder(ApiTestRequest apiTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createApiTestRequestBuilder(ApiTestRequest apiTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/api";
@@ -122,29 +118,84 @@ public class ApiTestsApi {
     requestBuilder.requestBody(apiTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete API test
-   * Deletes the specified API test. This method requires write permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteApiTest(String testId, String aid) throws ApiException {
-    deleteApiTestWithHttpInfo(testId, aid);
+
+  public static final class CreateApiTestRequest {
+    private final ApiTestRequest apiTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private CreateApiTestRequest(Builder builder) {
+      this.apiTestRequest = builder.apiTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public ApiTestRequest getApiTestRequest() {
+      return apiTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .apiTestRequest(apiTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private ApiTestRequest apiTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder apiTestRequest(ApiTestRequest apiTestRequest) {
+        this.apiTestRequest = apiTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateApiTestRequest build() {
+        return new CreateApiTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete API test
    * Deletes the specified API test. This method requires write permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteApiTest(DeleteApiTestRequest request) throws ApiException {
+    deleteApiTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete API test
+   * Deletes the specified API test. This method requires write permissions.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteApiTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteApiTestValidateRequest(testId);
+  public ApiResponse<Void> deleteApiTestWithHttpInfo(DeleteApiTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteApiTest");
+    }
+    deleteApiTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteApiTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteApiTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class ApiTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteApiTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteApiTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/api/{testId}"
@@ -175,35 +226,75 @@ public class ApiTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteApiTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteApiTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteApiTestRequest build() {
+        return new DeleteApiTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get API test
    * Returns details for a API test configuration. Please use &#x60;expand&#x60; parameter to access sub-resources such as alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiTestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiTestResponse getApiTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<ApiTestResponse> response = getApiTestWithHttpInfo(testId, aid, versionId, expand);
+  public ApiTestResponse getApiTest(GetApiTestRequest request) throws ApiException {
+    ApiResponse<ApiTestResponse> response = getApiTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get API test
    * Returns details for a API test configuration. Please use &#x60;expand&#x60; parameter to access sub-resources such as alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiTestResponse> getApiTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    getApiTestValidateRequest(testId);
+  public ApiResponse<ApiTestResponse> getApiTestWithHttpInfo(GetApiTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getApiTest");
+    }
+    getApiTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getApiTestRequestBuilder(testId, aid, versionId, expand);
+    var requestBuilder = getApiTestRequestBuilder(request.getTestId(), request.getAid(), request.getVersionId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), ApiTestResponse.class);
   }
@@ -215,8 +306,8 @@ public class ApiTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getApiTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getApiTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/api/{testId}"
@@ -236,29 +327,97 @@ public class ApiTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetApiTestRequest {
+    private final String testId;
+    private final String aid;
+    private final String versionId;
+    private final List<ExpandTestOptions> expand;
+
+    private GetApiTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.versionId = builder.versionId;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getVersionId() {
+      return versionId;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .versionId(versionId)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String versionId;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder versionId(String versionId) {
+        this.versionId = versionId;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetApiTestRequest build() {
+        return new GetApiTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List API tests
    * Returns a list of all API tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiTests
    * @throws ApiException if fails to make API call
    */
-  public ApiTests getApiTests(String aid) throws ApiException {
-    ApiResponse<ApiTests> response = getApiTestsWithHttpInfo(aid);
+  public ApiTests getApiTests(GetApiTestsRequest request) throws ApiException {
+    ApiResponse<ApiTests> response = getApiTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List API tests
    * Returns a list of all API tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiTests> getApiTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<ApiTests> getApiTestsWithHttpInfo(GetApiTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getApiTests");
+    }
     getApiTestsValidateRequest();
 
-    var requestBuilder = getApiTestsRequestBuilder(aid);
+    var requestBuilder = getApiTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiTests.class);
   }
@@ -266,8 +425,8 @@ public class ApiTestsApi {
   private void getApiTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getApiTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getApiTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/api";
@@ -284,35 +443,64 @@ public class ApiTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetApiTestsRequest {
+    private final String aid;
+
+    private GetApiTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetApiTestsRequest build() {
+        return new GetApiTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update API test
    * Updates an API test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires write permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param apiTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiTestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiTestResponse updateApiTest(String testId, ApiTestRequest apiTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<ApiTestResponse> response = updateApiTestWithHttpInfo(testId, apiTestRequest, aid, expand);
+  public ApiTestResponse updateApiTest(UpdateApiTestRequest request) throws ApiException {
+    ApiResponse<ApiTestResponse> response = updateApiTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update API test
    * Updates an API test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires write permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param apiTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiTestResponse> updateApiTestWithHttpInfo(String testId, ApiTestRequest apiTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updateApiTestValidateRequest(testId, apiTestRequest);
+  public ApiResponse<ApiTestResponse> updateApiTestWithHttpInfo(UpdateApiTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateApiTest");
+    }
+    updateApiTestValidateRequest(request.getTestId(), request.getApiTestRequest());
 
-    var requestBuilder = updateApiTestRequestBuilder(testId, apiTestRequest, aid, expand);
+    var requestBuilder = updateApiTestRequestBuilder(request.getTestId(), request.getApiTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), ApiTestResponse.class);
   }
@@ -328,8 +516,8 @@ public class ApiTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateApiTestRequestBuilder(String testId, ApiTestRequest apiTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateApiTestRequestBuilder(String testId, ApiTestRequest apiTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/api/{testId}"
@@ -350,4 +538,69 @@ public class ApiTestsApi {
     requestBuilder.requestBody(apiTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateApiTestRequest {
+    private final String testId;
+    private final ApiTestRequest apiTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private UpdateApiTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.apiTestRequest = builder.apiTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public ApiTestRequest getApiTestRequest() {
+      return apiTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .apiTestRequest(apiTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private ApiTestRequest apiTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder apiTestRequest(ApiTestRequest apiTestRequest) {
+        this.apiTestRequest = apiTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateApiTestRequest build() {
+        return new UpdateApiTestRequest(this);
+      }
+    }
+  }
+
 }

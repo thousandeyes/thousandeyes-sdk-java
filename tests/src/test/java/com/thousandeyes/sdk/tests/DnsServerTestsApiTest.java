@@ -84,7 +84,6 @@ public class DnsServerTestsApiTest {
     public void createDnsServerTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -340,7 +339,12 @@ public class DnsServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDnsServerTest(mappedRequest, null, null);
+        var request = DnsServerTestsApi.CreateDnsServerTestRequest.builder()
+                .dnsServerTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createDnsServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -357,7 +361,6 @@ public class DnsServerTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/dns-server/{testId}";
@@ -367,7 +370,11 @@ public class DnsServerTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteDnsServerTestWithHttpInfo(testId, null);
+        var request = DnsServerTestsApi.DeleteDnsServerTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteDnsServerTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -383,7 +390,6 @@ public class DnsServerTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -571,7 +577,13 @@ public class DnsServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsServerTest(testId, null, null, null);
+        var request = DnsServerTestsApi.GetDnsServerTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getDnsServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -586,7 +598,6 @@ public class DnsServerTestsApiTest {
     public void getDnsServerTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -727,7 +738,10 @@ public class DnsServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsServerTests(null);
+        var request = DnsServerTestsApi.GetDnsServerTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDnsServerTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -743,7 +757,6 @@ public class DnsServerTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -1000,7 +1013,13 @@ public class DnsServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateDnsServerTest(testId, mappedRequest, null, null);
+        var request = DnsServerTestsApi.UpdateDnsServerTestRequest.builder()
+                .testId(testId)
+                .dnsServerTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateDnsServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

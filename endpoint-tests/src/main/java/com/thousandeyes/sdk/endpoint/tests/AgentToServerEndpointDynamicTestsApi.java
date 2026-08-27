@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,28 +63,29 @@ public class AgentToServerEndpointDynamicTestsApi {
   /**
    * Create endpoint dynamic test
    * Create a new endpoint dynamic test in ThousandEyes using properties specified in the POST data. Please note that only Account Admins have the authorization to create new tests; regular users are restricted from using POST-based methods. 
-   * @param dynamicTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return DynamicTest
    * @throws ApiException if fails to make API call
    */
-  public DynamicTest createAgentToServerEndpointDynamicTest(DynamicTestRequest dynamicTestRequest, String aid) throws ApiException {
-    ApiResponse<DynamicTest> response = createAgentToServerEndpointDynamicTestWithHttpInfo(dynamicTestRequest, aid);
+  public DynamicTest createAgentToServerEndpointDynamicTest(CreateAgentToServerEndpointDynamicTestRequest request) throws ApiException {
+    ApiResponse<DynamicTest> response = createAgentToServerEndpointDynamicTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create endpoint dynamic test
    * Create a new endpoint dynamic test in ThousandEyes using properties specified in the POST data. Please note that only Account Admins have the authorization to create new tests; regular users are restricted from using POST-based methods. 
-   * @param dynamicTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DynamicTest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DynamicTest> createAgentToServerEndpointDynamicTestWithHttpInfo(DynamicTestRequest dynamicTestRequest, String aid) throws ApiException {
-    createAgentToServerEndpointDynamicTestValidateRequest(dynamicTestRequest);
+  public ApiResponse<DynamicTest> createAgentToServerEndpointDynamicTestWithHttpInfo(CreateAgentToServerEndpointDynamicTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createAgentToServerEndpointDynamicTest");
+    }
+    createAgentToServerEndpointDynamicTestValidateRequest(request.getDynamicTestRequest());
 
-    var requestBuilder = createAgentToServerEndpointDynamicTestRequestBuilder(dynamicTestRequest, aid);
+    var requestBuilder = createAgentToServerEndpointDynamicTestRequestBuilder(request.getDynamicTestRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), DynamicTest.class);
   }
@@ -99,8 +97,8 @@ public class AgentToServerEndpointDynamicTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAgentToServerEndpointDynamicTestRequestBuilder(DynamicTestRequest dynamicTestRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createAgentToServerEndpointDynamicTestRequestBuilder(DynamicTestRequest dynamicTestRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/tests/dynamic-tests/agent-to-server";
@@ -119,29 +117,73 @@ public class AgentToServerEndpointDynamicTestsApi {
     requestBuilder.requestBody(dynamicTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete agent to server dynamic test
-   * Deletes an agent to server endpoint dynamic test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteAgentToServerEndpointDynamicTest(String testId, String aid) throws ApiException {
-    deleteAgentToServerEndpointDynamicTestWithHttpInfo(testId, aid);
+
+  public static final class CreateAgentToServerEndpointDynamicTestRequest {
+    private final DynamicTestRequest dynamicTestRequest;
+    private final String aid;
+
+    private CreateAgentToServerEndpointDynamicTestRequest(Builder builder) {
+      this.dynamicTestRequest = builder.dynamicTestRequest;
+      this.aid = builder.aid;
+    }
+    public DynamicTestRequest getDynamicTestRequest() {
+      return dynamicTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dynamicTestRequest(dynamicTestRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private DynamicTestRequest dynamicTestRequest;
+      private String aid;
+
+      public Builder dynamicTestRequest(DynamicTestRequest dynamicTestRequest) {
+        this.dynamicTestRequest = dynamicTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateAgentToServerEndpointDynamicTestRequest build() {
+        return new CreateAgentToServerEndpointDynamicTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete agent to server dynamic test
    * Deletes an agent to server endpoint dynamic test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAgentToServerEndpointDynamicTest(DeleteAgentToServerEndpointDynamicTestRequest request) throws ApiException {
+    deleteAgentToServerEndpointDynamicTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete agent to server dynamic test
+   * Deletes an agent to server endpoint dynamic test.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteAgentToServerEndpointDynamicTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteAgentToServerEndpointDynamicTestValidateRequest(testId);
+  public ApiResponse<Void> deleteAgentToServerEndpointDynamicTestWithHttpInfo(DeleteAgentToServerEndpointDynamicTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteAgentToServerEndpointDynamicTest");
+    }
+    deleteAgentToServerEndpointDynamicTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteAgentToServerEndpointDynamicTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteAgentToServerEndpointDynamicTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -153,8 +195,8 @@ public class AgentToServerEndpointDynamicTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteAgentToServerEndpointDynamicTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteAgentToServerEndpointDynamicTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
@@ -172,31 +214,75 @@ public class AgentToServerEndpointDynamicTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteAgentToServerEndpointDynamicTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteAgentToServerEndpointDynamicTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteAgentToServerEndpointDynamicTestRequest build() {
+        return new DeleteAgentToServerEndpointDynamicTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve endpoint dynamic test
    * Returns details of an endpoint dynamic test, including test type, name, intervals, targets.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return DynamicTest
    * @throws ApiException if fails to make API call
    */
-  public DynamicTest getAgentToServerEndpointDynamicTest(String testId, String aid) throws ApiException {
-    ApiResponse<DynamicTest> response = getAgentToServerEndpointDynamicTestWithHttpInfo(testId, aid);
+  public DynamicTest getAgentToServerEndpointDynamicTest(GetAgentToServerEndpointDynamicTestRequest request) throws ApiException {
+    ApiResponse<DynamicTest> response = getAgentToServerEndpointDynamicTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve endpoint dynamic test
    * Returns details of an endpoint dynamic test, including test type, name, intervals, targets.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DynamicTest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DynamicTest> getAgentToServerEndpointDynamicTestWithHttpInfo(String testId, String aid) throws ApiException {
-    getAgentToServerEndpointDynamicTestValidateRequest(testId);
+  public ApiResponse<DynamicTest> getAgentToServerEndpointDynamicTestWithHttpInfo(GetAgentToServerEndpointDynamicTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgentToServerEndpointDynamicTest");
+    }
+    getAgentToServerEndpointDynamicTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getAgentToServerEndpointDynamicTestRequestBuilder(testId, aid);
+    var requestBuilder = getAgentToServerEndpointDynamicTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), DynamicTest.class);
   }
@@ -208,8 +294,8 @@ public class AgentToServerEndpointDynamicTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentToServerEndpointDynamicTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentToServerEndpointDynamicTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
@@ -227,29 +313,75 @@ public class AgentToServerEndpointDynamicTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentToServerEndpointDynamicTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private GetAgentToServerEndpointDynamicTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAgentToServerEndpointDynamicTestRequest build() {
+        return new GetAgentToServerEndpointDynamicTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List endpoint dynamic tests
    * Returns a list of all endpoint dynamic tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return DynamicTests
    * @throws ApiException if fails to make API call
    */
-  public DynamicTests getAgentToServerEndpointDynamicTests(String aid) throws ApiException {
-    ApiResponse<DynamicTests> response = getAgentToServerEndpointDynamicTestsWithHttpInfo(aid);
+  public DynamicTests getAgentToServerEndpointDynamicTests(GetAgentToServerEndpointDynamicTestsRequest request) throws ApiException {
+    ApiResponse<DynamicTests> response = getAgentToServerEndpointDynamicTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List endpoint dynamic tests
    * Returns a list of all endpoint dynamic tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DynamicTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DynamicTests> getAgentToServerEndpointDynamicTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<DynamicTests> getAgentToServerEndpointDynamicTestsWithHttpInfo(GetAgentToServerEndpointDynamicTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgentToServerEndpointDynamicTests");
+    }
     getAgentToServerEndpointDynamicTestsValidateRequest();
 
-    var requestBuilder = getAgentToServerEndpointDynamicTestsRequestBuilder(aid);
+    var requestBuilder = getAgentToServerEndpointDynamicTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), DynamicTests.class);
   }
@@ -257,8 +389,8 @@ public class AgentToServerEndpointDynamicTestsApi {
   private void getAgentToServerEndpointDynamicTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentToServerEndpointDynamicTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentToServerEndpointDynamicTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/tests/dynamic-tests/agent-to-server";
@@ -275,33 +407,64 @@ public class AgentToServerEndpointDynamicTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentToServerEndpointDynamicTestsRequest {
+    private final String aid;
+
+    private GetAgentToServerEndpointDynamicTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAgentToServerEndpointDynamicTestsRequest build() {
+        return new GetAgentToServerEndpointDynamicTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update agent to server dynamic test
    * Updates an agent to server endpoint dynamic test. Includes support for  enabling and disabling the test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param endpointDynamicTestUpdate  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return DynamicTest
    * @throws ApiException if fails to make API call
    */
-  public DynamicTest updateAgentToServerEndpointDynamicTest(String testId, EndpointDynamicTestUpdate endpointDynamicTestUpdate, String aid) throws ApiException {
-    ApiResponse<DynamicTest> response = updateAgentToServerEndpointDynamicTestWithHttpInfo(testId, endpointDynamicTestUpdate, aid);
+  public DynamicTest updateAgentToServerEndpointDynamicTest(UpdateAgentToServerEndpointDynamicTestRequest request) throws ApiException {
+    ApiResponse<DynamicTest> response = updateAgentToServerEndpointDynamicTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update agent to server dynamic test
    * Updates an agent to server endpoint dynamic test. Includes support for  enabling and disabling the test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param endpointDynamicTestUpdate  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DynamicTest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DynamicTest> updateAgentToServerEndpointDynamicTestWithHttpInfo(String testId, EndpointDynamicTestUpdate endpointDynamicTestUpdate, String aid) throws ApiException {
-    updateAgentToServerEndpointDynamicTestValidateRequest(testId, endpointDynamicTestUpdate);
+  public ApiResponse<DynamicTest> updateAgentToServerEndpointDynamicTestWithHttpInfo(UpdateAgentToServerEndpointDynamicTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateAgentToServerEndpointDynamicTest");
+    }
+    updateAgentToServerEndpointDynamicTestValidateRequest(request.getTestId(), request.getEndpointDynamicTestUpdate());
 
-    var requestBuilder = updateAgentToServerEndpointDynamicTestRequestBuilder(testId, endpointDynamicTestUpdate, aid);
+    var requestBuilder = updateAgentToServerEndpointDynamicTestRequestBuilder(request.getTestId(), request.getEndpointDynamicTestUpdate(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), DynamicTest.class);
   }
@@ -317,8 +480,8 @@ public class AgentToServerEndpointDynamicTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAgentToServerEndpointDynamicTestRequestBuilder(String testId, EndpointDynamicTestUpdate endpointDynamicTestUpdate, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateAgentToServerEndpointDynamicTestRequestBuilder(String testId, EndpointDynamicTestUpdate endpointDynamicTestUpdate, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PATCH");
 
     String path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}"
@@ -338,4 +501,58 @@ public class AgentToServerEndpointDynamicTestsApi {
     requestBuilder.requestBody(endpointDynamicTestUpdate);
     return requestBuilder;
   }
+
+  public static final class UpdateAgentToServerEndpointDynamicTestRequest {
+    private final String testId;
+    private final EndpointDynamicTestUpdate endpointDynamicTestUpdate;
+    private final String aid;
+
+    private UpdateAgentToServerEndpointDynamicTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.endpointDynamicTestUpdate = builder.endpointDynamicTestUpdate;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public EndpointDynamicTestUpdate getEndpointDynamicTestUpdate() {
+      return endpointDynamicTestUpdate;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .endpointDynamicTestUpdate(endpointDynamicTestUpdate)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private EndpointDynamicTestUpdate endpointDynamicTestUpdate;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder endpointDynamicTestUpdate(EndpointDynamicTestUpdate endpointDynamicTestUpdate) {
+        this.endpointDynamicTestUpdate = endpointDynamicTestUpdate;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateAgentToServerEndpointDynamicTestRequest build() {
+        return new UpdateAgentToServerEndpointDynamicTestRequest(this);
+      }
+    }
+  }
+
 }

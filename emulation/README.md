@@ -117,7 +117,11 @@ public class EmulationApiExample {
         EmulatedDevice emulatedDevice = new EmulatedDevice(); // EmulatedDevice | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EmulatedDeviceResponse result = apiInstance.createEmulatedDevice(emulatedDevice, aid);
+            EmulationApi.CreateEmulatedDeviceRequest request = EmulationApi.CreateEmulatedDeviceRequest.builder()
+                .emulatedDevice(emulatedDevice)
+                .aid(aid)
+                .build();
+            EmulatedDeviceResponse result = apiInstance.createEmulatedDevice(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EmulationApi#createEmulatedDevice");

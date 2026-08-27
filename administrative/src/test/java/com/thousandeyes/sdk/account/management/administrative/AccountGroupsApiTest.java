@@ -85,7 +85,6 @@ public class AccountGroupsApiTest {
     public void createAccountGroupRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "accountGroupName" : "My testing account group",
@@ -170,7 +169,11 @@ public class AccountGroupsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAccountGroup(mappedRequest, null);
+        var request = AccountGroupsApi.CreateAccountGroupRequest.builder()
+                .accountGroupRequest(mappedRequest)
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createAccountGroup(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -187,7 +190,6 @@ public class AccountGroupsApiTest {
     {
         String id = "1234";
 
-
         var statusCode = 204;
 
         var path = "/account-groups/{id}";
@@ -197,7 +199,10 @@ public class AccountGroupsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteAccountGroupWithHttpInfo(id);
+        var request = AccountGroupsApi.DeleteAccountGroupRequest.builder()
+                .id(id)
+                .build();
+        var apiResponse = api.deleteAccountGroupWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -213,7 +218,6 @@ public class AccountGroupsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "1234";
-
 
         var responseBodyJson = """
                 {
@@ -595,7 +599,11 @@ public class AccountGroupsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAccountGroup(id, null);
+        var request = AccountGroupsApi.GetAccountGroupRequest.builder()
+                .id(id)
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getAccountGroup(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -610,7 +618,6 @@ public class AccountGroupsApiTest {
     public void getAccountGroupsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -673,7 +680,6 @@ public class AccountGroupsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "1234";
-
         var requestBodyJson = """
                 {
                   "accountGroupName" : "My testing account group",
@@ -1067,7 +1073,12 @@ public class AccountGroupsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateAccountGroup(id, mappedRequest, null);
+        var request = AccountGroupsApi.UpdateAccountGroupRequest.builder()
+                .id(id)
+                .accountGroupRequest(mappedRequest)
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateAccountGroup(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

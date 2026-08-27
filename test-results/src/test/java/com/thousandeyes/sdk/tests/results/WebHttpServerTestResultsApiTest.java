@@ -86,7 +86,6 @@ public class WebHttpServerTestResultsApiTest {
     {
         String testId = "202701";
 
-
         var responseBodyJson = """
                 {
                   "test" : {
@@ -427,7 +426,15 @@ public class WebHttpServerTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestHttpServerResults(testId, null, null, null, null, null, null);
+        var request = WebHttpServerTestResultsApi.GetTestHttpServerResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getTestHttpServerResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -84,7 +84,6 @@ public class DnssecTestsApiTest {
     public void createDnsSecTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "dnsQueryClass" : "in",
@@ -290,7 +289,12 @@ public class DnssecTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDnsSecTest(mappedRequest, null, null);
+        var request = DnssecTestsApi.CreateDnsSecTestRequest.builder()
+                .dnsSecTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createDnsSecTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -307,7 +311,6 @@ public class DnssecTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/dnssec/{testId}";
@@ -317,7 +320,11 @@ public class DnssecTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteDnsSecTestWithHttpInfo(testId, null);
+        var request = DnssecTestsApi.DeleteDnsSecTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteDnsSecTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -333,7 +340,6 @@ public class DnssecTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -486,7 +492,13 @@ public class DnssecTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsSecTest(testId, null, null, null);
+        var request = DnssecTestsApi.GetDnsSecTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getDnsSecTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -501,7 +513,6 @@ public class DnssecTestsApiTest {
     public void getDnsSecTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -602,7 +613,10 @@ public class DnssecTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsSecTests(null);
+        var request = DnssecTestsApi.GetDnsSecTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDnsSecTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -618,7 +632,6 @@ public class DnssecTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "dnsQueryClass" : "in",
@@ -825,7 +838,13 @@ public class DnssecTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateDnsSecTest(testId, mappedRequest, null, null);
+        var request = DnssecTestsApi.UpdateDnsSecTestRequest.builder()
+                .testId(testId)
+                .dnsSecTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateDnsSecTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

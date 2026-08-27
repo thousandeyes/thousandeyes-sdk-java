@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -40,12 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -67,28 +64,29 @@ public class AccountGroupsApi {
   /**
    * Create account group
    * Creates a new account group. This operation requires the &#x60;Edit all account groups&#x60; permission.  **Note:** Any user assigned to &#x60;All Account Groups&#x60; is automatically assigned to the new account group.
-   * @param accountGroupRequest  (required)
-   * @param expand Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return CreatedAccountGroup
    * @throws ApiException if fails to make API call
    */
-  public CreatedAccountGroup createAccountGroup(AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    ApiResponse<CreatedAccountGroup> response = createAccountGroupWithHttpInfo(accountGroupRequest, expand);
+  public CreatedAccountGroup createAccountGroup(CreateAccountGroupRequest request) throws ApiException {
+    ApiResponse<CreatedAccountGroup> response = createAccountGroupWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create account group
    * Creates a new account group. This operation requires the &#x60;Edit all account groups&#x60; permission.  **Note:** Any user assigned to &#x60;All Account Groups&#x60; is automatically assigned to the new account group.
-   * @param accountGroupRequest  (required)
-   * @param expand Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CreatedAccountGroup&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CreatedAccountGroup> createAccountGroupWithHttpInfo(AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    createAccountGroupValidateRequest(accountGroupRequest);
+  public ApiResponse<CreatedAccountGroup> createAccountGroupWithHttpInfo(CreateAccountGroupRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createAccountGroup");
+    }
+    createAccountGroupValidateRequest(request.getAccountGroupRequest());
 
-    var requestBuilder = createAccountGroupRequestBuilder(accountGroupRequest, expand);
+    var requestBuilder = createAccountGroupRequestBuilder(request.getAccountGroupRequest(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), CreatedAccountGroup.class);
   }
@@ -100,8 +98,8 @@ public class AccountGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAccountGroupRequestBuilder(AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createAccountGroupRequestBuilder(AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/account-groups";
@@ -120,27 +118,73 @@ public class AccountGroupsApi {
     requestBuilder.requestBody(accountGroupRequest);
     return requestBuilder;
   }
-  /**
-   * Delete account group
-   * Deletes an account group using its ID. This operation requires the following permissions:    * Assign management permissions   * Delete account   * Edit all account groups
-   * @param id Identifier for the account group. (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteAccountGroup(String id) throws ApiException {
-    deleteAccountGroupWithHttpInfo(id);
+
+  public static final class CreateAccountGroupRequest {
+    private final AccountGroupRequest accountGroupRequest;
+    private final List<ExpandAccountGroupOptions> expand;
+
+    private CreateAccountGroupRequest(Builder builder) {
+      this.accountGroupRequest = builder.accountGroupRequest;
+      this.expand = builder.expand;
+    }
+    public AccountGroupRequest getAccountGroupRequest() {
+      return accountGroupRequest;
+    }
+    public List<ExpandAccountGroupOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .accountGroupRequest(accountGroupRequest)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private AccountGroupRequest accountGroupRequest;
+      private List<ExpandAccountGroupOptions> expand;
+
+      public Builder accountGroupRequest(AccountGroupRequest accountGroupRequest) {
+        this.accountGroupRequest = accountGroupRequest;
+        return this;
+      }
+      public Builder expand(List<ExpandAccountGroupOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateAccountGroupRequest build() {
+        return new CreateAccountGroupRequest(this);
+      }
+    }
   }
 
   /**
    * Delete account group
    * Deletes an account group using its ID. This operation requires the following permissions:    * Assign management permissions   * Delete account   * Edit all account groups
-   * @param id Identifier for the account group. (required)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAccountGroup(DeleteAccountGroupRequest request) throws ApiException {
+    deleteAccountGroupWithHttpInfo(request);
+  }
+
+  /**
+   * Delete account group
+   * Deletes an account group using its ID. This operation requires the following permissions:    * Assign management permissions   * Delete account   * Edit all account groups
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteAccountGroupWithHttpInfo(String id) throws ApiException {
-    deleteAccountGroupValidateRequest(id);
+  public ApiResponse<Void> deleteAccountGroupWithHttpInfo(DeleteAccountGroupRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteAccountGroup");
+    }
+    deleteAccountGroupValidateRequest(request.getId());
 
-    var requestBuilder = deleteAccountGroupRequestBuilder(id);
+    var requestBuilder = deleteAccountGroupRequestBuilder(request.getId());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -152,8 +196,8 @@ public class AccountGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteAccountGroupRequestBuilder(String id) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteAccountGroupRequestBuilder(String id) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/account-groups/{id}"
@@ -165,31 +209,64 @@ public class AccountGroupsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteAccountGroupRequest {
+    private final String id;
+
+    private DeleteAccountGroupRequest(Builder builder) {
+      this.id = builder.id;
+    }
+    public String getId() {
+      return id;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id);
+    }
+
+    public static final class Builder {
+      private String id;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public DeleteAccountGroupRequest build() {
+        return new DeleteAccountGroupRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve account group
    * Retrieves detailed information about an account group using its ID.  This operation requires the &#x60;View all account groups settings&#x60; permission.
-   * @param id Identifier for the account group. (required)
-   * @param expand Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return AccountGroupDetail
    * @throws ApiException if fails to make API call
    */
-  public AccountGroupDetail getAccountGroup(String id, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    ApiResponse<AccountGroupDetail> response = getAccountGroupWithHttpInfo(id, expand);
+  public AccountGroupDetail getAccountGroup(GetAccountGroupRequest request) throws ApiException {
+    ApiResponse<AccountGroupDetail> response = getAccountGroupWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve account group
    * Retrieves detailed information about an account group using its ID.  This operation requires the &#x60;View all account groups settings&#x60; permission.
-   * @param id Identifier for the account group. (required)
-   * @param expand Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AccountGroupDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AccountGroupDetail> getAccountGroupWithHttpInfo(String id, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    getAccountGroupValidateRequest(id);
+  public ApiResponse<AccountGroupDetail> getAccountGroupWithHttpInfo(GetAccountGroupRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAccountGroup");
+    }
+    getAccountGroupValidateRequest(request.getId());
 
-    var requestBuilder = getAccountGroupRequestBuilder(id, expand);
+    var requestBuilder = getAccountGroupRequestBuilder(request.getId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AccountGroupDetail.class);
   }
@@ -201,8 +278,8 @@ public class AccountGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAccountGroupRequestBuilder(String id, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAccountGroupRequestBuilder(String id, List<ExpandAccountGroupOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/account-groups/{id}"
@@ -220,6 +297,49 @@ public class AccountGroupsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAccountGroupRequest {
+    private final String id;
+    private final List<ExpandAccountGroupOptions> expand;
+
+    private GetAccountGroupRequest(Builder builder) {
+      this.id = builder.id;
+      this.expand = builder.expand;
+    }
+    public String getId() {
+      return id;
+    }
+    public List<ExpandAccountGroupOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String id;
+      private List<ExpandAccountGroupOptions> expand;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder expand(List<ExpandAccountGroupOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetAccountGroupRequest build() {
+        return new GetAccountGroupRequest(this);
+      }
+    }
+  }
+
   /**
    * List account groups
    * Retrieves a list of account groups available to the current user.
@@ -248,8 +368,8 @@ public class AccountGroupsApi {
   private void getAccountGroupsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAccountGroupsRequestBuilder() throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAccountGroupsRequestBuilder() throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/account-groups";
@@ -263,30 +383,29 @@ public class AccountGroupsApi {
   /**
    * Update account group
    * Updates an account group using its ID. You can modify the account group’s name or the list of agents assigned to the account group.
-   * @param id Identifier for the account group. (required)
-   * @param accountGroupRequest  (required)
-   * @param expand Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return AccountGroupDetail
    * @throws ApiException if fails to make API call
    */
-  public AccountGroupDetail updateAccountGroup(String id, AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    ApiResponse<AccountGroupDetail> response = updateAccountGroupWithHttpInfo(id, accountGroupRequest, expand);
+  public AccountGroupDetail updateAccountGroup(UpdateAccountGroupRequest request) throws ApiException {
+    ApiResponse<AccountGroupDetail> response = updateAccountGroupWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update account group
    * Updates an account group using its ID. You can modify the account group’s name or the list of agents assigned to the account group.
-   * @param id Identifier for the account group. (required)
-   * @param accountGroupRequest  (required)
-   * @param expand Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AccountGroupDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AccountGroupDetail> updateAccountGroupWithHttpInfo(String id, AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    updateAccountGroupValidateRequest(id, accountGroupRequest);
+  public ApiResponse<AccountGroupDetail> updateAccountGroupWithHttpInfo(UpdateAccountGroupRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateAccountGroup");
+    }
+    updateAccountGroupValidateRequest(request.getId(), request.getAccountGroupRequest());
 
-    var requestBuilder = updateAccountGroupRequestBuilder(id, accountGroupRequest, expand);
+    var requestBuilder = updateAccountGroupRequestBuilder(request.getId(), request.getAccountGroupRequest(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AccountGroupDetail.class);
   }
@@ -302,8 +421,8 @@ public class AccountGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAccountGroupRequestBuilder(String id, AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateAccountGroupRequestBuilder(String id, AccountGroupRequest accountGroupRequest, List<ExpandAccountGroupOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/account-groups/{id}"
@@ -323,4 +442,58 @@ public class AccountGroupsApi {
     requestBuilder.requestBody(accountGroupRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateAccountGroupRequest {
+    private final String id;
+    private final AccountGroupRequest accountGroupRequest;
+    private final List<ExpandAccountGroupOptions> expand;
+
+    private UpdateAccountGroupRequest(Builder builder) {
+      this.id = builder.id;
+      this.accountGroupRequest = builder.accountGroupRequest;
+      this.expand = builder.expand;
+    }
+    public String getId() {
+      return id;
+    }
+    public AccountGroupRequest getAccountGroupRequest() {
+      return accountGroupRequest;
+    }
+    public List<ExpandAccountGroupOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .accountGroupRequest(accountGroupRequest)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String id;
+      private AccountGroupRequest accountGroupRequest;
+      private List<ExpandAccountGroupOptions> expand;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder accountGroupRequest(AccountGroupRequest accountGroupRequest) {
+        this.accountGroupRequest = accountGroupRequest;
+        return this;
+      }
+      public Builder expand(List<ExpandAccountGroupOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateAccountGroupRequest build() {
+        return new UpdateAccountGroupRequest(this);
+      }
+    }
+  }
+
 }

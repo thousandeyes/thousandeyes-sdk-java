@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,28 +62,27 @@ public class EndpointAgentsTransferApi {
   /**
    * Transfer endpoint agent
    * Initiates the transfer of an agent from its current account, which must correspond to the provided aid, to the target account.  **Note:** It is essential to ensure that the &#x60;aid&#x60; parameter matches the current account of the agent for this operation to succeed. 
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param agentTransferRequest The request to move an agent between accounts. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @throws ApiException if fails to make API call
    */
-  public void transferEndpointAgent(UUID agentId, AgentTransferRequest agentTransferRequest, String aid) throws ApiException {
-    transferEndpointAgentWithHttpInfo(agentId, agentTransferRequest, aid);
+  public void transferEndpointAgent(TransferEndpointAgentRequest request) throws ApiException {
+    transferEndpointAgentWithHttpInfo(request);
   }
 
   /**
    * Transfer endpoint agent
    * Initiates the transfer of an agent from its current account, which must correspond to the provided aid, to the target account.  **Note:** It is essential to ensure that the &#x60;aid&#x60; parameter matches the current account of the agent for this operation to succeed. 
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param agentTransferRequest The request to move an agent between accounts. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> transferEndpointAgentWithHttpInfo(UUID agentId, AgentTransferRequest agentTransferRequest, String aid) throws ApiException {
-    transferEndpointAgentValidateRequest(agentId, agentTransferRequest);
+  public ApiResponse<Void> transferEndpointAgentWithHttpInfo(TransferEndpointAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling transferEndpointAgent");
+    }
+    transferEndpointAgentValidateRequest(request.getAgentId(), request.getAgentTransferRequest());
 
-    var requestBuilder = transferEndpointAgentRequestBuilder(agentId, agentTransferRequest, aid);
+    var requestBuilder = transferEndpointAgentRequestBuilder(request.getAgentId(), request.getAgentTransferRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -102,8 +98,8 @@ public class EndpointAgentsTransferApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder transferEndpointAgentRequestBuilder(UUID agentId, AgentTransferRequest agentTransferRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder transferEndpointAgentRequestBuilder(UUID agentId, AgentTransferRequest agentTransferRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/agents/{agentId}/transfer"
@@ -123,31 +119,86 @@ public class EndpointAgentsTransferApi {
     requestBuilder.requestBody(agentTransferRequest);
     return requestBuilder;
   }
+
+  public static final class TransferEndpointAgentRequest {
+    private final UUID agentId;
+    private final AgentTransferRequest agentTransferRequest;
+    private final String aid;
+
+    private TransferEndpointAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.agentTransferRequest = builder.agentTransferRequest;
+      this.aid = builder.aid;
+    }
+    public UUID getAgentId() {
+      return agentId;
+    }
+    public AgentTransferRequest getAgentTransferRequest() {
+      return agentTransferRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .agentTransferRequest(agentTransferRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private UUID agentId;
+      private AgentTransferRequest agentTransferRequest;
+      private String aid;
+
+      public Builder agentId(UUID agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder agentTransferRequest(AgentTransferRequest agentTransferRequest) {
+        this.agentTransferRequest = agentTransferRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public TransferEndpointAgentRequest build() {
+        return new TransferEndpointAgentRequest(this);
+      }
+    }
+  }
+
   /**
    * Bulk transfer agents
    * Initiates the transfer of multiple agents between accounts. The following conditions apply:  * The requester must possess &#39;write&#39; permissions for both the &#39;from&#39; and &#39;to&#39; accounts involved in each transfer.  * Multiple transfers may involve a mix of different source and destination accounts. * For each transfer request, the &#39;from&#39; account must match the current account of the respective agent. * Transfers are executed asynchronously. * Progress tracking is not intended, but users can monitor the progress by periodically polling the &#39;get agent&#39; endpoint. * Each transfer request is individually validated and completed; this operation is not atomic, meaning transfers can succeed or fail individually. * The API response provides the status of each transfer request. * There are no performance concerns for this API; any number of agents can be transferred in bulk. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param bulkAgentTransferRequest A collection of &#x60;AgentTransfers&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return BulkAgentTransferResponse
    * @throws ApiException if fails to make API call
    */
-  public BulkAgentTransferResponse transferEndpointAgents(String aid, BulkAgentTransferRequest bulkAgentTransferRequest) throws ApiException {
-    ApiResponse<BulkAgentTransferResponse> response = transferEndpointAgentsWithHttpInfo(aid, bulkAgentTransferRequest);
+  public BulkAgentTransferResponse transferEndpointAgents(TransferEndpointAgentsRequest request) throws ApiException {
+    ApiResponse<BulkAgentTransferResponse> response = transferEndpointAgentsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Bulk transfer agents
    * Initiates the transfer of multiple agents between accounts. The following conditions apply:  * The requester must possess &#39;write&#39; permissions for both the &#39;from&#39; and &#39;to&#39; accounts involved in each transfer.  * Multiple transfers may involve a mix of different source and destination accounts. * For each transfer request, the &#39;from&#39; account must match the current account of the respective agent. * Transfers are executed asynchronously. * Progress tracking is not intended, but users can monitor the progress by periodically polling the &#39;get agent&#39; endpoint. * Each transfer request is individually validated and completed; this operation is not atomic, meaning transfers can succeed or fail individually. * The API response provides the status of each transfer request. * There are no performance concerns for this API; any number of agents can be transferred in bulk. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param bulkAgentTransferRequest A collection of &#x60;AgentTransfers&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BulkAgentTransferResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BulkAgentTransferResponse> transferEndpointAgentsWithHttpInfo(String aid, BulkAgentTransferRequest bulkAgentTransferRequest) throws ApiException {
+  public ApiResponse<BulkAgentTransferResponse> transferEndpointAgentsWithHttpInfo(TransferEndpointAgentsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling transferEndpointAgents");
+    }
     transferEndpointAgentsValidateRequest();
 
-    var requestBuilder = transferEndpointAgentsRequestBuilder(aid, bulkAgentTransferRequest);
+    var requestBuilder = transferEndpointAgentsRequestBuilder(request.getAid(), request.getBulkAgentTransferRequest());
 
     return apiClient.send(requestBuilder.build(), BulkAgentTransferResponse.class);
   }
@@ -155,8 +206,8 @@ public class EndpointAgentsTransferApi {
   private void transferEndpointAgentsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder transferEndpointAgentsRequestBuilder(String aid, BulkAgentTransferRequest bulkAgentTransferRequest) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder transferEndpointAgentsRequestBuilder(String aid, BulkAgentTransferRequest bulkAgentTransferRequest) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/agents/transfer/bulk";
@@ -175,4 +226,47 @@ public class EndpointAgentsTransferApi {
     requestBuilder.requestBody(bulkAgentTransferRequest);
     return requestBuilder;
   }
+
+  public static final class TransferEndpointAgentsRequest {
+    private final String aid;
+    private final BulkAgentTransferRequest bulkAgentTransferRequest;
+
+    private TransferEndpointAgentsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.bulkAgentTransferRequest = builder.bulkAgentTransferRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public BulkAgentTransferRequest getBulkAgentTransferRequest() {
+      return bulkAgentTransferRequest;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .bulkAgentTransferRequest(bulkAgentTransferRequest);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private BulkAgentTransferRequest bulkAgentTransferRequest;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder bulkAgentTransferRequest(BulkAgentTransferRequest bulkAgentTransferRequest) {
+        this.bulkAgentTransferRequest = bulkAgentTransferRequest;
+        return this;
+      }
+      public TransferEndpointAgentsRequest build() {
+        return new TransferEndpointAgentsRequest(this);
+      }
+    }
+  }
+
 }

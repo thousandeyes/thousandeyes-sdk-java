@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,30 +62,29 @@ public class HttpPageLoadInstantTestsApi {
   /**
    * Create HTTP page load instant test
    * Creates and runs a new HTTP page load instant test.
-   * @param pageLoadInstantTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
+   * @param request operation parameters (required)
    * @return PageLoadInstantTestResponse
    * @throws ApiException if fails to make API call
    */
-  public PageLoadInstantTestResponse createPageLoadInstantTest(PageLoadInstantTestRequest pageLoadInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    ApiResponse<PageLoadInstantTestResponse> response = createPageLoadInstantTestWithHttpInfo(pageLoadInstantTestRequest, aid, expand);
+  public PageLoadInstantTestResponse createPageLoadInstantTest(CreatePageLoadInstantTestRequest request) throws ApiException {
+    ApiResponse<PageLoadInstantTestResponse> response = createPageLoadInstantTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create HTTP page load instant test
    * Creates and runs a new HTTP page load instant test.
-   * @param pageLoadInstantTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PageLoadInstantTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageLoadInstantTestResponse> createPageLoadInstantTestWithHttpInfo(PageLoadInstantTestRequest pageLoadInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    createPageLoadInstantTestValidateRequest(pageLoadInstantTestRequest);
+  public ApiResponse<PageLoadInstantTestResponse> createPageLoadInstantTestWithHttpInfo(CreatePageLoadInstantTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createPageLoadInstantTest");
+    }
+    createPageLoadInstantTestValidateRequest(request.getPageLoadInstantTestRequest());
 
-    var requestBuilder = createPageLoadInstantTestRequestBuilder(pageLoadInstantTestRequest, aid, expand);
+    var requestBuilder = createPageLoadInstantTestRequestBuilder(request.getPageLoadInstantTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), PageLoadInstantTestResponse.class);
   }
@@ -100,8 +96,8 @@ public class HttpPageLoadInstantTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createPageLoadInstantTestRequestBuilder(PageLoadInstantTestRequest pageLoadInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createPageLoadInstantTestRequestBuilder(PageLoadInstantTestRequest pageLoadInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/page-load/instant";
@@ -121,4 +117,58 @@ public class HttpPageLoadInstantTestsApi {
     requestBuilder.requestBody(pageLoadInstantTestRequest);
     return requestBuilder;
   }
+
+  public static final class CreatePageLoadInstantTestRequest {
+    private final PageLoadInstantTestRequest pageLoadInstantTestRequest;
+    private final String aid;
+    private final List<ExpandInstantTestOptions> expand;
+
+    private CreatePageLoadInstantTestRequest(Builder builder) {
+      this.pageLoadInstantTestRequest = builder.pageLoadInstantTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public PageLoadInstantTestRequest getPageLoadInstantTestRequest() {
+      return pageLoadInstantTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandInstantTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .pageLoadInstantTestRequest(pageLoadInstantTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private PageLoadInstantTestRequest pageLoadInstantTestRequest;
+      private String aid;
+      private List<ExpandInstantTestOptions> expand;
+
+      public Builder pageLoadInstantTestRequest(PageLoadInstantTestRequest pageLoadInstantTestRequest) {
+        this.pageLoadInstantTestRequest = pageLoadInstantTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandInstantTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreatePageLoadInstantTestRequest build() {
+        return new CreatePageLoadInstantTestRequest(this);
+      }
+    }
+  }
+
 }

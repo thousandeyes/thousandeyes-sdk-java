@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -45,12 +44,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -72,30 +69,29 @@ public class DashboardsApi {
   /**
    * Clone dashboard
    * Creates a dashboard by cloning an existing dashboard. By default, the clone inherits the source dashboard&#39;s widgets, layout, default timespan, tags, and other supported settings. Values provided in the request override the corresponding source dashboard settings. Sharing settings are not inherited. If &#x60;title&#x60; is omitted, the API generates a unique title for the clone.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can clone any dashboard they can view. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can clone dashboards they can view. The current user owns the cloned dashboard. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param cloneDashboardRequest Optional overrides for the cloned dashboard. (optional)
+   * @param request operation parameters (required)
    * @return Dashboard
    * @throws ApiException if fails to make API call
    */
-  public Dashboard cloneDashboard(String dashboardId, String aid, CloneDashboardRequest cloneDashboardRequest) throws ApiException {
-    ApiResponse<Dashboard> response = cloneDashboardWithHttpInfo(dashboardId, aid, cloneDashboardRequest);
+  public Dashboard cloneDashboard(CloneDashboardRequest request) throws ApiException {
+    ApiResponse<Dashboard> response = cloneDashboardWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Clone dashboard
    * Creates a dashboard by cloning an existing dashboard. By default, the clone inherits the source dashboard&#39;s widgets, layout, default timespan, tags, and other supported settings. Values provided in the request override the corresponding source dashboard settings. Sharing settings are not inherited. If &#x60;title&#x60; is omitted, the API generates a unique title for the clone.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can clone any dashboard they can view. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can clone dashboards they can view. The current user owns the cloned dashboard. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param cloneDashboardRequest Optional overrides for the cloned dashboard. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Dashboard&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Dashboard> cloneDashboardWithHttpInfo(String dashboardId, String aid, CloneDashboardRequest cloneDashboardRequest) throws ApiException {
-    cloneDashboardValidateRequest(dashboardId);
+  public ApiResponse<Dashboard> cloneDashboardWithHttpInfo(CloneDashboardRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling cloneDashboard");
+    }
+    cloneDashboardValidateRequest(request.getDashboardId());
 
-    var requestBuilder = cloneDashboardRequestBuilder(dashboardId, aid, cloneDashboardRequest);
+    var requestBuilder = cloneDashboardRequestBuilder(request.getDashboardId(), request.getAid(), request.getCloneDashboardRequest());
 
     return apiClient.send(requestBuilder.build(), Dashboard.class);
   }
@@ -107,8 +103,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder cloneDashboardRequestBuilder(String dashboardId, String aid, CloneDashboardRequest cloneDashboardRequest) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder cloneDashboardRequestBuilder(String dashboardId, String aid, com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest cloneDashboardRequest) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/dashboards/{dashboardId}/clone"
@@ -128,31 +124,86 @@ public class DashboardsApi {
     requestBuilder.requestBody(cloneDashboardRequest);
     return requestBuilder;
   }
+
+  public static final class CloneDashboardRequest {
+    private final String dashboardId;
+    private final String aid;
+    private final com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest cloneDashboardRequest;
+
+    private CloneDashboardRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.aid = builder.aid;
+      this.cloneDashboardRequest = builder.cloneDashboardRequest;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest getCloneDashboardRequest() {
+      return cloneDashboardRequest;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .aid(aid)
+          .cloneDashboardRequest(cloneDashboardRequest);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private String aid;
+      private com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest cloneDashboardRequest;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder cloneDashboardRequest(com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest cloneDashboardRequest) {
+        this.cloneDashboardRequest = cloneDashboardRequest;
+        return this;
+      }
+      public CloneDashboardRequest build() {
+        return new CloneDashboardRequest(this);
+      }
+    }
+  }
+
   /**
    * Create dashboard
    * Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
-   * @param dashboard Request body schema to create a dashboard. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Dashboard
    * @throws ApiException if fails to make API call
    */
-  public Dashboard createDashboard(Dashboard dashboard, String aid) throws ApiException {
-    ApiResponse<Dashboard> response = createDashboardWithHttpInfo(dashboard, aid);
+  public Dashboard createDashboard(CreateDashboardRequest request) throws ApiException {
+    ApiResponse<Dashboard> response = createDashboardWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create dashboard
    * Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
-   * @param dashboard Request body schema to create a dashboard. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Dashboard&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Dashboard> createDashboardWithHttpInfo(Dashboard dashboard, String aid) throws ApiException {
-    createDashboardValidateRequest(dashboard);
+  public ApiResponse<Dashboard> createDashboardWithHttpInfo(CreateDashboardRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createDashboard");
+    }
+    createDashboardValidateRequest(request.getDashboard());
 
-    var requestBuilder = createDashboardRequestBuilder(dashboard, aid);
+    var requestBuilder = createDashboardRequestBuilder(request.getDashboard(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Dashboard.class);
   }
@@ -164,8 +215,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createDashboardRequestBuilder(Dashboard dashboard, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createDashboardRequestBuilder(Dashboard dashboard, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/dashboards";
@@ -184,29 +235,73 @@ public class DashboardsApi {
     requestBuilder.requestBody(dashboard);
     return requestBuilder;
   }
-  /**
-   * Delete dashboard
-   * Deletes a dashboard using the &#x60;dashboardId&#x60; provided in the request.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can delete any dashboard. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only delete the dashboards they have created themselves. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteDashboard(String dashboardId, String aid) throws ApiException {
-    deleteDashboardWithHttpInfo(dashboardId, aid);
+
+  public static final class CreateDashboardRequest {
+    private final Dashboard dashboard;
+    private final String aid;
+
+    private CreateDashboardRequest(Builder builder) {
+      this.dashboard = builder.dashboard;
+      this.aid = builder.aid;
+    }
+    public Dashboard getDashboard() {
+      return dashboard;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboard(dashboard)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private Dashboard dashboard;
+      private String aid;
+
+      public Builder dashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateDashboardRequest build() {
+        return new CreateDashboardRequest(this);
+      }
+    }
   }
 
   /**
    * Delete dashboard
    * Deletes a dashboard using the &#x60;dashboardId&#x60; provided in the request.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can delete any dashboard. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only delete the dashboards they have created themselves. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteDashboard(DeleteDashboardRequest request) throws ApiException {
+    deleteDashboardWithHttpInfo(request);
+  }
+
+  /**
+   * Delete dashboard
+   * Deletes a dashboard using the &#x60;dashboardId&#x60; provided in the request.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can delete any dashboard. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only delete the dashboards they have created themselves. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteDashboardWithHttpInfo(String dashboardId, String aid) throws ApiException {
-    deleteDashboardValidateRequest(dashboardId);
+  public ApiResponse<Void> deleteDashboardWithHttpInfo(DeleteDashboardRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteDashboard");
+    }
+    deleteDashboardValidateRequest(request.getDashboardId());
 
-    var requestBuilder = deleteDashboardRequestBuilder(dashboardId, aid);
+    var requestBuilder = deleteDashboardRequestBuilder(request.getDashboardId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -218,8 +313,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteDashboardRequestBuilder(String dashboardId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteDashboardRequestBuilder(String dashboardId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/dashboards/{dashboardId}"
@@ -237,29 +332,73 @@ public class DashboardsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
-  /**
-   * Delete dashboard snapshot schedule
-   * Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteDashboardSchedule(String dashboardId, String aid) throws ApiException {
-    deleteDashboardScheduleWithHttpInfo(dashboardId, aid);
+
+  public static final class DeleteDashboardRequest {
+    private final String dashboardId;
+    private final String aid;
+
+    private DeleteDashboardRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.aid = builder.aid;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private String aid;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteDashboardRequest build() {
+        return new DeleteDashboardRequest(this);
+      }
+    }
   }
 
   /**
    * Delete dashboard snapshot schedule
    * Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteDashboardSchedule(DeleteDashboardScheduleRequest request) throws ApiException {
+    deleteDashboardScheduleWithHttpInfo(request);
+  }
+
+  /**
+   * Delete dashboard snapshot schedule
+   * Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteDashboardScheduleWithHttpInfo(String dashboardId, String aid) throws ApiException {
-    deleteDashboardScheduleValidateRequest(dashboardId);
+  public ApiResponse<Void> deleteDashboardScheduleWithHttpInfo(DeleteDashboardScheduleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteDashboardSchedule");
+    }
+    deleteDashboardScheduleValidateRequest(request.getDashboardId());
 
-    var requestBuilder = deleteDashboardScheduleRequestBuilder(dashboardId, aid);
+    var requestBuilder = deleteDashboardScheduleRequestBuilder(request.getDashboardId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -271,8 +410,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteDashboardScheduleRequestBuilder(String dashboardId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteDashboardScheduleRequestBuilder(String dashboardId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/dashboards/{dashboardId}/actions/schedule"
@@ -290,31 +429,75 @@ public class DashboardsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteDashboardScheduleRequest {
+    private final String dashboardId;
+    private final String aid;
+
+    private DeleteDashboardScheduleRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.aid = builder.aid;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private String aid;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteDashboardScheduleRequest build() {
+        return new DeleteDashboardScheduleRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve dashboard
    * Returns a list of widgets within a dashboard, along with the dashboard&#39;s metadata. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiDashboard
    * @throws ApiException if fails to make API call
    */
-  public ApiDashboard getDashboard(String dashboardId, String aid) throws ApiException {
-    ApiResponse<ApiDashboard> response = getDashboardWithHttpInfo(dashboardId, aid);
+  public ApiDashboard getDashboard(GetDashboardRequest request) throws ApiException {
+    ApiResponse<ApiDashboard> response = getDashboardWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve dashboard
    * Returns a list of widgets within a dashboard, along with the dashboard&#39;s metadata. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiDashboard&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiDashboard> getDashboardWithHttpInfo(String dashboardId, String aid) throws ApiException {
-    getDashboardValidateRequest(dashboardId);
+  public ApiResponse<ApiDashboard> getDashboardWithHttpInfo(GetDashboardRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDashboard");
+    }
+    getDashboardValidateRequest(request.getDashboardId());
 
-    var requestBuilder = getDashboardRequestBuilder(dashboardId, aid);
+    var requestBuilder = getDashboardRequestBuilder(request.getDashboardId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiDashboard.class);
   }
@@ -326,8 +509,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDashboardRequestBuilder(String dashboardId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDashboardRequestBuilder(String dashboardId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboards/{dashboardId}"
@@ -345,47 +528,75 @@ public class DashboardsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDashboardRequest {
+    private final String dashboardId;
+    private final String aid;
+
+    private GetDashboardRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.aid = builder.aid;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private String aid;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDashboardRequest build() {
+        return new GetDashboardRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve dashboard widget data
    * Returns the raw data displayed within a widget in the dashboard. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param widgetId A Identifier for a widget. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max Optionally specify the maximum number of objects to retrieve. This only applies to the **Alert List** and **Test Table** Widgets. * The default for the **Alert List** widget is set by its limitBy configuration. * The default value for the **Test Table** widget is 10. (optional)
-   * @param cursor An optional pagination cursor. This parameter should not not be used directly. Instead, use the &#x60;_links&#x60; returned by the API. This feature is only available in the **Test Table** widget. (optional)
-   * @param sort Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by &#x60;alertStatus&#x60; or &#x60;startTime&#x60;. The default is &#x60;alertStatus&#x60;. * For the **Test Table** widget, you can sort by &#x60;alertStatus&#x60;, &#x60;testName&#x60;, or &#x60;testType&#x60;. The sequence might vary from the web application. The default sort attribute is &#x60;alertStatus&#x60;. (optional)
-   * @param order Optional sorting order parameter that accepts either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending) values. This only applies to the **Alert List** and **Test Table** Widgets. (optional)
+   * @param request operation parameters (required)
    * @return ApiWidgetDataResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiWidgetDataResponse getDashboardWidgetData(String dashboardId, String widgetId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, BigDecimal max, String cursor, String sort, DashboardOrder order) throws ApiException {
-    ApiResponse<ApiWidgetDataResponse> response = getDashboardWidgetDataWithHttpInfo(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
+  public ApiWidgetDataResponse getDashboardWidgetData(GetDashboardWidgetDataRequest request) throws ApiException {
+    ApiResponse<ApiWidgetDataResponse> response = getDashboardWidgetDataWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve dashboard widget data
    * Returns the raw data displayed within a widget in the dashboard. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param widgetId A Identifier for a widget. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max Optionally specify the maximum number of objects to retrieve. This only applies to the **Alert List** and **Test Table** Widgets. * The default for the **Alert List** widget is set by its limitBy configuration. * The default value for the **Test Table** widget is 10. (optional)
-   * @param cursor An optional pagination cursor. This parameter should not not be used directly. Instead, use the &#x60;_links&#x60; returned by the API. This feature is only available in the **Test Table** widget. (optional)
-   * @param sort Optional sorting parameter with attributes listed comma-separated. This only applies to the **Alert List** and **Test Table** Widgets. * For the **Alert List** widget, you can sort by &#x60;alertStatus&#x60; or &#x60;startTime&#x60;. The default is &#x60;alertStatus&#x60;. * For the **Test Table** widget, you can sort by &#x60;alertStatus&#x60;, &#x60;testName&#x60;, or &#x60;testType&#x60;. The sequence might vary from the web application. The default sort attribute is &#x60;alertStatus&#x60;. (optional)
-   * @param order Optional sorting order parameter that accepts either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending) values. This only applies to the **Alert List** and **Test Table** Widgets. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiWidgetDataResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiWidgetDataResponse> getDashboardWidgetDataWithHttpInfo(String dashboardId, String widgetId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, BigDecimal max, String cursor, String sort, DashboardOrder order) throws ApiException {
-    getDashboardWidgetDataValidateRequest(dashboardId, widgetId);
+  public ApiResponse<ApiWidgetDataResponse> getDashboardWidgetDataWithHttpInfo(GetDashboardWidgetDataRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDashboardWidgetData");
+    }
+    getDashboardWidgetDataValidateRequest(request.getDashboardId(), request.getWidgetId());
 
-    var requestBuilder = getDashboardWidgetDataRequestBuilder(dashboardId, widgetId, aid, window, startDate, endDate, max, cursor, sort, order);
+    var requestBuilder = getDashboardWidgetDataRequestBuilder(request.getDashboardId(), request.getWidgetId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getMax(), request.getCursor(), request.getSort(), request.getOrder());
 
     return apiClient.send(requestBuilder.build(), ApiWidgetDataResponse.class);
   }
@@ -401,8 +612,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDashboardWidgetDataRequestBuilder(String dashboardId, String widgetId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, BigDecimal max, String cursor, String sort, DashboardOrder order) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDashboardWidgetDataRequestBuilder(String dashboardId, String widgetId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, BigDecimal max, String cursor, String sort, DashboardOrder order) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboards/{dashboardId}/widgets/{widgetId}"
@@ -428,29 +639,163 @@ public class DashboardsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDashboardWidgetDataRequest {
+    private final String dashboardId;
+    private final String widgetId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final BigDecimal max;
+    private final String cursor;
+    private final String sort;
+    private final DashboardOrder order;
+
+    private GetDashboardWidgetDataRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.widgetId = builder.widgetId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.max = builder.max;
+      this.cursor = builder.cursor;
+      this.sort = builder.sort;
+      this.order = builder.order;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public String getWidgetId() {
+      return widgetId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public BigDecimal getMax() {
+      return max;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public String getSort() {
+      return sort;
+    }
+    public DashboardOrder getOrder() {
+      return order;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .widgetId(widgetId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .max(max)
+          .cursor(cursor)
+          .sort(sort)
+          .order(order);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private String widgetId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private BigDecimal max;
+      private String cursor;
+      private String sort;
+      private DashboardOrder order;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder widgetId(String widgetId) {
+        this.widgetId = widgetId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder max(BigDecimal max) {
+        this.max = max;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder sort(String sort) {
+        this.sort = sort;
+        return this;
+      }
+      public Builder order(DashboardOrder order) {
+        this.order = order;
+        return this;
+      }
+      public GetDashboardWidgetDataRequest build() {
+        return new GetDashboardWidgetDataRequest(this);
+      }
+    }
+  }
+
   /**
    * List dashboards
    * Returns a list of dashboards and their settings within your account group. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return List&lt;ApiDashboard&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<ApiDashboard> getDashboards(String aid) throws ApiException {
-    ApiResponse<List<ApiDashboard>> response = getDashboardsWithHttpInfo(aid);
+  public List<ApiDashboard> getDashboards(GetDashboardsRequest request) throws ApiException {
+    ApiResponse<List<ApiDashboard>> response = getDashboardsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List dashboards
    * Returns a list of dashboards and their settings within your account group. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;List&lt;ApiDashboard&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<ApiDashboard>> getDashboardsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<List<ApiDashboard>> getDashboardsWithHttpInfo(GetDashboardsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDashboards");
+    }
     getDashboardsValidateRequest();
 
-    var requestBuilder = getDashboardsRequestBuilder(aid);
+    var requestBuilder = getDashboardsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), TypeUtils.parameterize(List.class, ApiDashboard.class));
   }
@@ -458,8 +803,8 @@ public class DashboardsApi {
   private void getDashboardsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getDashboardsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDashboardsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboards";
@@ -476,41 +821,64 @@ public class DashboardsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDashboardsRequest {
+    private final String aid;
+
+    private GetDashboardsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDashboardsRequest build() {
+        return new GetDashboardsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve individual card data from numbers widget
    * Returns the raw data for an individual card within a numbers widget in the dashboard. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param widgetId A Identifier for a widget. (required)
-   * @param cardId An identifier for a card within the numbers widget. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return ApiNumbersCardData
    * @throws ApiException if fails to make API call
    */
-  public ApiNumbersCardData getIndividualCardData(String dashboardId, String widgetId, String cardId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    ApiResponse<ApiNumbersCardData> response = getIndividualCardDataWithHttpInfo(dashboardId, widgetId, cardId, aid, window, startDate, endDate);
+  public ApiNumbersCardData getIndividualCardData(GetIndividualCardDataRequest request) throws ApiException {
+    ApiResponse<ApiNumbersCardData> response = getIndividualCardDataWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve individual card data from numbers widget
    * Returns the raw data for an individual card within a numbers widget in the dashboard. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param widgetId A Identifier for a widget. (required)
-   * @param cardId An identifier for a card within the numbers widget. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiNumbersCardData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiNumbersCardData> getIndividualCardDataWithHttpInfo(String dashboardId, String widgetId, String cardId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    getIndividualCardDataValidateRequest(dashboardId, widgetId, cardId);
+  public ApiResponse<ApiNumbersCardData> getIndividualCardDataWithHttpInfo(GetIndividualCardDataRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getIndividualCardData");
+    }
+    getIndividualCardDataValidateRequest(request.getDashboardId(), request.getWidgetId(), request.getCardId());
 
-    var requestBuilder = getIndividualCardDataRequestBuilder(dashboardId, widgetId, cardId, aid, window, startDate, endDate);
+    var requestBuilder = getIndividualCardDataRequestBuilder(request.getDashboardId(), request.getWidgetId(), request.getCardId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate());
 
     return apiClient.send(requestBuilder.build(), ApiNumbersCardData.class);
   }
@@ -530,8 +898,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getIndividualCardDataRequestBuilder(String dashboardId, String widgetId, String cardId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getIndividualCardDataRequestBuilder(String dashboardId, String widgetId, String cardId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboards/{dashboardId}/widgets/{widgetId}/cards/{cardId}"
@@ -554,41 +922,130 @@ public class DashboardsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetIndividualCardDataRequest {
+    private final String dashboardId;
+    private final String widgetId;
+    private final String cardId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+
+    private GetIndividualCardDataRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.widgetId = builder.widgetId;
+      this.cardId = builder.cardId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public String getWidgetId() {
+      return widgetId;
+    }
+    public String getCardId() {
+      return cardId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .widgetId(widgetId)
+          .cardId(cardId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private String widgetId;
+      private String cardId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder widgetId(String widgetId) {
+        this.widgetId = widgetId;
+        return this;
+      }
+      public Builder cardId(String cardId) {
+        this.cardId = cardId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public GetIndividualCardDataRequest build() {
+        return new GetIndividualCardDataRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve individual column data from multi-metric table widget
    * Returns the raw data for an individual column within a multi-metric table widget in the dashboard. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param widgetId A Identifier for a widget. (required)
-   * @param columnId An identifier for a column within the multi-metric table widget. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return ApiMultiMetricColumnData
    * @throws ApiException if fails to make API call
    */
-  public ApiMultiMetricColumnData getIndividualColumnData(String dashboardId, String widgetId, String columnId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    ApiResponse<ApiMultiMetricColumnData> response = getIndividualColumnDataWithHttpInfo(dashboardId, widgetId, columnId, aid, window, startDate, endDate);
+  public ApiMultiMetricColumnData getIndividualColumnData(GetIndividualColumnDataRequest request) throws ApiException {
+    ApiResponse<ApiMultiMetricColumnData> response = getIndividualColumnDataWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve individual column data from multi-metric table widget
    * Returns the raw data for an individual column within a multi-metric table widget in the dashboard. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param widgetId A Identifier for a widget. (required)
-   * @param columnId An identifier for a column within the multi-metric table widget. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiMultiMetricColumnData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiMultiMetricColumnData> getIndividualColumnDataWithHttpInfo(String dashboardId, String widgetId, String columnId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    getIndividualColumnDataValidateRequest(dashboardId, widgetId, columnId);
+  public ApiResponse<ApiMultiMetricColumnData> getIndividualColumnDataWithHttpInfo(GetIndividualColumnDataRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getIndividualColumnData");
+    }
+    getIndividualColumnDataValidateRequest(request.getDashboardId(), request.getWidgetId(), request.getColumnId());
 
-    var requestBuilder = getIndividualColumnDataRequestBuilder(dashboardId, widgetId, columnId, aid, window, startDate, endDate);
+    var requestBuilder = getIndividualColumnDataRequestBuilder(request.getDashboardId(), request.getWidgetId(), request.getColumnId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate());
 
     return apiClient.send(requestBuilder.build(), ApiMultiMetricColumnData.class);
   }
@@ -608,8 +1065,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getIndividualColumnDataRequestBuilder(String dashboardId, String widgetId, String columnId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getIndividualColumnDataRequestBuilder(String dashboardId, String widgetId, String columnId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId}"
@@ -632,33 +1089,130 @@ public class DashboardsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetIndividualColumnDataRequest {
+    private final String dashboardId;
+    private final String widgetId;
+    private final String columnId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+
+    private GetIndividualColumnDataRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.widgetId = builder.widgetId;
+      this.columnId = builder.columnId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public String getWidgetId() {
+      return widgetId;
+    }
+    public String getColumnId() {
+      return columnId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .widgetId(widgetId)
+          .columnId(columnId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private String widgetId;
+      private String columnId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder widgetId(String widgetId) {
+        this.widgetId = widgetId;
+        return this;
+      }
+      public Builder columnId(String columnId) {
+        this.columnId = columnId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public GetIndividualColumnDataRequest build() {
+        return new GetIndividualColumnDataRequest(this);
+      }
+    }
+  }
+
   /**
    * Update dashboard
    * Updates an existing dashboard in your account group.   **Note**:  * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can update any dashboard. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only update the dashboards they have created themselves. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param dashboard Request body schema to update a dashboard. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Dashboard
    * @throws ApiException if fails to make API call
    */
-  public Dashboard updateDashboard(String dashboardId, Dashboard dashboard, String aid) throws ApiException {
-    ApiResponse<Dashboard> response = updateDashboardWithHttpInfo(dashboardId, dashboard, aid);
+  public Dashboard updateDashboard(UpdateDashboardRequest request) throws ApiException {
+    ApiResponse<Dashboard> response = updateDashboardWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update dashboard
    * Updates an existing dashboard in your account group.   **Note**:  * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can update any dashboard. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only update the dashboards they have created themselves. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param dashboard Request body schema to update a dashboard. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Dashboard&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Dashboard> updateDashboardWithHttpInfo(String dashboardId, Dashboard dashboard, String aid) throws ApiException {
-    updateDashboardValidateRequest(dashboardId, dashboard);
+  public ApiResponse<Dashboard> updateDashboardWithHttpInfo(UpdateDashboardRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateDashboard");
+    }
+    updateDashboardValidateRequest(request.getDashboardId(), request.getDashboard());
 
-    var requestBuilder = updateDashboardRequestBuilder(dashboardId, dashboard, aid);
+    var requestBuilder = updateDashboardRequestBuilder(request.getDashboardId(), request.getDashboard(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Dashboard.class);
   }
@@ -674,8 +1228,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateDashboardRequestBuilder(String dashboardId, Dashboard dashboard, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateDashboardRequestBuilder(String dashboardId, Dashboard dashboard, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/dashboards/{dashboardId}"
@@ -695,33 +1249,86 @@ public class DashboardsApi {
     requestBuilder.requestBody(dashboard);
     return requestBuilder;
   }
+
+  public static final class UpdateDashboardRequest {
+    private final String dashboardId;
+    private final Dashboard dashboard;
+    private final String aid;
+
+    private UpdateDashboardRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.dashboard = builder.dashboard;
+      this.aid = builder.aid;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public Dashboard getDashboard() {
+      return dashboard;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .dashboard(dashboard)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private Dashboard dashboard;
+      private String aid;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder dashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateDashboardRequest build() {
+        return new UpdateDashboardRequest(this);
+      }
+    }
+  }
+
   /**
    * Create or update dashboard snapshot schedule
    * Creates or replaces the snapshot schedule for a dashboard. Set &#x60;repeat&#x60; to &#x60;NONE&#x60; to generate one snapshot at &#x60;startTime&#x60;. Other &#x60;repeat&#x60; values create recurring snapshots. Schedule settings control when snapshots are generated, the data time range included in each snapshot, and email delivery options. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param dashboardScheduleRequest Snapshot schedule configuration. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiDashboard
    * @throws ApiException if fails to make API call
    */
-  public ApiDashboard updateDashboardSchedule(String dashboardId, DashboardScheduleRequest dashboardScheduleRequest, String aid) throws ApiException {
-    ApiResponse<ApiDashboard> response = updateDashboardScheduleWithHttpInfo(dashboardId, dashboardScheduleRequest, aid);
+  public ApiDashboard updateDashboardSchedule(UpdateDashboardScheduleRequest request) throws ApiException {
+    ApiResponse<ApiDashboard> response = updateDashboardScheduleWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create or update dashboard snapshot schedule
    * Creates or replaces the snapshot schedule for a dashboard. Set &#x60;repeat&#x60; to &#x60;NONE&#x60; to generate one snapshot at &#x60;startTime&#x60;. Other &#x60;repeat&#x60; values create recurring snapshots. Schedule settings control when snapshots are generated, the data time range included in each snapshot, and email delivery options. 
-   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
-   * @param dashboardScheduleRequest Snapshot schedule configuration. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiDashboard&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiDashboard> updateDashboardScheduleWithHttpInfo(String dashboardId, DashboardScheduleRequest dashboardScheduleRequest, String aid) throws ApiException {
-    updateDashboardScheduleValidateRequest(dashboardId, dashboardScheduleRequest);
+  public ApiResponse<ApiDashboard> updateDashboardScheduleWithHttpInfo(UpdateDashboardScheduleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateDashboardSchedule");
+    }
+    updateDashboardScheduleValidateRequest(request.getDashboardId(), request.getDashboardScheduleRequest());
 
-    var requestBuilder = updateDashboardScheduleRequestBuilder(dashboardId, dashboardScheduleRequest, aid);
+    var requestBuilder = updateDashboardScheduleRequestBuilder(request.getDashboardId(), request.getDashboardScheduleRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiDashboard.class);
   }
@@ -737,8 +1344,8 @@ public class DashboardsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateDashboardScheduleRequestBuilder(String dashboardId, DashboardScheduleRequest dashboardScheduleRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateDashboardScheduleRequestBuilder(String dashboardId, DashboardScheduleRequest dashboardScheduleRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/dashboards/{dashboardId}/actions/schedule"
@@ -758,4 +1365,58 @@ public class DashboardsApi {
     requestBuilder.requestBody(dashboardScheduleRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateDashboardScheduleRequest {
+    private final String dashboardId;
+    private final DashboardScheduleRequest dashboardScheduleRequest;
+    private final String aid;
+
+    private UpdateDashboardScheduleRequest(Builder builder) {
+      this.dashboardId = builder.dashboardId;
+      this.dashboardScheduleRequest = builder.dashboardScheduleRequest;
+      this.aid = builder.aid;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public DashboardScheduleRequest getDashboardScheduleRequest() {
+      return dashboardScheduleRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dashboardId(dashboardId)
+          .dashboardScheduleRequest(dashboardScheduleRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String dashboardId;
+      private DashboardScheduleRequest dashboardScheduleRequest;
+      private String aid;
+
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder dashboardScheduleRequest(DashboardScheduleRequest dashboardScheduleRequest) {
+        this.dashboardScheduleRequest = dashboardScheduleRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateDashboardScheduleRequest build() {
+        return new UpdateDashboardScheduleRequest(this);
+      }
+    }
+  }
+
 }

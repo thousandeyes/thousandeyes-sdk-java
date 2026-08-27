@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -37,12 +36,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -64,28 +61,29 @@ public class AgentToServerEndpointInstantScheduledTestsApi {
   /**
    * Run agent to server instant scheduled test
    * Creates and runs a new endpoint agent to server instant scheduled test in ThousandEyes.
-   * @param endpointAgentToServerInstantTest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgentToServerTest
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgentToServerTest createAgentToServerScheduledInstantTest(EndpointAgentToServerInstantTest endpointAgentToServerInstantTest, String aid) throws ApiException {
-    ApiResponse<EndpointAgentToServerTest> response = createAgentToServerScheduledInstantTestWithHttpInfo(endpointAgentToServerInstantTest, aid);
+  public EndpointAgentToServerTest createAgentToServerScheduledInstantTest(CreateAgentToServerScheduledInstantTestRequest request) throws ApiException {
+    ApiResponse<EndpointAgentToServerTest> response = createAgentToServerScheduledInstantTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Run agent to server instant scheduled test
    * Creates and runs a new endpoint agent to server instant scheduled test in ThousandEyes.
-   * @param endpointAgentToServerInstantTest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgentToServerTest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgentToServerTest> createAgentToServerScheduledInstantTestWithHttpInfo(EndpointAgentToServerInstantTest endpointAgentToServerInstantTest, String aid) throws ApiException {
-    createAgentToServerScheduledInstantTestValidateRequest(endpointAgentToServerInstantTest);
+  public ApiResponse<EndpointAgentToServerTest> createAgentToServerScheduledInstantTestWithHttpInfo(CreateAgentToServerScheduledInstantTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createAgentToServerScheduledInstantTest");
+    }
+    createAgentToServerScheduledInstantTestValidateRequest(request.getEndpointAgentToServerInstantTest());
 
-    var requestBuilder = createAgentToServerScheduledInstantTestRequestBuilder(endpointAgentToServerInstantTest, aid);
+    var requestBuilder = createAgentToServerScheduledInstantTestRequestBuilder(request.getEndpointAgentToServerInstantTest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EndpointAgentToServerTest.class);
   }
@@ -97,8 +95,8 @@ public class AgentToServerEndpointInstantScheduledTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAgentToServerScheduledInstantTestRequestBuilder(EndpointAgentToServerInstantTest endpointAgentToServerInstantTest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createAgentToServerScheduledInstantTestRequestBuilder(EndpointAgentToServerInstantTest endpointAgentToServerInstantTest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/tests/scheduled-tests/agent-to-server/instant";
@@ -117,4 +115,47 @@ public class AgentToServerEndpointInstantScheduledTestsApi {
     requestBuilder.requestBody(endpointAgentToServerInstantTest);
     return requestBuilder;
   }
+
+  public static final class CreateAgentToServerScheduledInstantTestRequest {
+    private final EndpointAgentToServerInstantTest endpointAgentToServerInstantTest;
+    private final String aid;
+
+    private CreateAgentToServerScheduledInstantTestRequest(Builder builder) {
+      this.endpointAgentToServerInstantTest = builder.endpointAgentToServerInstantTest;
+      this.aid = builder.aid;
+    }
+    public EndpointAgentToServerInstantTest getEndpointAgentToServerInstantTest() {
+      return endpointAgentToServerInstantTest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .endpointAgentToServerInstantTest(endpointAgentToServerInstantTest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private EndpointAgentToServerInstantTest endpointAgentToServerInstantTest;
+      private String aid;
+
+      public Builder endpointAgentToServerInstantTest(EndpointAgentToServerInstantTest endpointAgentToServerInstantTest) {
+        this.endpointAgentToServerInstantTest = endpointAgentToServerInstantTest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateAgentToServerScheduledInstantTestRequest build() {
+        return new CreateAgentToServerScheduledInstantTestRequest(this);
+      }
+    }
+  }
+
 }

@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getAgentsProxies
 
-> AgentProxies getAgentsProxies(aid)
+> AgentProxies getAgentsProxies(GetAgentsProxiesRequest)
 
 List Enterprise Agent Proxies
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.AgentProxiesApi;
 
 public class Example {
@@ -40,7 +40,10 @@ public class Example {
         AgentProxiesApi apiInstance = new AgentProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AgentProxies result = apiInstance.getAgentsProxies(aid);
+            AgentProxiesApi.GetAgentsProxiesRequest request = AgentProxiesApi.GetAgentsProxiesRequest.builder()
+                .aid(aid)
+                .build();
+            AgentProxies result = apiInstance.getAgentsProxies(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentProxiesApi#getAgentsProxies");
@@ -55,10 +58,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentsProxiesRequest**](AgentProxiesApi.md#GetAgentsProxiesRequest)|-|-|
 
 ### Return type
 
@@ -88,7 +90,7 @@ public class Example {
 
 ## getAgentsProxiesWithHttpInfo
 
-> ApiResponse<AgentProxies> getAgentsProxies getAgentsProxiesWithHttpInfo(aid)
+> ApiResponse<AgentProxies> getAgentsProxies getAgentsProxiesWithHttpInfo(GetAgentsProxiesRequest)
 
 List Enterprise Agent Proxies
 
@@ -103,7 +105,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.AgentProxiesApi;
 
 public class Example {
@@ -118,7 +120,10 @@ public class Example {
         AgentProxiesApi apiInstance = new AgentProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AgentProxies> response = apiInstance.getAgentsProxiesWithHttpInfo(aid);
+            AgentProxiesApi.GetAgentsProxiesRequest request = AgentProxiesApi.GetAgentsProxiesRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<AgentProxies> response = apiInstance.getAgentsProxiesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -135,10 +140,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentsProxiesRequest**](AgentProxiesApi.md#GetAgentsProxiesRequest)|-|-|
 
 ### Return type
 
@@ -165,4 +169,14 @@ ApiResponse<[**AgentProxies**](AgentProxies.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetAgentsProxiesRequest"></a>
+## GetAgentsProxiesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

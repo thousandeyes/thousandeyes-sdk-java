@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -36,12 +35,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -63,30 +60,29 @@ public class TestsAssignmentOnAgentsApi {
   /**
    * Assign tests to an agent
    * Assign tests to a specific Agent. Existing assigned tests are not removed.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any provided test ID is invalid, the entire operation is canceled.    * Already assigned tests are ignored; other valid tests will be assigned.    * This operation does not overwrite existing assignments.
-   * @param agentId Unique ID for the Enterprise Agent cluster to add new agents to. (required)
-   * @param agentTestsAssignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return AgentDetails
    * @throws ApiException if fails to make API call
    */
-  public AgentDetails assignTests(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    ApiResponse<AgentDetails> response = assignTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid);
+  public AgentDetails assignTests(AssignTestsRequest request) throws ApiException {
+    ApiResponse<AgentDetails> response = assignTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Assign tests to an agent
    * Assign tests to a specific Agent. Existing assigned tests are not removed.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any provided test ID is invalid, the entire operation is canceled.    * Already assigned tests are ignored; other valid tests will be assigned.    * This operation does not overwrite existing assignments.
-   * @param agentId Unique ID for the Enterprise Agent cluster to add new agents to. (required)
-   * @param agentTestsAssignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AgentDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentDetails> assignTestsWithHttpInfo(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    assignTestsValidateRequest(agentId, agentTestsAssignRequest);
+  public ApiResponse<AgentDetails> assignTestsWithHttpInfo(AssignTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling assignTests");
+    }
+    assignTestsValidateRequest(request.getAgentId(), request.getAgentTestsAssignRequest());
 
-    var requestBuilder = assignTestsRequestBuilder(agentId, agentTestsAssignRequest, aid);
+    var requestBuilder = assignTestsRequestBuilder(request.getAgentId(), request.getAgentTestsAssignRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), AgentDetails.class);
   }
@@ -102,8 +98,8 @@ public class TestsAssignmentOnAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder assignTestsRequestBuilder(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder assignTestsRequestBuilder(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/agents/{agentId}/tests/assign"
@@ -123,33 +119,86 @@ public class TestsAssignmentOnAgentsApi {
     requestBuilder.requestBody(agentTestsAssignRequest);
     return requestBuilder;
   }
+
+  public static final class AssignTestsRequest {
+    private final String agentId;
+    private final AgentTestsAssignRequest agentTestsAssignRequest;
+    private final String aid;
+
+    private AssignTestsRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.agentTestsAssignRequest = builder.agentTestsAssignRequest;
+      this.aid = builder.aid;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public AgentTestsAssignRequest getAgentTestsAssignRequest() {
+      return agentTestsAssignRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .agentTestsAssignRequest(agentTestsAssignRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String agentId;
+      private AgentTestsAssignRequest agentTestsAssignRequest;
+      private String aid;
+
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder agentTestsAssignRequest(AgentTestsAssignRequest agentTestsAssignRequest) {
+        this.agentTestsAssignRequest = agentTestsAssignRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public AssignTestsRequest build() {
+        return new AssignTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Overwrite tests assigned to an agent
    * Replaces all tests assigned to a specific agent with the new set of test IDs provided.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any test ID is invalid, the operation is canceled and no changes are made.    * Already assigned tests that are also in the request are ignored.    * Previously assigned tests not included in the request will be removed.
-   * @param agentId Unique ID for the Enterprise Agent cluster to add new agents to. (required)
-   * @param agentTestsAssignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return AgentDetails
    * @throws ApiException if fails to make API call
    */
-  public AgentDetails overwriteTests(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    ApiResponse<AgentDetails> response = overwriteTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid);
+  public AgentDetails overwriteTests(OverwriteTestsRequest request) throws ApiException {
+    ApiResponse<AgentDetails> response = overwriteTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Overwrite tests assigned to an agent
    * Replaces all tests assigned to a specific agent with the new set of test IDs provided.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any test ID is invalid, the operation is canceled and no changes are made.    * Already assigned tests that are also in the request are ignored.    * Previously assigned tests not included in the request will be removed.
-   * @param agentId Unique ID for the Enterprise Agent cluster to add new agents to. (required)
-   * @param agentTestsAssignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AgentDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentDetails> overwriteTestsWithHttpInfo(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    overwriteTestsValidateRequest(agentId, agentTestsAssignRequest);
+  public ApiResponse<AgentDetails> overwriteTestsWithHttpInfo(OverwriteTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling overwriteTests");
+    }
+    overwriteTestsValidateRequest(request.getAgentId(), request.getAgentTestsAssignRequest());
 
-    var requestBuilder = overwriteTestsRequestBuilder(agentId, agentTestsAssignRequest, aid);
+    var requestBuilder = overwriteTestsRequestBuilder(request.getAgentId(), request.getAgentTestsAssignRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), AgentDetails.class);
   }
@@ -165,8 +214,8 @@ public class TestsAssignmentOnAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder overwriteTestsRequestBuilder(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder overwriteTestsRequestBuilder(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/agents/{agentId}/tests/override"
@@ -186,33 +235,86 @@ public class TestsAssignmentOnAgentsApi {
     requestBuilder.requestBody(agentTestsAssignRequest);
     return requestBuilder;
   }
+
+  public static final class OverwriteTestsRequest {
+    private final String agentId;
+    private final AgentTestsAssignRequest agentTestsAssignRequest;
+    private final String aid;
+
+    private OverwriteTestsRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.agentTestsAssignRequest = builder.agentTestsAssignRequest;
+      this.aid = builder.aid;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public AgentTestsAssignRequest getAgentTestsAssignRequest() {
+      return agentTestsAssignRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .agentTestsAssignRequest(agentTestsAssignRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String agentId;
+      private AgentTestsAssignRequest agentTestsAssignRequest;
+      private String aid;
+
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder agentTestsAssignRequest(AgentTestsAssignRequest agentTestsAssignRequest) {
+        this.agentTestsAssignRequest = agentTestsAssignRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public OverwriteTestsRequest build() {
+        return new OverwriteTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Unassign tests from an agent
    * Unassigns the specified tests from a specific agent.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any test ID is invalid, the operation is canceled and no changes are made.
-   * @param agentId Unique ID for the Enterprise Agent cluster to add new agents to. (required)
-   * @param agentTestsAssignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return AgentDetails
    * @throws ApiException if fails to make API call
    */
-  public AgentDetails unassignTests(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    ApiResponse<AgentDetails> response = unassignTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid);
+  public AgentDetails unassignTests(UnassignTestsRequest request) throws ApiException {
+    ApiResponse<AgentDetails> response = unassignTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Unassign tests from an agent
    * Unassigns the specified tests from a specific agent.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any test ID is invalid, the operation is canceled and no changes are made.
-   * @param agentId Unique ID for the Enterprise Agent cluster to add new agents to. (required)
-   * @param agentTestsAssignRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AgentDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentDetails> unassignTestsWithHttpInfo(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    unassignTestsValidateRequest(agentId, agentTestsAssignRequest);
+  public ApiResponse<AgentDetails> unassignTestsWithHttpInfo(UnassignTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling unassignTests");
+    }
+    unassignTestsValidateRequest(request.getAgentId(), request.getAgentTestsAssignRequest());
 
-    var requestBuilder = unassignTestsRequestBuilder(agentId, agentTestsAssignRequest, aid);
+    var requestBuilder = unassignTestsRequestBuilder(request.getAgentId(), request.getAgentTestsAssignRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), AgentDetails.class);
   }
@@ -228,8 +330,8 @@ public class TestsAssignmentOnAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder unassignTestsRequestBuilder(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder unassignTestsRequestBuilder(String agentId, AgentTestsAssignRequest agentTestsAssignRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/agents/{agentId}/tests/unassign"
@@ -249,4 +351,58 @@ public class TestsAssignmentOnAgentsApi {
     requestBuilder.requestBody(agentTestsAssignRequest);
     return requestBuilder;
   }
+
+  public static final class UnassignTestsRequest {
+    private final String agentId;
+    private final AgentTestsAssignRequest agentTestsAssignRequest;
+    private final String aid;
+
+    private UnassignTestsRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.agentTestsAssignRequest = builder.agentTestsAssignRequest;
+      this.aid = builder.aid;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public AgentTestsAssignRequest getAgentTestsAssignRequest() {
+      return agentTestsAssignRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .agentTestsAssignRequest(agentTestsAssignRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String agentId;
+      private AgentTestsAssignRequest agentTestsAssignRequest;
+      private String aid;
+
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder agentTestsAssignRequest(AgentTestsAssignRequest agentTestsAssignRequest) {
+        this.agentTestsAssignRequest = agentTestsAssignRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UnassignTestsRequest build() {
+        return new UnassignTestsRequest(this);
+      }
+    }
+  }
+
 }

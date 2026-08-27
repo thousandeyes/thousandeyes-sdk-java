@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,30 +62,29 @@ public class WebTransactionInstantTestsApi {
   /**
    * Create web transactions instant test
    * Creates and runs a new Web transactions instant test.
-   * @param webTransactionInstantTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
+   * @param request operation parameters (required)
    * @return WebTransactionInstantTestResponse
    * @throws ApiException if fails to make API call
    */
-  public WebTransactionInstantTestResponse createWebTransactionInstantTest(WebTransactionInstantTestRequest webTransactionInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    ApiResponse<WebTransactionInstantTestResponse> response = createWebTransactionInstantTestWithHttpInfo(webTransactionInstantTestRequest, aid, expand);
+  public WebTransactionInstantTestResponse createWebTransactionInstantTest(CreateWebTransactionInstantTestRequest request) throws ApiException {
+    ApiResponse<WebTransactionInstantTestResponse> response = createWebTransactionInstantTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create web transactions instant test
    * Creates and runs a new Web transactions instant test.
-   * @param webTransactionInstantTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;WebTransactionInstantTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WebTransactionInstantTestResponse> createWebTransactionInstantTestWithHttpInfo(WebTransactionInstantTestRequest webTransactionInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    createWebTransactionInstantTestValidateRequest(webTransactionInstantTestRequest);
+  public ApiResponse<WebTransactionInstantTestResponse> createWebTransactionInstantTestWithHttpInfo(CreateWebTransactionInstantTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createWebTransactionInstantTest");
+    }
+    createWebTransactionInstantTestValidateRequest(request.getWebTransactionInstantTestRequest());
 
-    var requestBuilder = createWebTransactionInstantTestRequestBuilder(webTransactionInstantTestRequest, aid, expand);
+    var requestBuilder = createWebTransactionInstantTestRequestBuilder(request.getWebTransactionInstantTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), WebTransactionInstantTestResponse.class);
   }
@@ -100,8 +96,8 @@ public class WebTransactionInstantTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createWebTransactionInstantTestRequestBuilder(WebTransactionInstantTestRequest webTransactionInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createWebTransactionInstantTestRequestBuilder(WebTransactionInstantTestRequest webTransactionInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/web-transactions/instant";
@@ -121,4 +117,58 @@ public class WebTransactionInstantTestsApi {
     requestBuilder.requestBody(webTransactionInstantTestRequest);
     return requestBuilder;
   }
+
+  public static final class CreateWebTransactionInstantTestRequest {
+    private final WebTransactionInstantTestRequest webTransactionInstantTestRequest;
+    private final String aid;
+    private final List<ExpandInstantTestOptions> expand;
+
+    private CreateWebTransactionInstantTestRequest(Builder builder) {
+      this.webTransactionInstantTestRequest = builder.webTransactionInstantTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public WebTransactionInstantTestRequest getWebTransactionInstantTestRequest() {
+      return webTransactionInstantTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandInstantTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .webTransactionInstantTestRequest(webTransactionInstantTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private WebTransactionInstantTestRequest webTransactionInstantTestRequest;
+      private String aid;
+      private List<ExpandInstantTestOptions> expand;
+
+      public Builder webTransactionInstantTestRequest(WebTransactionInstantTestRequest webTransactionInstantTestRequest) {
+        this.webTransactionInstantTestRequest = webTransactionInstantTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandInstantTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateWebTransactionInstantTestRequest build() {
+        return new CreateWebTransactionInstantTestRequest(this);
+      }
+    }
+  }
+
 }

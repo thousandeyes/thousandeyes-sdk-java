@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## assignOrganizationsAccountGroupsQuotas
 
-> OrganizationsQuotasAssign assignOrganizationsAccountGroupsQuotas(organizationsQuotasAssign)
+> OrganizationsQuotasAssign assignOrganizationsAccountGroupsQuotas(AssignOrganizationsAccountGroupsQuotasRequest)
 
 Create or update accout group quotas
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -48,7 +48,10 @@ public class Example {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         OrganizationsQuotasAssign organizationsQuotasAssign = new OrganizationsQuotasAssign(); // OrganizationsQuotasAssign | 
         try {
-            OrganizationsQuotasAssign result = apiInstance.assignOrganizationsAccountGroupsQuotas(organizationsQuotasAssign);
+            QuotasApi.AssignOrganizationsAccountGroupsQuotasRequest request = QuotasApi.AssignOrganizationsAccountGroupsQuotasRequest.builder()
+                .organizationsQuotasAssign(organizationsQuotasAssign)
+                .build();
+            OrganizationsQuotasAssign result = apiInstance.assignOrganizationsAccountGroupsQuotas(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QuotasApi#assignOrganizationsAccountGroupsQuotas");
@@ -63,10 +66,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **organizationsQuotasAssign** | [**OrganizationsQuotasAssign**](OrganizationsQuotasAssign.md)|  | [optional] |
+| request | [**AssignOrganizationsAccountGroupsQuotasRequest**](QuotasApi.md#AssignOrganizationsAccountGroupsQuotasRequest)|-|-|
 
 ### Return type
 
@@ -95,7 +97,7 @@ public class Example {
 
 ## assignOrganizationsAccountGroupsQuotasWithHttpInfo
 
-> ApiResponse<OrganizationsQuotasAssign> assignOrganizationsAccountGroupsQuotas assignOrganizationsAccountGroupsQuotasWithHttpInfo(organizationsQuotasAssign)
+> ApiResponse<OrganizationsQuotasAssign> assignOrganizationsAccountGroupsQuotas assignOrganizationsAccountGroupsQuotasWithHttpInfo(AssignOrganizationsAccountGroupsQuotasRequest)
 
 Create or update accout group quotas
 
@@ -110,7 +112,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -125,7 +127,10 @@ public class Example {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         OrganizationsQuotasAssign organizationsQuotasAssign = new OrganizationsQuotasAssign(); // OrganizationsQuotasAssign | 
         try {
-            ApiResponse<OrganizationsQuotasAssign> response = apiInstance.assignOrganizationsAccountGroupsQuotasWithHttpInfo(organizationsQuotasAssign);
+            QuotasApi.AssignOrganizationsAccountGroupsQuotasRequest request = QuotasApi.AssignOrganizationsAccountGroupsQuotasRequest.builder()
+                .organizationsQuotasAssign(organizationsQuotasAssign)
+                .build();
+            ApiResponse<OrganizationsQuotasAssign> response = apiInstance.assignOrganizationsAccountGroupsQuotasWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -142,10 +147,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **organizationsQuotasAssign** | [**OrganizationsQuotasAssign**](OrganizationsQuotasAssign.md)|  | [optional] |
+| request | [**AssignOrganizationsAccountGroupsQuotasRequest**](QuotasApi.md#AssignOrganizationsAccountGroupsQuotasRequest)|-|-|
 
 ### Return type
 
@@ -173,9 +177,19 @@ ApiResponse<[**OrganizationsQuotasAssign**](OrganizationsQuotasAssign.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="AssignOrganizationsAccountGroupsQuotasRequest"></a>
+## AssignOrganizationsAccountGroupsQuotasRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **organizationsQuotasAssign** | [**OrganizationsQuotasAssign**](OrganizationsQuotasAssign.md) |  | [optional] |
+
+
+
 ## assignOrganizationsQuotas
 
-> QuotasAssignResponse assignOrganizationsQuotas(quotasAssignRequest)
+> QuotasAssignResponse assignOrganizationsQuotas(AssignOrganizationsQuotasRequest)
 
 Create or update organizations quotas
 
@@ -189,7 +203,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -204,7 +218,10 @@ public class Example {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         QuotasAssignRequest quotasAssignRequest = new QuotasAssignRequest(); // QuotasAssignRequest | 
         try {
-            QuotasAssignResponse result = apiInstance.assignOrganizationsQuotas(quotasAssignRequest);
+            QuotasApi.AssignOrganizationsQuotasRequest request = QuotasApi.AssignOrganizationsQuotasRequest.builder()
+                .quotasAssignRequest(quotasAssignRequest)
+                .build();
+            QuotasAssignResponse result = apiInstance.assignOrganizationsQuotas(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QuotasApi#assignOrganizationsQuotas");
@@ -219,10 +236,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **quotasAssignRequest** | [**QuotasAssignRequest**](QuotasAssignRequest.md)|  | [optional] |
+| request | [**AssignOrganizationsQuotasRequest**](QuotasApi.md#AssignOrganizationsQuotasRequest)|-|-|
 
 ### Return type
 
@@ -251,7 +267,7 @@ public class Example {
 
 ## assignOrganizationsQuotasWithHttpInfo
 
-> ApiResponse<QuotasAssignResponse> assignOrganizationsQuotas assignOrganizationsQuotasWithHttpInfo(quotasAssignRequest)
+> ApiResponse<QuotasAssignResponse> assignOrganizationsQuotas assignOrganizationsQuotasWithHttpInfo(AssignOrganizationsQuotasRequest)
 
 Create or update organizations quotas
 
@@ -266,7 +282,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -281,7 +297,10 @@ public class Example {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         QuotasAssignRequest quotasAssignRequest = new QuotasAssignRequest(); // QuotasAssignRequest | 
         try {
-            ApiResponse<QuotasAssignResponse> response = apiInstance.assignOrganizationsQuotasWithHttpInfo(quotasAssignRequest);
+            QuotasApi.AssignOrganizationsQuotasRequest request = QuotasApi.AssignOrganizationsQuotasRequest.builder()
+                .quotasAssignRequest(quotasAssignRequest)
+                .build();
+            ApiResponse<QuotasAssignResponse> response = apiInstance.assignOrganizationsQuotasWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -298,10 +317,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **quotasAssignRequest** | [**QuotasAssignRequest**](QuotasAssignRequest.md)|  | [optional] |
+| request | [**AssignOrganizationsQuotasRequest**](QuotasApi.md#AssignOrganizationsQuotasRequest)|-|-|
 
 ### Return type
 
@@ -329,6 +347,16 @@ ApiResponse<[**QuotasAssignResponse**](QuotasAssignResponse.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="AssignOrganizationsQuotasRequest"></a>
+## AssignOrganizationsQuotasRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **quotasAssignRequest** | [**QuotasAssignRequest**](QuotasAssignRequest.md) |  | [optional] |
+
+
+
 ## getQuotas
 
 > Quotas getQuotas()
@@ -345,7 +373,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -418,7 +446,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -479,7 +507,7 @@ ApiResponse<[**Quotas**](Quotas.md)>
 
 ## unassignOrganizationsAccountGroupsQuotas
 
-> void unassignOrganizationsAccountGroupsQuotas(organizationsQuotasUnassign)
+> void unassignOrganizationsAccountGroupsQuotas(UnassignOrganizationsAccountGroupsQuotasRequest)
 
 Remove account group quotas from organizations
 
@@ -493,7 +521,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -508,7 +536,10 @@ public class Example {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         OrganizationsQuotasUnassign organizationsQuotasUnassign = new OrganizationsQuotasUnassign(); // OrganizationsQuotasUnassign | 
         try {
-            apiInstance.unassignOrganizationsAccountGroupsQuotas(organizationsQuotasUnassign);
+            QuotasApi.UnassignOrganizationsAccountGroupsQuotasRequest request = QuotasApi.UnassignOrganizationsAccountGroupsQuotasRequest.builder()
+                .organizationsQuotasUnassign(organizationsQuotasUnassign)
+                .build();
+            apiInstance.unassignOrganizationsAccountGroupsQuotas(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling QuotasApi#unassignOrganizationsAccountGroupsQuotas");
             System.err.println("Status code: " + e.getCode());
@@ -522,10 +553,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **organizationsQuotasUnassign** | [**OrganizationsQuotasUnassign**](OrganizationsQuotasUnassign.md)|  | [optional] |
+| request | [**UnassignOrganizationsAccountGroupsQuotasRequest**](QuotasApi.md#UnassignOrganizationsAccountGroupsQuotasRequest)|-|-|
 
 ### Return type
 
@@ -554,7 +584,7 @@ null (empty response body)
 
 ## unassignOrganizationsAccountGroupsQuotasWithHttpInfo
 
-> ApiResponse<Void> unassignOrganizationsAccountGroupsQuotas unassignOrganizationsAccountGroupsQuotasWithHttpInfo(organizationsQuotasUnassign)
+> ApiResponse<Void> unassignOrganizationsAccountGroupsQuotas unassignOrganizationsAccountGroupsQuotasWithHttpInfo(UnassignOrganizationsAccountGroupsQuotasRequest)
 
 Remove account group quotas from organizations
 
@@ -569,7 +599,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -584,7 +614,10 @@ public class Example {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         OrganizationsQuotasUnassign organizationsQuotasUnassign = new OrganizationsQuotasUnassign(); // OrganizationsQuotasUnassign | 
         try {
-            ApiResponse<Void> response = apiInstance.unassignOrganizationsAccountGroupsQuotasWithHttpInfo(organizationsQuotasUnassign);
+            QuotasApi.UnassignOrganizationsAccountGroupsQuotasRequest request = QuotasApi.UnassignOrganizationsAccountGroupsQuotasRequest.builder()
+                .organizationsQuotasUnassign(organizationsQuotasUnassign)
+                .build();
+            ApiResponse<Void> response = apiInstance.unassignOrganizationsAccountGroupsQuotasWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -600,10 +633,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **organizationsQuotasUnassign** | [**OrganizationsQuotasUnassign**](OrganizationsQuotasUnassign.md)|  | [optional] |
+| request | [**UnassignOrganizationsAccountGroupsQuotasRequest**](QuotasApi.md#UnassignOrganizationsAccountGroupsQuotasRequest)|-|-|
 
 ### Return type
 
@@ -631,9 +663,19 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="UnassignOrganizationsAccountGroupsQuotasRequest"></a>
+## UnassignOrganizationsAccountGroupsQuotasRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **organizationsQuotasUnassign** | [**OrganizationsQuotasUnassign**](OrganizationsQuotasUnassign.md) |  | [optional] |
+
+
+
 ## unassignOrganizationsQuotas
 
-> void unassignOrganizationsQuotas(quotasUnassign)
+> void unassignOrganizationsQuotas(UnassignOrganizationsQuotasRequest)
 
 Remove organization quotas
 
@@ -647,7 +689,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -662,7 +704,10 @@ public class Example {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         QuotasUnassign quotasUnassign = new QuotasUnassign(); // QuotasUnassign | 
         try {
-            apiInstance.unassignOrganizationsQuotas(quotasUnassign);
+            QuotasApi.UnassignOrganizationsQuotasRequest request = QuotasApi.UnassignOrganizationsQuotasRequest.builder()
+                .quotasUnassign(quotasUnassign)
+                .build();
+            apiInstance.unassignOrganizationsQuotas(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling QuotasApi#unassignOrganizationsQuotas");
             System.err.println("Status code: " + e.getCode());
@@ -676,10 +721,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **quotasUnassign** | [**QuotasUnassign**](QuotasUnassign.md)|  | [optional] |
+| request | [**UnassignOrganizationsQuotasRequest**](QuotasApi.md#UnassignOrganizationsQuotasRequest)|-|-|
 
 ### Return type
 
@@ -708,7 +752,7 @@ null (empty response body)
 
 ## unassignOrganizationsQuotasWithHttpInfo
 
-> ApiResponse<Void> unassignOrganizationsQuotas unassignOrganizationsQuotasWithHttpInfo(quotasUnassign)
+> ApiResponse<Void> unassignOrganizationsQuotas unassignOrganizationsQuotasWithHttpInfo(UnassignOrganizationsQuotasRequest)
 
 Remove organization quotas
 
@@ -723,7 +767,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.usage.model.*;
 import com.thousandeyes.sdk.usage.QuotasApi;
 
 public class Example {
@@ -738,7 +782,10 @@ public class Example {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         QuotasUnassign quotasUnassign = new QuotasUnassign(); // QuotasUnassign | 
         try {
-            ApiResponse<Void> response = apiInstance.unassignOrganizationsQuotasWithHttpInfo(quotasUnassign);
+            QuotasApi.UnassignOrganizationsQuotasRequest request = QuotasApi.UnassignOrganizationsQuotasRequest.builder()
+                .quotasUnassign(quotasUnassign)
+                .build();
+            ApiResponse<Void> response = apiInstance.unassignOrganizationsQuotasWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -754,10 +801,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **quotasUnassign** | [**QuotasUnassign**](QuotasUnassign.md)|  | [optional] |
+| request | [**UnassignOrganizationsQuotasRequest**](QuotasApi.md#UnassignOrganizationsQuotasRequest)|-|-|
 
 ### Return type
 
@@ -783,4 +829,14 @@ ApiResponse<Void>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UnassignOrganizationsQuotasRequest"></a>
+## UnassignOrganizationsQuotasRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **quotasUnassign** | [**QuotasUnassign**](QuotasUnassign.md) |  | [optional] |
+
 

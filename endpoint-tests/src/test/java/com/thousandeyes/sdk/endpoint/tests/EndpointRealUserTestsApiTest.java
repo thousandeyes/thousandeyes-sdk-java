@@ -80,7 +80,6 @@ public class EndpointRealUserTestsApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "realUserTests" : [ {
@@ -124,7 +123,10 @@ public class EndpointRealUserTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointRealUserTests(null);
+        var request = EndpointRealUserTestsApi.GetEndpointRealUserTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getEndpointRealUserTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

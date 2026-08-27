@@ -80,7 +80,6 @@ public class EndpointScheduledTestsApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "tests" : [ {
@@ -208,7 +207,10 @@ public class EndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointScheduledTests(null);
+        var request = EndpointScheduledTestsApi.GetEndpointScheduledTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getEndpointScheduledTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

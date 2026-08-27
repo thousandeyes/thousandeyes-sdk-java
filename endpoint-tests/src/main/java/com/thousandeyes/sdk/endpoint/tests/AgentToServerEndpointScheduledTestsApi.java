@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,28 +63,29 @@ public class AgentToServerEndpointScheduledTestsApi {
   /**
    * Creates agent to server endpoint scheduled test
    * Creates a new endpoint test in ThousandEyes using properties specified in the POST data. Please note that only Account Admins have the authorization to create new tests; regular users are restricted from using POST-based methods. 
-   * @param endpointAgentToServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgentToServerTest
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgentToServerTest createAgentToServerEndpointScheduledTest(EndpointAgentToServerTestRequest endpointAgentToServerTestRequest, String aid) throws ApiException {
-    ApiResponse<EndpointAgentToServerTest> response = createAgentToServerEndpointScheduledTestWithHttpInfo(endpointAgentToServerTestRequest, aid);
+  public EndpointAgentToServerTest createAgentToServerEndpointScheduledTest(CreateAgentToServerEndpointScheduledTestRequest request) throws ApiException {
+    ApiResponse<EndpointAgentToServerTest> response = createAgentToServerEndpointScheduledTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Creates agent to server endpoint scheduled test
    * Creates a new endpoint test in ThousandEyes using properties specified in the POST data. Please note that only Account Admins have the authorization to create new tests; regular users are restricted from using POST-based methods. 
-   * @param endpointAgentToServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgentToServerTest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgentToServerTest> createAgentToServerEndpointScheduledTestWithHttpInfo(EndpointAgentToServerTestRequest endpointAgentToServerTestRequest, String aid) throws ApiException {
-    createAgentToServerEndpointScheduledTestValidateRequest(endpointAgentToServerTestRequest);
+  public ApiResponse<EndpointAgentToServerTest> createAgentToServerEndpointScheduledTestWithHttpInfo(CreateAgentToServerEndpointScheduledTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createAgentToServerEndpointScheduledTest");
+    }
+    createAgentToServerEndpointScheduledTestValidateRequest(request.getEndpointAgentToServerTestRequest());
 
-    var requestBuilder = createAgentToServerEndpointScheduledTestRequestBuilder(endpointAgentToServerTestRequest, aid);
+    var requestBuilder = createAgentToServerEndpointScheduledTestRequestBuilder(request.getEndpointAgentToServerTestRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EndpointAgentToServerTest.class);
   }
@@ -99,8 +97,8 @@ public class AgentToServerEndpointScheduledTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAgentToServerEndpointScheduledTestRequestBuilder(EndpointAgentToServerTestRequest endpointAgentToServerTestRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createAgentToServerEndpointScheduledTestRequestBuilder(EndpointAgentToServerTestRequest endpointAgentToServerTestRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/tests/scheduled-tests/agent-to-server";
@@ -119,29 +117,73 @@ public class AgentToServerEndpointScheduledTestsApi {
     requestBuilder.requestBody(endpointAgentToServerTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete agent to server scheduled test
-   * Deletes an agent to server endpoint scheduled test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteAgentToServerEndpointScheduledTest(String testId, String aid) throws ApiException {
-    deleteAgentToServerEndpointScheduledTestWithHttpInfo(testId, aid);
+
+  public static final class CreateAgentToServerEndpointScheduledTestRequest {
+    private final EndpointAgentToServerTestRequest endpointAgentToServerTestRequest;
+    private final String aid;
+
+    private CreateAgentToServerEndpointScheduledTestRequest(Builder builder) {
+      this.endpointAgentToServerTestRequest = builder.endpointAgentToServerTestRequest;
+      this.aid = builder.aid;
+    }
+    public EndpointAgentToServerTestRequest getEndpointAgentToServerTestRequest() {
+      return endpointAgentToServerTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .endpointAgentToServerTestRequest(endpointAgentToServerTestRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private EndpointAgentToServerTestRequest endpointAgentToServerTestRequest;
+      private String aid;
+
+      public Builder endpointAgentToServerTestRequest(EndpointAgentToServerTestRequest endpointAgentToServerTestRequest) {
+        this.endpointAgentToServerTestRequest = endpointAgentToServerTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateAgentToServerEndpointScheduledTestRequest build() {
+        return new CreateAgentToServerEndpointScheduledTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete agent to server scheduled test
    * Deletes an agent to server endpoint scheduled test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAgentToServerEndpointScheduledTest(DeleteAgentToServerEndpointScheduledTestRequest request) throws ApiException {
+    deleteAgentToServerEndpointScheduledTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete agent to server scheduled test
+   * Deletes an agent to server endpoint scheduled test.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteAgentToServerEndpointScheduledTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteAgentToServerEndpointScheduledTestValidateRequest(testId);
+  public ApiResponse<Void> deleteAgentToServerEndpointScheduledTestWithHttpInfo(DeleteAgentToServerEndpointScheduledTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteAgentToServerEndpointScheduledTest");
+    }
+    deleteAgentToServerEndpointScheduledTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteAgentToServerEndpointScheduledTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteAgentToServerEndpointScheduledTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -153,8 +195,8 @@ public class AgentToServerEndpointScheduledTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteAgentToServerEndpointScheduledTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteAgentToServerEndpointScheduledTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/endpoint/tests/scheduled-tests/agent-to-server/{testId}"
@@ -172,31 +214,75 @@ public class AgentToServerEndpointScheduledTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteAgentToServerEndpointScheduledTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteAgentToServerEndpointScheduledTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteAgentToServerEndpointScheduledTestRequest build() {
+        return new DeleteAgentToServerEndpointScheduledTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve agent to server endpoint scheduled test
    * Retrieves details of an agent to server endpoint scheduled test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgentToServerTest
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgentToServerTest getAgentToServerEndpointScheduledTest(String testId, String aid) throws ApiException {
-    ApiResponse<EndpointAgentToServerTest> response = getAgentToServerEndpointScheduledTestWithHttpInfo(testId, aid);
+  public EndpointAgentToServerTest getAgentToServerEndpointScheduledTest(GetAgentToServerEndpointScheduledTestRequest request) throws ApiException {
+    ApiResponse<EndpointAgentToServerTest> response = getAgentToServerEndpointScheduledTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve agent to server endpoint scheduled test
    * Retrieves details of an agent to server endpoint scheduled test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgentToServerTest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgentToServerTest> getAgentToServerEndpointScheduledTestWithHttpInfo(String testId, String aid) throws ApiException {
-    getAgentToServerEndpointScheduledTestValidateRequest(testId);
+  public ApiResponse<EndpointAgentToServerTest> getAgentToServerEndpointScheduledTestWithHttpInfo(GetAgentToServerEndpointScheduledTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgentToServerEndpointScheduledTest");
+    }
+    getAgentToServerEndpointScheduledTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getAgentToServerEndpointScheduledTestRequestBuilder(testId, aid);
+    var requestBuilder = getAgentToServerEndpointScheduledTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EndpointAgentToServerTest.class);
   }
@@ -208,8 +294,8 @@ public class AgentToServerEndpointScheduledTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentToServerEndpointScheduledTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentToServerEndpointScheduledTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/tests/scheduled-tests/agent-to-server/{testId}"
@@ -227,29 +313,75 @@ public class AgentToServerEndpointScheduledTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentToServerEndpointScheduledTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private GetAgentToServerEndpointScheduledTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAgentToServerEndpointScheduledTestRequest build() {
+        return new GetAgentToServerEndpointScheduledTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List agent to server endpoint scheduled tests
    * Returns a list of all agent to server endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgentToServerTests
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgentToServerTests getAgentToServerEndpointScheduledTests(String aid) throws ApiException {
-    ApiResponse<EndpointAgentToServerTests> response = getAgentToServerEndpointScheduledTestsWithHttpInfo(aid);
+  public EndpointAgentToServerTests getAgentToServerEndpointScheduledTests(GetAgentToServerEndpointScheduledTestsRequest request) throws ApiException {
+    ApiResponse<EndpointAgentToServerTests> response = getAgentToServerEndpointScheduledTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List agent to server endpoint scheduled tests
    * Returns a list of all agent to server endpoint scheduled tests configured in ThousandEyes. This list does not contain saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgentToServerTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgentToServerTests> getAgentToServerEndpointScheduledTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<EndpointAgentToServerTests> getAgentToServerEndpointScheduledTestsWithHttpInfo(GetAgentToServerEndpointScheduledTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgentToServerEndpointScheduledTests");
+    }
     getAgentToServerEndpointScheduledTestsValidateRequest();
 
-    var requestBuilder = getAgentToServerEndpointScheduledTestsRequestBuilder(aid);
+    var requestBuilder = getAgentToServerEndpointScheduledTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), EndpointAgentToServerTests.class);
   }
@@ -257,8 +389,8 @@ public class AgentToServerEndpointScheduledTestsApi {
   private void getAgentToServerEndpointScheduledTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentToServerEndpointScheduledTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentToServerEndpointScheduledTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/tests/scheduled-tests/agent-to-server";
@@ -275,33 +407,64 @@ public class AgentToServerEndpointScheduledTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentToServerEndpointScheduledTestsRequest {
+    private final String aid;
+
+    private GetAgentToServerEndpointScheduledTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAgentToServerEndpointScheduledTestsRequest build() {
+        return new GetAgentToServerEndpointScheduledTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update agent to server endpoint scheduled test
    * Updates an agent to server scheduled test. Includes support for  enabling and disabling the test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param endpointNetworkTestUpdate  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgentToServerTest
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgentToServerTest updateAgentToServerEndpointScheduledTest(String testId, EndpointNetworkTestUpdate endpointNetworkTestUpdate, String aid) throws ApiException {
-    ApiResponse<EndpointAgentToServerTest> response = updateAgentToServerEndpointScheduledTestWithHttpInfo(testId, endpointNetworkTestUpdate, aid);
+  public EndpointAgentToServerTest updateAgentToServerEndpointScheduledTest(UpdateAgentToServerEndpointScheduledTestRequest request) throws ApiException {
+    ApiResponse<EndpointAgentToServerTest> response = updateAgentToServerEndpointScheduledTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update agent to server endpoint scheduled test
    * Updates an agent to server scheduled test. Includes support for  enabling and disabling the test.
-   * @param testId Unique ID of endpoint test. (required)
-   * @param endpointNetworkTestUpdate  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgentToServerTest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgentToServerTest> updateAgentToServerEndpointScheduledTestWithHttpInfo(String testId, EndpointNetworkTestUpdate endpointNetworkTestUpdate, String aid) throws ApiException {
-    updateAgentToServerEndpointScheduledTestValidateRequest(testId, endpointNetworkTestUpdate);
+  public ApiResponse<EndpointAgentToServerTest> updateAgentToServerEndpointScheduledTestWithHttpInfo(UpdateAgentToServerEndpointScheduledTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateAgentToServerEndpointScheduledTest");
+    }
+    updateAgentToServerEndpointScheduledTestValidateRequest(request.getTestId(), request.getEndpointNetworkTestUpdate());
 
-    var requestBuilder = updateAgentToServerEndpointScheduledTestRequestBuilder(testId, endpointNetworkTestUpdate, aid);
+    var requestBuilder = updateAgentToServerEndpointScheduledTestRequestBuilder(request.getTestId(), request.getEndpointNetworkTestUpdate(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EndpointAgentToServerTest.class);
   }
@@ -317,8 +480,8 @@ public class AgentToServerEndpointScheduledTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAgentToServerEndpointScheduledTestRequestBuilder(String testId, EndpointNetworkTestUpdate endpointNetworkTestUpdate, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateAgentToServerEndpointScheduledTestRequestBuilder(String testId, EndpointNetworkTestUpdate endpointNetworkTestUpdate, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PATCH");
 
     String path = "/endpoint/tests/scheduled-tests/agent-to-server/{testId}"
@@ -338,4 +501,58 @@ public class AgentToServerEndpointScheduledTestsApi {
     requestBuilder.requestBody(endpointNetworkTestUpdate);
     return requestBuilder;
   }
+
+  public static final class UpdateAgentToServerEndpointScheduledTestRequest {
+    private final String testId;
+    private final EndpointNetworkTestUpdate endpointNetworkTestUpdate;
+    private final String aid;
+
+    private UpdateAgentToServerEndpointScheduledTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.endpointNetworkTestUpdate = builder.endpointNetworkTestUpdate;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public EndpointNetworkTestUpdate getEndpointNetworkTestUpdate() {
+      return endpointNetworkTestUpdate;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .endpointNetworkTestUpdate(endpointNetworkTestUpdate)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private EndpointNetworkTestUpdate endpointNetworkTestUpdate;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder endpointNetworkTestUpdate(EndpointNetworkTestUpdate endpointNetworkTestUpdate) {
+        this.endpointNetworkTestUpdate = endpointNetworkTestUpdate;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateAgentToServerEndpointScheduledTestRequest build() {
+        return new UpdateAgentToServerEndpointScheduledTestRequest(this);
+      }
+    }
+  }
+
 }

@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getTestVersionHistory
 
-> TestVersionHistoryResponse getTestVersionHistory(testId, aid, limit)
+> TestVersionHistoryResponse getTestVersionHistory(GetTestVersionHistoryRequest)
 
 Get test version history
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.TestsApi;
 
 public class Example {
@@ -44,7 +44,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Integer limit = 50; // Integer | The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer.
         try {
-            TestVersionHistoryResponse result = apiInstance.getTestVersionHistory(testId, aid, limit);
+            TestsApi.GetTestVersionHistoryRequest request = TestsApi.GetTestVersionHistoryRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .limit(limit)
+                .build();
+            TestVersionHistoryResponse result = apiInstance.getTestVersionHistory(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TestsApi#getTestVersionHistory");
@@ -59,12 +64,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **limit** | **Integer**| The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer. | [optional] [default to 50] |
+| request | [**GetTestVersionHistoryRequest**](TestsApi.md#GetTestVersionHistoryRequest)|-|-|
 
 ### Return type
 
@@ -91,7 +93,7 @@ public class Example {
 
 ## getTestVersionHistoryWithHttpInfo
 
-> ApiResponse<TestVersionHistoryResponse> getTestVersionHistory getTestVersionHistoryWithHttpInfo(testId, aid, limit)
+> ApiResponse<TestVersionHistoryResponse> getTestVersionHistory getTestVersionHistoryWithHttpInfo(GetTestVersionHistoryRequest)
 
 Get test version history
 
@@ -106,7 +108,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.TestsApi;
 
 public class Example {
@@ -123,7 +125,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Integer limit = 50; // Integer | The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer.
         try {
-            ApiResponse<TestVersionHistoryResponse> response = apiInstance.getTestVersionHistoryWithHttpInfo(testId, aid, limit);
+            TestsApi.GetTestVersionHistoryRequest request = TestsApi.GetTestVersionHistoryRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .limit(limit)
+                .build();
+            ApiResponse<TestVersionHistoryResponse> response = apiInstance.getTestVersionHistoryWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -140,12 +147,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **limit** | **Integer**| The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer. | [optional] [default to 50] |
+| request | [**GetTestVersionHistoryRequest**](TestsApi.md#GetTestVersionHistoryRequest)|-|-|
 
 ### Return type
 
@@ -171,9 +175,21 @@ ApiResponse<[**TestVersionHistoryResponse**](TestVersionHistoryResponse.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetTestVersionHistoryRequest"></a>
+## GetTestVersionHistoryRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **limit** | **Integer** | The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer. | [optional] [default to 50] |
+
+
+
 ## getTests
 
-> Tests getTests(aid)
+> Tests getTests(GetTestsRequest)
 
 List configured tests
 
@@ -187,7 +203,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.TestsApi;
 
 public class Example {
@@ -202,7 +218,10 @@ public class Example {
         TestsApi apiInstance = new TestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Tests result = apiInstance.getTests(aid);
+            TestsApi.GetTestsRequest request = TestsApi.GetTestsRequest.builder()
+                .aid(aid)
+                .build();
+            Tests result = apiInstance.getTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TestsApi#getTests");
@@ -217,10 +236,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestsRequest**](TestsApi.md#GetTestsRequest)|-|-|
 
 ### Return type
 
@@ -250,7 +268,7 @@ public class Example {
 
 ## getTestsWithHttpInfo
 
-> ApiResponse<Tests> getTests getTestsWithHttpInfo(aid)
+> ApiResponse<Tests> getTests getTestsWithHttpInfo(GetTestsRequest)
 
 List configured tests
 
@@ -265,7 +283,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.TestsApi;
 
 public class Example {
@@ -280,7 +298,10 @@ public class Example {
         TestsApi apiInstance = new TestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Tests> response = apiInstance.getTestsWithHttpInfo(aid);
+            TestsApi.GetTestsRequest request = TestsApi.GetTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<Tests> response = apiInstance.getTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -297,10 +318,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestsRequest**](TestsApi.md#GetTestsRequest)|-|-|
 
 ### Return type
 
@@ -327,4 +347,14 @@ ApiResponse<[**Tests**](Tests.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetTestsRequest"></a>
+## GetTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

@@ -81,7 +81,6 @@ public class CredentialVaultOperationsApiTest {
     public void createCredentialVaultOperationRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -161,7 +160,11 @@ public class CredentialVaultOperationsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createCredentialVaultOperation(mappedRequest, null);
+        var request = CredentialVaultOperationsApi.CreateCredentialVaultOperationRequest.builder()
+                .credentialVaultOperation(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createCredentialVaultOperation(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -179,7 +182,6 @@ public class CredentialVaultOperationsApiTest {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         Boolean confirmDisabledObjects = false;
 
-
         var statusCode = 204;
 
         var path = "/operations/credential-vault/{id}";
@@ -189,7 +191,12 @@ public class CredentialVaultOperationsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteCredentialVaultOperationWithHttpInfo(id, confirmDisabledObjects, null);
+        var request = CredentialVaultOperationsApi.DeleteCredentialVaultOperationRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteCredentialVaultOperationWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -205,7 +212,6 @@ public class CredentialVaultOperationsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
 
         var responseBodyJson = """
                 {
@@ -251,7 +257,11 @@ public class CredentialVaultOperationsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getCredentialVaultOperation(id, null);
+        var request = CredentialVaultOperationsApi.GetCredentialVaultOperationRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getCredentialVaultOperation(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -266,7 +276,6 @@ public class CredentialVaultOperationsApiTest {
     public void getCredentialVaultOperationsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -351,7 +360,10 @@ public class CredentialVaultOperationsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getCredentialVaultOperations(null);
+        var request = CredentialVaultOperationsApi.GetCredentialVaultOperationsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getCredentialVaultOperations(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -367,7 +379,6 @@ public class CredentialVaultOperationsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -448,7 +459,12 @@ public class CredentialVaultOperationsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateCredentialVaultOperation(id, mappedRequest, null);
+        var request = CredentialVaultOperationsApi.UpdateCredentialVaultOperationRequest.builder()
+                .id(id)
+                .credentialVaultOperation(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateCredentialVaultOperation(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -88,7 +88,6 @@ public class DnsServerTestResultsApiTest {
         String testId = "202701";
         String serverId = "281474976710706";
 
-
         var responseBodyJson = """
                 {
                   "test" : {
@@ -232,7 +231,15 @@ public class DnsServerTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestDnsServerResult(testId, serverId, null, null, null, null, null);
+        var request = DnsServerTestResultsApi.GetTestDnsServerResultRequest.builder()
+                .testId(testId)
+                .serverId(serverId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getTestDnsServerResult(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -248,7 +255,6 @@ public class DnsServerTestResultsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -392,7 +398,14 @@ public class DnsServerTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestDnsServersResults(testId, null, null, null, null, null);
+        var request = DnsServerTestResultsApi.GetTestDnsServersResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getTestDnsServersResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
